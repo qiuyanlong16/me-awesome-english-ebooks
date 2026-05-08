@@ -1,0 +1,52 @@
+name: Weekly Economist Update
+
+on:
+  schedule:
+    - cron: '0 3 * * 6'  # Saturday 3:00 UTC (11:00 AM China time)
+  workflow_dispatch:      # Allow manual trigger
+
+permissions:
+  contents: write
+  pages: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          pip install pymupdf
+
+      - name: Copy user dictionary
+        run: |
+          mkdir -p scripts
+          # Dictionary is committed to repo
+          ls -la scripts/
+
+      - name: Process latest issue
+        run: |
+          python scripts/process.py
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Commit and push changes
+        run: |
+          git add docs/
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Add Economist issue $(date +%Y-%m-%d)"
+            git push
+          fi
