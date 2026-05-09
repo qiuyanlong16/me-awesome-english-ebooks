@@ -1,60 +1,72 @@
 # The Economist Daily Reader
 
-经济学人每日阅读工具 — 自动抓取、词汇注释、每日两页、打印友好。
+A personal reading tool for The Economist magazine — auto-fetches weekly issues, annotates advanced vocabulary with phonetics and Chinese definitions, splits content into daily ~2-page reading sessions, and formats for beautiful A4 printing.
 
-## 功能
+## Features
 
-- **自动更新**: GitHub Action 每周六自动抓取最新一期《经济学人》
-- **智能过滤**: 自动删除空白页和广告页面
-- **词汇注释**: 基于个人词库（4000+ 词），标注音标和中文释义
-- **每日阅读**: 自动将每期内容分割为约 2 页的每日阅读量
-- **打印友好**: A4 纸张排版优化，一键打印
+- **Auto-fetch**: GitHub Action automatically downloads the latest issue every Saturday from [awesome-english-ebooks](https://github.com/hehonghui/awesome-english-ebooks)
+- **Smart filtering**: Removes blank pages and ad content automatically
+- **Vocabulary annotation**: Uses a personal dictionary (4,000+ words) from Eudic, with phonetics and Chinese definitions
+- **Daily sessions**: Splits each ~100-page issue into ~42 daily reading chunks (~1,800 words/day)
+- **Print-ready**: Clean A4 layout optimized for printing — just click "Print"
 
-## 使用方式
+## Quick Start
 
-### 在线阅读
+### Online Reading
 
-访问 GitHub Pages 地址即可查看所有期刊的每日阅读页面。
+Visit the [GitHub Pages site](https://qiuyanlong16.github.io/me-awesome-english-ebooks/) to browse all issues and daily reading pages.
 
-### 本地处理
+### Local Processing
 
 ```bash
-# 安装依赖
+# Install dependencies
 pip install pymupdf
 
-# 处理本地 PDF 文件
+# Process latest issue
 python scripts/process.py
 ```
 
-### 手动触发更新
+### Manual Update Trigger
 
-在 GitHub 仓库的 Actions 页面中，点击 "Weekly Economist Update" → "Run workflow"。
+Go to **Actions** → **Weekly Economist Update** → **Run workflow** to manually fetch the latest issue.
 
-## 项目结构
+## Project Structure
 
 ```
 .
-├── .github/workflows/    # GitHub Action（每周自动更新）
+├── .github/workflows/
+│   └── weekly-update.yml       # Auto-fetches and processes every Saturday
 ├── scripts/
-│   ├── process.py        # 主流程（下载 → 提取 → 生成）
-│   ├── extract.py        # PDF 文本提取
-│   ├── annotate.py       # 词汇注释引擎
-│   ├── dictionary.py     # 词库加载器
-│   ├── generate.py       # HTML 页面生成
-│   ├── build_index.py    # 索引页生成
-│   └── user_dictionary.json  # 个人词库
+│   ├── process.py              # Main pipeline (download → extract → generate)
+│   ├── extract.py              # PDF text extraction with blank/ad filtering
+│   ├── annotate.py             # Vocabulary annotation and daily grouping
+│   ├── dictionary.py           # Dictionary loader with lemmatization
+│   ├── generate.py             # HTML page generation
+│   ├── build_index.py          # Index page builder
+│   └── user_dictionary.json    # Personal vocabulary (4,000+ words)
 ├── template/
-│   ├── page.html         # 每日阅读页模板
-│   └── index.html        # 首页模板
+│   ├── page.html               # Daily reading page template
+│   └── index.html              # Issue listing template
 └── docs/
-    ├── index.html        # 生成的索引页（GitHub Pages）
-    └── issues/           # 生成的每日阅读页
+    ├── index.html              # Generated index (served by GitHub Pages)
+    └── issues/YYYY-MM-DD/      # Generated daily reading pages + metadata
 ```
 
-## 词库来源
+## How It Works
 
-个人词库来自欧路词典导出的生词本（4000+ 词），包含音标和中文释义。
+1. **GitHub Action** runs every Saturday at 11:00 AM (China time)
+2. Downloads the latest Economist PDF from the source repo
+3. Extracts text, removes blank pages and ads
+4. Segments articles by section headers (Leaders, Letters, Briefing, etc.)
+5. Groups ~1,800 words into daily reading sessions
+6. Annotates advanced words using the personal dictionary
+7. Generates beautiful HTML pages with vocabulary glossaries
+8. Commits everything back to the `main` branch
+
+## Dictionary
+
+The vocabulary comes from a personal Eudic (欧路词典) wordbook containing 4,000+ words with phonetic transcriptions and Chinese definitions. Common CET-4 words (the, be, have, etc.) are excluded from annotation.
 
 ## License
 
-仅供个人学习使用。
+For personal study use only.
