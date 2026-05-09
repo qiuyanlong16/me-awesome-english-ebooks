@@ -51,9 +51,10 @@ def download_latest_pdf(output_dir):
     issues.sort(key=lambda x: x[0], reverse=True)
     latest_date, latest_dir, latest_api_url = issues[0]
 
-    # Check if already processed
+    # Check if already processed (unless FORCE_REGEN is set)
     local_dir = os.path.join(ISSUES_DIR, latest_date)
-    if os.path.exists(os.path.join(local_dir, 'meta.json')):
+    force_regen = os.environ.get('FORCE_REGEN', '').lower() in ('1', 'true', 'yes')
+    if not force_regen and os.path.exists(os.path.join(local_dir, 'meta.json')):
         print(f"Issue {latest_date} already processed locally. Skipping.")
         return None, None
 

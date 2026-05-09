@@ -37,15 +37,21 @@ def generate_day_page(date_str, day_paras, day_num, total_days, dictionary, issu
     # Annotate each paragraph and collect glossary
     body_html = ''
     all_glossary = []
+    prev_article = None
 
     for para in day_paras:
+        # Insert article header when transitioning to a new article
+        if prev_article is not None and para['title'] != prev_article:
+            body_html += '<div class="article-separator"></div>\n'
+            body_html += f'<div class="article-header">{html.escape(para["section"])} · {html.escape(para["title"])}</div>\n'
+
         annotated, glossary = annotate_text(para['body'], dictionary)
         all_glossary.extend(glossary)
 
-        # Wrap paragraphs in <p> tags
-        # Group consecutive paragraphs from the same article
         para_html = annotated.replace('\n', '<br>')
         body_html += f'<p>{para_html}</p>\n'
+
+        prev_article = para['title']
 
     # Generate glossary rows
     glossary_rows = ''
