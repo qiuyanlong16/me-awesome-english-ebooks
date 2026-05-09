@@ -3,11 +3,19 @@
 import os
 import re
 import json
-import html
 from datetime import datetime
 from scripts.annotate import split_into_days, annotate_text
 from scripts.extract import extract_pdf
 from scripts.dictionary import Dictionary
+
+
+def _escape(s):
+    """Minimal HTML escaping for text content."""
+    s = s.replace('&', '&amp;')
+    s = s.replace('<', '&lt;')
+    s = s.replace('>', '&gt;')
+    s = s.replace('"', '&quot;')
+    return s
 
 
 def clean_definition(def_text):
@@ -44,7 +52,7 @@ def generate_day_page(date_str, day_paras, day_num, total_days, dictionary, issu
         # Insert article header when transitioning to a new article
         if prev_article is not None and para['title'] != prev_article:
             body_html += '<div class="article-separator"></div>\n'
-            body_html += f'<div class="article-header">{html.escape(para["section"])} · {html.escape(para["title"])}</div>\n'
+            body_html += f'<div class="article-header">{_escape(para["section"])} · {_escape(para["title"])}</div>\n'
 
         annotated, glossary = annotate_text(para['body'], dictionary)
         all_glossary.extend(glossary)
@@ -75,21 +83,21 @@ def generate_day_page(date_str, day_paras, day_num, total_days, dictionary, issu
 
     # Fill template
     today = datetime.now().strftime('%Y-%m-%d')
-    html = template
-    html = html.replace('{{DATE}}', date_str)
-    html = html.replace('{{TITLE}}', title)
-    html = html.replace('{{SECTION}}', section)
-    html = html.replace('{{BODY}}', body_html)
-    html = html.replace('{{GLOSSARY_ROWS}}', glossary_rows)
-    html = html.replace('{{PREV_LINK}}', prev_link)
-    html = html.replace('{{NEXT_LINK}}', next_link)
-    html = html.replace('{{PROGRESS}}', progress)
-    html = html.replace('{{GENERATED_DATE}}', today)
+    page = template
+    page = page.replace('{{DATE}}', date_str)
+    page = page.replace('{{TITLE}}', title)
+    page = page.replace('{{SECTION}}', section)
+    page = page.replace('{{BODY}}', body_html)
+    page = page.replace('{{GLOSSARY_ROWS}}', glossary_rows)
+    page = page.replace('{{PREV_LINK}}', prev_link)
+    page = page.replace('{{NEXT_LINK}}', next_link)
+    page = page.replace('{{PROGRESS}}', progress)
+    page = page.replace('{{GENERATED_DATE}}', today)
 
     # Write page
     page_path = os.path.join(issue_dir, f'day{day_num}.html')
     with open(page_path, 'w', encoding='utf-8') as f:
-        f.write(html)
+        f.write(page)
 
     return len(all_glossary)
 
