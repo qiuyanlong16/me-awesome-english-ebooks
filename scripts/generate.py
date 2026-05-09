@@ -3,6 +3,7 @@
 import os
 import re
 import json
+import html
 from datetime import datetime
 from scripts.annotate import split_into_days, annotate_text
 from scripts.extract import extract_pdf
