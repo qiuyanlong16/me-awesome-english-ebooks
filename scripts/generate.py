@@ -57,7 +57,9 @@ def generate_day_page(date_str, day_paras, day_num, total_days, dictionary, issu
         annotated, glossary = annotate_text(para['body'], dictionary)
         all_glossary.extend(glossary)
 
-        para_html = annotated.replace('\n', '<br>')
+        # Replace PDF line-breaks with spaces so text flows naturally
+        para_html = re.sub(r'\n+', ' ', annotated).strip()
+        para_html = re.sub(r'\s{2,}', ' ', para_html)
         body_html += f'<p>{para_html}</p>\n'
 
         prev_article = para['title']
