@@ -74,8 +74,11 @@ def annotate_text(body, dictionary, max_annotations=None):
 
         glossary.append((word_lower, phonetic, pos, definition))
 
-        # Create HTML span for the word
-        replacement = f'<span class="annot">{html.escape(word)}</span>'
+        # Create HTML span with tooltip data
+        clean_def = re.sub(r'<[^>]+>', '', definition).strip().rstrip('；,，.。')[:60]
+        tooltip = f'{word_lower}  {phonetic}  {pos} {clean_def}'
+        # Use quote attributes instead of HTML escaping for the tooltip value
+        replacement = f'<span class="annot" data-tooltip="{tooltip}">{html.escape(word)}</span>'
         replacements.append((start, end, replacement))
 
     # Apply replacements in reverse order to preserve positions

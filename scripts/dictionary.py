@@ -2,6 +2,7 @@
 
 import json
 import os
+import html as html_mod
 
 # Only the MOST common English words — things any learner absolutely knows
 # This is intentionally conservative; the user's own dictionary covers most words
@@ -55,7 +56,14 @@ class Dictionary:
         self.entries = {}
         if dict_path and os.path.exists(dict_path):
             with open(dict_path, 'r', encoding='utf-8') as f:
-                self.entries = json.load(f)
+                raw = json.load(f)
+            # Unescape HTML entities in phonetics and definitions
+            for k, v in raw.items():
+                self.entries[k] = {
+                    'phonetic': html_mod.unescape(v.get('phonetic', '')),
+                    'pos': v.get('pos', ''),
+                    'definition': html_mod.unescape(v.get('definition', '')),
+                }
         self._lookup = {k.lower(): v for k, v in self.entries.items()}
 
     def lookup(self, word):
