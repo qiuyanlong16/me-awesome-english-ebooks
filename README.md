@@ -70,3 +70,4 @@ The vocabulary comes from a personal Eudic (欧路词典) wordbook containing 4,
 ## License
 
 For personal study use only.
+
