@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business | ICE age</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-05-16</div>
+
+<h1 class="article-title">Business | ICE age</h1>
+<div class="article-section">Business</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>detention facilities. CoreCivic’s <span class="annot" data-tooltip="net /net/ n. 网；净利；网络；实价vi. 编网vt. 净赚；得到；用网捕adj. 纯粹的；净余的时 态: netted, nettin">net</span> profit in the first <span class="annot" data-tooltip="quarter /'kwɔːrtər/ n. 四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一时 ">quarter</span> of 2026 was up by half from the year before. For Geo <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">Group</span>, it doubled. Deportation has also become a lucrative <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span>. March set a monthly record for ICE of <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> 1,800 deportation <span class="annot" data-tooltip="flights /flaɪt/ n. 飞翔, 飞行航班, 航机楼梯的一段逃跑, 溃退时 态: flighted, flighting, flights">flights</span>. Airlines such as GlobalX are profiting handsomely. The carrier, which had been making losses until recently, saw its sales <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> by 15% year on year in the first quarter, thanks largely to deportation flights. Most in the industry expect the boom to continue. Looking soft on illegal immigration has <span class="annot" data-tooltip="proved /proʊ/ n. 从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞">proved</span> time and again to be a vote-loser. Politicians will be <span class="annot" data-tooltip="reluctant /rɪ'lʌktənt/ adj. 不情愿的, 勉强的副 词: reluctantly">reluctant</span> to tighten the purse-strings. ■ To track the <span class="annot" data-tooltip="trends /trend/ n. 趋势, 倾向流行时 态: trended, trending, trends">trends</span> shaping <span class="annot" data-tooltip="commerce /'kɑːmɜːrs/ n. 商业, 贸易">commerce</span>, industry and technology, sign up to “The Bottom <span class="annot" data-tooltip="line /laɪn/ n. 绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long inter">Line</span>”, our weekly subscriber-only newsletter on global business. This article was downloaded by zlibrary from https://www.economist.com//business/2026/05/14/companies-are-making-big-bucks-from- immigration-<span class="annot" data-tooltip="crackdowns /'krækdaʊn/ n. 压迫,镇压,打击">crackdowns</span></p>
+<div class="article-separator"></div>
+<div class="article-header">Business · Business | Bartleby</div>
+<p>Introducing “<span class="annot" data-tooltip="velocity /və'lɑːsəti/ n. 速率；迅速；周转率">Velocity</span> pivot” The <span class="annot" data-tooltip="corporate /'kɔːrpərət/ adj. 社团的, 法人的副 词: corporately">corporate</span> world’s Lorem ipsum May 14th 2026 We are <span class="annot" data-tooltip="pleased /pliːzd/ adj. 高兴的；喜欢的；乐意做某事v. 满意；愿意（please的过去分词形式）">pleased</span> to announce a modern <span class="annot" data-tooltip="alternative /ɔːl'tɜːrnətɪv/ adj. 可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）">alternative</span> to the “Lorem ipsum” text. This much-loved piece of filler text, derived from Cicero’s “De finibus bonorum et malorum”, has been used for layout purposes for centuries, and remains available for anyone to use. But we believe that other, newer forms of meaningless babble are even better at taking up space, which is why we are <span class="annot" data-tooltip="thrilled /θrɪl/ n. 强烈的兴奋、恐惧或快乐感vt. & vi. (使)兴奋, (使)激动时 态: thrilled, thrilling, ">thrilled</span> to <span class="annot" data-tooltip="unveil /ˌʌn'veɪl/ vt. 揭去…的面罩，除去…的遮盖物使公之于众；揭露vi. 除去面纱(或覆盖物)；揭幕揭露出来时 态: unveiled，unv">unveil</span> “Velocity pivot”. For most forms of corporate communication, it is not necessary to change the text at all before you publish. Velocity pivot hunger to win relentless execution insatiable appetite artificial intelligence tokenmaxxing tokenised toecurling double-digit growth transformational volatility fireside chat drinking from a fire hose burning</p>
+<p>platform general pyromania augmentation not <span class="annot" data-tooltip="automation /ˌɔːtə'meɪʃn/ n. 自动化(技术), 自动操作">automation</span> it’s not AI that will take your job but the person using AI <span class="annot" data-tooltip="headcount /'hedkaʊnt/ n. 点人头数 总人数,职员总数">headcount</span> <span class="annot" data-tooltip="reduction /rɪ'dʌkʃn/ n. 减少，缩小；减少的量，降价">reduction</span> tough decisions rightsizing. <span class="annot" data-tooltip="innovation /ˌɪnə'veɪʃn/ n. 改革, 革新, 创新新观念, 新方法, 新发明形容词: innovational">Innovation</span> powerhouse three <span class="annot" data-tooltip="horizons /hə'raɪzn/ n. 地平线；眼界；范围；视野">horizons</span> four Ps five whys six is too many town hall watercooler conversations think like an <span class="annot" data-tooltip="owner /'oʊnər/ n. 所有者；物主">owner</span> speed up fast forward step back step up <span class="annot" data-tooltip="zoom /zuːm/ v. 快速移动；（用变焦距镜头）推近（或拉远）；急剧增长，猛涨；（飞机）陡直上升，作急跃升飞行；嗡嗡（或隆隆）作响；迅速前往n">zoom</span> in zoom out I’m feeling quite dizzy helicopter view deep dive top-down bottom-up <span class="annot" data-tooltip="downside /'daʊnsaɪd/ adj. 下降趋势的">downside</span> upside rotating <span class="annot" data-tooltip="turnaround /'tɜːrnəraʊnd/ n. 车辆回转场(为给飞机检修和加油之类使其重新进入飞行状态所需的)周转时间">turnaround</span> no really I am going to be sick. Change management <span class="annot" data-tooltip="strategic /strə'tiːdʒɪk/ adj. 战略(上)的有战略意义的; 至关重要的副 词: strategically">strategic</span> strategising waterfall <span class="annot" data-tooltip="agile /'ædʒl/ adj. 灵巧的，轻快的，活跃的灵活的，头脑灵敏的，动作敏捷的机敏的，活泼的副 词: agilely">agile</span> <span class="annot" data-tooltip="sprint /sprɪnt/ vi. 冲刺，全速跑n. 短跑；冲刺vt. 全速奔跑SPRINTabbr. Solid Propellant Rocket In">sprint</span> cascade tentpole brainstorming whiteboard miro board bored senseless modernising digitisation revolution not evolution not revolution <span class="annot" data-tooltip="vibe /vaɪb/ Ⅰn. ①(感情上的)感应，共鸣②(一地的)气氛，环境Ⅱvi. (感情上)产生共鸣">vibe</span>-coding <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span>-added MVP SVP FIFA CRO MCP PRD BBQ BAU KPI DEI though we don’t talk about the last one much any more. Data is the new oil models are the new oil oil is the new oil <span class="annot" data-tooltip="surplus /'sɜːrplʌs/ adj. 过剩的, 多余的n. 过剩">surplus</span> abundance multiplier effect 10x 100x 1,000x oh what the hell 10,000x impact deep impact really deep impact supercharged superexcited superpower superintelligence supermarket superstars tipping point inflection point <span class="annot" data-tooltip="choke /tʃoʊk/ vt. & vi. 填塞(使)窒息时 态: choked, choking, chokes">choke</span> points three-point turn <span class="annot" data-tooltip="lean /liːn/ vi. 倾斜；倚靠；倾向；依赖adj. 瘦的；贫乏的，歉收的vt. 使倾斜n. 倾斜；倾斜度；瘦肉时 态: leaned, le">lean</span> <span class="annot" data-tooltip="elevate /'elɪveɪt/ vt. 举起；提升；振奋情绪等；提升…的职位时 态: elevated, elevating, elevates">elevate</span> sharpen <span class="annot" data-tooltip="reach /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reach</span> out circle back converge <span class="annot" data-tooltip="spin /spɪn/ vi. 旋转；纺纱；吐丝；晕眩vt. 使旋转；纺纱；编造；结网n. 旋转；疾驰时 态: spun spinning, spins">spin</span> up spin down spin out. <span class="annot" data-tooltip="edge /edʒ/ n. 边缘；刀刃；优势；锋利vt. 使锐利；将…开刃；给…加上边vi. 缓缓移动；侧着移动EDGEabbr. Electron">Edge</span> cases use cases suitcases frequent <span class="annot" data-tooltip="flyer /'flaɪər/ n. 飞鸟；飞行物；飞跳；传单；[美俚]孤注一掷">flyer</span> lounges platinum member air miles in <span class="annot" data-tooltip="flight /flaɪt/ n. 飞翔, 飞行航班, 航机楼梯的一段逃跑, 溃退时 态: flighted, flighting, flights">flight</span> dynamic environment shifting <span class="annot" data-tooltip="landscape /'lændskeɪp/ n. 风景, 景色风景画, 风景照时 态: landscaped, landscaping, landscapes">landscape</span> new industrial revolution <span class="annot" data-tooltip="bias /'baɪəs/ n. 偏见；斜纹；偏爱；乖离率vt. 使存偏见adj. 偏斜的adv. 偏斜地时 态: biased, biassed bia">bias</span> for action <span class="annot" data-tooltip="actionable /'ækʃənəbl/ adj. 可控告的">actionable</span> traction tractionable is that a word? It is now reimagine reinvent <span class="annot" data-tooltip="reinforce /ˌriːɪn'fɔːrs/ v. 加强；充实；使更强烈加固；使更结实为 (军队或警察队伍) 增加力量（或装备）；向（某地）增兵；增援给予…更多支持；为…提">reinforce</span> revamp renew redefine <span class="annot" data-tooltip="resilient /rɪ'zɪliənt/ adj. (指物体或材料)能复原的;有弹性的;有弹力的(指人的性格)能迅速恢复或重新振作的;达观的;适应性强的">resilient</span> grit growth <span class="annot" data-tooltip="mindset /'maɪndset/ n. 心态；倾向；习惯；精神状态">mindset</span> futuristic heuristic holistic optimistic systemic getting the ic. Transforming the value proposition propositioning transformational value delighting customers strengthening communities leveraging insights other verb-noun <span class="annot" data-tooltip="combinations /ˌkɑːmbɪ'neɪʃn/ n. 合作, 结合, 组合联合体, 组合物密码组合, 字码组合排列, 组合形容词: combinational">combinations</span> end-to-end workflows deployment training <span class="annot" data-tooltip="inference /'ɪnfərəns/ n. 推论, 推理, 推断推断结果, 结论">inference</span> stack full-stack <span class="annot" data-tooltip="slack /slæk/ adj. 松(弛)的清淡的，不活跃的懈怠的，马虎的vt. & vi. 懈怠；偷懒减速；放松n. (绳索等)松弛部分宽松裤比较级: ">slack</span> attack geopolitics geoeconomics geotechnology geography is back top-right-hand quadrant total <span class="annot" data-tooltip="alignment /ə'laɪnmənt/ n. 排成直线">alignment</span> <span class="annot" data-tooltip="partial /'pɑːrʃl/ adj. 局部的；不公平的；[口]偏爱的名 词: partialness">partial</span> alignment non-alignment disagree and <span class="annot" data-tooltip="commit /kə'mɪt/ vt. 犯罪；犯错承诺；使自己受约束托付；交付时 态: committed，committing，commits">commit</span> together. Unfolding ever-changing fresh perspectives instant personalised large-scale multi-year multi-service long-term investment pipelines embedded</p>
+<p>ecosystem leaders <span class="annot" data-tooltip="leading /ˈliːdɪŋ/ adj. 主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）">leading</span> through leadership leaden prose new normal new paradigms <span class="annot" data-tooltip="paradox /'pærədɑːks/ n. 似非而是的论点；悖论，反论；自相矛盾的人或事形容词: paradoxical">paradox</span> parabola <span class="annot" data-tooltip="hockey /'hɑːki/ n. 冰球；曲棍球">hockey</span>-stick J-<span class="annot" data-tooltip="curve /kɜːrv/ n. 曲线；弯曲；曲线球；曲线图表vt. 使弯曲；弯vi. 成曲形adj. 弯曲的；曲线形的时 态: curved, curv">curve</span> K-shaped A-game C-suite B-yoncé. Improved outcomes purpose <span class="annot" data-tooltip="values /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">values</span> mission behaviours customer-centricity customer-<span class="annot" data-tooltip="obsessed /əb'ses/ v. 使痴迷，使迷恋；使心神不宁，不停地困扰； 唠叨；挂牵，念念不忘时 态: obsessed, obsessing, obs">obsessed</span> sounds a bit <span class="annot" data-tooltip="creepy /'kriːpi/ adj. 令人毛骨悚然的比较级: creepier, creepiest">creepy</span> to be <span class="annot" data-tooltip="honest /'ɑːnɪst/ adj. 诚实的，实在的；可靠的；坦率的">honest</span> bold audacious daring restless ambition world-class <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span>-leading game-changing topline metrics <span class="annot" data-tooltip="blueprint /'bluːprɪnt/ n. 蓝图, 设计图时 态: blueprinted, blueprinting, blueprints">blueprint</span> <span class="annot" data-tooltip="corporate /'kɔːrpərət/ adj. 社团的, 法人的副 词: corporately">corporate</span> DNA digital <span class="annot" data-tooltip="workforce /'wɜːrkfɔːrs/ n. 全体员工(国家或行业等)劳动力,劳动大军,劳动人口">workforce</span> orchestration agentic compute fuelling propelling driving accelerating never braking <span class="annot" data-tooltip="operational /ˌɑːpə'reɪʃənl/ adj. 即可使用的(用于)操作的, 经营的">operational</span> platform analytics global <span class="annot" data-tooltip="footprint /'fʊtprɪnt/ n. (尤指软地上的)脚印，足迹；(地板上的)脚印，鞋印(建筑物或设备，尤指计算机)占用的空间 (尤指来自卫星的)广播信号覆盖">footprint</span> local know-how uniquely positioned scaling powering delivering achieving winning executing mastering <span class="annot" data-tooltip="aggressive /ə'ɡresɪv/ adj. 好争斗的, 挑衅的, 侵略性的副 词: aggressively">aggressive</span> <span class="annot" data-tooltip="complete /kəm'pliːt/ adj. 完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善比较级: complete">complete</span> passivity just kidding. Decision points gates milestones gallstones <span class="annot" data-tooltip="durable /'dʊrəbl/ adj. 耐用的，持久的n. 耐用品副 词: durably">durable</span> <span class="annot" data-tooltip="sustainable adj. (对自然资源和能源的利用)不破坏生态平衡的, 合理利用的；可持续的">sustainable</span> confident <span class="annot" data-tooltip="momentum /moʊ'mentəm/ n. 动力；动量；冲力；势头复 数: momenta">momentum</span> <span class="annot" data-tooltip="sentiment /'sentɪmənt/ n. (对怜悯、怀旧等的)柔情态度或意见观点; 意见">sentiment</span> <span class="annot" data-tooltip="differentiated 分化型">differentiated</span> competitive advantage <span class="annot" data-tooltip="organic /ɔːr'ɡænɪk/ adj. 器官的；器质性的有机(体)的，有机物的副 词: organically">organic</span> growth inorganic growth basically growth core business core strength cor blimey cycles cycling triathlon lycra <span class="annot" data-tooltip="stretch /stretʃ/ vt. 伸展,张开vi. 伸展adj. 可伸缩的n. 伸展，延伸时 态: stretched, stretching, stre">stretch</span> goals <span class="annot" data-tooltip="objectives /əb'dʒektɪv/ n. 目标; 目的adj. 客观的; 不带偏见的副 词: objectively">objectives</span> key results at scale pace of change testament to the <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span> of the <span class="annot" data-tooltip="brand /brænd/ n. 商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责时 态: branded, branding, brands">brand</span> maximise breakthroughs unlock potential expand frontiers utilise headroom advance something or other. <span class="annot" data-tooltip="velocity /və'lɑːsəti/ n. 速率；迅速；周转率">Velocity</span> pivot hunger to win relentless execution insatiable appetite artificial intelligence tokenmaxxing tokenised toecurling double-digit growth transformational volatility fireside chat drinking from a fire hose burning platform general pyromania augmentation not <span class="annot" data-tooltip="automation /ˌɔːtə'meɪʃn/ n. 自动化(技术), 自动操作">automation</span> it’s not AI that will take ■ Step inside the world of work with our Bartleby newsletter. Each week our white-collar oracle muses on the agonies of office life. This article was downloaded by zlibrary from https://www.economist.com//business/2026/05/14/introducing-velocity-pivot</p>
+<div class="article-separator"></div>
+<div class="article-header">Business · Business | Schumpeter</div>
+<p>Big tech is sacrificing its cashflows to <span class="annot" data-tooltip="prop /prɑːp/ n. 支柱, 支柱物vt. 支撑, 支持, 维持时 态: propped, propping, props">prop</span> up the AI boom The result is increasingly unsettling May 14th 2026 Achart is <span class="annot" data-tooltip="haunting /hɔːnt/ vt. 经常出没于缠绕, 萦绕n. 某人常去的地方时 态: haunted, haunting, haunts">haunting</span> <span class="annot" data-tooltip="silicon /'sɪlɪkən/ n. 〈化〉硅">Silicon</span> <span class="annot" data-tooltip="valley /'væli/ n. 流域；山谷；溪谷">Valley</span>. The profits of big cloud-computing firms (<span class="annot" data-tooltip="amazon /ˈæməˌzɑn/ n. 高大强悍的女人；（古希腊神话中的）亚马孙族女战士Amazonn. 亚马逊河(南美洲大河)">Amazon</span>, Google, Meta, Microsoft and Oracle) are rising inexorably. Yet the amount of cashflow they generate after capital spending is <span class="annot" data-tooltip="falling /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">falling</span>. Sketched together, these soaring profits and diving free cashflows, which until recently rose in unison, <span class="annot" data-tooltip="resemble /rɪ'zembl/ vt. 像…, 类似于时 态: resembled, resembling, resembles">resemble</span> the <span class="annot" data-tooltip="gasps /ɡæsp/ vi. 喘息；喘气；渴望vt. 气喘吁吁地说；喘着气说话n. 喘气时 态: gasped, gasping, gasps">gasps</span> of the world’s investors. In short order America’s biggest companies have gone from printing money to burning it. Amazon, Meta and Microsoft are all expected by analysts to announce <span class="annot" data-tooltip="negative /'neɡətɪv/ adj. 拒绝的；怀疑的；不同意的消极的，非建设性的无预期结果的〈数〉负的；〈电〉阴的，负的n. 否定词语，否定的观点；拒绝；否认">negative</span> cashflows in at least one <span class="annot" data-tooltip="quarter /'kwɔːrtər/ n. 四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一时 ">quarter</span> this year. <span class="annot" data-tooltip="alphabet /'ælfəbet/ n. 字母表，字母系统；入门，初步">Alphabet</span>, the parent company of Google, will just about keep its head above water. Oracle, the weakest of the <span class="annot" data-tooltip="bunch /bʌntʃ/ n. 串；群；突出物vi. 隆起；打褶；形成一串vt. 使成一串；使打褶时 态: bunched, bunching, bun">bunch</span>, is already drowning.</p>
+<p>It does not take Poirot to work out what’s going on. This year the five firms will spend $800bn filling <span class="annot" data-tooltip="warehouses /'werhaʊs/ n. 仓库, 货栈时 态: warehoused, warehousing, warehousesalso">warehouses</span> with computers to run artificial- intelligence models. These investments <span class="annot" data-tooltip="barely /'berli/ adv. 仅仅，勉强；几乎不；公开地；贫乏地">barely</span> register on their profit statements, since <span class="annot" data-tooltip="assets /'æset/ n. 资产；有用的东西；有利条件；优点">assets</span> depreciate only once built—and then only slowly. Cashflow statements, though, are less <span class="annot" data-tooltip="susceptible /sə'septəbl/ adj. 易受影响的; 易动感情的过敏的; 易受…感染的能经受的副 词: susceptibly">susceptible</span> to obfuscation. At around 40% of their <span class="annot" data-tooltip="revenues /'revənuː/ n. 收入，收益；财政收入，税收">revenues</span> this year, the cloud giants’ capital <span class="annot" data-tooltip="expenditures /ɪk'spendɪtʃər/ n. 花费, 使用(尤指金钱的)支出额">expenditures</span> will <span class="annot" data-tooltip="surpass /sər'pæs/ vt. 胜过，优于；超越；非…所能办到或理解时 态: surpassed, surpassing, surpasses">surpass</span> those of the oil <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> during the shale boom in the 2010s and the <span class="annot" data-tooltip="telecoms /ˈtɛlɪˌkɑm/ n. 电信，远距通信；电讯">telecoms</span> industry during the dotcom <span class="annot" data-tooltip="bubble /'bʌbl/ n. 气泡，泡沫，泡状物；透明圆形罩，圆形顶vi. 沸腾，冒泡；发出气泡声vt. 使冒泡；滔滔不绝地说时 态: bubbled">bubble</span> in the 1990s. Arguments <span class="annot" data-tooltip="dismissive /dɪs'mɪsɪv/ adj. 轻视的, 轻蔑的, 鄙视的">dismissive</span> of the scale of big tech’s transformation have collapsed under the weight of the growing bill. Comparisons to the dotcom bubble are wrongheaded because the big spenders today generate ample cashflows, went one argument. Not any more. Their cashflow pressures cannot be that great because firms are still buying back bucketloads of their <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> stock, many said. During the most recent <span class="annot" data-tooltip="quarter /'kwɔːrtər/ n. 四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一时 ">quarter</span>, buy-backs collapsed. A third is that big tech trades at “only” 23 times the firms’ forecast earnings. Yes, but when the denominator of this equation captures almost nothing of their spending, is it at all useful? Nowadays investors judge the success of these firms on the basis of concentrated <span class="annot" data-tooltip="revenue /'revənuː/ n. 收入，收益；财政收入，税收">revenue</span> <span class="annot" data-tooltip="contracts /'kɑːntrækt/ vi. 感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约时 态: contracted, contracting, c">contracts</span> <span class="annot" data-tooltip="stretching /stretʃ/ vt. 伸展,张开vi. 伸展adj. 可伸缩的n. 伸展，延伸时 态: stretched, stretching, stre">stretching</span> <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> into the future, rather than dispersed sales received today. Mostly these contracts involve selling computing capacity to model-makers like OpenAI and <span class="annot" data-tooltip="anthropic /ænˈθrɑpɪk/ adj. 人类的,有关人类的">Anthropic</span>, which are themselves incinerating vast <span class="annot" data-tooltip="piles /paɪl/ n. 堆；大量；建筑群vt. 累积；打桩于vi. 积累；堆积；挤时 态: piled, piling, piles">piles</span> of cash. Total future revenue agreements have risen to $2trn, from $730bn last year, at <span class="annot" data-tooltip="amazon /ˈæməˌzɑn/ n. 高大强悍的女人；（古希腊神话中的）亚马孙族女战士Amazonn. 亚马逊河(南美洲大河)">Amazon</span>, Google, Microsoft and Oracle (Meta is a buyer, rather than a seller, of computing capacity). Simple balance-sheets with intangible assets and generous cash buffers have been replaced by ones which are complicated, <span class="annot" data-tooltip="asset /'æset/ n. 资产；有用的东西；有利条件；优点">asset</span>-heavy and indebted. Since the start of last year the big five have raised $260bn from bond markets, a quarter of all such borrowing by listed American non-financial firms. What started as a local <span class="annot" data-tooltip="affair /ə'fer/ n. 事情；事务；私事；（尤指关系不长久的）风流韵事">affair</span> has become a global bacchanal. <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">Nearly</span> a third of the haul from selling bonds this year is in currencies other than the dollar. <span class="annot" data-tooltip="alphabet /'ælfəbet/ n. 字母表，字母系统；入门，初步">Alphabet</span>, Google’s parent, will soon <span class="annot" data-tooltip="issue /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issue</span> its first bonds denominated in yen. Much larger obligations <span class="annot" data-tooltip="lurk /lɜːrk/ vi. 潜伏；埋伏；潜藏n. 埋伏；潜伏时 态: lurked, lurking, lurks">lurk</span> off-balance-sheet. The biggest are $820bn of future payments to <span class="annot" data-tooltip="lease /liːs/ n. 租约；租期；租赁物；租赁权vt. 出租；租得vi. 出租时 态: leased, leasing, leases">lease</span> data centres yet to be built, up from $270bn a year</p>
+<p>ago. <span class="annot" data-tooltip="commitments /kə'mɪtmənt/ n. 承诺；保证；信奉；献身；委任；花费金钱、时间、人力等">Commitments</span> to spend money on other things, like packing their data centres with chips, have risen as fast. <span class="annot" data-tooltip="amazon /ˈæməˌzɑn/ n. 高大强悍的女人；（古希腊神话中的）亚马孙族女战士Amazonn. 亚马逊河(南美洲大河)">Amazon</span>, Google, Meta and Oracle now <span class="annot" data-tooltip="disclose /dɪs'kloʊz/ vt. 揭露；公开时 态: disclosed, disclosing, discloses">disclose</span> $680bn of such obligations. Other bills are tied to special- purpose <span class="annot" data-tooltip="vehicles /'viːəkl/ n. 交通工具, 车辆传播媒介, 手段">vehicles</span>: separate entities with their <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> balance-sheets. Last year one assembled to build Meta’s new data-centre in Louisiana issued the biggest single <span class="annot" data-tooltip="corporate /'kɔːrpərət/ adj. 社团的, 法人的副 词: corporately">corporate</span> bond in history. Oracle’s finance chief recently talked about “uncoupling” the firm’s cashflows from its capex, <span class="annot" data-tooltip="presumably /prɪ'zuːməbli/ adv. 据推测, 大概, 可能">presumably</span> with similarly advanced financial engineering. This vast nexus of AI <span class="annot" data-tooltip="contracts /'kɑːntrækt/ vi. 感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约时 态: contracted, contracting, c">contracts</span> combines an absolute faith in technologists with a <span class="annot" data-tooltip="naive /naɪ'iːv/ adj. 幼稚的; 无经验的; 单纯的天真的; 轻信的副 词: naively">naive</span> trust in lawyers. Occasionally the market is discerning about what these contracts really mean; Oracle’s shares have been hammered since investors realised how dependent its future <span class="annot" data-tooltip="revenue /'revənuː/ n. 收入，收益；财政收入，税收">revenue</span> is on OpenAI. More often the market is obtuse. Bankers increasingly <span class="annot" data-tooltip="whisper /'wɪspər/ n. 私语；谣传；飒飒的声音vi. 耳语；密谈；飒飒地响vt. 低声说出时 态: whispered, whispering,">whisper</span> about <span class="annot" data-tooltip="decaying /dɪ'keɪ/ vi. 腐烂，腐朽；衰退，衰减n. 衰退，衰减；腐烂，腐朽vt. 使腐烂，使腐败；使衰退，使衰落时 态: decayed, de">decaying</span> documentation in AI financing agreements. “When we ask our lawyers to find ways that a hyperscaler might <span class="annot" data-tooltip="wriggle /'rɪɡl/ vi. 扭动；蠕动；蜿蜒行进vt. (使身体某一部位)扭动耍滑不做，逃避(应做的事等)n. 蠕动，扭动时 态: wriggled">wriggle</span> away from or re-<span class="annot" data-tooltip="negotiate /nɪ'ɡoʊʃieɪt/ vt. 谈判，商议；转让；越过">negotiate</span> a <span class="annot" data-tooltip="lease /liːs/ n. 租约；租期；租赁物；租赁权vt. 出租；租得vi. 出租时 态: leased, leasing, leases">lease</span> <span class="annot" data-tooltip="contract /'kɑːntrækt/ vi. 感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约时 态: contracted, contracting, c">contract</span>, often they come back with a very long list,” says the boss of one big lender that has <span class="annot" data-tooltip="steered /stɪr/ v. 驾驶（船、汽车等）；掌控方向盘（交通工具）行驶，沿（特定路线或方向）行进引导，带领n. 阉公牛；肉用公牛时 态: ste">steered</span> clear of some more esoteric financing structures in the AI boom. So <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> the capex splurge has been a great act of <span class="annot" data-tooltip="charity /'tʃærəti/ n. 施舍；慈善；慈善团体；施舍物；宽容">charity</span> to the rest of America’s tech <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span>. The five firms have assumed the role of <span class="annot" data-tooltip="central /'sentrəl/ adj. 中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的副 词: centrally">central</span> planners, attempting to make the complex chain of returns on investment work across the AI economy: data centres are useless if businesses don’t find models <span class="annot" data-tooltip="worth /wɜːrθ/ adj. 值…的n. 价值；财产时 态: worthed, worthing, worths">worth</span> paying for, which only happens if model-makers can <span class="annot" data-tooltip="raise /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raise</span> enough capital to make them. In the <span class="annot" data-tooltip="process /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">process</span>, the hyperscalers have sacrificed their own returns. Only shares in <span class="annot" data-tooltip="alphabet /'ælfəbet/ n. 字母表，字母系统；入门，初步">Alphabet</span> have beaten the <span class="annot" data-tooltip="nasdaq 纳斯达克指数〈美〉全国证券交易商自动报价系统协会">NASDAQ</span> index during the past year. Big tech has also liberally lent its creditworthiness across capital markets. Many firms that contract with the giants can take those contracts to the bank (<span class="annot" data-tooltip="literally /'lɪtərəli/ adv. 逐字地；照字面地确实地，真正地">literally</span>) and raise more debt. Moreover, the hyperscalers’ capex has become someone else’s free cashflow. Broadcom, Micron, <span class="annot" data-tooltip="nvidia 恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商">Nvidia</span> and Sandisk, four chip companies, are all <span class="annot" data-tooltip="minting /mɪnt/ n. 薄荷；造币厂，巨款vt. 铸造，铸币时 态: minted, minting, mints">minting</span> real <span class="annot" data-tooltip="fortunes /'fɔːrtʃən/ n. 运气；财富；命运vt. 给予财富vi. 偶然发生时 态: fortuned, fortuning, fortunes">fortunes</span> <span class="annot" data-tooltip="outfitting /'aʊtfɪt/ n. （为特定场合或活动而穿的）全套服装，装束全套装备；成套工具组织；公司；团队；军事单位v. 装备，配备；为…提供设备（或服">outfitting</span> big tech’s data centres. Together they account for a <span class="annot" data-tooltip="quarter /'kwɔːrtər/ n. 四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一时 ">quarter</span> of the expected profit growth in the S&P 500 index this year.</p>
+<p>Clearly this is unsustainable without enterprises becoming much more willing to pay for AI. But for now there are no brakes on the train. The hyperscalers’ capex bills this year will be twice as great as analysts predicted they would be a year ago. If AI models keep getting hungrier for computing power and the cost of equipment keeps rising, this forecast will soon be left behind, as those that came before it were. After two years of <span class="annot" data-tooltip="consistent /kən'sɪstənt/ adj. 一贯的, 始终如一的一致的, 符合的副 词: consistently">consistent</span> shock-and-awe, nothing would be less shocking. ■ Subscribers to The Economist can sign up to our Opinion newsletter, which brings together the best of our leaders, <span class="annot" data-tooltip="columns /'kɑːləm/ n. 圆柱，柱形物；纵队，列；专栏形容词: columned">columns</span>, guest <span class="annot" data-tooltip="essays /'eseɪ/ n. 散文, 随笔">essays</span> and reader <span class="annot" data-tooltip="correspondence /ˌkɔːrə'spɑːndəns/ n. 信件, 函件通信, 通信联系一致, 相似">correspondence</span>. This article was downloaded by zlibrary from https://www.economist.com//business/2026/05/13/big-tech-is-sacrificing-its- cashflows-to-<span class="annot" data-tooltip="prop /prɑːp/ n. 支柱, 支柱物vt. 支撑, 支持, 维持时 态: propped, propping, props">prop</span>-up-the-ai-boom</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>net</td><td>/net/ n.</td><td>网；净利；网络；实价vi. 编网vt. 净赚；得到；用网捕adj. 纯粹的；净余的, netting, nets</td></tr>
+<tr><td>quarter</td><td>/'kwɔːrtər/ n.</td><td>四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一, quartering, quarters</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>flights</td><td>/flaɪt/ n.</td><td>飞翔, 飞行航班, 航机楼梯的一段逃跑, 溃退, flighting, flights</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>proved</td><td>/proʊ/ n.</td><td>从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞成；支持Pro脯氨酸PROabbr. P</td></tr>
+<tr><td>reluctant</td><td>/rɪ'lʌktənt/ adj.</td><td>不情愿的, 勉强的</td></tr>
+<tr><td>trends</td><td>/trend/ n.</td><td>趋势, 倾向流行, trending, trends</td></tr>
+<tr><td>commerce</td><td>/'kɑːmɜːrs/ n.</td><td>商业, 贸易</td></tr>
+<tr><td>line</td><td>/laɪn/ n.</td><td>绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long interspersed element)长散在元</td></tr>
+<tr><td>crackdowns</td><td>/'krækdaʊn/ n.</td><td>压迫,镇压,打击</td></tr>
+<tr><td>velocity</td><td>/və'lɑːsəti/ n.</td><td>速率；迅速；周转率</td></tr>
+<tr><td>corporate</td><td>/'kɔːrpərət/ adj.</td><td>社团的, 法人的</td></tr>
+<tr><td>pleased</td><td>/pliːzd/ adj.</td><td>高兴的；喜欢的；乐意做某事v. 满意；愿意（please的过去分词形式）</td></tr>
+<tr><td>alternative</td><td>/ɔːl'tɜːrnətɪv/ adj.</td><td>可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）可供选择的事物；可供选择的解决办法替代物</td></tr>
+<tr><td>thrilled</td><td>/θrɪl/ n.</td><td>强烈的兴奋、恐惧或快乐感vt. & vi. (使)兴奋, (使)激动, thrilling, thrills</td></tr>
+<tr><td>unveil</td><td>/ˌʌn'veɪl/ vt.</td><td>揭去…的面罩，除去…的遮盖物使公之于众；揭露vi. 除去面纱(或覆盖物)；揭幕揭露出来，unveiling，unveils</td></tr>
+<tr><td>automation</td><td>/ˌɔːtə'meɪʃn/ n.</td><td>自动化(技术), 自动操作</td></tr>
+<tr><td>headcount</td><td>/'hedkaʊnt/ n.</td><td>点人头数 总人数,职员总数</td></tr>
+<tr><td>reduction</td><td>/rɪ'dʌkʃn/ n.</td><td>减少，缩小；减少的量，降价</td></tr>
+<tr><td>innovation</td><td>/ˌɪnə'veɪʃn/ n.</td><td>改革, 革新, 创新新观念, 新方法, 新发明</td></tr>
+<tr><td>horizons</td><td>/hə'raɪzn/ n.</td><td>地平线；眼界；范围；视野</td></tr>
+<tr><td>owner</td><td>/'oʊnər/ n.</td><td>所有者；物主</td></tr>
+<tr><td>zoom</td><td>/zuːm/ v.</td><td>快速移动；（用变焦距镜头）推近（或拉远）；急剧增长，猛涨；（飞机）陡直上升，作急跃升飞行；嗡嗡（或隆隆）作响；迅速前往n. 猛增；变焦摄影；（飞机等的）陡直上升</td></tr>
+<tr><td>downside</td><td>/'daʊnsaɪd/ adj.</td><td>下降趋势的</td></tr>
+<tr><td>turnaround</td><td>/'tɜːrnəraʊnd/ n.</td><td>车辆回转场(为给飞机检修和加油之类使其重新进入飞行状态所需的)周转时间</td></tr>
+<tr><td>strategic</td><td>/strə'tiːdʒɪk/ adj.</td><td>战略(上)的有战略意义的; 至关重要的</td></tr>
+<tr><td>agile</td><td>/'ædʒl/ adj.</td><td>灵巧的，轻快的，活跃的灵活的，头脑灵敏的，动作敏捷的机敏的，活泼的</td></tr>
+<tr><td>sprint</td><td>/sprɪnt/ vi.</td><td>冲刺，全速跑n. 短跑；冲刺vt. 全速奔跑SPRINTabbr. Solid Propellant Rocket Intercept Missile 固体(燃</td></tr>
+<tr><td>vibe</td><td>/vaɪb/ </td><td>Ⅰn. ①(感情上的)感应，共鸣②(一地的)气氛，环境Ⅱvi. (感情上)产生共鸣</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>surplus</td><td>/'sɜːrplʌs/ adj.</td><td>过剩的, 多余的n. 过剩</td></tr>
+<tr><td>choke</td><td>/tʃoʊk/ vt.</td><td>& vi. 填塞(使)窒息, choking, chokes</td></tr>
+<tr><td>lean</td><td>/liːn/ vi.</td><td>倾斜；倚靠；倾向；依赖adj. 瘦的；贫乏的，歉收的vt. 使倾斜n. 倾斜；倾斜度；瘦肉, leaning, leans</td></tr>
+<tr><td>elevate</td><td>/'elɪveɪt/ vt.</td><td>举起；提升；振奋情绪等；提升…的职位, elevating, elevates</td></tr>
+<tr><td>reach</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>spin</td><td>/spɪn/ vi.</td><td>旋转；纺纱；吐丝；晕眩vt. 使旋转；纺纱；编造；结网n. 旋转；疾驰, spins</td></tr>
+<tr><td>edge</td><td>/edʒ/ n.</td><td>边缘；刀刃；优势；锋利vt. 使锐利；将…开刃；给…加上边vi. 缓缓移动；侧着移动EDGEabbr. Electronic Data Gathering Eq</td></tr>
+<tr><td>flyer</td><td>/'flaɪər/ n.</td><td>飞鸟；飞行物；飞跳；传单；[美俚]孤注一掷</td></tr>
+<tr><td>flight</td><td>/flaɪt/ n.</td><td>飞翔, 飞行航班, 航机楼梯的一段逃跑, 溃退, flighting, flights</td></tr>
+<tr><td>landscape</td><td>/'lændskeɪp/ n.</td><td>风景, 景色风景画, 风景照, landscaping, landscapes</td></tr>
+<tr><td>bias</td><td>/'baɪəs/ n.</td><td>偏见；斜纹；偏爱；乖离率vt. 使存偏见adj. 偏斜的adv. 偏斜地, biassed biasing, biassing biases, biasses</td></tr>
+<tr><td>actionable</td><td>/'ækʃənəbl/ adj.</td><td>可控告的</td></tr>
+<tr><td>reinforce</td><td>/ˌriːɪn'fɔːrs/ v.</td><td>加强；充实；使更强烈加固；使更结实为 (军队或警察队伍) 增加力量（或装备）；向（某地）增兵；增援给予…更多支持；为…提供更多证据, reinforcing, </td></tr>
+<tr><td>resilient</td><td>/rɪ'zɪliənt/ adj.</td><td>(指物体或材料)能复原的;有弹性的;有弹力的(指人的性格)能迅速恢复或重新振作的;达观的;适应性强的</td></tr>
+<tr><td>mindset</td><td>/'maɪndset/ n.</td><td>心态；倾向；习惯；精神状态</td></tr>
+<tr><td>combinations</td><td>/ˌkɑːmbɪ'neɪʃn/ n.</td><td>合作, 结合, 组合联合体, 组合物密码组合, 字码组合排列, 组合</td></tr>
+<tr><td>inference</td><td>/'ɪnfərəns/ n.</td><td>推论, 推理, 推断推断结果, 结论</td></tr>
+<tr><td>slack</td><td>/slæk/ adj.</td><td>松(弛)的清淡的，不活跃的懈怠的，马虎的vt. & vi. 懈怠；偷懒减速；放松n. (绳索等)松弛部分宽松裤，slackest</td></tr>
+<tr><td>alignment</td><td>/ə'laɪnmənt/ n.</td><td>排成直线</td></tr>
+<tr><td>partial</td><td>/'pɑːrʃl/ adj.</td><td>局部的；不公平的；[口]偏爱的</td></tr>
+<tr><td>commit</td><td>/kə'mɪt/ vt.</td><td>犯罪；犯错承诺；使自己受约束托付；交付，committing，commits</td></tr>
+<tr><td>leading</td><td>/ˈliːdɪŋ/ adj.</td><td>主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）</td></tr>
+<tr><td>paradox</td><td>/'pærədɑːks/ n.</td><td>似非而是的论点；悖论，反论；自相矛盾的人或事</td></tr>
+<tr><td>hockey</td><td>/'hɑːki/ n.</td><td>冰球；曲棍球</td></tr>
+<tr><td>curve</td><td>/kɜːrv/ n.</td><td>曲线；弯曲；曲线球；曲线图表vt. 使弯曲；弯vi. 成曲形adj. 弯曲的；曲线形的, curving, curves</td></tr>
+<tr><td>values</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>obsessed</td><td>/əb'ses/ v.</td><td>使痴迷，使迷恋；使心神不宁，不停地困扰； 唠叨；挂牵，念念不忘, obsessing, obsesses</td></tr>
+<tr><td>creepy</td><td>/'kriːpi/ adj.</td><td>令人毛骨悚然的, creepiest</td></tr>
+<tr><td>honest</td><td>/'ɑːnɪst/ adj.</td><td>诚实的，实在的；可靠的；坦率的</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>blueprint</td><td>/'bluːprɪnt/ n.</td><td>蓝图, 设计图, blueprinting, blueprints</td></tr>
+<tr><td>corporate</td><td>/'kɔːrpərət/ adj.</td><td>社团的, 法人的</td></tr>
+<tr><td>workforce</td><td>/'wɜːrkfɔːrs/ n.</td><td>全体员工(国家或行业等)劳动力,劳动大军,劳动人口</td></tr>
+<tr><td>operational</td><td>/ˌɑːpə'reɪʃənl/ adj.</td><td>即可使用的(用于)操作的, 经营的</td></tr>
+<tr><td>footprint</td><td>/'fʊtprɪnt/ n.</td><td>(尤指软地上的)脚印，足迹；(地板上的)脚印，鞋印(建筑物或设备，尤指计算机)占用的空间 (尤指来自卫星的)广播信号覆盖区</td></tr>
+<tr><td>aggressive</td><td>/ə'ɡresɪv/ adj.</td><td>好争斗的, 挑衅的, 侵略性的</td></tr>
+<tr><td>complete</td><td>/kəm'pliːt/ adj.</td><td>完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善, completest 缩 写: comp, cpl</td></tr>
+<tr><td>durable</td><td>/'dʊrəbl/ adj.</td><td>耐用的，持久的n. 耐用品</td></tr>
+<tr><td>sustainable</td><td>— adj.</td><td>(对自然资源和能源的利用)不破坏生态平衡的, 合理利用的；可持续的</td></tr>
+<tr><td>momentum</td><td>/moʊ'mentəm/ n.</td><td>动力；动量；冲力；势头复 数: momenta</td></tr>
+<tr><td>sentiment</td><td>/'sentɪmənt/ n.</td><td>(对怜悯、怀旧等的)柔情态度或意见观点; 意见</td></tr>
+<tr><td>differentiated</td><td>— </td><td>分化型</td></tr>
+<tr><td>organic</td><td>/ɔːr'ɡænɪk/ adj.</td><td>器官的；器质性的有机(体)的，有机物的</td></tr>
+<tr><td>stretch</td><td>/stretʃ/ vt.</td><td>伸展,张开vi. 伸展adj. 可伸缩的n. 伸展，延伸, stretching, stretches</td></tr>
+<tr><td>objectives</td><td>/əb'dʒektɪv/ n.</td><td>目标; 目的adj. 客观的; 不带偏见的</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>brand</td><td>/brænd/ n.</td><td>商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责, branding, brands</td></tr>
+<tr><td>velocity</td><td>/və'lɑːsəti/ n.</td><td>速率；迅速；周转率</td></tr>
+<tr><td>automation</td><td>/ˌɔːtə'meɪʃn/ n.</td><td>自动化(技术), 自动操作</td></tr>
+<tr><td>prop</td><td>/prɑːp/ n.</td><td>支柱, 支柱物vt. 支撑, 支持, 维持, propping, props</td></tr>
+<tr><td>haunting</td><td>/hɔːnt/ vt.</td><td>经常出没于缠绕, 萦绕n. 某人常去的地方, haunting, haunts</td></tr>
+<tr><td>silicon</td><td>/'sɪlɪkən/ n.</td><td>〈化〉硅</td></tr>
+<tr><td>valley</td><td>/'væli/ n.</td><td>流域；山谷；溪谷</td></tr>
+<tr><td>amazon</td><td>/ˈæməˌzɑn/ n.</td><td>高大强悍的女人；（古希腊神话中的）亚马孙族女战士Amazonn. 亚马逊河(南美洲大河)</td></tr>
+<tr><td>falling</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>resemble</td><td>/rɪ'zembl/ vt.</td><td>像…, 类似于, resembling, resembles</td></tr>
+<tr><td>gasps</td><td>/ɡæsp/ vi.</td><td>喘息；喘气；渴望vt. 气喘吁吁地说；喘着气说话n. 喘气, gasping, gasps</td></tr>
+<tr><td>negative</td><td>/'neɡətɪv/ adj.</td><td>拒绝的；怀疑的；不同意的消极的，非建设性的无预期结果的〈数〉负的；〈电〉阴的，负的n. 否定词语，否定的观点；拒绝；否认，negativing，negative</td></tr>
+<tr><td>quarter</td><td>/'kwɔːrtər/ n.</td><td>四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一, quartering, quarters</td></tr>
+<tr><td>alphabet</td><td>/'ælfəbet/ n.</td><td>字母表，字母系统；入门，初步</td></tr>
+<tr><td>bunch</td><td>/bʌntʃ/ n.</td><td>串；群；突出物vi. 隆起；打褶；形成一串vt. 使成一串；使打褶, bunching, bunches</td></tr>
+<tr><td>warehouses</td><td>/'werhaʊs/ n.</td><td>仓库, 货栈, warehousing, warehousesalso</td></tr>
+<tr><td>barely</td><td>/'berli/ adv.</td><td>仅仅，勉强；几乎不；公开地；贫乏地</td></tr>
+<tr><td>assets</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>susceptible</td><td>/sə'septəbl/ adj.</td><td>易受影响的; 易动感情的过敏的; 易受…感染的能经受的</td></tr>
+<tr><td>revenues</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>expenditures</td><td>/ɪk'spendɪtʃər/ n.</td><td>花费, 使用(尤指金钱的)支出额</td></tr>
+<tr><td>surpass</td><td>/sər'pæs/ vt.</td><td>胜过，优于；超越；非…所能办到或理解, surpassing, surpasses</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>telecoms</td><td>/ˈtɛlɪˌkɑm/ n.</td><td>电信，远距通信；电讯</td></tr>
+<tr><td>bubble</td><td>/'bʌbl/ n.</td><td>气泡，泡沫，泡状物；透明圆形罩，圆形顶vi. 沸腾，冒泡；发出气泡声vt. 使冒泡；滔滔不绝地说, bubbling, bubbles</td></tr>
+<tr><td>dismissive</td><td>/dɪs'mɪsɪv/ adj.</td><td>轻视的, 轻蔑的, 鄙视的</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>quarter</td><td>/'kwɔːrtər/ n.</td><td>四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一, quartering, quarters</td></tr>
+<tr><td>revenue</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>contracts</td><td>/'kɑːntrækt/ vi.</td><td>感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约, contracting, contracts</td></tr>
+<tr><td>stretching</td><td>/stretʃ/ vt.</td><td>伸展,张开vi. 伸展adj. 可伸缩的n. 伸展，延伸, stretching, stretches</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>anthropic</td><td>/ænˈθrɑpɪk/ adj.</td><td>人类的,有关人类的</td></tr>
+<tr><td>piles</td><td>/paɪl/ n.</td><td>堆；大量；建筑群vt. 累积；打桩于vi. 积累；堆积；挤, piling, piles</td></tr>
+<tr><td>amazon</td><td>/ˈæməˌzɑn/ n.</td><td>高大强悍的女人；（古希腊神话中的）亚马孙族女战士Amazonn. 亚马逊河(南美洲大河)</td></tr>
+<tr><td>asset</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>affair</td><td>/ə'fer/ n.</td><td>事情；事务；私事；（尤指关系不长久的）风流韵事</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>alphabet</td><td>/'ælfəbet/ n.</td><td>字母表，字母系统；入门，初步</td></tr>
+<tr><td>issue</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>lurk</td><td>/lɜːrk/ vi.</td><td>潜伏；埋伏；潜藏n. 埋伏；潜伏, lurking, lurks</td></tr>
+<tr><td>lease</td><td>/liːs/ n.</td><td>租约；租期；租赁物；租赁权vt. 出租；租得vi. 出租, leasing, leases</td></tr>
+<tr><td>commitments</td><td>/kə'mɪtmənt/ n.</td><td>承诺；保证；信奉；献身；委任；花费金钱、时间、人力等</td></tr>
+<tr><td>amazon</td><td>/ˈæməˌzɑn/ n.</td><td>高大强悍的女人；（古希腊神话中的）亚马孙族女战士Amazonn. 亚马逊河(南美洲大河)</td></tr>
+<tr><td>disclose</td><td>/dɪs'kloʊz/ vt.</td><td>揭露；公开, disclosing, discloses</td></tr>
+<tr><td>vehicles</td><td>/'viːəkl/ n.</td><td>交通工具, 车辆传播媒介, 手段</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>corporate</td><td>/'kɔːrpərət/ adj.</td><td>社团的, 法人的</td></tr>
+<tr><td>presumably</td><td>/prɪ'zuːməbli/ adv.</td><td>据推测, 大概, 可能</td></tr>
+<tr><td>contracts</td><td>/'kɑːntrækt/ vi.</td><td>感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约, contracting, contracts</td></tr>
+<tr><td>naive</td><td>/naɪ'iːv/ adj.</td><td>幼稚的; 无经验的; 单纯的天真的; 轻信的</td></tr>
+<tr><td>revenue</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>whisper</td><td>/'wɪspər/ n.</td><td>私语；谣传；飒飒的声音vi. 耳语；密谈；飒飒地响vt. 低声说出, whispering, whispers</td></tr>
+<tr><td>decaying</td><td>/dɪ'keɪ/ vi.</td><td>腐烂，腐朽；衰退，衰减n. 衰退，衰减；腐烂，腐朽vt. 使腐烂，使腐败；使衰退，使衰落, decaying, decays</td></tr>
+<tr><td>wriggle</td><td>/'rɪɡl/ vi.</td><td>扭动；蠕动；蜿蜒行进vt. (使身体某一部位)扭动耍滑不做，逃避(应做的事等)n. 蠕动，扭动，wriggling，wriggles</td></tr>
+<tr><td>negotiate</td><td>/nɪ'ɡoʊʃieɪt/ vt.</td><td>谈判，商议；转让；越过</td></tr>
+<tr><td>lease</td><td>/liːs/ n.</td><td>租约；租期；租赁物；租赁权vt. 出租；租得vi. 出租, leasing, leases</td></tr>
+<tr><td>contract</td><td>/'kɑːntrækt/ vi.</td><td>感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约, contracting, contracts</td></tr>
+<tr><td>steered</td><td>/stɪr/ v.</td><td>驾驶（船、汽车等）；掌控方向盘（交通工具）行驶，沿（特定路线或方向）行进引导，带领n. 阉公牛；肉用公牛, steering, steers</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>charity</td><td>/'tʃærəti/ n.</td><td>施舍；慈善；慈善团体；施舍物；宽容</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>central</td><td>/'sentrəl/ adj.</td><td>中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的</td></tr>
+<tr><td>worth</td><td>/wɜːrθ/ adj.</td><td>值…的n. 价值；财产, worthing, worths</td></tr>
+<tr><td>raise</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>process</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>alphabet</td><td>/'ælfəbet/ n.</td><td>字母表，字母系统；入门，初步</td></tr>
+<tr><td>nasdaq</td><td>— </td><td>纳斯达克指数〈美〉全国证券交易商自动报价系统协会</td></tr>
+<tr><td>literally</td><td>/'lɪtərəli/ adv.</td><td>逐字地；照字面地确实地，真正地</td></tr>
+<tr><td>nvidia</td><td>— </td><td>恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商</td></tr>
+<tr><td>minting</td><td>/mɪnt/ n.</td><td>薄荷；造币厂，巨款vt. 铸造，铸币, minting, mints</td></tr>
+<tr><td>fortunes</td><td>/'fɔːrtʃən/ n.</td><td>运气；财富；命运vt. 给予财富vi. 偶然发生, fortuning, fortunes</td></tr>
+<tr><td>outfitting</td><td>/'aʊtfɪt/ n.</td><td>（为特定场合或活动而穿的）全套服装，装束全套装备；成套工具组织；公司；团队；军事单位v. 装备，配备；为…提供设备（或服装），outfitting，outfit</td></tr>
+<tr><td>quarter</td><td>/'kwɔːrtər/ n.</td><td>四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一, quartering, quarters</td></tr>
+<tr><td>consistent</td><td>/kən'sɪstənt/ adj.</td><td>一贯的, 始终如一的一致的, 符合的</td></tr>
+<tr><td>columns</td><td>/'kɑːləm/ n.</td><td>圆柱，柱形物；纵队，列；专栏</td></tr>
+<tr><td>essays</td><td>/'eseɪ/ n.</td><td>散文, 随笔</td></tr>
+<tr><td>correspondence</td><td>/ˌkɔːrə'spɑːndəns/ n.</td><td>信件, 函件通信, 通信联系一致, 相似</td></tr>
+<tr><td>prop</td><td>/prɑːp/ n.</td><td>支柱, 支柱物vt. 支撑, 支持, 维持, propping, props</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day32.html" class="nav-btn">← Day 32</a>
+  <a href="day34.html" class="nav-btn">Day 34 →</a>
+</div>
+
+<div class="progress">📖 Day 33 of 44</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-05-16</div>
+
+</body>
+</html>

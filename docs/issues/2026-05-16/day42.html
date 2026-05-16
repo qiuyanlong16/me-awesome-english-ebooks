@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Culture | In pod we trust</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-05-16</div>
+
+<h1 class="article-title">Culture | In pod we trust</h1>
+<div class="article-section">Culture</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>novel. An official <span class="annot" data-tooltip="podcast /'pɑːdkæst/ n. 播客">podcast</span> will chronicle “the joys and challenges of bringing 1980s television and naughtiness to life”. At least 17 <span class="annot" data-tooltip="companion /kəm'pænjən/ n. 同伴, 伙伴成双成对的物品之一时 态: companioned, companioning, companions">companion</span> <span class="annot" data-tooltip="podcasts /'pɑːdkæst/ n. 播客">podcasts</span> have launched this year alone (see chart). They <span class="annot" data-tooltip="tend /tend/ vt. 照料，照顾，伺候vi. 往，朝向易于；倾向时 态: tended，tending，tends">tend</span> to offer fans a glimpse behind the <span class="annot" data-tooltip="scenes /siːn/ n. 情景；景象；场面；事件">scenes</span>, as the tv show’s cast and <span class="annot" data-tooltip="crew /kruː/ n. 全体人员，全体船员；队，组vi. 一起工作vt. 使当船员时 态: crewed, crewing, crews">crew</span> chat about the decisions and antics on set. Take, for example, Neil Druckmann, who developed the video game “The Last of Us”, and became <span class="annot" data-tooltip="host /hoʊst/ n. 主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集时 态: hosted, hosting, host">host</span> of a podcast accompanying the television show. He let fans in on the <span class="annot" data-tooltip="adaptation /ˌædæp'teɪʃn/ n. 适应,适合改编，改写改编本，改写本">adaptation</span> <span class="annot" data-tooltip="process /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">process</span>, including how he “just could not <span class="annot" data-tooltip="crack /kræk/ vt. & vi. (使…)开裂, 破裂(使)身体上或精神上垮掉打开, 砸开(使)发出爆裂声n. 裂缝, 缝隙噼啪声, 爆裂声意">crack</span>” a film and how he was “unburdened by teaching people how to walk, move, jump and crawl”, as he rejigged entire <span class="annot" data-tooltip="plot /plɑːt/ n. 故事情节(秘密)计划，密谋小块地皮vt. 把…分成小块；划分绘制；标出vt. & vi. 密谋时 态: plotted，">plot</span> points for a <span class="annot" data-tooltip="passive /'pæsɪv/ adj. 被动的，消极的；被动语态的n. 被动语态副 词: passively">passive</span>, non-gamer audience. Becky Rho, HBO’s director of podcasts, says the format appeals in an “age of information”. Audiences are eager to know: “How did they pull off that stunt? How did this character or story arc come together?” Such podcasts should be “<span class="annot" data-tooltip="genuinely /'dʒenjuɪnli/ adv. 真地;真正地真诚地;诚实地">genuinely</span> <span class="annot" data-tooltip="immersive adj. 拟真的；沉浸式的；沉浸感的；增加沉浸感的">immersive</span> and <span class="annot" data-tooltip="insightful /ɪn'saɪtfl/ adj. 富有洞察力的,有深刻见解的">insightful</span>”, says Darby Dorras, a producer on the recent “Peaky Blinders” tie-in. It is no good “assuming the audience is going to stick around for a bit of a fun chat”. Some podcasts bring in subject experts to add <span class="annot" data-tooltip="authority /ə'θɔːrəti/ n. 威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗">authority</span> and analysis. A paediatrician has dissected the medical storylines in “The Pitt”, and a space scientist has guided viewers through the astrophysics of “3 Body Problem”.</p>
+<p>There has long been demand for this kind of content. Back in the day, dvd box sets came with special features and interviews. (Streaming did away with DVDs and their behind-the-<span class="annot" data-tooltip="scenes /siːn/ n. 情景；景象；场面；事件">scenes</span> <span class="annot" data-tooltip="bonuses /'boʊnəs/ n. 奖金；红利；额外津贴BONUSabbr. Boling Nuclear Superheat Reactor 沸腾式过热核">bonuses</span>, to the <span class="annot" data-tooltip="dismay /dɪs'meɪ/ n. 沮丧，灰心；惊慌vt. 使惊慌；使沮丧时 态: dismayed, dismaying, dismays">dismay</span> of enthusiasts.) Unofficial “rewatch <span class="annot" data-tooltip="podcasts /'pɑːdkæst/ n. 播客">podcasts</span>”, in which fans scrutinise their favourite shows, filled some of the gap and gained a popular following. In the 2010s two <span class="annot" data-tooltip="comedians /kə'miːdiən/ n. 喜剧演员；滑稽人物">comedians</span> found a huge audience with “Gilmore Guys”, an affectionate tribute to the teen drama “Gilmore Girls”. So for networks, <span class="annot" data-tooltip="companion /kəm'pænjən/ n. 同伴, 伙伴成双成对的物品之一时 态: companioned, companioning, companions">companion</span> podcasts are a no-brainer. They are <span class="annot" data-tooltip="relatively /'relətɪvli/ adv. 相对地，比较而言；相当相对来说；相比较而言">relatively</span> cheap to produce, bolster <span class="annot" data-tooltip="retention /rɪ'tenʃn/ n. 具有，具备，享有，享用记忆力，记性挡住，拦阻；保持，保留，容纳">retention</span> and can be enjoyed anywhere. “One of the core <span class="annot" data-tooltip="objectives /əb'dʒektɪv/ n. 目标; 目的adj. 客观的; 不带偏见的副 词: objectively">objectives</span> here is to introduce content that can be consumed on the move,” reckons Matt Trickett of Ampere Analysis, a research firm. Fans can be thinking about their favourite show all day long, not just when they watch it on the sofa after work. In time, a saturation point will surely come. Can you imagine if even half of the 1,100 shows released in America in 2025 had an official <span class="annot" data-tooltip="podcast /'pɑːdkæst/ n. 播客">podcast</span>? But for now, they are thriving. Television audiences are primed for an earful. ■ For more on the latest books, films, TV shows, albums and controversies, sign up to <span class="annot" data-tooltip="plot /plɑːt/ n. 故事情节(秘密)计划，密谋小块地皮vt. 把…分成小块；划分绘制；标出vt. & vi. 密谋时 态: plotted，">Plot</span> <span class="annot" data-tooltip="twist /twɪst/ vt. 捻；拧；扭伤；编织；使苦恼n. 扭曲；扭伤；拧vi. 扭动；弯曲时 态: twisted, twisting, twis">Twist</span>, our weekly subscriber-only newsletter This article was downloaded by zlibrary from https://www.economist.com//culture/2026/05/14/companion-podcasts-are-the-latest- hit-format</p>
+<div class="article-separator"></div>
+<div class="article-header">Culture · Culture | Fight or flight</div>
+<p>Who wants to relax on holiday? Daredevil vacations are becoming thrillingly popular May 14th 2026 “A VACATION IS having nothing to do and all day to do it in,” said Robert Orben, an American comedy writer. Summer holidays have long <span class="annot" data-tooltip="involved /ɪn'vɑːlvd/ adj. 卷入的；有关的；复杂的v. 涉及；使参与；包含（involve的过去式和过去分词）">involved</span> reclining on a <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span>-flung beach. But more tourists are forgoing sun loungers in search of adrenalin-packed pursuits, such as canyoning (<span class="annot" data-tooltip="scrambling 不规则性">scrambling</span> down gorges) and abseiling (<span class="annot" data-tooltip="descending /dɪ'send/ vi. 下降；下来；遗传；屈尊；下去vt. 下去；沿…向下时 态: descended, descending, descend">descending</span> rock faces). “Darecations” are a top tourism <span class="annot" data-tooltip="trend /trend/ n. 趋势, 倾向流行时 态: trended, trending, trends">trend</span> of 2026, according to Pinterest, a social-media firm. Around 14% of international travellers are <span class="annot" data-tooltip="keen /kiːn/ adj. 锋利的热衷的，热心的，渴望(做某事)激烈的，紧张的良好的；敏锐的，敏捷的比较级: keener，keenest">keen</span> on such pursuits, suggests the Adventure Travel Trade Association (ATTA), a trade <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span>. Adventure travel involves “wanting to get out of your comfort zone”, explains Heather Kelly of ATTA. Sometimes that means trying an extreme activity: SportsCover Direct, an insurance provider, claims that the <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span></p>
+<p>of people buying travel insurance for sporting activities <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> <span class="annot" data-tooltip="tripled /trɪp/ vi. 绊倒；犯错误；远足；轻快地走n. 旅行；绊倒；差错vt. 绊倒；使犯错TRIPabbr. transformation-">tripled</span> between 2023 and 2025. The fastest-growing endeavours include mountaineering, rafting, hiking and running events such as <span class="annot" data-tooltip="marathons /'mærəθɑːn/ n. 马拉松赛跑；耐力的考验adj. 马拉松式的；有耐力的vi. 参加马拉松赛跑">marathons</span>. Other times darecations come with added comforts. “Soft adventures”, as <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> <span class="annot" data-tooltip="folk /foʊk/ n. 人们；民族；亲属（复数）adj. 民间的">folk</span> call them, are on the <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span>. Such holidays can involve less strenuous activities—<span class="annot" data-tooltip="calm /kɑːm/ adj. 静的，平静的；沉着的vt. 使平静；使镇定vi. 平静下来；镇定下来n. 风平浪静比较级: calmer, calmes">calm</span> <span class="annot" data-tooltip="kayaking n. 独木舟；皮划艇；皮艇运动v. 划独木舟（kayak的ing形式）">kayaking</span> rather than white-water rafting—and luxury accommodation. On Airbnb bookings for nature and outdoor experiences, which include surfing and cycling tours, are outpacing all other activities. There is “a shift away from fly-and-flop holidays”, notes Lisa <span class="annot" data-tooltip="mar /mɑːr/ vt. 毁坏；损坏；玷污MARabbr. Master of Arts in Religion 宗教硕士Mar三月(March)">Mar</span>çais of Airbnb, and <span class="annot" data-tooltip="towards /tɔːrdz/ prep. 向，朝为了；有助于；用于对于，关于接近；将近；大约">towards</span> “<span class="annot" data-tooltip="immersive adj. 拟真的；沉浸式的；沉浸感的；增加沉浸感的">immersive</span> and memorable travel experiences”. As the wealthy amass even greater riches, they have more to splurge on <span class="annot" data-tooltip="tailored /'teɪlər/ vt. 剪裁；使合适n. 裁缝vi. 做裁缝时 态: tailored, tailoring, tailors">tailored</span> <span class="annot" data-tooltip="trips /trɪp/ vi. 绊倒；犯错误；远足；轻快地走n. 旅行；绊倒；差错vt. 绊倒；使犯错TRIPabbr. transformation-">trips</span>. Darecationers say they want to get off the beaten track; many see adventure travel as a status symbol. Rare events, such as seeing a volcano erupt at sunrise, make great stories to tell friends. Or better yet, show off on social media. Darecations offer the sort of enviable views instantly loved on Instagram. “The best things”, many <span class="annot" data-tooltip="captions /'kæpʃn/ n. 字幕；标题；说明；[英]逮捕vt. 加上说明；加上标题时 态: captioned, captioning, capti">captions</span> <span class="annot" data-tooltip="attest /ə'test/ vt. 证明；证实；为…作证vi. 证明；作证时 态: attested, attesting, attests">attest</span>, are found not on the beach but “on the other side of fear”. Holidays spent <span class="annot" data-tooltip="simply /'sɪmpli/ adv. 简单地；朴素地；简直；仅仅；坦白地">simply</span> lounging about have never been such a flop. ■ For more on the latest books, films, TV shows, albums and controversies, sign up to <span class="annot" data-tooltip="plot /plɑːt/ n. 故事情节(秘密)计划，密谋小块地皮vt. 把…分成小块；划分绘制；标出vt. & vi. 密谋时 态: plotted，">Plot</span> <span class="annot" data-tooltip="twist /twɪst/ vt. 捻；拧；扭伤；编织；使苦恼n. 扭曲；扭伤；拧vi. 扭动；弯曲时 态: twisted, twisting, twis">Twist</span>, our weekly subscriber-only newsletter This article was downloaded by zlibrary from https://www.economist.com//culture/2026/05/14/who-wants-to-relax-on-holiday</p>
+<div class="article-separator"></div>
+<div class="article-header">Culture · Culture | Point, click, destroy</div>
+<p>The AI that transformed American <span class="annot" data-tooltip="warfare /'wɔːrfer/ n. 战争, 战争状态">warfare</span> Maven not only identifies targets—it tells commanders how to attack them, too May 14th 2026 THE MAVEN Smart System is perhaps the most important weapon system you have never heard of. It has <span class="annot" data-tooltip="spotted /spɑːt/ n. 斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Po">spotted</span> Iranian missiles <span class="annot" data-tooltip="heading /'hedɪŋ/ n. 标题；信头；（足球）头球v. 用头顶（head的ing形式）">heading</span> for Israel and rocket launchers in Yemen. It has <span class="annot" data-tooltip="detected /dɪ'tekt/ vt. 发现；发觉，查明时 态: detected，detecting，detects">detected</span> migrants crossing America’s southern border and drug boats in the Caribbean. On one day in 2022 it found more than 260 potential targets for <span class="annot" data-tooltip="ukraine n. 乌克兰（原苏联一加盟共和国，现已独立）">Ukraine</span>. And Maven does not just sense such things: it can also co-ordinate the response. It <span class="annot" data-tooltip="fuses /fjuːz/ vt. & vi. 熔化；融合；合并n. 保险丝，熔丝导火线；引信FUSEabbr. Federation for Unifie">fuses</span> together different sorts of intelligence—photos, text, radio and electromagnetic pulses—and works out which plane, carrying which munitions, is closest to which target. With a single click by a human, Maven can turn data into ash. As one NATO official tells Katrina Manson, “This is</p>
+<p>the Microsoft Windows of warfighting.” It may well become to armed forces what Microsoft is to office <span class="annot" data-tooltip="drones /droʊn/ n. 无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫">drones</span>. In “Project Maven”, Ms Manson, a national-<span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span> journalist at Bloomberg, has written one of the most important books on war and technology in many years. It is a scintillating account of how Drew Cukor, a hard-driving marine, created a team of mavericks who put AI at the heart of America’s war machine—even though that team was often at war with itself and with the rest of the Pentagon. It is also a story of <span class="annot" data-tooltip="silicon /'sɪlɪkən/ n. 〈化〉硅">Silicon</span> <span class="annot" data-tooltip="valley /'væli/ n. 流域；山谷；溪谷">Valley</span>’s shifting relationship with war and the Pentagon. Google walked out of Maven in 2018 after employee <span class="annot" data-tooltip="protests /'proʊtest/ n. 抗议；反对vt. & vi. 声明；抗议时 态: protested，protesting，protests">protests</span> over the tech giant collaborating on lethal tools. Palantir later became the single most important firm in Maven’s development. It started out as a project <span class="annot" data-tooltip="harnessing /'hɑːrnɪs/ n. 马具, 挽具vt. 给(马等)装上挽具治理, 利用时 态: harnessed, harnessing, harness">harnessing</span> AI to find objects in reams of <span class="annot" data-tooltip="drone /droʊn/ n. 无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫">drone</span> <span class="annot" data-tooltip="footage /'fʊtɪdʒ/ n. 连续镜头；英尺长度；以尺计算长度">footage</span>, a job that previously consumed huge quantities of manpower. Early algorithms, tested during <span class="annot" data-tooltip="counter /'kaʊntər/ n. 柜台, 柜台式长桌计数器vt. & vi. 对抗, 反驳adv. 反方向地, 对立地时 态: countered, co">counter</span>-terrorism operations in Somalia in 2017, were erratic. Algorithms would label clouds as flying school buses. The next year, in <span class="annot" data-tooltip="afghanistan /æf'ɡænɪstæn/ n. 阿富汗">Afghanistan</span>, the software identified trees as people and rocks as buildings. But it improved. On one occasion, just as American forces were about to launch a drone <span class="annot" data-tooltip="strike /straɪk/ vi. 罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打时 态:">strike</span>, an analyst <span class="annot" data-tooltip="spotted /spɑːt/ n. 斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Po">spotted</span> a shepherd walking into the field of view. It had taken him 40 seconds to notice the man; when they tested Maven on the same video feed, it took the AI less than a second to <span class="annot" data-tooltip="detect /dɪ'tekt/ vt. 发现；发觉，查明时 态: detected，detecting，detects">detect</span> him. In 2019 Maven was used during the operation to kill Abu Bakr al-Baghdadi, the head of Islamic State, in Syria, and Qassem Suleimani, an Iranian general, by drone strike in 2020. When Joe Biden pulled American forces out of Kabul the next year, Maven would work out how many people were thronging the airfield during the mad <span class="annot" data-tooltip="scramble /'skræmbl/ vi. 快速爬行，匍匐前进；攀登争夺，争抢(军事飞机)紧急起飞vt. (用黄油)炒蛋扰频或倒频使(电话通话等)只可由有特殊接收器">scramble</span>. However, it was Russia’s invasion of <span class="annot" data-tooltip="ukraine n. 乌克兰（原苏联一加盟共和国，现已独立）">Ukraine</span> that was the <span class="annot" data-tooltip="pivotal /'pɪvətl/ adj. 作为支点的, 枢轴的中枢的, 关键的">pivotal</span> moment for Maven. The targeting tool was feeding what America euphemistically called “points of interest” to Ukraine on an industrial scale, at the cost of $1m per month in cloud-computing bills. “Sometimes it felt as though the</p>
+<p>US was all but punching co-ordinates into the weapons systems themselves,” Ms Manson writes. AI is context-<span class="annot" data-tooltip="specific /spə'sɪfɪk/ adj. 特殊的，特定的；明确的；详细的；具有特效的n. 特效药；细节；特性副 词: specifically">specific</span>, the book makes <span class="annot" data-tooltip="startlingly /'stɑːrtlɪŋli/ adv. 令人吃惊地，惊人地">startlingly</span> clear. Models that had 70% success rates in <span class="annot" data-tooltip="afghanistan /æf'ɡænɪstæn/ n. 阿富汗">Afghanistan</span> dropped to 30% in the Philippines, where people walked in front of thick green <span class="annot" data-tooltip="jungle /'dʒʌŋɡl/ n. (热带)丛林, 密林乱七八糟的一堆事物形容词: jungly">jungle</span> rather than dusty yellow ground. Similarly, the algorithms struggled to <span class="annot" data-tooltip="cope /koʊp/ vi. 处理；对付；竞争">cope</span> with Ukrainian snow and Russian <span class="annot" data-tooltip="tanks /tæŋk/ n. （存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内时 态: t">tanks</span> with their turrets blown off. Good data was <span class="annot" data-tooltip="crucial /'kruːʃl/ adj. 决定性的；重要的；定局的；决断的副 词: crucially">crucial</span>. Training a single algorithm might take 10,000 images, each one <span class="annot" data-tooltip="accurately /'ækjərət/ adj. 精确的, 准确的，正确无误的副 词: accurately">accurately</span> labelled. In 2021-22 more than 1,500 algorithms were whittled down to just two dozen for use in <span class="annot" data-tooltip="ukraine n. 乌克兰（原苏联一加盟共和国，现已独立）">Ukraine</span>. When Maven was launched, Pentagon officials <span class="annot" data-tooltip="portrayed /pɔːr'treɪ/ vt. 画像；描述扮演时 态: portrayed，portraying，portrays">portrayed</span> it as an intelligence tool, <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> from the messy and <span class="annot" data-tooltip="controversial /ˌkɑːntrə'vɜːrʃl/ adj. 有争议的, 引起争议的名 词: controversialist">controversial</span> work of targeting. Ms Manson’s book dispels this notion. From the start, Maven was intended to speed up America’s kill chain: the <span class="annot" data-tooltip="process /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">process</span> of finding targets, deciding what to do and conducting an attack. One official at the National Geospatial- Intelligence Agency tells Ms Manson that large-language models have speeded up the targeting process five-fold, allowing America to identify and hit 5,000 targets per day. “<span class="annot" data-tooltip="ultimately /'ʌltɪmətli/ adv. 最后;最终">Ultimately</span>,” says General Chris Donahue, who pioneered Maven’s use in Ukraine and now serves as the commander of American land forces in Europe, “all this <span class="annot" data-tooltip="stuff /stʌf/ n. 材料；东西；填充物；素材资料vt. 填塞；塞满；让吃饱vi. 吃得过多时 态: stuffed, stuffing, s">stuff</span> will become automated.” That <span class="annot" data-tooltip="raises /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raises</span> <span class="annot" data-tooltip="profound /prə'faʊnd/ adj. 深度的；深切的；深远的知识渊博的，见解深刻的，深奥的比较级: profounder，profoundest">profound</span> questions around human control of war. In a conflict between America and China or Russia, each side would face <span class="annot" data-tooltip="enormous /ɪ'nɔːrməs/ adj. 巨大的, 极大的, 庞大的副 词: enormously">enormous</span> pressure to <span class="annot" data-tooltip="strike /straɪk/ vi. 罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打时 态:">strike</span> quickly and <span class="annot" data-tooltip="decisively /dɪ'saɪsɪv/ adj. 决定性的；果断的，坚定的副 词: decisively">decisively</span>, before the other side could find targets and launch weapons. Even if people are <span class="annot" data-tooltip="overseeing /ˌoʊvər'siː/ vt. 监督；俯瞰；审查；偷看到，无意中看到时 态: oversaw overseen overseeing, oversees">overseeing</span> the process, can they keep up, particularly if something goes wrong? Long after Maven was deployed in Ukraine, it was still producing ten <span class="annot" data-tooltip="incorrect /ˌɪnkə'rekt/ adj. 错误的, 不正确的不能接受的副 词: incorrectly">incorrect</span> detections for every square kilometre it assessed. Now, as well as operating on distant servers, the algorithms developed by Maven sit inside weapons. The book describes two little-known weapons intended to <span class="annot" data-tooltip="overwhelm /ˌoʊvər'welm/ vt. 覆盖，淹没压倒，制服；打败使某人不知所措时 态: overwhelmed，overwhelming，overwhelms">overwhelm</span> and slow down Chinese forces in any war in the Pacific. “<span class="annot" data-tooltip="goalkeeper /'ɡoʊlkiːpər/ n. (足球队的)守门员">Goalkeeper</span>” is a loitering munition, or suicide <span class="annot" data-tooltip="drone /droʊn/ n. 无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫">drone</span>; “Whiplash” is an explosives-laden jet ski, whose early <span class="annot" data-tooltip="versions /'vɜːrʒn/ n. 变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本">versions</span> were smuggled into Ukraine by the CIA for testing. Each type could be sent to find and attack targets on its <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span>.</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>podcast</td><td>/'pɑːdkæst/ n.</td><td>播客</td></tr>
+<tr><td>companion</td><td>/kəm'pænjən/ n.</td><td>同伴, 伙伴成双成对的物品之一, companioning, companions</td></tr>
+<tr><td>podcasts</td><td>/'pɑːdkæst/ n.</td><td>播客</td></tr>
+<tr><td>tend</td><td>/tend/ vt.</td><td>照料，照顾，伺候vi. 往，朝向易于；倾向，tending，tends</td></tr>
+<tr><td>scenes</td><td>/siːn/ n.</td><td>情景；景象；场面；事件</td></tr>
+<tr><td>crew</td><td>/kruː/ n.</td><td>全体人员，全体船员；队，组vi. 一起工作vt. 使当船员, crewing, crews</td></tr>
+<tr><td>host</td><td>/hoʊst/ n.</td><td>主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集, hosting, hosts</td></tr>
+<tr><td>adaptation</td><td>/ˌædæp'teɪʃn/ n.</td><td>适应,适合改编，改写改编本，改写本</td></tr>
+<tr><td>process</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>crack</td><td>/kræk/ vt.</td><td>& vi. (使…)开裂, 破裂(使)身体上或精神上垮掉打开, 砸开(使)发出爆裂声n. 裂缝, 缝隙噼啪声, 爆裂声意外的一下重击试图, 尝试俏皮话强效可卡因</td></tr>
+<tr><td>plot</td><td>/plɑːt/ n.</td><td>故事情节(秘密)计划，密谋小块地皮vt. 把…分成小块；划分绘制；标出vt. & vi. 密谋，plotting，plots</td></tr>
+<tr><td>passive</td><td>/'pæsɪv/ adj.</td><td>被动的，消极的；被动语态的n. 被动语态</td></tr>
+<tr><td>genuinely</td><td>/'dʒenjuɪnli/ adv.</td><td>真地;真正地真诚地;诚实地</td></tr>
+<tr><td>immersive</td><td>— adj.</td><td>拟真的；沉浸式的；沉浸感的；增加沉浸感的</td></tr>
+<tr><td>insightful</td><td>/ɪn'saɪtfl/ adj.</td><td>富有洞察力的,有深刻见解的</td></tr>
+<tr><td>authority</td><td>/ə'θɔːrəti/ n.</td><td>威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗</td></tr>
+<tr><td>scenes</td><td>/siːn/ n.</td><td>情景；景象；场面；事件</td></tr>
+<tr><td>bonuses</td><td>/'boʊnəs/ n.</td><td>奖金；红利；额外津贴BONUSabbr. Boling Nuclear Superheat Reactor 沸腾式过热核反应堆</td></tr>
+<tr><td>dismay</td><td>/dɪs'meɪ/ n.</td><td>沮丧，灰心；惊慌vt. 使惊慌；使沮丧, dismaying, dismays</td></tr>
+<tr><td>podcasts</td><td>/'pɑːdkæst/ n.</td><td>播客</td></tr>
+<tr><td>comedians</td><td>/kə'miːdiən/ n.</td><td>喜剧演员；滑稽人物</td></tr>
+<tr><td>companion</td><td>/kəm'pænjən/ n.</td><td>同伴, 伙伴成双成对的物品之一, companioning, companions</td></tr>
+<tr><td>relatively</td><td>/'relətɪvli/ adv.</td><td>相对地，比较而言；相当相对来说；相比较而言</td></tr>
+<tr><td>retention</td><td>/rɪ'tenʃn/ n.</td><td>具有，具备，享有，享用记忆力，记性挡住，拦阻；保持，保留，容纳</td></tr>
+<tr><td>objectives</td><td>/əb'dʒektɪv/ n.</td><td>目标; 目的adj. 客观的; 不带偏见的</td></tr>
+<tr><td>podcast</td><td>/'pɑːdkæst/ n.</td><td>播客</td></tr>
+<tr><td>plot</td><td>/plɑːt/ n.</td><td>故事情节(秘密)计划，密谋小块地皮vt. 把…分成小块；划分绘制；标出vt. & vi. 密谋，plotting，plots</td></tr>
+<tr><td>twist</td><td>/twɪst/ vt.</td><td>捻；拧；扭伤；编织；使苦恼n. 扭曲；扭伤；拧vi. 扭动；弯曲, twisting, twists</td></tr>
+<tr><td>involved</td><td>/ɪn'vɑːlvd/ adj.</td><td>卷入的；有关的；复杂的v. 涉及；使参与；包含（involve的过去式和过去分词）</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>scrambling</td><td>— </td><td>不规则性</td></tr>
+<tr><td>descending</td><td>/dɪ'send/ vi.</td><td>下降；下来；遗传；屈尊；下去vt. 下去；沿…向下, descending, descends</td></tr>
+<tr><td>trend</td><td>/trend/ n.</td><td>趋势, 倾向流行, trending, trends</td></tr>
+<tr><td>keen</td><td>/kiːn/ adj.</td><td>锋利的热衷的，热心的，渴望(做某事)激烈的，紧张的良好的；敏锐的，敏捷的，keenest</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>tripled</td><td>/trɪp/ vi.</td><td>绊倒；犯错误；远足；轻快地走n. 旅行；绊倒；差错vt. 绊倒；使犯错TRIPabbr. transformation-induced plasticity 高</td></tr>
+<tr><td>marathons</td><td>/'mærəθɑːn/ n.</td><td>马拉松赛跑；耐力的考验adj. 马拉松式的；有耐力的vi. 参加马拉松赛跑</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>folk</td><td>/foʊk/ n.</td><td>人们；民族；亲属（复数）adj. 民间的</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>calm</td><td>/kɑːm/ adj.</td><td>静的，平静的；沉着的vt. 使平静；使镇定vi. 平静下来；镇定下来n. 风平浪静, calmest</td></tr>
+<tr><td>kayaking</td><td>— n.</td><td>独木舟；皮划艇；皮艇运动v. 划独木舟（kayak的ing形式）</td></tr>
+<tr><td>mar</td><td>/mɑːr/ vt.</td><td>毁坏；损坏；玷污MARabbr. Master of Arts in Religion 宗教硕士Mar三月(March)，marring，mars</td></tr>
+<tr><td>towards</td><td>/tɔːrdz/ prep.</td><td>向，朝为了；有助于；用于对于，关于接近；将近；大约</td></tr>
+<tr><td>immersive</td><td>— adj.</td><td>拟真的；沉浸式的；沉浸感的；增加沉浸感的</td></tr>
+<tr><td>tailored</td><td>/'teɪlər/ vt.</td><td>剪裁；使合适n. 裁缝vi. 做裁缝, tailoring, tailors</td></tr>
+<tr><td>trips</td><td>/trɪp/ vi.</td><td>绊倒；犯错误；远足；轻快地走n. 旅行；绊倒；差错vt. 绊倒；使犯错TRIPabbr. transformation-induced plasticity 高</td></tr>
+<tr><td>captions</td><td>/'kæpʃn/ n.</td><td>字幕；标题；说明；[英]逮捕vt. 加上说明；加上标题, captioning, captions</td></tr>
+<tr><td>attest</td><td>/ə'test/ vt.</td><td>证明；证实；为…作证vi. 证明；作证, attesting, attests</td></tr>
+<tr><td>simply</td><td>/'sɪmpli/ adv.</td><td>简单地；朴素地；简直；仅仅；坦白地</td></tr>
+<tr><td>plot</td><td>/plɑːt/ n.</td><td>故事情节(秘密)计划，密谋小块地皮vt. 把…分成小块；划分绘制；标出vt. & vi. 密谋，plotting，plots</td></tr>
+<tr><td>twist</td><td>/twɪst/ vt.</td><td>捻；拧；扭伤；编织；使苦恼n. 扭曲；扭伤；拧vi. 扭动；弯曲, twisting, twists</td></tr>
+<tr><td>warfare</td><td>/'wɔːrfer/ n.</td><td>战争, 战争状态</td></tr>
+<tr><td>spotted</td><td>/spɑːt/ n.</td><td>斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Positioning and Tracki</td></tr>
+<tr><td>heading</td><td>/'hedɪŋ/ n.</td><td>标题；信头；（足球）头球v. 用头顶（head的ing形式）</td></tr>
+<tr><td>detected</td><td>/dɪ'tekt/ vt.</td><td>发现；发觉，查明，detecting，detects</td></tr>
+<tr><td>ukraine</td><td>— n.</td><td>乌克兰（原苏联一加盟共和国，现已独立）</td></tr>
+<tr><td>fuses</td><td>/fjuːz/ vt.</td><td>& vi. 熔化；融合；合并n. 保险丝，熔丝导火线；引信FUSEabbr. Federation for Unified Science Education </td></tr>
+<tr><td>drones</td><td>/droʊn/ n.</td><td>无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫；嗡嗡响(人)絮絮叨叨地说，喋喋不休地说</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>silicon</td><td>/'sɪlɪkən/ n.</td><td>〈化〉硅</td></tr>
+<tr><td>valley</td><td>/'væli/ n.</td><td>流域；山谷；溪谷</td></tr>
+<tr><td>protests</td><td>/'proʊtest/ n.</td><td>抗议；反对vt. & vi. 声明；抗议，protesting，protests</td></tr>
+<tr><td>harnessing</td><td>/'hɑːrnɪs/ n.</td><td>马具, 挽具vt. 给(马等)装上挽具治理, 利用, harnessing, harnesses</td></tr>
+<tr><td>drone</td><td>/droʊn/ n.</td><td>无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫；嗡嗡响(人)絮絮叨叨地说，喋喋不休地说</td></tr>
+<tr><td>footage</td><td>/'fʊtɪdʒ/ n.</td><td>连续镜头；英尺长度；以尺计算长度</td></tr>
+<tr><td>counter</td><td>/'kaʊntər/ n.</td><td>柜台, 柜台式长桌计数器vt. & vi. 对抗, 反驳adv. 反方向地, 对立地, countering, counters</td></tr>
+<tr><td>afghanistan</td><td>/æf'ɡænɪstæn/ n.</td><td>阿富汗</td></tr>
+<tr><td>strike</td><td>/straɪk/ vi.</td><td>罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打, stricken striking, str</td></tr>
+<tr><td>spotted</td><td>/spɑːt/ n.</td><td>斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Positioning and Tracki</td></tr>
+<tr><td>detect</td><td>/dɪ'tekt/ vt.</td><td>发现；发觉，查明，detecting，detects</td></tr>
+<tr><td>scramble</td><td>/'skræmbl/ vi.</td><td>快速爬行，匍匐前进；攀登争夺，争抢(军事飞机)紧急起飞vt. (用黄油)炒蛋扰频或倒频使(电话通话等)只可由有特殊接收器的人收听混杂；把…搅乱n. 爬行，攀登争</td></tr>
+<tr><td>ukraine</td><td>— n.</td><td>乌克兰（原苏联一加盟共和国，现已独立）</td></tr>
+<tr><td>pivotal</td><td>/'pɪvətl/ adj.</td><td>作为支点的, 枢轴的中枢的, 关键的</td></tr>
+<tr><td>specific</td><td>/spə'sɪfɪk/ adj.</td><td>特殊的，特定的；明确的；详细的；具有特效的n. 特效药；细节；特性</td></tr>
+<tr><td>startlingly</td><td>/'stɑːrtlɪŋli/ adv.</td><td>令人吃惊地，惊人地</td></tr>
+<tr><td>afghanistan</td><td>/æf'ɡænɪstæn/ n.</td><td>阿富汗</td></tr>
+<tr><td>jungle</td><td>/'dʒʌŋɡl/ n.</td><td>(热带)丛林, 密林乱七八糟的一堆事物</td></tr>
+<tr><td>cope</td><td>/koʊp/ vi.</td><td>处理；对付；竞争</td></tr>
+<tr><td>tanks</td><td>/tæŋk/ n.</td><td>（存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内, tanking, tanks</td></tr>
+<tr><td>crucial</td><td>/'kruːʃl/ adj.</td><td>决定性的；重要的；定局的；决断的</td></tr>
+<tr><td>accurately</td><td>/'ækjərət/ adj.</td><td>精确的, 准确的，正确无误的</td></tr>
+<tr><td>ukraine</td><td>— n.</td><td>乌克兰（原苏联一加盟共和国，现已独立）</td></tr>
+<tr><td>portrayed</td><td>/pɔːr'treɪ/ vt.</td><td>画像；描述扮演，portraying，portrays</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>controversial</td><td>/ˌkɑːntrə'vɜːrʃl/ adj.</td><td>有争议的, 引起争议的</td></tr>
+<tr><td>process</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>ultimately</td><td>/'ʌltɪmətli/ adv.</td><td>最后;最终</td></tr>
+<tr><td>stuff</td><td>/stʌf/ n.</td><td>材料；东西；填充物；素材资料vt. 填塞；塞满；让吃饱vi. 吃得过多, stuffing, stuffs</td></tr>
+<tr><td>raises</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>profound</td><td>/prə'faʊnd/ adj.</td><td>深度的；深切的；深远的知识渊博的，见解深刻的，深奥的，profoundest</td></tr>
+<tr><td>enormous</td><td>/ɪ'nɔːrməs/ adj.</td><td>巨大的, 极大的, 庞大的</td></tr>
+<tr><td>strike</td><td>/straɪk/ vi.</td><td>罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打, stricken striking, str</td></tr>
+<tr><td>decisively</td><td>/dɪ'saɪsɪv/ adj.</td><td>决定性的；果断的，坚定的</td></tr>
+<tr><td>overseeing</td><td>/ˌoʊvər'siː/ vt.</td><td>监督；俯瞰；审查；偷看到，无意中看到, oversees</td></tr>
+<tr><td>incorrect</td><td>/ˌɪnkə'rekt/ adj.</td><td>错误的, 不正确的不能接受的</td></tr>
+<tr><td>overwhelm</td><td>/ˌoʊvər'welm/ vt.</td><td>覆盖，淹没压倒，制服；打败使某人不知所措，overwhelming，overwhelms</td></tr>
+<tr><td>goalkeeper</td><td>/'ɡoʊlkiːpər/ n.</td><td>(足球队的)守门员</td></tr>
+<tr><td>drone</td><td>/droʊn/ n.</td><td>无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫；嗡嗡响(人)絮絮叨叨地说，喋喋不休地说</td></tr>
+<tr><td>versions</td><td>/'vɜːrʒn/ n.</td><td>变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day41.html" class="nav-btn">← Day 41</a>
+  <a href="day43.html" class="nav-btn">Day 43 →</a>
+</div>
+
+<div class="progress">📖 Day 42 of 44</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-05-16</div>
+
+</body>
+</html>

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>United States | The uncanny valley</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-05-16</div>
+
+<h1 class="article-title">United States | The uncanny valley</h1>
+<div class="article-section">United States</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>Some of his voters have buyers’ remorse. Mario Guerrero, who owns a construction firm and heads the South <span class="annot" data-tooltip="texas /'teksəs/ n. 德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室">Texas</span> Builders’ Association, voted for Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> three times. But today <span class="annot" data-tooltip="tariffs /'tærɪf/ n. 关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表时 态: tariffed, tariffing, tar">tariffs</span> have increased his input costs, ice <span class="annot" data-tooltip="raids /reɪd/ n. 袭击；突袭；搜捕；抢劫vi. 对…进行突然袭击vt. 袭击，突袭RAID磁盘冗余阵列时 态: raided, raidi">raids</span> have reduced his labour force, <span class="annot" data-tooltip="petrol /'petrəl/ n. 汽油">petrol</span> prices have eaten into his budget and all this, combined with rising costs, means that fewer people can afford the homes he builds. Under Joe Biden, the border, just half an hour’s <span class="annot" data-tooltip="drive /draɪv/ vt. 驱赶驱使, 促使敲, 击vt. & vi. 驾驶n. 乘车旅行私人车道传动, 驱动干劲, 积极性, 能动性紧迫, 逼迫,">drive</span> from Edinburg, was <span class="annot" data-tooltip="chaotic /keɪ'ɑːtɪk/ adj. 混乱的，无秩序的；混沌的">chaotic</span>, and Mr Guerrero welcomed Mr Trump’s vow to control it and get the bad guys out. But, he says, “When I would hear that the rapists and the murderers were <span class="annot" data-tooltip="gonna /'ɡənə/ abbr. （美）将要（等于going to）">gonna</span> be taken out, I never <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span> that you were gonna go and pick up Juan that does <span class="annot" data-tooltip="cabinets /'kæbɪnət/ n. 内阁；橱柜；展览艺术品的小陈列室adj. 内阁的；私下的，秘密的">cabinets</span>, that has a family here, that has two sons in the air force.” An improved showing for Democrats in the rgv would not mean Latinos are coming “home”, argues Mike Madrid, a political strategist and author of “The Latino Century”. They “are moving away from both parties, [and] the same reasons these voters turned against the <span class="annot" data-tooltip="democratic /ˌdemə'krætɪk/ adj. 民主的, 有民主精神或作风的副 词: democratically">Democratic</span> Party is why they’re now moving away from <span class="annot" data-tooltip="republicans /rɪ'pʌblɪkən/ adj. 共和国的, 共和政体的n. 拥护共和政体者, 共和主义者名 词: republicanism">Republicans</span>”. Yet there are, he suggests, lessons for the party here. First, he says, “start moving toward the Latino working-class base instead of holding onto false hopes of recapturing the white working class in the rustbelt…The future <span class="annot" data-tooltip="relevance /'reləvəns/ n. 关联；切题">relevance</span> of the Democratic Party is the sunbelt.” Second, be opportunistic and <span class="annot" data-tooltip="unconventional /ˌʌnkən'venʃənl/ adj. 非传统的名 词: unconventionality">unconventional</span>: if your <span class="annot" data-tooltip="opponent /ə'poʊnənt/ n. 对手, 敌手；反对者名 词: opponency">opponent</span> <span class="annot" data-tooltip="sniffs /snɪf/ vi. 嗤之以鼻；嗅vt. 用力吸；发觉；闻；嗅n. 以鼻吸气；气味；吸，闻；吸气声；嗤之以鼻时 态: sniffed, sni">sniffs</span> that you’re nothing more than a quinceañera singer, sing at as many as will have you. Finally, it really helps to be famous. Unlike most first-time <span class="annot" data-tooltip="candidates /'kændɪdət，ˈkændɪdeɪt/ n. 申请求职者, 候选人报考者名 词: candidacy">candidates</span>, Mr Pulido has no problems with name <span class="annot" data-tooltip="recognition /ˌrekəɡ'nɪʃn/ n. 认识；认出；承认〈正〉酬谢，酬劳形容词: recognitory">recognition</span>. The tendency of Democrats to defend institutions often makes them seem like rule-following <span class="annot" data-tooltip="scolds /skoʊld/ vi. 责骂；叱责vt. 责骂；骂n. 责骂；爱责骂的人时 态: scolded, scolding, scolds">scolds</span>. They could use a few more candidates who know their way around a guitar, a ballad and a gun. ■ Stay on top of American politics with The US in brief, our daily newsletter with fast analysis of the most important political news, and Checks and Balance, a weekly note that examines the state of American <span class="annot" data-tooltip="democracy /dɪ'mɑːkrəsi/ n. 民主, 民主制民主国家">democracy</span> and the <span class="annot" data-tooltip="issues /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issues</span> that matter to voters.</p>
+<p>This article was downloaded by zlibrary from https://www.economist.com//united-states/2026/05/11/lessons-for-democrats-from-a- <span class="annot" data-tooltip="candidate /'kændɪdət，ˈkændɪdeɪt/ n. 申请求职者, 候选人报考者名 词: candidacy">candidate</span>-who-sings-and-shoots</p>
+<div class="article-separator"></div>
+<div class="article-header">United States · United States | Abundant progress</div>
+<p>New York looks set to lower a big barrier to building Sex and the environmental-review <span class="annot" data-tooltip="process /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">process</span> May 14th 2026 GETTING A NEW building project through New York’s state environmental approvals can feel like a bureaucratic game of snakes and ladders. Even though projects are also signed off locally, the state process requires an analysis of their effects. After about two years of study, if a builder is lucky, he can <span class="annot" data-tooltip="hop /hɑːp/ vi. 单足蹦跳, 跳跃跳上[下]vt. 跃过, 跳过搭乘n. 蹦跳, 跳跃跳舞一次飞行的距离HOPabbr. High Oxy">hop</span> up a ladder <span class="annot" data-tooltip="towards /tɔːrdz/ prep. 向，朝为了；有助于；用于对于，关于接近；将近；大约">towards</span> the end of the game. Others must go through a more-<span class="annot" data-tooltip="exacting /ɪɡ'zækt/ adj. 精确的；准确的，精密的vt. 强求；要求；急需vi. 勒索钱财时 态: exacted, exacting, exact">exacting</span> report, moving one square for a public hearing and then another for each of the 20 technical analyses that must be done in New York City. This takes closer to three years. If the plan changes in that time, the builder lands on a snake (or a chute, in the American <span class="annot" data-tooltip="version /'vɜːrʒn/ n. 变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本">version</span>) and goes back to the start. A <span class="annot" data-tooltip="lawsuit /'lɔːsuːt/ n. 诉讼（尤指非刑事案件）；诉讼案件">lawsuit</span> can create a whole second round.</p>
+<p>Now New York is on the <span class="annot" data-tooltip="brink /brɪŋk/ n. (悬崖峭壁的)边沿(危险的)边沿">brink</span> of throwing away the game. The state is set to pass the first big <span class="annot" data-tooltip="reform /rɪ'fɔːrm/ n. 改革，改良，改造vt. & vi. 改革；改造；改善时 态: reformed，reforming，reforms">reform</span> of its environmental reviews for housing in 50 years. Even though many developments are found to have little environmental impact, the convoluted <span class="annot" data-tooltip="process /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">process</span> slows building and becomes a blocking tool for would-be-neighbours. Scrapping it “is going to be a real transformational moment” <span class="annot" data-tooltip="boasts /boʊst/ n. 自吹自擂, 自夸的话vt. & vi. 自夸vt. 有(引以为荣的事物)时 态: boasted, boasting, ">boasts</span> Kathy Hochul, New York’s governor. But the Empire State is not alone: in an effort to get building, <span class="annot" data-tooltip="democratic /ˌdemə'krætɪk/ adj. 民主的, 有民主精神或作风的副 词: democratically">Democratic</span> states across the country are rethinking their environmental reviews. In 2024 New York state ranked fifth in the nation for cost <span class="annot" data-tooltip="burdens /'bɜːrdn/ n. 负担；责任；船的载货量vt. 烦扰；使负担；装货于时 态: burdened, burdening, burdens">burdens</span> for housing, with more than a third of <span class="annot" data-tooltip="residents /'rezɪdənt/ adj. 定居的; 常驻的n. 居民(旅馆的)住宿者">residents</span> spending more than 30% of their <span class="annot" data-tooltip="household /'haʊshoʊld/ n. 同住在一所房子里的人, 一家人, 户adj. 家庭的, 家用的">household</span> income on it. The state’s population has fallen, and it is projected to lose one or two congressional seats in the next reapportionment in 2030. For Ms Hochul, this is a crisis. “We’re losing residents to neighbouring states that have more ambition and willingness to not be thwarted by the NIMBY culture,” she says, referring to Not In My Backyard campaigners. Her solution is to reform the 1975 law that governs environmental review in the state. <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">Although</span> theoretically it is just a fact-finding <span class="annot" data-tooltip="exercise /'eksərsaɪz/ n. 练习；运动；运用；操练；典礼；礼拜vt. 练习；锻炼；使用；使忙碌；使惊恐vi. 运动；练习时 态: exercised">exercise</span>, any project requiring a special permit or a zoning change must go through the painstaking process. The state reckons it costs $82,000 per unit of housing in New York City and has little environmental benefit. A change to the state budget would scrap the reviews for projects of up to 500 units in the busiest parts of New York City and 300 units in other <span class="annot" data-tooltip="urban /'ɜːrbən/ adj. 城市的；住在都市的">urban</span> areas in the state, as long as they are on a <span class="annot" data-tooltip="plot /plɑːt/ n. 故事情节(秘密)计划，密谋小块地皮vt. 把…分成小块；划分绘制；标出vt. & vi. 密谋时 态: plotted，">plot</span> of previously developed land. Although the final language is yet to be seen, wonks are jubilant. “This is a <span class="annot" data-tooltip="major /'meɪdʒər/ adj. 主要的；主修的；重要的；较多的n. 成年人；主修科目；陆军少校vi. 主修时 态: majored, majoring,">major</span> step forward,” says Josh Berman of the Regional Plan Association, a local think-<span class="annot" data-tooltip="tank /tæŋk/ n. （存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内时 态: t">tank</span>. “It allows municipalities that want to build to go forward and <span class="annot" data-tooltip="actually /'æktʃuəl/ adj. 真实的，实际的；现行的，目前的副 词: actually">actually</span> build.” “It’s a big deal,” echoes Steven Fulop, the head of the Partnership for NYC, a business <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span>. If the final <span class="annot" data-tooltip="legislation /ˌledʒɪs'leɪʃn/ n. 法律；法规立法，法律的制定[通过]">legislation</span> is as expected, there should be more permits issued by the end of the year, says Carlo Scissura of the NY Building Congress. There are hitches: local governments would keep their say over development, so <span class="annot" data-tooltip="places /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">places</span> that are not <span class="annot" data-tooltip="keen /kiːn/ adj. 锋利的热衷的，热心的，渴望(做某事)激烈的，紧张的良好的；敏锐的，敏捷的比较级: keener，keenest">keen</span> on new housing would not have to embrace it (Ms Hochul attempted to <span class="annot" data-tooltip="nudge /nʌdʒ/ n. 用肘轻推；推动；没完没了抱怨的人vt. 用肘轻推；推进；向…不停地唠叨vi. 轻推；推进；唠叨时 态: nudged, ">nudge</span> building in 2023 and was shut down). But <span class="annot" data-tooltip="advocates /ˈædvəkeɪt，'ædvəkət/ v. 拥护；支持；提倡n. 拥护者；支持者；提倡者；辩护律师；出庭辩护人时 态: advocated, advocating,">advocates</span> cheer how warm the reception for environmental reform was. “It</p>
+<p>is really, really <span class="annot" data-tooltip="notable /'noʊtəbl/ adj. 值得注意的，显著的；著名的n. 名人，显要人物副 词: notably">notable</span> that we are finally seeing just everyone sing the same <span class="annot" data-tooltip="tune /tuːn/ n. 曲调, 曲子vt. & vi. 调音vt. 调整时 态: tuned, tuning, tunes">tune</span> that we need to build more housing,” says Annemarie Gray of Open New York, a YIMBY (the antithesis of NIMBY) <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span>. Plenty in New York attribute this to Ms Hochul’s vigour. But Democrats across the country have embraced the idea that the party needs to be more friendly to growth. In recent years California, Massachusetts and Washington have all made efforts to reduce the <span class="annot" data-tooltip="burden /'bɜːrdn/ n. 负担；责任；船的载货量vt. 烦扰；使负担；装货于时 态: burdened, burdening, burdens">burden</span> of climate reviews. State legislators are “all definitely trading notes”, says Charlie Anderson at Arnold Ventures, a research and advocacy group. “They’re also competitive.” This is a better game than snakes and ladders.■ Stay on top of American politics with The US in brief, our daily newsletter with fast analysis of the most important political news, and Checks and Balance, a weekly note that examines the state of American <span class="annot" data-tooltip="democracy /dɪ'mɑːkrəsi/ n. 民主, 民主制民主国家">democracy</span> and the <span class="annot" data-tooltip="issues /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issues</span> that matter to voters. This article was downloaded by zlibrary from https://www.economist.com//united-states/2026/05/14/new-york-looks-set-to-lower-a- big-barrier-to-building</p>
+<div class="article-separator"></div>
+<div class="article-header">United States · United States | The war on error</div>
+<p>America’s new <span class="annot" data-tooltip="counter /'kaʊntər/ n. 柜台, 柜台式长桌计数器vt. & vi. 对抗, 反驳adv. 反方向地, 对立地时 态: countered, co">counter</span>-terrorism <span class="annot" data-tooltip="strategy /'strætədʒi/ n. 战略学, 兵法战略, 策略策略, 计谋">strategy</span> is a partisan polemic It does not seem designed to make the country safer May 14th 2026 Sebastian Gorka, America’s counter-terrorism tsar, is abrasive. Critics of the Iran war are “<span class="annot" data-tooltip="testicularly /te'stɪkjələr/ adj. 双丸状的(例如两个并列的块茎)">testicularly</span> challenged”. Journalists are “scumbags” or “punks”. As for <span class="annot" data-tooltip="terrorists /'terərɪst/ n. 恐怖主义者, 恐怖分子形容词: terroristic">terrorists</span>, they must be vapourised into “red mist” and their bodies <span class="annot" data-tooltip="stacked /stækt/ adj. [俚]妖艳的；（女人）身材丰满匀称的v. 堆放（stack的过去分词）">stacked</span> “like cordwood”. Mr Gorka takes pride in his work. “I <span class="annot" data-tooltip="pinch /pɪntʃ/ vt. 捏；勒索；使苦恼；掐掉某物，修剪n. 匮乏；少量；夹痛vi. 夹痛；节省时 态: pinched, pinching, ">pinch</span> myself everyday,” he enthused on a <span class="annot" data-tooltip="podcast /'pɑːdkæst/ n. 播客">podcast</span> last year. “I’ve been waiting about 25 years for this job.” It should therefore come as little surprise that America’s new counter- terrorism strategy—hailed by Mr Gorka as his “life’s work”—is more polemic than policy. For a magnum opus, it is short: just 16 pages, including <span class="annot" data-tooltip="covers /'kʌvər/ vt. 包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替时 态: covered, covering, c">covers</span> and <span class="annot" data-tooltip="pictures /'pɪktʃər/ n. 图画，肖像；照片(生动的)描述，写照影片；电影；画面美景，景色情况，事态，局面vt. 绘画；描绘想象时 态: pictu">pictures</span>. It is also light on detail. The strategy identifies three</p>
+<p>“<span class="annot" data-tooltip="major /'meɪdʒər/ adj. 主要的；主修的；重要的；较多的n. 成年人；主修科目；陆军少校vi. 主修时 态: majored, majoring,">major</span> types of <span class="annot" data-tooltip="terror /'terər/ n. 恐怖; 恐怖活动引起恐怖的人[事]讨厌的人">terror</span> <span class="annot" data-tooltip="groups /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">groups</span>”: narco-<span class="annot" data-tooltip="terrorists /'terərɪst/ n. 恐怖主义者, 恐怖分子形容词: terroristic">terrorists</span> and <span class="annot" data-tooltip="transnational /ˌtrænz'næʃnəl/ adj. 影响数国的;数国参与的;跨国的">transnational</span> gangs; Islamist terrorists; and <span class="annot" data-tooltip="violent /'vaɪələnt/ adj. 暴力引起的, 粗暴的剧烈的, 强烈的副 词: violently">violent</span> left-<span class="annot" data-tooltip="wing /wɪŋ/ n. 翅膀；翼；飞翔；派别vt. 使飞；飞过；空运；增加…速度；装以翼vi. 飞行时 态: winged, winging, ">wing</span> extremists. It says nothing about threats <span class="annot" data-tooltip="stemming /stem/ n. (花草的)茎, (树木的)干词干vt. 遏制[阻止](液体的流动等)时 态: stemmed, stemming, st">stemming</span> from the war in Iran or the long-standing menace from right-wing extremists. Described as “apolitical”, the document is anything but. Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s name appears dozens of times in a nominally non- partisan <span class="annot" data-tooltip="memo /'memoʊ/ n. 备忘录">memo</span>. “It’s not a <span class="annot" data-tooltip="strategy /'strætədʒi/ n. 战略学, 兵法战略, 策略策略, 计谋">strategy</span>,” says Matthew Levitt of the Washington Institute for Near East Policy. “It’s an ideological, political document that fails to analytically assess the <span class="annot" data-tooltip="counter /'kaʊntər/ n. 柜台, 柜台式长桌计数器vt. & vi. 对抗, 反驳adv. 反方向地, 对立地时 态: countered, co">counter</span>-terrorism threat.” There is little new inside. The document largely spells out what the Trump administration has already been doing. The priority, it says, is going after drug cartels. For eight months, America’s armed forces have struck alleged “narco-<span class="annot" data-tooltip="terrorist /'terərɪst/ n. 恐怖主义者, 恐怖分子形容词: terroristic">terrorist</span>” boats in the Caribbean and Pacific. To date, it has carried out 57 confirmed <span class="annot" data-tooltip="strikes /straɪk/ vi. 罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打时 态:">strikes</span>, which have killed at least 192 people. The document <span class="annot" data-tooltip="boasts /boʊst/ n. 自吹自擂, 自夸的话vt. & vi. 自夸vt. 有(引以为荣的事物)时 态: boasted, boasting, ">boasts</span> that sea-borne drug <span class="annot" data-tooltip="trafficking /'træfɪk/ n. 交通；贸易；运输；通信量vt. 用…作交换；在…通行vi. 交易，买卖时 态: trafficked, traffick">trafficking</span> has decreased by 90%. The <span class="annot" data-tooltip="campaign /kæm'peɪn/ n. 运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）时">campaign</span>’s dubious legality aside, experts say the document betrays a lack of focus. “If every criminal <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span> is also a terrorist group there’s no distinction anymore,” warns Colin Clarke of the Soufan Centre, a non-profit. “It takes finite resources away from fighting <span class="annot" data-tooltip="actual /'æktʃuəl/ adj. 真实的，实际的；现行的，目前的副 词: actually">actual</span> terrorist organisations.” The government also vows to keep tabs on “<span class="annot" data-tooltip="legacy /'leɡəsi/ n. 遗产, 遗赠物遗留之物">legacy</span> Islamist terrorists” like al-Qaeda and ISIS. It boasts of loosening rules of <span class="annot" data-tooltip="engagement /ɪn'ɡeɪdʒmənt/ n. 订婚，婚约；约会，约定（尤指正式的或与工作有关的）；交战；诺言；进场（游戏术语）；参与度（指用户点赞、转发、评论、下载文">engagement</span>, which has led to a <span class="annot" data-tooltip="surge /sɜːrdʒ/ n. (情感的) 突发，涌现，突然出现（数量的）急剧上升，激增；大量；一大批奔涌向前；突然的向上运动（电流）浪涌v. 涌；汹涌">surge</span> in air strikes. In Somalia, for example, strikes since the start of 2025 have risen to 190—a <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> four-fold increase on the Biden years. Some of the strategy’s sharpest barbs are <span class="annot" data-tooltip="reserved /rɪ'zɜːrvd/ adj. 保留的，预订的；缄默的，冷淡的；包租的v. 保留（reserve的过去分词）副 词: reservedly">reserved</span> for Europe. The old world has become an “incubator” of terrorism stemming from its “open borders”. It warns the continent must “act now and halt its wilful decline”. <span class="annot" data-tooltip="strikingly /'straɪkɪŋ/ adj. 显著的，突出的引人注目的；容貌出众的副 词: strikingly">Strikingly</span>, the document does not mention the impact of the Iran war. A spate of attacks in recent months, some of which appear to have been inspired by the conflict, have raised questions about America’s counter- terror apparatus. Thousands of <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">federal</span> agents have been dragooned into immigration duty. And in the days before the Iran war began, the FBI fired a dozen staff, including agents who worked in a unit <span class="annot" data-tooltip="monitoring /'mɑːnɪtər/ n. 显示屏；监视器；（计算机）显示器监控器；监测器班长；级长；班代表（尤指派往国外的）监督员，核查员巨蜥v. 监视；检查；跟">monitoring</span> threats from Iran. “The Iran war is a gaping <span class="annot" data-tooltip="hole /hoʊl/ n. 洞，孔；洞穴，穴；突破口vi. 凿洞，穿孔；（高尔夫球等）进洞vt. 凿洞时 态: holed, holing, hol">hole</span> in this document,” points out Mr Clarke. The strategy’s focus on left-wing extremism is similarly <span class="annot" data-tooltip="hazy /'heɪzi/ adj. 朦胧的；模糊的；有薄雾的比较级: hazier, haziest">hazy</span>. Political killings by left-wing types, such as the murders of Charlie Kirk or Brian</p>
+<p>Thompson, the CEO of UnitedHealthcare, are a real and growing <span class="annot" data-tooltip="issue /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issue</span>. But it is not clear whether these killings <span class="annot" data-tooltip="actually /'æktʃuəl/ adj. 真实的，实际的；现行的，目前的副 词: actually">actually</span> constitute terrorism. The administration has <span class="annot" data-tooltip="nonetheless /ˌnʌnðə'les/ adv. 虽然如此,但是">nonetheless</span> designated <span class="annot" data-tooltip="amorphous /ə'mɔːrfəs/ adj. 无固定形状的非结晶的；非晶态的模糊的无组织的;难以名状的乱七八糟的;难以归类的无一定方向(或目的)的">amorphous</span>, left-<span class="annot" data-tooltip="wing /wɪŋ/ n. 翅膀；翼；飞翔；派别vt. 使飞；飞过；空运；增加…速度；装以翼vi. 飞行时 态: winged, winging, ">wing</span> militant <span class="annot" data-tooltip="groups /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">groups</span> as “<span class="annot" data-tooltip="terrorist /'terərɪst/ n. 恐怖主义者, 恐怖分子形容词: terroristic">terrorist</span> organisations”. Worryingly, violence perpetrated by right-wing extremists has been expunged from the document. “The people in charge are taking something that has traditionally been apolitical and non- ideological and weaponising it for ideological purposes,” laments Mr Levitt. “We’re less safe for it.”■ Stay on top of American politics with The US in brief, our daily newsletter with fast analysis of the most important political news, and Checks and Balance, a weekly note that examines the state of American <span class="annot" data-tooltip="democracy /dɪ'mɑːkrəsi/ n. 民主, 民主制民主国家">democracy</span> and the <span class="annot" data-tooltip="issues /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issues</span> that matter to voters. This article was downloaded by zlibrary from https://www.economist.com//united-states/2026/05/14/americas-new-<span class="annot" data-tooltip="counter /'kaʊntər/ n. 柜台, 柜台式长桌计数器vt. & vi. 对抗, 反驳adv. 反方向地, 对立地时 态: countered, co">counter</span>-terrorism- <span class="annot" data-tooltip="strategy /'strætədʒi/ n. 战略学, 兵法战略, 策略策略, 计谋">strategy</span>-is-a-partisan-polemic</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>texas</td><td>/'teksəs/ n.</td><td>德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室)</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>tariffs</td><td>/'tærɪf/ n.</td><td>关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表, tariffing, tariffs</td></tr>
+<tr><td>raids</td><td>/reɪd/ n.</td><td>袭击；突袭；搜捕；抢劫vi. 对…进行突然袭击vt. 袭击，突袭RAID磁盘冗余阵列, raiding, raids</td></tr>
+<tr><td>petrol</td><td>/'petrəl/ n.</td><td>汽油</td></tr>
+<tr><td>drive</td><td>/draɪv/ vt.</td><td>驱赶驱使, 促使敲, 击vt. & vi. 驾驶n. 乘车旅行私人车道传动, 驱动干劲, 积极性, 能动性紧迫, 逼迫, 压力, drives</td></tr>
+<tr><td>chaotic</td><td>/keɪ'ɑːtɪk/ adj.</td><td>混乱的，无秩序的；混沌的</td></tr>
+<tr><td>gonna</td><td>/'ɡənə/ abbr.</td><td>（美）将要（等于going to）</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>cabinets</td><td>/'kæbɪnət/ n.</td><td>内阁；橱柜；展览艺术品的小陈列室adj. 内阁的；私下的，秘密的</td></tr>
+<tr><td>democratic</td><td>/ˌdemə'krætɪk/ adj.</td><td>民主的, 有民主精神或作风的</td></tr>
+<tr><td>republicans</td><td>/rɪ'pʌblɪkən/ adj.</td><td>共和国的, 共和政体的n. 拥护共和政体者, 共和主义者</td></tr>
+<tr><td>relevance</td><td>/'reləvəns/ n.</td><td>关联；切题</td></tr>
+<tr><td>unconventional</td><td>/ˌʌnkən'venʃənl/ adj.</td><td>非传统的</td></tr>
+<tr><td>opponent</td><td>/ə'poʊnənt/ n.</td><td>对手, 敌手；反对者</td></tr>
+<tr><td>sniffs</td><td>/snɪf/ vi.</td><td>嗤之以鼻；嗅vt. 用力吸；发觉；闻；嗅n. 以鼻吸气；气味；吸，闻；吸气声；嗤之以鼻, sniffing, sniffs</td></tr>
+<tr><td>candidates</td><td>/'kændɪdət，ˈkændɪdeɪt/ n.</td><td>申请求职者, 候选人报考者</td></tr>
+<tr><td>recognition</td><td>/ˌrekəɡ'nɪʃn/ n.</td><td>认识；认出；承认〈正〉酬谢，酬劳</td></tr>
+<tr><td>scolds</td><td>/skoʊld/ vi.</td><td>责骂；叱责vt. 责骂；骂n. 责骂；爱责骂的人, scolding, scolds</td></tr>
+<tr><td>democracy</td><td>/dɪ'mɑːkrəsi/ n.</td><td>民主, 民主制民主国家</td></tr>
+<tr><td>issues</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>candidate</td><td>/'kændɪdət，ˈkændɪdeɪt/ n.</td><td>申请求职者, 候选人报考者</td></tr>
+<tr><td>process</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>hop</td><td>/hɑːp/ vi.</td><td>单足蹦跳, 跳跃跳上[下]vt. 跃过, 跳过搭乘n. 蹦跳, 跳跃跳舞一次飞行的距离HOPabbr. High Oxygen Pressure 高氧压, ho</td></tr>
+<tr><td>towards</td><td>/tɔːrdz/ prep.</td><td>向，朝为了；有助于；用于对于，关于接近；将近；大约</td></tr>
+<tr><td>exacting</td><td>/ɪɡ'zækt/ adj.</td><td>精确的；准确的，精密的vt. 强求；要求；急需vi. 勒索钱财, exacting, exacts</td></tr>
+<tr><td>version</td><td>/'vɜːrʒn/ n.</td><td>变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本</td></tr>
+<tr><td>lawsuit</td><td>/'lɔːsuːt/ n.</td><td>诉讼（尤指非刑事案件）；诉讼案件</td></tr>
+<tr><td>brink</td><td>/brɪŋk/ n.</td><td>(悬崖峭壁的)边沿(危险的)边沿</td></tr>
+<tr><td>reform</td><td>/rɪ'fɔːrm/ n.</td><td>改革，改良，改造vt. & vi. 改革；改造；改善，reforming，reforms</td></tr>
+<tr><td>process</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>boasts</td><td>/boʊst/ n.</td><td>自吹自擂, 自夸的话vt. & vi. 自夸vt. 有(引以为荣的事物), boasting, boasts</td></tr>
+<tr><td>democratic</td><td>/ˌdemə'krætɪk/ adj.</td><td>民主的, 有民主精神或作风的</td></tr>
+<tr><td>burdens</td><td>/'bɜːrdn/ n.</td><td>负担；责任；船的载货量vt. 烦扰；使负担；装货于, burdening, burdens</td></tr>
+<tr><td>residents</td><td>/'rezɪdənt/ adj.</td><td>定居的; 常驻的n. 居民(旅馆的)住宿者</td></tr>
+<tr><td>household</td><td>/'haʊshoʊld/ n.</td><td>同住在一所房子里的人, 一家人, 户adj. 家庭的, 家用的</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>exercise</td><td>/'eksərsaɪz/ n.</td><td>练习；运动；运用；操练；典礼；礼拜vt. 练习；锻炼；使用；使忙碌；使惊恐vi. 运动；练习, exercising, exercises</td></tr>
+<tr><td>urban</td><td>/'ɜːrbən/ adj.</td><td>城市的；住在都市的</td></tr>
+<tr><td>plot</td><td>/plɑːt/ n.</td><td>故事情节(秘密)计划，密谋小块地皮vt. 把…分成小块；划分绘制；标出vt. & vi. 密谋，plotting，plots</td></tr>
+<tr><td>major</td><td>/'meɪdʒər/ adj.</td><td>主要的；主修的；重要的；较多的n. 成年人；主修科目；陆军少校vi. 主修, majoring, majors</td></tr>
+<tr><td>tank</td><td>/tæŋk/ n.</td><td>（存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内, tanking, tanks</td></tr>
+<tr><td>actually</td><td>/'æktʃuəl/ adj.</td><td>真实的，实际的；现行的，目前的</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>legislation</td><td>/ˌledʒɪs'leɪʃn/ n.</td><td>法律；法规立法，法律的制定[通过]</td></tr>
+<tr><td>places</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>keen</td><td>/kiːn/ adj.</td><td>锋利的热衷的，热心的，渴望(做某事)激烈的，紧张的良好的；敏锐的，敏捷的，keenest</td></tr>
+<tr><td>nudge</td><td>/nʌdʒ/ n.</td><td>用肘轻推；推动；没完没了抱怨的人vt. 用肘轻推；推进；向…不停地唠叨vi. 轻推；推进；唠叨, nudging, nudges</td></tr>
+<tr><td>advocates</td><td>/ˈædvəkeɪt，'ædvəkət/ v.</td><td>拥护；支持；提倡n. 拥护者；支持者；提倡者；辩护律师；出庭辩护人, advocating, advocates</td></tr>
+<tr><td>notable</td><td>/'noʊtəbl/ adj.</td><td>值得注意的，显著的；著名的n. 名人，显要人物</td></tr>
+<tr><td>tune</td><td>/tuːn/ n.</td><td>曲调, 曲子vt. & vi. 调音vt. 调整, tuning, tunes</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>burden</td><td>/'bɜːrdn/ n.</td><td>负担；责任；船的载货量vt. 烦扰；使负担；装货于, burdening, burdens</td></tr>
+<tr><td>democracy</td><td>/dɪ'mɑːkrəsi/ n.</td><td>民主, 民主制民主国家</td></tr>
+<tr><td>issues</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>counter</td><td>/'kaʊntər/ n.</td><td>柜台, 柜台式长桌计数器vt. & vi. 对抗, 反驳adv. 反方向地, 对立地, countering, counters</td></tr>
+<tr><td>strategy</td><td>/'strætədʒi/ n.</td><td>战略学, 兵法战略, 策略策略, 计谋</td></tr>
+<tr><td>testicularly</td><td>/te'stɪkjələr/ adj.</td><td>双丸状的(例如两个并列的块茎)</td></tr>
+<tr><td>terrorists</td><td>/'terərɪst/ n.</td><td>恐怖主义者, 恐怖分子</td></tr>
+<tr><td>stacked</td><td>/stækt/ adj.</td><td>[俚]妖艳的；（女人）身材丰满匀称的v. 堆放（stack的过去分词）</td></tr>
+<tr><td>pinch</td><td>/pɪntʃ/ vt.</td><td>捏；勒索；使苦恼；掐掉某物，修剪n. 匮乏；少量；夹痛vi. 夹痛；节省, pinching, pinches</td></tr>
+<tr><td>podcast</td><td>/'pɑːdkæst/ n.</td><td>播客</td></tr>
+<tr><td>covers</td><td>/'kʌvər/ vt.</td><td>包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替, covering, covers</td></tr>
+<tr><td>pictures</td><td>/'pɪktʃər/ n.</td><td>图画，肖像；照片(生动的)描述，写照影片；电影；画面美景，景色情况，事态，局面vt. 绘画；描绘想象，picturing，pictures</td></tr>
+<tr><td>major</td><td>/'meɪdʒər/ adj.</td><td>主要的；主修的；重要的；较多的n. 成年人；主修科目；陆军少校vi. 主修, majoring, majors</td></tr>
+<tr><td>terror</td><td>/'terər/ n.</td><td>恐怖; 恐怖活动引起恐怖的人[事]讨厌的人</td></tr>
+<tr><td>groups</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>terrorists</td><td>/'terərɪst/ n.</td><td>恐怖主义者, 恐怖分子</td></tr>
+<tr><td>transnational</td><td>/ˌtrænz'næʃnəl/ adj.</td><td>影响数国的;数国参与的;跨国的</td></tr>
+<tr><td>violent</td><td>/'vaɪələnt/ adj.</td><td>暴力引起的, 粗暴的剧烈的, 强烈的</td></tr>
+<tr><td>wing</td><td>/wɪŋ/ n.</td><td>翅膀；翼；飞翔；派别vt. 使飞；飞过；空运；增加…速度；装以翼vi. 飞行, winging, wings</td></tr>
+<tr><td>stemming</td><td>/stem/ n.</td><td>(花草的)茎, (树木的)干词干vt. 遏制[阻止](液体的流动等), stemming, stems</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>memo</td><td>/'memoʊ/ n.</td><td>备忘录</td></tr>
+<tr><td>strategy</td><td>/'strætədʒi/ n.</td><td>战略学, 兵法战略, 策略策略, 计谋</td></tr>
+<tr><td>counter</td><td>/'kaʊntər/ n.</td><td>柜台, 柜台式长桌计数器vt. & vi. 对抗, 反驳adv. 反方向地, 对立地, countering, counters</td></tr>
+<tr><td>terrorist</td><td>/'terərɪst/ n.</td><td>恐怖主义者, 恐怖分子</td></tr>
+<tr><td>strikes</td><td>/straɪk/ vi.</td><td>罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打, stricken striking, str</td></tr>
+<tr><td>boasts</td><td>/boʊst/ n.</td><td>自吹自擂, 自夸的话vt. & vi. 自夸vt. 有(引以为荣的事物), boasting, boasts</td></tr>
+<tr><td>trafficking</td><td>/'træfɪk/ n.</td><td>交通；贸易；运输；通信量vt. 用…作交换；在…通行vi. 交易，买卖, trafficking, traffics</td></tr>
+<tr><td>campaign</td><td>/kæm'peɪn/ n.</td><td>运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）, campaigning, campai</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>actual</td><td>/'æktʃuəl/ adj.</td><td>真实的，实际的；现行的，目前的</td></tr>
+<tr><td>legacy</td><td>/'leɡəsi/ n.</td><td>遗产, 遗赠物遗留之物</td></tr>
+<tr><td>engagement</td><td>/ɪn'ɡeɪdʒmənt/ n.</td><td>订婚，婚约；约会，约定（尤指正式的或与工作有关的）；交战；诺言；进场（游戏术语）；参与度（指用户点赞、转发、评论、下载文档、观看视频、咨询等交互行为）</td></tr>
+<tr><td>surge</td><td>/sɜːrdʒ/ n.</td><td>(情感的) 突发，涌现，突然出现（数量的）急剧上升，激增；大量；一大批奔涌向前；突然的向上运动（电流）浪涌v. 涌；汹涌；涌动(感情、感觉) 突袭，涌动，突发(</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>reserved</td><td>/rɪ'zɜːrvd/ adj.</td><td>保留的，预订的；缄默的，冷淡的；包租的v. 保留（reserve的过去分词）</td></tr>
+<tr><td>strikingly</td><td>/'straɪkɪŋ/ adj.</td><td>显著的，突出的引人注目的；容貌出众的</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>monitoring</td><td>/'mɑːnɪtər/ n.</td><td>显示屏；监视器；（计算机）显示器监控器；监测器班长；级长；班代表（尤指派往国外的）监督员，核查员巨蜥v. 监视；检查；跟踪调查监听（电话、外国无线电广播等）, </td></tr>
+<tr><td>hole</td><td>/hoʊl/ n.</td><td>洞，孔；洞穴，穴；突破口vi. 凿洞，穿孔；（高尔夫球等）进洞vt. 凿洞, holing, holes</td></tr>
+<tr><td>hazy</td><td>/'heɪzi/ adj.</td><td>朦胧的；模糊的；有薄雾的, haziest</td></tr>
+<tr><td>issue</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>actually</td><td>/'æktʃuəl/ adj.</td><td>真实的，实际的；现行的，目前的</td></tr>
+<tr><td>nonetheless</td><td>/ˌnʌnðə'les/ adv.</td><td>虽然如此,但是</td></tr>
+<tr><td>amorphous</td><td>/ə'mɔːrfəs/ adj.</td><td>无固定形状的非结晶的；非晶态的模糊的无组织的;难以名状的乱七八糟的;难以归类的无一定方向(或目的)的</td></tr>
+<tr><td>wing</td><td>/wɪŋ/ n.</td><td>翅膀；翼；飞翔；派别vt. 使飞；飞过；空运；增加…速度；装以翼vi. 飞行, winging, wings</td></tr>
+<tr><td>groups</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>terrorist</td><td>/'terərɪst/ n.</td><td>恐怖主义者, 恐怖分子</td></tr>
+<tr><td>democracy</td><td>/dɪ'mɑːkrəsi/ n.</td><td>民主, 民主制民主国家</td></tr>
+<tr><td>issues</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>counter</td><td>/'kaʊntər/ n.</td><td>柜台, 柜台式长桌计数器vt. & vi. 对抗, 反驳adv. 反方向地, 对立地, countering, counters</td></tr>
+<tr><td>strategy</td><td>/'strætədʒi/ n.</td><td>战略学, 兵法战略, 策略策略, 计谋</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day9.html" class="nav-btn">← Day 9</a>
+  <a href="day11.html" class="nav-btn">Day 11 →</a>
+</div>
+
+<div class="progress">📖 Day 10 of 44</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-05-16</div>
+
+</body>
+</html>

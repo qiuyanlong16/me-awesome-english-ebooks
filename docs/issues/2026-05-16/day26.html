@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Europe | The Telegram</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-05-16</div>
+
+<h1 class="article-title">Europe | The Telegram</h1>
+<div class="article-section">Europe</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>exports to Europe and <span class="annot" data-tooltip="slumping /slʌmp/ vi. 大幅度下降, 暴跌沉重或突然地落下[倒下]n. 萧条期〈美〉(个人、球队等的)低潮状态时 态: slumped, slu">slumping</span> EU sales to China. A stream of visiting European leaders have warned Mr Xi that China’s state-backed <span class="annot" data-tooltip="manufacturing /ˌmænju'fæktʃərɪŋ/ n. 制造业，工业adj. 制造业的；制造的">manufacturing</span> juggernaut poses an intolerable threat to <span class="annot" data-tooltip="industries /'ɪndəstri/ n. 工业；产业；勤勉">industries</span> in their home countries. Unless China changes course, Europe too will have to close itself off, is their co-ordinated message. So <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span>, China’s reaction involves more cynicism than fear. Party high-ups are connoisseurs of power and coercion. That is how they become party bosses (at least until the next <span class="annot" data-tooltip="purge /pɜːrdʒ/ vi. 净化；通便vt. 净化；清洗；通便n. 泻药；净化时 态: purged, purging, purges">purge</span>). It is why they respect and resent America, the one country with the financial, technological and military might to slow China’s <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span>. By <span class="annot" data-tooltip="contrast /'kɑːntræst/ n. 对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照时 态: contrasted, cont">contrast</span>, they see Europe as an economic giant with puny geopolitical <span class="annot" data-tooltip="leverage /'levərɪdʒ/ n. （能够操控形势的）影响力，手段，优势 杠杆力；杠杆作用v. 举债经营；为…融资有效利用某物（资源、优势、工具等）时 态:">leverage</span>, hobbled by its need for <span class="annot" data-tooltip="consensus /kən'sensəs/ n. (意见等)一致, 一致同意">consensus</span> among 27 members. On a visit to Beijing and Shanghai, this columnist heard Europe discussed with <span class="annot" data-tooltip="scorn /skɔːrn/ n. 鄙视；轻蔑受某人鄙视的人或事物vt. 轻视，蔑视不屑做时 态: scorned，scorning，scorns">scorn</span>. A <span class="annot" data-tooltip="senior /'siːniər/ adj. 年长的资深的; 地位高的〈美〉最高年级的n. 较年长者高年级学生〈美〉毕业班学生Senior西尼尔(姓氏)">senior</span> figure described Chinese leaders as exasperated by <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span> of European lectures about <span class="annot" data-tooltip="values /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">values</span>, most recently over China’s support for Russia over <span class="annot" data-tooltip="ukraine n. 乌克兰（原苏联一加盟共和国，现已独立）">Ukraine</span>. What about Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s <span class="annot" data-tooltip="contempt /kən'tempt/ n. 轻视，蔑视；耻辱">contempt</span> for values, Chinese bigwigs ask? Europe is missing a chance to embrace China as a partner. Updating their divide-and-rule <span class="annot" data-tooltip="formula /'fɔːrmjələ/ n. 公式，准则；配方；婴儿食品形容词: formulaic">formula</span>, Chinese officials and trade negotiators <span class="annot" data-tooltip="heap /hiːp/ n. 累积；堆；许多vt. 堆积；堆vi. 堆起来HEAPabbr. High-Explosive Armour-Pierci">heap</span> praise on selected national governments. (Spain is a current favourite.) National leaders are called refreshingly <span class="annot" data-tooltip="pragmatic /præɡ'mætɪk/ adj. 务实的；实事求是的；注重实效的实用主义的，实用主义观点的形容词: pragmatical">pragmatic</span> by focusing on attracting Chinese high-tech investments. <span class="annot" data-tooltip="conversely /kənˈvɜːrs/ adj. 相反的，逆向的；颠倒的vi. 交谈，谈话；认识n. 相反的事物；逆行，逆向；倒时 态: conversed, conve">Conversely</span>, EU officials in <span class="annot" data-tooltip="brussels /ˈbrʌsəlz/ n. 布鲁塞尔（比利时首都）">Brussels</span> are <span class="annot" data-tooltip="scolded /skoʊld/ vi. 责骂；叱责vt. 责骂；骂n. 责骂；爱责骂的人时 态: scolded, scolding, scolds">scolded</span> for being ideological and <span class="annot" data-tooltip="obsessed /əb'ses/ v. 使痴迷，使迷恋；使心神不宁，不停地困扰； 唠叨；挂牵，念念不忘时 态: obsessed, obsessing, obs">obsessed</span> with achieving perfect economic <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span>. Europeans should be realists as they <span class="annot" data-tooltip="negotiate /nɪ'ɡoʊʃieɪt/ vt. 谈判，商议；转让；越过">negotiate</span>, as Americans now are, is a frequent Chinese <span class="annot" data-tooltip="line /laɪn/ n. 绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long inter">line</span> of attack. Brussels policy chiefs are not ready to back down. Fears of a looming China shock are <span class="annot" data-tooltip="leading /ˈliːdɪŋ/ adj. 主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）">leading</span> EU officials to prepare stronger trade defences, including the more frequent use of <span class="annot" data-tooltip="safeguard /'seɪfɡɑːrd/ n. 防护措施，安全设施vt. 保护；保卫；防护时 态: safeguarded，safeguarding，safeguard">safeguard</span> measures involving high <span class="annot" data-tooltip="tariffs /'tærɪf/ n. 关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表时 态: tariffed, tariffing, tar">tariffs</span> to shield whole industries. A get-tough package is set for debate by the European <span class="annot" data-tooltip="commission /kə'mɪʃn/ n. 授权, 委托委员会佣金, 回扣vt. 委任, 委托时 态: commissioned, commissioning, c">Commission</span>, the EU’s executive, this month and by national leaders in June. The Industrial Accelerator Act, a <span class="annot" data-tooltip="draft /dræft/ n. 汇票；草稿；选派；（尤指房间、烟囱、炉子等供暖系统中的）（小股）气流">draft</span> law, would <span class="annot" data-tooltip="oblige /ə'blaɪdʒ/ vt. 强制；赐，施恩惠；迫使；责成vi. 帮忙；施恩惠时 态: obliged, obliging, obliges">oblige</span> foreign investors with <span class="annot" data-tooltip="dominant /'dɑːmɪnənt/ adj. 支配的，统治的；占优势的；显性的n. 显性">dominant</span> positions in batteries, electric cars and other <span class="annot" data-tooltip="strategic /strə'tiːdʒɪk/ adj. 战略(上)的有战略意义的; 至关重要的副 词: strategically">strategic</span> industries (hello, China) to hire more European workers, buy lots of locally made components and <span class="annot" data-tooltip="transfer /træns'fɜːr/ n. 转移；转让；过户；传递vi. 转移；转让；转学；换车vt. 转让；调任；传递；使转移时 态: transferred, ">transfer</span> technologies to European partners as the</p>
+<p>price of access to the EU market. Another <span class="annot" data-tooltip="proposal /prə'poʊzl/ n. 提议，建议；求婚">proposal</span> would add buy-European conditions to big public <span class="annot" data-tooltip="contracts /'kɑːntrækt/ vi. 感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约时 态: contracted, contracting, c">contracts</span>. The EU has moved to tighten customs rules on low-<span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span> imports, after Europe’s online-shopping addicts <span class="annot" data-tooltip="ordered /'ɔːrdərd/ adj. 安排好的；整齐的；[数]有序的v. 命令；点餐（order的过去式和过去分词）">ordered</span> almost 6bn small packages last year, mainly from China. Chinese officials and industrialists recognise a copy when they see one. They know that European <span class="annot" data-tooltip="proposals /prə'poʊzl/ n. 提议，建议；求婚">proposals</span> aim to <span class="annot" data-tooltip="reproduce /ˌriːprə'duːs/ vt. & vi. 复制；重现；再版生殖，繁殖时 态: reproduced，reproducing，reproduces">reproduce</span> technological and value-extraction techniques that China used with success on Western <span class="annot" data-tooltip="multinationals /ˌmʌlti'næʃnəl/ adj. 多国的n. 跨国公司">multinationals</span> a generation ago. Instead of finding this <span class="annot" data-tooltip="imitation /ˌɪmɪ'teɪʃn/ n. 模仿, 仿效仿制品, 伪造物形容词: imitational">imitation</span> <span class="annot" data-tooltip="flattering /'flætər/ v. 向…谄媚，奉承，讨好；自认为，自以为是；使显得更漂亮时 态: flattered，flattering，flatters">flattering</span>, Chinese high-ups deride Europeans as lazy and chronically unwilling to <span class="annot" data-tooltip="invest /ɪn'vest/ vt. 投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买时 态: invested, investing, invests">invest</span> in <span class="annot" data-tooltip="innovation /ˌɪnə'veɪʃn/ n. 改革, 革新, 创新新观念, 新方法, 新发明形容词: innovational">innovation</span>. China’s <span class="annot" data-tooltip="commerce /'kɑːmɜːrs/ n. 商业, 贸易">commerce</span> ministry last month threatened unspecified <span class="annot" data-tooltip="countermeasures /'kaʊntərmeʒər/ n. 对策,反措施">countermeasures</span> if the Industrial Accelerator Act becomes law. A Chinese business executive asks why Europeans suppose that his country’s high-tech investments might create lots of jobs. Recalling a European factory visit, he describes seeing photographs of long-serving employees proudly hung on a wall. In our plants, those <span class="annot" data-tooltip="pictures /'pɪktʃər/ n. 图画，肖像；照片(生动的)描述，写照影片；电影；画面美景，景色情况，事态，局面vt. 绘画；描绘想象时 态: pictu">pictures</span> would show a <span class="annot" data-tooltip="line /laɪn/ n. 绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long inter">line</span> of robots, he scoffs. It is a sharp joke, but bad politics. If China is blamed for destroying European steel or carmaking jobs, say, any German chancellor or French president will face demands to <span class="annot" data-tooltip="intervene /ˌɪntər'viːn/ vi. 干涉，干预；调解干扰，阻碍时 态: intervened，intervening，intervenes">intervene</span>. Maros Sefcovic, an EU <span class="annot" data-tooltip="commissioner /kə'mɪʃn/ n. 授权, 委托委员会佣金, 回扣vt. 委任, 委托时 态: commissioned, commissioning, c">commissioner</span> from Slovakia who now holds the trade <span class="annot" data-tooltip="portfolio /pɔːrt'foʊlioʊ/ n. 公事包, 文件夹投资组合大臣或部长的职位或职责">portfolio</span>—making him the chief trade negotiator for 27 countries—is dubbed an unflappable Mr Fixit in <span class="annot" data-tooltip="brussels /ˈbrʌsəlz/ n. 布鲁塞尔（比利时首都）">Brussels</span>. Still, in an interview for Inside Geopolitics, a video show produced by The Economist, he is <span class="annot" data-tooltip="blunt /blʌnt/ adj. 钝的，不锋利的；生硬的；直率的vt. 使迟钝比较级: blunter, bluntest">blunt</span>. He compares Europe’s dependency on rare earths and other <span class="annot" data-tooltip="critical /'krɪtɪkl/ adj. 批评的，爱挑剔的；决定性的；危险的；临界的；鉴定的；评论的副 词: critically">critical</span> <span class="annot" data-tooltip="minerals /'mɪnərəl/ n. 矿物; 矿石; 矿物质">minerals</span> from China to its former reliance on Russian <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span>. Then there are surging exports driven by Chinese industrial overcapacity. If the EU does not defend itself and China fails to rebalance its economy, he avers, Europe risks losing “whole sectors of <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> within a couple of years”. Against that, he has a mandate to avoid costly fights. “Not a single” business leader is urging him to start trade conflicts, he says. “It’s very easy to start a trade war, but it’s difficult to stop one.” Even interventionists seek to pick their battles. Stéphane Séjourné is France’s EU commissioner, holding the “prosperity and industrial-<span class="annot" data-tooltip="strategy /'strætədʒi/ n. 战略学, 兵法战略, 策略策略, 计谋">strategy</span>” portfolio. He <span class="annot" data-tooltip="advocates /ˈædvəkeɪt，'ædvəkət/ v. 拥护；支持；提倡n. 拥护者；支持者；提倡者；辩护律师；出庭辩护人时 态: advocated, advocating,">advocates</span> industrial policies and buy-European clauses. He</p>
+<p>worries about the <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span> implications of Chinese-made electric cars and green technologies. But rather than slow Europe’s low-carbon <span class="annot" data-tooltip="transition /træn'zɪʃn/ n. 过渡; 转变; 变迁">transition</span>, he wants to focus on components that a hostile power could use for ill: the inverters that connect <span class="annot" data-tooltip="solar /'soʊlər/ adj. 太阳的；日光的；利用太阳光的；与太阳相关的n. 日光浴室">solar</span> <span class="annot" data-tooltip="panels /'pænl/ n. 仪表板；嵌板；座谈小组，全体陪审员vt. 嵌镶板时 态: paneled, panelled paneling, pan">panels</span> to electricity <span class="annot" data-tooltip="grids /ɡrɪd/ n. 格子,格栏地图上的坐标方格输电网">grids</span>, or the interface through which an <span class="annot" data-tooltip="autonomous /ɔː'tɑːnəməs/ adj. 自治的副 词: autonomously">autonomous</span> car talks to its <span class="annot" data-tooltip="manufacturer /ˌmænju'fæktʃərər/ n. 制造商, 制造厂">manufacturer</span>. Europe dreads a trade war with China. It also fears losing its <span class="annot" data-tooltip="industries /'ɪndəstri/ n. 工业；产业；勤勉">industries</span>. Only tough choices await. ■ Subscribers to The Economist can sign up to our Opinion newsletter, which brings together the best of our leaders, <span class="annot" data-tooltip="columns /'kɑːləm/ n. 圆柱，柱形物；纵队，列；专栏形容词: columned">columns</span>, guest <span class="annot" data-tooltip="essays /'eseɪ/ n. 散文, 随笔">essays</span> and reader <span class="annot" data-tooltip="correspondence /ˌkɔːrə'spɑːndəns/ n. 信件, 函件通信, 通信联系一致, 相似">correspondence</span>. This article was downloaded by zlibrary from https://www.economist.com//europe/2026/05/12/the-eu-and-china-are-stumbling-into-a- trade-war</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Britain</div>
+<p>Who can save the Labour Party? How Tommy Robinson, <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span>-right influencer, shaped views on Britain <span class="annot" data-tooltip="anatomy /ə'nætəmi/ n. 解剖, 解剖学(生物体的)解剖结构(详细的)分析人体；骨骼；干尸">Anatomy</span> of a coup against Keir Bond-market lessons for Labour’s leadership hopefuls Labour has turned into the <span class="annot" data-tooltip="conservative /kən'sɜːrvətɪv/ n. 保守的人adj. 保守的, 守旧的(式样等)不时新的, 传统的副 词: conservatively">Conservative</span> Party</p>
+<div class="article-separator"></div>
+<div class="article-header">Britain · Britain | The local losers</div>
+<p>Who can save the Labour Party? Britain’s social democrats are down but not out May 14th 2026 “My grandad grew up a miner’s son,” said Alan Strickland, a Labour MP, in a <span class="annot" data-tooltip="campaign /kæm'peɪn/ n. 运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）时">campaign</span> video before the 2024 general election. The mind-<span class="annot" data-tooltip="twisting /twɪst/ vt. 捻；拧；扭伤；编织；使苦恼n. 扭曲；扭伤；拧vi. 扭动；弯曲时 态: twisted, twisting, twis">twisting</span> <span class="annot" data-tooltip="line /laɪn/ n. 绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long inter">line</span> is meaningless but as a wannabe Labour <span class="annot" data-tooltip="candidate /'kændɪdət，ˈkændɪdeɪt/ n. 申请求职者, 候选人报考者名 词: candidacy">candidate</span> his hat tip (or flat-<span class="annot" data-tooltip="cap /kæp/ n. 帽子；盖vi. 脱帽致意vt. 覆盖；胜过；给…戴帽；加盖于Cap摩羯座CAPabbr. Common Agricult">cap</span> tip) to working-class history was de rigueur. Never mind that the last colliery in Mr Strickland’s <span class="annot" data-tooltip="patch /pætʃ/ n. 眼罩；斑点；碎片；小块土地vt. 修补；掩饰；解决vi. 打补丁时 态: patched, patching, patc">patch</span> was 30 years ago. The Labour Party is steeped in sentimentality. On May 7th Sir Keir Starmer’s centre-left party was trounced in local and devolved elections. Its losses were particularly heavy in historical heartlands in the north of England, West Midlands and Wales. Along with the political cost, Labour MPs suffered the emotional <span class="annot" data-tooltip="toll /toʊl/ vt. 征收；敲钟n. 通行费；代价；钟声vi. 鸣钟；征税时 态: tolled, tolling, tolls">toll</span> of seeing their party reduced to dust in areas it had held for more than a century. In the <span class="annot" data-tooltip="aftermath /'æftərmæθ/ n. 后果">aftermath</span>, <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> 100</p>
+<p>of them publicly called for Sir Keir to resign, including four government ministers. Even if the prime minister limps on for months, few believe he will lead Labour into the next election. Despite the gloom, his successor still has a good chance of winning over the country. The drubbing had long been expected. Labour has sunk around 20 percentage points in <span class="annot" data-tooltip="polls /poʊl/ n. 民意测验；投票；投票数；投票所vt. 剪短；对…进行民意测验；获得选票；投票vi. 投票adj. 剪过毛的；修过枝的；无">polls</span> since 2022, when most of the council seats were last <span class="annot" data-tooltip="contested /'kɑːntest/ vt. 争辩；提出质疑vi. 竞争；争辩n. 竞赛；争论；争夺时 态: contested, contesting, conte">contested</span>. But expectation management did little to <span class="annot" data-tooltip="ease /iːz/ vt. 减轻，缓和；使安心n. 安逸，悠闲；轻松，舒适vi. 减轻，缓和；放松；灵活地移动EASEabbr. Electroni">ease</span> the shock as results trickled in. The party lost 58% of its councillors up for election in England. It lost Barnsley and Sunderland, two northern strongholds, for the first time since those councils were <span class="annot" data-tooltip="established /ɪ'stæblɪʃt/ adj. 已建立的；已设立的；已制定的确定的，证实的">established</span> in 1974. In Wales it fell from a century-long winning <span class="annot" data-tooltip="streak /striːk/ n. 条纹，线条；倾向vi. 飞跑，疾驶；加上条纹vt. 飞跑，疾驰；加条纹于时 态: streaked, streaking">streak</span> to third <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span>, with just nine seats in the country’s 96-member devolved <span class="annot" data-tooltip="parliament /'pɑːrləmənt/ n. 议会, 国会">parliament</span>, the Senedd. The party went <span class="annot" data-tooltip="backwards /'bækwərd/ adj. 向后的；反向的；发展迟缓的adv. 相反地；向后地副 词: backwardly">backwards</span> in Scotland—another former heartland—just two years after soundly defeating the Scottish National Party (SNP) in the general election. As the electorate has <span class="annot" data-tooltip="fragmented /'fræɡmənt/ n. 碎片；片断或不完整部分vt. 使成碎片vi. 破碎或裂开时 态: fragmented, fragmenting, fr">fragmented</span> and opinion of the government <span class="annot" data-tooltip="soured /'saʊər/ adj. 有酸味的，酸的有发酵味道的，酸腐的，馊的坏脾气的；别扭的vt. & vi. (使某物)变酸，变馊；(使某人)阴郁比较级:">soured</span>, voters have abandoned the party in all directions. According to <span class="annot" data-tooltip="polling /'poʊlɪŋ/ n. 投票Polling轮流检测,联接到另一主机查看电子信件或新闻">polling</span> by More in Common around 14% of those who voted Labour in 2024 now say they would vote for the populist-left Green Party, 11% for the populist-right <span class="annot" data-tooltip="reform /rɪ'fɔːrm/ n. 改革，改良，改造vt. & vi. 改革；改造；改善时 态: reformed，reforming，reforms">Reform</span> UK, 8% Liberal Democrat and 5% <span class="annot" data-tooltip="conservative /kən'sɜːrvətɪv/ n. 保守的人adj. 保守的, 守旧的(式样等)不时新的, 传统的副 词: conservatively">Conservative</span>. This played out on May 7th, when Labour lost seats on all fronts. In council elections between 2021 and 2024 the party won areas with a majority of younger or working- class voters (see chart 1). This year Reform and the Greens acted like a pincer: Reform took older, working-class areas while the Greens won younger, <span class="annot" data-tooltip="urban /'ɜːrbən/ adj. 城市的；住在都市的">urban</span> ones. Reform was the resounding winner of the local elections. The party gained more than 1,450 councillors and control of 14 councils (slowed only by the fact that many of them elected merely a third of their councillors this year). Nigel Farage’s party defeated Labour in northern councils and ravaged the Tories in their rural county councils. The party won majorities in Essex and Suffolk and became the largest in Norfolk and East Sussex. Even so, this was not a landslide. Political scientists estimate that if the local elections were held nationwide, Reform would win 26-27% of the vote— down from 30-31% last year (see chart 2). Indeed, the party fell short in its <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> <span class="annot" data-tooltip="terms /tɜːrmz/ n. 条款；地位，关系；措辞；术语；价钱（term的复数形式）v. 把…称为（term的三单形式）">terms</span>. Earlier this year Mr Farage said the locals were an opportunity to</p>
+<p>destroy the <span class="annot" data-tooltip="conservative /kən'sɜːrvətɪv/ n. 保守的人adj. 保守的, 守旧的(式样等)不时新的, 传统的副 词: conservatively">Conservative</span> Party. Instead, the Tory share of the vote rose compared with last year. <span class="annot" data-tooltip="reform /rɪ'fɔːrm/ n. 改革，改良，改造vt. & vi. 改革；改造；改善时 态: reformed，reforming，reforms">Reform</span> fell short in three of the four London boroughs it was targeting and was defeated in Wales, which Mr Farage previously called “Reform’s top priority”. The Green Party also made big gains. It won its first elected mayors in the <span class="annot" data-tooltip="vibrant /'vaɪbrənt/ adj. 振动的；颤动的；响亮的充满生气的；精力充沛的；兴奋的(尤指颜色)鲜明的，醒目的">vibrant</span> inner-London boroughs of Hackney and Lewisham and took dozens of seats off Labour in student-y city centres in Leeds, Manchester, Norwich, Oxford and Sheffield. The Greens are now the largest party in five of London’s 32 boroughs (see map). The results <span class="annot" data-tooltip="reveal /rɪ'viːl/ vt. 显示；露出泄露；透露时 态: revealed，revealing，reveals">reveal</span> little not already known from opinion <span class="annot" data-tooltip="polls /poʊl/ n. 民意测验；投票；投票数；投票所vt. 剪短；对…进行民意测验；获得选票；投票vi. 投票adj. 剪过毛的；修过枝的；无">polls</span>, but the <span class="annot" data-tooltip="reality /ri'æləti/ n. 现实；真实；实际">reality</span> of losing this many seats has spurred jittery Labour MPs into action. The health <span class="annot" data-tooltip="secretary /'sekrəteri/ n. 秘书书记部长, 大臣形容词: secretarial">secretary</span>, Wes Streeting, is said to be collecting names to nominate him and trigger a leadership election. Andy Burnham, the mayor of Greater Manchester and another potential contender, claims to have a seat in <span class="annot" data-tooltip="parliament /'pɑːrləmənt/ n. 议会, 国会">Parliament</span> ready for his return. The risk is that the <span class="annot" data-tooltip="contest /'kɑːntest/ vt. 争辩；提出质疑vi. 竞争；争辩n. 竞赛；争论；争夺时 态: contested, contesting, conte">contest</span> to succeed Sir Keir becomes a <span class="annot" data-tooltip="race /reɪs/ n. 种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACE">race</span> to the bottom, spurred by the party’s left-<span class="annot" data-tooltip="wing /wɪŋ/ n. 翅膀；翼；飞翔；派别vt. 使飞；飞过；空运；增加…速度；装以翼vi. 飞行时 态: winged, winging, ">wing</span> <span class="annot" data-tooltip="membership /'membərʃɪp/ n. 全体会员会员身份, 会员资格">membership</span> and misguided sentimentalism about its historical heartlands. Angela Rayner, another potential challenger and former <span class="annot" data-tooltip="deputy /'depjuti/ n. 代理人，代表adj. 副的；代理的">deputy</span> leader, on May 10th issued a statement calling on the party to double down on left-wing policies: raising the minimum <span class="annot" data-tooltip="wage /weɪdʒ/ vi. 进行；发动；从事n. 工资；报偿；代价vt. 开展；进行时 态: waged, waging, wages">wage</span>, <span class="annot" data-tooltip="extending /ɪk'stend/ vt. & vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出时 态:">extending</span> workers’ rights and <span class="annot" data-tooltip="soaking /'soʊkɪŋ/ n. 浸湿，浸透adj. 湿透的，极湿的adv. 湿透地">soaking</span> the rich. The Tribune <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span> of soft- left MPs published a pamphlet calling for <span class="annot" data-tooltip="wealth /welθ/ n. 财富；大量；富有">wealth</span> taxes and increased borrowing. In reality Labour has not been rewarded for its left-wing <span class="annot" data-tooltip="initiatives /ɪ'nɪʃətɪv/ n. 主动性, 首创精神主动的行动, 倡议主动权">initiatives</span>. Abolishing the two-child limit on benefits was the right thing to do but there is no evidence that this or continuing to <span class="annot" data-tooltip="raise /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raise</span> the minimum wage has helped Labour among low-income voters, who are leaving the party faster than high earners. The government’s Renters’ Rights Act has not stopped private renters switching to the Greens. Expansive workers’ rights <span class="annot" data-tooltip="legislation /ˌledʒɪs'leɪʃn/ n. 法律；法规立法，法律的制定[通过]">legislation</span> has not prevented unions from <span class="annot" data-tooltip="mulling /mʌl/ vt. 研磨；思索或思考某事物；使醉n. 混乱；软薄布vi. 深思熟虑时 态: mulled, mulling, mulls">mulling</span> disaffiliation. And the government’s <span class="annot" data-tooltip="recognition /ˌrekəɡ'nɪʃn/ n. 认识；认出；承认〈正〉酬谢，酬劳形容词: recognitory">recognition</span> of Palestine has not <span class="annot" data-tooltip="swayed /sweɪ/ vt. 使摇动；统治；影响vi. 摇摆；影响n. 摇摆；统治；影响时 态: swayed, swaying, sways">swayed</span> those who believe it is aiding a genocide.</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>slumping</td><td>/slʌmp/ vi.</td><td>大幅度下降, 暴跌沉重或突然地落下[倒下]n. 萧条期〈美〉(个人、球队等的)低潮状态, slumping, slumps</td></tr>
+<tr><td>manufacturing</td><td>/ˌmænju'fæktʃərɪŋ/ n.</td><td>制造业，工业adj. 制造业的；制造的</td></tr>
+<tr><td>industries</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>purge</td><td>/pɜːrdʒ/ vi.</td><td>净化；通便vt. 净化；清洗；通便n. 泻药；净化, purging, purges</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>contrast</td><td>/'kɑːntræst/ n.</td><td>对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照, contrasting, contrasts</td></tr>
+<tr><td>leverage</td><td>/'levərɪdʒ/ n.</td><td>（能够操控形势的）影响力，手段，优势 杠杆力；杠杆作用v. 举债经营；为…融资有效利用某物（资源、优势、工具等）, leveraging, leverages</td></tr>
+<tr><td>consensus</td><td>/kən'sensəs/ n.</td><td>(意见等)一致, 一致同意</td></tr>
+<tr><td>scorn</td><td>/skɔːrn/ n.</td><td>鄙视；轻蔑受某人鄙视的人或事物vt. 轻视，蔑视不屑做，scorning，scorns</td></tr>
+<tr><td>senior</td><td>/'siːniər/ adj.</td><td>年长的资深的; 地位高的〈美〉最高年级的n. 较年长者高年级学生〈美〉毕业班学生Senior西尼尔(姓氏)</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>values</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>ukraine</td><td>— n.</td><td>乌克兰（原苏联一加盟共和国，现已独立）</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>contempt</td><td>/kən'tempt/ n.</td><td>轻视，蔑视；耻辱</td></tr>
+<tr><td>formula</td><td>/'fɔːrmjələ/ n.</td><td>公式，准则；配方；婴儿食品</td></tr>
+<tr><td>heap</td><td>/hiːp/ n.</td><td>累积；堆；许多vt. 堆积；堆vi. 堆起来HEAPabbr. High-Explosive Armour-Piercing 高爆穿甲(弹), heaping,</td></tr>
+<tr><td>pragmatic</td><td>/præɡ'mætɪk/ adj.</td><td>务实的；实事求是的；注重实效的实用主义的，实用主义观点的</td></tr>
+<tr><td>conversely</td><td>/kənˈvɜːrs/ adj.</td><td>相反的，逆向的；颠倒的vi. 交谈，谈话；认识n. 相反的事物；逆行，逆向；倒, conversing, converses</td></tr>
+<tr><td>brussels</td><td>/ˈbrʌsəlz/ n.</td><td>布鲁塞尔（比利时首都）</td></tr>
+<tr><td>scolded</td><td>/skoʊld/ vi.</td><td>责骂；叱责vt. 责骂；骂n. 责骂；爱责骂的人, scolding, scolds</td></tr>
+<tr><td>obsessed</td><td>/əb'ses/ v.</td><td>使痴迷，使迷恋；使心神不宁，不停地困扰； 唠叨；挂牵，念念不忘, obsessing, obsesses</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>negotiate</td><td>/nɪ'ɡoʊʃieɪt/ vt.</td><td>谈判，商议；转让；越过</td></tr>
+<tr><td>line</td><td>/laɪn/ n.</td><td>绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long interspersed element)长散在元</td></tr>
+<tr><td>leading</td><td>/ˈliːdɪŋ/ adj.</td><td>主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）</td></tr>
+<tr><td>safeguard</td><td>/'seɪfɡɑːrd/ n.</td><td>防护措施，安全设施vt. 保护；保卫；防护，safeguarding，safeguards</td></tr>
+<tr><td>tariffs</td><td>/'tærɪf/ n.</td><td>关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表, tariffing, tariffs</td></tr>
+<tr><td>commission</td><td>/kə'mɪʃn/ n.</td><td>授权, 委托委员会佣金, 回扣vt. 委任, 委托, commissioning, commissions</td></tr>
+<tr><td>draft</td><td>/dræft/ n.</td><td>汇票；草稿；选派；（尤指房间、烟囱、炉子等供暖系统中的）（小股）气流</td></tr>
+<tr><td>oblige</td><td>/ə'blaɪdʒ/ vt.</td><td>强制；赐，施恩惠；迫使；责成vi. 帮忙；施恩惠, obliging, obliges</td></tr>
+<tr><td>dominant</td><td>/'dɑːmɪnənt/ adj.</td><td>支配的，统治的；占优势的；显性的n. 显性</td></tr>
+<tr><td>strategic</td><td>/strə'tiːdʒɪk/ adj.</td><td>战略(上)的有战略意义的; 至关重要的</td></tr>
+<tr><td>transfer</td><td>/træns'fɜːr/ n.</td><td>转移；转让；过户；传递vi. 转移；转让；转学；换车vt. 转让；调任；传递；使转移, transferring, transfers</td></tr>
+<tr><td>proposal</td><td>/prə'poʊzl/ n.</td><td>提议，建议；求婚</td></tr>
+<tr><td>contracts</td><td>/'kɑːntrækt/ vi.</td><td>感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约, contracting, contracts</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>ordered</td><td>/'ɔːrdərd/ adj.</td><td>安排好的；整齐的；[数]有序的v. 命令；点餐（order的过去式和过去分词）</td></tr>
+<tr><td>proposals</td><td>/prə'poʊzl/ n.</td><td>提议，建议；求婚</td></tr>
+<tr><td>reproduce</td><td>/ˌriːprə'duːs/ vt.</td><td>& vi. 复制；重现；再版生殖，繁殖，reproducing，reproduces</td></tr>
+<tr><td>multinationals</td><td>/ˌmʌlti'næʃnəl/ adj.</td><td>多国的n. 跨国公司</td></tr>
+<tr><td>imitation</td><td>/ˌɪmɪ'teɪʃn/ n.</td><td>模仿, 仿效仿制品, 伪造物</td></tr>
+<tr><td>flattering</td><td>/'flætər/ v.</td><td>向…谄媚，奉承，讨好；自认为，自以为是；使显得更漂亮，flattering，flatters</td></tr>
+<tr><td>invest</td><td>/ɪn'vest/ vt.</td><td>投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买, investing, invests</td></tr>
+<tr><td>innovation</td><td>/ˌɪnə'veɪʃn/ n.</td><td>改革, 革新, 创新新观念, 新方法, 新发明</td></tr>
+<tr><td>commerce</td><td>/'kɑːmɜːrs/ n.</td><td>商业, 贸易</td></tr>
+<tr><td>countermeasures</td><td>/'kaʊntərmeʒər/ n.</td><td>对策,反措施</td></tr>
+<tr><td>pictures</td><td>/'pɪktʃər/ n.</td><td>图画，肖像；照片(生动的)描述，写照影片；电影；画面美景，景色情况，事态，局面vt. 绘画；描绘想象，picturing，pictures</td></tr>
+<tr><td>line</td><td>/laɪn/ n.</td><td>绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long interspersed element)长散在元</td></tr>
+<tr><td>intervene</td><td>/ˌɪntər'viːn/ vi.</td><td>干涉，干预；调解干扰，阻碍，intervening，intervenes</td></tr>
+<tr><td>commissioner</td><td>/kə'mɪʃn/ n.</td><td>授权, 委托委员会佣金, 回扣vt. 委任, 委托, commissioning, commissions</td></tr>
+<tr><td>portfolio</td><td>/pɔːrt'foʊlioʊ/ n.</td><td>公事包, 文件夹投资组合大臣或部长的职位或职责</td></tr>
+<tr><td>brussels</td><td>/ˈbrʌsəlz/ n.</td><td>布鲁塞尔（比利时首都）</td></tr>
+<tr><td>blunt</td><td>/blʌnt/ adj.</td><td>钝的，不锋利的；生硬的；直率的vt. 使迟钝, bluntest</td></tr>
+<tr><td>critical</td><td>/'krɪtɪkl/ adj.</td><td>批评的，爱挑剔的；决定性的；危险的；临界的；鉴定的；评论的</td></tr>
+<tr><td>minerals</td><td>/'mɪnərəl/ n.</td><td>矿物; 矿石; 矿物质</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>strategy</td><td>/'strætədʒi/ n.</td><td>战略学, 兵法战略, 策略策略, 计谋</td></tr>
+<tr><td>advocates</td><td>/ˈædvəkeɪt，'ædvəkət/ v.</td><td>拥护；支持；提倡n. 拥护者；支持者；提倡者；辩护律师；出庭辩护人, advocating, advocates</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>transition</td><td>/træn'zɪʃn/ n.</td><td>过渡; 转变; 变迁</td></tr>
+<tr><td>solar</td><td>/'soʊlər/ adj.</td><td>太阳的；日光的；利用太阳光的；与太阳相关的n. 日光浴室</td></tr>
+<tr><td>panels</td><td>/'pænl/ n.</td><td>仪表板；嵌板；座谈小组，全体陪审员vt. 嵌镶板, panelled paneling, panelling panels, panels</td></tr>
+<tr><td>grids</td><td>/ɡrɪd/ n.</td><td>格子,格栏地图上的坐标方格输电网</td></tr>
+<tr><td>autonomous</td><td>/ɔː'tɑːnəməs/ adj.</td><td>自治的</td></tr>
+<tr><td>manufacturer</td><td>/ˌmænju'fæktʃərər/ n.</td><td>制造商, 制造厂</td></tr>
+<tr><td>industries</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>columns</td><td>/'kɑːləm/ n.</td><td>圆柱，柱形物；纵队，列；专栏</td></tr>
+<tr><td>essays</td><td>/'eseɪ/ n.</td><td>散文, 随笔</td></tr>
+<tr><td>correspondence</td><td>/ˌkɔːrə'spɑːndəns/ n.</td><td>信件, 函件通信, 通信联系一致, 相似</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>anatomy</td><td>/ə'nætəmi/ n.</td><td>解剖, 解剖学(生物体的)解剖结构(详细的)分析人体；骨骼；干尸</td></tr>
+<tr><td>conservative</td><td>/kən'sɜːrvətɪv/ n.</td><td>保守的人adj. 保守的, 守旧的(式样等)不时新的, 传统的</td></tr>
+<tr><td>campaign</td><td>/kæm'peɪn/ n.</td><td>运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）, campaigning, campai</td></tr>
+<tr><td>twisting</td><td>/twɪst/ vt.</td><td>捻；拧；扭伤；编织；使苦恼n. 扭曲；扭伤；拧vi. 扭动；弯曲, twisting, twists</td></tr>
+<tr><td>line</td><td>/laɪn/ n.</td><td>绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long interspersed element)长散在元</td></tr>
+<tr><td>candidate</td><td>/'kændɪdət，ˈkændɪdeɪt/ n.</td><td>申请求职者, 候选人报考者</td></tr>
+<tr><td>cap</td><td>/kæp/ n.</td><td>帽子；盖vi. 脱帽致意vt. 覆盖；胜过；给…戴帽；加盖于Cap摩羯座CAPabbr. Common Agricultural Policy (欧共体)共同农</td></tr>
+<tr><td>patch</td><td>/pætʃ/ n.</td><td>眼罩；斑点；碎片；小块土地vt. 修补；掩饰；解决vi. 打补丁, patching, patches</td></tr>
+<tr><td>toll</td><td>/toʊl/ vt.</td><td>征收；敲钟n. 通行费；代价；钟声vi. 鸣钟；征税, tolling, tolls</td></tr>
+<tr><td>aftermath</td><td>/'æftərmæθ/ n.</td><td>后果</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>polls</td><td>/poʊl/ n.</td><td>民意测验；投票；投票数；投票所vt. 剪短；对…进行民意测验；获得选票；投票vi. 投票adj. 剪过毛的；修过枝的；无角的, polling, polls</td></tr>
+<tr><td>contested</td><td>/'kɑːntest/ vt.</td><td>争辩；提出质疑vi. 竞争；争辩n. 竞赛；争论；争夺, contesting, contests</td></tr>
+<tr><td>ease</td><td>/iːz/ vt.</td><td>减轻，缓和；使安心n. 安逸，悠闲；轻松，舒适vi. 减轻，缓和；放松；灵活地移动EASEabbr. Electronic Airborne Systems E</td></tr>
+<tr><td>established</td><td>/ɪ'stæblɪʃt/ adj.</td><td>已建立的；已设立的；已制定的确定的，证实的</td></tr>
+<tr><td>streak</td><td>/striːk/ n.</td><td>条纹，线条；倾向vi. 飞跑，疾驶；加上条纹vt. 飞跑，疾驰；加条纹于, streaking, streaks</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>parliament</td><td>/'pɑːrləmənt/ n.</td><td>议会, 国会</td></tr>
+<tr><td>backwards</td><td>/'bækwərd/ adj.</td><td>向后的；反向的；发展迟缓的adv. 相反地；向后地</td></tr>
+<tr><td>fragmented</td><td>/'fræɡmənt/ n.</td><td>碎片；片断或不完整部分vt. 使成碎片vi. 破碎或裂开, fragmenting, fragments</td></tr>
+<tr><td>soured</td><td>/'saʊər/ adj.</td><td>有酸味的，酸的有发酵味道的，酸腐的，馊的坏脾气的；别扭的vt. & vi. (使某物)变酸，变馊；(使某人)阴郁，sourest</td></tr>
+<tr><td>polling</td><td>/'poʊlɪŋ/ n.</td><td>投票Polling轮流检测,联接到另一主机查看电子信件或新闻</td></tr>
+<tr><td>reform</td><td>/rɪ'fɔːrm/ n.</td><td>改革，改良，改造vt. & vi. 改革；改造；改善，reforming，reforms</td></tr>
+<tr><td>conservative</td><td>/kən'sɜːrvətɪv/ n.</td><td>保守的人adj. 保守的, 守旧的(式样等)不时新的, 传统的</td></tr>
+<tr><td>urban</td><td>/'ɜːrbən/ adj.</td><td>城市的；住在都市的</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>terms</td><td>/tɜːrmz/ n.</td><td>条款；地位，关系；措辞；术语；价钱（term的复数形式）v. 把…称为（term的三单形式）</td></tr>
+<tr><td>conservative</td><td>/kən'sɜːrvətɪv/ n.</td><td>保守的人adj. 保守的, 守旧的(式样等)不时新的, 传统的</td></tr>
+<tr><td>reform</td><td>/rɪ'fɔːrm/ n.</td><td>改革，改良，改造vt. & vi. 改革；改造；改善，reforming，reforms</td></tr>
+<tr><td>vibrant</td><td>/'vaɪbrənt/ adj.</td><td>振动的；颤动的；响亮的充满生气的；精力充沛的；兴奋的(尤指颜色)鲜明的，醒目的</td></tr>
+<tr><td>reveal</td><td>/rɪ'viːl/ vt.</td><td>显示；露出泄露；透露，revealing，reveals</td></tr>
+<tr><td>polls</td><td>/poʊl/ n.</td><td>民意测验；投票；投票数；投票所vt. 剪短；对…进行民意测验；获得选票；投票vi. 投票adj. 剪过毛的；修过枝的；无角的, polling, polls</td></tr>
+<tr><td>reality</td><td>/ri'æləti/ n.</td><td>现实；真实；实际</td></tr>
+<tr><td>secretary</td><td>/'sekrəteri/ n.</td><td>秘书书记部长, 大臣</td></tr>
+<tr><td>parliament</td><td>/'pɑːrləmənt/ n.</td><td>议会, 国会</td></tr>
+<tr><td>contest</td><td>/'kɑːntest/ vt.</td><td>争辩；提出质疑vi. 竞争；争辩n. 竞赛；争论；争夺, contesting, contests</td></tr>
+<tr><td>race</td><td>/reɪs/ n.</td><td>种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACEabbr. Radiation Adap</td></tr>
+<tr><td>wing</td><td>/wɪŋ/ n.</td><td>翅膀；翼；飞翔；派别vt. 使飞；飞过；空运；增加…速度；装以翼vi. 飞行, winging, wings</td></tr>
+<tr><td>membership</td><td>/'membərʃɪp/ n.</td><td>全体会员会员身份, 会员资格</td></tr>
+<tr><td>deputy</td><td>/'depjuti/ n.</td><td>代理人，代表adj. 副的；代理的</td></tr>
+<tr><td>wage</td><td>/weɪdʒ/ vi.</td><td>进行；发动；从事n. 工资；报偿；代价vt. 开展；进行, waging, wages</td></tr>
+<tr><td>extending</td><td>/ɪk'stend/ vt.</td><td>& vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出，extending，extends</td></tr>
+<tr><td>soaking</td><td>/'soʊkɪŋ/ n.</td><td>浸湿，浸透adj. 湿透的，极湿的adv. 湿透地</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>wealth</td><td>/welθ/ n.</td><td>财富；大量；富有</td></tr>
+<tr><td>initiatives</td><td>/ɪ'nɪʃətɪv/ n.</td><td>主动性, 首创精神主动的行动, 倡议主动权</td></tr>
+<tr><td>raise</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>legislation</td><td>/ˌledʒɪs'leɪʃn/ n.</td><td>法律；法规立法，法律的制定[通过]</td></tr>
+<tr><td>mulling</td><td>/mʌl/ vt.</td><td>研磨；思索或思考某事物；使醉n. 混乱；软薄布vi. 深思熟虑, mulling, mulls</td></tr>
+<tr><td>recognition</td><td>/ˌrekəɡ'nɪʃn/ n.</td><td>认识；认出；承认〈正〉酬谢，酬劳</td></tr>
+<tr><td>swayed</td><td>/sweɪ/ vt.</td><td>使摇动；统治；影响vi. 摇摆；影响n. 摇摆；统治；影响, swaying, sways</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day25.html" class="nav-btn">← Day 25</a>
+  <a href="day27.html" class="nav-btn">Day 27 →</a>
+</div>
+
+<div class="progress">📖 Day 26 of 44</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-05-16</div>
+
+</body>
+</html>

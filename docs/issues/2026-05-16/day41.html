@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Culture | Worth its weight</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-05-16</div>
+
+<h1 class="article-title">Culture | Worth its weight</h1>
+<div class="article-section">Culture</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>The weird, wild story of <span class="annot" data-tooltip="humanity /hjuː'mænəti/ n. 人类；人道；仁慈；人文学科">humanity</span>’s <span class="annot" data-tooltip="obsession /əb'seʃn/ n. 困扰, 无法摆脱的思想(或情感)形容词: obsessional">obsession</span> with gold A new book charts the gilded history of an ancient <span class="annot" data-tooltip="asset /'æset/ n. 资产；有用的东西；有利条件；优点">asset</span> May 14th 2026 In the 1980s Lloyd Blankfein, the future boss of Goldman Sachs but then a rookie gold trader, bought a kilogram of the metal for himself. He describes this in “Streetwise”, his <span class="annot" data-tooltip="memoir /'memwɑːr/ n. 自传；实录；回忆录；研究报告名 词: memoirist">memoir</span>, as less an investment than a conversation piece—albeit one that cost around $15,000 ($50,000 today). When he handed it round at dinner parties, he found it better at <span class="annot" data-tooltip="prompting /prɑːmpt/ adj. 敏捷的，迅速的；立刻的vt. 促进；激起；提示；（给演员）提白n. 提示；付款期限；DOS命令：改变DOS系统提示符的风">prompting</span> awe than speech. “People would become slightly mesmerised,” he writes. “No one ever wanted to let go of it.” As Dominic Frisby, a financial writer, recounts, gold has captivated human beings since time immemorial. In doing so, it has shaped the course of history. The earliest known <span class="annot" data-tooltip="artefacts /'ɑːrtɪfækt/ n. 人工制品，加工品">artefacts</span> made of it are 6,700 years old, from the</p>
+<p>Neolithic period, and include crowns, <span class="annot" data-tooltip="brooches /broʊtʃ/ n. （女用的）胸针，领针">brooches</span> and a “gold phallus <span class="annot" data-tooltip="cover /'kʌvər/ vt. 包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替时 态: covered, covering, c">cover</span>, with <span class="annot" data-tooltip="holes /hoʊl/ n. 洞，孔；洞穴，穴；突破口vi. 凿洞，穿孔；（高尔夫球等）进洞vt. 凿洞时 态: holed, holing, hol">holes</span> for <span class="annot" data-tooltip="threads /θred/ n. 线；细线线索，思路vt. 将(针、线等)穿过…将(影片)装入放映机时 态: threaded，threading，thr">threads</span> to tie it on”. Even then, in other words, gold was already <span class="annot" data-tooltip="bound /baʊnd/ vi. 跳；弹回vt. 给…划界，限制n. 跳，跳跃，跃进界限，范围adj. 被捆绑的，被束缚的一定的，必定的去，准备去时 态:">bound</span> up with <span class="annot" data-tooltip="wealth /welθ/ n. 财富；大量；富有">wealth</span> and power—as it still is today. (The phallus cover, Mr Frisby muses, perhaps indicated “the <span class="annot" data-tooltip="owner /'oʊnər/ n. 所有者；物主">owner</span>’s status as a <span class="annot" data-tooltip="leading /ˈliːdɪŋ/ adj. 主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）">leading</span> procreator”.) The “primal <span class="annot" data-tooltip="instinct /'ɪnstɪŋkt/ n. 本能，直觉；天性adj. 充满着的">instinct</span>” to covet gold <span class="annot" data-tooltip="pervades /pər'veɪd/ vt. 遍及；弥漫时 态: pervaded，pervading，pervades">pervades</span> folklore. Greek <span class="annot" data-tooltip="myths /mɪθ/ n. 神话；虚构的人，虚构的事">myths</span> <span class="annot" data-tooltip="heave /hiːv/ vt. 举；拉；扔，抛vt. & vi. 喘息；发出呕吐vi. 凸起；起伏n. 举，提，拖，拉，扔，起伏，升起时 态: heav">heave</span> with the <span class="annot" data-tooltip="stuff /stʌf/ n. 材料；东西；填充物；素材资料vt. 填塞；塞满；让吃饱vi. 吃得过多时 态: stuffed, stuffing, s">stuff</span>: there is a golden fleece (sought by the Argonauts), a golden apple (given to Aphrodite) and golden everything (touched by King Midas). Ancient rulers understood the power of this symbolism and put it to good use. When the Lydian empire struck the first coins in the seventh century BC, it made them from silver and gold. Some 200 years later, when Alexander the Great conquered the Persian empire, he carefully secured all its <span class="annot" data-tooltip="main /meɪn/ adj. 主要的; 最重要的n. 总管道; 干线">main</span> gold-supplying regions. He then <span class="annot" data-tooltip="established /ɪ'stæblɪʃt/ adj. 已建立的；已设立的；已制定的确定的，证实的">established</span> 26 <span class="annot" data-tooltip="mints /mɪnt/ n. 薄荷；造币厂，巨款vt. 铸造，铸币时 态: minted, minting, mints">mints</span> across Europe, Asia and Africa, and ensured that some of the most valuable coins had a gold <span class="annot" data-tooltip="purity /'pjʊrəti/ n. 纯净；纯洁；纯粹；纯度">purity</span> of 98%. This idea <span class="annot" data-tooltip="stuck /stʌk/ v. 刺（stick的过去式）adj. 不能动的；被卡住的">stuck</span>, on and off, for over 2,000 years—and so gold’s history is also that of money. It is therefore unfortunate that Mr Frisby’s <span class="annot" data-tooltip="grasp /ɡræsp/ n. 理解；控制；抓住vt. 抓住；领会vi. 抓时 态: grasped, grasping, grasps">grasp</span> of this topic is shaky. He writes reverently of the gold standard, under which governments used to peg their currencies’ <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span> to the metal and for which no <span class="annot" data-tooltip="serious /'sɪriəs/ adj. 严肃的，严重的；认真的；庄重的；危急的副 词: seriously">serious</span> economist would <span class="annot" data-tooltip="advocate /ˈædvəkeɪt，'ædvəkət/ v. 拥护；支持；提倡n. 拥护者；支持者；提倡者；辩护律师；出庭辩护人时 态: advocated, advocating,">advocate</span> today. Its well-documented contributions to deflationary and financial crises, including the Depression, go curiously undiscussed in this book. By <span class="annot" data-tooltip="contrast /'kɑːntræst/ n. 对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照时 态: contrasted, cont">contrast</span> the author <span class="annot" data-tooltip="blasts /blæst/ n. 爆炸；冲击波；一阵vi. 猛攻vt. 使枯萎；损害；爆炸时 态: blasted, blasting, blasts">blasts</span> the “pernicious consequences” of the “floating fiat currencies” that replaced gold-backed ones after America <span class="annot" data-tooltip="junked /dʒʌŋk/ n. 废旧物品, 破烂物vt. 丢弃, 废弃时 态: junked, junking, junks">junked</span> the international gold standard in 1971. In fact, this switch set the stage for a great economic boom. Part of the fun of this book is how much Mr Frisby <span class="annot" data-tooltip="embodies /ɪm'bɑːdi/ vt. 表现，象征，具体表现包括；包含时 态: embodied，embodying，embodies">embodies</span> the <span class="annot" data-tooltip="stereotype /'steriətaɪp/ n. 老套, 模式化的见解, 有老一套固定想法的人vt. 把…模式化, 使成陈规时 态: stereotyped, stere">stereotype</span> of the goldbug as a crank. “Without the discipline of gold,” he writes, governments have grown “fat on waste, war and welfare”, as if these problems were born in the 1970s. Currencies not backed by gold are blamed for rising house prices, immigration and “feelings of hopelessness”. “The connections,” Mr Frisby darkly warns, “are undeniable once you understand the forces at work.” This reviewer must confess to having finished the book unenlightened.</p>
+<p>It is nevertheless <span class="annot" data-tooltip="worth /wɜːrθ/ adj. 值…的n. 价值；财产时 态: worthed, worthing, worths">worth</span> reading, because the author has collected some <span class="annot" data-tooltip="cracking /kræk/ vt. & vi. (使…)开裂, 破裂(使)身体上或精神上垮掉打开, 砸开(使)发出爆裂声n. 裂缝, 缝隙噼啪声, 爆裂声意">cracking</span> stories. There is the Spanish King Ferdinand II’s order to the conquistadors to “Get gold, humanely, if possible, but at all hazards, get gold.” There are the gold rushes of the 19th century, which transformed California and Australia. There is the Bank of <span class="annot" data-tooltip="norway /'nɔːrweɪ/ n. 挪威（北欧国家名）">Norway</span>’s daring—and amazingly successful—mission to keep its gold from the Nazis during the second world war. It is also worth reading this book because gold still matters a lot. It accounts for over 80% of America’s foreign-exchange reserves. Meanwhile America’s weaponisation of the dollar, through sanctions on the likes of Russia and Iran, has <span class="annot" data-tooltip="prompted /prɑːmpt/ adj. 敏捷的，迅速的；立刻的vt. 促进；激起；提示；（给演员）提白n. 提示；付款期限；DOS命令：改变DOS系统提示符的风">prompted</span> a <span class="annot" data-tooltip="race /reɪs/ n. 种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACE">race</span> for <span class="annot" data-tooltip="alternatives /ɔːl'tɜːrnətɪv/ adj. 可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）">alternatives</span>, whether backed by governments or based on bitcoin. Yet as Mr Frisby notes, even the countries that are <span class="annot" data-tooltip="keenest /kiːn/ adj. 锋利的热衷的，热心的，渴望(做某事)激烈的，紧张的良好的；敏锐的，敏捷的比较级: keener，keenest">keenest</span> on these alternatives, such as China, Saudi Arabia and <span class="annot" data-tooltip="thailand n. 泰国">Thailand</span>, are clamouring to buy gold, too. So are investors, because of gold’s use as a haven from <span class="annot" data-tooltip="inflation /ɪn'fleɪʃn/ n. (充气而引起的)膨胀通货膨胀">inflation</span> and political <span class="annot" data-tooltip="chaos /'keɪɑːs/ n. 混沌，混乱形容词: chaotic">chaos</span>. Both have surged in recent years, as has the gold price: Mr Blankfein’s kilogram would now <span class="annot" data-tooltip="fetch /fetʃ/ vt. 接来；到达；取来；吸引vi. 取物；卖得；拿n. 取得；诡计时 态: fetched, fetching, fetche">fetch</span> around $150,000. As a basis for money gold is still, as John Maynard Keynes wrote in 1924, “a barbarous relic”. But as a component in investors’ <span class="annot" data-tooltip="portfolios /pɔːrt'foʊlioʊ/ n. 公事包, 文件夹投资组合大臣或部长的职位或职责">portfolios</span>, it is as important as ever. ■ For more on the latest books, films, TV shows, albums and controversies, sign up to <span class="annot" data-tooltip="plot /plɑːt/ n. 故事情节(秘密)计划，密谋小块地皮vt. 把…分成小块；划分绘制；标出vt. & vi. 密谋时 态: plotted，">Plot</span> <span class="annot" data-tooltip="twist /twɪst/ vt. 捻；拧；扭伤；编织；使苦恼n. 扭曲；扭伤；拧vi. 扭动；弯曲时 态: twisted, twisting, twis">Twist</span>, our weekly subscriber-only newsletter This article was downloaded by zlibrary from https://www.economist.com//culture/2026/05/14/the-weird-wild-story-of-<span class="annot" data-tooltip="humanitys /hjuː'mænəti/ n. 人类；人道；仁慈；人文学科">humanitys</span>- <span class="annot" data-tooltip="obsession /əb'seʃn/ n. 困扰, 无法摆脱的思想(或情感)形容词: obsessional">obsession</span>-with-gold</p>
+<div class="article-separator"></div>
+<div class="article-header">Culture · Culture | Morris miner</div>
+<p>Jan Morris was a man, then a trans woman—but always a narcissist A new <span class="annot" data-tooltip="biography /baɪ'ɑːɡrəfi/ n. 传记">biography</span> digs into the life of an intrepid journalist May 14th 2026 In July 1972 the man once known as “James Morris” walked into a clinic in Casablanca. Days later, after a brisk operation, Jan Morris walked out. “I really am me!” She felt instantly different. As a man her role had been to “push and <span class="annot" data-tooltip="initiate /ɪ'nɪʃieɪt/ vt. 开始，创始；发起；使初步了解n. 开始；新加入者，接受初步知识者adj. 新加入的；接受初步知识的时 态: initia">initiate</span>”; now it was to “<span class="annot" data-tooltip="yield /jiːld/ vt. 出产；屈服；放弃vi. 屈服，投降n. 收益；产量时 态: yielded, yielding, yields">yield</span> and accept”. She felt closer to animals. She found herself “talking to the garden flowers, wishing them a Happy <span class="annot" data-tooltip="easter /'iːstər/ n. 〈宗〉复活节">Easter</span>”. Women are like that. You can <span class="annot" data-tooltip="barely /'berli/ adv. 仅仅，勉强；几乎不；公开地；贫乏地">barely</span> move in London parks for women talking to flowers. Not all women were so nice. Some, when they read “Conundrum” (1974), Morris’s account of her <span class="annot" data-tooltip="transition /træn'zɪʃn/ n. 过渡; 转变; 变迁">transition</span>, did not smile at flowers and think pretty, <span class="annot" data-tooltip="yielding /jiːld/ vt. 出产；屈服；放弃vi. 屈服，投降n. 收益；产量时 态: yielded, yielding, yields">yielding</span> <span class="annot" data-tooltip="thoughts /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thoughts</span>. Instead they said some pretty unyielding things. Morris is</p>
+<p>“to me a man who has eaten a great many pills”, wrote Germaine Greer, an Australian <span class="annot" data-tooltip="feminist /'femənɪst/ n. 女权主义者，女权运动者adj. 女权主义的，主张女权的形容词: feministic">feminist</span>. Morris was “a man’s idea of a woman”, said Rebecca West, a British critic. Though not wholly a man’s idea of a woman. When it came to <span class="annot" data-tooltip="domestic /də'mestɪk/ adj. 国内的；家庭的；驯养的；一心只管家务的">domestic</span> labour, Morris’s daughter observed, “she did nothing.” All lives are complicated. The life of Jan Morris—soldier, journalist, writer, man, woman, father, mother—is more complicated than most, as a new <span class="annot" data-tooltip="biography /baɪ'ɑːɡrəfi/ n. 传记">biography</span> by Sara Wheeler, a travel writer, shows. (Her <span class="annot" data-tooltip="pronouns n. 代名词；代词">pronouns</span> can feel complex too: this review, like the book, refers to Morris as “he” pre- <span class="annot" data-tooltip="transition /træn'zɪʃn/ n. 过渡; 转变; 变迁">transition</span>.) Morris lived an “<span class="annot" data-tooltip="insanely /ɪn'seɪn/ adj. 精神病的；极愚蠢的；疯狂的副 词: insanely">insanely</span> interesting life”, witnessing the second world war, the conquest of <span class="annot" data-tooltip="everest n. 珠穆朗玛峰(世界最高峰)">Everest</span>, the end of British rule in Palestine. “She was,” Ms Wheeler writes, “the 20th century”. Certainly, after he became world-famous for <span class="annot" data-tooltip="covering /'kʌvər/ vt. 包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替时 态: covered, covering, c">covering</span> the first conquest of Everest as a journalist for the Times, Morris met many of its most interesting players. Harry Truman chatted to him; Walt Disney spoke with him about his cartoons. Time erodes all lives, however great, into a few “Ozymandias”-like <span class="annot" data-tooltip="fragments /'fræɡmənt/ n. 碎片；片断或不完整部分vt. 使成碎片vi. 破碎或裂开时 态: fragmented, fragmenting, fr">fragments</span>: Napoleon is Waterloo and Elba; Caesar is the Rubicon, Cleopatra and his assassination; lesser lives are littler yet. Morris—who had been “James of Everest”—became the man who, in 1972, had had an operation and started dressing, says Ms Wheeler, like “a Walmart <span class="annot" data-tooltip="version /'vɜːrʒn/ n. 变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本">version</span> of the Queen”. She was, as another trans woman said of herself, “a sex change first and anything else second”. But Morris did so much. When he was born, in 1926, the British Empire lay over the map in “huge red slabs”—and empire coloured his life, too. His wife, Elizabeth, was brought up in it (she lived in Ceylon, now Sri Lanka, with a pet baby elephant); Morris’s job was “to help dissolve” it (he was sent to Palestine as an intelligence officer by the War Office); later, he <span class="annot" data-tooltip="chronicled /'krɑːnɪk/ adj. 慢性的；长期的；习惯性的副 词: chronically">chronicled</span> it (in his “Pax” trilogy). His big break came when he was sent by the Times to <span class="annot" data-tooltip="cover /'kʌvər/ vt. 包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替时 态: covered, covering, c">cover</span> the Everest expedition (much to the irritation of the leader, John Hunt, who <span class="annot" data-tooltip="considered /kən'sɪdər/ vt. & vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及时 态: considered, considering, ">considered</span> Morris “physically substandard”). The expedition was such hot news that its results had to be telegrammed in codewords: the death of a climber was to be “SIGNALBOX”; success was “SNOW CONDITIONS BAD”. On May 30th 1953 Morris sat, dizzy with altitude in his tent, and typed: “SNOW CONDITIONS BAD STOP”.</p>
+<p>The ascent of Morris’s career had begun. His family life was now thriving (he and Elizabeth eventually had five children), but Morris was struggling. At four he knew he “had been born into the wrong body”. And so he began his <span class="annot" data-tooltip="transition /træn'zɪʃn/ n. 过渡; 转变; 变迁">transition</span> in his early 30s. The <span class="annot" data-tooltip="description /dɪ'skrɪpʃn/ n. 描述, 形容种类, 类型">description</span> of this change is interesting— but <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> more interesting is Morris’s unchanging narcissism. When their baby daughter died of meningitis, Morris was not at the hospital: he had refused to go. Morris may have talked to flowers, but paused to <span class="annot" data-tooltip="consider /kən'sɪdər/ vt. & vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及时 态: considered, considering, ">consider</span> few other living things. Particularly not Elizabeth, who kept house, kept quiet over the gender transition and endured. As this detailed (at times far too detailed) <span class="annot" data-tooltip="biography /baɪ'ɑːɡrəfi/ n. 传记">biography</span> shows, her transition would, in the end, <span class="annot" data-tooltip="eclipse /ɪ'klɪps/ vt. 形成蚀；使黯然失色n. 日蚀，月蚀；黯然失色时 态: eclipsed, eclipsing, eclipses">eclipse</span> all else. “I want to be remembered as Jan ‘Empire’ Morris” she said. But she noted, “the headlines will read, ‘Sex Change Author Dies’.” Many, Ms Wheeler notes, “more or less did”. Few people today read her works. The sun is setting on Empire Morris. ■ For more on the latest books, films, TV shows, albums and controversies, sign up to <span class="annot" data-tooltip="plot /plɑːt/ n. 故事情节(秘密)计划，密谋小块地皮vt. 把…分成小块；划分绘制；标出vt. & vi. 密谋时 态: plotted，">Plot</span> <span class="annot" data-tooltip="twist /twɪst/ vt. 捻；拧；扭伤；编织；使苦恼n. 扭曲；扭伤；拧vi. 扭动；弯曲时 态: twisted, twisting, twis">Twist</span>, our weekly subscriber-only newsletter This article was downloaded by zlibrary from https://www.economist.com//culture/2026/05/14/jan-morris-was-a-man-then-a-trans- woman-but-always-a-narcissist</p>
+<div class="article-separator"></div>
+<div class="article-header">Culture · Culture | In pod we trust</div>
+<p>“<span class="annot" data-tooltip="companion /kəm'pænjən/ n. 同伴, 伙伴成双成对的物品之一时 态: companioned, companioning, companions">Companion</span> <span class="annot" data-tooltip="podcasts /'pɑːdkæst/ n. 播客">podcasts</span>” are the latest hit format Ready for more after <span class="annot" data-tooltip="bingeing /bɪndʒ/ n. 狂欢，狂闹；放纵vt. 放纵vi. 狂饮作乐；大吃大喝时 态: binged, binging, bingeing bi">bingeing</span> on TV? May 14th 2026 When you are not watching your new favourite TV show, you may be thinking about it. How did they come up with that plotline—and how did the lead actor feel when he read the script? Where did they shoot that memorable <span class="annot" data-tooltip="scene /siːn/ n. 情景；景象；场面；事件">scene</span>, and with how many retakes? How long did it take to make that bejewelled <span class="annot" data-tooltip="costume /'kɑːstuːm/ n. 服装, 服装式样女外套, 女装时 态: costumed, costuming, costumes">costume</span>? A new format has emerged to satisfy fans’ curiosity: the companion <span class="annot" data-tooltip="podcast /'pɑːdkæst/ n. 播客">podcast</span>. Recently listeners have devoured <span class="annot" data-tooltip="episodes /'epɪsoʊd/ n. 插曲；插话；一段情节；有趣的事件">episodes</span> about “Beef”, a mini-series, and plunged into “The Pitt”, a medical drama. This month, ahead of its tv remake of “Harry Potter” in December, HBO is releasing a podcast <span class="annot" data-tooltip="revisiting /ˌriː'vɪzɪt/ vt. 重游；再访；重临n. 再访问时 态: revisited, revisiting, revisits">revisiting</span> the eight movies. And on May 15th viewers will return to Rutshire for the second <span class="annot" data-tooltip="season /'siːzn/ n. 时期；季节；赛季vt. 给…调味；使适应vi. 变得成熟；变干燥时 态: seasoned, seasoning, se">season</span> of “<span class="annot" data-tooltip="rivals /'raɪvl/ n. 竞争对手vt. 与…竞争, 与…匹敌时 态: rivaled, rivalled rivaling, rivalling">Rivals</span>”, an <span class="annot" data-tooltip="adaptation /ˌædæp'teɪʃn/ n. 适应,适合改编，改写改编本，改写本">adaptation</span> of Jilly Cooper’s bonkbuster</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>humanity</td><td>/hjuː'mænəti/ n.</td><td>人类；人道；仁慈；人文学科</td></tr>
+<tr><td>obsession</td><td>/əb'seʃn/ n.</td><td>困扰, 无法摆脱的思想(或情感)</td></tr>
+<tr><td>asset</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>memoir</td><td>/'memwɑːr/ n.</td><td>自传；实录；回忆录；研究报告</td></tr>
+<tr><td>prompting</td><td>/prɑːmpt/ adj.</td><td>敏捷的，迅速的；立刻的vt. 促进；激起；提示；（给演员）提白n. 提示；付款期限；DOS命令：改变DOS系统提示符的风格adv. 准时地, promptest</td></tr>
+<tr><td>artefacts</td><td>/'ɑːrtɪfækt/ n.</td><td>人工制品，加工品</td></tr>
+<tr><td>brooches</td><td>/broʊtʃ/ n.</td><td>（女用的）胸针，领针</td></tr>
+<tr><td>cover</td><td>/'kʌvər/ vt.</td><td>包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替, covering, covers</td></tr>
+<tr><td>holes</td><td>/hoʊl/ n.</td><td>洞，孔；洞穴，穴；突破口vi. 凿洞，穿孔；（高尔夫球等）进洞vt. 凿洞, holing, holes</td></tr>
+<tr><td>threads</td><td>/θred/ n.</td><td>线；细线线索，思路vt. 将(针、线等)穿过…将(影片)装入放映机，threading，threads</td></tr>
+<tr><td>bound</td><td>/baʊnd/ vi.</td><td>跳；弹回vt. 给…划界，限制n. 跳，跳跃，跃进界限，范围adj. 被捆绑的，被束缚的一定的，必定的去，准备去，bounding，bounds</td></tr>
+<tr><td>wealth</td><td>/welθ/ n.</td><td>财富；大量；富有</td></tr>
+<tr><td>owner</td><td>/'oʊnər/ n.</td><td>所有者；物主</td></tr>
+<tr><td>leading</td><td>/ˈliːdɪŋ/ adj.</td><td>主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）</td></tr>
+<tr><td>instinct</td><td>/'ɪnstɪŋkt/ n.</td><td>本能，直觉；天性adj. 充满着的</td></tr>
+<tr><td>pervades</td><td>/pər'veɪd/ vt.</td><td>遍及；弥漫，pervading，pervades</td></tr>
+<tr><td>myths</td><td>/mɪθ/ n.</td><td>神话；虚构的人，虚构的事</td></tr>
+<tr><td>heave</td><td>/hiːv/ vt.</td><td>举；拉；扔，抛vt. & vi. 喘息；发出呕吐vi. 凸起；起伏n. 举，提，拖，拉，扔，起伏，升起，heaving，heaves</td></tr>
+<tr><td>stuff</td><td>/stʌf/ n.</td><td>材料；东西；填充物；素材资料vt. 填塞；塞满；让吃饱vi. 吃得过多, stuffing, stuffs</td></tr>
+<tr><td>main</td><td>/meɪn/ adj.</td><td>主要的; 最重要的n. 总管道; 干线</td></tr>
+<tr><td>established</td><td>/ɪ'stæblɪʃt/ adj.</td><td>已建立的；已设立的；已制定的确定的，证实的</td></tr>
+<tr><td>mints</td><td>/mɪnt/ n.</td><td>薄荷；造币厂，巨款vt. 铸造，铸币, minting, mints</td></tr>
+<tr><td>purity</td><td>/'pjʊrəti/ n.</td><td>纯净；纯洁；纯粹；纯度</td></tr>
+<tr><td>stuck</td><td>/stʌk/ v.</td><td>刺（stick的过去式）adj. 不能动的；被卡住的</td></tr>
+<tr><td>grasp</td><td>/ɡræsp/ n.</td><td>理解；控制；抓住vt. 抓住；领会vi. 抓, grasping, grasps</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>serious</td><td>/'sɪriəs/ adj.</td><td>严肃的，严重的；认真的；庄重的；危急的</td></tr>
+<tr><td>advocate</td><td>/ˈædvəkeɪt，'ædvəkət/ v.</td><td>拥护；支持；提倡n. 拥护者；支持者；提倡者；辩护律师；出庭辩护人, advocating, advocates</td></tr>
+<tr><td>contrast</td><td>/'kɑːntræst/ n.</td><td>对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照, contrasting, contrasts</td></tr>
+<tr><td>blasts</td><td>/blæst/ n.</td><td>爆炸；冲击波；一阵vi. 猛攻vt. 使枯萎；损害；爆炸, blasting, blasts</td></tr>
+<tr><td>junked</td><td>/dʒʌŋk/ n.</td><td>废旧物品, 破烂物vt. 丢弃, 废弃, junking, junks</td></tr>
+<tr><td>embodies</td><td>/ɪm'bɑːdi/ vt.</td><td>表现，象征，具体表现包括；包含，embodying，embodies</td></tr>
+<tr><td>stereotype</td><td>/'steriətaɪp/ n.</td><td>老套, 模式化的见解, 有老一套固定想法的人vt. 把…模式化, 使成陈规, stereotyping, stereotypes</td></tr>
+<tr><td>worth</td><td>/wɜːrθ/ adj.</td><td>值…的n. 价值；财产, worthing, worths</td></tr>
+<tr><td>cracking</td><td>/kræk/ vt.</td><td>& vi. (使…)开裂, 破裂(使)身体上或精神上垮掉打开, 砸开(使)发出爆裂声n. 裂缝, 缝隙噼啪声, 爆裂声意外的一下重击试图, 尝试俏皮话强效可卡因</td></tr>
+<tr><td>norway</td><td>/'nɔːrweɪ/ n.</td><td>挪威（北欧国家名）</td></tr>
+<tr><td>prompted</td><td>/prɑːmpt/ adj.</td><td>敏捷的，迅速的；立刻的vt. 促进；激起；提示；（给演员）提白n. 提示；付款期限；DOS命令：改变DOS系统提示符的风格adv. 准时地, promptest</td></tr>
+<tr><td>race</td><td>/reɪs/ n.</td><td>种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACEabbr. Radiation Adap</td></tr>
+<tr><td>alternatives</td><td>/ɔːl'tɜːrnətɪv/ adj.</td><td>可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）可供选择的事物；可供选择的解决办法替代物</td></tr>
+<tr><td>keenest</td><td>/kiːn/ adj.</td><td>锋利的热衷的，热心的，渴望(做某事)激烈的，紧张的良好的；敏锐的，敏捷的，keenest</td></tr>
+<tr><td>thailand</td><td>— n.</td><td>泰国</td></tr>
+<tr><td>inflation</td><td>/ɪn'fleɪʃn/ n.</td><td>(充气而引起的)膨胀通货膨胀</td></tr>
+<tr><td>chaos</td><td>/'keɪɑːs/ n.</td><td>混沌，混乱</td></tr>
+<tr><td>fetch</td><td>/fetʃ/ vt.</td><td>接来；到达；取来；吸引vi. 取物；卖得；拿n. 取得；诡计, fetching, fetches</td></tr>
+<tr><td>portfolios</td><td>/pɔːrt'foʊlioʊ/ n.</td><td>公事包, 文件夹投资组合大臣或部长的职位或职责</td></tr>
+<tr><td>plot</td><td>/plɑːt/ n.</td><td>故事情节(秘密)计划，密谋小块地皮vt. 把…分成小块；划分绘制；标出vt. & vi. 密谋，plotting，plots</td></tr>
+<tr><td>twist</td><td>/twɪst/ vt.</td><td>捻；拧；扭伤；编织；使苦恼n. 扭曲；扭伤；拧vi. 扭动；弯曲, twisting, twists</td></tr>
+<tr><td>humanitys</td><td>/hjuː'mænəti/ n.</td><td>人类；人道；仁慈；人文学科</td></tr>
+<tr><td>obsession</td><td>/əb'seʃn/ n.</td><td>困扰, 无法摆脱的思想(或情感)</td></tr>
+<tr><td>biography</td><td>/baɪ'ɑːɡrəfi/ n.</td><td>传记</td></tr>
+<tr><td>initiate</td><td>/ɪ'nɪʃieɪt/ vt.</td><td>开始，创始；发起；使初步了解n. 开始；新加入者，接受初步知识者adj. 新加入的；接受初步知识的, initiating, initiates</td></tr>
+<tr><td>yield</td><td>/jiːld/ vt.</td><td>出产；屈服；放弃vi. 屈服，投降n. 收益；产量, yielding, yields</td></tr>
+<tr><td>easter</td><td>/'iːstər/ n.</td><td>〈宗〉复活节</td></tr>
+<tr><td>barely</td><td>/'berli/ adv.</td><td>仅仅，勉强；几乎不；公开地；贫乏地</td></tr>
+<tr><td>transition</td><td>/træn'zɪʃn/ n.</td><td>过渡; 转变; 变迁</td></tr>
+<tr><td>yielding</td><td>/jiːld/ vt.</td><td>出产；屈服；放弃vi. 屈服，投降n. 收益；产量, yielding, yields</td></tr>
+<tr><td>thoughts</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>feminist</td><td>/'femənɪst/ n.</td><td>女权主义者，女权运动者adj. 女权主义的，主张女权的</td></tr>
+<tr><td>domestic</td><td>/də'mestɪk/ adj.</td><td>国内的；家庭的；驯养的；一心只管家务的</td></tr>
+<tr><td>biography</td><td>/baɪ'ɑːɡrəfi/ n.</td><td>传记</td></tr>
+<tr><td>pronouns</td><td>— n.</td><td>代名词；代词</td></tr>
+<tr><td>transition</td><td>/træn'zɪʃn/ n.</td><td>过渡; 转变; 变迁</td></tr>
+<tr><td>insanely</td><td>/ɪn'seɪn/ adj.</td><td>精神病的；极愚蠢的；疯狂的</td></tr>
+<tr><td>everest</td><td>— n.</td><td>珠穆朗玛峰(世界最高峰)</td></tr>
+<tr><td>covering</td><td>/'kʌvər/ vt.</td><td>包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替, covering, covers</td></tr>
+<tr><td>fragments</td><td>/'fræɡmənt/ n.</td><td>碎片；片断或不完整部分vt. 使成碎片vi. 破碎或裂开, fragmenting, fragments</td></tr>
+<tr><td>version</td><td>/'vɜːrʒn/ n.</td><td>变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本</td></tr>
+<tr><td>chronicled</td><td>/'krɑːnɪk/ adj.</td><td>慢性的；长期的；习惯性的</td></tr>
+<tr><td>cover</td><td>/'kʌvər/ vt.</td><td>包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替, covering, covers</td></tr>
+<tr><td>considered</td><td>/kən'sɪdər/ vt.</td><td>& vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及, considering, considers</td></tr>
+<tr><td>transition</td><td>/træn'zɪʃn/ n.</td><td>过渡; 转变; 变迁</td></tr>
+<tr><td>description</td><td>/dɪ'skrɪpʃn/ n.</td><td>描述, 形容种类, 类型</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>consider</td><td>/kən'sɪdər/ vt.</td><td>& vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及, considering, considers</td></tr>
+<tr><td>biography</td><td>/baɪ'ɑːɡrəfi/ n.</td><td>传记</td></tr>
+<tr><td>eclipse</td><td>/ɪ'klɪps/ vt.</td><td>形成蚀；使黯然失色n. 日蚀，月蚀；黯然失色, eclipsing, eclipses</td></tr>
+<tr><td>plot</td><td>/plɑːt/ n.</td><td>故事情节(秘密)计划，密谋小块地皮vt. 把…分成小块；划分绘制；标出vt. & vi. 密谋，plotting，plots</td></tr>
+<tr><td>twist</td><td>/twɪst/ vt.</td><td>捻；拧；扭伤；编织；使苦恼n. 扭曲；扭伤；拧vi. 扭动；弯曲, twisting, twists</td></tr>
+<tr><td>companion</td><td>/kəm'pænjən/ n.</td><td>同伴, 伙伴成双成对的物品之一, companioning, companions</td></tr>
+<tr><td>podcasts</td><td>/'pɑːdkæst/ n.</td><td>播客</td></tr>
+<tr><td>bingeing</td><td>/bɪndʒ/ n.</td><td>狂欢，狂闹；放纵vt. 放纵vi. 狂饮作乐；大吃大喝, binging, bingeing binges</td></tr>
+<tr><td>scene</td><td>/siːn/ n.</td><td>情景；景象；场面；事件</td></tr>
+<tr><td>costume</td><td>/'kɑːstuːm/ n.</td><td>服装, 服装式样女外套, 女装, costuming, costumes</td></tr>
+<tr><td>podcast</td><td>/'pɑːdkæst/ n.</td><td>播客</td></tr>
+<tr><td>episodes</td><td>/'epɪsoʊd/ n.</td><td>插曲；插话；一段情节；有趣的事件</td></tr>
+<tr><td>revisiting</td><td>/ˌriː'vɪzɪt/ vt.</td><td>重游；再访；重临n. 再访问, revisiting, revisits</td></tr>
+<tr><td>season</td><td>/'siːzn/ n.</td><td>时期；季节；赛季vt. 给…调味；使适应vi. 变得成熟；变干燥, seasoning, seasons</td></tr>
+<tr><td>rivals</td><td>/'raɪvl/ n.</td><td>竞争对手vt. 与…竞争, 与…匹敌, rivalled rivaling, rivalling rivals, rivals</td></tr>
+<tr><td>adaptation</td><td>/ˌædæp'teɪʃn/ n.</td><td>适应,适合改编，改写改编本，改写本</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day40.html" class="nav-btn">← Day 40</a>
+  <a href="day42.html" class="nav-btn">Day 42 →</a>
+</div>
+
+<div class="progress">📖 Day 41 of 44</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-05-16</div>
+
+</body>
+</html>

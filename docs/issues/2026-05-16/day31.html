@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business | Fed up</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-05-16</div>
+
+<h1 class="article-title">Business | Fed up</h1>
+<div class="article-section">Business</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>Agreement”—a <span class="annot" data-tooltip="bilateral /ˌbaɪ'lætərəl/ adj. 双边的, 双方的名 词: bilateralism">bilateral</span> arrangement managing imports of Mexican tomatoes—and imposed a 17% levy on them. But prices may keep climbing. Tomatoes, like other fresh produce, require fertiliser, the price of which has rocketed since the war with Iran broke out. Fuel costs are also starting to <span class="annot" data-tooltip="bite /baɪt/ vt. & vi. 咬, 叮n. 咬咬伤, 叮伤">bite</span>. How bad could the <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> in <span class="annot" data-tooltip="grocery /'ɡroʊsəri/ n. 杂货业杂货店">grocery</span> prices get? To understand how the <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span> shock will <span class="annot" data-tooltip="affect /ə'fekt/ vt. 影响；假装；感动；感染vi. 倾向；喜欢n. 情感；引起感情的因素时 态: affected, affecting, a">affect</span> grocery bills, <span class="annot" data-tooltip="consider /kən'sɪdər/ vt. & vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及时 态: considered, considering, ">consider</span> each step of the supply chain. Begin with farmers, who rely on fossil fuels. Fertilisers, which <span class="annot" data-tooltip="typically /'tɪpɪkli/ adv. 代表性地;作为特色地;典型地">typically</span> use natural gas as a feedstock, account for as much as 40% of their input costs. Add to that the <span class="annot" data-tooltip="diesel /'diːzl/ n. 柴油机；柴油；（俚）健康的身体adj. 内燃机传动的；供内燃机用的">diesel</span> needed to fuel their tractors. Producers of commodities like wheat and maize, however, have little control over their prices, which are determined by the balance of global supply and demand. Much of the <span class="annot" data-tooltip="expense /ɪk'spens/ n. 开支；消费；损失，代价vt. 向…收取费用vi. 被花掉时 态: expensed, expensing, expens">expense</span> for this year’s growing <span class="annot" data-tooltip="season /'siːzn/ n. 时期；季节；赛季vt. 给…调味；使适应vi. 变得成熟；变干燥时 态: seasoned, seasoning, se">season</span>— rent, equipment, seeds and even some fertiliser <span class="annot" data-tooltip="purchases /'pɜːrtʃəs/ n. 购买；紧握；起重装置vt. 购买；赢得vi. 购买东西时 态: purchased, purchasing, purch">purchases</span>—would have already been incurred by the time the war began. The energy shock might force some farmers into the red this year, but many will still make more money by planting what seed they have, rather than letting it go to waste. That means <span class="annot" data-tooltip="crop /krɑːp/ n. 农作物；庄稼；产量；平头vt. 种植；收割；修剪；剪短vi. 收获时 态: cropped, cropping, cro">crop</span> supply may not change much this season. The effect on farm prices might therefore not be felt in full until next season, by when growers who suffered big losses this year may have packed it in. Next in the grocery-supply chain is <span class="annot" data-tooltip="processing /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">processing</span>—at least for products like maize destined for <span class="annot" data-tooltip="cereal /'sɪriəl/ n. 谷类植物, 谷物谷类食物, 麦片粥">cereal</span> or cattle fated to become minced meat. Here markets <span class="annot" data-tooltip="tend /tend/ vt. 照料，照顾，伺候vi. 往，朝向易于；倾向时 态: tended，tending，tends">tend</span> to be more concentrated: there are just four <span class="annot" data-tooltip="major /'meɪdʒər/ adj. 主要的；主修的；重要的；较多的n. 成年人；主修科目；陆军少校vi. 主修时 态: majored, majoring,">major</span> meatpacking firms and a handful of <span class="annot" data-tooltip="processed /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">processed</span>-food giants, among them Kraft and General Mills. Yet there are two reasons not to expect the energy shock to lead these companies to <span class="annot" data-tooltip="raise /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raise</span> prices <span class="annot" data-tooltip="significantly /sɪɡ'nɪfɪkənt/ adj. 重要的, 重大的, 可观的有意义的, 有用意的意味深长的副 词: significantly">significantly</span>. The first is that they rely less on oil for energy and more on electricity and natural gas, the prices for which have risen much more slowly in America. The second is that processed-food producers <span class="annot" data-tooltip="jacked /dʒæk/ n. 千斤顶vt. 用千斤顶顶起离开；停止，放弃提高，增加">jacked</span> up prices during the post-<span class="annot" data-tooltip="pandemic /pæn'demɪk/ adj. （疾病）在全国（或世界）流行的">pandemic</span> <span class="annot" data-tooltip="wave /weɪv/ vi. 波动；起伏；摇动；呈波形；挥手示意vt. 向…挥手示意；使成波浪形；卷（烫）发n. 波浪；波动；高潮；卷曲；挥手示意时 ">wave</span> of <span class="annot" data-tooltip="inflation /ɪn'fleɪʃn/ n. (充气而引起的)膨胀通货膨胀">inflation</span>, resulting in a loss of customers to new entrants and <span class="annot" data-tooltip="retailers /'riːteɪlər/ n. 传播的人；零售商">retailers</span>’ in-house <span class="annot" data-tooltip="brands /brænd/ n. 商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责时 态: branded, branding, brands">brands</span>. Meatpackers have also already had to pass on higher beef prices, the result of a cattle <span class="annot" data-tooltip="shortage /'ʃɔːrtɪdʒ/ n. 不足; 缺少; 缺少量; 不足额">shortage</span> following a <span class="annot" data-tooltip="drought /draʊt/ n. 干旱；缺乏形容词: droughty">drought</span>. At least for now, the biggest pressure on American grocery prices as a consequence of the Iran war may come from the next two stages of the supply chain: packaging and transport. A good deal of food packaging is made from plastic, which in turn is made from oil. Petrochemical feedstocks</p>
+<p>are now around two-fifths higher in price. Here the greatest impact will be seen not on the food <span class="annot" data-tooltip="shelves /ʃelv/ vt. 搁置，将某事放到一旁不予考虑vi. 倾斜时 态: shelved, shelving, shelves">shelves</span> but in the home-care and beauty <span class="annot" data-tooltip="aisles /aɪl/ n. 过道, 通道">aisles</span>, <span class="annot" data-tooltip="stacked /stækt/ adj. [俚]妖艳的；（女人）身材丰满匀称的v. 堆放（stack的过去分词）">stacked</span> with products packaged in thick plastic. <span class="annot" data-tooltip="grocery /'ɡroʊsəri/ n. 杂货业杂货店">Grocery</span>-store shampoo prices were up by about 10% year on year at the end of March, according to NielsenIQ, a data provider. Then there is transport, which accounts for a sixth of the food-supply chain’s total <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span> <span class="annot" data-tooltip="consumption /kən'sʌmpʃn/ n. 消费，消耗；消费[耗]量肺病；结核病">consumption</span> but perhaps as much as half of its requirement for oil. According to the Department of Agriculture, 80-90% of America’s produce is transported on lorries. Costs are highest for foods like meat and <span class="annot" data-tooltip="dairy /'deri/ n. 乳品店；制酪场；牛奶及乳品业；乳牛；奶制品adj. 牛奶的；牛奶制的；乳品的；产乳的">dairy</span> that must be kept refrigerated. With the price of <span class="annot" data-tooltip="diesel /'diːzl/ n. 柴油机；柴油；（俚）健康的身体adj. 内燃机传动的；供内燃机用的">diesel</span> having soared, <span class="annot" data-tooltip="simply /'sɪmpli/ adv. 简单地；朴素地；简直；仅仅；坦白地">simply</span> getting food onto store shelves has become materially more expensive. Supermarkets, which <span class="annot" data-tooltip="tend /tend/ vt. 照料，照顾，伺候vi. 往，朝向易于；倾向时 态: tended，tending，tends">tend</span> to add only a small mark-up, usually pass on higher costs to shoppers. The result, then, is likely to be rising grocery bills, perhaps for some time. On May 12th data were released for April’s consumer price index. The prices of fruit and vegetables climbed by 6% year on year, though—mercifully—those of dairy products and eggs did not <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> any further. Still, as consumers are painfully <span class="annot" data-tooltip="aware /ə'wer/ adj. 知道的；意识到的；有…方面知识的；懂世故的名 词: awareness">aware</span>, food prices are already a third higher than they were before the <span class="annot" data-tooltip="pandemic /pæn'demɪk/ adj. （疾病）在全国（或世界）流行的">pandemic</span>. Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> will look for anyone but himself to blame. It is hard to think of a force that turns people against incumbent politicians more than <span class="annot" data-tooltip="anxiety /æŋ'zaɪəti/ n. 焦虑；挂念；渴望；令人焦虑的事">anxiety</span> at the supermarket, something that the president, who <span class="annot" data-tooltip="campaigned /kæm'peɪn/ n. 运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）时">campaigned</span> on bringing grocery prices down, knows all too well. Already he is pointing the finger at fertiliser producers and meatpackers, both of which have been the subject of antitrust investigations by the Department of Justice. Americans may find it hard to stomach his excuses. ■ Editor’s note (May 11th): Some readers have written to point out that tomatoes are fruit, not vegetables. In fact, they are both. To track the <span class="annot" data-tooltip="trends /trend/ n. 趋势, 倾向流行时 态: trended, trending, trends">trends</span> shaping <span class="annot" data-tooltip="commerce /'kɑːmɜːrs/ n. 商业, 贸易">commerce</span>, <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> and technology, sign up to “The Bottom <span class="annot" data-tooltip="line /laɪn/ n. 绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long inter">Line</span>”, our weekly subscriber-only newsletter on global business. This article was downloaded by zlibrary from https://www.economist.com//business/2026/05/10/america-faces-another-grocery-price- shock</p>
+<div class="article-separator"></div>
+<div class="article-header">Business · Business | Mythos and reality</div>
+<p>The war between businesses and hackers <span class="annot" data-tooltip="enters /'entər/ vt. & vi. 进入, 进去参加, 加入登记, 登录时 态: entered, entering, enters">enters</span> a perilous new <span class="annot" data-tooltip="phase /feɪz/ n. 阶段, 时期(月亮、行星的)位相vt. 分阶段计划[安排]时 态: phased, phasing, phases">phase</span> AI agents <span class="annot" data-tooltip="present /'preznt/ vt. 呈现；介绍；提出；赠送vi. 举枪瞄准adj. 出席的；现在的n. 现在；礼物；瞄准时 态: presented, pr">present</span> novel dangers May 14th 2026 <span class="annot" data-tooltip="cyber adj. 计算机(网络)的；信息技术的">CYBER</span>-<span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">SECURITY</span> IN the age of artificial intelligence in some ways <span class="annot" data-tooltip="resembles /rɪ'zembl/ vt. 像…, 类似于时 态: resembled, resembling, resembles">resembles</span> modern <span class="annot" data-tooltip="warfare /'wɔːrfer/ n. 战争, 战争状态">warfare</span>. It is asymmetric: small bands of attackers armed with the latest technology can <span class="annot" data-tooltip="penetrate /'penətreɪt/ vt. & vi. 穿过, 刺入, 渗入了解vt. 看穿时 态: penetrated, penetrating, penetr">penetrate</span> the most powerful defences. And the weaponry is increasingly <span class="annot" data-tooltip="autonomous /ɔː'tɑːnəməs/ adj. 自治的副 词: autonomously">autonomous</span>. As Nikesh Arora, boss of Palo Alto Networks (PAN), a big cyber-security firm, puts it, “AI has to fight AI.” The good guys do not always win. In recent weeks <span class="annot" data-tooltip="anthropic /ænˈθrɑpɪk/ adj. 人类的,有关人类的">Anthropic</span> and OpenAI have <span class="annot" data-tooltip="unveiled /ˌʌn'veɪl/ vt. 揭去…的面罩，除去…的遮盖物使公之于众；揭露vi. 除去面纱(或覆盖物)；揭幕揭露出来时 态: unveiled，unv">unveiled</span> AI models—Mythos Preview and 5.5-Cyber, <span class="annot" data-tooltip="respectively /rɪ'spektɪv/ adj. 各自的; 各个的">respectively</span>—so <span class="annot" data-tooltip="capable /'keɪpəbl/ adj. 能干的，能胜任的；有才华的副 词: capably">capable</span> of <span class="annot" data-tooltip="penetrating /ˈpenətreɪtɪŋ/ adj. 刺骨的；穿透的">penetrating</span> weak <span class="annot" data-tooltip="spots /spɑːt/ n. 斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Po">spots</span> in cyber-defences that the AI labs have released them only to trusted firms. But that is no guarantee of safety. New models are emerging all the time and</p>
+<p>hackers already use earlier varieties. Moreover, as Mr Arora says, it is not a fair fight. With AI, <span class="annot" data-tooltip="lone /loʊn/ adj. 独自的；寂寞的；单身的；人迹稀少的">lone</span> wolves can carry out attacks that used to require whole teams, and they have to be right just once to succeed. Defenders, by <span class="annot" data-tooltip="contrast /'kɑːntræst/ n. 对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照时 态: contrasted, cont">contrast</span>, have to be right every time. That is why <span class="annot" data-tooltip="cyber adj. 计算机(网络)的；信息技术的">cyber</span>-<span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span> firms, as well as businesses at large, are <span class="annot" data-tooltip="scrambling 不规则性">scrambling</span> to prepare for a <span class="annot" data-tooltip="wave /weɪv/ vi. 波动；起伏；摇动；呈波形；挥手示意vt. 向…挥手示意；使成波浪形；卷（烫）发n. 波浪；波动；高潮；卷曲；挥手示意时 ">wave</span> of AI-powered cyber-crime. Within the <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span>, PAN and <span class="annot" data-tooltip="leading /ˈliːdɪŋ/ adj. 主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）">leading</span> <span class="annot" data-tooltip="rivals /'raɪvl/ n. 竞争对手vt. 与…竞争, 与…匹敌时 态: rivaled, rivalled rivaling, rivalling">rivals</span> such as CrowdStrike have formed alliances to try to make deployment of the latest models safer. Among their customers, the <span class="annot" data-tooltip="immediate /ɪ'miːdiət/ adj. 立即的，即刻的；紧迫的目前的，当前的直接的最接近的名 词: immediateness">immediate</span> reaction to models like Mythos and 5.5-Cyber was one of “panic and <span class="annot" data-tooltip="freak /friːk/ n. 畸形生物；怪物反常的事，怪事有怪癖的人，奇形怪状的人对某一事爱好入迷者adj. 反常的，稀罕的vi. (使)强烈反应，震">freak</span>-out”, says Adam Meyers of CrowdStrike. But the models’ appearance was also a wake-up call. Assessments of cyber- <span class="annot" data-tooltip="readiness /'redinəs/ n. 准备就绪愿意，乐意">readiness</span> are moving from IT departments to C-suites and boardrooms. For the time being, these are more likely to be pessimistic than optimistic. The worst news is that however tightly AI labs limit access to their most hazardous creations, criminals will catch up. Soon after <span class="annot" data-tooltip="anthropic /ænˈθrɑpɪk/ adj. 人类的,有关人类的">Anthropic</span> <span class="annot" data-tooltip="unveiled /ˌʌn'veɪl/ vt. 揭去…的面罩，除去…的遮盖物使公之于众；揭露vi. 除去面纱(或覆盖物)；揭幕揭露出来时 态: unveiled，unv">unveiled</span> Mythos, OpenAI produced its <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> 5.5 series that, according to the British government’s AI Security Institute, may be even stronger. Many expect other model-makers, such as open-source or Chinese <span class="annot" data-tooltip="outfits /'aʊtfɪt/ n. （为特定场合或活动而穿的）全套服装，装束全套装备；成套工具组织；公司；团队；军事单位v. 装备，配备；为…提供设备（或服">outfits</span>, to quickly develop the long-term <span class="annot" data-tooltip="reasoning /'riːzənɪŋ/ n. 运用思考、理解、推想等能力的做法或过程;推理">reasoning</span> and other <span class="annot" data-tooltip="capabilities /ˌkeɪpə'bɪləti/ n. 能做某事的素质;能力尚未发挥的天资或素质">capabilities</span> that make Mythos and 5.5-Cyber so effective. The genie is out of the bottle. Even before the new models were released, older ones were enabling hackers to intrude faster and more frequently. CrowdStrike has said that AI- enhanced attacks rose by 89% in 2025 from the year before. PAN found that, equipped with AI, the fastest quartile of attackers were able to steal data from a software system they had broken into in just over an hour last year, down from almost five in 2024. A typical firm may take days to <span class="annot" data-tooltip="detect /dɪ'tekt/ vt. 发现；发觉，查明时 态: detected，detecting，detects">detect</span> a <span class="annot" data-tooltip="breach /briːtʃ/ n. 破坏, 违反破裂, 不和缺口, 裂口vt. 攻破破坏, 违反时 态: breached, breaching, brea">breach</span>. The <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> of <span class="annot" data-tooltip="autonomous /ɔː'tɑːnəməs/ adj. 自治的副 词: autonomously">autonomous</span> AI agents that can <span class="annot" data-tooltip="handle /'hændl/ n. 柄；把手；手感；口实vt. 买卖；处理；操作；触摸；运用vi. 易于操纵；搬运时 态: handled, handlin">handle</span> <span class="annot" data-tooltip="multiple /'mʌltɪpl/ adj. 多样的；许多的；多重的n. 并联；倍数">multiple</span> tasks on their own further increases the risks. As Mr Arora says, hackers can use agentic tools to be even more menacing. And the more firms <span class="annot" data-tooltip="adopt /ə'dɑːpt/ vt. 收养采用, 采纳, 采取正式接受, 通过时 态: adopted, adopting, adopts">adopt</span> agents for coding, customer service and so on, the bigger the area for hackers to attack. In anticipation of this, late last month PAN said it would acquire Portkey, a firm that helps manage and protect AI agents. Firms “are building more</p>
+<p>software than ever, so we are exposing ourselves more”, says Jeremy D’Hoinne of Gartner, an IT consultancy. Already companies are overstretched as they try to <span class="annot" data-tooltip="patch /pætʃ/ n. 眼罩；斑点；碎片；小块土地vt. 修补；掩饰；解决vi. 打补丁时 态: patched, patching, patc">patch</span> the bugs that AI tools are <span class="annot" data-tooltip="helping /'helpɪŋ/ n. （进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的">helping</span> to <span class="annot" data-tooltip="reveal /rɪ'viːl/ vt. 显示；露出泄露；透露时 态: revealed，revealing，reveals">reveal</span>. <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">Security</span> <span class="annot" data-tooltip="flaws /flɔː/ n.瑕疵，缺点；一阵狂风；短暂的风暴；裂缝，裂纹">flaws</span> are tagged as “common <span class="annot" data-tooltip="vulnerabilities /ˌvʌlnərə'bɪləti/ n. 弱点,攻击">vulnerabilities</span> and <span class="annot" data-tooltip="exposures /ɪk'spoʊʒər/ n. 暴露, 显露揭发, 揭露(软片等)曝光">exposures</span>” (CVEs), which are made known <span class="annot" data-tooltip="either /'iːðər/ pron. (两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的">either</span> to the firms that make the software or to specialised organisations. The <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of CVEs reported has been surging recently (see chart). Mr Meyers of CrowdStrike says some <span class="annot" data-tooltip="speculate /'spekjuleɪt/ vt. & vi. 思索；猜测，推测vi. 投机时 态: speculated，speculating，speculates">speculate</span> that the <span class="annot" data-tooltip="annual /'ænjuəl/ adj. 年度的；每年的n. 年刊，年鉴；一年生植物副 词: annually">annual</span> figure could soon increase ten-fold, to 480,000, as more powerful AI models <span class="annot" data-tooltip="detect /dɪ'tekt/ vt. 发现；发觉，查明时 态: detected，detecting，detects">detect</span> even more bugs. “The assumption is that AI will find vulnerabilities faster than <span class="annot" data-tooltip="patches /pætʃ/ n. 眼罩；斑点；碎片；小块土地vt. 修补；掩饰；解决vi. 打补丁时 态: patched, patching, patc">patches</span> can be written,” says Erik Nost of Forrester, another consultancy. The good news is that though AI is arming attackers, it is also aiding the defenders. Some businesses <span class="annot" data-tooltip="considered /kən'sɪdər/ vt. & vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及时 态: considered, considering, ">considered</span> especially <span class="annot" data-tooltip="critical /'krɪtɪkl/ adj. 批评的，爱挑剔的；决定性的；危险的；临界的；鉴定的；评论的副 词: critically">critical</span> to the <span class="annot" data-tooltip="infrastructure /'ɪnfrəstrʌktʃər/ n. 基础设施; 基础结构">infrastructure</span> of the internet, such as hyperscalers and <span class="annot" data-tooltip="cyber adj. 计算机(网络)的；信息技术的">cyber</span>-security firms, have gained access to the limited-<span class="annot" data-tooltip="release /rɪ'liːs/ vt. 释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]时 态: released，rel">release</span> Mythos and 5.5-Cyber models of <span class="annot" data-tooltip="anthropic /ænˈθrɑpɪk/ adj. 人类的,有关人类的">Anthropic</span> and OpenAI, <span class="annot" data-tooltip="respectively /rɪ'spektɪv/ adj. 各自的; 各个的">respectively</span>, to test their <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> systems. The two AI labs also have lower <span class="annot" data-tooltip="tiers /tɪr/ n. 行，列；层，排；等级vt. 使层叠vi. 成递升排列时 态: tiered, tiering, tiers">tiers</span>, whose members are given access to models that are slightly less <span class="annot" data-tooltip="permissive /pər'mɪsɪv/ adj. 宽大的，放任的，宽容的；自由的，随意的容许的，许可的副 词: permissively">permissive</span> than Mythos and 5.5-Cyber but have more cyber- <span class="annot" data-tooltip="capabilities /ˌkeɪpə'bɪləti/ n. 能做某事的素质;能力尚未发挥的天资或素质">capabilities</span> than those on general release. The recipients are akin to <span class="annot" data-tooltip="pandemic /pæn'demɪk/ adj. （疾病）在全国（或世界）流行的">pandemic</span>-era key workers receiving early doses of <span class="annot" data-tooltip="vaccines /væk'siːn/ n. 疫苗;痘苗adj. 痘苗的;疫苗的">vaccines</span>.</p>
+<p>Mozilla, <span class="annot" data-tooltip="creator /kri'eɪtər/ n. 创造者,创作者">creator</span> of Firefox, a web browser, recently offered an optimistic example: an early <span class="annot" data-tooltip="version /'vɜːrʒn/ n. 变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本">version</span> of Mythos helped it identify 271 <span class="annot" data-tooltip="vulnerabilities /ˌvʌlnərə'bɪləti/ n. 弱点,攻击">vulnerabilities</span> in a new <span class="annot" data-tooltip="iteration /ˌɪtə'reɪʃn/ n. 反复">iteration</span> of Firefox. It said the model was <span class="annot" data-tooltip="capable /'keɪpəbl/ adj. 能干的，能胜任的；有才华的副 词: capably">capable</span> of identifying every bug that a human could, which was not possible only a few months ago. This helped level the playing field against attackers. “Defenders finally have a chance to win, <span class="annot" data-tooltip="decisively /dɪ'saɪsɪv/ adj. 决定性的；果断的，坚定的副 词: decisively">decisively</span>,” it said in a blog post. But it is not just the enhanced <span class="annot" data-tooltip="capabilities /ˌkeɪpə'bɪləti/ n. 能做某事的素质;能力尚未发挥的天资或素质">capabilities</span> of the <span class="annot" data-tooltip="cutting /'kʌtɪŋ/ n. 切断；剪辑；开凿adj. 严寒的；锋利的；尖酸刻薄的v. 切开；采伐；削减（cut的ing形式）">cutting</span>-<span class="annot" data-tooltip="edge /edʒ/ n. 边缘；刀刃；优势；锋利vt. 使锐利；将…开刃；给…加上边vi. 缓缓移动；侧着移动EDGEabbr. Electron">edge</span> models that are assisting defenders. <span class="annot" data-tooltip="cyber adj. 计算机(网络)的；信息技术的">Cyber</span>-<span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span> firms are also <span class="annot" data-tooltip="developing /dɪ'veləpɪŋ/ adj. 在进行中的;走向完成阶段的;走向成熟的发展中的">developing</span> their <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> tools, which they call <span class="annot" data-tooltip="harnesses /'hɑːrnɪs/ n. 马具, 挽具vt. 给(马等)装上挽具治理, 利用时 态: harnessed, harnessing, harness">harnesses</span>, to make all models more effective. On May 12th Cisco, an IT giant with access to both Mythos and 5.5-Cyber, said it would make available an open-source, step-by-step guide to creating cyber- security harnesses to help firms use any model to boost their defences. There are widespread hopes that the <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> can <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> to the challenge of AI if it gets its act together. <span class="annot" data-tooltip="anthropic /ænˈθrɑpɪk/ adj. 人类的,有关人类的">Anthropic</span> and OpenAI have won widespread plaudits for <span class="annot" data-tooltip="leading /ˈliːdɪŋ/ adj. 主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）">leading</span> a collaborative approach. But <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">although</span> Mr Arora gives them an A+ for <span class="annot" data-tooltip="intent /ɪn'tent/ n. 意图；目的；含义adj. 专心的；急切的；坚决的副 词: intently">intent</span>, PAN’s boss reckons <span class="annot" data-tooltip="neither /'niːðər/ conj. 既不；也不adv. 两个都不；既不……也不adj. 两者都不的det./pron. 两者都不">neither</span> the labs nor the cyber- security industry deserves more than a B+ for execution. That is partly because AI threats are still so new that everyone is learning as they go. “There’s no magic bullet. There’s no panacea. We don’t know what the right answer is yet.” Music to the ears of hackers, no doubt. ■ To track the <span class="annot" data-tooltip="trends /trend/ n. 趋势, 倾向流行时 态: trended, trending, trends">trends</span> shaping <span class="annot" data-tooltip="commerce /'kɑːmɜːrs/ n. 商业, 贸易">commerce</span>, industry and technology, sign up to “The Bottom <span class="annot" data-tooltip="line /laɪn/ n. 绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long inter">Line</span>”, our weekly subscriber-only newsletter on global business. This article was downloaded by zlibrary from https://www.economist.com//business/2026/05/13/the-war-between-businesses-and- hackers-<span class="annot" data-tooltip="enters /'entər/ vt. & vi. 进入, 进去参加, 加入登记, 登录时 态: entered, entering, enters">enters</span>-a-perilous-new-<span class="annot" data-tooltip="phase /feɪz/ n. 阶段, 时期(月亮、行星的)位相vt. 分阶段计划[安排]时 态: phased, phasing, phases">phase</span></p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>bilateral</td><td>/ˌbaɪ'lætərəl/ adj.</td><td>双边的, 双方的</td></tr>
+<tr><td>bite</td><td>/baɪt/ vt.</td><td>& vi. 咬, 叮n. 咬咬伤, 叮伤</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>grocery</td><td>/'ɡroʊsəri/ n.</td><td>杂货业杂货店</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>affect</td><td>/ə'fekt/ vt.</td><td>影响；假装；感动；感染vi. 倾向；喜欢n. 情感；引起感情的因素, affecting, affects</td></tr>
+<tr><td>consider</td><td>/kən'sɪdər/ vt.</td><td>& vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及, considering, considers</td></tr>
+<tr><td>typically</td><td>/'tɪpɪkli/ adv.</td><td>代表性地;作为特色地;典型地</td></tr>
+<tr><td>diesel</td><td>/'diːzl/ n.</td><td>柴油机；柴油；（俚）健康的身体adj. 内燃机传动的；供内燃机用的</td></tr>
+<tr><td>expense</td><td>/ɪk'spens/ n.</td><td>开支；消费；损失，代价vt. 向…收取费用vi. 被花掉, expensing, expenses</td></tr>
+<tr><td>season</td><td>/'siːzn/ n.</td><td>时期；季节；赛季vt. 给…调味；使适应vi. 变得成熟；变干燥, seasoning, seasons</td></tr>
+<tr><td>purchases</td><td>/'pɜːrtʃəs/ n.</td><td>购买；紧握；起重装置vt. 购买；赢得vi. 购买东西, purchasing, purchases</td></tr>
+<tr><td>crop</td><td>/krɑːp/ n.</td><td>农作物；庄稼；产量；平头vt. 种植；收割；修剪；剪短vi. 收获, cropping, crops</td></tr>
+<tr><td>processing</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>cereal</td><td>/'sɪriəl/ n.</td><td>谷类植物, 谷物谷类食物, 麦片粥</td></tr>
+<tr><td>tend</td><td>/tend/ vt.</td><td>照料，照顾，伺候vi. 往，朝向易于；倾向，tending，tends</td></tr>
+<tr><td>major</td><td>/'meɪdʒər/ adj.</td><td>主要的；主修的；重要的；较多的n. 成年人；主修科目；陆军少校vi. 主修, majoring, majors</td></tr>
+<tr><td>processed</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>raise</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>significantly</td><td>/sɪɡ'nɪfɪkənt/ adj.</td><td>重要的, 重大的, 可观的有意义的, 有用意的意味深长的</td></tr>
+<tr><td>jacked</td><td>/dʒæk/ n.</td><td>千斤顶vt. 用千斤顶顶起离开；停止，放弃提高，增加</td></tr>
+<tr><td>pandemic</td><td>/pæn'demɪk/ adj.</td><td>（疾病）在全国（或世界）流行的</td></tr>
+<tr><td>wave</td><td>/weɪv/ vi.</td><td>波动；起伏；摇动；呈波形；挥手示意vt. 向…挥手示意；使成波浪形；卷（烫）发n. 波浪；波动；高潮；卷曲；挥手示意, waving, waves</td></tr>
+<tr><td>inflation</td><td>/ɪn'fleɪʃn/ n.</td><td>(充气而引起的)膨胀通货膨胀</td></tr>
+<tr><td>retailers</td><td>/'riːteɪlər/ n.</td><td>传播的人；零售商</td></tr>
+<tr><td>brands</td><td>/brænd/ n.</td><td>商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责, branding, brands</td></tr>
+<tr><td>shortage</td><td>/'ʃɔːrtɪdʒ/ n.</td><td>不足; 缺少; 缺少量; 不足额</td></tr>
+<tr><td>drought</td><td>/draʊt/ n.</td><td>干旱；缺乏</td></tr>
+<tr><td>shelves</td><td>/ʃelv/ vt.</td><td>搁置，将某事放到一旁不予考虑vi. 倾斜, shelving, shelves</td></tr>
+<tr><td>aisles</td><td>/aɪl/ n.</td><td>过道, 通道</td></tr>
+<tr><td>stacked</td><td>/stækt/ adj.</td><td>[俚]妖艳的；（女人）身材丰满匀称的v. 堆放（stack的过去分词）</td></tr>
+<tr><td>grocery</td><td>/'ɡroʊsəri/ n.</td><td>杂货业杂货店</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>consumption</td><td>/kən'sʌmpʃn/ n.</td><td>消费，消耗；消费[耗]量肺病；结核病</td></tr>
+<tr><td>dairy</td><td>/'deri/ n.</td><td>乳品店；制酪场；牛奶及乳品业；乳牛；奶制品adj. 牛奶的；牛奶制的；乳品的；产乳的</td></tr>
+<tr><td>diesel</td><td>/'diːzl/ n.</td><td>柴油机；柴油；（俚）健康的身体adj. 内燃机传动的；供内燃机用的</td></tr>
+<tr><td>simply</td><td>/'sɪmpli/ adv.</td><td>简单地；朴素地；简直；仅仅；坦白地</td></tr>
+<tr><td>tend</td><td>/tend/ vt.</td><td>照料，照顾，伺候vi. 往，朝向易于；倾向，tending，tends</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>aware</td><td>/ə'wer/ adj.</td><td>知道的；意识到的；有…方面知识的；懂世故的</td></tr>
+<tr><td>pandemic</td><td>/pæn'demɪk/ adj.</td><td>（疾病）在全国（或世界）流行的</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>anxiety</td><td>/æŋ'zaɪəti/ n.</td><td>焦虑；挂念；渴望；令人焦虑的事</td></tr>
+<tr><td>campaigned</td><td>/kæm'peɪn/ n.</td><td>运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）, campaigning, campai</td></tr>
+<tr><td>trends</td><td>/trend/ n.</td><td>趋势, 倾向流行, trending, trends</td></tr>
+<tr><td>commerce</td><td>/'kɑːmɜːrs/ n.</td><td>商业, 贸易</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>line</td><td>/laɪn/ n.</td><td>绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long interspersed element)长散在元</td></tr>
+<tr><td>enters</td><td>/'entər/ vt.</td><td>& vi. 进入, 进去参加, 加入登记, 登录, entering, enters</td></tr>
+<tr><td>phase</td><td>/feɪz/ n.</td><td>阶段, 时期(月亮、行星的)位相vt. 分阶段计划[安排], phasing, phases</td></tr>
+<tr><td>present</td><td>/'preznt/ vt.</td><td>呈现；介绍；提出；赠送vi. 举枪瞄准adj. 出席的；现在的n. 现在；礼物；瞄准, presenting, presents</td></tr>
+<tr><td>cyber</td><td>— adj.</td><td>计算机(网络)的；信息技术的</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>resembles</td><td>/rɪ'zembl/ vt.</td><td>像…, 类似于, resembling, resembles</td></tr>
+<tr><td>warfare</td><td>/'wɔːrfer/ n.</td><td>战争, 战争状态</td></tr>
+<tr><td>penetrate</td><td>/'penətreɪt/ vt.</td><td>& vi. 穿过, 刺入, 渗入了解vt. 看穿, penetrating, penetrates</td></tr>
+<tr><td>autonomous</td><td>/ɔː'tɑːnəməs/ adj.</td><td>自治的</td></tr>
+<tr><td>anthropic</td><td>/ænˈθrɑpɪk/ adj.</td><td>人类的,有关人类的</td></tr>
+<tr><td>unveiled</td><td>/ˌʌn'veɪl/ vt.</td><td>揭去…的面罩，除去…的遮盖物使公之于众；揭露vi. 除去面纱(或覆盖物)；揭幕揭露出来，unveiling，unveils</td></tr>
+<tr><td>respectively</td><td>/rɪ'spektɪv/ adj.</td><td>各自的; 各个的</td></tr>
+<tr><td>capable</td><td>/'keɪpəbl/ adj.</td><td>能干的，能胜任的；有才华的</td></tr>
+<tr><td>penetrating</td><td>/ˈpenətreɪtɪŋ/ adj.</td><td>刺骨的；穿透的</td></tr>
+<tr><td>spots</td><td>/spɑːt/ n.</td><td>斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Positioning and Tracki</td></tr>
+<tr><td>lone</td><td>/loʊn/ adj.</td><td>独自的；寂寞的；单身的；人迹稀少的</td></tr>
+<tr><td>contrast</td><td>/'kɑːntræst/ n.</td><td>对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照, contrasting, contrasts</td></tr>
+<tr><td>cyber</td><td>— adj.</td><td>计算机(网络)的；信息技术的</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>scrambling</td><td>— </td><td>不规则性</td></tr>
+<tr><td>wave</td><td>/weɪv/ vi.</td><td>波动；起伏；摇动；呈波形；挥手示意vt. 向…挥手示意；使成波浪形；卷（烫）发n. 波浪；波动；高潮；卷曲；挥手示意, waving, waves</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>leading</td><td>/ˈliːdɪŋ/ adj.</td><td>主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）</td></tr>
+<tr><td>rivals</td><td>/'raɪvl/ n.</td><td>竞争对手vt. 与…竞争, 与…匹敌, rivalled rivaling, rivalling rivals, rivals</td></tr>
+<tr><td>immediate</td><td>/ɪ'miːdiət/ adj.</td><td>立即的，即刻的；紧迫的目前的，当前的直接的最接近的</td></tr>
+<tr><td>freak</td><td>/friːk/ n.</td><td>畸形生物；怪物反常的事，怪事有怪癖的人，奇形怪状的人对某一事爱好入迷者adj. 反常的，稀罕的vi. (使)强烈反应，震惊，畏惧，freaking，freaks</td></tr>
+<tr><td>readiness</td><td>/'redinəs/ n.</td><td>准备就绪愿意，乐意</td></tr>
+<tr><td>anthropic</td><td>/ænˈθrɑpɪk/ adj.</td><td>人类的,有关人类的</td></tr>
+<tr><td>unveiled</td><td>/ˌʌn'veɪl/ vt.</td><td>揭去…的面罩，除去…的遮盖物使公之于众；揭露vi. 除去面纱(或覆盖物)；揭幕揭露出来，unveiling，unveils</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>outfits</td><td>/'aʊtfɪt/ n.</td><td>（为特定场合或活动而穿的）全套服装，装束全套装备；成套工具组织；公司；团队；军事单位v. 装备，配备；为…提供设备（或服装），outfitting，outfit</td></tr>
+<tr><td>reasoning</td><td>/'riːzənɪŋ/ n.</td><td>运用思考、理解、推想等能力的做法或过程;推理</td></tr>
+<tr><td>capabilities</td><td>/ˌkeɪpə'bɪləti/ n.</td><td>能做某事的素质;能力尚未发挥的天资或素质</td></tr>
+<tr><td>detect</td><td>/dɪ'tekt/ vt.</td><td>发现；发觉，查明，detecting，detects</td></tr>
+<tr><td>breach</td><td>/briːtʃ/ n.</td><td>破坏, 违反破裂, 不和缺口, 裂口vt. 攻破破坏, 违反, breaching, breaches</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>autonomous</td><td>/ɔː'tɑːnəməs/ adj.</td><td>自治的</td></tr>
+<tr><td>handle</td><td>/'hændl/ n.</td><td>柄；把手；手感；口实vt. 买卖；处理；操作；触摸；运用vi. 易于操纵；搬运, handling, handles</td></tr>
+<tr><td>multiple</td><td>/'mʌltɪpl/ adj.</td><td>多样的；许多的；多重的n. 并联；倍数</td></tr>
+<tr><td>adopt</td><td>/ə'dɑːpt/ vt.</td><td>收养采用, 采纳, 采取正式接受, 通过, adopting, adopts</td></tr>
+<tr><td>patch</td><td>/pætʃ/ n.</td><td>眼罩；斑点；碎片；小块土地vt. 修补；掩饰；解决vi. 打补丁, patching, patches</td></tr>
+<tr><td>helping</td><td>/'helpɪŋ/ n.</td><td>（进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的</td></tr>
+<tr><td>reveal</td><td>/rɪ'viːl/ vt.</td><td>显示；露出泄露；透露，revealing，reveals</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>flaws</td><td>/flɔː/ </td><td>n.瑕疵，缺点；一阵狂风；短暂的风暴；裂缝，裂纹</td></tr>
+<tr><td>vulnerabilities</td><td>/ˌvʌlnərə'bɪləti/ n.</td><td>弱点,攻击</td></tr>
+<tr><td>exposures</td><td>/ɪk'spoʊʒər/ n.</td><td>暴露, 显露揭发, 揭露(软片等)曝光</td></tr>
+<tr><td>either</td><td>/'iːðər/ pron.</td><td>(两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>speculate</td><td>/'spekjuleɪt/ vt.</td><td>& vi. 思索；猜测，推测vi. 投机，speculating，speculates</td></tr>
+<tr><td>annual</td><td>/'ænjuəl/ adj.</td><td>年度的；每年的n. 年刊，年鉴；一年生植物</td></tr>
+<tr><td>detect</td><td>/dɪ'tekt/ vt.</td><td>发现；发觉，查明，detecting，detects</td></tr>
+<tr><td>patches</td><td>/pætʃ/ n.</td><td>眼罩；斑点；碎片；小块土地vt. 修补；掩饰；解决vi. 打补丁, patching, patches</td></tr>
+<tr><td>considered</td><td>/kən'sɪdər/ vt.</td><td>& vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及, considering, considers</td></tr>
+<tr><td>critical</td><td>/'krɪtɪkl/ adj.</td><td>批评的，爱挑剔的；决定性的；危险的；临界的；鉴定的；评论的</td></tr>
+<tr><td>infrastructure</td><td>/'ɪnfrəstrʌktʃər/ n.</td><td>基础设施; 基础结构</td></tr>
+<tr><td>cyber</td><td>— adj.</td><td>计算机(网络)的；信息技术的</td></tr>
+<tr><td>release</td><td>/rɪ'liːs/ vt.</td><td>释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]，releasing，releases</td></tr>
+<tr><td>anthropic</td><td>/ænˈθrɑpɪk/ adj.</td><td>人类的,有关人类的</td></tr>
+<tr><td>respectively</td><td>/rɪ'spektɪv/ adj.</td><td>各自的; 各个的</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>tiers</td><td>/tɪr/ n.</td><td>行，列；层，排；等级vt. 使层叠vi. 成递升排列, tiering, tiers</td></tr>
+<tr><td>permissive</td><td>/pər'mɪsɪv/ adj.</td><td>宽大的，放任的，宽容的；自由的，随意的容许的，许可的</td></tr>
+<tr><td>capabilities</td><td>/ˌkeɪpə'bɪləti/ n.</td><td>能做某事的素质;能力尚未发挥的天资或素质</td></tr>
+<tr><td>pandemic</td><td>/pæn'demɪk/ adj.</td><td>（疾病）在全国（或世界）流行的</td></tr>
+<tr><td>vaccines</td><td>/væk'siːn/ n.</td><td>疫苗;痘苗adj. 痘苗的;疫苗的</td></tr>
+<tr><td>creator</td><td>/kri'eɪtər/ n.</td><td>创造者,创作者</td></tr>
+<tr><td>version</td><td>/'vɜːrʒn/ n.</td><td>变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本</td></tr>
+<tr><td>vulnerabilities</td><td>/ˌvʌlnərə'bɪləti/ n.</td><td>弱点,攻击</td></tr>
+<tr><td>iteration</td><td>/ˌɪtə'reɪʃn/ n.</td><td>反复</td></tr>
+<tr><td>capable</td><td>/'keɪpəbl/ adj.</td><td>能干的，能胜任的；有才华的</td></tr>
+<tr><td>decisively</td><td>/dɪ'saɪsɪv/ adj.</td><td>决定性的；果断的，坚定的</td></tr>
+<tr><td>capabilities</td><td>/ˌkeɪpə'bɪləti/ n.</td><td>能做某事的素质;能力尚未发挥的天资或素质</td></tr>
+<tr><td>cutting</td><td>/'kʌtɪŋ/ n.</td><td>切断；剪辑；开凿adj. 严寒的；锋利的；尖酸刻薄的v. 切开；采伐；削减（cut的ing形式）</td></tr>
+<tr><td>edge</td><td>/edʒ/ n.</td><td>边缘；刀刃；优势；锋利vt. 使锐利；将…开刃；给…加上边vi. 缓缓移动；侧着移动EDGEabbr. Electronic Data Gathering Eq</td></tr>
+<tr><td>cyber</td><td>— adj.</td><td>计算机(网络)的；信息技术的</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>developing</td><td>/dɪ'veləpɪŋ/ adj.</td><td>在进行中的;走向完成阶段的;走向成熟的发展中的</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>harnesses</td><td>/'hɑːrnɪs/ n.</td><td>马具, 挽具vt. 给(马等)装上挽具治理, 利用, harnessing, harnesses</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>anthropic</td><td>/ænˈθrɑpɪk/ adj.</td><td>人类的,有关人类的</td></tr>
+<tr><td>leading</td><td>/ˈliːdɪŋ/ adj.</td><td>主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>intent</td><td>/ɪn'tent/ n.</td><td>意图；目的；含义adj. 专心的；急切的；坚决的</td></tr>
+<tr><td>neither</td><td>/'niːðər/ conj.</td><td>既不；也不adv. 两个都不；既不……也不adj. 两者都不的det./pron. 两者都不</td></tr>
+<tr><td>trends</td><td>/trend/ n.</td><td>趋势, 倾向流行, trending, trends</td></tr>
+<tr><td>commerce</td><td>/'kɑːmɜːrs/ n.</td><td>商业, 贸易</td></tr>
+<tr><td>line</td><td>/laɪn/ n.</td><td>绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long interspersed element)长散在元</td></tr>
+<tr><td>enters</td><td>/'entər/ vt.</td><td>& vi. 进入, 进去参加, 加入登记, 登录, entering, enters</td></tr>
+<tr><td>phase</td><td>/feɪz/ n.</td><td>阶段, 时期(月亮、行星的)位相vt. 分阶段计划[安排], phasing, phases</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day30.html" class="nav-btn">← Day 30</a>
+  <a href="day32.html" class="nav-btn">Day 32 →</a>
+</div>
+
+<div class="progress">📖 Day 31 of 44</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-05-16</div>
+
+</body>
+</html>

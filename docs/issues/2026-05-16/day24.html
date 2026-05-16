@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Europe | Patron quest</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-05-16</div>
+
+<h1 class="article-title">Europe | Patron quest</h1>
+<div class="article-section">Europe</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>Armenia’s election will test its leader’s pivot to the West Let down by Russia, Nikol Pashinyan wants to make up with Azerbaijan and join the EU May 14th 2026 In 2023 Armenia finally lost a <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span>-long intermittent war against neighbouring Azerbaijan over a bit of <span class="annot" data-tooltip="territory /'terətɔːri/ n. 领土, 版图管区, 营业地区地盘, 领域, 范围">territory</span> known as Nagorno- Karabakh. Since then Nikol Pashinyan, Armenia’s prime minister, has been trying to wrest a <span class="annot" data-tooltip="diplomatic /ˌdɪplə'mætɪk/ adj. 外交上的, 外交人员的有手腕的, 策略的, 善于交涉的, 圆滑的副 词: diplomatically">diplomatic</span> victory from the jaws of military defeat. Let down by Russia, Armenia’s longtime patron, he is pivoting to America and Europe and working on a peace treaty with Azerbaijan. On June 7th voters will give their <span class="annot" data-tooltip="verdict /'vɜːrdɪkt/ n. (陪审团的)裁决, 裁定(经过试验、检验或体验发表的)决定, 意见">verdict</span> on his efforts in a general election. Opinion <span class="annot" data-tooltip="polls /poʊl/ n. 民意测验；投票；投票数；投票所vt. 剪短；对…进行民意测验；获得选票；投票vi. 投票adj. 剪过毛的；修过枝的；无">polls</span> suggest he will probably win.</p>
+<p>European leaders have lent their support. On May 4th Yerevan, Armenia’s capital, <span class="annot" data-tooltip="hosted /hoʊst/ n. 主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集时 态: hosted, hosting, host">hosted</span> a meeting of the European Political Community (EPC), a <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span> of countries in and around the European Union. The next day the EU held its first <span class="annot" data-tooltip="bilateral /ˌbaɪ'lætərəl/ adj. 双边的, 双方的名 词: bilateralism">bilateral</span> summit with Armenia. The bloc is offering Armenia up to €2.5bn ($2.9bn) in <span class="annot" data-tooltip="infrastructure /'ɪnfrəstrʌktʃər/ n. 基础设施; 基础结构">infrastructure</span> funding—more than 10% of its <span class="annot" data-tooltip="annual /'ænjuəl/ adj. 年度的；每年的n. 年刊，年鉴；一年生植物副 词: annually">annual</span> GDP. Armenia hopes to become a member one day. Plenty of Armenians dislike Mr Pashinyan. <span class="annot" data-tooltip="murals /'mjʊrəl/ adj. 墙壁的n. 壁画；（美）壁饰名 词: muralist">Murals</span> of fallen soldiers dot Yerevan, reminders of his failures during the war. <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">Outside</span> the EPC summit, protesters waved the flag of Artsakh, the erstwhile ethnic-Armenian statelet in Nagorno-Karabakh. Some refugees from the <span class="annot" data-tooltip="territory /'terətɔːri/ n. 领土, 版图管区, 营业地区地盘, 领域, 范围">territory</span> wanted their relatives’ bodies to be transported to Armenia; others called for Azerbaijan to free <span class="annot" data-tooltip="prisoners /'prɪznər/ n. 囚徒俘虏被夺去自由的人[动物]等">prisoners</span>-of-war. Several demonstrators predicted that the <span class="annot" data-tooltip="pro /proʊ/ n. 从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞">pro</span>- Western pivot would backfire. “He is turning Armenia into a playground for geopolitical games,” says one young man who fled Nagorno-Karabakh in 2023. Nationalist politicians are stoking <span class="annot" data-tooltip="discontent /ˌdɪskən'tent/ n. 不满时 态: discontented, discontenting, discontents">discontent</span>. Samvel Karapetyan, a Russian-Armenian oligarch who leads the most popular opposition group, is under house arrest for calling for the government to be overthrown (he denies the charge). When your correspondent visited him in his swanky mansion, Mr Karapetyan accused the government of kowtowing to Azerbaijani demands. Mr Pashinyan, he says, is “attempting to trigger” a war with Russia. Such views are not uncommon in Yerevan, a stronghold of the old <span class="annot" data-tooltip="elite /eɪ'liːt/ n. （社会）上层集团；掌权人物；出类拔萃的人，精英adj.（社会）上层集团的；掌权人物的；精英的">elite</span>. But they are rarer in the countryside, where the government has built roads and schools. <span class="annot" data-tooltip="residents /'rezɪdənt/ adj. 定居的; 常驻的n. 居民(旅馆的)住宿者">Residents</span> of border regions might benefit most from peace. Mr Pashinyan’s <span class="annot" data-tooltip="civil /'sɪvl/ adj. 公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的副 词: civilly">Civil</span> <span class="annot" data-tooltip="contract /'kɑːntrækt/ vi. 感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约时 态: contracted, contracting, c">Contract</span> party <span class="annot" data-tooltip="polls /poʊl/ n. 民意测验；投票；投票数；投票所vt. 剪短；对…进行民意测验；获得选票；投票vi. 投票adj. 剪过毛的；修过枝的；无">polls</span> at around 30%, well ahead of Mr Karapetyan’s <span class="annot" data-tooltip="outfit /'aʊtfɪt/ n. （为特定场合或活动而穿的）全套服装，装束全套装备；成套工具组织；公司；团队；军事单位v. 装备，配备；为…提供设备（或服">outfit</span>. Mr Pashinyan has <span class="annot" data-tooltip="flaws /flɔː/ n.瑕疵，缺点；一阵狂风；短暂的风暴；裂缝，裂纹">flaws</span>. The <span class="annot" data-tooltip="anti /'ænti/ adj. 反对的n. 反对者，反对论者">anti</span>-<span class="annot" data-tooltip="corruption /kə'rʌpʃn/ n. 堕落;腐化;腐败;贿赂腐烂">corruption</span> <span class="annot" data-tooltip="drive /draɪv/ vt. 驱赶驱使, 促使敲, 击vt. & vi. 驾驶n. 乘车旅行私人车道传动, 驱动干劲, 积极性, 能动性紧迫, 逼迫,">drive</span> of his first term has waned, and he has a populist <span class="annot" data-tooltip="streak /striːk/ n. 条纹，线条；倾向vi. 飞跑，疾驶；加上条纹vt. 飞跑，疾驰；加条纹于时 态: streaked, streaking">streak</span> that riles his <span class="annot" data-tooltip="opponents /ə'poʊnənt/ n. 对手, 敌手；反对者名 词: opponency">opponents</span>. “You get a lot more <span class="annot" data-tooltip="monologue /'mɑːnəlɔːɡ/ n. [戏]独白时 态: monologuedalso monologged monologuingmonologging m">monologue</span> than dialogue from Pashinyan,” says Thomas de Waal of Carnegie Europe, a think-<span class="annot" data-tooltip="tank /tæŋk/ n. （存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内时 态: t">tank</span>. In March the prime minister was filmed arguing with a Karabakh refugee who refused to accept a Civil Contract <span class="annot" data-tooltip="campaign /kæm'peɪn/ n. 运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）时">campaign</span> badge. He later apologised.</p>
+<p>The Kremlin could meddle, too. Russia provides 85% of Armenia’s gas and maintains an army base there. Russian companies <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> <span class="annot" data-tooltip="vital /'vaɪtl/ adj. 极重要的，必不可少的维持生命所必需的；生命的有生气的，充满生机的副 词: vitally">vital</span> <span class="annot" data-tooltip="infrastructure /'ɪnfrəstrʌktʃər/ n. 基础设施; 基础结构">infrastructure</span>, a <span class="annot" data-tooltip="legacy /'leɡəsi/ n. 遗产, 遗赠物遗留之物">legacy</span> of debt-relief deals made by previous Armenian leaders. Russia recently banned the sale of some <span class="annot" data-tooltip="batches /bætʃ/ n. 一炉一批, 一组, 一群时 态: batched, batching, batches">batches</span> of Jermuk, an Armenian water <span class="annot" data-tooltip="brand /brænd/ n. 商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责时 态: branded, branding, brands">brand</span>, on dubious sanitary grounds. Such tactics will probably deepen Armenians’ distrust of their old patron. “The Armenian political mind is very <span class="annot" data-tooltip="prone /proʊn/ adj. 易于…的; 很可能…的俯卧的名 词: proneness">prone</span> to look for saviours around the world: Moscow, <span class="annot" data-tooltip="brussels /ˈbrʌsəlz/ n. 布鲁塞尔（比利时首都）">Brussels</span>, Washington,” says Maria Karapetyan (no relation of Samvel), a <span class="annot" data-tooltip="civil /'sɪvl/ adj. 公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的副 词: civilly">Civil</span> <span class="annot" data-tooltip="contract /'kɑːntrækt/ vi. 感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约时 态: contracted, contracting, c">Contract</span> MP. “My party thinks we don’t need to look for saviours.” Armenia’s dependence on Russia <span class="annot" data-tooltip="proved /proʊ/ n. 从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞">proved</span> <span class="annot" data-tooltip="toxic /'tɑːksɪk/ adj. 有毒的；因中毒引起的">toxic</span>. Now it is trying to play the field. ■ To stay on top of the biggest European stories, sign up to Café Europa, our weekly subscriber-only newsletter. This article was downloaded by zlibrary from https://www.economist.com//europe/2026/05/14/armenias-election-will-test-its- leaders-pivot-to-the-west</p>
+<div class="article-separator"></div>
+<div class="article-header">Europe · Europe | Bunker mentality</div>
+<p>The world’s best-sounding nightclub is in an unexpected <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span> Why DJs are <span class="annot" data-tooltip="flocking /flɑːk/ n. 群；棉束（等于floc）vt. 用棉束填满vi. 聚集；成群而行Flock(瑞士)弗洛克(很短的粘胶短纤维)时 态: f">flocking</span> to an <span class="annot" data-tooltip="obscure /əb'skjʊr/ adj. 无名的；鲜为人知的；默默无闻的费解的，晦涩的；模糊的，朦胧的；不清楚的v. 遮掩；遮蔽；使不分明隐藏，掩盖；使难理解，使">obscure</span> town in west Germany May 14th 2026 AS YOU APPROACH the dancefloor, you feel the bass before you hear it. <span class="annot" data-tooltip="enter /'entər/ vt. & vi. 进入, 进去参加, 加入登记, 登录时 态: entered, entering, enters">Enter</span> the throng, and you are bathed in a sound so clean it seems to reorganise the air around you. Since opening in late 2023, Open Ground, based in a reconstructed wartime <span class="annot" data-tooltip="bunker /bʌŋk/ n. 铺位；座床；床铺vi. 睡在铺上；逃跑vt. 为…提供铺位时 态: bunked, bunking, bunks">bunker</span> in the west German town of Wuppertal, has <span class="annot" data-tooltip="earned /ɪr/ n. 耳朵；听觉；倾听；穗vi. （美俚）听见；抽穗EARabbr. East African Railways 东非铁路公司">earned</span> a reputation as one of the best-sounding nightclubs in the world. It is another universe from the <span class="annot" data-tooltip="lavish /'lævɪʃ/ adj. 浪费的；丰富的；大方的vt. 浪费；慷慨给予；滥用时 态: lavished, lavishing, lavishes">lavish</span> fleshpots of Las Vegas or Ibiza. But for a certain sort of nightlife connoisseur, this post-industrial town has become an <span class="annot" data-tooltip="essential /ɪ'senʃl/ adj. 基本的；必要的；本质的；精华的">essential</span> stop. Open Ground is the brainchild of Markus Riedel, a local who set up the club with financing from his brother, an entrepreneur. Sick of clubs with <span class="annot" data-tooltip="terrible /'terəbl/ adj. 可怕的；很糟的；令人讨厌的adv. [口]很，非常副 词: terribly">terrible</span></p>
+<p>sound, Mr Riedel and his business partner, Mark Ernestus, veterans of the Berlin music <span class="annot" data-tooltip="scene /siːn/ n. 情景；景象；场面；事件">scene</span>, <span class="annot" data-tooltip="recruited /rɪ'kruːt/ n. 新兵(机构中的)新成员vt. 招聘；吸引(新成员)吸收某人为新成员vt. & vi. 招募，征募(新兵)恢复健康，恢复体">recruited</span> acousticians to turn their <span class="annot" data-tooltip="concrete /'kɑːnkriːt/ adj. 混凝土制的确实的，具体的（而非想象或猜测的）有形的；实在的v. 用混凝土覆盖n. 混凝土时 态: concreted, ">concrete</span> shell into an aural delight. Polyester-lined <span class="annot" data-tooltip="panels /'pænl/ n. 仪表板；嵌板；座谈小组，全体陪审员vt. 嵌镶板时 态: paneled, panelled paneling, pan">panels</span> absorb <span class="annot" data-tooltip="auditory /'ɔːdətɔːri/ n. 听众；礼堂adj. 听觉的；耳朵的">auditory</span> “reflections”, leaving a crystalline sound that brings out details lost in muddier spaces. This wizardry is complemented by speaker technology custom-made for the space. “It’s a temple for music,” enthuses Darren White, <span class="annot" data-tooltip="aka abbr. 又叫做，亦称（also known as）">aka</span> dBridge, a dj who performs at the club. An eclectic approach to <span class="annot" data-tooltip="genre /'ʒɑːnrə/ （文学、绘画、音乐、电影等艺术作品的）体裁，类型">genre</span> expands the appeal. Mr White says his circles are abuzz with talk of Open Ground. As word spreads, djs approach the club seeking bookings. “Everyone who has played wants to play again, and everyone who hasn’t wants to,” chuckles Arthur Rieger, its programming chief. Open Ground has helped <span class="annot" data-tooltip="nudge /nʌdʒ/ n. 用肘轻推；推动；没完没了抱怨的人vt. 用肘轻推；推进；向…不停地唠叨vi. 轻推；推进；唠叨时 态: nudged, ">nudge</span> Wuppertal, Germany’s 17th-biggest town, onto the map. Some youngsters studying in nearby cities like <span class="annot" data-tooltip="cologne 科隆（德意志联邦共和国城市）">Cologne</span> base themselves here in part to be nearer the club, says Mr Riedel. One local, <span class="annot" data-tooltip="encountered /ɪn'kaʊntər/ vt. 遇到, 遭遇偶然碰到, 邂逅n. 突然遇到时 态: encountered, encountering, encount">encountered</span> in the unexpectedly <span class="annot" data-tooltip="calm /kɑːm/ adj. 静的，平静的；沉着的vt. 使平静；使镇定vi. 平静下来；镇定下来n. 风平浪静比较级: calmer, calmes">calm</span> <span class="annot" data-tooltip="lobby /'lɑːbi/ n. 前厅, 厅堂议会休息室游说议员的团体vt. & vi. 向…进行游说[疏通]名 词: lobbyism">lobby</span> during a dancefloor break, enthusiastically <span class="annot" data-tooltip="reels n. 绕线轮，卷筒；摇晃，旋转（reel的复数形式）v. 眩晕，旋转，卷，绕（reel的第三人称单数形式）">reels</span> off a litany of trivia about the town’s history. All of it —surprisingly, for the <span class="annot" data-tooltip="ranting /rænt/ vt. & vi. 夸夸其谈，大叫大嚷地以…说教气愤地)大叫大嚷；不停地大声抱怨时 态: ranted, ranting, ra">ranting</span> of a bug-eyed raver at 3am—turns out to be true. (Wuppertal <span class="annot" data-tooltip="spawned /spɔːn/ n. 菌丝；卵；产物vt. 产卵；酿成，造成；大量生产vi. 产卵；大量生产时 态: spawned, spawning, s">spawned</span> Friedrich Engels and heroin, among other claims to fame.) As rents soar and an abstemious Gen Z displaces its hedonistic elders, many clubs in Germany and beyond are <span class="annot" data-tooltip="confronting /kən'frʌnt/ vt. 遭遇；比较；面对时 态: confronted, confronting, confronts">confronting</span> Clubsterben, or “club death”. A midsized <span class="annot" data-tooltip="venue /'venjuː/ n. 聚集地点;会场;(尤指)体育比赛场所犯罪地点;审判地争论中所持的立场">venue</span> in Wuppertal cannot reverse that <span class="annot" data-tooltip="tide /taɪd/ n. 潮汐；趋势，潮流vt. 随潮漂流时 态: tided, tiding, tides">tide</span>. But it has lifted <span class="annot" data-tooltip="spirits /'spɪrɪt/ n. 精神；心灵；志气；烈酒；情绪vt. 鼓励；鼓舞；诱拐时 态: spirited, spiriting, spirits">spirits</span>, quickened pulses—and provided a haven for clubland’s most discerning ears.■ To stay on top of the biggest European stories, sign up to Café Europa, our weekly subscriber-only newsletter. This article was downloaded by zlibrary from https://www.economist.com//europe/2026/05/13/the-worlds-best-sounding-nightclub-is- in-an-unexpected-<span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span></p>
+<div class="article-separator"></div>
+<div class="article-header">Europe · Europe | No direction home</div>
+<p>To understand European voters’ anger, look at their rent bills Rent-control policies are making Europe’s housing <span class="annot" data-tooltip="shortage /'ʃɔːrtɪdʒ/ n. 不足; 缺少; 缺少量; 不足额">shortage</span> worse May 14th 2026 When Bourgeois Fincas, a <span class="annot" data-tooltip="property /'prɑːpərti/ n. 财产；性质，性能；所有权形容词: propertyless">property</span> agency in Barcelona, lists a flat for rent on the internet, it gets 200 enquiries within an hour or so and it is let within a day. “It’s been like this since last year,” says Jaume Cortes, who works there. “The change is <span class="annot" data-tooltip="brutal /'bruːtl/ adj. 残忍的；野蛮的，不讲理的副 词: brutally">brutal</span>.” The agency is based in the Eixample, a leafy <span class="annot" data-tooltip="grid /ɡrɪd/ n. 格子,格栏地图上的坐标方格输电网">grid</span> of elegant 19th-century streets that <span class="annot" data-tooltip="stretches /stretʃ/ vt. 伸展,张开vi. 伸展adj. 可伸缩的n. 伸展，延伸时 态: stretched, stretching, stre">stretches</span> north from the city’s historic <span class="annot" data-tooltip="gothic adj. 哥特式的；野蛮的n. 哥特式">Gothic</span> heart. In many cases the new <span class="annot" data-tooltip="tenants /'tenənt/ n. 房客, 佃户, 承租人〈律〉占用者, 占有者时 态: tenanted, tenanting, tenants">tenants</span> are digital <span class="annot" data-tooltip="nomads /'noʊmæd/ n. 游牧民；游牧部落的人形容词: nomadic">nomads</span> or other foreigners seeking a second home in the sun. But at the bottom of the market the competition is just as fierce. In poor suburbs of Barcelona and Madrid agents report individual rooms being fought over, some rented by the hour by shift workers who take turns sleeping there.</p>
+<p>All across Europe, cities face housing <span class="annot" data-tooltip="shortages /'ʃɔːrtɪdʒ/ n. 不足; 缺少; 缺少量; 不足额">shortages</span>. Average house prices in the EU surged by 60% between 2015 and 2025, well ahead of <span class="annot" data-tooltip="household /'haʊshoʊld/ n. 同住在一所房子里的人, 一家人, 户adj. 家庭的, 家用的">household</span> incomes. In many <span class="annot" data-tooltip="places /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">places</span> rents take up much more than 40% of average salaries, a <span class="annot" data-tooltip="threshold /'θreʃhoʊld/ n. 门槛; 〈喻〉开始">threshold</span> that can imply financial difficulty (see chart). Housing is an <span class="annot" data-tooltip="urgent /'ɜːrdʒənt/ adj. 紧急的；急迫的副 词: urgently">urgent</span> political <span class="annot" data-tooltip="issue /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issue</span>: some link the populist right’s <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> to the difficulty of finding a home, especially for the young. In Spain and the Netherlands <span class="annot" data-tooltip="polls /poʊl/ n. 民意测验；投票；投票数；投票所vt. 剪短；对…进行民意测验；获得选票；投票vi. 投票adj. 剪过毛的；修过枝的；无">polls</span> find it is the top public concern. The EU talks of a “housing crisis”; its 27 national leaders are <span class="annot" data-tooltip="due /duː/ adj. 到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）">due</span> to discuss this at a summit this year. In 2024 the European <span class="annot" data-tooltip="commission /kə'mɪʃn/ n. 授权, 委托委员会佣金, 回扣vt. 委任, 委托时 态: commissioned, commissioning, c">Commission</span> appointed a housing <span class="annot" data-tooltip="commissioner /kə'mɪʃn/ n. 授权, 委托委员会佣金, 回扣vt. 委任, 委托时 态: commissioned, commissioning, c">commissioner</span> for the first time (shared with <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span>). It plans to <span class="annot" data-tooltip="tweak /twiːk/ n. 拧；扭；焦急vt. 扭；用力拉；开足马力时 态: tweaked, tweaking, tweaks">tweak</span> rules to allow more public investment and let governments limit tourist flats. Housing markets <span class="annot" data-tooltip="vary /'veri/ vi. 变化；违反；[生]变异vt. 改变；使多样化；[音]变奏时 态: varied varying, varies">vary</span> from country to country. Germans <span class="annot" data-tooltip="tend /tend/ vt. 照料，照顾，伺候vi. 往，朝向易于；倾向时 态: tended，tending，tends">tend</span> to rent their homes, while southern and eastern Europeans prefer to buy. Public and social housing (ie, those subsidised or run by non-profit organisations) makes up 30% or more of the stock in the Netherlands and in Vienna. By <span class="annot" data-tooltip="contrast /'kɑːntræst/ n. 对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照时 态: contrasted, cont">contrast</span>, in Spain public housing accounts for just 3.4%. The EU average is 8%.</p>
+<p>Yet the <span class="annot" data-tooltip="surge /sɜːrdʒ/ n. (情感的) 突发，涌现，突然出现（数量的）急剧上升，激增；大量；一大批奔涌向前；突然的向上运动（电流）浪涌v. 涌；汹涌">surge</span> in rents and house prices is taking <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span> across the continent, a <span class="annot" data-tooltip="symptom /'sɪmptəm/ n. 征兆；症状">symptom</span> of a growing mismatch between supply and demand. Nowhere is the <span class="annot" data-tooltip="shortage /'ʃɔːrtɪdʒ/ n. 不足; 缺少; 缺少量; 不足额">shortage</span> more acute than in Spain. The Bank of Spain reckons there is a shortfall of 700,000 homes. There are 1.2m more <span class="annot" data-tooltip="households /'haʊshoʊld/ n. 同住在一所房子里的人, 一家人, 户adj. 家庭的, 家用的">households</span> now than in 2021, mainly because of massive immigration. But Spain builds fewer than 90,000 homes per year. On top of that, sun-seeking foreigners account for up to a fifth of buyers. There are <span class="annot" data-tooltip="shortages /'ʃɔːrtɪdʒ/ n. 不足; 缺少; 缺少量; 不足额">shortages</span> elsewhere, too. Germany is building only around half the 400,000 new housing units economists say it needs each year. France will start around 300,000 new homes this year, according to its Building Federation, but that is some 220,000 fewer than it needs. Immigration is one factor, but so is the steady dribble of people from countryside to city. A census in Spain in 2021 found 3.8m empty homes, 14% of the total, mostly in poor repair or in small towns or villages where few want to live. Much the same applies in Italy. One response to the crisis is rent controls. These are longstanding in Germany. In the Netherlands, where the waiting list for social housing in Amsterdam is almost 11 years, a centrist government greatly expanded them for private <span class="annot" data-tooltip="rentals /'rentl/ n. 租赁；租金收入，租金adj. 租赁的；收取租金的">rentals</span> in 2024. In Spain in 2023 the Socialist-led administration</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>territory</td><td>/'terətɔːri/ n.</td><td>领土, 版图管区, 营业地区地盘, 领域, 范围</td></tr>
+<tr><td>diplomatic</td><td>/ˌdɪplə'mætɪk/ adj.</td><td>外交上的, 外交人员的有手腕的, 策略的, 善于交涉的, 圆滑的</td></tr>
+<tr><td>verdict</td><td>/'vɜːrdɪkt/ n.</td><td>(陪审团的)裁决, 裁定(经过试验、检验或体验发表的)决定, 意见</td></tr>
+<tr><td>polls</td><td>/poʊl/ n.</td><td>民意测验；投票；投票数；投票所vt. 剪短；对…进行民意测验；获得选票；投票vi. 投票adj. 剪过毛的；修过枝的；无角的, polling, polls</td></tr>
+<tr><td>hosted</td><td>/hoʊst/ n.</td><td>主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集, hosting, hosts</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>bilateral</td><td>/ˌbaɪ'lætərəl/ adj.</td><td>双边的, 双方的</td></tr>
+<tr><td>infrastructure</td><td>/'ɪnfrəstrʌktʃər/ n.</td><td>基础设施; 基础结构</td></tr>
+<tr><td>annual</td><td>/'ænjuəl/ adj.</td><td>年度的；每年的n. 年刊，年鉴；一年生植物</td></tr>
+<tr><td>murals</td><td>/'mjʊrəl/ adj.</td><td>墙壁的n. 壁画；（美）壁饰</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>territory</td><td>/'terətɔːri/ n.</td><td>领土, 版图管区, 营业地区地盘, 领域, 范围</td></tr>
+<tr><td>prisoners</td><td>/'prɪznər/ n.</td><td>囚徒俘虏被夺去自由的人[动物]等</td></tr>
+<tr><td>pro</td><td>/proʊ/ n.</td><td>从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞成；支持Pro脯氨酸PROabbr. P</td></tr>
+<tr><td>discontent</td><td>/ˌdɪskən'tent/ n.</td><td>不满, discontenting, discontents</td></tr>
+<tr><td>elite</td><td>/eɪ'liːt/ n.</td><td>（社会）上层集团；掌权人物；出类拔萃的人，精英adj.（社会）上层集团的；掌权人物的；精英的</td></tr>
+<tr><td>residents</td><td>/'rezɪdənt/ adj.</td><td>定居的; 常驻的n. 居民(旅馆的)住宿者</td></tr>
+<tr><td>civil</td><td>/'sɪvl/ adj.</td><td>公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的</td></tr>
+<tr><td>contract</td><td>/'kɑːntrækt/ vi.</td><td>感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约, contracting, contracts</td></tr>
+<tr><td>polls</td><td>/poʊl/ n.</td><td>民意测验；投票；投票数；投票所vt. 剪短；对…进行民意测验；获得选票；投票vi. 投票adj. 剪过毛的；修过枝的；无角的, polling, polls</td></tr>
+<tr><td>outfit</td><td>/'aʊtfɪt/ n.</td><td>（为特定场合或活动而穿的）全套服装，装束全套装备；成套工具组织；公司；团队；军事单位v. 装备，配备；为…提供设备（或服装），outfitting，outfit</td></tr>
+<tr><td>flaws</td><td>/flɔː/ </td><td>n.瑕疵，缺点；一阵狂风；短暂的风暴；裂缝，裂纹</td></tr>
+<tr><td>anti</td><td>/'ænti/ adj.</td><td>反对的n. 反对者，反对论者</td></tr>
+<tr><td>corruption</td><td>/kə'rʌpʃn/ n.</td><td>堕落;腐化;腐败;贿赂腐烂</td></tr>
+<tr><td>drive</td><td>/draɪv/ vt.</td><td>驱赶驱使, 促使敲, 击vt. & vi. 驾驶n. 乘车旅行私人车道传动, 驱动干劲, 积极性, 能动性紧迫, 逼迫, 压力, drives</td></tr>
+<tr><td>streak</td><td>/striːk/ n.</td><td>条纹，线条；倾向vi. 飞跑，疾驶；加上条纹vt. 飞跑，疾驰；加条纹于, streaking, streaks</td></tr>
+<tr><td>opponents</td><td>/ə'poʊnənt/ n.</td><td>对手, 敌手；反对者</td></tr>
+<tr><td>monologue</td><td>/'mɑːnəlɔːɡ/ n.</td><td>[戏]独白</td></tr>
+<tr><td>tank</td><td>/tæŋk/ n.</td><td>（存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内, tanking, tanks</td></tr>
+<tr><td>campaign</td><td>/kæm'peɪn/ n.</td><td>运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）, campaigning, campai</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>vital</td><td>/'vaɪtl/ adj.</td><td>极重要的，必不可少的维持生命所必需的；生命的有生气的，充满生机的</td></tr>
+<tr><td>infrastructure</td><td>/'ɪnfrəstrʌktʃər/ n.</td><td>基础设施; 基础结构</td></tr>
+<tr><td>legacy</td><td>/'leɡəsi/ n.</td><td>遗产, 遗赠物遗留之物</td></tr>
+<tr><td>batches</td><td>/bætʃ/ n.</td><td>一炉一批, 一组, 一群, batching, batches</td></tr>
+<tr><td>brand</td><td>/brænd/ n.</td><td>商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责, branding, brands</td></tr>
+<tr><td>prone</td><td>/proʊn/ adj.</td><td>易于…的; 很可能…的俯卧的</td></tr>
+<tr><td>brussels</td><td>/ˈbrʌsəlz/ n.</td><td>布鲁塞尔（比利时首都）</td></tr>
+<tr><td>civil</td><td>/'sɪvl/ adj.</td><td>公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的</td></tr>
+<tr><td>contract</td><td>/'kɑːntrækt/ vi.</td><td>感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约, contracting, contracts</td></tr>
+<tr><td>proved</td><td>/proʊ/ n.</td><td>从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞成；支持Pro脯氨酸PROabbr. P</td></tr>
+<tr><td>toxic</td><td>/'tɑːksɪk/ adj.</td><td>有毒的；因中毒引起的</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>flocking</td><td>/flɑːk/ n.</td><td>群；棉束（等于floc）vt. 用棉束填满vi. 聚集；成群而行Flock(瑞士)弗洛克(很短的粘胶短纤维), flocking, flocks</td></tr>
+<tr><td>obscure</td><td>/əb'skjʊr/ adj.</td><td>无名的；鲜为人知的；默默无闻的费解的，晦涩的；模糊的，朦胧的；不清楚的v. 遮掩；遮蔽；使不分明隐藏，掩盖；使难理解，使晦涩, obscurest</td></tr>
+<tr><td>enter</td><td>/'entər/ vt.</td><td>& vi. 进入, 进去参加, 加入登记, 登录, entering, enters</td></tr>
+<tr><td>bunker</td><td>/bʌŋk/ n.</td><td>铺位；座床；床铺vi. 睡在铺上；逃跑vt. 为…提供铺位, bunking, bunks</td></tr>
+<tr><td>earned</td><td>/ɪr/ n.</td><td>耳朵；听觉；倾听；穗vi. （美俚）听见；抽穗EARabbr. East African Railways 东非铁路公司, earing, ears</td></tr>
+<tr><td>lavish</td><td>/'lævɪʃ/ adj.</td><td>浪费的；丰富的；大方的vt. 浪费；慷慨给予；滥用, lavishing, lavishes</td></tr>
+<tr><td>essential</td><td>/ɪ'senʃl/ adj.</td><td>基本的；必要的；本质的；精华的</td></tr>
+<tr><td>terrible</td><td>/'terəbl/ adj.</td><td>可怕的；很糟的；令人讨厌的adv. [口]很，非常</td></tr>
+<tr><td>scene</td><td>/siːn/ n.</td><td>情景；景象；场面；事件</td></tr>
+<tr><td>recruited</td><td>/rɪ'kruːt/ n.</td><td>新兵(机构中的)新成员vt. 招聘；吸引(新成员)吸收某人为新成员vt. & vi. 招募，征募(新兵)恢复健康，恢复体力，recruiting，recruit</td></tr>
+<tr><td>concrete</td><td>/'kɑːnkriːt/ adj.</td><td>混凝土制的确实的，具体的（而非想象或猜测的）有形的；实在的v. 用混凝土覆盖n. 混凝土, concreting, concretes</td></tr>
+<tr><td>panels</td><td>/'pænl/ n.</td><td>仪表板；嵌板；座谈小组，全体陪审员vt. 嵌镶板, panelled paneling, panelling panels, panels</td></tr>
+<tr><td>auditory</td><td>/'ɔːdətɔːri/ n.</td><td>听众；礼堂adj. 听觉的；耳朵的</td></tr>
+<tr><td>aka</td><td>— abbr.</td><td>又叫做，亦称（also known as）</td></tr>
+<tr><td>genre</td><td>/'ʒɑːnrə/ </td><td>（文学、绘画、音乐、电影等艺术作品的）体裁，类型</td></tr>
+<tr><td>nudge</td><td>/nʌdʒ/ n.</td><td>用肘轻推；推动；没完没了抱怨的人vt. 用肘轻推；推进；向…不停地唠叨vi. 轻推；推进；唠叨, nudging, nudges</td></tr>
+<tr><td>cologne</td><td>— </td><td>科隆（德意志联邦共和国城市）</td></tr>
+<tr><td>encountered</td><td>/ɪn'kaʊntər/ vt.</td><td>遇到, 遭遇偶然碰到, 邂逅n. 突然遇到, encountering, encounters</td></tr>
+<tr><td>calm</td><td>/kɑːm/ adj.</td><td>静的，平静的；沉着的vt. 使平静；使镇定vi. 平静下来；镇定下来n. 风平浪静, calmest</td></tr>
+<tr><td>lobby</td><td>/'lɑːbi/ n.</td><td>前厅, 厅堂议会休息室游说议员的团体vt. & vi. 向…进行游说[疏通]</td></tr>
+<tr><td>reels</td><td>— n.</td><td>绕线轮，卷筒；摇晃，旋转（reel的复数形式）v. 眩晕，旋转，卷，绕（reel的第三人称单数形式）</td></tr>
+<tr><td>ranting</td><td>/rænt/ vt.</td><td>& vi. 夸夸其谈，大叫大嚷地以…说教气愤地)大叫大嚷；不停地大声抱怨, ranting, rants</td></tr>
+<tr><td>spawned</td><td>/spɔːn/ n.</td><td>菌丝；卵；产物vt. 产卵；酿成，造成；大量生产vi. 产卵；大量生产, spawning, spawns</td></tr>
+<tr><td>confronting</td><td>/kən'frʌnt/ vt.</td><td>遭遇；比较；面对, confronting, confronts</td></tr>
+<tr><td>venue</td><td>/'venjuː/ n.</td><td>聚集地点;会场;(尤指)体育比赛场所犯罪地点;审判地争论中所持的立场</td></tr>
+<tr><td>tide</td><td>/taɪd/ n.</td><td>潮汐；趋势，潮流vt. 随潮漂流, tiding, tides</td></tr>
+<tr><td>spirits</td><td>/'spɪrɪt/ n.</td><td>精神；心灵；志气；烈酒；情绪vt. 鼓励；鼓舞；诱拐, spiriting, spirits</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>shortage</td><td>/'ʃɔːrtɪdʒ/ n.</td><td>不足; 缺少; 缺少量; 不足额</td></tr>
+<tr><td>property</td><td>/'prɑːpərti/ n.</td><td>财产；性质，性能；所有权</td></tr>
+<tr><td>brutal</td><td>/'bruːtl/ adj.</td><td>残忍的；野蛮的，不讲理的</td></tr>
+<tr><td>grid</td><td>/ɡrɪd/ n.</td><td>格子,格栏地图上的坐标方格输电网</td></tr>
+<tr><td>stretches</td><td>/stretʃ/ vt.</td><td>伸展,张开vi. 伸展adj. 可伸缩的n. 伸展，延伸, stretching, stretches</td></tr>
+<tr><td>gothic</td><td>— adj.</td><td>哥特式的；野蛮的n. 哥特式</td></tr>
+<tr><td>tenants</td><td>/'tenənt/ n.</td><td>房客, 佃户, 承租人〈律〉占用者, 占有者, tenanting, tenants</td></tr>
+<tr><td>nomads</td><td>/'noʊmæd/ n.</td><td>游牧民；游牧部落的人</td></tr>
+<tr><td>shortages</td><td>/'ʃɔːrtɪdʒ/ n.</td><td>不足; 缺少; 缺少量; 不足额</td></tr>
+<tr><td>household</td><td>/'haʊshoʊld/ n.</td><td>同住在一所房子里的人, 一家人, 户adj. 家庭的, 家用的</td></tr>
+<tr><td>places</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>threshold</td><td>/'θreʃhoʊld/ n.</td><td>门槛; 〈喻〉开始</td></tr>
+<tr><td>urgent</td><td>/'ɜːrdʒənt/ adj.</td><td>紧急的；急迫的</td></tr>
+<tr><td>issue</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>polls</td><td>/poʊl/ n.</td><td>民意测验；投票；投票数；投票所vt. 剪短；对…进行民意测验；获得选票；投票vi. 投票adj. 剪过毛的；修过枝的；无角的, polling, polls</td></tr>
+<tr><td>due</td><td>/duː/ adj.</td><td>到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）</td></tr>
+<tr><td>commission</td><td>/kə'mɪʃn/ n.</td><td>授权, 委托委员会佣金, 回扣vt. 委任, 委托, commissioning, commissions</td></tr>
+<tr><td>commissioner</td><td>/kə'mɪʃn/ n.</td><td>授权, 委托委员会佣金, 回扣vt. 委任, 委托, commissioning, commissions</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>tweak</td><td>/twiːk/ n.</td><td>拧；扭；焦急vt. 扭；用力拉；开足马力, tweaking, tweaks</td></tr>
+<tr><td>vary</td><td>/'veri/ vi.</td><td>变化；违反；[生]变异vt. 改变；使多样化；[音]变奏, varies</td></tr>
+<tr><td>tend</td><td>/tend/ vt.</td><td>照料，照顾，伺候vi. 往，朝向易于；倾向，tending，tends</td></tr>
+<tr><td>contrast</td><td>/'kɑːntræst/ n.</td><td>对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照, contrasting, contrasts</td></tr>
+<tr><td>surge</td><td>/sɜːrdʒ/ n.</td><td>(情感的) 突发，涌现，突然出现（数量的）急剧上升，激增；大量；一大批奔涌向前；突然的向上运动（电流）浪涌v. 涌；汹涌；涌动(感情、感觉) 突袭，涌动，突发(</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>symptom</td><td>/'sɪmptəm/ n.</td><td>征兆；症状</td></tr>
+<tr><td>shortage</td><td>/'ʃɔːrtɪdʒ/ n.</td><td>不足; 缺少; 缺少量; 不足额</td></tr>
+<tr><td>households</td><td>/'haʊshoʊld/ n.</td><td>同住在一所房子里的人, 一家人, 户adj. 家庭的, 家用的</td></tr>
+<tr><td>shortages</td><td>/'ʃɔːrtɪdʒ/ n.</td><td>不足; 缺少; 缺少量; 不足额</td></tr>
+<tr><td>rentals</td><td>/'rentl/ n.</td><td>租赁；租金收入，租金adj. 租赁的；收取租金的</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day23.html" class="nav-btn">← Day 23</a>
+  <a href="day25.html" class="nav-btn">Day 25 →</a>
+</div>
+
+<div class="progress">📖 Day 24 of 44</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-05-16</div>
+
+</body>
+</html>

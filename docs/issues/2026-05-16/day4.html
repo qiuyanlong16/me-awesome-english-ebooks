@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leaders | Jeopardy in Jakarta</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-05-16</div>
+
+<h1 class="article-title">Leaders | Jeopardy in Jakarta</h1>
+<div class="article-section">Leaders</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>respected finance minister and replaced her with Purbaya Yudhi Sadewa, who has called the IMF “stupid” and who told The Economist in April that the president need not worry about “developments in the global economy [or] in the global oil price”. <span class="annot" data-tooltip="indonesian /ˌɪndə'niːʒn/ n. 印度尼西亚人;印度尼西亚国民印度尼西亚人后裔(东印度群岛)前马来人的一员西澳特罗尼西亚语族adj. (有关)印度尼西亚的">Indonesian</span> businessfolk are scared to speak out, perhaps because Mr Prabowo is a thin-skinned former general with a sketchy human-rights record, or perhaps because he has recently been <span class="annot" data-tooltip="bullying /'bʊli/ v. 迫使；胁迫欺负；恐吓；欺凌n. 恃强凌弱者；恶霸adj. 顶好的，快活的，第一流的时 态: bullied，bullyi">bullying</span> big business. Mr Prabowo appears to be insulating himself from <span class="annot" data-tooltip="reality /ri'æləti/ n. 现实；真实；实际">reality</span>. So he may not listen to <span class="annot" data-tooltip="sober /'soʊbər/ adj. 冷静的，清醒的；未醉的vt. 使醒酒，使清醒；使严肃比较级: soberer, soberest">sober</span> advice. <span class="annot" data-tooltip="nonetheless /ˌnʌnðə'les/ adv. 虽然如此,但是">Nonetheless</span>, here is some. His pet projects are unaffordable. Before the Iran war, spending a projected 10% of the budget on just two of them—free school meals and a network of 80,000 village co- operatives—was merely wasteful. Now, the <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span> <span class="annot" data-tooltip="crunch /krʌntʃ/ n. 咬碎，咬碎声；扎扎地踏vt. 压碎；嘎扎嘎扎的咬嚼；扎扎地踏过vi. 嘎吱作响地咀嚼；嘎吱嘎吱地踏过时 态: crunc">crunch</span> has wiped out any room for error. Mr Prabowo must change course or risk a crisis. He must cut spending on his pet projects, or on <span class="annot" data-tooltip="indonesia /ˌɪndə'niːʒə/ n. 印度尼西亚(东南亚岛国)">Indonesia</span>’s <span class="annot" data-tooltip="colossal /kə'lɑːsl/ adj. 巨大的；异常的，非常的">colossal</span> fossil- fuel <span class="annot" data-tooltip="subsidies /'sʌbsədi/ n. 津贴；补助金；补贴">subsidies</span>, or break a law that <span class="annot" data-tooltip="caps abbr. Cassette Programming System 盒式磁带程序设计系统">caps</span> the budget deficit at 3% of GDP. Each option comes with risks. To cut his pet boondoggles would make him look weak. To let energy prices <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> would invite unrest. So Mr Prabowo may take the third path: letting the deficit <span class="annot" data-tooltip="breach /briːtʃ/ n. 破坏, 违反破裂, 不和缺口, 裂口vt. 攻破破坏, 违反时 态: breached, breaching, brea">breach</span> its legal limit. That would be a mistake. True, the 3% limit is an <span class="annot" data-tooltip="arbitrary /'ɑːrbɪtreri/ adj. 随意的, 主观的专横的, 独断专行的副 词: arbitrarily">arbitrary</span> figure copy-and- pasted from Europe’s Maastricht treaty. But since the crisis of 1998 it has signalled that Indonesia’s government is <span class="annot" data-tooltip="serious /'sɪriəs/ adj. 严肃的，严重的；认真的；庄重的；危急的副 词: seriously">serious</span> about <span class="annot" data-tooltip="fiscal /'fɪskl/ adj. 国库的；会计的，财政的副 词: fiscally">fiscal</span> discipline. Now investors are jumpy. Interest payments as a share of government <span class="annot" data-tooltip="revenue /'revənuː/ n. 收入，收益；财政收入，税收">revenue</span> are surging. <span class="annot" data-tooltip="credit /'kredɪt/ n. 赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)时 态:">Credit</span>-rating agencies are eyeing a <span class="annot" data-tooltip="downgrade /ˌdaʊn'ɡreɪd/ vt. 使降低, 使降级时 态: downgraded, downgrading, downgrades">downgrade</span>. On Mr Prabowo’s watch, $6bn in foreign capital has fled and the rupiah has sagged by 11% against the dollar to a record low. <span class="annot" data-tooltip="busting /bʌst/ vi. 爆裂；破产；降低级别vt. 使爆裂；使破产；逮捕n. 半身像；胸部；萧条；破产adj. 破产了的；毁坏了的时 态: bu">Busting</span> the budget <span class="annot" data-tooltip="cap /kæp/ n. 帽子；盖vi. 脱帽致意vt. 覆盖；胜过；给…戴帽；加盖于Cap摩羯座CAPabbr. Common Agricult">cap</span> would push borrowing costs higher. Even as he makes the economy more precarious, Mr Prabowo is eroding Indonesian <span class="annot" data-tooltip="democracy /dɪ'mɑːkrəsi/ n. 民主, 民主制民主国家">democracy</span>. Legislative opposition has been all but neutered, and <span class="annot" data-tooltip="proposals /prə'poʊzl/ n. 提议，建议；求婚">proposals</span> to end direct elections for provincial governors do not bode well. <span class="annot" data-tooltip="civil /'sɪvl/ adj. 公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的副 词: civilly">Civil</span> <span class="annot" data-tooltip="society /sə'saɪəti/ n. 社会；社交界；交往；社团">society</span> is intimidated. There are few <span class="annot" data-tooltip="avenues /'ævənuː/ n. 林荫道, 大街途径, 手段">avenues</span> for dissent, and little creative struggle between competing ideas. <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">Far</span> too much depends on the <span class="annot" data-tooltip="instincts /'ɪnstɪŋkt/ n. 本能，直觉；天性adj. 充满着的">instincts</span> of a single, badly advised ex-soldier.</p>
+<p>He needs to hear unpalatable truths. Yes, cheap fuel is popular. But it <span class="annot" data-tooltip="encourages /ɪn'kɜːrɪdʒ/ vt. 鼓励, 激励促进, 助长, 激发时 态: encouraged, encouraging, encourages">encourages</span> <span class="annot" data-tooltip="consumption /kən'sʌmpʃn/ n. 消费，消耗；消费[耗]量肺病；结核病">consumption</span> at a time of <span class="annot" data-tooltip="shortages /'ʃɔːrtɪdʒ/ n. 不足; 缺少; 缺少量; 不足额">shortages</span>. Yes, people like free school lunches. But giving them to everyone is wasteful. Wiser to focus on <span class="annot" data-tooltip="pregnant /'preɡnənt/ adj. 怀孕的, 怀胎的含蓄的, 意味深长的孕育着…的, 预示着…前景的">pregnant</span> mothers and toddlers in poor families, who need better nutrition to avoid <span class="annot" data-tooltip="stunting /stʌn/ vt. 击晕, 打晕使大吃一惊, 使震惊时 态: stunned, stunning, stuns">stunting</span>. Yes, <span class="annot" data-tooltip="indonesian /ˌɪndə'niːʒn/ n. 印度尼西亚人;印度尼西亚国民印度尼西亚人后裔(东印度群岛)前马来人的一员西澳特罗尼西亚语族adj. (有关)印度尼西亚的">Indonesian</span> farmers were being ripped off by middlemen when buying fertiliser. But there are cheaper ways to <span class="annot" data-tooltip="tackle /'tækl/ vt. 解决；应付vt. & vi. 捉住；扭倒n. 拦截；擒抱器具，器械，用具滑车，滑轮组时 态: tackled，tackl">tackle</span> this than creating those 80,000 village co-operatives, which are likely to be graft- <span class="annot" data-tooltip="prone /proʊn/ adj. 易于…的; 很可能…的俯卧的名 词: proneness">prone</span>. And yes, the 3% deficit limit could well be lifted some day. But first Mr Prabowo must convince markets that <span class="annot" data-tooltip="indonesia /ˌɪndə'niːʒə/ n. 印度尼西亚(东南亚岛国)">Indonesia</span>’s finances are in safe hands. Indonesia has made great advances in the past <span class="annot" data-tooltip="quarter /'kwɔːrtər/ n. 四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一时 ">quarter</span>-century. Under a succession of reasonably <span class="annot" data-tooltip="pragmatic /præɡ'mætɪk/ adj. 务实的；实事求是的；注重实效的实用主义的，实用主义观点的形容词: pragmatical">pragmatic</span> governments, income per person has more than doubled and <span class="annot" data-tooltip="democracy /dɪ'mɑːkrəsi/ n. 民主, 民主制民主国家">democracy</span> has put down roots. Mr Prabowo is not a kleptocratic despot like his late father-in-law, but he is chipping away at the progress his country has made since the bad old days. The president must stop trying to squelch opposition in the legislature, media and <span class="annot" data-tooltip="civil /'sɪvl/ adj. 公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的副 词: civilly">civil</span> <span class="annot" data-tooltip="society /sə'saɪəti/ n. 社会；社交界；交往；社团">society</span>. Dissent that cannot find an <span class="annot" data-tooltip="outlet /'aʊtlet/ n. 出口, 出路发泄的途径经销店">outlet</span> in politics will <span class="annot" data-tooltip="spill /spɪl/ vt. 使溢出，使流出；使摔下vi. 溢出，流出；摔下；涌流n. 溢出，溅出；溢出量；摔下；小塞子时 态: spilled, s">spill</span> onto the streets, as it did during riots last year. His insistence that opposition should be “polite” is a <span class="annot" data-tooltip="recipe /'resəpi/ n. 烹饪法; 食谱方法; 秘诀; 诀窍">recipe</span> for it one day turning <span class="annot" data-tooltip="violent /'vaɪələnt/ adj. 暴力引起的, 粗暴的剧烈的, 强烈的副 词: violently">violent</span>. There is hope. Mr Prabowo cares about his <span class="annot" data-tooltip="legacy /'leɡəsi/ n. 遗产, 遗赠物遗留之物">legacy</span>. So he needs to realise that a huge, sprawling multi-ethnic archipelago like Indonesia cannot <span class="annot" data-tooltip="simply /'sɪmpli/ adv. 简单地；朴素地；简直；仅仅；坦白地">simply</span> be given orders as if it were an army unit. It needs a commander-in-chief who listens to many voices, rather than surrounding himself with yes-men. ■ Subscribers to The Economist can sign up to our Opinion newsletter, which brings together the best of our leaders, <span class="annot" data-tooltip="columns /'kɑːləm/ n. 圆柱，柱形物；纵队，列；专栏形容词: columned">columns</span>, guest <span class="annot" data-tooltip="essays /'eseɪ/ n. 散文, 随笔">essays</span> and reader <span class="annot" data-tooltip="correspondence /ˌkɔːrə'spɑːndəns/ n. 信件, 函件通信, 通信联系一致, 相似">correspondence</span>. This article was downloaded by zlibrary from https://www.economist.com//leaders/2026/05/14/indonesia-the-biggest-muslim- majority-country-is-on-a-risky-path</p>
+<div class="article-separator"></div>
+<div class="article-header">Leaders · Leaders | The shocking lack of lactologists</div>
+<p>Mothers who cannot breastfeed have been given <span class="annot" data-tooltip="terrible /'terəbl/ adj. 可怕的；很糟的；令人讨厌的adv. [口]很，非常副 词: terribly">terrible</span> advice Medicine has neglected mammary glands for too long May 14th 2026 MEDICINE IS A neatly sorted discipline. From head to toe, all <span class="annot" data-tooltip="major /'meɪdʒər/ adj. 主要的；主修的；重要的；较多的n. 成年人；主修科目；陆军少校vi. 主修时 态: majored, majoring,">major</span> parts of the body have a specialism: cardiology for the heart, urology for (male) genitals, neurology for the brain, even psychiatry for the embodied mind. All, that is, but one. Mammary glands, though <span class="annot" data-tooltip="possessed /pə'zes/ vt. 具有占据时 态: possessed, possessing, possesses">possessed</span> by one half of <span class="annot" data-tooltip="humanity /hjuː'mænəti/ n. 人类；人道；仁慈；人文学科">humanity</span> and admired by the other, lack a <span class="annot" data-tooltip="dedicated /'dedɪkeɪtɪd/ adj. 专注的;献身的专用的">dedicated</span> field. Science, too, has neglected the body’s milk-making function. This lack of “lactology” is bad for <span class="annot" data-tooltip="infants /'ɪnfənt/ n. 婴儿；幼儿adj. 供婴幼儿用的初期的；初创期的">infants</span> and mothers. More than 130m women give birth each year. Of the <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> 2bn women and girls <span class="annot" data-tooltip="alive /ə'laɪv/ adj. 活着的, 在世的, 存在的有活力的, 活跃的, 有生气的">alive</span> today who have not yet done so, over 90% can expect to have a child at some point. Most mothers try to breastfeed, but two in five of those</p>
+<p>who do will <span class="annot" data-tooltip="encounter /ɪn'kaʊntər/ vt. 遇到, 遭遇偶然碰到, 邂逅n. 突然遇到时 态: encountered, encountering, encount">encounter</span> at least some problems. For some it hurts, like being bitten by a critter you can’t swat away. For others, producing enough milk to feed their baby proves impossible. And often, the advice they receive is both painful and useless. Yet despite the vast unmet demand for better advice and treatment, scandalously little is known about the subject. A search for “low milk supply” or “low milk production” returns a meagre 14,000 <span class="annot" data-tooltip="academic /ˌækə'demɪk/ adj. 学院的；学术的；理论的n. 大学生，大学教师；学者副 词: academically">academic</span> papers on <span class="annot" data-tooltip="pubmed /pʌb/ n. 酒馆；客栈">PubMed</span>, a database of 40m medical-research papers. “Erectile dysfunction”, which afflicts perhaps 300m men (mostly <span class="annot" data-tooltip="minimally /'mɪnɪml/ adj. 〈正式〉最小的; 极少的名 词: minimality">minimally</span>), elicits 32,000 studies. This neglect matters. Mothers are free to choose not to breastfeed. But most want to try, because the benefits for their babies, such as <span class="annot" data-tooltip="helping /'helpɪŋ/ n. （进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的">helping</span> <span class="annot" data-tooltip="ward /wɔːrd/ n. 监视；保卫；病房vt. 避开；保卫；守护Ward沃德(姓氏, 男子名)时 态: warded, warding, war">ward</span> off <span class="annot" data-tooltip="infections /ɪn'fekʃn/ n. 〈医〉传染, 感染传染病">infections</span>, are large. A study in the Lancet, a medical <span class="annot" data-tooltip="journal /'dʒɜːrnl/ n. 日报，杂志；日记；[经]分类账">journal</span>, in 2016 found that if all babies were <span class="annot" data-tooltip="breastfed /brest/ n. 乳房，胸部；胸怀；心情vt. 以胸对着；与…搏斗时 态: breasted, breasting, breasts">breastfed</span>, 823,000 deaths of children under five would be averted each year, partly because in poor countries <span class="annot" data-tooltip="formula /'fɔːrmjələ/ n. 公式，准则；配方；婴儿食品形容词: formulaic">formula</span> is often made with dirty water. Understanding why some women give up, and what can be done to reduce their <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span>, is therefore of <span class="annot" data-tooltip="immense /ɪ'mens/ adj. 极大的, 巨大的副 词: immensely">immense</span> <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span>. Instead, doctors often dismiss their problems, offer dubious guesswork as advice or tell mothers to switch to formula. In parts of Europe between 20% and 40% of newborns are fed <span class="annot" data-tooltip="powdered /'paʊdər/ n. 粉末；粉；火药；尘土vt. 使成粉末；搽粉于；撒粉vi. 搽粉；变成粉末时 态: powdered, powdering">powdered</span> milk before leaving the hospital. Pregnancy care in some <span class="annot" data-tooltip="places /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">places</span> scarcely mentions breastfeeding, perhaps on the assumption that it will be easy because it is natural. So is childbirth, but that does not make obstetricians <span class="annot" data-tooltip="redundant /rɪ'dʌndənt/ adj. 因人员过剩而被解雇的不需要的; 多余的副 词: redundantly">redundant</span>. The gap left by medicine is filled by non-<span class="annot" data-tooltip="physicians /fɪ'zɪʃn/ n. 医生, 内科医生">physicians</span> on breastfeeding <span class="annot" data-tooltip="helplines n. 热线服务电话">helplines</span> and “lactation consultants” who in the absence of hard facts often base their <span class="annot" data-tooltip="counsel /'kaʊnsl/ n. 忠告；讨论；商议；决策；法律顾问vt. 劝告；建议vi. 提出忠告；商讨时 态: counseled, counsell">counsel</span> on <span class="annot" data-tooltip="hunches /hʌntʃ/ n. 预感；大块；肉峰">hunches</span>. A better understanding of <span class="annot" data-tooltip="breasts /brest/ n. 乳房，胸部；胸怀；心情vt. 以胸对着；与…搏斗时 态: breasted, breasting, breasts">breasts</span> would allow doctors to make important distinctions. Some mothers produce enough milk but have trouble releasing it. For them, the answer may be to <span class="annot" data-tooltip="stimulate /'stɪmjuleɪt/ vt. 刺激；激励时 态: stimulated，stimulating，stimulates">stimulate</span> the flow by putting the baby to a <span class="annot" data-tooltip="nipple /'nɪpl/ n. 奶嘴；乳头，奶头">nipple</span> more often, or by using a breastpump. For mothers who cannot produce enough, different approaches are needed. For years doctors assumed this problem was rare: that no more than 5% of mothers suffered from <span class="annot" data-tooltip="inadequate /ɪn'ædɪkwət/ adj. 不充足的，不适当的不足胜任的，信心不足的adv. 不充足地，不适当地；不足胜任地副 词: inadequately">inadequate</span> milk supply. Recent research, by scientists who have bothered to look, suggests that the true figure is closer to 10% or even 20%. The causes of low milk supply are often linked to complicated biological pathways beyond a new mother’s</p>
+<p>control, as we explore in our “Weekend Intelligence” <span class="annot" data-tooltip="podcast /'pɑːdkæst/ n. 播客">podcast</span>. Some are <span class="annot" data-tooltip="genetic /dʒə'netɪk/ adj. 遗传的；起源的；基因的副 词: genetically">genetic</span>. Others may involve conditions like <span class="annot" data-tooltip="obesity /oʊ'biːsəti/ n. 肥大，肥胖">obesity</span>, <span class="annot" data-tooltip="diabetes /ˌdaɪə'biːtiːz/ n. 糖尿病">diabetes</span> or autoimmune <span class="annot" data-tooltip="disorders /dɪs'ɔːrdər/ n. 混乱；骚乱vt. 扰乱；使失调时 态: disordered, disordering, disorders">disorders</span>, which expectant women cannot just wish away by <span class="annot" data-tooltip="willpower /'wɪlpaʊər/ n. 意志力, 克制力">willpower</span> alone. Mothers grappling with such problems deserve a <span class="annot" data-tooltip="rigorous /'rɪɡərəs/ adj. 严密的；缜密的严格的，严厉的副 词: rigorously">rigorous</span> diagnosis and proven treatment from a specialist medical lactologist. Instead the standard advice is to <span class="annot" data-tooltip="tether /'teðər/ n. 范围；系链；拴绳vt. 用绳或链拴住时 态: tethered, tethering, tethers">tether</span> themselves to a breastpump at least eight times a day and all will be fine—though such a <span class="annot" data-tooltip="brutal /'bruːtl/ adj. 残忍的；野蛮的，不讲理的副 词: brutally">brutal</span> regimen is not grounded in any research. When all is not fine, women are often made to feel that the fault is theirs for a lack of effort. In fact, they have not failed their children. Rather, medicine has failed them. ■ Subscribers to The Economist can sign up to our Opinion newsletter, which brings together the best of our leaders, <span class="annot" data-tooltip="columns /'kɑːləm/ n. 圆柱，柱形物；纵队，列；专栏形容词: columned">columns</span>, guest <span class="annot" data-tooltip="essays /'eseɪ/ n. 散文, 随笔">essays</span> and reader <span class="annot" data-tooltip="correspondence /ˌkɔːrə'spɑːndəns/ n. 信件, 函件通信, 通信联系一致, 相似">correspondence</span>. This article was downloaded by zlibrary from https://www.economist.com//leaders/2026/05/14/mothers-who-cannot-breastfeed-have- been-given-<span class="annot" data-tooltip="terrible /'terəbl/ adj. 可怕的；很糟的；令人讨厌的adv. [口]很，非常副 词: terribly">terrible</span>-advice</p>
+<div class="article-separator"></div>
+<div class="article-header">Leaders · Leaders | Minerals and killing in Congo</div>
+<p>Not all Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s peacemaking <span class="annot" data-tooltip="boasts /boʊst/ n. 自吹自擂, 自夸的话vt. & vi. 自夸vt. 有(引以为荣的事物)时 态: boasted, boasting, ">boasts</span> are empty But to end Congo’s <span class="annot" data-tooltip="terrible /'terəbl/ adj. 可怕的；很糟的；令人讨厌的adv. [口]很，非常副 词: terribly">terrible</span> war, America must remain <span class="annot" data-tooltip="neutral /'nuːtrəl/ adj. 中立的，中性的；中立国的；非彩色的n. 中立国；中立者；非彩色；齿轮的空档副 词: neutrally">neutral</span> May 14th 2026 When Donald Trump boasts about all the wars he has supposedly ended, he often mentions one in <span class="annot" data-tooltip="central /'sentrəl/ adj. 中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的副 词: centrally">central</span> Africa. In December he brought together the leaders of Rwanda and the <span class="annot" data-tooltip="democratic /ˌdemə'krætɪk/ adj. 民主的, 有民主精神或作风的副 词: democratically">Democratic</span> Republic of Congo, whose on-again, off-again conflict has been one of the continent’s bloodiest, and persuaded them to sign a peace deal called the Washington Accords. “They’ve spent a lot of time killing each other and they’re going to spend a lot of time hugging,” he said. But there is still a lot more killing than hugging. Most of the 8m or so Congolese who have fled from their homes are too scared to return. Over the past year the battlefield has expanded in the eastern Congolese provinces of</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>indonesian</td><td>/ˌɪndə'niːʒn/ n.</td><td>印度尼西亚人;印度尼西亚国民印度尼西亚人后裔(东印度群岛)前马来人的一员西澳特罗尼西亚语族adj. (有关)印度尼西亚的;(有关)印度尼西亚人(语)的</td></tr>
+<tr><td>bullying</td><td>/'bʊli/ v.</td><td>迫使；胁迫欺负；恐吓；欺凌n. 恃强凌弱者；恶霸adj. 顶好的，快活的，第一流的，bullying，bullies</td></tr>
+<tr><td>reality</td><td>/ri'æləti/ n.</td><td>现实；真实；实际</td></tr>
+<tr><td>sober</td><td>/'soʊbər/ adj.</td><td>冷静的，清醒的；未醉的vt. 使醒酒，使清醒；使严肃, soberest</td></tr>
+<tr><td>nonetheless</td><td>/ˌnʌnðə'les/ adv.</td><td>虽然如此,但是</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>crunch</td><td>/krʌntʃ/ n.</td><td>咬碎，咬碎声；扎扎地踏vt. 压碎；嘎扎嘎扎的咬嚼；扎扎地踏过vi. 嘎吱作响地咀嚼；嘎吱嘎吱地踏过, crunching, crunches</td></tr>
+<tr><td>indonesia</td><td>/ˌɪndə'niːʒə/ n.</td><td>印度尼西亚(东南亚岛国)</td></tr>
+<tr><td>colossal</td><td>/kə'lɑːsl/ adj.</td><td>巨大的；异常的，非常的</td></tr>
+<tr><td>subsidies</td><td>/'sʌbsədi/ n.</td><td>津贴；补助金；补贴</td></tr>
+<tr><td>caps</td><td>— abbr.</td><td>Cassette Programming System 盒式磁带程序设计系统</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>breach</td><td>/briːtʃ/ n.</td><td>破坏, 违反破裂, 不和缺口, 裂口vt. 攻破破坏, 违反, breaching, breaches</td></tr>
+<tr><td>arbitrary</td><td>/'ɑːrbɪtreri/ adj.</td><td>随意的, 主观的专横的, 独断专行的</td></tr>
+<tr><td>serious</td><td>/'sɪriəs/ adj.</td><td>严肃的，严重的；认真的；庄重的；危急的</td></tr>
+<tr><td>fiscal</td><td>/'fɪskl/ adj.</td><td>国库的；会计的，财政的</td></tr>
+<tr><td>revenue</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>credit</td><td>/'kredɪt/ n.</td><td>赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)，crediting，credits</td></tr>
+<tr><td>downgrade</td><td>/ˌdaʊn'ɡreɪd/ vt.</td><td>使降低, 使降级, downgrading, downgrades</td></tr>
+<tr><td>busting</td><td>/bʌst/ vi.</td><td>爆裂；破产；降低级别vt. 使爆裂；使破产；逮捕n. 半身像；胸部；萧条；破产adj. 破产了的；毁坏了的, busting, busts</td></tr>
+<tr><td>cap</td><td>/kæp/ n.</td><td>帽子；盖vi. 脱帽致意vt. 覆盖；胜过；给…戴帽；加盖于Cap摩羯座CAPabbr. Common Agricultural Policy (欧共体)共同农</td></tr>
+<tr><td>democracy</td><td>/dɪ'mɑːkrəsi/ n.</td><td>民主, 民主制民主国家</td></tr>
+<tr><td>proposals</td><td>/prə'poʊzl/ n.</td><td>提议，建议；求婚</td></tr>
+<tr><td>civil</td><td>/'sɪvl/ adj.</td><td>公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的</td></tr>
+<tr><td>society</td><td>/sə'saɪəti/ n.</td><td>社会；社交界；交往；社团</td></tr>
+<tr><td>avenues</td><td>/'ævənuː/ n.</td><td>林荫道, 大街途径, 手段</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>instincts</td><td>/'ɪnstɪŋkt/ n.</td><td>本能，直觉；天性adj. 充满着的</td></tr>
+<tr><td>encourages</td><td>/ɪn'kɜːrɪdʒ/ vt.</td><td>鼓励, 激励促进, 助长, 激发, encouraging, encourages</td></tr>
+<tr><td>consumption</td><td>/kən'sʌmpʃn/ n.</td><td>消费，消耗；消费[耗]量肺病；结核病</td></tr>
+<tr><td>shortages</td><td>/'ʃɔːrtɪdʒ/ n.</td><td>不足; 缺少; 缺少量; 不足额</td></tr>
+<tr><td>pregnant</td><td>/'preɡnənt/ adj.</td><td>怀孕的, 怀胎的含蓄的, 意味深长的孕育着…的, 预示着…前景的</td></tr>
+<tr><td>stunting</td><td>/stʌn/ vt.</td><td>击晕, 打晕使大吃一惊, 使震惊, stunning, stuns</td></tr>
+<tr><td>indonesian</td><td>/ˌɪndə'niːʒn/ n.</td><td>印度尼西亚人;印度尼西亚国民印度尼西亚人后裔(东印度群岛)前马来人的一员西澳特罗尼西亚语族adj. (有关)印度尼西亚的;(有关)印度尼西亚人(语)的</td></tr>
+<tr><td>tackle</td><td>/'tækl/ vt.</td><td>解决；应付vt. & vi. 捉住；扭倒n. 拦截；擒抱器具，器械，用具滑车，滑轮组，tackling，tackles</td></tr>
+<tr><td>prone</td><td>/proʊn/ adj.</td><td>易于…的; 很可能…的俯卧的</td></tr>
+<tr><td>indonesia</td><td>/ˌɪndə'niːʒə/ n.</td><td>印度尼西亚(东南亚岛国)</td></tr>
+<tr><td>quarter</td><td>/'kwɔːrtər/ n.</td><td>四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一, quartering, quarters</td></tr>
+<tr><td>pragmatic</td><td>/præɡ'mætɪk/ adj.</td><td>务实的；实事求是的；注重实效的实用主义的，实用主义观点的</td></tr>
+<tr><td>democracy</td><td>/dɪ'mɑːkrəsi/ n.</td><td>民主, 民主制民主国家</td></tr>
+<tr><td>civil</td><td>/'sɪvl/ adj.</td><td>公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的</td></tr>
+<tr><td>society</td><td>/sə'saɪəti/ n.</td><td>社会；社交界；交往；社团</td></tr>
+<tr><td>outlet</td><td>/'aʊtlet/ n.</td><td>出口, 出路发泄的途径经销店</td></tr>
+<tr><td>spill</td><td>/spɪl/ vt.</td><td>使溢出，使流出；使摔下vi. 溢出，流出；摔下；涌流n. 溢出，溅出；溢出量；摔下；小塞子, spilt spilling, spills</td></tr>
+<tr><td>recipe</td><td>/'resəpi/ n.</td><td>烹饪法; 食谱方法; 秘诀; 诀窍</td></tr>
+<tr><td>violent</td><td>/'vaɪələnt/ adj.</td><td>暴力引起的, 粗暴的剧烈的, 强烈的</td></tr>
+<tr><td>legacy</td><td>/'leɡəsi/ n.</td><td>遗产, 遗赠物遗留之物</td></tr>
+<tr><td>simply</td><td>/'sɪmpli/ adv.</td><td>简单地；朴素地；简直；仅仅；坦白地</td></tr>
+<tr><td>columns</td><td>/'kɑːləm/ n.</td><td>圆柱，柱形物；纵队，列；专栏</td></tr>
+<tr><td>essays</td><td>/'eseɪ/ n.</td><td>散文, 随笔</td></tr>
+<tr><td>correspondence</td><td>/ˌkɔːrə'spɑːndəns/ n.</td><td>信件, 函件通信, 通信联系一致, 相似</td></tr>
+<tr><td>terrible</td><td>/'terəbl/ adj.</td><td>可怕的；很糟的；令人讨厌的adv. [口]很，非常</td></tr>
+<tr><td>major</td><td>/'meɪdʒər/ adj.</td><td>主要的；主修的；重要的；较多的n. 成年人；主修科目；陆军少校vi. 主修, majoring, majors</td></tr>
+<tr><td>possessed</td><td>/pə'zes/ vt.</td><td>具有占据, possessing, possesses</td></tr>
+<tr><td>humanity</td><td>/hjuː'mænəti/ n.</td><td>人类；人道；仁慈；人文学科</td></tr>
+<tr><td>dedicated</td><td>/'dedɪkeɪtɪd/ adj.</td><td>专注的;献身的专用的</td></tr>
+<tr><td>infants</td><td>/'ɪnfənt/ n.</td><td>婴儿；幼儿adj. 供婴幼儿用的初期的；初创期的</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>alive</td><td>/ə'laɪv/ adj.</td><td>活着的, 在世的, 存在的有活力的, 活跃的, 有生气的</td></tr>
+<tr><td>encounter</td><td>/ɪn'kaʊntər/ vt.</td><td>遇到, 遭遇偶然碰到, 邂逅n. 突然遇到, encountering, encounters</td></tr>
+<tr><td>academic</td><td>/ˌækə'demɪk/ adj.</td><td>学院的；学术的；理论的n. 大学生，大学教师；学者</td></tr>
+<tr><td>pubmed</td><td>/pʌb/ n.</td><td>酒馆；客栈</td></tr>
+<tr><td>minimally</td><td>/'mɪnɪml/ adj.</td><td>〈正式〉最小的; 极少的</td></tr>
+<tr><td>helping</td><td>/'helpɪŋ/ n.</td><td>（进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的</td></tr>
+<tr><td>ward</td><td>/wɔːrd/ n.</td><td>监视；保卫；病房vt. 避开；保卫；守护Ward沃德(姓氏, 男子名), warding, wards</td></tr>
+<tr><td>infections</td><td>/ɪn'fekʃn/ n.</td><td>〈医〉传染, 感染传染病</td></tr>
+<tr><td>journal</td><td>/'dʒɜːrnl/ n.</td><td>日报，杂志；日记；[经]分类账</td></tr>
+<tr><td>breastfed</td><td>/brest/ n.</td><td>乳房，胸部；胸怀；心情vt. 以胸对着；与…搏斗, breasting, breasts</td></tr>
+<tr><td>formula</td><td>/'fɔːrmjələ/ n.</td><td>公式，准则；配方；婴儿食品</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>immense</td><td>/ɪ'mens/ adj.</td><td>极大的, 巨大的</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>powdered</td><td>/'paʊdər/ n.</td><td>粉末；粉；火药；尘土vt. 使成粉末；搽粉于；撒粉vi. 搽粉；变成粉末, powdering, powders</td></tr>
+<tr><td>places</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>redundant</td><td>/rɪ'dʌndənt/ adj.</td><td>因人员过剩而被解雇的不需要的; 多余的</td></tr>
+<tr><td>physicians</td><td>/fɪ'zɪʃn/ n.</td><td>医生, 内科医生</td></tr>
+<tr><td>helplines</td><td>— n.</td><td>热线服务电话</td></tr>
+<tr><td>counsel</td><td>/'kaʊnsl/ n.</td><td>忠告；讨论；商议；决策；法律顾问vt. 劝告；建议vi. 提出忠告；商讨, counselled counseling, counselling counsel</td></tr>
+<tr><td>hunches</td><td>/hʌntʃ/ n.</td><td>预感；大块；肉峰</td></tr>
+<tr><td>breasts</td><td>/brest/ n.</td><td>乳房，胸部；胸怀；心情vt. 以胸对着；与…搏斗, breasting, breasts</td></tr>
+<tr><td>stimulate</td><td>/'stɪmjuleɪt/ vt.</td><td>刺激；激励，stimulating，stimulates</td></tr>
+<tr><td>nipple</td><td>/'nɪpl/ n.</td><td>奶嘴；乳头，奶头</td></tr>
+<tr><td>inadequate</td><td>/ɪn'ædɪkwət/ adj.</td><td>不充足的，不适当的不足胜任的，信心不足的adv. 不充足地，不适当地；不足胜任地</td></tr>
+<tr><td>podcast</td><td>/'pɑːdkæst/ n.</td><td>播客</td></tr>
+<tr><td>genetic</td><td>/dʒə'netɪk/ adj.</td><td>遗传的；起源的；基因的</td></tr>
+<tr><td>obesity</td><td>/oʊ'biːsəti/ n.</td><td>肥大，肥胖</td></tr>
+<tr><td>diabetes</td><td>/ˌdaɪə'biːtiːz/ n.</td><td>糖尿病</td></tr>
+<tr><td>disorders</td><td>/dɪs'ɔːrdər/ n.</td><td>混乱；骚乱vt. 扰乱；使失调, disordering, disorders</td></tr>
+<tr><td>willpower</td><td>/'wɪlpaʊər/ n.</td><td>意志力, 克制力</td></tr>
+<tr><td>rigorous</td><td>/'rɪɡərəs/ adj.</td><td>严密的；缜密的严格的，严厉的</td></tr>
+<tr><td>tether</td><td>/'teðər/ n.</td><td>范围；系链；拴绳vt. 用绳或链拴住, tethering, tethers</td></tr>
+<tr><td>brutal</td><td>/'bruːtl/ adj.</td><td>残忍的；野蛮的，不讲理的</td></tr>
+<tr><td>columns</td><td>/'kɑːləm/ n.</td><td>圆柱，柱形物；纵队，列；专栏</td></tr>
+<tr><td>essays</td><td>/'eseɪ/ n.</td><td>散文, 随笔</td></tr>
+<tr><td>correspondence</td><td>/ˌkɔːrə'spɑːndəns/ n.</td><td>信件, 函件通信, 通信联系一致, 相似</td></tr>
+<tr><td>terrible</td><td>/'terəbl/ adj.</td><td>可怕的；很糟的；令人讨厌的adv. [口]很，非常</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>boasts</td><td>/boʊst/ n.</td><td>自吹自擂, 自夸的话vt. & vi. 自夸vt. 有(引以为荣的事物), boasting, boasts</td></tr>
+<tr><td>terrible</td><td>/'terəbl/ adj.</td><td>可怕的；很糟的；令人讨厌的adv. [口]很，非常</td></tr>
+<tr><td>neutral</td><td>/'nuːtrəl/ adj.</td><td>中立的，中性的；中立国的；非彩色的n. 中立国；中立者；非彩色；齿轮的空档</td></tr>
+<tr><td>central</td><td>/'sentrəl/ adj.</td><td>中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的</td></tr>
+<tr><td>democratic</td><td>/ˌdemə'krætɪk/ adj.</td><td>民主的, 有民主精神或作风的</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day3.html" class="nav-btn">← Day 3</a>
+  <a href="day5.html" class="nav-btn">Day 5 →</a>
+</div>
+
+<div class="progress">📖 Day 4 of 44</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-05-16</div>
+
+</body>
+</html>

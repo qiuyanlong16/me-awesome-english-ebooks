@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Science & technology</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-05-16</div>
+
+<h1 class="article-title">Science & technology</h1>
+<div class="article-section"></div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>This advice, though well-meaning, is turning out to be <span class="annot" data-tooltip="inadequate /ɪn'ædɪkwət/ adj. 不充足的，不适当的不足胜任的，信心不足的adv. 不充足地，不适当地；不足胜任地副 词: inadequately">inadequate</span>. Many women who follow it still end up with babies who fail to gain enough weight —a clear sign that the mothers are not producing enough milk. Studies of <span class="annot" data-tooltip="breast /brest/ n. 乳房，胸部；胸怀；心情vt. 以胸对着；与…搏斗时 态: breasted, breasting, breasts">breast</span>-milk production involving hundreds of women in America and Australia in recent years suggest that the <span class="annot" data-tooltip="proportion /prə'pɔːrʃn/ n. 均衡；相称，协调一物与他物在数量、大小等方面的关系；比例部分；份儿时 态: proportioned，proportio">proportion</span> of mothers who produce too little milk is <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> higher than previously <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span>: between 10% and 20%. Researchers are beginning to understand why these numbers are so elevated. For many women, the <span class="annot" data-tooltip="explanation /ˌeksplə'neɪʃn/ n. 解释, 说明能说明某事缘由的言语、事实、情况等">explanation</span> lies not in how they breastfeed but in the <span class="annot" data-tooltip="composition /ˌkɑːmpə'zɪʃn/ n. 创作，写作，作曲作文，作品构图；构成，成分混合物，合成物">composition</span> and function of unique cells in the mammary gland, an aspect of their biology over which they have no control. Further research may one day lead to treatments. But even in the short term these discoveries should help destigmatise low milk supply. “In the last ten years it has become more [accepted] that there is a biological reason for these cases,” says Yarden Golan Maor, who studies human milk production at Cornell University. “And it’s not, you know, you’re just not trying hard enough.” At the heart of the matter are lactocytes, cells in the mammary glands that multiply rapidly during pregnancy and begin to <span class="annot" data-tooltip="secrete /sɪ'kriːt/ vt. 藏匿；私下侵吞；[生]分泌时 态: secreted, secreting, secretes">secrete</span> breast milk about three days after a woman gives birth. In the past, <span class="annot" data-tooltip="obtaining /əb'teɪn/ vi. 获得；流行vt. 获得时 态: obtained, obtaining, obtains">obtaining</span> such cells for study would have required a <span class="annot" data-tooltip="tissue /'tɪʃuː/ n. 组织薄纸, 棉纸一套, 一系列形容词: tissular">tissue</span> <span class="annot" data-tooltip="biopsy /'baɪɑːpsi/ n. 活组织检查；活组织切片检查；切片检查法">biopsy</span> from a breastfeeding woman. That made research into lactation biology <span class="annot" data-tooltip="tricky /'trɪki/ adj. 机警的；狡猾的比较级: trickier, trickiest">tricky</span>. In 2010, however, researchers discovered that microRNA molecules from the mother’s breast cells (which contain information about those cells’ function) were abundant in breast milk. Breast milk samples could, therefore, be used as liquid <span class="annot" data-tooltip="biopsies /'baɪɑːpsi/ n. 活组织检查；活组织切片检查；切片检查法">biopsies</span> to understand the causes of low milk production. Such work has <span class="annot" data-tooltip="revealed /rɪ'viːl/ vt. 显示；露出泄露；透露时 态: revealed，revealing，reveals">revealed</span> <span class="annot" data-tooltip="distinct /dɪ'stɪŋkt/ adj. 截然不同的, 完全分开的清晰的, 明白的, 明显的副 词: distinctly">distinct</span> biological pathways for what is going wrong. Some women have too few lactocytes. Others may have lactocytes that are inefficient and secrete little breast milk. Lindsay Hinck at the University of California in Santa Cruz has made progress on untangling the first of those <span class="annot" data-tooltip="issues /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issues</span>. The problem may begin in pregnancy, when individual lactocytes repeatedly divide to form pairs of daughter cells <span class="annot" data-tooltip="identical /aɪ'dentɪkl/ adj. 同一的副 词: identically">identical</span> to their mothers. Some lactocytes, however, are different: instead of giving <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> to new cells, they <span class="annot" data-tooltip="hoard /hɔːrd/ n. (钱财、食物或其他珍贵物品的)储藏, 积存vt. & vi. 积蓄并储藏(某物)时 态: hoarded, hoardi">hoard</span> <span class="annot" data-tooltip="multiple /'mʌltɪpl/ adj. 多样的；许多的；多重的n. 并联；倍数">multiple</span> copies of their <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> DNA within themselves, a trick that allows them to make more milk.</p>
+<p>Both populations of cells are at risk of accumulating random DNA <span class="annot" data-tooltip="mutations /mjuː'teɪʃn/ n. 突变；变化；元音变化">mutations</span>, which can cause them to <span class="annot" data-tooltip="either /'iːðər/ pron. (两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的">either</span> die or stop working. And <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">although</span> a cell-repair <span class="annot" data-tooltip="mechanism /'mekənɪzəm/ n. 机械装置构造, 机制办法, 技巧, 途径">mechanism</span> exists which can boost the numbers of the <span class="annot" data-tooltip="hoarding /hɔːrd/ n. (钱财、食物或其他珍贵物品的)储藏, 积存vt. & vi. 积蓄并储藏(某物)时 态: hoarded, hoardi">hoarding</span> cells, it does not always work as planned. In experiments conducted in mice, reported in Nature Communications in 2024, Dr Hinck’s team found that low levels of an enzyme called WEE1 <span class="annot" data-tooltip="disrupts /dɪs'rʌpt/ vt. 使混乱, 扰乱时 态: disrupted, disrupting, disrupts">disrupts</span> this repair mechanism, <span class="annot" data-tooltip="leading /ˈliːdɪŋ/ adj. 主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）">leading</span> to fewer functioning lactocytes and low milk supply. A deficiency of WEE1 could be responsible for low lactocyte levels in humans, too, says Dr Hinck. Rachel Walker at Penn State University is testing a <span class="annot" data-tooltip="hypothesis /haɪ'pɑːθəsɪs/ n. 假说, 假设, 前提">hypothesis</span> <span class="annot" data-tooltip="regarding /rɪ'ɡɑːrdɪŋ/ prep. (表示论及)关于; 至于; 就…而论">regarding</span> what may be a separate mechanism. Many of the hormones that <span class="annot" data-tooltip="instruct /ɪn'strʌkt/ vt. 命令；教授；指导；通知时 态: instructed, instructing, instructs">instruct</span> the lactocytes to multiply and prepare the mammary gland for lactation are made in the placenta. As some animal studies have <span class="annot" data-tooltip="tentatively /'tentətɪv/ adj. 试探性的; 试验的; 尝试性的副 词: tentatively">tentatively</span> linked <span class="annot" data-tooltip="damage /'dæmɪdʒ/ v. 损害；伤害；毁坏；破坏n. 损坏，破坏，损失，损害，伤害（法院判定的）损害赔偿金时 态: damaged, damagi">damage</span> to the placenta with low milk production, Dr Walker and her team are examining whether this could be the case in humans, too. They are studying the placentas of new mothers in Uganda to see whether <span class="annot" data-tooltip="infection /ɪn'fekʃn/ n. 〈医〉传染, 感染传染病">infection</span>, among other things, is connected to low milk supply. If such a link is found, it might eventually be possible to predict the likelihood of low milk supply at the moment of childbirth. Progress has also been made on understanding why lactocytes might not function efficiently. One possible cause is a deficiency of <span class="annot" data-tooltip="critical /'krɪtɪkl/ adj. 批评的，爱挑剔的；决定性的；危险的；临界的；鉴定的；评论的副 词: critically">critical</span> nutrients in the mammary gland. These provide <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span> for the lactocytes’ normal functioning and are used as <span class="annot" data-tooltip="ingredients /ɪn'ɡriːdiənt/ n. (混合物的)组成部分; 配料">ingredients</span> in the <span class="annot" data-tooltip="breast /brest/ n. 乳房，胸部；胸怀；心情vt. 以胸对着；与…搏斗时 态: breasted, breasting, breasts">breast</span> milk that they <span class="annot" data-tooltip="secrete /sɪ'kriːt/ vt. 藏匿；私下侵吞；[生]分泌时 态: secreted, secreting, secretes">secrete</span>. Researchers believe that a <span class="annot" data-tooltip="shortage /'ʃɔːrtɪdʒ/ n. 不足; 缺少; 缺少量; 不足额">shortage</span> would cause the lactocytes to either work harder to make up the shortage or else lose energy. Both <span class="annot" data-tooltip="scenarios /sə'nærioʊ/ n. 情节；剧本；方案">scenarios</span> might cause them to make less milk. Such <span class="annot" data-tooltip="shortages /'ʃɔːrtɪdʒ/ n. 不足; 缺少; 缺少量; 不足额">shortages</span> are not necessarily the product of the mother’s diet; certain gene <span class="annot" data-tooltip="variants /'veriənt/ n. 变体；变种；变型(词等的)变体；异读(书等的)不同版本；改编adj. 不同的；差别的；变异的；易变的，不定的；各种各样的">variants</span> and inflammatory molecules can also play a part. Some women, for example, have a gene <span class="annot" data-tooltip="mutation /mjuː'teɪʃn/ n. 突变；变化；元音变化">mutation</span> that <span class="annot" data-tooltip="affects /ə'fekt/ vt. 影响；假装；感动；感染vi. 倾向；喜欢n. 情感；引起感情的因素时 态: affected, affecting, a">affects</span> how zinc passes from the blood into breast milk. Zinc is not only an important nutrient for babies, but is also <span class="annot" data-tooltip="involved /ɪn'vɑːlvd/ adj. 卷入的；有关的；复杂的v. 涉及；使参与；包含（involve的过去式和过去分词）">involved</span> in the development of the mammary gland. Researchers have found that having this mutation is linked with low milk supply. Large-scale genomic studies in cows have also found genes that regulate the protein content of milk, some <span class="annot" data-tooltip="versions /'vɜːrʒn/ n. 变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本">versions</span> of which may also exist in humans.</p>
+<p>Women with these genes may struggle to have the right nutrient balance to trigger their lactocytes. That being said, scientists think that <span class="annot" data-tooltip="genetic /dʒə'netɪk/ adj. 遗传的；起源的；基因的副 词: genetically">genetic</span> causes of low milk supply are probably rare, as the associated <span class="annot" data-tooltip="mutations /mjuː'teɪʃn/ n. 突变；变化；元音变化">mutations</span> are unlikely to have been favoured by natural selection. <span class="annot" data-tooltip="genetics /dʒə'netɪk/ adj. 遗传的；起源的；基因的副 词: genetically">Genetics</span>, in other words, cannot be the end of the story. Another prime suspect seems to be inflammation. In 2022 Dr Walker and her colleagues published research showing that <span class="annot" data-tooltip="chronic /'krɑːnɪk/ adj. 慢性的；长期的；习惯性的副 词: chronically">chronic</span> inflammation (the type common in <span class="annot" data-tooltip="obesity /oʊ'biːsəti/ n. 肥大，肥胖">obesity</span> and auto-immune <span class="annot" data-tooltip="disorders /dɪs'ɔːrdər/ n. 混乱；骚乱vt. 扰乱；使失调时 态: disordered, disordering, disorders">disorders</span> like <span class="annot" data-tooltip="diabetes /ˌdaɪə'biːtiːz/ n. 糖尿病">diabetes</span>) prevents fatty acids in the blood from <span class="annot" data-tooltip="entering /'entər/ vt. & vi. 进入, 进去参加, 加入登记, 登录时 态: entered, entering, enters">entering</span> the mammary glands and enriching the <span class="annot" data-tooltip="breast /brest/ n. 乳房，胸部；胸怀；心情vt. 以胸对着；与…搏斗时 态: breasted, breasting, breasts">breast</span> milk. <span class="annot" data-tooltip="specific /spə'sɪfɪk/ adj. 特殊的，特定的；明确的；详细的；具有特效的n. 特效药；细节；特性副 词: specifically">Specific</span> inflammatory molecules can also <span class="annot" data-tooltip="disrupt /dɪs'rʌpt/ vt. 使混乱, 扰乱时 态: disrupted, disrupting, disrupts">disrupt</span> the synthesis of carbohydrates, another important component of breast milk. This growing body of research <span class="annot" data-tooltip="highlights 拔萃,集锦(精采会议文献选辑)">highlights</span> a <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of factors that may increase a woman’s risk of having low supply. Obesity, diabetes and autoimmune disorders, for example, lead to chronic inflammation which can disturb the functioning of many organs in the body. Pre-eclampsia, a disease of the placenta that <span class="annot" data-tooltip="affects /ə'fekt/ vt. 影响；假装；感动；感染vi. 倾向；喜欢n. 情感；引起感情的因素时 态: affected, affecting, a">affects</span> roughly 4% of women, can also <span class="annot" data-tooltip="damage /'dæmɪdʒ/ v. 损害；伤害；毁坏；破坏n. 损坏，破坏，损失，损害，伤害（法院判定的）损害赔偿金时 态: damaged, damagi">damage</span> many organs. For women with some of these conditions, studies show that up to half may end up with low milk supply. Other causes are less clear. One risk factor that a number of studies have identified is having <span class="annot" data-tooltip="breasts /brest/ n. 乳房，胸部；胸怀；心情vt. 以胸对着；与…搏斗时 态: breasted, breasting, breasts">breasts</span> that are more widely spaced than average. Women who <span class="annot" data-tooltip="fall /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">fall</span> into this category often have little glandular <span class="annot" data-tooltip="tissue /'tɪʃuː/ n. 组织薄纸, 棉纸一套, 一系列形容词: tissular">tissue</span> and, therefore, fewer lactocytes. Some research suggests obesity in early life may play a role, <span class="annot" data-tooltip="affecting /ə'fekt/ vt. 影响；假装；感动；感染vi. 倾向；喜欢n. 情感；引起感情的因素时 态: affected, affecting, a">affecting</span> the mammary gland’s ability to grow at this <span class="annot" data-tooltip="crucial /'kruːʃl/ adj. 决定性的；重要的；定局的；决断的副 词: crucially">crucial</span> period of its development. But at the moment, says Dr Golan Maor, “It’s all speculation.” There is clearly much more research to be done. Untangling the biology of lactation could have dramatic benefits for new mothers. Most <span class="annot" data-tooltip="straightforwardly /ˌstreɪt'fɔːrwərd/ adj. (人或其态度)正直的，坦率的；老实的简单的；易懂的副 词: straightforwardly">straightforwardly</span>, tests to diagnose low milk production would open the door to more <span class="annot" data-tooltip="tailored /'teɪlər/ vt. 剪裁；使合适n. 裁缝vi. 做裁缝时 态: tailored, tailoring, tailors">tailored</span> advice as well as potential treatments. Some such tests are already being developed. In a paper from 2025 a team of Australian researchers showed that hand-held probes can <span class="annot" data-tooltip="accurately /'ækjərət/ adj. 精确的, 准确的，正确无误的副 词: accurately">accurately</span> <span class="annot" data-tooltip="gauge /ɡeɪdʒ/ n. 厚度, 直径测量仪表规格, 尺度vt. 计量, 度量估计, 判断时 态: gaugedalso gaged gaugin">gauge</span> sodium levels in breast milk, a useful <span class="annot" data-tooltip="indicator /'ɪndɪkeɪtər/ n. (仪器上显示温度、压力、耗油量等的)指针，指示器，记录器(车辆上的)转弯指示灯指示物；指示者">indicator</span> of malfunctioning lactocytes (as well as other conditions such as mastitis). When milk secretion begins, the spaces between the cells lining the mammary gland normally close up,</p>
+<p>preventing sodium from <span class="annot" data-tooltip="leaking /liːk/ n. 漏洞，裂缝；泄漏vt. 使渗漏，泄露vi. 漏，渗；泄漏出去时 态: leaked, leaking, leaks">leaking</span> into <span class="annot" data-tooltip="breast /brest/ n. 乳房，胸部；胸怀；心情vt. 以胸对着；与…搏斗时 态: breasted, breasting, breasts">breast</span> milk. <span class="annot" data-tooltip="abnormally /æb'nɔːrml/ adj. 反常的，异常的；变态的副 词: abnormally">Abnormally</span> high sodium levels in a mother with suspected low milk supply would suggest some <span class="annot" data-tooltip="underlying /ˌʌndər'laɪɪŋ/ adj. 根本的, 基础的含蓄的, 潜在的">underlying</span> biological <span class="annot" data-tooltip="issue /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issue</span>. More such <span class="annot" data-tooltip="innovations /ˌɪnə'veɪʃn/ n. 改革, 革新, 创新新观念, 新方法, 新发明形容词: innovational">innovations</span> will <span class="annot" data-tooltip="hopefully /'hoʊpfəli/ adv. 怀有希望地；如果顺利的话，可望">hopefully</span> hit the market soon. If lactation science continues in this way, millions of women who suspect they are making too little milk could get timely and definitive answers on whether that is, indeed, the case. ■ Curious about the world? To enjoy our mind-expanding science <span class="annot" data-tooltip="coverage /'kʌvərɪdʒ/ n. 新闻报道, 报道量覆盖范围">coverage</span>, sign up to <span class="annot" data-tooltip="simply /'sɪmpli/ adv. 简单地；朴素地；简直；仅仅；坦白地">Simply</span> Science, our weekly subscriber-only newsletter. This article was downloaded by zlibrary from https://www.economist.com//science-and-technology/2026/05/12/why-many-women-cannot- make-enough-breast-milk</p>
+<p>Science & technology | <span class="annot" data-tooltip="brace /breɪs/ n. 箍子；夹子；支架大括弧；大括号（ 猎获的鸟或兽）一对，一双v. （为困难或坏事）使作准备；使防备使（身体或身体部位）顶住">Brace</span> yourselves Neanderthals went to the dentist (really) They did so tens of thousands of years before humans May 14th 2026 For much of the modern era, “Neanderthal” has served as shorthand for brutishness and ineptitude. Yet <span class="annot" data-tooltip="mounting /maʊnt/ vt. & vi. 登上；骑上vi. 增加；上升vt. 上演；配有…发动攻击；攻击n. 山峰坐骑时 态: mounted，mou">mounting</span> archaeological evidence suggests a rather more refined species: one that buried its dead, <span class="annot" data-tooltip="tended /tend/ vt. 照料，照顾，伺候vi. 往，朝向易于；倾向时 态: tended，tending，tends">tended</span> to injured <span class="annot" data-tooltip="companions /kəm'pænjən/ n. 同伴, 伙伴成双成对的物品之一时 态: companioned, companioning, companions">companions</span> and adapted with remarkable success to the rigours of Ice Age Europe. Many researchers still draw a <span class="annot" data-tooltip="line /laɪn/ n. 绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long inter">line</span> between their behaviour and that of modern humans, arguing that they lacked the technical sophistication to perform something as complex as <span class="annot" data-tooltip="surgery /'sɜːrdʒəri/ n. 外科；外科手术；手术室；诊疗室">surgery</span>. Now a <span class="annot" data-tooltip="battered /'bætər/ n. 击球手；（用鸡蛋、牛奶、面粉等调成的）糊状物；墙面的倾斜vt. 猛击；打坏；使向上倾斜vi. 接连猛击；向上倾斜时 态:">battered</span> tooth from a cave in southern Siberia, described in the <span class="annot" data-tooltip="journal /'dʒɜːrnl/ n. 日报，杂志；日记；[经]分类账">journal</span> PLOS one by Alisa Zubova, Lydia Zotkina and Ksenia Kolobova at the Russian Academy of Sciences, is forcing a rethink.</p>
+<p>The tooth in question is a 59,000-year-old molar from an adult Neanderthal. It was discovered in 2016 in Chagyrskaya Cave in the Russian <span class="annot" data-tooltip="stretch /stretʃ/ vt. 伸展,张开vi. 伸展adj. 可伸缩的n. 伸展，延伸时 态: stretched, stretching, stre">stretch</span> of the Altai Mountains by Dr Kolobova’s team and, like many ancient teeth, it is heavily worn down from years of chewing on tough, gritty food. No other skeletal remains of its <span class="annot" data-tooltip="owner /'oʊnər/ n. 所有者；物主">owner</span> have been found. What is noteworthy about the tooth is that it has a large <span class="annot" data-tooltip="hollow /'hɑːloʊ/ adj. 空的；凹的；虚伪的；中空的，空腹的n. 洞；山谷；窟窿vt. 使成为空洞vi. 形成空洞adv. 无用地；彻底地比较级:">hollow</span> on the chewing surface that <span class="annot" data-tooltip="reaches /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reaches</span> deep into its centre, where <span class="annot" data-tooltip="nerves /nɜːrv/ n. 神经神经过敏；神经紧张勇气；胆量时 态: nerved，nerving，nerves">nerves</span> and blood <span class="annot" data-tooltip="vessels n. 容器；船舶；血管（vessel的复数）">vessels</span> would have been. At first glance, the hollow looks like the site of a <span class="annot" data-tooltip="dental /'dentl/ adj. 牙齿的，牙的；牙科的n. 齿音">dental</span> <span class="annot" data-tooltip="infection /ɪn'fekʃn/ n. 〈医〉传染, 感染传染病">infection</span> (or cavity) that would <span class="annot" data-tooltip="ultimately /'ʌltɪmətli/ adv. 最后;最终">ultimately</span> have <span class="annot" data-tooltip="proved /proʊ/ n. 从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞">proved</span> lethal. But when Dr Zubova and her team looked closer, they realised its owner probably escaped this fate. Microscope images and CT scans <span class="annot" data-tooltip="revealed /rɪ'viːl/ vt. 显示；露出泄露；透露时 态: revealed，revealing，reveals">revealed</span> grooves and fine striations on the <span class="annot" data-tooltip="hole /hoʊl/ n. 洞，孔；洞穴，穴；突破口vi. 凿洞，穿孔；（高尔夫球等）进洞vt. 凿洞时 态: holed, holing, hol">hole</span>’s walls that looked as if they had been made through the repeated <span class="annot" data-tooltip="rotation /roʊ'teɪʃn/ n. 旋转；循环，轮流形容词: rotational">rotation</span> of some sort of pointed tool. To their astonishment, this suggested that a Neanderthal had <span class="annot" data-tooltip="intentionally /ɪn'tenʃənəli/ adv. 有意地,故意地">intentionally</span> <span class="annot" data-tooltip="drilled /drɪl/ n. 钻子；钻孔机；播种机；训练vi. 钻孔；训练vt. 训练；钻孔；条播时 态: drilled, drilling, dr">drilled</span> into the tooth to scoop out <span class="annot" data-tooltip="infected /ɪn'fekt/ vt. 感染，传染时 态: infected, infecting, infects">infected</span> <span class="annot" data-tooltip="tissue /'tɪʃuː/ n. 组织薄纸, 棉纸一套, 一系列形容词: tissular">tissue</span>. Could stone tools alone have been up to the task? Dr Zubova turned to Dr Zotkina, an experimental archaeologist, to find out. The question of which stone to use was easy to answer: small and sharp tools made of a quartz-like material known as jasper have previously been found in Chagyrskaya Cave. Dr Zotkina consequently worked with her team to build similar tools and then use them to <span class="annot" data-tooltip="drill /drɪl/ n. 钻子；钻孔机；播种机；训练vi. 钻孔；训练vt. 训练；钻孔；条播时 态: drilled, drilling, dr">drill</span> into sample teeth. They</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>inadequate</td><td>/ɪn'ædɪkwət/ adj.</td><td>不充足的，不适当的不足胜任的，信心不足的adv. 不充足地，不适当地；不足胜任地</td></tr>
+<tr><td>breast</td><td>/brest/ n.</td><td>乳房，胸部；胸怀；心情vt. 以胸对着；与…搏斗, breasting, breasts</td></tr>
+<tr><td>proportion</td><td>/prə'pɔːrʃn/ n.</td><td>均衡；相称，协调一物与他物在数量、大小等方面的关系；比例部分；份儿，proportioning，proportions</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>explanation</td><td>/ˌeksplə'neɪʃn/ n.</td><td>解释, 说明能说明某事缘由的言语、事实、情况等</td></tr>
+<tr><td>composition</td><td>/ˌkɑːmpə'zɪʃn/ n.</td><td>创作，写作，作曲作文，作品构图；构成，成分混合物，合成物</td></tr>
+<tr><td>secrete</td><td>/sɪ'kriːt/ vt.</td><td>藏匿；私下侵吞；[生]分泌, secreting, secretes</td></tr>
+<tr><td>obtaining</td><td>/əb'teɪn/ vi.</td><td>获得；流行vt. 获得, obtaining, obtains</td></tr>
+<tr><td>tissue</td><td>/'tɪʃuː/ n.</td><td>组织薄纸, 棉纸一套, 一系列</td></tr>
+<tr><td>biopsy</td><td>/'baɪɑːpsi/ n.</td><td>活组织检查；活组织切片检查；切片检查法</td></tr>
+<tr><td>tricky</td><td>/'trɪki/ adj.</td><td>机警的；狡猾的, trickiest</td></tr>
+<tr><td>biopsies</td><td>/'baɪɑːpsi/ n.</td><td>活组织检查；活组织切片检查；切片检查法</td></tr>
+<tr><td>revealed</td><td>/rɪ'viːl/ vt.</td><td>显示；露出泄露；透露，revealing，reveals</td></tr>
+<tr><td>distinct</td><td>/dɪ'stɪŋkt/ adj.</td><td>截然不同的, 完全分开的清晰的, 明白的, 明显的</td></tr>
+<tr><td>issues</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>identical</td><td>/aɪ'dentɪkl/ adj.</td><td>同一的</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>hoard</td><td>/hɔːrd/ n.</td><td>(钱财、食物或其他珍贵物品的)储藏, 积存vt. & vi. 积蓄并储藏(某物), hoarding, hoards</td></tr>
+<tr><td>multiple</td><td>/'mʌltɪpl/ adj.</td><td>多样的；许多的；多重的n. 并联；倍数</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>mutations</td><td>/mjuː'teɪʃn/ n.</td><td>突变；变化；元音变化</td></tr>
+<tr><td>either</td><td>/'iːðər/ pron.</td><td>(两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>mechanism</td><td>/'mekənɪzəm/ n.</td><td>机械装置构造, 机制办法, 技巧, 途径</td></tr>
+<tr><td>hoarding</td><td>/hɔːrd/ n.</td><td>(钱财、食物或其他珍贵物品的)储藏, 积存vt. & vi. 积蓄并储藏(某物), hoarding, hoards</td></tr>
+<tr><td>disrupts</td><td>/dɪs'rʌpt/ vt.</td><td>使混乱, 扰乱, disrupting, disrupts</td></tr>
+<tr><td>leading</td><td>/ˈliːdɪŋ/ adj.</td><td>主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）</td></tr>
+<tr><td>hypothesis</td><td>/haɪ'pɑːθəsɪs/ n.</td><td>假说, 假设, 前提</td></tr>
+<tr><td>regarding</td><td>/rɪ'ɡɑːrdɪŋ/ prep.</td><td>(表示论及)关于; 至于; 就…而论</td></tr>
+<tr><td>instruct</td><td>/ɪn'strʌkt/ vt.</td><td>命令；教授；指导；通知, instructing, instructs</td></tr>
+<tr><td>tentatively</td><td>/'tentətɪv/ adj.</td><td>试探性的; 试验的; 尝试性的</td></tr>
+<tr><td>damage</td><td>/'dæmɪdʒ/ v.</td><td>损害；伤害；毁坏；破坏n. 损坏，破坏，损失，损害，伤害（法院判定的）损害赔偿金, damaging, damages</td></tr>
+<tr><td>infection</td><td>/ɪn'fekʃn/ n.</td><td>〈医〉传染, 感染传染病</td></tr>
+<tr><td>critical</td><td>/'krɪtɪkl/ adj.</td><td>批评的，爱挑剔的；决定性的；危险的；临界的；鉴定的；评论的</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>ingredients</td><td>/ɪn'ɡriːdiənt/ n.</td><td>(混合物的)组成部分; 配料</td></tr>
+<tr><td>breast</td><td>/brest/ n.</td><td>乳房，胸部；胸怀；心情vt. 以胸对着；与…搏斗, breasting, breasts</td></tr>
+<tr><td>secrete</td><td>/sɪ'kriːt/ vt.</td><td>藏匿；私下侵吞；[生]分泌, secreting, secretes</td></tr>
+<tr><td>shortage</td><td>/'ʃɔːrtɪdʒ/ n.</td><td>不足; 缺少; 缺少量; 不足额</td></tr>
+<tr><td>scenarios</td><td>/sə'nærioʊ/ n.</td><td>情节；剧本；方案</td></tr>
+<tr><td>shortages</td><td>/'ʃɔːrtɪdʒ/ n.</td><td>不足; 缺少; 缺少量; 不足额</td></tr>
+<tr><td>variants</td><td>/'veriənt/ n.</td><td>变体；变种；变型(词等的)变体；异读(书等的)不同版本；改编adj. 不同的；差别的；变异的；易变的，不定的；各种各样的</td></tr>
+<tr><td>mutation</td><td>/mjuː'teɪʃn/ n.</td><td>突变；变化；元音变化</td></tr>
+<tr><td>affects</td><td>/ə'fekt/ vt.</td><td>影响；假装；感动；感染vi. 倾向；喜欢n. 情感；引起感情的因素, affecting, affects</td></tr>
+<tr><td>involved</td><td>/ɪn'vɑːlvd/ adj.</td><td>卷入的；有关的；复杂的v. 涉及；使参与；包含（involve的过去式和过去分词）</td></tr>
+<tr><td>versions</td><td>/'vɜːrʒn/ n.</td><td>变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本</td></tr>
+<tr><td>genetic</td><td>/dʒə'netɪk/ adj.</td><td>遗传的；起源的；基因的</td></tr>
+<tr><td>mutations</td><td>/mjuː'teɪʃn/ n.</td><td>突变；变化；元音变化</td></tr>
+<tr><td>genetics</td><td>/dʒə'netɪk/ adj.</td><td>遗传的；起源的；基因的</td></tr>
+<tr><td>chronic</td><td>/'krɑːnɪk/ adj.</td><td>慢性的；长期的；习惯性的</td></tr>
+<tr><td>obesity</td><td>/oʊ'biːsəti/ n.</td><td>肥大，肥胖</td></tr>
+<tr><td>disorders</td><td>/dɪs'ɔːrdər/ n.</td><td>混乱；骚乱vt. 扰乱；使失调, disordering, disorders</td></tr>
+<tr><td>diabetes</td><td>/ˌdaɪə'biːtiːz/ n.</td><td>糖尿病</td></tr>
+<tr><td>entering</td><td>/'entər/ vt.</td><td>& vi. 进入, 进去参加, 加入登记, 登录, entering, enters</td></tr>
+<tr><td>breast</td><td>/brest/ n.</td><td>乳房，胸部；胸怀；心情vt. 以胸对着；与…搏斗, breasting, breasts</td></tr>
+<tr><td>specific</td><td>/spə'sɪfɪk/ adj.</td><td>特殊的，特定的；明确的；详细的；具有特效的n. 特效药；细节；特性</td></tr>
+<tr><td>disrupt</td><td>/dɪs'rʌpt/ vt.</td><td>使混乱, 扰乱, disrupting, disrupts</td></tr>
+<tr><td>highlights</td><td>— </td><td>拔萃,集锦(精采会议文献选辑)</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>affects</td><td>/ə'fekt/ vt.</td><td>影响；假装；感动；感染vi. 倾向；喜欢n. 情感；引起感情的因素, affecting, affects</td></tr>
+<tr><td>damage</td><td>/'dæmɪdʒ/ v.</td><td>损害；伤害；毁坏；破坏n. 损坏，破坏，损失，损害，伤害（法院判定的）损害赔偿金, damaging, damages</td></tr>
+<tr><td>breasts</td><td>/brest/ n.</td><td>乳房，胸部；胸怀；心情vt. 以胸对着；与…搏斗, breasting, breasts</td></tr>
+<tr><td>fall</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>tissue</td><td>/'tɪʃuː/ n.</td><td>组织薄纸, 棉纸一套, 一系列</td></tr>
+<tr><td>affecting</td><td>/ə'fekt/ vt.</td><td>影响；假装；感动；感染vi. 倾向；喜欢n. 情感；引起感情的因素, affecting, affects</td></tr>
+<tr><td>crucial</td><td>/'kruːʃl/ adj.</td><td>决定性的；重要的；定局的；决断的</td></tr>
+<tr><td>straightforwardly</td><td>/ˌstreɪt'fɔːrwərd/ adj.</td><td>(人或其态度)正直的，坦率的；老实的简单的；易懂的</td></tr>
+<tr><td>tailored</td><td>/'teɪlər/ vt.</td><td>剪裁；使合适n. 裁缝vi. 做裁缝, tailoring, tailors</td></tr>
+<tr><td>accurately</td><td>/'ækjərət/ adj.</td><td>精确的, 准确的，正确无误的</td></tr>
+<tr><td>gauge</td><td>/ɡeɪdʒ/ n.</td><td>厚度, 直径测量仪表规格, 尺度vt. 计量, 度量估计, 判断</td></tr>
+<tr><td>indicator</td><td>/'ɪndɪkeɪtər/ n.</td><td>(仪器上显示温度、压力、耗油量等的)指针，指示器，记录器(车辆上的)转弯指示灯指示物；指示者</td></tr>
+<tr><td>leaking</td><td>/liːk/ n.</td><td>漏洞，裂缝；泄漏vt. 使渗漏，泄露vi. 漏，渗；泄漏出去, leaking, leaks</td></tr>
+<tr><td>breast</td><td>/brest/ n.</td><td>乳房，胸部；胸怀；心情vt. 以胸对着；与…搏斗, breasting, breasts</td></tr>
+<tr><td>abnormally</td><td>/æb'nɔːrml/ adj.</td><td>反常的，异常的；变态的</td></tr>
+<tr><td>underlying</td><td>/ˌʌndər'laɪɪŋ/ adj.</td><td>根本的, 基础的含蓄的, 潜在的</td></tr>
+<tr><td>issue</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>innovations</td><td>/ˌɪnə'veɪʃn/ n.</td><td>改革, 革新, 创新新观念, 新方法, 新发明</td></tr>
+<tr><td>hopefully</td><td>/'hoʊpfəli/ adv.</td><td>怀有希望地；如果顺利的话，可望</td></tr>
+<tr><td>coverage</td><td>/'kʌvərɪdʒ/ n.</td><td>新闻报道, 报道量覆盖范围</td></tr>
+<tr><td>simply</td><td>/'sɪmpli/ adv.</td><td>简单地；朴素地；简直；仅仅；坦白地</td></tr>
+<tr><td>brace</td><td>/breɪs/ n.</td><td>箍子；夹子；支架大括弧；大括号（ 猎获的鸟或兽）一对，一双v. （为困难或坏事）使作准备；使防备使（身体或身体部位）顶住，抵住（以免跌倒等）（做费劲的事之前）绷</td></tr>
+<tr><td>mounting</td><td>/maʊnt/ vt.</td><td>& vi. 登上；骑上vi. 增加；上升vt. 上演；配有…发动攻击；攻击n. 山峰坐骑，mounting，mounts</td></tr>
+<tr><td>tended</td><td>/tend/ vt.</td><td>照料，照顾，伺候vi. 往，朝向易于；倾向，tending，tends</td></tr>
+<tr><td>companions</td><td>/kəm'pænjən/ n.</td><td>同伴, 伙伴成双成对的物品之一, companioning, companions</td></tr>
+<tr><td>line</td><td>/laɪn/ n.</td><td>绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long interspersed element)长散在元</td></tr>
+<tr><td>surgery</td><td>/'sɜːrdʒəri/ n.</td><td>外科；外科手术；手术室；诊疗室</td></tr>
+<tr><td>battered</td><td>/'bætər/ n.</td><td>击球手；（用鸡蛋、牛奶、面粉等调成的）糊状物；墙面的倾斜vt. 猛击；打坏；使向上倾斜vi. 接连猛击；向上倾斜, battering, batters</td></tr>
+<tr><td>journal</td><td>/'dʒɜːrnl/ n.</td><td>日报，杂志；日记；[经]分类账</td></tr>
+<tr><td>stretch</td><td>/stretʃ/ vt.</td><td>伸展,张开vi. 伸展adj. 可伸缩的n. 伸展，延伸, stretching, stretches</td></tr>
+<tr><td>owner</td><td>/'oʊnər/ n.</td><td>所有者；物主</td></tr>
+<tr><td>hollow</td><td>/'hɑːloʊ/ adj.</td><td>空的；凹的；虚伪的；中空的，空腹的n. 洞；山谷；窟窿vt. 使成为空洞vi. 形成空洞adv. 无用地；彻底地, hollowest</td></tr>
+<tr><td>reaches</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>nerves</td><td>/nɜːrv/ n.</td><td>神经神经过敏；神经紧张勇气；胆量，nerving，nerves</td></tr>
+<tr><td>vessels</td><td>— n.</td><td>容器；船舶；血管（vessel的复数）</td></tr>
+<tr><td>dental</td><td>/'dentl/ adj.</td><td>牙齿的，牙的；牙科的n. 齿音</td></tr>
+<tr><td>infection</td><td>/ɪn'fekʃn/ n.</td><td>〈医〉传染, 感染传染病</td></tr>
+<tr><td>ultimately</td><td>/'ʌltɪmətli/ adv.</td><td>最后;最终</td></tr>
+<tr><td>proved</td><td>/proʊ/ n.</td><td>从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞成；支持Pro脯氨酸PROabbr. P</td></tr>
+<tr><td>revealed</td><td>/rɪ'viːl/ vt.</td><td>显示；露出泄露；透露，revealing，reveals</td></tr>
+<tr><td>hole</td><td>/hoʊl/ n.</td><td>洞，孔；洞穴，穴；突破口vi. 凿洞，穿孔；（高尔夫球等）进洞vt. 凿洞, holing, holes</td></tr>
+<tr><td>rotation</td><td>/roʊ'teɪʃn/ n.</td><td>旋转；循环，轮流</td></tr>
+<tr><td>intentionally</td><td>/ɪn'tenʃənəli/ adv.</td><td>有意地,故意地</td></tr>
+<tr><td>drilled</td><td>/drɪl/ n.</td><td>钻子；钻孔机；播种机；训练vi. 钻孔；训练vt. 训练；钻孔；条播, drilling, drills</td></tr>
+<tr><td>infected</td><td>/ɪn'fekt/ vt.</td><td>感染，传染, infecting, infects</td></tr>
+<tr><td>tissue</td><td>/'tɪʃuː/ n.</td><td>组织薄纸, 棉纸一套, 一系列</td></tr>
+<tr><td>drill</td><td>/drɪl/ n.</td><td>钻子；钻孔机；播种机；训练vi. 钻孔；训练vt. 训练；钻孔；条播, drilling, drills</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day37.html" class="nav-btn">← Day 37</a>
+  <a href="day39.html" class="nav-btn">Day 39 →</a>
+</div>
+
+<div class="progress">📖 Day 38 of 44</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-05-16</div>
+
+</body>
+</html>
