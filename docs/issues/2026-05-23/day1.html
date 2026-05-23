@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Politics</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-05-23</div>
+
+<h1 class="article-title">Politics</h1>
+<div class="article-section"></div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>May 21st 2026 America’s Justice Department charged Raúl Castro with the “murder” of four Americans of Cuban <span class="annot" data-tooltip="descent /dɪ'sent/ n. 下降；血统；袭击vt. 除去…的气味；使…失去香味">descent</span>. Mr Castro succeeded his brother Fidel as Cuba’s leader before stepping down in 2021. The indictments relate to the shooting down of two small <span class="annot" data-tooltip="aircraft /'erkræft/ n. 飞机，航空器">aircraft</span>, operated by a Cuban-exiles <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span>, in 1996 by Cuban military jets, which killed the four men. Mr Castro was Cuba’s defence minister at the time. The charges intensify America’s <span class="annot" data-tooltip="campaign /kæm'peɪn/ n. 运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）时">campaign</span> against the Cuban <span class="annot" data-tooltip="regime /reɪ'ʒiːm/ n. 政权，政体；社会制度；管理体制">regime</span> and threat of an invasion. <span class="annot" data-tooltip="speaking /'spikɪŋ/ adj. 演讲的；富于表情的，雄辩的n. 说话；演讲v. 讲（speak的ing形式）">Speaking</span> in Spanish, Marco Rubio, America’s <span class="annot" data-tooltip="secretary /'sekrəteri/ n. 秘书书记部长, 大臣形容词: secretarial">secretary</span> of state, released a video to Cubans telling them that America was offering “to build a better future” for the island. <span class="annot" data-tooltip="venezuela /ˌvenə'zweɪlə/ n. 委内瑞拉形容词: Venezuelan">Venezuela</span> <span class="annot" data-tooltip="deported /dɪ'pɔːrt/ vt. 举止；放逐；驱逐出境时 态: deported, deporting, deports">deported</span> Alex Saab, an ally of Nicolás Maduro, the deposed president, to America. Mr Saab, often referred to as Mr Maduro’s “bag man”, appeared in court in Miami where a charge of money-laundering was</p>
+<p><span class="annot" data-tooltip="presented /'preznt/ vt. 呈现；介绍；提出；赠送vi. 举枪瞄准adj. 出席的；现在的n. 现在；礼物；瞄准时 态: presented, pr">presented</span>. He has been arrested before, but prosecutors may now <span class="annot" data-tooltip="lean /liːn/ vi. 倾斜；倚靠；倾向；依赖adj. 瘦的；贫乏的，歉收的vt. 使倾斜n. 倾斜；倾斜度；瘦肉时 态: leaned, le">lean</span> on Mr Saab to flesh out their case against Mr Maduro, who was snatched by American forces in January. More <span class="annot" data-tooltip="anti /'ænti/ adj. 反对的n. 反对者，反对论者">anti</span>-government <span class="annot" data-tooltip="demonstrations /ˌdemən'streɪʃn/ n. 表明;证明;示范游行示威">demonstrations</span> took <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span> in Bolivia, <span class="annot" data-tooltip="amid /ə'mɪd/ prep. 在其中，在其间">amid</span> widening opposition to austerity measures proposed by Rodrigo Paz, the centrist president. Bolivian officials in part blame Evo Morales, a former leftist president, for <span class="annot" data-tooltip="stirring /stɜːr/ vt. & vi. 搅拌(使)移动；(使)激动n. 搅动；搅和；搅拌激动；纷乱；骚乱STIRabbr. Surveillance">stirring</span> up trouble. Mr Paz’s election to office last year ended two <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span> of socialist rule in the country. America’s State Department compared the <span class="annot" data-tooltip="protests /'proʊtest/ n. 抗议；反对vt. & vi. 声明；抗议时 态: protested，protesting，protests">protests</span> to an attempted “coup d’état”. After weeks of counting the <span class="annot" data-tooltip="ballot /'bælət/ n. 投票表决, 选举选票vt. & vi. (使)投票表决时 态: balloted, balloting, ballots">ballot</span> in the first round of <span class="annot" data-tooltip="peru n. 秘鲁形容词: Peruvian">Peru</span>’s presidential election, the <span class="annot" data-tooltip="authorities /ə'θɔːrəti/ n. 威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗">authorities</span> announced that Roberto Sánchez, the leftist <span class="annot" data-tooltip="candidate /'kændɪdət，ˈkændɪdeɪt/ n. 申请求职者, 候选人报考者名 词: candidacy">candidate</span>, would advance to the second round to be held on June 7th. He will face Keiko Fujimori, the <span class="annot" data-tooltip="conservative /kən'sɜːrvətɪv/ n. 保守的人adj. 保守的, 守旧的(式样等)不时新的, 传统的副 词: conservatively">conservative</span> runner. <span class="annot" data-tooltip="indonesia /ˌɪndə'niːʒə/ n. 印度尼西亚(东南亚岛国)">Indonesia</span> announced a <span class="annot" data-tooltip="proposal /prə'poʊzl/ n. 提议，建议；求婚">proposal</span> to centralise the export of commodities such as palm oil and coal through a new state-operated export company. Exporters of natural resources will also have to place their export earnings in state-owned banks, in order to stabilise the <span class="annot" data-tooltip="falling /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">falling</span> rupiah. Indonesia’s <span class="annot" data-tooltip="central /'sentrəl/ adj. 中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的副 词: centrally">central</span> bank raised interest rates for the first time in two years, lifting them by a larger-than-expected half a percentage point. Vladimir Putin visited China, where he signed several deals on trade and co- operation with Xi Jinping. The leaders discussed a new pipeline that would provide China with Russian natural gas. Meanwhile, China confirmed it will buy 200 Boeing jets following Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s recent <span class="annot" data-tooltip="trip /trɪp/ vi. 绊倒；犯错误；远足；轻快地走n. 旅行；绊倒；差错vt. 绊倒；使犯错TRIPabbr. transformation-">trip</span> to Beijing. <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">Although</span> the order is smaller than had been expected it represents a step forward; at the height of the trade war China paused deliveries of Boeing jets.</p>
+<p>The WHO declared an outbreak of Ebola to be a public-health emergency of international concern. The virus kills up to half of those who catch it. The epidemic in eastern <span class="annot" data-tooltip="democratic /ˌdemə'krætɪk/ adj. 民主的, 有民主精神或作风的副 词: democratically">Democratic</span> Republic of Congo is <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span> to have killed at least 139 people so <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span>, with hundreds more <span class="annot" data-tooltip="infected /ɪn'fekt/ vt. 感染，传染时 态: infected, infecting, infects">infected</span>. The numbers will probably <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span>. The response to the outbreak is being hampered by war, aid cuts and the lack of a <span class="annot" data-tooltip="vaccine /væk'siːn/ n. 疫苗;痘苗adj. 痘苗的;疫苗的">vaccine</span> for the strain that is causing it. America and Nigeria claimed that a top Islamic State commander and 175 other militants were killed in air <span class="annot" data-tooltip="strikes /straɪk/ vi. 罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打时 态:">strikes</span> in north-eastern Nigeria, part of a series of collaborative operations aimed at tackling the country’s <span class="annot" data-tooltip="overlapping /ˌoʊvər'læp/ n. 重叠；重复vi. 部分重叠；部分的同时发生vt. 与…重叠；与…同时发生时 态: overlapped, overlap">overlapping</span> <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span> crises. America has stepped up support for Nigeria’s <span class="annot" data-tooltip="counter /'kaʊntər/ n. 柜台, 柜台式长桌计数器vt. & vi. 对抗, 反驳adv. 反方向地, 对立地时 态: countered, co">counter</span>-terrorism efforts, but there is no evidence that this is reducing the violence. At least four people were killed in <span class="annot" data-tooltip="protests /'proʊtest/ n. 抗议；反对vt. & vi. 声明；抗议时 态: protested，protesting，protests">protests</span> over high fuel prices in Kenya. In response the government cut <span class="annot" data-tooltip="diesel /'diːzl/ n. 柴油机；柴油；（俚）健康的身体adj. 内燃机传动的；供内燃机用的">diesel</span> prices and <span class="annot" data-tooltip="entered /'entər/ vt. & vi. 进入, 进去参加, 加入登记, 登录时 态: entered, entering, enters">entered</span> <span class="annot" data-tooltip="negotiations /nɪˌɡoʊʃi'eɪʃn/ n. 协商，谈判完成(难事)；通过">negotiations</span> with transport unions to resolve a <span class="annot" data-tooltip="strike /straɪk/ vi. 罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打时 态:">strike</span> by bus and minibus drivers. The war in Iran has driven up prices in Kenya, which, like much of east Africa, depends on the Gulf for oil supplies. Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> threatened to restart strikes on Iran, warning the Islamic <span class="annot" data-tooltip="regime /reɪ'ʒiːm/ n. 政权，政体；社会制度；管理体制">regime</span> that the “clock is ticking”. The American president then said that he had</p>
+<p>called off an attack at the request of Qatar, Saudi Arabia and the United Arab Emirates. He claimed that “<span class="annot" data-tooltip="serious /'sɪriəs/ adj. 严肃的，严重的；认真的；庄重的；危急的副 词: seriously">serious</span> <span class="annot" data-tooltip="negotiations /nɪˌɡoʊʃi'eɪʃn/ n. 协商，谈判完成(难事)；通过">negotiations</span>” were under way. Meanwhile, Iran announced the establishment of the Persian Gulf <span class="annot" data-tooltip="strait /streɪt/ n. 海峡；（尤指经济拮据引起的）困境，境况窘迫adj. 狭窄的；苦恼的副 词: straitly">Strait</span> <span class="annot" data-tooltip="authority /ə'θɔːrəti/ n. 威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗">Authority</span>, a new entity tasked with “managing the passage and transit through the Strait of Hormuz”. The United Arab Emirates said a <span class="annot" data-tooltip="drone /droʊn/ n. 无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫">drone</span> <span class="annot" data-tooltip="strike /straɪk/ vi. 罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打时 态:">strike</span> on its Barakah nuclear plant had <span class="annot" data-tooltip="sparked /spɑːrk/ n. 火花，火星；电火花；一丝，略微；导火线，诱因v. 引发，触发；产生火花（电火花）；点燃；增加趣味（或活力、风味等）时 态">sparked</span> a fire. Officials said they did not know who was responsible, but confirmed that the attack had come from <span class="annot" data-tooltip="iraq n. 伊拉克（西南亚国家）">Iraq</span>, where some Iranian- backed militias are based. Bezalel Smotrich, Israel’s <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span>-right finance minister, claimed that the International Criminal Court is seeking a “secret” warrant for his arrest. He said this would be a “declaration of war” and blamed the Palestinian authority. Itamar Ben-Gvir, Israel’s <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span> minister, posted a video of himself waving the Israeli flag in front of activists who had been taken off a <span class="annot" data-tooltip="vessel /'vesl/ n. 容器，器皿；船，舰；脉管，血管">vessel</span> en <span class="annot" data-tooltip="route /ruːt，raʊt/ n. 路, 路途, 路线, 路程时 态: routed, routing, routes">route</span> to <span class="annot" data-tooltip="gaza n. 加沙（地中海岸港市）">Gaza</span>. In the video the activists were <span class="annot" data-tooltip="bound /baʊnd/ vi. 跳；弹回vt. 给…划界，限制n. 跳，跳跃，跃进界限，范围adj. 被捆绑的，被束缚的一定的，必定的去，准备去时 态:">bound</span> and kneeling on the floor. Even Binyamin Netanyahu said the incident did not represent Israeli <span class="annot" data-tooltip="values /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">values</span>. Separately, an Israeli air strike in Gaza killed Izz al-Din al-Haddad, the head of Hamas’s military <span class="annot" data-tooltip="wing /wɪŋ/ n. 翅膀；翼；飞翔；派别vt. 使飞；飞过；空运；增加…速度；装以翼vi. 飞行时 态: winged, winging, ">wing</span>. He was the most <span class="annot" data-tooltip="senior /'siːniər/ adj. 年长的资深的; 地位高的〈美〉最高年级的n. 较年长者高年级学生〈美〉毕业班学生Senior西尼尔(姓氏)">senior</span> official in the militant <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span> to have been targeted since last October’s <span class="annot" data-tooltip="ceasefire /'siːsfaɪər/ n. (通常指永久性的)停火; 停战">ceasefire</span> was called. America’s Justice Department created a $1.8bn fund to <span class="annot" data-tooltip="compensate /'kɑːmpenseɪt/ vt. & vi. 补偿, 报酬时 态: compensated, compensating, compensates">compensate</span> people who claim they have been targeted by <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">federal</span> prosecutors for political purposes, in effect <span class="annot" data-tooltip="allies n. （第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者">allies</span> and supporters of Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>. This will probably include the rioters who stormed Congress on January 6th 2021. It forms part of the government’s settlement with Mr Trump in a case related to his <span class="annot" data-tooltip="leaked /liːk/ n. 漏洞，裂缝；泄漏vt. 使渗漏，泄露vi. 漏，渗；泄漏出去时 态: leaked, leaking, leaks">leaked</span> tax documents. The president was seeking $10bn in <span class="annot" data-tooltip="damages /'dæmɪdʒ/ v. 损害；伤害；毁坏；破坏n. 损坏，破坏，损失，损害，伤害（法院判定的）损害赔偿金时 态: damaged, damagi">damages</span> and has now dropped his claims. A <span class="annot" data-tooltip="novice /'nɑːvɪs/ n. 初学者，新手">novice</span> <span class="annot" data-tooltip="candidate /'kændɪdət，ˈkændɪdeɪt/ n. 申请求职者, 候选人报考者名 词: candidacy">candidate</span> backed by Mr Trump won a primary election for a congressional district in north Kentucky. Ed Gallrein defeated Thomas Massie, one of the few remaining <span class="annot" data-tooltip="republican /rɪ'pʌblɪkən/ adj. 共和国的, 共和政体的n. 拥护共和政体者, 共和主义者名 词: republicanism">Republican</span> critics of the president, in the most expensive House primary election ever. Another thorn in Mr Trump’s side, Bill Cassidy, was defeated in his <span class="annot" data-tooltip="senate /ˈsenət/ n.（诸如美国、澳大利亚、法国的）参议院（the Senate） （某些国家的）大学理事会，大学评议会（古罗马的）元老院">Senate</span> primary in Louisiana.</p>
+<p>Two teenagers shot three men dead <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span> a <span class="annot" data-tooltip="mosque /mɑːsk/ n. 清真寺, 伊斯兰教寺院">mosque</span> in San Diego, before taking their <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> lives. The mother of one of the gunmen had reported that her son was missing and <span class="annot" data-tooltip="suicidal /ˌsuːɪ'saɪdl/ adj. (想)自杀的;可能导致自杀的(人)有自杀倾向的可能导致自我毁灭的副 词: suicidally">suicidal</span>. Andy Burnham, the mayor of Greater Manchester, emerged as the favourite to succeed Sir Keir Starmer as Labour’s leader, and thus Britain’s prime minister, in a putative leadership <span class="annot" data-tooltip="contest /'kɑːntest/ vt. 争辩；提出质疑vi. 竞争；争辩n. 竞赛；争论；争夺时 态: contested, contesting, conte">contest</span>. But Mr Burnham is not a member of <span class="annot" data-tooltip="parliament /'pɑːrləmənt/ n. 议会, 国会">Parliament</span>. The MP in Makerfield, a traditional Labour seat, stood down to <span class="annot" data-tooltip="enable /ɪ'neɪbl/ vt. 使能够；提供做…的权利[措施]使可能时 态: enabled，enabling，enables">enable</span> him to contest it in a by-election. However, at the recent local elections <span class="annot" data-tooltip="reform /rɪ'fɔːrm/ n. 改革，改良，改造vt. & vi. 改革；改造；改善时 态: reformed，reforming，reforms">Reform</span> UK made big gains in the area, suggesting it is not a foregone conclusion that Mr Burnham will clinch the seat. Peter Magyar, Hungary’s new prime minister, visited Poland on his first <span class="annot" data-tooltip="trip /trɪp/ vi. 绊倒；犯错误；远足；轻快地走n. 旅行；绊倒；差错vt. 绊倒；使犯错TRIPabbr. transformation-">trip</span> abroad. Mr Magyar met Donald Tusk, his <span class="annot" data-tooltip="polish /'pɑːlɪʃ/ n. 磨光，擦亮；上光剂，擦亮剂；优雅，精良vi. 擦亮，变光滑vt. 磨光，使发亮adj. 波兰的Polishadj. 波兰">Polish</span> <span class="annot" data-tooltip="counterpart /'kaʊntərpɑːrt/ n. 与对方地位相当的人, 与另一方作用相当的物">counterpart</span>, who also came to office by defeating an <span class="annot" data-tooltip="anti /'ænti/ adj. 反对的n. 反对者，反对论者">anti</span>-EU government. Hungary’s relations with Poland were strained under Mr Magyar’s predecessor, Viktor Orban. Mr Magyar wants Hungarian-Polish relations to return to “normality” as the countries have much in common. A NATO jet shot down a Ukrainian <span class="annot" data-tooltip="drone /droʊn/ n. 无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫">drone</span> that had <span class="annot" data-tooltip="entered /'entər/ vt. & vi. 进入, 进去参加, 加入登记, 登录时 态: entered, entering, enters">entered</span> Estonia’s air space. <span class="annot" data-tooltip="ukraine n. 乌克兰（原苏联一加盟共和国，现已独立）">Ukraine</span> blamed Russia’s “electronic <span class="annot" data-tooltip="warfare /'wɔːrfer/ n. 战争, 战争状态">warfare</span>” for redirecting the drone. Another Ukrainian drone <span class="annot" data-tooltip="crashed /kræʃ/ n. 碰撞；崩溃；坠落vt. 破碎；撞碎；坠落vi. 碰撞；坠毁；闯；突然倒台adj. 速成的时 态: crashed, cr">crashed</span> in Lithuania. Latvia also reported drone incursions. Latvia’s prime minister, Evika Silina, resigned recently, after misdirected Ukrainian <span class="annot" data-tooltip="drones /droʊn/ n. 无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫">drones</span> crossed over from Russia and damaged an oil facility. Latvia’s defences had not <span class="annot" data-tooltip="detected /dɪ'tekt/ vt. 发现；发觉，查明时 态: detected，detecting，detects">detected</span> the <span class="annot" data-tooltip="breach /briːtʃ/ n. 破坏, 违反破裂, 不和缺口, 裂口vt. 攻破破坏, 违反时 态: breached, breaching, brea">breach</span>. This article was downloaded by zlibrary from https://www.economist.com//the-world-this-week/2026/05/21/politics</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Business</div>
+<p>May 21st 2026 SpaceX officially launched its blockbuster IPO. The space-rocket firm, led by Elon Musk, hopes to <span class="annot" data-tooltip="raise /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raise</span> around $75bn when it floats on the <span class="annot" data-tooltip="nasdaq 纳斯达克指数〈美〉全国证券交易商自动报价系统协会">NASDAQ</span> stockmarket, <span class="annot" data-tooltip="smashing /smæʃ/ n. 破碎(声)猛击；猛撞大成功；极为成功的新书[新戏，电影等]vt. & vi. 打碎；捣烂vt. 重击；打败时 态: sm">smashing</span> the record for an IPO held by Saudi Aramco, which went public in 2019. Its target valuation is about $1.75trn. In its prospectus SpaceX laid out ambitions to use its rockets to transport components to off- world data centres in space. It also mentions a <span class="annot" data-tooltip="vision /'vɪʒn/ n. 视力；眼力；幻象；美景；想象力vt. 显现；梦见；想象时 态: visioned, visioning, visions">vision</span> of carrying people to Mars and of <span class="annot" data-tooltip="mining /'maɪnɪŋ/ n. 矿业；采矿">mining</span> on asteroids. The IPO announcement came as the firm prepared the first test <span class="annot" data-tooltip="flight /flaɪt/ n. 飞翔, 飞行航班, 航机楼梯的一段逃跑, 溃退时 态: flighted, flighting, flights">flight</span> of its V3 Starship megarocket. It was a mixed week for Elon Musk, who lost his courtroom battle with OpenAI and Sam Altman. It took a <span class="annot" data-tooltip="jury /'dʒʊri/ n. 陪审团；评判委员会adj. 应急的">jury</span> just two hours to reject the case, in which Mr Musk sought <span class="annot" data-tooltip="damages /'dæmɪdʒ/ v. 损害；伤害；毁坏；破坏n. 损坏，破坏，损失，损害，伤害（法院判定的）损害赔偿金时 态: damaged, damagi">damages</span> from OpenAI for <span class="annot" data-tooltip="allegedly adv. 依其申述">allegedly</span> reneging on a <span class="annot" data-tooltip="contract /'kɑːntrækt/ vi. 感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约时 态: contracted, contracting, c">contract</span> with him as a co-founder to run the firm as a non-profit instead of</p>
+<p>for-profit entity. Meanwhile, OpenAI was reportedly ready to launch its <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> IPO with a view to a listing in September. <span class="annot" data-tooltip="nvidia 恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商">Nvidia</span> <span class="annot" data-tooltip="presented /'preznt/ vt. 呈现；介绍；提出；赠送vi. 举枪瞄准adj. 出席的；现在的n. 现在；礼物；瞄准时 态: presented, pr">presented</span> another stellar set of <span class="annot" data-tooltip="quarterly /'kwɔːrtərli/ n. 季刊adj. 一年四次的, 每季的adv. 一年四次地, 每季地">quarterly</span> earnings. It recorded <span class="annot" data-tooltip="overall /ˌoʊvər'ɔːl/ adj. 总体的；全面的；综合的全面考虑的adv. 大体上，总的来说一切包括在内，全部的n. 长罩衣工装裤；工作裤">overall</span> <span class="annot" data-tooltip="revenues /'revənuː/ n. 收入，收益；财政收入，税收">revenues</span> of $81.6bn, up by 85% year on year, with sales from chips for data centres taking in $75.2bn, a <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> of 92%. The company announced an additional $80bn in share buy-backs. A last-minute deal between management and unions averted a <span class="annot" data-tooltip="strike /straɪk/ vi. 罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打时 态:">strike</span> at Samsung. Samsung has reaped huge profits from selling its memory chips to data centres and the unions want their cut in <span class="annot" data-tooltip="bonuses /'boʊnəs/ n. 奖金；红利；额外津贴BONUSabbr. Boling Nuclear Superheat Reactor 沸腾式过热核">bonuses</span>. Britain’s <span class="annot" data-tooltip="annual /'ænjuəl/ adj. 年度的；每年的n. 年刊，年鉴；一年生植物副 词: annually">annual</span> <span class="annot" data-tooltip="inflation /ɪn'fleɪʃn/ n. (充气而引起的)膨胀通货膨胀">inflation</span> rate fell to 2.8% in April from 3.3% in March, mostly a result of the government lowering its <span class="annot" data-tooltip="cap /kæp/ n. 帽子；盖vi. 脱帽致意vt. 覆盖；胜过；给…戴帽；加盖于Cap摩羯座CAPabbr. Common Agricult">cap</span> on <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span> prices. Electricity prices fell by 8.4%. However the cost of motor fuel surged by 23%, <span class="annot" data-tooltip="prompting /prɑːmpt/ adj. 敏捷的，迅速的；立刻的vt. 促进；激起；提示；（给演员）提白n. 提示；付款期限；DOS命令：改变DOS系统提示符的风">prompting</span> the government to postpone a rise in fuel tax this week. Economists expect the overall inflation rate to rise again in the coming months. America <span class="annot" data-tooltip="extended /ɪk'stend/ vt. & vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出时 态:">extended</span> a <span class="annot" data-tooltip="waiver /'weɪvər/ n. 弃权，放弃；弃权证书">waiver</span> on sanctions for buying Russian oil for another 30 days. The waiver applies to Russian oil held at sea and is designed to help poorer countries that have taken a hit from the stoppage of supplies through the <span class="annot" data-tooltip="strait /streɪt/ n. 海峡；（尤指经济拮据引起的）困境，境况窘迫adj. 狭窄的；苦恼的副 词: straitly">Strait</span> of Hormuz. Meanwhile, Britain eased sanctions on Russian oil refined into <span class="annot" data-tooltip="diesel /'diːzl/ n. 柴油机；柴油；（俚）健康的身体adj. 内燃机传动的；供内燃机用的">diesel</span> and jet fuel in other countries. This will <span class="annot" data-tooltip="enable /ɪ'neɪbl/ vt. 使能够；提供做…的权利[措施]使可能时 态: enabled，enabling，enables">enable</span> the country to import jet fuel from India. Ryanair, Europe’s largest airline, said it was “<span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> too early” to give any meaningful profit guidance because of <span class="annot" data-tooltip="volatile /'vɑːlətl/ adj. （人或其情绪）不稳定的；易变的；易怒的，喜怒无常的（情况）可能急剧波动的；不稳定的；易恶化的（物质）易挥发的，易气化的【">volatile</span> jet-fuel prices. Europe is <span class="annot" data-tooltip="relatively /'relətɪvli/ adv. 相对地，比较而言；相当相对来说；相比较而言">relatively</span> well stocked with jet fuel, and Ryanair <span class="annot" data-tooltip="hedges /hedʒ/ vt. 用树篱笆围住；避免作正面答复vi. 用树篱围住；避免作正面答复n. 树篱；障碍时 态: hedged, hedging,">hedges</span> 80% of its fuel costs, but it warned that <span class="annot" data-tooltip="spot /spɑːt/ n. 斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Po">spot</span> prices had hit $150 a <span class="annot" data-tooltip="barrel /'bærəl/ vt. 把……装入桶内n. 桶；枪管，炮管vi. 快速移动时 态: barreled, barrelled barreling,">barrel</span> for unhedged fuel. Adani Enterprises, part of Adani <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">Group</span>, agreed to pay $275m to settle claims that it violated American sanctions by buying Iranian fuel between November 2023 and June 2025. The case was brought by America’s <span class="annot" data-tooltip="treasury /'treʒəri/ n. 财政部；国库，金库；宝库">Treasury</span> Department. Meanwhile, the Justice Department decided to drop its criminal <span class="annot" data-tooltip="fraud /frɔːd/ n. 欺诈, 欺骗行为骗子">fraud</span> case against Gautam Adani, Adani Group’s <span class="annot" data-tooltip="chairman /'tʃermən/ n. 主席，会长；董事长时 态: chairmanned, chairmanning, chairmans">chairman</span>, and the <span class="annot" data-tooltip="securities /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">Securities</span> and Exchange <span class="annot" data-tooltip="commission /kə'mɪʃn/ n. 授权, 委托委员会佣金, 回扣vt. 委任, 委托时 态: commissioned, commissioning, c">Commission</span> settled with Mr Adani on allegations</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>descent</td><td>/dɪ'sent/ n.</td><td>下降；血统；袭击vt. 除去…的气味；使…失去香味</td></tr>
+<tr><td>aircraft</td><td>/'erkræft/ n.</td><td>飞机，航空器</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>campaign</td><td>/kæm'peɪn/ n.</td><td>运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）, campaigning, campai</td></tr>
+<tr><td>regime</td><td>/reɪ'ʒiːm/ n.</td><td>政权，政体；社会制度；管理体制</td></tr>
+<tr><td>speaking</td><td>/'spikɪŋ/ adj.</td><td>演讲的；富于表情的，雄辩的n. 说话；演讲v. 讲（speak的ing形式）</td></tr>
+<tr><td>secretary</td><td>/'sekrəteri/ n.</td><td>秘书书记部长, 大臣</td></tr>
+<tr><td>venezuela</td><td>/ˌvenə'zweɪlə/ n.</td><td>委内瑞拉</td></tr>
+<tr><td>deported</td><td>/dɪ'pɔːrt/ vt.</td><td>举止；放逐；驱逐出境, deporting, deports</td></tr>
+<tr><td>presented</td><td>/'preznt/ vt.</td><td>呈现；介绍；提出；赠送vi. 举枪瞄准adj. 出席的；现在的n. 现在；礼物；瞄准, presenting, presents</td></tr>
+<tr><td>lean</td><td>/liːn/ vi.</td><td>倾斜；倚靠；倾向；依赖adj. 瘦的；贫乏的，歉收的vt. 使倾斜n. 倾斜；倾斜度；瘦肉, leaning, leans</td></tr>
+<tr><td>anti</td><td>/'ænti/ adj.</td><td>反对的n. 反对者，反对论者</td></tr>
+<tr><td>demonstrations</td><td>/ˌdemən'streɪʃn/ n.</td><td>表明;证明;示范游行示威</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>amid</td><td>/ə'mɪd/ prep.</td><td>在其中，在其间</td></tr>
+<tr><td>stirring</td><td>/stɜːr/ vt.</td><td>& vi. 搅拌(使)移动；(使)激动n. 搅动；搅和；搅拌激动；纷乱；骚乱STIRabbr. Surveillance and Target Indicati</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>protests</td><td>/'proʊtest/ n.</td><td>抗议；反对vt. & vi. 声明；抗议，protesting，protests</td></tr>
+<tr><td>ballot</td><td>/'bælət/ n.</td><td>投票表决, 选举选票vt. & vi. (使)投票表决, balloting, ballots</td></tr>
+<tr><td>peru</td><td>— n.</td><td>秘鲁</td></tr>
+<tr><td>authorities</td><td>/ə'θɔːrəti/ n.</td><td>威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗</td></tr>
+<tr><td>candidate</td><td>/'kændɪdət，ˈkændɪdeɪt/ n.</td><td>申请求职者, 候选人报考者</td></tr>
+<tr><td>conservative</td><td>/kən'sɜːrvətɪv/ n.</td><td>保守的人adj. 保守的, 守旧的(式样等)不时新的, 传统的</td></tr>
+<tr><td>indonesia</td><td>/ˌɪndə'niːʒə/ n.</td><td>印度尼西亚(东南亚岛国)</td></tr>
+<tr><td>proposal</td><td>/prə'poʊzl/ n.</td><td>提议，建议；求婚</td></tr>
+<tr><td>falling</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>central</td><td>/'sentrəl/ adj.</td><td>中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>trip</td><td>/trɪp/ vi.</td><td>绊倒；犯错误；远足；轻快地走n. 旅行；绊倒；差错vt. 绊倒；使犯错TRIPabbr. transformation-induced plasticity 高</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>democratic</td><td>/ˌdemə'krætɪk/ adj.</td><td>民主的, 有民主精神或作风的</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>infected</td><td>/ɪn'fekt/ vt.</td><td>感染，传染, infecting, infects</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>vaccine</td><td>/væk'siːn/ n.</td><td>疫苗;痘苗adj. 痘苗的;疫苗的</td></tr>
+<tr><td>strikes</td><td>/straɪk/ vi.</td><td>罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打, stricken striking, str</td></tr>
+<tr><td>overlapping</td><td>/ˌoʊvər'læp/ n.</td><td>重叠；重复vi. 部分重叠；部分的同时发生vt. 与…重叠；与…同时发生, overlapping, overlaps</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>counter</td><td>/'kaʊntər/ n.</td><td>柜台, 柜台式长桌计数器vt. & vi. 对抗, 反驳adv. 反方向地, 对立地, countering, counters</td></tr>
+<tr><td>protests</td><td>/'proʊtest/ n.</td><td>抗议；反对vt. & vi. 声明；抗议，protesting，protests</td></tr>
+<tr><td>diesel</td><td>/'diːzl/ n.</td><td>柴油机；柴油；（俚）健康的身体adj. 内燃机传动的；供内燃机用的</td></tr>
+<tr><td>entered</td><td>/'entər/ vt.</td><td>& vi. 进入, 进去参加, 加入登记, 登录, entering, enters</td></tr>
+<tr><td>negotiations</td><td>/nɪˌɡoʊʃi'eɪʃn/ n.</td><td>协商，谈判完成(难事)；通过</td></tr>
+<tr><td>strike</td><td>/straɪk/ vi.</td><td>罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打, stricken striking, str</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>regime</td><td>/reɪ'ʒiːm/ n.</td><td>政权，政体；社会制度；管理体制</td></tr>
+<tr><td>serious</td><td>/'sɪriəs/ adj.</td><td>严肃的，严重的；认真的；庄重的；危急的</td></tr>
+<tr><td>negotiations</td><td>/nɪˌɡoʊʃi'eɪʃn/ n.</td><td>协商，谈判完成(难事)；通过</td></tr>
+<tr><td>strait</td><td>/streɪt/ n.</td><td>海峡；（尤指经济拮据引起的）困境，境况窘迫adj. 狭窄的；苦恼的</td></tr>
+<tr><td>authority</td><td>/ə'θɔːrəti/ n.</td><td>威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗</td></tr>
+<tr><td>drone</td><td>/droʊn/ n.</td><td>无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫；嗡嗡响(人)絮絮叨叨地说，喋喋不休地说</td></tr>
+<tr><td>strike</td><td>/straɪk/ vi.</td><td>罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打, stricken striking, str</td></tr>
+<tr><td>sparked</td><td>/spɑːrk/ n.</td><td>火花，火星；电火花；一丝，略微；导火线，诱因v. 引发，触发；产生火花（电火花）；点燃；增加趣味（或活力、风味等）, sparking, sparks</td></tr>
+<tr><td>iraq</td><td>— n.</td><td>伊拉克（西南亚国家）</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>vessel</td><td>/'vesl/ n.</td><td>容器，器皿；船，舰；脉管，血管</td></tr>
+<tr><td>route</td><td>/ruːt，raʊt/ n.</td><td>路, 路途, 路线, 路程, routing, routes</td></tr>
+<tr><td>gaza</td><td>— n.</td><td>加沙（地中海岸港市）</td></tr>
+<tr><td>bound</td><td>/baʊnd/ vi.</td><td>跳；弹回vt. 给…划界，限制n. 跳，跳跃，跃进界限，范围adj. 被捆绑的，被束缚的一定的，必定的去，准备去，bounding，bounds</td></tr>
+<tr><td>values</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>wing</td><td>/wɪŋ/ n.</td><td>翅膀；翼；飞翔；派别vt. 使飞；飞过；空运；增加…速度；装以翼vi. 飞行, winging, wings</td></tr>
+<tr><td>senior</td><td>/'siːniər/ adj.</td><td>年长的资深的; 地位高的〈美〉最高年级的n. 较年长者高年级学生〈美〉毕业班学生Senior西尼尔(姓氏)</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>ceasefire</td><td>/'siːsfaɪər/ n.</td><td>(通常指永久性的)停火; 停战</td></tr>
+<tr><td>compensate</td><td>/'kɑːmpenseɪt/ vt.</td><td>& vi. 补偿, 报酬, compensating, compensates</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>allies</td><td>— n.</td><td>（第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>leaked</td><td>/liːk/ n.</td><td>漏洞，裂缝；泄漏vt. 使渗漏，泄露vi. 漏，渗；泄漏出去, leaking, leaks</td></tr>
+<tr><td>damages</td><td>/'dæmɪdʒ/ v.</td><td>损害；伤害；毁坏；破坏n. 损坏，破坏，损失，损害，伤害（法院判定的）损害赔偿金, damaging, damages</td></tr>
+<tr><td>novice</td><td>/'nɑːvɪs/ n.</td><td>初学者，新手</td></tr>
+<tr><td>candidate</td><td>/'kændɪdət，ˈkændɪdeɪt/ n.</td><td>申请求职者, 候选人报考者</td></tr>
+<tr><td>republican</td><td>/rɪ'pʌblɪkən/ adj.</td><td>共和国的, 共和政体的n. 拥护共和政体者, 共和主义者</td></tr>
+<tr><td>senate</td><td>/ˈsenət/ </td><td>n.（诸如美国、澳大利亚、法国的）参议院（the Senate） （某些国家的）大学理事会，大学评议会（古罗马的）元老院</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>mosque</td><td>/mɑːsk/ n.</td><td>清真寺, 伊斯兰教寺院</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>suicidal</td><td>/ˌsuːɪ'saɪdl/ adj.</td><td>(想)自杀的;可能导致自杀的(人)有自杀倾向的可能导致自我毁灭的</td></tr>
+<tr><td>contest</td><td>/'kɑːntest/ vt.</td><td>争辩；提出质疑vi. 竞争；争辩n. 竞赛；争论；争夺, contesting, contests</td></tr>
+<tr><td>parliament</td><td>/'pɑːrləmənt/ n.</td><td>议会, 国会</td></tr>
+<tr><td>enable</td><td>/ɪ'neɪbl/ vt.</td><td>使能够；提供做…的权利[措施]使可能，enabling，enables</td></tr>
+<tr><td>reform</td><td>/rɪ'fɔːrm/ n.</td><td>改革，改良，改造vt. & vi. 改革；改造；改善，reforming，reforms</td></tr>
+<tr><td>trip</td><td>/trɪp/ vi.</td><td>绊倒；犯错误；远足；轻快地走n. 旅行；绊倒；差错vt. 绊倒；使犯错TRIPabbr. transformation-induced plasticity 高</td></tr>
+<tr><td>polish</td><td>/'pɑːlɪʃ/ n.</td><td>磨光，擦亮；上光剂，擦亮剂；优雅，精良vi. 擦亮，变光滑vt. 磨光，使发亮adj. 波兰的Polishadj. 波兰的,与波兰有关的波兰人的,波兰语的n. </td></tr>
+<tr><td>counterpart</td><td>/'kaʊntərpɑːrt/ n.</td><td>与对方地位相当的人, 与另一方作用相当的物</td></tr>
+<tr><td>anti</td><td>/'ænti/ adj.</td><td>反对的n. 反对者，反对论者</td></tr>
+<tr><td>drone</td><td>/droʊn/ n.</td><td>无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫；嗡嗡响(人)絮絮叨叨地说，喋喋不休地说</td></tr>
+<tr><td>entered</td><td>/'entər/ vt.</td><td>& vi. 进入, 进去参加, 加入登记, 登录, entering, enters</td></tr>
+<tr><td>ukraine</td><td>— n.</td><td>乌克兰（原苏联一加盟共和国，现已独立）</td></tr>
+<tr><td>warfare</td><td>/'wɔːrfer/ n.</td><td>战争, 战争状态</td></tr>
+<tr><td>crashed</td><td>/kræʃ/ n.</td><td>碰撞；崩溃；坠落vt. 破碎；撞碎；坠落vi. 碰撞；坠毁；闯；突然倒台adj. 速成的, crashing, crashes</td></tr>
+<tr><td>drones</td><td>/droʊn/ n.</td><td>无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫；嗡嗡响(人)絮絮叨叨地说，喋喋不休地说</td></tr>
+<tr><td>detected</td><td>/dɪ'tekt/ vt.</td><td>发现；发觉，查明，detecting，detects</td></tr>
+<tr><td>breach</td><td>/briːtʃ/ n.</td><td>破坏, 违反破裂, 不和缺口, 裂口vt. 攻破破坏, 违反, breaching, breaches</td></tr>
+<tr><td>raise</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>nasdaq</td><td>— </td><td>纳斯达克指数〈美〉全国证券交易商自动报价系统协会</td></tr>
+<tr><td>smashing</td><td>/smæʃ/ n.</td><td>破碎(声)猛击；猛撞大成功；极为成功的新书[新戏，电影等]vt. & vi. 打碎；捣烂vt. 重击；打败，smashing，smashes</td></tr>
+<tr><td>vision</td><td>/'vɪʒn/ n.</td><td>视力；眼力；幻象；美景；想象力vt. 显现；梦见；想象, visioning, visions</td></tr>
+<tr><td>mining</td><td>/'maɪnɪŋ/ n.</td><td>矿业；采矿</td></tr>
+<tr><td>flight</td><td>/flaɪt/ n.</td><td>飞翔, 飞行航班, 航机楼梯的一段逃跑, 溃退, flighting, flights</td></tr>
+<tr><td>jury</td><td>/'dʒʊri/ n.</td><td>陪审团；评判委员会adj. 应急的</td></tr>
+<tr><td>damages</td><td>/'dæmɪdʒ/ v.</td><td>损害；伤害；毁坏；破坏n. 损坏，破坏，损失，损害，伤害（法院判定的）损害赔偿金, damaging, damages</td></tr>
+<tr><td>allegedly</td><td>— adv.</td><td>依其申述</td></tr>
+<tr><td>contract</td><td>/'kɑːntrækt/ vi.</td><td>感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约, contracting, contracts</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>nvidia</td><td>— </td><td>恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商</td></tr>
+<tr><td>presented</td><td>/'preznt/ vt.</td><td>呈现；介绍；提出；赠送vi. 举枪瞄准adj. 出席的；现在的n. 现在；礼物；瞄准, presenting, presents</td></tr>
+<tr><td>quarterly</td><td>/'kwɔːrtərli/ n.</td><td>季刊adj. 一年四次的, 每季的adv. 一年四次地, 每季地</td></tr>
+<tr><td>overall</td><td>/ˌoʊvər'ɔːl/ adj.</td><td>总体的；全面的；综合的全面考虑的adv. 大体上，总的来说一切包括在内，全部的n. 长罩衣工装裤；工作裤</td></tr>
+<tr><td>revenues</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>strike</td><td>/straɪk/ vi.</td><td>罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打, stricken striking, str</td></tr>
+<tr><td>bonuses</td><td>/'boʊnəs/ n.</td><td>奖金；红利；额外津贴BONUSabbr. Boling Nuclear Superheat Reactor 沸腾式过热核反应堆</td></tr>
+<tr><td>annual</td><td>/'ænjuəl/ adj.</td><td>年度的；每年的n. 年刊，年鉴；一年生植物</td></tr>
+<tr><td>inflation</td><td>/ɪn'fleɪʃn/ n.</td><td>(充气而引起的)膨胀通货膨胀</td></tr>
+<tr><td>cap</td><td>/kæp/ n.</td><td>帽子；盖vi. 脱帽致意vt. 覆盖；胜过；给…戴帽；加盖于Cap摩羯座CAPabbr. Common Agricultural Policy (欧共体)共同农</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>prompting</td><td>/prɑːmpt/ adj.</td><td>敏捷的，迅速的；立刻的vt. 促进；激起；提示；（给演员）提白n. 提示；付款期限；DOS命令：改变DOS系统提示符的风格adv. 准时地, promptest</td></tr>
+<tr><td>extended</td><td>/ɪk'stend/ vt.</td><td>& vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出，extending，extends</td></tr>
+<tr><td>waiver</td><td>/'weɪvər/ n.</td><td>弃权，放弃；弃权证书</td></tr>
+<tr><td>strait</td><td>/streɪt/ n.</td><td>海峡；（尤指经济拮据引起的）困境，境况窘迫adj. 狭窄的；苦恼的</td></tr>
+<tr><td>diesel</td><td>/'diːzl/ n.</td><td>柴油机；柴油；（俚）健康的身体adj. 内燃机传动的；供内燃机用的</td></tr>
+<tr><td>enable</td><td>/ɪ'neɪbl/ vt.</td><td>使能够；提供做…的权利[措施]使可能，enabling，enables</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>volatile</td><td>/'vɑːlətl/ adj.</td><td>（人或其情绪）不稳定的；易变的；易怒的，喜怒无常的（情况）可能急剧波动的；不稳定的；易恶化的（物质）易挥发的，易气化的【计】（计算机内存）易失的n.【罕】 挥发</td></tr>
+<tr><td>relatively</td><td>/'relətɪvli/ adv.</td><td>相对地，比较而言；相当相对来说；相比较而言</td></tr>
+<tr><td>hedges</td><td>/hedʒ/ vt.</td><td>用树篱笆围住；避免作正面答复vi. 用树篱围住；避免作正面答复n. 树篱；障碍, hedging, hedges</td></tr>
+<tr><td>spot</td><td>/spɑːt/ n.</td><td>斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Positioning and Tracki</td></tr>
+<tr><td>barrel</td><td>/'bærəl/ vt.</td><td>把……装入桶内n. 桶；枪管，炮管vi. 快速移动, barrelled barreling, barrelling barrels, barrels</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>treasury</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>fraud</td><td>/frɔːd/ n.</td><td>欺诈, 欺骗行为骗子</td></tr>
+<tr><td>chairman</td><td>/'tʃermən/ n.</td><td>主席，会长；董事长, chairmanning, chairmans</td></tr>
+<tr><td>securities</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>commission</td><td>/kə'mɪʃn/ n.</td><td>授权, 委托委员会佣金, 回扣vt. 委任, 委托, commissioning, commissions</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  
+  <a href="day2.html" class="nav-btn">Day 2 →</a>
+</div>
+
+<div class="progress">📖 Day 1 of 43</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-05-23</div>
+
+</body>
+</html>

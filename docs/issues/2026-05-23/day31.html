@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business | Agents for the masses</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-05-23</div>
+
+<h1 class="article-title">Business | Agents for the masses</h1>
+<div class="article-section">Business</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>going forward). It now looks as though it may steal the consumer AI crown from OpenAI, maker of ChatGPT, as well. On May 19th Google <span class="annot" data-tooltip="unveiled /ˌʌn'veɪl/ vt. 揭去…的面罩，除去…的遮盖物使公之于众；揭露vi. 除去面纱(或覆盖物)；揭幕揭露出来时 态: unveiled，unv">unveiled</span> a new <span class="annot" data-tooltip="line /laɪn/ n. 绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long inter">line</span>-up of AI agents powered by its latest <span class="annot" data-tooltip="gemini /ˈdʒɛməˌnaɪ/ n. 双生子；双胎Geminin. 双子宫,双子(星)座">Gemini</span> 3.5 Flash model. It included AI coders to <span class="annot" data-tooltip="rival /'raɪvl/ n. 竞争对手vt. 与…竞争, 与…匹敌时 态: rivaled, rivalled rivaling, rivalling">rival</span> those offered by OpenAI and <span class="annot" data-tooltip="anthropic /ænˈθrɑpɪk/ adj. 人类的,有关人类的">Anthropic</span>, but also agents designed to perform various tasks for regular <span class="annot" data-tooltip="folk /foʊk/ n. 人们；民族；亲属（复数）adj. 民间的">folk</span> going about their daily lives. Some will appear in the Gemini app, used by 900m people every month. Others will be embedded directly in Google Search, used by more than 3bn. The company is, in sum, bringing agents to the masses. As is common in <span class="annot" data-tooltip="silicon /'sɪlɪkən/ n. 〈化〉硅">Silicon</span> <span class="annot" data-tooltip="valley /'væli/ n. 流域；山谷；溪谷">Valley</span>, the examples executives used on stage raised plenty of <span class="annot" data-tooltip="eyebrows /'aɪbraʊ/ n. 眉毛v. 为…描眉；用皱眉蹙额迫使">eyebrows</span>. How often would someone need an AI agent to make a slide presentation for a bouncy-castle party? Yet the tools unveiled also show promise. An agent called Gemini <span class="annot" data-tooltip="spark /spɑːrk/ n. 火花，火星；电火花；一丝，略微；导火线，诱因v. 引发，触发；产生火花（电火花）；点燃；增加趣味（或活力、风味等）时 态">Spark</span> will be able to do things such as scan emails or organise <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span> <span class="annot" data-tooltip="trips /trɪp/ vi. 绊倒；犯错误；远足；轻快地走n. 旅行；绊倒；差错vt. 绊倒；使犯错TRIPabbr. transformation-">trips</span> even after a user has closed their laptop or put down their phone, while “information agents” in Google Search will be able to keep tabs on sports tournaments, shopping sales or the stockmarket. All this looks particularly troubling for OpenAI, which has so <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> led in consumer AI. Shortly after Google launched its Gemini 3 family of models in November, Sam Altman, OpenAI’s boss, issued a “Code Red” emergency to galvanise employees into speeding up improvements to ChatGPT. Since then, the focus at the lab has shifted <span class="annot" data-tooltip="towards /tɔːrdz/ prep. 向，朝为了；有助于；用于对于，关于接近；将近；大约">towards</span> its coding agent. But the <span class="annot" data-tooltip="release /rɪ'liːs/ vt. 释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]时 态: released，rel">release</span> of Gemini 3.5 Flash, which Google says is four times faster than other frontier models, and the new suite of agents is likely to <span class="annot" data-tooltip="raise /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raise</span> fresh questions about what OpenAI is doing with its <span class="annot" data-tooltip="flagship /'flæɡʃɪp/ n. 旗舰；佼佼者；（作定语）一流">flagship</span> chatbot.</p>
+<p>Investors are certainly bullish on Google’s <span class="annot" data-tooltip="prospects /'prɑːspekt/ n. 景象，景色前景；前途可能成为主顾的人；有希望的候选人vi. 勘探；勘察时 态: prospected，prospecti">prospects</span>. The market <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span> of <span class="annot" data-tooltip="alphabet /'ælfəbet/ n. 字母表，字母系统；入门，初步">Alphabet</span>, its parent company, is now within a hair’s <span class="annot" data-tooltip="breadth /bredθ/ n. 宽度，幅度；宽宏">breadth</span> of $5trn, having passed $4trn only in January (see chart). Yet Google’s success in AI is also creating problems. According to Mr Pichai, the <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of tokens—<span class="annot" data-tooltip="silicon /'sɪlɪkən/ n. 〈化〉硅">Silicon</span> <span class="annot" data-tooltip="valley /'væli/ n. 流域；山谷；溪谷">Valley</span>’s favoured measure of AI usage—consumed by its services has risen to 3.2 quadrillion a month, up from 480trn a year ago. Each token requires computing power, and therefore money, to generate, which is why Google’s capital <span class="annot" data-tooltip="expenditure /ɪk'spendɪtʃər/ n. 花费, 使用(尤指金钱的)支出额">expenditure</span> this year will be up to $190bn, six times as much as four years ago. Moreover, that money does not go as <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> as it used to, because everything from chips to <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span> has become more expensive. Even for Google, there are limits to how much it can afford to spend. There are a few potential solutions. One is to lower the cost per token by making the technology more efficient, which Google will surely do. Another is to put limits on AI usage. Such <span class="annot" data-tooltip="restrictions /rɪ'strɪkʃn/ n. 约束，限制管制，限定；法律，规章">restrictions</span> were not announced at the event, but <span class="annot" data-tooltip="gemini /ˈdʒɛməˌnaɪ/ n. 双生子；双胎Geminin. 双子宫,双子(星)座">Gemini</span> subscribers were alerted afterwards that they would apply, albeit with higher limits than for non-subscribers, according to Richard Windsor of Radio Free Mobile, a research firm. Usage <span class="annot" data-tooltip="caps abbr. Cassette Programming System 盒式磁带程序设计系统">caps</span> may also <span class="annot" data-tooltip="encourage /ɪn'kɜːrɪdʒ/ vt. 鼓励, 激励促进, 助长, 激发时 态: encouraged, encouraging, encourages">encourage</span> more people to pay for a <span class="annot" data-tooltip="subscription /səb'skrɪpʃn/ n. 捐助，订阅，签名捐款；订阅费">subscription</span>. A third solution is to <span class="annot" data-tooltip="lean /liːn/ vi. 倾斜；倚靠；倾向；依赖adj. 瘦的；贫乏的，歉收的vt. 使倾斜n. 倾斜；倾斜度；瘦肉时 态: leaned, le">lean</span> more into ads. Google reckons that the greater detail in AI queries will appeal to marketers. <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">Although</span> it has not yet</p>
+<p><span class="annot" data-tooltip="incorporated /ɪn'kɔːrpəreɪtɪd/ adj. 股份有限的,组成公司的">incorporated</span> ads into its <span class="annot" data-tooltip="gemini /ˈdʒɛməˌnaɪ/ n. 双生子；双胎Geminin. 双子宫,双子(星)座">Gemini</span> app, it has been interspersing them into the AI responses its search service now spits out, and soon it will put AI product explainers <span class="annot" data-tooltip="alongside /əˌlɔːŋ'saɪd/ adv. 靠着边，沿着边prep. (表示位置)在…旁边；沿着…的边；与…并排靠拢着(表示比较)与…放在一起比较(表示伴随)与…一">alongside</span> these ads. Mr Pichai noted at the <span class="annot" data-tooltip="conference /'kɑːnfərəns/ n. 会议讨论, 商谈形容词: conferential">conference</span> that some companies are “already <span class="annot" data-tooltip="blowing /bloʊ/ n. 吹；殴打；打击vi. 风吹；喘气vt. 风吹时 态: blew blown blowing, blows">blowing</span> through their <span class="annot" data-tooltip="annual /'ænjuəl/ adj. 年度的；每年的n. 年刊，年鉴；一年生植物副 词: annually">annual</span> token budgets—and it’s only May.” Consumers are not “tokenmaxxing” to anything like the same extent. But the more they use agents, the more providers of AI will need to come up with novel ways to make money from them. ■ To track the <span class="annot" data-tooltip="trends /trend/ n. 趋势, 倾向流行时 态: trended, trending, trends">trends</span> shaping <span class="annot" data-tooltip="commerce /'kɑːmɜːrs/ n. 商业, 贸易">commerce</span>, <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> and technology, sign up to “The Bottom <span class="annot" data-tooltip="line /laɪn/ n. 绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long inter">Line</span>”, our weekly subscriber-only newsletter on global business. This article was downloaded by zlibrary from https://www.economist.com//business/2026/05/20/google-is-dethroning-openai-as-the- king-of-consumer-ai</p>
+<div class="article-separator"></div>
+<div class="article-header">Business · Business | Loco for Coco</div>
+<p>Chanel’s creative <span class="annot" data-tooltip="revival /rɪ'vaɪvl/ n. 复活；复兴；恢复精神；苏醒；再生效">revival</span> is paying off The world’s second-biggest luxury label is turning heads again May 21st 2026 Few figures have been as influential in shaping modern haute couture as Karl Lagerfeld, creative director of Chanel from 1983 until his death in 2019. His 36-year stint at the maison brought not only fresh designs after years of creative stagnation, but also extravagant—and occasionally bizarre —fashion shows that wowed magazine editors and wealthy shoppers alike. His long-time <span class="annot" data-tooltip="deputy /'depjuti/ n. 代理人，代表adj. 副的；代理的">deputy</span>, Virginie Viard, <span class="annot" data-tooltip="proved /proʊ/ n. 从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞">proved</span> an uninspired choice as his successor. <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">Although</span> sales rose by half during her five-year <span class="annot" data-tooltip="tenure /'tenjər/ n. 占有；任期vt. 授予…终身职位形容词: tenurial">tenure</span>, that growth came largely through price hikes during the post-<span class="annot" data-tooltip="pandemic /pæn'demɪk/ adj. （疾病）在全国（或世界）流行的">pandemic</span> luxury boom. Fashion critics <span class="annot" data-tooltip="soured /'saʊər/ adj. 有酸味的，酸的有发酵味道的，酸腐的，馊的坏脾气的；别扭的vt. & vi. (使某物)变酸，变馊；(使某人)阴郁比较级:">soured</span> on the <span class="annot" data-tooltip="brand /brænd/ n. 商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责时 态: branded, branding, brands">brand</span>. <span class="annot" data-tooltip="amid /ə'mɪd/ prep. 在其中，在其间">Amid</span> a wider downturn in the <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span>, sales at the world’s second-biggest luxury label fell by 4% in 2024, with operating profit down by 30%.</p>
+<p>Lately, however, Chanel has been regaining its <span class="annot" data-tooltip="shine /ʃaɪn/ vi. 发光；反射光；照耀表现突出，出众vt. 照射〈美〉擦亮n. 光亮；光泽磨，擦时 态: shone ，shined shi">shine</span>. On May 19th the private company, which is owned by brothers Alain and Gérard Wertheimer, reported that its sales and operating profit were up by 2% and 5%, <span class="annot" data-tooltip="respectively /rɪ'spektɪv/ adj. 各自的; 各个的">respectively</span>, last year. In the first <span class="annot" data-tooltip="quarter /'kwɔːrtər/ n. 四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一时 ">quarter</span> of this year Chanel for the first time topped a ranking of the hottest labels in fashion maintained by Lyst, an e-<span class="annot" data-tooltip="commerce /'kɑːmɜːrs/ n. 商业, 贸易">commerce</span> site. Two of its wares, a pair of square-toe pumps and a chunky handbag, numbered among the ten most desirable products as measured by social-media chatter. During the most recent <span class="annot" data-tooltip="lunar /'luːnər/ adj. 月的, 月球的；；阴历的；银的；微亮的">Lunar</span> New Year holiday in China, analysts at Bernstein, a broker, counted a 130% increase in foot <span class="annot" data-tooltip="traffic /'træfɪk/ n. 交通；贸易；运输；通信量vt. 用…作交换；在…通行vi. 交易，买卖时 态: trafficked, traffick">traffic</span> at Chanel’s stores in luxury malls. Its shops in New York and London have experienced a similar upswell in visitors. For the change in Chanel’s <span class="annot" data-tooltip="fortunes /'fɔːrtʃən/ n. 运气；财富；命运vt. 给予财富vi. 偶然发生时 态: fortuned, fortuning, fortunes">fortunes</span>, the Wertheimer brothers can thank Matthieu Blazy, who took over as the label’s creative director in April last year. Fashion commentators have dubbed the rapturous response to his collections “Blazymania”. His success has served as a reminder that, in the world of high-end fashion, creativity and clever marketing are as <span class="annot" data-tooltip="vital /'vaɪtl/ adj. 极重要的，必不可少的维持生命所必需的；生命的有生气的，充满生机的副 词: vitally">vital</span> as ever. On April 28th Mr Blazy held his latest fashion show at the French <span class="annot" data-tooltip="seaside /'siːsaɪd/ n. 海滨, 海边">seaside</span> town of Biarritz, where he took house <span class="annot" data-tooltip="signatures /'sɪɡnətʃər/ n. 签名, 签字">signatures</span> such as tweed and <span class="annot" data-tooltip="lightened /'laɪtn/ vt. 使(某物)更明亮vi. 变得更光明别那么严肃；别抱怨；别担忧使生动活泼时 态: lightened, lightenin">lightened</span> them up, sending semi-transparent suits and fringed skirts down the runway. Before the event, the company held <span class="annot" data-tooltip="lavish /'lævɪʃ/ adj. 浪费的；丰富的；大方的vt. 浪费；慷慨给予；滥用时 态: lavished, lavishing, lavishes">lavish</span> preview events for its “Very Important <span class="annot" data-tooltip="clients /'klaɪənt/ n. 委托人顾客, 常客">Clients</span>”, the high-rollers who account for an <span class="annot" data-tooltip="outsize /'aʊtsaɪz/ adj. 特大的n. 特大号">outsize</span> share of total sales. It also made sure that new products, including some less expensive items, would <span class="annot" data-tooltip="enter /'entər/ vt. & vi. 进入, 进去参加, 加入登记, 登录时 态: entered, entering, enters">enter</span> stores quickly to make the most of the online <span class="annot" data-tooltip="buzz /bʌz/ v. 发嗡嗡声；发蜂鸣声用蜂鸣器（给…）发信号繁忙；充满活力（飞机）低空飞过（尤指作为警告或威胁）（用特殊的机器）将头发剪得非">buzz</span>. Mr Blazy has proven adept at refreshing the <span class="annot" data-tooltip="brand /brænd/ n. 商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责时 态: branded, branding, brands">brand</span>’s image in order to attract new customers without alienating existing clients by abandoning its hallmarks altogether. Meanwhile, lots of Chanel’s competitors continue to struggle. Many had hoped that 2026 would be the year in which spending on luxury items returned to growth. But the war in Iran has dampened consumer <span class="annot" data-tooltip="sentiment /'sentɪmənt/ n. (对怜悯、怀旧等的)柔情态度或意见观点; 意见">sentiment</span>, not least among big-spending shoppers in the Gulf. Sales in the fashion <span class="annot" data-tooltip="division /dɪ'vɪʒn/ n. [数] 除法；部门；分配；分割；师（军队）；赛区形容词: divisional">division</span> of LVMH, the colossus that counts Louis Vuitton, the world’s biggest luxury label, among its maisons, were down by 2% year on year in the first quarter. For Kering, which owns Gucci, they fell by 3%. The buzz</p>
+<p>around Mr Blazy’s new designs hasn’t helped <span class="annot" data-tooltip="rivals /'raɪvl/ n. 竞争对手vt. 与…竞争, 与…匹敌时 态: rivaled, rivalled rivaling, rivalling">rivals</span>. “Chanel is <span class="annot" data-tooltip="vacuuming /'vækjuːm/ n. 真空〈口〉真空吸尘器空间; 空虚; 空白vt. 用真空吸尘器清扫(某物)">vacuuming</span> most of the consumer attention,” says Luca Solca of Bernstein. Even Hermès, which had seemed immune to the luxury downturn, now looks to be under increasing pressure. Its sales in the first <span class="annot" data-tooltip="quarter /'kwɔːrtər/ n. 四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一时 ">quarter</span> of 2026 were up by 6% year on year, <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> slower than they had been growing. The <span class="annot" data-tooltip="brand /brænd/ n. 商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责时 态: branded, branding, brands">brand</span> has cultivated an air of exclusivity by limiting production of its coveted Birkin and Kelly bags, forcing shoppers to join lengthy waiting lists. But beyond the <span class="annot" data-tooltip="release /rɪ'liːs/ vt. 释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]时 态: released，rel">release</span> of new colours each year, Hermès has not refreshed its core product range in <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span>. Now there are signs that demand may be waning. The resale price of Birkin and Kelly bags has been dropping. By <span class="annot" data-tooltip="contrast /'kɑːntræst/ n. 对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照时 态: contrasted, cont">contrast</span>, demand for Chanel’s bags has been booming on second-hand markets. In the week after Mr Blazy’s first show for the brand, searches on Vestiaire Collective, a resale platform, for its <span class="annot" data-tooltip="signature /'sɪɡnətʃər/ n. 签名, 签字">signature</span> flap bag increased by 132%. Might Chanel have found its new Lagerfeld at last? ■ To track the <span class="annot" data-tooltip="trends /trend/ n. 趋势, 倾向流行时 态: trended, trending, trends">trends</span> shaping <span class="annot" data-tooltip="commerce /'kɑːmɜːrs/ n. 商业, 贸易">commerce</span>, <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> and technology, sign up to “The Bottom <span class="annot" data-tooltip="line /laɪn/ n. 绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long inter">Line</span>”, our weekly subscriber-only newsletter on global business. This article was downloaded by zlibrary from https://www.economist.com//business/2026/05/19/chanels-creative-<span class="annot" data-tooltip="revival /rɪ'vaɪvl/ n. 复活；复兴；恢复精神；苏醒；再生效">revival</span>-is-paying- off</p>
+<div class="article-separator"></div>
+<div class="article-header">Business · Business | Striking a new chord</div>
+<p>The strange fate of Hard Rock Cafe A Native American tribe is making big bucks from the <span class="annot" data-tooltip="brand /brænd/ n. 商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责时 态: branded, branding, brands">brand</span> May 21st 2026 When the first Hard Rock Cafe opened in 1971 in London, the musical <span class="annot" data-tooltip="genre /'ʒɑːnrə/ （文学、绘画、音乐、电影等艺术作品的）体裁，类型">genre</span> to which the <span class="annot" data-tooltip="restaurant /'restrɑːnt/ n. 饭店, 餐馆">restaurant</span> chain pays tribute had just begun to hit the airwaves. Over the following <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span>, as the ranks of head-<span class="annot" data-tooltip="bangers /'bæŋər/ n. 香肠破旧的汽车, 老爷车(声音很响的)爆竹">bangers</span> <span class="annot" data-tooltip="swelled /swel/ vi. 膨胀；[病理]肿胀；隆起vt. 使膨胀；使隆起n. 肿胀；隆起adj. 漂亮的；一流的时 态: swelled, swe">swelled</span>, hundreds of the eateries were opened in cities around the world. Yet these days a visit to one of the <span class="annot" data-tooltip="restaurants /'restrɑːnt/ n. 饭店, 餐馆">restaurants</span> feels as passé as an aged rocker performing yet another farewell tour. Patrons are treated to long- forgotten hits and underwhelming fries. Several of the restaurants are now making losses, and some are closing. Last year Chicago’s Hard Rock Cafe shut its doors after <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> 40 years. In</p>
+<p>January the branch in Manchester, opened in 2000, also closed, joining those in Paris, <span class="annot" data-tooltip="sydney /'sɪdni/ n. 悉尼（澳大利亚港市）">Sydney</span> and elsewhere. What is more surprising is that so many remain open. Still today there are Hard Rock Cafes selling pricey burgers and <span class="annot" data-tooltip="branded /brænd/ n. 商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责时 态: branded, branding, brands">branded</span> T-shirts in more than 50 countries. Some are run by independent franchisees, but many are operated by the company behind the <span class="annot" data-tooltip="brand /brænd/ n. 商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责时 态: branded, branding, brands">brand</span>, Hard Rock International. Against all <span class="annot" data-tooltip="odds /ɑːdz/ n. 不平等；几率；胜算；差别">odds</span>, it looks to be thriving. Back in 2007 Hard Rock International, which had fallen on tough times, was purchased for just under $1bn by the Seminoles, a Native American tribe in Florida. They proceeded to build a <span class="annot" data-tooltip="hospitality /ˌhɑːspɪ'tæləti/ n. 殷勤, 好客(提供给客人的)食宿招待">hospitality</span> empire across America and beyond that now <span class="annot" data-tooltip="encompasses /ɪn'kʌmpəs/ vt. 围绕；包围时 态: encompassed，encompassing，encompasses">encompasses</span> 15 <span class="annot" data-tooltip="casinos /kə'siːnoʊ/ n. 赌场;娱乐场">casinos</span> and 36 hotels which use the brand. Visitors can play blackjack at the company’s <span class="annot" data-tooltip="casino /kə'siːnoʊ/ n. 赌场;娱乐场">casino</span> in the Dominican Republic or <span class="annot" data-tooltip="sip /sɪp/ n. 抿；小口喝；[计]单列直插式组件vi. 啜饮vt. 啜SIPabbr. solvent-in-pulp 溶剂矿浆萃取时 ">sip</span> <span class="annot" data-tooltip="cocktails /'kɑːkteɪl/ n. 鸡尾酒餐前开胃菜混合物">cocktails</span> at its resort in the Maldives. Such <span class="annot" data-tooltip="venues /'venjuː/ n. 聚集地点;会场;(尤指)体育比赛场所犯罪地点;审判地争论中所持的立场">venues</span> have become the real money-spinners for Hard Rock International, with the ubiquitous <span class="annot" data-tooltip="restaurants /'restrɑːnt/ n. 饭店, 餐馆">restaurants</span> serving as a way to keep the brand <span class="annot" data-tooltip="alive /ə'laɪv/ adj. 活着的, 在世的, 存在的有活力的, 活跃的, 有生气的">alive</span> in the minds of consumers. The launch in Florida in 2023 of an online-gambling app called Hard Rock Bet has <span class="annot" data-tooltip="presumably /prɪ'zuːməbli/ adv. 据推测, 大概, 可能">presumably</span> helped boost growth. It has since been rolled out in nine other American states. In 2025 Hard Rock International generated $7.9bn in <span class="annot" data-tooltip="revenue /'revənuː/ n. 收入，收益；财政收入，税收">revenue</span>, estimates Forbes, up by a third from two years before. The golden age of rock and roll may be over. But don’t expect Hard Rock Cafe to disappear soon. ■ To track the <span class="annot" data-tooltip="trends /trend/ n. 趋势, 倾向流行时 态: trended, trending, trends">trends</span> shaping <span class="annot" data-tooltip="commerce /'kɑːmɜːrs/ n. 商业, 贸易">commerce</span>, <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> and technology, sign up to “The Bottom <span class="annot" data-tooltip="line /laɪn/ n. 绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long inter">Line</span>”, our weekly subscriber-only newsletter on global business. This article was downloaded by zlibrary from https://www.economist.com//business/2026/05/21/the-strange-fate-of-hard-rock-cafe</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>unveiled</td><td>/ˌʌn'veɪl/ vt.</td><td>揭去…的面罩，除去…的遮盖物使公之于众；揭露vi. 除去面纱(或覆盖物)；揭幕揭露出来，unveiling，unveils</td></tr>
+<tr><td>line</td><td>/laɪn/ n.</td><td>绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long interspersed element)长散在元</td></tr>
+<tr><td>gemini</td><td>/ˈdʒɛməˌnaɪ/ n.</td><td>双生子；双胎Geminin. 双子宫,双子(星)座</td></tr>
+<tr><td>rival</td><td>/'raɪvl/ n.</td><td>竞争对手vt. 与…竞争, 与…匹敌, rivalled rivaling, rivalling rivals, rivals</td></tr>
+<tr><td>anthropic</td><td>/ænˈθrɑpɪk/ adj.</td><td>人类的,有关人类的</td></tr>
+<tr><td>folk</td><td>/foʊk/ n.</td><td>人们；民族；亲属（复数）adj. 民间的</td></tr>
+<tr><td>silicon</td><td>/'sɪlɪkən/ n.</td><td>〈化〉硅</td></tr>
+<tr><td>valley</td><td>/'væli/ n.</td><td>流域；山谷；溪谷</td></tr>
+<tr><td>eyebrows</td><td>/'aɪbraʊ/ n.</td><td>眉毛v. 为…描眉；用皱眉蹙额迫使</td></tr>
+<tr><td>spark</td><td>/spɑːrk/ n.</td><td>火花，火星；电火花；一丝，略微；导火线，诱因v. 引发，触发；产生火花（电火花）；点燃；增加趣味（或活力、风味等）, sparking, sparks</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>trips</td><td>/trɪp/ vi.</td><td>绊倒；犯错误；远足；轻快地走n. 旅行；绊倒；差错vt. 绊倒；使犯错TRIPabbr. transformation-induced plasticity 高</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>towards</td><td>/tɔːrdz/ prep.</td><td>向，朝为了；有助于；用于对于，关于接近；将近；大约</td></tr>
+<tr><td>release</td><td>/rɪ'liːs/ vt.</td><td>释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]，releasing，releases</td></tr>
+<tr><td>raise</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>flagship</td><td>/'flæɡʃɪp/ n.</td><td>旗舰；佼佼者；（作定语）一流</td></tr>
+<tr><td>prospects</td><td>/'prɑːspekt/ n.</td><td>景象，景色前景；前途可能成为主顾的人；有希望的候选人vi. 勘探；勘察，prospecting，prospects</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>alphabet</td><td>/'ælfəbet/ n.</td><td>字母表，字母系统；入门，初步</td></tr>
+<tr><td>breadth</td><td>/bredθ/ n.</td><td>宽度，幅度；宽宏</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>silicon</td><td>/'sɪlɪkən/ n.</td><td>〈化〉硅</td></tr>
+<tr><td>valley</td><td>/'væli/ n.</td><td>流域；山谷；溪谷</td></tr>
+<tr><td>expenditure</td><td>/ɪk'spendɪtʃər/ n.</td><td>花费, 使用(尤指金钱的)支出额</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>restrictions</td><td>/rɪ'strɪkʃn/ n.</td><td>约束，限制管制，限定；法律，规章</td></tr>
+<tr><td>gemini</td><td>/ˈdʒɛməˌnaɪ/ n.</td><td>双生子；双胎Geminin. 双子宫,双子(星)座</td></tr>
+<tr><td>caps</td><td>— abbr.</td><td>Cassette Programming System 盒式磁带程序设计系统</td></tr>
+<tr><td>encourage</td><td>/ɪn'kɜːrɪdʒ/ vt.</td><td>鼓励, 激励促进, 助长, 激发, encouraging, encourages</td></tr>
+<tr><td>subscription</td><td>/səb'skrɪpʃn/ n.</td><td>捐助，订阅，签名捐款；订阅费</td></tr>
+<tr><td>lean</td><td>/liːn/ vi.</td><td>倾斜；倚靠；倾向；依赖adj. 瘦的；贫乏的，歉收的vt. 使倾斜n. 倾斜；倾斜度；瘦肉, leaning, leans</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>incorporated</td><td>/ɪn'kɔːrpəreɪtɪd/ adj.</td><td>股份有限的,组成公司的</td></tr>
+<tr><td>gemini</td><td>/ˈdʒɛməˌnaɪ/ n.</td><td>双生子；双胎Geminin. 双子宫,双子(星)座</td></tr>
+<tr><td>alongside</td><td>/əˌlɔːŋ'saɪd/ adv.</td><td>靠着边，沿着边prep. (表示位置)在…旁边；沿着…的边；与…并排靠拢着(表示比较)与…放在一起比较(表示伴随)与…一起，与…一道</td></tr>
+<tr><td>conference</td><td>/'kɑːnfərəns/ n.</td><td>会议讨论, 商谈</td></tr>
+<tr><td>blowing</td><td>/bloʊ/ n.</td><td>吹；殴打；打击vi. 风吹；喘气vt. 风吹, blows</td></tr>
+<tr><td>annual</td><td>/'ænjuəl/ adj.</td><td>年度的；每年的n. 年刊，年鉴；一年生植物</td></tr>
+<tr><td>trends</td><td>/trend/ n.</td><td>趋势, 倾向流行, trending, trends</td></tr>
+<tr><td>commerce</td><td>/'kɑːmɜːrs/ n.</td><td>商业, 贸易</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>line</td><td>/laɪn/ n.</td><td>绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long interspersed element)长散在元</td></tr>
+<tr><td>revival</td><td>/rɪ'vaɪvl/ n.</td><td>复活；复兴；恢复精神；苏醒；再生效</td></tr>
+<tr><td>deputy</td><td>/'depjuti/ n.</td><td>代理人，代表adj. 副的；代理的</td></tr>
+<tr><td>proved</td><td>/proʊ/ n.</td><td>从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞成；支持Pro脯氨酸PROabbr. P</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>tenure</td><td>/'tenjər/ n.</td><td>占有；任期vt. 授予…终身职位</td></tr>
+<tr><td>pandemic</td><td>/pæn'demɪk/ adj.</td><td>（疾病）在全国（或世界）流行的</td></tr>
+<tr><td>soured</td><td>/'saʊər/ adj.</td><td>有酸味的，酸的有发酵味道的，酸腐的，馊的坏脾气的；别扭的vt. & vi. (使某物)变酸，变馊；(使某人)阴郁，sourest</td></tr>
+<tr><td>brand</td><td>/brænd/ n.</td><td>商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责, branding, brands</td></tr>
+<tr><td>amid</td><td>/ə'mɪd/ prep.</td><td>在其中，在其间</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>shine</td><td>/ʃaɪn/ vi.</td><td>发光；反射光；照耀表现突出，出众vt. 照射〈美〉擦亮n. 光亮；光泽磨，擦，shined shining，shines</td></tr>
+<tr><td>respectively</td><td>/rɪ'spektɪv/ adj.</td><td>各自的; 各个的</td></tr>
+<tr><td>quarter</td><td>/'kwɔːrtər/ n.</td><td>四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一, quartering, quarters</td></tr>
+<tr><td>commerce</td><td>/'kɑːmɜːrs/ n.</td><td>商业, 贸易</td></tr>
+<tr><td>lunar</td><td>/'luːnər/ adj.</td><td>月的, 月球的；；阴历的；银的；微亮的</td></tr>
+<tr><td>traffic</td><td>/'træfɪk/ n.</td><td>交通；贸易；运输；通信量vt. 用…作交换；在…通行vi. 交易，买卖, trafficking, traffics</td></tr>
+<tr><td>fortunes</td><td>/'fɔːrtʃən/ n.</td><td>运气；财富；命运vt. 给予财富vi. 偶然发生, fortuning, fortunes</td></tr>
+<tr><td>vital</td><td>/'vaɪtl/ adj.</td><td>极重要的，必不可少的维持生命所必需的；生命的有生气的，充满生机的</td></tr>
+<tr><td>seaside</td><td>/'siːsaɪd/ n.</td><td>海滨, 海边</td></tr>
+<tr><td>signatures</td><td>/'sɪɡnətʃər/ n.</td><td>签名, 签字</td></tr>
+<tr><td>lightened</td><td>/'laɪtn/ vt.</td><td>使(某物)更明亮vi. 变得更光明别那么严肃；别抱怨；别担忧使生动活泼, lightening, lightens</td></tr>
+<tr><td>lavish</td><td>/'lævɪʃ/ adj.</td><td>浪费的；丰富的；大方的vt. 浪费；慷慨给予；滥用, lavishing, lavishes</td></tr>
+<tr><td>clients</td><td>/'klaɪənt/ n.</td><td>委托人顾客, 常客</td></tr>
+<tr><td>outsize</td><td>/'aʊtsaɪz/ adj.</td><td>特大的n. 特大号</td></tr>
+<tr><td>enter</td><td>/'entər/ vt.</td><td>& vi. 进入, 进去参加, 加入登记, 登录, entering, enters</td></tr>
+<tr><td>buzz</td><td>/bʌz/ v.</td><td>发嗡嗡声；发蜂鸣声用蜂鸣器（给…）发信号繁忙；充满活力（飞机）低空飞过（尤指作为警告或威胁）（用特殊的机器）将头发剪得非常短n. 嗡嗡声；蜂鸣声（愉快、兴奋或成</td></tr>
+<tr><td>brand</td><td>/brænd/ n.</td><td>商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责, branding, brands</td></tr>
+<tr><td>sentiment</td><td>/'sentɪmənt/ n.</td><td>(对怜悯、怀旧等的)柔情态度或意见观点; 意见</td></tr>
+<tr><td>division</td><td>/dɪ'vɪʒn/ n.</td><td>[数] 除法；部门；分配；分割；师（军队）；赛区</td></tr>
+<tr><td>rivals</td><td>/'raɪvl/ n.</td><td>竞争对手vt. 与…竞争, 与…匹敌, rivalled rivaling, rivalling rivals, rivals</td></tr>
+<tr><td>vacuuming</td><td>/'vækjuːm/ n.</td><td>真空〈口〉真空吸尘器空间; 空虚; 空白vt. 用真空吸尘器清扫(某物)</td></tr>
+<tr><td>quarter</td><td>/'kwɔːrtər/ n.</td><td>四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一, quartering, quarters</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>brand</td><td>/brænd/ n.</td><td>商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责, branding, brands</td></tr>
+<tr><td>release</td><td>/rɪ'liːs/ vt.</td><td>释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]，releasing，releases</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>contrast</td><td>/'kɑːntræst/ n.</td><td>对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照, contrasting, contrasts</td></tr>
+<tr><td>signature</td><td>/'sɪɡnətʃər/ n.</td><td>签名, 签字</td></tr>
+<tr><td>trends</td><td>/trend/ n.</td><td>趋势, 倾向流行, trending, trends</td></tr>
+<tr><td>commerce</td><td>/'kɑːmɜːrs/ n.</td><td>商业, 贸易</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>line</td><td>/laɪn/ n.</td><td>绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long interspersed element)长散在元</td></tr>
+<tr><td>revival</td><td>/rɪ'vaɪvl/ n.</td><td>复活；复兴；恢复精神；苏醒；再生效</td></tr>
+<tr><td>brand</td><td>/brænd/ n.</td><td>商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责, branding, brands</td></tr>
+<tr><td>genre</td><td>/'ʒɑːnrə/ </td><td>（文学、绘画、音乐、电影等艺术作品的）体裁，类型</td></tr>
+<tr><td>restaurant</td><td>/'restrɑːnt/ n.</td><td>饭店, 餐馆</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>bangers</td><td>/'bæŋər/ n.</td><td>香肠破旧的汽车, 老爷车(声音很响的)爆竹</td></tr>
+<tr><td>swelled</td><td>/swel/ vi.</td><td>膨胀；[病理]肿胀；隆起vt. 使膨胀；使隆起n. 肿胀；隆起adj. 漂亮的；一流的, swelled, swollen swelling, swells</td></tr>
+<tr><td>restaurants</td><td>/'restrɑːnt/ n.</td><td>饭店, 餐馆</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>sydney</td><td>/'sɪdni/ n.</td><td>悉尼（澳大利亚港市）</td></tr>
+<tr><td>branded</td><td>/brænd/ n.</td><td>商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责, branding, brands</td></tr>
+<tr><td>brand</td><td>/brænd/ n.</td><td>商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责, branding, brands</td></tr>
+<tr><td>odds</td><td>/ɑːdz/ n.</td><td>不平等；几率；胜算；差别</td></tr>
+<tr><td>hospitality</td><td>/ˌhɑːspɪ'tæləti/ n.</td><td>殷勤, 好客(提供给客人的)食宿招待</td></tr>
+<tr><td>encompasses</td><td>/ɪn'kʌmpəs/ vt.</td><td>围绕；包围，encompassing，encompasses</td></tr>
+<tr><td>casinos</td><td>/kə'siːnoʊ/ n.</td><td>赌场;娱乐场</td></tr>
+<tr><td>casino</td><td>/kə'siːnoʊ/ n.</td><td>赌场;娱乐场</td></tr>
+<tr><td>sip</td><td>/sɪp/ n.</td><td>抿；小口喝；[计]单列直插式组件vi. 啜饮vt. 啜SIPabbr. solvent-in-pulp 溶剂矿浆萃取, sipping, sips</td></tr>
+<tr><td>cocktails</td><td>/'kɑːkteɪl/ n.</td><td>鸡尾酒餐前开胃菜混合物</td></tr>
+<tr><td>venues</td><td>/'venjuː/ n.</td><td>聚集地点;会场;(尤指)体育比赛场所犯罪地点;审判地争论中所持的立场</td></tr>
+<tr><td>restaurants</td><td>/'restrɑːnt/ n.</td><td>饭店, 餐馆</td></tr>
+<tr><td>alive</td><td>/ə'laɪv/ adj.</td><td>活着的, 在世的, 存在的有活力的, 活跃的, 有生气的</td></tr>
+<tr><td>presumably</td><td>/prɪ'zuːməbli/ adv.</td><td>据推测, 大概, 可能</td></tr>
+<tr><td>revenue</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>trends</td><td>/trend/ n.</td><td>趋势, 倾向流行, trending, trends</td></tr>
+<tr><td>commerce</td><td>/'kɑːmɜːrs/ n.</td><td>商业, 贸易</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>line</td><td>/laɪn/ n.</td><td>绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long interspersed element)长散在元</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day30.html" class="nav-btn">← Day 30</a>
+  <a href="day32.html" class="nav-btn">Day 32 →</a>
+</div>
+
+<div class="progress">📖 Day 31 of 43</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-05-23</div>
+
+</body>
+</html>

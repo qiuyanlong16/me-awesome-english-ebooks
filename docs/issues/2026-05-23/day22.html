@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Europe | Bytebreak</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-05-23</div>
+
+<h1 class="article-title">Europe | Bytebreak</h1>
+<div class="article-section">Europe</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>The third reason for Europe’s digital <span class="annot" data-tooltip="sovereignty /'sɑːvrənti/ n. 最高统治权, 君权国家的主权">sovereignty</span> <span class="annot" data-tooltip="drive /draɪv/ vt. 驱赶驱使, 促使敲, 击vt. & vi. 驾驶n. 乘车旅行私人车道传动, 驱动干劲, 积极性, 能动性紧迫, 逼迫,">drive</span> is growth. Europe is losing the technological <span class="annot" data-tooltip="race /reɪs/ n. 种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACE">race</span> against America and China, including in AI, which <span class="annot" data-tooltip="reaches /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reaches</span> into many sectors where Europe remains strong. Building <span class="annot" data-tooltip="domestic /də'mestɪk/ adj. 国内的；家庭的；驯养的；一心只管家务的">domestic</span> providers is seen as necessary to stay competitive. One question is whether users will be able to switch. Hyperscalers provide integrated services and the scale to make them efficient. “That bundling of services then leads to lock-in effects,” says Svea Windwehr of D64, a digital-progress association in Germany: users cannot count on easily taking data with them. Quality and cost also matter. A survey of Danish firms, which use clouds more than any others in Europe, found that their top concerns (after <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span> and legal <span class="annot" data-tooltip="compliance /kəm'plaɪəns/ n. 服从,听从,顺从">compliance</span>) were quality, <span class="annot" data-tooltip="ease /iːz/ vt. 减轻，缓和；使安心n. 安逸，悠闲；轻松，舒适vi. 减轻，缓和；放松；灵活地移动EASEabbr. Electroni">ease</span> of use and price. That often argues for American providers. So does the fact that European firms’ customers <span class="annot" data-tooltip="tend /tend/ vt. 照料，照顾，伺候vi. 往，朝向易于；倾向时 态: tended，tending，tends">tend</span> to use American tech, too. “For many industrial applications,” says a European industrial executive, “there are no <span class="annot" data-tooltip="capable /'keɪpəbl/ adj. 能干的，能胜任的；有才华的副 词: capably">capable</span> <span class="annot" data-tooltip="alternatives /ɔːl'tɜːrnətɪv/ adj. 可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）">alternatives</span> to software-as-a-service from American providers.” “Europe’s challenge is one of industrial co-ordination and animal <span class="annot" data-tooltip="spirits /'spɪrɪt/ n. 精神；心灵；志气；烈酒；情绪vt. 鼓励；鼓舞；诱拐时 态: spirited, spiriting, spirits">spirits</span>,” argues Georg Riekeles of the European Policy Centre, a think-<span class="annot" data-tooltip="tank /tæŋk/ n. （存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内时 态: t">tank</span> in <span class="annot" data-tooltip="brussels /ˈbrʌsəlz/ n. 布鲁塞尔（比利时首都）">Brussels</span>. There is demand for <span class="annot" data-tooltip="sovereign /'sɑːvrɪn/ n. 君主，国王，女王旧时价值为一镑的英国金币adj. 控制国家的；统治的独立自主的">sovereign</span> solutions, <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> <span class="annot" data-tooltip="representatives /ˌreprɪ'zentətɪv/ n. 代表代理人adj. 有代表性的, 典型的名 词: representativeness">representatives</span> say. But building an ecosystem, from chips to data centres and services, is hard. America’s strong economic <span class="annot" data-tooltip="momentum /moʊ'mentəm/ n. 动力；动量；冲力；势头复 数: momenta">momentum</span> makes it harder still. Anne Hidma of ASML, the Dutch-based company that leads the world in the machines that make chips (but which sells only 1% of its machines in Europe), says Europeans start with their strong suit, <span class="annot" data-tooltip="innovative /'ɪnəveɪtɪv/ adj. 新发明的，新引进的；革新的；有改革精神的乐于引进新观念的">innovative</span> technical ideas. Then they see whether there is a market for them. In <span class="annot" data-tooltip="contrast /'kɑːntræst/ n. 对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照时 态: contrasted, cont">contrast</span>, “America starts from the end market and builds its ecosystem from there,” she says. To get things moving, the EU wants to help build large data centres and strengthen the supply chain for chipmaking. The forthcoming package will probably include faster permitting <span class="annot" data-tooltip="procedures 规程">procedures</span>, some public funds to support investment and <span class="annot" data-tooltip="procurement /prə'kjʊrmənt/ n. 获得;采购">procurement</span> rules that prioritise European suppliers. The hope is that this will create demand both for chip design and <span class="annot" data-tooltip="manufacturing /ˌmænju'fæktʃərɪŋ/ n. 制造业，工业adj. 制造业的；制造的">manufacturing</span>, and for cloud and AI services made in Europe. It is a tall order. ■</p>
+<p>To stay on top of the biggest European stories, sign up to Café Europa, our weekly subscriber-only newsletter. This article was downloaded by zlibrary from https://www.economist.com//europe/2026/05/21/how-europe-is-fighting-for-digital- <span class="annot" data-tooltip="sovereignty /'sɑːvrənti/ n. 最高统治权, 君权国家的主权">sovereignty</span></p>
+<div class="article-separator"></div>
+<div class="article-header">Europe · Europe | Charlemagne</div>
+<p>Bre-entry may be the next drama to grip the European Union An old friend comes knocking May 21st 2026 <span class="annot" data-tooltip="picture /'pɪktʃər/ n. 图画，肖像；照片(生动的)描述，写照影片；电影；画面美景，景色情况，事态，局面vt. 绘画；描绘想象时 态: pictu">Picture</span> the <span class="annot" data-tooltip="scene /siːn/ n. 情景；景象；场面；事件">scene</span>, some time in the 2030s. Three dozen leaders of the European Union’s member states crowd around a gilded desk in some history-laden hall—perhaps in Versailles, Sarajevo or Rome. The Spanish prime minister signs a thick vellum document, before passing the Mont Blanc pen to the German chancellor, then the Ukrainian president. The mood is jovial as, one by one, <span class="annot" data-tooltip="signatures /'sɪɡnətʃər/ n. 签名, 签字">signatures</span> are affixed on “The Treaty of Accession of the United Kingdom to the European Union (<span class="annot" data-tooltip="version /'vɜːrʒn/ n. 变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本">version</span> 2.0)”. As the pen makes its way to the French president, she seems to waver for a second, perhaps recalling past tabloid headlines about bendy bananas and budget rebates. Finally it is the turn of the British prime minister of the day. In one <span class="annot" data-tooltip="stroke /stroʊk/ n. 一击一画，一笔(游泳或划船的)划，划法；游法钟的敲声中风轻抚vt. 轻抚，抚摸时 态: stroked，stroking">stroke</span> Brexit is reversed; the only member to have left the EU’s embrace is</p>
+<p>now safely back inside. <span class="annot" data-tooltip="amid /ə'mɪd/ prep. 在其中，在其间">Amid</span> the sound of champagne corks popping, few can make out the words of an <span class="annot" data-tooltip="elderly /'eldərli/ adj. 上了年纪的, 中年以上的">elderly</span> gentleman in the public gallery, one Nigel Farage, fulminating <span class="annot" data-tooltip="vaguely /veɪɡ/ adj. 不明确的；含糊的；模糊的；暧昧的比较级: vaguer, vaguest">vaguely</span> about the will of the people. Welcome back, Britain! The prodigal nation returns! What would once have seemed like a Remainer fever dream no longer feels so absurd. For the first time since the Brexit referendum of June 2016, the idea of asking to return to the fold is on Britain’s political <span class="annot" data-tooltip="horizon /hə'raɪzn/ n. 地平线；眼界；范围；视野">horizon</span>. Granted, for now the idea of Bre-entry is <span class="annot" data-tooltip="confined /kən'faɪnd/ 1. adj. 被限制的，封闭的，狭窄的">confined</span> to Labour politicians, floating the notion to charm party members ahead of a possible challenge to Sir Keir Starmer; several hope to become prime minister in his stead. Granted, too, that the euro-bashers of Mr Farage’s <span class="annot" data-tooltip="reform /rɪ'fɔːrm/ n. 改革，改良，改造vt. & vi. 改革；改造；改善时 态: reformed，reforming，reforms">Reform</span> UK party are <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> ahead in the <span class="annot" data-tooltip="polls /poʊl/ n. 民意测验；投票；投票数；投票所vt. 剪短；对…进行民意测验；获得选票；投票vi. 投票adj. 剪过毛的；修过枝的；无">polls</span>. But rejoining the EU seems to resonate with many British voters, a majority of whom think leaving was a mistake. The notion is unlikely to go away soon. As more and more Westminster politicians declare they favour applying for re-entry, the EU may one day need to say what it thinks of the idea of Britain boomeranging back into the union it left in a <span class="annot" data-tooltip="huff /hʌf/ vi. 生气地说；把……吹胀，吹气；发怒，激怒；蔑视；恫吓；嗅（汽油、溶剂）作为兴奋剂；（国际跳棋中）取掉（对方本可吃棋的棋子）">huff</span>. The current state of Britain-EU relations offers nary a hint of what response might emanate from <span class="annot" data-tooltip="brussels /ˈbrʌsəlz/ n. 布鲁塞尔（比利时首都）">Brussels</span>. Since the divorce was officialised in 2020, the two sides have haggled over <span class="annot" data-tooltip="relatively /'relətɪvli/ adv. 相对地，比较而言；相当相对来说；相比较而言">relatively</span> small fry, such as <span class="annot" data-tooltip="aligning /ə'laɪn/ vt. 使结盟；使成一行；匹配vi. 排列；排成一行时 态: alignedalso alined aligningalinin">aligning</span> rules on food safety and whatnot. That is the purview of mid-level Eurocrats. In <span class="annot" data-tooltip="contrast /'kɑːntræst/ n. 对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照时 态: contrasted, cont">contrast</span>, a bid for Bre-entry would be taken up by the EU’s national leaders in Paris, Berlin and beyond. Plenty would see the case for Britain to rejoin. Any union should welcome a G7 country with a seat on the UN <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">Security</span> Council, its <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> nuclear weapons and the continent’s biggest capital- markets <span class="annot" data-tooltip="hub /hʌb/ n. 中心；毂；木片">hub</span>. The same factors that are <span class="annot" data-tooltip="prompting /prɑːmpt/ adj. 敏捷的，迅速的；立刻的vt. 促进；激起；提示；（给演员）提白n. 提示；付款期限；DOS命令：改变DOS系统提示符的风">prompting</span> some in Britain to discuss a return—a <span class="annot" data-tooltip="chaotic /keɪ'ɑːtɪk/ adj. 混乱的，无秩序的；混沌的">chaotic</span> global order, in which America and China vie for supremacy and leave middle powers <span class="annot" data-tooltip="scrambling 不规则性">scrambling</span> for security—should also <span class="annot" data-tooltip="sway /sweɪ/ vt. 使摇动；统治；影响vi. 摇摆；影响n. 摇摆；统治；影响时 态: swayed, swaying, sways">sway</span> the EU <span class="annot" data-tooltip="towards /tɔːrdz/ prep. 向，朝为了；有助于；用于对于，关于接近；将近；大约">towards</span> Bre-entry. Across the union, voters say they would welcome Britain back. Pas si <span class="annot" data-tooltip="vite adv. 急速地;轻快地">vite</span>, some diplomats might retort. Britain was always a half-hearted member of the EU. It insisted on <span class="annot" data-tooltip="opt /ɑːpt/ vi. 选择OPTabbr. VC开发环境自动生成的用来存放WorkSpace中各种选项的文件。时 态: opted, opti">opt</span>-outs from some of the bloc’s <span class="annot" data-tooltip="flagship /'flæɡʃɪp/ n. 旗舰；佼佼者；（作定语）一流">flagship</span> measures, <span class="annot" data-tooltip="notably /'noʊtəbli/ adv. 显著地；尤其">notably</span> the euro and the Schengen passport-free travel area, not to mention demanding rebates on its contributions to the budget. Why bring the <span class="annot" data-tooltip="awkward /'ɔːkwərd/ adj. 笨拙的；尴尬的；棘手的；不合适的副 词: awkwardly">awkward</span> <span class="annot" data-tooltip="squad /skwɑːd/ n. (军队中的)班, 小队">squad</span> back into a union they think has worked just fine without it? Since Britain’s departure, the EU has pushed forward with federalising</p>
+<p>schemes that British prime ministers would no doubt have proudly kiboshed at <span class="annot" data-tooltip="brussels /ˈbrʌsəlz/ n. 布鲁塞尔（比利时首都）">Brussels</span> summits. EU spending is now funded in part with money <span class="annot" data-tooltip="jointly /dʒɔɪnt/ n. 关节；接合处，接合点；接缝；（牛，羊等的腿）大块肉adj. 联合的，合办的；共同的；连接的vt. 连接，贴合；接合；使有">jointly</span> borrowed by its 27 member states, surely a taboo in London. The union has <span class="annot" data-tooltip="adopted /ə'dɑːpt/ vt. 收养采用, 采纳, 采取正式接受, 通过时 态: adopted, adopting, adopts">adopted</span> French ideas on industrial policy and “<span class="annot" data-tooltip="strategic /strə'tiːdʒɪk/ adj. 战略(上)的有战略意义的; 至关重要的副 词: strategically">strategic</span> <span class="annot" data-tooltip="autonomy /ɔː'tɑːnəmi/ n. 自治，自治权名 词: autonomist">autonomy</span>”, in part thanks to not having to worry about British vetoes. In theory, Britain’s reaccession bid would be treated no differently from those of other countries, from <span class="annot" data-tooltip="ukraine n. 乌克兰（原苏联一加盟共和国，现已独立）">Ukraine</span> to Serbia, which have formally asked to join the EU. In <span class="annot" data-tooltip="practice /'præktɪs/ n. 练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规时 态: practiced，practicing，">practice</span> it would be both easier and harder. As a past member whose regulation has not much diverged from the acquis communautaire, the hundreds of tomes of EU rules that all prospective joiners must accept, Britain would jump through <span class="annot" data-tooltip="hoops /huːp/ n. 箍；铁环；呼呼声vt. 加箍于；包围vi. 发呼呼声时 态: hooped, hooping, hoops">hoops</span> faster than most. The tough bit—apart from dozens of national governments each wielding a veto over the final decision—is that some might insist Britain could join the EU only if it also agreed to <span class="annot" data-tooltip="adopt /ə'dɑːpt/ vt. 收养采用, 采纳, 采取正式接受, 通过时 态: adopted, adopting, adopts">adopt</span> the euro and Schengen. This could serve as a test of how <span class="annot" data-tooltip="seriously /'sɪriəs/ adj. 严肃的，严重的；认真的；庄重的；危急的副 词: seriously">seriously</span> the aspiring newcomer really wants to be part of the club this time. In practice it would be easy enough for Britain to <span class="annot" data-tooltip="commit /kə'mɪt/ vt. 犯罪；犯错承诺；使自己受约束托付；交付时 态: committed，committing，commits">commit</span> to join <span class="annot" data-tooltip="either /'iːðər/ pron. (两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的">either</span> one “when the right conditions were met”, only for said conditions never to be met. The budget rebate Britain once enjoyed would no doubt have to go, which might have happened anyway had it remained in the EU. The <span class="annot" data-tooltip="main /meɪn/ adj. 主要的; 最重要的n. 总管道; 干线">main</span> reason for reluctance about Bre-entry on the EU side is a niggling doubt as to whether Britain can ever be counted on to stay in. To have a member leave the union once may be regarded as a misfortune; for it to happen again would look like carelessness. In practice, says Charles Grant of the Centre for European <span class="annot" data-tooltip="reform /rɪ'fɔːrm/ n. 改革，改良，改造vt. & vi. 改革；改造；改善时 态: reformed，reforming，reforms">Reform</span>, a think-<span class="annot" data-tooltip="tank /tæŋk/ n. （存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内时 态: t">tank</span> in London, the EU would want to see broad agreement across party <span class="annot" data-tooltip="lines n. 台词；线；航线（line的复数）v. 排成一行；画线于（line的三单形式）">lines</span> in Britain before discussing re-entry <span class="annot" data-tooltip="terms /tɜːrmz/ n. 条款；地位，关系；措辞；术语；价钱（term的复数形式）v. 把…称为（term的三单形式）">terms</span>, so that tomorrow’s ministers did not unpick a deal <span class="annot" data-tooltip="reached /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reached</span> by today’s. That might <span class="annot" data-tooltip="entail /ɪn'teɪl/ vt. 使…成为必要, 需要限定继承时 态: entailed, entailing, entails">entail</span> the <span class="annot" data-tooltip="conservatives /kən'sɜːrvətɪv/ n. 保守的人adj. 保守的, 守旧的(式样等)不时新的, 传统的副 词: conservatively">Conservatives</span> backing a return (<span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span>-<span class="annot" data-tooltip="fetched /fetʃ/ vt. 接来；到达；取来；吸引vi. 取物；卖得；拿n. 取得；诡计时 态: fetched, fetching, fetche">fetched</span> for now), or Mr Farage’s political <span class="annot" data-tooltip="fortunes /'fɔːrtʃən/ n. 运气；财富；命运vt. 给予财富vi. 偶然发生时 态: fortuned, fortuning, fortunes">fortunes</span> waning. Even then patience would be in order. Britain’s initial bid to join the EU in 1961 succeeded only after 12 years (and despite two French vetoes). A similar timeline would imply more than a generation had passed between the 2016 vote and Bre-entry, a suitable timeframe for a nation to change its mind. The <span class="annot" data-tooltip="journey /'dʒɜːrni/ n. 旅行; 行程vi. 旅行">journey</span> would be long, tortuous—and <span class="annot" data-tooltip="worth /wɜːrθ/ adj. 值…的n. 价值；财产时 态: worthed, worthing, worths">worth</span> it. Brits would get to unpick an error that has left them poorer and more <span class="annot" data-tooltip="isolated /'aɪsəleɪtɪd/ adj. 孤立的；分离的；绝缘的；单独的v. 使孤立；使绝缘；脱离（isolate的过去分词）">isolated</span>. For the EU the</p>
+<p>prize may be even greater: to <span class="annot" data-tooltip="establish /ɪ'stæblɪʃ/ vt. 建立, 成立安置确定, 证实时 态: established, establishing, establishes">establish</span> their union as the continent’s <span class="annot" data-tooltip="manifest /'mænɪfest/ vt. 证明，表明；显示vi. 显示，出现n. 旅客名单；载货单，货单adj. 明白的；显然的，明显的时 态: manifest">manifest</span> destiny, <span class="annot" data-tooltip="complete /kəm'pliːt/ adj. 完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善比较级: complete">complete</span> with chastened British officials once again haggling late into the night over fishing quotas. ■ Subscribers to The Economist can sign up to our Opinion newsletter, which brings together the best of our leaders, <span class="annot" data-tooltip="columns /'kɑːləm/ n. 圆柱，柱形物；纵队，列；专栏形容词: columned">columns</span>, guest <span class="annot" data-tooltip="essays /'eseɪ/ n. 散文, 随笔">essays</span> and reader <span class="annot" data-tooltip="correspondence /ˌkɔːrə'spɑːndəns/ n. 信件, 函件通信, 通信联系一致, 相似">correspondence</span>. This article was downloaded by zlibrary from https://www.economist.com//europe/2026/05/21/bre-entry-may-be-the-next-drama-to- grip-the-european-union</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Britain</div>
+<p>In football, Britain has a world-beating <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> Why football attendance is booming <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span> the Premier <span class="annot" data-tooltip="league /liːɡ/ n. 联盟；社团；范畴vt. 使…结盟；与…联合vi. 结盟；团结时 态: leagued, leaguing, league">League</span> The legal case hanging over Man City and the Premier League Britain’s second-biggest city goes from dysfunctional to worse Labour’s “battle for ideas” is a <span class="annot" data-tooltip="skirmish /'skɜːrmɪʃ/ n. 小规模战斗；小冲突时 态: skirmished, skirmishing, skirmishes">skirmish</span> over small differences Hate Labour? Vote Labour!</p>
+<div class="article-separator"></div>
+<div class="article-header">Britain · Britain | World champions</div>
+<p>In football, Britain has a world-beating <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> Many things in the country aren’t working. The Premier <span class="annot" data-tooltip="league /liːɡ/ n. 联盟；社团；范畴vt. 使…结盟；与…联合vi. 结盟；团结时 态: leagued, leaguing, league">League</span> is May 21st 2026 Bus conductors in Nigeria are <span class="annot" data-tooltip="typically /'tɪpɪkli/ adv. 代表性地;作为特色地;典型地">typically</span> Chelsea fans. In Goma, a city under the control of a <span class="annot" data-tooltip="rebel /'rebl/ n. 反政府的人；反叛者；造反者叛逆者vi. 反抗政府；造反反抗权威；叛逆时 态: rebelled，rebelling，re">rebel</span> <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span> that opposes the Congolese state, lots of bootleg Newcastle United shirts are on sale (the Geordies have a striker, Yoane Wissa, who plays for the national team). Tiny villages <span class="annot" data-tooltip="alongside /əˌlɔːŋ'saɪd/ adv. 靠着边，沿着边prep. (表示位置)在…旁边；沿着…的边；与…并排靠拢着(表示比较)与…放在一起比较(表示伴随)与…一">alongside</span> Lake Victoria in Kenya may have no electricity and <span class="annot" data-tooltip="barely /'berli/ adv. 仅仅，勉强；几乎不；公开地；贫乏地">barely</span> any roads, but they do <span class="annot" data-tooltip="tend /tend/ vt. 照料，照顾，伺候vi. 往，朝向易于；倾向时 态: tended，tending，tends">tend</span> to have a <span class="annot" data-tooltip="pub /pʌb/ n. 酒馆；客栈">pub</span>—a shack with <span class="annot" data-tooltip="solar /'soʊlər/ adj. 太阳的；日光的；利用太阳光的；与太阳相关的n. 日光浴室">solar</span> <span class="annot" data-tooltip="panels /'pænl/ n. 仪表板；嵌板；座谈小组，全体陪审员vt. 嵌镶板时 态: paneled, panelled paneling, pan">panels</span> on the roof, a fridge to cool beer and a small television with some way of receiving Premier League games. The FancyFree pub in <span class="annot" data-tooltip="brooklyn /'brʊklɪn/ n. 布鲁克林（美国纽约西南部的一区）">Brooklyn</span> <span class="annot" data-tooltip="overflows /ˌoʊvər'floʊ/ vt. & vi. 溢出；淹没充满n. 溢出溢出物容纳不下的人[物]时 态: overflowed，overflowing，ov">overflows</span> with Arsenal fans when there is a game. On May 19th Arsenal clinched the league title. The presidents of both Kenya and Rwanda took to social media to congratulate the team. In Botswana the</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>sovereignty</td><td>/'sɑːvrənti/ n.</td><td>最高统治权, 君权国家的主权</td></tr>
+<tr><td>drive</td><td>/draɪv/ vt.</td><td>驱赶驱使, 促使敲, 击vt. & vi. 驾驶n. 乘车旅行私人车道传动, 驱动干劲, 积极性, 能动性紧迫, 逼迫, 压力, drives</td></tr>
+<tr><td>race</td><td>/reɪs/ n.</td><td>种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACEabbr. Radiation Adap</td></tr>
+<tr><td>reaches</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>domestic</td><td>/də'mestɪk/ adj.</td><td>国内的；家庭的；驯养的；一心只管家务的</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>compliance</td><td>/kəm'plaɪəns/ n.</td><td>服从,听从,顺从</td></tr>
+<tr><td>ease</td><td>/iːz/ vt.</td><td>减轻，缓和；使安心n. 安逸，悠闲；轻松，舒适vi. 减轻，缓和；放松；灵活地移动EASEabbr. Electronic Airborne Systems E</td></tr>
+<tr><td>tend</td><td>/tend/ vt.</td><td>照料，照顾，伺候vi. 往，朝向易于；倾向，tending，tends</td></tr>
+<tr><td>capable</td><td>/'keɪpəbl/ adj.</td><td>能干的，能胜任的；有才华的</td></tr>
+<tr><td>alternatives</td><td>/ɔːl'tɜːrnətɪv/ adj.</td><td>可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）可供选择的事物；可供选择的解决办法替代物</td></tr>
+<tr><td>spirits</td><td>/'spɪrɪt/ n.</td><td>精神；心灵；志气；烈酒；情绪vt. 鼓励；鼓舞；诱拐, spiriting, spirits</td></tr>
+<tr><td>tank</td><td>/tæŋk/ n.</td><td>（存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内, tanking, tanks</td></tr>
+<tr><td>brussels</td><td>/ˈbrʌsəlz/ n.</td><td>布鲁塞尔（比利时首都）</td></tr>
+<tr><td>sovereign</td><td>/'sɑːvrɪn/ n.</td><td>君主，国王，女王旧时价值为一镑的英国金币adj. 控制国家的；统治的独立自主的</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>representatives</td><td>/ˌreprɪ'zentətɪv/ n.</td><td>代表代理人adj. 有代表性的, 典型的</td></tr>
+<tr><td>momentum</td><td>/moʊ'mentəm/ n.</td><td>动力；动量；冲力；势头复 数: momenta</td></tr>
+<tr><td>innovative</td><td>/'ɪnəveɪtɪv/ adj.</td><td>新发明的，新引进的；革新的；有改革精神的乐于引进新观念的</td></tr>
+<tr><td>contrast</td><td>/'kɑːntræst/ n.</td><td>对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照, contrasting, contrasts</td></tr>
+<tr><td>procedures</td><td>— </td><td>规程</td></tr>
+<tr><td>procurement</td><td>/prə'kjʊrmənt/ n.</td><td>获得;采购</td></tr>
+<tr><td>manufacturing</td><td>/ˌmænju'fæktʃərɪŋ/ n.</td><td>制造业，工业adj. 制造业的；制造的</td></tr>
+<tr><td>sovereignty</td><td>/'sɑːvrənti/ n.</td><td>最高统治权, 君权国家的主权</td></tr>
+<tr><td>picture</td><td>/'pɪktʃər/ n.</td><td>图画，肖像；照片(生动的)描述，写照影片；电影；画面美景，景色情况，事态，局面vt. 绘画；描绘想象，picturing，pictures</td></tr>
+<tr><td>scene</td><td>/siːn/ n.</td><td>情景；景象；场面；事件</td></tr>
+<tr><td>signatures</td><td>/'sɪɡnətʃər/ n.</td><td>签名, 签字</td></tr>
+<tr><td>version</td><td>/'vɜːrʒn/ n.</td><td>变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本</td></tr>
+<tr><td>stroke</td><td>/stroʊk/ n.</td><td>一击一画，一笔(游泳或划船的)划，划法；游法钟的敲声中风轻抚vt. 轻抚，抚摸，stroking，strokes</td></tr>
+<tr><td>amid</td><td>/ə'mɪd/ prep.</td><td>在其中，在其间</td></tr>
+<tr><td>elderly</td><td>/'eldərli/ adj.</td><td>上了年纪的, 中年以上的</td></tr>
+<tr><td>vaguely</td><td>/veɪɡ/ adj.</td><td>不明确的；含糊的；模糊的；暧昧的, vaguest</td></tr>
+<tr><td>horizon</td><td>/hə'raɪzn/ n.</td><td>地平线；眼界；范围；视野</td></tr>
+<tr><td>confined</td><td>/kən'faɪnd/ </td><td>1. adj. 被限制的，封闭的，狭窄的</td></tr>
+<tr><td>reform</td><td>/rɪ'fɔːrm/ n.</td><td>改革，改良，改造vt. & vi. 改革；改造；改善，reforming，reforms</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>polls</td><td>/poʊl/ n.</td><td>民意测验；投票；投票数；投票所vt. 剪短；对…进行民意测验；获得选票；投票vi. 投票adj. 剪过毛的；修过枝的；无角的, polling, polls</td></tr>
+<tr><td>huff</td><td>/hʌf/ vi.</td><td>生气地说；把……吹胀，吹气；发怒，激怒；蔑视；恫吓；嗅（汽油、溶剂）作为兴奋剂；（国际跳棋中）取掉（对方本可吃棋的棋子）</td></tr>
+<tr><td>brussels</td><td>/ˈbrʌsəlz/ n.</td><td>布鲁塞尔（比利时首都）</td></tr>
+<tr><td>relatively</td><td>/'relətɪvli/ adv.</td><td>相对地，比较而言；相当相对来说；相比较而言</td></tr>
+<tr><td>aligning</td><td>/ə'laɪn/ vt.</td><td>使结盟；使成一行；匹配vi. 排列；排成一行</td></tr>
+<tr><td>contrast</td><td>/'kɑːntræst/ n.</td><td>对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照, contrasting, contrasts</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>hub</td><td>/hʌb/ n.</td><td>中心；毂；木片</td></tr>
+<tr><td>prompting</td><td>/prɑːmpt/ adj.</td><td>敏捷的，迅速的；立刻的vt. 促进；激起；提示；（给演员）提白n. 提示；付款期限；DOS命令：改变DOS系统提示符的风格adv. 准时地, promptest</td></tr>
+<tr><td>chaotic</td><td>/keɪ'ɑːtɪk/ adj.</td><td>混乱的，无秩序的；混沌的</td></tr>
+<tr><td>scrambling</td><td>— </td><td>不规则性</td></tr>
+<tr><td>sway</td><td>/sweɪ/ vt.</td><td>使摇动；统治；影响vi. 摇摆；影响n. 摇摆；统治；影响, swaying, sways</td></tr>
+<tr><td>towards</td><td>/tɔːrdz/ prep.</td><td>向，朝为了；有助于；用于对于，关于接近；将近；大约</td></tr>
+<tr><td>vite</td><td>— adv.</td><td>急速地;轻快地</td></tr>
+<tr><td>opt</td><td>/ɑːpt/ vi.</td><td>选择OPTabbr. VC开发环境自动生成的用来存放WorkSpace中各种选项的文件。, opting, opts</td></tr>
+<tr><td>flagship</td><td>/'flæɡʃɪp/ n.</td><td>旗舰；佼佼者；（作定语）一流</td></tr>
+<tr><td>notably</td><td>/'noʊtəbli/ adv.</td><td>显著地；尤其</td></tr>
+<tr><td>awkward</td><td>/'ɔːkwərd/ adj.</td><td>笨拙的；尴尬的；棘手的；不合适的</td></tr>
+<tr><td>squad</td><td>/skwɑːd/ n.</td><td>(军队中的)班, 小队</td></tr>
+<tr><td>brussels</td><td>/ˈbrʌsəlz/ n.</td><td>布鲁塞尔（比利时首都）</td></tr>
+<tr><td>jointly</td><td>/dʒɔɪnt/ n.</td><td>关节；接合处，接合点；接缝；（牛，羊等的腿）大块肉adj. 联合的，合办的；共同的；连接的vt. 连接，贴合；接合；使有接头vi. 贴合；生节, jointin</td></tr>
+<tr><td>adopted</td><td>/ə'dɑːpt/ vt.</td><td>收养采用, 采纳, 采取正式接受, 通过, adopting, adopts</td></tr>
+<tr><td>strategic</td><td>/strə'tiːdʒɪk/ adj.</td><td>战略(上)的有战略意义的; 至关重要的</td></tr>
+<tr><td>autonomy</td><td>/ɔː'tɑːnəmi/ n.</td><td>自治，自治权</td></tr>
+<tr><td>ukraine</td><td>— n.</td><td>乌克兰（原苏联一加盟共和国，现已独立）</td></tr>
+<tr><td>practice</td><td>/'præktɪs/ n.</td><td>练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规，practicing，practices</td></tr>
+<tr><td>hoops</td><td>/huːp/ n.</td><td>箍；铁环；呼呼声vt. 加箍于；包围vi. 发呼呼声, hooping, hoops</td></tr>
+<tr><td>adopt</td><td>/ə'dɑːpt/ vt.</td><td>收养采用, 采纳, 采取正式接受, 通过, adopting, adopts</td></tr>
+<tr><td>seriously</td><td>/'sɪriəs/ adj.</td><td>严肃的，严重的；认真的；庄重的；危急的</td></tr>
+<tr><td>commit</td><td>/kə'mɪt/ vt.</td><td>犯罪；犯错承诺；使自己受约束托付；交付，committing，commits</td></tr>
+<tr><td>either</td><td>/'iːðər/ pron.</td><td>(两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的</td></tr>
+<tr><td>main</td><td>/meɪn/ adj.</td><td>主要的; 最重要的n. 总管道; 干线</td></tr>
+<tr><td>reform</td><td>/rɪ'fɔːrm/ n.</td><td>改革，改良，改造vt. & vi. 改革；改造；改善，reforming，reforms</td></tr>
+<tr><td>tank</td><td>/tæŋk/ n.</td><td>（存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内, tanking, tanks</td></tr>
+<tr><td>lines</td><td>— n.</td><td>台词；线；航线（line的复数）v. 排成一行；画线于（line的三单形式）</td></tr>
+<tr><td>terms</td><td>/tɜːrmz/ n.</td><td>条款；地位，关系；措辞；术语；价钱（term的复数形式）v. 把…称为（term的三单形式）</td></tr>
+<tr><td>reached</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>entail</td><td>/ɪn'teɪl/ vt.</td><td>使…成为必要, 需要限定继承, entailing, entails</td></tr>
+<tr><td>conservatives</td><td>/kən'sɜːrvətɪv/ n.</td><td>保守的人adj. 保守的, 守旧的(式样等)不时新的, 传统的</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>fetched</td><td>/fetʃ/ vt.</td><td>接来；到达；取来；吸引vi. 取物；卖得；拿n. 取得；诡计, fetching, fetches</td></tr>
+<tr><td>fortunes</td><td>/'fɔːrtʃən/ n.</td><td>运气；财富；命运vt. 给予财富vi. 偶然发生, fortuning, fortunes</td></tr>
+<tr><td>journey</td><td>/'dʒɜːrni/ n.</td><td>旅行; 行程vi. 旅行</td></tr>
+<tr><td>worth</td><td>/wɜːrθ/ adj.</td><td>值…的n. 价值；财产, worthing, worths</td></tr>
+<tr><td>isolated</td><td>/'aɪsəleɪtɪd/ adj.</td><td>孤立的；分离的；绝缘的；单独的v. 使孤立；使绝缘；脱离（isolate的过去分词）</td></tr>
+<tr><td>establish</td><td>/ɪ'stæblɪʃ/ vt.</td><td>建立, 成立安置确定, 证实, establishing, establishes</td></tr>
+<tr><td>manifest</td><td>/'mænɪfest/ vt.</td><td>证明，表明；显示vi. 显示，出现n. 旅客名单；载货单，货单adj. 明白的；显然的，明显的, manifesting, manifests</td></tr>
+<tr><td>complete</td><td>/kəm'pliːt/ adj.</td><td>完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善, completest 缩 写: comp, cpl</td></tr>
+<tr><td>columns</td><td>/'kɑːləm/ n.</td><td>圆柱，柱形物；纵队，列；专栏</td></tr>
+<tr><td>essays</td><td>/'eseɪ/ n.</td><td>散文, 随笔</td></tr>
+<tr><td>correspondence</td><td>/ˌkɔːrə'spɑːndəns/ n.</td><td>信件, 函件通信, 通信联系一致, 相似</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>league</td><td>/liːɡ/ n.</td><td>联盟；社团；范畴vt. 使…结盟；与…联合vi. 结盟；团结, leaguing, leagues</td></tr>
+<tr><td>skirmish</td><td>/'skɜːrmɪʃ/ n.</td><td>小规模战斗；小冲突, skirmishing, skirmishes</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>league</td><td>/liːɡ/ n.</td><td>联盟；社团；范畴vt. 使…结盟；与…联合vi. 结盟；团结, leaguing, leagues</td></tr>
+<tr><td>typically</td><td>/'tɪpɪkli/ adv.</td><td>代表性地;作为特色地;典型地</td></tr>
+<tr><td>rebel</td><td>/'rebl/ n.</td><td>反政府的人；反叛者；造反者叛逆者vi. 反抗政府；造反反抗权威；叛逆，rebelling，rebels</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>alongside</td><td>/əˌlɔːŋ'saɪd/ adv.</td><td>靠着边，沿着边prep. (表示位置)在…旁边；沿着…的边；与…并排靠拢着(表示比较)与…放在一起比较(表示伴随)与…一起，与…一道</td></tr>
+<tr><td>barely</td><td>/'berli/ adv.</td><td>仅仅，勉强；几乎不；公开地；贫乏地</td></tr>
+<tr><td>tend</td><td>/tend/ vt.</td><td>照料，照顾，伺候vi. 往，朝向易于；倾向，tending，tends</td></tr>
+<tr><td>pub</td><td>/pʌb/ n.</td><td>酒馆；客栈</td></tr>
+<tr><td>solar</td><td>/'soʊlər/ adj.</td><td>太阳的；日光的；利用太阳光的；与太阳相关的n. 日光浴室</td></tr>
+<tr><td>panels</td><td>/'pænl/ n.</td><td>仪表板；嵌板；座谈小组，全体陪审员vt. 嵌镶板, panelled paneling, panelling panels, panels</td></tr>
+<tr><td>brooklyn</td><td>/'brʊklɪn/ n.</td><td>布鲁克林（美国纽约西南部的一区）</td></tr>
+<tr><td>overflows</td><td>/ˌoʊvər'floʊ/ vt.</td><td>& vi. 溢出；淹没充满n. 溢出溢出物容纳不下的人[物]，overflowing，overflows</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day21.html" class="nav-btn">← Day 21</a>
+  <a href="day23.html" class="nav-btn">Day 23 →</a>
+</div>
+
+<div class="progress">📖 Day 22 of 43</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-05-23</div>
+
+</body>
+</html>

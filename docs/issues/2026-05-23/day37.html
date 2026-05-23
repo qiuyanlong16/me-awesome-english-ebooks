@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance & economics</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-05-23</div>
+
+<h1 class="article-title">Finance & economics</h1>
+<div class="article-section"></div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>sell at any price. In theory, arbitrageurs should smooth out any <span class="annot" data-tooltip="distortions /dɪ'stɔːrʃn/ n. 变形；[物] 失真；扭曲；曲解形容词: distortional or">distortions</span> this causes using <span class="annot" data-tooltip="derivative /dɪ'rɪvətɪv/ n. 衍生物，派生物；派生词；【数】导数，微商adj. 缺乏独创性的；模仿他人的副 词: derivatively">derivative</span> <span class="annot" data-tooltip="contracts /'kɑːntrækt/ vi. 感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约时 态: contracted, contracting, c">contracts</span>. In <span class="annot" data-tooltip="practice /'præktɪs/ n. 练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规时 态: practiced，practicing，">practice</span>, trading <span class="annot" data-tooltip="inflation /ɪn'fleɪʃn/ n. (充气而引起的)膨胀通货膨胀">inflation</span> <span class="annot" data-tooltip="derivatives /dɪ'rɪvətɪv/ n. 衍生物，派生物；派生词；【数】导数，微商adj. 缺乏独创性的；模仿他人的副 词: derivatively">derivatives</span> throws up so many complications that opportunistic traders often cannot find a broker willing to take them on. <span class="annot" data-tooltip="exhibit /ɪɡ'zɪbɪt/ vt. 显示；展览；提出（证据等）n. 展览品；证据；展示会vi. 展出；开展览会时 态: exhibited, exhibit">Exhibit</span> C is the unique function of ordinary <span class="annot" data-tooltip="treasury /'treʒəri/ n. 财政部；国库，金库；宝库">Treasury</span> bonds. Investors do not only, or even mainly, use them to bet on the future path of interest rates and inflation, but as a safe harbour when other markets are <span class="annot" data-tooltip="turbulent /'tɜːrbjələnt/ adj. 骚动的; 骚乱的; 汹涌的">turbulent</span>. They also trust that, during a big stockmarket <span class="annot" data-tooltip="crash /kræʃ/ n. 碰撞；崩溃；坠落vt. 破碎；撞碎；坠落vi. 碰撞；坠毁；闯；突然倒台adj. 速成的时 态: crashed, cr">crash</span>, interest rates would <span class="annot" data-tooltip="fall /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">fall</span> and Treasury prices would <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span>, cushioning their losses. Erratic policymaking in America has tested both beliefs recently. But not to destruction: people still hold <span class="annot" data-tooltip="treasuries /'treʒəri/ n. 财政部；国库，金库；宝库">Treasuries</span> with an eagerness that does not apply to TIPs. So Treasury <span class="annot" data-tooltip="yields /jiːld/ vt. 出产；屈服；放弃vi. 屈服，投降n. 收益；产量时 态: yielded, yielding, yields">yields</span> are <span class="annot" data-tooltip="tugged /tʌɡ/ vt. & vi. 用力拉；使劲拉；猛扯n. 猛拉；猛拖；猛扯时 态: tugged，tugging，tugs">tugged</span> down and those of TIPs are not, meaning the break-even— the gap between the two—is depressed. The effect is especially strong during a panic, when the safety of Treasuries is most appealing. Almost certainly, this helps explain why break-evens fell so low in 2020. If you want to guarantee your purchasing power no matter how <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> consumer prices rise, linkers are just the thing. If you want to know how much investors fear inflation, you may need to look elsewhere. ■ Subscribers to The Economist can sign up to our Opinion newsletter, which brings together the best of our leaders, <span class="annot" data-tooltip="columns /'kɑːləm/ n. 圆柱，柱形物；纵队，列；专栏形容词: columned">columns</span>, guest <span class="annot" data-tooltip="essays /'eseɪ/ n. 散文, 随笔">essays</span> and reader <span class="annot" data-tooltip="correspondence /ˌkɔːrə'spɑːndəns/ n. 信件, 函件通信, 通信联系一致, 相似">correspondence</span>. This article was downloaded by zlibrary from https://www.economist.com//finance-and-economics/2026/05/19/investors-fear-another- <span class="annot" data-tooltip="surge /sɜːrdʒ/ n. (情感的) 突发，涌现，突然出现（数量的）急剧上升，激增；大量；一大批奔涌向前；突然的向上运动（电流）浪涌v. 涌；汹涌">surge</span>-in-inflation</p>
+<p>Finance & economics | Free Exchange How should economists treat morality? Sometimes it is more than merely an exogenous <span class="annot" data-tooltip="constraint /kən'streɪnt/ n. 强制；限制，约束强制，强迫">constraint</span> May 21st 2026 WHY IS BUYING heroin easier than hiring a hitman? Both are illegal. Yet find yourself in an unfamiliar town and ask around where you might get your fix and—<span class="annot" data-tooltip="possibly /'pɑːsəbli/ adv. 可能地；大概；也许">possibly</span> after being met by a few disgusted glances and wide- eyed stares—you are eventually given a phone <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> or directions to some sketchy area. Even if someone bothers to report you to the police, the constabulary is too busy to follow up on a single user. Start asking where you can get the services of a <span class="annot" data-tooltip="contract /'kɑːntrækt/ vi. 感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约时 态: contracted, contracting, c">contract</span> killer, however, and if you receive any leads at all, you are most likely to find yourself talking to an undercover policeman. This is one of the questions asked in “Moral Economics”, a new book by Alvin Roth, a Nobel-prizewinning economist at Stanford University. Mr</p>
+<p>Roth’s Nobel was for his work on market design, particularly in those markets where two or more parties must be paired up in the absence of price signals (think university <span class="annot" data-tooltip="places /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">places</span> or marriage). His studies led him to the trade in human organs—he set up a <span class="annot" data-tooltip="kidney /'kɪdni/ n. 肾, 肾脏(可食用的动物的)腰子">kidney</span> exchange in which donors who are not a match for their <span class="annot" data-tooltip="respective /rɪ'spektɪv/ adj. 各自的; 各个的">respective</span> intended recipients can swap—and, more broadly, to the murky world of “repugnant <span class="annot" data-tooltip="transactions /træn'zækʃn/ n. 处理，办理，执行(一笔)交易；(一项)事务形容词: transactional">transactions</span>”. These Mr Roth defines as ones where, like scoring heroin but not securing a hitman, buyers and sellers would happily transact but someone else not directly harmed by the exchange wishes to prevent it. Mr Roth’s subject is a good one. Morality clearly shapes markets <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> beyond those for heroin and hitmen. Like all of his discipline, he makes moral economics about trade-offs: are the harms of allowing an activity greater than the harms of disallowing it? After all, he writes, people “can’t generally expect to <span class="annot" data-tooltip="reach /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reach</span> a <span class="annot" data-tooltip="consensus /kən'sensəs/ n. (意见等)一致, 一致同意">consensus</span>” about the principles at stake. The clear-eyed evidence he gathers is a useful <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span> from which to argue about when prohibition works. Yet despite his attempts to “take moral and <span class="annot" data-tooltip="ethical /'eθɪkl/ adj. 道德的；伦理的；凭处方出售的n. 处方药副 词: ethically">ethical</span> concerns <span class="annot" data-tooltip="seriously /'sɪriəs/ adj. 严肃的，严重的；认真的；庄重的；危急的副 词: seriously">seriously</span>”, the book too often treats other people’s principles as an <span class="annot" data-tooltip="irrational /ɪ'ræʃənl/ adj. 无理性的;失去理性的;不合理的副 词: irrationally">irrational</span> <span class="annot" data-tooltip="bias /'baɪəs/ n. 偏见；斜纹；偏爱；乖离率vt. 使存偏见adj. 偏斜的adv. 偏斜地时 态: biased, biassed bia">bias</span> to be managed rather than a reasoned position to be argued against. That is a missed opportunity. Some of his frustration is <span class="annot" data-tooltip="understandable /ˌʌndər'stændəbl/ adj. 能懂的;可理解的;可同情的名 词: understandability">understandable</span>. What different <span class="annot" data-tooltip="societies /sə'saɪəti/ n. 社会；社交界；交往；社团">societies</span> <span class="annot" data-tooltip="consider /kən'sɪdər/ vt. & vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及时 态: considered, considering, ">consider</span> repugnant can seem <span class="annot" data-tooltip="arbitrary /'ɑːrbɪtreri/ adj. 随意的, 主观的专横的, 独断专行的副 词: arbitrarily">arbitrary</span>. Horsemeat, a delicacy in parts of Europe, is off the table in California following a referendum in 1998. Many European countries forbid surrogacy on the ground that it <span class="annot" data-tooltip="violates /'vaɪəleɪt/ vt. 违反, 违背亵渎侵犯, 妨碍时 态: violated, violating, violates">violates</span> the dignity of women to make the body into a tradable commodity, yet they permit some forms of sex work. In America it is the other way around: prostitution is illegal everywhere except for a few counties in Nevada <span class="annot" data-tooltip="whereas /ˌwer'æz/ conj. 但是, 而">whereas</span> surrogacy is widely available. California allows paid sex—so long as it is being used to make <span class="annot" data-tooltip="pornography /pɔːr'nɑːɡrəfi/ n. 色情描绘, 色情表演色情作品名 词: pornographer">pornography</span>. Americans can be paid to donate blood but could not partake in “challenge <span class="annot" data-tooltip="trials /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">trials</span>” for covid-19 <span class="annot" data-tooltip="vaccines /væk'siːn/ n. 疫苗;痘苗adj. 痘苗的;疫苗的">vaccines</span>, tested on donors who <span class="annot" data-tooltip="expose /ɪk'spoʊz/ vt. 使曝光；揭露，揭发；显示时 态: exposed, exposing, exposes">expose</span> themselves to the disease. British blood donors can count on at best a biscuit but are allowed to offer their life for a fee to see if a jab works. Such <span class="annot" data-tooltip="inconsistencies /ˌɪnkən'sɪstənsi/ n. 不一致（之处）；前后矛盾（的事情）（行为的）反复无常，易变">inconsistencies</span> infuriate ethicists trying to find a coherent set of moral <span class="annot" data-tooltip="intuitions /ˌɪntu'ɪʃn/ n. 直觉凭直觉感知的知识形容词: intuitional">intuitions</span>. For Mr Roth, they are a godsend. They provide an opportunity for some field experiments to see what happens when markets are legal or not and what kind of black markets come with them. Some rules of <span class="annot" data-tooltip="thumb /θʌm/ vt. 以拇指拨弄；作搭车手势；笨拙地摆弄；翻阅vi. 用拇指翻书页；竖起拇指要求搭车n. 拇指时 态: thumbed, th">thumb</span></p>
+<p>emerge: bans never work perfectly but they do reduce the frequency of the activity. There are usually ways around <span class="annot" data-tooltip="restrictions /rɪ'strɪkʃn/ n. 约束，限制管制，限定；法律，规章">restrictions</span> for the suitably motivated. A <span class="annot" data-tooltip="forum /'fɔːrəm/ n. 论坛，讨论会；法庭；公开讨论的广场">forum</span> for Kazakhs in America suggests trying one or two Uzbek <span class="annot" data-tooltip="restaurants /'restrɑːnt/ n. 饭店, 餐馆">restaurants</span> in Philadelphia for your horsemeat fix, or <span class="annot" data-tooltip="heading /'hedɪŋ/ n. 标题；信头；（足球）头球v. 用头顶（head的ing形式）">heading</span> to Quebec. Horse lovers in California can content themselves that fewer are being eaten locally. Mr Roth suggests, reasonably, that policy should <span class="annot" data-tooltip="weigh /weɪ/ vt. & vi. 称…的重量link v. 重达vt. 权衡；考虑时 态: weighed，weighing，weighs">weigh</span> the costs and benefits of banning an activity. He cites a paper by Scott Cunningham of Baylor University, in <span class="annot" data-tooltip="texas /'teksəs/ n. 德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室">Texas</span>, and Manisha Shah of the University of California, Berkeley, that took advantage of an accidental legalisation of indoor prostitution in Rhode Island after state lawmakers did not fully think through the implications of a bill. The researchers found that the result was fewer <span class="annot" data-tooltip="sexual /'sekʃuəl/ adj. 性交的, 性行为的, 性吸引的, 两性的, 肉体吸引的性别的, 性的, 男性或女性的生殖的, 有性生殖的副 词: sex">sexual</span> <span class="annot" data-tooltip="assaults /ə'sɔːlt/ n. 攻击；袭击vt. 袭击；攻击vi. 袭击；动武时 态: assaulted, assaulting, assaults">assaults</span> and <span class="annot" data-tooltip="sexually /'sekʃuəl/ adj. 性交的, 性行为的, 性吸引的, 两性的, 肉体吸引的性别的, 性的, 男性或女性的生殖的, 有性生殖的副 词: sex">sexually</span> transmitted <span class="annot" data-tooltip="infections /ɪn'fekʃn/ n. 〈医〉传染, 感染传染病">infections</span>. This argues for policy experiments with licensed sex work. Where evidence is scarcer or more <span class="annot" data-tooltip="ambiguous /æm'bɪɡjuəs/ adj. 引起歧义的；模棱两可的，含糊不清的">ambiguous</span>, as with prohibitions on drugs that are both addictive and lethal, he <span class="annot" data-tooltip="suspends /sə'spend/ vt. 延缓，推迟；使暂停；使悬浮vi. 悬浮；[体]禁赛时 态: suspended, suspending, suspend">suspends</span> judgment. Too often, though, Mr Roth retreats to the position that there is not much point in discussing the principles because there will be no agreement. That makes morality an exogenous fact of life, something generated <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span> the economic model. It is a <span class="annot" data-tooltip="constraint /kən'streɪnt/ n. 强制；限制，约束强制，强迫">constraint</span>, like geography, that must be recognised by economists. Sometimes, on Mr Roth’s view, it is useful: in <span class="annot" data-tooltip="contrast /'kɑːntræst/ n. 对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照时 态: contrasted, cont">contrast</span> to this newspaper, he seems <span class="annot" data-tooltip="sceptical /'skeptɪkl/ adj. 不肯相信的; 常怀疑的">sceptical</span> about legalising many drugs. Sometimes it is deadly: hundreds of thousands die every year because they cannot get the organ donations they need. Mr Roth’s reluctance to <span class="annot" data-tooltip="engage /ɪn'ɡeɪdʒ/ vt. 雇佣；吸引，占用；使订婚；使参加；预定vi. 答应，保证；从事；交战；啮合时 态: engaged, engaging,">engage</span> in arguments about principles is a shame. For one thing, he has nothing to be ashamed of. The <span class="annot" data-tooltip="picture /'pɪktʃər/ n. 图画，肖像；照片(生动的)描述，写照影片；电影；画面美景，景色情况，事态，局面vt. 绘画；描绘想象时 态: pictu">picture</span> that emerges from the book is of a deeply moral person, who believes in bodily <span class="annot" data-tooltip="autonomy /ɔː'tɑːnəmi/ n. 自治，自治权名 词: autonomist">autonomy</span>, in not subordinating individual lives to a collective and in not accepting unnecessary deaths to spare some people from feeling squeamish. Perhaps more important, it lets Mr Roth skirt an uncomfortable question about the role of repugnance. He is right that it often serves to <span class="annot" data-tooltip="exercise /'eksərsaɪz/ n. 练习；运动；运用；操练；典礼；礼拜vt. 练习；锻炼；使用；使忙碌；使惊恐vi. 运动；练习时 态: exercised">exercise</span> social control: dietary restrictions let an in-<span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span> that shuns pork, or beef, or meat, ostracise the out-group that does not. But it is also a tool of social cohesion. Emile Durkheim, a French sociologist at the turn of the 20th</p>
+<p>century, argued that <span class="annot" data-tooltip="societies /sə'saɪəti/ n. 社会；社交界；交往；社团">societies</span> divide the world into the <span class="annot" data-tooltip="sacred /'seɪkrɪd/ adj. 神圣的；庄严的；宗教的；神的副 词: sacredly">sacred</span>, <span class="annot" data-tooltip="covered /'kʌvər/ vt. 包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替时 态: covered, covering, c">covered</span> by <span class="annot" data-tooltip="ritual /'rɪtʃuəl/ n. 仪式；惯例；礼制adj. 仪式的；礼节性的；例行的副 词: ritually">ritual</span> and taboo, and the profane, the ordinary. One that treats everything as tradable might struggle to <span class="annot" data-tooltip="sustain /sə'steɪn/ vt. 承受，支撑维持长期保持；使继续经受，遭受时 态: sustained，sustaining，sustains">sustain</span> the tacit co-operation on which markets, repugnant or otherwise, <span class="annot" data-tooltip="ultimately /'ʌltɪmətli/ adv. 最后;最终">ultimately</span> rely. ■ Subscribers to The Economist can sign up to our Opinion newsletter, which brings together the best of our leaders, <span class="annot" data-tooltip="columns /'kɑːləm/ n. 圆柱，柱形物；纵队，列；专栏形容词: columned">columns</span>, guest <span class="annot" data-tooltip="essays /'eseɪ/ n. 散文, 随笔">essays</span> and reader <span class="annot" data-tooltip="correspondence /ˌkɔːrə'spɑːndəns/ n. 信件, 函件通信, 通信联系一致, 相似">correspondence</span>. This article was downloaded by zlibrary from https://www.economist.com//finance-and-economics/2026/05/21/how-should-economists- treat-morality</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Science &amp; technology</div>
+<p>Breakthroughs for batteries could soon make them much better The hantavirus outbreak is a <span class="annot" data-tooltip="tragedy /'trædʒədi/ n. 悲剧；灾难；惨案">tragedy</span>—and a valuable data source Could microscopic <span class="annot" data-tooltip="spheres /sfɪr/ n. 范围；球体vt. 包围；放入球内；使…成球形adj. 球体的时 态: sphered, sphering, sphere">spheres</span> of silica help cool the planet? How well do anabolic steroids work?</p>
+<p>Science & technology | Charging ahead Breakthroughs for batteries could soon make them much better Solid-state cells would be faster and safer than today’s lithium-ion <span class="annot" data-tooltip="equivalents /ɪ'kwɪvələnt/ adj. 等同的，等效的n. 对等的人（或事物），对应的人（或事物）">equivalents</span> May 21st 2026 LIKE ANY champion who spends too long at the top, the lithium-ion battery is stagnating. Over <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span> as the battery of choice in everything from smartphones to electric cars and <span class="annot" data-tooltip="drones /droʊn/ n. 无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫">drones</span>, its design has been <span class="annot" data-tooltip="tweaked /twiːk/ n. 拧；扭；焦急vt. 扭；用力拉；开足马力时 态: tweaked, tweaking, tweaks">tweaked</span> <span class="annot" data-tooltip="countless /'kaʊntləs/ adj. 无数的;多得数不清的">countless</span> times to improve its <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span> density and performance. But, some scientists say, those improvements are approaching their theoretical limits. Even the best models are <span class="annot" data-tooltip="prone /proʊn/ adj. 易于…的; 很可能…的俯卧的名 词: proneness">prone</span> to dying out in the cold, rapidly losing capacity or—as is the case for those in <span class="annot" data-tooltip="household /'haʊshoʊld/ n. 同住在一所房子里的人, 一家人, 户adj. 家庭的, 家用的">household</span> devices—<span class="annot" data-tooltip="spontaneously /spɑːn'teɪniəsli/ adv. 自然地;自发地;不由自主地">spontaneously</span> catching fire.</p>
+<p>At the same time, demand for batteries has never been greater. 30% of cars sold in 2026 are expected to be electric <span class="annot" data-tooltip="vehicles /'viːəkl/ n. 交通工具, 车辆传播媒介, 手段">vehicles</span> (EVs) which rely on them for power. Last year American homes and businesses installed a record <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of big batteries. According to Wood Mackenzie, a consultancy, by the end of the <span class="annot" data-tooltip="decade /'dekeɪd/ n. 十年，十年期；十">decade</span> installations could <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> by almost 40%. Worthy challengers are desperately needed. Advances in materials science are at last bringing some within <span class="annot" data-tooltip="reach /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reach</span>. Battery-builders are modifying existing materials and creating novel <span class="annot" data-tooltip="combinations /ˌkɑːmbɪ'neɪʃn/ n. 合作, 结合, 组合联合体, 组合物密码组合, 字码组合排列, 组合形容词: combinational">combinations</span> to design batteries that store more <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span> while being safer and more stable than anything on the market today. The lithium-ion battery’s crown may be up for grabs. Solid-state batteries are among the most <span class="annot" data-tooltip="exciting /ɪk'saɪtɪŋ/ adj. 使人激动的；令人兴奋的v. 激动；唤起；刺激（excite的ing形式）">exciting</span> <span class="annot" data-tooltip="alternatives /ɔːl'tɜːrnətɪv/ adj. 可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）">alternatives</span>. When a conventional lithium-ion battery is charged, lithium ions migrate from the cathode to the anode; when it is discharged, they return. The medium the ions <span class="annot" data-tooltip="shuttle /'ʃʌtl/ n. 梭子；穿梭；穿梭班机、公共汽车等；航天飞机vt. 使穿梭般来回移动；短程穿梭般运送vi. 穿梭往返时 态: shuttl">shuttle</span> through is called the electrolyte, usually a <span class="annot" data-tooltip="flammable /'flæməbl/ adj. 易燃的,可燃的名 词: flammability">flammable</span>, <span class="annot" data-tooltip="organic /ɔːr'ɡænɪk/ adj. 器官的；器质性的有机(体)的，有机物的副 词: organically">organic</span> solvent <span class="annot" data-tooltip="soaked /soʊk/ vt. 吸收，吸入；使……上下湿透；沉浸在（工作或学习中）vi. 渗透；浸泡n. 浸；湿透；大雨时 态: soaked, soa">soaked</span> into all of a battery’s components. In solid-state batteries, however, the anode, cathode and electrolyte are compressed together as slabs. This means more conductive materials can be packed into the same space, allowing for energy densities as high as 500 watt-hours per kilogram (Wh/kg), compared with about 300Wh/kg for liquid electrolytes. They are also less likely to combust. <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">Although</span> solid-state batteries have been studied for <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span>, researchers have thus <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> been able to make only tiny <span class="annot" data-tooltip="versions /'vɜːrʒn/ n. 变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本">versions</span> for use in such devices as medical implants. The most <span class="annot" data-tooltip="significant /sɪɡ'nɪfɪkənt/ adj. 重要的, 重大的, 可观的有意义的, 有用意的意味深长的副 词: significantly">significant</span> barrier to scaling them up is brittleness. When cells are charged and discharged, the ions repeatedly embed themselves in the electrode material. That causes the battery to expand and <span class="annot" data-tooltip="contract /'kɑːntrækt/ vi. 感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约时 态: contracted, contracting, c">contract</span>, creating voids between the components that can lead to <span class="annot" data-tooltip="cracking /kræk/ vt. & vi. (使…)开裂, 破裂(使)身体上或精神上垮掉打开, 砸开(使)发出爆裂声n. 裂缝, 缝隙噼啪声, 爆裂声意">cracking</span> and deformation. This slows down the ions and <span class="annot" data-tooltip="degrades /dɪ'ɡreɪd/ vt. 使……丢脸；使……降级；使……降解；贬低vi. 退化；降级，降低时 态: degraded, degrading, de">degrades</span> the battery’s performance. In January researchers at the Shenzhen Institutes of Advanced Technology, part of the Chinese Academy of Sciences, took a big step <span class="annot" data-tooltip="towards /tɔːrdz/ prep. 向，朝为了；有助于；用于对于，关于接近；将近；大约">towards</span> overcoming the brittleness problem. They created a high-performing electrolyte material by <span class="annot" data-tooltip="alternately /'ɔːltərnət/ adj. 轮流的, 交替的间隔的代替的vt. & vi. (使)交替, (使)轮换时 态: alternated, alterna">alternately</span> <span class="annot" data-tooltip="stacking n. 堆垛v. 堆叠，堆积（stack的ing形式）">stacking</span> layers of ceramic 1-100nm thick with similarly thin sheets of polymer. The stack was then placed</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>distortions</td><td>/dɪ'stɔːrʃn/ n.</td><td>变形；[物] 失真；扭曲；曲解</td></tr>
+<tr><td>derivative</td><td>/dɪ'rɪvətɪv/ n.</td><td>衍生物，派生物；派生词；【数】导数，微商adj. 缺乏独创性的；模仿他人的</td></tr>
+<tr><td>contracts</td><td>/'kɑːntrækt/ vi.</td><td>感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约, contracting, contracts</td></tr>
+<tr><td>practice</td><td>/'præktɪs/ n.</td><td>练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规，practicing，practices</td></tr>
+<tr><td>inflation</td><td>/ɪn'fleɪʃn/ n.</td><td>(充气而引起的)膨胀通货膨胀</td></tr>
+<tr><td>derivatives</td><td>/dɪ'rɪvətɪv/ n.</td><td>衍生物，派生物；派生词；【数】导数，微商adj. 缺乏独创性的；模仿他人的</td></tr>
+<tr><td>exhibit</td><td>/ɪɡ'zɪbɪt/ vt.</td><td>显示；展览；提出（证据等）n. 展览品；证据；展示会vi. 展出；开展览会, exhibiting, exhibits</td></tr>
+<tr><td>treasury</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>turbulent</td><td>/'tɜːrbjələnt/ adj.</td><td>骚动的; 骚乱的; 汹涌的</td></tr>
+<tr><td>crash</td><td>/kræʃ/ n.</td><td>碰撞；崩溃；坠落vt. 破碎；撞碎；坠落vi. 碰撞；坠毁；闯；突然倒台adj. 速成的, crashing, crashes</td></tr>
+<tr><td>fall</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>treasuries</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>yields</td><td>/jiːld/ vt.</td><td>出产；屈服；放弃vi. 屈服，投降n. 收益；产量, yielding, yields</td></tr>
+<tr><td>tugged</td><td>/tʌɡ/ vt.</td><td>& vi. 用力拉；使劲拉；猛扯n. 猛拉；猛拖；猛扯，tugging，tugs</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>columns</td><td>/'kɑːləm/ n.</td><td>圆柱，柱形物；纵队，列；专栏</td></tr>
+<tr><td>essays</td><td>/'eseɪ/ n.</td><td>散文, 随笔</td></tr>
+<tr><td>correspondence</td><td>/ˌkɔːrə'spɑːndəns/ n.</td><td>信件, 函件通信, 通信联系一致, 相似</td></tr>
+<tr><td>surge</td><td>/sɜːrdʒ/ n.</td><td>(情感的) 突发，涌现，突然出现（数量的）急剧上升，激增；大量；一大批奔涌向前；突然的向上运动（电流）浪涌v. 涌；汹涌；涌动(感情、感觉) 突袭，涌动，突发(</td></tr>
+<tr><td>constraint</td><td>/kən'streɪnt/ n.</td><td>强制；限制，约束强制，强迫</td></tr>
+<tr><td>possibly</td><td>/'pɑːsəbli/ adv.</td><td>可能地；大概；也许</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>contract</td><td>/'kɑːntrækt/ vi.</td><td>感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约, contracting, contracts</td></tr>
+<tr><td>places</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>kidney</td><td>/'kɪdni/ n.</td><td>肾, 肾脏(可食用的动物的)腰子</td></tr>
+<tr><td>respective</td><td>/rɪ'spektɪv/ adj.</td><td>各自的; 各个的</td></tr>
+<tr><td>transactions</td><td>/træn'zækʃn/ n.</td><td>处理，办理，执行(一笔)交易；(一项)事务</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>reach</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>consensus</td><td>/kən'sensəs/ n.</td><td>(意见等)一致, 一致同意</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>ethical</td><td>/'eθɪkl/ adj.</td><td>道德的；伦理的；凭处方出售的n. 处方药</td></tr>
+<tr><td>seriously</td><td>/'sɪriəs/ adj.</td><td>严肃的，严重的；认真的；庄重的；危急的</td></tr>
+<tr><td>irrational</td><td>/ɪ'ræʃənl/ adj.</td><td>无理性的;失去理性的;不合理的</td></tr>
+<tr><td>bias</td><td>/'baɪəs/ n.</td><td>偏见；斜纹；偏爱；乖离率vt. 使存偏见adj. 偏斜的adv. 偏斜地, biassed biasing, biassing biases, biasses</td></tr>
+<tr><td>understandable</td><td>/ˌʌndər'stændəbl/ adj.</td><td>能懂的;可理解的;可同情的</td></tr>
+<tr><td>societies</td><td>/sə'saɪəti/ n.</td><td>社会；社交界；交往；社团</td></tr>
+<tr><td>consider</td><td>/kən'sɪdər/ vt.</td><td>& vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及, considering, considers</td></tr>
+<tr><td>arbitrary</td><td>/'ɑːrbɪtreri/ adj.</td><td>随意的, 主观的专横的, 独断专行的</td></tr>
+<tr><td>violates</td><td>/'vaɪəleɪt/ vt.</td><td>违反, 违背亵渎侵犯, 妨碍, violating, violates</td></tr>
+<tr><td>whereas</td><td>/ˌwer'æz/ conj.</td><td>但是, 而</td></tr>
+<tr><td>pornography</td><td>/pɔːr'nɑːɡrəfi/ n.</td><td>色情描绘, 色情表演色情作品</td></tr>
+<tr><td>trials</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>vaccines</td><td>/væk'siːn/ n.</td><td>疫苗;痘苗adj. 痘苗的;疫苗的</td></tr>
+<tr><td>expose</td><td>/ɪk'spoʊz/ vt.</td><td>使曝光；揭露，揭发；显示, exposing, exposes</td></tr>
+<tr><td>inconsistencies</td><td>/ˌɪnkən'sɪstənsi/ n.</td><td>不一致（之处）；前后矛盾（的事情）（行为的）反复无常，易变</td></tr>
+<tr><td>intuitions</td><td>/ˌɪntu'ɪʃn/ n.</td><td>直觉凭直觉感知的知识</td></tr>
+<tr><td>thumb</td><td>/θʌm/ vt.</td><td>以拇指拨弄；作搭车手势；笨拙地摆弄；翻阅vi. 用拇指翻书页；竖起拇指要求搭车n. 拇指, thumbing, thumbs</td></tr>
+<tr><td>restrictions</td><td>/rɪ'strɪkʃn/ n.</td><td>约束，限制管制，限定；法律，规章</td></tr>
+<tr><td>forum</td><td>/'fɔːrəm/ n.</td><td>论坛，讨论会；法庭；公开讨论的广场</td></tr>
+<tr><td>restaurants</td><td>/'restrɑːnt/ n.</td><td>饭店, 餐馆</td></tr>
+<tr><td>heading</td><td>/'hedɪŋ/ n.</td><td>标题；信头；（足球）头球v. 用头顶（head的ing形式）</td></tr>
+<tr><td>weigh</td><td>/weɪ/ vt.</td><td>& vi. 称…的重量link v. 重达vt. 权衡；考虑，weighing，weighs</td></tr>
+<tr><td>texas</td><td>/'teksəs/ n.</td><td>德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室)</td></tr>
+<tr><td>sexual</td><td>/'sekʃuəl/ adj.</td><td>性交的, 性行为的, 性吸引的, 两性的, 肉体吸引的性别的, 性的, 男性或女性的生殖的, 有性生殖的</td></tr>
+<tr><td>assaults</td><td>/ə'sɔːlt/ n.</td><td>攻击；袭击vt. 袭击；攻击vi. 袭击；动武, assaulting, assaults</td></tr>
+<tr><td>sexually</td><td>/'sekʃuəl/ adj.</td><td>性交的, 性行为的, 性吸引的, 两性的, 肉体吸引的性别的, 性的, 男性或女性的生殖的, 有性生殖的</td></tr>
+<tr><td>infections</td><td>/ɪn'fekʃn/ n.</td><td>〈医〉传染, 感染传染病</td></tr>
+<tr><td>ambiguous</td><td>/æm'bɪɡjuəs/ adj.</td><td>引起歧义的；模棱两可的，含糊不清的</td></tr>
+<tr><td>suspends</td><td>/sə'spend/ vt.</td><td>延缓，推迟；使暂停；使悬浮vi. 悬浮；[体]禁赛, suspending, suspends</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>constraint</td><td>/kən'streɪnt/ n.</td><td>强制；限制，约束强制，强迫</td></tr>
+<tr><td>contrast</td><td>/'kɑːntræst/ n.</td><td>对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照, contrasting, contrasts</td></tr>
+<tr><td>sceptical</td><td>/'skeptɪkl/ adj.</td><td>不肯相信的; 常怀疑的</td></tr>
+<tr><td>engage</td><td>/ɪn'ɡeɪdʒ/ vt.</td><td>雇佣；吸引，占用；使订婚；使参加；预定vi. 答应，保证；从事；交战；啮合, engaging, engages</td></tr>
+<tr><td>picture</td><td>/'pɪktʃər/ n.</td><td>图画，肖像；照片(生动的)描述，写照影片；电影；画面美景，景色情况，事态，局面vt. 绘画；描绘想象，picturing，pictures</td></tr>
+<tr><td>autonomy</td><td>/ɔː'tɑːnəmi/ n.</td><td>自治，自治权</td></tr>
+<tr><td>exercise</td><td>/'eksərsaɪz/ n.</td><td>练习；运动；运用；操练；典礼；礼拜vt. 练习；锻炼；使用；使忙碌；使惊恐vi. 运动；练习, exercising, exercises</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>societies</td><td>/sə'saɪəti/ n.</td><td>社会；社交界；交往；社团</td></tr>
+<tr><td>sacred</td><td>/'seɪkrɪd/ adj.</td><td>神圣的；庄严的；宗教的；神的</td></tr>
+<tr><td>covered</td><td>/'kʌvər/ vt.</td><td>包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替, covering, covers</td></tr>
+<tr><td>ritual</td><td>/'rɪtʃuəl/ n.</td><td>仪式；惯例；礼制adj. 仪式的；礼节性的；例行的</td></tr>
+<tr><td>sustain</td><td>/sə'steɪn/ vt.</td><td>承受，支撑维持长期保持；使继续经受，遭受，sustaining，sustains</td></tr>
+<tr><td>ultimately</td><td>/'ʌltɪmətli/ adv.</td><td>最后;最终</td></tr>
+<tr><td>columns</td><td>/'kɑːləm/ n.</td><td>圆柱，柱形物；纵队，列；专栏</td></tr>
+<tr><td>essays</td><td>/'eseɪ/ n.</td><td>散文, 随笔</td></tr>
+<tr><td>correspondence</td><td>/ˌkɔːrə'spɑːndəns/ n.</td><td>信件, 函件通信, 通信联系一致, 相似</td></tr>
+<tr><td>tragedy</td><td>/'trædʒədi/ n.</td><td>悲剧；灾难；惨案</td></tr>
+<tr><td>spheres</td><td>/sfɪr/ n.</td><td>范围；球体vt. 包围；放入球内；使…成球形adj. 球体的, sphering, spheres</td></tr>
+<tr><td>equivalents</td><td>/ɪ'kwɪvələnt/ adj.</td><td>等同的，等效的n. 对等的人（或事物），对应的人（或事物）</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>drones</td><td>/droʊn/ n.</td><td>无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫；嗡嗡响(人)絮絮叨叨地说，喋喋不休地说</td></tr>
+<tr><td>tweaked</td><td>/twiːk/ n.</td><td>拧；扭；焦急vt. 扭；用力拉；开足马力, tweaking, tweaks</td></tr>
+<tr><td>countless</td><td>/'kaʊntləs/ adj.</td><td>无数的;多得数不清的</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>prone</td><td>/proʊn/ adj.</td><td>易于…的; 很可能…的俯卧的</td></tr>
+<tr><td>household</td><td>/'haʊshoʊld/ n.</td><td>同住在一所房子里的人, 一家人, 户adj. 家庭的, 家用的</td></tr>
+<tr><td>spontaneously</td><td>/spɑːn'teɪniəsli/ adv.</td><td>自然地;自发地;不由自主地</td></tr>
+<tr><td>vehicles</td><td>/'viːəkl/ n.</td><td>交通工具, 车辆传播媒介, 手段</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>decade</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>reach</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>combinations</td><td>/ˌkɑːmbɪ'neɪʃn/ n.</td><td>合作, 结合, 组合联合体, 组合物密码组合, 字码组合排列, 组合</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>exciting</td><td>/ɪk'saɪtɪŋ/ adj.</td><td>使人激动的；令人兴奋的v. 激动；唤起；刺激（excite的ing形式）</td></tr>
+<tr><td>alternatives</td><td>/ɔːl'tɜːrnətɪv/ adj.</td><td>可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）可供选择的事物；可供选择的解决办法替代物</td></tr>
+<tr><td>shuttle</td><td>/'ʃʌtl/ n.</td><td>梭子；穿梭；穿梭班机、公共汽车等；航天飞机vt. 使穿梭般来回移动；短程穿梭般运送vi. 穿梭往返, shuttling, shuttles</td></tr>
+<tr><td>flammable</td><td>/'flæməbl/ adj.</td><td>易燃的,可燃的</td></tr>
+<tr><td>organic</td><td>/ɔːr'ɡænɪk/ adj.</td><td>器官的；器质性的有机(体)的，有机物的</td></tr>
+<tr><td>soaked</td><td>/soʊk/ vt.</td><td>吸收，吸入；使……上下湿透；沉浸在（工作或学习中）vi. 渗透；浸泡n. 浸；湿透；大雨, soaking, soaks</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>versions</td><td>/'vɜːrʒn/ n.</td><td>变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本</td></tr>
+<tr><td>significant</td><td>/sɪɡ'nɪfɪkənt/ adj.</td><td>重要的, 重大的, 可观的有意义的, 有用意的意味深长的</td></tr>
+<tr><td>contract</td><td>/'kɑːntrækt/ vi.</td><td>感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约, contracting, contracts</td></tr>
+<tr><td>cracking</td><td>/kræk/ vt.</td><td>& vi. (使…)开裂, 破裂(使)身体上或精神上垮掉打开, 砸开(使)发出爆裂声n. 裂缝, 缝隙噼啪声, 爆裂声意外的一下重击试图, 尝试俏皮话强效可卡因</td></tr>
+<tr><td>degrades</td><td>/dɪ'ɡreɪd/ vt.</td><td>使……丢脸；使……降级；使……降解；贬低vi. 退化；降级，降低, degrading, degrades</td></tr>
+<tr><td>towards</td><td>/tɔːrdz/ prep.</td><td>向，朝为了；有助于；用于对于，关于接近；将近；大约</td></tr>
+<tr><td>alternately</td><td>/'ɔːltərnət/ adj.</td><td>轮流的, 交替的间隔的代替的vt. & vi. (使)交替, (使)轮换, alternating, alternates</td></tr>
+<tr><td>stacking</td><td>— n.</td><td>堆垛v. 堆叠，堆积（stack的ing形式）</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day36.html" class="nav-btn">← Day 36</a>
+  <a href="day38.html" class="nav-btn">Day 38 →</a>
+</div>
+
+<div class="progress">📖 Day 37 of 43</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-05-23</div>
+
+</body>
+</html>

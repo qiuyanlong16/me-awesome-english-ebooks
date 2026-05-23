@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>International | The Telegram</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-05-23</div>
+
+<h1 class="article-title">International | The Telegram</h1>
+<div class="article-section">International</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>limits. (These levels would also <span class="annot" data-tooltip="typically /'tɪpɪkli/ adv. 代表性地;作为特色地;典型地">typically</span> be lower than those seen in some users of high-street gyms.) Pieles said that people in the enhancement business laughed when he told them what he planned on giving the athletes (“Your stack is so boring!”). He <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span> they had a point. “I don’t know why there is so much fuss about it,” he told us. In February around 40 Enhanced athletes moved to Abu Dhabi to begin training under their specially designed drug protocols. Their new home and training centre was ERTH, a luxury hotel that is being converted into a state- of-the-art sporting complex as part of the UAE’s plan to become a <span class="annot" data-tooltip="leading /ˈliːdɪŋ/ adj. 主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）">leading</span> <span class="annot" data-tooltip="venue /'venjuː/ n. 聚集地点;会场;(尤指)体育比赛场所犯罪地点;审判地争论中所持的立场">venue</span> for global sport. Building works were shielded from view by placards declaring, <span class="annot" data-tooltip="appropriately /ə'proʊpriət/ adj. 适当的，恰当的vt. 挪用；占用；盗用拨出(款项)时 态: appropriated，appropriating，app">appropriately</span>, that the facilities were being “enhanced”. Even so, ERTH already had all the equipment the athletes needed: an <span class="annot" data-tooltip="enormous /ɪ'nɔːrməs/ adj. 巨大的, 极大的, 庞大的副 词: enormously">enormous</span> gym, a running track, a 50-metre indoor pool. “I’ve never experienced having all your wants and needs taken care of like this,” said Hawke, the head swimming coach. The athletes also had access to physios, sports <span class="annot" data-tooltip="massage /mə'sɑːʒ/ n. 按摩, 推拿时 态: massaged, massaging, massages">massage</span> and doctors; a private beach; and the hotel buffet, where the chefs had reimagined the indulgent menus to make them <span class="annot" data-tooltip="leaner /liːn/ vi. 倾斜；倚靠；倾向；依赖adj. 瘦的；贫乏的，歉收的vt. 使倾斜n. 倾斜；倾斜度；瘦肉时 态: leaned, le">leaner</span> and protein- rich. “This meal might cost me $75 back in Austin,” said Emmanuel Matadi, a <span class="annot" data-tooltip="sprinter /sprɪnt/ vi. 冲刺，全速跑n. 短跑；冲刺vt. 全速奔跑SPRINTabbr. Solid Propellant Rocket In">sprinter</span>, sitting at an outdoor table shielded from the strong sun by an umbrella. He shook his head in disbelief at the mountain of <span class="annot" data-tooltip="grilled /ɡrɪl/ vt. 烧，烤；拷问vi. 烧，烤；严加盘问n. 烤架，铁格子；烤肉时 态: grilled, grilling, grills">grilled</span> <span class="annot" data-tooltip="salmon /'sæmən/ n. 鲑鱼, 大马哈鱼">salmon</span> and vegetables on his plate. “I often don’t get all the calories I need <span class="annot" data-tooltip="simply /'sɪmpli/ adv. 简单地；朴素地；简直；仅仅；坦白地">simply</span> because I don’t have the time or the money to <span class="annot" data-tooltip="cook /kʊk/ v. 做饭，烹调；（食物）被烧煮；（非正式）篡改，伪造；密谋；干得起劲n.. 厨师n.(Cook) （美）库克（人名）时 态:">cook</span> at this level.”</p>
+<p>Normally <span class="annot" data-tooltip="elite /eɪ'liːt/ n. （社会）上层集团；掌权人物；出类拔萃的人，精英adj.（社会）上层集团的；掌权人物的；精英的">elite</span> athletes pay for their <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> food, coaches, training facilities and travel. Ivan Rojas, an experienced weightlifting coach who now works for Enhanced, told us that when he coached the American team one year at the world weightlifting championships he realised they hadn’t been given travel uniforms. He ended up buying them embroidered polo shirts with his own money. There are modest prize pots and performance fees on offer at <span class="annot" data-tooltip="established /ɪ'stæblɪʃt/ adj. 已建立的；已设立的；已制定的确定的，证实的">established</span> competitions, but if athletes have to drop out they lose this income. “That’s how track is,” Marvin Bracy-Williams, a 100-metre <span class="annot" data-tooltip="sprinter /sprɪnt/ vi. 冲刺，全速跑n. 短跑；冲刺vt. 全速奔跑SPRINTabbr. Solid Propellant Rocket In">sprinter</span>, told us. “You have a bad day, somebody ain’t eating.” To make ends meet, Bracy-Williams had spent years as part of the <span class="annot" data-tooltip="practice /'præktɪs/ n. 练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规时 态: practiced，practicing，">practice</span> <span class="annot" data-tooltip="squads /skwɑːd/ n. (军队中的)班, 小队">squads</span> of National Football <span class="annot" data-tooltip="league /liːɡ/ n. 联盟；社团；范畴vt. 使…结盟；与…联合vi. 结盟；团结时 态: leagued, leaguing, league">League</span> teams, where there is steady pay on offer. But after he broke his arm in 2019 he once again took up competitive <span class="annot" data-tooltip="sprinting /sprɪnt/ vi. 冲刺，全速跑n. 短跑；冲刺vt. 全速奔跑SPRINTabbr. Solid Propellant Rocket In">sprinting</span>: “It’s like gambling. You’re spending money to be a part of something, hoping that you win big.” Bracy-Williams had been offered a <span class="annot" data-tooltip="sponsorship /'spɑːnsərʃɪp/ n. 赞助；发起；保证人的地位；教父母身份">sponsorship</span> deal <span class="annot" data-tooltip="worth /wɜːrθ/ adj. 值…的n. 价值；财产时 态: worthed, worthing, worths">worth</span> $120,000 ahead of the Paris Olympics, conditional on his being selected for the American athletics team. But he pulled a leg muscle during training and in the qualification <span class="annot" data-tooltip="trials /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">trials</span> ran two seconds slower than his personal best. He didn’t make the cut. “I watched the money walk away,” he said.</p>
+<p>Desperate to get back into the game, Bracy-Williams contacted someone who could hook him up with performance-enhancing drugs. He knew the risks—a probable ban from the sport, being dropped by his <span class="annot" data-tooltip="sponsors /'spɑːnsər/ vt. 赞助, 发起n. 赞助者；主办者；保证人">sponsors</span>, social stigma—but felt as though he had no other choice. “I was willing to do whatever it took to just not hurt any more,” he said. Bracy-Williams started taking small doses of drugs, primarily testosterone. But they didn’t make much difference: his times didn’t <span class="annot" data-tooltip="budge /bʌdʒ/ vt. & vi. (使)稍微移动(使)改变主意；(使)让步n. (毛向外翻的)羔羊皮adj. 用羔羊皮装饰的浮夸的，自负的；庄">budge</span> and the pain in his leg grew worse. In agony one day, he confessed to hiscoach. The coach was sympathetic, but told Bracy-Williams he’d have to report him to America’s <span class="annot" data-tooltip="anti /'ænti/ adj. 反对的n. 反对者，反对论者">anti</span>-doping agency. The next day inspectors turned up and tested Bracy-Williams. His sample was positive, and he was <span class="annot" data-tooltip="suspended /sə'spend/ vt. 延缓，推迟；使暂停；使悬浮vi. 悬浮；[体]禁赛时 态: suspended, suspending, suspend">suspended</span> from the sport until November 2027. “The hardest is when it’s 9am and you know all your friends are at <span class="annot" data-tooltip="practice /'præktɪs/ n. 练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规时 态: practiced，practicing，">practice</span>,” he told us, “and you’re just sat there with nowhere to be.” For Bracy-Williams, the appeal of the games is clear. He’s one of six Enhanced athletes who have faced drug-related suspensions in their careers, <span class="annot" data-tooltip="leading /ˈliːdɪŋ/ adj. 主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）">leading</span> some critics to dub the games the “<span class="annot" data-tooltip="cheaters n. 骗子,欺诈者,背叛者">Cheaters</span>’ Olympics”. Athletes who were known for being squeaky clean, like Proud, the 50-metre freestyle swimmer, have more to lose. Anyone—be it a competitor, doctor or coach— who takes part in the Enhanced Games could face a long-term ban from professional sports. Proud sometimes seemed to be trying to justify his participation. He argued that Enhanced was <span class="annot" data-tooltip="actually /'æktʃuəl/ adj. 真实的，实际的；现行的，目前的副 词: actually">actually</span> levelling the playing field, which he believes is skewed in favour of athletes from countries that turn a blind eye to doping. “One of my close friends <span class="annot" data-tooltip="narrowly /'næroʊ/ adj. 狭窄的，有限的；度量小的；精密的；勉强的n. 狭窄部分，隘路；海峡vt. 使变狭窄vi. 变窄比较级: narrower">narrowly</span> missed a gold to one of those Chinese swimmers,” he said, referring to a doping controversy at the Paris Olympics, in which 11 Chinese swimmers who had previously tested positive for a banned heart medicine were nevertheless allowed to compete. “You have to suck it up and get on with it, because as swimmers we don’t feel we have the power to stand up and say that something like this is clearly wrong.” He also seemed glad finally to be making money. “I always said, growing up, you never get into swimming for the money...that’s fine to say when you’re 20, 23 years old, but when you get to 28 or 30, it’s a very different story.” Since joining Enhanced he has <span class="annot" data-tooltip="earned /ɪr/ n. 耳朵；听觉；倾听；穗vi. （美俚）听见；抽穗EARabbr. East African Railways 东非铁路公司">earned</span> both a signing <span class="annot" data-tooltip="bonus /'boʊnəs/ n. 奖金；红利；额外津贴BONUSabbr. Boling Nuclear Superheat Reactor 沸腾式过热核">bonus</span> and a</p>
+<p>salary (he didn’t <span class="annot" data-tooltip="disclose /dɪs'kloʊz/ vt. 揭露；公开时 态: disclosed, disclosing, discloses">disclose</span> the <span class="annot" data-tooltip="exact /ɪɡ'zækt/ adj. 精确的；准确的，精密的vt. 强求；要求；急需vi. 勒索钱财时 态: exacted, exacting, exact">exact</span> figures, but the total is believed to be in the hundreds of thousands of dollars). And he still stands to earn $1.25m if he both wins his <span class="annot" data-tooltip="race /reɪs/ n. 种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACE">race</span> and breaks the world record. In late February Proud stood in his hotel room, shaking as he inserted the needle into the soft flesh just below his waist for the first time. He felt a small prick and pushed the plunger. Now he knew he could never go back. Whether the inaugural games marks the launch of a <span class="annot" data-tooltip="viable /'vaɪəbl/ adj. 能养活的；能生育的；可行的名 词: viability">viable</span> business or a one- off PR stunt will largely come down to Enhanced’s leadership, particularly Christian Angermayer, who has become its <span class="annot" data-tooltip="main /meɪn/ adj. 主要的; 最重要的n. 总管道; 干线">main</span> backer. D’Souza left the company at some point—it’s not <span class="annot" data-tooltip="entirely /ɪn'taɪərli/ adv. 全部地;完整地;完全地">entirely</span> clear when, but his departure appears to have been amicable. Maximilian Martin, the company’s former chief <span class="annot" data-tooltip="strategy /'strætədʒi/ n. 战略学, 兵法战略, 策略策略, 计谋">strategy</span> officer, <span class="annot" data-tooltip="seemingly /'siːmɪŋli/ adv. 看来似乎, 表面上看">seemingly</span> became chief executive last August. Under him, Enhanced has become less provocative and more <span class="annot" data-tooltip="polished /'pɑːlɪʃt/ adj. 擦亮的；优美的；圆滑的v. 擦亮（polish的过去式和过去分词）">polished</span>. Instead of proclaiming, as D’Souza did, that athletes today have to hide their doping like gay people had to hide their sexuality 50 years ago, Martin has tried to reassure the public that performance-enhancing drugs are “not that dangerous…under the right clinical and medical supervision”.</p>
+<p>But thanks to Angermayer’s expanded influence, Enhanced still <span class="annot" data-tooltip="possesses /pə'zes/ vt. 具有占据时 态: possessed, possessing, possesses">possesses</span> its founding techno-<span class="annot" data-tooltip="utopian /juː'toʊpiən/ adj. 空想的；乌托邦的；理想化的n. 空想家；乌托邦的居民Utopianadj. 理想而不实际的, 乌托邦的">utopian</span> <span class="annot" data-tooltip="spirit /'spɪrɪt/ n. 精神；心灵；志气；烈酒；情绪vt. 鼓励；鼓舞；诱拐时 态: spirited, spiriting, spirits">spirit</span>. In the past few <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span> he has funded projects researching longevity medicine, brain-computer interfaces and the use of psychedelics to treat <span class="annot" data-tooltip="mental /'mentl/ adj. 精神的, 头脑的, 心理的, 智力的精神病的副 词: mentally">mental</span>-health conditions (Angermayer is a proponent of hallucinogenic drugs, which he also believes will help <span class="annot" data-tooltip="humanity /hjuː'mænəti/ n. 人类；人道；仁慈；人文学科">humanity</span> adjust to the mass joblessness that AI will create). Taken together, Angermayer’s preoccupations speak to a <span class="annot" data-tooltip="vision /'vɪʒn/ n. 视力；眼力；幻象；美景；想象力vt. 显现；梦见；想象时 态: visioned, visioning, visions">vision</span> of the future in which medicines, rather than being <span class="annot" data-tooltip="simply /'sɪmpli/ adv. 简单地；朴素地；简直；仅仅；坦白地">simply</span> used to treat disease, can <span class="annot" data-tooltip="extend /ɪk'stend/ vt. & vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出时 态:">extend</span> human longevity and enhance well-being. We recently met Angermayer in his penthouse flat near Old Street, a <span class="annot" data-tooltip="trendy /'trendi/ adj. 时髦的,赶时髦的,追随时髦的n. 时髦人物,赶时髦的人比较级: trendier, trendiest">trendy</span> area of London. He has been on testosterone-replacement <span class="annot" data-tooltip="therapy /'θerəpi/ n. 治疗，疗法">therapy</span> (TRT) since he was 30; now 48, he is built like a gym bunny. Sitting at the head of a table the size of an aeroplane-landing <span class="annot" data-tooltip="strip /strɪp/ vt. 剥去；剥夺；脱去衣服n. 带；条状；脱衣舞vi. 脱去衣服时 态: stripped, stripping, strip">strip</span>, he offered us cannabidiol- infused sodas from a firm he <span class="annot" data-tooltip="invests /ɪn'vest/ vt. 投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买时 态: invested, investing, invests">invests</span> in. On the wall was an artwork made of Ecstasy pills, arranged in a colourful halo. ”I was always very <span class="annot" data-tooltip="vain /veɪn/ adj. 徒劳的；虚荣的；空虚的比较级: vainer, vainest">vain</span>,” Angermayer recalled. “Even in my 20s, I was already thinking: how can I slow down ageing?” Now he believes he has found a way to bring the drugs he has been experimenting with to a mass market. The business model he described sounded similar to that of Red Bull, an <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span>-drink <span class="annot" data-tooltip="brand /brænd/ n. 商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责时 态: branded, branding, brands">brand</span>: stage a series of high-profile sporting events (in Red Bull’s case, extreme ones like <span class="annot" data-tooltip="cliff /klɪf/ n. 悬崖; 峭壁形容词: cliffy">cliff</span> diving or motorsports) and use them to publicise a product. Earlier this year, Enhanced launched a range of personalised performance and longevity medicines, as well as services like blood <span class="annot" data-tooltip="panels /'pænl/ n. 仪表板；嵌板；座谈小组，全体陪审员vt. 嵌镶板时 态: paneled, panelled paneling, pan">panels</span> and telehealth consultations. Angermayer envisions the games as a way to market these products. The <span class="annot" data-tooltip="venue /'venjuː/ n. 聚集地点;会场;(尤指)体育比赛场所犯罪地点;审判地争论中所持的立场">venue</span> in Las Vegas has been built using a <span class="annot" data-tooltip="modular /'mɑːdʒələr/ adj. 模的,有标准组件的名 词: modular">modular</span> system, which means it can be reassembled anywhere in the world (it cost about $8m to create, with $6m spent on the pool alone). He has big ideas for future <span class="annot" data-tooltip="iterations /ˌɪtə'reɪʃn/ n. 反复">iterations</span> of the competition, <span class="annot" data-tooltip="musing /'mjuːzɪŋ/ adj. 沉思的；瞑想的v. 沉思；凝望（muse的ing形式）副 词: musingly">musing</span> that the athletes could one day <span class="annot" data-tooltip="race /reɪs/ n. 种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACE">race</span> against humanoid robots or <span class="annot" data-tooltip="celebrities /sə'lebrəti/ n. (尤指娱乐界的)名人, 名流名声, 名誉">celebrities</span>. The games under Angermayer are well-suited to the political moment, in <span class="annot" data-tooltip="tune /tuːn/ n. 曲调, 曲子vt. & vi. 调音vt. 调整时 态: tuned, tuning, tunes">tune</span> with the cultural and ideological <span class="annot" data-tooltip="energies /'enərdʒi/ n. 精力；能量；活力；精神">energies</span> of Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s second term (“A hundred percent the reason they’re happening in the US is because Trump won,” Angermayer has said). Trump’s son Donald <span class="annot" data-tooltip="junior /'dʒuːniər/ adj. 年少的, 较年幼的资历较浅的, 地位较低的n. 年少者地位较低者, 晚辈(美国中学或大学的)三年级学生">junior</span> is an</p>
+<p>investor through his work at 1789 Capital, a venture-capital firm that aims to <span class="annot" data-tooltip="stimulate /'stɪmjuleɪt/ vt. 刺激；激励时 态: stimulated，stimulating，stimulates">stimulate</span> a MAGA-<span class="annot" data-tooltip="adjacent /ə'dʒeɪsnt/ adj. 邻近的">adjacent</span> “<span class="annot" data-tooltip="patriot /'peɪtriət/ n. 爱国者; 爱国主义者">patriot</span> economy”. The administration has also <span class="annot" data-tooltip="proved /proʊ/ n. 从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞">proved</span> friendly to ideas that Angermayer and others interested in body- optimisation and longevity medicine have long <span class="annot" data-tooltip="promoted /'proʊmoʊ/ n. 商品推销；商品广告，广告片">promoted</span>. Earlier this year an expert <span class="annot" data-tooltip="panel /'pænl/ n. 仪表板；嵌板；座谈小组，全体陪审员vt. 嵌镶板时 态: paneled, panelled paneling, pan">panel</span> from the Food and Drug Administration (FDA) recommended making TRT more widely available. The FDA is also poised to review its <span class="annot" data-tooltip="restrictions /rɪ'strɪkʃn/ n. 约束，限制管制，限定；法律，规章">restrictions</span> on some unapproved peptides (Angermayer says Enhanced will only sell peptides that have credible data on their safety in humans). Still, Enhanced has yet to turn a profit. According to its filings it lost $4.7m in 2024 and $26.7m in 2025. Lucrative media rights and big-name <span class="annot" data-tooltip="brand /brænd/ n. 商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责时 态: branded, branding, brands">brand</span> <span class="annot" data-tooltip="sponsorships /'spɑːnsərʃɪp/ n. 赞助；发起；保证人的地位；教父母身份">sponsorships</span> have largely not materialised, perhaps because companies fear damaging their relationships with traditional sporting bodies. In early May the company went public by merging with a special-purpose <span class="annot" data-tooltip="acquisition /ˌækwɪ'zɪʃn/ n. 获得物，获得；收购">acquisition</span> company (SPAC), a shell company that is already listed. (SPACs have become a popular <span class="annot" data-tooltip="backdoor /'bæk,dor/ adj. 秘密的n. 后门副 词: backdoor">backdoor</span> <span class="annot" data-tooltip="route /ruːt，raʊt/ n. 路, 路途, 路线, 路程时 态: routed, routing, routes">route</span> for companies looking to avoid the <span class="annot" data-tooltip="bureaucracy /bjʊ'rɑːkrəsi/ n. 政府机构官僚主义, 官僚作风">bureaucracy</span> of a traditional listing.) The merger documentation acknowledged that Enhanced <span class="annot" data-tooltip="possesses /pə'zes/ vt. 具有占据时 态: possessed, possessing, possesses">possesses</span> an “unproven business model” but <span class="annot" data-tooltip="nonetheless /ˌnʌnðə'les/ adv. 虽然如此,但是">nonetheless</span> valued it at $1.2bn. Even so, most <span class="annot" data-tooltip="shareholders /'ʃerhoʊldər/ n. 股东名 词: shareholding">shareholders</span> in the SPAC decided to sell their shares before it went public—taking most of the $200m in cash the combined firm might have held. Perhaps these investors didn’t believe in Enhanced’s <span class="annot" data-tooltip="vision /'vɪʒn/ n. 视力；眼力；幻象；美景；想象力vt. 显现；梦见；想象时 态: visioned, visioning, visions">vision</span> or balked at the structure of the merger, which gave Angermayer’s investment firm around 97% of the voting power.</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>typically</td><td>/'tɪpɪkli/ adv.</td><td>代表性地;作为特色地;典型地</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>leading</td><td>/ˈliːdɪŋ/ adj.</td><td>主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）</td></tr>
+<tr><td>venue</td><td>/'venjuː/ n.</td><td>聚集地点;会场;(尤指)体育比赛场所犯罪地点;审判地争论中所持的立场</td></tr>
+<tr><td>appropriately</td><td>/ə'proʊpriət/ adj.</td><td>适当的，恰当的vt. 挪用；占用；盗用拨出(款项)，appropriating，appropriates</td></tr>
+<tr><td>enormous</td><td>/ɪ'nɔːrməs/ adj.</td><td>巨大的, 极大的, 庞大的</td></tr>
+<tr><td>massage</td><td>/mə'sɑːʒ/ n.</td><td>按摩, 推拿, massaging, massages</td></tr>
+<tr><td>leaner</td><td>/liːn/ vi.</td><td>倾斜；倚靠；倾向；依赖adj. 瘦的；贫乏的，歉收的vt. 使倾斜n. 倾斜；倾斜度；瘦肉, leaning, leans</td></tr>
+<tr><td>sprinter</td><td>/sprɪnt/ vi.</td><td>冲刺，全速跑n. 短跑；冲刺vt. 全速奔跑SPRINTabbr. Solid Propellant Rocket Intercept Missile 固体(燃</td></tr>
+<tr><td>grilled</td><td>/ɡrɪl/ vt.</td><td>烧，烤；拷问vi. 烧，烤；严加盘问n. 烤架，铁格子；烤肉, grilling, grills</td></tr>
+<tr><td>salmon</td><td>/'sæmən/ n.</td><td>鲑鱼, 大马哈鱼</td></tr>
+<tr><td>simply</td><td>/'sɪmpli/ adv.</td><td>简单地；朴素地；简直；仅仅；坦白地</td></tr>
+<tr><td>cook</td><td>/kʊk/ v.</td><td>做饭，烹调；（食物）被烧煮；（非正式）篡改，伪造；密谋；干得起劲n.. 厨师n.(Cook) （美）库克（人名）, cooking, cooks</td></tr>
+<tr><td>elite</td><td>/eɪ'liːt/ n.</td><td>（社会）上层集团；掌权人物；出类拔萃的人，精英adj.（社会）上层集团的；掌权人物的；精英的</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>established</td><td>/ɪ'stæblɪʃt/ adj.</td><td>已建立的；已设立的；已制定的确定的，证实的</td></tr>
+<tr><td>sprinter</td><td>/sprɪnt/ vi.</td><td>冲刺，全速跑n. 短跑；冲刺vt. 全速奔跑SPRINTabbr. Solid Propellant Rocket Intercept Missile 固体(燃</td></tr>
+<tr><td>practice</td><td>/'præktɪs/ n.</td><td>练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规，practicing，practices</td></tr>
+<tr><td>squads</td><td>/skwɑːd/ n.</td><td>(军队中的)班, 小队</td></tr>
+<tr><td>league</td><td>/liːɡ/ n.</td><td>联盟；社团；范畴vt. 使…结盟；与…联合vi. 结盟；团结, leaguing, leagues</td></tr>
+<tr><td>sprinting</td><td>/sprɪnt/ vi.</td><td>冲刺，全速跑n. 短跑；冲刺vt. 全速奔跑SPRINTabbr. Solid Propellant Rocket Intercept Missile 固体(燃</td></tr>
+<tr><td>sponsorship</td><td>/'spɑːnsərʃɪp/ n.</td><td>赞助；发起；保证人的地位；教父母身份</td></tr>
+<tr><td>worth</td><td>/wɜːrθ/ adj.</td><td>值…的n. 价值；财产, worthing, worths</td></tr>
+<tr><td>trials</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>sponsors</td><td>/'spɑːnsər/ vt.</td><td>赞助, 发起n. 赞助者；主办者；保证人</td></tr>
+<tr><td>budge</td><td>/bʌdʒ/ vt.</td><td>& vi. (使)稍微移动(使)改变主意；(使)让步n. (毛向外翻的)羔羊皮adj. 用羔羊皮装饰的浮夸的，自负的；庄严的，budging，budges</td></tr>
+<tr><td>anti</td><td>/'ænti/ adj.</td><td>反对的n. 反对者，反对论者</td></tr>
+<tr><td>suspended</td><td>/sə'spend/ vt.</td><td>延缓，推迟；使暂停；使悬浮vi. 悬浮；[体]禁赛, suspending, suspends</td></tr>
+<tr><td>practice</td><td>/'præktɪs/ n.</td><td>练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规，practicing，practices</td></tr>
+<tr><td>leading</td><td>/ˈliːdɪŋ/ adj.</td><td>主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）</td></tr>
+<tr><td>cheaters</td><td>— n.</td><td>骗子,欺诈者,背叛者</td></tr>
+<tr><td>actually</td><td>/'æktʃuəl/ adj.</td><td>真实的，实际的；现行的，目前的</td></tr>
+<tr><td>narrowly</td><td>/'næroʊ/ adj.</td><td>狭窄的，有限的；度量小的；精密的；勉强的n. 狭窄部分，隘路；海峡vt. 使变狭窄vi. 变窄, narrowest</td></tr>
+<tr><td>earned</td><td>/ɪr/ n.</td><td>耳朵；听觉；倾听；穗vi. （美俚）听见；抽穗EARabbr. East African Railways 东非铁路公司, earing, ears</td></tr>
+<tr><td>bonus</td><td>/'boʊnəs/ n.</td><td>奖金；红利；额外津贴BONUSabbr. Boling Nuclear Superheat Reactor 沸腾式过热核反应堆</td></tr>
+<tr><td>disclose</td><td>/dɪs'kloʊz/ vt.</td><td>揭露；公开, disclosing, discloses</td></tr>
+<tr><td>exact</td><td>/ɪɡ'zækt/ adj.</td><td>精确的；准确的，精密的vt. 强求；要求；急需vi. 勒索钱财, exacting, exacts</td></tr>
+<tr><td>race</td><td>/reɪs/ n.</td><td>种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACEabbr. Radiation Adap</td></tr>
+<tr><td>viable</td><td>/'vaɪəbl/ adj.</td><td>能养活的；能生育的；可行的</td></tr>
+<tr><td>main</td><td>/meɪn/ adj.</td><td>主要的; 最重要的n. 总管道; 干线</td></tr>
+<tr><td>entirely</td><td>/ɪn'taɪərli/ adv.</td><td>全部地;完整地;完全地</td></tr>
+<tr><td>strategy</td><td>/'strætədʒi/ n.</td><td>战略学, 兵法战略, 策略策略, 计谋</td></tr>
+<tr><td>seemingly</td><td>/'siːmɪŋli/ adv.</td><td>看来似乎, 表面上看</td></tr>
+<tr><td>polished</td><td>/'pɑːlɪʃt/ adj.</td><td>擦亮的；优美的；圆滑的v. 擦亮（polish的过去式和过去分词）</td></tr>
+<tr><td>possesses</td><td>/pə'zes/ vt.</td><td>具有占据, possessing, possesses</td></tr>
+<tr><td>utopian</td><td>/juː'toʊpiən/ adj.</td><td>空想的；乌托邦的；理想化的n. 空想家；乌托邦的居民Utopianadj. 理想而不实际的, 乌托邦的</td></tr>
+<tr><td>spirit</td><td>/'spɪrɪt/ n.</td><td>精神；心灵；志气；烈酒；情绪vt. 鼓励；鼓舞；诱拐, spiriting, spirits</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>mental</td><td>/'mentl/ adj.</td><td>精神的, 头脑的, 心理的, 智力的精神病的</td></tr>
+<tr><td>humanity</td><td>/hjuː'mænəti/ n.</td><td>人类；人道；仁慈；人文学科</td></tr>
+<tr><td>vision</td><td>/'vɪʒn/ n.</td><td>视力；眼力；幻象；美景；想象力vt. 显现；梦见；想象, visioning, visions</td></tr>
+<tr><td>simply</td><td>/'sɪmpli/ adv.</td><td>简单地；朴素地；简直；仅仅；坦白地</td></tr>
+<tr><td>extend</td><td>/ɪk'stend/ vt.</td><td>& vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出，extending，extends</td></tr>
+<tr><td>trendy</td><td>/'trendi/ adj.</td><td>时髦的,赶时髦的,追随时髦的n. 时髦人物,赶时髦的人, trendiest</td></tr>
+<tr><td>therapy</td><td>/'θerəpi/ n.</td><td>治疗，疗法</td></tr>
+<tr><td>strip</td><td>/strɪp/ vt.</td><td>剥去；剥夺；脱去衣服n. 带；条状；脱衣舞vi. 脱去衣服, stripping, strips</td></tr>
+<tr><td>invests</td><td>/ɪn'vest/ vt.</td><td>投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买, investing, invests</td></tr>
+<tr><td>vain</td><td>/veɪn/ adj.</td><td>徒劳的；虚荣的；空虚的, vainest</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>brand</td><td>/brænd/ n.</td><td>商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责, branding, brands</td></tr>
+<tr><td>cliff</td><td>/klɪf/ n.</td><td>悬崖; 峭壁</td></tr>
+<tr><td>panels</td><td>/'pænl/ n.</td><td>仪表板；嵌板；座谈小组，全体陪审员vt. 嵌镶板, panelled paneling, panelling panels, panels</td></tr>
+<tr><td>venue</td><td>/'venjuː/ n.</td><td>聚集地点;会场;(尤指)体育比赛场所犯罪地点;审判地争论中所持的立场</td></tr>
+<tr><td>modular</td><td>/'mɑːdʒələr/ adj.</td><td>模的,有标准组件的</td></tr>
+<tr><td>iterations</td><td>/ˌɪtə'reɪʃn/ n.</td><td>反复</td></tr>
+<tr><td>musing</td><td>/'mjuːzɪŋ/ adj.</td><td>沉思的；瞑想的v. 沉思；凝望（muse的ing形式）</td></tr>
+<tr><td>race</td><td>/reɪs/ n.</td><td>种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACEabbr. Radiation Adap</td></tr>
+<tr><td>celebrities</td><td>/sə'lebrəti/ n.</td><td>(尤指娱乐界的)名人, 名流名声, 名誉</td></tr>
+<tr><td>tune</td><td>/tuːn/ n.</td><td>曲调, 曲子vt. & vi. 调音vt. 调整, tuning, tunes</td></tr>
+<tr><td>energies</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>junior</td><td>/'dʒuːniər/ adj.</td><td>年少的, 较年幼的资历较浅的, 地位较低的n. 年少者地位较低者, 晚辈(美国中学或大学的)三年级学生</td></tr>
+<tr><td>stimulate</td><td>/'stɪmjuleɪt/ vt.</td><td>刺激；激励，stimulating，stimulates</td></tr>
+<tr><td>adjacent</td><td>/ə'dʒeɪsnt/ adj.</td><td>邻近的</td></tr>
+<tr><td>patriot</td><td>/'peɪtriət/ n.</td><td>爱国者; 爱国主义者</td></tr>
+<tr><td>proved</td><td>/proʊ/ n.</td><td>从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞成；支持Pro脯氨酸PROabbr. P</td></tr>
+<tr><td>promoted</td><td>/'proʊmoʊ/ n.</td><td>商品推销；商品广告，广告片</td></tr>
+<tr><td>panel</td><td>/'pænl/ n.</td><td>仪表板；嵌板；座谈小组，全体陪审员vt. 嵌镶板, panelled paneling, panelling panels, panels</td></tr>
+<tr><td>restrictions</td><td>/rɪ'strɪkʃn/ n.</td><td>约束，限制管制，限定；法律，规章</td></tr>
+<tr><td>brand</td><td>/brænd/ n.</td><td>商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责, branding, brands</td></tr>
+<tr><td>sponsorships</td><td>/'spɑːnsərʃɪp/ n.</td><td>赞助；发起；保证人的地位；教父母身份</td></tr>
+<tr><td>acquisition</td><td>/ˌækwɪ'zɪʃn/ n.</td><td>获得物，获得；收购</td></tr>
+<tr><td>backdoor</td><td>/'bæk,dor/ adj.</td><td>秘密的n. 后门</td></tr>
+<tr><td>route</td><td>/ruːt，raʊt/ n.</td><td>路, 路途, 路线, 路程, routing, routes</td></tr>
+<tr><td>bureaucracy</td><td>/bjʊ'rɑːkrəsi/ n.</td><td>政府机构官僚主义, 官僚作风</td></tr>
+<tr><td>possesses</td><td>/pə'zes/ vt.</td><td>具有占据, possessing, possesses</td></tr>
+<tr><td>nonetheless</td><td>/ˌnʌnðə'les/ adv.</td><td>虽然如此,但是</td></tr>
+<tr><td>shareholders</td><td>/'ʃerhoʊldər/ n.</td><td>股东</td></tr>
+<tr><td>vision</td><td>/'vɪʒn/ n.</td><td>视力；眼力；幻象；美景；想象力vt. 显现；梦见；想象, visioning, visions</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day28.html" class="nav-btn">← Day 28</a>
+  <a href="day30.html" class="nav-btn">Day 30 →</a>
+</div>
+
+<div class="progress">📖 Day 29 of 43</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-05-23</div>
+
+</body>
+</html>

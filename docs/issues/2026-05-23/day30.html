@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>International | The Telegram</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-05-23</div>
+
+<h1 class="article-title">International | The Telegram</h1>
+<div class="article-section">International</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>Enhanced is just one project in Angermayer’s <span class="annot" data-tooltip="portfolio /pɔːrt'foʊlioʊ/ n. 公事包, 文件夹投资组合大臣或部长的职位或职责">portfolio</span>—his most publicised attempt yet to bring his drug-fuelled <span class="annot" data-tooltip="vision /'vɪʒn/ n. 视力；眼力；幻象；美景；想象力vt. 显现；梦见；想象时 态: visioned, visioning, visions">vision</span> of <span class="annot" data-tooltip="humanity /hjuː'mænəti/ n. 人类；人道；仁慈；人文学科">humanity</span>’s future into being. If the company fails, it’s only his finances that will take a hit. But almost everyone else <span class="annot" data-tooltip="involved /ɪn'vɑːlvd/ adj. 卷入的；有关的；复杂的v. 涉及；使参与；包含（involve的过去式和过去分词）">involved</span> in the games has burned bridges, risked their future livelihoods or their health. Understanding the long-term side-effects of the enhancements used in the protocols will take time. Yet with the launch of Enhanced’s consumer business, more and more people may soon be <span class="annot" data-tooltip="wagering /weɪdʒ/ vi. 进行；发动；从事n. 工资；报偿；代价vt. 开展；进行时 态: waged, waging, wages">wagering</span> their bodies on a chance to roll back the clock. Just weeks after we visited the Enhanced facilities in Abu Dhabi, America and Israel attacked Iran, causing turmoil across the Middle East. Suddenly, the athletes were training to <span class="annot" data-tooltip="streaks /striːk/ n. 条纹，线条；倾向vi. 飞跑，疾驶；加上条纹vt. 飞跑，疾驰；加条纹于时 态: streaked, streaking">streaks</span> of missiles across the <span class="annot" data-tooltip="horizon /hə'raɪzn/ n. 地平线；眼界；范围；视野">horizon</span> and the flash of interceptors. “It’s funny how quickly you grow accustomed to it,” Shania Collins, a 100-metre <span class="annot" data-tooltip="sprinter /sprɪnt/ vi. 冲刺，全速跑n. 短跑；冲刺vt. 全速奔跑SPRINTabbr. Solid Propellant Rocket In">sprinter</span>, told us. She didn’t leave the ERTH complex for over a month, and her enhancement protocol was delayed because the lab <span class="annot" data-tooltip="processing /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">processing</span> the results of some preparatory tests was hit by debris from an <span class="annot" data-tooltip="intercepted /ˌɪntər'sept/ vt. 拦截, 截住, 截击时 态: intercepted, intercepting, intercepts">intercepted</span> missile. Proud remembered the first night of the war as “awful” (he said that a swimmer from <span class="annot" data-tooltip="ukraine n. 乌克兰（原苏联一加盟共和国，现已独立）">Ukraine</span> “who has been through all of this before” helped the other athletes find a <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span> to hunker down). Soon though, the <span class="annot" data-tooltip="explosions /ɪk'sploʊʒn/ n. 爆炸；爆发激增，扩大">explosions</span> became <span class="annot" data-tooltip="background /'bækɡraʊnd/ n. (画等的)背景, 底色背景情况个人背景资料动 词: background">background</span> noise. As a side-effect of the testosterone in his</p>
+<p>protocol, Proud has been sleeping more deeply than ever before, and he often didn’t wake at the warning sirens. Most of the athletes have managed through their protocols well enough. Collins was generally <span class="annot" data-tooltip="pleased /pliːzd/ adj. 高兴的；喜欢的；乐意做某事v. 满意；愿意（please的过去分词形式）">pleased</span> with how she was feeling—her arms were more toned, her biceps more defined, and she was <span class="annot" data-tooltip="smashing /smæʃ/ n. 破碎(声)猛击；猛撞大成功；极为成功的新书[新戏，电影等]vt. & vi. 打碎；捣烂vt. 重击；打败时 态: sm">smashing</span> her personal bests in the gym. (She also noticed a difference in her fellow athletes, especially the swimmers: “I looked at them and <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span>, wow, are these guys modelling now or swimming?”) But she was worried about the potential side-effects of taking testosterone; people online had speculated that doing so would turn her into a man. Her doctors assured her that her dosage was <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> below that needed for a gender <span class="annot" data-tooltip="transition /træn'zɪʃn/ n. 过渡; 转变; 变迁">transition</span>. Even so, she had downloaded a <span class="annot" data-tooltip="pitch /pɪtʃ/ n. 球场音调，音高程度；强度；高度沥青颠簸斜度，坡度商贩摊位，艺人表演场地推销商品的话vt. 投，掷，扔为…定音调用人们易懂">pitch</span> <span class="annot" data-tooltip="monitor /'mɑːnɪtər/ n. 显示屏；监视器；（计算机）显示器监控器；监测器班长；级长；班代表（尤指派往国外的）监督员，核查员巨蜥v. 监视；检查；跟">monitor</span> on her phone to make sure her voice wasn’t getting any deeper. Other athletes were concerned about what would happen to their careers and <span class="annot" data-tooltip="sponsorship /'spɑːnsərʃɪp/ n. 赞助；发起；保证人的地位；教父母身份">sponsorship</span> opportunities after the games, and whether their bans from <span class="annot" data-tooltip="mainstream /'meɪnstriːm/ n. (思想或行为的)主流时 态: mainstreamed, mainstreaming, mainstreams">mainstream</span> sport would continue. But despite these worries and the sounds of war, the ERTH complex had become something of a Neverland: a <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span> where athletes whose best days were behind them had another chance to do what they loved, and in the competition of their lives. For months, Proud has been visualising his <span class="annot" data-tooltip="race /reɪs/ n. 种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACE">race</span>—that 20-second chase for a life-changing amount of money. As he approaches the starting block, he will be <span class="annot" data-tooltip="intensely /ɪn'tens/ adj. 强烈的；紧张的；热情的；非常的比较级: intenser, intensest">intensely</span> focused. “I’m not daydreaming or letting my attention go anywhere else. I focus on my block and on the <span class="annot" data-tooltip="process /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">process</span>…You feel your heart <span class="annot" data-tooltip="pounding /paʊnd/ n. 英镑；兽栏；重击，重击声；拘留所vt. 捣烂；敲打；监禁，拘留vi. 连续重击，猛击Pound庞德(姓氏)名 词: po">pounding</span>, you’re dizzy and you don’t know if you can stand up <span class="annot" data-tooltip="straight /streɪt/ adj. 直的，笔直的连续的；不间断的直率的adv. 直接地；径直地立即，马上比较级: straighter，straightes">straight</span>. But your body has this method of keeping its control.” At the sound of the <span class="annot" data-tooltip="buzzer /bʌz/ v. 发嗡嗡声；发蜂鸣声用蜂鸣器（给…）发信号繁忙；充满活力（飞机）低空飞过（尤指作为警告或威胁）（用特殊的机器）将头发剪得非">buzzer</span>, he will dive into the pool. If everything has gone well with his enhancement protocol he will spring forward a little farther than usual, and cut through the water more quickly. As Proud crosses the mark on the bottom of the pool signalling the last 15 metres, he will kick harder <span class="annot" data-tooltip="towards /tɔːrdz/ prep. 向，朝为了；有助于；用于对于，关于接近；将近；大约">towards</span> the finish. “The last thing you have to think about is to make sure your touch on the wall is at the perfect distance, at just the right time,” he told us. “And then everything else is history.” ■</p>
+<p>Barclay Bram is a <span class="annot" data-tooltip="senior /'siːniər/ adj. 年长的资深的; 地位高的〈美〉最高年级的n. 较年长者高年级学生〈美〉毕业班学生Senior西尼尔(姓氏)">senior</span> <span class="annot" data-tooltip="podcast /'pɑːdkæst/ n. 播客">podcast</span> producer at The Economist. Natasha Loder is The Economist’s health editor. <span class="annot" data-tooltip="illustrations /ˌɪlə'streɪʃn/ n. 插图, 图表, 图案例证, 实例说明, 图解, 图示形容词: illustrational">Illustrations</span>: Ewelina Karpowiak This article was downloaded by zlibrary from https://www.economist.com//<span class="annot" data-tooltip="interactive /ˌɪntər'æktɪv/ adj. (指至少两个人或物)一起活动或互相合作的交互式的, 人机对话的">interactive</span>/1843/2026/05/21/<span class="annot" data-tooltip="dope /doʊp/ n. 笨蛋；麻醉药物；涂料vt. 上涂料；服药vi. 吸毒；吸毒成瘾（俚）酷毙了时 态: doped, doping, dop">dope</span>-and-<span class="annot" data-tooltip="glory /'ɡlɔːri/ n. 光荣，荣誉；赞颂vi. 自豪，骄傲；狂喜">glory</span>-inside-the- enhanced-games</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Business</div>
+<p>AI super-apps are remaking China’s internet Google is dethroning OpenAI as the king of consumer AI Chanel’s creative <span class="annot" data-tooltip="revival /rɪ'vaɪvl/ n. 复活；复兴；恢复精神；苏醒；再生效">revival</span> is paying off The strange fate of Hard Rock Cafe How Star Wars went from space opera to soap opera A new <span class="annot" data-tooltip="mega n. 百万adj. 许多；宏大的adv. 非常">mega</span>-deal shows how AI has turned <span class="annot" data-tooltip="utilities /juː'tɪləti/ n. 效用；实用；功用；公共设施adj. 有多种用途的；通用的；实用的">utilities</span> into hot <span class="annot" data-tooltip="property /'prɑːpərti/ n. 财产；性质，性能；所有权形容词: propertyless">property</span> Can an <span class="annot" data-tooltip="italian /ɪ'tæliən/ adj. 意大利的；意大利文化的；意大利语的n. 意大利人；意大利语">Italian</span> company <span class="annot" data-tooltip="disrupt /dɪs'rʌpt/ vt. 使混乱, 扰乱时 态: disrupted, disrupting, disrupts">disrupt</span> Germany’s broken railway <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span>? The benefits—and dangers—of optimism</p>
+<div class="article-separator"></div>
+<div class="article-header">Business · Business | Everything engines</div>
+<p>AI super-apps are remaking China’s internet Welcome to the agentic era May 21st 2026 To have a coffee delivered to an office in Shanghai, <span class="annot" data-tooltip="simply /'sɪmpli/ adv. 简单地；朴素地；简直；仅仅；坦白地">simply</span> ask one of China’s artificial-intelligence super-apps to choose a <span class="annot" data-tooltip="brew /bruː/ vt. 酿造；酝酿vi. 酿酒；被冲泡；即将发生n. 啤酒；质地时 态: brewed, brewing, brews">brew</span> on your behalf, press “confirm” and the <span class="annot" data-tooltip="beverage /'bevərɪdʒ/ n. 饮料">beverage</span> will be on its way. Delegating such important decisions brings risks, of course. When your correspondent asked one popular AI app to deliver a “special coffee”, he received a rose-<span class="annot" data-tooltip="petal /'petl/ n. 花瓣">petal</span>- vinegar-<span class="annot" data-tooltip="flavoured /'fleɪvər/ n. 香味；滋味vt. 给……调味；给……增添风趣">flavoured</span> one. Nevertheless, the pace with which such services are being <span class="annot" data-tooltip="adopted /ə'dɑːpt/ vt. 收养采用, 采纳, 采取正式接受, 通过时 态: adopted, adopting, adopts">adopted</span> in China is remarkable. Already more than 600m of its people are <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span> to have used some form of so-called agentic app. China is speeding <span class="annot" data-tooltip="towards /tɔːrdz/ prep. 向，朝为了；有助于；用于对于，关于接近；将近；大约">towards</span> a future in which AI chooses, <span class="annot" data-tooltip="purchases /'pɜːrtʃəs/ n. 购买；紧握；起重装置vt. 购买；赢得vi. 购买东西时 态: purchased, purchasing, purch">purchases</span> and delivers many of the goods and services people <span class="annot" data-tooltip="consume /kən'suːm/ vt. 消耗, 消费, 耗尽大吃, 大喝烧毁, 毁灭时 态: consumed, consuming, consumes">consume</span>, upending its digital economy in the <span class="annot" data-tooltip="process /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">process</span>.</p>
+<p>Chinese <span class="annot" data-tooltip="netizens /'netɪzn/ 网民">netizens</span> have so <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> lived through two <span class="annot" data-tooltip="distinct /dɪ'stɪŋkt/ adj. 截然不同的, 完全分开的清晰的, 明白的, 明显的副 词: distinctly">distinct</span> internet eras. From the early 2000s most turned to Baidu, a search engine, as their window to the web. When Google was forced to exit the country at the end of the <span class="annot" data-tooltip="decade /'dekeɪd/ n. 十年，十年期；十">decade</span>, Baidu, in effect, became a monopoly. But as it sought to monetise its service more <span class="annot" data-tooltip="aggressively /ə'ɡresɪv/ adj. 好争斗的, 挑衅的, 侵略性的副 词: aggressively">aggressively</span>, ad-driven recommendations took over, frustrating users. That brought a backlash against web-based search and, thanks to the spread of the smartphone, pushed China into a second internet era dominated by mobile super-apps that combine functions such as shopping, entertainment, communication and payments. One consequence is that China’s biggest technology firms—including Alibaba, an e-<span class="annot" data-tooltip="commerce /'kɑːmɜːrs/ n. 商业, 贸易">commerce</span> titan, ByteDance, an entertainment giant, and Tencent, a gaming-and-messaging colossus—<span class="annot" data-tooltip="possess /pə'zes/ vt. 具有占据时 态: possessed, possessing, possesses">possess</span> sprawling <span class="annot" data-tooltip="portfolios /pɔːrt'foʊlioʊ/ n. 公事包, 文件夹投资组合大臣或部长的职位或职责">portfolios</span> of digital services and <span class="annot" data-tooltip="logistics /lə'dʒɪstɪk/ adj. 后勤学的；符号逻辑的副 词: logistically">logistics</span> networks that can be used to develop agentic offerings <span class="annot" data-tooltip="capable /'keɪpəbl/ adj. 能干的，能胜任的；有才华的副 词: capably">capable</span> of performing a wide variety of tasks for users. Another consequence is that any of these companies could conceivably emerge as the leader of this new, third era in China’s internet. Already the competition is ferocious. On May 13th Pony Ma, founder of Tencent, warned that a messy “land grab” for AI services was in the offing. On May 11th Alibaba announced that it had fully integrated Qwen, its chatbot, with Taobao, its shopping app. With a few simple commands the AI can now <span class="annot" data-tooltip="procure /prə'kjʊr/ vt. 获得，取得；导致vi. 取得时 态: procured, procuring, procures">procure</span> all manner of products and services (including rose-<span class="annot" data-tooltip="petal /'petl/ n. 花瓣">petal</span>- vinegar-<span class="annot" data-tooltip="flavoured /'fleɪvər/ n. 香味；滋味vt. 给……调味；给……增添风趣">flavoured</span> coffee). ByteDance is preparing to <span class="annot" data-tooltip="release /rɪ'liːs/ vt. 释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]时 态: released，rel">release</span> a similar integration between Doubao, its chatbot, and Douyin, its short-video app (which also <span class="annot" data-tooltip="incorporates /ɪn'kɔːrpəreɪt/ vt. 包含, 加上, 吸收把…合并, 使并入组成公司时 态: incorporated, incorporating, inc">incorporates</span> shopping). Tencent has been a dark horse in the <span class="annot" data-tooltip="race /reɪs/ n. 种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACE">race</span>. Its investment in AI models started more slowly, but the company says that over the past six months it has <span class="annot" data-tooltip="completely /kəm'pliːt/ adj. 完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善比较级: complete">completely</span> revamped how its AI team works. A new model, Hy3, is in a testing <span class="annot" data-tooltip="phase /feɪz/ n. 阶段, 时期(月亮、行星的)位相vt. 分阶段计划[安排]时 态: phased, phasing, phases">phase</span> and has performed well. Tencent is now slowly integrating this model with WeChat, its ubiquitous messaging-and-payments app. Millions of businesses have created “mini-programs” within WeChat that could be woven together with AI. For the tech giants, AI super-apps may offer an attractive new source of growth at a time when consumer spending in China is anaemic. Adjusted operating profit in Alibaba’s Chinese e-commerce <span class="annot" data-tooltip="division /dɪ'vɪʒn/ n. [数] 除法；部门；分配；分割；师（军队）；赛区形容词: divisional">division</span> was down by</p>
+<p>40% year on year in the first <span class="annot" data-tooltip="quarter /'kwɔːrtər/ n. 四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一时 ">quarter</span> of 2026. And <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">although</span> the firm’s cloud business is booming as enterprises spend more on its AI <span class="annot" data-tooltip="infrastructure /'ɪnfrəstrʌktʃər/ n. 基础设施; 基础结构">infrastructure</span>, that growth requires <span class="annot" data-tooltip="enormous /ɪ'nɔːrməs/ adj. 巨大的, 极大的, 庞大的副 词: enormously">enormous</span> capital investment, <span class="annot" data-tooltip="weighing /weɪ/ vt. & vi. 称…的重量link v. 重达vt. 权衡；考虑时 态: weighed，weighing，weighs">weighing</span> on cashflows. In private China’s tech giants say that their AI super-apps do not recommend products based on ad spending. But to make these <span class="annot" data-tooltip="profitable /'prɑːfɪtəbl/ adj. 有利可图的; 有益的副 词: profitably">profitable</span>, they may eventually have to. Although ByteDance recently launched a paid <span class="annot" data-tooltip="tier /tɪr/ n. 行，列；层，排；等级vt. 使层叠vi. 成递升排列时 态: tiered, tiering, tiers">tier</span> for Doubao users wishing to access certain features, most chatbots in China are free to use. In February, to coincide with the <span class="annot" data-tooltip="lunar /'luːnər/ adj. 月的, 月球的；；阴历的；银的；微亮的">Lunar</span> New Year, many tech giants offered generous promotions to <span class="annot" data-tooltip="encourage /ɪn'kɜːrɪdʒ/ vt. 鼓励, 激励促进, 助长, 激发时 态: encouraged, encouraging, encourages">encourage</span> people to start using their agentic services. With competition so <span class="annot" data-tooltip="intense /ɪn'tens/ adj. 强烈的；紧张的；热情的；非常的比较级: intenser, intensest">intense</span>, it seems unlikely they will start charging for the services soon. The rationale for the tech giants may also be defensive. Some in the <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> worry that the emergence of a device powered by AI with agentic <span class="annot" data-tooltip="capabilities /ˌkeɪpə'bɪləti/ n. 能做某事的素质;能力尚未发挥的天资或素质">capabilities</span> embedded in its operating system could displace existing super- apps. OpenAI, an American lab, is reportedly working on such a device. ByteDance tried this in December when it launched a smartphone with ZTE, a device-maker, which came pre-loaded with an AI assistant. But despite an initial burst of <span class="annot" data-tooltip="enthusiasm /ɪn'θuːziæzəm/ n. 热情, 热心巨大兴趣, 热衷的事物">enthusiasm</span>, with around 30,000 of the devices produced, the project was a failure, in part because Alibaba and Tencent blocked it from using their payment platforms. That will not stop others from trying. In March Xiaomi, a gadget-maker that has expanded into electric <span class="annot" data-tooltip="vehicles /'viːəkl/ n. 交通工具, 车辆传播媒介, 手段">vehicles</span> (EVs), announced the <span class="annot" data-tooltip="release /rɪ'liːs/ vt. 释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]时 态: released，rel">release</span> of new AI models that would be embedded in its smartphones and cars. Huawei, another tech giant that makes both smartphones and software systems for EVs, could also muscle in. Auto executives reckon that many young Chinese will access agentic services through voice discussions with their car. Xiaomi and Huawei already have hundreds of millions of users apiece. If Alibaba and Tencent were to try to hobble a push into agentic offerings by <span class="annot" data-tooltip="either /'iːðər/ pron. (两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的">either</span> company, local regulators might well <span class="annot" data-tooltip="intervene /ˌɪntər'viːn/ vi. 干涉，干预；调解干扰，阻碍时 态: intervened，intervening，intervenes">intervene</span>. As China’s internet <span class="annot" data-tooltip="enters /'entər/ vt. & vi. 进入, 进去参加, 加入登记, 登录时 态: entered, entering, enters">enters</span> its next era, a bitter fight for dominance looms. ■ To track the <span class="annot" data-tooltip="trends /trend/ n. 趋势, 倾向流行时 态: trended, trending, trends">trends</span> shaping <span class="annot" data-tooltip="commerce /'kɑːmɜːrs/ n. 商业, 贸易">commerce</span>, industry and technology, sign up to “The Bottom <span class="annot" data-tooltip="line /laɪn/ n. 绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long inter">Line</span>”, our weekly subscriber-only newsletter on global business.</p>
+<p>This article was downloaded by zlibrary from https://www.economist.com//business/2026/05/17/ai-super-apps-are-remaking-chinas- internet</p>
+<div class="article-separator"></div>
+<div class="article-header">Business · Business | Agents for the masses</div>
+<p>Google is dethroning OpenAI as the king of consumer AI But its users are burning through quadrillions of tokens a month May 21st 2026 THE AMPHITHEATRE complex where Google holds its <span class="annot" data-tooltip="annual /'ænjuəl/ adj. 年度的；每年的n. 年刊，年鉴；一年生植物副 词: annually">annual</span> software- developers’ <span class="annot" data-tooltip="conference /'kɑːnfərəns/ n. 会议讨论, 商谈形容词: conferential">conference</span> has a <span class="annot" data-tooltip="cheesy /'tʃiːzi/ adj. 干酪质的；下等的；【俚】漂亮的比较级: cheesier, cheesiest">cheesy</span>, fairground feel. RVs are parked on site. Employees whiz in on the tech company’s multi-coloured bicycles. There are stands and sideshows everywhere. On stage, Sundar Pichai, its boss, tells a corny joke about Google’s overworked chips, known as TPUs, doing “teraflops into bed”. The event is by no means as <span class="annot" data-tooltip="sleek /sliːk/ adj. 圆滑的；井然有序的vt. 使…光滑；掩盖vi. 打扮整洁；滑动比较级: sleeker, sleekest">sleek</span> as Apple’s developer jamboree held in June, which tries to <span class="annot" data-tooltip="retain /rɪ'teɪn/ vt. 保持；雇；记住时 态: retained, retaining, retains 缩 写: ret">retain</span> some of the <span class="annot" data-tooltip="minimalist /'mɪnɪməlɪst/ adj. 极简抽象艺术的; 极简派音乐的n. 极简抽象派艺术家; 极简派音乐家">minimalist</span> chic of the late Steve Jobs. But when it comes to artificial intelligence, Google long ago upstaged the maker of the iPhone (its models will power many of Apple’s AI features</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>portfolio</td><td>/pɔːrt'foʊlioʊ/ n.</td><td>公事包, 文件夹投资组合大臣或部长的职位或职责</td></tr>
+<tr><td>vision</td><td>/'vɪʒn/ n.</td><td>视力；眼力；幻象；美景；想象力vt. 显现；梦见；想象, visioning, visions</td></tr>
+<tr><td>humanity</td><td>/hjuː'mænəti/ n.</td><td>人类；人道；仁慈；人文学科</td></tr>
+<tr><td>involved</td><td>/ɪn'vɑːlvd/ adj.</td><td>卷入的；有关的；复杂的v. 涉及；使参与；包含（involve的过去式和过去分词）</td></tr>
+<tr><td>wagering</td><td>/weɪdʒ/ vi.</td><td>进行；发动；从事n. 工资；报偿；代价vt. 开展；进行, waging, wages</td></tr>
+<tr><td>streaks</td><td>/striːk/ n.</td><td>条纹，线条；倾向vi. 飞跑，疾驶；加上条纹vt. 飞跑，疾驰；加条纹于, streaking, streaks</td></tr>
+<tr><td>horizon</td><td>/hə'raɪzn/ n.</td><td>地平线；眼界；范围；视野</td></tr>
+<tr><td>sprinter</td><td>/sprɪnt/ vi.</td><td>冲刺，全速跑n. 短跑；冲刺vt. 全速奔跑SPRINTabbr. Solid Propellant Rocket Intercept Missile 固体(燃</td></tr>
+<tr><td>processing</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>intercepted</td><td>/ˌɪntər'sept/ vt.</td><td>拦截, 截住, 截击, intercepting, intercepts</td></tr>
+<tr><td>ukraine</td><td>— n.</td><td>乌克兰（原苏联一加盟共和国，现已独立）</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>explosions</td><td>/ɪk'sploʊʒn/ n.</td><td>爆炸；爆发激增，扩大</td></tr>
+<tr><td>background</td><td>/'bækɡraʊnd/ n.</td><td>(画等的)背景, 底色背景情况个人背景资料动 词: background</td></tr>
+<tr><td>pleased</td><td>/pliːzd/ adj.</td><td>高兴的；喜欢的；乐意做某事v. 满意；愿意（please的过去分词形式）</td></tr>
+<tr><td>smashing</td><td>/smæʃ/ n.</td><td>破碎(声)猛击；猛撞大成功；极为成功的新书[新戏，电影等]vt. & vi. 打碎；捣烂vt. 重击；打败，smashing，smashes</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>transition</td><td>/træn'zɪʃn/ n.</td><td>过渡; 转变; 变迁</td></tr>
+<tr><td>pitch</td><td>/pɪtʃ/ n.</td><td>球场音调，音高程度；强度；高度沥青颠簸斜度，坡度商贩摊位，艺人表演场地推销商品的话vt. 投，掷，扔为…定音调用人们易懂的方式表述vt. & vi. 搭(帐篷)</td></tr>
+<tr><td>monitor</td><td>/'mɑːnɪtər/ n.</td><td>显示屏；监视器；（计算机）显示器监控器；监测器班长；级长；班代表（尤指派往国外的）监督员，核查员巨蜥v. 监视；检查；跟踪调查监听（电话、外国无线电广播等）, </td></tr>
+<tr><td>sponsorship</td><td>/'spɑːnsərʃɪp/ n.</td><td>赞助；发起；保证人的地位；教父母身份</td></tr>
+<tr><td>mainstream</td><td>/'meɪnstriːm/ n.</td><td>(思想或行为的)主流, mainstreaming, mainstreams</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>race</td><td>/reɪs/ n.</td><td>种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACEabbr. Radiation Adap</td></tr>
+<tr><td>intensely</td><td>/ɪn'tens/ adj.</td><td>强烈的；紧张的；热情的；非常的, intensest</td></tr>
+<tr><td>process</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>pounding</td><td>/paʊnd/ n.</td><td>英镑；兽栏；重击，重击声；拘留所vt. 捣烂；敲打；监禁，拘留vi. 连续重击，猛击Pound庞德(姓氏)</td></tr>
+<tr><td>straight</td><td>/streɪt/ adj.</td><td>直的，笔直的连续的；不间断的直率的adv. 直接地；径直地立即，马上，straightest</td></tr>
+<tr><td>buzzer</td><td>/bʌz/ v.</td><td>发嗡嗡声；发蜂鸣声用蜂鸣器（给…）发信号繁忙；充满活力（飞机）低空飞过（尤指作为警告或威胁）（用特殊的机器）将头发剪得非常短n. 嗡嗡声；蜂鸣声（愉快、兴奋或成</td></tr>
+<tr><td>towards</td><td>/tɔːrdz/ prep.</td><td>向，朝为了；有助于；用于对于，关于接近；将近；大约</td></tr>
+<tr><td>senior</td><td>/'siːniər/ adj.</td><td>年长的资深的; 地位高的〈美〉最高年级的n. 较年长者高年级学生〈美〉毕业班学生Senior西尼尔(姓氏)</td></tr>
+<tr><td>podcast</td><td>/'pɑːdkæst/ n.</td><td>播客</td></tr>
+<tr><td>illustrations</td><td>/ˌɪlə'streɪʃn/ n.</td><td>插图, 图表, 图案例证, 实例说明, 图解, 图示</td></tr>
+<tr><td>interactive</td><td>/ˌɪntər'æktɪv/ adj.</td><td>(指至少两个人或物)一起活动或互相合作的交互式的, 人机对话的</td></tr>
+<tr><td>dope</td><td>/doʊp/ n.</td><td>笨蛋；麻醉药物；涂料vt. 上涂料；服药vi. 吸毒；吸毒成瘾（俚）酷毙了, doping, dopes</td></tr>
+<tr><td>glory</td><td>/'ɡlɔːri/ n.</td><td>光荣，荣誉；赞颂vi. 自豪，骄傲；狂喜</td></tr>
+<tr><td>revival</td><td>/rɪ'vaɪvl/ n.</td><td>复活；复兴；恢复精神；苏醒；再生效</td></tr>
+<tr><td>mega</td><td>— n.</td><td>百万adj. 许多；宏大的adv. 非常</td></tr>
+<tr><td>utilities</td><td>/juː'tɪləti/ n.</td><td>效用；实用；功用；公共设施adj. 有多种用途的；通用的；实用的</td></tr>
+<tr><td>property</td><td>/'prɑːpərti/ n.</td><td>财产；性质，性能；所有权</td></tr>
+<tr><td>italian</td><td>/ɪ'tæliən/ adj.</td><td>意大利的；意大利文化的；意大利语的n. 意大利人；意大利语</td></tr>
+<tr><td>disrupt</td><td>/dɪs'rʌpt/ vt.</td><td>使混乱, 扰乱, disrupting, disrupts</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>simply</td><td>/'sɪmpli/ adv.</td><td>简单地；朴素地；简直；仅仅；坦白地</td></tr>
+<tr><td>brew</td><td>/bruː/ vt.</td><td>酿造；酝酿vi. 酿酒；被冲泡；即将发生n. 啤酒；质地, brewing, brews</td></tr>
+<tr><td>beverage</td><td>/'bevərɪdʒ/ n.</td><td>饮料</td></tr>
+<tr><td>petal</td><td>/'petl/ n.</td><td>花瓣</td></tr>
+<tr><td>flavoured</td><td>/'fleɪvər/ n.</td><td>香味；滋味vt. 给……调味；给……增添风趣</td></tr>
+<tr><td>adopted</td><td>/ə'dɑːpt/ vt.</td><td>收养采用, 采纳, 采取正式接受, 通过, adopting, adopts</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>towards</td><td>/tɔːrdz/ prep.</td><td>向，朝为了；有助于；用于对于，关于接近；将近；大约</td></tr>
+<tr><td>purchases</td><td>/'pɜːrtʃəs/ n.</td><td>购买；紧握；起重装置vt. 购买；赢得vi. 购买东西, purchasing, purchases</td></tr>
+<tr><td>consume</td><td>/kən'suːm/ vt.</td><td>消耗, 消费, 耗尽大吃, 大喝烧毁, 毁灭, consuming, consumes</td></tr>
+<tr><td>process</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>netizens</td><td>/'netɪzn/ </td><td>网民</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>distinct</td><td>/dɪ'stɪŋkt/ adj.</td><td>截然不同的, 完全分开的清晰的, 明白的, 明显的</td></tr>
+<tr><td>decade</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>aggressively</td><td>/ə'ɡresɪv/ adj.</td><td>好争斗的, 挑衅的, 侵略性的</td></tr>
+<tr><td>commerce</td><td>/'kɑːmɜːrs/ n.</td><td>商业, 贸易</td></tr>
+<tr><td>possess</td><td>/pə'zes/ vt.</td><td>具有占据, possessing, possesses</td></tr>
+<tr><td>portfolios</td><td>/pɔːrt'foʊlioʊ/ n.</td><td>公事包, 文件夹投资组合大臣或部长的职位或职责</td></tr>
+<tr><td>logistics</td><td>/lə'dʒɪstɪk/ adj.</td><td>后勤学的；符号逻辑的</td></tr>
+<tr><td>capable</td><td>/'keɪpəbl/ adj.</td><td>能干的，能胜任的；有才华的</td></tr>
+<tr><td>procure</td><td>/prə'kjʊr/ vt.</td><td>获得，取得；导致vi. 取得, procuring, procures</td></tr>
+<tr><td>petal</td><td>/'petl/ n.</td><td>花瓣</td></tr>
+<tr><td>flavoured</td><td>/'fleɪvər/ n.</td><td>香味；滋味vt. 给……调味；给……增添风趣</td></tr>
+<tr><td>release</td><td>/rɪ'liːs/ vt.</td><td>释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]，releasing，releases</td></tr>
+<tr><td>incorporates</td><td>/ɪn'kɔːrpəreɪt/ vt.</td><td>包含, 加上, 吸收把…合并, 使并入组成公司, incorporating, incorporates</td></tr>
+<tr><td>race</td><td>/reɪs/ n.</td><td>种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACEabbr. Radiation Adap</td></tr>
+<tr><td>completely</td><td>/kəm'pliːt/ adj.</td><td>完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善, completest 缩 写: comp, cpl</td></tr>
+<tr><td>phase</td><td>/feɪz/ n.</td><td>阶段, 时期(月亮、行星的)位相vt. 分阶段计划[安排], phasing, phases</td></tr>
+<tr><td>division</td><td>/dɪ'vɪʒn/ n.</td><td>[数] 除法；部门；分配；分割；师（军队）；赛区</td></tr>
+<tr><td>quarter</td><td>/'kwɔːrtər/ n.</td><td>四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一, quartering, quarters</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>infrastructure</td><td>/'ɪnfrəstrʌktʃər/ n.</td><td>基础设施; 基础结构</td></tr>
+<tr><td>enormous</td><td>/ɪ'nɔːrməs/ adj.</td><td>巨大的, 极大的, 庞大的</td></tr>
+<tr><td>weighing</td><td>/weɪ/ vt.</td><td>& vi. 称…的重量link v. 重达vt. 权衡；考虑，weighing，weighs</td></tr>
+<tr><td>profitable</td><td>/'prɑːfɪtəbl/ adj.</td><td>有利可图的; 有益的</td></tr>
+<tr><td>tier</td><td>/tɪr/ n.</td><td>行，列；层，排；等级vt. 使层叠vi. 成递升排列, tiering, tiers</td></tr>
+<tr><td>lunar</td><td>/'luːnər/ adj.</td><td>月的, 月球的；；阴历的；银的；微亮的</td></tr>
+<tr><td>encourage</td><td>/ɪn'kɜːrɪdʒ/ vt.</td><td>鼓励, 激励促进, 助长, 激发, encouraging, encourages</td></tr>
+<tr><td>intense</td><td>/ɪn'tens/ adj.</td><td>强烈的；紧张的；热情的；非常的, intensest</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>capabilities</td><td>/ˌkeɪpə'bɪləti/ n.</td><td>能做某事的素质;能力尚未发挥的天资或素质</td></tr>
+<tr><td>enthusiasm</td><td>/ɪn'θuːziæzəm/ n.</td><td>热情, 热心巨大兴趣, 热衷的事物</td></tr>
+<tr><td>vehicles</td><td>/'viːəkl/ n.</td><td>交通工具, 车辆传播媒介, 手段</td></tr>
+<tr><td>release</td><td>/rɪ'liːs/ vt.</td><td>释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]，releasing，releases</td></tr>
+<tr><td>either</td><td>/'iːðər/ pron.</td><td>(两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的</td></tr>
+<tr><td>intervene</td><td>/ˌɪntər'viːn/ vi.</td><td>干涉，干预；调解干扰，阻碍，intervening，intervenes</td></tr>
+<tr><td>enters</td><td>/'entər/ vt.</td><td>& vi. 进入, 进去参加, 加入登记, 登录, entering, enters</td></tr>
+<tr><td>trends</td><td>/trend/ n.</td><td>趋势, 倾向流行, trending, trends</td></tr>
+<tr><td>commerce</td><td>/'kɑːmɜːrs/ n.</td><td>商业, 贸易</td></tr>
+<tr><td>line</td><td>/laɪn/ n.</td><td>绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long interspersed element)长散在元</td></tr>
+<tr><td>annual</td><td>/'ænjuəl/ adj.</td><td>年度的；每年的n. 年刊，年鉴；一年生植物</td></tr>
+<tr><td>conference</td><td>/'kɑːnfərəns/ n.</td><td>会议讨论, 商谈</td></tr>
+<tr><td>cheesy</td><td>/'tʃiːzi/ adj.</td><td>干酪质的；下等的；【俚】漂亮的, cheesiest</td></tr>
+<tr><td>sleek</td><td>/sliːk/ adj.</td><td>圆滑的；井然有序的vt. 使…光滑；掩盖vi. 打扮整洁；滑动, sleekest</td></tr>
+<tr><td>retain</td><td>/rɪ'teɪn/ vt.</td><td>保持；雇；记住, retaining, retains 缩 写: ret</td></tr>
+<tr><td>minimalist</td><td>/'mɪnɪməlɪst/ adj.</td><td>极简抽象艺术的; 极简派音乐的n. 极简抽象派艺术家; 极简派音乐家</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day29.html" class="nav-btn">← Day 29</a>
+  <a href="day31.html" class="nav-btn">Day 31 →</a>
+</div>
+
+<div class="progress">📖 Day 30 of 43</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-05-23</div>
+
+</body>
+</html>

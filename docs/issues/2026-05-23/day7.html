@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Briefing | Out of this world</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-05-23</div>
+
+<h1 class="article-title">Briefing | Out of this world</h1>
+<div class="article-section">Briefing</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>may eventually sign up anywhere between 20m and 50m residential subscribers, <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">although</span> average <span class="annot" data-tooltip="revenues /'revənuː/ n. 收入，收益；财政收入，税收">revenues</span> per customer are likely to decline as it adds users <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span> the rich world. At the moment, though, Starlink’s growth is held back by the size of the satellites that SpaceX can fit onto a Falcon 9. It plans “<span class="annot" data-tooltip="version /'vɜːrʒn/ n. 变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本">version</span> 3” satellites that will each add 20 times more capacity than the “v2 Minis” it currently uses. But they are so big they can be launched only with Starship. SpaceX is <span class="annot" data-tooltip="investing /ɪn'vest/ vt. 投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买时 态: invested, investing, invests">investing</span> heavily to keep Starlink growing. Last year it spent $19.6bn to acquire <span class="annot" data-tooltip="spectrum /'spektrəm/ n. 光谱波谱范围, 系列复 数: spectra">spectrum</span> from EchoStar, an American <span class="annot" data-tooltip="telecoms /ˈtɛlɪˌkɑm/ n. 电信，远距通信；电讯">telecoms</span> firm, to bolster the nascent D2C business, and has sought authorisation to launch 15,000 specialised satellites. PitchBook, which gathers data on venture- capital-backed firms, notes that these are expensive wagers. The EchoStar deal represents more than a year of SpaceX’s revenues. But it expects Starlink to top 1bn subscribers over the next 15 years. Analysts are divided over Starlink’s potential. “I think D2C is just not going to live up to the <span class="annot" data-tooltip="hype /haɪp/ n. 天花乱坠的广告宣传vt. 大肆宣传夸张地宣传(某人或某事物)(用巧计或绝技)人为地刺激,助长十分兴奋的；很激动的；十分担">hype</span>,” says Mr Farrar, arguing that it will be used mostly in <span class="annot" data-tooltip="places /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">places</span> where there are no terrestrial phone <span class="annot" data-tooltip="masts /mæst/ n. 船桅，桅杆；旗杆MASTabbr. Magnetic Annular Shock Tube 磁性环形激波管(风洞研究用)">masts</span> and therefore few people. Simon Potter of BryceTech is more optimistic: “It could <span class="annot" data-tooltip="enable /ɪ'neɪbl/ vt. 使能够；提供做…的权利[措施]使可能时 态: enabled，enabling，enables">enable</span> ubiquitous connectivity between devices using standard smartphone kit. That could be transformational in applications such as cars, agriculture, <span class="annot" data-tooltip="logistics /lə'dʒɪstɪk/ adj. 后勤学的；符号逻辑的副 词: logistically">logistics</span>—and maybe in military ones, too.” Franco Granda, at PitchBook, thinks that Starlink and SpaceX’s launch business could justify a $1.75trn valuation by themselves. Launching lots of satellites, however, will not use up all Starship’s capacity. SpaceX is planning fleets of them. It is building a pair of huge factories, dubbed “Gigabays”, which Mr Musk hopes will eventually produce hundreds of Starships a year. Even with the Falcon 9, points out Mr Henry of Quilty Space, there was not a “clear commercial case for a high-<span class="annot" data-tooltip="cadence /'keɪdns/ n. 节奏；韵律；抑扬顿挫形容词: cadenced">cadence</span> launcher”. In the end, SpaceX had to develop Starlink to give its rockets enough work to keep them busy. Its plans for data centres in space, he says, are an attempt to repeat the trick. Tom Mueller, SpaceX’s first-ever employee, the designer of its rocket engines and now the founder of Impulse, another space firm, summarised his old <span class="annot" data-tooltip="employer /ɪm'plɔɪ/ vt. 使用，采用；雇用；使忙于，使从事于n. 雇用；使用时 态: employed, employing, employs">employer</span>’s plans last year. Building a settlement on Mars requires</p>
+<p>hundreds of Starships, he noted. But the movements of the planets mean they can travel to Mars only roughly every two years. “What do you do with the hundreds of Starships the other 25 months of the Mars cycle?” he wrote. “Fly data centres to space, paid for by investors.” SpaceX did not come up with the idea of putting AI in orbit. Last year Starcloud, a <span class="annot" data-tooltip="startup /ˈstɑrtˈʌp/ n. 启动；开办">startup</span>, flew a prototype (aboard a Falcon 9) to prove the idea could work. Google, a tech firm, hopes to test satellites of its <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> in 2027. (It is reportedly in discussions with SpaceX to launch them.) Proponents of orbital data centres (ODCs) cite several advantages. One is an abundance of power. With no atmosphere to get in the way, sunlight in orbit is about 30% more <span class="annot" data-tooltip="intense /ɪn'tens/ adj. 强烈的；紧张的；热情的；非常的比较级: intenser, intensest">intense</span> than on even the sunniest day on the ground. Putting <span class="annot" data-tooltip="solar /'soʊlər/ adj. 太阳的；日光的；利用太阳光的；与太阳相关的n. 日光浴室">solar</span>-powered ODCs in certain “sun-<span class="annot" data-tooltip="synchronous /'sɪŋkrənəs/ adj. 同时存在〔发生〕的；同步的副 词: synchronously">synchronous</span>” orbits could provide almost permanent sunlight. Efficiency is another plus. A terrestrial data centre might use a <span class="annot" data-tooltip="quarter /'kwɔːrtər/ n. 四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一时 ">quarter</span> of the electricity it <span class="annot" data-tooltip="consumes /kən'suːm/ vt. 消耗, 消费, 耗尽大吃, 大喝烧毁, 毁灭时 态: consumed, consuming, consumes">consumes</span> to cool its servers. ODCs could instead rely on the freezing <span class="annot" data-tooltip="vacuum /'vækjuːm/ n. 真空〈口〉真空吸尘器空间; 空虚; 空白vt. 用真空吸尘器清扫(某物)">vacuum</span> of space. The final advantage is remoteness. The AI <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> <span class="annot" data-tooltip="stirs /stɜːr/ vt. & vi. 搅拌(使)移动；(使)激动n. 搅动；搅和；搅拌激动；纷乱；骚乱STIRabbr. Surveillance">stirs</span> fears of job losses and even human <span class="annot" data-tooltip="extinction /ɪk'stɪŋkʃn/ n. 熄灭，消灭，灭绝；废除">extinction</span>. Many people take a dim view of the technology. Dozens of American state and local governments have banned new data centres or are <span class="annot" data-tooltip="considering /kən'sɪdərɪŋ/ prep. 考虑到, 就…而论adv. 从各方面考虑, 从通盘考虑">considering</span> it. Putting them in space might keep them out of mind as well as sight. With typical bravado, Mr Musk has said that within two to three years, ODCs will be the cheapest way to provide computing for AI. (Sam Altman, the boss of OpenAI, thinks that timeline is “ridiculous”.) The economics depend on how low launch costs go, how efficient satellites are at turning sunlight into data-<span class="annot" data-tooltip="crunching /krʌntʃ/ n. 咬碎，咬碎声；扎扎地踏vt. 压碎；嘎扎嘎扎的咬嚼；扎扎地踏过vi. 嘎吱作响地咀嚼；嘎吱嘎吱地踏过时 态: crunc">crunching</span>, and how much those satellites cost. SpaceX hopes to make use of its experience mass-producing Starlink’s satellites by building ODCs, at least at first, on the same chassis. In January the firm applied for regulatory approval to launch up to a million of them.</p>
+<p>If they can be made to work, the market could be absurdly lucrative. Capital spending on data centres is forecast to exceed $800bn this year. The <span class="annot" data-tooltip="revenues /'revənuː/ n. 收入，收益；财政收入，税收">revenues</span> of the top AI labs are growing fast, from about $17bn in 2025 to an anticipated $90bn-100bn this year. Both <span class="annot" data-tooltip="anthropic /ænˈθrɑpɪk/ adj. 人类的,有关人类的">Anthropic</span> and OpenAI are planning IPOs at valuations of about $1trn. SpaceX could profit in two ways. The first is by boosting xAI, which has struggled to compete with its longer-<span class="annot" data-tooltip="established /ɪ'stæblɪʃt/ adj. 已建立的；已设立的；已制定的确定的，证实的">established</span> <span class="annot" data-tooltip="rivals /'raɪvl/ n. 竞争对手vt. 与…竞争, 与…匹敌时 态: rivaled, rivalled rivaling, rivalling">rivals</span>. If being part of SpaceX gives xAI access to cheap, quickly deployable computing power, that could provide the boost it needs to <span class="annot" data-tooltip="overtake /ˌoʊvər'teɪk/ vt. 赶上；压倒；突然来袭vi. 超车时 态: overtook overtaken overtaking, overtake">overtake</span> its competitors. If that does not work, an <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span>-wide switch to space-based <span class="annot" data-tooltip="infrastructure /'ɪnfrəstrʌktʃər/ n. 基础设施; 基础结构">infrastructure</span> could leave SpaceX occupying a similar position to <span class="annot" data-tooltip="nvidia 恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商">Nvidia</span>, which designs AI chips, or TSMC, which manufactures them—an indispensable provider of infrastructure. There have been hints of this latter approach already. On May 6th Anthropic signed a deal to pay as much as $1.25bn a month for the next three years to use some of the computing capacity at xAI’s existing, land-based Colossus data centre. Giant rockets, AI in space—science fiction made real: will investors buy it? There is likely to be appetite, especially given what Gil Luria of D.A. Davidson, an investment firm, calls the “hopes and dreams” <span class="annot" data-tooltip="premium /'priːmiəm/ n. 奖金，津贴；加价；附加费；保险费；额外费用adj. （品质）高级的；优质的，顶级的">premium</span> that</p>
+<p>Musk’s futuristic endeavours <span class="annot" data-tooltip="tend /tend/ vt. 照料，照顾，伺候vi. 往，朝向易于；倾向时 态: tended，tending，tends">tend</span> to command. The IPO includes a five-to- one stock split, which reduces the cost per share, a boon for Mr Musk’s legions of fans among <span class="annot" data-tooltip="retail /ˈriːteɪl/ vt. 零售；转述vi. 零售n. 零售adv. 以零售方式adj. 零售的时 态: retailed, retailing, ">retail</span> investors. But investors should <span class="annot" data-tooltip="brace /breɪs/ n. 箍子；夹子；支架大括弧；大括号（ 猎获的鸟或兽）一对，一双v. （为困难或坏事）使作准备；使防备使（身体或身体部位）顶住">brace</span> for volatility. Many of the venture capitalists who made early bets on SpaceX will be <span class="annot" data-tooltip="keen /kiːn/ adj. 锋利的热衷的，热心的，渴望(做某事)激烈的，紧张的良好的；敏锐的，敏捷的比较级: keener，keenest">keen</span> to cash out as soon as possible. That could hit the stock price. The firm’s two-<span class="annot" data-tooltip="tier /tɪr/ n. 行，列；层，排；等级vt. 使层叠vi. 成递升排列时 态: tiered, tiering, tiers">tier</span> share structure makes Mr Musk in effect unremovable, no matter how his plans go. <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">Although</span> some of his big bets have paid off—re-usable rockets, electric cars, Starlink—others have not, or at least not on schedule. Tesla’s fleet of robotaxis has been just over the <span class="annot" data-tooltip="horizon /hə'raɪzn/ n. 地平线；眼界；范围；视野">horizon</span> for years. Its humanoid robots are also late for work. xAI, meanwhile, is losing billions. If progress on Starship slows, Starlink’s growth will be hobbled, bringing in less cash to <span class="annot" data-tooltip="cover /'kʌvər/ vt. 包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替时 态: covered, covering, c">cover</span> those losses. SpaceX’s dominance in launch could be eroded by competitors such as Blue Origin, which is owned by Jeff Bezos, the founder of <span class="annot" data-tooltip="amazon /ˈæməˌzɑn/ n. 高大强悍的女人；（古希腊神话中的）亚马孙族女战士Amazonn. 亚马逊河(南美洲大河)">Amazon</span>. Markets are high and nervy; even if AI proves as useful as its pioneers hope, many see current levels of investment as unsustainable. Where would SpaceX’s plans stand if they slowed? Mr Musk’s lofty aspirations for SpaceX can be made to hang together, at least conceptually. As he is <span class="annot" data-tooltip="fond /fɑːnd/ adj. 喜欢的；温柔的；宠爱的比较级: fonder, fondest">fond</span> of saying when assessing a grand idea, nothing about them breaks the laws of physics. That means making it all happen is “merely” a question of engineering, both industrial and financial. But as Mr Musk knows, engineering is an unforgiving discipline. ■ This article was downloaded by zlibrary from https://www.economist.com//briefing/2026/05/21/spacex-has-initiated-the-biggest- ever-public-offering</p>
+<div class="article-separator"></div>
+<div class="article-header"> · United States</div>
+<p>Even by Trumpian standards, a $1.8bn fund for friends is bad Drained by war with Iran, America is stalling deliveries of arms to</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Europe</div>
+<p>America’s <span class="annot" data-tooltip="sermons /'sɜːrmən/ n. 布道, 讲道, 说教讲道文章一大通教训形容词: sermonic">sermons</span> are becoming op-eds <span class="annot" data-tooltip="democratic /ˌdemə'krætɪk/ adj. 民主的, 有民主精神或作风的副 词: democratically">Democratic</span> primary voters chose a dicey <span class="annot" data-tooltip="candidate /'kændɪdət，ˈkændɪdeɪt/ n. 申请求职者, 候选人报考者名 词: candidacy">candidate</span> for Georgia governor Europe’s first known language is <span class="annot" data-tooltip="alive /ə'laɪv/ adj. 活着的, 在世的, 存在的有活力的, 活跃的, 有生气的">alive</span> in America’s West Michigan’s <span class="annot" data-tooltip="senate /ˈsenət/ n.（诸如美国、澳大利亚、法国的）参议院（the Senate） （某些国家的）大学理事会，大学评议会（古罗马的）元老院">Senate</span> primary is a fight over the future of the Democratic Party Leftist populism’s next big test</p>
+<div class="article-separator"></div>
+<div class="article-header">United States · United States | Friends with benefits</div>
+<p>Even by Trumpian standards, a $1.8bn fund for friends is bad The president threatened to <span class="annot" data-tooltip="sue /suː/ vt. & vi. (为要求赔偿损失而)起诉, 控告, 和…打官司时 态: sued, suing, sues">sue</span> his <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> administration, and will hand out the pay-off May 21st 2026 American courts are not supposed to be <span class="annot" data-tooltip="venues /'venjuː/ n. 聚集地点;会场;(尤指)体育比赛场所犯罪地点;审判地争论中所持的立场">venues</span> for performance art. If <span class="annot" data-tooltip="counter /'kaʊntər/ n. 柜台, 柜台式长桌计数器vt. & vi. 对抗, 反驳adv. 反方向地, 对立地时 态: countered, co">counter</span>-parties in a <span class="annot" data-tooltip="lawsuit /'lɔːsuːt/ n. 诉讼（尤指非刑事案件）；诉讼案件">lawsuit</span> do not have <span class="annot" data-tooltip="adverse /əd'vɜːrs/ adj. 不利的；相反的；敌对的（名词adverseness，副词adversely）副 词: adversely">adverse</span> interests—say, because they answer to the same person—judges balk. So when Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> sued his own administration seeking $10bn in <span class="annot" data-tooltip="damages /'dæmɪdʒ/ v. 损害；伤害；毁坏；破坏n. 损坏，破坏，损失，损害，伤害（法院判定的）损害赔偿金时 态: damaged, damagi">damages</span>, the judge had questions. Rather than <span class="annot" data-tooltip="address /ə'dres/ v. 写（收信人）姓名地址；致函演说；演讲称呼（某人）；冠以（某种称呼）设法解决；处理；对付向…说话n. 地址；住址；通信处 ">address</span> them, on May 18th the president dropped his suit altogether. In exchange he secured a <span class="annot" data-tooltip="commitment /kə'mɪtmənt/ n. 承诺；保证；信奉；献身；委任；花费金钱、时间、人力等">commitment</span> by his own administration to <span class="annot" data-tooltip="compensate /'kɑːmpenseɪt/ vt. & vi. 补偿, 报酬时 态: compensated, compensating, compensates">compensate</span> <span class="annot" data-tooltip="victims /'vɪktɪm/ n. 牺牲者；受害人；牺牲品">victims</span> of government “lawfare”, to the <span class="annot" data-tooltip="tune /tuːn/ n. 曲调, 曲子vt. & vi. 调音vt. 调整时 态: tuned, tuning, tunes">tune</span> of $1.8bn. In maga-speak, that means political <span class="annot" data-tooltip="allies n. （第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者">allies</span> prosecuted by Democrats: think January 6th rioters, <span class="annot" data-tooltip="pro /proʊ/ n. 从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞">pro</span>-life activists and the like. The scheme is of a piece</p>
+<p>with the self-dealing and the shakedowns that have defined this presidency. Rather than <span class="annot" data-tooltip="line /laɪn/ n. 绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long inter">line</span> his <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> pockets with taxpayers’ money—Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> is not taking a cut himself—this one will line those of his supporters. The <span class="annot" data-tooltip="lawsuit /'lɔːsuːt/ n. 诉讼（尤指非刑事案件）；诉讼案件">lawsuit</span> originated with a <span class="annot" data-tooltip="genuine /'dʒenjuɪn/ adj. 真实的，真正的；诚恳的副 词: genuinely">genuine</span> wrong to the president. Between 2018 and 2020 a contractor at the <span class="annot" data-tooltip="internal /ɪn'tɜːrnl/ adj. 国内的；内部的；内在的名 词: internality">Internal</span> <span class="annot" data-tooltip="revenue /'revənuː/ n. 收入，收益；财政收入，税收">Revenue</span> Service (irs) named Charles Littlejohn <span class="annot" data-tooltip="illegally /ɪ'liːɡəli/ adv. 不法地">illegally</span> <span class="annot" data-tooltip="leaked /liːk/ n. 漏洞，裂缝；泄漏vt. 使渗漏，泄露vi. 漏，渗；泄漏出去时 态: leaked, leaking, leaks">leaked</span> Mr Trump’s tax returns to the New York Times and ProPublica, an investigative <span class="annot" data-tooltip="outlet /'aʊtlet/ n. 出口, 出路发泄的途径经销店">outlet</span>. Mr Littlejohn was prosecuted and sentenced to five years in prison. Other billionaires also had their information exposed, including Ken Griffin, a <span class="annot" data-tooltip="hedge /hedʒ/ vt. 用树篱笆围住；避免作正面答复vi. 用树篱围住；避免作正面答复n. 树篱；障碍时 态: hedged, hedging,">hedge</span>-fund tycoon. Both Mr Griffin and Mr Trump sued the irs. But <span class="annot" data-tooltip="whereas /ˌwer'æz/ conj. 但是, 而">whereas</span> Mr Griffin only sought an apology, which he got, Mr Trump demanded $10bn. Never before had a president sued his own administration. “<span class="annot" data-tooltip="essentially /ɪ'senʃəli/ adv. 本质上;根本上必需的">Essentially</span> the lawsuit’s been won,” he said back in February, a seeming acknowledgment of the stitch-up. A standard payout for people with <span class="annot" data-tooltip="breach /briːtʃ/ n. 破坏, 违反破裂, 不和缺口, 裂口vt. 攻破破坏, 违反时 态: breached, breaching, brea">breach</span>-of-<span class="annot" data-tooltip="confidentiality /ˌkɑːnfɪˌdenʃi'æləti/ n. 机密性">confidentiality</span> claims is $1,000 per <span class="annot" data-tooltip="violation /ˌvaɪə'leɪʃn/ n. 违反, 冒犯, 侵害违反(行为、事例)强奸">violation</span>. Anything above that requires the plaintiff to show “<span class="annot" data-tooltip="extraordinary /ɪk'strɔːrdəneri/ adj. 非常奇怪的非同寻常的, 特别的额外安排的, 临时的副 词: extraordinarily">extraordinary</span>” <span class="annot" data-tooltip="damage /'dæmɪdʒ/ v. 损害；伤害；毁坏；破坏n. 损坏，破坏，损失，损害，伤害（法院判定的）损害赔偿金时 态: damaged, damagi">damage</span>, which should in theory match losses incurred. Mr Trump has not had to justify anything to anyone. Todd Blanche, the man defending the government, once worked as his private lawyer. “I love you, sir,” he told his boss last month. The melding of law <span class="annot" data-tooltip="enforcement /ɪn'fɔːrsmənt/ n. 强制,实施,执行">enforcement</span> with the president’s personal <span class="annot" data-tooltip="agenda /ə'dʒendə/ n. （政治）议题；议事日程；目的">agenda</span> is another hallmark of this administration. As part of the deal, the IRS also agreed to drop any <span class="annot" data-tooltip="pending /'pendɪŋ/ adj. 未决定的；行将发生的prep. 在…期间；直到…时为止；在等待…之际v. 待定；悬而不决（pend的ing形式）">pending</span> <span class="annot" data-tooltip="audits /'ɔːdɪt/ v. 查（账）；审计；稽核【美式】旁听（大学课程）n. 审计；稽核（质量或标准的）审查，检查时 态: audited, aud">audits</span> of Mr Trump, his family or his firms. Nothing about the fund’s structure is normal. The Department of Justice (doj) says anyone who “suffered weaponisation and lawfare” for their politics can file a claim and that payouts can be kept secret. Really, it is a taxpayer-funded “slush fund for people with no legally cognisable injuries that was never authorised by Congress or the courts”, says Maria Glover of Georgetown University. That it was set up through a private deal makes it a <span class="annot" data-tooltip="handy /'hændi/ adj. 手边的，就近的；便利的；容易取得的；敏捷的比较级: handier, handiest">handy</span> way to circumvent Congress, which controls spending under the constitution. Barack Obama’s DoJ did something similar when it sued banks and diverted the proceeds to left-<span class="annot" data-tooltip="wing /wɪŋ/ n. 翅膀；翼；飞翔；派别vt. 使飞；飞过；空运；增加…速度；装以翼vi. 飞行时 态: winged, winging, ">wing</span> <span class="annot" data-tooltip="groups /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">groups</span> without congressional approval. Those deals were criticised by <span class="annot" data-tooltip="republicans /rɪ'pʌblɪkən/ adj. 共和国的, 共和政体的n. 拥护共和政体者, 共和主义者名 词: republicanism">Republicans</span> in Congress. There are no “partisan requirements” to seek a payout, according to the doj. In <span class="annot" data-tooltip="reality /ri'æləti/ n. 现实；真实；实际">reality</span>, the eligibility <span class="annot" data-tooltip="criteria /kraɪˈtɪrɪə/ n. 标准，条件（criterion的复数）">criteria</span> are clear enough: only maga need apply.</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>revenues</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>version</td><td>/'vɜːrʒn/ n.</td><td>变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本</td></tr>
+<tr><td>investing</td><td>/ɪn'vest/ vt.</td><td>投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买, investing, invests</td></tr>
+<tr><td>spectrum</td><td>/'spektrəm/ n.</td><td>光谱波谱范围, 系列复 数: spectra</td></tr>
+<tr><td>telecoms</td><td>/ˈtɛlɪˌkɑm/ n.</td><td>电信，远距通信；电讯</td></tr>
+<tr><td>hype</td><td>/haɪp/ n.</td><td>天花乱坠的广告宣传vt. 大肆宣传夸张地宣传(某人或某事物)(用巧计或绝技)人为地刺激,助长十分兴奋的；很激动的；十分担忧的被大肆宣扬(或宣传)的, hypin</td></tr>
+<tr><td>places</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>masts</td><td>/mæst/ n.</td><td>船桅，桅杆；旗杆MASTabbr. Magnetic Annular Shock Tube 磁性环形激波管(风洞研究用)</td></tr>
+<tr><td>enable</td><td>/ɪ'neɪbl/ vt.</td><td>使能够；提供做…的权利[措施]使可能，enabling，enables</td></tr>
+<tr><td>logistics</td><td>/lə'dʒɪstɪk/ adj.</td><td>后勤学的；符号逻辑的</td></tr>
+<tr><td>cadence</td><td>/'keɪdns/ n.</td><td>节奏；韵律；抑扬顿挫</td></tr>
+<tr><td>employer</td><td>/ɪm'plɔɪ/ vt.</td><td>使用，采用；雇用；使忙于，使从事于n. 雇用；使用, employing, employs</td></tr>
+<tr><td>startup</td><td>/ˈstɑrtˈʌp/ n.</td><td>启动；开办</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>intense</td><td>/ɪn'tens/ adj.</td><td>强烈的；紧张的；热情的；非常的, intensest</td></tr>
+<tr><td>solar</td><td>/'soʊlər/ adj.</td><td>太阳的；日光的；利用太阳光的；与太阳相关的n. 日光浴室</td></tr>
+<tr><td>synchronous</td><td>/'sɪŋkrənəs/ adj.</td><td>同时存在〔发生〕的；同步的</td></tr>
+<tr><td>quarter</td><td>/'kwɔːrtər/ n.</td><td>四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一, quartering, quarters</td></tr>
+<tr><td>consumes</td><td>/kən'suːm/ vt.</td><td>消耗, 消费, 耗尽大吃, 大喝烧毁, 毁灭, consuming, consumes</td></tr>
+<tr><td>vacuum</td><td>/'vækjuːm/ n.</td><td>真空〈口〉真空吸尘器空间; 空虚; 空白vt. 用真空吸尘器清扫(某物)</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>stirs</td><td>/stɜːr/ vt.</td><td>& vi. 搅拌(使)移动；(使)激动n. 搅动；搅和；搅拌激动；纷乱；骚乱STIRabbr. Surveillance and Target Indicati</td></tr>
+<tr><td>extinction</td><td>/ɪk'stɪŋkʃn/ n.</td><td>熄灭，消灭，灭绝；废除</td></tr>
+<tr><td>considering</td><td>/kən'sɪdərɪŋ/ prep.</td><td>考虑到, 就…而论adv. 从各方面考虑, 从通盘考虑</td></tr>
+<tr><td>crunching</td><td>/krʌntʃ/ n.</td><td>咬碎，咬碎声；扎扎地踏vt. 压碎；嘎扎嘎扎的咬嚼；扎扎地踏过vi. 嘎吱作响地咀嚼；嘎吱嘎吱地踏过, crunching, crunches</td></tr>
+<tr><td>revenues</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>anthropic</td><td>/ænˈθrɑpɪk/ adj.</td><td>人类的,有关人类的</td></tr>
+<tr><td>established</td><td>/ɪ'stæblɪʃt/ adj.</td><td>已建立的；已设立的；已制定的确定的，证实的</td></tr>
+<tr><td>rivals</td><td>/'raɪvl/ n.</td><td>竞争对手vt. 与…竞争, 与…匹敌, rivalled rivaling, rivalling rivals, rivals</td></tr>
+<tr><td>overtake</td><td>/ˌoʊvər'teɪk/ vt.</td><td>赶上；压倒；突然来袭vi. 超车, overtakes</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>infrastructure</td><td>/'ɪnfrəstrʌktʃər/ n.</td><td>基础设施; 基础结构</td></tr>
+<tr><td>nvidia</td><td>— </td><td>恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商</td></tr>
+<tr><td>premium</td><td>/'priːmiəm/ n.</td><td>奖金，津贴；加价；附加费；保险费；额外费用adj. （品质）高级的；优质的，顶级的</td></tr>
+<tr><td>tend</td><td>/tend/ vt.</td><td>照料，照顾，伺候vi. 往，朝向易于；倾向，tending，tends</td></tr>
+<tr><td>retail</td><td>/ˈriːteɪl/ vt.</td><td>零售；转述vi. 零售n. 零售adv. 以零售方式adj. 零售的, retailing, retails</td></tr>
+<tr><td>brace</td><td>/breɪs/ n.</td><td>箍子；夹子；支架大括弧；大括号（ 猎获的鸟或兽）一对，一双v. （为困难或坏事）使作准备；使防备使（身体或身体部位）顶住，抵住（以免跌倒等）（做费劲的事之前）绷</td></tr>
+<tr><td>keen</td><td>/kiːn/ adj.</td><td>锋利的热衷的，热心的，渴望(做某事)激烈的，紧张的良好的；敏锐的，敏捷的，keenest</td></tr>
+<tr><td>tier</td><td>/tɪr/ n.</td><td>行，列；层，排；等级vt. 使层叠vi. 成递升排列, tiering, tiers</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>horizon</td><td>/hə'raɪzn/ n.</td><td>地平线；眼界；范围；视野</td></tr>
+<tr><td>cover</td><td>/'kʌvər/ vt.</td><td>包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替, covering, covers</td></tr>
+<tr><td>amazon</td><td>/ˈæməˌzɑn/ n.</td><td>高大强悍的女人；（古希腊神话中的）亚马孙族女战士Amazonn. 亚马逊河(南美洲大河)</td></tr>
+<tr><td>fond</td><td>/fɑːnd/ adj.</td><td>喜欢的；温柔的；宠爱的, fondest</td></tr>
+<tr><td>sermons</td><td>/'sɜːrmən/ n.</td><td>布道, 讲道, 说教讲道文章一大通教训</td></tr>
+<tr><td>democratic</td><td>/ˌdemə'krætɪk/ adj.</td><td>民主的, 有民主精神或作风的</td></tr>
+<tr><td>candidate</td><td>/'kændɪdət，ˈkændɪdeɪt/ n.</td><td>申请求职者, 候选人报考者</td></tr>
+<tr><td>alive</td><td>/ə'laɪv/ adj.</td><td>活着的, 在世的, 存在的有活力的, 活跃的, 有生气的</td></tr>
+<tr><td>senate</td><td>/ˈsenət/ </td><td>n.（诸如美国、澳大利亚、法国的）参议院（the Senate） （某些国家的）大学理事会，大学评议会（古罗马的）元老院</td></tr>
+<tr><td>sue</td><td>/suː/ vt.</td><td>& vi. (为要求赔偿损失而)起诉, 控告, 和…打官司, suing, sues</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>venues</td><td>/'venjuː/ n.</td><td>聚集地点;会场;(尤指)体育比赛场所犯罪地点;审判地争论中所持的立场</td></tr>
+<tr><td>counter</td><td>/'kaʊntər/ n.</td><td>柜台, 柜台式长桌计数器vt. & vi. 对抗, 反驳adv. 反方向地, 对立地, countering, counters</td></tr>
+<tr><td>lawsuit</td><td>/'lɔːsuːt/ n.</td><td>诉讼（尤指非刑事案件）；诉讼案件</td></tr>
+<tr><td>adverse</td><td>/əd'vɜːrs/ adj.</td><td>不利的；相反的；敌对的（名词adverseness，副词adversely）</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>damages</td><td>/'dæmɪdʒ/ v.</td><td>损害；伤害；毁坏；破坏n. 损坏，破坏，损失，损害，伤害（法院判定的）损害赔偿金, damaging, damages</td></tr>
+<tr><td>address</td><td>/ə'dres/ v.</td><td>写（收信人）姓名地址；致函演说；演讲称呼（某人）；冠以（某种称呼）设法解决；处理；对付向…说话n. 地址；住址；通信处 网址；电子邮件地址 演讲，演说 称呼 【</td></tr>
+<tr><td>commitment</td><td>/kə'mɪtmənt/ n.</td><td>承诺；保证；信奉；献身；委任；花费金钱、时间、人力等</td></tr>
+<tr><td>compensate</td><td>/'kɑːmpenseɪt/ vt.</td><td>& vi. 补偿, 报酬, compensating, compensates</td></tr>
+<tr><td>victims</td><td>/'vɪktɪm/ n.</td><td>牺牲者；受害人；牺牲品</td></tr>
+<tr><td>tune</td><td>/tuːn/ n.</td><td>曲调, 曲子vt. & vi. 调音vt. 调整, tuning, tunes</td></tr>
+<tr><td>allies</td><td>— n.</td><td>（第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者</td></tr>
+<tr><td>pro</td><td>/proʊ/ n.</td><td>从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞成；支持Pro脯氨酸PROabbr. P</td></tr>
+<tr><td>line</td><td>/laɪn/ n.</td><td>绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long interspersed element)长散在元</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>lawsuit</td><td>/'lɔːsuːt/ n.</td><td>诉讼（尤指非刑事案件）；诉讼案件</td></tr>
+<tr><td>genuine</td><td>/'dʒenjuɪn/ adj.</td><td>真实的，真正的；诚恳的</td></tr>
+<tr><td>internal</td><td>/ɪn'tɜːrnl/ adj.</td><td>国内的；内部的；内在的</td></tr>
+<tr><td>revenue</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>illegally</td><td>/ɪ'liːɡəli/ adv.</td><td>不法地</td></tr>
+<tr><td>leaked</td><td>/liːk/ n.</td><td>漏洞，裂缝；泄漏vt. 使渗漏，泄露vi. 漏，渗；泄漏出去, leaking, leaks</td></tr>
+<tr><td>outlet</td><td>/'aʊtlet/ n.</td><td>出口, 出路发泄的途径经销店</td></tr>
+<tr><td>hedge</td><td>/hedʒ/ vt.</td><td>用树篱笆围住；避免作正面答复vi. 用树篱围住；避免作正面答复n. 树篱；障碍, hedging, hedges</td></tr>
+<tr><td>whereas</td><td>/ˌwer'æz/ conj.</td><td>但是, 而</td></tr>
+<tr><td>essentially</td><td>/ɪ'senʃəli/ adv.</td><td>本质上;根本上必需的</td></tr>
+<tr><td>breach</td><td>/briːtʃ/ n.</td><td>破坏, 违反破裂, 不和缺口, 裂口vt. 攻破破坏, 违反, breaching, breaches</td></tr>
+<tr><td>confidentiality</td><td>/ˌkɑːnfɪˌdenʃi'æləti/ n.</td><td>机密性</td></tr>
+<tr><td>violation</td><td>/ˌvaɪə'leɪʃn/ n.</td><td>违反, 冒犯, 侵害违反(行为、事例)强奸</td></tr>
+<tr><td>extraordinary</td><td>/ɪk'strɔːrdəneri/ adj.</td><td>非常奇怪的非同寻常的, 特别的额外安排的, 临时的</td></tr>
+<tr><td>damage</td><td>/'dæmɪdʒ/ v.</td><td>损害；伤害；毁坏；破坏n. 损坏，破坏，损失，损害，伤害（法院判定的）损害赔偿金, damaging, damages</td></tr>
+<tr><td>enforcement</td><td>/ɪn'fɔːrsmənt/ n.</td><td>强制,实施,执行</td></tr>
+<tr><td>agenda</td><td>/ə'dʒendə/ n.</td><td>（政治）议题；议事日程；目的</td></tr>
+<tr><td>pending</td><td>/'pendɪŋ/ adj.</td><td>未决定的；行将发生的prep. 在…期间；直到…时为止；在等待…之际v. 待定；悬而不决（pend的ing形式）</td></tr>
+<tr><td>audits</td><td>/'ɔːdɪt/ v.</td><td>查（账）；审计；稽核【美式】旁听（大学课程）n. 审计；稽核（质量或标准的）审查，检查, auditing, audits</td></tr>
+<tr><td>handy</td><td>/'hændi/ adj.</td><td>手边的，就近的；便利的；容易取得的；敏捷的, handiest</td></tr>
+<tr><td>wing</td><td>/wɪŋ/ n.</td><td>翅膀；翼；飞翔；派别vt. 使飞；飞过；空运；增加…速度；装以翼vi. 飞行, winging, wings</td></tr>
+<tr><td>groups</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>republicans</td><td>/rɪ'pʌblɪkən/ adj.</td><td>共和国的, 共和政体的n. 拥护共和政体者, 共和主义者</td></tr>
+<tr><td>reality</td><td>/ri'æləti/ n.</td><td>现实；真实；实际</td></tr>
+<tr><td>criteria</td><td>/kraɪˈtɪrɪə/ n.</td><td>标准，条件（criterion的复数）</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day6.html" class="nav-btn">← Day 6</a>
+  <a href="day8.html" class="nav-btn">Day 8 →</a>
+</div>
+
+<div class="progress">📖 Day 7 of 43</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-05-23</div>
+
+</body>
+</html>

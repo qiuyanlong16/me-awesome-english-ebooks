@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Culture | Red, white and cru</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-05-23</div>
+
+<h1 class="article-title">Culture | Red, white and cru</h1>
+<div class="article-section">Culture</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>But 50 years ago, on May 24th, the unthinkable happened. Red and white wines from Napa made in the French style—a bottle of Stag’s <span class="annot" data-tooltip="leap /liːp/ vi. 跳，跳跃n. 跳跃；飞跃vt. 跳跃，跳过；使跃过时 态: leaped, leapt leaping, leaps">Leap</span> and Chateau Montelena from 1973—won the <span class="annot" data-tooltip="contest /'kɑːntest/ vt. 争辩；提出质疑vi. 竞争；争辩n. 竞赛；争论；争夺时 态: contested, contesting, conte">contest</span>, ranking above acclaimed names such as Château Mouton Rothschild and Château Haut-Brion. Unlike the mythical Judgment of Paris, which led to the Trojan war, golden grapes did not provoke an <span class="annot" data-tooltip="actual /'æktʃuəl/ adj. 真实的，实际的；现行的，目前的副 词: actually">actual</span> conflict—but they did <span class="annot" data-tooltip="prompt /prɑːmpt/ adj. 敏捷的，迅速的；立刻的vt. 促进；激起；提示；（给演员）提白n. 提示；付款期限；DOS命令：改变DOS系统提示符的风">prompt</span> some fighting talk. One French wine official later described the tasting as “our Waterloo”. The French first blamed the judges. They also, as usual, blamed the English. “Perfidious Albion” is what one winemaker called Spurrier to his face; others lobbed less literary insults behind his back. (In 2008 Spurrier was played memorably by Alan Rickman in “Bottle Shock”, Hollywood’s depiction of the tasting.) The Judgment of Paris was the shot heard round the wine world. Napa’s victory had two Nebuchadnezzar-size effects. First, it <span class="annot" data-tooltip="sparked /spɑːrk/ n. 火花，火星；电火花；一丝，略微；导火线，诱因v. 引发，触发；产生火花（电火花）；点燃；增加趣味（或活力、风味等）时 态">sparked</span> demand for Californian wine at home and abroad. The volume of exported bottles of American wine more than quintupled between 1975 and 1980. Second, it inspired confidence in “new world” producers, including Argentina and Australia. “There is no more influential event in the wine world, ever,” claims Juan Muñoz-Oca, <span class="annot" data-tooltip="estate /ɪ'steɪt/ n.（位于乡村的）大片私有土地，庄园，种植园【英式】（按规划建造的）住宅区，工业区【法律】（个人死后留下的全部）财产，遗">estate</span> director at Stag’s Leap. Today the two winning bottles can be found at the Smithsonian’s National Museum of</p>
+<p>American History, where George Washington’s uniform and the original star-spangled banner are also on display. Much can be discerned from how the two countries are <span class="annot" data-tooltip="marking /mɑːr/ vt. 毁坏；损坏；玷污MARabbr. Master of Arts in Religion 宗教硕士Mar三月(March)">marking</span> the tasting’s 50th anniversary. Stag’s <span class="annot" data-tooltip="leap /liːp/ vi. 跳，跳跃n. 跳跃；飞跃vt. 跳跃，跳过；使跃过时 态: leaped, leapt leaping, leaps">Leap</span> and Chateau Montelena are <span class="annot" data-tooltip="hosting /hoʊst/ n. 主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集时 态: hosted, hosting, host">hosting</span> events around the world and pouring <span class="annot" data-tooltip="tastes /teɪst/ n. 滋味, 味道鉴赏力爱好, 嗜好vt. & vi. 尝, 品尝, 尝到vt. 吃, 喝体验, 领略时 态: tasted,">tastes</span> of the acclaimed vintages. (The 1973 Stag’s Leap and Montelena were released with a price tag of $6 and $6.50, <span class="annot" data-tooltip="respectively /rɪ'spektɪv/ adj. 各自的; 各个的">respectively</span>, around $35-38 in today’s dollars. Now a single bottle costs thousands of dollars, if you can find one.) And following Ralph Waldo Emerson’s <span class="annot" data-tooltip="observation /ˌɑːbzər'veɪʃn/ n. 注意；观察观察力言论，评论，意见观察资料，观察数据形容词: observational">observation</span> that “music and wine are one,” in July a new one-act opera based on the tasting will premiere in Napa. In France there will be no songs or <span class="annot" data-tooltip="spectacle /'spektəkl/ n. 壮观的场面或景象可笑的事物; 愚蠢的景象眼镜">spectacle</span>. Ask winemakers there how often the Judgment of Paris is discussed, and they will claim almost never. (Though they will also point out that the French wines, on average, scored higher than Napa’s. And that they aged better, too.) The competitive element of the tasting <span class="annot" data-tooltip="obscures /əb'skjʊr/ adj. 无名的；鲜为人知的；默默无闻的费解的，晦涩的；模糊的，朦胧的；不清楚的v. 遮掩；遮蔽；使不分明隐藏，掩盖；使难理解，使">obscures</span> the fact that, in the <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span> following the Judgment, both American and French wines boomed, enjoying new markets and newly <span class="annot" data-tooltip="minted /mɪnt/ n. 薄荷；造币厂，巨款vt. 铸造，铸币时 态: minted, minting, mints">minted</span> middle-class wine drinkers. Fifty years on, the <span class="annot" data-tooltip="scene /siːn/ n. 情景；景象；场面；事件">scene</span> is less convivial. Wine <span class="annot" data-tooltip="consumption /kən'sʌmpʃn/ n. 消费，消耗；消费[耗]量肺病；结核病">consumption</span> is <span class="annot" data-tooltip="falling /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">falling</span>, with Gen Z and baby-boomers alike preferring to drink “less but better”. After being</p>
+<p>associated with heart health, now wine is on the heart and mind of health officials, who say no amount of alcohol is safe. Wine is being “put in the same category as prostitution and drugs”, complains Stéphanie de Bouard- Rivoal of Château Angelus, a top-<span class="annot" data-tooltip="tier /tɪr/ n. 行，列；层，排；等级vt. 使层叠vi. 成递升排列时 态: tiered, tiering, tiers">tier</span> winery in Saint Émilion. Today winemakers in Bordeaux talk openly about la crise (the crisis). “Pretty bad” is how Bo Barrett, who runs Chateau Montelena, describes the situation in Napa. Both regions are seeing <span class="annot" data-tooltip="vines /vaɪn/ n. [植]葡萄树；[植]藤本植物；[植]攀缘植物；[植]藤vi. 长成藤蔓；爬藤时 态: vined, vining, vi">vines</span> ripped out, as the supply of grapes outstrips demand. France and the EU have <span class="annot" data-tooltip="committed /kə'mɪt/ vt. 犯罪；犯错承诺；使自己受约束托付；交付时 态: committed，committing，commits">committed</span> around €250m ($290m) to <span class="annot" data-tooltip="vine /vaɪn/ n. [植]葡萄树；[植]藤本植物；[植]攀缘植物；[植]藤vi. 长成藤蔓；爬藤时 态: vined, vining, vi">vine</span>-uprooting. Of all the world’s wine regions, Burgundy has fared best. At about a third of Bordeaux’s size, it is smaller, less <span class="annot" data-tooltip="corporate /'kɔːrpərət/ adj. 社团的, 法人的副 词: corporately">corporate</span> and more coveted by connoisseurs. Its wines—reds made from Pinot Noir and whites from Chardonnay grapes—<span class="annot" data-tooltip="boast /boʊst/ n. 自吹自擂, 自夸的话vt. & vi. 自夸vt. 有(引以为荣的事物)时 态: boasted, boasting, ">boast</span> elegance and finesse. (Bordeaux’s reds are based on Cabernet Sauvignon and Merlot.) Burgundy’s <span class="annot" data-tooltip="rarity /'rerəti/ n. 罕见；珍贵；稀薄；珍品（需用复数）">rarity</span>, exclusivity and sometimes astronomical prices have <span class="annot" data-tooltip="prompted /prɑːmpt/ adj. 敏捷的，迅速的；立刻的vt. 促进；激起；提示；（给演员）提白n. 提示；付款期限；DOS命令：改变DOS系统提示符的风">prompted</span> even millionaires to complain they can no longer afford to drink it. On Liv-ex, a wine exchange, Burgundy’s share of sales has risen to around 23%, more than <span class="annot" data-tooltip="triple /'trɪpl/ adj. 三倍的；三方的n. 三倍数；三个一组vi. 增至三倍vt. 使成三倍时 态: tripled, tripling, tr">triple</span> what it was ten years ago (see chart).</p>
+<p>Both Bordeaux and Napa, in <span class="annot" data-tooltip="contrast /'kɑːntræst/ n. 对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照时 态: contrasted, cont">contrast</span>, are experiencing “economic crises” and are “at a turning-point”, says William Kelley, editor-in-chief of the Wine <span class="annot" data-tooltip="advocate /ˈædvəkeɪt，'ædvəkət/ v. 拥护；支持；提倡n. 拥护者；支持者；提倡者；辩护律师；出庭辩护人时 态: advocated, advocating,">Advocate</span>. Yet their suffering has different causes. Bordeaux is “paying for the <span class="annot" data-tooltip="mischiefs /'mɪstʃɪf/ n. 损害, 危害, 伤害胡闹, 调皮捣蛋, 恶作剧调皮捣蛋的人, 淘气鬼">mischiefs</span> of the past”, says Omri <span class="annot" data-tooltip="ram /ræm/ abbr. Royal Academy of Music〈英〉皇家音乐学院">Ram</span> of Château Lafleur, namely that it produced a “<span class="annot" data-tooltip="bubble /'bʌbl/ n. 气泡，泡沫，泡状物；透明圆形罩，圆形顶vi. 沸腾，冒泡；发出气泡声vt. 使冒泡；滔滔不绝地说时 态: bubbled">bubble</span>” of too much wine that was “sold for the wrong reasons to the wrong <span class="annot" data-tooltip="clients /'klaɪənt/ n. 委托人顾客, 常客">clients</span>”. Chinese buyers had thirsted after Bordeaux’s <span class="annot" data-tooltip="prestige /pre'stiːʒ/ n. 威望，声望；声誉Prestige普雷斯蒂奇(姓氏)">prestige</span> labels—until Xi Jinping denounced <span class="annot" data-tooltip="lavish /'lævɪʃ/ adj. 浪费的；丰富的；大方的vt. 浪费；慷慨给予；滥用时 态: lavished, lavishing, lavishes">lavish</span> gifts, and sales sputtered. That left winemakers, who had been raising prices, <span class="annot" data-tooltip="vulnerable /'vʌlnərəbl/ adj. 易受伤的, 脆弱的, 敏感的">vulnerable</span> to a <span class="annot" data-tooltip="collapse /kə'læps/ vi. 倒塌；瓦解；暴跌vt. 使倒塌，使崩溃；使萎陷n. 倒塌；失败；衰竭时 态: collapsed, collapsing">collapse</span> in demand. The en primeur system governing how Bordeaux’s wines are sold has also stoked la crise. It <span class="annot" data-tooltip="facilitates /fə'sɪlɪteɪt/ vt. 使便利, 减轻…的困难时 态: facilitated, facilitating, facilitates">facilitates</span> pre-orders for new vintages, which hands cash to winemakers for cases delivered years later. With the price of older vintages now comparable to, or below, new <span class="annot" data-tooltip="releases /rɪ'liːs/ vt. 释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]时 态: released，rel">releases</span>, buyers are less <span class="annot" data-tooltip="keen /kiːn/ adj. 锋利的热衷的，热心的，渴望(做某事)激烈的，紧张的良好的；敏锐的，敏捷的比较级: keener，keenest">keen</span> to <span class="annot" data-tooltip="snap /snæp/ vt. 猛咬；突然折断，拉断；啪地关上vi. 咬；厉声说；咯嗒一声关上n. 猛咬；劈啪声；突然折断adj. 突然的SNAPabb">snap</span> up the young <span class="annot" data-tooltip="stuff /stʌf/ n. 材料；东西；填充物；素材资料vt. 填塞；塞满；让吃饱vi. 吃得过多时 态: stuffed, stuffing, s">stuff</span>, which requires ageing and storage. It has created a <span class="annot" data-tooltip="doom /duːm/ vt. 注定；判定n. 厄运，劫数时 态: doomed，dooming，dooms">doom</span> loop, especially for the mid- and lower-<span class="annot" data-tooltip="tier /tɪr/ n. 行，列；层，排；等级vt. 使层叠vi. 成递升排列时 态: tiered, tiering, tiers">tier</span> wines. Last month wineries <span class="annot" data-tooltip="hosted /hoʊst/ n. 主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集时 态: hosted, hosting, host">hosted</span> their <span class="annot" data-tooltip="annual /'ænjuəl/ adj. 年度的；每年的n. 年刊，年鉴；一年生植物副 词: annually">annual</span> en primeur tastings, and the mood was <span class="annot" data-tooltip="tense /tens/ adj. 拉紧的；紧张的vt. 使拉紧；变得紧张vi. 拉紧，变得紧张n. 时态比较级: tenser, tensest">tense</span>. Some warn en primeur may cease to exist. Napa’s winemakers are feeling <span class="annot" data-tooltip="pinched /pɪntʃ/ vt. 捏；勒索；使苦恼；掐掉某物，修剪n. 匮乏；少量；夹痛vi. 夹痛；节省时 态: pinched, pinching, ">pinched</span> for different reasons. In recent <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span> they doubled down on the American market, selling to baby- boomers at high prices rather than prioritising a global <span class="annot" data-tooltip="footprint /'fʊtprɪnt/ n. (尤指软地上的)脚印，足迹；(地板上的)脚印，鞋印(建筑物或设备，尤指计算机)占用的空间 (尤指来自卫星的)广播信号覆盖">footprint</span>. But consumers are ageing and buying less. In <span class="annot" data-tooltip="addition /ə'dɪʃn/ n. 添加；增加物；加法形容词: additional">addition</span>, Napa’s most important international market, Canada, has dried up: sales of American wine there fell by <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> 80% in 2025, after most provinces banned American alcohol in retaliation for <span class="annot" data-tooltip="tariffs /'tærɪf/ n. 关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表时 态: tariffed, tariffing, tar">tariffs</span>. The cost of doing business in California (like France) is hangover-inducing, as is the red tape. “It’s hard for small producers to stay in business, so they’re gobbled up by larger wine companies,” says Mr Muñoz-Oca. Stag’s <span class="annot" data-tooltip="leap /liːp/ vi. 跳，跳跃n. 跳跃；飞跃vt. 跳跃，跳过；使跃过时 态: leaped, leapt leaping, leaps">Leap</span> is a case in point: Marchesi Antinori, an <span class="annot" data-tooltip="italian /ɪ'tæliən/ adj. 意大利的；意大利文化的；意大利语的n. 意大利人；意大利语">Italian</span> firm, acquired <span class="annot" data-tooltip="sole /soʊl/ n. 鞋底；脚底；基础；鳎目鱼adj. 唯一的；单独的；仅有的vt. 上鞋底；触底时 态: soled, soling, so">sole</span> <span class="annot" data-tooltip="ownership /'oʊnərʃɪp/ n. 物主的身份；所有(权)，所有制">ownership</span> of it in 2023. Palates have also changed. Napa underwent a “Cabernetisation”, as it chased the high scores and price tags of big red wines. Consumers, however, have shifted away from that “monster truck” style of red wine, says Mr Kelley. <span class="annot" data-tooltip="cuisine /kwɪ'ziːn/ n. 烹饪艺术菜肴">Cuisine</span> has become <span class="annot" data-tooltip="lighter /'laɪtər/ n. 打火机；驳船；点火者vt. 驳运时 态: lightered, lightering, lighters">lighter</span>, and people want more balanced reds with lower alcohol levels.</p>
+<p>Both Napa and Bordeaux are trying to navigate their new <span class="annot" data-tooltip="reality /ri'æləti/ n. 现实；真实；实际">reality</span>. Consumers are opening bottles younger, so “we try to make them approachable,” says Blandine de Brier Manoncourt, co-<span class="annot" data-tooltip="owner /'oʊnər/ n. 所有者；物主">owner</span> of Château Figeac in Bordeaux. Some, including Château Angelus, have launched lower-<span class="annot" data-tooltip="tier /tɪr/ n. 行，列；层，排；等级vt. 使层叠vi. 成递升排列时 态: tiered, tiering, tiers">tier</span> wines to appeal to younger buyers. Its 2023 Tempo d’Angelus sells for around €22 a bottle, about a twentieth the price of its <span class="annot" data-tooltip="flagship /'flæɡʃɪp/ n. 旗舰；佼佼者；（作定语）一流">flagship</span> wine. Today the competition is not between America and France. It is between wine and everything else. ■ This article was downloaded by zlibrary from https://www.economist.com//culture/2026/05/21/a-blind-tasting-revolutionised-the- wine-world-50-years-ago</p>
+<div class="article-separator"></div>
+<div class="article-header">Culture · Culture | The Kim catechism</div>
+<p>The unlikely inspiration for North Korea’s first <span class="annot" data-tooltip="dictator /'dɪkteɪtər/ n. 独裁者；命令者">dictator</span> Kim Il Sung’s <span class="annot" data-tooltip="regime /reɪ'ʒiːm/ n. 政权，政体；社会制度；管理体制">regime</span> was influenced by Christianity, a new book shows May 21st 2026 People have been predicting the <span class="annot" data-tooltip="collapse /kə'læps/ vi. 倒塌；瓦解；暴跌vt. 使倒塌，使崩溃；使萎陷n. 倒塌；失败；衰竭时 态: collapsed, collapsing">collapse</span> of North Korea’s <span class="annot" data-tooltip="communist /'kɑːmjənɪst/ n. 共产主义者adj. 共产主义的, 信仰共产主义的">communist</span> dictatorship since 1948, when Kim Il Sung seized power with Josef Stalin’s backing. And yet, almost 80 years later, the regime is still there, and the Kim family are still in charge of it, having survived the Korean war, the <span class="annot" data-tooltip="fall /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">fall</span> of the <span class="annot" data-tooltip="soviet /'soʊviet/ adj. 苏维埃的；苏联的；委员会的n. 苏维埃（代表会议）；委员会；代表会议Sovietn. 苏维埃adj. 苏维埃的,前苏联的">Soviet</span> Union, <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span> of national self-isolation and two dynastic <span class="annot" data-tooltip="transitions /træn'zɪʃn/ n. 过渡; 转变; 变迁">transitions</span>. Totalitarian repression, as well as assistance from powers such as China and Russia, help explain the regime’s <span class="annot" data-tooltip="resilience /rɪ'zɪliəns/ n. 弹回;弹性恢复力；适应力">resilience</span>. “Korean Messiah” by Jonathan Cheng, a journalist at the Wall Street <span class="annot" data-tooltip="journal /'dʒɜːrnl/ n. 日报，杂志；日记；[经]分类账">Journal</span>, <span class="annot" data-tooltip="sheds /ʃed/ n. 棚, 库vt. 流出, 流下蜕皮, 树叶脱落时 态: shed, shedding, sheds">sheds</span> light on a less appreciated force: faith.</p>
+<p>In keeping with <span class="annot" data-tooltip="communist /'kɑːmjənɪst/ n. 共产主义者adj. 共产主义的, 信仰共产主义的">communist</span> principles, North Korea is officially atheist. <span class="annot" data-tooltip="nonetheless /ˌnʌnðə'les/ adv. 虽然如此,但是">Nonetheless</span>, in Mr Cheng’s telling, its system owes as much to Jesus, Mary and Joseph as it does to Marx and Engels. He argues convincingly that Kim Il Sung appropriated the <span class="annot" data-tooltip="rituals /'rɪtʃuəl/ n. 仪式；惯例；礼制adj. 仪式的；礼节性的；例行的副 词: ritually">rituals</span> and dogma of religion when forging his political <span class="annot" data-tooltip="ideology /ˌaɪdi'ɑːlədʒi/ n. 意识形态；思想意识；观念学名 词: ideologist">ideology</span>. For example, all North Koreans are taught a set of decrees called the “Ten Principles for the <span class="annot" data-tooltip="monolithic /ˌmɑːnə'lɪθɪk/ adj. 独块巨石的整体的庞大的">Monolithic</span> Ideology”. They are “so similar in language to the biblical Ten Commandments, and…<span class="annot" data-tooltip="fulfilled /fʊlˈfɪl/ vt. 履行；满足；实现；使结束（等于fulfil）时 态: fulfilled, fulfilling, fulfillsal">fulfilled</span> so similar a function in the lives of its population” that they “might as well have been etched on a pair of stone <span class="annot" data-tooltip="tablets /'tæblət/ n. 药片(木、竹)简；碑，牌匾时 态: tableted，tableting，tablets">tablets</span>”, Mr Cheng writes. Pyongyang had long been a hotbed of Christian <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span>. In the late 19th and early 20th centuries the city became known as “the Jerusalem of the East” among Western missionaries in Asia. Kim’s ancestors were among the first converts; his parents were fervent Presbyterians. As a child, he accompanied his father to chapel, where he sang hymns and learned to play the organ. “This upbringing gave the young man a front-row seat to the power of faith —its power to mobilise, to offer succour, and, perhaps most importantly, to inspire awe, <span class="annot" data-tooltip="devotion /dɪ'voʊʃn/ n. 奉献, 献身, 忠诚热爱, 挚爱">devotion</span>, fear and zeal.” Kim’s <span class="annot" data-tooltip="exposure /ɪk'spoʊʒər/ n. 暴露, 显露揭发, 揭露(软片等)曝光">exposure</span> to Christianity also gave him an acute sense of the threat it posed to his hopes for absolute rule. After taking power in North Korea, Kim, by then an ardent Marxist and hardened <span class="annot" data-tooltip="anti /'ænti/ adj. 反对的n. 反对者，反对论者">anti</span>-American crusader, came to see Christianity as a <span class="annot" data-tooltip="rival /'raɪvl/ n. 竞争对手vt. 与…竞争, 与…匹敌时 态: rivaled, rivalled rivaling, rivalling">rival</span> faith. <span class="annot" data-tooltip="portraying /pɔːr'treɪ/ vt. 画像；描述扮演时 态: portrayed，portraying，portrays">Portraying</span> himself as the true messiah, he <span class="annot" data-tooltip="brutally /'bruːtl/ adj. 残忍的；野蛮的，不讲理的副 词: brutally">brutally</span> <span class="annot" data-tooltip="suppressed /sə'pres/ v. 镇压；制止；压制；（武力）平定禁止（发表）；查禁；封锁抑制；控制；忍住压制；阻止；抑制（身体的功能或反应）时 态: su">suppressed</span> Christians, killing thousands of believers and sending more fleeing to the South.</p>
+<p>Eventually the Great Leader’s teachings coalesced into a formal doctrine, known as Juche (self-reliance), which supplanted Marxism-Leninism as the foundation of the <span class="annot" data-tooltip="regime /reɪ'ʒiːm/ n. 政权，政体；社会制度；管理体制">regime</span>. Ideologues insisted that Kim’s dogma be treated as infallible. Mr Cheng quotes one North Korean escapee’s <span class="annot" data-tooltip="description /dɪ'skrɪpʃn/ n. 描述, 形容种类, 类型">description</span> of <span class="annot" data-tooltip="encountering /ɪn'kaʊntər/ vt. 遇到, 遭遇偶然碰到, 邂逅n. 突然遇到时 态: encountered, encountering, encount">encountering</span> Christianity after fleeing the country: “When they talked about God, it kept reminding me of Kim Il Sung…When they mentioned Jesus, it reminded me of Kim Jong Il.” The state enforces <span class="annot" data-tooltip="cult /kʌlt/ n. 狂热；异教团体；宗教信仰；膜拜仪式；时髦的人（或事物）；信徒">cult</span>-like <span class="annot" data-tooltip="devotion /dɪ'voʊʃn/ n. 奉献, 献身, 忠诚热爱, 挚爱">devotion</span> to the ruling family. Jim Jones of Jonestown infamy was an admirer of Kim Il Sung. Jones’s acolytes met with North Korean officials more than a dozen times. In arguing that Christianity holds the key to understanding the regime, Mr Cheng underplays other influences, such as Korea’s long history of monarchy, Stalinism and <span class="annot" data-tooltip="communist /'kɑːmjənɪst/ n. 共产主义者adj. 共产主义的, 信仰共产主义的">communist</span> <span class="annot" data-tooltip="ideology /ˌaɪdi'ɑːlədʒi/ n. 意识形态；思想意识；观念学名 词: ideologist">ideology</span> itself. But seeing North Korea as a quasi-religious project is illuminating. In <span class="annot" data-tooltip="addition /ə'dɪʃn/ n. 添加；增加物；加法形容词: additional">addition</span> to brute force, the Kim dynasty relies on indoctrination and inquisition to stay in power. If its subjects harbour doubts, they are not allowed to express them, on pain of the gulag or worse. The regime persecutes any belief system that could <span class="annot" data-tooltip="rival /'raɪvl/ n. 竞争对手vt. 与…竞争, 与…匹敌时 态: rivaled, rivalled rivaling, rivalling">rival</span> its <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span>. North Koreans who watch television shows smuggled in from rich, <span class="annot" data-tooltip="democratic /ˌdemə'krætɪk/ adj. 民主的, 有民主精神或作风的副 词: democratically">democratic</span> South Korea—which <span class="annot" data-tooltip="reveal /rɪ'viːl/ vt. 显示；露出泄露；透露时 态: revealed，revealing，reveals">reveal</span> how much better life is without a god-king—can face the death penalty. The greatest threat the Kim cult faces is not America, but apostasy. ■</p>
+<p>For more on the latest books, films, TV shows, albums and controversies, sign up to <span class="annot" data-tooltip="plot /plɑːt/ n. 故事情节(秘密)计划，密谋小块地皮vt. 把…分成小块；划分绘制；标出vt. & vi. 密谋时 态: plotted，">Plot</span> <span class="annot" data-tooltip="twist /twɪst/ vt. 捻；拧；扭伤；编织；使苦恼n. 扭曲；扭伤；拧vi. 扭动；弯曲时 态: twisted, twisting, twis">Twist</span>, our weekly subscriber-only newsletter This article was downloaded by zlibrary from https://www.economist.com//culture/2026/05/21/the-unlikely-inspiration-for-north- koreas-first-<span class="annot" data-tooltip="dictator /'dɪkteɪtər/ n. 独裁者；命令者">dictator</span></p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>leap</td><td>/liːp/ vi.</td><td>跳，跳跃n. 跳跃；飞跃vt. 跳跃，跳过；使跃过, leapt leaping, leaps</td></tr>
+<tr><td>contest</td><td>/'kɑːntest/ vt.</td><td>争辩；提出质疑vi. 竞争；争辩n. 竞赛；争论；争夺, contesting, contests</td></tr>
+<tr><td>actual</td><td>/'æktʃuəl/ adj.</td><td>真实的，实际的；现行的，目前的</td></tr>
+<tr><td>prompt</td><td>/prɑːmpt/ adj.</td><td>敏捷的，迅速的；立刻的vt. 促进；激起；提示；（给演员）提白n. 提示；付款期限；DOS命令：改变DOS系统提示符的风格adv. 准时地, promptest</td></tr>
+<tr><td>sparked</td><td>/spɑːrk/ n.</td><td>火花，火星；电火花；一丝，略微；导火线，诱因v. 引发，触发；产生火花（电火花）；点燃；增加趣味（或活力、风味等）, sparking, sparks</td></tr>
+<tr><td>estate</td><td>/ɪ'steɪt/ </td><td>n.（位于乡村的）大片私有土地，庄园，种植园【英式】（按规划建造的）住宅区，工业区【法律】（个人死后留下的全部）财产，遗产【英式】旅游汽车；客货两用轿车（est</td></tr>
+<tr><td>marking</td><td>/mɑːr/ vt.</td><td>毁坏；损坏；玷污MARabbr. Master of Arts in Religion 宗教硕士Mar三月(March)，marring，mars</td></tr>
+<tr><td>leap</td><td>/liːp/ vi.</td><td>跳，跳跃n. 跳跃；飞跃vt. 跳跃，跳过；使跃过, leapt leaping, leaps</td></tr>
+<tr><td>hosting</td><td>/hoʊst/ n.</td><td>主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集, hosting, hosts</td></tr>
+<tr><td>tastes</td><td>/teɪst/ n.</td><td>滋味, 味道鉴赏力爱好, 嗜好vt. & vi. 尝, 品尝, 尝到vt. 吃, 喝体验, 领略, tasting, tastes</td></tr>
+<tr><td>respectively</td><td>/rɪ'spektɪv/ adj.</td><td>各自的; 各个的</td></tr>
+<tr><td>observation</td><td>/ˌɑːbzər'veɪʃn/ n.</td><td>注意；观察观察力言论，评论，意见观察资料，观察数据</td></tr>
+<tr><td>spectacle</td><td>/'spektəkl/ n.</td><td>壮观的场面或景象可笑的事物; 愚蠢的景象眼镜</td></tr>
+<tr><td>obscures</td><td>/əb'skjʊr/ adj.</td><td>无名的；鲜为人知的；默默无闻的费解的，晦涩的；模糊的，朦胧的；不清楚的v. 遮掩；遮蔽；使不分明隐藏，掩盖；使难理解，使晦涩, obscurest</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>minted</td><td>/mɪnt/ n.</td><td>薄荷；造币厂，巨款vt. 铸造，铸币, minting, mints</td></tr>
+<tr><td>scene</td><td>/siːn/ n.</td><td>情景；景象；场面；事件</td></tr>
+<tr><td>consumption</td><td>/kən'sʌmpʃn/ n.</td><td>消费，消耗；消费[耗]量肺病；结核病</td></tr>
+<tr><td>falling</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>tier</td><td>/tɪr/ n.</td><td>行，列；层，排；等级vt. 使层叠vi. 成递升排列, tiering, tiers</td></tr>
+<tr><td>vines</td><td>/vaɪn/ n.</td><td>[植]葡萄树；[植]藤本植物；[植]攀缘植物；[植]藤vi. 长成藤蔓；爬藤, vining, vines</td></tr>
+<tr><td>committed</td><td>/kə'mɪt/ vt.</td><td>犯罪；犯错承诺；使自己受约束托付；交付，committing，commits</td></tr>
+<tr><td>vine</td><td>/vaɪn/ n.</td><td>[植]葡萄树；[植]藤本植物；[植]攀缘植物；[植]藤vi. 长成藤蔓；爬藤, vining, vines</td></tr>
+<tr><td>corporate</td><td>/'kɔːrpərət/ adj.</td><td>社团的, 法人的</td></tr>
+<tr><td>boast</td><td>/boʊst/ n.</td><td>自吹自擂, 自夸的话vt. & vi. 自夸vt. 有(引以为荣的事物), boasting, boasts</td></tr>
+<tr><td>rarity</td><td>/'rerəti/ n.</td><td>罕见；珍贵；稀薄；珍品（需用复数）</td></tr>
+<tr><td>prompted</td><td>/prɑːmpt/ adj.</td><td>敏捷的，迅速的；立刻的vt. 促进；激起；提示；（给演员）提白n. 提示；付款期限；DOS命令：改变DOS系统提示符的风格adv. 准时地, promptest</td></tr>
+<tr><td>triple</td><td>/'trɪpl/ adj.</td><td>三倍的；三方的n. 三倍数；三个一组vi. 增至三倍vt. 使成三倍, tripling, triples</td></tr>
+<tr><td>contrast</td><td>/'kɑːntræst/ n.</td><td>对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照, contrasting, contrasts</td></tr>
+<tr><td>advocate</td><td>/ˈædvəkeɪt，'ædvəkət/ v.</td><td>拥护；支持；提倡n. 拥护者；支持者；提倡者；辩护律师；出庭辩护人, advocating, advocates</td></tr>
+<tr><td>mischiefs</td><td>/'mɪstʃɪf/ n.</td><td>损害, 危害, 伤害胡闹, 调皮捣蛋, 恶作剧调皮捣蛋的人, 淘气鬼</td></tr>
+<tr><td>ram</td><td>/ræm/ abbr.</td><td>Royal Academy of Music〈英〉皇家音乐学院</td></tr>
+<tr><td>bubble</td><td>/'bʌbl/ n.</td><td>气泡，泡沫，泡状物；透明圆形罩，圆形顶vi. 沸腾，冒泡；发出气泡声vt. 使冒泡；滔滔不绝地说, bubbling, bubbles</td></tr>
+<tr><td>clients</td><td>/'klaɪənt/ n.</td><td>委托人顾客, 常客</td></tr>
+<tr><td>prestige</td><td>/pre'stiːʒ/ n.</td><td>威望，声望；声誉Prestige普雷斯蒂奇(姓氏)</td></tr>
+<tr><td>lavish</td><td>/'lævɪʃ/ adj.</td><td>浪费的；丰富的；大方的vt. 浪费；慷慨给予；滥用, lavishing, lavishes</td></tr>
+<tr><td>vulnerable</td><td>/'vʌlnərəbl/ adj.</td><td>易受伤的, 脆弱的, 敏感的</td></tr>
+<tr><td>collapse</td><td>/kə'læps/ vi.</td><td>倒塌；瓦解；暴跌vt. 使倒塌，使崩溃；使萎陷n. 倒塌；失败；衰竭, collapsing, collapses</td></tr>
+<tr><td>facilitates</td><td>/fə'sɪlɪteɪt/ vt.</td><td>使便利, 减轻…的困难, facilitating, facilitates</td></tr>
+<tr><td>releases</td><td>/rɪ'liːs/ vt.</td><td>释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]，releasing，releases</td></tr>
+<tr><td>keen</td><td>/kiːn/ adj.</td><td>锋利的热衷的，热心的，渴望(做某事)激烈的，紧张的良好的；敏锐的，敏捷的，keenest</td></tr>
+<tr><td>snap</td><td>/snæp/ vt.</td><td>猛咬；突然折断，拉断；啪地关上vi. 咬；厉声说；咯嗒一声关上n. 猛咬；劈啪声；突然折断adj. 突然的SNAPabbr. Satellite Navigat</td></tr>
+<tr><td>stuff</td><td>/stʌf/ n.</td><td>材料；东西；填充物；素材资料vt. 填塞；塞满；让吃饱vi. 吃得过多, stuffing, stuffs</td></tr>
+<tr><td>doom</td><td>/duːm/ vt.</td><td>注定；判定n. 厄运，劫数，dooming，dooms</td></tr>
+<tr><td>tier</td><td>/tɪr/ n.</td><td>行，列；层，排；等级vt. 使层叠vi. 成递升排列, tiering, tiers</td></tr>
+<tr><td>hosted</td><td>/hoʊst/ n.</td><td>主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集, hosting, hosts</td></tr>
+<tr><td>annual</td><td>/'ænjuəl/ adj.</td><td>年度的；每年的n. 年刊，年鉴；一年生植物</td></tr>
+<tr><td>tense</td><td>/tens/ adj.</td><td>拉紧的；紧张的vt. 使拉紧；变得紧张vi. 拉紧，变得紧张n. 时态, tensest</td></tr>
+<tr><td>pinched</td><td>/pɪntʃ/ vt.</td><td>捏；勒索；使苦恼；掐掉某物，修剪n. 匮乏；少量；夹痛vi. 夹痛；节省, pinching, pinches</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>footprint</td><td>/'fʊtprɪnt/ n.</td><td>(尤指软地上的)脚印，足迹；(地板上的)脚印，鞋印(建筑物或设备，尤指计算机)占用的空间 (尤指来自卫星的)广播信号覆盖区</td></tr>
+<tr><td>addition</td><td>/ə'dɪʃn/ n.</td><td>添加；增加物；加法</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>tariffs</td><td>/'tærɪf/ n.</td><td>关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表, tariffing, tariffs</td></tr>
+<tr><td>leap</td><td>/liːp/ vi.</td><td>跳，跳跃n. 跳跃；飞跃vt. 跳跃，跳过；使跃过, leapt leaping, leaps</td></tr>
+<tr><td>italian</td><td>/ɪ'tæliən/ adj.</td><td>意大利的；意大利文化的；意大利语的n. 意大利人；意大利语</td></tr>
+<tr><td>sole</td><td>/soʊl/ n.</td><td>鞋底；脚底；基础；鳎目鱼adj. 唯一的；单独的；仅有的vt. 上鞋底；触底, soling, soles</td></tr>
+<tr><td>ownership</td><td>/'oʊnərʃɪp/ n.</td><td>物主的身份；所有(权)，所有制</td></tr>
+<tr><td>cuisine</td><td>/kwɪ'ziːn/ n.</td><td>烹饪艺术菜肴</td></tr>
+<tr><td>lighter</td><td>/'laɪtər/ n.</td><td>打火机；驳船；点火者vt. 驳运, lightering, lighters</td></tr>
+<tr><td>reality</td><td>/ri'æləti/ n.</td><td>现实；真实；实际</td></tr>
+<tr><td>owner</td><td>/'oʊnər/ n.</td><td>所有者；物主</td></tr>
+<tr><td>tier</td><td>/tɪr/ n.</td><td>行，列；层，排；等级vt. 使层叠vi. 成递升排列, tiering, tiers</td></tr>
+<tr><td>flagship</td><td>/'flæɡʃɪp/ n.</td><td>旗舰；佼佼者；（作定语）一流</td></tr>
+<tr><td>dictator</td><td>/'dɪkteɪtər/ n.</td><td>独裁者；命令者</td></tr>
+<tr><td>regime</td><td>/reɪ'ʒiːm/ n.</td><td>政权，政体；社会制度；管理体制</td></tr>
+<tr><td>collapse</td><td>/kə'læps/ vi.</td><td>倒塌；瓦解；暴跌vt. 使倒塌，使崩溃；使萎陷n. 倒塌；失败；衰竭, collapsing, collapses</td></tr>
+<tr><td>communist</td><td>/'kɑːmjənɪst/ n.</td><td>共产主义者adj. 共产主义的, 信仰共产主义的</td></tr>
+<tr><td>fall</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>soviet</td><td>/'soʊviet/ adj.</td><td>苏维埃的；苏联的；委员会的n. 苏维埃（代表会议）；委员会；代表会议Sovietn. 苏维埃adj. 苏维埃的,前苏联的,前苏联人的</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>transitions</td><td>/træn'zɪʃn/ n.</td><td>过渡; 转变; 变迁</td></tr>
+<tr><td>resilience</td><td>/rɪ'zɪliəns/ n.</td><td>弹回;弹性恢复力；适应力</td></tr>
+<tr><td>journal</td><td>/'dʒɜːrnl/ n.</td><td>日报，杂志；日记；[经]分类账</td></tr>
+<tr><td>sheds</td><td>/ʃed/ n.</td><td>棚, 库vt. 流出, 流下蜕皮, 树叶脱落, shedding, sheds</td></tr>
+<tr><td>communist</td><td>/'kɑːmjənɪst/ n.</td><td>共产主义者adj. 共产主义的, 信仰共产主义的</td></tr>
+<tr><td>nonetheless</td><td>/ˌnʌnðə'les/ adv.</td><td>虽然如此,但是</td></tr>
+<tr><td>rituals</td><td>/'rɪtʃuəl/ n.</td><td>仪式；惯例；礼制adj. 仪式的；礼节性的；例行的</td></tr>
+<tr><td>ideology</td><td>/ˌaɪdi'ɑːlədʒi/ n.</td><td>意识形态；思想意识；观念学</td></tr>
+<tr><td>monolithic</td><td>/ˌmɑːnə'lɪθɪk/ adj.</td><td>独块巨石的整体的庞大的</td></tr>
+<tr><td>fulfilled</td><td>/fʊlˈfɪl/ vt.</td><td>履行；满足；实现；使结束（等于fulfil）, fulfilling, fulfillsalso fulfils</td></tr>
+<tr><td>tablets</td><td>/'tæblət/ n.</td><td>药片(木、竹)简；碑，牌匾，tableting，tablets</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>devotion</td><td>/dɪ'voʊʃn/ n.</td><td>奉献, 献身, 忠诚热爱, 挚爱</td></tr>
+<tr><td>exposure</td><td>/ɪk'spoʊʒər/ n.</td><td>暴露, 显露揭发, 揭露(软片等)曝光</td></tr>
+<tr><td>anti</td><td>/'ænti/ adj.</td><td>反对的n. 反对者，反对论者</td></tr>
+<tr><td>rival</td><td>/'raɪvl/ n.</td><td>竞争对手vt. 与…竞争, 与…匹敌, rivalled rivaling, rivalling rivals, rivals</td></tr>
+<tr><td>portraying</td><td>/pɔːr'treɪ/ vt.</td><td>画像；描述扮演，portraying，portrays</td></tr>
+<tr><td>brutally</td><td>/'bruːtl/ adj.</td><td>残忍的；野蛮的，不讲理的</td></tr>
+<tr><td>suppressed</td><td>/sə'pres/ v.</td><td>镇压；制止；压制；（武力）平定禁止（发表）；查禁；封锁抑制；控制；忍住压制；阻止；抑制（身体的功能或反应），suppressing，suppresses</td></tr>
+<tr><td>regime</td><td>/reɪ'ʒiːm/ n.</td><td>政权，政体；社会制度；管理体制</td></tr>
+<tr><td>description</td><td>/dɪ'skrɪpʃn/ n.</td><td>描述, 形容种类, 类型</td></tr>
+<tr><td>encountering</td><td>/ɪn'kaʊntər/ vt.</td><td>遇到, 遭遇偶然碰到, 邂逅n. 突然遇到, encountering, encounters</td></tr>
+<tr><td>cult</td><td>/kʌlt/ n.</td><td>狂热；异教团体；宗教信仰；膜拜仪式；时髦的人（或事物）；信徒</td></tr>
+<tr><td>devotion</td><td>/dɪ'voʊʃn/ n.</td><td>奉献, 献身, 忠诚热爱, 挚爱</td></tr>
+<tr><td>communist</td><td>/'kɑːmjənɪst/ n.</td><td>共产主义者adj. 共产主义的, 信仰共产主义的</td></tr>
+<tr><td>ideology</td><td>/ˌaɪdi'ɑːlədʒi/ n.</td><td>意识形态；思想意识；观念学</td></tr>
+<tr><td>addition</td><td>/ə'dɪʃn/ n.</td><td>添加；增加物；加法</td></tr>
+<tr><td>rival</td><td>/'raɪvl/ n.</td><td>竞争对手vt. 与…竞争, 与…匹敌, rivalled rivaling, rivalling rivals, rivals</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>democratic</td><td>/ˌdemə'krætɪk/ adj.</td><td>民主的, 有民主精神或作风的</td></tr>
+<tr><td>reveal</td><td>/rɪ'viːl/ vt.</td><td>显示；露出泄露；透露，revealing，reveals</td></tr>
+<tr><td>plot</td><td>/plɑːt/ n.</td><td>故事情节(秘密)计划，密谋小块地皮vt. 把…分成小块；划分绘制；标出vt. & vi. 密谋，plotting，plots</td></tr>
+<tr><td>twist</td><td>/twɪst/ vt.</td><td>捻；拧；扭伤；编织；使苦恼n. 扭曲；扭伤；拧vi. 扭动；弯曲, twisting, twists</td></tr>
+<tr><td>dictator</td><td>/'dɪkteɪtər/ n.</td><td>独裁者；命令者</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day39.html" class="nav-btn">← Day 39</a>
+  <a href="day41.html" class="nav-btn">Day 41 →</a>
+</div>
+
+<div class="progress">📖 Day 40 of 43</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-05-23</div>
+
+</body>
+</html>

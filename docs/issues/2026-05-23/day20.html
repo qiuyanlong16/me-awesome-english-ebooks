@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Europe</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-05-23</div>
+
+<h1 class="article-title">Europe</h1>
+<div class="article-section"></div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>Europe’s secret Plan B to replace NATO Who are Europe’s newest troublemakers? Real Madrid’s boss calls an election How Europe is fighting for digital <span class="annot" data-tooltip="sovereignty /'sɑːvrənti/ n. 最高统治权, 君权国家的主权">sovereignty</span> Bre-entry may be the next drama to grip the European Union</p>
+<div class="article-separator"></div>
+<div class="article-header">Europe · Europe | Transatlantic rift</div>
+<p>Europe’s secret Plan B to replace NATO What happens if America quits May 21st 2026 SOLDIERS OF the “Black <span class="annot" data-tooltip="jack /dʒæk/ n. 千斤顶vt. 用千斤顶顶起离开；停止，放弃提高，增加">Jack</span>” brigade <span class="annot" data-tooltip="ritually /'rɪtʃuəl/ n. 仪式；惯例；礼制adj. 仪式的；礼节性的；例行的副 词: ritually">ritually</span> furled and packed their unit’s colours in Fort <span class="annot" data-tooltip="hood n. 头巾；兜帽；覆盖vt. 以头巾覆盖；罩上Hood胡德(姓氏)时 态: hooded, hooding, hoods">Hood</span>, <span class="annot" data-tooltip="texas /'teksəs/ n. 德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室">Texas</span> in early May, as the <span class="annot" data-tooltip="tank /tæŋk/ n. （存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内时 态: t">tank</span> unit’s 4,000 troops prepared to deploy to Poland to help defend NATO against the Russian threat. “When an armoured brigade combat team deploys forward, it sends a clear and unmistakable signal,” said General Thomas Feltey, the <span class="annot" data-tooltip="division /dɪ'vɪʒn/ n. [数] 除法；部门；分配；分割；师（军队）；赛区形容词: divisional">division</span>’s commander, at the ceremony. Less than two weeks later America sent the opposite signal: the deployment was scrapped. It was the second time this month that Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> had announced cuts to America’s military presence in Europe, reflecting his anger at the lack of European support for his war in Iran. On May 22nd America is expected to announce a <span class="annot" data-tooltip="reduction /rɪ'dʌkʃn/ n. 减少，缩小；减少的量，降价">reduction</span> in the forces it <span class="annot" data-tooltip="pledges /pledʒ/ n. 抵押；保证，誓言；抵押品，典当物vt. 保证，许诺；用……抵押；举杯祝……健康时 态: pledged, pledgin">pledges</span> in the event of an attack, Reuters reports.</p>
+<p>Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> has been casting doubt on his <span class="annot" data-tooltip="commitment /kə'mɪtmənt/ n. 承诺；保证；信奉；献身；委任；花费金钱、时间、人力等">commitment</span> to NATO and its Article 5 <span class="annot" data-tooltip="mutual /'mjuːtʃuəl/ adj. 相互的, 彼此的共同的, 共有的名 词: mutuality">mutual</span>-defence clause since the start of his second term. That has <span class="annot" data-tooltip="prompted /prɑːmpt/ adj. 敏捷的，迅速的；立刻的vt. 促进；激起；提示；（给演员）提白n. 提示；付款期限；DOS命令：改变DOS系统提示符的风">prompted</span> a long-overdue increase in European defence spending. Yet in recent months he has gone further, announcing unexpected troop <span class="annot" data-tooltip="reductions /rɪ'dʌkʃn/ n. 减少，缩小；减少的量，降价">reductions</span> and cancelling the deployment to Germany of a cruise-missile unit that was to <span class="annot" data-tooltip="plug /plʌɡ/ n. 栓；插头；塞子vi. 塞住；用插头将与电源接通vt. 塞住；插入；接插头时 态: plugged, plugging, ">plug</span> an important gap in Europe’s defence. The rapid drawdown has upended Europeans’ assumption that they would have time to build up their <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> forces and replace <span class="annot" data-tooltip="vital /'vaɪtl/ adj. 极重要的，必不可少的维持生命所必需的；生命的有生气的，充满生机的副 词: vitally">vital</span> American “enablers”, such as intelligence and surveillance <span class="annot" data-tooltip="assets /'æset/ n. 资产；有用的东西；有利条件；优点">assets</span>. America’s huge <span class="annot" data-tooltip="expenditure /ɪk'spendɪtʃər/ n. 花费, 使用(尤指金钱的)支出额">expenditure</span> of missiles in Iran is delaying shipments to European <span class="annot" data-tooltip="allies n. （第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者">allies</span> and <span class="annot" data-tooltip="ukraine n. 乌克兰（原苏联一加盟共和国，现已独立）">Ukraine</span>, as it restocks. Some in NATO, shocked by Mr Trump’s threat in January to seize Greenland from <span class="annot" data-tooltip="denmark /'denmɑːrk/ n. 丹麦(北欧国家,首都哥本哈根)">Denmark</span>, worry not only that America might sit out a war with Russia, but that it could <span class="annot" data-tooltip="actively adv. 积极地；活跃地">actively</span> thwart other members’ responses. The possibility is seen as remote. But interviews with <span class="annot" data-tooltip="senior /'siːniər/ adj. 年长的资深的; 地位高的〈美〉最高年级的n. 较年长者高年级学生〈美〉毕业班学生Senior西尼尔(姓氏)">senior</span> officers and defence officials from several NATO countries <span class="annot" data-tooltip="reveal /rɪ'viːl/ vt. 显示；露出泄露；透露时 态: revealed，revealing，reveals">reveal</span> for the first time how <span class="annot" data-tooltip="seriously /'sɪriəs/ adj. 严肃的，严重的；认真的；庄重的；危急的副 词: seriously">seriously</span> they take the risk. Some European armed forces are making secret plans to fight not just without America’s help, but without much of NATO’s command-and-control <span class="annot" data-tooltip="infrastructure /'ɪnfrəstrʌktʃər/ n. 基础设施; 基础结构">infrastructure</span>. “The Greenland crisis was a wake-up call,” says a Swedish defence official. “We realised we need a Plan B.” None of the officials interviewed would speak on the record, because of concerns that doing so could accelerate America’s departure. Mark Rutte, NATO’s <span class="annot" data-tooltip="secretary /'sekrəteri/ n. 秘书书记部长, 大臣形容词: secretarial">secretary</span>-general, “has <span class="annot" data-tooltip="literally /'lɪtərəli/ adv. 逐字地；照字面地确实地，真正地">literally</span> banned talking about it because he believes it can add fuel to the fire”, says one insider. When Matti Pesu of the Finnish Institute of International <span class="annot" data-tooltip="affairs /ə'fer/ n. 事情；事务；私事；（尤指关系不长久的）风流韵事">Affairs</span> (FIIA) co-authored a paper last year arguing for a Plan B, Finnish officials denied one would be <span class="annot" data-tooltip="considered /kən'sɪdər/ vt. & vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及时 态: considered, considering, ">considered</span>. But the urgency of the threat has led several countries to start thinking about how, and under whose command, Europe would fight if NATO were to “malfunction”, as one official put it. “What chain of command can you use if America is blocking NATO?” asks another defence official.</p>
+<p>The question cuts to the core of the alliance’s success. Most military coalitions look like a primary-school music <span class="annot" data-tooltip="practice /'præktɪs/ n. 练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规时 态: practiced，practicing，">practice</span>: each country turns up, bangs its drum roughly in time with the others, and leaves. NATO, by <span class="annot" data-tooltip="contrast /'kɑːntræst/ n. 对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照时 态: contrasted, cont">contrast</span>, was set up as a symphony <span class="annot" data-tooltip="orchestra /'ɔːrkɪstrə/ n. 管弦乐队形容词: orchestral">orchestra</span> controlled by a single conductor, the <span class="annot" data-tooltip="supreme /su'priːm/ adj. 最高的；至上的最重要的比较级: supremer，supremest 缩 写: supr">Supreme</span> Allied Commander Europe (SACEUR), an American general who also commands America’s forces in Europe. To conduct this orchestra, SACEUR has <span class="annot" data-tooltip="secure /sɪ'kjʊr/ adj. 安心的；有把握的可靠的；牢靠的；稳固的；安全的；稳妥的严密把守的；牢固的；坚固的v. （尤指经过努力）获得，取得，实现拴">secure</span> communications links to a network of permanent <span class="annot" data-tooltip="subordinate /sə'bɔːrdɪnət/ n. 部属，下属，下级；从属，次要">subordinate</span> <span class="annot" data-tooltip="headquarters /ˈhɛdˈkwɔrtɚ/ vi. 设总部vt. 将…的总部设在把…放在总部里时 态: headquartered, headquartering, hea">headquarters</span> (see map), staffed with thousands of personnel ready to respond the moment a war starts. “US leadership is the glue that holds the alliance together,” says Luis Simón, the director of the Centre for <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">Security</span>, Diplomacy and <span class="annot" data-tooltip="strategy /'strætədʒi/ n. 战略学, 兵法战略, 策略策略, 计谋">Strategy</span> at the Free University of <span class="annot" data-tooltip="brussels /ˈbrʌsəlz/ n. 布鲁塞尔（比利时首都）">Brussels</span>. “Without them, we would see a fragmentation, probably, of the deterrence ecosystem.” Thus a Plan B requires more than acquiring weapons; it means creating a structure under which Europeans would fight. The core, at least in northern Europe, would probably be a coalition of Baltic and Nordic countries, plus Poland. These countries mostly share common <span class="annot" data-tooltip="values /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">values</span>, and all fear Russia. Several of NATO’s bigger European members, such as Britain, France and Germany, have “tripwire” forces in the Baltics, and are thus very likely to be drawn into any conflict. Perhaps one-third of NATO members would “fight on day one” irrespective of whether Article 5 is <span class="annot" data-tooltip="triggered adj. 触发的">triggered</span>, says Edward</p>
+<p>Arnold of RUSI, a think-<span class="annot" data-tooltip="tank /tæŋk/ n. （存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内时 态: t">tank</span> in London. “No one would be waiting for the Portuguese to turn up at the North Atlantic Council [NATO’s highest decision-making body] to debate,” he says. One often-mentioned <span class="annot" data-tooltip="alternative /ɔːl'tɜːrnətɪv/ adj. 可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）">alternative</span> command structure is a British-led coalition of ten mostly Baltic and Nordic countries known as the <span class="annot" data-tooltip="joint /dʒɔɪnt/ n. 关节；接合处，接合点；接缝；（牛，羊等的腿）大块肉adj. 联合的，合办的；共同的；连接的vt. 连接，贴合；接合；使有">Joint</span> Expeditionary Force (JEF), with a <span class="annot" data-tooltip="headquarters /ˈhɛdˈkwɔrtɚ/ vi. 设总部vt. 将…的总部设在把…放在总部里时 态: headquartered, headquartering, hea">headquarters</span> near London. <span class="annot" data-tooltip="established /ɪ'stæblɪʃt/ adj. 已建立的；已设立的；已制定的确定的，证实的">Established</span> by Britain and six other NATO members in 2014, the JEF was originally seen as a complement to the larger body that could provide high-<span class="annot" data-tooltip="readiness /'redinəs/ n. 准备就绪愿意，乐意">readiness</span> forces on short notice for circumstances that did not meet the Article 5 <span class="annot" data-tooltip="threshold /'θreʃhoʊld/ n. 门槛; 〈喻〉开始">threshold</span>. Its remit expanded when Sweden and <span class="annot" data-tooltip="finland n. 芬兰（欧洲）名 词: Finlander">Finland</span> joined the coalition in 2017, several years before they applied for <span class="annot" data-tooltip="membership /'membərʃɪp/ n. 全体会员会员身份, 会员资格">membership</span> in NATO. It is now seen as a way to sidestep one of NATO’s weaknesses: any member can block the triggering of Article 5, which requires a unanimous decision. The JEF, as its then commander, British <span class="annot" data-tooltip="major /'meɪdʒər/ adj. 主要的；主修的；重要的；较多的n. 成年人；主修科目；陆军少校vi. 主修时 态: majored, majoring,">Major</span> General Jim Morris, said in 2023, “can react to situations on a non-<span class="annot" data-tooltip="consensus /kən'sensəs/ n. (意见等)一致, 一致同意">consensus</span> basis”. It has already been activated several times, for <span class="annot" data-tooltip="exercises /'eksərsaɪz/ n. 练习；运动；运用；操练；典礼；礼拜vt. 练习；锻炼；使用；使忙碌；使惊恐vi. 运动；练习时 态: exercised">exercises</span> and <span class="annot" data-tooltip="naval /'neɪvl/ adj. 海军的；军舰的">naval</span> patrols. “The JEF is the most established of the <span class="annot" data-tooltip="alternatives /ɔːl'tɜːrnətɪv/ adj. 可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）">alternatives</span>,” says Mr Arnold. Its headquarters already has <span class="annot" data-tooltip="capabilities /ˌkeɪpə'bɪləti/ n. 能做某事的素质;能力尚未发挥的天资或素质">capabilities</span> in intelligence, planning and <span class="annot" data-tooltip="logistics /lə'dʒɪstɪk/ adj. 后勤学的；符号逻辑的副 词: logistically">logistics</span>, he notes. It has its <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> <span class="annot" data-tooltip="secure /sɪ'kjʊr/ adj. 安心的；有把握的可靠的；牢靠的；稳固的；安全的；稳妥的严密把守的；牢固的；坚固的v. （尤指经过努力）获得，取得，实现拴">secure</span> communications networks that, <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">although</span> limited, do not rely on NATO. Britain’s membership offers a degree of nuclear deterrence. Yet the JEF focuses primarily on the Nordic and Baltic regions. It lacks major powers such as France, Germany and Poland. Some officials are anxious about Britain’s defence preparedness: underfunding has left it with few <span class="annot" data-tooltip="ships /ʃɪp/ vt. 运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Di">ships</span>, submarines and army units ready to deploy at short notice. “England is everyone’s favourite uncle,” says one official. “But it is suffering from Downton Abbey <span class="annot" data-tooltip="syndrome /'sɪndroʊm/ n. 综合征；征群；综合症状（特定情形下人的）典型负面特征，典型负面表现【计】校验子形容词: syndromic">syndrome</span>. It keeps up the pretence, but it doesn’t have the funds.” Such problems might be mitigated if the <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span> brought in Germany, which is <span class="annot" data-tooltip="enormously /ɪ'nɔːrməs/ adj. 巨大的, 极大的, 庞大的副 词: enormously">enormously</span> increasing its defence budget. For all its drawbacks, the JEF seems the best solution if European members are unable to take over the existing NATO framework. But Europe will find some form of defence framework to replace the Americans. A deterrent based on someone who may not show up is no deterrent at all. ■</p>
+<p>To stay on top of the biggest European stories, sign up to Café Europa, our weekly subscriber-only newsletter. This article was downloaded by zlibrary from https://www.economist.com//europe/2026/05/19/europes-secret-plan-b-to-replace-nato</p>
+<div class="article-separator"></div>
+<div class="article-header">Europe · Europe | The wild south-east</div>
+<p>Who are Europe’s newest troublemakers? <span class="annot" data-tooltip="corruption /kə'rʌpʃn/ n. 堕落;腐化;腐败;贿赂腐烂">Corruption</span> and <span class="annot" data-tooltip="inflation /ɪn'fleɪʃn/ n. (充气而引起的)膨胀通货膨胀">inflation</span> are boosting Eurosceptic populists May 21st 2026 WHEN PETER MAGYAR beat Viktor Orban in Hungary’s election in April, most European leaders were relieved. “For the first time in years, there are no Russians in the room,” joked Donald Tusk, Poland’s prime minister, at a European Union summit that month. Look to the south-east, however, and they have less to cheer. On May 8th Rumen Radev, a Russia- friendly populist, was sworn in as Bulgaria’s prime minister after winning an election in late April. On May 5th <span class="annot" data-tooltip="romania /ru'meɪniə/ n. 罗马尼亚（欧洲巴尔干半岛东北部国家）">Romania</span>’s liberal prime minister had been forced out in a no-confidence <span class="annot" data-tooltip="motion /'moʊʃn/ n. 动作；请求；手势；移动；意向vi. 运动；打手势vt. 运动；向…打手势时 态: motioned, motioning">motion</span> that was backed by both the centre-left and a rising nationalist-right party. Might Bulgaria and Romania replace Hungary as the EU’s <span class="annot" data-tooltip="awkward /'ɔːkwərd/ adj. 笨拙的；尴尬的；棘手的；不合适的副 词: awkwardly">awkward</span> <span class="annot" data-tooltip="squad /skwɑːd/ n. (军队中的)班, 小队">squad</span>? Economic malaise plagues both countries. Last year prices rose by 3.5% in</p>
+<p>Bulgaria and 6.8% in <span class="annot" data-tooltip="romania /ru'meɪniə/ n. 罗马尼亚（欧洲巴尔干半岛东北部国家）">Romania</span>, above the EU average of 2.5%. Growth is strong in Bulgaria, but Romania’s GDP was 1.7% lower in the first <span class="annot" data-tooltip="quarter /'kwɔːrtər/ n. 四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一时 ">quarter</span> than in the same period last year. This pushes voters <span class="annot" data-tooltip="towards /tɔːrdz/ prep. 向，朝为了；有助于；用于对于，关于接近；将近；大约">towards</span> populists. Mr Radev, a former air-force commander, had served since 2017 as president, a mostly <span class="annot" data-tooltip="ceremonial /ˌserɪ'moʊniəl/ adj. 礼仪的;仪式的adv. 礼仪地;仪式地名 词: ceremonialism">ceremonial</span> role. He <span class="annot" data-tooltip="campaigned /kæm'peɪn/ n. 运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）时">campaigned</span> for prime minister on an <span class="annot" data-tooltip="anti /'ænti/ adj. 反对的n. 反对者，反对论者">anti</span>-graft platform, vowing to dismantle Bulgaria’s “oligarchic model of <span class="annot" data-tooltip="governance /'ɡʌvərnəns/ n. 统治;管理;治理;统治方式;管理方法">governance</span>” and restore judicial independence. He linked the country’s <span class="annot" data-tooltip="corruption /kə'rʌpʃn/ n. 堕落;腐化;腐败;贿赂腐烂">corruption</span>, among the worst in the EU according to <span class="annot" data-tooltip="transparency /træns'pærənsi/ n. 透明；透明度；透明性透明的东西；幻灯片">Transparency</span> International, a Berlin-based <span class="annot" data-tooltip="monitor /'mɑːnɪtər/ n. 显示屏；监视器；（计算机）显示器监控器；监测器班长；级长；班代表（尤指派往国外的）监督员，核查员巨蜥v. 监视；检查；跟">monitor</span>, to its income <span class="annot" data-tooltip="inequality /ˌɪnɪ'kwɑːləti/ n. 不平等,不均等,不等量">inequality</span>, the highest in the bloc. After eight elections in five years, Bulgarians were looking to break the gridlock. Mr Radev’s <span class="annot" data-tooltip="progressive /prə'ɡresɪv/ adj. 不断前进的, 有进展的, 逐渐上升的进步的, 先进的副 词: progressively">Progressive</span> Bulgaria party won <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> 45% of the vote, <span class="annot" data-tooltip="crushing /krʌʃ/ vt. & vi. 压碎, 压坏vt. 弄皱镇压, 消灭, 击溃vi. 挤进, 挤入n. 拥挤的人群时 态: crushed, ">crushing</span> the <span class="annot" data-tooltip="corrupt /kə'rʌpt/ adj. 腐败的，贪污的；堕落的vt. 使堕落，使恶化；使腐烂vi. 腐烂；堕落，腐化时 态: corrupted, corrup">corrupt</span> parties of power and <span class="annot" data-tooltip="established /ɪ'stæblɪʃt/ adj. 已建立的；已设立的；已制定的确定的，证实的">established</span> anti-corruption <span class="annot" data-tooltip="outfits /'aʊtfɪt/ n. （为特定场合或活动而穿的）全套服装，装束全套装备；成套工具组织；公司；团队；军事单位v. 装备，配备；为…提供设备（或服">outfits</span> alike. He will be the first prime minister in <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span> with an <span class="annot" data-tooltip="outright /'aʊtraɪt/ adv. 完全地；彻底地坦率地；直率地；无保留地立即，当场adj. 完全的；彻底的">outright</span> majority in <span class="annot" data-tooltip="parliament /'pɑːrləmənt/ n. 议会, 国会">parliament</span>. “Fatigue <span class="annot" data-tooltip="stemming /stem/ n. (花草的)茎, (树木的)干词干vt. 遏制[阻止](液体的流动等)时 态: stemmed, stemming, st">stemming</span> from the lack of a single party offering a clear <span class="annot" data-tooltip="alternative /ɔːl'tɜːrnətɪv/ adj. 可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）">alternative</span>” played a role, says Daniel Smilov of the Centre for Liberal <span class="annot" data-tooltip="strategies /'strætədʒi/ n. 战略学, 兵法战略, 策略策略, 计谋">Strategies</span>, a Bulgarian think-<span class="annot" data-tooltip="tank /tæŋk/ n. （存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内时 态: t">tank</span>. The new government quickly demonstrated its populist bona fides. On May 11th it proposed “fair-price” <span class="annot" data-tooltip="benchmarks /'bentʃmɑːrk/ 基准时 态: benchmarked, benchmarking, benchmarks">benchmarks</span> for consumer goods, forcing <span class="annot" data-tooltip="retailers /'riːteɪlər/ n. 传播的人；零售商">retailers</span> to justify price increases or face fines. Economic populism runs through Mr Radev’s approach to Russia as well. The prime minister claims that sanctions “harm the economies of Russia and the EU” and wants to increase imports of Russian fossil fuels (which the bloc wants to end by 2027). Europe, he argues, should stop selling arms to <span class="annot" data-tooltip="ukraine n. 乌克兰（原苏联一加盟共和国，现已独立）">Ukraine</span> and push for a quick peace deal. Dmitry Peskov, the Kremlin’s press <span class="annot" data-tooltip="secretary /'sekrəteri/ n. 秘书书记部长, 大臣形容词: secretarial">secretary</span>, said he was “impressed”. Romania’s centrists are on the back foot, too. A year ago Nicusor Dan, a liberal anti-corruption <span class="annot" data-tooltip="campaigner /kæm'peɪn/ n. 运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）时">campaigner</span>, beat George Simion of the nationalist Alliance for the Union of Romanians (AUR) in a presidential election. But the government he appointed lacked strong support in Parliament. For months it fought to cut Romania’s budget deficit, the largest in the EU. After it passed a slimmed-down budget, the centre-left Social <span class="annot" data-tooltip="democratic /ˌdemə'krætɪk/ adj. 民主的, 有民主精神或作风的副 词: democratically">Democratic</span> Party (PSD) left the coalition and teamed up with AUR to bring down the government.</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>sovereignty</td><td>/'sɑːvrənti/ n.</td><td>最高统治权, 君权国家的主权</td></tr>
+<tr><td>jack</td><td>/dʒæk/ n.</td><td>千斤顶vt. 用千斤顶顶起离开；停止，放弃提高，增加</td></tr>
+<tr><td>ritually</td><td>/'rɪtʃuəl/ n.</td><td>仪式；惯例；礼制adj. 仪式的；礼节性的；例行的</td></tr>
+<tr><td>hood</td><td>— n.</td><td>头巾；兜帽；覆盖vt. 以头巾覆盖；罩上Hood胡德(姓氏), hooding, hoods</td></tr>
+<tr><td>texas</td><td>/'teksəs/ n.</td><td>德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室)</td></tr>
+<tr><td>tank</td><td>/tæŋk/ n.</td><td>（存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内, tanking, tanks</td></tr>
+<tr><td>division</td><td>/dɪ'vɪʒn/ n.</td><td>[数] 除法；部门；分配；分割；师（军队）；赛区</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>reduction</td><td>/rɪ'dʌkʃn/ n.</td><td>减少，缩小；减少的量，降价</td></tr>
+<tr><td>pledges</td><td>/pledʒ/ n.</td><td>抵押；保证，誓言；抵押品，典当物vt. 保证，许诺；用……抵押；举杯祝……健康, pledging, pledges</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>commitment</td><td>/kə'mɪtmənt/ n.</td><td>承诺；保证；信奉；献身；委任；花费金钱、时间、人力等</td></tr>
+<tr><td>mutual</td><td>/'mjuːtʃuəl/ adj.</td><td>相互的, 彼此的共同的, 共有的</td></tr>
+<tr><td>prompted</td><td>/prɑːmpt/ adj.</td><td>敏捷的，迅速的；立刻的vt. 促进；激起；提示；（给演员）提白n. 提示；付款期限；DOS命令：改变DOS系统提示符的风格adv. 准时地, promptest</td></tr>
+<tr><td>reductions</td><td>/rɪ'dʌkʃn/ n.</td><td>减少，缩小；减少的量，降价</td></tr>
+<tr><td>plug</td><td>/plʌɡ/ n.</td><td>栓；插头；塞子vi. 塞住；用插头将与电源接通vt. 塞住；插入；接插头, plugging, plugs</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>vital</td><td>/'vaɪtl/ adj.</td><td>极重要的，必不可少的维持生命所必需的；生命的有生气的，充满生机的</td></tr>
+<tr><td>assets</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>expenditure</td><td>/ɪk'spendɪtʃər/ n.</td><td>花费, 使用(尤指金钱的)支出额</td></tr>
+<tr><td>allies</td><td>— n.</td><td>（第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者</td></tr>
+<tr><td>ukraine</td><td>— n.</td><td>乌克兰（原苏联一加盟共和国，现已独立）</td></tr>
+<tr><td>denmark</td><td>/'denmɑːrk/ n.</td><td>丹麦(北欧国家,首都哥本哈根)</td></tr>
+<tr><td>actively</td><td>— adv.</td><td>积极地；活跃地</td></tr>
+<tr><td>senior</td><td>/'siːniər/ adj.</td><td>年长的资深的; 地位高的〈美〉最高年级的n. 较年长者高年级学生〈美〉毕业班学生Senior西尼尔(姓氏)</td></tr>
+<tr><td>reveal</td><td>/rɪ'viːl/ vt.</td><td>显示；露出泄露；透露，revealing，reveals</td></tr>
+<tr><td>seriously</td><td>/'sɪriəs/ adj.</td><td>严肃的，严重的；认真的；庄重的；危急的</td></tr>
+<tr><td>infrastructure</td><td>/'ɪnfrəstrʌktʃər/ n.</td><td>基础设施; 基础结构</td></tr>
+<tr><td>secretary</td><td>/'sekrəteri/ n.</td><td>秘书书记部长, 大臣</td></tr>
+<tr><td>literally</td><td>/'lɪtərəli/ adv.</td><td>逐字地；照字面地确实地，真正地</td></tr>
+<tr><td>affairs</td><td>/ə'fer/ n.</td><td>事情；事务；私事；（尤指关系不长久的）风流韵事</td></tr>
+<tr><td>considered</td><td>/kən'sɪdər/ vt.</td><td>& vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及, considering, considers</td></tr>
+<tr><td>practice</td><td>/'præktɪs/ n.</td><td>练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规，practicing，practices</td></tr>
+<tr><td>contrast</td><td>/'kɑːntræst/ n.</td><td>对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照, contrasting, contrasts</td></tr>
+<tr><td>orchestra</td><td>/'ɔːrkɪstrə/ n.</td><td>管弦乐队</td></tr>
+<tr><td>supreme</td><td>/su'priːm/ adj.</td><td>最高的；至上的最重要的，supremest 缩 写: supr</td></tr>
+<tr><td>secure</td><td>/sɪ'kjʊr/ adj.</td><td>安心的；有把握的可靠的；牢靠的；稳固的；安全的；稳妥的严密把守的；牢固的；坚固的v. （尤指经过努力）获得，取得，实现拴牢；扣紧；关严保护；保卫；使安全抵押；为</td></tr>
+<tr><td>subordinate</td><td>/sə'bɔːrdɪnət/ n.</td><td>部属，下属，下级；从属，次要</td></tr>
+<tr><td>headquarters</td><td>/ˈhɛdˈkwɔrtɚ/ vi.</td><td>设总部vt. 将…的总部设在把…放在总部里, headquartering, headquarters</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>strategy</td><td>/'strætədʒi/ n.</td><td>战略学, 兵法战略, 策略策略, 计谋</td></tr>
+<tr><td>brussels</td><td>/ˈbrʌsəlz/ n.</td><td>布鲁塞尔（比利时首都）</td></tr>
+<tr><td>values</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>triggered</td><td>— adj.</td><td>触发的</td></tr>
+<tr><td>tank</td><td>/tæŋk/ n.</td><td>（存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内, tanking, tanks</td></tr>
+<tr><td>alternative</td><td>/ɔːl'tɜːrnətɪv/ adj.</td><td>可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）可供选择的事物；可供选择的解决办法替代物</td></tr>
+<tr><td>joint</td><td>/dʒɔɪnt/ n.</td><td>关节；接合处，接合点；接缝；（牛，羊等的腿）大块肉adj. 联合的，合办的；共同的；连接的vt. 连接，贴合；接合；使有接头vi. 贴合；生节, jointin</td></tr>
+<tr><td>headquarters</td><td>/ˈhɛdˈkwɔrtɚ/ vi.</td><td>设总部vt. 将…的总部设在把…放在总部里, headquartering, headquarters</td></tr>
+<tr><td>established</td><td>/ɪ'stæblɪʃt/ adj.</td><td>已建立的；已设立的；已制定的确定的，证实的</td></tr>
+<tr><td>readiness</td><td>/'redinəs/ n.</td><td>准备就绪愿意，乐意</td></tr>
+<tr><td>threshold</td><td>/'θreʃhoʊld/ n.</td><td>门槛; 〈喻〉开始</td></tr>
+<tr><td>finland</td><td>— n.</td><td>芬兰（欧洲）</td></tr>
+<tr><td>membership</td><td>/'membərʃɪp/ n.</td><td>全体会员会员身份, 会员资格</td></tr>
+<tr><td>major</td><td>/'meɪdʒər/ adj.</td><td>主要的；主修的；重要的；较多的n. 成年人；主修科目；陆军少校vi. 主修, majoring, majors</td></tr>
+<tr><td>consensus</td><td>/kən'sensəs/ n.</td><td>(意见等)一致, 一致同意</td></tr>
+<tr><td>exercises</td><td>/'eksərsaɪz/ n.</td><td>练习；运动；运用；操练；典礼；礼拜vt. 练习；锻炼；使用；使忙碌；使惊恐vi. 运动；练习, exercising, exercises</td></tr>
+<tr><td>naval</td><td>/'neɪvl/ adj.</td><td>海军的；军舰的</td></tr>
+<tr><td>alternatives</td><td>/ɔːl'tɜːrnətɪv/ adj.</td><td>可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）可供选择的事物；可供选择的解决办法替代物</td></tr>
+<tr><td>capabilities</td><td>/ˌkeɪpə'bɪləti/ n.</td><td>能做某事的素质;能力尚未发挥的天资或素质</td></tr>
+<tr><td>logistics</td><td>/lə'dʒɪstɪk/ adj.</td><td>后勤学的；符号逻辑的</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>secure</td><td>/sɪ'kjʊr/ adj.</td><td>安心的；有把握的可靠的；牢靠的；稳固的；安全的；稳妥的严密把守的；牢固的；坚固的v. （尤指经过努力）获得，取得，实现拴牢；扣紧；关严保护；保卫；使安全抵押；为</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>ships</td><td>/ʃɪp/ vt.</td><td>运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Division of the Nation</td></tr>
+<tr><td>syndrome</td><td>/'sɪndroʊm/ n.</td><td>综合征；征群；综合症状（特定情形下人的）典型负面特征，典型负面表现【计】校验子</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>enormously</td><td>/ɪ'nɔːrməs/ adj.</td><td>巨大的, 极大的, 庞大的</td></tr>
+<tr><td>corruption</td><td>/kə'rʌpʃn/ n.</td><td>堕落;腐化;腐败;贿赂腐烂</td></tr>
+<tr><td>inflation</td><td>/ɪn'fleɪʃn/ n.</td><td>(充气而引起的)膨胀通货膨胀</td></tr>
+<tr><td>romania</td><td>/ru'meɪniə/ n.</td><td>罗马尼亚（欧洲巴尔干半岛东北部国家）</td></tr>
+<tr><td>motion</td><td>/'moʊʃn/ n.</td><td>动作；请求；手势；移动；意向vi. 运动；打手势vt. 运动；向…打手势, motioning, motions</td></tr>
+<tr><td>awkward</td><td>/'ɔːkwərd/ adj.</td><td>笨拙的；尴尬的；棘手的；不合适的</td></tr>
+<tr><td>squad</td><td>/skwɑːd/ n.</td><td>(军队中的)班, 小队</td></tr>
+<tr><td>romania</td><td>/ru'meɪniə/ n.</td><td>罗马尼亚（欧洲巴尔干半岛东北部国家）</td></tr>
+<tr><td>quarter</td><td>/'kwɔːrtər/ n.</td><td>四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一, quartering, quarters</td></tr>
+<tr><td>towards</td><td>/tɔːrdz/ prep.</td><td>向，朝为了；有助于；用于对于，关于接近；将近；大约</td></tr>
+<tr><td>ceremonial</td><td>/ˌserɪ'moʊniəl/ adj.</td><td>礼仪的;仪式的adv. 礼仪地;仪式地</td></tr>
+<tr><td>campaigned</td><td>/kæm'peɪn/ n.</td><td>运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）, campaigning, campai</td></tr>
+<tr><td>anti</td><td>/'ænti/ adj.</td><td>反对的n. 反对者，反对论者</td></tr>
+<tr><td>governance</td><td>/'ɡʌvərnəns/ n.</td><td>统治;管理;治理;统治方式;管理方法</td></tr>
+<tr><td>corruption</td><td>/kə'rʌpʃn/ n.</td><td>堕落;腐化;腐败;贿赂腐烂</td></tr>
+<tr><td>transparency</td><td>/træns'pærənsi/ n.</td><td>透明；透明度；透明性透明的东西；幻灯片</td></tr>
+<tr><td>monitor</td><td>/'mɑːnɪtər/ n.</td><td>显示屏；监视器；（计算机）显示器监控器；监测器班长；级长；班代表（尤指派往国外的）监督员，核查员巨蜥v. 监视；检查；跟踪调查监听（电话、外国无线电广播等）, </td></tr>
+<tr><td>inequality</td><td>/ˌɪnɪ'kwɑːləti/ n.</td><td>不平等,不均等,不等量</td></tr>
+<tr><td>progressive</td><td>/prə'ɡresɪv/ adj.</td><td>不断前进的, 有进展的, 逐渐上升的进步的, 先进的</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>crushing</td><td>/krʌʃ/ vt.</td><td>& vi. 压碎, 压坏vt. 弄皱镇压, 消灭, 击溃vi. 挤进, 挤入n. 拥挤的人群, crushing, crushes</td></tr>
+<tr><td>corrupt</td><td>/kə'rʌpt/ adj.</td><td>腐败的，贪污的；堕落的vt. 使堕落，使恶化；使腐烂vi. 腐烂；堕落，腐化, corrupting, corrupts</td></tr>
+<tr><td>established</td><td>/ɪ'stæblɪʃt/ adj.</td><td>已建立的；已设立的；已制定的确定的，证实的</td></tr>
+<tr><td>outfits</td><td>/'aʊtfɪt/ n.</td><td>（为特定场合或活动而穿的）全套服装，装束全套装备；成套工具组织；公司；团队；军事单位v. 装备，配备；为…提供设备（或服装），outfitting，outfit</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>outright</td><td>/'aʊtraɪt/ adv.</td><td>完全地；彻底地坦率地；直率地；无保留地立即，当场adj. 完全的；彻底的</td></tr>
+<tr><td>parliament</td><td>/'pɑːrləmənt/ n.</td><td>议会, 国会</td></tr>
+<tr><td>stemming</td><td>/stem/ n.</td><td>(花草的)茎, (树木的)干词干vt. 遏制[阻止](液体的流动等), stemming, stems</td></tr>
+<tr><td>alternative</td><td>/ɔːl'tɜːrnətɪv/ adj.</td><td>可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）可供选择的事物；可供选择的解决办法替代物</td></tr>
+<tr><td>strategies</td><td>/'strætədʒi/ n.</td><td>战略学, 兵法战略, 策略策略, 计谋</td></tr>
+<tr><td>tank</td><td>/tæŋk/ n.</td><td>（存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内, tanking, tanks</td></tr>
+<tr><td>benchmarks</td><td>/'bentʃmɑːrk/ </td><td>基准, benchmarking, benchmarks</td></tr>
+<tr><td>retailers</td><td>/'riːteɪlər/ n.</td><td>传播的人；零售商</td></tr>
+<tr><td>ukraine</td><td>— n.</td><td>乌克兰（原苏联一加盟共和国，现已独立）</td></tr>
+<tr><td>secretary</td><td>/'sekrəteri/ n.</td><td>秘书书记部长, 大臣</td></tr>
+<tr><td>campaigner</td><td>/kæm'peɪn/ n.</td><td>运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）, campaigning, campai</td></tr>
+<tr><td>democratic</td><td>/ˌdemə'krætɪk/ adj.</td><td>民主的, 有民主精神或作风的</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day19.html" class="nav-btn">← Day 19</a>
+  <a href="day21.html" class="nav-btn">Day 21 →</a>
+</div>
+
+<div class="progress">📖 Day 20 of 43</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-05-23</div>
+
+</body>
+</html>
