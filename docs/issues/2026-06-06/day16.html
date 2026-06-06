@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>China</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-06-06</div>
+
+<h1 class="article-title">China</h1>
+<div class="article-section"></div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>Mr Hegseth seemed to anticipate that his silence on Taiwan would <span class="annot" data-tooltip="raise /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raise</span> questions about America’s <span class="annot" data-tooltip="commitments /kə'mɪtmənt/ n. 承诺；保证；信奉；献身；委任；花费金钱、时间、人力等">commitments</span> to its friends and <span class="annot" data-tooltip="allies n. （第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者">allies</span> in Asia. (They grew nervous when, in February, it emerged that Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> had delayed a congressionally approved sale of arms to Taiwan; they were shocked when Mr Trump <span class="annot" data-tooltip="revealed /rɪ'viːl/ vt. 显示；露出泄露；透露时 态: revealed，revealing，reveals">revealed</span> he had discussed sales to the island with Xi Jinping, China’s leader, at a summit in May.) So Mr Hegseth sought to <span class="annot" data-tooltip="frame /freɪm/ n. 框架；结构；画面vt. 设计；陷害；建造；使…适合vi. 有成功希望adj. 有木架的；有构架的时 态: framed,">frame</span> his silence as a principled effort to lower <span class="annot" data-tooltip="tensions /'tenʃn/ n. 张力，拉力；紧张，不安；电压vt. 使紧张；使拉紧时 态: tensioned, tensioning, tension">tensions</span>, suggesting (implausibly) that the Trump administration did not practise “<span class="annot" data-tooltip="peacocking /'piːkɑːk/ n. (雄)孔雀">peacocking</span>”. In fact Mr Hegseth was probably trying to avoid saying anything that might cause a fuss before the next planned meeting between Mr Trump and Mr Xi, taking <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span> in America in September. Chinese officials liked what they heard (or, more <span class="annot" data-tooltip="precisely /prɪ'saɪsli/ adv. 精确地；恰好；细心地对，的确如此">precisely</span>, what they did not). South-East Asian bigwigs report they are happy that tensions between the world’s two big powers seem lowered. But Richard Haass, a former president of the Council on Foreign Relations, compares Mr Hegseth’s silence on Taiwan to that of Dean Acheson in January 1950. Acheson was America’s <span class="annot" data-tooltip="secretary /'sekrəteri/ n. 秘书书记部长, 大臣形容词: secretarial">secretary</span> of state in the early days of the cold war; he failed to say that South Korea sat within America’s “defensive <span class="annot" data-tooltip="perimeter /pə'rɪmɪtər/ n. 周边;周围;边缘形容词: perimetric">perimeter</span>” in a grand speech setting out America’s policy in Asia. Two weeks later, Joseph Stalin approved a North Korean invasion of the south. There is some sense in the Pentagon’s evolving approach to Asia. A <span class="annot" data-tooltip="strategy /'strætədʒi/ n. 战略学, 兵法战略, 策略策略, 计谋">strategy</span> focused on the first island chain, and on hard military power, stands a good chance of <span class="annot" data-tooltip="deterring /dɪ'tɜːr/ vt. 制止，阻止；使打消念头时 态: deterred, deterring, deters">deterring</span> Chinese adventurism. If allies can increase their defence spending, that too will boost deterrence. Quizzed directly by journalists as he prepared to fly out of Singapore, Mr Hegseth insisted that America’s policies <span class="annot" data-tooltip="towards /tɔːrdz/ prep. 向，朝为了；有助于；用于对于，关于接近；将近；大约">towards</span> Taiwan have not changed. But permitting any confusion on this matter is extremely risky. It invites the very challenges that the Pentagon’s strategy is designed to <span class="annot" data-tooltip="ward /wɔːrd/ n. 监视；保卫；病房vt. 避开；保卫；守护Ward沃德(姓氏, 男子名)时 态: warded, warding, war">ward</span> off. ■ For <span class="annot" data-tooltip="exclusive /ɪk'skluːsɪv/ adj. 高级的，奢华的专用的；独家的n. 独家新闻，独家报道副 词: exclusively">exclusive</span> <span class="annot" data-tooltip="coverage /'kʌvərɪdʒ/ n. 新闻报道, 报道量覆盖范围">coverage</span> of Asian politics, economics and <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span>, sign up to Asia Bulletin, our weekly subscriber-only newsletter. This article was downloaded by zlibrary from https://www.economist.com//asia/2026/06/04/americas-secretary-of-war-pulls-his- punches-on-china</p>
+<div class="article-separator"></div>
+<div class="article-header">Asia · Asia | Industry in East Asia</div>
+<p>Worries about migrants imperil South Korea’s shipbuilding boom Compared with most rich countries, the foreign <span class="annot" data-tooltip="workforce /'wɜːrkfɔːrs/ n. 全体员工(国家或行业等)劳动力,劳动大军,劳动人口">workforce</span> is still small June 4th 2026 “THERE’S NO WORK back home,” says Wichit, a <span class="annot" data-tooltip="welder /weld/ v. 焊接；熔接；锻接使紧密结合；使连成整体n. 焊接点；焊接处时 态: welded, welding, welds">welder</span> from <span class="annot" data-tooltip="thailand n. 泰国">Thailand</span>. In Ulsan, a city in south-eastern South Korea, he’s found plenty. He works for HD Hyundai Heavy <span class="annot" data-tooltip="industries /'ɪndəstri/ n. 工业；产业；勤勉">Industries</span> (HHI), a South Korean shipbuilder. Migrants such as Wichit are <span class="annot" data-tooltip="helping /'helpɪŋ/ n. （进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的">helping</span> companies like HHI fulfil a boom in orders from foreign buyers for liquefied-natural-gas carriers and fuel- efficient container <span class="annot" data-tooltip="ships /ʃɪp/ vt. 运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Di">ships</span>. Now their presence is making <span class="annot" data-tooltip="waves /weɪv/ vi. 波动；起伏；摇动；呈波形；挥手示意vt. 向…挥手示意；使成波浪形；卷（烫）发n. 波浪；波动；高潮；卷曲；挥手示意时 ">waves</span>. In 2025 South Korean shipbuilders took 21% of all global orders, the largest share after China, according to Clarksons, a British maritime-research firm. The government has recently offered to share the country’s know-how to help Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> “Make American Shipbuilding Great Again”. Last year</p>
+<p>it pledged to <span class="annot" data-tooltip="invest /ɪn'vest/ vt. 投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买时 态: invested, investing, invests">invest</span> $150bn in shipbuilding projects in America as part of its effort to <span class="annot" data-tooltip="wriggle /'rɪɡl/ vi. 扭动；蠕动；蜿蜒行进vt. (使身体某一部位)扭动耍滑不做，逃避(应做的事等)n. 蠕动，扭动时 态: wriggled">wriggle</span> out of <span class="annot" data-tooltip="tariffs /'tærɪf/ n. 关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表时 态: tariffed, tariffing, tar">tariffs</span>. Yet the <span class="annot" data-tooltip="yards /jɑːrd/ n. 院子场地码(等于3英尺或36英寸或0.9144米)时 态: yarded, yarding, yards">yards</span> face a big staffing problem. South Korea’s population is one of the world’s fastest-ageing. Many of the workers who powered the <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> through a previous boom in the 2000s have retired or moved into management. Young South Koreans see shipbuilding as dangerous, laborious and low-paying: the fatality rate at shipyards is four times higher than in the average industrial workplace. So they have left shipbuilding regions in droves. In Ulsan only 24% of adults are under the age of 40. That has decreased by six percentage points in a <span class="annot" data-tooltip="decade /'dekeɪd/ n. 十年，十年期；十">decade</span>. Instead, shipbuilders have courted workers from countries such as <span class="annot" data-tooltip="indonesia /ˌɪndə'niːʒə/ n. 印度尼西亚(东南亚岛国)">Indonesia</span>, Sri Lanka, <span class="annot" data-tooltip="thailand n. 泰国">Thailand</span> and <span class="annot" data-tooltip="vietnam /ˌviːet'nɑːm/ n. 越南（南亚国家）">Vietnam</span>. These days close to a <span class="annot" data-tooltip="quarter /'kwɔːrtər/ n. 四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一时 ">quarter</span> of the shipbuilding <span class="annot" data-tooltip="workforce /'wɜːrkfɔːrs/ n. 全体员工(国家或行业等)劳动力,劳动大军,劳动人口">workforce</span> is foreign—four times the share ten years ago. The government has encouraged this through changes to visa rules for skilled workers passed in 2022. While shipbuilding bosses welcome the new arrivals, locals in <span class="annot" data-tooltip="places /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">places</span> such as Ulsan are feeling miffed. Boom times for the maritime industry used to be good for many smaller businesses in coastal communities, says Lee Soo- won, an <span class="annot" data-tooltip="estate /ɪ'steɪt/ n.（位于乡村的）大片私有土地，庄园，种植园【英式】（按规划建造的）住宅区，工业区【法律】（个人死后留下的全部）财产，遗">estate</span> agent in Ulsan. Eateries near HHI always filled up when shifts finished. That is no longer so true. The migrant workers “<span class="annot" data-tooltip="barely /'berli/ adv. 仅仅，勉强；几乎不；公开地；贫乏地">barely</span> spend and hardly eat out”, says Ms Lee. Many of them have to pay thousands of dollars to brokers who help them <span class="annot" data-tooltip="secure /sɪ'kjʊr/ adj. 安心的；有把握的可靠的；牢靠的；稳固的；安全的；稳妥的严密把守的；牢固的；坚固的v. （尤指经过努力）获得，取得，实现拴">secure</span> their visas, saddling them with debt before they even <span class="annot" data-tooltip="enter /'entər/ vt. & vi. 进入, 进去参加, 加入登记, 登录时 态: entered, entering, enters">enter</span> the country. They are also inclined to send much of their income home, rather than <span class="annot" data-tooltip="splash /splæʃ/ n. 溅泼声溅上的斑点(光、色等的)斑点溅泼的量vt. 使(液体)溅起vi. (指液体)溅落时 态: splashed, sp">splash</span> out in <span class="annot" data-tooltip="seaside /'siːsaɪd/ n. 海滨, 海边">seaside</span> towns. Wichit says that each month he sends 30,000 baht ($920) back to his family in Pattaya, his home in Thailand. That is roughly two-fifths of what he makes. Locals’ grievances are becoming more difficult to ignore. Recently Lee Jae Myung, the president, appeared to <span class="annot" data-tooltip="criticise vt. & vi. 评论, 批评">criticise</span> shipbuilders’ hiring and pay <span class="annot" data-tooltip="practices /'præktɪs/ n. 练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规时 态: practiced，practicing，">practices</span>. Under pressure, the companies have started talking about giving contractors <span class="annot" data-tooltip="bonuses /'boʊnəs/ n. 奖金；红利；额外津贴BONUSabbr. Boling Nuclear Superheat Reactor 沸腾式过热核">bonuses</span>. They are promising to do more to help migrant workers move their families to South Korea (with the idea that this would reduce their desire to send money out of the country). Shipbuilding bosses have also</p>
+<p>started to make noises about reducing the <span class="annot" data-tooltip="overall /ˌoʊvər'ɔːl/ adj. 总体的；全面的；综合的全面考虑的adv. 大体上，总的来说一切包括在内，全部的n. 长罩衣工装裤；工作裤">overall</span> size of their foreign <span class="annot" data-tooltip="workforces /'wɜːrkfɔːrs/ n. 全体员工(国家或行业等)劳动力,劳动大军,劳动人口">workforces</span>. Yet there is only so much they can do to <span class="annot" data-tooltip="tempt /tempt/ vt. 引诱或怂恿(某人)干不正当的事使想要时 态: tempted, tempting, tempts">tempt</span> young South Koreans back. ■ For <span class="annot" data-tooltip="exclusive /ɪk'skluːsɪv/ adj. 高级的，奢华的专用的；独家的n. 独家新闻，独家报道副 词: exclusively">exclusive</span> <span class="annot" data-tooltip="coverage /'kʌvərɪdʒ/ n. 新闻报道, 报道量覆盖范围">coverage</span> of Asian politics, economics and <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span>, sign up to Asia Bulletin, our weekly subscriber-only newsletter. This article was downloaded by zlibrary from https://www.economist.com//asia/2026/06/04/worries-about-migrants-imperil-south- koreas-shipbuilding-boom</p>
+<div class="article-separator"></div>
+<div class="article-header">Asia · Asia | Anything goes</div>
+<p>Sex tourists fuel outrage about <span class="annot" data-tooltip="vice /vaɪs/ n. 堕落，邪恶；不良习气，恶习（尤指与性或毒品有关的）罪行，道德败坏行为【英式】老虎钳；台钳（【美式】vise）pref. ">vice</span> in Japan The debates do not have women’s interests at heart June 4th 2026 MAI, a 34-year-old woman in Tokyo, used to work at a hospital. But when covid-19 <span class="annot" data-tooltip="overwhelmed /ˌoʊvər'welm/ vt. 覆盖，淹没压倒，制服；打败使某人不知所措时 态: overwhelmed，overwhelming，overwhelms">overwhelmed</span> the <span class="annot" data-tooltip="wards /wɔːrd/ n. 监视；保卫；病房vt. 避开；保卫；守护Ward沃德(姓氏, 男子名)时 态: warded, warding, war">wards</span>, she found her work too stressful. A single mother, she also needed money for her family. Lured by higher pay, she <span class="annot" data-tooltip="entered /'entər/ vt. & vi. 进入, 进去参加, 加入登记, 登录时 态: entered, entering, enters">entered</span> the sex trade, first working as a <span class="annot" data-tooltip="porn /pɔːrn/ n. 〈口〉色情文学,色情描写形容词: porny">porn</span> actress before becoming a deriheru or “delivery health” worker—<span class="annot" data-tooltip="slang /slæŋ/ n. 俚语；行话adj. 俚语的vi. 用粗话骂vt. 用俚语说时 态: slanged, slanging, slangs">slang</span> for call-girls who visit <span class="annot" data-tooltip="clients /'klaɪənt/ n. 委托人顾客, 常客">clients</span> at home or in hotels. For a two-hour session, she earns ¥30,000 ($190). Mai is among hundreds of thousands of women working in Japan’s sprawling sex <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span>. The business, <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span> to be <span class="annot" data-tooltip="worth /wɜːrθ/ adj. 值…的n. 价值；财产时 态: worthed, worthing, worths">worth</span> ¥2trn-5trn ($12bn- 31bn) a year, is woven into male social life. One study in 2022 found that 48% of Japanese men had paid for sex at some point, compared with 11% in Britain. Hagiwara, a 63-year-old man in Tokyo, recalls being taken to a</p>
+<p>brothel by <span class="annot" data-tooltip="senior /'siːniər/ adj. 年长的资深的; 地位高的〈美〉最高年级的n. 较年长者高年级学生〈美〉毕业班学生Senior西尼尔(姓氏)">senior</span> colleagues after joining a company, as a <span class="annot" data-tooltip="rite /raɪt/ n. 仪式；惯例，习俗；典礼RITEabbr. Rapid Information Technique for Evaluat">rite</span> of passage. Emu, a man in his 30s, says “most men around me have been at least once.” Lately, however, lawmakers’ tolerance for the <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> has come under much strain. Two recent triggers have encouraged Japanese to re-examine the confusing thicket of laws and conventions that govern how sex work is policed. One was an <span class="annot" data-tooltip="outrageous /aʊt'reɪdʒəs/ adj. 骇人的;残暴的;无耻的;不道德的副 词: outrageously">outrageous</span> crime: last year <span class="annot" data-tooltip="authorities /ə'θɔːrəti/ n. 威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗">authorities</span> rescued a 12- year-old Thai girl who had been <span class="annot" data-tooltip="trafficked /'træfɪk/ n. 交通；贸易；运输；通信量vt. 用…作交换；在…通行vi. 交易，买卖时 态: trafficked, traffick">trafficked</span> to Japan and forced to work at a sex shop in Tokyo. The second concern has been the growing visibility of women who sell sex around Okubo Park, near Tokyo’s red-light district (where the haggling more ordinarily goes on behind <span class="annot" data-tooltip="neon /'niːɑːn/ n. 〈化〉氖">neon</span>-lit doors). <span class="annot" data-tooltip="relatively /'relətɪvli/ adv. 相对地，比较而言；相当相对来说；相比较而言">Relatively</span> few women are <span class="annot" data-tooltip="involved /ɪn'vɑːlvd/ adj. 卷入的；有关的；复杂的v. 涉及；使参与；包含（involve的过去式和过去分词）">involved</span> in this. <span class="annot" data-tooltip="nonetheless /ˌnʌnðə'les/ adv. 虽然如此,但是">Nonetheless</span>, solicitation (waiting for or approaching <span class="annot" data-tooltip="clients /'klaɪənt/ n. 委托人顾客, 常客">clients</span> in public) is illegal in Japan. The sight of women openly waiting for clients has unsettled the public. <span class="annot" data-tooltip="compounding /'kɑːmpaʊnd/ n. 复合物；混合物；【化】化合物（语法）复合词有围栏（或围墙）的场地（内有工厂或其他建筑群）adj. 复合的v. 使加重；使">Compounding</span> the public debate is the fact that some of their customers are foreign tourists, lured to Japan by the cheapness of the yen. Videos of them approaching women in Okubo Park have spread rapidly online. “It is truly lamentable,” said Kamiya Sohei, leader of the right-<span class="annot" data-tooltip="wing /wɪŋ/ n. 翅膀；翼；飞翔；派别vt. 使飞；飞过；空运；增加…速度；装以翼vi. 飞行时 态: winged, winging, ">wing</span> populist Sanseito party, in a video. Behind the outrage lies a sense of <span class="annot" data-tooltip="wounded /wund/ n. 创伤，伤口vt. 使受伤vi. 受伤，伤害时 态: wounded, wounding, wounds">wounded</span> pride: during Japan’s boom years in the 1970s and 1980s, it was Japanese men who went abroad for sex. The authorities have decided to act—at least where the streetwalkers are concerned. Recently women around Okubo Park have been <span class="annot" data-tooltip="detained /dɪ'teɪn/ vt. 拘留；留住；耽搁时 态: detained, detaining, detains">detained</span> or arrested. Yet campaigners say it is unfair that authorities have not also been trying to punish the buyers. “Women are taken away by the police—while the men who buy sex stand beside them <span class="annot" data-tooltip="smirking /smɜːrk/ n. 傻笑；得意的笑vi. 傻笑时 态: smirked，smirking，smirks">smirking</span>,” says Kanajiri Kazuna of PAPS, a women’s-rights <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span>. In November an opposition lawmaker raised this disparity in <span class="annot" data-tooltip="parliament /'pɑːrləmənt/ n. 议会, 国会">parliament</span>. In response Takaichi Sanae, the prime minister, <span class="annot" data-tooltip="ordered /'ɔːrdərd/ adj. 安排好的；整齐的；[数]有序的v. 命令；点餐（order的过去式和过去分词）">ordered</span> the justice ministry to re-examine current <span class="annot" data-tooltip="practices /'præktɪs/ n. 练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规时 态: practiced，practicing，">practices</span> and <span class="annot" data-tooltip="consider /kən'sɪdər/ vt. & vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及时 态: considered, considering, ">consider</span> <span class="annot" data-tooltip="reforms /rɪ'fɔːrm/ n. 改革，改良，改造vt. & vi. 改革；改造；改善时 态: reformed，reforming，reforms">reforms</span>. The <span class="annot" data-tooltip="prospect /'prɑːspekt/ n. 景象，景色前景；前途可能成为主顾的人；有希望的候选人vi. 勘探；勘察时 态: prospected，prospecti">prospect</span> of change has <span class="annot" data-tooltip="sparked /spɑːrk/ n. 火花，火星；电火花；一丝，略微；导火线，诱因v. 引发，触发；产生火花（电火花）；点燃；增加趣味（或活力、风味等）时 态">sparked</span> very broad debate about how Japan could improve its policing of sex work. Some Japanese <span class="annot" data-tooltip="feminists /'femənɪst/ n. 女权主义者，女权运动者adj. 女权主义的，主张女权的形容词: feministic">feminists</span> would like their country to implement the Nordic style of regulation <span class="annot" data-tooltip="adopted /ə'dɑːpt/ vt. 收养采用, 采纳, 采取正式接受, 通过时 态: adopted, adopting, adopts">adopted</span> by</p>
+<p>Sweden, France and others, which criminalises buying sex while shielding sellers themselves from prosecution. “Buying sex is a form of violence against women,” says Ms Kanajiri. Other Japanese argue that getting tougher on buyers will <span class="annot" data-tooltip="drive /draɪv/ vt. 驱赶驱使, 促使敲, 击vt. & vi. 驾驶n. 乘车旅行私人车道传动, 驱动干劲, 积极性, 能动性紧迫, 逼迫,">drive</span> sex work underground, leaving women more exposed to violence. Some want the <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> fully legalised and regulated, as in Germany and the Netherlands. Nakayama Misato of Siente, a sex-work advocacy <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span>, argues that criminalisation can mean that women are treated merely as <span class="annot" data-tooltip="victims /'vɪktɪm/ n. 牺牲者；受害人；牺牲品">victims</span>, ignoring their agency. “Doing sex work is not a bad thing—it’s a valid way of making a living.” To be more than skin deep, any changes would have to apply not only to streetwalking but to Japan’s vast indoor sex-industry, the laws for which are riddled with <span class="annot" data-tooltip="loopholes /'luːphoʊl/ n. 枪眼；换气孔；漏洞；射弹孔">loopholes</span> and selectively enforced. <span class="annot" data-tooltip="consider /kən'sɪdər/ vt. & vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及时 态: considered, considering, ">Consider</span> the <span class="annot" data-tooltip="practice /'præktɪs/ n. 练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规时 态: practiced，practicing，">practice</span> of “soapland”, in which customers ostensibly pay to be bathed; if sex happens to take <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span> in the <span class="annot" data-tooltip="process /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">process</span>, officials generally turn a blind eye. Takao Yasuo of Curtin University says this is typical of Japan’s approach to regulating the sex industry. The priority is to keep <span class="annot" data-tooltip="vice /vaɪs/ n. 堕落，邪恶；不良习气，恶习（尤指与性或毒品有关的）罪行，道德败坏行为【英式】老虎钳；台钳（【美式】vise）pref. ">vice</span> decorously out of public view. A big rethink seems unlikely. For now, the justice ministry is <span class="annot" data-tooltip="narrowly /'næroʊ/ adj. 狭窄的，有限的；度量小的；精密的；勉强的n. 狭窄部分，隘路；海峡vt. 使变狭窄vi. 变窄比较级: narrower">narrowly</span> focused on street prostitution. Taking care of that is “the lowest-cost, highest-visibility form of <span class="annot" data-tooltip="enforcement /ɪn'fɔːrsmənt/ n. 强制,实施,执行">enforcement</span> available to the state”, notes Mr Takao. “Many lawmakers, especially <span class="annot" data-tooltip="conservatives /kən'sɜːrvətɪv/ n. 保守的人adj. 保守的, 守旧的(式样等)不时新的, 传统的副 词: conservatively">conservatives</span>, are sensitive to the idea of women becoming <span class="annot" data-tooltip="sexually /'sekʃuəl/ adj. 性交的, 性行为的, 性吸引的, 两性的, 肉体吸引的性别的, 性的, 男性或女性的生殖的, 有性生殖的副 词: sex">sexually</span> promiscuous,” says Shiomura Ayaka, a lawmaker. Women openly soliciting sex in public have become symbols of social <span class="annot" data-tooltip="disorder /dɪs'ɔːrdər/ n. 混乱；骚乱vt. 扰乱；使失调时 态: disordered, disordering, disorders">disorder</span>. ■ For <span class="annot" data-tooltip="exclusive /ɪk'skluːsɪv/ adj. 高级的，奢华的专用的；独家的n. 独家新闻，独家报道副 词: exclusively">exclusive</span> <span class="annot" data-tooltip="coverage /'kʌvərɪdʒ/ n. 新闻报道, 报道量覆盖范围">coverage</span> of Asian politics, economics and <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span>, sign up to Asia Bulletin, our weekly subscriber-only newsletter. This article was downloaded by zlibrary from https://www.economist.com//asia/2026/06/04/sex-tourists-fuel-outrage-about-vice-in- japan</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>raise</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>commitments</td><td>/kə'mɪtmənt/ n.</td><td>承诺；保证；信奉；献身；委任；花费金钱、时间、人力等</td></tr>
+<tr><td>allies</td><td>— n.</td><td>（第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>revealed</td><td>/rɪ'viːl/ vt.</td><td>显示；露出泄露；透露，revealing，reveals</td></tr>
+<tr><td>frame</td><td>/freɪm/ n.</td><td>框架；结构；画面vt. 设计；陷害；建造；使…适合vi. 有成功希望adj. 有木架的；有构架的, framing, frames</td></tr>
+<tr><td>tensions</td><td>/'tenʃn/ n.</td><td>张力，拉力；紧张，不安；电压vt. 使紧张；使拉紧, tensioning, tensions</td></tr>
+<tr><td>peacocking</td><td>/'piːkɑːk/ n.</td><td>(雄)孔雀</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>precisely</td><td>/prɪ'saɪsli/ adv.</td><td>精确地；恰好；细心地对，的确如此</td></tr>
+<tr><td>secretary</td><td>/'sekrəteri/ n.</td><td>秘书书记部长, 大臣</td></tr>
+<tr><td>perimeter</td><td>/pə'rɪmɪtər/ n.</td><td>周边;周围;边缘</td></tr>
+<tr><td>strategy</td><td>/'strætədʒi/ n.</td><td>战略学, 兵法战略, 策略策略, 计谋</td></tr>
+<tr><td>deterring</td><td>/dɪ'tɜːr/ vt.</td><td>制止，阻止；使打消念头, deterring, deters</td></tr>
+<tr><td>towards</td><td>/tɔːrdz/ prep.</td><td>向，朝为了；有助于；用于对于，关于接近；将近；大约</td></tr>
+<tr><td>ward</td><td>/wɔːrd/ n.</td><td>监视；保卫；病房vt. 避开；保卫；守护Ward沃德(姓氏, 男子名), warding, wards</td></tr>
+<tr><td>exclusive</td><td>/ɪk'skluːsɪv/ adj.</td><td>高级的，奢华的专用的；独家的n. 独家新闻，独家报道</td></tr>
+<tr><td>coverage</td><td>/'kʌvərɪdʒ/ n.</td><td>新闻报道, 报道量覆盖范围</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>workforce</td><td>/'wɜːrkfɔːrs/ n.</td><td>全体员工(国家或行业等)劳动力,劳动大军,劳动人口</td></tr>
+<tr><td>welder</td><td>/weld/ v.</td><td>焊接；熔接；锻接使紧密结合；使连成整体n. 焊接点；焊接处, welding, welds</td></tr>
+<tr><td>thailand</td><td>— n.</td><td>泰国</td></tr>
+<tr><td>industries</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>helping</td><td>/'helpɪŋ/ n.</td><td>（进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的</td></tr>
+<tr><td>ships</td><td>/ʃɪp/ vt.</td><td>运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Division of the Nation</td></tr>
+<tr><td>waves</td><td>/weɪv/ vi.</td><td>波动；起伏；摇动；呈波形；挥手示意vt. 向…挥手示意；使成波浪形；卷（烫）发n. 波浪；波动；高潮；卷曲；挥手示意, waving, waves</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>invest</td><td>/ɪn'vest/ vt.</td><td>投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买, investing, invests</td></tr>
+<tr><td>wriggle</td><td>/'rɪɡl/ vi.</td><td>扭动；蠕动；蜿蜒行进vt. (使身体某一部位)扭动耍滑不做，逃避(应做的事等)n. 蠕动，扭动，wriggling，wriggles</td></tr>
+<tr><td>tariffs</td><td>/'tærɪf/ n.</td><td>关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表, tariffing, tariffs</td></tr>
+<tr><td>yards</td><td>/jɑːrd/ n.</td><td>院子场地码(等于3英尺或36英寸或0.9144米), yarding, yards</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>decade</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>indonesia</td><td>/ˌɪndə'niːʒə/ n.</td><td>印度尼西亚(东南亚岛国)</td></tr>
+<tr><td>thailand</td><td>— n.</td><td>泰国</td></tr>
+<tr><td>vietnam</td><td>/ˌviːet'nɑːm/ n.</td><td>越南（南亚国家）</td></tr>
+<tr><td>quarter</td><td>/'kwɔːrtər/ n.</td><td>四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一, quartering, quarters</td></tr>
+<tr><td>workforce</td><td>/'wɜːrkfɔːrs/ n.</td><td>全体员工(国家或行业等)劳动力,劳动大军,劳动人口</td></tr>
+<tr><td>places</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>estate</td><td>/ɪ'steɪt/ </td><td>n.（位于乡村的）大片私有土地，庄园，种植园【英式】（按规划建造的）住宅区，工业区【法律】（个人死后留下的全部）财产，遗产【英式】旅游汽车；客货两用轿车（est</td></tr>
+<tr><td>barely</td><td>/'berli/ adv.</td><td>仅仅，勉强；几乎不；公开地；贫乏地</td></tr>
+<tr><td>secure</td><td>/sɪ'kjʊr/ adj.</td><td>安心的；有把握的可靠的；牢靠的；稳固的；安全的；稳妥的严密把守的；牢固的；坚固的v. （尤指经过努力）获得，取得，实现拴牢；扣紧；关严保护；保卫；使安全抵押；为</td></tr>
+<tr><td>enter</td><td>/'entər/ vt.</td><td>& vi. 进入, 进去参加, 加入登记, 登录, entering, enters</td></tr>
+<tr><td>splash</td><td>/splæʃ/ n.</td><td>溅泼声溅上的斑点(光、色等的)斑点溅泼的量vt. 使(液体)溅起vi. (指液体)溅落, splashing, splashes</td></tr>
+<tr><td>seaside</td><td>/'siːsaɪd/ n.</td><td>海滨, 海边</td></tr>
+<tr><td>criticise</td><td>— vt.</td><td>& vi. 评论, 批评</td></tr>
+<tr><td>practices</td><td>/'præktɪs/ n.</td><td>练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规，practicing，practices</td></tr>
+<tr><td>bonuses</td><td>/'boʊnəs/ n.</td><td>奖金；红利；额外津贴BONUSabbr. Boling Nuclear Superheat Reactor 沸腾式过热核反应堆</td></tr>
+<tr><td>overall</td><td>/ˌoʊvər'ɔːl/ adj.</td><td>总体的；全面的；综合的全面考虑的adv. 大体上，总的来说一切包括在内，全部的n. 长罩衣工装裤；工作裤</td></tr>
+<tr><td>workforces</td><td>/'wɜːrkfɔːrs/ n.</td><td>全体员工(国家或行业等)劳动力,劳动大军,劳动人口</td></tr>
+<tr><td>tempt</td><td>/tempt/ vt.</td><td>引诱或怂恿(某人)干不正当的事使想要, tempting, tempts</td></tr>
+<tr><td>exclusive</td><td>/ɪk'skluːsɪv/ adj.</td><td>高级的，奢华的专用的；独家的n. 独家新闻，独家报道</td></tr>
+<tr><td>coverage</td><td>/'kʌvərɪdʒ/ n.</td><td>新闻报道, 报道量覆盖范围</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>vice</td><td>/vaɪs/ n.</td><td>堕落，邪恶；不良习气，恶习（尤指与性或毒品有关的）罪行，道德败坏行为【英式】老虎钳；台钳（【美式】vise）pref. 副职的；副的</td></tr>
+<tr><td>overwhelmed</td><td>/ˌoʊvər'welm/ vt.</td><td>覆盖，淹没压倒，制服；打败使某人不知所措，overwhelming，overwhelms</td></tr>
+<tr><td>wards</td><td>/wɔːrd/ n.</td><td>监视；保卫；病房vt. 避开；保卫；守护Ward沃德(姓氏, 男子名), warding, wards</td></tr>
+<tr><td>entered</td><td>/'entər/ vt.</td><td>& vi. 进入, 进去参加, 加入登记, 登录, entering, enters</td></tr>
+<tr><td>porn</td><td>/pɔːrn/ n.</td><td>〈口〉色情文学,色情描写</td></tr>
+<tr><td>slang</td><td>/slæŋ/ n.</td><td>俚语；行话adj. 俚语的vi. 用粗话骂vt. 用俚语说, slanging, slangs</td></tr>
+<tr><td>clients</td><td>/'klaɪənt/ n.</td><td>委托人顾客, 常客</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>worth</td><td>/wɜːrθ/ adj.</td><td>值…的n. 价值；财产, worthing, worths</td></tr>
+<tr><td>senior</td><td>/'siːniər/ adj.</td><td>年长的资深的; 地位高的〈美〉最高年级的n. 较年长者高年级学生〈美〉毕业班学生Senior西尼尔(姓氏)</td></tr>
+<tr><td>rite</td><td>/raɪt/ n.</td><td>仪式；惯例，习俗；典礼RITEabbr. Rapid Information Technique for Evaluation (美国通用动力分司)鉴定用快速信</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>outrageous</td><td>/aʊt'reɪdʒəs/ adj.</td><td>骇人的;残暴的;无耻的;不道德的</td></tr>
+<tr><td>authorities</td><td>/ə'θɔːrəti/ n.</td><td>威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗</td></tr>
+<tr><td>trafficked</td><td>/'træfɪk/ n.</td><td>交通；贸易；运输；通信量vt. 用…作交换；在…通行vi. 交易，买卖, trafficking, traffics</td></tr>
+<tr><td>neon</td><td>/'niːɑːn/ n.</td><td>〈化〉氖</td></tr>
+<tr><td>relatively</td><td>/'relətɪvli/ adv.</td><td>相对地，比较而言；相当相对来说；相比较而言</td></tr>
+<tr><td>involved</td><td>/ɪn'vɑːlvd/ adj.</td><td>卷入的；有关的；复杂的v. 涉及；使参与；包含（involve的过去式和过去分词）</td></tr>
+<tr><td>nonetheless</td><td>/ˌnʌnðə'les/ adv.</td><td>虽然如此,但是</td></tr>
+<tr><td>clients</td><td>/'klaɪənt/ n.</td><td>委托人顾客, 常客</td></tr>
+<tr><td>compounding</td><td>/'kɑːmpaʊnd/ n.</td><td>复合物；混合物；【化】化合物（语法）复合词有围栏（或围墙）的场地（内有工厂或其他建筑群）adj. 复合的v. 使加重；使恶化由…构成（或形成）混合；掺和；拌和,</td></tr>
+<tr><td>wing</td><td>/wɪŋ/ n.</td><td>翅膀；翼；飞翔；派别vt. 使飞；飞过；空运；增加…速度；装以翼vi. 飞行, winging, wings</td></tr>
+<tr><td>wounded</td><td>/wund/ n.</td><td>创伤，伤口vt. 使受伤vi. 受伤，伤害, wounding, wounds</td></tr>
+<tr><td>detained</td><td>/dɪ'teɪn/ vt.</td><td>拘留；留住；耽搁, detaining, detains</td></tr>
+<tr><td>smirking</td><td>/smɜːrk/ n.</td><td>傻笑；得意的笑vi. 傻笑，smirking，smirks</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>parliament</td><td>/'pɑːrləmənt/ n.</td><td>议会, 国会</td></tr>
+<tr><td>ordered</td><td>/'ɔːrdərd/ adj.</td><td>安排好的；整齐的；[数]有序的v. 命令；点餐（order的过去式和过去分词）</td></tr>
+<tr><td>practices</td><td>/'præktɪs/ n.</td><td>练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规，practicing，practices</td></tr>
+<tr><td>consider</td><td>/kən'sɪdər/ vt.</td><td>& vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及, considering, considers</td></tr>
+<tr><td>reforms</td><td>/rɪ'fɔːrm/ n.</td><td>改革，改良，改造vt. & vi. 改革；改造；改善，reforming，reforms</td></tr>
+<tr><td>prospect</td><td>/'prɑːspekt/ n.</td><td>景象，景色前景；前途可能成为主顾的人；有希望的候选人vi. 勘探；勘察，prospecting，prospects</td></tr>
+<tr><td>sparked</td><td>/spɑːrk/ n.</td><td>火花，火星；电火花；一丝，略微；导火线，诱因v. 引发，触发；产生火花（电火花）；点燃；增加趣味（或活力、风味等）, sparking, sparks</td></tr>
+<tr><td>feminists</td><td>/'femənɪst/ n.</td><td>女权主义者，女权运动者adj. 女权主义的，主张女权的</td></tr>
+<tr><td>adopted</td><td>/ə'dɑːpt/ vt.</td><td>收养采用, 采纳, 采取正式接受, 通过, adopting, adopts</td></tr>
+<tr><td>drive</td><td>/draɪv/ vt.</td><td>驱赶驱使, 促使敲, 击vt. & vi. 驾驶n. 乘车旅行私人车道传动, 驱动干劲, 积极性, 能动性紧迫, 逼迫, 压力, drives</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>victims</td><td>/'vɪktɪm/ n.</td><td>牺牲者；受害人；牺牲品</td></tr>
+<tr><td>loopholes</td><td>/'luːphoʊl/ n.</td><td>枪眼；换气孔；漏洞；射弹孔</td></tr>
+<tr><td>consider</td><td>/kən'sɪdər/ vt.</td><td>& vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及, considering, considers</td></tr>
+<tr><td>practice</td><td>/'præktɪs/ n.</td><td>练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规，practicing，practices</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>process</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>vice</td><td>/vaɪs/ n.</td><td>堕落，邪恶；不良习气，恶习（尤指与性或毒品有关的）罪行，道德败坏行为【英式】老虎钳；台钳（【美式】vise）pref. 副职的；副的</td></tr>
+<tr><td>narrowly</td><td>/'næroʊ/ adj.</td><td>狭窄的，有限的；度量小的；精密的；勉强的n. 狭窄部分，隘路；海峡vt. 使变狭窄vi. 变窄, narrowest</td></tr>
+<tr><td>enforcement</td><td>/ɪn'fɔːrsmənt/ n.</td><td>强制,实施,执行</td></tr>
+<tr><td>conservatives</td><td>/kən'sɜːrvətɪv/ n.</td><td>保守的人adj. 保守的, 守旧的(式样等)不时新的, 传统的</td></tr>
+<tr><td>sexually</td><td>/'sekʃuəl/ adj.</td><td>性交的, 性行为的, 性吸引的, 两性的, 肉体吸引的性别的, 性的, 男性或女性的生殖的, 有性生殖的</td></tr>
+<tr><td>disorder</td><td>/dɪs'ɔːrdər/ n.</td><td>混乱；骚乱vt. 扰乱；使失调, disordering, disorders</td></tr>
+<tr><td>exclusive</td><td>/ɪk'skluːsɪv/ adj.</td><td>高级的，奢华的专用的；独家的n. 独家新闻，独家报道</td></tr>
+<tr><td>coverage</td><td>/'kʌvərɪdʒ/ n.</td><td>新闻报道, 报道量覆盖范围</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day15.html" class="nav-btn">← Day 15</a>
+  <a href="day17.html" class="nav-btn">Day 17 →</a>
+</div>
+
+<div class="progress">📖 Day 16 of 46</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-06-06</div>
+
+</body>
+</html>

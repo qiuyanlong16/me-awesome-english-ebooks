@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Special report | No longer special</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-06-06</div>
+
+<h1 class="article-title">Special report | No longer special</h1>
+<div class="article-section">Special report</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p><span class="annot" data-tooltip="hoards /hɔːrd/ n. (钱财、食物或其他珍贵物品的)储藏, 积存vt. & vi. 积蓄并储藏(某物)时 态: hoarded, hoardi">hoards</span> include more Swiss francs and Canadian dollars these days, in <span class="annot" data-tooltip="addition /ə'dɪʃn/ n. 添加；增加物；加法形容词: additional">addition</span> to their stash of euros, yen and <span class="annot" data-tooltip="pounds /paʊnd/ n. 英镑；兽栏；重击，重击声；拘留所vt. 捣烂；敲打；监禁，拘留vi. 连续重击，猛击Pound庞德(姓氏)名 词: po">pounds</span>. Foreign <span class="annot" data-tooltip="central /'sentrəl/ adj. 中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的副 词: centrally">central</span> banks have also become more hesitant to <span class="annot" data-tooltip="invest /ɪn'vest/ vt. 投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买时 态: invested, investing, invests">invest</span> in <span class="annot" data-tooltip="treasuries /'treʒəri/ n. 财政部；国库，金库；宝库">Treasuries</span> after witnessing the freezing of the Russian central bank’s foreign <span class="annot" data-tooltip="assets /'æset/ n. 资产；有用的东西；有利条件；优点">assets</span> in the wake of Russia’s invasion of <span class="annot" data-tooltip="ukraine n. 乌克兰（原苏联一加盟共和国，现已独立）">Ukraine</span>. “It’s a Rubicon that’s been crossed,” says a member of the <span class="annot" data-tooltip="treasury /'treʒəri/ n. 财政部；国库，金库；宝库">Treasury</span> Borrowing Advisory Committee, a private-sector <span class="annot" data-tooltip="panel /'pænl/ n. 仪表板；嵌板；座谈小组，全体陪审员vt. 嵌镶板时 态: paneled, panelled paneling, pan">panel</span> that advises the Treasury. “They’re afraid of the US government effectively confiscating their assets.” In a survey last year by UBS, a Swiss bank, 49% of reserve managers expressed concern about the weaponisation of foreign-currency reserves, up from 14% in 2023. That fear has driven some central banks to hold more reserves in gold instead. Since 2022 they have bought about 1,000 metric tonnes a year, on average, twice their <span class="annot" data-tooltip="purchases /'pɜːrtʃəs/ n. 购买；紧握；起重装置vt. 购买；赢得vi. 购买东西时 态: purchased, purchasing, purch">purchases</span> over the previous <span class="annot" data-tooltip="decade /'dekeɪd/ n. 十年，十年期；十">decade</span>. Russia’s and Turkey’s central banks have been selling gold to weather the financial turmoil from the war in Iran. The biggest reason for the <span class="annot" data-tooltip="fall /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">fall</span> in central banks’ share of Treasuries, however, has been the <span class="annot" data-tooltip="enormous /ɪ'nɔːrməs/ adj. 巨大的, 极大的, 庞大的副 词: enormously">enormous</span> expansion in the Treasury market. Over the past decade the world’s stock of foreign-exchange reserves has grown by a little more than $2trn; America’s <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">federal</span> debt has grown by $17trn. Even if every <span class="annot" data-tooltip="penny /'peni/ n. 便士；（美）分Penny彭妮(女子名, Penelope 的昵称)">penny</span> of new reserves had been held in dollars, America would still have needed to find lots of new customers for its debt.</p>
+<p>Since 2023 foreign commercial investors have had bigger holdings of <span class="annot" data-tooltip="treasuries /'treʒəri/ n. 财政部；国库，金库；宝库">Treasuries</span> than have foreign governments. They now <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> a little more than $5trn-<span class="annot" data-tooltip="worth /wɜːrθ/ adj. 值…的n. 价值；财产时 态: worthed, worthing, worths">worth</span>, or about 17% of the market (see chart). Last year alone they added $545bn to their stash. But private investors, naturally, are <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> more interested in returns than governments, and so make far more capricious investors. For most of the past 15 years, <span class="annot" data-tooltip="yields /jiːld/ vt. 出产；屈服；放弃vi. 屈服，投降n. 收益；产量时 态: yielded, yielding, yields">yields</span> on Treasuries have been higher than on their <span class="annot" data-tooltip="equivalents /ɪ'kwɪvələnt/ adj. 等同的，等效的n. 对等的人（或事物），对应的人（或事物）">equivalents</span> in Britain, continental Europe and Japan, which generated prodigious appetite for American debt. That is no longer quite so true. Rising long-term yields have made government bonds elsewhere in the world an increasingly competitive <span class="annot" data-tooltip="alternative /ɔːl'tɜːrnətɪv/ adj. 可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）">alternative</span>. Some private investors are already <span class="annot" data-tooltip="cutting /'kʌtɪŋ/ n. 切断；剪辑；开凿adj. 严寒的；锋利的；尖酸刻薄的v. 切开；采伐；削减（cut的ing形式）">cutting</span> their holdings of Treasuries. Alecta, a Swedish <span class="annot" data-tooltip="pension /ˈpenʃn/ n. 津贴；退休金，抚恤金；膳宿费vt. 发给养老金或抚恤金时 态: pensioned, pensioning, pensi">pension</span> fund with more than $180bn in <span class="annot" data-tooltip="assets /'æset/ n. 资产；有用的东西；有利条件；优点">assets</span>, began selling its Treasuries in <span class="annot" data-tooltip="waves /weɪv/ vi. 波动；起伏；摇动；呈波形；挥手示意vt. 向…挥手示意；使成波浪形；卷（烫）发n. 波浪；波动；高潮；卷曲；挥手示意时 ">waves</span> at the beginning of 2025, citing America’s <span class="annot" data-tooltip="swelling /swel/ vi. 膨胀；[病理]肿胀；隆起vt. 使膨胀；使隆起n. 肿胀；隆起adj. 漂亮的；一流的时 态: swelled, swe">swelling</span> national debt. <span class="annot" data-tooltip="denmark /'denmɑːrk/ n. 丹麦(北欧国家,首都哥本哈根)">Denmark</span>’s AkademikerPension announced a similar decision to sell its modest holdings earlier this year. Degroof Petercam <span class="annot" data-tooltip="asset /'æset/ n. 资产；有用的东西；有利条件；优点">Asset</span> Management, a Belgian firm, has also sold its holdings, citing <span class="annot" data-tooltip="vague /veɪɡ/ adj. 不明确的；含糊的；模糊的；暧昧的比较级: vaguer, vaguest">vague</span> concerns about valuation.</p>
+<p>Japan’s life-insurance firms provide an example of how quickly investors can lose a ravenous appetite for bonds. Between 2010 and 2019 they bought over 29trn yen ($280bn by exchange rates during that period) in foreign bonds (mostly American <span class="annot" data-tooltip="corporate /'kɔːrpərət/ adj. 社团的, 法人的副 词: corporately">corporate</span> and government debt). But since 2020 they have sold a <span class="annot" data-tooltip="net /net/ n. 网；净利；网络；实价vi. 编网vt. 净赚；得到；用网捕adj. 纯粹的；净余的时 态: netted, nettin">net</span> 20trn yen, with particularly large sales in 2022, when the <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">Federal</span> Reserve’s rapid series of <span class="annot" data-tooltip="rises /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rises</span> in interest rates drove up the cost of currency hedging for Japanese investors. For the insurers, whose liabilities are all in yen, owning American bonds no longer made sense. There are other reasons to believe that broader demand for <span class="annot" data-tooltip="treasuries /'treʒəri/ n. 财政部；国库，金库；宝库">Treasuries</span> from the private sector abroad may be ebbing, especially where the longest-dated debt is concerned. “<span class="annot" data-tooltip="arguably /'ɑːrɡjuəbli/ adv. 可论证地,正如可提出证据加以证明的那样">Arguably</span>, ageing populations and declining fertility rates reduce the need for life-insurance products,” notes Thomas Mathews of Capital Economics, a consultancy. Demand for life insurance <span class="annot" data-tooltip="tends /tend/ vt. 照料，照顾，伺候vi. 往，朝向易于；倾向时 态: tended，tending，tends">tends</span> to come from people of working age with dependent children. More old people and fewer children may, therefore, presage lower demand. The shift among foreign buyers of Treasuries from unexacting <span class="annot" data-tooltip="central /'sentrəl/ adj. 中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的副 词: centrally">central</span> banks to commercial investors focused on returns suggests that demand for American debt will become more sensitive to price. To continue to attract buyers, <span class="annot" data-tooltip="yields /jiːld/ vt. 出产；屈服；放弃vi. 屈服，投降n. 收益；产量时 态: yielded, yielding, yields">yields</span> will have to be higher than in the past, driving up the bill for American taxpayers. ■ This article was downloaded by zlibrary from https://www.economist.com//special-report/2026/06/01/foreign-demand-for-american- government-debt-is-becoming-much-less-<span class="annot" data-tooltip="reliable /rɪ'laɪəbl/ adj. 可靠的, 可信赖的副 词: reliably">reliable</span></p>
+<p>Like it or not, <span class="annot" data-tooltip="hedge /hedʒ/ vt. 用树篱笆围住；避免作正面答复vi. 用树篱围住；避免作正面答复n. 树篱；障碍时 态: hedged, hedging,">hedge</span> funds are a permanent part of the <span class="annot" data-tooltip="treasury /'treʒəri/ n. 财政部；国库，金库；宝库">Treasury</span> market As interest from other buyers dwindles, the trade in <span class="annot" data-tooltip="treasuries /'treʒəri/ n. 财政部；国库，金库；宝库">Treasuries</span> increasingly relies on risky investors June 4th 2026 THE SCALE of the Treasury market is mind-boggling. Some $1trn in <span class="annot" data-tooltip="securities /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">securities</span> change hands each day. Trillions more are used as <span class="annot" data-tooltip="collateral /kə'lætərəl/ n. 附属担保品adj. 相关的">collateral</span> for short-term loans. Financial institutions of all <span class="annot" data-tooltip="stripes /straɪp/ n. 条纹，斑纹；种类vt. 加条纹于…时 态: striped, striping, stripes">stripes</span> are <span class="annot" data-tooltip="involved /ɪn'vɑːlvd/ adj. 卷入的；有关的；复杂的v. 涉及；使参与；包含（involve的过去式和过去分词）">involved</span>: banks, <span class="annot" data-tooltip="central /'sentrəl/ adj. 中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的副 词: centrally">central</span> banks, high-speed traders, insurers, endowments, <span class="annot" data-tooltip="pension /ˈpenʃn/ n. 津贴；退休金，抚恤金；膳宿费vt. 发给养老金或抚恤金时 态: pensioned, pensioning, pensi">pension</span> funds, hedge funds and so on. It used to be that banks were the <span class="annot" data-tooltip="main /meɪn/ adj. 主要的; 最重要的n. 总管道; 干线">main</span> facilitators of all this, acting as “market-makers” for other financial firms. As recently as 2009 about half of Treasuries with maturities of a year or more were bought at auction by the brokerage arms of investment banks, which then sold them on. But new regulations introduced after the financial crisis <span class="annot" data-tooltip="diminished /dɪ'mɪnɪʃ/ vt. 使减少；使变小vi. 变小；减少，缩小时 态: diminished, diminishing, diminishes">diminished</span> banks’ role as <span class="annot" data-tooltip="intermediaries /ˌɪntər'miːdieri/ n. 中间人;调解人">intermediaries</span> in the Treasury market, by requiring them to fund themselves</p>
+<p>with more capital to underpin such mundane <span class="annot" data-tooltip="transactions /træn'zækʃn/ n. 处理，办理，执行(一笔)交易；(一项)事务形容词: transactional">transactions</span>. Dealer banks now buy just 12% of <span class="annot" data-tooltip="treasuries /'treʒəri/ n. 财政部；国库，金库；宝库">Treasuries</span> maturing in over a year at auction. Another <span class="annot" data-tooltip="prolific /prə'lɪfɪk/ adj. 多产的；丰富的名 词: prolificacy">prolific</span> buyer has helped to fill the void: <span class="annot" data-tooltip="hedge /hedʒ/ vt. 用树篱笆围住；避免作正面答复vi. 用树篱围住；避免作正面答复n. 树篱；障碍时 态: hedged, hedging,">hedge</span> funds. These try to profit from Treasuries in lots of ways, but one approach, called relative <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span>, causes particular <span class="annot" data-tooltip="consternation /ˌkɑːnstər'neɪʃn/ n. 惊愕；惊惶失措；恐怖">consternation</span>. This involves <span class="annot" data-tooltip="exploiting /ɪk'splɔɪt/ vt. 开发，开拓；剥削；开采n. 勋绩；功绩时 态: exploited, exploiting, exploits">exploiting</span> tiny <span class="annot" data-tooltip="discrepancies /dɪ'skrepənsi/ n. 差异，不符合(之处)；不一致(之处)">discrepancies</span> in the prices of similar <span class="annot" data-tooltip="assets /'æset/ n. 资产；有用的东西；有利条件；优点">assets</span> which will converge over time. Because the differences in price are minuscule, so are the profits. To make such trades worthwhile, hedge funds <span class="annot" data-tooltip="pursue /pər'suː/ vt. 从事；追赶；继续；纠缠vi. 追赶；继续进行时 态: pursued, pursuing, pursues">pursue</span> them at huge scale using borrowed cash. To that end, they hold $2.4trn of long <span class="annot" data-tooltip="exposure /ɪk'spoʊʒər/ n. 暴露, 显露揭发, 揭露(软片等)曝光">exposure</span> to Treasuries —bets that the bonds will <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> in value—in the form of the <span class="annot" data-tooltip="securities /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">securities</span> themselves and <span class="annot" data-tooltip="derivatives /dɪ'rɪvətɪv/ n. 衍生物，派生物；派生词；【数】导数，微商adj. 缺乏独创性的；模仿他人的副 词: derivatively">derivatives</span> (see chart). The most common relative-value <span class="annot" data-tooltip="strategy /'strætədʒi/ n. 战略学, 兵法战略, 策略策略, 计谋">strategy</span> is called the basis trade. It seeks to profit from piddling differences in price between <span class="annot" data-tooltip="treasury /'treʒəri/ n. 财政部；国库，金库；宝库">Treasury</span> futures (a <span class="annot" data-tooltip="contract /'kɑːntrækt/ vi. 感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约时 态: contracted, contracting, c">contract</span> to buy or sell a Treasury bond on a fixed date) and the <span class="annot" data-tooltip="underlying /ˌʌndər'laɪɪŋ/ adj. 根本的, 基础的含蓄的, 潜在的">underlying</span> Treasury bonds themselves. Treasury futures are in huge demand from <span class="annot" data-tooltip="asset /'æset/ n. 资产；有用的东西；有利条件；优点">asset</span> managers, because owning them involves less red tape than buying the bonds. That means that a given Treasury bond often trades at a fractionally lower price than the like futures contract. Citadel, ExodusPoint and other hedge funds sell futures <span class="annot" data-tooltip="contracts /'kɑːntrækt/ vi. 感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约时 态: contracted, contracting, c">contracts</span>, use the proceeds to buy the <span class="annot" data-tooltip="relevant /'reləvənt/ adj. 有关的, 切题的副 词: relevantly">relevant</span></p>
+<p><span class="annot" data-tooltip="treasury /'treʒəri/ n. 财政部；国库，金库；宝库">Treasury</span> bonds for fractionally less, and then pocket the difference when the <span class="annot" data-tooltip="contract /'kɑːntrækt/ vi. 感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约时 态: contracted, contracting, c">contract</span> matures. That the two <span class="annot" data-tooltip="assets /'æset/ n. 资产；有用的东西；有利条件；优点">assets</span> will converge in price as they mature is a certainty, so the trade itself <span class="annot" data-tooltip="entails /ɪn'teɪl/ vt. 使…成为必要, 需要限定继承时 态: entailed, entailing, entails">entails</span> no risk. But to make it <span class="annot" data-tooltip="worth /wɜːrθ/ adj. 值…的n. 价值；财产时 态: worthed, worthing, worths">worth</span> their while, the firms <span class="annot" data-tooltip="amplify /'æmplɪfaɪ/ vt. 放大, 扩大增强vt. & vi. 详述时 态: amplified, amplifying, amplifies">amplify</span> their investment by borrowing heavily, which creates big risks. They <span class="annot" data-tooltip="typically /'tɪpɪkli/ adv. 代表性地;作为特色地;典型地">typically</span> <span class="annot" data-tooltip="pledge /pledʒ/ n. 抵押；保证，誓言；抵押品，典当物vt. 保证，许诺；用……抵押；举杯祝……健康时 态: pledged, pledgin">pledge</span> <span class="annot" data-tooltip="treasuries /'treʒəri/ n. 财政部；国库，金库；宝库">Treasuries</span> as <span class="annot" data-tooltip="collateral /kə'lætərəl/ n. 附属担保品adj. 相关的">collateral</span>. If the price of Treasuries <span class="annot" data-tooltip="falls /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">falls</span>, lenders may demand more protection. And if it falls <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> enough, borrowers can be forced to liquidate assets to repay their loans. This dynamic can <span class="annot" data-tooltip="exacerbate /ɪɡ'zæsərbeɪt/ vt. 使恶化；使加重时 态: exacerbated，exacerbating，exacerbates">exacerbate</span> the severity of swings in the Treasury market. During the <span class="annot" data-tooltip="dash /dæʃ/ n. 破折号；冲撞vt. 使…破灭；猛撞；泼溅vi. 猛冲；撞击DASHabbr. Drone Antisubmarine H">dash</span> for cash, <span class="annot" data-tooltip="hedge /hedʒ/ vt. 用树篱笆围住；避免作正面答复vi. 用树篱围住；避免作正面答复n. 树篱；障碍时 态: hedged, hedging,">hedge</span> funds sold an estimated $172bn of Treasuries, contributing to the market’s seizure. Since then, volumes of Treasuries borrowed for the basis trade have risen by 160%. Should another crisis arise, the basis trade will make it only worse. Some regulators worry about the growing weight of hedge funds in the Treasury market. In 2023 Gary Gensler, then <span class="annot" data-tooltip="chairman /'tʃermən/ n. 主席，会长；董事长时 态: chairmanned, chairmanning, chairmans">chairman</span> of the <span class="annot" data-tooltip="securities /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">Securities</span> and Exchange <span class="annot" data-tooltip="commission /kə'mɪʃn/ n. 授权, 委托委员会佣金, 回扣vt. 委任, 委托时 态: commissioned, commissioning, c">Commission</span> (SEC), one of several regulators with responsibility for the Treasury market, suggested that hedge funds should be regulated like the trading arms of banks. That drew howls of opposition from the likes of Ken Griffin, the founder and CEO of Citadel. “The mirage is that it’s the safest, deepest, most liquid market in the world,” says Anil Kashyap, a professor at the University of Chicago and a former member of the Bank of England’s financial-policy committee. “The <span class="annot" data-tooltip="reality /ri'æləti/ n. 现实；真实；实际">reality</span> on the ground is that the market now depends on people who are very highly <span class="annot" data-tooltip="levered /'levər/ n. 〈物〉杠杆操作杆vt. (用杠杆)撬动时 态: levered, levering, levers">levered</span> being the marginal buyer of Treasuries.” <span class="annot" data-tooltip="exactly /ɪɡ'zækt/ adj. 精确的；准确的，精密的vt. 强求；要求；急需vi. 勒索钱财时 态: exacted, exacting, exact">Exactly</span> how much <span class="annot" data-tooltip="leverage /'levərɪdʒ/ n. （能够操控形势的）影响力，手段，优势 杠杆力；杠杆作用v. 举债经营；为…融资有效利用某物（资源、优势、工具等）时 态:">leverage</span> is <span class="annot" data-tooltip="involved /ɪn'vɑːlvd/ adj. 卷入的；有关的；复杂的v. 涉及；使参与；包含（involve的过去式和过去分词）">involved</span> in relative-<span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span> trades is disconcertingly uncertain. The Office of Financial Research, an arm of the Treasury Department, collates information about borrowing from hedge funds’ <span class="annot" data-tooltip="corporate /'kɔːrpərət/ adj. 社团的, 法人的副 词: corporately">corporate</span> filings. It finds that, for every $26 hedge funds <span class="annot" data-tooltip="invest /ɪn'vest/ vt. 投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买时 态: invested, investing, invests">invest</span> in relative-value trades, $25 are borrowed. Relative-value trades involving Treasuries, which are <span class="annot" data-tooltip="relatively /'relətɪvli/ adv. 相对地，比较而言；相当相对来说；相比较而言">relatively</span> easy to borrow against, are likely to be even more heavily leveraged.</p>
+<p>Some analysts worry that <span class="annot" data-tooltip="leverage /'levərɪdʒ/ n. （能够操控形势的）影响力，手段，优势 杠杆力；杠杆作用v. 举债经营；为…融资有效利用某物（资源、优势、工具等）时 态:">leverage</span> could be higher still for certain investors. To win valued business from <span class="annot" data-tooltip="hedge /hedʒ/ vt. 用树篱笆围住；避免作正面答复vi. 用树篱围住；避免作正面答复n. 树篱；障碍时 态: hedged, hedging,">hedge</span> funds, banks sometimes lend them more than their <span class="annot" data-tooltip="collateral /kə'lætərəl/ n. 附属担保品adj. 相关的">collateral</span> is <span class="annot" data-tooltip="worth /wɜːrθ/ adj. 值…的n. 价值；财产时 态: worthed, worthing, worths">worth</span>, a <span class="annot" data-tooltip="practice /'præktɪs/ n. 练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规时 态: practiced，practicing，">practice</span> known as a “<span class="annot" data-tooltip="negative /'neɡətɪv/ adj. 拒绝的；怀疑的；不同意的消极的，非建设性的无预期结果的〈数〉负的；〈电〉阴的，负的n. 否定词语，否定的观点；拒绝；否认">negative</span> haircut”. If a bank <span class="annot" data-tooltip="extends /ɪk'stend/ vt. & vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出时 态:">extends</span> $110 of <span class="annot" data-tooltip="credit /'kredɪt/ n. 赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)时 态:">credit</span> against a <span class="annot" data-tooltip="treasury /'treʒəri/ n. 财政部；国库，金库；宝库">Treasury</span> worth $100, that leaves no buffer if the bond <span class="annot" data-tooltip="falls /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">falls</span> in <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span>. “If you’re picking up <span class="annot" data-tooltip="pennies /'peni/ n. 便士；（美）分Penny彭妮(女子名, Penelope 的昵称)">pennies</span> in front of a steamroller, those pennies grow pretty nicely with leverage, but you still have that steamroller risk,” says Jonathan Wallen of Harvard Business School. Hedge funds argue that all this borrowing is not as risky as it sounds. Firms may have investments that <span class="annot" data-tooltip="offset /'ɔːfset/ vt. 抵消, 补偿时 态: offset, offsetting, offsets">offset</span> the risk of a sudden <span class="annot" data-tooltip="adverse /əd'vɜːrs/ adj. 不利的；相反的；敌对的（名词adverseness，副词adversely）副 词: adversely">adverse</span> lurch in the Treasury market. During the <span class="annot" data-tooltip="dash /dæʃ/ n. 破折号；冲撞vt. 使…破灭；猛撞；泼溅vi. 猛冲；撞击DASHabbr. Drone Antisubmarine H">dash</span> for cash, for instance, many held options that surged in value as markets tumbled. Others keep lots of cash to hand in case they suddenly need to post more collateral. Sometimes, borrowing appears to be high on one side of the trade, but is markedly lower when the other side is <span class="annot" data-tooltip="considered /kən'sɪdər/ vt. & vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及时 态: considered, considering, ">considered</span> too: a tiny or negative haircut on Treasury bonds may be combined with a more meaningful <span class="annot" data-tooltip="margin /'mɑːrdʒɪn/ n. 页边缘；利润，余裕；页边的空白">margin</span> on the futures <span class="annot" data-tooltip="portion /'pɔːrʃn/ n. 部分；一份；命运">portion</span> of the trade. Since the two trades usually offset one another, basis traders suggest the practice is safer than it seems. Still, according to a Fed report on financial stability last year, few of the banks lending to hedge funds <span class="annot" data-tooltip="actually /'æktʃuəl/ adj. 真实的，实际的；现行的，目前的副 词: actually">actually</span> <span class="annot" data-tooltip="engage /ɪn'ɡeɪdʒ/ vt. 雇佣；吸引，占用；使订婚；使参加；预定vi. 答应，保证；从事；交战；啮合时 态: engaged, engaging,">engage</span> in this kind of protection from <span class="annot" data-tooltip="blow /bloʊ/ n. 吹；殴打；打击vi. 风吹；喘气vt. 风吹时 态: blew blown blowing, blows">blow</span>- ups. What is more, hedge funds were by no means the only sellers during the dash for cash. There were those supposedly <span class="annot" data-tooltip="reliable /rɪ'laɪəbl/ adj. 可靠的, 可信赖的副 词: reliably">reliable</span> <span class="annot" data-tooltip="central /'sentrəl/ adj. 中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的副 词: centrally">central</span> bankers, who sold <span class="annot" data-tooltip="treasuries /'treʒəri/ n. 财政部；国库，金库；宝库">Treasuries</span> to try to <span class="annot" data-tooltip="prop /prɑːp/ n. 支柱, 支柱物vt. 支撑, 支持, 维持时 态: propped, propping, props">prop</span> up the value of their currencies. And dull-as- ditchwater open-ended <span class="annot" data-tooltip="mutual /'mjuːtʃuəl/ adj. 相互的, 彼此的共同的, 共有的名 词: mutuality">mutual</span> funds sold an estimated $266bn of Treasuries in that <span class="annot" data-tooltip="quarter /'kwɔːrtər/ n. 四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一时 ">quarter</span>, considerably more than hedge funds. In <span class="annot" data-tooltip="addition /ə'dɪʃn/ n. 添加；增加物；加法形容词: additional">addition</span>, hedge funds are performing a service when they <span class="annot" data-tooltip="pile /paɪl/ n. 堆；大量；建筑群vt. 累积；打桩于vi. 积累；堆积；挤时 态: piled, piling, piles">pile</span> into the basis trade, by ironing out a kink in financial markets. The voracious appetite of ordinary <span class="annot" data-tooltip="asset /'æset/ n. 资产；有用的东西；有利条件；优点">asset</span> managers for Treasury futures would otherwise create a much bigger <span class="annot" data-tooltip="distortion /dɪ'stɔːrʃn/ n. 变形；[物] 失真；扭曲；曲解形容词: distortional or">distortion</span>. Arbitrage of this sort does not just make hedge-fund managers rich, the rich hedge-fund managers like to point out, it also makes markets more efficient.</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>hoards</td><td>/hɔːrd/ n.</td><td>(钱财、食物或其他珍贵物品的)储藏, 积存vt. & vi. 积蓄并储藏(某物), hoarding, hoards</td></tr>
+<tr><td>addition</td><td>/ə'dɪʃn/ n.</td><td>添加；增加物；加法</td></tr>
+<tr><td>pounds</td><td>/paʊnd/ n.</td><td>英镑；兽栏；重击，重击声；拘留所vt. 捣烂；敲打；监禁，拘留vi. 连续重击，猛击Pound庞德(姓氏)</td></tr>
+<tr><td>central</td><td>/'sentrəl/ adj.</td><td>中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的</td></tr>
+<tr><td>invest</td><td>/ɪn'vest/ vt.</td><td>投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买, investing, invests</td></tr>
+<tr><td>treasuries</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>assets</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>ukraine</td><td>— n.</td><td>乌克兰（原苏联一加盟共和国，现已独立）</td></tr>
+<tr><td>treasury</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>panel</td><td>/'pænl/ n.</td><td>仪表板；嵌板；座谈小组，全体陪审员vt. 嵌镶板, panelled paneling, panelling panels, panels</td></tr>
+<tr><td>purchases</td><td>/'pɜːrtʃəs/ n.</td><td>购买；紧握；起重装置vt. 购买；赢得vi. 购买东西, purchasing, purchases</td></tr>
+<tr><td>decade</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>fall</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>enormous</td><td>/ɪ'nɔːrməs/ adj.</td><td>巨大的, 极大的, 庞大的</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>penny</td><td>/'peni/ n.</td><td>便士；（美）分Penny彭妮(女子名, Penelope 的昵称)</td></tr>
+<tr><td>treasuries</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>worth</td><td>/wɜːrθ/ adj.</td><td>值…的n. 价值；财产, worthing, worths</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>yields</td><td>/jiːld/ vt.</td><td>出产；屈服；放弃vi. 屈服，投降n. 收益；产量, yielding, yields</td></tr>
+<tr><td>equivalents</td><td>/ɪ'kwɪvələnt/ adj.</td><td>等同的，等效的n. 对等的人（或事物），对应的人（或事物）</td></tr>
+<tr><td>alternative</td><td>/ɔːl'tɜːrnətɪv/ adj.</td><td>可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）可供选择的事物；可供选择的解决办法替代物</td></tr>
+<tr><td>cutting</td><td>/'kʌtɪŋ/ n.</td><td>切断；剪辑；开凿adj. 严寒的；锋利的；尖酸刻薄的v. 切开；采伐；削减（cut的ing形式）</td></tr>
+<tr><td>pension</td><td>/ˈpenʃn/ n.</td><td>津贴；退休金，抚恤金；膳宿费vt. 发给养老金或抚恤金, pensioning, pensions</td></tr>
+<tr><td>assets</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>waves</td><td>/weɪv/ vi.</td><td>波动；起伏；摇动；呈波形；挥手示意vt. 向…挥手示意；使成波浪形；卷（烫）发n. 波浪；波动；高潮；卷曲；挥手示意, waving, waves</td></tr>
+<tr><td>swelling</td><td>/swel/ vi.</td><td>膨胀；[病理]肿胀；隆起vt. 使膨胀；使隆起n. 肿胀；隆起adj. 漂亮的；一流的, swelled, swollen swelling, swells</td></tr>
+<tr><td>denmark</td><td>/'denmɑːrk/ n.</td><td>丹麦(北欧国家,首都哥本哈根)</td></tr>
+<tr><td>asset</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>vague</td><td>/veɪɡ/ adj.</td><td>不明确的；含糊的；模糊的；暧昧的, vaguest</td></tr>
+<tr><td>corporate</td><td>/'kɔːrpərət/ adj.</td><td>社团的, 法人的</td></tr>
+<tr><td>net</td><td>/net/ n.</td><td>网；净利；网络；实价vi. 编网vt. 净赚；得到；用网捕adj. 纯粹的；净余的, netting, nets</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>rises</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>treasuries</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>arguably</td><td>/'ɑːrɡjuəbli/ adv.</td><td>可论证地,正如可提出证据加以证明的那样</td></tr>
+<tr><td>tends</td><td>/tend/ vt.</td><td>照料，照顾，伺候vi. 往，朝向易于；倾向，tending，tends</td></tr>
+<tr><td>central</td><td>/'sentrəl/ adj.</td><td>中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的</td></tr>
+<tr><td>yields</td><td>/jiːld/ vt.</td><td>出产；屈服；放弃vi. 屈服，投降n. 收益；产量, yielding, yields</td></tr>
+<tr><td>reliable</td><td>/rɪ'laɪəbl/ adj.</td><td>可靠的, 可信赖的</td></tr>
+<tr><td>hedge</td><td>/hedʒ/ vt.</td><td>用树篱笆围住；避免作正面答复vi. 用树篱围住；避免作正面答复n. 树篱；障碍, hedging, hedges</td></tr>
+<tr><td>treasury</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>treasuries</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>securities</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>collateral</td><td>/kə'lætərəl/ n.</td><td>附属担保品adj. 相关的</td></tr>
+<tr><td>stripes</td><td>/straɪp/ n.</td><td>条纹，斑纹；种类vt. 加条纹于…, striping, stripes</td></tr>
+<tr><td>involved</td><td>/ɪn'vɑːlvd/ adj.</td><td>卷入的；有关的；复杂的v. 涉及；使参与；包含（involve的过去式和过去分词）</td></tr>
+<tr><td>central</td><td>/'sentrəl/ adj.</td><td>中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的</td></tr>
+<tr><td>pension</td><td>/ˈpenʃn/ n.</td><td>津贴；退休金，抚恤金；膳宿费vt. 发给养老金或抚恤金, pensioning, pensions</td></tr>
+<tr><td>main</td><td>/meɪn/ adj.</td><td>主要的; 最重要的n. 总管道; 干线</td></tr>
+<tr><td>diminished</td><td>/dɪ'mɪnɪʃ/ vt.</td><td>使减少；使变小vi. 变小；减少，缩小, diminishing, diminishes</td></tr>
+<tr><td>intermediaries</td><td>/ˌɪntər'miːdieri/ n.</td><td>中间人;调解人</td></tr>
+<tr><td>transactions</td><td>/træn'zækʃn/ n.</td><td>处理，办理，执行(一笔)交易；(一项)事务</td></tr>
+<tr><td>treasuries</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>prolific</td><td>/prə'lɪfɪk/ adj.</td><td>多产的；丰富的</td></tr>
+<tr><td>hedge</td><td>/hedʒ/ vt.</td><td>用树篱笆围住；避免作正面答复vi. 用树篱围住；避免作正面答复n. 树篱；障碍, hedging, hedges</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>consternation</td><td>/ˌkɑːnstər'neɪʃn/ n.</td><td>惊愕；惊惶失措；恐怖</td></tr>
+<tr><td>exploiting</td><td>/ɪk'splɔɪt/ vt.</td><td>开发，开拓；剥削；开采n. 勋绩；功绩, exploiting, exploits</td></tr>
+<tr><td>discrepancies</td><td>/dɪ'skrepənsi/ n.</td><td>差异，不符合(之处)；不一致(之处)</td></tr>
+<tr><td>assets</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>pursue</td><td>/pər'suː/ vt.</td><td>从事；追赶；继续；纠缠vi. 追赶；继续进行, pursuing, pursues</td></tr>
+<tr><td>exposure</td><td>/ɪk'spoʊʒər/ n.</td><td>暴露, 显露揭发, 揭露(软片等)曝光</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>securities</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>derivatives</td><td>/dɪ'rɪvətɪv/ n.</td><td>衍生物，派生物；派生词；【数】导数，微商adj. 缺乏独创性的；模仿他人的</td></tr>
+<tr><td>strategy</td><td>/'strætədʒi/ n.</td><td>战略学, 兵法战略, 策略策略, 计谋</td></tr>
+<tr><td>treasury</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>contract</td><td>/'kɑːntrækt/ vi.</td><td>感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约, contracting, contracts</td></tr>
+<tr><td>underlying</td><td>/ˌʌndər'laɪɪŋ/ adj.</td><td>根本的, 基础的含蓄的, 潜在的</td></tr>
+<tr><td>asset</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>contracts</td><td>/'kɑːntrækt/ vi.</td><td>感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约, contracting, contracts</td></tr>
+<tr><td>relevant</td><td>/'reləvənt/ adj.</td><td>有关的, 切题的</td></tr>
+<tr><td>treasury</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>contract</td><td>/'kɑːntrækt/ vi.</td><td>感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约, contracting, contracts</td></tr>
+<tr><td>assets</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>entails</td><td>/ɪn'teɪl/ vt.</td><td>使…成为必要, 需要限定继承, entailing, entails</td></tr>
+<tr><td>worth</td><td>/wɜːrθ/ adj.</td><td>值…的n. 价值；财产, worthing, worths</td></tr>
+<tr><td>amplify</td><td>/'æmplɪfaɪ/ vt.</td><td>放大, 扩大增强vt. & vi. 详述, amplifying, amplifies</td></tr>
+<tr><td>typically</td><td>/'tɪpɪkli/ adv.</td><td>代表性地;作为特色地;典型地</td></tr>
+<tr><td>pledge</td><td>/pledʒ/ n.</td><td>抵押；保证，誓言；抵押品，典当物vt. 保证，许诺；用……抵押；举杯祝……健康, pledging, pledges</td></tr>
+<tr><td>treasuries</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>collateral</td><td>/kə'lætərəl/ n.</td><td>附属担保品adj. 相关的</td></tr>
+<tr><td>falls</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>exacerbate</td><td>/ɪɡ'zæsərbeɪt/ vt.</td><td>使恶化；使加重，exacerbating，exacerbates</td></tr>
+<tr><td>dash</td><td>/dæʃ/ n.</td><td>破折号；冲撞vt. 使…破灭；猛撞；泼溅vi. 猛冲；撞击DASHabbr. Drone Antisubmarine Helicopter 无线电遥控反潜艇直升</td></tr>
+<tr><td>hedge</td><td>/hedʒ/ vt.</td><td>用树篱笆围住；避免作正面答复vi. 用树篱围住；避免作正面答复n. 树篱；障碍, hedging, hedges</td></tr>
+<tr><td>chairman</td><td>/'tʃermən/ n.</td><td>主席，会长；董事长, chairmanning, chairmans</td></tr>
+<tr><td>securities</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>commission</td><td>/kə'mɪʃn/ n.</td><td>授权, 委托委员会佣金, 回扣vt. 委任, 委托, commissioning, commissions</td></tr>
+<tr><td>reality</td><td>/ri'æləti/ n.</td><td>现实；真实；实际</td></tr>
+<tr><td>levered</td><td>/'levər/ n.</td><td>〈物〉杠杆操作杆vt. (用杠杆)撬动, levering, levers</td></tr>
+<tr><td>exactly</td><td>/ɪɡ'zækt/ adj.</td><td>精确的；准确的，精密的vt. 强求；要求；急需vi. 勒索钱财, exacting, exacts</td></tr>
+<tr><td>leverage</td><td>/'levərɪdʒ/ n.</td><td>（能够操控形势的）影响力，手段，优势 杠杆力；杠杆作用v. 举债经营；为…融资有效利用某物（资源、优势、工具等）, leveraging, leverages</td></tr>
+<tr><td>involved</td><td>/ɪn'vɑːlvd/ adj.</td><td>卷入的；有关的；复杂的v. 涉及；使参与；包含（involve的过去式和过去分词）</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>corporate</td><td>/'kɔːrpərət/ adj.</td><td>社团的, 法人的</td></tr>
+<tr><td>invest</td><td>/ɪn'vest/ vt.</td><td>投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买, investing, invests</td></tr>
+<tr><td>relatively</td><td>/'relətɪvli/ adv.</td><td>相对地，比较而言；相当相对来说；相比较而言</td></tr>
+<tr><td>leverage</td><td>/'levərɪdʒ/ n.</td><td>（能够操控形势的）影响力，手段，优势 杠杆力；杠杆作用v. 举债经营；为…融资有效利用某物（资源、优势、工具等）, leveraging, leverages</td></tr>
+<tr><td>hedge</td><td>/hedʒ/ vt.</td><td>用树篱笆围住；避免作正面答复vi. 用树篱围住；避免作正面答复n. 树篱；障碍, hedging, hedges</td></tr>
+<tr><td>collateral</td><td>/kə'lætərəl/ n.</td><td>附属担保品adj. 相关的</td></tr>
+<tr><td>worth</td><td>/wɜːrθ/ adj.</td><td>值…的n. 价值；财产, worthing, worths</td></tr>
+<tr><td>practice</td><td>/'præktɪs/ n.</td><td>练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规，practicing，practices</td></tr>
+<tr><td>negative</td><td>/'neɡətɪv/ adj.</td><td>拒绝的；怀疑的；不同意的消极的，非建设性的无预期结果的〈数〉负的；〈电〉阴的，负的n. 否定词语，否定的观点；拒绝；否认，negativing，negative</td></tr>
+<tr><td>extends</td><td>/ɪk'stend/ vt.</td><td>& vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出，extending，extends</td></tr>
+<tr><td>credit</td><td>/'kredɪt/ n.</td><td>赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)，crediting，credits</td></tr>
+<tr><td>treasury</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>falls</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>pennies</td><td>/'peni/ n.</td><td>便士；（美）分Penny彭妮(女子名, Penelope 的昵称)</td></tr>
+<tr><td>offset</td><td>/'ɔːfset/ vt.</td><td>抵消, 补偿, offsetting, offsets</td></tr>
+<tr><td>adverse</td><td>/əd'vɜːrs/ adj.</td><td>不利的；相反的；敌对的（名词adverseness，副词adversely）</td></tr>
+<tr><td>dash</td><td>/dæʃ/ n.</td><td>破折号；冲撞vt. 使…破灭；猛撞；泼溅vi. 猛冲；撞击DASHabbr. Drone Antisubmarine Helicopter 无线电遥控反潜艇直升</td></tr>
+<tr><td>considered</td><td>/kən'sɪdər/ vt.</td><td>& vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及, considering, considers</td></tr>
+<tr><td>margin</td><td>/'mɑːrdʒɪn/ n.</td><td>页边缘；利润，余裕；页边的空白</td></tr>
+<tr><td>portion</td><td>/'pɔːrʃn/ n.</td><td>部分；一份；命运</td></tr>
+<tr><td>actually</td><td>/'æktʃuəl/ adj.</td><td>真实的，实际的；现行的，目前的</td></tr>
+<tr><td>engage</td><td>/ɪn'ɡeɪdʒ/ vt.</td><td>雇佣；吸引，占用；使订婚；使参加；预定vi. 答应，保证；从事；交战；啮合, engaging, engages</td></tr>
+<tr><td>blow</td><td>/bloʊ/ n.</td><td>吹；殴打；打击vi. 风吹；喘气vt. 风吹, blows</td></tr>
+<tr><td>reliable</td><td>/rɪ'laɪəbl/ adj.</td><td>可靠的, 可信赖的</td></tr>
+<tr><td>central</td><td>/'sentrəl/ adj.</td><td>中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的</td></tr>
+<tr><td>treasuries</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>prop</td><td>/prɑːp/ n.</td><td>支柱, 支柱物vt. 支撑, 支持, 维持, propping, props</td></tr>
+<tr><td>mutual</td><td>/'mjuːtʃuəl/ adj.</td><td>相互的, 彼此的共同的, 共有的</td></tr>
+<tr><td>quarter</td><td>/'kwɔːrtər/ n.</td><td>四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一, quartering, quarters</td></tr>
+<tr><td>addition</td><td>/ə'dɪʃn/ n.</td><td>添加；增加物；加法</td></tr>
+<tr><td>pile</td><td>/paɪl/ n.</td><td>堆；大量；建筑群vt. 累积；打桩于vi. 积累；堆积；挤, piling, piles</td></tr>
+<tr><td>asset</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>distortion</td><td>/dɪ'stɔːrʃn/ n.</td><td>变形；[物] 失真；扭曲；曲解</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day28.html" class="nav-btn">← Day 28</a>
+  <a href="day30.html" class="nav-btn">Day 30 →</a>
+</div>
+
+<div class="progress">📖 Day 29 of 46</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-06-06</div>
+
+</body>
+</html>

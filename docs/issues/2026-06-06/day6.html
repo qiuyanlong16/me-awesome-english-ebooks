@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>By Invitation | Pass, pass, cross, yawn</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-06-06</div>
+
+<h1 class="article-title">By Invitation | Pass, pass, cross, yawn</h1>
+<div class="article-section">By Invitation</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>ranked <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span> the top third by bookmakers have <span class="annot" data-tooltip="reached /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reached</span> the semi-finals: Croatia (1998 and 2022), South Korea (2002), Turkey (2002), Uruguay (2010) and Morocco (2022). Their runs to the semis had an average score of 1.1 <span class="annot" data-tooltip="versus /'vɜːrsəs/ prep. 对；与...相对；对抗">versus</span> 0.7 in normal time. New Zealand, ranked last by bookies in 2010, were the only unbeaten team that year, scoring twice across three draws. Put <span class="annot" data-tooltip="simply /'sɪmpli/ adv. 简单地；朴素地；简直；仅仅；坦白地">simply</span>, for countries outside the <span class="annot" data-tooltip="elite /eɪ'liːt/ n. （社会）上层集团；掌权人物；出类拔萃的人，精英adj.（社会）上层集团的；掌权人物的；精英的">elite</span>, it pays to “park the bus” and pray—a logic that will apply even more strongly with 48 teams. There might be more goals in <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span>-stage drubbings, but also more Davids <span class="annot" data-tooltip="hacking /hæk/ vt. & vi. 劈, 砍vt. 狠踢, 乱踢vi. 咳嗽(发出刺耳声音)(以普通速度)骑马驾驶计程车n. 砍, 劈用靴头踢骑">hacking</span> down Goliath in the knockouts. The possibility of winning the World Cup is so intoxicating that every game could be scoreless and billions would still watch. But football is competing in a global market for eyeballs, in which the governing bodies of other sports are trying to make their “product” more appealing. Sometimes that means making matches snappier, as <span class="annot" data-tooltip="major /'meɪdʒər/ adj. 主要的；主修的；重要的；较多的n. 成年人；主修科目；陆军少校vi. 主修时 态: majored, majoring,">Major</span> <span class="annot" data-tooltip="league /liːɡ/ n. 联盟；社团；范畴vt. 使…结盟；与…联合vi. 结盟；团结时 态: leagued, leaguing, league">League</span> Baseball has done by introducing a 15-second limit for pitchers. Often it means making them higher-scoring, as both codes of rugby have done by <span class="annot" data-tooltip="refereeing /ˌrefə'riː/ n. 裁判员；调解人；介绍人vi. 担任裁判；仲裁vt. 为…当裁判；调停时 态: refereed, refereeing,">refereeing</span> the “ruck” more favourably to the attack, and the Indian Premier League has in <span class="annot" data-tooltip="cricket /'krɪkɪt/ n. 蟋蟀；板球，板球运动时 态: cricketed, cricketing, crickets">cricket</span> by adding a 12th “impact player”. Meanwhile, <span class="annot" data-tooltip="formula /'fɔːrmjələ/ n. 公式，准则；配方；婴儿食品形容词: formulaic">Formula</span> One has increased unpredictability by changing several rules for constructors: this <span class="annot" data-tooltip="season /'siːzn/ n. 时期；季节；赛季vt. 给…调味；使适应vi. 变得成熟；变干燥时 态: seasoned, seasoning, se">season</span> Lewis Hamilton and Max Verstappen, champions in ten of the past 12 <span class="annot" data-tooltip="seasons /'siːzn/ n. 时期；季节；赛季vt. 给…调味；使适应vi. 变得成熟；变干燥时 态: seasoned, seasoning, se">seasons</span>, have yet to win a <span class="annot" data-tooltip="race /reɪs/ n. 种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACE">race</span>. There is a long history of administrators making such <span class="annot" data-tooltip="tweaks /twiːk/ n. 拧；扭；焦急vt. 扭；用力拉；开足马力时 态: tweaked, tweaking, tweaks">tweaks</span>. America’s National Basketball Association introduced a shot clock to force more attacking play in the 1950s, when matches averaged 160 points (it is now 230). But today the rate of experimentation is accelerating, <span class="annot" data-tooltip="amid /ə'mɪd/ prep. 在其中，在其间">amid</span> fears that broadcast deals have peaked and that younger audiences are watching more <span class="annot" data-tooltip="highlights 拔萃,集锦(精采会议文献选辑)">highlights</span> and fewer matches. In truth, teams in most sports play <span class="annot" data-tooltip="conservatively /kən'sɜːrvətɪv/ n. 保守的人adj. 保守的, 守旧的(式样等)不时新的, 传统的副 词: conservatively">conservatively</span> in play-offs, so organisers who do not <span class="annot" data-tooltip="innovate /'ɪnəveɪt/ vi. 改革；创新；革新vt. 创始；改变；创立；引人时 态: innovated, innovating, innovates">innovate</span> are risking an <span class="annot" data-tooltip="anti /'ænti/ adj. 反对的n. 反对者，反对论者">anti</span>-climax as other <span class="annot" data-tooltip="leagues /liːɡ/ n. 联盟；社团；范畴vt. 使…结盟；与…联合vi. 结盟；团结时 态: leagued, leaguing, league">leagues</span> <span class="annot" data-tooltip="reach /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reach</span> a crescendo. Some governing bodies even use external analysts to model how changes in gameplay and the behaviour of fans might <span class="annot" data-tooltip="affect /ə'fekt/ vt. 影响；假装；感动；感染vi. 倾向；喜欢n. 情感；引起感情的因素时 态: affected, affecting, a">affect</span> their businesses. Football has historically been less open to this. The laws are largely untouched from 30 years ago—with changes few in <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> and mostly <span class="annot" data-tooltip="minor /'maɪnər/ adj. 较小的, 较少的, 低级的, 次要的n. 未成年人副修科目时 态: minored, minoring, minors">minor</span>—though they are enforced more <span class="annot" data-tooltip="strictly /'strɪktli/ adv. 严格地；完全地；确实地">strictly</span>: today you’ll get a red card for raking someone’s shin, with the video assistant <span class="annot" data-tooltip="referee /ˌrefə'riː/ n. 裁判员；调解人；介绍人vi. 担任裁判；仲裁vt. 为…当裁判；调停时 态: refereed, refereeing,">referee</span> (VAR) adding</p>
+<p>extra scrutiny to every decision. Recently, however, FIFA, world football’s governing body, has realised that it too might need to <span class="annot" data-tooltip="innovate /'ɪnəveɪt/ vi. 改革；创新；革新vt. 创始；改变；创立；引人时 态: innovated, innovating, innovates">innovate</span>, to maintain the sport’s share of the attention economy—and, perhaps, to grow it in America, which will <span class="annot" data-tooltip="host /hoʊst/ n. 主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集时 态: hosted, hosting, host">host</span> 78 of this year’s 104 matches. Arsène Wenger, a venerated former manager who now works for FIFA, has suggested relaxing the offside law to apply only when there is “clear daylight” between the attacker and defender. This is being <span class="annot" data-tooltip="trialled /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">trialled</span> in the Canadian <span class="annot" data-tooltip="league /liːɡ/ n. 联盟；社团；范畴vt. 使…结盟；与…联合vi. 结盟；团结时 态: leagued, leaguing, league">league</span>. The idea is to reinstate many goals that are currently being chalked off by VAR (though officials will still have to draw a <span class="annot" data-tooltip="line /laɪn/ n. 绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long inter">line</span> somewhere, so the debate over whether someone’s shoelace was offside will never end). Given how much fans dislike VAR—in a recent survey of British fans, 72% said it makes watching football less enjoyable—fixing it ought to be top of FIFA’s <span class="annot" data-tooltip="agenda /ə'dʒendə/ n. （政治）议题；议事日程；目的">agenda</span>. Using it <span class="annot" data-tooltip="solely /'soʊlli/ adv. 唯一地;仅仅;独一无二地">solely</span> when teams make “challenges”, with each given a limited <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span>, as is common in other sports, should mean that only howlers get checked, while shifting some blame to the teams if something gets missed. That change, in tandem with Mr Wenger’s offside <span class="annot" data-tooltip="tweak /twiːk/ n. 拧；扭；焦急vt. 扭；用力拉；开足马力时 态: tweaked, tweaking, tweaks">tweak</span>, could mean more goals and fewer <span class="annot" data-tooltip="refereeing /ˌrefə'riː/ n. 裁判员；调解人；介绍人vi. 担任裁判；仲裁vt. 为…当裁判；调停时 态: refereed, refereeing,">refereeing</span> delays. For fans in the 47 eliminated countries that won’t lift the World Cup <span class="annot" data-tooltip="trophy /'troʊfi/ n.（为竞赛获胜者颁发的）奖品，奖杯（尤指狩猎或战争中获得的）纪念品，战利品">trophy</span>, that would be a victory to celebrate. ■ James Tozer is a co-founder of <span class="annot" data-tooltip="prospect /'prɑːspekt/ n. 景象，景色前景；前途可能成为主顾的人；有希望的候选人vi. 勘探；勘察时 态: prospected，prospecti">Prospect</span>, a sports analytics firm that works with governing bodies, teams, coaches and others. He was a data journalist with The Economist from 2014 to 2022. This article was downloaded by zlibrary from https://www.economist.com//by-<span class="annot" data-tooltip="invitation /ˌɪnvɪ'teɪʃn/ n. 邀请请柬, 请帖">invitation</span>/2026/06/03/why-the-world-cup-produces-an- ugly-<span class="annot" data-tooltip="version /'vɜːrʒn/ n. 变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本">version</span>-of-the-beautiful-game</p>
+<div class="article-separator"></div>
+<div class="article-header">By Invitation · By Invitation | Roll over and groan</div>
+<p>The pain to come in private <span class="annot" data-tooltip="credit /'kredɪt/ n. 赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)时 态:">credit</span> It’s time to <span class="annot" data-tooltip="ditch /dɪtʃ/ vt. 在…上掘沟；把…开入沟里；[俚]丢弃vi. 开沟；掘沟n. 沟渠；壕沟时 态: ditched, ditching, d">ditch</span> assumptions built on cheap capital, stable growth and <span class="annot" data-tooltip="predictable /prɪ'dɪktəbl/ adj. 可预言〔预报〕的不出所料的，可以想见的；平庸的；墨守成规的；毫无想像力的n. 可预测性">predictable</span> exits, argues Hamza Lemssouguer June 4th 2026 TO UNDERSTAND TODAY’S private-credit market, broadly defined as loans to private mid-size companies made by investment funds, you must start with a simple truth: the current environment was shaped by a <span class="annot" data-tooltip="decade /'dekeɪd/ n. 十年，十年期；十">decade</span> of very low interest rates and abundant liquidity, which <span class="annot" data-tooltip="flattered /'flætər/ v. 向…谄媚，奉承，讨好；自认为，自以为是；使显得更漂亮时 态: flattered，flattering，flatters">flattered</span> <span class="annot" data-tooltip="leverage /'levərɪdʒ/ n. （能够操控形势的）影响力，手段，优势 杠杆力；杠杆作用v. 举债经营；为…融资有效利用某物（资源、优势、工具等）时 态:">leverage</span> and <span class="annot" data-tooltip="suppressed /sə'pres/ v. 镇压；制止；压制；（武力）平定禁止（发表）；查禁；封锁抑制；控制；忍住压制；阻止；抑制（身体的功能或反应）时 态: su">suppressed</span> risk. Those conditions are unwinding, with implications that <span class="annot" data-tooltip="extend /ɪk'stend/ vt. & vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出时 态:">extend</span> well beyond credit markets, to <span class="annot" data-tooltip="portfolio /pɔːrt'foʊlioʊ/ n. 公事包, 文件夹投资组合大臣或部长的职位或职责">portfolio</span> <span class="annot" data-tooltip="allocation /ˌælə'keɪʃn/ n. 配给, 分配, 拨出分配额(或量)">allocation</span>, valuation <span class="annot" data-tooltip="methodology /ˌmeθə'dɑːlədʒi/ n. 一套方法方法学,方法论adj. 方法学的n. 方法论者,方法学者形容词: methodological">methodology</span> and risk-pricing across <span class="annot" data-tooltip="asset /'æset/ n. 资产；有用的东西；有利条件；优点">asset</span> classes. The sector has grown from around $500bn in 2015 to an estimated $2trn or more today by promising investors—including <span class="annot" data-tooltip="pension /ˈpenʃn/ n. 津贴；退休金，抚恤金；膳宿费vt. 发给养老金或抚恤金时 态: pensioned, pensioning, pensi">pension</span> plans, insurance companies and increasingly individual investors—an attractive, stable <span class="annot" data-tooltip="yield /jiːld/ vt. 出产；屈服；放弃vi. 屈服，投降n. 收益；产量时 态: yielded, yielding, yields">yield</span></p>
+<p>with <span class="annot" data-tooltip="downside /'daʊnsaɪd/ adj. 下降趋势的">downside</span> protection. Low interest rates and the hunt for <span class="annot" data-tooltip="yield /jiːld/ vt. 出产；屈服；放弃vi. 屈服，投降n. 收益；产量时 态: yielded, yielding, yields">yield</span> fuelled investment in private markets and encouraged capital structures optimised for cheap money and <span class="annot" data-tooltip="seamless /'siːmləs/ adj. 无缝合线的；无缝的；无伤痕的副 词: seamlessly">seamless</span> exits. That dynamic has now been fundamentally <span class="annot" data-tooltip="disrupted /dɪs'rʌpt/ vt. 使混乱, 扰乱时 态: disrupted, disrupting, disrupts">disrupted</span>. Higher interest rates have reset the cost of capital. Private equity, long the engine of deal flow and liquidity, has slowed, with exit paths such as mergers, <span class="annot" data-tooltip="acquisitions /ˌækwɪ'zɪʃn/ n. 获得物，获得；收购">acquisitions</span> and initial public offerings <span class="annot" data-tooltip="narrowing /'næroʊ/ adj. 狭窄的，有限的；度量小的；精密的；勉强的n. 狭窄部分，隘路；海峡vt. 使变狭窄vi. 变窄比较级: narrower">narrowing</span> and holding periods <span class="annot" data-tooltip="stretching /stretʃ/ vt. 伸展,张开vi. 伸展adj. 可伸缩的n. 伸展，延伸时 态: stretched, stretching, stre">stretching</span> well beyond historical norms. Capital is, in effect, trapped. Refinancing has become more difficult. Layer onto this <span class="annot" data-tooltip="numerous /'nuːmərəs/ adj. 很多的, 许多的副 词: numerously">numerous</span> structural pressures: a looming maturity wall as low-cost debt rolls into a higher-rate environment, the retreat of traditional bank lenders and sector-level <span class="annot" data-tooltip="disruptions n. 中断,分裂,瓦解,破坏">disruptions</span>, from AI-driven repricing in software to structurally higher <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span> costs, particularly in Europe. And then there’s the geo-economic context. The long <span class="annot" data-tooltip="benign /bɪ'naɪn/ adj. 良性的；吉利的；和蔼的，亲切的副 词: benignly">benign</span> period in which debt-laden businesses were supported by globalisation has given way to an increasingly <span class="annot" data-tooltip="fragmented /'fræɡmənt/ n. 碎片；片断或不完整部分vt. 使成碎片vi. 破碎或裂开时 态: fragmented, fragmenting, fr">fragmented</span> world, with its higher costs of doing business. What does pain look like in this context? Many borrowers will face a financial shock, as the cost of debt resets to two or three times the levels before 2022, when markets began repricing risk after the long party. Some companies will adapt, preserving earnings power and restructuring their balance-sheets. Others will find that refinancing cannot restore sustainability. The dividing <span class="annot" data-tooltip="line /laɪn/ n. 绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long inter">line</span> will be the <span class="annot" data-tooltip="underlying /ˌʌndər'laɪɪŋ/ adj. 根本的, 基础的含蓄的, 潜在的">underlying</span> <span class="annot" data-tooltip="resilience /rɪ'zɪliəns/ n. 弹回;弹性恢复力；适应力">resilience</span> of each business. Software is likely to be the first <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> of many where these pressures erupt. Investors <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span> they were allocating to diversified, defensive, even “boring” private <span class="annot" data-tooltip="credit /'kredɪt/ n. 赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)时 态:">credit</span>. Instead they were buying leveraged, highly concentrated <span class="annot" data-tooltip="exposure /ɪk'spoʊʒər/ n. 暴露, 显露揭发, 揭露(软片等)曝光">exposure</span> to a single sector with <span class="annot" data-tooltip="relatively /'relətɪvli/ adv. 相对地，比较而言；相当相对来说；相比较而言">relatively</span> low recovery rates in a downturn. We will look back on software’s go-go years as a <span class="annot" data-tooltip="major /'meɪdʒər/ adj. 主要的；主修的；重要的；较多的n. 成年人；主修科目；陆军少校vi. 主修时 态: majored, majoring,">major</span> risk- management blind <span class="annot" data-tooltip="spot /spɑːt/ n. 斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Po">spot</span>. Many software firms took on <span class="annot" data-tooltip="piles /paɪl/ n. 堆；大量；建筑群vt. 累积；打桩于vi. 积累；堆积；挤时 态: piled, piling, piles">piles</span> of debt during the low-rate years, <span class="annot" data-tooltip="helping /'helpɪŋ/ n. （进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的">helping</span> the industry to expand from about $8bn in 2015 to $500bn by the end of 2025. But the debt was often underwritten to <span class="annot" data-tooltip="aggressive /ə'ɡresɪv/ adj. 好争斗的, 挑衅的, 侵略性的副 词: aggressively">aggressive</span> growth assumptions</p>
+<p>rather than <span class="annot" data-tooltip="durable /'dʊrəbl/ adj. 耐用的，持久的n. 耐用品副 词: durably">durable</span> cash generation. Now the <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span>’s business and financing models are under heavy strain. AI is lowering barriers to entry, enabling competitors to quickly and cheaply replicate unique <span class="annot" data-tooltip="capabilities /ˌkeɪpə'bɪləti/ n. 能做某事的素质;能力尚未发挥的天资或素质">capabilities</span> and workflows. Higher financing costs are exposing <span class="annot" data-tooltip="fragile /'frædʒl/ adj. 易碎的，脆的虚弱的，脆弱的；经不起折腾的名 词: fragility">fragile</span> capital structures built on optimistic expectations. There will be winners, particularly firms able to <span class="annot" data-tooltip="integrate /'ɪntɪɡreɪt/ vt. 使结合成为整体vt. & vi. (使)融入时 态: integrated, integrating, integrat">integrate</span> AI effectively. However, for many lenders, returns are likely to come under heavy pressure. Software businesses <span class="annot" data-tooltip="typically /'tɪpɪkli/ adv. 代表性地;作为特色地;典型地">typically</span> lack hard <span class="annot" data-tooltip="assets /'æset/ n. 资产；有用的东西；有利条件；优点">assets</span>, limiting recoveries in downturns. When equity <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span> is impaired, <span class="annot" data-tooltip="retaining /rɪ'teɪn/ vt. 保持；雇；记住时 态: retained, retaining, retains 缩 写: ret">retaining</span> <span class="annot" data-tooltip="senior /'siːniər/ adj. 年长的资深的; 地位高的〈美〉最高年级的n. 较年长者高年级学生〈美〉毕业班学生Senior西尼尔(姓氏)">senior</span> engineers can also become difficult. These dynamics can <span class="annot" data-tooltip="compound /'kɑːmpaʊnd/ n. 复合物；混合物；【化】化合物（语法）复合词有围栏（或围墙）的场地（内有工厂或其他建筑群）adj. 复合的v. 使加重；使">compound</span> in a restructuring. Recoveries for lenders may <span class="annot" data-tooltip="fall /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">fall</span> below historical averages, and in weaker cases could drop well below 50 cents on the dollar. Signs of this shift are already visible in public <span class="annot" data-tooltip="credit /'kredɪt/ n. 赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)时 态:">credit</span> markets, where software firms seeking leveraged loans are struggling to attract demand at a cost of capital they can afford. In private markets these pressures are taking longer to surface, with lenders amending loans and <span class="annot" data-tooltip="deferring /dɪ'fɜːr/ vt. 拖延, 延缓, 推迟vi. 服从某人的意愿, 遵从时 态: deferred, deferring, defers">deferring</span> interest to <span class="annot" data-tooltip="extend /ɪk'stend/ vt. & vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出时 态:">extend</span> timelines. Default rates are still artificially low. The recent <span class="annot" data-tooltip="benign /bɪ'naɪn/ adj. 良性的；吉利的；和蔼的，亲切的副 词: benignly">benign</span> period encouraged a belief that risk had been structurally reduced. In <span class="annot" data-tooltip="reality /ri'æləti/ n. 现实；真实；实际">reality</span>, it had often merely been <span class="annot" data-tooltip="deferred /dɪ'fɜːr/ vt. 拖延, 延缓, 推迟vi. 服从某人的意愿, 遵从时 态: deferred, deferring, defers">deferred</span>. This is hardly new in finance—and, indeed, the current <span class="annot" data-tooltip="transition /træn'zɪʃn/ n. 过渡; 转变; 变迁">transition</span> follows a familiar <span class="annot" data-tooltip="pattern /'pætərn/ n. 型，样式花样，图案方式，形式榜样，典范vt. 模仿； 仿制以图案装饰时 态: patterned，patterning，">pattern</span>: as conditions normalise, overconfidence is corrected; and that adjustment forces a repricing of risk and a more disciplined use of capital. Despite the <span class="annot" data-tooltip="portfolio /pɔːrt'foʊlioʊ/ n. 公事包, 文件夹投资组合大臣或部长的职位或职责">portfolio</span>-construction and underwriting mistakes of the <span class="annot" data-tooltip="decade /'dekeɪd/ n. 十年，十年期；十">decade</span> following the global financial crisis, private credit does not <span class="annot" data-tooltip="present /'preznt/ vt. 呈现；介绍；提出；赠送vi. 举枪瞄准adj. 出席的；现在的n. 现在；礼物；瞄准时 态: presented, pr">present</span> a systemic risk to the financial system. Unlike in 2008, this debt is not concentrated on the balance-sheets of highly leveraged banks. In that sense, much of the post-crisis regulation has worked as intended. The repricing will take years rather than months, and managing underperforming loans will <span class="annot" data-tooltip="soak /soʊk/ vt. 吸收，吸入；使……上下湿透；沉浸在（工作或学习中）vi. 渗透；浸泡n. 浸；湿透；大雨时 态: soaked, soa">soak</span> up plenty of time and resources, limiting private-credit firms’ ability to adapt in a fast-changing market. But the risk of widespread contagion appears limited. Nevertheless, the underwriting assumptions of the past decade, built on cheap capital, stable growth and <span class="annot" data-tooltip="predictable /prɪ'dɪktəbl/ adj. 可预言〔预报〕的不出所料的，可以想见的；平庸的；墨守成规的；毫无想像力的n. 可预测性">predictable</span> exits, can now be <span class="annot" data-tooltip="discarded /dɪ'skɑːrd/ vt. 丢弃；抛弃；放弃vi. 放弃n. 抛弃；被丢弃的东西或人时 态: discarded, discarding, disc">discarded</span>.</p>
+<p>The new environment requires a <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> more forensic assessment of <span class="annot" data-tooltip="resilience /rɪ'zɪliəns/ n. 弹回;弹性恢复力；适应力">resilience</span>, not just growth. It is a private-<span class="annot" data-tooltip="credit /'kredɪt/ n. 赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)时 态:">credit</span> market defined less by <span class="annot" data-tooltip="outright /'aʊtraɪt/ adv. 完全地；彻底地坦率地；直率地；无保留地立即，当场adj. 完全的；彻底的">outright</span> <span class="annot" data-tooltip="distress /dɪ'stres/ n. 悲痛, 痛苦, 忧伤, 苦恼贫困, 窘迫危险, 困难, 危难vt. 使痛苦, 使忧伤时 态: distressed, d">distress</span> and more by widening dispersion between winners and losers. There will still be opportunities. For investors able to distinguish between temporary dislocation and lasting <span class="annot" data-tooltip="impairment /ɪm'permənt/ n. 损害,损伤">impairment</span>, the goal will be to deploy capital at more attractive entry points and to work through capital structures to restore sustainability. The story of private credit today is not about <span class="annot" data-tooltip="excess /ɪk'ses/ n. 无节制；过度，过量；超过，超额adj. 额外的，过量的；附加的时 态: excessed, excessing, exc">excess</span> giving way to crisis. It is about a structural <span class="annot" data-tooltip="transition /træn'zɪʃn/ n. 过渡; 转变; 变迁">transition</span> from an era of abundant, undifferentiated capital to one in which liquidity is conditional, underwriting must be <span class="annot" data-tooltip="granular /'ɡrænjələr/ adj. 颗粒状的名 词: granularity">granular</span> and outcomes will be increasingly unequal. The adjustment will not <span class="annot" data-tooltip="spark /spɑːrk/ n. 火花，火星；电火花；一丝，略微；导火线，诱因v. 引发，触发；产生火花（电火花）；点燃；增加趣味（或活力、风味等）时 态">spark</span> a broader financial <span class="annot" data-tooltip="meltdown /'meltdaʊn/ n. 彻底垮台">meltdown</span>, but expect it to inflict a good deal of pain— while, as always, giving those best placed to navigate choppier waters a chance to dig for treasure.■ Hamza Lemssouguer is the founder and chief investment officer of Arini, a credit investment firm with $20bn under management. This article was downloaded by zlibrary from https://www.economist.com//by-<span class="annot" data-tooltip="invitation /ˌɪnvɪ'teɪʃn/ n. 邀请请柬, 请帖">invitation</span>/2026/06/01/the-pain-to-come-in-private- credit</p>
+<div class="article-separator"></div>
+<div class="article-header">Briefing · Briefing | Demographic dive</div>
+<p>India’s population will soon be <span class="annot" data-tooltip="falling /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">falling</span>—probably quite fast <span class="annot" data-tooltip="neither /'niːðər/ conj. 既不；也不adv. 两个都不；既不……也不adj. 两者都不的det./pron. 两者都不">Neither</span> widespread poverty, nor high rates of marriage nor <span class="annot" data-tooltip="relatively /'relətɪvli/ adv. 相对地，比较而言；相当相对来说；相比较而言">relatively</span> young mothers are <span class="annot" data-tooltip="sustaining /sə'steɪn/ vt. 承受，支撑维持长期保持；使继续经受，遭受时 态: sustained，sustaining，sustains">sustaining</span> fertility June 4th 2026 IN THE SPRAWLING slum in <span class="annot" data-tooltip="delhi /ˈdɛli/ n. 德里（印度城市名）">Delhi</span> where Parul Gayen lived in the 1970s, children were everywhere. It was not <span class="annot" data-tooltip="unusual /ʌn'juːʒuəl/ adj. 与众不同的；不寻常的；不平常的副 词: unusually">unusual</span> then that her mother had been one of six, or her grandfather one of 11. Swapan, the handsome boy whom she often saw cycling to work, and later married at 16, had six <span class="annot" data-tooltip="siblings /'sɪblɪŋ/ n. 兄弟姊妹；民族成员">siblings</span>—the seventh did not survive infancy. But times have changed, says Ms Gayen, who is now 58 and lives with Swapan in a one-bedroom flat nearby. Of the couple’s three grown-up kids, only two decided to have children of their <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span>. Both stopped at one. “One child feels lonely,” she says.</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>reached</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>versus</td><td>/'vɜːrsəs/ prep.</td><td>对；与...相对；对抗</td></tr>
+<tr><td>simply</td><td>/'sɪmpli/ adv.</td><td>简单地；朴素地；简直；仅仅；坦白地</td></tr>
+<tr><td>elite</td><td>/eɪ'liːt/ n.</td><td>（社会）上层集团；掌权人物；出类拔萃的人，精英adj.（社会）上层集团的；掌权人物的；精英的</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>hacking</td><td>/hæk/ vt.</td><td>& vi. 劈, 砍vt. 狠踢, 乱踢vi. 咳嗽(发出刺耳声音)(以普通速度)骑马驾驶计程车n. 砍, 劈用靴头踢骑用马, 供出租的马受雇于出版商的文人出租</td></tr>
+<tr><td>major</td><td>/'meɪdʒər/ adj.</td><td>主要的；主修的；重要的；较多的n. 成年人；主修科目；陆军少校vi. 主修, majoring, majors</td></tr>
+<tr><td>league</td><td>/liːɡ/ n.</td><td>联盟；社团；范畴vt. 使…结盟；与…联合vi. 结盟；团结, leaguing, leagues</td></tr>
+<tr><td>refereeing</td><td>/ˌrefə'riː/ n.</td><td>裁判员；调解人；介绍人vi. 担任裁判；仲裁vt. 为…当裁判；调停, refereeing, referees</td></tr>
+<tr><td>cricket</td><td>/'krɪkɪt/ n.</td><td>蟋蟀；板球，板球运动, cricketing, crickets</td></tr>
+<tr><td>formula</td><td>/'fɔːrmjələ/ n.</td><td>公式，准则；配方；婴儿食品</td></tr>
+<tr><td>season</td><td>/'siːzn/ n.</td><td>时期；季节；赛季vt. 给…调味；使适应vi. 变得成熟；变干燥, seasoning, seasons</td></tr>
+<tr><td>seasons</td><td>/'siːzn/ n.</td><td>时期；季节；赛季vt. 给…调味；使适应vi. 变得成熟；变干燥, seasoning, seasons</td></tr>
+<tr><td>race</td><td>/reɪs/ n.</td><td>种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACEabbr. Radiation Adap</td></tr>
+<tr><td>tweaks</td><td>/twiːk/ n.</td><td>拧；扭；焦急vt. 扭；用力拉；开足马力, tweaking, tweaks</td></tr>
+<tr><td>amid</td><td>/ə'mɪd/ prep.</td><td>在其中，在其间</td></tr>
+<tr><td>highlights</td><td>— </td><td>拔萃,集锦(精采会议文献选辑)</td></tr>
+<tr><td>conservatively</td><td>/kən'sɜːrvətɪv/ n.</td><td>保守的人adj. 保守的, 守旧的(式样等)不时新的, 传统的</td></tr>
+<tr><td>innovate</td><td>/'ɪnəveɪt/ vi.</td><td>改革；创新；革新vt. 创始；改变；创立；引人, innovating, innovates</td></tr>
+<tr><td>anti</td><td>/'ænti/ adj.</td><td>反对的n. 反对者，反对论者</td></tr>
+<tr><td>leagues</td><td>/liːɡ/ n.</td><td>联盟；社团；范畴vt. 使…结盟；与…联合vi. 结盟；团结, leaguing, leagues</td></tr>
+<tr><td>reach</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>affect</td><td>/ə'fekt/ vt.</td><td>影响；假装；感动；感染vi. 倾向；喜欢n. 情感；引起感情的因素, affecting, affects</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>minor</td><td>/'maɪnər/ adj.</td><td>较小的, 较少的, 低级的, 次要的n. 未成年人副修科目, minoring, minors</td></tr>
+<tr><td>strictly</td><td>/'strɪktli/ adv.</td><td>严格地；完全地；确实地</td></tr>
+<tr><td>referee</td><td>/ˌrefə'riː/ n.</td><td>裁判员；调解人；介绍人vi. 担任裁判；仲裁vt. 为…当裁判；调停, refereeing, referees</td></tr>
+<tr><td>innovate</td><td>/'ɪnəveɪt/ vi.</td><td>改革；创新；革新vt. 创始；改变；创立；引人, innovating, innovates</td></tr>
+<tr><td>host</td><td>/hoʊst/ n.</td><td>主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集, hosting, hosts</td></tr>
+<tr><td>trialled</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>league</td><td>/liːɡ/ n.</td><td>联盟；社团；范畴vt. 使…结盟；与…联合vi. 结盟；团结, leaguing, leagues</td></tr>
+<tr><td>line</td><td>/laɪn/ n.</td><td>绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long interspersed element)长散在元</td></tr>
+<tr><td>agenda</td><td>/ə'dʒendə/ n.</td><td>（政治）议题；议事日程；目的</td></tr>
+<tr><td>solely</td><td>/'soʊlli/ adv.</td><td>唯一地;仅仅;独一无二地</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>tweak</td><td>/twiːk/ n.</td><td>拧；扭；焦急vt. 扭；用力拉；开足马力, tweaking, tweaks</td></tr>
+<tr><td>refereeing</td><td>/ˌrefə'riː/ n.</td><td>裁判员；调解人；介绍人vi. 担任裁判；仲裁vt. 为…当裁判；调停, refereeing, referees</td></tr>
+<tr><td>trophy</td><td>/'troʊfi/ </td><td>n.（为竞赛获胜者颁发的）奖品，奖杯（尤指狩猎或战争中获得的）纪念品，战利品</td></tr>
+<tr><td>prospect</td><td>/'prɑːspekt/ n.</td><td>景象，景色前景；前途可能成为主顾的人；有希望的候选人vi. 勘探；勘察，prospecting，prospects</td></tr>
+<tr><td>invitation</td><td>/ˌɪnvɪ'teɪʃn/ n.</td><td>邀请请柬, 请帖</td></tr>
+<tr><td>version</td><td>/'vɜːrʒn/ n.</td><td>变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本</td></tr>
+<tr><td>credit</td><td>/'kredɪt/ n.</td><td>赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)，crediting，credits</td></tr>
+<tr><td>ditch</td><td>/dɪtʃ/ vt.</td><td>在…上掘沟；把…开入沟里；[俚]丢弃vi. 开沟；掘沟n. 沟渠；壕沟, ditching, ditches</td></tr>
+<tr><td>predictable</td><td>/prɪ'dɪktəbl/ adj.</td><td>可预言〔预报〕的不出所料的，可以想见的；平庸的；墨守成规的；毫无想像力的n. 可预测性</td></tr>
+<tr><td>decade</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>flattered</td><td>/'flætər/ v.</td><td>向…谄媚，奉承，讨好；自认为，自以为是；使显得更漂亮，flattering，flatters</td></tr>
+<tr><td>leverage</td><td>/'levərɪdʒ/ n.</td><td>（能够操控形势的）影响力，手段，优势 杠杆力；杠杆作用v. 举债经营；为…融资有效利用某物（资源、优势、工具等）, leveraging, leverages</td></tr>
+<tr><td>suppressed</td><td>/sə'pres/ v.</td><td>镇压；制止；压制；（武力）平定禁止（发表）；查禁；封锁抑制；控制；忍住压制；阻止；抑制（身体的功能或反应），suppressing，suppresses</td></tr>
+<tr><td>extend</td><td>/ɪk'stend/ vt.</td><td>& vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出，extending，extends</td></tr>
+<tr><td>portfolio</td><td>/pɔːrt'foʊlioʊ/ n.</td><td>公事包, 文件夹投资组合大臣或部长的职位或职责</td></tr>
+<tr><td>allocation</td><td>/ˌælə'keɪʃn/ n.</td><td>配给, 分配, 拨出分配额(或量)</td></tr>
+<tr><td>methodology</td><td>/ˌmeθə'dɑːlədʒi/ n.</td><td>一套方法方法学,方法论adj. 方法学的n. 方法论者,方法学者</td></tr>
+<tr><td>asset</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>pension</td><td>/ˈpenʃn/ n.</td><td>津贴；退休金，抚恤金；膳宿费vt. 发给养老金或抚恤金, pensioning, pensions</td></tr>
+<tr><td>yield</td><td>/jiːld/ vt.</td><td>出产；屈服；放弃vi. 屈服，投降n. 收益；产量, yielding, yields</td></tr>
+<tr><td>downside</td><td>/'daʊnsaɪd/ adj.</td><td>下降趋势的</td></tr>
+<tr><td>yield</td><td>/jiːld/ vt.</td><td>出产；屈服；放弃vi. 屈服，投降n. 收益；产量, yielding, yields</td></tr>
+<tr><td>seamless</td><td>/'siːmləs/ adj.</td><td>无缝合线的；无缝的；无伤痕的</td></tr>
+<tr><td>disrupted</td><td>/dɪs'rʌpt/ vt.</td><td>使混乱, 扰乱, disrupting, disrupts</td></tr>
+<tr><td>acquisitions</td><td>/ˌækwɪ'zɪʃn/ n.</td><td>获得物，获得；收购</td></tr>
+<tr><td>narrowing</td><td>/'næroʊ/ adj.</td><td>狭窄的，有限的；度量小的；精密的；勉强的n. 狭窄部分，隘路；海峡vt. 使变狭窄vi. 变窄, narrowest</td></tr>
+<tr><td>stretching</td><td>/stretʃ/ vt.</td><td>伸展,张开vi. 伸展adj. 可伸缩的n. 伸展，延伸, stretching, stretches</td></tr>
+<tr><td>numerous</td><td>/'nuːmərəs/ adj.</td><td>很多的, 许多的</td></tr>
+<tr><td>disruptions</td><td>— n.</td><td>中断,分裂,瓦解,破坏</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>benign</td><td>/bɪ'naɪn/ adj.</td><td>良性的；吉利的；和蔼的，亲切的</td></tr>
+<tr><td>fragmented</td><td>/'fræɡmənt/ n.</td><td>碎片；片断或不完整部分vt. 使成碎片vi. 破碎或裂开, fragmenting, fragments</td></tr>
+<tr><td>line</td><td>/laɪn/ n.</td><td>绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long interspersed element)长散在元</td></tr>
+<tr><td>underlying</td><td>/ˌʌndər'laɪɪŋ/ adj.</td><td>根本的, 基础的含蓄的, 潜在的</td></tr>
+<tr><td>resilience</td><td>/rɪ'zɪliəns/ n.</td><td>弹回;弹性恢复力；适应力</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>credit</td><td>/'kredɪt/ n.</td><td>赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)，crediting，credits</td></tr>
+<tr><td>exposure</td><td>/ɪk'spoʊʒər/ n.</td><td>暴露, 显露揭发, 揭露(软片等)曝光</td></tr>
+<tr><td>relatively</td><td>/'relətɪvli/ adv.</td><td>相对地，比较而言；相当相对来说；相比较而言</td></tr>
+<tr><td>major</td><td>/'meɪdʒər/ adj.</td><td>主要的；主修的；重要的；较多的n. 成年人；主修科目；陆军少校vi. 主修, majoring, majors</td></tr>
+<tr><td>spot</td><td>/spɑːt/ n.</td><td>斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Positioning and Tracki</td></tr>
+<tr><td>piles</td><td>/paɪl/ n.</td><td>堆；大量；建筑群vt. 累积；打桩于vi. 积累；堆积；挤, piling, piles</td></tr>
+<tr><td>helping</td><td>/'helpɪŋ/ n.</td><td>（进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的</td></tr>
+<tr><td>aggressive</td><td>/ə'ɡresɪv/ adj.</td><td>好争斗的, 挑衅的, 侵略性的</td></tr>
+<tr><td>durable</td><td>/'dʊrəbl/ adj.</td><td>耐用的，持久的n. 耐用品</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>capabilities</td><td>/ˌkeɪpə'bɪləti/ n.</td><td>能做某事的素质;能力尚未发挥的天资或素质</td></tr>
+<tr><td>fragile</td><td>/'frædʒl/ adj.</td><td>易碎的，脆的虚弱的，脆弱的；经不起折腾的</td></tr>
+<tr><td>integrate</td><td>/'ɪntɪɡreɪt/ vt.</td><td>使结合成为整体vt. & vi. (使)融入, integrating, integrates</td></tr>
+<tr><td>typically</td><td>/'tɪpɪkli/ adv.</td><td>代表性地;作为特色地;典型地</td></tr>
+<tr><td>assets</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>retaining</td><td>/rɪ'teɪn/ vt.</td><td>保持；雇；记住, retaining, retains 缩 写: ret</td></tr>
+<tr><td>senior</td><td>/'siːniər/ adj.</td><td>年长的资深的; 地位高的〈美〉最高年级的n. 较年长者高年级学生〈美〉毕业班学生Senior西尼尔(姓氏)</td></tr>
+<tr><td>compound</td><td>/'kɑːmpaʊnd/ n.</td><td>复合物；混合物；【化】化合物（语法）复合词有围栏（或围墙）的场地（内有工厂或其他建筑群）adj. 复合的v. 使加重；使恶化由…构成（或形成）混合；掺和；拌和,</td></tr>
+<tr><td>fall</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>credit</td><td>/'kredɪt/ n.</td><td>赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)，crediting，credits</td></tr>
+<tr><td>deferring</td><td>/dɪ'fɜːr/ vt.</td><td>拖延, 延缓, 推迟vi. 服从某人的意愿, 遵从, deferring, defers</td></tr>
+<tr><td>extend</td><td>/ɪk'stend/ vt.</td><td>& vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出，extending，extends</td></tr>
+<tr><td>benign</td><td>/bɪ'naɪn/ adj.</td><td>良性的；吉利的；和蔼的，亲切的</td></tr>
+<tr><td>reality</td><td>/ri'æləti/ n.</td><td>现实；真实；实际</td></tr>
+<tr><td>deferred</td><td>/dɪ'fɜːr/ vt.</td><td>拖延, 延缓, 推迟vi. 服从某人的意愿, 遵从, deferring, defers</td></tr>
+<tr><td>transition</td><td>/træn'zɪʃn/ n.</td><td>过渡; 转变; 变迁</td></tr>
+<tr><td>pattern</td><td>/'pætərn/ n.</td><td>型，样式花样，图案方式，形式榜样，典范vt. 模仿； 仿制以图案装饰，patterning，patterns</td></tr>
+<tr><td>portfolio</td><td>/pɔːrt'foʊlioʊ/ n.</td><td>公事包, 文件夹投资组合大臣或部长的职位或职责</td></tr>
+<tr><td>decade</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>present</td><td>/'preznt/ vt.</td><td>呈现；介绍；提出；赠送vi. 举枪瞄准adj. 出席的；现在的n. 现在；礼物；瞄准, presenting, presents</td></tr>
+<tr><td>soak</td><td>/soʊk/ vt.</td><td>吸收，吸入；使……上下湿透；沉浸在（工作或学习中）vi. 渗透；浸泡n. 浸；湿透；大雨, soaking, soaks</td></tr>
+<tr><td>predictable</td><td>/prɪ'dɪktəbl/ adj.</td><td>可预言〔预报〕的不出所料的，可以想见的；平庸的；墨守成规的；毫无想像力的n. 可预测性</td></tr>
+<tr><td>discarded</td><td>/dɪ'skɑːrd/ vt.</td><td>丢弃；抛弃；放弃vi. 放弃n. 抛弃；被丢弃的东西或人, discarding, discards</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>resilience</td><td>/rɪ'zɪliəns/ n.</td><td>弹回;弹性恢复力；适应力</td></tr>
+<tr><td>credit</td><td>/'kredɪt/ n.</td><td>赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)，crediting，credits</td></tr>
+<tr><td>outright</td><td>/'aʊtraɪt/ adv.</td><td>完全地；彻底地坦率地；直率地；无保留地立即，当场adj. 完全的；彻底的</td></tr>
+<tr><td>distress</td><td>/dɪ'stres/ n.</td><td>悲痛, 痛苦, 忧伤, 苦恼贫困, 窘迫危险, 困难, 危难vt. 使痛苦, 使忧伤, distressing, distresses</td></tr>
+<tr><td>impairment</td><td>/ɪm'permənt/ n.</td><td>损害,损伤</td></tr>
+<tr><td>excess</td><td>/ɪk'ses/ n.</td><td>无节制；过度，过量；超过，超额adj. 额外的，过量的；附加的, excessing, excesses</td></tr>
+<tr><td>transition</td><td>/træn'zɪʃn/ n.</td><td>过渡; 转变; 变迁</td></tr>
+<tr><td>granular</td><td>/'ɡrænjələr/ adj.</td><td>颗粒状的</td></tr>
+<tr><td>spark</td><td>/spɑːrk/ n.</td><td>火花，火星；电火花；一丝，略微；导火线，诱因v. 引发，触发；产生火花（电火花）；点燃；增加趣味（或活力、风味等）, sparking, sparks</td></tr>
+<tr><td>meltdown</td><td>/'meltdaʊn/ n.</td><td>彻底垮台</td></tr>
+<tr><td>invitation</td><td>/ˌɪnvɪ'teɪʃn/ n.</td><td>邀请请柬, 请帖</td></tr>
+<tr><td>falling</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>neither</td><td>/'niːðər/ conj.</td><td>既不；也不adv. 两个都不；既不……也不adj. 两者都不的det./pron. 两者都不</td></tr>
+<tr><td>relatively</td><td>/'relətɪvli/ adv.</td><td>相对地，比较而言；相当相对来说；相比较而言</td></tr>
+<tr><td>sustaining</td><td>/sə'steɪn/ vt.</td><td>承受，支撑维持长期保持；使继续经受，遭受，sustaining，sustains</td></tr>
+<tr><td>delhi</td><td>/ˈdɛli/ n.</td><td>德里（印度城市名）</td></tr>
+<tr><td>unusual</td><td>/ʌn'juːʒuəl/ adj.</td><td>与众不同的；不寻常的；不平常的</td></tr>
+<tr><td>siblings</td><td>/'sɪblɪŋ/ n.</td><td>兄弟姊妹；民族成员</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day5.html" class="nav-btn">← Day 5</a>
+  <a href="day7.html" class="nav-btn">Day 7 →</a>
+</div>
+
+<div class="progress">📖 Day 6 of 46</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-06-06</div>
+
+</body>
+</html>

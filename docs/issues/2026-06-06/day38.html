@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance & economics</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-06-06</div>
+
+<h1 class="article-title">Finance & economics</h1>
+<div class="article-section"></div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p><span class="annot" data-tooltip="annual /'ænjuəl/ adj. 年度的；每年的n. 年刊，年鉴；一年生植物副 词: annually">annual</span> tax of 1% on <span class="annot" data-tooltip="wealth /welθ/ n. 财富；大量；富有">wealth</span> over £10m ($13m) and 2% over £1bn (Britain has just 100 or so billionaires). Mr Mamdani is implementing an annual surcharge on some luxury residential <span class="annot" data-tooltip="properties 道具">properties</span>. Washington state is <span class="annot" data-tooltip="adopting /ə'dɑːpt/ vt. 收养采用, 采纳, 采取正式接受, 通过时 态: adopted, adopting, adopts">adopting</span> a “millionaire’s tax” of 9.9% on earnings over $1m. Additional money will, the theory goes, come from making government more efficient. Verdant, Mr Meadway’s think-<span class="annot" data-tooltip="tank /tæŋk/ n. （存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内时 态: t">tank</span>, which is close to the Greens, has argued for a “DOGE of the left”, named after Elon Musk’s short-lived effort to <span class="annot" data-tooltip="eliminate /ɪ'lɪmɪneɪt/ vt. 消除, 排除忽略淘汰〈口〉干掉时 态: eliminated, eliminating, eliminates">eliminate</span> wasteful <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">federal</span> spending under Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>. On May 28th Mr Mamdani promised COGE—the <span class="annot" data-tooltip="commission /kə'mɪʃn/ n. 授权, 委托委员会佣金, 回扣vt. 委任, 委托时 态: commissioned, commissioning, c">Commission</span> on Government Efficiency—for his city. Most of these ideas are batty. Rent controls fail to make housing more affordable by discouraging investment in the sector, which in turn <span class="annot" data-tooltip="raises /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raises</span> rents by constricting supply. Trying to stop AI will cause investment and jobs to move elsewhere. Efficiency savings are great on paper but hard to find in <span class="annot" data-tooltip="practice /'præktɪs/ n. 练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规时 态: practiced，practicing，">practice</span>: just ask Mr Musk. And relying so heavily on taxing plutocrats is risky: there <span class="annot" data-tooltip="simply /'sɪmpli/ adv. 简单地；朴素地；简直；仅仅；坦白地">simply</span> are not that many of them and they can move (as some have from California in anticipation of a potential extra tax on billionaires). Regardless, plenty of non-socialists are entertaining policies to make Mr Mamdani proud. Middle-of-the-road Labourites are toying with price <span class="annot" data-tooltip="caps abbr. Cassette Programming System 盒式磁带程序设计系统">caps</span> on <span class="annot" data-tooltip="groceries /'ɡroʊsəri/ n. 杂货业杂货店">groceries</span>, centrist Democrats have proposed tax cuts for anyone <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span> the top few per cent of high earners and even MAGA <span class="annot" data-tooltip="republicans /rɪ'pʌblɪkən/ adj. 共和国的, 共和政体的n. 拥护共和政体者, 共和主义者名 词: republicanism">Republicans</span> are <span class="annot" data-tooltip="partial /'pɑːrʃl/ adj. 局部的；不公平的；[口]偏爱的名 词: partialness">partial</span> to pauses in data-centre construction. Whether or not more Gen-Z socialists succeed at the <span class="annot" data-tooltip="polls /poʊl/ n. 民意测验；投票；投票数；投票所vt. 剪短；对…进行民意测验；获得选票；投票vi. 投票adj. 剪过毛的；修过枝的；无">polls</span>, Gen-Z <span class="annot" data-tooltip="socialism /'soʊʃəlɪzəm/ n. 社会主义">socialism</span> is not going away.■ For more expert analysis of the biggest stories in economics, finance and markets, sign up to Money Talks, our weekly subscriber-only newsletter. This article was downloaded by zlibrary from https://www.economist.com//finance-and-economics/2026/06/04/gen-z-socialism-from- zohran-to-zack-and-beyond</p>
+<p>Finance & economics | Giga-IPOs Can the stockmarket swallow SpaceX, <span class="annot" data-tooltip="anthropic /ænˈθrɑpɪk/ adj. 人类的,有关人类的">Anthropic</span> and OpenAI? Watch out for indigestion June 4th 2026 They promise to be the biggest stockmarket <span class="annot" data-tooltip="debuts /deɪ'bjuː/ n. 〈法〉演员首次演出时 态: debuted debuting debuts">debuts</span> in history. On June 11th SpaceX reportedly hopes to <span class="annot" data-tooltip="raise /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raise</span> $75bn from investors, by issuing shares that will begin trading on the <span class="annot" data-tooltip="nasdaq 纳斯达克指数〈美〉全国证券交易商自动报价系统协会">Nasdaq</span> exchange the next day. Elon Musk’s rocketry firm will probably soon be followed by two other <span class="annot" data-tooltip="mammoth /'mæməθ/ n. 长毛象；猛犸象；庞然大物adj. 猛犸似的；巨大的，庞大的">mammoth</span> listings. Anthropic, an artificial-intelligence lab, filed <span class="annot" data-tooltip="draft /dræft/ n. 汇票；草稿；选派；（尤指房间、烟囱、炉子等供暖系统中的）（小股）气流">draft</span> paperwork for its initial public offering on June 1st; OpenAI, a competitor, is expected to do so soon. The two are rumoured to be seeking as much as $60bn apiece. Together, the three giga-IPOs may add as much as $4trn to the market <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span> of listed American companies in a matter of months.</p>
+<p>How on earth will the stockmarket <span class="annot" data-tooltip="handle /'hændl/ n. 柄；把手；手感；口实vt. 买卖；处理；操作；触摸；运用vi. 易于操纵；搬运时 态: handled, handlin">handle</span> this? Headlines predict a “trading frenzy”. Steve Sosnik, chief strategist at <span class="annot" data-tooltip="interactive /ˌɪntər'æktɪv/ adj. (指至少两个人或物)一起活动或互相合作的交互式的, 人机对话的">Interactive</span> Brokers, one of the world’s biggest online trading platforms, has warned of the “<span class="annot" data-tooltip="existential /ˌeɡzɪ'stenʃl/ adj. 有关存在的,存在主义的,存在判断的">existential</span> risk” the listings pose. A particular worry is that compilers of stockmarket indices will grant the gigantic trio fast-track entry to their <span class="annot" data-tooltip="benchmarks /'bentʃmɑːrk/ 基准时 态: benchmarked, benchmarking, benchmarks">benchmarks</span>. That would <span class="annot" data-tooltip="prompt /prɑːmpt/ adj. 敏捷的，迅速的；立刻的vt. 促进；激起；提示；（给演员）提白n. 提示；付款期限；DOS命令：改变DOS系统提示符的风">prompt</span> tracker funds with trillions of dollars in <span class="annot" data-tooltip="assets /'æset/ n. 资产；有用的东西；有利条件；优点">assets</span> to buy the newly <span class="annot" data-tooltip="minted /mɪnt/ n. 薄荷；造币厂，巨款vt. 铸造，铸币时 态: minted, minting, mints">minted</span> shares days after they are issued. After <span class="annot" data-tooltip="exhausting /ɪɡ'zɔːstɪŋ/ adj. 使耗尽的;使人精疲力竭的">exhausting</span> a big pool of buyers <span class="annot" data-tooltip="straight /streɪt/ adj. 直的，笔直的连续的；不间断的直率的adv. 直接地；径直地立即，马上比较级: straighter，straightes">straight</span> away, who will be left? The answer is: lots of investors in an extraordinarily deep and liquid market. Unprecedented as the serving of supersized IPOs is, America’s <span class="annot" data-tooltip="extraordinary /ɪk'strɔːrdəneri/ adj. 非常奇怪的非同寻常的, 特别的额外安排的, 临时的副 词: extraordinarily">extraordinary</span> stockmarket will <span class="annot" data-tooltip="gulp /ɡʌlp/ vt. 狼吞虎咽地吃, 吞咽大口地吸(气)vi. 哽住n. 吞咽一大口(尤指液体)时 态: gulped, gulping, g">gulp</span> it down. In the years to follow, though, expect some indigestion. First put the giga-IPOs’ size in context. In nominal <span class="annot" data-tooltip="terms /tɜːrmz/ n. 条款；地位，关系；措辞；术语；价钱（term的复数形式）v. 把…称为（term的三单形式）">terms</span>, the record for capital raised by a <span class="annot" data-tooltip="debut /deɪ'bjuː/ n. 〈法〉演员首次演出时 态: debuted debuting debuts">debut</span> listing is held by Saudi Aramco, which in 2019 pulled in $29bn ($38bn in today’s money) when it floated in Riyadh. SpaceX, <span class="annot" data-tooltip="anthropic /ænˈθrɑpɪk/ adj. 人类的,有关人类的">Anthropic</span> and OpenAI are <span class="annot" data-tooltip="collectively /kə'lektɪvli/ adv. 全体地；共同地">collectively</span> targeting $200bn-odd. Yet this is a rounding error in America’s bourses. Firms in the broad Russell 3000 share index have a total market <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span> of $77trn; those in the <span class="annot" data-tooltip="narrower /'næroʊ/ adj. 狭窄的，有限的；度量小的；精密的；勉强的n. 狭窄部分，隘路；海峡vt. 使变狭窄vi. 变窄比较级: narrower">narrower</span> (but more widely tracked) S&P 500 index of big companies are <span class="annot" data-tooltip="worth /wɜːrθ/ adj. 值…的n. 价值；财产时 态: worthed, worthing, worths">worth</span> $65trn. As a consequence, investors in index funds will not <span class="annot" data-tooltip="immediately /ɪ'miːdiət/ adj. 立即的，即刻的；紧迫的目前的，当前的直接的最接近的名 词: immediateness">immediately</span> see their <span class="annot" data-tooltip="portfolios /pɔːrt'foʊlioʊ/ n. 公事包, 文件夹投资组合大臣或部长的职位或职责">portfolios</span> change much. <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">Although</span> <span class="annot" data-tooltip="nasdaq 纳斯达克指数〈美〉全国证券交易商自动报价系统协会">Nasdaq</span> has already shortened the “<span class="annot" data-tooltip="seasoning /'siːzn/ n. 时期；季节；赛季vt. 给…调味；使适应vi. 变得成熟；变干燥时 态: seasoned, seasoning, se">seasoning</span>” period before index inclusion to 15 trading days and FTSE Russell has <span class="annot" data-tooltip="slashed /slæʃ/ v. （用利器）砍，劈割破；在…上留下深长的切口大量削减n. （用刀等）砍，劈（长而窄的）伤口，切口，砍痕斜杠；斜线号时 态:">slashed</span> its waiting time to five days (with S&P Dow Jones reportedly <span class="annot" data-tooltip="considering /kən'sɪdərɪŋ/ prep. 考虑到, 就…而论adv. 从各方面考虑, 从通盘考虑">considering</span> something similar), most share indices weight firms in <span class="annot" data-tooltip="proportion /prə'pɔːrʃn/ n. 均衡；相称，协调一物与他物在数量、大小等方面的关系；比例部分；份儿时 态: proportioned，proportio">proportion</span> to the value only of shares they have released for public trading (the “free float”). For SpaceX, this means just the $75bn or so of stock it intends to <span class="annot" data-tooltip="issue /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issue</span> in June—so its initial weight in the S&P 500 will be around 0.1%. The NASDAQ 100 is an exception, and has changed its rules to weight companies at up to three times their free float, in an <span class="annot" data-tooltip="apparent /ə'pærənt/ adj. 显然的；表面上的副 词: apparently">apparent</span> effort to woo Mr Musk. Even so, SpaceX’s probable initial weight in this $40trn index will be only around 0.5%. This will change as more shares are released for trading. All of America’s listed tech giants have free floats above 85% (see chart 1); the lowest is that</p>
+<p>of Meta, which went public in 2012 and has 13% of its shares still owned by Mark Zuckerberg, its founder. At first, “lock-up” <span class="annot" data-tooltip="provisions /prə'vɪʒn/ n. 提供，供给，给养，供应品（为将来做的）准备饮食供应，（尤指旅途中的）粮食（provisions）（法律文件的）规定，条款">provisions</span> in the IPO prospectuses of SpaceX, <span class="annot" data-tooltip="anthropic /ænˈθrɑpɪk/ adj. 人类的,有关人类的">Anthropic</span> and OpenAI will prevent company insiders and early investors from selling their existing stakes and raising the free float. Over time, however, these will <span class="annot" data-tooltip="expire /ɪk'spaɪər/ vi. 期满, (期限)终止断气, 死亡时 态: expired, expiring, expires">expire</span> and trillions of dollars’ <span class="annot" data-tooltip="worth /wɜːrθ/ adj. 值…的n. 价值；财产时 态: worthed, worthing, worths">worth</span> of new shares will come to market. SpaceX plans to <span class="annot" data-tooltip="release /rɪ'liːs/ vt. 释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]时 态: released，rel">release</span> its locked-up shares in a series of tranches. If its IPO <span class="annot" data-tooltip="issues /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issues</span> $75bn of shares, valuing the firm at its hoped-for $1.8trn, the initial free float will be 4%. None of Mr Musk’s stake, which accounts for about half of the <span class="annot" data-tooltip="remainder /rɪ'meɪndər/ n. 剩余物；残余部分时 态: remaindered，remaindering，remainders">remainder</span>, can be sold for 366 days after the IPO. This <span class="annot" data-tooltip="restriction /rɪ'strɪkʃn/ n. 约束，限制管制，限定；法律，规章">restriction</span> also applies to some shares held by “certain <span class="annot" data-tooltip="significant /sɪɡ'nɪfɪkənt/ adj. 重要的, 重大的, 可观的有意义的, 有用意的意味深长的副 词: significantly">significant</span> investors”. Lock-ups on the rest, representing a little under half of SpaceX’s <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span>, will expire more quickly. After its first <span class="annot" data-tooltip="quarterly /'kwɔːrtərli/ n. 季刊adj. 一年四次的, 每季的adv. 一年四次地, 每季地">quarterly</span> report, probably in August or September, insiders can sell 20% of their stakes. They can <span class="annot" data-tooltip="offload /ˌɔːf'loʊd/ v. 卸下,卸货时 态: offloaded, offloading, offloads">offload</span> another 10% if the shares are then trading 30% or more above their IPO price. Extra tranches are <span class="annot" data-tooltip="due /duː/ adj. 到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）">due</span> for release on set dates after the IPO, and after the second quarterly earnings report (see chart 2). Insiders do not have to sell their shares, of course. Mr Musk, in particular, may hold on to his—most of which carry <span class="annot" data-tooltip="outsize /'aʊtsaɪz/ adj. 特大的n. 特大号">outsize</span> voting rights and so</p>
+<p>cement his control of SpaceX. Similar considerations will apply to <span class="annot" data-tooltip="shareholders /'ʃerhoʊldər/ n. 股东名 词: shareholding">shareholders</span> in <span class="annot" data-tooltip="anthropic /ænˈθrɑpɪk/ adj. 人类的,有关人类的">Anthropic</span> and OpenAI after the labs’ flotations. So the <span class="annot" data-tooltip="addition /ə'dɪʃn/ n. 添加；增加物；加法形容词: additional">addition</span> of these firms to public markets will unfold over years rather than days. Gradual does not, however, mean inconsequential. If history is a guide, those who buy the resulting shares stand a good chance of disappointment. Jay Ritter of the University of Florida has studied the post-IPO returns of stocks listed between 1980 and 2024. The average such stock returned 20 percentage points less than the broader market over the three years after its first trading day. Firms valued at more than 40 times their <span class="annot" data-tooltip="revenue /'revənuː/ n. 收入，收益；财政收入，税收">revenue</span> underperformed by 58 percentage points. SpaceX, with a valuation of $1.8trn, would begin trading at over 90 times its revenue. Blockbuster IPOs are also often taken as a sign that a bull market is nearing its peak—understandably, since firms want to sell shares for top dollar. The last <span class="annot" data-tooltip="surge /sɜːrdʒ/ n. (情感的) 突发，涌现，突然出现（数量的）急剧上升，激增；大量；一大批奔涌向前；突然的向上运动（电流）浪涌v. 涌；汹涌">surge</span> in listings, in 2020 and 2021, came just before a bear market. Previous IPO booms, for instance in the late 1990s or the years before 2008, were followed by <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> bigger <span class="annot" data-tooltip="slumps /slʌmp/ vi. 大幅度下降, 暴跌沉重或突然地落下[倒下]n. 萧条期〈美〉(个人、球队等的)低潮状态时 态: slumped, slu">slumps</span>. Today, if the giga-trio underperforms, it may even precipitate a stockmarket rout. All three firms are closely associated with progress in AI and so too,</p>
+<p>increasingly, is the wider market: America’s ten biggest listed AI-related firms already account for two-fifths of the S&P 500’s <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span>. Bad news for SpaceX alone might not harm a tracker fund much; bad news for AI certainly would. Funds that weight each of an index’s component stocks equally, rather than by market value, offer some protection from this. But they also amount to betting against the market—the opposite of <span class="annot" data-tooltip="passive /'pæsɪv/ adj. 被动的，消极的；被动语态的n. 被动语态副 词: passively">passive</span> investment. A broader worry still is that the giga-IPOs <span class="annot" data-tooltip="herald /'herəld/ n. 使者, 预报者vi. 预示时 态: heralded, heralding, heralds">herald</span> more capital-raising, both by the newly listed tech giants and their older peers. For years, notes Victor Haghani of Elm <span class="annot" data-tooltip="wealth /welθ/ n. 财富；大量；富有">Wealth</span>, an investment firm, capital has been abundant and shares increasingly scarce. Tech giants have generated so much cash that they have been buying back shares rather than issuing new ones at the same time as white-collar workers have ploughed retirement savings into the market. This has driven up share prices. Now the tech behemoths are slowing share buy-backs or halting them altogether, instead reinvesting their profits to develop AI. Several have turned to the bond market for more capital. This month <span class="annot" data-tooltip="alphabet /'ælfəbet/ n. 字母表，字母系统；入门，初步">Alphabet</span>, Google’s <span class="annot" data-tooltip="corporate /'kɔːrpərət/ adj. 社团的, 法人的副 词: corporately">corporate</span> parent, said it would <span class="annot" data-tooltip="issue /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issue</span> $85bn in new shares. And the club’s newest members are tapping the stockmarket. <span class="annot" data-tooltip="simultaneously /ˌsaɪml'teɪniəsli/ adv. 同时地">Simultaneously</span>, white-collar workers are perhaps most in danger of seeing AI <span class="annot" data-tooltip="automate /'ɔːtəmeɪt/ vt. 使自动化，使自动操作vi. 自动化，自动操作时 态: automated, automating, automates">automate</span> their jobs and immiserate their <span class="annot" data-tooltip="pension /ˈpenʃn/ n. 津贴；退休金，抚恤金；膳宿费vt. 发给养老金或抚恤金时 态: pensioned, pensioning, pensi">pension</span> pots. Expect investors to go gaga for the giga-IPOs. A few years from now, though, the stockmarket may need to prepare for a capital diet. ■ For more expert analysis of the biggest stories in economics, finance and markets, sign up to Money Talks, our weekly subscriber-only newsletter. This article was downloaded by zlibrary from https://www.economist.com//finance-and-economics/2026/06/01/can-the-stockmarket- swallow-spacex-<span class="annot" data-tooltip="anthropic /ænˈθrɑpɪk/ adj. 人类的,有关人类的">anthropic</span>-and-openai</p>
+<p>Finance & economics | Weather markets Indians can now bet on the monsoon Heatwaves may be more important June 4th 2026 BY THE MIDDLE of June <span class="annot" data-tooltip="mumbai n. 孟买（印度城市）">Mumbai</span>, India’s financial capital, should be drenched. The south-west monsoon, the seasonal storm which provides most of the year’s water in South Asia, will bring torrential downpours to the city. Street food-hawkers and builders will <span class="annot" data-tooltip="curse /kɜːrs/ vt. & vi. 诅咒；骂n. 诅咒，咒语；骂人的话祸害，祸根时 态: cursed，curst cursing，curses">curse</span>. Slum-dwelling migrant workers may head home to villages to wait for the rains to pass. Some businesspeople and financiers, meanwhile, will be patting <span class="annot" data-tooltip="damp /dæmp/ vt. 使潮湿；使沮丧，抑制；使阻尼vi. 减幅，阻尼；变潮湿n. 潮湿，湿气adj. 潮湿的dAMP脱氧腺苷酸比较级: dam">damp</span> pockets full of rupees. On May 29th India’s National Commodity and <span class="annot" data-tooltip="derivatives /dɪ'rɪvətɪv/ n. 衍生物，派生物；派生词；【数】导数，微商adj. 缺乏独创性的；模仿他人的副 词: derivatively">Derivatives</span> Exchange (NCDEX) allowed traders to start placing financial bets on whether each month of this year’s monsoon will be wetter or drier in Mumbai than the average of the past 30 years.</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>annual</td><td>/'ænjuəl/ adj.</td><td>年度的；每年的n. 年刊，年鉴；一年生植物</td></tr>
+<tr><td>wealth</td><td>/welθ/ n.</td><td>财富；大量；富有</td></tr>
+<tr><td>properties</td><td>— </td><td>道具</td></tr>
+<tr><td>adopting</td><td>/ə'dɑːpt/ vt.</td><td>收养采用, 采纳, 采取正式接受, 通过, adopting, adopts</td></tr>
+<tr><td>tank</td><td>/tæŋk/ n.</td><td>（存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内, tanking, tanks</td></tr>
+<tr><td>eliminate</td><td>/ɪ'lɪmɪneɪt/ vt.</td><td>消除, 排除忽略淘汰〈口〉干掉, eliminating, eliminates</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>commission</td><td>/kə'mɪʃn/ n.</td><td>授权, 委托委员会佣金, 回扣vt. 委任, 委托, commissioning, commissions</td></tr>
+<tr><td>raises</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>practice</td><td>/'præktɪs/ n.</td><td>练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规，practicing，practices</td></tr>
+<tr><td>simply</td><td>/'sɪmpli/ adv.</td><td>简单地；朴素地；简直；仅仅；坦白地</td></tr>
+<tr><td>caps</td><td>— abbr.</td><td>Cassette Programming System 盒式磁带程序设计系统</td></tr>
+<tr><td>groceries</td><td>/'ɡroʊsəri/ n.</td><td>杂货业杂货店</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>republicans</td><td>/rɪ'pʌblɪkən/ adj.</td><td>共和国的, 共和政体的n. 拥护共和政体者, 共和主义者</td></tr>
+<tr><td>partial</td><td>/'pɑːrʃl/ adj.</td><td>局部的；不公平的；[口]偏爱的</td></tr>
+<tr><td>polls</td><td>/poʊl/ n.</td><td>民意测验；投票；投票数；投票所vt. 剪短；对…进行民意测验；获得选票；投票vi. 投票adj. 剪过毛的；修过枝的；无角的, polling, polls</td></tr>
+<tr><td>socialism</td><td>/'soʊʃəlɪzəm/ n.</td><td>社会主义</td></tr>
+<tr><td>anthropic</td><td>/ænˈθrɑpɪk/ adj.</td><td>人类的,有关人类的</td></tr>
+<tr><td>debuts</td><td>/deɪ'bjuː/ n.</td><td>〈法〉演员首次演出</td></tr>
+<tr><td>raise</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>nasdaq</td><td>— </td><td>纳斯达克指数〈美〉全国证券交易商自动报价系统协会</td></tr>
+<tr><td>mammoth</td><td>/'mæməθ/ n.</td><td>长毛象；猛犸象；庞然大物adj. 猛犸似的；巨大的，庞大的</td></tr>
+<tr><td>draft</td><td>/dræft/ n.</td><td>汇票；草稿；选派；（尤指房间、烟囱、炉子等供暖系统中的）（小股）气流</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>handle</td><td>/'hændl/ n.</td><td>柄；把手；手感；口实vt. 买卖；处理；操作；触摸；运用vi. 易于操纵；搬运, handling, handles</td></tr>
+<tr><td>interactive</td><td>/ˌɪntər'æktɪv/ adj.</td><td>(指至少两个人或物)一起活动或互相合作的交互式的, 人机对话的</td></tr>
+<tr><td>existential</td><td>/ˌeɡzɪ'stenʃl/ adj.</td><td>有关存在的,存在主义的,存在判断的</td></tr>
+<tr><td>benchmarks</td><td>/'bentʃmɑːrk/ </td><td>基准, benchmarking, benchmarks</td></tr>
+<tr><td>prompt</td><td>/prɑːmpt/ adj.</td><td>敏捷的，迅速的；立刻的vt. 促进；激起；提示；（给演员）提白n. 提示；付款期限；DOS命令：改变DOS系统提示符的风格adv. 准时地, promptest</td></tr>
+<tr><td>assets</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>minted</td><td>/mɪnt/ n.</td><td>薄荷；造币厂，巨款vt. 铸造，铸币, minting, mints</td></tr>
+<tr><td>exhausting</td><td>/ɪɡ'zɔːstɪŋ/ adj.</td><td>使耗尽的;使人精疲力竭的</td></tr>
+<tr><td>straight</td><td>/streɪt/ adj.</td><td>直的，笔直的连续的；不间断的直率的adv. 直接地；径直地立即，马上，straightest</td></tr>
+<tr><td>extraordinary</td><td>/ɪk'strɔːrdəneri/ adj.</td><td>非常奇怪的非同寻常的, 特别的额外安排的, 临时的</td></tr>
+<tr><td>gulp</td><td>/ɡʌlp/ vt.</td><td>狼吞虎咽地吃, 吞咽大口地吸(气)vi. 哽住n. 吞咽一大口(尤指液体), gulping, gulps</td></tr>
+<tr><td>terms</td><td>/tɜːrmz/ n.</td><td>条款；地位，关系；措辞；术语；价钱（term的复数形式）v. 把…称为（term的三单形式）</td></tr>
+<tr><td>debut</td><td>/deɪ'bjuː/ n.</td><td>〈法〉演员首次演出</td></tr>
+<tr><td>anthropic</td><td>/ænˈθrɑpɪk/ adj.</td><td>人类的,有关人类的</td></tr>
+<tr><td>collectively</td><td>/kə'lektɪvli/ adv.</td><td>全体地；共同地</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>narrower</td><td>/'næroʊ/ adj.</td><td>狭窄的，有限的；度量小的；精密的；勉强的n. 狭窄部分，隘路；海峡vt. 使变狭窄vi. 变窄, narrowest</td></tr>
+<tr><td>worth</td><td>/wɜːrθ/ adj.</td><td>值…的n. 价值；财产, worthing, worths</td></tr>
+<tr><td>immediately</td><td>/ɪ'miːdiət/ adj.</td><td>立即的，即刻的；紧迫的目前的，当前的直接的最接近的</td></tr>
+<tr><td>portfolios</td><td>/pɔːrt'foʊlioʊ/ n.</td><td>公事包, 文件夹投资组合大臣或部长的职位或职责</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>nasdaq</td><td>— </td><td>纳斯达克指数〈美〉全国证券交易商自动报价系统协会</td></tr>
+<tr><td>seasoning</td><td>/'siːzn/ n.</td><td>时期；季节；赛季vt. 给…调味；使适应vi. 变得成熟；变干燥, seasoning, seasons</td></tr>
+<tr><td>slashed</td><td>/slæʃ/ v.</td><td>（用利器）砍，劈割破；在…上留下深长的切口大量削减n. （用刀等）砍，劈（长而窄的）伤口，切口，砍痕斜杠；斜线号，slashing，slashes</td></tr>
+<tr><td>considering</td><td>/kən'sɪdərɪŋ/ prep.</td><td>考虑到, 就…而论adv. 从各方面考虑, 从通盘考虑</td></tr>
+<tr><td>proportion</td><td>/prə'pɔːrʃn/ n.</td><td>均衡；相称，协调一物与他物在数量、大小等方面的关系；比例部分；份儿，proportioning，proportions</td></tr>
+<tr><td>issue</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>apparent</td><td>/ə'pærənt/ adj.</td><td>显然的；表面上的</td></tr>
+<tr><td>provisions</td><td>/prə'vɪʒn/ n.</td><td>提供，供给，给养，供应品（为将来做的）准备饮食供应，（尤指旅途中的）粮食（provisions）（法律文件的）规定，条款v. 【正式】为…提供所需物品（尤指食物</td></tr>
+<tr><td>anthropic</td><td>/ænˈθrɑpɪk/ adj.</td><td>人类的,有关人类的</td></tr>
+<tr><td>expire</td><td>/ɪk'spaɪər/ vi.</td><td>期满, (期限)终止断气, 死亡, expiring, expires</td></tr>
+<tr><td>worth</td><td>/wɜːrθ/ adj.</td><td>值…的n. 价值；财产, worthing, worths</td></tr>
+<tr><td>release</td><td>/rɪ'liːs/ vt.</td><td>释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]，releasing，releases</td></tr>
+<tr><td>issues</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>remainder</td><td>/rɪ'meɪndər/ n.</td><td>剩余物；残余部分，remaindering，remainders</td></tr>
+<tr><td>restriction</td><td>/rɪ'strɪkʃn/ n.</td><td>约束，限制管制，限定；法律，规章</td></tr>
+<tr><td>significant</td><td>/sɪɡ'nɪfɪkənt/ adj.</td><td>重要的, 重大的, 可观的有意义的, 有用意的意味深长的</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>quarterly</td><td>/'kwɔːrtərli/ n.</td><td>季刊adj. 一年四次的, 每季的adv. 一年四次地, 每季地</td></tr>
+<tr><td>offload</td><td>/ˌɔːf'loʊd/ v.</td><td>卸下,卸货, offloading, offloads</td></tr>
+<tr><td>due</td><td>/duː/ adj.</td><td>到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）</td></tr>
+<tr><td>outsize</td><td>/'aʊtsaɪz/ adj.</td><td>特大的n. 特大号</td></tr>
+<tr><td>shareholders</td><td>/'ʃerhoʊldər/ n.</td><td>股东</td></tr>
+<tr><td>anthropic</td><td>/ænˈθrɑpɪk/ adj.</td><td>人类的,有关人类的</td></tr>
+<tr><td>addition</td><td>/ə'dɪʃn/ n.</td><td>添加；增加物；加法</td></tr>
+<tr><td>revenue</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>surge</td><td>/sɜːrdʒ/ n.</td><td>(情感的) 突发，涌现，突然出现（数量的）急剧上升，激增；大量；一大批奔涌向前；突然的向上运动（电流）浪涌v. 涌；汹涌；涌动(感情、感觉) 突袭，涌动，突发(</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>slumps</td><td>/slʌmp/ vi.</td><td>大幅度下降, 暴跌沉重或突然地落下[倒下]n. 萧条期〈美〉(个人、球队等的)低潮状态, slumping, slumps</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>passive</td><td>/'pæsɪv/ adj.</td><td>被动的，消极的；被动语态的n. 被动语态</td></tr>
+<tr><td>herald</td><td>/'herəld/ n.</td><td>使者, 预报者vi. 预示, heralding, heralds</td></tr>
+<tr><td>wealth</td><td>/welθ/ n.</td><td>财富；大量；富有</td></tr>
+<tr><td>alphabet</td><td>/'ælfəbet/ n.</td><td>字母表，字母系统；入门，初步</td></tr>
+<tr><td>corporate</td><td>/'kɔːrpərət/ adj.</td><td>社团的, 法人的</td></tr>
+<tr><td>issue</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>simultaneously</td><td>/ˌsaɪml'teɪniəsli/ adv.</td><td>同时地</td></tr>
+<tr><td>automate</td><td>/'ɔːtəmeɪt/ vt.</td><td>使自动化，使自动操作vi. 自动化，自动操作, automating, automates</td></tr>
+<tr><td>pension</td><td>/ˈpenʃn/ n.</td><td>津贴；退休金，抚恤金；膳宿费vt. 发给养老金或抚恤金, pensioning, pensions</td></tr>
+<tr><td>anthropic</td><td>/ænˈθrɑpɪk/ adj.</td><td>人类的,有关人类的</td></tr>
+<tr><td>mumbai</td><td>— n.</td><td>孟买（印度城市）</td></tr>
+<tr><td>curse</td><td>/kɜːrs/ vt.</td><td>& vi. 诅咒；骂n. 诅咒，咒语；骂人的话祸害，祸根，curst cursing，curses</td></tr>
+<tr><td>damp</td><td>/dæmp/ vt.</td><td>使潮湿；使沮丧，抑制；使阻尼vi. 减幅，阻尼；变潮湿n. 潮湿，湿气adj. 潮湿的dAMP脱氧腺苷酸, dampest</td></tr>
+<tr><td>derivatives</td><td>/dɪ'rɪvətɪv/ n.</td><td>衍生物，派生物；派生词；【数】导数，微商adj. 缺乏独创性的；模仿他人的</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day37.html" class="nav-btn">← Day 37</a>
+  <a href="day39.html" class="nav-btn">Day 39 →</a>
+</div>
+
+<div class="progress">📖 Day 38 of 46</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-06-06</div>
+
+</body>
+</html>

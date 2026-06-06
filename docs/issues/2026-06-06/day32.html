@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Special report | No other option</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-06-06</div>
+
+<h1 class="article-title">Special report | No other option</h1>
+<div class="article-section">Special report</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>bar of gold, which means precious metals cannot play the role of a <span class="annot" data-tooltip="productive /prə'dʌktɪv/ adj. 多产的，富饶的富有成效的；有益的副 词: productively">productive</span> risk-free <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span>. Even in the era of gold-backed currencies, when money could in theory be redeemed for gold, government bonds were still preferred as a safe <span class="annot" data-tooltip="asset /'æset/ n. 资产；有用的东西；有利条件；优点">asset</span>, because they offered investors a <span class="annot" data-tooltip="yield /jiːld/ vt. 出产；屈服；放弃vi. 屈服，投降n. 收益；产量时 态: yielded, yielding, yields">yield</span>, not just a parking space for their money. As China has grown in economic heft, analysts have mused about whether it, too, might pick up the mantle of global financial superpower. But with its capital controls limiting flows of money in and out of the country, it is impossible to imagine China issuing an international safe asset that is <span class="annot" data-tooltip="genuinely /'dʒenjuɪnli/ adv. 真地;真正地真诚地;诚实地">genuinely</span> liquid. In a crisis the shutters would come down, and foreign buyers would be unable to repatriate their money. Some of the very highest-rated <span class="annot" data-tooltip="corporate /'kɔːrpərət/ adj. 社团的, 法人的副 词: corporately">corporate</span> bonds, short-term lending arrangements between large financial institutions, and debt secured against <span class="annot" data-tooltip="seemingly /'siːmɪŋli/ adv. 看来似乎, 表面上看">seemingly</span> stable <span class="annot" data-tooltip="assets /'æset/ n. 资产；有用的东西；有利条件；优点">assets</span> are often treated as very <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> safe, trading so closely in price to <span class="annot" data-tooltip="treasury /'treʒəri/ n. 财政部；国库，金库；宝库">Treasury</span> bonds that much of the time they seem to function in a nearly <span class="annot" data-tooltip="identical /aɪ'dentɪkl/ adj. 同一的副 词: identically">identical</span> way. But that is true only until it is not. During the global financial crisis of 2007- 09, investors who had depended on near-safe assets like highly rated <span class="annot" data-tooltip="mortgage /'mɔːrɡɪdʒ/ n. 抵押借款抵押债款的利息vt. 抵押时 态: mortgaged, mortgaging, mortgages">mortgage</span> bonds to <span class="annot" data-tooltip="secure /sɪ'kjʊr/ adj. 安心的；有把握的可靠的；牢靠的；稳固的；安全的；稳妥的严密把守的；牢固的；坚固的v. （尤指经过努力）获得，取得，实现拴">secure</span> <span class="annot" data-tooltip="enormous /ɪ'nɔːrməs/ adj. 巨大的, 极大的, 庞大的副 词: enormously">enormous</span> <span class="annot" data-tooltip="leverage /'levərɪdʒ/ n. （能够操控形势的）影响力，手段，优势 杠杆力；杠杆作用v. 举债经营；为…融资有效利用某物（资源、优势、工具等）时 态:">leverage</span> discovered that near-safety and safety are altogether different things. There is nothing to say that the potential successors to <span class="annot" data-tooltip="treasuries /'treʒəri/ n. 财政部；国库，金库；宝库">Treasuries</span> will not get their acts together, and provide the world with safe and <span class="annot" data-tooltip="reliable /rɪ'laɪəbl/ adj. 可靠的, 可信赖的副 词: reliably">reliable</span> assets one day. But right now, none is up to the challenge.■ This article was downloaded by zlibrary from https://www.economist.com//special-report/2026/06/01/could-something-replace-the- treasury-market</p>
+<div class="article-separator"></div>
+<div class="article-header">Special report · Special report | Debts of despair</div>
+<p>Imagining a world without a safe <span class="annot" data-tooltip="asset /'æset/ n. 资产；有用的东西；有利条件；优点">asset</span> No corner of finance would be left untouched June 4th 2026 Around THE time The <span class="annot" data-tooltip="beatles n. 披头士合唱（摇滚乐队）">Beatles</span> were setting the standard for pop music, a <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span> of <span class="annot" data-tooltip="academics /ˌækə'demɪk/ adj. 学院的；学术的；理论的n. 大学生，大学教师；学者副 词: academically">academics</span>—many of them future rock stars of investment—were doing the same in finance. They developed the Capital Asset Pricing Model (CAPM), which estimates the return investors should expect for taking on risks. To work out that return on risk, they realised, investors would need to know what a riskless investment <span class="annot" data-tooltip="earned /ɪr/ n. 耳朵；听觉；倾听；穗vi. （美俚）听见；抽穗EARabbr. East African Railways 东非铁路公司">earned</span>. An economist named William Sharpe aimed to find a “pure interest rate”. Six <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span> later the CAPM <span class="annot" data-tooltip="drives /draɪv/ vt. 驱赶驱使, 促使敲, 击vt. & vi. 驾驶n. 乘车旅行私人车道传动, 驱动干劲, 积极性, 能动性紧迫, 逼迫,">drives</span> trillions of dollars of investment decisions; the “Sharpe <span class="annot" data-tooltip="ratio /'reɪʃioʊ/ n. 比, 比率">ratio</span>”, measuring risk-adjusted performance, is still used everywhere in finance. The</p>
+<p>supposedly riskless <span class="annot" data-tooltip="asset /'æset/ n. 资产；有用的东西；有利条件；优点">asset</span> <span class="annot" data-tooltip="underlying /ˌʌndər'laɪɪŋ/ adj. 根本的, 基础的含蓄的, 潜在的">underlying</span> these influential calculations is almost always a <span class="annot" data-tooltip="treasury /'treʒəri/ n. 财政部；国库，金库；宝库">Treasury</span> <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span>. What happens, then, if <span class="annot" data-tooltip="treasuries /'treʒəri/ n. 财政部；国库，金库；宝库">Treasuries</span> are no longer deemed riskless? A lot more than the theory underpinning <span class="annot" data-tooltip="portfolio /pɔːrt'foʊlioʊ/ n. 公事包, 文件夹投资组合大臣或部长的职位或职责">portfolio</span> construction would be in jeopardy. Treasury-market prices are to investors like water to a fish. The <span class="annot" data-tooltip="assets /'æset/ n. 资产；有用的东西；有利条件；优点">assets</span> are so fundamental to global finance that it is tough to imagine a world without them. It would be a world with higher interest rates, greater <span class="annot" data-tooltip="uncertainty /ʌn'sɜːrtnti/ n. 无把握;不确定;变化不定无把握、不确定的事物">uncertainty</span> and more risk. It would be more dangerous and difficult to navigate for investors and taxpayers not just in America, but in the rest of the world, too. The world’s safest assets <span class="annot" data-tooltip="encourage /ɪn'kɜːrɪdʒ/ vt. 鼓励, 激励促进, 助长, 激发时 态: encouraged, encouraging, encourages">encourage</span> much risk-taking. If investors <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> an asset that they know will benefit during a sudden market <span class="annot" data-tooltip="spasm /'spæzəm/ n. 痉挛；抽搐；一阵发作">spasm</span>, a sell-off or a recession, they will be happy to take greater risk elsewhere. “If you don’t have a safe asset”, says Markus Brunnermeier, an economist at Princeton University, “it leads to less lending to risky projects, to a supply shock.” The privileges of being judged risk-free are visible across the economy. Banks have to hold <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> less capital against Treasuries than against other assets. The bonds can be used as <span class="annot" data-tooltip="collateral /kə'lætərəl/ n. 附属担保品adj. 相关的">collateral</span> for loans in the <span class="annot" data-tooltip="enormous /ɪ'nɔːrməs/ adj. 巨大的, 极大的, 庞大的副 词: enormously">enormous</span> repo market, or to <span class="annot" data-tooltip="hedge /hedʒ/ vt. 用树篱笆围住；避免作正面答复vi. 用树篱围住；避免作正面答复n. 树篱；障碍时 态: hedged, hedging,">hedge</span> risk in currencies and interest rates. The <span class="annot" data-tooltip="yields /jiːld/ vt. 出产；屈服；放弃vi. 屈服，投降n. 收益；产量时 态: yielded, yielding, yields">yields</span> on any other dollar-denominated bond, issued by a firm, a foreign government or an American state or city are judged by their spread—how much higher they are than on Treasury bonds. But wobbliness is beginning to show. Recently one of the most valuable attributes of Treasury bonds went up in smoke. For the first two <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span> of the 21st century, Treasuries <span class="annot" data-tooltip="tended /tend/ vt. 照料，照顾，伺候vi. 往，朝向易于；倾向时 态: tended，tending，tends">tended</span> to rally when equity markets <span class="annot" data-tooltip="slumped /slʌmp/ vi. 大幅度下降, 暴跌沉重或突然地落下[倒下]n. 萧条期〈美〉(个人、球队等的)低潮状态时 态: slumped, slu">slumped</span>. Investors could protect themselves against turmoil in risky assets by holding American debt.</p>
+<p>That <span class="annot" data-tooltip="negative /'neɡətɪv/ adj. 拒绝的；怀疑的；不同意的消极的，非建设性的无预期结果的〈数〉负的；〈电〉阴的，负的n. 否定词语，否定的观点；拒绝；否认">negative</span> <span class="annot" data-tooltip="correlation /ˌkɔːrə'leɪʃn/ n. 相互的关系">correlation</span> made <span class="annot" data-tooltip="treasuries /'treʒəri/ n. 财政部；国库，金库；宝库">Treasuries</span> even better ballast than they had been in diversified <span class="annot" data-tooltip="portfolios /pɔːrt'foʊlioʊ/ n. 公事包, 文件夹投资组合大臣或部长的职位或职责">portfolios</span>—now they could, in theory, <span class="annot" data-tooltip="offset /'ɔːfset/ vt. 抵消, 补偿时 态: offset, offsetting, offsets">offset</span> losses in equities. New investment <span class="annot" data-tooltip="strategies /'strætədʒi/ n. 战略学, 兵法战略, 策略策略, 计谋">strategies</span> emerged. So-called risk-<span class="annot" data-tooltip="parity /'pærəti/ n. 同等,相等,对等奇偶校验">parity</span> funds, which borrowed to <span class="annot" data-tooltip="raise /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raise</span> their <span class="annot" data-tooltip="exposure /ɪk'spoʊʒər/ n. 暴露, 显露揭发, 揭露(软片等)曝光">exposure</span> to bonds and did well when stocks and bonds moved in opposite directions, boomed in size. But high <span class="annot" data-tooltip="inflation /ɪn'fleɪʃn/ n. (充气而引起的)膨胀通货膨胀">inflation</span> in 2021 and 2022, then a <span class="annot" data-tooltip="spike /spaɪk/ n. 尖头，尖刺，（尤指金属的）尖状物（某些运动鞋上的）防滑鞋钉，钉鞋（spikes）（通常在指下跌前）非常高的数量，价格或程">spike</span> in interest rates, ended that. Bonds and stocks sold off at the same time, burning the fingers of investors who <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span> they had diversified their risk (see chart). Another new risk for Treasuries is that many market-shaking moments are coming from policymakers in Washington instead of from external economic shocks. Early in 2025, as word of steep new <span class="annot" data-tooltip="tariffs /'tærɪf/ n. 关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表时 态: tariffed, tariffing, tar">tariffs</span> rattled markets, Treasuries offered no safe harbour: ten-year <span class="annot" data-tooltip="yields /jiːld/ vt. 出产；屈服；放弃vi. 屈服，投降n. 收益；产量时 态: yielded, yielding, yields">yields</span> climbed by around half a percentage point over the course of a week, as investors rejected American <span class="annot" data-tooltip="assets /'æset/ n. 资产；有用的东西；有利条件；优点">assets</span> indiscriminately. Gone was their “convenience <span class="annot" data-tooltip="yield /jiːld/ vt. 出产；屈服；放弃vi. 屈服，投降n. 收益；产量时 态: yielded, yielding, yields">yield</span>”, the <span class="annot" data-tooltip="dividend /'dɪvɪdend/ n. 股息；被除数；奖金">dividend</span> of seeming safe and liquid. A <span class="annot" data-tooltip="diminished /dɪ'mɪnɪʃ/ vt. 使减少；使变小vi. 变小；减少，缩小时 态: diminished, diminishing, diminishes">diminished</span> <span class="annot" data-tooltip="treasury /'treʒəri/ n. 财政部；国库，金库；宝库">Treasury</span> market would have <span class="annot" data-tooltip="dismal /'dɪzməl/ adj. 凄凉的，忧郁的；阴沉的，沉闷的；可怕的n. 低落的情绪副 词: dismally">dismal</span> knock-on effects. Research published in 2024 by Jason Choi of the University of Toronto and colleagues suggests that America’s unique status as the issuer of safe assets</p>
+<p>saves the government more than half a percent of GDP each year in interest payments. What is more, between 1994 and 2019, the rising share of <span class="annot" data-tooltip="treasuries /'treʒəri/ n. 财政部；国库，金库；宝库">Treasuries</span> held by foreign <span class="annot" data-tooltip="central /'sentrəl/ adj. 中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的副 词: centrally">central</span> banks reduced America’s <span class="annot" data-tooltip="neutral /'nuːtrəl/ adj. 中立的，中性的；中立国的；非彩色的n. 中立国；中立者；非彩色；齿轮的空档副 词: neutrally">neutral</span> interest rate—the rate at which the country can <span class="annot" data-tooltip="sustain /sə'steɪn/ vt. 承受，支撑维持长期保持；使继续经受，遭受时 态: sustained，sustaining，sustains">sustain</span> full employment and low, stable <span class="annot" data-tooltip="inflation /ɪn'fleɪʃn/ n. (充气而引起的)膨胀通货膨胀">inflation</span>—by 0.5 percentage points, by one estimate. The benefits of that accrue to businesses, homeowners, states and cities across the country. Pricing the risk of <span class="annot" data-tooltip="corporate /'kɔːrpərət/ adj. 社团的, 法人的副 词: corporately">corporate</span> bonds is getting more difficult, too. The spread between AAA-rated corporate bonds and Treasuries of the same maturity has dropped to just 0.34 percentage points on average since the beginning of 2024, compared with an average of 0.64 percentage points from 2010-19. In September two bonds issued by Microsoft offered lower <span class="annot" data-tooltip="yields /jiːld/ vt. 出产；屈服；放弃vi. 屈服，投降n. 收益；产量时 态: yielded, yielding, yields">yields</span> than Treasuries of the same maturity. Such performance is common where debt is seen as high and risky, and it is likely to become more common in America. JPMorgan Chase, a bank, reckons the coming increase in <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">federal</span> debt—from 100% to 120% of GDP by 2040—may reduce spreads with the most creditworthy firms by half a percentage point. Some on America’s political right welcome a decline in the <span class="annot" data-tooltip="treasury /'treʒəri/ n. 财政部；国库，金库；宝库">Treasury</span> market. The Coalition for a <span class="annot" data-tooltip="prosperous /'prɑːspərəs/ adj. 成功的, 繁荣的, 兴旺的副 词: prosperously">Prosperous</span> America, a <span class="annot" data-tooltip="pro /proʊ/ n. 从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞">pro</span>-<span class="annot" data-tooltip="tariff /'tærɪf/ n. 关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表时 态: tariffed, tariffing, tar">tariff</span> <span class="annot" data-tooltip="lobbying /'lɑːbi/ n. 前厅, 厅堂议会休息室游说议员的团体vt. & vi. 向…进行游说[疏通]名 词: lobbyism">lobbying</span> <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span>, want a “market access charge”, or a tax on many American financial <span class="annot" data-tooltip="assets /'æset/ n. 资产；有用的东西；有利条件；优点">assets</span>. That would, they say, reduce demand for dollars, weakening the currency and making <span class="annot" data-tooltip="domestic /də'mestɪk/ adj. 国内的；家庭的；驯养的；一心只管家务的">domestic</span> <span class="annot" data-tooltip="manufacturing /ˌmænju'fæktʃərɪŋ/ n. 制造业，工业adj. 制造业的；制造的">manufacturing</span> more competitive. In November 2024 <span class="annot" data-tooltip="hedge /hedʒ/ vt. 用树篱笆围住；避免作正面答复vi. 用树篱围住；避免作正面答复n. 树篱；障碍时 态: hedged, hedging,">hedge</span>-funder Stephen Miran suggested a “user fee” be charged on foreign holdings of Treasuries; Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> put him on the Fed board (he has since left). Investors saw last year what a political attack on foreign holders of American assets might look like. An early <span class="annot" data-tooltip="version /'vɜːrʒn/ n. 变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本">version</span> of Mr Trump’s One Big Beautiful Bill Act gave the White House the <span class="annot" data-tooltip="authority /ə'θɔːrəti/ n. 威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗">authority</span> to withhold investment income owed to foreigners in retaliation for putatively unfair taxes on American firms overseas. The threat did not apply to holders of Treasury bonds specifically, but it was a worrying portent.</p>
+<p>A self-sabotage of <span class="annot" data-tooltip="treasuries /'treʒəri/ n. 财政部；国库，金库；宝库">Treasuries</span> might seem crazy. But issuers of the world’s reserve <span class="annot" data-tooltip="assets /'æset/ n. 资产；有用的东西；有利条件；优点">assets</span> have changed the rules before. The American government devalued the dollar against gold in 1934 and 1971, and the British government did the same with sterling, in 1931 and 1949. In each case foreign bondholders were sacrificed for the sake of <span class="annot" data-tooltip="domestic /də'mestɪk/ adj. 国内的；家庭的；驯养的；一心只管家务的">domestic</span> financial <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span>. If the <span class="annot" data-tooltip="treasury /'treʒəri/ n. 财政部；国库，金库；宝库">Treasury</span> market were to lose its special status, the consequences would be more extreme for much of the rest of the world than they would be for America. Foreign investors have relied on Treasuries as a safe <span class="annot" data-tooltip="asset /'æset/ n. 资产；有用的东西；有利条件；优点">asset</span> in their <span class="annot" data-tooltip="portfolios /pɔːrt'foʊlioʊ/ n. 公事包, 文件夹投资组合大臣或部长的职位或职责">portfolios</span>, where their <span class="annot" data-tooltip="alternatives /ɔːl'tɜːrnətɪv/ adj. 可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）">alternatives</span> were <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> more <span class="annot" data-tooltip="volatile /'vɑːlətl/ adj. （人或其情绪）不稳定的；易变的；易怒的，喜怒无常的（情况）可能急剧波动的；不稳定的；易恶化的（物质）易挥发的，易气化的【">volatile</span> government bonds at home. They have nothing to replace Treasuries with. The interwar period holds a troubling precedent. Britain’s position as the world’s supplier of safe assets <span class="annot" data-tooltip="snapped /snæp/ vt. 猛咬；突然折断，拉断；啪地关上vi. 咬；厉声说；咯嗒一声关上n. 猛咬；劈啪声；突然折断adj. 突然的SNAPabb">snapped</span> under the <span class="annot" data-tooltip="fiscal /'fɪskl/ adj. 国库的；会计的，财政的副 词: fiscally">fiscal</span> pressure of the first world war and the bursts of <span class="annot" data-tooltip="inflation /ɪn'fleɪʃn/ n. (充气而引起的)膨胀通货膨胀">inflation</span> that followed. But the Treasury market was not yet ready to take on the role. The era was <span class="annot" data-tooltip="marked /mɑːr/ vt. 毁坏；损坏；玷污MARabbr. Master of Arts in Religion 宗教硕士Mar三月(March)">marked</span> by repeated financial panics, a downturn in the global economy and a <span class="annot" data-tooltip="fragmenting /'fræɡmənt/ n. 碎片；片断或不完整部分vt. 使成碎片vi. 破碎或裂开时 态: fragmented, fragmenting, fr">fragmenting</span> of global trade. Not having a single <span class="annot" data-tooltip="reliably /rɪ'laɪəbli/ adv. 可靠地；确实地">reliably</span> deep reserve to turn to made all of that worse. A world where Treasuries are no longer <span class="annot" data-tooltip="reliable /rɪ'laɪəbl/ adj. 可靠的, 可信赖的副 词: reliably">reliable</span> safe assets will be a world in which there are no plausible replacements at all. The Treasury Department provides the world with something close to a public good. Mercantilist politics, nervous investors and a <span class="annot" data-tooltip="surge /sɜːrdʒ/ n. (情感的) 突发，涌现，突然出现（数量的）急剧上升，激增；大量；一大批奔涌向前；突然的向上运动（电流）浪涌v. 涌；汹涌">surge</span> in American government debt are eroding its status. Global finance is in danger of losing its lodestar, making the job of keeping markets and economies on course a more treacherous and difficult one at home and abroad. ■ This article was downloaded by zlibrary from https://www.economist.com//special-report/2026/06/01/imagining-a-world-without-a- safe-asset</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Business</div>
+<p><span class="annot" data-tooltip="texas /'teksəs/ n. 德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室">Texas</span> is America Inc’s new centre of gravity BYD is losing its <span class="annot" data-tooltip="spark /spɑːrk/ n. 火花，火星；电火花；一丝，略微；导火线，诱因v. 引发，触发；产生火花（电火花）；点燃；增加趣味（或活力、风味等）时 态">spark</span> A new defence champion is rising from the Gulf Lego, Pokémon and the future of fun Two American tycoons are betting big on a <span class="annot" data-tooltip="casino /kə'siːnoʊ/ n. 赌场;娱乐场">casino</span> <span class="annot" data-tooltip="revival /rɪ'vaɪvl/ n. 复活；复兴；恢复精神；苏醒；再生效">revival</span> <span class="annot" data-tooltip="nvidia 恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商">Nvidia</span> wants to <span class="annot" data-tooltip="supercharge /'suːpərtʃɑːrdʒ/ vt. 对…增压时 态: supercharged, supercharging, supercharges">supercharge</span> your laptop What to read to understand your next <span class="annot" data-tooltip="employer /ɪm'plɔɪ/ vt. 使用，采用；雇用；使忙于，使从事于n. 雇用；使用时 态: employed, employing, employs">employer</span> American <span class="annot" data-tooltip="capitalism /'kæpɪtəlɪzəm/ n. 资本主义(制度)资本(或财富)的拥有资本(私人占有和生产盈利)的支配地位">capitalism</span> has taken an apocalyptic turn</p>
+<div class="article-separator"></div>
+<div class="article-header">Business · Business | Rodeo capitalism</div>
+<p><span class="annot" data-tooltip="texas /'teksəs/ n. 德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室">Texas</span> is America Inc’s new centre of gravity Exxon’s reincorporation is one more <span class="annot" data-tooltip="feather /'feðər/ n. 羽毛时 态: feathered, feathering, feathers">feather</span> in the state’s cowboy hat June 4th 2026 “Just when I <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span> I got him to <span class="annot" data-tooltip="fall /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">fall</span> in love with Tennessee, I shoulda known better than to take him back to Abilene.” So laments Ella Langley in “Choosin’ Texas”, a song that has ranked near the top of America’s music charts throughout 2026. Some of those listens may be coming from policymakers elsewhere in the country. Much like Ms Langley, they are losing to Texas.</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>productive</td><td>/prə'dʌktɪv/ adj.</td><td>多产的，富饶的富有成效的；有益的</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>asset</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>yield</td><td>/jiːld/ vt.</td><td>出产；屈服；放弃vi. 屈服，投降n. 收益；产量, yielding, yields</td></tr>
+<tr><td>genuinely</td><td>/'dʒenjuɪnli/ adv.</td><td>真地;真正地真诚地;诚实地</td></tr>
+<tr><td>corporate</td><td>/'kɔːrpərət/ adj.</td><td>社团的, 法人的</td></tr>
+<tr><td>seemingly</td><td>/'siːmɪŋli/ adv.</td><td>看来似乎, 表面上看</td></tr>
+<tr><td>assets</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>treasury</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>identical</td><td>/aɪ'dentɪkl/ adj.</td><td>同一的</td></tr>
+<tr><td>mortgage</td><td>/'mɔːrɡɪdʒ/ n.</td><td>抵押借款抵押债款的利息vt. 抵押, mortgaging, mortgages</td></tr>
+<tr><td>secure</td><td>/sɪ'kjʊr/ adj.</td><td>安心的；有把握的可靠的；牢靠的；稳固的；安全的；稳妥的严密把守的；牢固的；坚固的v. （尤指经过努力）获得，取得，实现拴牢；扣紧；关严保护；保卫；使安全抵押；为</td></tr>
+<tr><td>enormous</td><td>/ɪ'nɔːrməs/ adj.</td><td>巨大的, 极大的, 庞大的</td></tr>
+<tr><td>leverage</td><td>/'levərɪdʒ/ n.</td><td>（能够操控形势的）影响力，手段，优势 杠杆力；杠杆作用v. 举债经营；为…融资有效利用某物（资源、优势、工具等）, leveraging, leverages</td></tr>
+<tr><td>treasuries</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>reliable</td><td>/rɪ'laɪəbl/ adj.</td><td>可靠的, 可信赖的</td></tr>
+<tr><td>asset</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>beatles</td><td>— n.</td><td>披头士合唱（摇滚乐队）</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>academics</td><td>/ˌækə'demɪk/ adj.</td><td>学院的；学术的；理论的n. 大学生，大学教师；学者</td></tr>
+<tr><td>earned</td><td>/ɪr/ n.</td><td>耳朵；听觉；倾听；穗vi. （美俚）听见；抽穗EARabbr. East African Railways 东非铁路公司, earing, ears</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>drives</td><td>/draɪv/ vt.</td><td>驱赶驱使, 促使敲, 击vt. & vi. 驾驶n. 乘车旅行私人车道传动, 驱动干劲, 积极性, 能动性紧迫, 逼迫, 压力, drives</td></tr>
+<tr><td>ratio</td><td>/'reɪʃioʊ/ n.</td><td>比, 比率</td></tr>
+<tr><td>asset</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>underlying</td><td>/ˌʌndər'laɪɪŋ/ adj.</td><td>根本的, 基础的含蓄的, 潜在的</td></tr>
+<tr><td>treasury</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>treasuries</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>portfolio</td><td>/pɔːrt'foʊlioʊ/ n.</td><td>公事包, 文件夹投资组合大臣或部长的职位或职责</td></tr>
+<tr><td>assets</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>uncertainty</td><td>/ʌn'sɜːrtnti/ n.</td><td>无把握;不确定;变化不定无把握、不确定的事物</td></tr>
+<tr><td>encourage</td><td>/ɪn'kɜːrɪdʒ/ vt.</td><td>鼓励, 激励促进, 助长, 激发, encouraging, encourages</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>spasm</td><td>/'spæzəm/ n.</td><td>痉挛；抽搐；一阵发作</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>collateral</td><td>/kə'lætərəl/ n.</td><td>附属担保品adj. 相关的</td></tr>
+<tr><td>enormous</td><td>/ɪ'nɔːrməs/ adj.</td><td>巨大的, 极大的, 庞大的</td></tr>
+<tr><td>hedge</td><td>/hedʒ/ vt.</td><td>用树篱笆围住；避免作正面答复vi. 用树篱围住；避免作正面答复n. 树篱；障碍, hedging, hedges</td></tr>
+<tr><td>yields</td><td>/jiːld/ vt.</td><td>出产；屈服；放弃vi. 屈服，投降n. 收益；产量, yielding, yields</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>tended</td><td>/tend/ vt.</td><td>照料，照顾，伺候vi. 往，朝向易于；倾向，tending，tends</td></tr>
+<tr><td>slumped</td><td>/slʌmp/ vi.</td><td>大幅度下降, 暴跌沉重或突然地落下[倒下]n. 萧条期〈美〉(个人、球队等的)低潮状态, slumping, slumps</td></tr>
+<tr><td>negative</td><td>/'neɡətɪv/ adj.</td><td>拒绝的；怀疑的；不同意的消极的，非建设性的无预期结果的〈数〉负的；〈电〉阴的，负的n. 否定词语，否定的观点；拒绝；否认，negativing，negative</td></tr>
+<tr><td>correlation</td><td>/ˌkɔːrə'leɪʃn/ n.</td><td>相互的关系</td></tr>
+<tr><td>treasuries</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>portfolios</td><td>/pɔːrt'foʊlioʊ/ n.</td><td>公事包, 文件夹投资组合大臣或部长的职位或职责</td></tr>
+<tr><td>offset</td><td>/'ɔːfset/ vt.</td><td>抵消, 补偿, offsetting, offsets</td></tr>
+<tr><td>strategies</td><td>/'strætədʒi/ n.</td><td>战略学, 兵法战略, 策略策略, 计谋</td></tr>
+<tr><td>parity</td><td>/'pærəti/ n.</td><td>同等,相等,对等奇偶校验</td></tr>
+<tr><td>raise</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>exposure</td><td>/ɪk'spoʊʒər/ n.</td><td>暴露, 显露揭发, 揭露(软片等)曝光</td></tr>
+<tr><td>inflation</td><td>/ɪn'fleɪʃn/ n.</td><td>(充气而引起的)膨胀通货膨胀</td></tr>
+<tr><td>spike</td><td>/spaɪk/ n.</td><td>尖头，尖刺，（尤指金属的）尖状物（某些运动鞋上的）防滑鞋钉，钉鞋（spikes）（通常在指下跌前）非常高的数量，价格或程度v. 拒绝刊登，弃置（文章）不用将烈酒</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>tariffs</td><td>/'tærɪf/ n.</td><td>关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表, tariffing, tariffs</td></tr>
+<tr><td>yields</td><td>/jiːld/ vt.</td><td>出产；屈服；放弃vi. 屈服，投降n. 收益；产量, yielding, yields</td></tr>
+<tr><td>assets</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>yield</td><td>/jiːld/ vt.</td><td>出产；屈服；放弃vi. 屈服，投降n. 收益；产量, yielding, yields</td></tr>
+<tr><td>dividend</td><td>/'dɪvɪdend/ n.</td><td>股息；被除数；奖金</td></tr>
+<tr><td>diminished</td><td>/dɪ'mɪnɪʃ/ vt.</td><td>使减少；使变小vi. 变小；减少，缩小, diminishing, diminishes</td></tr>
+<tr><td>treasury</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>dismal</td><td>/'dɪzməl/ adj.</td><td>凄凉的，忧郁的；阴沉的，沉闷的；可怕的n. 低落的情绪</td></tr>
+<tr><td>treasuries</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>central</td><td>/'sentrəl/ adj.</td><td>中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的</td></tr>
+<tr><td>neutral</td><td>/'nuːtrəl/ adj.</td><td>中立的，中性的；中立国的；非彩色的n. 中立国；中立者；非彩色；齿轮的空档</td></tr>
+<tr><td>sustain</td><td>/sə'steɪn/ vt.</td><td>承受，支撑维持长期保持；使继续经受，遭受，sustaining，sustains</td></tr>
+<tr><td>inflation</td><td>/ɪn'fleɪʃn/ n.</td><td>(充气而引起的)膨胀通货膨胀</td></tr>
+<tr><td>corporate</td><td>/'kɔːrpərət/ adj.</td><td>社团的, 法人的</td></tr>
+<tr><td>yields</td><td>/jiːld/ vt.</td><td>出产；屈服；放弃vi. 屈服，投降n. 收益；产量, yielding, yields</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>treasury</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>prosperous</td><td>/'prɑːspərəs/ adj.</td><td>成功的, 繁荣的, 兴旺的</td></tr>
+<tr><td>pro</td><td>/proʊ/ n.</td><td>从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞成；支持Pro脯氨酸PROabbr. P</td></tr>
+<tr><td>tariff</td><td>/'tærɪf/ n.</td><td>关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表, tariffing, tariffs</td></tr>
+<tr><td>lobbying</td><td>/'lɑːbi/ n.</td><td>前厅, 厅堂议会休息室游说议员的团体vt. & vi. 向…进行游说[疏通]</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>assets</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>domestic</td><td>/də'mestɪk/ adj.</td><td>国内的；家庭的；驯养的；一心只管家务的</td></tr>
+<tr><td>manufacturing</td><td>/ˌmænju'fæktʃərɪŋ/ n.</td><td>制造业，工业adj. 制造业的；制造的</td></tr>
+<tr><td>hedge</td><td>/hedʒ/ vt.</td><td>用树篱笆围住；避免作正面答复vi. 用树篱围住；避免作正面答复n. 树篱；障碍, hedging, hedges</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>version</td><td>/'vɜːrʒn/ n.</td><td>变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本</td></tr>
+<tr><td>authority</td><td>/ə'θɔːrəti/ n.</td><td>威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗</td></tr>
+<tr><td>treasuries</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>assets</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>domestic</td><td>/də'mestɪk/ adj.</td><td>国内的；家庭的；驯养的；一心只管家务的</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>treasury</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>asset</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>portfolios</td><td>/pɔːrt'foʊlioʊ/ n.</td><td>公事包, 文件夹投资组合大臣或部长的职位或职责</td></tr>
+<tr><td>alternatives</td><td>/ɔːl'tɜːrnətɪv/ adj.</td><td>可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）可供选择的事物；可供选择的解决办法替代物</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>volatile</td><td>/'vɑːlətl/ adj.</td><td>（人或其情绪）不稳定的；易变的；易怒的，喜怒无常的（情况）可能急剧波动的；不稳定的；易恶化的（物质）易挥发的，易气化的【计】（计算机内存）易失的n.【罕】 挥发</td></tr>
+<tr><td>snapped</td><td>/snæp/ vt.</td><td>猛咬；突然折断，拉断；啪地关上vi. 咬；厉声说；咯嗒一声关上n. 猛咬；劈啪声；突然折断adj. 突然的SNAPabbr. Satellite Navigat</td></tr>
+<tr><td>fiscal</td><td>/'fɪskl/ adj.</td><td>国库的；会计的，财政的</td></tr>
+<tr><td>inflation</td><td>/ɪn'fleɪʃn/ n.</td><td>(充气而引起的)膨胀通货膨胀</td></tr>
+<tr><td>marked</td><td>/mɑːr/ vt.</td><td>毁坏；损坏；玷污MARabbr. Master of Arts in Religion 宗教硕士Mar三月(March)，marring，mars</td></tr>
+<tr><td>fragmenting</td><td>/'fræɡmənt/ n.</td><td>碎片；片断或不完整部分vt. 使成碎片vi. 破碎或裂开, fragmenting, fragments</td></tr>
+<tr><td>reliably</td><td>/rɪ'laɪəbli/ adv.</td><td>可靠地；确实地</td></tr>
+<tr><td>reliable</td><td>/rɪ'laɪəbl/ adj.</td><td>可靠的, 可信赖的</td></tr>
+<tr><td>surge</td><td>/sɜːrdʒ/ n.</td><td>(情感的) 突发，涌现，突然出现（数量的）急剧上升，激增；大量；一大批奔涌向前；突然的向上运动（电流）浪涌v. 涌；汹涌；涌动(感情、感觉) 突袭，涌动，突发(</td></tr>
+<tr><td>texas</td><td>/'teksəs/ n.</td><td>德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室)</td></tr>
+<tr><td>spark</td><td>/spɑːrk/ n.</td><td>火花，火星；电火花；一丝，略微；导火线，诱因v. 引发，触发；产生火花（电火花）；点燃；增加趣味（或活力、风味等）, sparking, sparks</td></tr>
+<tr><td>casino</td><td>/kə'siːnoʊ/ n.</td><td>赌场;娱乐场</td></tr>
+<tr><td>revival</td><td>/rɪ'vaɪvl/ n.</td><td>复活；复兴；恢复精神；苏醒；再生效</td></tr>
+<tr><td>nvidia</td><td>— </td><td>恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商</td></tr>
+<tr><td>supercharge</td><td>/'suːpərtʃɑːrdʒ/ vt.</td><td>对…增压, supercharging, supercharges</td></tr>
+<tr><td>employer</td><td>/ɪm'plɔɪ/ vt.</td><td>使用，采用；雇用；使忙于，使从事于n. 雇用；使用, employing, employs</td></tr>
+<tr><td>capitalism</td><td>/'kæpɪtəlɪzəm/ n.</td><td>资本主义(制度)资本(或财富)的拥有资本(私人占有和生产盈利)的支配地位</td></tr>
+<tr><td>texas</td><td>/'teksəs/ n.</td><td>德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室)</td></tr>
+<tr><td>feather</td><td>/'feðər/ n.</td><td>羽毛, feathering, feathers</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>fall</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day31.html" class="nav-btn">← Day 31</a>
+  <a href="day33.html" class="nav-btn">Day 33 →</a>
+</div>
+
+<div class="progress">📖 Day 32 of 46</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-06-06</div>
+
+</body>
+</html>

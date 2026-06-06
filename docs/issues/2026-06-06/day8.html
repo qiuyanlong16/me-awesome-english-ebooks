@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Briefing | Demographic dive</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-06-06</div>
+
+<h1 class="article-title">Briefing | Demographic dive</h1>
+<div class="article-section">Briefing</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>changes in the labour market. This makes child care a bigger <span class="annot" data-tooltip="burden /'bɜːrdn/ n. 负担；责任；船的载货量vt. 烦扰；使负担；装货于时 态: burdened, burdening, burdens">burden</span> and creates an incentive to limit family size. But most Indian men do not seem to have noticed. “My husband sometimes washes his <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> plate,” says Kavitha Kannan, a farmer and mother of two from Tamil Nadu. In the past, as the old blessing suggests, another consideration motivated couples: a strong <span class="annot" data-tooltip="preference /'prefrəns/ n. 较喜欢的东西, 偏爱优待, 优惠, 优先权">preference</span> for boys. That helped to keep fertility higher, because couples would keep having children until they had a boy. But “boy preference” has fallen <span class="annot" data-tooltip="dramatically /drə'mætɪkli/ adv. 戏剧性地;引人注目地">dramatically</span>: the data show that many Indian parents are content with a girl. Third, even if education and family structures shape parents’ thinking, it is reinforced by culture. Having fewer children has become aspirational, and that is being shaped by changes in technology and access to information. A study has found that the spread of <span class="annot" data-tooltip="cable /'keɪbl/ n. (船只、桥梁等上的)巨缆, 钢索电缆vt. & vi. 给(某人)发电报, 打电报告诉(某人)Cable凯布尔(姓氏)时">cable</span> television to villages in the 2000s led to a <span class="annot" data-tooltip="fall /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">fall</span> in the <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of pregnancies, which the author put down to soap operas <span class="annot" data-tooltip="depicting /dɪ'pɪkt/ vt. 描绘；描画描述时 态: depicted，depicting，depicts">depicting</span> <span class="annot" data-tooltip="urban /'ɜːrbən/ adj. 城市的；住在都市的">urban</span>, middle-class women with small families. It is possible that smartphones—which are becoming ubiquitous, even in poor villages—are having a similar <span class="annot" data-tooltip="compounding /'kɑːmpaʊnd/ n. 复合物；混合物；【化】化合物（语法）复合词有围栏（或围墙）的场地（内有工厂或其他建筑群）adj. 复合的v. 使加重；使">compounding</span> effect. There is as yet scant evidence that their spread has accelerated fertility’s fall. But it is likely that smartphones help <span class="annot" data-tooltip="disseminate /dɪ'semɪneɪt/ vt. 散布, 传播时 态: disseminated, disseminating, disseminates">disseminate</span> cultural norms more rapidly. In Nagepur, a village in Uttar Pradesh, women say they see lots of videos that <span class="annot" data-tooltip="depict /dɪ'pɪkt/ vt. 描绘；描画描述时 态: depicted，depicting，depicts">depict</span> small families and discuss how hard it is for youngsters to find jobs. Mr Rajan likens low fertility to a “contagion”: “What happens in Kerala ends up in Bihar,” he says.</p>
+<p>That all this is already <span class="annot" data-tooltip="leading /ˈliːdɪŋ/ adj. 主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）">leading</span> to smaller families and paving the way for a <span class="annot" data-tooltip="contraction /kən'trækʃn/ n. 订约(分娩时)子宫收缩收缩,缩短缩减缩略词">contraction</span> in population is beyond <span class="annot" data-tooltip="dispute /dɪ'spjuːt/ vt. 辩论；阻止；抗拒；怀疑vi. 争论n. 辩论；争吵时 态: disputed, disputing, disputes">dispute</span>. The only question is how <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> fertility will <span class="annot" data-tooltip="fall /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">fall</span>. Some demographers suggest that strong marriage and childbearing norms will act as a floor, sparing India a baby <span class="annot" data-tooltip="drought /draʊt/ n. 干旱；缺乏形容词: droughty">drought</span> as <span class="annot" data-tooltip="severe /sɪ'vɪr/ adj. 严厉的；苛刻的；剧烈的；严峻的比较级: severer, severest">severe</span> as, say, South Korea’s. Others <span class="annot" data-tooltip="flip /flɪp/ vt. 轻击；掷vi. 用指轻弹；蹦跳adj. 无礼的；轻率的n. 筋斗；弹FLIPabbr. Floating Indeved">flip</span> this on its head, arguing that it is remarkable that fertility has already fallen so low despite such norms. They <span class="annot" data-tooltip="speculate /'spekjuleɪt/ vt. & vi. 思索；猜测，推测vi. 投机时 态: speculated，speculating，speculates">speculate</span> that in the coming <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span> more Indian women will <span class="annot" data-tooltip="opt /ɑːpt/ vi. 选择OPTabbr. VC开发环境自动生成的用来存放WorkSpace中各种选项的文件。时 态: opted, opti">opt</span> out of marriage and childbearing altogether. Even if India does not become South Korea, the speed of its <span class="annot" data-tooltip="demographic /ˌdemə'ɡræfɪk/ adj. 人口统计学的">demographic</span> <span class="annot" data-tooltip="transition /træn'zɪʃn/ n. 过渡; 转变; 变迁">transition</span> will have far-<span class="annot" data-tooltip="reaching /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reaching</span> consequences. Most obviously, it will get old before it gets rich. In Kerala, where almost a fifth of the population is over 60, the government has just created a department for ageing. The state has the most <span class="annot" data-tooltip="comprehensive /ˌkɑːmprɪ'hensɪv/ adj. 广泛的, 综合的副 词: comprehensively">comprehensive</span> social-safety <span class="annot" data-tooltip="net /net/ n. 网；净利；网络；实价vi. 编网vt. 净赚；得到；用网捕adj. 纯粹的；净余的时 态: netted, nettin">net</span> in India but, even so, only 19.4% of the <span class="annot" data-tooltip="workforce /'wɜːrkfɔːrs/ n. 全体员工(国家或行业等)劳动力,劳动大军,劳动人口">workforce</span> belong to any kind of <span class="annot" data-tooltip="pension /ˈpenʃn/ n. 津贴；退休金，抚恤金；膳宿费vt. 发给养老金或抚恤金时 态: pensioned, pensioning, pensi">pension</span> scheme (the national figure is 12%). Providing for the growing ranks of <span class="annot" data-tooltip="elderly /'eldərli/ adj. 上了年纪的, 中年以上的">elderly</span> Indians seems a remote <span class="annot" data-tooltip="prospect /'prɑːspekt/ n. 景象，景色前景；前途可能成为主顾的人；有希望的候选人vi. 勘探；勘察时 态: prospected，prospecti">prospect</span>. Yet the decline of the <span class="annot" data-tooltip="extended /ɪk'stend/ vt. & vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出时 态:">extended</span> family <span class="annot" data-tooltip="undermines /ˌʌndər'maɪn/ vt. 在某物下挖洞或挖通道；侵蚀…的基础暗中破坏；逐渐削弱时 态: undermined，undermining，underm">undermines</span> the assumption that children will care for parents in their old age. In south India rich-world-style care homes are popping up. In rural <span class="annot" data-tooltip="places /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">places</span> more basic forms of care for the elderly are appearing, centred around yoga and gossip. But families unable</p>
+<p>to find or afford care, particularly for those with <span class="annot" data-tooltip="serious /'sɪriəs/ adj. 严肃的，严重的；认真的；庄重的；危急的副 词: seriously">serious</span> illnesses such as <span class="annot" data-tooltip="dementia /dɪ'menʃə/ n. 〈医〉痴呆">dementia</span>, may be forced back together. Cases of <span class="annot" data-tooltip="elderly /'eldərli/ adj. 上了年纪的, 中年以上的">elderly</span> relatives abandoned at mass gatherings, such as the Kumbh Mela, a Hindu pilgrimage, are on the <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span>. The strains on family ties are exacerbated by another <span class="annot" data-tooltip="trend /trend/ n. 趋势, 倾向流行时 态: trended, trending, trends">trend</span>, a boom in <span class="annot" data-tooltip="internal /ɪn'tɜːrnl/ adj. 国内的；内部的；内在的名 词: internality">internal</span> <span class="annot" data-tooltip="migration /maɪ'ɡreɪʃn/ n. 迁移, 移居">migration</span>. Southern states have long relied on labour from the North and East, particularly in hotels and <span class="annot" data-tooltip="restaurants /'restrɑːnt/ n. 饭店, 餐馆">restaurants</span>. But the flows of migrants are increasing, to provide workers for factories and care homes, among other jobs. At the Athulya care facility in Chennai, the capital of Tamil Nadu, the staff are almost all young women from the state of Odisha. The pull of migration will see more elderly Indians left behind in the village. Some aggrieved parents are already taking to social media to castigate their absent children. A more rapid <span class="annot" data-tooltip="demographic /ˌdemə'ɡræfɪk/ adj. 人口统计学的">demographic</span> <span class="annot" data-tooltip="transition /træn'zɪʃn/ n. 过渡; 转变; 变迁">transition</span> means that the share of India’s population that is of working age could peak as soon as 2030. India’s <span class="annot" data-tooltip="workforce /'wɜːrkfɔːrs/ n. 全体员工(国家或行业等)劳动力,劳动大军,劳动人口">workforce</span> can continue to grow even as its population ages because many working-age people are under-<span class="annot" data-tooltip="employed /ɪm'plɔɪ/ vt. 使用，采用；雇用；使忙于，使从事于n. 雇用；使用时 态: employed, employing, employs">employed</span>. In the long run the economy will need to make better use of women in particular, says Mr Mishra of Axis Bank. Demographic concerns already <span class="annot" data-tooltip="infuse /ɪn'fjuːz/ vt. 灌输,加入(一种特性)vt. & vi. 沏(茶),泡(草药)把(某种素质)注入…；在…中注入(某种素质)时 态: in">infuse</span> politics. Mr Modi’s BJP likes to stoke fears that Hindus (around 80% of the population) will be overrun by Muslims (around 15%). <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">Although</span> fertility among Muslims is indeed higher, it too is <span class="annot" data-tooltip="falling /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">falling</span> fast and the difference is mainly because Muslims are poorer. <span class="annot" data-tooltip="nonetheless /ˌnʌnðə'les/ adv. 虽然如此,但是">Nonetheless</span> in February Mohan Bhagwat, the leader of the RSS, a huge Hindu-nationalist social organisation, exhorted patriotic Indians to have three children to help with “population stabilisation”. Southern states, meanwhile, worry that Mr Modi will “punish” them for their lower birth rates by <span class="annot" data-tooltip="trimming /'trɪmɪŋ/ n. 装饰；修饰装饰品, 讨人喜欢的附加品修剪下来的东西(主菜之外的)花色配菜(常复数)配料,佐料">trimming</span> their seats in <span class="annot" data-tooltip="parliament /'pɑːrləmənt/ n. 议会, 国会">parliament</span>. There may also be <span class="annot" data-tooltip="tensions /'tenʃn/ n. 张力，拉力；紧张，不安；电压vt. 使紧张；使拉紧时 态: tensioned, tensioning, tension">tensions</span> between internal migrants and their adoptive states. Most southern politicians realise that migrants boost the economy, but there is some griping about an influx of outsiders who do not speak the local language. It is easy to imagine the north-south divide becoming more fraught.</p>
+<p>For now, expect politicians of all <span class="annot" data-tooltip="stripes /straɪp/ n. 条纹，斑纹；种类vt. 加条纹于…时 态: striped, striping, stripes">stripes</span> to cast around for policies to promote baby-making, like Mr Naidu. Yet evidence from around the world suggests that exhortations and bungs will not work. Fertility seems to be driven by forces too powerful for states or religious leaders to control very easily. Mr Rajan points out that India’s fertility has been declining for 70 years. The <span class="annot" data-tooltip="odds /ɑːdz/ n. 不平等；几率；胜算；差别">odds</span> of a sudden reversal are slim. ■ Stay on top of our India <span class="annot" data-tooltip="coverage /'kʌvərɪdʒ/ n. 新闻报道, 报道量覆盖范围">coverage</span> by signing up to <span class="annot" data-tooltip="essential /ɪ'senʃl/ adj. 基本的；必要的；本质的；精华的">Essential</span> India, our free weekly newsletter. This article was downloaded by zlibrary from https://www.economist.com//briefing/2026/06/04/indias-population-will-soon-be- <span class="annot" data-tooltip="falling /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">falling</span>-probably-quite-fast</p>
+<div class="article-separator"></div>
+<div class="article-header"> · United States</div>
+<p>America’s Social <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">Security</span> trust fund is disappearing California is on the cusp of its “Becerra era” Welcome to Evanston, where woke never died The fading influence of America’s <span class="annot" data-tooltip="spy /spaɪ/ vt. 侦察；发现；暗中监视vi. 侦察；当间谍n. 间谍；密探">spy</span> co-ordinator Meet the jailscraper Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> says Pete Hegseth loves war. That should disqualify him</p>
+<div class="article-separator"></div>
+<div class="article-header">United States · United States | Project 2032</div>
+<p>America’s Social <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">Security</span> trust fund is disappearing Legislators have just six years to fix things June 4th 2026 AMERICA’S SOCIAL Security trust fund for the country’s <span class="annot" data-tooltip="elderly /'eldərli/ adj. 上了年纪的, 中年以上的">elderly</span> citizens is now more than old enough to be drawing a <span class="annot" data-tooltip="pension /ˈpenʃn/ n. 津贴；退休金，抚恤金；膳宿费vt. 发给养老金或抚恤金时 态: pensioned, pensioning, pensi">pension</span> itself. When the programme launched in 1940, its future must have seemed assured. Lots of money went in and little came out: for each retired person drawing benefits, more than 150 workers were contributing to the fund, which <span class="annot" data-tooltip="invested /ɪn'vest/ vt. 投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买时 态: invested, investing, invests">invested</span> in <span class="annot" data-tooltip="treasury /'treʒəri/ n. 财政部；国库，金库；宝库">Treasury</span> <span class="annot" data-tooltip="securities /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">securities</span>. Today, after years of <span class="annot" data-tooltip="demographic /ˌdemə'ɡræfɪk/ adj. 人口统计学的">demographic</span> transformation—lower birth rates bringing fewer workers to the labour force, and longer <span class="annot" data-tooltip="lifespans /'laɪfspæn/ n. 预期生命期限；寿命；预期使用期限">lifespans</span> for the fortunate recipients—the <span class="annot" data-tooltip="ratio /'reɪʃioʊ/ n. 比, 比率">ratio</span> of workers to recipients is less than three to one. In 2017 the reserves held in the trust fund peaked at $2.8trn. Since then,</p>
+<p>the fund’s size has dropped by $400bn, with more money leaving it in payments to retirees than has <span class="annot" data-tooltip="entered /'entər/ vt. & vi. 进入, 进去参加, 加入登记, 登录时 态: entered, entering, enters">entered</span> it in the form of contributions. Outflows are accelerating, and some time around the end of the next presidential term, in late 2032 or early 2033, the fund will run dry. Washington has a little more than six years to find a remedy, which means that senators elected in November may still be serving their term when the fund runs out. If nothing is done, the <span class="annot" data-tooltip="immediate /ɪ'miːdiət/ adj. 立即的，即刻的；紧迫的目前的，当前的直接的最接近的名 词: immediateness">immediate</span> consequences for pensioners will be <span class="annot" data-tooltip="dire /'daɪər/ adj. 可怕的, 恐怖的比较级: direr, direst">dire</span>. Payments will drop by around 23%, and will slide further in the following <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span>. The gap between the fund’s <span class="annot" data-tooltip="revenue /'revənuː/ n. 收入，收益；财政收入，税收">revenue</span> and payments last year is estimated to have been around $209bn, about 0.7% of GDP, a gap which would have to be <span class="annot" data-tooltip="covered /'kʌvər/ vt. 包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替时 态: covered, covering, c">covered</span> by borrowing. The system has been in a similar position before, but that was then. Big amendments to Social <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">Security</span> have been secured in different political contexts: in 1965 Lyndon Johnson <span class="annot" data-tooltip="harnessed /'hɑːrnɪs/ n. 马具, 挽具vt. 给(马等)装上挽具治理, 利用时 态: harnessed, harnessing, harness">harnessed</span> a supermajority in both houses of Congress to <span class="annot" data-tooltip="ram /ræm/ abbr. Royal Academy of Music〈英〉皇家音乐学院">ram</span> through changes that expanded the programme. He created America’s <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">federal</span> health-insurance schemes at the same time. In 1983, when the fund was months away from <span class="annot" data-tooltip="depletion /dɪ'pliːʃn/ n. 消耗;用尽">depletion</span>, Democrats and <span class="annot" data-tooltip="republicans /rɪ'pʌblɪkən/ adj. 共和国的, 共和政体的n. 拥护共和政体者, 共和主义者名 词: republicanism">Republicans</span> inked an agreement that steadily increased the retirement age from 65 to 67 and broadened the tax base.</p>
+<p>The changes required need not be drastic if they are made soon. Research published last year by Wendell Primus and Tara Watson of the Brookings Institution and <span class="annot" data-tooltip="jack /dʒæk/ n. 千斤顶vt. 用千斤顶顶起离开；停止，放弃提高，增加">Jack</span> Smalligan of the <span class="annot" data-tooltip="urban /'ɜːrbən/ adj. 城市的；住在都市的">Urban</span> Institute suggests a series of fixes. They would <span class="annot" data-tooltip="raise /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raise</span> payroll taxes fractionally, from 12.4% to 12.6%, and add some workers in local and state governments who do not currently pay into Social <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">Security</span>. At the same time, they suggest increasing retirement ages for better-paid workers from 67 to 70 and taxing their benefits more. But getting the policy right is not the problem. The politics of Social Security and partisanship are both <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> more <span class="annot" data-tooltip="thorny /'θɔːrni/ adj. 痛苦的；多刺的；令人苦恼的比较级: thornier, thorniest">thorny</span> than they once were. “A bipartisan <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span> of people could pencil it out and we’d have a <span class="annot" data-tooltip="reform /rɪ'fɔːrm/ n. 改革，改良，改造vt. & vi. 改革；改造；改善时 态: reformed，reforming，reforms">reform</span> done, but that’s <span class="annot" data-tooltip="completely /kəm'pliːt/ adj. 完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善比较级: complete">completely</span> different to the political calculus,” says Daniel Bunn, president of the Tax Foundation, a <span class="annot" data-tooltip="fiscal /'fɪskl/ adj. 国库的；会计的，财政的副 词: fiscally">fiscal</span> think-<span class="annot" data-tooltip="tank /tæŋk/ n. （存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内时 态: t">tank</span>. Imagining a repeat of the <span class="annot" data-tooltip="aisle /aɪl/ n. 过道, 通道">aisle</span>-crossing deal that fixed the system in 1983 is now extremely hard. Based on data from Voteview, a research project <span class="annot" data-tooltip="cataloguing /ˈkætəlɔɡ/ n. 目录；登记vt. 为…编目录；登记vi. 编目录；按确定价格收入目录（等于catalogue）时 态: cataloge">cataloguing</span> every American congressional vote for almost the past century and a half, legislative polarisation has never been as high as it is today. What’s more, President Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> has shifted the <span class="annot" data-tooltip="republican /rɪ'pʌblɪkən/ adj. 共和国的, 共和政体的n. 拥护共和政体者, 共和主义者名 词: republicanism">Republican</span> Party’s position on Social Security, an area where the Democrats have <span class="annot" data-tooltip="tended /tend/ vt. 照料，照顾，伺候vi. 往，朝向易于；倾向时 态: tended，tending，tends">tended</span> to command more public trust. During the 2024 presidential <span class="annot" data-tooltip="campaign /kæm'peɪn/ n. 运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）时">campaign</span> all</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>burden</td><td>/'bɜːrdn/ n.</td><td>负担；责任；船的载货量vt. 烦扰；使负担；装货于, burdening, burdens</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>preference</td><td>/'prefrəns/ n.</td><td>较喜欢的东西, 偏爱优待, 优惠, 优先权</td></tr>
+<tr><td>dramatically</td><td>/drə'mætɪkli/ adv.</td><td>戏剧性地;引人注目地</td></tr>
+<tr><td>cable</td><td>/'keɪbl/ n.</td><td>(船只、桥梁等上的)巨缆, 钢索电缆vt. & vi. 给(某人)发电报, 打电报告诉(某人)Cable凯布尔(姓氏), cabling, cables</td></tr>
+<tr><td>fall</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>depicting</td><td>/dɪ'pɪkt/ vt.</td><td>描绘；描画描述，depicting，depicts</td></tr>
+<tr><td>urban</td><td>/'ɜːrbən/ adj.</td><td>城市的；住在都市的</td></tr>
+<tr><td>compounding</td><td>/'kɑːmpaʊnd/ n.</td><td>复合物；混合物；【化】化合物（语法）复合词有围栏（或围墙）的场地（内有工厂或其他建筑群）adj. 复合的v. 使加重；使恶化由…构成（或形成）混合；掺和；拌和,</td></tr>
+<tr><td>disseminate</td><td>/dɪ'semɪneɪt/ vt.</td><td>散布, 传播, disseminating, disseminates</td></tr>
+<tr><td>depict</td><td>/dɪ'pɪkt/ vt.</td><td>描绘；描画描述，depicting，depicts</td></tr>
+<tr><td>leading</td><td>/ˈliːdɪŋ/ adj.</td><td>主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）</td></tr>
+<tr><td>contraction</td><td>/kən'trækʃn/ n.</td><td>订约(分娩时)子宫收缩收缩,缩短缩减缩略词</td></tr>
+<tr><td>dispute</td><td>/dɪ'spjuːt/ vt.</td><td>辩论；阻止；抗拒；怀疑vi. 争论n. 辩论；争吵, disputing, disputes</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>fall</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>drought</td><td>/draʊt/ n.</td><td>干旱；缺乏</td></tr>
+<tr><td>severe</td><td>/sɪ'vɪr/ adj.</td><td>严厉的；苛刻的；剧烈的；严峻的, severest</td></tr>
+<tr><td>flip</td><td>/flɪp/ vt.</td><td>轻击；掷vi. 用指轻弹；蹦跳adj. 无礼的；轻率的n. 筋斗；弹FLIPabbr. Floating Indeved Point Arithmetic 变址</td></tr>
+<tr><td>speculate</td><td>/'spekjuleɪt/ vt.</td><td>& vi. 思索；猜测，推测vi. 投机，speculating，speculates</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>opt</td><td>/ɑːpt/ vi.</td><td>选择OPTabbr. VC开发环境自动生成的用来存放WorkSpace中各种选项的文件。, opting, opts</td></tr>
+<tr><td>demographic</td><td>/ˌdemə'ɡræfɪk/ adj.</td><td>人口统计学的</td></tr>
+<tr><td>transition</td><td>/træn'zɪʃn/ n.</td><td>过渡; 转变; 变迁</td></tr>
+<tr><td>reaching</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>comprehensive</td><td>/ˌkɑːmprɪ'hensɪv/ adj.</td><td>广泛的, 综合的</td></tr>
+<tr><td>net</td><td>/net/ n.</td><td>网；净利；网络；实价vi. 编网vt. 净赚；得到；用网捕adj. 纯粹的；净余的, netting, nets</td></tr>
+<tr><td>workforce</td><td>/'wɜːrkfɔːrs/ n.</td><td>全体员工(国家或行业等)劳动力,劳动大军,劳动人口</td></tr>
+<tr><td>pension</td><td>/ˈpenʃn/ n.</td><td>津贴；退休金，抚恤金；膳宿费vt. 发给养老金或抚恤金, pensioning, pensions</td></tr>
+<tr><td>elderly</td><td>/'eldərli/ adj.</td><td>上了年纪的, 中年以上的</td></tr>
+<tr><td>prospect</td><td>/'prɑːspekt/ n.</td><td>景象，景色前景；前途可能成为主顾的人；有希望的候选人vi. 勘探；勘察，prospecting，prospects</td></tr>
+<tr><td>extended</td><td>/ɪk'stend/ vt.</td><td>& vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出，extending，extends</td></tr>
+<tr><td>undermines</td><td>/ˌʌndər'maɪn/ vt.</td><td>在某物下挖洞或挖通道；侵蚀…的基础暗中破坏；逐渐削弱，undermining，undermines</td></tr>
+<tr><td>places</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>serious</td><td>/'sɪriəs/ adj.</td><td>严肃的，严重的；认真的；庄重的；危急的</td></tr>
+<tr><td>dementia</td><td>/dɪ'menʃə/ n.</td><td>〈医〉痴呆</td></tr>
+<tr><td>elderly</td><td>/'eldərli/ adj.</td><td>上了年纪的, 中年以上的</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>trend</td><td>/trend/ n.</td><td>趋势, 倾向流行, trending, trends</td></tr>
+<tr><td>internal</td><td>/ɪn'tɜːrnl/ adj.</td><td>国内的；内部的；内在的</td></tr>
+<tr><td>migration</td><td>/maɪ'ɡreɪʃn/ n.</td><td>迁移, 移居</td></tr>
+<tr><td>restaurants</td><td>/'restrɑːnt/ n.</td><td>饭店, 餐馆</td></tr>
+<tr><td>demographic</td><td>/ˌdemə'ɡræfɪk/ adj.</td><td>人口统计学的</td></tr>
+<tr><td>transition</td><td>/træn'zɪʃn/ n.</td><td>过渡; 转变; 变迁</td></tr>
+<tr><td>workforce</td><td>/'wɜːrkfɔːrs/ n.</td><td>全体员工(国家或行业等)劳动力,劳动大军,劳动人口</td></tr>
+<tr><td>employed</td><td>/ɪm'plɔɪ/ vt.</td><td>使用，采用；雇用；使忙于，使从事于n. 雇用；使用, employing, employs</td></tr>
+<tr><td>infuse</td><td>/ɪn'fjuːz/ vt.</td><td>灌输,加入(一种特性)vt. & vi. 沏(茶),泡(草药)把(某种素质)注入…；在…中注入(某种素质), infusing, infuses</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>falling</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>nonetheless</td><td>/ˌnʌnðə'les/ adv.</td><td>虽然如此,但是</td></tr>
+<tr><td>trimming</td><td>/'trɪmɪŋ/ n.</td><td>装饰；修饰装饰品, 讨人喜欢的附加品修剪下来的东西(主菜之外的)花色配菜(常复数)配料,佐料</td></tr>
+<tr><td>parliament</td><td>/'pɑːrləmənt/ n.</td><td>议会, 国会</td></tr>
+<tr><td>tensions</td><td>/'tenʃn/ n.</td><td>张力，拉力；紧张，不安；电压vt. 使紧张；使拉紧, tensioning, tensions</td></tr>
+<tr><td>stripes</td><td>/straɪp/ n.</td><td>条纹，斑纹；种类vt. 加条纹于…, striping, stripes</td></tr>
+<tr><td>odds</td><td>/ɑːdz/ n.</td><td>不平等；几率；胜算；差别</td></tr>
+<tr><td>coverage</td><td>/'kʌvərɪdʒ/ n.</td><td>新闻报道, 报道量覆盖范围</td></tr>
+<tr><td>essential</td><td>/ɪ'senʃl/ adj.</td><td>基本的；必要的；本质的；精华的</td></tr>
+<tr><td>falling</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>spy</td><td>/spaɪ/ vt.</td><td>侦察；发现；暗中监视vi. 侦察；当间谍n. 间谍；密探</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>elderly</td><td>/'eldərli/ adj.</td><td>上了年纪的, 中年以上的</td></tr>
+<tr><td>pension</td><td>/ˈpenʃn/ n.</td><td>津贴；退休金，抚恤金；膳宿费vt. 发给养老金或抚恤金, pensioning, pensions</td></tr>
+<tr><td>invested</td><td>/ɪn'vest/ vt.</td><td>投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买, investing, invests</td></tr>
+<tr><td>treasury</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>securities</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>demographic</td><td>/ˌdemə'ɡræfɪk/ adj.</td><td>人口统计学的</td></tr>
+<tr><td>lifespans</td><td>/'laɪfspæn/ n.</td><td>预期生命期限；寿命；预期使用期限</td></tr>
+<tr><td>ratio</td><td>/'reɪʃioʊ/ n.</td><td>比, 比率</td></tr>
+<tr><td>entered</td><td>/'entər/ vt.</td><td>& vi. 进入, 进去参加, 加入登记, 登录, entering, enters</td></tr>
+<tr><td>immediate</td><td>/ɪ'miːdiət/ adj.</td><td>立即的，即刻的；紧迫的目前的，当前的直接的最接近的</td></tr>
+<tr><td>dire</td><td>/'daɪər/ adj.</td><td>可怕的, 恐怖的, direst</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>revenue</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>covered</td><td>/'kʌvər/ vt.</td><td>包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替, covering, covers</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>harnessed</td><td>/'hɑːrnɪs/ n.</td><td>马具, 挽具vt. 给(马等)装上挽具治理, 利用, harnessing, harnesses</td></tr>
+<tr><td>ram</td><td>/ræm/ abbr.</td><td>Royal Academy of Music〈英〉皇家音乐学院</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>depletion</td><td>/dɪ'pliːʃn/ n.</td><td>消耗;用尽</td></tr>
+<tr><td>republicans</td><td>/rɪ'pʌblɪkən/ adj.</td><td>共和国的, 共和政体的n. 拥护共和政体者, 共和主义者</td></tr>
+<tr><td>jack</td><td>/dʒæk/ n.</td><td>千斤顶vt. 用千斤顶顶起离开；停止，放弃提高，增加</td></tr>
+<tr><td>urban</td><td>/'ɜːrbən/ adj.</td><td>城市的；住在都市的</td></tr>
+<tr><td>raise</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>thorny</td><td>/'θɔːrni/ adj.</td><td>痛苦的；多刺的；令人苦恼的, thorniest</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>reform</td><td>/rɪ'fɔːrm/ n.</td><td>改革，改良，改造vt. & vi. 改革；改造；改善，reforming，reforms</td></tr>
+<tr><td>completely</td><td>/kəm'pliːt/ adj.</td><td>完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善, completest 缩 写: comp, cpl</td></tr>
+<tr><td>fiscal</td><td>/'fɪskl/ adj.</td><td>国库的；会计的，财政的</td></tr>
+<tr><td>tank</td><td>/tæŋk/ n.</td><td>（存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内, tanking, tanks</td></tr>
+<tr><td>aisle</td><td>/aɪl/ n.</td><td>过道, 通道</td></tr>
+<tr><td>cataloguing</td><td>/ˈkætəlɔɡ/ n.</td><td>目录；登记vt. 为…编目录；登记vi. 编目录；按确定价格收入目录（等于catalogue）, catalogued cataloging, catalogu</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>republican</td><td>/rɪ'pʌblɪkən/ adj.</td><td>共和国的, 共和政体的n. 拥护共和政体者, 共和主义者</td></tr>
+<tr><td>tended</td><td>/tend/ vt.</td><td>照料，照顾，伺候vi. 往，朝向易于；倾向，tending，tends</td></tr>
+<tr><td>campaign</td><td>/kæm'peɪn/ n.</td><td>运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）, campaigning, campai</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day7.html" class="nav-btn">← Day 7</a>
+  <a href="day9.html" class="nav-btn">Day 9 →</a>
+</div>
+
+<div class="progress">📖 Day 8 of 46</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-06-06</div>
+
+</body>
+</html>

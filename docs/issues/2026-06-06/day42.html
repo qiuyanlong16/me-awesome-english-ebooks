@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Science & technology</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-06-06</div>
+
+<h1 class="article-title">Science & technology</h1>
+<div class="article-section"></div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>for an extension). It will now be later still. Blue Origin is supposed to fly 12 missions for <span class="annot" data-tooltip="amazon /ˈæməˌzɑn/ n. 高大强悍的女人；（古希腊神话中的）亚马孙族女战士Amazonn. 亚马逊河(南美洲大河)">Amazon</span>, with an option for 15 more. In the worst case, deployment could slow to a crawl. Of its 83 intended launches, Amazon booked 38 on Vulcan Centaur, a rocket owned by United Launch Alliance, an American launch-provider. Vulcan Centaur uses the same BE-4 engines, made by Blue Origin, as New Glenn does. If the <span class="annot" data-tooltip="explosion /ɪk'sploʊʒn/ n. 爆炸；爆发激增，扩大">explosion</span> is traced to an engine <span class="annot" data-tooltip="issue /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issue</span>, then the Vulcan Centaur could end up grounded too. Then there is NASA, which sees itself as in a <span class="annot" data-tooltip="race /reɪs/ n. 种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACE">race</span> to the Moon with China. In 2021 NASA awarded SpaceX a <span class="annot" data-tooltip="contract /'kɑːntrækt/ vi. 感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约时 态: contracted, contracting, c">contract</span> to build a lander to ferry astronauts from <span class="annot" data-tooltip="lunar /'luːnər/ adj. 月的, 月球的；；阴历的；银的；微亮的">lunar</span> orbit to the Moon’s surface. In 2023, worried about the risks of relying on a single supplier, the agency asked Blue Origin to build a lander of its <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span>. SpaceX’s lander is already late. With Blue Origin now out of action for at least the next six months, NASA’s ambition to return humans to the lunar surface by early 2028 looks even more improbable than it already did. NASA insists that, unlike in the 1960s, this time it wants to go to the Moon and stay there. On May 26th the agency outlined some of its plans for the eventual construction of a base at the lunar south pole. Blue Origin is to supply a lander <span class="annot" data-tooltip="capable /'keɪpəbl/ adj. 能干的，能胜任的；有才华的副 词: capably">capable</span> of ferrying three tonnes of cargo to the lunar surface, to <span class="annot" data-tooltip="enable /ɪ'neɪbl/ vt. 使能够；提供做…的权利[措施]使可能时 态: enabled，enabling，enables">enable</span> <span class="annot" data-tooltip="scouting /skaʊt/ n. 侦察员；侦察机；（尤指）侦察兵（尤指体育或娱乐界的）人才发掘者，星探童子军队员；童子军（the Scouts）v. 侦察">scouting</span> missions and to pre-<span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span> useful bits of kit, such as lunar <span class="annot" data-tooltip="rovers /'roʊvər/ n. 流浪者,漫游者">rovers</span>, that will later be used by astronauts. Blue Origin’s first Moon-base mission was supposed to depart as early as this autumn. Just two days after the plan was made public, those ambitions also went up in smoke. ■ Curious about the world? To enjoy our mind-expanding science <span class="annot" data-tooltip="coverage /'kʌvərɪdʒ/ n. 新闻报道, 报道量覆盖范围">coverage</span>, sign up to <span class="annot" data-tooltip="simply /'sɪmpli/ adv. 简单地；朴素地；简直；仅仅；坦白地">Simply</span> Science, our weekly subscriber-only newsletter. This article was downloaded by zlibrary from https://www.economist.com//science-and-technology/2026/06/03/rocket-goes-boom-so- do-moon-plans</p>
+<p>Science & technology | Silent night How to bring down cheap, low-flying <span class="annot" data-tooltip="drones /droʊn/ n. 无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫">drones</span> Acoustics and <span class="annot" data-tooltip="innovative /'ɪnəveɪtɪv/ adj. 新发明的，新引进的；革新的；有改革精神的乐于引进新观念的">innovative</span> radar could help June 4th 2026 SMALL DRONES are everywhere. Not just in <span class="annot" data-tooltip="ukraine n. 乌克兰（原苏联一加盟共和国，现已独立）">Ukraine</span>, but flying over air bases in mainland America and Britain, and hitting targets across the Middle East. The technology is cheap, easy to use and accessible, with <span class="annot" data-tooltip="groups /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">groups</span> like Hizbullah enthusiastically deploying small quadcopters to hit Israeli <span class="annot" data-tooltip="tanks /tæŋk/ n. （存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内时 态: t">tanks</span>. To make matters worse, existing air-defence <span class="annot" data-tooltip="sensors /'sensər/ n. 传感器">sensors</span> have been mostly designed to <span class="annot" data-tooltip="spot /spɑːt/ n. 斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Po">spot</span> bigger threats like manned <span class="annot" data-tooltip="aircraft /'erkræft/ n. 飞机，航空器">aircraft</span> and missiles. The challenge, then, is to develop systems that can spot small, low-flying drones that, like birds, may be <span class="annot" data-tooltip="skimming /skɪm/ vt. 撇去…的浮物；从…表面飞掠而过；去除；略读；[俚]（为逃税而）隐瞒（部分收入）vi. 掠过；浏览n. 撇；撇去的东西；表">skimming</span> treetops and weaving <span class="annot" data-tooltip="amid /ə'mɪd/ prep. 在其中，在其间">amid</span> other <span class="annot" data-tooltip="clutter /'klʌtər/ n. 杂乱，混乱vt. 使凌乱；胡乱地填满时 态: cluttered, cluttering, clutters">clutter</span>. One approach is to redesign radar systems. Another involves the clever use of acoustics.</p>
+<p>Radars <span class="annot" data-tooltip="emit /i'mɪt/ vt. 发出，放射；发行；发表EMITabbr. Electromagnetic Induction Tweeter 电磁感应高">emit</span> pulses of radio <span class="annot" data-tooltip="waves /weɪv/ vi. 波动；起伏；摇动；呈波形；挥手示意vt. 向…挥手示意；使成波浪形；卷（烫）发n. 波浪；波动；高潮；卷曲；挥手示意时 ">waves</span> and <span class="annot" data-tooltip="detect /dɪ'tekt/ vt. 发现；发觉，查明时 态: detected，detecting，detects">detect</span> the reflections that come back. They work equally well at night and in bad weather and will <span class="annot" data-tooltip="spot /spɑːt/ n. 斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Po">spot</span> anything in the air. But, says Thomas Withington, an electronic-<span class="annot" data-tooltip="warfare /'wɔːrfer/ n. 战争, 战争状态">warfare</span> expert at RUSI, a think-<span class="annot" data-tooltip="tank /tæŋk/ n. （存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内时 态: t">tank</span>, radar <span class="annot" data-tooltip="typically /'tɪpɪkli/ adv. 代表性地;作为特色地;典型地">typically</span> filters out small, low-flying objects, which are assumed to be birds. Echodyne, a firm based in Kirkland, Washington, is <span class="annot" data-tooltip="developing /dɪ'veləpɪŋ/ adj. 在进行中的;走向完成阶段的;走向成熟的发展中的">developing</span> a smarter <span class="annot" data-tooltip="alternative /ɔːl'tɜːrnətɪv/ adj. 可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）">alternative</span>. Eben Frankenberg, the company’s boss, says its radar uses three <span class="annot" data-tooltip="distinctive /dɪ'stɪŋktɪv/ adj. 有特色的, 与众不同的副 词: distinctively">distinctive</span> <span class="annot" data-tooltip="innovations /ˌɪnə'veɪʃn/ n. 改革, 革新, 创新新观念, 新方法, 新发明形容词: innovational">innovations</span> to identify “smaller, slower, lower” threats. Most modern radar systems generate their beams with arrays of solid-state emitters (LED-like devices that emit radio waves instead of light) rather than the moving dishes that were once the norm. These are effective but expensive. Echodyne’s <span class="annot" data-tooltip="workaround /'wɜːrkəraʊnd/ n. 工作区">workaround</span> is to use a small <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of emitters with specialised antennas that adjust the waves they transmit. This is ideal for a low-power, low-cost system for short-range work. Mr Frankenberg claims their radar is an order of <span class="annot" data-tooltip="magnitude /'mæɡnɪtuːd/ n. 巨大; 重要性〈天〉星等">magnitude</span> less expensive than traditional systems. Echodyne’s radar also rapidly shifts the “waveform” of its pulses, meaning their length, <span class="annot" data-tooltip="intensity /ɪn'tensəti/ n. 强烈, 剧烈(感情的)强烈程度">intensity</span> and frequency. This allows the beam to switch between modes as it <span class="annot" data-tooltip="sweeps /swiːp/ vt. 扫除；猛拉；掸去vi. 扫，打扫；席卷；扫视；袭击n. 打扫，扫除；范围；全胜时 态: swept sweeping, ">sweeps</span> across the sky. Different waveforms, says Mr Frankenberg, are available for <span class="annot" data-tooltip="detecting /dɪ'tekt/ vt. 发现；发觉，查明时 态: detected，detecting，detects">detecting</span> targets in, say, open spaces or against busy <span class="annot" data-tooltip="backgrounds /'bækɡraʊnd/ n. (画等的)背景, 底色背景情况个人背景资料动 词: background">backgrounds</span> like buildings. Some waveforms have been designed to spot <span class="annot" data-tooltip="spinning /spɪn/ vi. 旋转；纺纱；吐丝；晕眩vt. 使旋转；纺纱；编造；结网n. 旋转；疾驰时 态: spun spinning, spins">spinning</span> rotor <span class="annot" data-tooltip="blades /bleɪd/ n. 刀片，刀锋；叶片；剑形容词: bladed">blades</span>, a good way to distinguish a <span class="annot" data-tooltip="drone /droʊn/ n. 无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫">drone</span> from a bird. Finally, the system classifies the objects it tracks using a machine-learning model. It learns the <span class="annot" data-tooltip="patterns /'pætərn/ n. 型，样式花样，图案方式，形式榜样，典范vt. 模仿； 仿制以图案装饰时 态: patterned，patterning，">patterns</span> that <span class="annot" data-tooltip="correspond /ˌkɔːrə'spɑːnd/ vi. 相符合, 相一致相当, 相类似通信时 态: corresponded, corresponding, correspon">correspond</span> to each type of aerial track, from birds to balloons to quadcopters to fixed-<span class="annot" data-tooltip="wing /wɪŋ/ n. 翅膀；翼；飞翔；派别vt. 使飞；飞过；空运；增加…速度；装以翼vi. 飞行时 态: winged, winging, ">wing</span> <span class="annot" data-tooltip="aircraft /'erkræft/ n. 飞机，航空器">aircraft</span>, improving <span class="annot" data-tooltip="reliability /rɪˌlaɪə'bɪləti/ n. 可靠，可信赖">reliability</span>. This is especially useful for picking out weak signals embedded in <span class="annot" data-tooltip="clutter /'klʌtər/ n. 杂乱，混乱vt. 使凌乱；胡乱地填满时 态: cluttered, cluttering, clutters">clutter</span>, such as a drone flying against vegetation <span class="annot" data-tooltip="blowing /bloʊ/ n. 吹；殴打；打击vi. 风吹；喘气vt. 风吹时 态: blew blown blowing, blows">blowing</span> in the wind. These technologies allow Echodyne’s EchoShield radar, a device that is the size of a laptop, to spot, track and classify even tiny <span class="annot" data-tooltip="drones /droʊn/ n. 无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫">drones</span> out to a range of around five kilometres. The tracking is <span class="annot" data-tooltip="accurate /'ækjərət/ adj. 精确的, 准确的，正确无误的副 词: accurately">accurate</span> enough to direct a camera, or a weapon, at the moving drone.</p>
+<p>Another way to hunt for <span class="annot" data-tooltip="drones /droʊn/ n. 无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫">drones</span> is to use sound, an approach pioneered by <span class="annot" data-tooltip="ukraine n. 乌克兰（原苏联一加盟共和国，现已独立）">Ukraine</span>. Fields and forests there are dotted with microphones that listen for the <span class="annot" data-tooltip="buzz /bʌz/ v. 发嗡嗡声；发蜂鸣声用蜂鸣器（给…）发信号繁忙；充满活力（飞机）低空飞过（尤指作为警告或威胁）（用特殊的机器）将头发剪得非">buzz</span> of Russian drones. Prandtl Dynamics, a <span class="annot" data-tooltip="startup /ˈstɑrtˈʌp/ n. 启动；开办">startup</span> based in Toronto, has been working on ways to develop acoustic technology further and claims its kit can <span class="annot" data-tooltip="reveal /rɪ'viːl/ vt. 显示；露出泄露；透露时 态: revealed，revealing，reveals">reveal</span> the presence of a hidden <span class="annot" data-tooltip="drone /droʊn/ n. 无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫">drone</span> nearby even before it is powered on. It is a remarkable trick. Prandtl’s system, called Dome, <span class="annot" data-tooltip="blasts /blæst/ n. 爆炸；冲击波；一阵vi. 猛攻vt. 使枯萎；损害；爆炸时 态: blasted, blasting, blasts">blasts</span> out pulses of inaudible <span class="annot" data-tooltip="ultrasound /'ʌltrəsaʊnd/ n. 超音，超声波（用于人体器官检查、潜艇导航等）超声波扫描检查">ultrasound</span>. If a drone is in the area, this “acoustic interrogation” makes its electronic and <span class="annot" data-tooltip="mechanical /mə'kænɪkl/ adj. 机械的，力学的机械似的；呆板的副 词: mechanically">mechanical</span> <span class="annot" data-tooltip="assemblies /ə'sembli/ n. 装配；集会，集合">assemblies</span> vibrate, producing telltale squeaks. (The different components in a mobile phone, by <span class="annot" data-tooltip="contrast /'kɑːntræst/ n. 对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照时 态: contrasted, cont">contrast</span>, would remain silent.) The idea, says Parth Mahendru, Prandtl’s boss, is to turn a <span class="annot" data-tooltip="concealed /kən'siːl/ vt. 隐藏；隐瞒时 态: concealed, concealing, conceals">concealed</span> drone into “a tiny speaker broadcasting its position”. The firm says Dome has been able to find drones in a <span class="annot" data-tooltip="backpack /'bækpæk/ n. (指登山者、步行者使用或背小孩时使用的)背包, (有轻金属框的)箱形背包vi. 背着背包徒步旅行时 态: backpac">backpack</span>, behind a rooftop ledge, and even, in some cases, inside a <span class="annot" data-tooltip="vehicle /'viːəkl/ n. 交通工具, 车辆传播媒介, 手段">vehicle</span>. For now, these detections have been of stationary drones located a few tens of metres away. That is enough, though, to hand a <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span> detail “a huge <span class="annot" data-tooltip="operational /ˌɑːpə'reɪʃənl/ adj. 即可使用的(用于)操作的, 经营的">operational</span> advantage”, says Dan Stanek, chief operating officer at OTTO Engineering, an Illinois firm that supplies communications <span class="annot" data-tooltip="gear /ɡɪr/ n. 用具，设备，衣服齿轮；传动装置；(排)挡vi. 换挡vt. 使兴奋起来；使准备好vt. & vi. (使)搭配；(使)适">gear</span> to defence, intelligence and security agencies including America’s Secret Service. OTTO plans to partner with Prandtl on production. Joe Dai, Prandtl’s chief technologist, says a small battery-powered model <span class="annot" data-tooltip="branded /brænd/ n. 商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责时 态: branded, branding, brands">branded</span> Dome-C, wielded like “a hand-held bug-hunting device”, should be ready for market this summer. Prandtl is also <span class="annot" data-tooltip="developing /dɪ'veləpɪŋ/ adj. 在进行中的;走向完成阶段的;走向成熟的发展中的">developing</span> a bigger, <span class="annot" data-tooltip="plug /plʌɡ/ n. 栓；插头；塞子vi. 塞住；用插头将与电源接通vt. 塞住；插入；接插头时 态: plugged, plugging, ">plug</span>-in <span class="annot" data-tooltip="version /'vɜːrʒn/ n. 变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本">version</span> <span class="annot" data-tooltip="mounted /maʊnt/ vt. & vi. 登上；骑上vi. 增加；上升vt. 上演；配有…发动攻击；攻击n. 山峰坐骑时 态: mounted，mou">mounted</span> on a tripod. Ultrasound <span class="annot" data-tooltip="emitted /i'mɪt/ vt. 发出，放射；发行；发表EMITabbr. Electromagnetic Induction Tweeter 电磁感应高">emitted</span> by Dome-O, as this larger model is called, also makes drones squeak. But Dome-O can be operated in conjunction with microphone systems, like those deployed in Ukraine, that <span class="annot" data-tooltip="detect /dɪ'tekt/ vt. 发现；发觉，查明时 态: detected，detecting，detects">detect</span> drones in <span class="annot" data-tooltip="flight /flaɪt/ n. 飞翔, 飞行航班, 航机楼梯的一段逃跑, 溃退时 态: flighted, flighting, flights">flight</span>. Dome-O’s pulses of ultrasound, broader than the <span class="annot" data-tooltip="narrow /'næroʊ/ adj. 狭窄的，有限的；度量小的；精密的；勉强的n. 狭窄部分，隘路；海峡vt. 使变狭窄vi. 变窄比较级: narrower">narrow</span> beams produced by Dome-C, flood a swathe of sky. They <span class="annot" data-tooltip="augment /ɔːɡ'ment/ vt. 增加, 提高, 扩大n. 增加, 提高, 扩大时 态: augmented, augmenting, augments">augment</span> the acoustic <span class="annot" data-tooltip="signature /'sɪɡnətʃər/ n. 签名, 签字">signature</span> already produced by a drone’s motors, rotors and passage through the air, <span class="annot" data-tooltip="helping /'helpɪŋ/ n. （进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的">helping</span> microphones pick it up at longer range. In a noisy city, Prandtl’s 16-microphone array, called Oscura, can <span class="annot" data-tooltip="spot /spɑːt/ n. 斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Po">spot</span> and track incoming drones as light as 250 grammes out to about 200 metres.</p>
+<p>With Dome-O switched on, Mr Mahendru says, Oscura’s range can <span class="annot" data-tooltip="reach /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reach</span> 75 metres farther. The set-up was put to the test in a <span class="annot" data-tooltip="counter /'kaʊntər/ n. 柜台, 柜台式长桌计数器vt. & vi. 对抗, 反驳adv. 反方向地, 对立地时 态: countered, co">counter</span>-<span class="annot" data-tooltip="drone /droʊn/ n. 无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫">drone</span> competition <span class="annot" data-tooltip="hosted /hoʊst/ n. 主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集时 态: hosted, hosting, host">hosted</span> by Canada’s Department of National Defence in <span class="annot" data-tooltip="downtown /ˌdaʊn'taʊn/ adv. 在市中心；往市中心（尤指商业中心区）adj. 商业区的；市中心的；闹市区的n. 市中心；市中心区；（市中）商业区">downtown</span> Ottawa in November. Christian Labbé, a lieutenant colonel <span class="annot" data-tooltip="involved /ɪn'vɑːlvd/ adj. 卷入的；有关的；复杂的v. 涉及；使参与；包含（involve的过去式和过去分词）">involved</span> in the five-day <span class="annot" data-tooltip="trials /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">trials</span>, says Prandtl’s technology was able to track <span class="annot" data-tooltip="drones /droʊn/ n. 无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫">drones</span> <span class="annot" data-tooltip="amid /ə'mɪd/ prep. 在其中，在其间">amid</span> construction noise, even when out of view. The kit is not yet ready for military use, he adds, citing false positives and the system’s relative fragility. But it was deemed promising enough for Prandtl to tie for second <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span>, bagging a C$375,000 ($270,000) “Diamond in the Rough” prize. Echodyne, for its part, has already sold its radar devices to America’s air force. The company’s kit is now fitted to warships and set up to defend military bases. A <span class="annot" data-tooltip="vehicle /'viːəkl/ n. 交通工具, 车辆传播媒介, 手段">vehicle</span>-<span class="annot" data-tooltip="mounted /maʊnt/ vt. & vi. 登上；骑上vi. 增加；上升vt. 上演；配有…发动攻击；攻击n. 山峰坐骑时 态: mounted，mou">mounted</span> <span class="annot" data-tooltip="version /'vɜːrʒn/ n. 变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本">version</span> is in service, and the air force and others plan to deploy many more such systems. Such <span class="annot" data-tooltip="innovations /ˌɪnə'veɪʃn/ n. 改革, 革新, 创新新观念, 新方法, 新发明形容词: innovational">innovations</span> are not about to end the <span class="annot" data-tooltip="reign /reɪn/ vi. 统治；盛行；支配；君临n. 统治；支配；统治时期时 态: reigned, reigning, reigns">reign</span> of small drones, but the blind <span class="annot" data-tooltip="spots /spɑːt/ n. 斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Po">spots</span> they <span class="annot" data-tooltip="exploit /ɪk'splɔɪt/ vt. 开发，开拓；剥削；开采n. 勋绩；功绩时 态: exploited, exploiting, exploits">exploit</span> are, it seems, beginning to close. ■ Curious about the world? To enjoy our mind-expanding science <span class="annot" data-tooltip="coverage /'kʌvərɪdʒ/ n. 新闻报道, 报道量覆盖范围">coverage</span>, sign up to <span class="annot" data-tooltip="simply /'sɪmpli/ adv. 简单地；朴素地；简直；仅仅；坦白地">Simply</span> Science, our weekly subscriber-only newsletter. This article was downloaded by zlibrary from https://www.economist.com//science-and-technology/2026/06/01/how-to-bring-down- cheap-low-flying-drones</p>
+<p>Science & technology | Well Informed Should you use a sleep tracker? They are pretty <span class="annot" data-tooltip="accurate /'ækjərət/ adj. 精确的, 准确的，正确无误的副 词: accurately">accurate</span>. But they could keep you up at night June 4th 2026 <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">Nearly</span> half of all Americans and around 40% of Britons now use a smartwatch, smart ring, phone app or another similar device to track their sleep. Are these gadgets accurate—and do their users get a better night’s rest? Not getting enough sleep can cause all manner of health problems, from <span class="annot" data-tooltip="dementia /dɪ'menʃə/ n. 〈医〉痴呆">dementia</span> to <span class="annot" data-tooltip="diabetes /ˌdaɪə'biːtiːz/ n. 糖尿病">diabetes</span>. A new study, published in Nature, finds a U-shaped relationship between how long people sleep and <span class="annot" data-tooltip="markers /'mɑːrkər/ n. 书签；记分员；标识物；作记号的人">markers</span> of biological ageing. The researchers used data from the UK Biobank, a database containing health and lifestyle information on roughly 500,000 people. Those who got between 6.4 and 7.8 hours of shut-eye a night seemed to</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>amazon</td><td>/ˈæməˌzɑn/ n.</td><td>高大强悍的女人；（古希腊神话中的）亚马孙族女战士Amazonn. 亚马逊河(南美洲大河)</td></tr>
+<tr><td>explosion</td><td>/ɪk'sploʊʒn/ n.</td><td>爆炸；爆发激增，扩大</td></tr>
+<tr><td>issue</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>race</td><td>/reɪs/ n.</td><td>种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACEabbr. Radiation Adap</td></tr>
+<tr><td>contract</td><td>/'kɑːntrækt/ vi.</td><td>感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约, contracting, contracts</td></tr>
+<tr><td>lunar</td><td>/'luːnər/ adj.</td><td>月的, 月球的；；阴历的；银的；微亮的</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>capable</td><td>/'keɪpəbl/ adj.</td><td>能干的，能胜任的；有才华的</td></tr>
+<tr><td>enable</td><td>/ɪ'neɪbl/ vt.</td><td>使能够；提供做…的权利[措施]使可能，enabling，enables</td></tr>
+<tr><td>scouting</td><td>/skaʊt/ n.</td><td>侦察员；侦察机；（尤指）侦察兵（尤指体育或娱乐界的）人才发掘者，星探童子军队员；童子军（the Scouts）v. 侦察；搜索；寻找物色（优秀运动员、演员、音乐</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>rovers</td><td>/'roʊvər/ n.</td><td>流浪者,漫游者</td></tr>
+<tr><td>coverage</td><td>/'kʌvərɪdʒ/ n.</td><td>新闻报道, 报道量覆盖范围</td></tr>
+<tr><td>simply</td><td>/'sɪmpli/ adv.</td><td>简单地；朴素地；简直；仅仅；坦白地</td></tr>
+<tr><td>drones</td><td>/droʊn/ n.</td><td>无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫；嗡嗡响(人)絮絮叨叨地说，喋喋不休地说</td></tr>
+<tr><td>innovative</td><td>/'ɪnəveɪtɪv/ adj.</td><td>新发明的，新引进的；革新的；有改革精神的乐于引进新观念的</td></tr>
+<tr><td>ukraine</td><td>— n.</td><td>乌克兰（原苏联一加盟共和国，现已独立）</td></tr>
+<tr><td>groups</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>tanks</td><td>/tæŋk/ n.</td><td>（存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内, tanking, tanks</td></tr>
+<tr><td>sensors</td><td>/'sensər/ n.</td><td>传感器</td></tr>
+<tr><td>spot</td><td>/spɑːt/ n.</td><td>斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Positioning and Tracki</td></tr>
+<tr><td>aircraft</td><td>/'erkræft/ n.</td><td>飞机，航空器</td></tr>
+<tr><td>skimming</td><td>/skɪm/ vt.</td><td>撇去…的浮物；从…表面飞掠而过；去除；略读；[俚]（为逃税而）隐瞒（部分收入）vi. 掠过；浏览n. 撇；撇去的东西；表层物；瞒报所得的收入adj. 撇去浮沫的</td></tr>
+<tr><td>amid</td><td>/ə'mɪd/ prep.</td><td>在其中，在其间</td></tr>
+<tr><td>clutter</td><td>/'klʌtər/ n.</td><td>杂乱，混乱vt. 使凌乱；胡乱地填满, cluttering, clutters</td></tr>
+<tr><td>emit</td><td>/i'mɪt/ vt.</td><td>发出，放射；发行；发表EMITabbr. Electromagnetic Induction Tweeter 电磁感应高频扬声器, emitting, emit</td></tr>
+<tr><td>waves</td><td>/weɪv/ vi.</td><td>波动；起伏；摇动；呈波形；挥手示意vt. 向…挥手示意；使成波浪形；卷（烫）发n. 波浪；波动；高潮；卷曲；挥手示意, waving, waves</td></tr>
+<tr><td>detect</td><td>/dɪ'tekt/ vt.</td><td>发现；发觉，查明，detecting，detects</td></tr>
+<tr><td>spot</td><td>/spɑːt/ n.</td><td>斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Positioning and Tracki</td></tr>
+<tr><td>warfare</td><td>/'wɔːrfer/ n.</td><td>战争, 战争状态</td></tr>
+<tr><td>tank</td><td>/tæŋk/ n.</td><td>（存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内, tanking, tanks</td></tr>
+<tr><td>typically</td><td>/'tɪpɪkli/ adv.</td><td>代表性地;作为特色地;典型地</td></tr>
+<tr><td>developing</td><td>/dɪ'veləpɪŋ/ adj.</td><td>在进行中的;走向完成阶段的;走向成熟的发展中的</td></tr>
+<tr><td>alternative</td><td>/ɔːl'tɜːrnətɪv/ adj.</td><td>可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）可供选择的事物；可供选择的解决办法替代物</td></tr>
+<tr><td>distinctive</td><td>/dɪ'stɪŋktɪv/ adj.</td><td>有特色的, 与众不同的</td></tr>
+<tr><td>innovations</td><td>/ˌɪnə'veɪʃn/ n.</td><td>改革, 革新, 创新新观念, 新方法, 新发明</td></tr>
+<tr><td>workaround</td><td>/'wɜːrkəraʊnd/ n.</td><td>工作区</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>magnitude</td><td>/'mæɡnɪtuːd/ n.</td><td>巨大; 重要性〈天〉星等</td></tr>
+<tr><td>intensity</td><td>/ɪn'tensəti/ n.</td><td>强烈, 剧烈(感情的)强烈程度</td></tr>
+<tr><td>sweeps</td><td>/swiːp/ vt.</td><td>扫除；猛拉；掸去vi. 扫，打扫；席卷；扫视；袭击n. 打扫，扫除；范围；全胜, sweeps</td></tr>
+<tr><td>detecting</td><td>/dɪ'tekt/ vt.</td><td>发现；发觉，查明，detecting，detects</td></tr>
+<tr><td>backgrounds</td><td>/'bækɡraʊnd/ n.</td><td>(画等的)背景, 底色背景情况个人背景资料动 词: background</td></tr>
+<tr><td>spinning</td><td>/spɪn/ vi.</td><td>旋转；纺纱；吐丝；晕眩vt. 使旋转；纺纱；编造；结网n. 旋转；疾驰, spins</td></tr>
+<tr><td>blades</td><td>/bleɪd/ n.</td><td>刀片，刀锋；叶片；剑</td></tr>
+<tr><td>drone</td><td>/droʊn/ n.</td><td>无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫；嗡嗡响(人)絮絮叨叨地说，喋喋不休地说</td></tr>
+<tr><td>patterns</td><td>/'pætərn/ n.</td><td>型，样式花样，图案方式，形式榜样，典范vt. 模仿； 仿制以图案装饰，patterning，patterns</td></tr>
+<tr><td>correspond</td><td>/ˌkɔːrə'spɑːnd/ vi.</td><td>相符合, 相一致相当, 相类似通信, corresponding, corresponds</td></tr>
+<tr><td>wing</td><td>/wɪŋ/ n.</td><td>翅膀；翼；飞翔；派别vt. 使飞；飞过；空运；增加…速度；装以翼vi. 飞行, winging, wings</td></tr>
+<tr><td>aircraft</td><td>/'erkræft/ n.</td><td>飞机，航空器</td></tr>
+<tr><td>reliability</td><td>/rɪˌlaɪə'bɪləti/ n.</td><td>可靠，可信赖</td></tr>
+<tr><td>clutter</td><td>/'klʌtər/ n.</td><td>杂乱，混乱vt. 使凌乱；胡乱地填满, cluttering, clutters</td></tr>
+<tr><td>blowing</td><td>/bloʊ/ n.</td><td>吹；殴打；打击vi. 风吹；喘气vt. 风吹, blows</td></tr>
+<tr><td>drones</td><td>/droʊn/ n.</td><td>无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫；嗡嗡响(人)絮絮叨叨地说，喋喋不休地说</td></tr>
+<tr><td>accurate</td><td>/'ækjərət/ adj.</td><td>精确的, 准确的，正确无误的</td></tr>
+<tr><td>drones</td><td>/droʊn/ n.</td><td>无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫；嗡嗡响(人)絮絮叨叨地说，喋喋不休地说</td></tr>
+<tr><td>ukraine</td><td>— n.</td><td>乌克兰（原苏联一加盟共和国，现已独立）</td></tr>
+<tr><td>buzz</td><td>/bʌz/ v.</td><td>发嗡嗡声；发蜂鸣声用蜂鸣器（给…）发信号繁忙；充满活力（飞机）低空飞过（尤指作为警告或威胁）（用特殊的机器）将头发剪得非常短n. 嗡嗡声；蜂鸣声（愉快、兴奋或成</td></tr>
+<tr><td>startup</td><td>/ˈstɑrtˈʌp/ n.</td><td>启动；开办</td></tr>
+<tr><td>reveal</td><td>/rɪ'viːl/ vt.</td><td>显示；露出泄露；透露，revealing，reveals</td></tr>
+<tr><td>drone</td><td>/droʊn/ n.</td><td>无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫；嗡嗡响(人)絮絮叨叨地说，喋喋不休地说</td></tr>
+<tr><td>blasts</td><td>/blæst/ n.</td><td>爆炸；冲击波；一阵vi. 猛攻vt. 使枯萎；损害；爆炸, blasting, blasts</td></tr>
+<tr><td>ultrasound</td><td>/'ʌltrəsaʊnd/ n.</td><td>超音，超声波（用于人体器官检查、潜艇导航等）超声波扫描检查</td></tr>
+<tr><td>mechanical</td><td>/mə'kænɪkl/ adj.</td><td>机械的，力学的机械似的；呆板的</td></tr>
+<tr><td>assemblies</td><td>/ə'sembli/ n.</td><td>装配；集会，集合</td></tr>
+<tr><td>contrast</td><td>/'kɑːntræst/ n.</td><td>对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照, contrasting, contrasts</td></tr>
+<tr><td>concealed</td><td>/kən'siːl/ vt.</td><td>隐藏；隐瞒, concealing, conceals</td></tr>
+<tr><td>backpack</td><td>/'bækpæk/ n.</td><td>(指登山者、步行者使用或背小孩时使用的)背包, (有轻金属框的)箱形背包vi. 背着背包徒步旅行, backpacking, backpacks</td></tr>
+<tr><td>vehicle</td><td>/'viːəkl/ n.</td><td>交通工具, 车辆传播媒介, 手段</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>operational</td><td>/ˌɑːpə'reɪʃənl/ adj.</td><td>即可使用的(用于)操作的, 经营的</td></tr>
+<tr><td>gear</td><td>/ɡɪr/ n.</td><td>用具，设备，衣服齿轮；传动装置；(排)挡vi. 换挡vt. 使兴奋起来；使准备好vt. & vi. (使)搭配；(使)适合，gearing，gears</td></tr>
+<tr><td>branded</td><td>/brænd/ n.</td><td>商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责, branding, brands</td></tr>
+<tr><td>developing</td><td>/dɪ'veləpɪŋ/ adj.</td><td>在进行中的;走向完成阶段的;走向成熟的发展中的</td></tr>
+<tr><td>plug</td><td>/plʌɡ/ n.</td><td>栓；插头；塞子vi. 塞住；用插头将与电源接通vt. 塞住；插入；接插头, plugging, plugs</td></tr>
+<tr><td>version</td><td>/'vɜːrʒn/ n.</td><td>变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本</td></tr>
+<tr><td>mounted</td><td>/maʊnt/ vt.</td><td>& vi. 登上；骑上vi. 增加；上升vt. 上演；配有…发动攻击；攻击n. 山峰坐骑，mounting，mounts</td></tr>
+<tr><td>emitted</td><td>/i'mɪt/ vt.</td><td>发出，放射；发行；发表EMITabbr. Electromagnetic Induction Tweeter 电磁感应高频扬声器, emitting, emit</td></tr>
+<tr><td>detect</td><td>/dɪ'tekt/ vt.</td><td>发现；发觉，查明，detecting，detects</td></tr>
+<tr><td>flight</td><td>/flaɪt/ n.</td><td>飞翔, 飞行航班, 航机楼梯的一段逃跑, 溃退, flighting, flights</td></tr>
+<tr><td>narrow</td><td>/'næroʊ/ adj.</td><td>狭窄的，有限的；度量小的；精密的；勉强的n. 狭窄部分，隘路；海峡vt. 使变狭窄vi. 变窄, narrowest</td></tr>
+<tr><td>augment</td><td>/ɔːɡ'ment/ vt.</td><td>增加, 提高, 扩大n. 增加, 提高, 扩大, augmenting, augments</td></tr>
+<tr><td>signature</td><td>/'sɪɡnətʃər/ n.</td><td>签名, 签字</td></tr>
+<tr><td>helping</td><td>/'helpɪŋ/ n.</td><td>（进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的</td></tr>
+<tr><td>spot</td><td>/spɑːt/ n.</td><td>斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Positioning and Tracki</td></tr>
+<tr><td>reach</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>counter</td><td>/'kaʊntər/ n.</td><td>柜台, 柜台式长桌计数器vt. & vi. 对抗, 反驳adv. 反方向地, 对立地, countering, counters</td></tr>
+<tr><td>drone</td><td>/droʊn/ n.</td><td>无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫；嗡嗡响(人)絮絮叨叨地说，喋喋不休地说</td></tr>
+<tr><td>hosted</td><td>/hoʊst/ n.</td><td>主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集, hosting, hosts</td></tr>
+<tr><td>downtown</td><td>/ˌdaʊn'taʊn/ adv.</td><td>在市中心；往市中心（尤指商业中心区）adj. 商业区的；市中心的；闹市区的n. 市中心；市中心区；（市中）商业区</td></tr>
+<tr><td>involved</td><td>/ɪn'vɑːlvd/ adj.</td><td>卷入的；有关的；复杂的v. 涉及；使参与；包含（involve的过去式和过去分词）</td></tr>
+<tr><td>trials</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>drones</td><td>/droʊn/ n.</td><td>无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫；嗡嗡响(人)絮絮叨叨地说，喋喋不休地说</td></tr>
+<tr><td>amid</td><td>/ə'mɪd/ prep.</td><td>在其中，在其间</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>vehicle</td><td>/'viːəkl/ n.</td><td>交通工具, 车辆传播媒介, 手段</td></tr>
+<tr><td>mounted</td><td>/maʊnt/ vt.</td><td>& vi. 登上；骑上vi. 增加；上升vt. 上演；配有…发动攻击；攻击n. 山峰坐骑，mounting，mounts</td></tr>
+<tr><td>version</td><td>/'vɜːrʒn/ n.</td><td>变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本</td></tr>
+<tr><td>innovations</td><td>/ˌɪnə'veɪʃn/ n.</td><td>改革, 革新, 创新新观念, 新方法, 新发明</td></tr>
+<tr><td>reign</td><td>/reɪn/ vi.</td><td>统治；盛行；支配；君临n. 统治；支配；统治时期, reigning, reigns</td></tr>
+<tr><td>spots</td><td>/spɑːt/ n.</td><td>斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Positioning and Tracki</td></tr>
+<tr><td>exploit</td><td>/ɪk'splɔɪt/ vt.</td><td>开发，开拓；剥削；开采n. 勋绩；功绩, exploiting, exploits</td></tr>
+<tr><td>coverage</td><td>/'kʌvərɪdʒ/ n.</td><td>新闻报道, 报道量覆盖范围</td></tr>
+<tr><td>simply</td><td>/'sɪmpli/ adv.</td><td>简单地；朴素地；简直；仅仅；坦白地</td></tr>
+<tr><td>accurate</td><td>/'ækjərət/ adj.</td><td>精确的, 准确的，正确无误的</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>dementia</td><td>/dɪ'menʃə/ n.</td><td>〈医〉痴呆</td></tr>
+<tr><td>diabetes</td><td>/ˌdaɪə'biːtiːz/ n.</td><td>糖尿病</td></tr>
+<tr><td>markers</td><td>/'mɑːrkər/ n.</td><td>书签；记分员；标识物；作记号的人</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day41.html" class="nav-btn">← Day 41</a>
+  <a href="day43.html" class="nav-btn">Day 43 →</a>
+</div>
+
+<div class="progress">📖 Day 42 of 46</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-06-06</div>
+
+</body>
+</html>

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Obituary | The last colossus</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-06-06</div>
+
+<h1 class="article-title">Obituary | The last colossus</h1>
+<div class="article-section">Obituary</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>him in the same <span class="annot" data-tooltip="league /liːɡ/ n. 联盟；社团；范畴vt. 使…结盟；与…联合vi. 结盟；团结时 态: leagued, leaguing, league">league</span> as his heroes Charlie “Bird” Parker and John Coltrane. He kept that status for the rest of his career, which contained more than 60 albums and two Grammys. But however much he was applauded, he was never satisfied with the way he played. Every so often the voice that kept talking inside him would tell him to improve himself. <span class="annot" data-tooltip="hence /hens/ adv. 因此；今后">Hence</span>, later, his time in an ashram in India, and hence his daily sojourns on the Williamsburg Bridge. They went on for two years. Sometimes he would play for 15 hours or more, coming down only for bathroom breaks or a cognac at a bar he liked. In winter he played with gloves on. Some passers-by noticed his tall <span class="annot" data-tooltip="frame /freɪm/ n. 框架；结构；画面vt. 设计；陷害；建造；使…适合vi. 有成功希望adj. 有木架的；有构架的时 态: framed,">frame</span> squeezed among the steelwork, and all heard his music, but few spoke to him. That was fine, because the only company he needed was his <span class="annot" data-tooltip="horn /hɔːrn/ n. 角, 触角角质物号, 号角喇叭, 报警器Horn合恩(南美最南端的一岛名)时 态: horned, horning, h">horn</span>, which he was pushing further and further. Somewhere, at the bottom of the ocean, maybe, or beyond the stars—way beyond Sonny Rollins as yet— there was an <span class="annot" data-tooltip="ultimate /'ʌltɪmət/ adj. 最后的，最终的；终极的；极端的；最好（或坏、伟大、重要等）的；根本的；基本的；基础性的n. 最好（或先进、伟大等）的事物">ultimate</span> sound. He had no ideas about what it might be, but he would know it when he heard it, and perhaps twice a year onstage he might get a snatch of it. Instantly it would fulfil him, and he would know that, at last, he was playing well. But not til then. His head was already full to bursting with scraps of musical material he had laid down over the years. Etudes his brother played on the violin; Fats Waller on the family’s piano roll; juke-box <span class="annot" data-tooltip="tunes /tuːn/ n. 曲调, 曲子vt. & vi. 调音vt. 调整时 态: tuned, tuning, tunes">tunes</span> in bars; pop songs and ballads from cheap gramophones, and the jazz that sounded all over Harlem from clubs and open windows. The pianist Thelonious <span class="annot" data-tooltip="monk /mʌŋk/ n. 僧侣，修道士；和尚">Monk</span> <span class="annot" data-tooltip="mentored /'mentɔːr/ n. (无经验之人的)有经验可信赖的顾问时 态: mentored, mentoring, mentors">mentored</span> him, and the saxophonist Coleman Hawkins lived nearby. He revered both of them, and from eight years old, toting the alto sax his mother had given him, he knew a musical life was for him, too. His improvisations drew on all this. He loved playing quotes and, after any <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of rhythmic and harmonic variations, each one could be joined to another. An aria from here, a <span class="annot" data-tooltip="broadway n. 百老汇（美国纽约市戏院集中的一条大街）broadway大路;宽阔的公路">Broadway</span> ballad from there, a cheeky half- heard riff. It was as if all music had a natural unity, and he believed it had. He would walk onto every stage with his mind a blank, waiting for a fresh <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span> or a fresh note to <span class="annot" data-tooltip="fall /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">fall</span> upon it. His horn technique he knew he could trust <span class="annot" data-tooltip="completely /kəm'pliːt/ adj. 完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善比较级: complete">completely</span>, subconsciously, however complex or fast. He had a thing with his horn, a communion. (When he and his wife Lucille had to flee from their flat on 9/11, his saxophone was all he took with him.) But the rest of</p>
+<p>any piece, the emotion and the <span class="annot" data-tooltip="spirit /'spɪrɪt/ n. 精神；心灵；志气；烈酒；情绪vt. 鼓励；鼓舞；诱拐时 态: spirited, spiriting, spirits">spirit</span>, he left <span class="annot" data-tooltip="entirely /ɪn'taɪərli/ adv. 全部地;完整地;完全地">entirely</span> to the higher powers to provide. Because he played with Bird, Coltrane, the trumpeter Miles Davis and drummer Max Roach, he was often called a bebop star. But he wouldn’t be pigeonholed that way. The freshness of bebop when it appeared in the 1940s, with its speed, intricacy and long solos, certainly suited him; its strictures didn’t, because he was naturally free. He often fused jazz with calypso in homage to his mother, who came from St Thomas in the <span class="annot" data-tooltip="virgin /'vɜːrdʒɪn/ adj. 处女的；纯洁的；未经利用的，处于原始状态的n. 处女">Virgin</span> Islands; “St Thomas” was one of the most celebrated tracks on “Saxophone Colossus”. Another, “Blue 7”, mixed jazz with blues. He married it to Latin dance rhythms, to funk and even to rock, in a brief <span class="annot" data-tooltip="collaboration /kəˌlæbə'reɪʃn/ n. 合作, 协作通敌">collaboration</span> with the Rolling Stones on “<span class="annot" data-tooltip="tattoo /tæ'tuː/ n. 纹身vt. 刺花纹于vi. 刺花样名 词: tattooer">Tattoo</span> You” in 1981. (He wasn’t too proud to play a backbeat.) For a time he got rid of pianists, who annoyed him because they limited his harmonic range. He liked trios: a drummer and a bassist, faithfully following along. And he could lead them anywhere for his jazz—especially, he felt, on the albums “Freedom Suite”, “A Night at ‘The Village Vanguard’” and “Way Out West”—which was big-<span class="annot" data-tooltip="picture /'pɪktʃər/ n. 图画，肖像；照片(生动的)描述，写照影片；电影；画面美景，景色情况，事态，局面vt. 绘画；描绘想象时 态: pictu">picture</span> <span class="annot" data-tooltip="stuff /stʌf/ n. 材料；东西；填充物；素材资料vt. 填塞；塞满；让吃饱vi. 吃得过多时 态: stuffed, stuffing, s">stuff</span> in which everything came together. It was the unification of music; it was all one. God, perhaps. His serenity, onstage and off, disguised his rough road to fame. Because as a young man he saw Charlie Parker as his Messiah, and Bird was on drugs, he used heroin himself to see if he could end up playing like that. All it did was set him to stealing, for which he eventually served ten months at Rikers Island. In 1955, after some tough rehabilitation, he was clean again, and stayed that way. It was Bird himself who had told him to stop and <span class="annot" data-tooltip="consider /kən'sɪdər/ vt. & vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及时 态: considered, considering, ">consider</span> what he had to give to music. That set him thinking. He had always <span class="annot" data-tooltip="considered /kən'sɪdər/ vt. & vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及时 态: considered, considering, ">considered</span> music as a gift to him, ever since he had blown his first notes as a child. He had been in seventh heaven then. And it continued with each performance, as (with few exceptions, but some down days) he revelled in the gift he had been given. But the question was, was he truly giving back to his audiences, or just playing for himself? To <span class="annot" data-tooltip="mangle /'mæŋɡl/ vt. 乱砍；轧布；损坏n. 轧布机时 态: mangled, mangling, mangles">mangle</span> his <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> Golden Rule a bit, was he doing unto others as had been done to him? He never really found the answer to that question. But he was looking for that as much as for the <span class="annot" data-tooltip="ultimate /'ʌltɪmət/ adj. 最后的，最终的；终极的；极端的；最好（或坏、伟大、重要等）的；根本的；基本的；基础性的n. 最好（或先进、伟大等）的事物">ultimate</span> sound. It seemed to be his <span class="annot" data-tooltip="karma /'kɑːrmə/ n. 〈宗〉(佛教和印度教的)业命运, 宿缘">karma</span>, ever, to</p>
+<p>search for these things. Well, he’d got a lot of bad <span class="annot" data-tooltip="stuff /stʌf/ n. 材料；东西；填充物；素材资料vt. 填塞；塞满；让吃饱vi. 吃得过多时 态: stuffed, stuffing, s">stuff</span> he was paying for. But that was the purpose of being in this inconsequential world. To learn; to try to get wisdom; to come back and try again, if you didn’t. And to keep on pushing that music, as he had on the Williamsburg Bridge; which, for his <span class="annot" data-tooltip="multitudes /'mʌltɪtuːd/ n. 大量, 许多大众, 民众, 群众">multitudes</span> of admirers, was gift and <span class="annot" data-tooltip="glory /'ɡlɔːri/ n. 光荣，荣誉；赞颂vi. 自豪，骄傲；狂喜">glory</span> enough. ■ This article was downloaded by zlibrary from https://www.economist.com//obituary/2026/06/04/sonny-rollins-believed-that-jazz- was-all-there-was</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Leaders</div>
+<p>How to fight back against Gen-Z <span class="annot" data-tooltip="socialism /'soʊʃəlɪzəm/ n. 社会主义">socialism</span> India’s surprise baby <span class="annot" data-tooltip="bust /bʌst/ vi. 爆裂；破产；降低级别vt. 使爆裂；使破产；逮捕n. 半身像；胸部；萧条；破产adj. 破产了的；毁坏了的时 态: bu">bust</span> is a warning to the world <span class="annot" data-tooltip="ukraine n. 乌克兰（原苏联一加盟共和国，现已独立）">Ukraine</span> is not a <span class="annot" data-tooltip="charity /'tʃærəti/ n. 施舍；慈善；慈善团体；施舍物；宽容">charity</span> case Britain is wrong to ban speakers like Hasan Piker America’s <span class="annot" data-tooltip="decaying /dɪ'keɪ/ vi. 腐烂，腐朽；衰退，衰减n. 衰退，衰减；腐烂，腐朽vt. 使腐烂，使腐败；使衰退，使衰落时 态: decayed, de">decaying</span> <span class="annot" data-tooltip="treasury /'treʒəri/ n. 财政部；国库，金库；宝库">Treasury</span> market needs a fix How to make football more <span class="annot" data-tooltip="exciting /ɪk'saɪtɪŋ/ adj. 使人激动的；令人兴奋的v. 激动；唤起；刺激（excite的ing形式）">exciting</span></p>
+<div class="article-separator"></div>
+<div class="article-header"> · United States</div>
+<p>America’s Social <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">Security</span> trust fund is disappearing California is on the cusp of its “Becerra era” Welcome to Evanston, where woke never died The fading influence of America’s <span class="annot" data-tooltip="spy /spaɪ/ vt. 侦察；发现；暗中监视vi. 侦察；当间谍n. 间谍；密探">spy</span> co-ordinator Meet the jailscraper Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> says Pete Hegseth loves war. That should disqualify him</p>
+<div class="article-separator"></div>
+<div class="article-header"> · The Americas</div>
+<p>Brazil’s high-tech voting system is losing voters’ trust Protesters have controlled Bolivia’s capital for a month Abelardo de la Espriella is now the front-runner in <span class="annot" data-tooltip="colombia n. 哥伦比亚（拉丁美洲国家）形容词: Colombian">Colombia</span></p>
+<div class="article-separator"></div>
+<div class="article-header"> · Asia</div>
+<p>Pakistan is battling two insurgencies The <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> of One Nation is <span class="annot" data-tooltip="melting /melt/ vi. 熔化，溶解；渐混vt. 使软化；使融化；使熔化；使感动n. 熔化；熔化物时 态: melted, melting, me">melting</span> Australian politics</p>
+<p>America’s <span class="annot" data-tooltip="secretary /'sekrəteri/ n. 秘书书记部长, 大臣形容词: secretarial">secretary</span> of war pulls his punches on China Worries about migrants imperil South Korea’s shipbuilding boom Sex tourists fuel outrage about <span class="annot" data-tooltip="vice /vaɪs/ n. 堕落，邪恶；不良习气，恶习（尤指与性或毒品有关的）罪行，道德败坏行为【英式】老虎钳；台钳（【美式】vise）pref. ">vice</span> in Japan India’s republic of uncles</p>
+<div class="article-separator"></div>
+<div class="article-header"> · China</div>
+<p>China’s high-tech <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> is leaving much of the country behind Xi Jinping gives China’s <span class="annot" data-tooltip="crack /kræk/ vt. & vi. (使…)开裂, 破裂(使)身体上或精神上垮掉打开, 砸开(使)发出爆裂声n. 裂缝, 缝隙噼啪声, 爆裂声意">crack</span> scientists new jobs inside government Ma Ning will proudly represent China at the World Cup China’s delivery drivers are its most obvious underclass</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Middle East &amp; Africa</div>
+<p>Even if America and Iran find an accord, don’t expect it to last Can Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> save Israel from itself in Lebanon? Gulf rulers are desperate to prove they are in fact strongmen Nigeria’s Christian <span class="annot" data-tooltip="groups /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">groups</span> <span class="annot" data-tooltip="scramble /'skræmbl/ vi. 快速爬行，匍匐前进；攀登争夺，争抢(军事飞机)紧急起飞vt. (用黄油)炒蛋扰频或倒频使(电话通话等)只可由有特殊接收器">scramble</span> to win over Trump’s America The parable of the tshukudu, Goma’s quintessential transport</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Europe</div>
+<p><span class="annot" data-tooltip="ukraine n. 乌克兰（原苏联一加盟共和国，现已独立）">Ukraine</span> is now Europe’s war. Survival can’t be the only aim Why France is uneasy about German rearmament How long can Pedro Sánchez last? Italy has tracked down Cosa Nostra’s riches Europe has reduced illegal immigration without goon tactics</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Britain</div>
+<p>Was this Britain’s George Floyd moment? The Green Party’s ill-<span class="annot" data-tooltip="considered /kən'sɪdər/ vt. & vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及时 态: considered, considering, ">considered</span> policy to <span class="annot" data-tooltip="cap /kæp/ n. 帽子；盖vi. 脱帽致意vt. 覆盖；胜过；给…戴帽；加盖于Cap摩羯座CAPabbr. Common Agricult">cap</span> CEOs’ pay British politics has passed peak Palestine Britain’s government prefers visa bans to free speech The impact of taxing British private-school fees starts to show Build a prime minister</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Special report</div>
+<p>The special role of the <span class="annot" data-tooltip="treasury /'treʒəri/ n. 财政部；国库，金库；宝库">Treasury</span> market is in peril Foreign demand for American government debt is becoming much less <span class="annot" data-tooltip="reliable /rɪ'laɪəbl/ adj. 可靠的, 可信赖的副 词: reliably">reliable</span> Like it or not, <span class="annot" data-tooltip="hedge /hedʒ/ vt. 用树篱笆围住；避免作正面答复vi. 用树篱围住；避免作正面答复n. 树篱；障碍时 态: hedged, hedging,">hedge</span> funds are a permanent part of the Treasury market Partners in prime: The Fed and Treasury’s new relationship <span class="annot" data-tooltip="neither /'niːðər/ conj. 既不；也不adv. 两个都不；既不……也不adj. 两者都不的det./pron. 两者都不">Neither</span> banks nor stablecoins will rescue the Treasury market Could something replace the Treasury market? Imagining a world without a safe <span class="annot" data-tooltip="asset /'æset/ n. 资产；有用的东西；有利条件；优点">asset</span></p>
+<div class="article-separator"></div>
+<div class="article-header"> · Business</div>
+<p><span class="annot" data-tooltip="texas /'teksəs/ n. 德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室">Texas</span> is America Inc’s new centre of gravity BYD is losing its <span class="annot" data-tooltip="spark /spɑːrk/ n. 火花，火星；电火花；一丝，略微；导火线，诱因v. 引发，触发；产生火花（电火花）；点燃；增加趣味（或活力、风味等）时 态">spark</span> A new defence champion is rising from the Gulf Lego, Pokémon and the future of fun Two American tycoons are betting big on a <span class="annot" data-tooltip="casino /kə'siːnoʊ/ n. 赌场;娱乐场">casino</span> <span class="annot" data-tooltip="revival /rɪ'vaɪvl/ n. 复活；复兴；恢复精神；苏醒；再生效">revival</span> <span class="annot" data-tooltip="nvidia 恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商">Nvidia</span> wants to <span class="annot" data-tooltip="supercharge /'suːpərtʃɑːrdʒ/ vt. 对…增压时 态: supercharged, supercharging, supercharges">supercharge</span> your laptop What to read to understand your next <span class="annot" data-tooltip="employer /ɪm'plɔɪ/ vt. 使用，采用；雇用；使忙于，使从事于n. 雇用；使用时 态: employed, employing, employs">employer</span> American <span class="annot" data-tooltip="capitalism /'kæpɪtəlɪzəm/ n. 资本主义(制度)资本(或财富)的拥有资本(私人占有和生产盈利)的支配地位">capitalism</span> has taken an apocalyptic turn</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Finance &amp; economics</div>
+<p>Gen-Z <span class="annot" data-tooltip="socialism /'soʊʃəlɪzəm/ n. 社会主义">socialism</span>, from Zohran to Zack and beyond Can the stockmarket swallow SpaceX, <span class="annot" data-tooltip="anthropic /ænˈθrɑpɪk/ adj. 人类的,有关人类的">Anthropic</span> and OpenAI? Indians can now bet on the monsoon European electricity markets have too much power Want to know the future? Don’t trust the stockmarket Some billionaires pay too little tax</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Science &amp; technology</div>
+<p>Investment in agricultural tech is growing Rocket goes boom; so do moon plans How to bring down cheap, low-flying <span class="annot" data-tooltip="drones /droʊn/ n. 无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫">drones</span> Should you use a sleep tracker?</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Culture</div>
+<p>How many times a day do you think about Alexander the Great? The hidden tastemakers of the literary world Why you should never skip a TV intro The best, and worst, TV series and films of 2026 (so <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span>) Travel is becoming a competitive sport</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>league</td><td>/liːɡ/ n.</td><td>联盟；社团；范畴vt. 使…结盟；与…联合vi. 结盟；团结, leaguing, leagues</td></tr>
+<tr><td>hence</td><td>/hens/ adv.</td><td>因此；今后</td></tr>
+<tr><td>frame</td><td>/freɪm/ n.</td><td>框架；结构；画面vt. 设计；陷害；建造；使…适合vi. 有成功希望adj. 有木架的；有构架的, framing, frames</td></tr>
+<tr><td>horn</td><td>/hɔːrn/ n.</td><td>角, 触角角质物号, 号角喇叭, 报警器Horn合恩(南美最南端的一岛名), horning, horns</td></tr>
+<tr><td>ultimate</td><td>/'ʌltɪmət/ adj.</td><td>最后的，最终的；终极的；极端的；最好（或坏、伟大、重要等）的；根本的；基本的；基础性的n. 最好（或先进、伟大等）的事物；精华；极致；极限；最高典范</td></tr>
+<tr><td>tunes</td><td>/tuːn/ n.</td><td>曲调, 曲子vt. & vi. 调音vt. 调整, tuning, tunes</td></tr>
+<tr><td>monk</td><td>/mʌŋk/ n.</td><td>僧侣，修道士；和尚</td></tr>
+<tr><td>mentored</td><td>/'mentɔːr/ n.</td><td>(无经验之人的)有经验可信赖的顾问, mentoring, mentors</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>broadway</td><td>— n.</td><td>百老汇（美国纽约市戏院集中的一条大街）broadway大路;宽阔的公路</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>fall</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>completely</td><td>/kəm'pliːt/ adj.</td><td>完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善, completest 缩 写: comp, cpl</td></tr>
+<tr><td>spirit</td><td>/'spɪrɪt/ n.</td><td>精神；心灵；志气；烈酒；情绪vt. 鼓励；鼓舞；诱拐, spiriting, spirits</td></tr>
+<tr><td>entirely</td><td>/ɪn'taɪərli/ adv.</td><td>全部地;完整地;完全地</td></tr>
+<tr><td>virgin</td><td>/'vɜːrdʒɪn/ adj.</td><td>处女的；纯洁的；未经利用的，处于原始状态的n. 处女</td></tr>
+<tr><td>collaboration</td><td>/kəˌlæbə'reɪʃn/ n.</td><td>合作, 协作通敌</td></tr>
+<tr><td>tattoo</td><td>/tæ'tuː/ n.</td><td>纹身vt. 刺花纹于vi. 刺花样</td></tr>
+<tr><td>picture</td><td>/'pɪktʃər/ n.</td><td>图画，肖像；照片(生动的)描述，写照影片；电影；画面美景，景色情况，事态，局面vt. 绘画；描绘想象，picturing，pictures</td></tr>
+<tr><td>stuff</td><td>/stʌf/ n.</td><td>材料；东西；填充物；素材资料vt. 填塞；塞满；让吃饱vi. 吃得过多, stuffing, stuffs</td></tr>
+<tr><td>consider</td><td>/kən'sɪdər/ vt.</td><td>& vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及, considering, considers</td></tr>
+<tr><td>considered</td><td>/kən'sɪdər/ vt.</td><td>& vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及, considering, considers</td></tr>
+<tr><td>mangle</td><td>/'mæŋɡl/ vt.</td><td>乱砍；轧布；损坏n. 轧布机, mangling, mangles</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>ultimate</td><td>/'ʌltɪmət/ adj.</td><td>最后的，最终的；终极的；极端的；最好（或坏、伟大、重要等）的；根本的；基本的；基础性的n. 最好（或先进、伟大等）的事物；精华；极致；极限；最高典范</td></tr>
+<tr><td>karma</td><td>/'kɑːrmə/ n.</td><td>〈宗〉(佛教和印度教的)业命运, 宿缘</td></tr>
+<tr><td>stuff</td><td>/stʌf/ n.</td><td>材料；东西；填充物；素材资料vt. 填塞；塞满；让吃饱vi. 吃得过多, stuffing, stuffs</td></tr>
+<tr><td>multitudes</td><td>/'mʌltɪtuːd/ n.</td><td>大量, 许多大众, 民众, 群众</td></tr>
+<tr><td>glory</td><td>/'ɡlɔːri/ n.</td><td>光荣，荣誉；赞颂vi. 自豪，骄傲；狂喜</td></tr>
+<tr><td>socialism</td><td>/'soʊʃəlɪzəm/ n.</td><td>社会主义</td></tr>
+<tr><td>bust</td><td>/bʌst/ vi.</td><td>爆裂；破产；降低级别vt. 使爆裂；使破产；逮捕n. 半身像；胸部；萧条；破产adj. 破产了的；毁坏了的, busting, busts</td></tr>
+<tr><td>ukraine</td><td>— n.</td><td>乌克兰（原苏联一加盟共和国，现已独立）</td></tr>
+<tr><td>charity</td><td>/'tʃærəti/ n.</td><td>施舍；慈善；慈善团体；施舍物；宽容</td></tr>
+<tr><td>decaying</td><td>/dɪ'keɪ/ vi.</td><td>腐烂，腐朽；衰退，衰减n. 衰退，衰减；腐烂，腐朽vt. 使腐烂，使腐败；使衰退，使衰落, decaying, decays</td></tr>
+<tr><td>treasury</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>exciting</td><td>/ɪk'saɪtɪŋ/ adj.</td><td>使人激动的；令人兴奋的v. 激动；唤起；刺激（excite的ing形式）</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>spy</td><td>/spaɪ/ vt.</td><td>侦察；发现；暗中监视vi. 侦察；当间谍n. 间谍；密探</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>colombia</td><td>— n.</td><td>哥伦比亚（拉丁美洲国家）</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>melting</td><td>/melt/ vi.</td><td>熔化，溶解；渐混vt. 使软化；使融化；使熔化；使感动n. 熔化；熔化物, melting, melts</td></tr>
+<tr><td>secretary</td><td>/'sekrəteri/ n.</td><td>秘书书记部长, 大臣</td></tr>
+<tr><td>vice</td><td>/vaɪs/ n.</td><td>堕落，邪恶；不良习气，恶习（尤指与性或毒品有关的）罪行，道德败坏行为【英式】老虎钳；台钳（【美式】vise）pref. 副职的；副的</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>crack</td><td>/kræk/ vt.</td><td>& vi. (使…)开裂, 破裂(使)身体上或精神上垮掉打开, 砸开(使)发出爆裂声n. 裂缝, 缝隙噼啪声, 爆裂声意外的一下重击试图, 尝试俏皮话强效可卡因</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>groups</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>scramble</td><td>/'skræmbl/ vi.</td><td>快速爬行，匍匐前进；攀登争夺，争抢(军事飞机)紧急起飞vt. (用黄油)炒蛋扰频或倒频使(电话通话等)只可由有特殊接收器的人收听混杂；把…搅乱n. 爬行，攀登争</td></tr>
+<tr><td>ukraine</td><td>— n.</td><td>乌克兰（原苏联一加盟共和国，现已独立）</td></tr>
+<tr><td>considered</td><td>/kən'sɪdər/ vt.</td><td>& vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及, considering, considers</td></tr>
+<tr><td>cap</td><td>/kæp/ n.</td><td>帽子；盖vi. 脱帽致意vt. 覆盖；胜过；给…戴帽；加盖于Cap摩羯座CAPabbr. Common Agricultural Policy (欧共体)共同农</td></tr>
+<tr><td>treasury</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>reliable</td><td>/rɪ'laɪəbl/ adj.</td><td>可靠的, 可信赖的</td></tr>
+<tr><td>hedge</td><td>/hedʒ/ vt.</td><td>用树篱笆围住；避免作正面答复vi. 用树篱围住；避免作正面答复n. 树篱；障碍, hedging, hedges</td></tr>
+<tr><td>neither</td><td>/'niːðər/ conj.</td><td>既不；也不adv. 两个都不；既不……也不adj. 两者都不的det./pron. 两者都不</td></tr>
+<tr><td>asset</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>texas</td><td>/'teksəs/ n.</td><td>德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室)</td></tr>
+<tr><td>spark</td><td>/spɑːrk/ n.</td><td>火花，火星；电火花；一丝，略微；导火线，诱因v. 引发，触发；产生火花（电火花）；点燃；增加趣味（或活力、风味等）, sparking, sparks</td></tr>
+<tr><td>casino</td><td>/kə'siːnoʊ/ n.</td><td>赌场;娱乐场</td></tr>
+<tr><td>revival</td><td>/rɪ'vaɪvl/ n.</td><td>复活；复兴；恢复精神；苏醒；再生效</td></tr>
+<tr><td>nvidia</td><td>— </td><td>恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商</td></tr>
+<tr><td>supercharge</td><td>/'suːpərtʃɑːrdʒ/ vt.</td><td>对…增压, supercharging, supercharges</td></tr>
+<tr><td>employer</td><td>/ɪm'plɔɪ/ vt.</td><td>使用，采用；雇用；使忙于，使从事于n. 雇用；使用, employing, employs</td></tr>
+<tr><td>capitalism</td><td>/'kæpɪtəlɪzəm/ n.</td><td>资本主义(制度)资本(或财富)的拥有资本(私人占有和生产盈利)的支配地位</td></tr>
+<tr><td>socialism</td><td>/'soʊʃəlɪzəm/ n.</td><td>社会主义</td></tr>
+<tr><td>anthropic</td><td>/ænˈθrɑpɪk/ adj.</td><td>人类的,有关人类的</td></tr>
+<tr><td>drones</td><td>/droʊn/ n.</td><td>无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫；嗡嗡响(人)絮絮叨叨地说，喋喋不休地说</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day45.html" class="nav-btn">← Day 45</a>
+  
+</div>
+
+<div class="progress">📖 Day 46 of 46</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-06-06</div>
+
+</body>
+</html>

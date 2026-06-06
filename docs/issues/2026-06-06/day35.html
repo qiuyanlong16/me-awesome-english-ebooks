@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business | Rolling the dice</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-06-06</div>
+
+<h1 class="article-title">Business | Rolling the dice</h1>
+<div class="article-section">Business</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>Two American tycoons are betting big on a <span class="annot" data-tooltip="casino /kə'siːnoʊ/ n. 赌场;娱乐场">casino</span> <span class="annot" data-tooltip="revival /rɪ'vaɪvl/ n. 复活；复兴；恢复精神；苏醒；再生效">revival</span> Caesars and MGM may soon be under new <span class="annot" data-tooltip="ownership /'oʊnərʃɪp/ n. 物主的身份；所有(权)，所有制">ownership</span> June 4th 2026 Chance plays a big role in Las Vegas. But two events in the space of a week seemed to be more than just coincidence. On May 28th Tilman Fertitta, a <span class="annot" data-tooltip="hospitality /ˌhɑːspɪ'tæləti/ n. 殷勤, 好客(提供给客人的)食宿招待">hospitality</span> mogul, announced that he had agreed to buy Caesars Entertainment, a chain of more than 50 casino resorts, in a deal valuing the company at $17.6bn. Four days later Barry Diller, the high-rolling <span class="annot" data-tooltip="owner /'oʊnər/ n. 所有者；物主">owner</span> of People Inc, a publishing business, upped the ante with a bid for MGM Resorts that valued the casino operator at over $18bn. It may seem a surprising time to be betting on the gambling <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span>, which has been on a painful losing <span class="annot" data-tooltip="streak /striːk/ n. 条纹，线条；倾向vi. 飞跑，疾驶；加上条纹vt. 飞跑，疾驰；加条纹于时 态: streaked, streaking">streak</span>. Online gaming has been <span class="annot" data-tooltip="disrupted /dɪs'rʌpt/ vt. 使混乱, 扰乱时 态: disrupted, disrupting, disrupts">disrupted</span> by the arrival of “prediction markets” run by firms like Kalshi and Polymarket,</p>
+<p>which allow punters to bet on anything from sports results to American invasion plans. Meanwhile, bricks-and-mortar <span class="annot" data-tooltip="casinos /kə'siːnoʊ/ n. 赌场;娱乐场">casinos</span> have struggled as consumers have grown anxious about the state of the economy. Las Vegas, where MGM and Caesars operate glittering <span class="annot" data-tooltip="casino /kə'siːnoʊ/ n. 赌场;娱乐场">casino</span>-resorts along the <span class="annot" data-tooltip="strip /strɪp/ vt. 剥去；剥夺；脱去衣服n. 带；条状；脱衣舞vi. 脱去衣服时 态: stripped, stripping, strip">Strip</span>, received 10% fewer visitors last year than at its pre-<span class="annot" data-tooltip="pandemic /pæn'demɪk/ adj. （疾病）在全国（或世界）流行的">pandemic</span> peak. Having been dealt such a bad hand, many investors have folded. In the five years up until last week, MGM’s share price had fallen by about 15%; that of Caesars, which is more leveraged and less diversified, had dropped by <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> three-<span class="annot" data-tooltip="quarters n. 住处,岗位">quarters</span>. Messrs Fertitta and Diller, however, seem to have concluded that the market has now <span class="annot" data-tooltip="reached /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reached</span> the bottom. Are they right? Many in Vegas—admittedly the world capital of optimism <span class="annot" data-tooltip="bias /'baɪəs/ n. 偏见；斜纹；偏爱；乖离率vt. 使存偏见adj. 偏斜的adv. 偏斜地时 态: biased, biassed bia">bias</span>—believe that the <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> is about to turn a corner. The city is “hitting an inflection point” in visitors’ <span class="annot" data-tooltip="perception /pər'sepʃn/ n. 感知(能力)；觉察(力)认识，观念，看法形容词: perceptional">perception</span> of the <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span> it offers, says Barry Jonas of Truist, a bank which recently upgraded MGM from “hold” to “buy”. Some long-term <span class="annot" data-tooltip="trends /trend/ n. 趋势, 倾向流行时 态: trended, trending, trends">trends</span> in consumer behaviour also look to be playing out in casino operators’ favour. One is the growing demand for live entertainment, something on which casino-resorts have placed big wagers in recent years. In the early 1990s gambling accounted for nearly 60% of the <span class="annot" data-tooltip="revenue /'revənuː/ n. 收入，收益；财政收入，税收">revenue</span> of resorts on the Las Vegas Strip. Today it accounts for just over a third, as visitors to Sin City <span class="annot" data-tooltip="splash /splæʃ/ n. 溅泼声溅上的斑点(光、色等的)斑点溅泼的量vt. 使(液体)溅起vi. (指液体)溅落时 态: splashed, sp">splash</span> more of their cash on <span class="annot" data-tooltip="concerts /'kɑːnsərt/ n. 音乐会；和谐；一致vt. 使协调；协同安排vi. 协力；协调adj. 音乐会用的；在音乐会上演出的时 态: concer">concerts</span>, sports and various other <span class="annot" data-tooltip="diversions /daɪ'vɜːrʒn/ n. 转移, 转向娱乐, 消遣临时绕行路分散注意力形容词: diversionary">diversions</span>. And <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">although</span> online betting has introduced new competition, it also <span class="annot" data-tooltip="presents /'preznt/ vt. 呈现；介绍；提出；赠送vi. 举枪瞄准adj. 出席的；现在的n. 现在；礼物；瞄准时 态: presented, pr">presents</span> opportunities for the gambling industry. MGM and Caesars both have betting apps which they use to acquire new customers, with the <span class="annot" data-tooltip="ultimate /'ʌltɪmət/ adj. 最后的，最终的；终极的；极端的；最好（或坏、伟大、重要等）的；根本的；基本的；基础性的n. 最好（或先进、伟大等）的事物">ultimate</span> aim of luring them to spend an expensive vacation at one of their resorts. Online gambling is also <span class="annot" data-tooltip="helping /'helpɪŋ/ n. （进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的">helping</span> to popularise what was once <span class="annot" data-tooltip="considered /kən'sɪdər/ vt. & vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及时 态: considered, considering, ">considered</span> a taboo pursuit. As many as one in six Americans placed a bet on a sporting event last year, twice as many as two years earlier, according to <span class="annot" data-tooltip="polling /'poʊlɪŋ/ n. 投票Polling轮流检测,联接到另一主机查看电子信件或新闻">polling</span> by Ipsos. What will MGM and Caesars’ new <span class="annot" data-tooltip="owners /'oʊnər/ n. 所有者；物主">owners</span> do with the <span class="annot" data-tooltip="properties 道具">properties</span>? Following Mr Diller’s offer of $48.30 a share for MGM, the price initially rose to over $51, suggesting the market believed he would have to offer more to clinch a deal (though the price has since fallen back). If he does</p>
+<p>succeed in taking control, he may keep things at MGM much as they are: Mr Diller’s firm already owns more than a <span class="annot" data-tooltip="quarter /'kwɔːrtər/ n. 四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一时 ">quarter</span> of the <span class="annot" data-tooltip="casino /kə'siːnoʊ/ n. 赌场;娱乐场">casino</span> operator and he has a seat on its board. The media baron, who is busy restructuring the rest of his empire, is said to get along with MGM’s current management. Mr Fertitta’s <span class="annot" data-tooltip="acquisition /ˌækwɪ'zɪʃn/ n. 获得物，获得；收购">acquisition</span> of Caesars, which seems like a surer bet to go ahead, may also bring more continuity than change. The buyers have already said that Caesars’ boss will stay in <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span>. But there may be benefits from <span class="annot" data-tooltip="tying /'taɪɪŋ/ n. 结子v. 系（tie的ing形式）">tying</span> up with Mr Fertitta’s other <span class="annot" data-tooltip="properties 道具">properties</span>, <span class="annot" data-tooltip="encompassing /ɪn'kʌmpəs/ vt. 围绕；包围时 态: encompassed，encompassing，encompasses">encompassing</span> the Golden Nugget chain of <span class="annot" data-tooltip="casinos /kə'siːnoʊ/ n. 赌场;娱乐场">casinos</span> and his string of hotels and <span class="annot" data-tooltip="restaurants /'restrɑːnt/ n. 饭店, 餐馆">restaurants</span>, including Morton’s steakhouses and the Bubba Gump <span class="annot" data-tooltip="shrimp /ʃrɪmp/ n. 虾；小虾；矮小的人vi. 捕虾adj. 有虾的；虾制的名 词: shrimper">Shrimp</span> chain. Visitors to Caesar’s Palace might soon be able to celebrate their wins with a fillet <span class="annot" data-tooltip="steak /steɪk/ n. 牛排">steak</span> —or drown their <span class="annot" data-tooltip="sorrows /'sɑːroʊ/ n. 悲痛，悲伤；遗憾，懊悔不幸的事；忧患时 态: sorrowed，sorrowing，sorrows">sorrows</span> in a <span class="annot" data-tooltip="bowl /boʊl/ n. 碗；木球；大酒杯vi. 玩保龄球；滑动；平稳快速移动vt. 投球；旋转；平稳快速移动时 态: bowled, bowli">bowl</span> of gumbo. ■ To track the <span class="annot" data-tooltip="trends /trend/ n. 趋势, 倾向流行时 态: trended, trending, trends">trends</span> shaping <span class="annot" data-tooltip="commerce /'kɑːmɜːrs/ n. 商业, 贸易">commerce</span>, <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> and technology, sign up to “The Bottom <span class="annot" data-tooltip="line /laɪn/ n. 绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long inter">Line</span>”, our weekly subscriber-only newsletter on global business. This article was downloaded by zlibrary from https://www.economist.com//business/2026/06/04/two-american-tycoons-are-betting- big-on-a-casino-<span class="annot" data-tooltip="revival /rɪ'vaɪvl/ n. 复活；复兴；恢复精神；苏醒；再生效">revival</span></p>
+<div class="article-separator"></div>
+<div class="article-header">Business · Business | Chip shot</div>
+<p><span class="annot" data-tooltip="nvidia 恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商">Nvidia</span> wants to <span class="annot" data-tooltip="supercharge /'suːpərtʃɑːrdʒ/ vt. 对…增压时 态: supercharged, supercharging, supercharges">supercharge</span> your laptop Jensen Huang is bringing his chipmaker’s AI act to the PC June 4th 2026 For the past few years, whenever Jensen Huang, boss of Nvidia, has taken the stage, he has followed a familiar script, <span class="annot" data-tooltip="unveiling /ˌʌn'veɪl/ vt. 揭去…的面罩，除去…的遮盖物使公之于众；揭露vi. 除去面纱(或覆盖物)；揭幕揭露出来时 态: unveiled，unv">unveiling</span> ever more powerful <span class="annot" data-tooltip="semiconductors /'semikəndʌktər/ n. 〈物〉半导体形容词: semiconducting">semiconductors</span>, software and systems for running artificial intelligence in data centres. No <span class="annot" data-tooltip="wonder /'wʌndər/ vt. & vi. 对…感到疑惑想知道；问自己n. 惊奇，惊叹，惊异，惊诧奇人，奇才奇观，奇景，奇迹，奇事时 态: wonder">wonder</span>: the AI boom has <span class="annot" data-tooltip="sparked /spɑːrk/ n. 火花，火星；电火花；一丝，略微；导火线，诱因v. 引发，触发；产生火花（电火花）；点燃；增加趣味（或活力、风味等）时 态">sparked</span> a spending spree on giant server farms, and much of that money has flowed <span class="annot" data-tooltip="straight /streɪt/ adj. 直的，笔直的连续的；不间断的直率的adv. 直接地；径直地立即，马上比较级: straighter，straightes">straight</span> to the giant chipmaker. In the past four years, <span class="annot" data-tooltip="annual /'ænjuəl/ adj. 年度的；每年的n. 年刊，年鉴；一年生植物副 词: annually">annual</span> <span class="annot" data-tooltip="revenue /'revənuː/ n. 收入，收益；财政收入，税收">revenue</span> at Nvidia’s data-centre <span class="annot" data-tooltip="division /dɪ'vɪʒn/ n. [数] 除法；部门；分配；分割；师（军队）；赛区形容词: divisional">division</span> has grown from $11bn to $194bn, pushing the firm’s market <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span> past $5trn, more than any other company ever. But on June 1st at Computex, an annual tech-<span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> jamboree in Taiwan, Mr Huang did more than refresh Nvidia’s data-centre wares. He <span class="annot" data-tooltip="unveiled /ˌʌn'veɪl/ vt. 揭去…的面罩，除去…的遮盖物使公之于众；揭露vi. 除去面纱(或覆盖物)；揭幕揭露出来时 态: unveiled，unv">unveiled</span> RTX <span class="annot" data-tooltip="spark /spɑːrk/ n. 火花，火星；电火花；一丝，略微；导火线，诱因v. 引发，触发；产生火花（电火花）；点燃；增加趣味（或活力、风味等）时 态">Spark</span>, a chip to be launched later this year for personal computers</p>
+<p>(PCs), built in <span class="annot" data-tooltip="collaboration /kəˌlæbə'reɪʃn/ n. 合作, 协作通敌">collaboration</span> with Microsoft, whose software they will run. <span class="annot" data-tooltip="nvidia 恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商">Nvidia</span> is taking on Intel and AMD, the chipmakers that <span class="annot" data-tooltip="dominate /'dɑːmɪneɪt/ vt. 支配；控制；占优势；在…中占主要地位vi. 处于支配地位；占优势时 态: dominated, dominating, ">dominate</span> the segment—and is betting that the next <span class="annot" data-tooltip="phase /feɪz/ n. 阶段, 时期(月亮、行星的)位相vt. 分阶段计划[安排]时 态: phased, phasing, phases">phase</span> of AI will play out not just in data centres, but on devices at the <span class="annot" data-tooltip="edge /edʒ/ n. 边缘；刀刃；优势；锋利vt. 使锐利；将…开刃；给…加上边vi. 缓缓移动；侧着移动EDGEabbr. Electron">edge</span>. In recent years PCs have been one of tech’s backwaters. Evercore, an investment bank, estimates that in the past <span class="annot" data-tooltip="decade /'dekeɪd/ n. 十年，十年期；十">decade</span> unit sales of chips for desktop computers have fallen by 4% a year, while those for laptops have been roughly flat. What is drawing fresh interest is the <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> of “agentic” AI, software that can carry out complex tasks on its <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span>. As it spreads, the <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of tokens (the chunks of text <span class="annot" data-tooltip="processed /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">processed</span> by AI models) is expected to rise sharply. Model-makers and cloud providers are already straining to keep up. <span class="annot" data-tooltip="offloading /ˌɔːf'loʊd/ v. 卸下,卸货时 态: offloaded, offloading, offloads">Offloading</span> some work from the cloud to local devices could be cheaper and more efficient. Nvidia argues that this will require a different sort of machine. PCs rely on <span class="annot" data-tooltip="central /'sentrəl/ adj. 中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的副 词: centrally">central</span> <span class="annot" data-tooltip="processing /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">processing</span> units (CPUs), general-purpose chips that <span class="annot" data-tooltip="handle /'hændl/ n. 柄；把手；手感；口实vt. 买卖；处理；操作；触摸；运用vi. 易于操纵；搬运时 态: handled, handlin">handle</span> everything from word processing to web browsing. CPUs may co-ordinate the work of AI agents, but the models those agents rely on need another type of chip: <span class="annot" data-tooltip="graphics /'ɡræfɪks/ n. 制图学；制图法；图表算法">graphics</span>-processing units, or GPUs, the market for which Nvidia <span class="annot" data-tooltip="dominates /'dɑːmɪneɪt/ vt. 支配；控制；占优势；在…中占主要地位vi. 处于支配地位；占优势时 态: dominated, dominating, ">dominates</span>. With RTX <span class="annot" data-tooltip="spark /spɑːrk/ n. 火花，火星；电火花；一丝，略微；导火线，诱因v. 引发，触发；产生火花（电火花）；点燃；增加趣味（或活力、风味等）时 态">Spark</span>, Nvidia is combining the two types into a “superchip”. The upshot, according to Mr Huang, is that the PC is being reinvented for the first time in 40 years, replacing the old model, in which humans did most of the clicking and typing, with one in which AI agents do much of the work. Success is <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> from assured. Nvidia is not a stranger to PCs; before the AI boom, it made a big chunk of its money selling GPUs for gaming machines. But in CPUs for PCs, it is a newcomer. Intel and AMD together supply more than four-fifths of all CPUs sold for PCs. As for software, Nvidia says it has worked with Microsoft for over two and a half years on the new chip. Even so, some analysts remain <span class="annot" data-tooltip="sceptical /'skeptɪkl/ adj. 不肯相信的; 常怀疑的">sceptical</span> that developers and users will quickly embrace a new class of AI-first PC. Yet Nvidia has plenty of advantages. For a start, it has <span class="annot" data-tooltip="piles /paɪl/ n. 堆；大量；建筑群vt. 累积；打桩于vi. 积累；堆积；挤时 态: piled, piling, piles">piles</span> of money to <span class="annot" data-tooltip="invest /ɪn'vest/ vt. 投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买时 态: invested, investing, invests">invest</span>; analysts expect the company to generate roughly $200bn in free cashflow this year. It also has the clout to draw in partners and a <span class="annot" data-tooltip="brand /brænd/ n. 商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责时 态: branded, branding, brands">brand</span> that may help catch the attention of consumers. A number of the biggest PC-</p>
+<p>makers, including HP, Lenovo and Acer, have already signed up to offer the new chip in their devices. <span class="annot" data-tooltip="nvidia 恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商">Nvidia</span>’s move is another sign of how fiercely <span class="annot" data-tooltip="contested /'kɑːntest/ vt. 争辩；提出质疑vi. 竞争；争辩n. 竞赛；争论；争夺时 态: contested, contesting, conte">contested</span> the chip business has become, with firms venturing ever further from their original <span class="annot" data-tooltip="turf /tɜːrf/ n. 泥炭；草皮；跑马场vt. 覆草皮于形容词: turfy">turf</span>. In March Arm, a British designer that licenses chip <span class="annot" data-tooltip="blueprints /'bluːprɪnt/ n. 蓝图, 设计图时 态: blueprinted, blueprinting, blueprints">blueprints</span> to others, announced its <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> CPU for AI data centres; RTX <span class="annot" data-tooltip="spark /spɑːrk/ n. 火花，火星；电火花；一丝，略微；导火线，诱因v. 引发，触发；产生火花（电火花）；点燃；增加趣味（或活力、风味等）时 态">Spark</span> uses Arm’s designs for its CPU. A day after Mr Huang spoke at Computex, Lip-Bu Tan, Intel’s boss, <span class="annot" data-tooltip="presented /'preznt/ vt. 呈现；介绍；提出；赠送vi. 举枪瞄准adj. 出席的；现在的n. 现在；礼物；瞄准时 态: presented, pr">presented</span> his own plans. Among them was an AI chip <span class="annot" data-tooltip="due /duː/ adj. 到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）">due</span> later this year, aimed at running models in data centres. Intel, Mr Tan said, was “going to do really well”. Mr Huang is equally confident. ■ To track the <span class="annot" data-tooltip="trends /trend/ n. 趋势, 倾向流行时 态: trended, trending, trends">trends</span> shaping <span class="annot" data-tooltip="commerce /'kɑːmɜːrs/ n. 商业, 贸易">commerce</span>, <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> and technology, sign up to “The Bottom <span class="annot" data-tooltip="line /laɪn/ n. 绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long inter">Line</span>”, our weekly subscriber-only newsletter on global business. This article was downloaded by zlibrary from https://www.economist.com//business/2026/06/02/nvidia-wants-to-<span class="annot" data-tooltip="supercharge /'suːpərtʃɑːrdʒ/ vt. 对…增压时 态: supercharged, supercharging, supercharges">supercharge</span>-your- laptop</p>
+<div class="article-separator"></div>
+<div class="article-header">Business · Business | Bartleby</div>
+<p>What to read to understand your next <span class="annot" data-tooltip="employer /ɪm'plɔɪ/ vt. 使用，采用；雇用；使忙于，使从事于n. 雇用；使用时 态: employed, employing, employs">employer</span> From Kafka’s “The <span class="annot" data-tooltip="trial /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">Trial</span>” to Orwell’s “1984” June 4th 2026 Welcome to Ungoliant! As part of your <span class="annot" data-tooltip="onboarding /'ɑːnbɔːrd/ adj. 随车携带的副 词: onboard">onboarding</span> <span class="annot" data-tooltip="process /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">process</span>, we <span class="annot" data-tooltip="encourage /ɪn'kɜːrɪdʒ/ vt. 鼓励, 激励促进, 助长, 激发时 态: encouraged, encouraging, encourages">encourage</span> you to read a few books before you <span class="annot" data-tooltip="actually /'æktʃuəl/ adj. 真实的，实际的；现行的，目前的副 词: actually">actually</span> start work. That will give you the best chance of understanding our unique culture. If a reading list seems retro, it’s not. “The Little Prince” has a special <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span> in Netflix lore: Antoine de Saint-Exupéry is still quoted in the streaming firm’s culture guide. The US Marines have something called “The Commandant’s Professional Reading Programme”, a kind of book club with bullets; marines are expected to read five titles a year from a list of recommendations on topics such as <span class="annot" data-tooltip="strategy /'strætədʒi/ n. 战略学, 兵法战略, 策略策略, 计谋">strategy</span>, <span class="annot" data-tooltip="warfare /'wɔːrfer/ n. 战争, 战争状态">warfare</span> and decision- making. “The Looming Tower”, a history of the 9/11 attacks, and (more</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>casino</td><td>/kə'siːnoʊ/ n.</td><td>赌场;娱乐场</td></tr>
+<tr><td>revival</td><td>/rɪ'vaɪvl/ n.</td><td>复活；复兴；恢复精神；苏醒；再生效</td></tr>
+<tr><td>ownership</td><td>/'oʊnərʃɪp/ n.</td><td>物主的身份；所有(权)，所有制</td></tr>
+<tr><td>hospitality</td><td>/ˌhɑːspɪ'tæləti/ n.</td><td>殷勤, 好客(提供给客人的)食宿招待</td></tr>
+<tr><td>owner</td><td>/'oʊnər/ n.</td><td>所有者；物主</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>streak</td><td>/striːk/ n.</td><td>条纹，线条；倾向vi. 飞跑，疾驶；加上条纹vt. 飞跑，疾驰；加条纹于, streaking, streaks</td></tr>
+<tr><td>disrupted</td><td>/dɪs'rʌpt/ vt.</td><td>使混乱, 扰乱, disrupting, disrupts</td></tr>
+<tr><td>casinos</td><td>/kə'siːnoʊ/ n.</td><td>赌场;娱乐场</td></tr>
+<tr><td>casino</td><td>/kə'siːnoʊ/ n.</td><td>赌场;娱乐场</td></tr>
+<tr><td>strip</td><td>/strɪp/ vt.</td><td>剥去；剥夺；脱去衣服n. 带；条状；脱衣舞vi. 脱去衣服, stripping, strips</td></tr>
+<tr><td>pandemic</td><td>/pæn'demɪk/ adj.</td><td>（疾病）在全国（或世界）流行的</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>quarters</td><td>— n.</td><td>住处,岗位</td></tr>
+<tr><td>reached</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>bias</td><td>/'baɪəs/ n.</td><td>偏见；斜纹；偏爱；乖离率vt. 使存偏见adj. 偏斜的adv. 偏斜地, biassed biasing, biassing biases, biasses</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>perception</td><td>/pər'sepʃn/ n.</td><td>感知(能力)；觉察(力)认识，观念，看法</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>trends</td><td>/trend/ n.</td><td>趋势, 倾向流行, trending, trends</td></tr>
+<tr><td>revenue</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>splash</td><td>/splæʃ/ n.</td><td>溅泼声溅上的斑点(光、色等的)斑点溅泼的量vt. 使(液体)溅起vi. (指液体)溅落, splashing, splashes</td></tr>
+<tr><td>concerts</td><td>/'kɑːnsərt/ n.</td><td>音乐会；和谐；一致vt. 使协调；协同安排vi. 协力；协调adj. 音乐会用的；在音乐会上演出的, concerting, concerts</td></tr>
+<tr><td>diversions</td><td>/daɪ'vɜːrʒn/ n.</td><td>转移, 转向娱乐, 消遣临时绕行路分散注意力</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>presents</td><td>/'preznt/ vt.</td><td>呈现；介绍；提出；赠送vi. 举枪瞄准adj. 出席的；现在的n. 现在；礼物；瞄准, presenting, presents</td></tr>
+<tr><td>ultimate</td><td>/'ʌltɪmət/ adj.</td><td>最后的，最终的；终极的；极端的；最好（或坏、伟大、重要等）的；根本的；基本的；基础性的n. 最好（或先进、伟大等）的事物；精华；极致；极限；最高典范</td></tr>
+<tr><td>helping</td><td>/'helpɪŋ/ n.</td><td>（进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的</td></tr>
+<tr><td>considered</td><td>/kən'sɪdər/ vt.</td><td>& vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及, considering, considers</td></tr>
+<tr><td>polling</td><td>/'poʊlɪŋ/ n.</td><td>投票Polling轮流检测,联接到另一主机查看电子信件或新闻</td></tr>
+<tr><td>owners</td><td>/'oʊnər/ n.</td><td>所有者；物主</td></tr>
+<tr><td>properties</td><td>— </td><td>道具</td></tr>
+<tr><td>quarter</td><td>/'kwɔːrtər/ n.</td><td>四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一, quartering, quarters</td></tr>
+<tr><td>casino</td><td>/kə'siːnoʊ/ n.</td><td>赌场;娱乐场</td></tr>
+<tr><td>acquisition</td><td>/ˌækwɪ'zɪʃn/ n.</td><td>获得物，获得；收购</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>tying</td><td>/'taɪɪŋ/ n.</td><td>结子v. 系（tie的ing形式）</td></tr>
+<tr><td>properties</td><td>— </td><td>道具</td></tr>
+<tr><td>encompassing</td><td>/ɪn'kʌmpəs/ vt.</td><td>围绕；包围，encompassing，encompasses</td></tr>
+<tr><td>casinos</td><td>/kə'siːnoʊ/ n.</td><td>赌场;娱乐场</td></tr>
+<tr><td>restaurants</td><td>/'restrɑːnt/ n.</td><td>饭店, 餐馆</td></tr>
+<tr><td>shrimp</td><td>/ʃrɪmp/ n.</td><td>虾；小虾；矮小的人vi. 捕虾adj. 有虾的；虾制的</td></tr>
+<tr><td>steak</td><td>/steɪk/ n.</td><td>牛排</td></tr>
+<tr><td>sorrows</td><td>/'sɑːroʊ/ n.</td><td>悲痛，悲伤；遗憾，懊悔不幸的事；忧患，sorrowing，sorrows</td></tr>
+<tr><td>bowl</td><td>/boʊl/ n.</td><td>碗；木球；大酒杯vi. 玩保龄球；滑动；平稳快速移动vt. 投球；旋转；平稳快速移动, bowling, bowls</td></tr>
+<tr><td>trends</td><td>/trend/ n.</td><td>趋势, 倾向流行, trending, trends</td></tr>
+<tr><td>commerce</td><td>/'kɑːmɜːrs/ n.</td><td>商业, 贸易</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>line</td><td>/laɪn/ n.</td><td>绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long interspersed element)长散在元</td></tr>
+<tr><td>revival</td><td>/rɪ'vaɪvl/ n.</td><td>复活；复兴；恢复精神；苏醒；再生效</td></tr>
+<tr><td>nvidia</td><td>— </td><td>恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商</td></tr>
+<tr><td>supercharge</td><td>/'suːpərtʃɑːrdʒ/ vt.</td><td>对…增压, supercharging, supercharges</td></tr>
+<tr><td>unveiling</td><td>/ˌʌn'veɪl/ vt.</td><td>揭去…的面罩，除去…的遮盖物使公之于众；揭露vi. 除去面纱(或覆盖物)；揭幕揭露出来，unveiling，unveils</td></tr>
+<tr><td>semiconductors</td><td>/'semikəndʌktər/ n.</td><td>〈物〉半导体</td></tr>
+<tr><td>wonder</td><td>/'wʌndər/ vt.</td><td>& vi. 对…感到疑惑想知道；问自己n. 惊奇，惊叹，惊异，惊诧奇人，奇才奇观，奇景，奇迹，奇事，wondering，wonders</td></tr>
+<tr><td>sparked</td><td>/spɑːrk/ n.</td><td>火花，火星；电火花；一丝，略微；导火线，诱因v. 引发，触发；产生火花（电火花）；点燃；增加趣味（或活力、风味等）, sparking, sparks</td></tr>
+<tr><td>straight</td><td>/streɪt/ adj.</td><td>直的，笔直的连续的；不间断的直率的adv. 直接地；径直地立即，马上，straightest</td></tr>
+<tr><td>annual</td><td>/'ænjuəl/ adj.</td><td>年度的；每年的n. 年刊，年鉴；一年生植物</td></tr>
+<tr><td>revenue</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>division</td><td>/dɪ'vɪʒn/ n.</td><td>[数] 除法；部门；分配；分割；师（军队）；赛区</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>unveiled</td><td>/ˌʌn'veɪl/ vt.</td><td>揭去…的面罩，除去…的遮盖物使公之于众；揭露vi. 除去面纱(或覆盖物)；揭幕揭露出来，unveiling，unveils</td></tr>
+<tr><td>spark</td><td>/spɑːrk/ n.</td><td>火花，火星；电火花；一丝，略微；导火线，诱因v. 引发，触发；产生火花（电火花）；点燃；增加趣味（或活力、风味等）, sparking, sparks</td></tr>
+<tr><td>collaboration</td><td>/kəˌlæbə'reɪʃn/ n.</td><td>合作, 协作通敌</td></tr>
+<tr><td>nvidia</td><td>— </td><td>恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商</td></tr>
+<tr><td>dominate</td><td>/'dɑːmɪneɪt/ vt.</td><td>支配；控制；占优势；在…中占主要地位vi. 处于支配地位；占优势, dominating, dominates</td></tr>
+<tr><td>phase</td><td>/feɪz/ n.</td><td>阶段, 时期(月亮、行星的)位相vt. 分阶段计划[安排], phasing, phases</td></tr>
+<tr><td>edge</td><td>/edʒ/ n.</td><td>边缘；刀刃；优势；锋利vt. 使锐利；将…开刃；给…加上边vi. 缓缓移动；侧着移动EDGEabbr. Electronic Data Gathering Eq</td></tr>
+<tr><td>decade</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>processed</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>offloading</td><td>/ˌɔːf'loʊd/ v.</td><td>卸下,卸货, offloading, offloads</td></tr>
+<tr><td>central</td><td>/'sentrəl/ adj.</td><td>中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的</td></tr>
+<tr><td>processing</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>handle</td><td>/'hændl/ n.</td><td>柄；把手；手感；口实vt. 买卖；处理；操作；触摸；运用vi. 易于操纵；搬运, handling, handles</td></tr>
+<tr><td>graphics</td><td>/'ɡræfɪks/ n.</td><td>制图学；制图法；图表算法</td></tr>
+<tr><td>dominates</td><td>/'dɑːmɪneɪt/ vt.</td><td>支配；控制；占优势；在…中占主要地位vi. 处于支配地位；占优势, dominating, dominates</td></tr>
+<tr><td>spark</td><td>/spɑːrk/ n.</td><td>火花，火星；电火花；一丝，略微；导火线，诱因v. 引发，触发；产生火花（电火花）；点燃；增加趣味（或活力、风味等）, sparking, sparks</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>sceptical</td><td>/'skeptɪkl/ adj.</td><td>不肯相信的; 常怀疑的</td></tr>
+<tr><td>piles</td><td>/paɪl/ n.</td><td>堆；大量；建筑群vt. 累积；打桩于vi. 积累；堆积；挤, piling, piles</td></tr>
+<tr><td>invest</td><td>/ɪn'vest/ vt.</td><td>投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买, investing, invests</td></tr>
+<tr><td>brand</td><td>/brænd/ n.</td><td>商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责, branding, brands</td></tr>
+<tr><td>nvidia</td><td>— </td><td>恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商</td></tr>
+<tr><td>contested</td><td>/'kɑːntest/ vt.</td><td>争辩；提出质疑vi. 竞争；争辩n. 竞赛；争论；争夺, contesting, contests</td></tr>
+<tr><td>turf</td><td>/tɜːrf/ n.</td><td>泥炭；草皮；跑马场vt. 覆草皮于</td></tr>
+<tr><td>blueprints</td><td>/'bluːprɪnt/ n.</td><td>蓝图, 设计图, blueprinting, blueprints</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>spark</td><td>/spɑːrk/ n.</td><td>火花，火星；电火花；一丝，略微；导火线，诱因v. 引发，触发；产生火花（电火花）；点燃；增加趣味（或活力、风味等）, sparking, sparks</td></tr>
+<tr><td>presented</td><td>/'preznt/ vt.</td><td>呈现；介绍；提出；赠送vi. 举枪瞄准adj. 出席的；现在的n. 现在；礼物；瞄准, presenting, presents</td></tr>
+<tr><td>due</td><td>/duː/ adj.</td><td>到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）</td></tr>
+<tr><td>trends</td><td>/trend/ n.</td><td>趋势, 倾向流行, trending, trends</td></tr>
+<tr><td>commerce</td><td>/'kɑːmɜːrs/ n.</td><td>商业, 贸易</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>line</td><td>/laɪn/ n.</td><td>绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long interspersed element)长散在元</td></tr>
+<tr><td>supercharge</td><td>/'suːpərtʃɑːrdʒ/ vt.</td><td>对…增压, supercharging, supercharges</td></tr>
+<tr><td>employer</td><td>/ɪm'plɔɪ/ vt.</td><td>使用，采用；雇用；使忙于，使从事于n. 雇用；使用, employing, employs</td></tr>
+<tr><td>trial</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>onboarding</td><td>/'ɑːnbɔːrd/ adj.</td><td>随车携带的</td></tr>
+<tr><td>process</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>encourage</td><td>/ɪn'kɜːrɪdʒ/ vt.</td><td>鼓励, 激励促进, 助长, 激发, encouraging, encourages</td></tr>
+<tr><td>actually</td><td>/'æktʃuəl/ adj.</td><td>真实的，实际的；现行的，目前的</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>strategy</td><td>/'strætədʒi/ n.</td><td>战略学, 兵法战略, 策略策略, 计谋</td></tr>
+<tr><td>warfare</td><td>/'wɔːrfer/ n.</td><td>战争, 战争状态</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day34.html" class="nav-btn">← Day 34</a>
+  <a href="day36.html" class="nav-btn">Day 36 →</a>
+</div>
+
+<div class="progress">📖 Day 35 of 46</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-06-06</div>
+
+</body>
+</html>

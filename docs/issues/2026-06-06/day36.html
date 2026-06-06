@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business | Bartleby</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-06-06</div>
+
+<h1 class="article-title">Business | Bartleby</h1>
+<div class="article-section">Business</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>improbably) “Impro”, a guide to improvisational theatre, have both featured on lists for Palantir employees. Other forms of entertainment can also provide clues to how bosses want you to think. As a child Howard Schultz, the man behind Starbucks, was a big fan of the Gene Wilder <span class="annot" data-tooltip="version /'vɜːrʒn/ n. 变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本">version</span> of “Willy Wonka & the Chocolate Factory”. When he was planning the firm’s first roastery, a <span class="annot" data-tooltip="premium /'priːmiəm/ n. 奖金，津贴；加价；附加费；保险费；额外费用adj. （品质）高级的；优质的，顶级的">premium</span> <span class="annot" data-tooltip="retail /ˈriːteɪl/ vt. 零售；转述vi. 零售n. 零售adv. 以零售方式adj. 零售的时 态: retailed, retailing, ">retail</span> <span class="annot" data-tooltip="outlet /'aʊtlet/ n. 出口, 出路发泄的途径经销店">outlet</span> built around coffee, he invited a <span class="annot" data-tooltip="bunch /bʌntʃ/ n. 串；群；突出物vi. 隆起；打褶；形成一串vt. 使成一串；使打褶时 态: bunched, bunching, bun">bunch</span> of executives to his house to watch the film and use it as a source of inspiration. At Ungoliant, you will never ever be invited to watch the boss’s favourite childhood film. Willy Wonka is not a lodestar. But if you read these books instead, you will understand our <span class="annot" data-tooltip="values /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">values</span> and how we like to work. “The <span class="annot" data-tooltip="trial /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">Trial</span>” by Franz Kakfa. This tale of an ordinary person who is abruptly plunged into a nightmarish world of senseless <span class="annot" data-tooltip="bureaucracy /bjʊ'rɑːkrəsi/ n. 政府机构官僚主义, 官僚作风">bureaucracy</span> is less a novel, more an employee handbook. “Catch-22” by Joseph Heller. The title of Heller’s novel is about an impossible wartime <span class="annot" data-tooltip="dilemma /dɪ'lemə/ n. （进退两难的）窘境，困境形容词: dilemmatic">dilemma</span>: pleading insanity as a reason to avoid flying missions is itself clear proof of sanity. At Ungoliant, if you do good work, you will be asked to move into a role managing people. If you do bad work, you will be fired. There is absolutely no way to carry on doing what you <span class="annot" data-tooltip="actually /'æktʃuəl/ adj. 真实的，实际的；现行的，目前的副 词: actually">actually</span> enjoy. “The <span class="annot" data-tooltip="waves /weɪv/ vi. 波动；起伏；摇动；呈波形；挥手示意vt. 向…挥手示意；使成波浪形；卷（烫）发n. 波浪；波动；高潮；卷曲；挥手示意时 ">Waves</span>” by Virginia Woolf. Streams of <span class="annot" data-tooltip="consciousness /'kɑːnʃəsnəs/ n. 知觉意识, 观念, 觉悟察觉, 感觉">consciousness</span>, individuals blurring into each other, entire <span class="annot" data-tooltip="lifetimes /'laɪftaɪm/ n. 一生；寿命；终生；使用期adj. 一生的；终身的">lifetimes</span> passing and an overpowering sense of confusion. This is the perfect introduction to office life. “Say Nothing” by Patrick Radden Keefe. It doesn’t matter what this book is about. It’s just very good advice. “Tomorrow and Tomorrow and Tomorrow” by Gabrielle Zevin. None of us have actually read this one but we think it must be a primer on project management. “1984” by George Orwell. Some people <span class="annot" data-tooltip="apparently /ə'pærəntli/ adv. 显然地表面上,似乎">apparently</span> regard this book as <span class="annot" data-tooltip="dystopian /dɪs'toʊpiən/ adj. 反面乌托邦的,反面假想国的n. 反面乌托邦的鼓吹者(或描写者)">dystopian</span>, and it is true that the Party is a bit <span class="annot" data-tooltip="keener /kiːn/ adj. 锋利的热衷的，热心的，渴望(做某事)激烈的，紧张的良好的；敏锐的，敏捷的比较级: keener，keenest">keener</span> on sticks than <span class="annot" data-tooltip="carrots /'kærət/ n. 胡萝卜">carrots</span>.</p>
+<p>But there’s a lot to learn from its core messages: that <span class="annot" data-tooltip="harnessing /'hɑːrnɪs/ n. 马具, 挽具vt. 给(马等)装上挽具治理, 利用时 态: harnessed, harnessing, harness">harnessing</span> data is a source of <span class="annot" data-tooltip="genuine /'dʒenjuɪn/ adj. 真实的，真正的；诚恳的副 词: genuinely">genuine</span> competitive advantage and that it’s better to work together <span class="annot" data-tooltip="towards /tɔːrdz/ prep. 向，朝为了；有助于；用于对于，关于接近；将近；大约">towards</span> a common purpose than <span class="annot" data-tooltip="pursue /pər'suː/ vt. 从事；追赶；继续；纠缠vi. 追赶；继续进行时 态: pursued, pursuing, pursues">pursue</span> your <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> selfish aims. Winston Smith is clearly not a team player and we can all see how well that worked out for him. “The Island of Dr Moreau” by H.G. Wells. The one thing you can say about Dr Moreau is that he dared to dream. Yes, his dream was heavily based on vivisection, and some of the consequences were rather unfortunate. But no omelette is made without breaking a few eggs. To be clear, Ungoliant has no current plans to turn animals into beast <span class="annot" data-tooltip="folk /foʊk/ n. 人们；民族；亲属（复数）adj. 民间的">folk</span>. But thinking differently and failing is <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span>, far better than accepting <span class="annot" data-tooltip="arbitrary /'ɑːrbɪtreri/ adj. 随意的, 主观的专横的, 独断专行的副 词: arbitrarily">arbitrary</span> boundaries. Further reading: “Frankenstein”, “Dr Jekyll and Mr Hyde”. “Emma” by Jane Austen. An inveterate meddler ends up getting everything she wants. Proof that micromanaging can really pay off. “The Secret History” by Donna Tartt. An outsider joins a tight-<span class="annot" data-tooltip="knit /nɪt/ v. 编织；针织；机织织平针（使）紧密结合，严密，紧凑（使）（断骨）愈合，接合n. 编织的衣服；针织衫（knits）时 态: ">knit</span> <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span> of people who are devoted to a single <span class="annot" data-tooltip="mentor /'mentɔːr/ n. (无经验之人的)有经验可信赖的顾问时 态: mentored, mentoring, mentors">mentor</span> figure and steadily loses all sense of morality. The fact that the characters wind up paying a heavy price for their behaviour is the only thing to quibble with in this book. In all other respects, it tells you just what you can expect from your time working here. “Wolf Hall” by Hilary Mantel. A <span class="annot" data-tooltip="supremely /su'priːm/ adj. 最高的；至上的最重要的比较级: supremer，supremest 缩 写: supr">supremely</span> <span class="annot" data-tooltip="capable /'keɪpəbl/ adj. 能干的，能胜任的；有才华的副 词: capably">capable</span> operator scales the organisational ladder on merit but fails to remember that his fate is in the hands of a <span class="annot" data-tooltip="wildly /'waɪldli/ adv. 野生地；野蛮地；狂暴地；鲁莽地">wildly</span> capricious boss. All Ungoliantians matter, but only one of us has 85% of the voting rights. If you read all of these and still turn up to your first day at work, you are just the kind of employee we want. We look forward to seeing you next month. ■ Subscribers to The Economist can sign up to our Opinion newsletter, which brings together the best of our leaders, <span class="annot" data-tooltip="columns /'kɑːləm/ n. 圆柱，柱形物；纵队，列；专栏形容词: columned">columns</span>, guest <span class="annot" data-tooltip="essays /'eseɪ/ n. 散文, 随笔">essays</span> and reader <span class="annot" data-tooltip="correspondence /ˌkɔːrə'spɑːndəns/ n. 信件, 函件通信, 通信联系一致, 相似">correspondence</span>. This article was downloaded by zlibrary from https://www.economist.com//business/2026/06/04/what-to-read-to-understand-your- next-<span class="annot" data-tooltip="employer /ɪm'plɔɪ/ vt. 使用，采用；雇用；使忙于，使从事于n. 雇用；使用时 态: employed, employing, employs">employer</span></p>
+<div class="article-separator"></div>
+<div class="article-header">Business · Business | Schumpeter</div>
+<p>American <span class="annot" data-tooltip="capitalism /'kæpɪtəlɪzəm/ n. 资本主义(制度)资本(或财富)的拥有资本(私人占有和生产盈利)的支配地位">capitalism</span> has taken an apocalyptic turn Millenarian thinking permeates business and markets June 4th 2026 Charles Mackay’s “<span class="annot" data-tooltip="extraordinary /ɪk'strɔːrdəneri/ adj. 非常奇怪的非同寻常的, 特别的额外安排的, 临时的副 词: extraordinarily">Extraordinary</span> Popular <span class="annot" data-tooltip="delusions /dɪ'luːʒn/ n. 错觉；幻想；迷惑，欺骗形容词: delusional">Delusions</span> and the Madness of Crowds” (1841) is reviled by historians and revered among traders. The book is best known for its colourful passages on tulip mania in the 17th century and the South Sea <span class="annot" data-tooltip="bubble /'bʌbl/ n. 气泡，泡沫，泡状物；透明圆形罩，圆形顶vi. 沸腾，冒泡；发出气泡声vt. 使冒泡；滔滔不绝地说时 态: bubbled">bubble</span> in the 18th. But those wanting to understand business in the 21st should instead turn to Mackay’s chapter on the “epidemic <span class="annot" data-tooltip="terror /'terər/ n. 恐怖; 恐怖活动引起恐怖的人[事]讨厌的人">terror</span> of the end of the world”. Apocalyptic thinking is the strongest impulse in American capitalism today. Elon Musk, a character who could be <span class="annot" data-tooltip="straight /streɪt/ adj. 直的，笔直的连续的；不间断的直率的adv. 直接地；径直地立即，马上比较级: straighter，straightes">straight</span> from Mackay’s pages, will soon float SpaceX, a rocket company whose professed mission is to avert</p>
+<p><span class="annot" data-tooltip="existential /ˌeɡzɪ'stenʃl/ adj. 有关存在的,存在主义的,存在判断的">existential</span> threats to <span class="annot" data-tooltip="humanity /hjuː'mænəti/ n. 人类；人道；仁慈；人文学科">humanity</span> by <span class="annot" data-tooltip="establishing /ɪ'stæblɪʃ/ vt. 建立, 成立安置确定, 证实时 态: established, establishing, establishes">establishing</span> a colony on Mars. Mr Musk is America’s richest capitalist in part because he is its loudest Cassandra. Mr Musk is rushing to list before two other prophets with similarly millenarian worldviews. <span class="annot" data-tooltip="anthropic /ænˈθrɑpɪk/ adj. 人类的,有关人类的">Anthropic</span> filed paperwork for a public offering this week. Dario Amodei, its boss, has made much of the <span class="annot" data-tooltip="destructive /dɪ'strʌktɪv/ adj. 破坏性的, 毁灭性的副 词: destructively">destructive</span> potential of his firm’s Mythos model, which has thus <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> been kept from the public. OpenAI, run by Sam Altman, will probably file its paperwork soon. The lab recently published a <span class="annot" data-tooltip="utopian /juː'toʊpiən/ adj. 空想的；乌托邦的；理想化的n. 空想家；乌托邦的居民Utopianadj. 理想而不实际的, 乌托邦的">utopian</span> plan for the social <span class="annot" data-tooltip="contract /'kɑːntrækt/ vi. 感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约时 态: contracted, contracting, c">contract</span> after (or, rather, under) AI. American business nowadays is best segmented not by <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> but eschatology. The threat of war looms <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> as large in business as that of AI. Last year Alex Karp, the boss of Palantir, wrote a book arguing that the future of the West depends on high-tech defence companies such as his <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span>. Palmer Luckey, the founder of Anduril, another defence-tech <span class="annot" data-tooltip="outfit /'aʊtfɪt/ n. （为特定场合或活动而穿的）全套服装，装束全套装备；成套工具组织；公司；团队；军事单位v. 装备，配备；为…提供设备（或服">outfit</span>, often talks up his expectation that China will try to <span class="annot" data-tooltip="invade /ɪn'veɪd/ vt. 侵略；侵袭；侵扰；涌入vi. 侵略；侵袭；侵犯；侵入时 态: invaded, invading, invades">invade</span> Taiwan. Every firm selling <span class="annot" data-tooltip="critical /'krɪtɪkl/ adj. 批评的，爱挑剔的；决定性的；危险的；临界的；鉴定的；评论的副 词: critically">critical</span> <span class="annot" data-tooltip="minerals /'mɪnərəl/ n. 矿物; 矿石; 矿物质">minerals</span> has a <span class="annot" data-tooltip="compelling /kəm'pelɪŋ/ adj. 引人入胜的;扣人心弦的非常强烈的;不可抗拒的令人信服的，有说服力的">compelling</span> story for why theirs would become painfully scarce in the event of such a conflict. Much of Wall Street is in a fatalistic mood. Investor <span class="annot" data-tooltip="withdrawals /wɪð'drɔːəl/ n. 收回，取回，撤回；撤退，撤走收回[取回，撤回；撤退，撤走]的实例">withdrawals</span> from hitherto unknown private-<span class="annot" data-tooltip="credit /'kredɪt/ n. 赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)时 态:">credit</span> funds recently shook faith in all private markets. The list of financial <span class="annot" data-tooltip="innovations /ˌɪnə'veɪʃn/ n. 改革, 革新, 创新新观念, 新方法, 新发明形容词: innovational">innovations</span> <span class="annot" data-tooltip="central /'sentrəl/ adj. 中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的副 词: centrally">central</span> bankers say pose “systemic” risks to the economy is so long it’s hard to believe the system hasn’t collapsed under the weight of its own <span class="annot" data-tooltip="anxiety /æŋ'zaɪəti/ n. 焦虑；挂念；渴望；令人焦虑的事">anxiety</span>. One of these, cryptocurrency, is itself an intrinsically apocalyptic endeavour, since it claims to offer protection against government control and <span class="annot" data-tooltip="inflation /ɪn'fleɪʃn/ n. (充气而引起的)膨胀通货膨胀">inflation</span> caused by Uncle Sam’s spending—on, among other things, defence. Dates of previous calamities assume almost superstitious significance. The most read book on Wall Street last year was called “1929”. A good bet for this year is “1873”. Traders describe the stockmarket in <span class="annot" data-tooltip="terms /tɜːrmz/ n. 条款；地位，关系；措辞；术语；价钱（term的复数形式）v. 把…称为（term的三单形式）">terms</span> of previous catastrophes. “Will 1999 turn into 2000 or 1987? Or will the clock reset back to 1996?” wrote a strategist at Deutsche Bank this week. That’s before you even <span class="annot" data-tooltip="consider /kən'sɪdər/ vt. & vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及时 态: considered, considering, ">consider</span> the <span class="annot" data-tooltip="prospect /'prɑːspekt/ n. 景象，景色前景；前途可能成为主顾的人；有希望的候选人vi. 勘探；勘察时 态: prospected，prospecti">prospect</span> of a 1973. And surely a 1999 would increase the likelihood of another 2008?</p>
+<p>A millenarian economy is necessarily a <span class="annot" data-tooltip="paranoid /'pærənɔɪd/ adj. 类似妄想狂的；属于偏执狂的n. 患妄想狂的人；偏执狂患者">paranoid</span> one. The appearance of comets has often foretold the end of the world. Nowadays a website tracks the private jets of the super-rich, supposedly because they would flee to safety in the event of a catastrophe. Economists anxiously examine America’s remarkably <span class="annot" data-tooltip="resilient /rɪ'zɪliənt/ adj. (指物体或材料)能复原的;有弹性的;有弹力的(指人的性格)能迅速恢复或重新振作的;达观的;适应性强的">resilient</span> economic data for the mark of “K”, the idea that the economy is unsustainably <span class="annot" data-tooltip="propped /prɑːp/ n. 支柱, 支柱物vt. 支撑, 支持, 维持时 态: propped, propping, props">propped</span> up by the super-rich while everybody else languishes. Permitting <span class="annot" data-tooltip="disputes /dɪ'spjuːt/ vt. 辩论；阻止；抗拒；怀疑vi. 争论n. 辩论；争吵时 态: disputed, disputing, disputes">disputes</span> have become questions of national survival. “It’s over. We’re done, <span class="annot" data-tooltip="folks /foʊk/ n. 人们；民族；亲属（复数）adj. 民间的">folks</span>,” warned the governor of Utah if America were to cede ground to China in AI (his constituents are up in arms about a massive data centre in the state backed by Kevin O’Leary, a TV star best-known for appearing on “Shark <span class="annot" data-tooltip="tank /tæŋk/ n. （存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内时 态: t">Tank</span>”). <span class="annot" data-tooltip="issues /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">Issues</span> of <span class="annot" data-tooltip="contract /'kɑːntrækt/ vi. 感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约时 态: contracted, contracting, c">contract</span> have assumed cosmic importance. “I apologise, but the fate of civilisation is at stake,” Mr Musk wrote to Mr Altman as they quarrelled over the <span class="annot" data-tooltip="governance /'ɡʌvərnəns/ n. 统治;管理;治理;统治方式;管理方法">governance</span> of OpenAI. Debates about regulating business have taken an evangelical turn. Peter Thiel, a tech investor, says AI will <span class="annot" data-tooltip="summon /'sʌmən/ vt. 召唤；召集；鼓起；振作时 态: summoned, summoning, summons">summon</span> the Antichrist in the form of <span class="annot" data-tooltip="authoritarian /əˌθɔːrə'teriən/ adj. 权力主义的,专制的n. 权力主义者,专制者,独裁者名 词: authoritarian">authoritarian</span> rules. “Merely regulating it is <span class="annot" data-tooltip="insufficient /ˌɪnsə'fɪʃnt/ adj. 不足的,不够的副 词: insufficiently">insufficient</span>,” wrote Pope <span class="annot" data-tooltip="leo /'liːoʊ/ n. [天文]狮子座；狮子（用于儿童故事寓言等）；利奥（男子名）">Leo</span> XIV in a 40,000-word <span class="annot" data-tooltip="essay /'eseɪ/ n. 散文, 随笔">essay</span> on AI last month. “It must be disarmed.” A new <span class="annot" data-tooltip="tune /tuːn/ n. 曲调, 曲子vt. & vi. 调音vt. 调整时 态: tuned, tuning, tunes">tune</span> by Charli XCX, a pop star, captures both the papal and the popular mood: “Spring, Summer ’26/When the world is <span class="annot" data-tooltip="gonna /'ɡənə/ abbr. （美）将要（等于going to）">gonna</span> end, no hope for any of it/Yeah, we’re walkin’ on a runway that goes <span class="annot" data-tooltip="straight /streɪt/ adj. 直的，笔直的连续的；不间断的直率的adv. 直接地；径直地立即，马上比较级: straighter，straightes">straight</span> to hell.” If things are so <span class="annot" data-tooltip="dire /'daɪər/ adj. 可怕的, 恐怖的比较级: direr, direst">dire</span>, why are American stocks so expensive? It is often said that American markets today are a <span class="annot" data-tooltip="triumph /'traɪʌmf/ n. 胜利，成功巨大的成就[成功]vi. 获胜，得胜；克服时 态: triumphed，triumphing，triumphs">triumph</span> of greed over fear. But this gets things the wrong way round. Firms are raising capital in <span class="annot" data-tooltip="proportion /prə'pɔːrʃn/ n. 均衡；相称，协调一物与他物在数量、大小等方面的关系；比例部分；份儿时 态: proportioned，proportio">proportion</span> to the <span class="annot" data-tooltip="intensity /ɪn'tensəti/ n. 强烈, 剧烈(感情的)强烈程度">intensity</span> of their apocalyptic <span class="annot" data-tooltip="vision /'vɪʒn/ n. 视力；眼力；幻象；美景；想象力vt. 显现；梦见；想象时 态: visioned, visioning, visions">vision</span>, and are rushing to do so before the impending market <span class="annot" data-tooltip="collapse /kə'læps/ vi. 倒塌；瓦解；暴跌vt. 使倒塌，使崩溃；使萎陷n. 倒塌；失败；衰竭时 态: collapsed, collapsing">collapse</span> many of them expect. Fear of missing out has been replaced with something more <span class="annot" data-tooltip="hysterical /hɪ'sterɪkl/ adj. 情绪异常激动的, 歇斯底里般的副 词: hysterically">hysterical</span>. The <span class="annot" data-tooltip="instinct /'ɪnstɪŋkt/ n. 本能，直觉；天性adj. 充满着的">instinct</span> to <span class="annot" data-tooltip="accumulate /ə'kjuːmjəleɪt/ vt. & vi. 堆积；积累时 态: accumulated，accumulating，accumulates">accumulate</span> capital is greater if you believes your labour will soon become worthless, as some <span class="annot" data-tooltip="hedge /hedʒ/ vt. 用树篱笆围住；避免作正面答复vi. 用树篱围住；避免作正面答复n. 树篱；障碍时 态: hedged, hedging,">hedge</span>-fund types think. They are betting the house. But their <span class="annot" data-tooltip="portfolios /pɔːrt'foʊlioʊ/ n. 公事包, 文件夹投资组合大臣或部长的职位或职责">portfolios</span> are often <span class="annot" data-tooltip="indistinguishable /ˌɪndɪ'stɪŋɡwɪʃəbl/ adj. 难区分的,不能分辨的副 词: indistinguishably">indistinguishable</span> from those who think that is nonsense. Other than tech stocks, what else can they buy? If AI does create a new economy, it will be a fast-growing one where bonds are <span class="annot" data-tooltip="worth /wɜːrθ/ adj. 值…的n. 价值；财产时 态: worthed, worthing, worths">worth</span> less because of <span class="annot" data-tooltip="inflation /ɪn'fleɪʃn/ n. (充气而引起的)膨胀通货膨胀">inflation</span> and higher interest rates. If it doesn’t, it will <span class="annot" data-tooltip="wreck /rek/ n. 失事；残骸；破坏；[口]失去健康的人vt. 破坏；使失事；拆毁vi. 失事；营救失事船只时 态: wrecked, wr">wreck</span></p>
+<p>the existing economy and bonds will be <span class="annot" data-tooltip="worth /wɜːrθ/ adj. 值…的n. 价值；财产时 态: worthed, worthing, worths">worth</span> even less. Every investor is an acolyte, whether they believe it or not. It is possible for a country to worry itself into irrelevance. But America is an experiment in terrifying yourself to riches. Predictions of total and <span class="annot" data-tooltip="irreversible /ˌɪrɪ'vɜːrsəbl/ adj. 不可更改的；不可挽回的，不可反转的n. 不可更改；不可挽回，不可反转adv. 不可更改地；不可挽回地，不可反转地">irreversible</span> change certainly have their uses: there is no stronger <span class="annot" data-tooltip="pitch /pɪtʃ/ n. 球场音调，音高程度；强度；高度沥青颠簸斜度，坡度商贩摊位，艺人表演场地推销商品的话vt. 投，掷，扔为…定音调用人们易懂">pitch</span> to investors than claiming your business will end the world as we know it. That said, an economy which combines widespread distrust of business with a growing <span class="annot" data-tooltip="elite /eɪ'liːt/ n. （社会）上层集团；掌权人物；出类拔萃的人，精英adj.（社会）上层集团的；掌权人物的；精英的">elite</span> millenarianism is also a combustible one. Perhaps the danger is not 2008, 1999, 1973 or even 1873, but 1789. ■ Subscribers to The Economist can sign up to our Opinion newsletter, which brings together the best of our leaders, <span class="annot" data-tooltip="columns /'kɑːləm/ n. 圆柱，柱形物；纵队，列；专栏形容词: columned">columns</span>, guest <span class="annot" data-tooltip="essays /'eseɪ/ n. 散文, 随笔">essays</span> and reader <span class="annot" data-tooltip="correspondence /ˌkɔːrə'spɑːndəns/ n. 信件, 函件通信, 通信联系一致, 相似">correspondence</span>. This article was downloaded by zlibrary from https://www.economist.com//business/2026/06/03/american-<span class="annot" data-tooltip="capitalism /'kæpɪtəlɪzəm/ n. 资本主义(制度)资本(或财富)的拥有资本(私人占有和生产盈利)的支配地位">capitalism</span>-has-taken-an- apocalyptic-turn</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Finance &amp; economics</div>
+<p>Gen-Z <span class="annot" data-tooltip="socialism /'soʊʃəlɪzəm/ n. 社会主义">socialism</span>, from Zohran to Zack and beyond Can the stockmarket swallow SpaceX, <span class="annot" data-tooltip="anthropic /ænˈθrɑpɪk/ adj. 人类的,有关人类的">Anthropic</span> and OpenAI? Indians can now bet on the monsoon European electricity markets have too much power Want to know the future? Don’t trust the stockmarket Some billionaires pay too little tax</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>version</td><td>/'vɜːrʒn/ n.</td><td>变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本</td></tr>
+<tr><td>premium</td><td>/'priːmiəm/ n.</td><td>奖金，津贴；加价；附加费；保险费；额外费用adj. （品质）高级的；优质的，顶级的</td></tr>
+<tr><td>retail</td><td>/ˈriːteɪl/ vt.</td><td>零售；转述vi. 零售n. 零售adv. 以零售方式adj. 零售的, retailing, retails</td></tr>
+<tr><td>outlet</td><td>/'aʊtlet/ n.</td><td>出口, 出路发泄的途径经销店</td></tr>
+<tr><td>bunch</td><td>/bʌntʃ/ n.</td><td>串；群；突出物vi. 隆起；打褶；形成一串vt. 使成一串；使打褶, bunching, bunches</td></tr>
+<tr><td>values</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>trial</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>bureaucracy</td><td>/bjʊ'rɑːkrəsi/ n.</td><td>政府机构官僚主义, 官僚作风</td></tr>
+<tr><td>dilemma</td><td>/dɪ'lemə/ n.</td><td>（进退两难的）窘境，困境</td></tr>
+<tr><td>actually</td><td>/'æktʃuəl/ adj.</td><td>真实的，实际的；现行的，目前的</td></tr>
+<tr><td>waves</td><td>/weɪv/ vi.</td><td>波动；起伏；摇动；呈波形；挥手示意vt. 向…挥手示意；使成波浪形；卷（烫）发n. 波浪；波动；高潮；卷曲；挥手示意, waving, waves</td></tr>
+<tr><td>consciousness</td><td>/'kɑːnʃəsnəs/ n.</td><td>知觉意识, 观念, 觉悟察觉, 感觉</td></tr>
+<tr><td>lifetimes</td><td>/'laɪftaɪm/ n.</td><td>一生；寿命；终生；使用期adj. 一生的；终身的</td></tr>
+<tr><td>apparently</td><td>/ə'pærəntli/ adv.</td><td>显然地表面上,似乎</td></tr>
+<tr><td>dystopian</td><td>/dɪs'toʊpiən/ adj.</td><td>反面乌托邦的,反面假想国的n. 反面乌托邦的鼓吹者(或描写者)</td></tr>
+<tr><td>keener</td><td>/kiːn/ adj.</td><td>锋利的热衷的，热心的，渴望(做某事)激烈的，紧张的良好的；敏锐的，敏捷的，keenest</td></tr>
+<tr><td>carrots</td><td>/'kærət/ n.</td><td>胡萝卜</td></tr>
+<tr><td>harnessing</td><td>/'hɑːrnɪs/ n.</td><td>马具, 挽具vt. 给(马等)装上挽具治理, 利用, harnessing, harnesses</td></tr>
+<tr><td>genuine</td><td>/'dʒenjuɪn/ adj.</td><td>真实的，真正的；诚恳的</td></tr>
+<tr><td>towards</td><td>/tɔːrdz/ prep.</td><td>向，朝为了；有助于；用于对于，关于接近；将近；大约</td></tr>
+<tr><td>pursue</td><td>/pər'suː/ vt.</td><td>从事；追赶；继续；纠缠vi. 追赶；继续进行, pursuing, pursues</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>folk</td><td>/foʊk/ n.</td><td>人们；民族；亲属（复数）adj. 民间的</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>arbitrary</td><td>/'ɑːrbɪtreri/ adj.</td><td>随意的, 主观的专横的, 独断专行的</td></tr>
+<tr><td>knit</td><td>/nɪt/ v.</td><td>编织；针织；机织织平针（使）紧密结合，严密，紧凑（使）（断骨）愈合，接合n. 编织的衣服；针织衫（knits）</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>mentor</td><td>/'mentɔːr/ n.</td><td>(无经验之人的)有经验可信赖的顾问, mentoring, mentors</td></tr>
+<tr><td>supremely</td><td>/su'priːm/ adj.</td><td>最高的；至上的最重要的，supremest 缩 写: supr</td></tr>
+<tr><td>capable</td><td>/'keɪpəbl/ adj.</td><td>能干的，能胜任的；有才华的</td></tr>
+<tr><td>wildly</td><td>/'waɪldli/ adv.</td><td>野生地；野蛮地；狂暴地；鲁莽地</td></tr>
+<tr><td>columns</td><td>/'kɑːləm/ n.</td><td>圆柱，柱形物；纵队，列；专栏</td></tr>
+<tr><td>essays</td><td>/'eseɪ/ n.</td><td>散文, 随笔</td></tr>
+<tr><td>correspondence</td><td>/ˌkɔːrə'spɑːndəns/ n.</td><td>信件, 函件通信, 通信联系一致, 相似</td></tr>
+<tr><td>employer</td><td>/ɪm'plɔɪ/ vt.</td><td>使用，采用；雇用；使忙于，使从事于n. 雇用；使用, employing, employs</td></tr>
+<tr><td>capitalism</td><td>/'kæpɪtəlɪzəm/ n.</td><td>资本主义(制度)资本(或财富)的拥有资本(私人占有和生产盈利)的支配地位</td></tr>
+<tr><td>extraordinary</td><td>/ɪk'strɔːrdəneri/ adj.</td><td>非常奇怪的非同寻常的, 特别的额外安排的, 临时的</td></tr>
+<tr><td>delusions</td><td>/dɪ'luːʒn/ n.</td><td>错觉；幻想；迷惑，欺骗</td></tr>
+<tr><td>bubble</td><td>/'bʌbl/ n.</td><td>气泡，泡沫，泡状物；透明圆形罩，圆形顶vi. 沸腾，冒泡；发出气泡声vt. 使冒泡；滔滔不绝地说, bubbling, bubbles</td></tr>
+<tr><td>terror</td><td>/'terər/ n.</td><td>恐怖; 恐怖活动引起恐怖的人[事]讨厌的人</td></tr>
+<tr><td>straight</td><td>/streɪt/ adj.</td><td>直的，笔直的连续的；不间断的直率的adv. 直接地；径直地立即，马上，straightest</td></tr>
+<tr><td>existential</td><td>/ˌeɡzɪ'stenʃl/ adj.</td><td>有关存在的,存在主义的,存在判断的</td></tr>
+<tr><td>humanity</td><td>/hjuː'mænəti/ n.</td><td>人类；人道；仁慈；人文学科</td></tr>
+<tr><td>establishing</td><td>/ɪ'stæblɪʃ/ vt.</td><td>建立, 成立安置确定, 证实, establishing, establishes</td></tr>
+<tr><td>anthropic</td><td>/ænˈθrɑpɪk/ adj.</td><td>人类的,有关人类的</td></tr>
+<tr><td>destructive</td><td>/dɪ'strʌktɪv/ adj.</td><td>破坏性的, 毁灭性的</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>utopian</td><td>/juː'toʊpiən/ adj.</td><td>空想的；乌托邦的；理想化的n. 空想家；乌托邦的居民Utopianadj. 理想而不实际的, 乌托邦的</td></tr>
+<tr><td>contract</td><td>/'kɑːntrækt/ vi.</td><td>感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约, contracting, contracts</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>outfit</td><td>/'aʊtfɪt/ n.</td><td>（为特定场合或活动而穿的）全套服装，装束全套装备；成套工具组织；公司；团队；军事单位v. 装备，配备；为…提供设备（或服装），outfitting，outfit</td></tr>
+<tr><td>invade</td><td>/ɪn'veɪd/ vt.</td><td>侵略；侵袭；侵扰；涌入vi. 侵略；侵袭；侵犯；侵入, invading, invades</td></tr>
+<tr><td>critical</td><td>/'krɪtɪkl/ adj.</td><td>批评的，爱挑剔的；决定性的；危险的；临界的；鉴定的；评论的</td></tr>
+<tr><td>minerals</td><td>/'mɪnərəl/ n.</td><td>矿物; 矿石; 矿物质</td></tr>
+<tr><td>compelling</td><td>/kəm'pelɪŋ/ adj.</td><td>引人入胜的;扣人心弦的非常强烈的;不可抗拒的令人信服的，有说服力的</td></tr>
+<tr><td>withdrawals</td><td>/wɪð'drɔːəl/ n.</td><td>收回，取回，撤回；撤退，撤走收回[取回，撤回；撤退，撤走]的实例</td></tr>
+<tr><td>credit</td><td>/'kredɪt/ n.</td><td>赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)，crediting，credits</td></tr>
+<tr><td>innovations</td><td>/ˌɪnə'veɪʃn/ n.</td><td>改革, 革新, 创新新观念, 新方法, 新发明</td></tr>
+<tr><td>central</td><td>/'sentrəl/ adj.</td><td>中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的</td></tr>
+<tr><td>anxiety</td><td>/æŋ'zaɪəti/ n.</td><td>焦虑；挂念；渴望；令人焦虑的事</td></tr>
+<tr><td>inflation</td><td>/ɪn'fleɪʃn/ n.</td><td>(充气而引起的)膨胀通货膨胀</td></tr>
+<tr><td>terms</td><td>/tɜːrmz/ n.</td><td>条款；地位，关系；措辞；术语；价钱（term的复数形式）v. 把…称为（term的三单形式）</td></tr>
+<tr><td>consider</td><td>/kən'sɪdər/ vt.</td><td>& vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及, considering, considers</td></tr>
+<tr><td>prospect</td><td>/'prɑːspekt/ n.</td><td>景象，景色前景；前途可能成为主顾的人；有希望的候选人vi. 勘探；勘察，prospecting，prospects</td></tr>
+<tr><td>paranoid</td><td>/'pærənɔɪd/ adj.</td><td>类似妄想狂的；属于偏执狂的n. 患妄想狂的人；偏执狂患者</td></tr>
+<tr><td>resilient</td><td>/rɪ'zɪliənt/ adj.</td><td>(指物体或材料)能复原的;有弹性的;有弹力的(指人的性格)能迅速恢复或重新振作的;达观的;适应性强的</td></tr>
+<tr><td>propped</td><td>/prɑːp/ n.</td><td>支柱, 支柱物vt. 支撑, 支持, 维持, propping, props</td></tr>
+<tr><td>disputes</td><td>/dɪ'spjuːt/ vt.</td><td>辩论；阻止；抗拒；怀疑vi. 争论n. 辩论；争吵, disputing, disputes</td></tr>
+<tr><td>folks</td><td>/foʊk/ n.</td><td>人们；民族；亲属（复数）adj. 民间的</td></tr>
+<tr><td>tank</td><td>/tæŋk/ n.</td><td>（存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内, tanking, tanks</td></tr>
+<tr><td>issues</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>contract</td><td>/'kɑːntrækt/ vi.</td><td>感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约, contracting, contracts</td></tr>
+<tr><td>governance</td><td>/'ɡʌvərnəns/ n.</td><td>统治;管理;治理;统治方式;管理方法</td></tr>
+<tr><td>summon</td><td>/'sʌmən/ vt.</td><td>召唤；召集；鼓起；振作, summoning, summons</td></tr>
+<tr><td>authoritarian</td><td>/əˌθɔːrə'teriən/ adj.</td><td>权力主义的,专制的n. 权力主义者,专制者,独裁者</td></tr>
+<tr><td>insufficient</td><td>/ˌɪnsə'fɪʃnt/ adj.</td><td>不足的,不够的</td></tr>
+<tr><td>leo</td><td>/'liːoʊ/ n.</td><td>[天文]狮子座；狮子（用于儿童故事寓言等）；利奥（男子名）</td></tr>
+<tr><td>essay</td><td>/'eseɪ/ n.</td><td>散文, 随笔</td></tr>
+<tr><td>tune</td><td>/tuːn/ n.</td><td>曲调, 曲子vt. & vi. 调音vt. 调整, tuning, tunes</td></tr>
+<tr><td>gonna</td><td>/'ɡənə/ abbr.</td><td>（美）将要（等于going to）</td></tr>
+<tr><td>straight</td><td>/streɪt/ adj.</td><td>直的，笔直的连续的；不间断的直率的adv. 直接地；径直地立即，马上，straightest</td></tr>
+<tr><td>dire</td><td>/'daɪər/ adj.</td><td>可怕的, 恐怖的, direst</td></tr>
+<tr><td>triumph</td><td>/'traɪʌmf/ n.</td><td>胜利，成功巨大的成就[成功]vi. 获胜，得胜；克服，triumphing，triumphs</td></tr>
+<tr><td>proportion</td><td>/prə'pɔːrʃn/ n.</td><td>均衡；相称，协调一物与他物在数量、大小等方面的关系；比例部分；份儿，proportioning，proportions</td></tr>
+<tr><td>intensity</td><td>/ɪn'tensəti/ n.</td><td>强烈, 剧烈(感情的)强烈程度</td></tr>
+<tr><td>vision</td><td>/'vɪʒn/ n.</td><td>视力；眼力；幻象；美景；想象力vt. 显现；梦见；想象, visioning, visions</td></tr>
+<tr><td>collapse</td><td>/kə'læps/ vi.</td><td>倒塌；瓦解；暴跌vt. 使倒塌，使崩溃；使萎陷n. 倒塌；失败；衰竭, collapsing, collapses</td></tr>
+<tr><td>hysterical</td><td>/hɪ'sterɪkl/ adj.</td><td>情绪异常激动的, 歇斯底里般的</td></tr>
+<tr><td>instinct</td><td>/'ɪnstɪŋkt/ n.</td><td>本能，直觉；天性adj. 充满着的</td></tr>
+<tr><td>accumulate</td><td>/ə'kjuːmjəleɪt/ vt.</td><td>& vi. 堆积；积累，accumulating，accumulates</td></tr>
+<tr><td>hedge</td><td>/hedʒ/ vt.</td><td>用树篱笆围住；避免作正面答复vi. 用树篱围住；避免作正面答复n. 树篱；障碍, hedging, hedges</td></tr>
+<tr><td>portfolios</td><td>/pɔːrt'foʊlioʊ/ n.</td><td>公事包, 文件夹投资组合大臣或部长的职位或职责</td></tr>
+<tr><td>indistinguishable</td><td>/ˌɪndɪ'stɪŋɡwɪʃəbl/ adj.</td><td>难区分的,不能分辨的</td></tr>
+<tr><td>worth</td><td>/wɜːrθ/ adj.</td><td>值…的n. 价值；财产, worthing, worths</td></tr>
+<tr><td>inflation</td><td>/ɪn'fleɪʃn/ n.</td><td>(充气而引起的)膨胀通货膨胀</td></tr>
+<tr><td>wreck</td><td>/rek/ n.</td><td>失事；残骸；破坏；[口]失去健康的人vt. 破坏；使失事；拆毁vi. 失事；营救失事船只, wrecking, wrecks</td></tr>
+<tr><td>worth</td><td>/wɜːrθ/ adj.</td><td>值…的n. 价值；财产, worthing, worths</td></tr>
+<tr><td>irreversible</td><td>/ˌɪrɪ'vɜːrsəbl/ adj.</td><td>不可更改的；不可挽回的，不可反转的n. 不可更改；不可挽回，不可反转adv. 不可更改地；不可挽回地，不可反转地</td></tr>
+<tr><td>pitch</td><td>/pɪtʃ/ n.</td><td>球场音调，音高程度；强度；高度沥青颠簸斜度，坡度商贩摊位，艺人表演场地推销商品的话vt. 投，掷，扔为…定音调用人们易懂的方式表述vt. & vi. 搭(帐篷)</td></tr>
+<tr><td>elite</td><td>/eɪ'liːt/ n.</td><td>（社会）上层集团；掌权人物；出类拔萃的人，精英adj.（社会）上层集团的；掌权人物的；精英的</td></tr>
+<tr><td>columns</td><td>/'kɑːləm/ n.</td><td>圆柱，柱形物；纵队，列；专栏</td></tr>
+<tr><td>essays</td><td>/'eseɪ/ n.</td><td>散文, 随笔</td></tr>
+<tr><td>correspondence</td><td>/ˌkɔːrə'spɑːndəns/ n.</td><td>信件, 函件通信, 通信联系一致, 相似</td></tr>
+<tr><td>capitalism</td><td>/'kæpɪtəlɪzəm/ n.</td><td>资本主义(制度)资本(或财富)的拥有资本(私人占有和生产盈利)的支配地位</td></tr>
+<tr><td>socialism</td><td>/'soʊʃəlɪzəm/ n.</td><td>社会主义</td></tr>
+<tr><td>anthropic</td><td>/ænˈθrɑpɪk/ adj.</td><td>人类的,有关人类的</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day35.html" class="nav-btn">← Day 35</a>
+  <a href="day37.html" class="nav-btn">Day 37 →</a>
+</div>
+
+<div class="progress">📖 Day 36 of 46</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-06-06</div>
+
+</body>
+</html>

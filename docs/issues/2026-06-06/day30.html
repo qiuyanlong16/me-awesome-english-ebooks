@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Special report | No longer special</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-06-06</div>
+
+<h1 class="article-title">Special report | No longer special</h1>
+<div class="article-section">Special report</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>Meanwhile, regulatory changes related to <span class="annot" data-tooltip="treasuries /'treʒəri/ n. 财政部；国库，金库；宝库">Treasuries</span> <span class="annot" data-tooltip="transactions /træn'zækʃn/ n. 处理，办理，执行(一笔)交易；(一项)事务形容词: transactional">transactions</span> may <span class="annot" data-tooltip="alleviate /ə'liːvieɪt/ vt. 减轻, 缓解, 缓和时 态: alleviated, alleviating, alleviates">alleviate</span> the risks of the basis trade. At the end of this year the SEC will require much trading in Treasuries to be conducted through a clearing house, a step designed to make such transactions more <span class="annot" data-tooltip="reliable /rɪ'laɪəbl/ adj. 可靠的, 可信赖的副 词: reliably">reliable</span>, by standardising <span class="annot" data-tooltip="collateral /kə'lætərəl/ n. 附属担保品adj. 相关的">collateral</span> requirements, for instance. By mid-2027 a further slice of <span class="annot" data-tooltip="treasury /'treʒəri/ n. 财政部；国库，金库；宝库">Treasury</span>-related trading will be forced into clearing houses. All this will also give regulators a much clearer <span class="annot" data-tooltip="picture /'pɪktʃər/ n. 图画，肖像；照片(生动的)描述，写照影片；电影；画面美景，景色情况，事态，局面vt. 绘画；描绘想象时 态: pictu">picture</span> of what is happening in the Treasury market. Research published recently by Barclays, a big British bank, argues that a change in bank regulations, too, may reduce the risk of the basis trade. Since new rules on <span class="annot" data-tooltip="leverage /'levərɪdʒ/ n. （能够操控形势的）影响力，手段，优势 杠杆力；杠杆作用v. 举债经营；为…融资有效利用某物（资源、优势、工具等）时 态:">leverage</span> for banks were confirmed last year, giving them more leeway to grow their balance-sheets, banks have been hedging against shifts in interest rates by taking short positions in Treasury futures markets. That makes them natural counterparties to the <span class="annot" data-tooltip="asset /'æset/ n. 资产；有用的东西；有利条件；优点">asset</span> managers who buy trillions of dollars of Treasury futures, and so, in turn, should lessen the opportunity for debt-<span class="annot" data-tooltip="bingeing /bɪndʒ/ n. 狂欢，狂闹；放纵vt. 放纵vi. 狂饮作乐；大吃大喝时 态: binged, binging, bingeing bi">bingeing</span> <span class="annot" data-tooltip="hedge /hedʒ/ vt. 用树篱笆围住；避免作正面答复vi. 用树篱围住；避免作正面答复n. 树篱；障碍时 态: hedged, hedging,">hedge</span> funds. Some analysts have more novel <span class="annot" data-tooltip="proposals /prə'poʊzl/ n. 提议，建议；求婚">proposals</span>. Mr Kashyap, Mr Wallen, Jeremy C. <span class="annot" data-tooltip="stein /staɪn/ n. (容量约为一品脱的)陶质(或玻璃)啤酒杯Stein斯坦(姓氏)">Stein</span> of Harvard University and Josh Younger of Tudor Investment Corporation, a hedge fund, suggested in research published in 2025 that the Fed itself could <span class="annot" data-tooltip="enter /'entər/ vt. & vi. 进入, 进去参加, 加入登记, 登录时 态: entered, entering, enters">enter</span> the basis trade to settle things down during moments of market turmoil. If hedge funds were <span class="annot" data-tooltip="dumping n. 倾销；倾泻v. 倾倒（dump的ing形式）">dumping</span> Treasury bonds in a panic, the Fed could buy Treasury bonds and short Treasury futures (<span class="annot" data-tooltip="essentially /ɪ'senʃəli/ adv. 本质上;根本上必需的">essentially</span> <span class="annot" data-tooltip="replicating /'replɪkə/ n. 复制品">replicating</span> what hedge funds do during normal times), which would lower the risk of market <span class="annot" data-tooltip="blow /bloʊ/ n. 吹；殴打；打击vi. 风吹；喘气vt. 风吹时 态: blew blown blowing, blows">blow</span>-ups without <span class="annot" data-tooltip="affecting /ə'fekt/ vt. 影响；假装；感动；感染vi. 倾向；喜欢n. 情感；引起感情的因素时 态: affected, affecting, a">affecting</span> monetary policy. Anyway, whatever the remaining risks, as the Treasury market expands and the ranks of reliable buyers thin, regulators cannot be too <span class="annot" data-tooltip="choosy /'tʃuːzi/ adj. 好挑剔的比较级: choosier, choosiest">choosy</span>. Direct bidders (a category that includes all manner of investment funds) and indirect bidders (buyers acting through an <span class="annot" data-tooltip="intermediary /ˌɪntər'miːdieri/ n. 中间人;调解人">intermediary</span>) now account for a combined 75% of demand at auctions of Treasuries maturing in a year or longer, up from 45% in 2009. The precise share of Treasuries sold to hedge funds is not known, but in private, financial officials say that the firms ensure that all the bonds on offer <span class="annot" data-tooltip="actually /'æktʃuəl/ adj. 真实的，实际的；现行的，目前的副 词: actually">actually</span> get sold, which is no small matter. Research published by the <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">Federal</span> Reserve last year shows that funds based in the financial haven of</p>
+<p>the Cayman Islands have become <span class="annot" data-tooltip="enormous /ɪ'nɔːrməs/ adj. 巨大的, 极大的, 庞大的副 词: enormously">enormous</span> players in the <span class="annot" data-tooltip="treasury /'treʒəri/ n. 财政部；国库，金库；宝库">Treasury</span> market, partly because of their role in the basis trade. The paper suggested that the Treasury’s data on foreign holdings of American government debt undercounted the stockpile of <span class="annot" data-tooltip="hedge /hedʒ/ vt. 用树篱笆围住；避免作正面答复vi. 用树篱围住；避免作正面答复n. 树篱；障碍时 态: hedged, hedging,">hedge</span> funds in the Cayman Islands by $1.4trn in 2024. Its new creditors may have troubling <span class="annot" data-tooltip="flaws /flɔː/ n.瑕疵，缺点；一阵狂风；短暂的风暴；裂缝，裂纹">flaws</span>, but America cannot afford to turn them away.■ This article was downloaded by zlibrary from https://www.economist.com//special-report/2026/06/01/like-it-or-not-hedge-funds- are-a-permanent-part-of-the-treasury-market</p>
+<div class="article-separator"></div>
+<div class="article-header">Special report · Special report | Balancing Act</div>
+<p>Partners in prime: The Fed and <span class="annot" data-tooltip="treasury /'treʒəri/ n. 财政部；国库，金库；宝库">Treasury</span>’s new relationship Scott Bessent and the new Fed chair have talked about co-ordinating their work June 4th 2026 NO FINANCIAL institution or government agency matters more to the Treasury market than does the <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">Federal</span> Reserve. The <span class="annot" data-tooltip="central /'sentrəl/ adj. 中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的副 词: centrally">central</span> bank’s responsibility for financial stability and monetary policy has made it a <span class="annot" data-tooltip="mammoth /'mæməθ/ n. 长毛象；猛犸象；庞然大物adj. 猛犸似的；巨大的，庞大的">mammoth</span> buyer of <span class="annot" data-tooltip="treasuries /'treʒəri/ n. 财政部；国库，金库；宝库">Treasuries</span> in this century, <span class="annot" data-tooltip="snapping /snæp/ vt. 猛咬；突然折断，拉断；啪地关上vi. 咬；厉声说；咯嗒一声关上n. 猛咬；劈啪声；突然折断adj. 突然的SNAPabb">snapping</span> up trillions of dollars’ <span class="annot" data-tooltip="worth /wɜːrθ/ adj. 值…的n. 价值；财产时 态: worthed, worthing, worths">worth</span> after the global financial crisis in 2007-09 and again during the covid-19 <span class="annot" data-tooltip="pandemic /pæn'demɪk/ adj. （疾病）在全国（或世界）流行的">pandemic</span>. As a result, the Fed’s balance-sheet is <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> larger than it once was: it held less than $1trn in <span class="annot" data-tooltip="assets /'æset/ n. 资产；有用的东西；有利条件；优点">assets</span> two <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span> ago, but now wallows in around $6.7trn.</p>
+<p>Kevin Warsh, who became <span class="annot" data-tooltip="chairman /'tʃermən/ n. 主席，会长；董事长时 态: chairmanned, chairmanning, chairmans">chairman</span> of the Fed in May, <span class="annot" data-tooltip="considers /kən'sɪdər/ vt. & vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及时 态: considered, considering, ">considers</span> this an unhealthy aberration. He argues that the expansion of the Fed’s balance- sheet has mostly enriched people who were already wealthy (because when the Fed <span class="annot" data-tooltip="splashes /splæʃ/ n. 溅泼声溅上的斑点(光、色等的)斑点溅泼的量vt. 使(液体)溅起vi. (指液体)溅落时 态: splashed, sp">splashes</span> money around in financial markets, the prices of the <span class="annot" data-tooltip="assets /'æset/ n. 资产；有用的东西；有利条件；优点">assets</span> held by individuals go up). Perhaps more worrying, he says, the Fed’s repeated <span class="annot" data-tooltip="interventions /ˌɪntər'venʃn/ n. 介入, 干涉, 干预">interventions</span> <span class="annot" data-tooltip="muddy /'mʌdi/ adj. 泥泞的；模糊的；混乱的vt. 使沾上泥；使污浊；把…弄糊涂vi. 变得泥泞；沾满烂泥比较级: muddier, mudd">muddy</span> important market signals, and make it more difficult for investors to discern creditworthy borrowers from risky ones. He dreams of a Fed with a <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> smaller role in financial markets. In Scott Bessent, the <span class="annot" data-tooltip="treasury /'treʒəri/ n. 财政部；国库，金库；宝库">treasury</span> <span class="annot" data-tooltip="secretary /'sekrəteri/ n. 秘书书记部长, 大臣形容词: secretarial">secretary</span>, Mr Warsh finds a partner with similar views. Mr Bessent argued last year that the Fed’s balance-sheet expansion had <span class="annot" data-tooltip="strayed /streɪ/ vi. 走失，离群；迷路走入歧途；犯罪n. 走失的动物adj. 独自的；零散的时 态: strayed，straying，str">strayed</span> into <span class="annot" data-tooltip="territory /'terətɔːri/ n. 领土, 版图管区, 营业地区地盘, 领域, 范围">territory</span> usually <span class="annot" data-tooltip="reserved /rɪ'zɜːrvd/ adj. 保留的，预订的；缄默的，冷淡的；包租的v. 保留（reserve的过去分词）副 词: reservedly">reserved</span> for elected policymakers—showering favour on, say, the biggest firms that borrow in bond markets, while potentially making it harder for small firms to find <span class="annot" data-tooltip="credit /'kredɪt/ n. 赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)时 态:">credit</span> to expand. Mr Bessent could <span class="annot" data-tooltip="pursue /pər'suː/ vt. 从事；追赶；继续；纠缠vi. 追赶；继续进行时 态: pursued, pursuing, pursues">pursue</span> a <span class="annot" data-tooltip="strategy /'strætədʒi/ n. 战略学, 兵法战略, 策略策略, 计谋">strategy</span> that would both limit the Fed’s role in markets and reduce America’s burgeoning interest bill. Mr Bessent currently hopes for the Treasury to <span class="annot" data-tooltip="issue /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issue</span> more short-term debt (known as bills), since the interest the Treasury has to pay on such bonds is <span class="annot" data-tooltip="typically /'tɪpɪkli/ adv. 代表性地;作为特色地;典型地">typically</span> lower. That might help with the interest bill, but it would make America’s debt far more <span class="annot" data-tooltip="vulnerable /'vʌlnərəbl/ adj. 易受伤的, 脆弱的, 敏感的">vulnerable</span> to changes in interest rates, known as “rollover risk”. If the Fed wanted to look less meddling, the natural thing to do would be to rejig its holdings to match the maturities of the <span class="annot" data-tooltip="overall /ˌoʊvər'ɔːl/ adj. 总体的；全面的；综合的全面考虑的adv. 大体上，总的来说一切包括在内，全部的n. 长罩衣工装裤；工作裤">overall</span> stock of <span class="annot" data-tooltip="treasuries /'treʒəri/ n. 财政部；国库，金库；宝库">Treasuries</span> outstanding. That would leave it holding less long-term debt and more bills. A retreat from long-term bonds would probably have the opposite effect to that of its buying spree: interest rates on such bonds would have to go up to <span class="annot" data-tooltip="persuade /pər'sweɪd/ vt. & vi. 说服, 劝告时 态: persuaded, persuading, persuades">persuade</span> private investors to pick up the <span class="annot" data-tooltip="slack /slæk/ adj. 松(弛)的清淡的，不活跃的懈怠的，马虎的vt. & vi. 懈怠；偷懒减速；放松n. (绳索等)松弛部分宽松裤比较级: ">slack</span>. The Fed’s share of the Treasury market has already been declining, from 26% of Treasuries in 2022 to just 12% today. (The Fed’s balance-sheet has shrunk too, as it has let bonds it holds mature without replacing them, at the same time as the <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">federal</span> debt has surged.) If the government’s borrowing costs <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span>, so do those of everyone with a loan in dollars. Researchers like Andrew Lee Smith of the Kansas City Fed and Victor Valcarcel of the University of <span class="annot" data-tooltip="texas /'teksəs/ n. 德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室">Texas</span> at Dallas have shown how <span class="annot" data-tooltip="reductions /rɪ'dʌkʃn/ n. 减少，缩小；减少的量，降价">reductions</span> in the Fed’s holdings of Treasuries have led to higher long-term</p>
+<p>interest rates, as investors face a less liquid <span class="annot" data-tooltip="treasury /'treʒəri/ n. 财政部；国库，金库；宝库">Treasury</span> market and a little less certainty about the future. The increase seems to have come through the term <span class="annot" data-tooltip="premium /'priːmiəm/ n. 奖金，津贴；加价；附加费；保险费；额外费用adj. （品质）高级的；优质的，顶级的">premium</span>, a tough-to-measure <span class="annot" data-tooltip="residual /rɪ'zɪdʒuəl/ adj. 存留下来的;剩余的;残余的副 词: residually">residual</span> that <span class="annot" data-tooltip="compensates /'kɑːmpenseɪt/ vt. & vi. 补偿, 报酬时 态: compensated, compensating, compensates">compensates</span> investors for the various <span class="annot" data-tooltip="uncertainties /ʌn'sɜːrtnti/ n. 无把握;不确定;变化不定无把握、不确定的事物">uncertainties</span> of holding long-term bonds. Having a less active buyer in the Fed also increases risks to financial stability should there be a selling panic in <span class="annot" data-tooltip="treasuries /'treʒəri/ n. 财政部；国库，金库；宝库">Treasuries</span>. Funding markets seized up in September 2019, causing the interest rates on overnight loans between large financial firms (known as the repo market) to <span class="annot" data-tooltip="spike /spaɪk/ n. 尖头，尖刺，（尤指金属的）尖状物（某些运动鞋上的）防滑鞋钉，钉鞋（spikes）（通常在指下跌前）非常高的数量，价格或程">spike</span> <span class="annot" data-tooltip="dramatically /drə'mætɪkli/ adv. 戏剧性地;引人注目地">dramatically</span>, a problem which some economists attributed to the <span class="annot" data-tooltip="shrinking /ʃrɪŋk/ vt. & vi. 收缩；退缩时 态: shrank ，shrunk shrunk，shrunken shrinking，shr">shrinking</span> of the Fed’s balance-sheet. And the same market looked stressed again in the final <span class="annot" data-tooltip="quarter /'kwɔːrtər/ n. 四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一时 ">quarter</span> of last year, after the Fed had stopped shrinking its balance- sheet. In a moment of extreme dysfunction, most analysts believe the Fed would quickly reassert itself to bring stability back to the Treasury market. Mr Warsh himself has made clear that these moments are when the case for <span class="annot" data-tooltip="intervention /ˌɪntər'venʃn/ n. 介入, 干涉, 干预">intervention</span> is most <span class="annot" data-tooltip="compelling /kəm'pelɪŋ/ adj. 引人入胜的;扣人心弦的非常强烈的;不可抗拒的令人信服的，有说服力的">compelling</span>. “The Fed is always going to step in and do what it can, even if it <span class="annot" data-tooltip="blows /bloʊ/ n. 吹；殴打；打击vi. 风吹；喘气vt. 风吹时 态: blew blown blowing, blows">blows</span> up the balance-sheet,” says Darrell Duffie, an economist at Stanford University. “But even with all guns <span class="annot" data-tooltip="blazing /'bleɪzɪŋ/ adj. 燃烧的；强烈的；闪耀的adv. 非常v. 燃烧；闪耀；迸发；公开（blaze的ing形式）">blazing</span> it can’t stop Treasury-market dysfunction. It can only make it less bad.” Mr Duffie notes that despite the Fed’s intervention during the <span class="annot" data-tooltip="dash /dæʃ/ n. 破折号；冲撞vt. 使…破灭；猛撞；泼溅vi. 猛冲；撞击DASHabbr. Drone Antisubmarine H">dash</span> for cash in 2020, it took a <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of weeks before the market returned to a state of relative normality. Nellie Liang, a Treasury official during the Biden administration, says that in a fresh crisis the Fed’s job would be complicated by a different set of economic conditions. When the Fed began buying Treasuries in huge volumes in March 2020, that suited both its monetary-policy and financial- stability <span class="annot" data-tooltip="objectives /əb'dʒektɪv/ n. 目标; 目的adj. 客观的; 不带偏见的副 词: objectively">objectives</span>: soothing a <span class="annot" data-tooltip="chaotic /keɪ'ɑːtɪk/ adj. 混乱的，无秩序的；混沌的">chaotic</span> market while boosting an economy in danger of freefall owing to the <span class="annot" data-tooltip="pandemic /pæn'demɪk/ adj. （疾病）在全国（或世界）流行的">pandemic</span>. Today, that would not be the case. <span class="annot" data-tooltip="inflation /ɪn'fleɪʃn/ n. (充气而引起的)膨胀通货膨胀">Inflation</span> remains <span class="annot" data-tooltip="stubbornly /'stʌbərn/ adj. 顽固的；固执的难以移动、去除、医治等比较级: stubborner，stubbornest">stubbornly</span> above the Fed’s target of 2%. If a Treasury-market <span class="annot" data-tooltip="blow /bloʊ/ n. 吹；殴打；打击vi. 风吹；喘气vt. 风吹时 态: blew blown blowing, blows">blow</span>-up were to come at the same time as a supply shock—a <span class="annot" data-tooltip="slump /slʌmp/ vi. 大幅度下降, 暴跌沉重或突然地落下[倒下]n. 萧条期〈美〉(个人、球队等的)低潮状态时 态: slumped, slu">slump</span> driven by sudden trade <span class="annot" data-tooltip="restrictions /rɪ'strɪkʃn/ n. 约束，限制管制，限定；法律，规章">restrictions</span>, or a <span class="annot" data-tooltip="surge /sɜːrdʒ/ n. (情感的) 突发，涌现，突然出现（数量的）急剧上升，激增；大量；一大批奔涌向前；突然的向上运动（电流）浪涌v. 涌；汹涌">surge</span> in <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span> prices—the Fed’s goals would be in conflict.</p>
+<p>Mr Warsh has talked about the Fed and the <span class="annot" data-tooltip="treasury /'treʒəri/ n. 财政部；国库，金库；宝库">Treasury</span> working together to avoid a clash of monetary and <span class="annot" data-tooltip="fiscal /'fɪskl/ adj. 国库的；会计的，财政的副 词: fiscally">fiscal</span> policy. That may mean a formal arrangement whereby they co-ordinate how much debt the Treasury plans to <span class="annot" data-tooltip="issue /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issue</span>, at what maturities, and what debt the <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">Federal</span> Reserve plans to buy. But even without a formal understanding, there are ways in which the Fed’s and Treasury’s priorities may dovetail with one another. The Treasury debt held by the Federal Reserve has a much longer average maturity than the market more generally. If Mr Warsh nurses fears that the Fed is badly distorting financial markets, then holding more short-term Treasury debt and letting long-term bonds mature would more <span class="annot" data-tooltip="evenly /'iːvnli/ adv. 平坦地；均匀地；平等地；平衡地">evenly</span> spread the Fed’s large <span class="annot" data-tooltip="footprint /'fʊtprɪnt/ n. (尤指软地上的)脚印，足迹；(地板上的)脚印，鞋印(建筑物或设备，尤指计算机)占用的空间 (尤指来自卫星的)广播信号覆盖">footprint</span>. <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">Although</span> Mr Bessent criticised his predecessor, Janet Yellen, for raising the share of bills in total debt issuance from around 15% to 22%, the path he seems inclined to <span class="annot" data-tooltip="pursue /pər'suː/ vt. 从事；追赶；继续；纠缠vi. 追赶；继续进行时 态: pursued, pursuing, pursues">pursue</span> looks likely to push it even higher still. If the amount of longer-dated debt issued by the Treasury does not increase, analysts at JPMorgan Chase, a bank, suggest that the percentage of issuance accounted for by bills would <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> to 28% by the end of 2028. The share of bills was last so high in 2009 (see chart); the Treasury market was then around half its current size relative to the American economy.</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>treasuries</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>transactions</td><td>/træn'zækʃn/ n.</td><td>处理，办理，执行(一笔)交易；(一项)事务</td></tr>
+<tr><td>alleviate</td><td>/ə'liːvieɪt/ vt.</td><td>减轻, 缓解, 缓和, alleviating, alleviates</td></tr>
+<tr><td>reliable</td><td>/rɪ'laɪəbl/ adj.</td><td>可靠的, 可信赖的</td></tr>
+<tr><td>collateral</td><td>/kə'lætərəl/ n.</td><td>附属担保品adj. 相关的</td></tr>
+<tr><td>treasury</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>picture</td><td>/'pɪktʃər/ n.</td><td>图画，肖像；照片(生动的)描述，写照影片；电影；画面美景，景色情况，事态，局面vt. 绘画；描绘想象，picturing，pictures</td></tr>
+<tr><td>leverage</td><td>/'levərɪdʒ/ n.</td><td>（能够操控形势的）影响力，手段，优势 杠杆力；杠杆作用v. 举债经营；为…融资有效利用某物（资源、优势、工具等）, leveraging, leverages</td></tr>
+<tr><td>asset</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>bingeing</td><td>/bɪndʒ/ n.</td><td>狂欢，狂闹；放纵vt. 放纵vi. 狂饮作乐；大吃大喝, binging, bingeing binges</td></tr>
+<tr><td>hedge</td><td>/hedʒ/ vt.</td><td>用树篱笆围住；避免作正面答复vi. 用树篱围住；避免作正面答复n. 树篱；障碍, hedging, hedges</td></tr>
+<tr><td>proposals</td><td>/prə'poʊzl/ n.</td><td>提议，建议；求婚</td></tr>
+<tr><td>stein</td><td>/staɪn/ n.</td><td>(容量约为一品脱的)陶质(或玻璃)啤酒杯Stein斯坦(姓氏)</td></tr>
+<tr><td>enter</td><td>/'entər/ vt.</td><td>& vi. 进入, 进去参加, 加入登记, 登录, entering, enters</td></tr>
+<tr><td>dumping</td><td>— n.</td><td>倾销；倾泻v. 倾倒（dump的ing形式）</td></tr>
+<tr><td>essentially</td><td>/ɪ'senʃəli/ adv.</td><td>本质上;根本上必需的</td></tr>
+<tr><td>replicating</td><td>/'replɪkə/ n.</td><td>复制品</td></tr>
+<tr><td>blow</td><td>/bloʊ/ n.</td><td>吹；殴打；打击vi. 风吹；喘气vt. 风吹, blows</td></tr>
+<tr><td>affecting</td><td>/ə'fekt/ vt.</td><td>影响；假装；感动；感染vi. 倾向；喜欢n. 情感；引起感情的因素, affecting, affects</td></tr>
+<tr><td>choosy</td><td>/'tʃuːzi/ adj.</td><td>好挑剔的, choosiest</td></tr>
+<tr><td>intermediary</td><td>/ˌɪntər'miːdieri/ n.</td><td>中间人;调解人</td></tr>
+<tr><td>actually</td><td>/'æktʃuəl/ adj.</td><td>真实的，实际的；现行的，目前的</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>enormous</td><td>/ɪ'nɔːrməs/ adj.</td><td>巨大的, 极大的, 庞大的</td></tr>
+<tr><td>treasury</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>hedge</td><td>/hedʒ/ vt.</td><td>用树篱笆围住；避免作正面答复vi. 用树篱围住；避免作正面答复n. 树篱；障碍, hedging, hedges</td></tr>
+<tr><td>flaws</td><td>/flɔː/ </td><td>n.瑕疵，缺点；一阵狂风；短暂的风暴；裂缝，裂纹</td></tr>
+<tr><td>treasury</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>central</td><td>/'sentrəl/ adj.</td><td>中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的</td></tr>
+<tr><td>mammoth</td><td>/'mæməθ/ n.</td><td>长毛象；猛犸象；庞然大物adj. 猛犸似的；巨大的，庞大的</td></tr>
+<tr><td>treasuries</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>snapping</td><td>/snæp/ vt.</td><td>猛咬；突然折断，拉断；啪地关上vi. 咬；厉声说；咯嗒一声关上n. 猛咬；劈啪声；突然折断adj. 突然的SNAPabbr. Satellite Navigat</td></tr>
+<tr><td>worth</td><td>/wɜːrθ/ adj.</td><td>值…的n. 价值；财产, worthing, worths</td></tr>
+<tr><td>pandemic</td><td>/pæn'demɪk/ adj.</td><td>（疾病）在全国（或世界）流行的</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>assets</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>chairman</td><td>/'tʃermən/ n.</td><td>主席，会长；董事长, chairmanning, chairmans</td></tr>
+<tr><td>considers</td><td>/kən'sɪdər/ vt.</td><td>& vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及, considering, considers</td></tr>
+<tr><td>splashes</td><td>/splæʃ/ n.</td><td>溅泼声溅上的斑点(光、色等的)斑点溅泼的量vt. 使(液体)溅起vi. (指液体)溅落, splashing, splashes</td></tr>
+<tr><td>assets</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>interventions</td><td>/ˌɪntər'venʃn/ n.</td><td>介入, 干涉, 干预</td></tr>
+<tr><td>muddy</td><td>/'mʌdi/ adj.</td><td>泥泞的；模糊的；混乱的vt. 使沾上泥；使污浊；把…弄糊涂vi. 变得泥泞；沾满烂泥, muddiest</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>treasury</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>secretary</td><td>/'sekrəteri/ n.</td><td>秘书书记部长, 大臣</td></tr>
+<tr><td>strayed</td><td>/streɪ/ vi.</td><td>走失，离群；迷路走入歧途；犯罪n. 走失的动物adj. 独自的；零散的，straying，strays</td></tr>
+<tr><td>territory</td><td>/'terətɔːri/ n.</td><td>领土, 版图管区, 营业地区地盘, 领域, 范围</td></tr>
+<tr><td>reserved</td><td>/rɪ'zɜːrvd/ adj.</td><td>保留的，预订的；缄默的，冷淡的；包租的v. 保留（reserve的过去分词）</td></tr>
+<tr><td>credit</td><td>/'kredɪt/ n.</td><td>赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)，crediting，credits</td></tr>
+<tr><td>pursue</td><td>/pər'suː/ vt.</td><td>从事；追赶；继续；纠缠vi. 追赶；继续进行, pursuing, pursues</td></tr>
+<tr><td>strategy</td><td>/'strætədʒi/ n.</td><td>战略学, 兵法战略, 策略策略, 计谋</td></tr>
+<tr><td>issue</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>typically</td><td>/'tɪpɪkli/ adv.</td><td>代表性地;作为特色地;典型地</td></tr>
+<tr><td>vulnerable</td><td>/'vʌlnərəbl/ adj.</td><td>易受伤的, 脆弱的, 敏感的</td></tr>
+<tr><td>overall</td><td>/ˌoʊvər'ɔːl/ adj.</td><td>总体的；全面的；综合的全面考虑的adv. 大体上，总的来说一切包括在内，全部的n. 长罩衣工装裤；工作裤</td></tr>
+<tr><td>treasuries</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>persuade</td><td>/pər'sweɪd/ vt.</td><td>& vi. 说服, 劝告, persuading, persuades</td></tr>
+<tr><td>slack</td><td>/slæk/ adj.</td><td>松(弛)的清淡的，不活跃的懈怠的，马虎的vt. & vi. 懈怠；偷懒减速；放松n. (绳索等)松弛部分宽松裤，slackest</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>texas</td><td>/'teksəs/ n.</td><td>德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室)</td></tr>
+<tr><td>reductions</td><td>/rɪ'dʌkʃn/ n.</td><td>减少，缩小；减少的量，降价</td></tr>
+<tr><td>treasury</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>premium</td><td>/'priːmiəm/ n.</td><td>奖金，津贴；加价；附加费；保险费；额外费用adj. （品质）高级的；优质的，顶级的</td></tr>
+<tr><td>residual</td><td>/rɪ'zɪdʒuəl/ adj.</td><td>存留下来的;剩余的;残余的</td></tr>
+<tr><td>compensates</td><td>/'kɑːmpenseɪt/ vt.</td><td>& vi. 补偿, 报酬, compensating, compensates</td></tr>
+<tr><td>uncertainties</td><td>/ʌn'sɜːrtnti/ n.</td><td>无把握;不确定;变化不定无把握、不确定的事物</td></tr>
+<tr><td>treasuries</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>spike</td><td>/spaɪk/ n.</td><td>尖头，尖刺，（尤指金属的）尖状物（某些运动鞋上的）防滑鞋钉，钉鞋（spikes）（通常在指下跌前）非常高的数量，价格或程度v. 拒绝刊登，弃置（文章）不用将烈酒</td></tr>
+<tr><td>dramatically</td><td>/drə'mætɪkli/ adv.</td><td>戏剧性地;引人注目地</td></tr>
+<tr><td>shrinking</td><td>/ʃrɪŋk/ vt.</td><td>& vi. 收缩；退缩，shrunk shrunk，shrunken shrinking，shrinks</td></tr>
+<tr><td>quarter</td><td>/'kwɔːrtər/ n.</td><td>四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一, quartering, quarters</td></tr>
+<tr><td>intervention</td><td>/ˌɪntər'venʃn/ n.</td><td>介入, 干涉, 干预</td></tr>
+<tr><td>compelling</td><td>/kəm'pelɪŋ/ adj.</td><td>引人入胜的;扣人心弦的非常强烈的;不可抗拒的令人信服的，有说服力的</td></tr>
+<tr><td>blows</td><td>/bloʊ/ n.</td><td>吹；殴打；打击vi. 风吹；喘气vt. 风吹, blows</td></tr>
+<tr><td>blazing</td><td>/'bleɪzɪŋ/ adj.</td><td>燃烧的；强烈的；闪耀的adv. 非常v. 燃烧；闪耀；迸发；公开（blaze的ing形式）</td></tr>
+<tr><td>dash</td><td>/dæʃ/ n.</td><td>破折号；冲撞vt. 使…破灭；猛撞；泼溅vi. 猛冲；撞击DASHabbr. Drone Antisubmarine Helicopter 无线电遥控反潜艇直升</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>objectives</td><td>/əb'dʒektɪv/ n.</td><td>目标; 目的adj. 客观的; 不带偏见的</td></tr>
+<tr><td>chaotic</td><td>/keɪ'ɑːtɪk/ adj.</td><td>混乱的，无秩序的；混沌的</td></tr>
+<tr><td>pandemic</td><td>/pæn'demɪk/ adj.</td><td>（疾病）在全国（或世界）流行的</td></tr>
+<tr><td>inflation</td><td>/ɪn'fleɪʃn/ n.</td><td>(充气而引起的)膨胀通货膨胀</td></tr>
+<tr><td>stubbornly</td><td>/'stʌbərn/ adj.</td><td>顽固的；固执的难以移动、去除、医治等，stubbornest</td></tr>
+<tr><td>blow</td><td>/bloʊ/ n.</td><td>吹；殴打；打击vi. 风吹；喘气vt. 风吹, blows</td></tr>
+<tr><td>slump</td><td>/slʌmp/ vi.</td><td>大幅度下降, 暴跌沉重或突然地落下[倒下]n. 萧条期〈美〉(个人、球队等的)低潮状态, slumping, slumps</td></tr>
+<tr><td>restrictions</td><td>/rɪ'strɪkʃn/ n.</td><td>约束，限制管制，限定；法律，规章</td></tr>
+<tr><td>surge</td><td>/sɜːrdʒ/ n.</td><td>(情感的) 突发，涌现，突然出现（数量的）急剧上升，激增；大量；一大批奔涌向前；突然的向上运动（电流）浪涌v. 涌；汹涌；涌动(感情、感觉) 突袭，涌动，突发(</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>treasury</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>fiscal</td><td>/'fɪskl/ adj.</td><td>国库的；会计的，财政的</td></tr>
+<tr><td>issue</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>evenly</td><td>/'iːvnli/ adv.</td><td>平坦地；均匀地；平等地；平衡地</td></tr>
+<tr><td>footprint</td><td>/'fʊtprɪnt/ n.</td><td>(尤指软地上的)脚印，足迹；(地板上的)脚印，鞋印(建筑物或设备，尤指计算机)占用的空间 (尤指来自卫星的)广播信号覆盖区</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>pursue</td><td>/pər'suː/ vt.</td><td>从事；追赶；继续；纠缠vi. 追赶；继续进行, pursuing, pursues</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day29.html" class="nav-btn">← Day 29</a>
+  <a href="day31.html" class="nav-btn">Day 31 →</a>
+</div>
+
+<div class="progress">📖 Day 30 of 46</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-06-06</div>
+
+</body>
+</html>

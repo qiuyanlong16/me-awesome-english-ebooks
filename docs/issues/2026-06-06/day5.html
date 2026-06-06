@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leaders | The even more beautiful game</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-06-06</div>
+
+<h1 class="article-title">Leaders | The even more beautiful game</h1>
+<div class="article-section">Leaders</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>There’s nothing like the promise of permanent residency to make sport <span class="annot" data-tooltip="exciting /ɪk'saɪtɪŋ/ adj. 使人激动的；令人兴奋的v. 激动；唤起；刺激（excite的ing形式）">exciting</span>. As well as the usual yellow and red cards, the <span class="annot" data-tooltip="referees /ˌrefə'riː/ n. 裁判员；调解人；介绍人vi. 担任裁判；仲裁vt. 为…当裁判；调停时 态: refereed, refereeing,">referees</span> will be able to award a green card to any player who dribbles past an <span class="annot" data-tooltip="opponent /ə'poʊnənt/ n. 对手, 敌手；反对者名 词: opponency">opponent</span> in games played on American soil. One of the most memorable figures in the World Cup was a Cameroonian player called <span class="annot" data-tooltip="roger /'rɑdʒɚ/ int. 好；知道了n. 罗杰（男子名）rogerint. (无线电通讯答语)已收到ROGERabbr. Remotely Ope">Roger</span> Milla, who did a dance by the corner flag when he scored. If that makes football sound boring, our point is made. Still, a creative goal celebration can be fun; to <span class="annot" data-tooltip="encourage /ɪn'kɜːrɪdʒ/ vt. 鼓励, 激励促进, 助长, 激发时 态: encouraged, encouraging, encourages">encourage</span> them, the <span class="annot" data-tooltip="referee /ˌrefə'riː/ n. 裁判员；调解人；介绍人vi. 担任裁判；仲裁vt. 为…当裁判；调停时 态: refereed, refereeing,">referee</span> can rescind a yellow card for <span class="annot" data-tooltip="foul /faʊl/ adj. 邪恶的；污秽的；犯规的；淤塞的vt. 弄脏；犯规；淤塞；缠住，妨害vi. 犯规；缠结；腐烂n. 犯规；缠绕adv. 违反">foul</span> play if they are particularly <span class="annot" data-tooltip="imaginative /ɪ'mædʒɪnətɪv/ adj. 富于想像力的; 运用想像力的副 词: imaginatively">imaginative</span>. Competition is always a good thing, and that principle can be applied within matches by having two balls on the field at once. This will mainly be fun because of the effect that it will have on referees and commentators. In extremis, a <span class="annot" data-tooltip="panel /'pænl/ n. 仪表板；嵌板；座谈小组，全体陪审员vt. 嵌镶板时 态: paneled, panelled paneling, pan">panel</span> of video assistant referees can award a penalty against a team for being too boring. Even the best teams spend inordinate amounts of time passing the ball from one side of the <span class="annot" data-tooltip="pitch /pɪtʃ/ n. 球场音调，音高程度；强度；高度沥青颠簸斜度，坡度商贩摊位，艺人表演场地推销商品的话vt. 投，掷，扔为…定音调用人们易懂">pitch</span> to the other, <span class="annot" data-tooltip="apparently /ə'pærəntli/ adv. 显然地表面上,似乎">apparently</span> unaware that the goal is in front of them. They should be punished. It is just possible that these ideas will not be <span class="annot" data-tooltip="adopted /ə'dɑːpt/ vt. 收养采用, 采纳, 采取正式接受, 通过时 态: adopted, adopting, adopts">adopted</span> before the World Cup starts. Bold thinking often takes time to become accepted. In the meantime, there are some consolations. It could be six and a half weeks of golf. ■ Subscribers to The Economist can sign up to our Opinion newsletter, which brings together the best of our leaders, <span class="annot" data-tooltip="columns /'kɑːləm/ n. 圆柱，柱形物；纵队，列；专栏形容词: columned">columns</span>, guest <span class="annot" data-tooltip="essays /'eseɪ/ n. 散文, 随笔">essays</span> and reader <span class="annot" data-tooltip="correspondence /ˌkɔːrə'spɑːndəns/ n. 信件, 函件通信, 通信联系一致, 相似">correspondence</span>. This article was downloaded by zlibrary from https://www.economist.com//leaders/2026/06/04/how-to-make-football-more-exciting</p>
+<div class="article-separator"></div>
+<div class="article-header">Letters · Letters | A selection of correspondence</div>
+<p>Are most <span class="annot" data-tooltip="celebrity /sə'lebrəti/ n. (尤指娱乐界的)名人, 名流名声, 名誉">celebrity</span> book-clubs irritating? Also this week, SpaceX, Star Wars and cinema production, <span class="annot" data-tooltip="urban /'ɜːrbən/ adj. 城市的；住在都市的">urban</span> trees, management waffle, dressing for the City June 4th 2026 Letters are welcome via email to letters@economist.comFind out more about how we <span class="annot" data-tooltip="process /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">process</span> your letter “From red carpet to reading list” (May 9th) noted that most celebrity book- clubs are irritating, but that such clubs make reading less lonely, turning “a <span class="annot" data-tooltip="solitary /'sɑːləteri/ adj. 单独的; 独居的; 无伴的惟一的人迹罕至的; 幽静的副 词: solitarily">solitary</span> experience…into a collective one”, as one <span class="annot" data-tooltip="academic /ˌækə'demɪk/ adj. 学院的；学术的；理论的n. 大学生，大学教师；学者副 词: academically">academic</span> put it. That is <span class="annot" data-tooltip="precisely /prɪ'saɪsli/ adv. 精确地；恰好；细心地对，的确如此">precisely</span> the function of Charmaghz, a non-profit that works with girls in <span class="annot" data-tooltip="afghanistan /æf'ɡænɪstæn/ n. 阿富汗">Afghanistan</span>. Founded by an <span class="annot" data-tooltip="afghan n. 阿富汗语；阿富汗人adj. 阿富汗人的；阿富汗的afghann. 一种宽松的羊皮外衣">Afghan</span> girls’ education activist, Charmaghz runs online book clubs where the Taliban has banned girls from <span class="annot" data-tooltip="secondary /'sekənderi/ adj. 次要的, 次等的中级的, 第二的副 词: secondarily">secondary</span> school and university.</p>
+<p>Girls and women in <span class="annot" data-tooltip="afghanistan /æf'ɡænɪstæn/ n. 阿富汗">Afghanistan</span> are now <span class="annot" data-tooltip="routinely /ruː'tiːnli/ adv. 常规地,惯常地老一套地,令人厌烦地">routinely</span> excluded from most public spaces. What they lack is the company of other readers their <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> age, and a setting in which their views on a novel, or anything else, are worthy. A weekly 90-minute session led by <span class="annot" data-tooltip="afghan n. 阿富汗语；阿富汗人adj. 阿富汗人的；阿富汗的afghann. 一种宽松的羊皮外衣">Afghan</span> women, discussing “The Adventures of Tom <span class="annot" data-tooltip="sawyer /'sɔɪə/ n. 锯木匠；显赫天牛；漂流水中的树木">Sawyer</span>” or “Around the World in 80 Days”, supplies both. You said that critics question the seriousness of many book clubs, in particular those led by <span class="annot" data-tooltip="celebrities /sə'lebrəti/ n. (尤指娱乐界的)名人, 名流名声, 名誉">celebrities</span>. Seriousness is in no short supply among our participants. They are among the most determined readers I know, despite and probably because of the barriers they face to get hold of a book at all. Liz RobinsonChief executiveCharmaghzLondon SpaceX “is a marvel of free markets” and “<span class="annot" data-tooltip="capitalism /'kæpɪtəlɪzəm/ n. 资本主义(制度)资本(或财富)的拥有资本(私人占有和生产盈利)的支配地位">capitalism</span> at its most remarkable”, you said in your leader on the rocket firm’s forthcoming initial public offering (“A Starship enterprise”, May 23rd). This <span class="annot" data-tooltip="overlooks /ˌoʊvər'lʊk/ vt.忽略；俯瞰；远眺；不计较，宽恕；施魔法于；监督；检查n.忽视；眺望；从高处能看到的景色时 态: overlooke">overlooks</span> the <span class="annot" data-tooltip="critical /'krɪtɪkl/ adj. 批评的，爱挑剔的；决定性的；危险的；临界的；鉴定的；评论的副 词: critically">critical</span> role that government played in getting SpaceX off the ground. In 2008 the fledgling <span class="annot" data-tooltip="startup /ˈstɑrtˈʌp/ n. 启动；开办">startup</span> was <span class="annot" data-tooltip="heading /'hedɪŋ/ n. 标题；信头；（足球）头球v. 用头顶（head的ing形式）">heading</span> for bankruptcy until NASA awarded it a $1.6bn <span class="annot" data-tooltip="contract /'kɑːntrækt/ vi. 感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约时 态: contracted, contracting, c">contract</span>, thereby providing a trajectory-changing <span class="annot" data-tooltip="revenue /'revənuː/ n. 收入，收益；财政收入，税收">revenue</span> stream. American taxpayers absorbed much of the early risk that private investors would not. SpaceX’s success is impressive, but it is a <span class="annot" data-tooltip="triumph /'traɪʌmf/ n. 胜利，成功巨大的成就[成功]vi. 获胜，得胜；克服时 态: triumphed，triumphing，triumphs">triumph</span> of state- supported capitalism more than a free-market marvel. T. Michael SpencerWashington, DC Your account of how Star Wars has <span class="annot" data-tooltip="descended /dɪ'send/ vi. 下降；下来；遗传；屈尊；下去vt. 下去；沿…向下时 态: descended, descending, descend">descended</span> from cinematic event to serialised filler deserves a wider diagnosis (“Yodanomics”, May 23rd). The <span class="annot" data-tooltip="paradox /'pærədɑːks/ n. 似非而是的论点；悖论，反论；自相矛盾的人或事形容词: paradoxical">paradox</span> of our cultural moment is that the means of producing <span class="annot" data-tooltip="novelty /'nɑːvlti/ n. 新颖; 新奇性新奇的人[事物]新颖小巧而价廉的物品">novelty</span> have never been so abundant (<span class="annot" data-tooltip="generative /'dʒenərətɪv/ adj. 能生产的, 有生产力的生殖的">generative</span> tools, distribution platforms, and so on) and yet the cultural <span class="annot" data-tooltip="industries /'ɪndəstri/ n. 工业；产业；勤勉">industries</span> have rarely been so <span class="annot" data-tooltip="timid /'tɪmɪd/ adj. 胆小的羞怯的比较级: timider, timidest">timid</span>. Disney’s retreat from Tatooine to television is not idiosyncratic but symptomatic. Data-driven greenlighting rewards the <span class="annot" data-tooltip="legible /'ledʒəbl/ adj. 易读的；清晰的；易辨认的副 词: legibly">legible</span> past over the speculative future. <span class="annot" data-tooltip="algorithmic adj. 算法的,规则系统的">Algorithmic</span> recommendation <span class="annot" data-tooltip="collapses /kə'læps/ vi. 倒塌；瓦解；暴跌vt. 使倒塌，使崩溃；使萎陷n. 倒塌；失败；衰竭时 态: collapsed, collapsing">collapses</span> <span class="annot" data-tooltip="taste /teɪst/ n. 滋味, 味道鉴赏力爱好, 嗜好vt. & vi. 尝, 品尝, 尝到vt. 吃, 喝体验, 领略时 态: tasted,">taste</span> onto a handful of safe attractors. Capital markets, anxious about subscriber churn, prefer <span class="annot" data-tooltip="extending /ɪk'stend/ vt. & vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出时 态:">extending</span> a known universe to funding an unknown one. The result is an ecosystem in</p>
+<p>which the cost of failure has become unbearable just as the cost of production has collapsed: an economy of <span class="annot" data-tooltip="infinite /'ɪnfɪnət/ adj. 无限的，无穷的；无数的；极大的n. 无限；无限的东西（如空间，时间）；无穷大副 词: infinitely">infinite</span> remixes of finite ideas. <span class="annot" data-tooltip="generative /'dʒenərətɪv/ adj. 能生产的, 有生产力的生殖的">Generative</span> AI will only sharpen the contradiction. A technology trained on the past can produce, at <span class="annot" data-tooltip="vanishing /'vænɪʃ/ vi. 消失；突然不见；[数]成为零vt. 使不见，使消失n. [语]弱化音时 态: vanished, vanishing, ">vanishing</span> cost, ever more elaborate variations of what already exists. The risk is not that Star Wars becomes a soap opera, but that everything does. Whether audiences will keep paying for the upholstery of nostalgia, once they can stitch their <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span>, is the real question on the desk of Josh D’Amaro, Disney’s new boss. <span class="annot" data-tooltip="pier /pɪr/ n. 水上平台, 码头">PIER</span> LUIGI SACCOProfessor of biobehavioural economicsGabriele d'Annunzio University of Chieti-PescaraChieti, Italy Banyan set out his case for felling India’s <span class="annot" data-tooltip="urban /'ɜːrbən/ adj. 城市的；住在都市的">urban</span> trees because they are <span class="annot" data-tooltip="hindering /'hɪndər/ vt. & vi. 阻碍；妨碍时 态: hindered，hindering，hinders">hindering</span> development (May 9th). The real <span class="annot" data-tooltip="issue /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issue</span> isn’t a lack of courage to chop down the trees, it is a refusal to acknowledge the law of induced demand. In cities such as Bangalore and Hyderabad, the time savings promised by new flyovers <span class="annot" data-tooltip="typically /'tɪpɪkli/ adv. 代表性地;作为特色地;典型地">typically</span> evaporate within months as the new road capacity <span class="annot" data-tooltip="simply /'sɪmpli/ adv. 简单地；朴素地；简直；仅仅；坦白地">simply</span> invites more private <span class="annot" data-tooltip="vehicles /'viːəkl/ n. 交通工具, 车辆传播媒介, 手段">vehicles</span>. Furthermore, the state’s interest in “greenery” is suspiciously selective. One need only visit the leafy, walkable streets of a government enclave, to see that the state understands the <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span> of a canopy. It is only when one steps <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span> these protected zones into the “dysfunctional” city that trees are treated as <span class="annot" data-tooltip="impediments /ɪm'pedɪmənt/ n. 妨碍、阻碍某事物进展或活动的人或物身体上的某类残疾, 缺陷形容词: impedimental">impediments</span> to progress rather than <span class="annot" data-tooltip="essential /ɪ'senʃl/ adj. 基本的；必要的；本质的；精华的">essential</span> public-health <span class="annot" data-tooltip="infrastructure /'ɪnfrəstrʌktʃər/ n. 基础设施; 基础结构">infrastructure</span>. When the state chops trees “in the dead of night”, as it did in <span class="annot" data-tooltip="mumbai n. 孟买（印度城市）">Mumbai</span>, it isn’t acting rationally, it is acting autocratically. Until Indian urban planning moves away from the 1960s American model of car-centric expansion and <span class="annot" data-tooltip="towards /tɔːrdz/ prep. 向，朝为了；有助于；用于对于，关于接近；将近；大约">towards</span> transparent, public-led transit design, “tree-huggers” remain the only thin <span class="annot" data-tooltip="line /laɪn/ n. 绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long inter">line</span> between a liveable city and a heat-radiating <span class="annot" data-tooltip="concrete /'kɑːnkriːt/ adj. 混凝土制的确实的，具体的（而非想象或猜测的）有形的；实在的v. 用混凝土覆盖n. 混凝土时 态: concreted, ">concrete</span> desert. Dharmendra TolaniDelhi</p>
+<p>Bartleby’s stream of unpunctuated <span class="annot" data-tooltip="consciousness /'kɑːnʃəsnəs/ n. 知觉意识, 观念, 觉悟察觉, 感觉">consciousness</span> on management babble (May 16th) caught my attention. I spent my career in middle management. The <span class="annot" data-tooltip="senior /'siːniər/ adj. 年长的资深的; 地位高的〈美〉最高年级的n. 较年长者高年级学生〈美〉毕业班学生Senior西尼尔(姓氏)">senior</span> ranks commanded that each organisation within the company produce a mission statement. A <span class="annot" data-tooltip="seemingly /'siːmɪŋli/ adv. 看来似乎, 表面上看">seemingly</span> simple task since we had only <span class="annot" data-tooltip="internal /ɪn'tɜːrnl/ adj. 国内的；内部的；内在的名 词: internality">internal</span> customers and a single product. Our mission statement was stated in <span class="annot" data-tooltip="straightforward /ˌstreɪt'fɔːrwərd/ adj. (人或其态度)正直的，坦率的；老实的简单的；易懂的副 词: straightforwardly">straightforward</span> English contained in one <span class="annot" data-tooltip="sentence /'sentəns/ n. 宣判，判决；句子，命题vt. 判决，宣判时 态: sentenced, sentencing, sentences">sentence</span>. Clearly that did not pass muster. We had neglected to use the currently fashionable <span class="annot" data-tooltip="buzzwords /'bʌzwɜːrd/ n. (报刊等的)时髦术语,流行行话">buzzwords</span>. We ended up with meaningless gobbledegook and wasted <span class="annot" data-tooltip="countless /'kaʊntləs/ adj. 无数的;多得数不清的">countless</span> hours. JOSEPH VANDERSLICEThe Woodlands, <span class="annot" data-tooltip="texas /'teksəs/ n. 德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室">Texas</span> Perhaps I’m not alone in having read Bartleby’s “<span class="annot" data-tooltip="velocity /və'lɑːsəti/ n. 速率；迅速；周转率">velocity</span> pivot” to the <span class="annot" data-tooltip="tune /tuːn/ n. 曲调, 曲子vt. & vi. 调音vt. 调整时 态: tuned, tuning, tunes">tune</span> of Billy Joel’s “We Didn’t Start the Fire”. Should a new title be needed for this <span class="annot" data-tooltip="corporate /'kɔːrpərət/ adj. 社团的, 法人的副 词: corporately">corporate</span> filler text, I might suggest “We Didn’t Start the Email <span class="annot" data-tooltip="thread /θred/ n. 线；细线线索，思路vt. 将(针、线等)穿过…将(影片)装入放映机时 态: threaded，threading，thr">Thread</span>”. DAVID PEDUTOAnnapolis, Maryland A photograph of a gentleman striding across Threadneedle Street wearing brown shoes with a dark suit accompanied your article on the recovery of London’s financial district (“Getting its mojo back”, May 2nd). In 1980, just <span class="annot" data-tooltip="transferred /træns'fɜːr/ n. 转移；转让；过户；传递vi. 转移；转让；转学；换车vt. 转让；调任；传递；使转移时 态: transferred, ">transferred</span> from the sartorially relaxed Rio de Janeiro to the City, I was similarly attired and on my second day I was called to the managing</p>
+<p>director’s office. Rather sniffily he enquired whether I had trod in dog poo on the way in. Thankfully the City’s mojo no longer depends on its dress code. Peter BreeseLauzerte, France This article was downloaded by zlibrary from https://www.economist.com//letters/2026/06/04/are-most-<span class="annot" data-tooltip="celebrity /sə'lebrəti/ n. (尤指娱乐界的)名人, 名流名声, 名誉">celebrity</span>-book-clubs- irritating</p>
+<div class="article-separator"></div>
+<div class="article-header">By Invitation · By Invitation | Pass, pass, cross, yawn</div>
+<p>Why the World Cup produces an ugly <span class="annot" data-tooltip="version /'vɜːrʒn/ n. 变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本">version</span> of the beautiful game FIFA could emulate other sports by <span class="annot" data-tooltip="tweaking /twiːk/ n. 拧；扭；焦急vt. 扭；用力拉；开足马力时 态: tweaked, tweaking, tweaks">tweaking</span> rules to generate more excitement June 4th 2026 DURING THIS year’s World Cup, three outcomes are guaranteed. First, fans of one country will experience nirvana, while those in 47 others (up from 31 previously) will be heartbroken. Second, there will be moments of everlasting genius and infamy. There could be a goal as mesmerising as Diego Maradona’s solo dribble against England, a touch as sumptuous as Johan Cruyff’s turn against Sweden or a save as improbable as Gordon Banks’s against Pelé; a penalty miss as agonising as Roberto Baggio’s against Brazil, a handball as blatant as Luis Suárez’s against Ghana or a headbutt as shocking as Zinedine Zidane’s against Italy.</p>
+<p>The third certainty is plenty of stodgy matches which few people remember fondly. That is because the World Cup—for all the fervour about sweepstakes, <span class="annot" data-tooltip="sticker /'stɪkər/ n. 尖刀；难题；张贴物；坚持不懈的人vt. 给…贴上标签价adj. 汽车价目标签的；汽车标签价的">sticker</span> albums and occasional screamers—<span class="annot" data-tooltip="typically /'tɪpɪkli/ adv. 代表性地;作为特色地;典型地">typically</span> produces an ugly <span class="annot" data-tooltip="version /'vɜːrʒn/ n. 变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本">version</span> of the beautiful game. One way to measure this is in goals: in the past three editions, there have been only 2.6 per game in normal time, <span class="annot" data-tooltip="falling /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">falling</span> to just 2.3 in the <span class="annot" data-tooltip="quarter /'kwɔːrtər/ n. 四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一时 ">quarter</span>-finals, semi-finals and final. During that time, the rate in the English Premier <span class="annot" data-tooltip="league /liːɡ/ n. 联盟；社团；范畴vt. 使…结盟；与…联合vi. 结盟；团结时 态: leagued, leaguing, league">League</span>, the world’s richest <span class="annot" data-tooltip="domestic /də'mestɪk/ adj. 国内的；家庭的；驯养的；一心只管家务的">domestic</span> competition, has been 2.8. <span class="annot" data-tooltip="notably /'noʊtəbli/ adv. 显著地；尤其">Notably</span>, the moments of brilliance and ignominy mentioned above happened in otherwise cagey games. In only one did a team score <span class="annot" data-tooltip="multiple /'mʌltɪpl/ adj. 多样的；许多的；多重的n. 并联；倍数">multiple</span> goals, and that was because Maradona punched one in with the “Hand of God”. This attritional nature shows up in other statistics. Compared with the preceding <span class="annot" data-tooltip="season /'siːzn/ n. 时期；季节；赛季vt. 给…调味；使适应vi. 变得成熟；变干燥时 态: seasoned, seasoning, se">season</span> of the Premier League, the last World Cup had 16% fewer shots per 90 minutes and 17% more <span class="annot" data-tooltip="fouls /faʊl/ adj. 邪恶的；污秽的；犯规的；淤塞的vt. 弄脏；犯规；淤塞；缠住，妨害vi. 犯规；缠结；腐烂n. 犯规；缠绕adv. 违反">fouls</span>. One match featured 18 yellow cards and a red. This is partly because players are <span class="annot" data-tooltip="exhausted /ɪɡ'zɔːst/ vt. 弄空, 取出用尽, 耗尽使非常疲倦vi. 排气n. 排气装置, 排气管[孔]机器排出的废气时 态: exhausted,">exhausted</span> after an <span class="annot" data-tooltip="extended /ɪk'stend/ vt. & vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出时 态:">extended</span> <span class="annot" data-tooltip="campaign /kæm'peɪn/ n. 运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）时">campaign</span>. (The heatwaves expected in the <span class="annot" data-tooltip="upcoming /'ʌpkʌmɪŋ/ adj. 即将来到的, 即将出现的">upcoming</span> matches will not help.) They also rarely train with international teammates, causing disjointed play. <span class="annot" data-tooltip="tension /'tenʃn/ n. 张力，拉力；紧张，不安；电压vt. 使紧张；使拉紧时 态: tensioned, tensioning, tension">Tension</span> is a factor, too, as <span class="annot" data-tooltip="eternal /ɪ'tɜːrnl/ adj. 永恒的；不朽的副 词: eternally">eternal</span> <span class="annot" data-tooltip="glory /'ɡlɔːri/ n. 光荣，荣誉；赞颂vi. 自豪，骄傲；狂喜">glory</span> looms. Another reason for humdrum football is that, for middle- and lower-<span class="annot" data-tooltip="tier /tɪr/ n. 行，列；层，排；等级vt. 使层叠vi. 成递升排列时 态: tiered, tiering, tiers">tier</span> countries, it works. Since the World Cup expanded to 32 teams in 1998, six</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>exciting</td><td>/ɪk'saɪtɪŋ/ adj.</td><td>使人激动的；令人兴奋的v. 激动；唤起；刺激（excite的ing形式）</td></tr>
+<tr><td>referees</td><td>/ˌrefə'riː/ n.</td><td>裁判员；调解人；介绍人vi. 担任裁判；仲裁vt. 为…当裁判；调停, refereeing, referees</td></tr>
+<tr><td>opponent</td><td>/ə'poʊnənt/ n.</td><td>对手, 敌手；反对者</td></tr>
+<tr><td>roger</td><td>/'rɑdʒɚ/ int.</td><td>好；知道了n. 罗杰（男子名）rogerint. (无线电通讯答语)已收到ROGERabbr. Remotely Operated Geophysical Ex</td></tr>
+<tr><td>encourage</td><td>/ɪn'kɜːrɪdʒ/ vt.</td><td>鼓励, 激励促进, 助长, 激发, encouraging, encourages</td></tr>
+<tr><td>referee</td><td>/ˌrefə'riː/ n.</td><td>裁判员；调解人；介绍人vi. 担任裁判；仲裁vt. 为…当裁判；调停, refereeing, referees</td></tr>
+<tr><td>foul</td><td>/faʊl/ adj.</td><td>邪恶的；污秽的；犯规的；淤塞的vt. 弄脏；犯规；淤塞；缠住，妨害vi. 犯规；缠结；腐烂n. 犯规；缠绕adv. 违反规则地，不正当地, foulest</td></tr>
+<tr><td>imaginative</td><td>/ɪ'mædʒɪnətɪv/ adj.</td><td>富于想像力的; 运用想像力的</td></tr>
+<tr><td>panel</td><td>/'pænl/ n.</td><td>仪表板；嵌板；座谈小组，全体陪审员vt. 嵌镶板, panelled paneling, panelling panels, panels</td></tr>
+<tr><td>pitch</td><td>/pɪtʃ/ n.</td><td>球场音调，音高程度；强度；高度沥青颠簸斜度，坡度商贩摊位，艺人表演场地推销商品的话vt. 投，掷，扔为…定音调用人们易懂的方式表述vt. & vi. 搭(帐篷)</td></tr>
+<tr><td>apparently</td><td>/ə'pærəntli/ adv.</td><td>显然地表面上,似乎</td></tr>
+<tr><td>adopted</td><td>/ə'dɑːpt/ vt.</td><td>收养采用, 采纳, 采取正式接受, 通过, adopting, adopts</td></tr>
+<tr><td>columns</td><td>/'kɑːləm/ n.</td><td>圆柱，柱形物；纵队，列；专栏</td></tr>
+<tr><td>essays</td><td>/'eseɪ/ n.</td><td>散文, 随笔</td></tr>
+<tr><td>correspondence</td><td>/ˌkɔːrə'spɑːndəns/ n.</td><td>信件, 函件通信, 通信联系一致, 相似</td></tr>
+<tr><td>celebrity</td><td>/sə'lebrəti/ n.</td><td>(尤指娱乐界的)名人, 名流名声, 名誉</td></tr>
+<tr><td>urban</td><td>/'ɜːrbən/ adj.</td><td>城市的；住在都市的</td></tr>
+<tr><td>process</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>solitary</td><td>/'sɑːləteri/ adj.</td><td>单独的; 独居的; 无伴的惟一的人迹罕至的; 幽静的</td></tr>
+<tr><td>academic</td><td>/ˌækə'demɪk/ adj.</td><td>学院的；学术的；理论的n. 大学生，大学教师；学者</td></tr>
+<tr><td>precisely</td><td>/prɪ'saɪsli/ adv.</td><td>精确地；恰好；细心地对，的确如此</td></tr>
+<tr><td>afghanistan</td><td>/æf'ɡænɪstæn/ n.</td><td>阿富汗</td></tr>
+<tr><td>afghan</td><td>— n.</td><td>阿富汗语；阿富汗人adj. 阿富汗人的；阿富汗的afghann. 一种宽松的羊皮外衣</td></tr>
+<tr><td>secondary</td><td>/'sekənderi/ adj.</td><td>次要的, 次等的中级的, 第二的</td></tr>
+<tr><td>afghanistan</td><td>/æf'ɡænɪstæn/ n.</td><td>阿富汗</td></tr>
+<tr><td>routinely</td><td>/ruː'tiːnli/ adv.</td><td>常规地,惯常地老一套地,令人厌烦地</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>afghan</td><td>— n.</td><td>阿富汗语；阿富汗人adj. 阿富汗人的；阿富汗的afghann. 一种宽松的羊皮外衣</td></tr>
+<tr><td>sawyer</td><td>/'sɔɪə/ n.</td><td>锯木匠；显赫天牛；漂流水中的树木</td></tr>
+<tr><td>celebrities</td><td>/sə'lebrəti/ n.</td><td>(尤指娱乐界的)名人, 名流名声, 名誉</td></tr>
+<tr><td>capitalism</td><td>/'kæpɪtəlɪzəm/ n.</td><td>资本主义(制度)资本(或财富)的拥有资本(私人占有和生产盈利)的支配地位</td></tr>
+<tr><td>overlooks</td><td>/ˌoʊvər'lʊk/ </td><td>vt.忽略；俯瞰；远眺；不计较，宽恕；施魔法于；监督；检查n.忽视；眺望；从高处能看到的景色, overlooking, overlooks</td></tr>
+<tr><td>critical</td><td>/'krɪtɪkl/ adj.</td><td>批评的，爱挑剔的；决定性的；危险的；临界的；鉴定的；评论的</td></tr>
+<tr><td>startup</td><td>/ˈstɑrtˈʌp/ n.</td><td>启动；开办</td></tr>
+<tr><td>heading</td><td>/'hedɪŋ/ n.</td><td>标题；信头；（足球）头球v. 用头顶（head的ing形式）</td></tr>
+<tr><td>contract</td><td>/'kɑːntrækt/ vi.</td><td>感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约, contracting, contracts</td></tr>
+<tr><td>revenue</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>triumph</td><td>/'traɪʌmf/ n.</td><td>胜利，成功巨大的成就[成功]vi. 获胜，得胜；克服，triumphing，triumphs</td></tr>
+<tr><td>descended</td><td>/dɪ'send/ vi.</td><td>下降；下来；遗传；屈尊；下去vt. 下去；沿…向下, descending, descends</td></tr>
+<tr><td>paradox</td><td>/'pærədɑːks/ n.</td><td>似非而是的论点；悖论，反论；自相矛盾的人或事</td></tr>
+<tr><td>novelty</td><td>/'nɑːvlti/ n.</td><td>新颖; 新奇性新奇的人[事物]新颖小巧而价廉的物品</td></tr>
+<tr><td>generative</td><td>/'dʒenərətɪv/ adj.</td><td>能生产的, 有生产力的生殖的</td></tr>
+<tr><td>industries</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>timid</td><td>/'tɪmɪd/ adj.</td><td>胆小的羞怯的, timidest</td></tr>
+<tr><td>legible</td><td>/'ledʒəbl/ adj.</td><td>易读的；清晰的；易辨认的</td></tr>
+<tr><td>algorithmic</td><td>— adj.</td><td>算法的,规则系统的</td></tr>
+<tr><td>collapses</td><td>/kə'læps/ vi.</td><td>倒塌；瓦解；暴跌vt. 使倒塌，使崩溃；使萎陷n. 倒塌；失败；衰竭, collapsing, collapses</td></tr>
+<tr><td>taste</td><td>/teɪst/ n.</td><td>滋味, 味道鉴赏力爱好, 嗜好vt. & vi. 尝, 品尝, 尝到vt. 吃, 喝体验, 领略, tasting, tastes</td></tr>
+<tr><td>extending</td><td>/ɪk'stend/ vt.</td><td>& vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出，extending，extends</td></tr>
+<tr><td>infinite</td><td>/'ɪnfɪnət/ adj.</td><td>无限的，无穷的；无数的；极大的n. 无限；无限的东西（如空间，时间）；无穷大</td></tr>
+<tr><td>generative</td><td>/'dʒenərətɪv/ adj.</td><td>能生产的, 有生产力的生殖的</td></tr>
+<tr><td>vanishing</td><td>/'vænɪʃ/ vi.</td><td>消失；突然不见；[数]成为零vt. 使不见，使消失n. [语]弱化音, vanishing, vanishes</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>pier</td><td>/pɪr/ n.</td><td>水上平台, 码头</td></tr>
+<tr><td>urban</td><td>/'ɜːrbən/ adj.</td><td>城市的；住在都市的</td></tr>
+<tr><td>hindering</td><td>/'hɪndər/ vt.</td><td>& vi. 阻碍；妨碍，hindering，hinders</td></tr>
+<tr><td>issue</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>typically</td><td>/'tɪpɪkli/ adv.</td><td>代表性地;作为特色地;典型地</td></tr>
+<tr><td>simply</td><td>/'sɪmpli/ adv.</td><td>简单地；朴素地；简直；仅仅；坦白地</td></tr>
+<tr><td>vehicles</td><td>/'viːəkl/ n.</td><td>交通工具, 车辆传播媒介, 手段</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>impediments</td><td>/ɪm'pedɪmənt/ n.</td><td>妨碍、阻碍某事物进展或活动的人或物身体上的某类残疾, 缺陷</td></tr>
+<tr><td>essential</td><td>/ɪ'senʃl/ adj.</td><td>基本的；必要的；本质的；精华的</td></tr>
+<tr><td>infrastructure</td><td>/'ɪnfrəstrʌktʃər/ n.</td><td>基础设施; 基础结构</td></tr>
+<tr><td>mumbai</td><td>— n.</td><td>孟买（印度城市）</td></tr>
+<tr><td>towards</td><td>/tɔːrdz/ prep.</td><td>向，朝为了；有助于；用于对于，关于接近；将近；大约</td></tr>
+<tr><td>line</td><td>/laɪn/ n.</td><td>绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long interspersed element)长散在元</td></tr>
+<tr><td>concrete</td><td>/'kɑːnkriːt/ adj.</td><td>混凝土制的确实的，具体的（而非想象或猜测的）有形的；实在的v. 用混凝土覆盖n. 混凝土, concreting, concretes</td></tr>
+<tr><td>consciousness</td><td>/'kɑːnʃəsnəs/ n.</td><td>知觉意识, 观念, 觉悟察觉, 感觉</td></tr>
+<tr><td>senior</td><td>/'siːniər/ adj.</td><td>年长的资深的; 地位高的〈美〉最高年级的n. 较年长者高年级学生〈美〉毕业班学生Senior西尼尔(姓氏)</td></tr>
+<tr><td>seemingly</td><td>/'siːmɪŋli/ adv.</td><td>看来似乎, 表面上看</td></tr>
+<tr><td>internal</td><td>/ɪn'tɜːrnl/ adj.</td><td>国内的；内部的；内在的</td></tr>
+<tr><td>straightforward</td><td>/ˌstreɪt'fɔːrwərd/ adj.</td><td>(人或其态度)正直的，坦率的；老实的简单的；易懂的</td></tr>
+<tr><td>sentence</td><td>/'sentəns/ n.</td><td>宣判，判决；句子，命题vt. 判决，宣判, sentencing, sentences</td></tr>
+<tr><td>buzzwords</td><td>/'bʌzwɜːrd/ n.</td><td>(报刊等的)时髦术语,流行行话</td></tr>
+<tr><td>countless</td><td>/'kaʊntləs/ adj.</td><td>无数的;多得数不清的</td></tr>
+<tr><td>texas</td><td>/'teksəs/ n.</td><td>德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室)</td></tr>
+<tr><td>velocity</td><td>/və'lɑːsəti/ n.</td><td>速率；迅速；周转率</td></tr>
+<tr><td>tune</td><td>/tuːn/ n.</td><td>曲调, 曲子vt. & vi. 调音vt. 调整, tuning, tunes</td></tr>
+<tr><td>corporate</td><td>/'kɔːrpərət/ adj.</td><td>社团的, 法人的</td></tr>
+<tr><td>thread</td><td>/θred/ n.</td><td>线；细线线索，思路vt. 将(针、线等)穿过…将(影片)装入放映机，threading，threads</td></tr>
+<tr><td>transferred</td><td>/træns'fɜːr/ n.</td><td>转移；转让；过户；传递vi. 转移；转让；转学；换车vt. 转让；调任；传递；使转移, transferring, transfers</td></tr>
+<tr><td>celebrity</td><td>/sə'lebrəti/ n.</td><td>(尤指娱乐界的)名人, 名流名声, 名誉</td></tr>
+<tr><td>version</td><td>/'vɜːrʒn/ n.</td><td>变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本</td></tr>
+<tr><td>tweaking</td><td>/twiːk/ n.</td><td>拧；扭；焦急vt. 扭；用力拉；开足马力, tweaking, tweaks</td></tr>
+<tr><td>sticker</td><td>/'stɪkər/ n.</td><td>尖刀；难题；张贴物；坚持不懈的人vt. 给…贴上标签价adj. 汽车价目标签的；汽车标签价的</td></tr>
+<tr><td>typically</td><td>/'tɪpɪkli/ adv.</td><td>代表性地;作为特色地;典型地</td></tr>
+<tr><td>version</td><td>/'vɜːrʒn/ n.</td><td>变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本</td></tr>
+<tr><td>falling</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>quarter</td><td>/'kwɔːrtər/ n.</td><td>四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一, quartering, quarters</td></tr>
+<tr><td>league</td><td>/liːɡ/ n.</td><td>联盟；社团；范畴vt. 使…结盟；与…联合vi. 结盟；团结, leaguing, leagues</td></tr>
+<tr><td>domestic</td><td>/də'mestɪk/ adj.</td><td>国内的；家庭的；驯养的；一心只管家务的</td></tr>
+<tr><td>notably</td><td>/'noʊtəbli/ adv.</td><td>显著地；尤其</td></tr>
+<tr><td>multiple</td><td>/'mʌltɪpl/ adj.</td><td>多样的；许多的；多重的n. 并联；倍数</td></tr>
+<tr><td>season</td><td>/'siːzn/ n.</td><td>时期；季节；赛季vt. 给…调味；使适应vi. 变得成熟；变干燥, seasoning, seasons</td></tr>
+<tr><td>fouls</td><td>/faʊl/ adj.</td><td>邪恶的；污秽的；犯规的；淤塞的vt. 弄脏；犯规；淤塞；缠住，妨害vi. 犯规；缠结；腐烂n. 犯规；缠绕adv. 违反规则地，不正当地, foulest</td></tr>
+<tr><td>exhausted</td><td>/ɪɡ'zɔːst/ vt.</td><td>弄空, 取出用尽, 耗尽使非常疲倦vi. 排气n. 排气装置, 排气管[孔]机器排出的废气, exhausting, exhausts</td></tr>
+<tr><td>extended</td><td>/ɪk'stend/ vt.</td><td>& vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出，extending，extends</td></tr>
+<tr><td>campaign</td><td>/kæm'peɪn/ n.</td><td>运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）, campaigning, campai</td></tr>
+<tr><td>upcoming</td><td>/'ʌpkʌmɪŋ/ adj.</td><td>即将来到的, 即将出现的</td></tr>
+<tr><td>tension</td><td>/'tenʃn/ n.</td><td>张力，拉力；紧张，不安；电压vt. 使紧张；使拉紧, tensioning, tensions</td></tr>
+<tr><td>eternal</td><td>/ɪ'tɜːrnl/ adj.</td><td>永恒的；不朽的</td></tr>
+<tr><td>glory</td><td>/'ɡlɔːri/ n.</td><td>光荣，荣誉；赞颂vi. 自豪，骄傲；狂喜</td></tr>
+<tr><td>tier</td><td>/tɪr/ n.</td><td>行，列；层，排；等级vt. 使层叠vi. 成递升排列, tiering, tiers</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day4.html" class="nav-btn">← Day 4</a>
+  <a href="day6.html" class="nav-btn">Day 6 →</a>
+</div>
+
+<div class="progress">📖 Day 5 of 46</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-06-06</div>
+
+</body>
+</html>
