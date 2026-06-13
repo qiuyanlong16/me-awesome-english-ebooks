@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Culture | What’s yours is mine</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-06-13</div>
+
+<h1 class="article-title">Culture | What’s yours is mine</h1>
+<div class="article-section">Culture</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>Latchford had developed an <span class="annot" data-tooltip="obsession /əb'seʃn/ n. 困扰, 无法摆脱的思想(或情感)形容词: obsessional">obsession</span> with the Khmer empire, which lasted from 802ad to 1431AD in Cambodia and parts of Laos, <span class="annot" data-tooltip="thailand n. 泰国">Thailand</span> and <span class="annot" data-tooltip="vietnam /ˌviːet'nɑːm/ n. 越南（南亚国家）">Vietnam</span>. In 1974 he opened a gallery in Bangkok, offering hundreds if not thousands of stolen Khmer antiquities to collectors and institutions. Some of his pieces ended up in the Norton Simon Museum in California and the <span class="annot" data-tooltip="metropolitan /ˌmetrə'pɑːlɪtən/ adj. 大都会的, 大城市的中心地区的, 正宗的">Metropolitan</span> Museum of Art in New York. Mr Campbell reckons Latchford may have pulled off “the world’s biggest art <span class="annot" data-tooltip="heist /haɪst/ vt. 抢劫，拦劫；强夺n. 抢劫；强夺vi. 抢劫时 态: heisted, heisting, heists">heist</span>”. The book untangles the murky supply chain for stolen masterpieces in riveting detail. It began with looters such as Toek Tik. “<span class="annot" data-tooltip="cambodians /kæm'boʊdiən/ n. 柬埔寨人柬埔寨裔柬埔寨语；高棉语adj. 柬埔寨的;柬埔寨人的;柬埔寨语的">Cambodians</span> were raised to revere such objects,” Mr Campbell notes, seeing them as “<span class="annot" data-tooltip="avatars /'ævətɑːr/ n. 电影《阿凡达》">avatars</span> of the gods”. But in the wake of the <span class="annot" data-tooltip="civil /'sɪvl/ adj. 公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的副 词: civilly">civil</span> war and the Khmers Rouges’ bloody <span class="annot" data-tooltip="regime /reɪ'ʒiːm/ n. 政权，政体；社会制度；管理体制">regime</span>, many were desperate. So they took huge statues and bas- reliefs, using pneumatic <span class="annot" data-tooltip="drills /drɪl/ n. 钻子；钻孔机；播种机；训练vi. 钻孔；训练vt. 训练；钻孔；条播时 态: drilled, drilling, dr">drills</span> and dynamite if necessary. (Many objects were damaged or destroyed in the <span class="annot" data-tooltip="process /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">process</span>.) Once artworks were prised free, they were packed into oxcarts or trucks; a broker would get them over the border into Thailand and thence to Latchford. He would find a buyer, inventing provenance and forging documents as required. They often arrived at their prestigious new homes still dusted with <span class="annot" data-tooltip="cambodian /kæm'boʊdiən/ n. 柬埔寨人柬埔寨裔柬埔寨语；高棉语adj. 柬埔寨的;柬埔寨人的;柬埔寨语的">Cambodian</span> soil.</p>
+<p>Such sophisticated buyers <span class="annot" data-tooltip="proved /proʊ/ n. 从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞">proved</span> undiscerning thinkers. Latchford’s <span class="annot" data-tooltip="clients /'klaɪənt/ n. 委托人顾客, 常客">clients</span> gave little consideration to how these spectacular pieces ended up in their display <span class="annot" data-tooltip="cabinets /'kæbɪnət/ n. 内阁；橱柜；展览艺术品的小陈列室adj. 内阁的；私下的，秘密的">cabinets</span>. Mr Campbell finds that “The Met had been willing, again and again, to <span class="annot" data-tooltip="augment /ɔːɡ'ment/ vt. 增加, 提高, 扩大n. 增加, 提高, 扩大时 态: augmented, augmenting, augments">augment</span> its collection with works whose legitimacy rested on the slenderest wisps of evidence.” Thanks to the efforts of investigators, the extent of Latchford’s criminal enterprise became clear—though he died in 2020, before facing justice. “The Man Who Stole the Gods” reads like a <span class="annot" data-tooltip="thriller /'θrɪlər/ n. 使人毛骨悚然的东西；使人毛骨悚然的小说；惊险小说">thriller</span>, in good ways and bad: sometimes the author cannot resist the hokey phrases of an airport novel. Yet the story romps along with dogged lawyers and a ludicrous, devious antagonist. (Latchford could often be found poolside in Bangkok, flanked by oiled-up young male bodybuilders.) And the tale has a fairly <span class="annot" data-tooltip="neat /niːt/ adj. 整洁的；未搀水的；优雅的；灵巧的；齐整的；平滑的比较级: neater, neatest">neat</span> <span class="annot" data-tooltip="resolution /ˌrezə'luːʃn/ n. 正式决定，决议决心，决定坚决；坚定；坚毅解决，解答分辨力，分辨率[度]">resolution</span>: American investigators succeeded in returning many pilfered <span class="annot" data-tooltip="artefacts /'ɑːrtɪfækt/ n. 人工制品，加工品">artefacts</span> to Cambodia, where they are on display in the National Museum in Phnom Penh. Mr Campbell suggests that Latchford’s story offers a cautionary tale and that the investigation may have put “an end to the entire US market for such <span class="annot" data-tooltip="looted /luːt/ n. 掠夺品；战利品；抢劫vt. 抢劫，洗劫；强夺vi. 洗劫，掠夺；抢劫时 态: looted, looting, loot">looted</span> objects”. That is <span class="annot" data-tooltip="unrealistic /ˌʌnriːə'lɪstɪk/ adj. 不切实际的;不实事求是的副 词: unrealistically">unrealistic</span>. People will always want to <span class="annot" data-tooltip="gaze /ɡeɪz/ vi. 凝视, 注视n. 凝视, 端详时 态: gazed, gazing, gazes">gaze</span> at beautiful, <span class="annot" data-tooltip="unusual /ʌn'juːʒuəl/ adj. 与众不同的；不寻常的；不平常的副 词: unusually">unusual</span> objects from ancient civilisations. That means they will be</p>
+<p>willing to <span class="annot" data-tooltip="overlook /ˌoʊvər'lʊk/ vt.忽略；俯瞰；远眺；不计较，宽恕；施魔法于；监督；检查n.忽视；眺望；从高处能看到的景色时 态: overlooke">overlook</span> provenance—and the world’s second-oldest profession will find new <span class="annot" data-tooltip="recruits /rɪ'kruːt/ n. 新兵(机构中的)新成员vt. 招聘；吸引(新成员)吸收某人为新成员vt. & vi. 招募，征募(新兵)恢复健康，恢复体">recruits</span>. ■ For more on the latest books, films, TV shows, albums and controversies, sign up to <span class="annot" data-tooltip="plot /plɑːt/ n. 故事情节(秘密)计划，密谋小块地皮vt. 把…分成小块；划分绘制；标出vt. & vi. 密谋时 态: plotted，">Plot</span> <span class="annot" data-tooltip="twist /twɪst/ vt. 捻；拧；扭伤；编织；使苦恼n. 扭曲；扭伤；拧vi. 扭动；弯曲时 态: twisted, twisting, twis">Twist</span>, our weekly subscriber-only newsletter This article was downloaded by zlibrary from https://www.economist.com//culture/2026/06/11/the-people-behind-the-largest-art- <span class="annot" data-tooltip="heist /haɪst/ vt. 抢劫，拦劫；强夺n. 抢劫；强夺vi. 抢劫时 态: heisted, heisting, heists">heist</span>-in-history</p>
+<div class="article-separator"></div>
+<div class="article-header">Culture · Culture | Slaying the game</div>
+<p>What “Backrooms” and “<span class="annot" data-tooltip="obsession /əb'seʃn/ n. 困扰, 无法摆脱的思想(或情感)形容词: obsessional">Obsession</span>” <span class="annot" data-tooltip="reveal /rɪ'viːl/ vt. 显示；露出泄露；透露时 态: revealed，revealing，reveals">reveal</span> about Gen Z’s fears Two new horror films have hit a <span class="annot" data-tooltip="nerve /nɜːrv/ n. 神经神经过敏；神经紧张勇气；胆量时 态: nerved，nerving，nerves">nerve</span> with youngsters June 11th 2026 IN RECENT WEEKS the global box office has been dominated not by Hollywood veterans, but YouTubers in their 20s. “Obsession” is <span class="annot" data-tooltip="curry /'kɜːri/ n. 咖喱食品vt. 用咖喱粉烹调(食物)梳刷(马匹)讨好； 奉承； 拍某人的马屁Curry柯里(姓氏)时 态: currie">Curry</span> Barker’s second film, made with a minuscule budget of under $1m (his first was made for only $800). Since opening in cinemas “Obsession” has <span class="annot" data-tooltip="grossed /ɡroʊs/ adj. 总共的；粗野的；恶劣的；显而易见的vt. 总共收入n. 总额，总数比较级: grosser, grossest">grossed</span> $230m. “Backrooms”, meanwhile, is Kane Parsons’s <span class="annot" data-tooltip="debut /deɪ'bjuː/ n. 〈法〉演员首次演出时 态: debuted debuting debuts">debut</span> feature film, adapted from a <span class="annot" data-tooltip="viral /'vaɪrəl/ adj. 滤过性毒菌引起的；滤过性毒菌的">viral</span> web series. The movie has made over $215m; Mr Parsons has become the youngest-ever film-maker to open a flick in America in the top-<span class="annot" data-tooltip="grossing /ɡroʊs/ adj. 总共的；粗野的；恶劣的；显而易见的vt. 总共收入n. 总额，总数比较级: grosser, grossest">grossing</span> <span class="annot" data-tooltip="spot /spɑːt/ n. 斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Po">spot</span>. What’s behind their breakout success? It helps that both films are horror, a <span class="annot" data-tooltip="genre /'ʒɑːnrə/ （文学、绘画、音乐、电影等艺术作品的）体裁，类型">genre</span> that still <span class="annot" data-tooltip="lures /lʊr/ n. 诱惑物；诱惑；饵vt. 引诱；诱惑时 态: lured, luring, lures">lures</span> people to cinemas. But what is interesting is that these scary movies are appealing to the</p>
+<p>“anxious generation”. In the opening weekend <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> 85% of the audience for “Backrooms” was under 35; 75% of those seeing “<span class="annot" data-tooltip="obsession /əb'seʃn/ n. 困扰, 无法摆脱的思想(或情感)形容词: obsessional">Obsession</span>” when it opened were aged between 18 and 25. Both films capture some of Gen Z’s fears and fixations (even though the <span class="annot" data-tooltip="main /meɪn/ adj. 主要的; 最重要的n. 总管道; 干线">main</span> character in “Backrooms” is middle-aged). One theme is loneliness: the <span class="annot" data-tooltip="protagonists /prə'tæɡənɪst/ n. (戏剧的)主角(故事的)主人公；现实事件(尤指冲突和争端的)主要参与者，主要人物领导者；倡导者；拥护者">protagonists</span> in both films are <span class="annot" data-tooltip="isolated /'aɪsəleɪtɪd/ adj. 孤立的；分离的；绝缘的；单独的v. 使孤立；使绝缘；脱离（isolate的过去分词）">isolated</span> and unhappy. (A study found that 80% of Gen Z have felt the same way.) In “Backrooms” Clark (Chiwetel Ejiofor, pictured) is a divorced and depressed alcoholic. “Obsession” follows Bear (Michael Johnston), a socially <span class="annot" data-tooltip="awkward /'ɔːkwərd/ adj. 笨拙的；尴尬的；棘手的；不合适的副 词: awkwardly">awkward</span> man who has unreciprocated feelings for his friend Nikki. One day he buys a <span class="annot" data-tooltip="novelty /'nɑːvlti/ n. 新颖; 新奇性新奇的人[事物]新颖小巧而价廉的物品">novelty</span> talisman and wishes that Nikki would love him “more than anyone else in the world”. Wish granted: Nikki becomes disturbingly <span class="annot" data-tooltip="possessive /pə'zesɪv/ adj. 所有(权)的；不愿分享的所属关系的，所有格的n. 表示所属关系的词或词语形式adv. 占有地；所属关系地n. 占有，占有">possessive</span> and <span class="annot" data-tooltip="violent /'vaɪələnt/ adj. 暴力引起的, 粗暴的剧烈的, 强烈的副 词: violently">violent</span>. Another theme is instability. In “Backrooms”, having been kicked out of the home he shared with his wife, Clark moves into his furniture shop. In the basement, he comes across an eerie labyrinth: each room is <span class="annot" data-tooltip="covered /'kʌvər/ vt. 包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替时 态: covered, covering, c">covered</span> in sickly yellow <span class="annot" data-tooltip="wallpaper /'wɔːlpeɪpər/ n. 壁纸；墙纸vt. 往 (屋里墙上)贴壁纸vi. 贴壁纸时 态: wallpapered，wallpapering，wal">wallpaper</span> and home to all manner of unpleasant things. Clark’s precarious living situation updates the “<span class="annot" data-tooltip="haunted /hɔːnt/ vt. 经常出没于缠绕, 萦绕n. 某人常去的地方时 态: haunted, haunting, haunts">haunted</span> house” trope for a generation that, across much of the rich world, fears they may never have a <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span> of their <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span>. <span class="annot" data-tooltip="dismal /'dɪzməl/ adj. 凄凉的，忧郁的；阴沉的，沉闷的；可怕的n. 低落的情绪副 词: dismally">Dismal</span> <span class="annot" data-tooltip="prospects /'prɑːspekt/ n. 景象，景色前景；前途可能成为主顾的人；有希望的候选人vi. 勘探；勘察时 态: prospected，prospecti">prospects</span> and thwarted ambition are yet another shared theme. Clark is a failed <span class="annot" data-tooltip="architect /'ɑːrkɪtekt/ n. 建筑师, 设计师">architect</span>. Before she is subjected to the talisman’s magic, Nikki plans to quit her job and <span class="annot" data-tooltip="pursue /pər'suː/ vt. 从事；追赶；继续；纠缠vi. 追赶；继续进行时 态: pursued, pursuing, pursues">pursue</span> a career in writing. Another character is about to open a college-acceptance letter when her brains are bashed in. Both movies include acts of self-destruction. In the <span class="annot" data-tooltip="bleak /bliːk/ adj. 荒凉的，无遮蔽的；阴冷的；黯淡的，无希望的；冷酷的；单调的比较级: bleaker, bleakest">bleak</span>, <span class="annot" data-tooltip="cruel /'kruːəl/ adj. 残酷的, 残忍的使人痛苦的, 让人受难的比较级: crueler, crueller cruelest, cruelle">cruel</span> world of these stories, the characters’ best option is to <span class="annot" data-tooltip="surrender /sə'rendər/ vt. & vi. 投降vt. 放弃；抛弃n. 投降，放弃时 态: surrendered，surrendering，surre">surrender</span>. Many Gen Zers say they feel similarly hopeless. The <span class="annot" data-tooltip="creators /kri'eɪtər/ n. 创造者,创作者">creators</span> of these blockbusters, though, must be feeling the future looks bright. ■ For more on the latest books, films, TV shows, albums and controversies, sign up to <span class="annot" data-tooltip="plot /plɑːt/ n. 故事情节(秘密)计划，密谋小块地皮vt. 把…分成小块；划分绘制；标出vt. & vi. 密谋时 态: plotted，">Plot</span> <span class="annot" data-tooltip="twist /twɪst/ vt. 捻；拧；扭伤；编织；使苦恼n. 扭曲；扭伤；拧vi. 扭动；弯曲时 态: twisted, twisting, twis">Twist</span>, our weekly subscriber-only newsletter This article was downloaded by zlibrary from https://www.economist.com//culture/2026/06/11/what-backrooms-and-obsession-<span class="annot" data-tooltip="reveal /rɪ'viːl/ vt. 显示；露出泄露；透露时 态: revealed，revealing，reveals">reveal</span>- about-gen-zs-fears</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Economic &amp; financial indicators</div>
+<p>Economic data, commodities and markets</p>
+<p>Economic & financial <span class="annot" data-tooltip="indicators /'ɪndɪkeɪtər/ n. (仪器上显示温度、压力、耗油量等的)指针，指示器，记录器(车辆上的)转弯指示灯指示物；指示者">indicators</span> | Indicators Economic data, commodities and markets June 11th 2026</p>
+<p>This article was downloaded by zlibrary from https://www.economist.com//economic-and-financial-<span class="annot" data-tooltip="indicators /'ɪndɪkeɪtər/ n. (仪器上显示温度、压力、耗油量等的)指针，指示器，记录器(车辆上的)转弯指示灯指示物；指示者">indicators</span>/2026/06/11/economic- data-commodities-and-markets</p>
+<div class="article-separator"></div>
+<div class="article-header">Obituary · Obituary | Veil and beard and nuclear weapon</div>
+<p>Marjane Satrapi set out to correct the West’s views of Iran The author of “Persepolis”, an international <span class="annot" data-tooltip="sensation /sen'seɪʃn/ n. 感觉, 感受知觉激动, 轰动">sensation</span>, died on June 4th, aged 56 June 11th 2026 When it happened, she was ten. Her face stared out separately from a <span class="annot" data-tooltip="line /laɪn/ n. 绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long inter">line</span> of grim little girls, all wearing black veils. She didn’t see why she had to; no one had explained. In the playground the veils came off (too hot anyway) to make strangler <span class="annot" data-tooltip="scarves /skɑːrf/ n. 围巾; 披肩; 领巾名 词: scarfer">scarves</span> and skipping ropes. On that first page of “Persepolis”, Marjane Satrapi’s <span class="annot" data-tooltip="graphic /'ɡræfɪk/ adj. 图表的；形象的；绘画似的副 词: graphically">graphic</span> novel of 2000, it was already clear that Marji, her child-self, would not be told what to wear or how to behave. She knew who she was: the last Prophet, born to bring celestial light. She had already written her <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> book of Rules (Rule 6: Everybody should have a car). Iran’s Islamic Revolution in 1979 forced her to look demure, and she was outraged.</p>
+<p>It was so hard to fit in. Her bright, bourgeois parents were Marxists; her head was filled early with dialectic materialism, which she read about in bed. Teachers and <span class="annot" data-tooltip="preachers /'priːtʃər/ n. 说教者；鼓吹者；传道人，讲道的道士">preachers</span> held no <span class="annot" data-tooltip="terror /'terər/ n. 恐怖; 恐怖活动引起恐怖的人[事]讨厌的人">terror</span> for her, nor any heavy-bearded official who would not look a woman in the eye. <span class="annot" data-tooltip="speaking /'spikɪŋ/ adj. 演讲的；富于表情的，雄辩的n. 说话；演讲v. 讲（speak的ing形式）">Speaking</span> her mind got her <span class="annot" data-tooltip="expelled /ɪk'spel/ vt. 驱逐；开除时 态: expelled, expelling, expels">expelled</span> from school and into trouble with the <span class="annot" data-tooltip="regime /reɪ'ʒiːm/ n. 政权，政体；社会制度；管理体制">regime</span>’s morality police. But why shouldn’t she walk out in the tight <span class="annot" data-tooltip="jeans /dʒiːnz/ n. 牛仔裤Jeans琼斯(①姓氏 ②Sir James Hopwood, 1877-1946, 英国数学家, 物理学家, 天">jeans</span> and denim jacket her parents had bought for her, or in lipstick, with a bit of hair showing? Why shouldn’t she politicise the <span class="annot" data-tooltip="maid /meɪd/ n. 女仆；少女vt. 侍候；做新娘的女傧相vi. 当女仆">maid</span> by taking her along to <span class="annot" data-tooltip="protests /'proʊtest/ n. 抗议；反对vt. & vi. 声明；抗议时 态: protested，protesting，protests">protests</span>? And what was wrong with going out at night to buy Iron Maiden tapes from the men with suitcases on Gandhi <span class="annot" data-tooltip="avenue /'ævənuː/ n. 林荫道, 大街途径, 手段">Avenue</span>? In mullah-ruled Iran she lived two lives, but so did many people. In public, men grew beards and removed their ties. Women went black-robed all over. Everyone recited the same politico-religious nonsense, especially during the war with <span class="annot" data-tooltip="iraq n. 伊拉克（西南亚国家）">Iraq</span>, when the martyrs (their bodies dissolving into ghosts, with the golden keys to paradise swinging round their necks) were honoured with twice-daily <span class="annot" data-tooltip="breast /brest/ n. 乳房，胸部；胸怀；心情vt. 以胸对着；与…搏斗时 态: breasted, breasting, breasts">breast</span>-beatings. In private, certainly in the houses of her parents and their neighbours, there could be riotous drinking and dancing; her father once had to <span class="annot" data-tooltip="distract /dɪ'strækt/ vt. 转移；分心时 态: distracted, distracting, distracts">distract</span> the police while she and her grandmother, in panic and quickly back in their chadors, emptied all the alcohol down the loo. Her double life continued after she left Iran for Austria, at 14, to continue her education. But there the hypocrisy was reversed. As she grew she lived a free, wild European life, doing drugs, being punk and sleeping around, but inside she was ashamed. Assimilation meant betrayal; by 19, she needed to go back to Iran. Putting on her veil again, she <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span>: “So much for my individual and social liberties,” with a face as sad as when she had tied it first. Words were hardly necessary. Her expression said it all. Throughout the two parts of “Persepolis” her face dominated the pages, sulky or scared, angry or exploding with laughter, rippling like a <span class="annot" data-tooltip="puddle /'pʌdl/ n. 水坑；(尤指道路上的)雨水坑时 态: puddled，puddling，puddles">puddle</span> as she <span class="annot" data-tooltip="tripped /trɪp/ vi. 绊倒；犯错误；远足；轻快地走n. 旅行；绊倒；差错vt. 绊倒；使犯错TRIPabbr. transformation-">tripped</span> on drugs. In the simplest drawings, with the tiniest nicks of her pen, the most complex emotions could come through. Drawing nailed them, when writing was too hard; it was, after all, the first language of humans. She preferred her books to be called “<span class="annot" data-tooltip="comic /'kɑːmɪk/ adj. 滑稽的, 好笑的喜剧的n. 连环漫画杂志喜剧演员">comic</span>”, not “<span class="annot" data-tooltip="graphic /'ɡræfɪk/ adj. 图表的；形象的；绘画似的副 词: graphically">graphic</span>”, and she had fun, but the modern history of Iran kept tipping <span class="annot" data-tooltip="towards /tɔːrdz/ prep. 向，朝为了；有助于；用于对于，关于接近；将近；大约">towards</span> the dark. At the most harrowing moment of the first volume, when she found her <span class="annot" data-tooltip="jewish /'dʒuːɪʃ/ adj. 犹太人的;犹太教徒的">Jewish</span> friend Neda’s <span class="annot" data-tooltip="bracelet /'breɪslət/ n. 手镯">bracelet</span> (“still</p>
+<p>attached to...I don’t know what...”) in a house just destroyed by an Iraqi missile, the final <span class="annot" data-tooltip="panel /'pænl/ n. 仪表板；嵌板；座谈小组，全体陪审员vt. 嵌镶板时 态: paneled, panelled paneling, pan">panel</span> was plain black. No scream; no drawing <span class="annot" data-tooltip="either /'iːðər/ pron. (两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的">either</span>. Nothing. From time to time her interest shifted. After the success of “Persepolis”, including an animated film in 2007 that won her an Oscar <span class="annot" data-tooltip="nomination /ˌnɑːmɪ'neɪʃn/ n. 提名,任命">nomination</span>, she tried directing films for a time. She went back to drawing, though, in 2024, when she collaborated with 17 artists to produce “Woman, Life, Freedom”, the story of Mahsa Amini, an Iranian girl who died in custody after wearing her veil “improperly”. This revived her sempiternal theme, the repression of women. At art school in Iran, after her return, she <span class="annot" data-tooltip="mocked /mɑːk/ vt. & vi. 愚弄；嘲弄vt. 使受挫折adj. 仿制的；模拟的时 态: mocked，mocking，mocks">mocked</span> the <span class="annot" data-tooltip="absurdity /əb'sɜːrdəti/ n. 极端无理性,悖理；荒谬谬论；荒谬的行为">absurdity</span> of “life classes” in which the female-only model was draped from head to toe. Her real <span class="annot" data-tooltip="feminist /'femənɪst/ n. 女权主义者，女权运动者adj. 女权主义的，主张女权的形容词: feministic">feminist</span> <span class="annot" data-tooltip="heroine /'heroʊɪn/ n. 女英雄；女杰adj. 英雄式的">heroine</span>, however, was her grandmother, who had endured several varieties of 20th-century patriarchy, from Mossadegh to the Shah to the ayatollahs, and had emerged smiling (once her morning opium had kicked in), shockingly frank, and wise. In “Embroideries” (2003), she and a <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span> of other women spent an enjoyable teatime discussing men, their precious penises, their ridiculous hang-ups, and how to fake virginity on your wedding night. Her sly remarks were the most <span class="annot" data-tooltip="eyebrow /'aɪbraʊ/ n. 眉毛v. 为…描眉；用皱眉蹙额迫使">eyebrow</span>-raising. It was with her grandmother that Marjane walked by the Caspian sea before, in 1994, she left Iran for good. After five years, her return had not worked</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>obsession</td><td>/əb'seʃn/ n.</td><td>困扰, 无法摆脱的思想(或情感)</td></tr>
+<tr><td>thailand</td><td>— n.</td><td>泰国</td></tr>
+<tr><td>vietnam</td><td>/ˌviːet'nɑːm/ n.</td><td>越南（南亚国家）</td></tr>
+<tr><td>metropolitan</td><td>/ˌmetrə'pɑːlɪtən/ adj.</td><td>大都会的, 大城市的中心地区的, 正宗的</td></tr>
+<tr><td>heist</td><td>/haɪst/ vt.</td><td>抢劫，拦劫；强夺n. 抢劫；强夺vi. 抢劫, heisting, heists</td></tr>
+<tr><td>cambodians</td><td>/kæm'boʊdiən/ n.</td><td>柬埔寨人柬埔寨裔柬埔寨语；高棉语adj. 柬埔寨的;柬埔寨人的;柬埔寨语的</td></tr>
+<tr><td>avatars</td><td>/'ævətɑːr/ n.</td><td>电影《阿凡达》</td></tr>
+<tr><td>civil</td><td>/'sɪvl/ adj.</td><td>公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的</td></tr>
+<tr><td>regime</td><td>/reɪ'ʒiːm/ n.</td><td>政权，政体；社会制度；管理体制</td></tr>
+<tr><td>drills</td><td>/drɪl/ n.</td><td>钻子；钻孔机；播种机；训练vi. 钻孔；训练vt. 训练；钻孔；条播, drilling, drills</td></tr>
+<tr><td>process</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>cambodian</td><td>/kæm'boʊdiən/ n.</td><td>柬埔寨人柬埔寨裔柬埔寨语；高棉语adj. 柬埔寨的;柬埔寨人的;柬埔寨语的</td></tr>
+<tr><td>proved</td><td>/proʊ/ n.</td><td>从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞成；支持Pro脯氨酸PROabbr. P</td></tr>
+<tr><td>clients</td><td>/'klaɪənt/ n.</td><td>委托人顾客, 常客</td></tr>
+<tr><td>cabinets</td><td>/'kæbɪnət/ n.</td><td>内阁；橱柜；展览艺术品的小陈列室adj. 内阁的；私下的，秘密的</td></tr>
+<tr><td>augment</td><td>/ɔːɡ'ment/ vt.</td><td>增加, 提高, 扩大n. 增加, 提高, 扩大, augmenting, augments</td></tr>
+<tr><td>thriller</td><td>/'θrɪlər/ n.</td><td>使人毛骨悚然的东西；使人毛骨悚然的小说；惊险小说</td></tr>
+<tr><td>neat</td><td>/niːt/ adj.</td><td>整洁的；未搀水的；优雅的；灵巧的；齐整的；平滑的, neatest</td></tr>
+<tr><td>resolution</td><td>/ˌrezə'luːʃn/ n.</td><td>正式决定，决议决心，决定坚决；坚定；坚毅解决，解答分辨力，分辨率[度]</td></tr>
+<tr><td>artefacts</td><td>/'ɑːrtɪfækt/ n.</td><td>人工制品，加工品</td></tr>
+<tr><td>looted</td><td>/luːt/ n.</td><td>掠夺品；战利品；抢劫vt. 抢劫，洗劫；强夺vi. 洗劫，掠夺；抢劫, looting, loots</td></tr>
+<tr><td>unrealistic</td><td>/ˌʌnriːə'lɪstɪk/ adj.</td><td>不切实际的;不实事求是的</td></tr>
+<tr><td>gaze</td><td>/ɡeɪz/ vi.</td><td>凝视, 注视n. 凝视, 端详, gazing, gazes</td></tr>
+<tr><td>unusual</td><td>/ʌn'juːʒuəl/ adj.</td><td>与众不同的；不寻常的；不平常的</td></tr>
+<tr><td>overlook</td><td>/ˌoʊvər'lʊk/ </td><td>vt.忽略；俯瞰；远眺；不计较，宽恕；施魔法于；监督；检查n.忽视；眺望；从高处能看到的景色, overlooking, overlooks</td></tr>
+<tr><td>recruits</td><td>/rɪ'kruːt/ n.</td><td>新兵(机构中的)新成员vt. 招聘；吸引(新成员)吸收某人为新成员vt. & vi. 招募，征募(新兵)恢复健康，恢复体力，recruiting，recruit</td></tr>
+<tr><td>plot</td><td>/plɑːt/ n.</td><td>故事情节(秘密)计划，密谋小块地皮vt. 把…分成小块；划分绘制；标出vt. & vi. 密谋，plotting，plots</td></tr>
+<tr><td>twist</td><td>/twɪst/ vt.</td><td>捻；拧；扭伤；编织；使苦恼n. 扭曲；扭伤；拧vi. 扭动；弯曲, twisting, twists</td></tr>
+<tr><td>heist</td><td>/haɪst/ vt.</td><td>抢劫，拦劫；强夺n. 抢劫；强夺vi. 抢劫, heisting, heists</td></tr>
+<tr><td>obsession</td><td>/əb'seʃn/ n.</td><td>困扰, 无法摆脱的思想(或情感)</td></tr>
+<tr><td>reveal</td><td>/rɪ'viːl/ vt.</td><td>显示；露出泄露；透露，revealing，reveals</td></tr>
+<tr><td>nerve</td><td>/nɜːrv/ n.</td><td>神经神经过敏；神经紧张勇气；胆量，nerving，nerves</td></tr>
+<tr><td>curry</td><td>/'kɜːri/ n.</td><td>咖喱食品vt. 用咖喱粉烹调(食物)梳刷(马匹)讨好； 奉承； 拍某人的马屁Curry柯里(姓氏), currying, curries</td></tr>
+<tr><td>grossed</td><td>/ɡroʊs/ adj.</td><td>总共的；粗野的；恶劣的；显而易见的vt. 总共收入n. 总额，总数, grossest</td></tr>
+<tr><td>debut</td><td>/deɪ'bjuː/ n.</td><td>〈法〉演员首次演出</td></tr>
+<tr><td>viral</td><td>/'vaɪrəl/ adj.</td><td>滤过性毒菌引起的；滤过性毒菌的</td></tr>
+<tr><td>grossing</td><td>/ɡroʊs/ adj.</td><td>总共的；粗野的；恶劣的；显而易见的vt. 总共收入n. 总额，总数, grossest</td></tr>
+<tr><td>spot</td><td>/spɑːt/ n.</td><td>斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Positioning and Tracki</td></tr>
+<tr><td>genre</td><td>/'ʒɑːnrə/ </td><td>（文学、绘画、音乐、电影等艺术作品的）体裁，类型</td></tr>
+<tr><td>lures</td><td>/lʊr/ n.</td><td>诱惑物；诱惑；饵vt. 引诱；诱惑, luring, lures</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>obsession</td><td>/əb'seʃn/ n.</td><td>困扰, 无法摆脱的思想(或情感)</td></tr>
+<tr><td>main</td><td>/meɪn/ adj.</td><td>主要的; 最重要的n. 总管道; 干线</td></tr>
+<tr><td>protagonists</td><td>/prə'tæɡənɪst/ n.</td><td>(戏剧的)主角(故事的)主人公；现实事件(尤指冲突和争端的)主要参与者，主要人物领导者；倡导者；拥护者</td></tr>
+<tr><td>isolated</td><td>/'aɪsəleɪtɪd/ adj.</td><td>孤立的；分离的；绝缘的；单独的v. 使孤立；使绝缘；脱离（isolate的过去分词）</td></tr>
+<tr><td>awkward</td><td>/'ɔːkwərd/ adj.</td><td>笨拙的；尴尬的；棘手的；不合适的</td></tr>
+<tr><td>novelty</td><td>/'nɑːvlti/ n.</td><td>新颖; 新奇性新奇的人[事物]新颖小巧而价廉的物品</td></tr>
+<tr><td>possessive</td><td>/pə'zesɪv/ adj.</td><td>所有(权)的；不愿分享的所属关系的，所有格的n. 表示所属关系的词或词语形式adv. 占有地；所属关系地n. 占有，占有欲所有格形容词</td></tr>
+<tr><td>violent</td><td>/'vaɪələnt/ adj.</td><td>暴力引起的, 粗暴的剧烈的, 强烈的</td></tr>
+<tr><td>covered</td><td>/'kʌvər/ vt.</td><td>包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替, covering, covers</td></tr>
+<tr><td>wallpaper</td><td>/'wɔːlpeɪpər/ n.</td><td>壁纸；墙纸vt. 往 (屋里墙上)贴壁纸vi. 贴壁纸，wallpapering，wallpapers</td></tr>
+<tr><td>haunted</td><td>/hɔːnt/ vt.</td><td>经常出没于缠绕, 萦绕n. 某人常去的地方, haunting, haunts</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>dismal</td><td>/'dɪzməl/ adj.</td><td>凄凉的，忧郁的；阴沉的，沉闷的；可怕的n. 低落的情绪</td></tr>
+<tr><td>prospects</td><td>/'prɑːspekt/ n.</td><td>景象，景色前景；前途可能成为主顾的人；有希望的候选人vi. 勘探；勘察，prospecting，prospects</td></tr>
+<tr><td>architect</td><td>/'ɑːrkɪtekt/ n.</td><td>建筑师, 设计师</td></tr>
+<tr><td>pursue</td><td>/pər'suː/ vt.</td><td>从事；追赶；继续；纠缠vi. 追赶；继续进行, pursuing, pursues</td></tr>
+<tr><td>bleak</td><td>/bliːk/ adj.</td><td>荒凉的，无遮蔽的；阴冷的；黯淡的，无希望的；冷酷的；单调的, bleakest</td></tr>
+<tr><td>cruel</td><td>/'kruːəl/ adj.</td><td>残酷的, 残忍的使人痛苦的, 让人受难的, crueller cruelest, cruellest</td></tr>
+<tr><td>surrender</td><td>/sə'rendər/ vt.</td><td>& vi. 投降vt. 放弃；抛弃n. 投降，放弃，surrendering，surrenders</td></tr>
+<tr><td>creators</td><td>/kri'eɪtər/ n.</td><td>创造者,创作者</td></tr>
+<tr><td>plot</td><td>/plɑːt/ n.</td><td>故事情节(秘密)计划，密谋小块地皮vt. 把…分成小块；划分绘制；标出vt. & vi. 密谋，plotting，plots</td></tr>
+<tr><td>twist</td><td>/twɪst/ vt.</td><td>捻；拧；扭伤；编织；使苦恼n. 扭曲；扭伤；拧vi. 扭动；弯曲, twisting, twists</td></tr>
+<tr><td>reveal</td><td>/rɪ'viːl/ vt.</td><td>显示；露出泄露；透露，revealing，reveals</td></tr>
+<tr><td>indicators</td><td>/'ɪndɪkeɪtər/ n.</td><td>(仪器上显示温度、压力、耗油量等的)指针，指示器，记录器(车辆上的)转弯指示灯指示物；指示者</td></tr>
+<tr><td>indicators</td><td>/'ɪndɪkeɪtər/ n.</td><td>(仪器上显示温度、压力、耗油量等的)指针，指示器，记录器(车辆上的)转弯指示灯指示物；指示者</td></tr>
+<tr><td>sensation</td><td>/sen'seɪʃn/ n.</td><td>感觉, 感受知觉激动, 轰动</td></tr>
+<tr><td>line</td><td>/laɪn/ n.</td><td>绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long interspersed element)长散在元</td></tr>
+<tr><td>scarves</td><td>/skɑːrf/ n.</td><td>围巾; 披肩; 领巾</td></tr>
+<tr><td>graphic</td><td>/'ɡræfɪk/ adj.</td><td>图表的；形象的；绘画似的</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>preachers</td><td>/'priːtʃər/ n.</td><td>说教者；鼓吹者；传道人，讲道的道士</td></tr>
+<tr><td>terror</td><td>/'terər/ n.</td><td>恐怖; 恐怖活动引起恐怖的人[事]讨厌的人</td></tr>
+<tr><td>speaking</td><td>/'spikɪŋ/ adj.</td><td>演讲的；富于表情的，雄辩的n. 说话；演讲v. 讲（speak的ing形式）</td></tr>
+<tr><td>expelled</td><td>/ɪk'spel/ vt.</td><td>驱逐；开除, expelling, expels</td></tr>
+<tr><td>regime</td><td>/reɪ'ʒiːm/ n.</td><td>政权，政体；社会制度；管理体制</td></tr>
+<tr><td>jeans</td><td>/dʒiːnz/ n.</td><td>牛仔裤Jeans琼斯(①姓氏 ②Sir James Hopwood, 1877-1946, 英国数学家, 物理学家, 天文学家)</td></tr>
+<tr><td>maid</td><td>/meɪd/ n.</td><td>女仆；少女vt. 侍候；做新娘的女傧相vi. 当女仆</td></tr>
+<tr><td>protests</td><td>/'proʊtest/ n.</td><td>抗议；反对vt. & vi. 声明；抗议，protesting，protests</td></tr>
+<tr><td>avenue</td><td>/'ævənuː/ n.</td><td>林荫道, 大街途径, 手段</td></tr>
+<tr><td>iraq</td><td>— n.</td><td>伊拉克（西南亚国家）</td></tr>
+<tr><td>breast</td><td>/brest/ n.</td><td>乳房，胸部；胸怀；心情vt. 以胸对着；与…搏斗, breasting, breasts</td></tr>
+<tr><td>distract</td><td>/dɪ'strækt/ vt.</td><td>转移；分心, distracting, distracts</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>puddle</td><td>/'pʌdl/ n.</td><td>水坑；(尤指道路上的)雨水坑，puddling，puddles</td></tr>
+<tr><td>tripped</td><td>/trɪp/ vi.</td><td>绊倒；犯错误；远足；轻快地走n. 旅行；绊倒；差错vt. 绊倒；使犯错TRIPabbr. transformation-induced plasticity 高</td></tr>
+<tr><td>comic</td><td>/'kɑːmɪk/ adj.</td><td>滑稽的, 好笑的喜剧的n. 连环漫画杂志喜剧演员</td></tr>
+<tr><td>graphic</td><td>/'ɡræfɪk/ adj.</td><td>图表的；形象的；绘画似的</td></tr>
+<tr><td>towards</td><td>/tɔːrdz/ prep.</td><td>向，朝为了；有助于；用于对于，关于接近；将近；大约</td></tr>
+<tr><td>jewish</td><td>/'dʒuːɪʃ/ adj.</td><td>犹太人的;犹太教徒的</td></tr>
+<tr><td>bracelet</td><td>/'breɪslət/ n.</td><td>手镯</td></tr>
+<tr><td>panel</td><td>/'pænl/ n.</td><td>仪表板；嵌板；座谈小组，全体陪审员vt. 嵌镶板, panelled paneling, panelling panels, panels</td></tr>
+<tr><td>either</td><td>/'iːðər/ pron.</td><td>(两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的</td></tr>
+<tr><td>nomination</td><td>/ˌnɑːmɪ'neɪʃn/ n.</td><td>提名,任命</td></tr>
+<tr><td>mocked</td><td>/mɑːk/ vt.</td><td>& vi. 愚弄；嘲弄vt. 使受挫折adj. 仿制的；模拟的，mocking，mocks</td></tr>
+<tr><td>absurdity</td><td>/əb'sɜːrdəti/ n.</td><td>极端无理性,悖理；荒谬谬论；荒谬的行为</td></tr>
+<tr><td>feminist</td><td>/'femənɪst/ n.</td><td>女权主义者，女权运动者adj. 女权主义的，主张女权的</td></tr>
+<tr><td>heroine</td><td>/'heroʊɪn/ n.</td><td>女英雄；女杰adj. 英雄式的</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>eyebrow</td><td>/'aɪbraʊ/ n.</td><td>眉毛v. 为…描眉；用皱眉蹙额迫使</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day43.html" class="nav-btn">← Day 43</a>
+  <a href="day45.html" class="nav-btn">Day 45 →</a>
+</div>
+
+<div class="progress">📖 Day 44 of 45</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-06-13</div>
+
+</body>
+</html>

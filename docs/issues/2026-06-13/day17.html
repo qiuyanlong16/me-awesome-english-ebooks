@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asia | A chicken and egg problem</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-06-13</div>
+
+<h1 class="article-title">Asia | A chicken and egg problem</h1>
+<div class="article-section">Asia</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>surrounded by paddy fields and forest—some 60,000 hens lay many millions of eggs a year. They are cooped up in rows of battery cages that <span class="annot" data-tooltip="stretch /stretʃ/ vt. 伸展,张开vi. 伸展adj. 可伸缩的n. 伸展，延伸时 态: stretched, stretching, stre">stretch</span> almost as <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> as the eye can see. Each bird occupies a space smaller than a laptop, where she will spend most of her short life. Several countries in Europe have banned battery cages, as have a <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of states in America. In Asia, by <span class="annot" data-tooltip="contrast /'kɑːntræst/ n. 对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照时 态: contrasted, cont">contrast</span>, around 89% of the region’s commercial laying hens are raised in cages, compared with 55% in America and 16% in Britain. Factories that go cage-free need a lot more space, which can increase costs by 20-40%. Few consumers in India or <span class="annot" data-tooltip="indonesia /ˌɪndə'niːʒə/ n. 印度尼西亚(东南亚岛国)">Indonesia</span> are willing to shell out that kind of a <span class="annot" data-tooltip="premium /'priːmiəm/ n. 奖金，津贴；加价；附加费；保险费；额外费用adj. （品质）高级的；优质的，顶级的">premium</span>. Nor have governments much appetite to <span class="annot" data-tooltip="intervene /ˌɪntər'viːn/ vi. 干涉，干预；调解干扰，阻碍时 态: intervened，intervening，intervenes">intervene</span>. Many officials see factory farms as a much-needed boost to agricultural <span class="annot" data-tooltip="productivity /ˌproʊdʌk'tɪvəti/ n. 生产率, 生产力">productivity</span>, and eggs as <span class="annot" data-tooltip="essential /ɪ'senʃl/ adj. 基本的；必要的；本质的；精华的">essential</span> food for growing populations. Around the region people are busily trying to <span class="annot" data-tooltip="crack /kræk/ vt. & vi. (使…)开裂, 破裂(使)身体上或精神上垮掉打开, 砸开(使)发出爆裂声n. 裂缝, 缝隙噼啪声, 爆裂声意">crack</span> the problem. Many businesses that are <span class="annot" data-tooltip="keen /kiːn/ adj. 锋利的热衷的，热心的，渴望(做某事)激烈的，紧张的良好的；敏锐的，敏捷的比较级: keener，keenest">keen</span> to buy cage-free eggs, such as posh hotels, struggle to get hold of them. The “cage-free <span class="annot" data-tooltip="credit /'kredɪt/ n. 赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)时 态:">credit</span>”, pioneered by Global Food Partners, a consultancy in Singapore, seeks to <span class="annot" data-tooltip="address /ə'dres/ v. 写（收信人）姓名地址；致函演说；演讲称呼（某人）；冠以（某种称呼）设法解决；处理；对付向…说话n. 地址；住址；通信处 ">address</span> this. The companies in its scheme buy cage-free eggs when they realistically can. When they cannot, they buy eggs from cages—but at the same time they also buy a credit, the proceeds from which are used to help farmers somewhere in their region go cageless. This is a rare example of a smart policy that <span class="annot" data-tooltip="genuinely /'dʒenjuɪnli/ adv. 真地;真正地真诚地;诚实地">genuinely</span> boosts animal welfare, argues Elissa <span class="annot" data-tooltip="lane /leɪn/ n. 小巷；航线；车道；[篮球]罚球区">Lane</span>, a co-founder of the <span class="annot" data-tooltip="outfit /'aʊtfɪt/ n. （为特定场合或活动而穿的）全套服装，装束全套装备；成套工具组织；公司；团队；军事单位v. 装备，配备；为…提供设备（或服">outfit</span>. The idea is slowly starting to take <span class="annot" data-tooltip="flight /flaɪt/ n. 飞翔, 飞行航班, 航机楼梯的一段逃跑, 溃退时 态: flighted, flighting, flights">flight</span>. A number of big companies in India, Indonesia, the Philippines and <span class="annot" data-tooltip="vietnam /ˌviːet'nɑːm/ n. 越南（南亚国家）">Vietnam</span> have bought or signed up for cage-free <span class="annot" data-tooltip="credits /'kredɪt/ n. 赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)时 态:">credits</span>. They include the Asian arms of <span class="annot" data-tooltip="major /'meɪdʒər/ adj. 主要的；主修的；重要的；较多的n. 成年人；主修科目；陆军少校vi. 主修时 态: majored, majoring,">major</span> food firms such as Compass <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">Group</span>, Kellanova and PizzaExpress. In April Compass’s Indian operation bought enough credits to <span class="annot" data-tooltip="offset /'ɔːfset/ vt. 抵消, 补偿时 态: offset, offsetting, offsets">offset</span> 4m caged eggs. In time technology could also offer ways to make egg production less irksome. In-ovo sexing, which <span class="annot" data-tooltip="detects /dɪ'tekt/ vt. 发现；发觉，查明时 态: detected，detecting，detects">detects</span> and culls male embryos before they <span class="annot" data-tooltip="hatch /hætʃ/ n. 舱口；孵化vt. 策划；孵vi. 孵化时 态: hatched, hatching, hatches">hatch</span>, <span class="annot" data-tooltip="tackles /'tækl/ vt. 解决；应付vt. & vi. 捉住；扭倒n. 拦截；擒抱器具，器械，用具滑车，滑轮组时 态: tackled，tackl">tackles</span> the grim <span class="annot" data-tooltip="practice /'præktɪs/ n. 练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规时 态: practiced，practicing，">practice</span> of killing male chicks (useless to egg producers) at birth. In parts of Europe, where culling is banned, this technique has already spared 110m chicks, reckons <span class="annot" data-tooltip="innovate /'ɪnəveɪt/ vi. 改革；创新；革新vt. 创始；改变；创立；引人时 态: innovated, innovating, innovates">Innovate</span> Animal Ag, an American think-<span class="annot" data-tooltip="tank /tæŋk/ n. （存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内时 态: t">tank</span>. A pilot began in Australia last month. The most <span class="annot" data-tooltip="radical /'rædɪkl/ adj. 根本的，基本的；彻底的，完全的激进的，激进派的副 词: radically">radical</span> solution would be to do away with the hen altogether. In 2022 Float Foods, a</p>
+<p>Singaporean firm, <span class="annot" data-tooltip="hatched /hætʃ/ n. 舱口；孵化vt. 策划；孵vi. 孵化时 态: hatched, hatching, hatches">hatched</span> OnlyEg, Asia’s first commercial plant-based whole-egg <span class="annot" data-tooltip="substitute /'sʌbstɪtuːt/ vt. & vi. 代替, 替换, 代用时 态: substituted, substituting, substitutes">substitute</span>—<span class="annot" data-tooltip="complete /kəm'pliːt/ adj. 完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善比较级: complete">complete</span> with a legume-based yolk. <span class="annot" data-tooltip="vegans /'viːɡən/ n. 纯素主义者(既不吃也不用任何动物产品, 如蛋、丝绸、皮革)名 词: veganism">Vegans</span> cannot get un oeuf of them. ■ For <span class="annot" data-tooltip="exclusive /ɪk'skluːsɪv/ adj. 高级的，奢华的专用的；独家的n. 独家新闻，独家报道副 词: exclusively">exclusive</span> <span class="annot" data-tooltip="coverage /'kʌvərɪdʒ/ n. 新闻报道, 报道量覆盖范围">coverage</span> of Asian politics, economics and <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span>, sign up to Asia Bulletin, our weekly subscriber-only newsletter. This article was downloaded by zlibrary from https://www.economist.com//asia/2026/06/11/asian-activists-say-too-much-egg- production-is-<span class="annot" data-tooltip="cruel /'kruːəl/ adj. 残酷的, 残忍的使人痛苦的, 让人受难的比较级: crueler, crueller cruelest, cruelle">cruel</span></p>
+<div class="article-separator"></div>
+<div class="article-header">Asia · Asia | Pest control</div>
+<p>Can India’s cockroach party become a political movement? The government is betting that the answer is no June 11th 2026 ABHIJEET DIPKE, the founder of the Cockroach Janta Party, predicted that when he landed at <span class="annot" data-tooltip="delhi /ˈdɛli/ n. 德里（印度城市名）">Delhi</span> airport he would be arrested and the <span class="annot" data-tooltip="protest /'proʊtest/ n. 抗议；反对vt. & vi. 声明；抗议时 态: protested，protesting，protests">protest</span> he had planned would be banned. That might have sounded a bit dramatic for a man who, a month ago, was posting <span class="annot" data-tooltip="memes n. (通过模仿等传递的)文化基因">memes</span> from his home in Boston, in America. But Mr Dipke has <span class="annot" data-tooltip="accidentally /ˌæksɪ'dentəli/ adv. 偶然地；意外地；非故意地故作意外地；有意装无意地">accidentally</span> found himself at the <span class="annot" data-tooltip="helm /helm/ n. 舵；舵柄；领导地位；驾驶盘vt. 指挥；给...掌舵时 态: helmed, helming, helms">helm</span> of a movement. His party, which began as a joke in response to a nasty comment made by the <span class="annot" data-tooltip="supreme /su'priːm/ adj. 最高的；至上的最重要的比较级: supremer，supremest 缩 写: supr">Supreme</span> Court of India’s chief justice about the country’s jobless young, has attracted millions of followers. As it went <span class="annot" data-tooltip="viral /'vaɪrəl/ adj. 滤过性毒菌引起的；滤过性毒菌的">viral</span>, the Indian government’s first response was to try to <span class="annot" data-tooltip="squash /skwɑːʃ/ vt. 将(某人[某物])压扁，压烂，挤碎将(某人[某物])向某方挤粗暴地使(某人)住嘴挤进平定(叛乱等)；镇压；制服n. 拥挤">squash</span> it.</p>
+<p>Once Mr Dipke landed on June 6th, however, it became clear that the government had adroitly changed tack. The <span class="annot" data-tooltip="delhi /ˈdɛli/ n. 德里（印度城市名）">Delhi</span> police <span class="annot" data-tooltip="swiftly /swɪft/ adj. 迅速的, 速度快的敏捷的, 反应快的SWIFTabbr. Society for Worldwide Interbank">swiftly</span> granted him permission to hold the rally. A jetlagged Mr Dipke, a 30-year-old communications professional, proceeded to a <span class="annot" data-tooltip="protest /'proʊtest/ n. 抗议；反对vt. & vi. 声明；抗议时 态: protested，protesting，protests">protest</span> site in <span class="annot" data-tooltip="central /'sentrəl/ adj. 中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的副 词: centrally">central</span> Delhi. By <span class="annot" data-tooltip="midday /ˌmɪd'deɪ/ n. 中午；正午adj. 正午的">midday</span> there were perhaps one or two thousand people there, mostly young, many filming themselves. They drummed and chanted slogans, calling for the education minister to resign because of scandals involving botched exams. Mr Dipke held aloft an autobiography by B.R. Ambedkar, a Dalit leader, and gave impromptu speeches that were inaudible. At one point he appeared to <span class="annot" data-tooltip="faint /feɪnt/ vi. 晕倒，昏倒adj. 微弱的，模糊的，暗淡的(体力)无力的，虚弱的；易失去知觉的，昏眩的(动作等)无力的，似无太大效果的n">faint</span>, hardly surprising given the sweltering heat. The grievances that Mr Dipke has tapped into run deep and wide. Like many young people across India, the protesters were angry about a lack of jobs and an education system that can often seem designed to <span class="annot" data-tooltip="crush /krʌʃ/ vt. & vi. 压碎, 压坏vt. 弄皱镇压, 消灭, 击溃vi. 挤进, 挤入n. 拥挤的人群时 态: crushed, ">crush</span> their aspirations. Many complained that those in power are unaccountable, and <span class="annot" data-tooltip="suppress /sə'pres/ v. 镇压；制止；压制；（武力）平定禁止（发表）；查禁；封锁抑制；控制；忍住压制；阻止；抑制（身体的功能或反应）时 态: su">suppress</span> dissent. Naveen, who had travelled from Jaipur, said the problem was not the education minister but “the whole system”. Arvind Singh, from Chandigarh, said that the nascent party had given angry but fearful youngsters the confidence to speak out. “When something gets too big organically, it comes and <span class="annot" data-tooltip="bites /baɪt/ vt. & vi. 咬, 叮n. 咬咬伤, 叮伤">bites</span> you back,” he said. Both wore cockroach masks. “We are cockroaches!” the crowd chanted. Mr Dipke has promised more rallies across India. He has plenty of <span class="annot" data-tooltip="discontent /ˌdɪskən'tent/ n. 不满时 态: discontented, discontenting, discontents">discontent</span> to draw on and a powerful symbol, which counts for something in Indian politics. But his movement is inchoate. It has no real organisation (the turnout in Delhi was surprisingly small), it lacks a coherent message, and it is not clear that Mr Dipke will have the skills to turn a burst of anger into a movement. Those in power seem to doubt that it will be any more than a <span class="annot" data-tooltip="minor /'maɪnər/ adj. 较小的, 较少的, 低级的, 次要的n. 未成年人副修科目时 态: minored, minoring, minors">minor</span> pest. It is up to the cockroaches to prove them wrong. ■ Stay on top of our India <span class="annot" data-tooltip="coverage /'kʌvərɪdʒ/ n. 新闻报道, 报道量覆盖范围">coverage</span> by signing up to <span class="annot" data-tooltip="essential /ɪ'senʃl/ adj. 基本的；必要的；本质的；精华的">Essential</span> India, our free weekly newsletter. This article was downloaded by zlibrary from https://www.economist.com//asia/2026/06/11/can-indias-cockroach-party-become-a- political-movement</p>
+<div class="article-separator"></div>
+<div class="article-header">Asia · Asia | The other parent</div>
+<p>Japan is rethinking its divorce laws A move to introduce <span class="annot" data-tooltip="joint /dʒɔɪnt/ n. 关节；接合处，接合点；接缝；（牛，羊等的腿）大块肉adj. 联合的，合办的；共同的；连接的vt. 连接，贴合；接合；使有">joint</span> custody marks a big shift June 11th 2026 WHEN SHIBAHASHI SATOKO divorced her husband a <span class="annot" data-tooltip="decade /'dekeɪd/ n. 十年，十年期；十">decade</span> ago, she did not want her ten-year-old son to see his father. The break-up had been ugly, and she recoiled at the <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span> of a <span class="annot" data-tooltip="reunion /ˌriː'juːniən/ n. 再结合，重聚； (久别的亲友、同事的)聚会Reunion留尼旺岛，印度洋西南面的一个法属火山岛">reunion</span>. Then she met another divorced mother whose child, denied access to his father, looked <span class="annot" data-tooltip="miserable /'mɪzrəbl/ adj. 悲惨的，不幸的，可怜的令人痛苦的；令人不快的低劣的；贫乏的卑鄙的，可耻的，可恶的名 词: miserable">miserable</span>. “I thought: what a <span class="annot" data-tooltip="terrible /'terəbl/ adj. 可怕的；很糟的；令人讨厌的adv. [口]很，非常副 词: terribly">terrible</span> mother,” she recalls. “But then I realised I’m no better.” She called her ex-husband to arrange a meeting. He has been part of the boy’s life since. Her change of heart mirrors a broader one. For <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span> Japan was the only G7 country not to recognise joint custody after divorce—so that the parent granted custody, usually the mother, could easily shut the other out. A government survey in 2021 found that only one in three children of divorced</p>
+<p>parents had any contact with the absent parent, <span class="annot" data-tooltip="typically /'tɪpɪkli/ adv. 代表性地;作为特色地;典型地">typically</span> just once a month. In April, following a revision of a <span class="annot" data-tooltip="civil /'sɪvl/ adj. 公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的副 词: civilly">civil</span> code unchanged for <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> eight <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span>, Japan introduced <span class="annot" data-tooltip="joint /dʒɔɪnt/ n. 关节；接合处，接合点；接缝；（牛，羊等的腿）大块肉adj. 联合的，合办的；共同的；连接的vt. 连接，贴合；接合；使有">joint</span> custody. The change reflects a <span class="annot" data-tooltip="profound /prə'faʊnd/ adj. 深度的；深切的；深远的知识渊博的，见解深刻的，深奥的比较级: profounder，profoundest">profound</span> shift in how the country thinks about family life. Despite traditional family <span class="annot" data-tooltip="values /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">values</span>, divorce is common. James Raymo, a demographer at Princeton University, estimates that at its peak in the 2000s, around a third of Japanese marriages ended in divorce, though that has eased to roughly a <span class="annot" data-tooltip="quarter /'kwɔːrtər/ n. 四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一时 ">quarter</span> today as people marry more selectively. Japan is among the world’s easiest <span class="annot" data-tooltip="places /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">places</span> to split: rather than seeking a court order, as couples must in America or Britain, a Japanese pair need only sign a form at their local <span class="annot" data-tooltip="ward /wɔːrd/ n. 监视；保卫；病房vt. 避开；保卫；守护Ward沃德(姓氏, 男子名)时 态: warded, warding, war">ward</span> office. Around nine in ten divorces are settled in this way. That creates problems. Decisions over money, child support and custody are made while <span class="annot" data-tooltip="tempers /'tempər/ n. 脾气；（钢等）回火；性情；倾向vt. 调和；锻炼；使缓和；使回火vi. 回火；调和时 态: tempered, temp">tempers</span> run hot, with no <span class="annot" data-tooltip="neutral /'nuːtrəl/ adj. 中立的，中性的；中立国的；非彩色的n. 中立国；中立者；非彩色；齿轮的空档副 词: neutrally">neutral</span> party to cool them. The results are <span class="annot" data-tooltip="bleak /bliːk/ adj. 荒凉的，无遮蔽的；阴冷的；黯淡的，无希望的；冷酷的；单调的比较级: bleaker, bleakest">bleak</span>. Only 28% of single mothers get child support from ex-husbands. Combined with a large gender pay gap, this helps explain why the relative poverty rate for single-mother <span class="annot" data-tooltip="households /'haʊshoʊld/ n. 同住在一所房子里的人, 一家人, 户adj. 家庭的, 家用的">households</span>, at 45%, is one of the highest in rich countries. The same desire to sever ties shapes contact with the children. In principle, the non-custodial parent <span class="annot" data-tooltip="retains /rɪ'teɪn/ vt. 保持；雇；记住时 态: retained, retaining, retains 缩 写: ret">retains</span> the right to see them; in <span class="annot" data-tooltip="practice /'præktɪs/ n. 练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规时 态: practiced，practicing，">practice</span>, that contact is limited and easily withheld. Divorce in Japan, notes Allison Alexy, an anthropologist, follows a “clean break” model, in the belief that shuttling between two households harms children. When ex-<span class="annot" data-tooltip="spouses /spaʊs/ n. 配偶, 夫或妻时 态: spoused, spousing, spouses">spouses</span> leave, says Ms Shibahashi, they are often treated as if they have died. Critics point to an even <span class="annot" data-tooltip="bleaker /bliːk/ adj. 荒凉的，无遮蔽的；阴冷的；黯淡的，无希望的；冷酷的；单调的比较级: bleaker, bleakest">bleaker</span> consequence. Japanese courts <span class="annot" data-tooltip="tend /tend/ vt. 照料，照顾，伺候vi. 往，朝向易于；倾向时 态: tended，tending，tends">tend</span> to award custody to whichever parent the children already live with, creating a perverse incentive: a <span class="annot" data-tooltip="spouse /spaʊs/ n. 配偶, 夫或妻时 态: spoused, spousing, spouses">spouse</span> anticipating a break-up may <span class="annot" data-tooltip="simply /'sɪmpli/ adv. 简单地；朴素地；简直；仅仅；坦白地">simply</span> take the children first. Such “parental abductions” have become hotly debated. In 2021 a Frenchman staged a hunger <span class="annot" data-tooltip="strike /straɪk/ vi. 罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打时 态:">strike</span> in Tokyo demanding the right to see his children after his Japanese ex-wife took them away; but she did not relent. Supporters of joint custody hope that the new law will help. It requires divorced parents to make big decisions—over <span class="annot" data-tooltip="schooling /'skuːlɪŋ/ n. 学校教育；训练；学费v. 教育，培养；使学会（school的现在分词形式）；训练">schooling</span>, say, or <span class="annot" data-tooltip="relocation /ˌriːloʊ'keɪʃn/ n. 再布置,变换布置">relocation</span> —together, and puts parent-child contact on a firmer legal footing. Officials</p>
+<p>hope that fathers with a continuing stake in their children’s lives will be likelier to pay support; the <span class="annot" data-tooltip="reform /rɪ'fɔːrm/ n. 改革，改良，改造vt. & vi. 改革；改造；改善时 态: reformed，reforming，reforms">reform</span> has been paired with a new statutory child-support measure. Opposition has come mainly from women’s-rights <span class="annot" data-tooltip="groups /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">groups</span>, which argue that <span class="annot" data-tooltip="joint /dʒɔɪnt/ n. 关节；接合处，接合点；接缝；（牛，羊等的腿）大块肉adj. 联合的，合办的；共同的；连接的vt. 连接，贴合；接合；使有">joint</span> custody could force <span class="annot" data-tooltip="victims /'vɪktɪm/ n. 牺牲者；受害人；牺牲品">victims</span> of <span class="annot" data-tooltip="domestic /də'mestɪk/ adj. 国内的；家庭的；驯养的；一心只管家务的">domestic</span> violence back into contact with their <span class="annot" data-tooltip="abusive /ə'bjuːsɪv/ adj. 被滥用的，被误用的，被妄用的虐待的；凌辱的；糟蹋的骂人的, 攻击性的毁谤的舞弊的；腐败的骗人的；欺骗性的，欺诈性的adv">abusive</span> former partners. The concern is by no means baseless, though a survey suggested that only 8% of divorces were caused by physical violence. It will take time to judge the law in <span class="annot" data-tooltip="practice /'præktɪs/ n. 练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规时 态: practiced，practicing，">practice</span>. But the direction seems right. As Ms Shibahashi puts it: “Grown-ups may fight each other, but a child should never lose a parent because of that.” ■ For <span class="annot" data-tooltip="exclusive /ɪk'skluːsɪv/ adj. 高级的，奢华的专用的；独家的n. 独家新闻，独家报道副 词: exclusively">exclusive</span> <span class="annot" data-tooltip="coverage /'kʌvərɪdʒ/ n. 新闻报道, 报道量覆盖范围">coverage</span> of Asian politics, economics and <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span>, sign up to Asia Bulletin, our weekly subscriber-only newsletter. This article was downloaded by zlibrary from https://www.economist.com//asia/2026/06/11/japan-is-rethinking-its-divorce-laws</p>
+<div class="article-separator"></div>
+<div class="article-header">Asia · Asia | Ashoka</div>
+<p>Money troubles are driving India’s states to drink Things are so <span class="annot" data-tooltip="dire /'daɪər/ adj. 可怕的, 恐怖的比较级: direr, direst">dire</span> that one state has produced a rational alcohol policy June 11th 2026 Just like many humans, Indian states have a conflicted relationship with <span class="annot" data-tooltip="booze /buːz/ n. 酒；酒宴vi. 豪饮；痛饮时 态: boozed, boozing, boozes">booze</span>. The Directive Principles of State Policy enshrined in the country’s constitution call on governments to “endeavour to bring about prohibition”. India celebrates its independence day, and many other public holidays, by imposing abstinence. In Kerala the first day of every month is dry. In Maharashtra drinkers must (in theory) have a state-issued permit. These attempts to cut down should be familiar to anyone who has ever woken up worse for wear and vowed never to drink again. On the other hand, the Directive Principles are a non-binding list of aspirations likened even at independence to “<span class="annot" data-tooltip="resolutions /ˌrezə'luːʃn/ n. 正式决定，决议决心，决定坚决；坚定；坚毅解决，解答分辨力，分辨率[度]">resolutions</span> made on New Year’s Day which are broken on the 2nd of January”. There is always a</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>stretch</td><td>/stretʃ/ vt.</td><td>伸展,张开vi. 伸展adj. 可伸缩的n. 伸展，延伸, stretching, stretches</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>contrast</td><td>/'kɑːntræst/ n.</td><td>对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照, contrasting, contrasts</td></tr>
+<tr><td>indonesia</td><td>/ˌɪndə'niːʒə/ n.</td><td>印度尼西亚(东南亚岛国)</td></tr>
+<tr><td>premium</td><td>/'priːmiəm/ n.</td><td>奖金，津贴；加价；附加费；保险费；额外费用adj. （品质）高级的；优质的，顶级的</td></tr>
+<tr><td>intervene</td><td>/ˌɪntər'viːn/ vi.</td><td>干涉，干预；调解干扰，阻碍，intervening，intervenes</td></tr>
+<tr><td>productivity</td><td>/ˌproʊdʌk'tɪvəti/ n.</td><td>生产率, 生产力</td></tr>
+<tr><td>essential</td><td>/ɪ'senʃl/ adj.</td><td>基本的；必要的；本质的；精华的</td></tr>
+<tr><td>crack</td><td>/kræk/ vt.</td><td>& vi. (使…)开裂, 破裂(使)身体上或精神上垮掉打开, 砸开(使)发出爆裂声n. 裂缝, 缝隙噼啪声, 爆裂声意外的一下重击试图, 尝试俏皮话强效可卡因</td></tr>
+<tr><td>keen</td><td>/kiːn/ adj.</td><td>锋利的热衷的，热心的，渴望(做某事)激烈的，紧张的良好的；敏锐的，敏捷的，keenest</td></tr>
+<tr><td>credit</td><td>/'kredɪt/ n.</td><td>赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)，crediting，credits</td></tr>
+<tr><td>address</td><td>/ə'dres/ v.</td><td>写（收信人）姓名地址；致函演说；演讲称呼（某人）；冠以（某种称呼）设法解决；处理；对付向…说话n. 地址；住址；通信处 网址；电子邮件地址 演讲，演说 称呼 【</td></tr>
+<tr><td>genuinely</td><td>/'dʒenjuɪnli/ adv.</td><td>真地;真正地真诚地;诚实地</td></tr>
+<tr><td>lane</td><td>/leɪn/ n.</td><td>小巷；航线；车道；[篮球]罚球区</td></tr>
+<tr><td>outfit</td><td>/'aʊtfɪt/ n.</td><td>（为特定场合或活动而穿的）全套服装，装束全套装备；成套工具组织；公司；团队；军事单位v. 装备，配备；为…提供设备（或服装），outfitting，outfit</td></tr>
+<tr><td>flight</td><td>/flaɪt/ n.</td><td>飞翔, 飞行航班, 航机楼梯的一段逃跑, 溃退, flighting, flights</td></tr>
+<tr><td>vietnam</td><td>/ˌviːet'nɑːm/ n.</td><td>越南（南亚国家）</td></tr>
+<tr><td>credits</td><td>/'kredɪt/ n.</td><td>赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)，crediting，credits</td></tr>
+<tr><td>major</td><td>/'meɪdʒər/ adj.</td><td>主要的；主修的；重要的；较多的n. 成年人；主修科目；陆军少校vi. 主修, majoring, majors</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>offset</td><td>/'ɔːfset/ vt.</td><td>抵消, 补偿, offsetting, offsets</td></tr>
+<tr><td>detects</td><td>/dɪ'tekt/ vt.</td><td>发现；发觉，查明，detecting，detects</td></tr>
+<tr><td>hatch</td><td>/hætʃ/ n.</td><td>舱口；孵化vt. 策划；孵vi. 孵化, hatching, hatches</td></tr>
+<tr><td>tackles</td><td>/'tækl/ vt.</td><td>解决；应付vt. & vi. 捉住；扭倒n. 拦截；擒抱器具，器械，用具滑车，滑轮组，tackling，tackles</td></tr>
+<tr><td>practice</td><td>/'præktɪs/ n.</td><td>练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规，practicing，practices</td></tr>
+<tr><td>innovate</td><td>/'ɪnəveɪt/ vi.</td><td>改革；创新；革新vt. 创始；改变；创立；引人, innovating, innovates</td></tr>
+<tr><td>tank</td><td>/tæŋk/ n.</td><td>（存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内, tanking, tanks</td></tr>
+<tr><td>radical</td><td>/'rædɪkl/ adj.</td><td>根本的，基本的；彻底的，完全的激进的，激进派的</td></tr>
+<tr><td>hatched</td><td>/hætʃ/ n.</td><td>舱口；孵化vt. 策划；孵vi. 孵化, hatching, hatches</td></tr>
+<tr><td>substitute</td><td>/'sʌbstɪtuːt/ vt.</td><td>& vi. 代替, 替换, 代用, substituting, substitutes</td></tr>
+<tr><td>complete</td><td>/kəm'pliːt/ adj.</td><td>完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善, completest 缩 写: comp, cpl</td></tr>
+<tr><td>vegans</td><td>/'viːɡən/ n.</td><td>纯素主义者(既不吃也不用任何动物产品, 如蛋、丝绸、皮革)</td></tr>
+<tr><td>exclusive</td><td>/ɪk'skluːsɪv/ adj.</td><td>高级的，奢华的专用的；独家的n. 独家新闻，独家报道</td></tr>
+<tr><td>coverage</td><td>/'kʌvərɪdʒ/ n.</td><td>新闻报道, 报道量覆盖范围</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>cruel</td><td>/'kruːəl/ adj.</td><td>残酷的, 残忍的使人痛苦的, 让人受难的, crueller cruelest, cruellest</td></tr>
+<tr><td>delhi</td><td>/ˈdɛli/ n.</td><td>德里（印度城市名）</td></tr>
+<tr><td>protest</td><td>/'proʊtest/ n.</td><td>抗议；反对vt. & vi. 声明；抗议，protesting，protests</td></tr>
+<tr><td>memes</td><td>— n.</td><td>(通过模仿等传递的)文化基因</td></tr>
+<tr><td>accidentally</td><td>/ˌæksɪ'dentəli/ adv.</td><td>偶然地；意外地；非故意地故作意外地；有意装无意地</td></tr>
+<tr><td>helm</td><td>/helm/ n.</td><td>舵；舵柄；领导地位；驾驶盘vt. 指挥；给...掌舵, helming, helms</td></tr>
+<tr><td>supreme</td><td>/su'priːm/ adj.</td><td>最高的；至上的最重要的，supremest 缩 写: supr</td></tr>
+<tr><td>viral</td><td>/'vaɪrəl/ adj.</td><td>滤过性毒菌引起的；滤过性毒菌的</td></tr>
+<tr><td>squash</td><td>/skwɑːʃ/ vt.</td><td>将(某人[某物])压扁，压烂，挤碎将(某人[某物])向某方挤粗暴地使(某人)住嘴挤进平定(叛乱等)；镇压；制服n. 拥挤的人群果汁汽水(软式)墙网球，壁球，sq</td></tr>
+<tr><td>delhi</td><td>/ˈdɛli/ n.</td><td>德里（印度城市名）</td></tr>
+<tr><td>swiftly</td><td>/swɪft/ adj.</td><td>迅速的, 速度快的敏捷的, 反应快的SWIFTabbr. Society for Worldwide Interbank Financial Telecommu</td></tr>
+<tr><td>protest</td><td>/'proʊtest/ n.</td><td>抗议；反对vt. & vi. 声明；抗议，protesting，protests</td></tr>
+<tr><td>central</td><td>/'sentrəl/ adj.</td><td>中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的</td></tr>
+<tr><td>midday</td><td>/ˌmɪd'deɪ/ n.</td><td>中午；正午adj. 正午的</td></tr>
+<tr><td>faint</td><td>/feɪnt/ vi.</td><td>晕倒，昏倒adj. 微弱的，模糊的，暗淡的(体力)无力的，虚弱的；易失去知觉的，昏眩的(动作等)无力的，似无太大效果的n. 昏倒，faintest</td></tr>
+<tr><td>crush</td><td>/krʌʃ/ vt.</td><td>& vi. 压碎, 压坏vt. 弄皱镇压, 消灭, 击溃vi. 挤进, 挤入n. 拥挤的人群, crushing, crushes</td></tr>
+<tr><td>suppress</td><td>/sə'pres/ v.</td><td>镇压；制止；压制；（武力）平定禁止（发表）；查禁；封锁抑制；控制；忍住压制；阻止；抑制（身体的功能或反应），suppressing，suppresses</td></tr>
+<tr><td>bites</td><td>/baɪt/ vt.</td><td>& vi. 咬, 叮n. 咬咬伤, 叮伤</td></tr>
+<tr><td>discontent</td><td>/ˌdɪskən'tent/ n.</td><td>不满, discontenting, discontents</td></tr>
+<tr><td>minor</td><td>/'maɪnər/ adj.</td><td>较小的, 较少的, 低级的, 次要的n. 未成年人副修科目, minoring, minors</td></tr>
+<tr><td>coverage</td><td>/'kʌvərɪdʒ/ n.</td><td>新闻报道, 报道量覆盖范围</td></tr>
+<tr><td>essential</td><td>/ɪ'senʃl/ adj.</td><td>基本的；必要的；本质的；精华的</td></tr>
+<tr><td>joint</td><td>/dʒɔɪnt/ n.</td><td>关节；接合处，接合点；接缝；（牛，羊等的腿）大块肉adj. 联合的，合办的；共同的；连接的vt. 连接，贴合；接合；使有接头vi. 贴合；生节, jointin</td></tr>
+<tr><td>decade</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>reunion</td><td>/ˌriː'juːniən/ n.</td><td>再结合，重聚； (久别的亲友、同事的)聚会Reunion留尼旺岛，印度洋西南面的一个法属火山岛</td></tr>
+<tr><td>miserable</td><td>/'mɪzrəbl/ adj.</td><td>悲惨的，不幸的，可怜的令人痛苦的；令人不快的低劣的；贫乏的卑鄙的，可耻的，可恶的</td></tr>
+<tr><td>terrible</td><td>/'terəbl/ adj.</td><td>可怕的；很糟的；令人讨厌的adv. [口]很，非常</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>typically</td><td>/'tɪpɪkli/ adv.</td><td>代表性地;作为特色地;典型地</td></tr>
+<tr><td>civil</td><td>/'sɪvl/ adj.</td><td>公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>joint</td><td>/dʒɔɪnt/ n.</td><td>关节；接合处，接合点；接缝；（牛，羊等的腿）大块肉adj. 联合的，合办的；共同的；连接的vt. 连接，贴合；接合；使有接头vi. 贴合；生节, jointin</td></tr>
+<tr><td>profound</td><td>/prə'faʊnd/ adj.</td><td>深度的；深切的；深远的知识渊博的，见解深刻的，深奥的，profoundest</td></tr>
+<tr><td>values</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>quarter</td><td>/'kwɔːrtər/ n.</td><td>四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一, quartering, quarters</td></tr>
+<tr><td>places</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>ward</td><td>/wɔːrd/ n.</td><td>监视；保卫；病房vt. 避开；保卫；守护Ward沃德(姓氏, 男子名), warding, wards</td></tr>
+<tr><td>tempers</td><td>/'tempər/ n.</td><td>脾气；（钢等）回火；性情；倾向vt. 调和；锻炼；使缓和；使回火vi. 回火；调和, tempering, tempers</td></tr>
+<tr><td>neutral</td><td>/'nuːtrəl/ adj.</td><td>中立的，中性的；中立国的；非彩色的n. 中立国；中立者；非彩色；齿轮的空档</td></tr>
+<tr><td>bleak</td><td>/bliːk/ adj.</td><td>荒凉的，无遮蔽的；阴冷的；黯淡的，无希望的；冷酷的；单调的, bleakest</td></tr>
+<tr><td>households</td><td>/'haʊshoʊld/ n.</td><td>同住在一所房子里的人, 一家人, 户adj. 家庭的, 家用的</td></tr>
+<tr><td>retains</td><td>/rɪ'teɪn/ vt.</td><td>保持；雇；记住, retaining, retains 缩 写: ret</td></tr>
+<tr><td>practice</td><td>/'præktɪs/ n.</td><td>练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规，practicing，practices</td></tr>
+<tr><td>spouses</td><td>/spaʊs/ n.</td><td>配偶, 夫或妻, spousing, spouses</td></tr>
+<tr><td>bleaker</td><td>/bliːk/ adj.</td><td>荒凉的，无遮蔽的；阴冷的；黯淡的，无希望的；冷酷的；单调的, bleakest</td></tr>
+<tr><td>tend</td><td>/tend/ vt.</td><td>照料，照顾，伺候vi. 往，朝向易于；倾向，tending，tends</td></tr>
+<tr><td>spouse</td><td>/spaʊs/ n.</td><td>配偶, 夫或妻, spousing, spouses</td></tr>
+<tr><td>simply</td><td>/'sɪmpli/ adv.</td><td>简单地；朴素地；简直；仅仅；坦白地</td></tr>
+<tr><td>strike</td><td>/straɪk/ vi.</td><td>罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打, stricken striking, str</td></tr>
+<tr><td>schooling</td><td>/'skuːlɪŋ/ n.</td><td>学校教育；训练；学费v. 教育，培养；使学会（school的现在分词形式）；训练</td></tr>
+<tr><td>relocation</td><td>/ˌriːloʊ'keɪʃn/ n.</td><td>再布置,变换布置</td></tr>
+<tr><td>reform</td><td>/rɪ'fɔːrm/ n.</td><td>改革，改良，改造vt. & vi. 改革；改造；改善，reforming，reforms</td></tr>
+<tr><td>groups</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>joint</td><td>/dʒɔɪnt/ n.</td><td>关节；接合处，接合点；接缝；（牛，羊等的腿）大块肉adj. 联合的，合办的；共同的；连接的vt. 连接，贴合；接合；使有接头vi. 贴合；生节, jointin</td></tr>
+<tr><td>victims</td><td>/'vɪktɪm/ n.</td><td>牺牲者；受害人；牺牲品</td></tr>
+<tr><td>domestic</td><td>/də'mestɪk/ adj.</td><td>国内的；家庭的；驯养的；一心只管家务的</td></tr>
+<tr><td>abusive</td><td>/ə'bjuːsɪv/ adj.</td><td>被滥用的，被误用的，被妄用的虐待的；凌辱的；糟蹋的骂人的, 攻击性的毁谤的舞弊的；腐败的骗人的；欺骗性的，欺诈性的adv. 滥用地；虐待地；攻击性地；毁谤地；欺</td></tr>
+<tr><td>practice</td><td>/'præktɪs/ n.</td><td>练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规，practicing，practices</td></tr>
+<tr><td>exclusive</td><td>/ɪk'skluːsɪv/ adj.</td><td>高级的，奢华的专用的；独家的n. 独家新闻，独家报道</td></tr>
+<tr><td>coverage</td><td>/'kʌvərɪdʒ/ n.</td><td>新闻报道, 报道量覆盖范围</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>dire</td><td>/'daɪər/ adj.</td><td>可怕的, 恐怖的, direst</td></tr>
+<tr><td>booze</td><td>/buːz/ n.</td><td>酒；酒宴vi. 豪饮；痛饮, boozing, boozes</td></tr>
+<tr><td>resolutions</td><td>/ˌrezə'luːʃn/ n.</td><td>正式决定，决议决心，决定坚决；坚定；坚毅解决，解答分辨力，分辨率[度]</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day16.html" class="nav-btn">← Day 16</a>
+  <a href="day18.html" class="nav-btn">Day 18 →</a>
+</div>
+
+<div class="progress">📖 Day 17 of 45</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-06-13</div>
+
+</body>
+</html>

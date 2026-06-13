@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Britain | Playground politics</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-06-13</div>
+
+<h1 class="article-title">Britain | Playground politics</h1>
+<div class="article-section">Britain</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p><span class="annot" data-tooltip="hence /hens/ adv. 因此；今后">Hence</span>, days before the vote, the government hopes to announce its response to a public consultation on “growing up in the online world”. <span class="annot" data-tooltip="allies n. （第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者">Allies</span> say that Sir Keir will set out a “game-changer” policy. It will almost certainly be some sort of ban on under-16s using big social-media apps and sites. <span class="annot" data-tooltip="exemptions /ɪɡ'zempʃn/ n. (义务等的)免除;免(税)(收入中的)免税额">Exemptions</span> are expected for a range of messaging services, such as WhatsApp, or those seen as educational, such as YouTube’s “Kids” offering (no need to throw Bluey out with the bathwater). As a prelude, the government this week promised to block children from viewing naked <span class="annot" data-tooltip="pictures /'pɪktʃər/ n. 图画，肖像；照片(生动的)描述，写照影片；电影；画面美景，景色情况，事态，局面vt. 绘画；描绘想象时 态: pictu">pictures</span> online, giving tech firms a three-month ultimatum for installing software. Australia has already enacted a social-media ban. Canada and the EU are moving in that direction. A <span class="annot" data-tooltip="poll /poʊl/ n. 民意测验；投票；投票数；投票所vt. 剪短；对…进行民意测验；获得选票；投票vi. 投票adj. 剪过毛的；修过枝的；无">poll</span> by YouGov in March found that 76% of Brits back a ban, more than in most large European countries (see chart). Even a majority of older teenagers and 20-somethings support it, suggesting it is not just an <span class="annot" data-tooltip="obsession /əb'seʃn/ n. 困扰, 无法摆脱的思想(或情感)形容词: obsessional">obsession</span> of greying curmudgeons. Some kids’ <span class="annot" data-tooltip="charities /'tʃærəti/ n. 施舍；慈善；慈善团体；施舍物；宽容">charities</span> which once opposed a ban now favour it. Yet <span class="annot" data-tooltip="pressing /'presɪŋ/ n. 压；冲压件adj. 紧迫的；迫切的；恳切的v. 按；压；熨烫衣物（press的ing形式）副 词: pressingly">pressing</span> ahead would be a mistake. As well as harms, social media bring benefits. And Australia’s ban has <span class="annot" data-tooltip="proved /proʊ/ n. 从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞">proved</span> leaky, with many children still having access to at least some social-media sites; the measure has not led to an uptick in more wholesome hobbies.</p>
+<p>Britons may be some of the <span class="annot" data-tooltip="keenest /kiːn/ adj. 锋利的热衷的，热心的，渴望(做某事)激烈的，紧张的良好的；敏锐的，敏捷的比较级: keener，keenest">keenest</span> cheerleaders for a ban, but they are also among the least likely to think it would work. Some families of children whose deaths have been linked to social-media use oppose the idea, partly because they fear the most dangerous content is not on <span class="annot" data-tooltip="major /'meɪdʒər/ adj. 主要的；主修的；重要的；较多的n. 成年人；主修科目；陆军少校vi. 主修时 态: majored, majoring,">major</span> apps but <span class="annot" data-tooltip="lurking /lɜːrk/ vi. 潜伏；埋伏；潜藏n. 埋伏；潜伏时 态: lurked, lurking, lurks">lurking</span> in darker corners of the web not <span class="annot" data-tooltip="covered /'kʌvər/ vt. 包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替时 态: covered, covering, c">covered</span> by any regulation. And for the government, there is a danger of mixed messaging. Britain is trying to position itself as a tech and AI champion, but some of its rhetoric sounds hostile. Elon Musk, the <span class="annot" data-tooltip="owner /'oʊnər/ n. 所有者；物主">owner</span> of X, is a favoured target, but <span class="annot" data-tooltip="silicon /'sɪlɪkən/ n. 〈化〉硅">Silicon</span> <span class="annot" data-tooltip="valley /'væli/ n. 流域；山谷；溪谷">Valley</span> as a whole also gets it in the neck from Labour bigwigs. Mr Burnham recently thundered that it was time to “regulate social media, artificial intelligence and big tech”, while Wes Streeting, another would-be Labour leader, said in the Observer that X and its chatbot <span class="annot" data-tooltip="grok /ɡrɑːk/ v. 〈美俚〉通过神入作用而理解,体验(神入)时 态: grokked, grokking, groks">Grok</span> “should be treated like any other publisher”—a move that would make it near impossible for AI language models to be used in Britain. <span class="annot" data-tooltip="neither /'niːðər/ conj. 既不；也不adv. 两个都不；既不……也不adj. 两者都不的det./pron. 两者都不">Neither</span> has set out details of the tech policies he would <span class="annot" data-tooltip="actually /'æktʃuəl/ adj. 真实的，实际的；现行的，目前的副 词: actually">actually</span> <span class="annot" data-tooltip="pursue /pər'suː/ vt. 从事；追赶；继续；纠缠vi. 追赶；继续进行时 态: pursued, pursuing, pursues">pursue</span> if he made it to Downing Street. Theo Bertram, a former executive at TikTok who now runs the Social Market Foundation, a think-<span class="annot" data-tooltip="tank /tæŋk/ n. （存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内时 态: t">tank</span>, says that while social-media firms can accept new rules about children they will feel more jittery about the increasingly <span class="annot" data-tooltip="aggressive /ə'ɡresɪv/ adj. 好争斗的, 挑衅的, 侵略性的副 词: aggressively">aggressive</span> tone in Westminster. “If the Labour Party or any party expresses a position that the UK is hostile to AI, that could be extremely harmful,” he predicts. The <span class="annot" data-tooltip="issue /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issue</span> is a <span class="annot" data-tooltip="diplomatic /ˌdɪplə'mætɪk/ adj. 外交上的, 外交人员的有手腕的, 策略的, 善于交涉的, 圆滑的副 词: diplomatically">diplomatic</span> minefield: a press <span class="annot" data-tooltip="release /rɪ'liːs/ vt. 释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]时 态: released，rel">release</span> from the American <span class="annot" data-tooltip="embassy /'embəsi/ n. 大使馆；大使馆全体人员">embassy</span> in London warned that a ban would <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span> “disproportionate” <span class="annot" data-tooltip="burdens /'bɜːrdn/ n. 负担；责任；船的载货量vt. 烦扰；使负担；装货于时 态: burdened, burdening, burdens">burdens</span> on American firms. Others deny that there is any contradiction between a short-term safety <span class="annot" data-tooltip="crackdown /'krækdaʊn/ n. 压迫,镇压,打击">crackdown</span> and broader tech boosterism. At a <span class="annot" data-tooltip="cabinet /'kæbɪnət/ n. 内阁；橱柜；展览艺术品的小陈列室adj. 内阁的；私下的，秘密的">cabinet</span> meeting on June 9th Liz Kendall, the <span class="annot" data-tooltip="secretary /'sekrəteri/ n. 秘书书记部长, 大臣形容词: secretarial">secretary</span> of state for science, <span class="annot" data-tooltip="innovation /ˌɪnə'veɪʃn/ n. 改革, 革新, 创新新观念, 新方法, 新发明形容词: innovational">innovation</span> and technology, said that AI had “huge potential” which Britain could “only seize” if public concern over tech’s impact on child safety and economic <span class="annot" data-tooltip="inequality /ˌɪnɪ'kwɑːləti/ n. 不平等,不均等,不等量">inequality</span> is <span class="annot" data-tooltip="adequately /'ædɪkwət/ adj. 充分的, 足够的适当的, 胜任的名 词: adequacy">adequately</span> tackled. The push looks like yet another example of Sir Keir’s <span class="annot" data-tooltip="vanilla /və'nɪlə/ n. 香子兰;香草香草醛；香草精adj. 香草的;香草味的平凡的;普通的;乏味的">vanilla</span> <span class="annot" data-tooltip="brand /brænd/ n. 商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责时 态: branded, branding, brands">brand</span> of populism. He rightly rejects the economic utopianism of the populist left and the <span class="annot" data-tooltip="anti /'ænti/ adj. 反对的n. 反对者，反对论者">anti</span>-immigration vitriol of the populist right, but still embraces easy</p>
+<p>policy answers when it suits—regardless of the complications. Predictably, this supposed quick win is facing flak: even before the policy’s announcement it is being <span class="annot" data-tooltip="assailed /ə'seɪl/ vt. 攻击；质问；着手解决时 态: assailed, assailing, assails">assailed</span> by the opposition for not doing enough.■ For more expert analysis of the biggest stories in Britain, sign up to Blighty, our weekly subscriber-only newsletter. This article was downloaded by zlibrary from https://www.economist.com//britain/2026/06/11/a-kids-social-media-ban-would-be-a- bad-parting-gift-from-keir-starmer</p>
+<div class="article-separator"></div>
+<div class="article-header">Britain · Britain | Belfast burning</div>
+<p>A frenzied knife attack by a refugee has put Northern Ireland on <span class="annot" data-tooltip="edge /edʒ/ n. 边缘；刀刃；优势；锋利vt. 使锐利；将…开刃；给…加上边vi. 缓缓移动；侧着移动EDGEabbr. Electron">edge</span> It set off <span class="annot" data-tooltip="destructive /dɪ'strʌktɪv/ adj. 破坏性的, 毁灭性的副 词: destructively">destructive</span> riots in Belfast and beyond June 11th 2026 Rush hour in Belfast on June 9th didn’t happen at the usual 5pm. By mid- afternoon offices, shops and government buildings started to empty. By teatime Northern Ireland’s capital was more deserted than on a public holiday. The previous night a Sudanese refugee had been caught on video viciously stabbing a local man. Police captured the suspect almost <span class="annot" data-tooltip="immediately /ɪ'miːdiət/ adj. 立即的，即刻的；紧迫的目前的，当前的直接的最接近的名 词: immediateness">immediately</span>; his <span class="annot" data-tooltip="victim /'vɪktɪm/ n. 牺牲者；受害人；牺牲品">victim</span> survived, remarkably. Within hours, <span class="annot" data-tooltip="anonymous /ə'nɑːnɪməs/ adj. 无名的, 不具名的匿名的">anonymous</span> posts began spreading across the internet, advertising <span class="annot" data-tooltip="protest /'proʊtest/ n. 抗议；反对vt. & vi. 声明；抗议时 态: protested，protesting，protests">protest</span> locations that evening. These were not so much <span class="annot" data-tooltip="invitations /ˌɪnvɪ'teɪʃn/ n. 邀请请柬, 请帖">invitations</span> as threats to shut down much of Northern Ireland. They made clear that businesses were expected to close.</p>
+<p>It is a tactic that hardline protesters have repeatedly used in the region, to devastating effect. It brings things to a <span class="annot" data-tooltip="standstill /'stændstɪl/ n. 静止状态;停顿">standstill</span>. Before it was even dark, protesters had closed several arterial <span class="annot" data-tooltip="routes /ruːt，raʊt/ n. 路, 路途, 路线, 路程时 态: routed, routing, routes">routes</span> around Belfast. A Glider—the large bus-like <span class="annot" data-tooltip="vehicles /'viːəkl/ n. 交通工具, 车辆传播媒介, 手段">vehicles</span> in the city’s rapid transit system—was burnt out. <span class="annot" data-tooltip="petrol /'petrəl/ n. 汽油">Petrol</span> bombs were thrown at police in Newtownabbey, north of the city. Several cars were burned. A police car was set alight in Portadown, 40km south-west of Belfast. Riot police could do little. The real targets were foreigners. Doors were kicked in, cars <span class="annot" data-tooltip="torched /tɔːrtʃ/ n. 火把，火炬；手电筒；启发之物vi. 像火炬一样燃烧vt. 用火炬点燃时 态: torched, torching, to">torched</span> and homes set alight. A child was among those evacuated in an armoured police <span class="annot" data-tooltip="vehicle /'viːəkl/ n. 交通工具, 车辆传播媒介, 手段">vehicle</span> as their home went up in flames. Two women were still in their care- worker uniforms when police rescued them from arsonists. This was the region’s third <span class="annot" data-tooltip="consecutive /kən'sekjətɪv/ adj. 连续的, 连贯的副 词: consecutively">consecutive</span> year of <span class="annot" data-tooltip="anti /'ænti/ adj. 反对的n. 反对者，反对论者">anti</span>-migrant violence. Unlike <span class="annot" data-tooltip="protests /'proʊtest/ n. 抗议；反对vt. & vi. 声明；抗议时 态: protested，protesting，protests">protests</span> in mainland Britain, the unrest involves the organisational muscle of <span class="annot" data-tooltip="pro /proʊ/ n. 从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞">pro</span>-British loyalist paramilitaries who have survived for over a <span class="annot" data-tooltip="quarter /'kwɔːrtər/ n. 四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一时 ">quarter</span> of a century after the Good Friday Agreement. Claire Hanna, the leader of the nationalist SDLP, called it a “<span class="annot" data-tooltip="racist /'reɪsɪst/ n. 种族歧视者">racist</span> pogrom”. The Police Federation said it had been “reminiscent of fascism and <span class="annot" data-tooltip="racism /'reɪsɪzəm/ n. 种族主义，种族歧视；人种偏见形容词: racist">racism</span>”. <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">Although</span> pro-British unionist leaders <span class="annot" data-tooltip="condemned /kən'dem/ vt. 判刑，定罪；谴责；声讨时 态: condemned, condemning, condemns">condemned</span> the violence, they <span class="annot" data-tooltip="emphasised /'emfəsɪs/ n. 强调, 重点">emphasised</span> understanding of anti-migrant <span class="annot" data-tooltip="sentiment /'sentɪmənt/ n. (对怜悯、怀旧等的)柔情态度或意见观点; 意见">sentiment</span>. Jim Allister, whose</p>
+<p>TUV party has an electoral alliance with <span class="annot" data-tooltip="reform /rɪ'fɔːrm/ n. 改革，改良，改造vt. & vi. 改革；改造；改善时 态: reformed，reforming，reforms">Reform</span> UK, decried “the importation of an alien culture”. Hadi Alodid, the man charged with attempted murder in the attack, had travelled to Northern Ireland from the Republic of Ireland, crossing the open land border. He was not an illegal <span class="annot" data-tooltip="immigrant /'ɪmɪɡrənt/ n. 移民">immigrant</span>. The <span class="annot" data-tooltip="conservative /kən'sɜːrvətɪv/ n. 保守的人adj. 保守的, 守旧的(式样等)不时新的, 传统的副 词: conservatively">Conservative</span> Party’s shadow Northern Ireland <span class="annot" data-tooltip="secretary /'sekrəteri/ n. 秘书书记部长, 大臣形容词: secretarial">secretary</span> suggested that there should be intelligence-led immigration checks on the British side of that border, as already happens on the Irish side. On June 10th a riot closed Northern Ireland’s busiest roundabout, in Glengormley just north of Belfast. For three hours police were sporadically attacked with masonry and <span class="annot" data-tooltip="petrol /'petrəl/ n. 汽油">petrol</span> bombs. Children as young as four were taken by their parents to watch among a crowd of about 1,000. A grandmother on a walking stick disapproved—not of the violence, but of the indiscriminate destruction of the street: “It’s themmuns [gesturing to where she believed migrants lived] they want to be doing it to, not our <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span>,” she said angrily. Recent history suggests this <span class="annot" data-tooltip="disruption n. 中断,分裂,瓦解,破坏">disruption</span> will fade after a few days, but it will keep <span class="annot" data-tooltip="recurring /rɪ'kɜːr/ vi. 重现；复发；再来；采用；循环；递归时 态: recurred, recurring, recurs">recurring</span>.■ For more expert analysis of the biggest stories in Britain, sign up to Blighty, our weekly subscriber-only newsletter. This article was downloaded by zlibrary from https://www.economist.com//britain/2026/06/11/a-frenzied-knife-attack-by-a-refugee- has-put-northern-ireland-on-<span class="annot" data-tooltip="edge /edʒ/ n. 边缘；刀刃；优势；锋利vt. 使锐利；将…开刃；给…加上边vi. 缓缓移动；侧着移动EDGEabbr. Electron">edge</span></p>
+<div class="article-separator"></div>
+<div class="article-header">Britain · Britain | King and “Country Life”</div>
+<p>A posh and <span class="annot" data-tooltip="peculiar /pɪ'kjuːliər/ adj. 奇怪的, 异常的特有的, 独具的〈非正〉不舒服, 有病的副 词: peculiarly">peculiar</span> British magazine is thriving The <span class="annot" data-tooltip="unusual /ʌn'juːʒuəl/ adj. 与众不同的；不寻常的；不平常的副 词: unusually">unusual</span> pleasures of “Country Life” June 11th 2026 It was late March 2026. The war in Iran was raging. Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> had threatened to destroy Iran’s power plants. Newspapers across the world raced to <span class="annot" data-tooltip="cover /'kʌvər/ vt. 包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替时 态: covered, covering, c">cover</span> this. Not Country Life. The British magazine instead offered a cover with two lambs on it and, inside, a feature on “The chickens that lay our favourite eggs”. It was similarly off-news for the outbreak of the covid- 19 <span class="annot" data-tooltip="pandemic /pæn'demɪk/ adj. （疾病）在全国（或世界）流行的">pandemic</span> (its cover had a lovely <span class="annot" data-tooltip="picture /'pɪktʃər/ n. 图画，肖像；照片(生动的)描述，写照影片；电影；画面美景，景色情况，事态，局面vt. 绘画；描绘想象时 态: pictu">picture</span> of a thatched cottage) and of the <span class="annot" data-tooltip="ukraine n. 乌克兰（原苏联一加盟共和国，现已独立）">Ukraine</span> war (a lovely picture of the coast). The second world war was marginally more newsy. On September 16th 1939 the magazine offered: “Golf—The Game in War-Time”. Britain offers two kinds of country life. There is “country life”, the simple act of living in the country. Then there is Country Life, an upper-case, upper-</p>
+<p>class magazine that is related to country living (it features a lot of cows) but that is also very different (it features a lot of country houses and croquet <span class="annot" data-tooltip="lawns /lɔːn/ n. 草坪；草地">lawns</span>). Country Life is less a <span class="annot" data-tooltip="mere /mɪr/ adj. 仅仅, 只不过纯粹的Superlative merest">mere</span> publication than an institution. British novelists satirise it. British <span class="annot" data-tooltip="landmarks /'lændmɑːrk/ n. 陆标，地标；里程碑；地界标；划时代的事">landmarks</span> are sold in it (in 1915 Stonehenge was flogged for £6,600, or £602,340 in today’s money). British <span class="annot" data-tooltip="royalty /'rɔɪəlti/ n. 王权；皇室；版税；专利税">royalty</span> reads it: Charles is a fan. The other British royal family, the Beckhams, rather like it, too: David reads it from <span class="annot" data-tooltip="cover /'kʌvər/ vt. 包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替时 态: covered, covering, c">cover</span> to cover. It is, like the royals, surprisingly popular; 40,000 buy it each week. It is also, like the royals, odd. Each <span class="annot" data-tooltip="issue /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issue</span> opens with “posh <span class="annot" data-tooltip="porn /pɔːrn/ n. 〈口〉色情文学,色情描写形容词: porny">porn</span>”: images of grand houses newly on the market (they <span class="annot" data-tooltip="tend /tend/ vt. 照料，照顾，伺候vi. 往，朝向易于；倾向时 态: tended，tending，tends">tend</span> to have things like lovely moats) and, in its “Frontispiece” feature, images of grand girls (they tend to have lovely smiles). The title implies a physical location. In truth, it speaks to a spiritual one: an England of country <span class="annot" data-tooltip="piles /paɪl/ n. 堆；大量；建筑群vt. 累积；打桩于vi. 积累；堆积；挤时 态: piled, piling, piles">piles</span> and tennis and tea on the <span class="annot" data-tooltip="lawn /lɔːn/ n. 草坪；草地">lawn</span>; an England that is declining but not yet fallen; an England that is, in short, <span class="annot" data-tooltip="keen /kiːn/ adj. 锋利的热衷的，热心的，渴望(做某事)激烈的，紧张的良好的；敏锐的，敏捷的比较级: keener，keenest">keen</span> to read articles with titles like: “How do you make an 18th- century stately home fit for a 21st-century family?” Its first issue was published in January 1897 when Edward Hudson, a publisher, having failed to make a magazine about glossy horses sell, switched to glossy houses. Soon Country Life had <span class="annot" data-tooltip="fancy /'fænsi/ n. 想像力；爱好；幻想adj. 想象的；奇特的；精选的；昂贵的vt. 设想；喜爱；想象；自负vi. 想象；幻想副 词: fa">fancy</span> offices (designed by Edwin Lutyens), fancy correspondents (Gertrude Jekyll did gardening) and fancier readers, like Evelyn Waugh. Go to the right sort of country house and you will, still, find piles of it in the loo. The magazine is so anodyne it often appears in doctors’ waiting rooms. “It is”, says Michael (now Lord) Heseltine, a former <span class="annot" data-tooltip="conservative /kən'sɜːrvətɪv/ n. 保守的人adj. 保守的, 守旧的(式样等)不时新的, 传统的副 词: conservatively">Conservative</span> politician and a fan, “our life…It’s us. It’s what we do.” It even has its <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> vernacular: one does not “buy” Country Life or “read” it, one “takes” it, like literary laudanum. The magazine’s success is enviable and to many unfathomable. It breaks almost every publishing maxim. <span class="annot" data-tooltip="whereas /ˌwer'æz/ conj. 但是, 而">Whereas</span> the news elsewhere focuses on the grim, Country Life not only “ignored the second world war”, says Mark <span class="annot" data-tooltip="hedges /hedʒ/ vt. 用树篱笆围住；避免作正面答复vi. 用树篱围住；避免作正面答复n. 树篱；障碍时 态: hedged, hedging,">Hedges</span>, its editor, and the covid-19 <span class="annot" data-tooltip="pandemic /pæn'demɪk/ adj. （疾病）在全国（或世界）流行的">pandemic</span> (he preferred “concentrating</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>hence</td><td>/hens/ adv.</td><td>因此；今后</td></tr>
+<tr><td>allies</td><td>— n.</td><td>（第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者</td></tr>
+<tr><td>exemptions</td><td>/ɪɡ'zempʃn/ n.</td><td>(义务等的)免除;免(税)(收入中的)免税额</td></tr>
+<tr><td>pictures</td><td>/'pɪktʃər/ n.</td><td>图画，肖像；照片(生动的)描述，写照影片；电影；画面美景，景色情况，事态，局面vt. 绘画；描绘想象，picturing，pictures</td></tr>
+<tr><td>poll</td><td>/poʊl/ n.</td><td>民意测验；投票；投票数；投票所vt. 剪短；对…进行民意测验；获得选票；投票vi. 投票adj. 剪过毛的；修过枝的；无角的, polling, polls</td></tr>
+<tr><td>obsession</td><td>/əb'seʃn/ n.</td><td>困扰, 无法摆脱的思想(或情感)</td></tr>
+<tr><td>charities</td><td>/'tʃærəti/ n.</td><td>施舍；慈善；慈善团体；施舍物；宽容</td></tr>
+<tr><td>pressing</td><td>/'presɪŋ/ n.</td><td>压；冲压件adj. 紧迫的；迫切的；恳切的v. 按；压；熨烫衣物（press的ing形式）</td></tr>
+<tr><td>proved</td><td>/proʊ/ n.</td><td>从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞成；支持Pro脯氨酸PROabbr. P</td></tr>
+<tr><td>keenest</td><td>/kiːn/ adj.</td><td>锋利的热衷的，热心的，渴望(做某事)激烈的，紧张的良好的；敏锐的，敏捷的，keenest</td></tr>
+<tr><td>major</td><td>/'meɪdʒər/ adj.</td><td>主要的；主修的；重要的；较多的n. 成年人；主修科目；陆军少校vi. 主修, majoring, majors</td></tr>
+<tr><td>lurking</td><td>/lɜːrk/ vi.</td><td>潜伏；埋伏；潜藏n. 埋伏；潜伏, lurking, lurks</td></tr>
+<tr><td>covered</td><td>/'kʌvər/ vt.</td><td>包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替, covering, covers</td></tr>
+<tr><td>owner</td><td>/'oʊnər/ n.</td><td>所有者；物主</td></tr>
+<tr><td>silicon</td><td>/'sɪlɪkən/ n.</td><td>〈化〉硅</td></tr>
+<tr><td>valley</td><td>/'væli/ n.</td><td>流域；山谷；溪谷</td></tr>
+<tr><td>grok</td><td>/ɡrɑːk/ v.</td><td>〈美俚〉通过神入作用而理解,体验(神入), grokking, groks</td></tr>
+<tr><td>neither</td><td>/'niːðər/ conj.</td><td>既不；也不adv. 两个都不；既不……也不adj. 两者都不的det./pron. 两者都不</td></tr>
+<tr><td>actually</td><td>/'æktʃuəl/ adj.</td><td>真实的，实际的；现行的，目前的</td></tr>
+<tr><td>pursue</td><td>/pər'suː/ vt.</td><td>从事；追赶；继续；纠缠vi. 追赶；继续进行, pursuing, pursues</td></tr>
+<tr><td>tank</td><td>/tæŋk/ n.</td><td>（存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内, tanking, tanks</td></tr>
+<tr><td>aggressive</td><td>/ə'ɡresɪv/ adj.</td><td>好争斗的, 挑衅的, 侵略性的</td></tr>
+<tr><td>issue</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>diplomatic</td><td>/ˌdɪplə'mætɪk/ adj.</td><td>外交上的, 外交人员的有手腕的, 策略的, 善于交涉的, 圆滑的</td></tr>
+<tr><td>release</td><td>/rɪ'liːs/ vt.</td><td>释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]，releasing，releases</td></tr>
+<tr><td>embassy</td><td>/'embəsi/ n.</td><td>大使馆；大使馆全体人员</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>burdens</td><td>/'bɜːrdn/ n.</td><td>负担；责任；船的载货量vt. 烦扰；使负担；装货于, burdening, burdens</td></tr>
+<tr><td>crackdown</td><td>/'krækdaʊn/ n.</td><td>压迫,镇压,打击</td></tr>
+<tr><td>cabinet</td><td>/'kæbɪnət/ n.</td><td>内阁；橱柜；展览艺术品的小陈列室adj. 内阁的；私下的，秘密的</td></tr>
+<tr><td>secretary</td><td>/'sekrəteri/ n.</td><td>秘书书记部长, 大臣</td></tr>
+<tr><td>innovation</td><td>/ˌɪnə'veɪʃn/ n.</td><td>改革, 革新, 创新新观念, 新方法, 新发明</td></tr>
+<tr><td>inequality</td><td>/ˌɪnɪ'kwɑːləti/ n.</td><td>不平等,不均等,不等量</td></tr>
+<tr><td>adequately</td><td>/'ædɪkwət/ adj.</td><td>充分的, 足够的适当的, 胜任的</td></tr>
+<tr><td>vanilla</td><td>/və'nɪlə/ n.</td><td>香子兰;香草香草醛；香草精adj. 香草的;香草味的平凡的;普通的;乏味的</td></tr>
+<tr><td>brand</td><td>/brænd/ n.</td><td>商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责, branding, brands</td></tr>
+<tr><td>anti</td><td>/'ænti/ adj.</td><td>反对的n. 反对者，反对论者</td></tr>
+<tr><td>assailed</td><td>/ə'seɪl/ vt.</td><td>攻击；质问；着手解决, assailing, assails</td></tr>
+<tr><td>edge</td><td>/edʒ/ n.</td><td>边缘；刀刃；优势；锋利vt. 使锐利；将…开刃；给…加上边vi. 缓缓移动；侧着移动EDGEabbr. Electronic Data Gathering Eq</td></tr>
+<tr><td>destructive</td><td>/dɪ'strʌktɪv/ adj.</td><td>破坏性的, 毁灭性的</td></tr>
+<tr><td>immediately</td><td>/ɪ'miːdiət/ adj.</td><td>立即的，即刻的；紧迫的目前的，当前的直接的最接近的</td></tr>
+<tr><td>victim</td><td>/'vɪktɪm/ n.</td><td>牺牲者；受害人；牺牲品</td></tr>
+<tr><td>anonymous</td><td>/ə'nɑːnɪməs/ adj.</td><td>无名的, 不具名的匿名的</td></tr>
+<tr><td>protest</td><td>/'proʊtest/ n.</td><td>抗议；反对vt. & vi. 声明；抗议，protesting，protests</td></tr>
+<tr><td>invitations</td><td>/ˌɪnvɪ'teɪʃn/ n.</td><td>邀请请柬, 请帖</td></tr>
+<tr><td>standstill</td><td>/'stændstɪl/ n.</td><td>静止状态;停顿</td></tr>
+<tr><td>routes</td><td>/ruːt，raʊt/ n.</td><td>路, 路途, 路线, 路程, routing, routes</td></tr>
+<tr><td>vehicles</td><td>/'viːəkl/ n.</td><td>交通工具, 车辆传播媒介, 手段</td></tr>
+<tr><td>petrol</td><td>/'petrəl/ n.</td><td>汽油</td></tr>
+<tr><td>torched</td><td>/tɔːrtʃ/ n.</td><td>火把，火炬；手电筒；启发之物vi. 像火炬一样燃烧vt. 用火炬点燃, torching, torches</td></tr>
+<tr><td>vehicle</td><td>/'viːəkl/ n.</td><td>交通工具, 车辆传播媒介, 手段</td></tr>
+<tr><td>consecutive</td><td>/kən'sekjətɪv/ adj.</td><td>连续的, 连贯的</td></tr>
+<tr><td>anti</td><td>/'ænti/ adj.</td><td>反对的n. 反对者，反对论者</td></tr>
+<tr><td>protests</td><td>/'proʊtest/ n.</td><td>抗议；反对vt. & vi. 声明；抗议，protesting，protests</td></tr>
+<tr><td>pro</td><td>/proʊ/ n.</td><td>从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞成；支持Pro脯氨酸PROabbr. P</td></tr>
+<tr><td>quarter</td><td>/'kwɔːrtər/ n.</td><td>四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一, quartering, quarters</td></tr>
+<tr><td>racist</td><td>/'reɪsɪst/ n.</td><td>种族歧视者</td></tr>
+<tr><td>racism</td><td>/'reɪsɪzəm/ n.</td><td>种族主义，种族歧视；人种偏见</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>condemned</td><td>/kən'dem/ vt.</td><td>判刑，定罪；谴责；声讨, condemning, condemns</td></tr>
+<tr><td>emphasised</td><td>/'emfəsɪs/ n.</td><td>强调, 重点</td></tr>
+<tr><td>sentiment</td><td>/'sentɪmənt/ n.</td><td>(对怜悯、怀旧等的)柔情态度或意见观点; 意见</td></tr>
+<tr><td>reform</td><td>/rɪ'fɔːrm/ n.</td><td>改革，改良，改造vt. & vi. 改革；改造；改善，reforming，reforms</td></tr>
+<tr><td>immigrant</td><td>/'ɪmɪɡrənt/ n.</td><td>移民</td></tr>
+<tr><td>conservative</td><td>/kən'sɜːrvətɪv/ n.</td><td>保守的人adj. 保守的, 守旧的(式样等)不时新的, 传统的</td></tr>
+<tr><td>secretary</td><td>/'sekrəteri/ n.</td><td>秘书书记部长, 大臣</td></tr>
+<tr><td>petrol</td><td>/'petrəl/ n.</td><td>汽油</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>disruption</td><td>— n.</td><td>中断,分裂,瓦解,破坏</td></tr>
+<tr><td>recurring</td><td>/rɪ'kɜːr/ vi.</td><td>重现；复发；再来；采用；循环；递归, recurring, recurs</td></tr>
+<tr><td>edge</td><td>/edʒ/ n.</td><td>边缘；刀刃；优势；锋利vt. 使锐利；将…开刃；给…加上边vi. 缓缓移动；侧着移动EDGEabbr. Electronic Data Gathering Eq</td></tr>
+<tr><td>peculiar</td><td>/pɪ'kjuːliər/ adj.</td><td>奇怪的, 异常的特有的, 独具的〈非正〉不舒服, 有病的</td></tr>
+<tr><td>unusual</td><td>/ʌn'juːʒuəl/ adj.</td><td>与众不同的；不寻常的；不平常的</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>cover</td><td>/'kʌvər/ vt.</td><td>包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替, covering, covers</td></tr>
+<tr><td>pandemic</td><td>/pæn'demɪk/ adj.</td><td>（疾病）在全国（或世界）流行的</td></tr>
+<tr><td>picture</td><td>/'pɪktʃər/ n.</td><td>图画，肖像；照片(生动的)描述，写照影片；电影；画面美景，景色情况，事态，局面vt. 绘画；描绘想象，picturing，pictures</td></tr>
+<tr><td>ukraine</td><td>— n.</td><td>乌克兰（原苏联一加盟共和国，现已独立）</td></tr>
+<tr><td>lawns</td><td>/lɔːn/ n.</td><td>草坪；草地</td></tr>
+<tr><td>mere</td><td>/mɪr/ adj.</td><td>仅仅, 只不过纯粹的Superlative merest</td></tr>
+<tr><td>landmarks</td><td>/'lændmɑːrk/ n.</td><td>陆标，地标；里程碑；地界标；划时代的事</td></tr>
+<tr><td>royalty</td><td>/'rɔɪəlti/ n.</td><td>王权；皇室；版税；专利税</td></tr>
+<tr><td>cover</td><td>/'kʌvər/ vt.</td><td>包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替, covering, covers</td></tr>
+<tr><td>issue</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>porn</td><td>/pɔːrn/ n.</td><td>〈口〉色情文学,色情描写</td></tr>
+<tr><td>tend</td><td>/tend/ vt.</td><td>照料，照顾，伺候vi. 往，朝向易于；倾向，tending，tends</td></tr>
+<tr><td>piles</td><td>/paɪl/ n.</td><td>堆；大量；建筑群vt. 累积；打桩于vi. 积累；堆积；挤, piling, piles</td></tr>
+<tr><td>lawn</td><td>/lɔːn/ n.</td><td>草坪；草地</td></tr>
+<tr><td>keen</td><td>/kiːn/ adj.</td><td>锋利的热衷的，热心的，渴望(做某事)激烈的，紧张的良好的；敏锐的，敏捷的，keenest</td></tr>
+<tr><td>fancy</td><td>/'fænsi/ n.</td><td>想像力；爱好；幻想adj. 想象的；奇特的；精选的；昂贵的vt. 设想；喜爱；想象；自负vi. 想象；幻想</td></tr>
+<tr><td>conservative</td><td>/kən'sɜːrvətɪv/ n.</td><td>保守的人adj. 保守的, 守旧的(式样等)不时新的, 传统的</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>whereas</td><td>/ˌwer'æz/ conj.</td><td>但是, 而</td></tr>
+<tr><td>hedges</td><td>/hedʒ/ vt.</td><td>用树篱笆围住；避免作正面答复vi. 用树篱围住；避免作正面答复n. 树篱；障碍, hedging, hedges</td></tr>
+<tr><td>pandemic</td><td>/pæn'demɪk/ adj.</td><td>（疾病）在全国（或世界）流行的</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day27.html" class="nav-btn">← Day 27</a>
+  <a href="day29.html" class="nav-btn">Day 29 →</a>
+</div>
+
+<div class="progress">📖 Day 28 of 45</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-06-13</div>
+
+</body>
+</html>

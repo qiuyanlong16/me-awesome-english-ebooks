@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-06-13</div>
+
+<h1 class="article-title">Business</h1>
+<div class="article-section"></div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>In France, a consortium of Bouygues <span class="annot" data-tooltip="telecom /ˈtɛlɪˌkɑm/ n. 电信，远距通信；电讯">Telecom</span>, Orange and Iliad agreed to buy SFR, a <span class="annot" data-tooltip="rival /'raɪvl/ n. 竞争对手vt. 与…竞争, 与…匹敌时 态: rivaled, rivalled rivaling, rivalling">rival</span> telecom company, for €20.4 billion ($23.5bn). SFR is part of a sprawling <span class="annot" data-tooltip="telecoms /ˈtɛlɪˌkɑm/ n. 电信，远距通信；电讯">telecoms</span> and media empire run by Patrick Drahi, one of France’s richest men, and the sale will help reduce the <span class="annot" data-tooltip="pile /paɪl/ n. 堆；大量；建筑群vt. 累积；打桩于vi. 积累；堆积；挤时 态: piled, piling, piles">pile</span> of debt held by his Altice <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span>. But regulatory approval for the deal, which reduces France’s big telecom operators from four to three, is not assured. GSK, formerly GlaxoSmithKline, agreed to buy Nuvalent, an American biotech firm specialising in <span class="annot" data-tooltip="cancer /'kænsər/ n. 癌迅速蔓延的恶劣的或危险的事物形容词: cancerous">cancer</span>, for $10.6bn. It is the British drug company’s biggest-ever takeover of another firm. Smartphones could account for some of the decline in America’s fertility rate, according to a working paper at the National Bureau of Economic Research. The researchers looked at the roll-out of the iPhone from 2007 to 2011, when it was sold only by AT&T, allowing them to “identify its effect from variation in AT&T’s mobile-broadband <span class="annot" data-tooltip="coverage /'kʌvərɪdʒ/ n. 新闻报道, 报道量覆盖范围">coverage</span>”. The researchers found that “<span class="annot" data-tooltip="overall /ˌoʊvər'ɔːl/ adj. 总体的；全面的；综合的全面考虑的adv. 大体上，总的来说一切包括在内，全部的n. 长罩衣工装裤；工作裤">Overall</span>, the diffusion of the iPhone explains 33–52% of the decline in the general fertility rate among women aged 15–44”. Possible <span class="annot" data-tooltip="explanations /ˌeksplə'neɪʃn/ n. 解释, 说明能说明某事缘由的言语、事实、情况等">explanations</span> include a decline in personal interactions, availability of <span class="annot" data-tooltip="contraceptive /ˌkɑːntrə'septɪv/ adj. 避孕的,避孕用的n. 避孕药,避孕用具">contraceptive</span> advice on phones and more access to <span class="annot" data-tooltip="pornography /pɔːr'nɑːɡrəfi/ n. 色情描绘, 色情表演色情作品名 词: pornographer">pornography</span>. This article was downloaded by zlibrary from https://www.economist.com//the-world-this-week/2026/06/11/business</p>
+<div class="article-separator"></div>
+<div class="article-header"> · The weekly cartoon</div>
+<p>June 11th 2026 Dig deeper Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s least bad option in Iran How Israel is frustrating Donald Trump’s Iran plans Iran has lost its fear of war The <span class="annot" data-tooltip="editorial /ˌedɪ'tɔːriəl/ adj. 编辑的；编者的；主编的n. （报刊的）社论；（美国电台或电视台的）评论">editorial</span> cartoon appears weekly in The Economist. You can see last week’s here. This article was downloaded by zlibrary from https://www.economist.com//the-world-this-week/2026/06/11/the-weekly-cartoon</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Leaders</div>
+<p>The World Cup <span class="annot" data-tooltip="paradox /'pærədɑːks/ n. 似非而是的论点；悖论，反论；自相矛盾的人或事形容词: paradoxical">paradox</span> Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s least bad option in Iran The <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">Federal</span> Reserve must soon give Donald Trump bad news For its <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> sake, China should change its growth model The best way to celebrate America at 250 is to get behind the wheel</p>
+<div class="article-separator"></div>
+<div class="article-header">Leaders · Leaders | Our cover</div>
+<p>The World Cup <span class="annot" data-tooltip="paradox /'pærədɑːks/ n. 似非而是的论点；悖论，反论；自相矛盾的人或事形容词: paradoxical">paradox</span> How the rules of both entertainment and soft power are being rewritten June 11th 2026 WITH <span class="annot" data-tooltip="lyrics n. 歌词；抒情诗（lyric的复数）">LYRICS</span> in English, French, Spanish, <span class="annot" data-tooltip="italian /ɪ'tæliən/ adj. 意大利的；意大利文化的；意大利语的n. 意大利人；意大利语">Italian</span> and Japanese, the theme <span class="annot" data-tooltip="tune /tuːn/ n. 曲调, 曲子vt. & vi. 调音vt. 调整时 态: tuned, tuning, tunes">tune</span> of the men’s World Cup, performed at its opening ceremony on June 11th, exemplifies the <span class="annot" data-tooltip="contest /'kɑːntest/ vt. 争辩；提出质疑vi. 竞争；争辩n. 竞赛；争论；争夺时 态: contested, contesting, conte">contest</span>’s claim to <span class="annot" data-tooltip="foster /'fɑːstər/ v. 促进；助长；培养；鼓励收养，代养，抚育（他人子女，通常指有限的一段时间）adj. （与某些代养有关的名词连用）（在有限的">foster</span> global unity. <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">Nearly</span> half the world is expected to tune in over the coming weeks as the tournament moves <span class="annot" data-tooltip="towards /tɔːrdz/ prep. 向，朝为了；有助于；用于对于，关于接近；将近；大约">towards</span> its final on the outskirts of New York. A viewer might come away with two conclusions. First, that entertainment culture is more globalised than ever. Second, that America remains the soft-power superpower at the centre of it all. Both assumptions would be wrong. <span class="annot" data-tooltip="mega n. 百万adj. 许多；宏大的adv. 非常">Mega</span>-events like the World Cup still seize global attention. But the bigger <span class="annot" data-tooltip="picture /'pɪktʃər/ n. 图画，肖像；照片(生动的)描述，写照影片；电影；画面美景，景色情况，事态，局面vt. 绘画；描绘想象时 态: pictu">picture</span> is that entertainment is <span class="annot" data-tooltip="fragmenting /'fræɡmənt/ n. 碎片；片断或不完整部分vt. 使成碎片vi. 破碎或裂开时 态: fragmented, fragmenting, fr">fragmenting</span>. From music to television to social media and gaming, audiences are <span class="annot" data-tooltip="tuning n. 调谐,调整,调音">tuning</span> out of American content and embracing <span class="annot" data-tooltip="alternatives /ɔːl'tɜːrnətɪv/ adj. 可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）">alternatives</span></p>
+<p>from closer to home. There is an emerging <span class="annot" data-tooltip="paradox /'pærədɑːks/ n. 似非而是的论点；悖论，反论；自相矛盾的人或事形容词: paradoxical">paradox</span>: even as the world becomes more connected, people are choosing more local forms of fun. Even as billions <span class="annot" data-tooltip="tune /tuːn/ n. 曲调, 曲子vt. & vi. 调音vt. 调整时 态: tuned, tuning, tunes">tune</span> in to a single show in North America, the American- led monoculture is fading. This local turn is the opposite of what many predicted. Global entertainment platforms such as Spotify, Netflix, YouTube, and the Apple and Google mobile-app stores give people everywhere access to the same music, video and games. The biggest winners have been a lopsidedly American <span class="annot" data-tooltip="elite /eɪ'liːt/ n. （社会）上层集团；掌权人物；出类拔萃的人，精英adj.（社会）上层集团的；掌权人物的；精英的">elite</span> of megastars and <span class="annot" data-tooltip="brands /brænd/ n. 商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责时 态: branded, branding, brands">brands</span>—think Taylor <span class="annot" data-tooltip="swift /swɪft/ adj. 迅速的, 速度快的敏捷的, 反应快的SWIFTabbr. Society for Worldwide Interbank">Swift</span>, MrBeast or Roblox—which have gone global as never before. The biggest sports <span class="annot" data-tooltip="leagues /liːɡ/ n. 联盟；社团；范畴vt. 使…结盟；与…联合vi. 结盟；团结时 态: leagued, leaguing, league">leagues</span> have soared in <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span> along with them. But below the top <span class="annot" data-tooltip="tier /tɪr/ n. 行，列；层，排；等级vt. 使层叠vi. 成递升排列时 态: tiered, tiering, tiers">tier</span>, entertainment is <span class="annot" data-tooltip="fragmenting /'fræɡmənt/ n. 碎片；片断或不完整部分vt. 使成碎片vi. 破碎或裂开时 态: fragmented, fragmenting, fr">fragmenting</span>. Sport has always been a <span class="annot" data-tooltip="reluctant /rɪ'lʌktənt/ adj. 不情愿的, 勉强的副 词: reluctantly">reluctant</span> globaliser, because people prefer to watch their local team. America’s National Football <span class="annot" data-tooltip="league /liːɡ/ n. 联盟；社团；范畴vt. 使…结盟；与…联合vi. 结盟；团结时 态: leagued, leaguing, league">League</span>, the world’s highest-<span class="annot" data-tooltip="earning /ɪr/ n. 耳朵；听觉；倾听；穗vi. （美俚）听见；抽穗EARabbr. East African Railways 东非铁路公司">earning</span> sports <span class="annot" data-tooltip="property /'prɑːpərti/ n. 财产；性质，性能；所有权形容词: propertyless">property</span>, earns 98% of its media-rights <span class="annot" data-tooltip="revenue /'revənuː/ n. 收入，收益；财政收入，税收">revenue</span> at home. The English Premier League is the only football league in Europe that makes more in media rights abroad than it does at home. Every four years the world comes together for the World Cup and the Olympics. Otherwise, fans are mainly engrossed in <span class="annot" data-tooltip="domestic /də'mestɪk/ adj. 国内的；家庭的；驯养的；一心只管家务的">domestic</span> <span class="annot" data-tooltip="contests /'kɑːntest/ vt. 争辩；提出质疑vi. 竞争；争辩n. 竞赛；争论；争夺时 态: contested, contesting, conte">contests</span>. New Yorkers are <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> less excited about the football than they are about the Knicks. Other kinds of culture have long been more globalised, often thanks to America; think of music from Motown or TV from Tinseltown. But now this seems to be reversing. Music charts are becoming more local: in Brazil, an extreme case, 96 of the 100 most-streamed artists last week were Brazilian. Video-streaming services like Netflix and <span class="annot" data-tooltip="amazon /ˈæməˌzɑn/ n. 高大强悍的女人；（古希腊神话中的）亚马孙族女战士Amazonn. 亚马逊河(南美洲大河)">Amazon</span> are producing more shows abroad, to woo subscribers in fresh markets. North America’s share of new streaming <span class="annot" data-tooltip="commissions /kə'mɪʃn/ n. 授权, 委托委员会佣金, 回扣vt. 委任, 委托时 态: commissioned, commissioning, c">commissions</span> has halved in the past six years, from 70% to 36%. New media are no more global. YouTube offers content from every country, but its users gravitate <span class="annot" data-tooltip="towards /tɔːrdz/ prep. 向，朝为了；有助于；用于对于，关于接近；将近；大约">towards</span> <span class="annot" data-tooltip="clips /klɪp/ vt. 修剪；夹牢；痛打vi. 修剪n. 夹子；修剪；回形针CLIPabbr. Cellular Logic Image Pro">clips</span> from close to home: three-<span class="annot" data-tooltip="quarters n. 住处,岗位">quarters</span> of its “<span class="annot" data-tooltip="trending /trend/ n. 趋势, 倾向流行时 态: trended, trending, trends">trending</span>” videos manage to <span class="annot" data-tooltip="trend /trend/ n. 趋势, 倾向流行时 态: trended, trending, trends">trend</span> in only one country. Gaming on PCs and <span class="annot" data-tooltip="consoles /kənˈsoʊl/ v. 安慰，安抚，抚慰，慰藉n. （电子设备或机器的）操纵台，控制台，仪表板时 态: consoled, consoling,">consoles</span> remains dominated by a few worldwide franchises (including a football series formerly known as “FIFA”). But on mobile, which has a bigger and more diverse audience, regional variations are sharper. Across the</p>
+<p>five biggest gaming markets, no app features in every country’s top ten. While Americans play “Fortnite”, Asians have shifted to titles such as “Free Fire”. Cheaper production and distribution have caused a boom in the supply of local entertainment. In the age of CDs, cinemas and game <span class="annot" data-tooltip="cartridges /'kɑːrtrɪdʒ/ n. 弹药筒，打印机的（墨盒）；[摄] 暗盒；笔芯；一卷软片">cartridges</span>, there were huge economies of scale in pushing popular acts or products to go global. Today, producing and distributing new entertainment—whether songs, videos or games—is cheap enough for it to be <span class="annot" data-tooltip="profitable /'prɑːfɪtəbl/ adj. 有利可图的; 有益的副 词: profitably">profitable</span> to target much smaller <span class="annot" data-tooltip="niches /niːʃ，nɪtʃ/ n. （尤指本人合意的）适合的工作（或职位）;称心的工作合宜的小环境（尤指用来放置塑像的）壁龛adj. （产品）针对特定小群体">niches</span>. In some <span class="annot" data-tooltip="places /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">places</span> there is even evidence of a sub-national cultural boom: more than half the content posted on YouTube in India is in languages other than Hindi (mostly local ones). AI will <span class="annot" data-tooltip="enable /ɪ'neɪbl/ vt. 使能够；提供做…的权利[措施]使可能时 态: enabled，enabling，enables">enable</span> ever more <span class="annot" data-tooltip="niche /niːʃ，nɪtʃ/ n. （尤指本人合意的）适合的工作（或职位）;称心的工作合宜的小环境（尤指用来放置塑像的）壁龛adj. （产品）针对特定小群体">niche</span> production. The audience has also changed. A growing global middle class has made it worthwhile for Netflix to make big-budget shows <span class="annot" data-tooltip="tailored /'teɪlər/ vt. 剪裁；使合适n. 裁缝vi. 做裁缝时 态: tailored, tailoring, tailors">tailored</span> to Mexican subscribers, or for the developers of “Free Fire” to devise Bollywood themes for Indian gamers. And audiences’ discovery of new content is increasingly being led by algorithms rather than human tastemakers. Sometimes those algorithms send everyone to the same global hits—prepare for a blizzard of World Cup <span class="annot" data-tooltip="highlights 拔萃,集锦(精采会议文献选辑)">highlights</span> on your social feeds—but they also divide them into niches. In one recent year, German songs made up only four of the 100 most-played tracks on national radio, but 44 of the country’s streaming top 100. People’s <span class="annot" data-tooltip="preferences /'prefrəns/ n. 较喜欢的东西, 偏爱优待, 优惠, 优先权">preferences</span> have turned out to be more local than <span class="annot" data-tooltip="elite /eɪ'liːt/ n. （社会）上层集团；掌权人物；出类拔萃的人，精英adj.（社会）上层集团的；掌权人物的；精英的">elite</span> tastemakers <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span>. Something will be lost if people’s cultural habits turn too <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> inward. A Britain that served only British food and “Carry On” films would be <span class="annot" data-tooltip="bleaker /bliːk/ adj. 荒凉的，无遮蔽的；阴冷的；黯淡的，无希望的；冷酷的；单调的比较级: bleaker, bleakest">bleaker</span> than purgatory. Yet it is cause for celebration that audiences now have so much more choice. Rather than a diet of entertainment from a country that had a historical advantage in its production and distribution, consumers can choose from a global menu of Danish hip-<span class="annot" data-tooltip="hop /hɑːp/ vi. 单足蹦跳, 跳跃跳上[下]vt. 跃过, 跳过搭乘n. 蹦跳, 跳跃跳舞一次飞行的距离HOPabbr. High Oxy">hop</span>, <span class="annot" data-tooltip="polish /'pɑːlɪʃ/ n. 磨光，擦亮；上光剂，擦亮剂；优雅，精良vi. 擦亮，变光滑vt. 磨光，使发亮adj. 波兰的Polishadj. 波兰">Polish</span> comedy or Chinese video games. Regulators should note that the turn <span class="annot" data-tooltip="towards /tɔːrdz/ prep. 向，朝为了；有助于；用于对于，关于接近；将近；大约">towards</span> local options has been brought about by technology, and not by rules of the sort imposed by Canada, where radio stations have to play unhealthy amounts of Justin Bieber to meet local quotas.</p>
+<p>Governments will need to adapt to the changing dynamics of soft power. America’s century of dominance over global popular culture is over. It still controls much of entertainment’s distribution, via platforms such as YouTube and the app stores, and thus much of the <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span>’s profit. But it has lost its grip on content, and with it the cultural tractor-beam that has <span class="annot" data-tooltip="recruited /rɪ'kruːt/ n. 新兵(机构中的)新成员vt. 招聘；吸引(新成员)吸收某人为新成员vt. & vi. 招募，征募(新兵)恢复健康，恢复体">recruited</span> millions of listeners, viewers and players to American <span class="annot" data-tooltip="values /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">values</span> and ideas over the years. Other countries are rushing to fill the gap that America has left, from Brazil in music to South Korea in TV and China in gaming. All eyes will be on America for the World Cup final next month. But it is a fading force in a new game of soft power that has only just kicked off.■ Subscribers to The Economist can sign up to our Opinion newsletter, which brings together the best of our leaders, <span class="annot" data-tooltip="columns /'kɑːləm/ n. 圆柱，柱形物；纵队，列；专栏形容词: columned">columns</span>, guest <span class="annot" data-tooltip="essays /'eseɪ/ n. 散文, 随笔">essays</span> and reader <span class="annot" data-tooltip="correspondence /ˌkɔːrə'spɑːndəns/ n. 信件, 函件通信, 通信联系一致, 相似">correspondence</span>. This article was downloaded by zlibrary from https://www.economist.com//leaders/2026/06/10/the-world-cup-<span class="annot" data-tooltip="paradox /'pærədɑːks/ n. 似非而是的论点；悖论，反论；自相矛盾的人或事形容词: paradoxical">paradox</span></p>
+<div class="article-separator"></div>
+<div class="article-header">Leaders · Leaders | Dire strait</div>
+<p>Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s least bad option in Iran He must swallow his pride and accept a deal worse than the pre-war status quo June 11th 2026 Once again, Iran has been “<span class="annot" data-tooltip="completely /kəm'pliːt/ adj. 完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善比较级: complete">completely</span> defeated”, said Donald Trump on June 10th. Confusingly, the “<span class="annot" data-tooltip="bully /'bʊli/ v. 迫使；胁迫欺负；恐吓；欺凌n. 恃强凌弱者；恶霸adj. 顶好的，快活的，第一流的时 态: bullied，bullyi">Bully</span> of the Middle East”, despite being “DEAD!!!”, will have to “pay the price!!!” of not agreeing to Mr Trump’s peace <span class="annot" data-tooltip="terms /tɜːrmz/ n. 条款；地位，关系；措辞；术语；价钱（term的复数形式）v. 把…称为（term的三单形式）">terms</span>. In <span class="annot" data-tooltip="reality /ri'æləti/ n. 现实；真实；实际">reality</span>, despite more than 100 days of being <span class="annot" data-tooltip="bombed abbr. 物料清单（Bill of Materiel）">bombed</span> and blockaded by the world’s top military superpower and its Israeli ally, the Iranian <span class="annot" data-tooltip="regime /reɪ'ʒiːm/ n. 政权，政体；社会制度；管理体制">regime</span> is emboldened. This week it downed an American helicopter and fired missiles at its Gulf neighbours and Israel. It is almost as if Iran is daring Mr Trump to scrap the shaky <span class="annot" data-tooltip="ceasefire /'siːsfaɪər/ n. (通常指永久性的)停火; 停战">ceasefire</span> and restart a hot war. Mr Trump is in a <span class="annot" data-tooltip="triple /'trɪpl/ adj. 三倍的；三方的n. 三倍数；三个一组vi. 增至三倍vt. 使成三倍时 态: tripled, tripling, tr">triple</span> bind. Iran is garrotting the global <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span> supply by threatening tankers in the <span class="annot" data-tooltip="strait /streɪt/ n. 海峡；（尤指经济拮据引起的）困境，境况窘迫adj. 狭窄的；苦恼的副 词: straitly">Strait</span> of Hormuz. Israel is <span class="annot" data-tooltip="bombing abbr. 物料清单（Bill of Materiel）">bombing</span> Lebanon,</p>
+<p>despite Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> telling it not to. And hawks in America are <span class="annot" data-tooltip="pressing /'presɪŋ/ n. 压；冲压件adj. 紧迫的；迫切的；恳切的v. 按；压；熨烫衣物（press的ing形式）副 词: pressingly">pressing</span> Mr Trump to chase <span class="annot" data-tooltip="unrealistic /ˌʌnriːə'lɪstɪk/ adj. 不切实际的;不实事求是的副 词: unrealistically">unrealistic</span> war aims. Something must eventually give. But the <span class="annot" data-tooltip="mess /mes/ vt. 弄脏；弄乱n. 杂乱，脏乱；脏东西不整洁[乱七八糟]的人[事]粪便时 态: messed，messing，messes">mess</span> that Mr Trump created by starting the war could take longer to clear up than markets are expecting. The world must prepare for higher <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span> prices. Inside Iran the situation is <span class="annot" data-tooltip="opaque /oʊ'peɪk/ adj. 不透明的难理解的, 晦涩的副 词: opaquely">opaque</span>. But the war seems to have strengthened the hand of hardliners, <span class="annot" data-tooltip="notably /'noʊtəbli/ adv. 显著地；尤其">notably</span> the Revolutionary Guards, who appear to be in charge. Iran’s people are suffering misery, penury and power cuts, but the latest attacks suggest that their rulers would rather risk a return to full-scale conflict than accept a peace deal on Mr Trump’s <span class="annot" data-tooltip="terms /tɜːrmz/ n. 条款；地位，关系；措辞；术语；价钱（term的复数形式）v. 把…称为（term的三单形式）">terms</span>. After first playing down the <span class="annot" data-tooltip="tension /'tenʃn/ n. 张力，拉力；紧张，不安；电压vt. 使紧张；使拉紧时 态: tensioned, tensioning, tension">tension</span>, Mr Trump <span class="annot" data-tooltip="ordered /'ɔːrdərd/ adj. 安排好的；整齐的；[数]有序的v. 命令；点餐（order的过去式和过去分词）">ordered</span> retaliatory <span class="annot" data-tooltip="strikes /straɪk/ vi. 罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打时 态:">strikes</span>, which in turn spurred Iran to launch more missiles. Israel complicates matters. To smooth the path to a peace agreement with Iran, Mr Trump wants Binyamin Netanyahu, Israel’s prime minister, to wind down his attacks on Hizbullah, Iran’s proxy militia in Lebanon. He has reportedly <span class="annot" data-tooltip="vetoed /vet/ vt. 诊疗；审查vi. 作兽医；诊疗n. 兽医时 态: vetted, vetting, vets">vetoed</span> strikes on Beirut, Lebanon’s capital. But <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">although</span> the American president says he calls “all the shots”, Israel’s occupation of southern Lebanon is expanding. Mr Netanyahu wants to seem tough in the run-up to a general election. Phone calls between the two <span class="annot" data-tooltip="allies n. （第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者">allies</span> are growing increasingly <span class="annot" data-tooltip="tense /tens/ adj. 拉紧的；紧张的vt. 使拉紧；变得紧张vi. 拉紧，变得紧张n. 时态比较级: tenser, tensest">tense</span> and expletive-filled. The hard men in <span class="annot" data-tooltip="tehran 德黑兰">Tehran</span> are delighted at their enemies’ <span class="annot" data-tooltip="division /dɪ'vɪʒn/ n. [数] 除法；部门；分配；分割；师（军队）；赛区形容词: divisional">division</span>.</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>telecom</td><td>/ˈtɛlɪˌkɑm/ n.</td><td>电信，远距通信；电讯</td></tr>
+<tr><td>rival</td><td>/'raɪvl/ n.</td><td>竞争对手vt. 与…竞争, 与…匹敌, rivalled rivaling, rivalling rivals, rivals</td></tr>
+<tr><td>telecoms</td><td>/ˈtɛlɪˌkɑm/ n.</td><td>电信，远距通信；电讯</td></tr>
+<tr><td>pile</td><td>/paɪl/ n.</td><td>堆；大量；建筑群vt. 累积；打桩于vi. 积累；堆积；挤, piling, piles</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>cancer</td><td>/'kænsər/ n.</td><td>癌迅速蔓延的恶劣的或危险的事物</td></tr>
+<tr><td>coverage</td><td>/'kʌvərɪdʒ/ n.</td><td>新闻报道, 报道量覆盖范围</td></tr>
+<tr><td>overall</td><td>/ˌoʊvər'ɔːl/ adj.</td><td>总体的；全面的；综合的全面考虑的adv. 大体上，总的来说一切包括在内，全部的n. 长罩衣工装裤；工作裤</td></tr>
+<tr><td>explanations</td><td>/ˌeksplə'neɪʃn/ n.</td><td>解释, 说明能说明某事缘由的言语、事实、情况等</td></tr>
+<tr><td>contraceptive</td><td>/ˌkɑːntrə'septɪv/ adj.</td><td>避孕的,避孕用的n. 避孕药,避孕用具</td></tr>
+<tr><td>pornography</td><td>/pɔːr'nɑːɡrəfi/ n.</td><td>色情描绘, 色情表演色情作品</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>editorial</td><td>/ˌedɪ'tɔːriəl/ adj.</td><td>编辑的；编者的；主编的n. （报刊的）社论；（美国电台或电视台的）评论</td></tr>
+<tr><td>paradox</td><td>/'pærədɑːks/ n.</td><td>似非而是的论点；悖论，反论；自相矛盾的人或事</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>paradox</td><td>/'pærədɑːks/ n.</td><td>似非而是的论点；悖论，反论；自相矛盾的人或事</td></tr>
+<tr><td>lyrics</td><td>— n.</td><td>歌词；抒情诗（lyric的复数）</td></tr>
+<tr><td>italian</td><td>/ɪ'tæliən/ adj.</td><td>意大利的；意大利文化的；意大利语的n. 意大利人；意大利语</td></tr>
+<tr><td>tune</td><td>/tuːn/ n.</td><td>曲调, 曲子vt. & vi. 调音vt. 调整, tuning, tunes</td></tr>
+<tr><td>contest</td><td>/'kɑːntest/ vt.</td><td>争辩；提出质疑vi. 竞争；争辩n. 竞赛；争论；争夺, contesting, contests</td></tr>
+<tr><td>foster</td><td>/'fɑːstər/ v.</td><td>促进；助长；培养；鼓励收养，代养，抚育（他人子女，通常指有限的一段时间）adj. （与某些代养有关的名词连用）（在有限的一段时间内）（所）收养的，（所）代养的F</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>towards</td><td>/tɔːrdz/ prep.</td><td>向，朝为了；有助于；用于对于，关于接近；将近；大约</td></tr>
+<tr><td>mega</td><td>— n.</td><td>百万adj. 许多；宏大的adv. 非常</td></tr>
+<tr><td>picture</td><td>/'pɪktʃər/ n.</td><td>图画，肖像；照片(生动的)描述，写照影片；电影；画面美景，景色情况，事态，局面vt. 绘画；描绘想象，picturing，pictures</td></tr>
+<tr><td>fragmenting</td><td>/'fræɡmənt/ n.</td><td>碎片；片断或不完整部分vt. 使成碎片vi. 破碎或裂开, fragmenting, fragments</td></tr>
+<tr><td>tuning</td><td>— n.</td><td>调谐,调整,调音</td></tr>
+<tr><td>alternatives</td><td>/ɔːl'tɜːrnətɪv/ adj.</td><td>可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）可供选择的事物；可供选择的解决办法替代物</td></tr>
+<tr><td>paradox</td><td>/'pærədɑːks/ n.</td><td>似非而是的论点；悖论，反论；自相矛盾的人或事</td></tr>
+<tr><td>tune</td><td>/tuːn/ n.</td><td>曲调, 曲子vt. & vi. 调音vt. 调整, tuning, tunes</td></tr>
+<tr><td>elite</td><td>/eɪ'liːt/ n.</td><td>（社会）上层集团；掌权人物；出类拔萃的人，精英adj.（社会）上层集团的；掌权人物的；精英的</td></tr>
+<tr><td>brands</td><td>/brænd/ n.</td><td>商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责, branding, brands</td></tr>
+<tr><td>swift</td><td>/swɪft/ adj.</td><td>迅速的, 速度快的敏捷的, 反应快的SWIFTabbr. Society for Worldwide Interbank Financial Telecommu</td></tr>
+<tr><td>leagues</td><td>/liːɡ/ n.</td><td>联盟；社团；范畴vt. 使…结盟；与…联合vi. 结盟；团结, leaguing, leagues</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>tier</td><td>/tɪr/ n.</td><td>行，列；层，排；等级vt. 使层叠vi. 成递升排列, tiering, tiers</td></tr>
+<tr><td>fragmenting</td><td>/'fræɡmənt/ n.</td><td>碎片；片断或不完整部分vt. 使成碎片vi. 破碎或裂开, fragmenting, fragments</td></tr>
+<tr><td>reluctant</td><td>/rɪ'lʌktənt/ adj.</td><td>不情愿的, 勉强的</td></tr>
+<tr><td>league</td><td>/liːɡ/ n.</td><td>联盟；社团；范畴vt. 使…结盟；与…联合vi. 结盟；团结, leaguing, leagues</td></tr>
+<tr><td>earning</td><td>/ɪr/ n.</td><td>耳朵；听觉；倾听；穗vi. （美俚）听见；抽穗EARabbr. East African Railways 东非铁路公司, earing, ears</td></tr>
+<tr><td>property</td><td>/'prɑːpərti/ n.</td><td>财产；性质，性能；所有权</td></tr>
+<tr><td>revenue</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>domestic</td><td>/də'mestɪk/ adj.</td><td>国内的；家庭的；驯养的；一心只管家务的</td></tr>
+<tr><td>contests</td><td>/'kɑːntest/ vt.</td><td>争辩；提出质疑vi. 竞争；争辩n. 竞赛；争论；争夺, contesting, contests</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>amazon</td><td>/ˈæməˌzɑn/ n.</td><td>高大强悍的女人；（古希腊神话中的）亚马孙族女战士Amazonn. 亚马逊河(南美洲大河)</td></tr>
+<tr><td>commissions</td><td>/kə'mɪʃn/ n.</td><td>授权, 委托委员会佣金, 回扣vt. 委任, 委托, commissioning, commissions</td></tr>
+<tr><td>towards</td><td>/tɔːrdz/ prep.</td><td>向，朝为了；有助于；用于对于，关于接近；将近；大约</td></tr>
+<tr><td>clips</td><td>/klɪp/ vt.</td><td>修剪；夹牢；痛打vi. 修剪n. 夹子；修剪；回形针CLIPabbr. Cellular Logic Image Processor 单元逻辑映象处理器Comp</td></tr>
+<tr><td>quarters</td><td>— n.</td><td>住处,岗位</td></tr>
+<tr><td>trending</td><td>/trend/ n.</td><td>趋势, 倾向流行, trending, trends</td></tr>
+<tr><td>trend</td><td>/trend/ n.</td><td>趋势, 倾向流行, trending, trends</td></tr>
+<tr><td>consoles</td><td>/kənˈsoʊl/ v.</td><td>安慰，安抚，抚慰，慰藉n. （电子设备或机器的）操纵台，控制台，仪表板, consoling, consoles</td></tr>
+<tr><td>cartridges</td><td>/'kɑːrtrɪdʒ/ n.</td><td>弹药筒，打印机的（墨盒）；[摄] 暗盒；笔芯；一卷软片</td></tr>
+<tr><td>profitable</td><td>/'prɑːfɪtəbl/ adj.</td><td>有利可图的; 有益的</td></tr>
+<tr><td>niches</td><td>/niːʃ，nɪtʃ/ n.</td><td>（尤指本人合意的）适合的工作（或职位）;称心的工作合宜的小环境（尤指用来放置塑像的）壁龛adj. （产品）针对特定小群体的v. 把……放在壁龛中, nichin</td></tr>
+<tr><td>places</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>enable</td><td>/ɪ'neɪbl/ vt.</td><td>使能够；提供做…的权利[措施]使可能，enabling，enables</td></tr>
+<tr><td>niche</td><td>/niːʃ，nɪtʃ/ n.</td><td>（尤指本人合意的）适合的工作（或职位）;称心的工作合宜的小环境（尤指用来放置塑像的）壁龛adj. （产品）针对特定小群体的v. 把……放在壁龛中, nichin</td></tr>
+<tr><td>tailored</td><td>/'teɪlər/ vt.</td><td>剪裁；使合适n. 裁缝vi. 做裁缝, tailoring, tailors</td></tr>
+<tr><td>highlights</td><td>— </td><td>拔萃,集锦(精采会议文献选辑)</td></tr>
+<tr><td>preferences</td><td>/'prefrəns/ n.</td><td>较喜欢的东西, 偏爱优待, 优惠, 优先权</td></tr>
+<tr><td>elite</td><td>/eɪ'liːt/ n.</td><td>（社会）上层集团；掌权人物；出类拔萃的人，精英adj.（社会）上层集团的；掌权人物的；精英的</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>bleaker</td><td>/bliːk/ adj.</td><td>荒凉的，无遮蔽的；阴冷的；黯淡的，无希望的；冷酷的；单调的, bleakest</td></tr>
+<tr><td>hop</td><td>/hɑːp/ vi.</td><td>单足蹦跳, 跳跃跳上[下]vt. 跃过, 跳过搭乘n. 蹦跳, 跳跃跳舞一次飞行的距离HOPabbr. High Oxygen Pressure 高氧压, ho</td></tr>
+<tr><td>polish</td><td>/'pɑːlɪʃ/ n.</td><td>磨光，擦亮；上光剂，擦亮剂；优雅，精良vi. 擦亮，变光滑vt. 磨光，使发亮adj. 波兰的Polishadj. 波兰的,与波兰有关的波兰人的,波兰语的n. </td></tr>
+<tr><td>towards</td><td>/tɔːrdz/ prep.</td><td>向，朝为了；有助于；用于对于，关于接近；将近；大约</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>recruited</td><td>/rɪ'kruːt/ n.</td><td>新兵(机构中的)新成员vt. 招聘；吸引(新成员)吸收某人为新成员vt. & vi. 招募，征募(新兵)恢复健康，恢复体力，recruiting，recruit</td></tr>
+<tr><td>values</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>columns</td><td>/'kɑːləm/ n.</td><td>圆柱，柱形物；纵队，列；专栏</td></tr>
+<tr><td>essays</td><td>/'eseɪ/ n.</td><td>散文, 随笔</td></tr>
+<tr><td>correspondence</td><td>/ˌkɔːrə'spɑːndəns/ n.</td><td>信件, 函件通信, 通信联系一致, 相似</td></tr>
+<tr><td>paradox</td><td>/'pærədɑːks/ n.</td><td>似非而是的论点；悖论，反论；自相矛盾的人或事</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>completely</td><td>/kəm'pliːt/ adj.</td><td>完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善, completest 缩 写: comp, cpl</td></tr>
+<tr><td>bully</td><td>/'bʊli/ v.</td><td>迫使；胁迫欺负；恐吓；欺凌n. 恃强凌弱者；恶霸adj. 顶好的，快活的，第一流的，bullying，bullies</td></tr>
+<tr><td>terms</td><td>/tɜːrmz/ n.</td><td>条款；地位，关系；措辞；术语；价钱（term的复数形式）v. 把…称为（term的三单形式）</td></tr>
+<tr><td>reality</td><td>/ri'æləti/ n.</td><td>现实；真实；实际</td></tr>
+<tr><td>bombed</td><td>— abbr.</td><td>物料清单（Bill of Materiel）</td></tr>
+<tr><td>regime</td><td>/reɪ'ʒiːm/ n.</td><td>政权，政体；社会制度；管理体制</td></tr>
+<tr><td>ceasefire</td><td>/'siːsfaɪər/ n.</td><td>(通常指永久性的)停火; 停战</td></tr>
+<tr><td>triple</td><td>/'trɪpl/ adj.</td><td>三倍的；三方的n. 三倍数；三个一组vi. 增至三倍vt. 使成三倍, tripling, triples</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>strait</td><td>/streɪt/ n.</td><td>海峡；（尤指经济拮据引起的）困境，境况窘迫adj. 狭窄的；苦恼的</td></tr>
+<tr><td>bombing</td><td>— abbr.</td><td>物料清单（Bill of Materiel）</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>pressing</td><td>/'presɪŋ/ n.</td><td>压；冲压件adj. 紧迫的；迫切的；恳切的v. 按；压；熨烫衣物（press的ing形式）</td></tr>
+<tr><td>unrealistic</td><td>/ˌʌnriːə'lɪstɪk/ adj.</td><td>不切实际的;不实事求是的</td></tr>
+<tr><td>mess</td><td>/mes/ vt.</td><td>弄脏；弄乱n. 杂乱，脏乱；脏东西不整洁[乱七八糟]的人[事]粪便，messing，messes</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>opaque</td><td>/oʊ'peɪk/ adj.</td><td>不透明的难理解的, 晦涩的</td></tr>
+<tr><td>notably</td><td>/'noʊtəbli/ adv.</td><td>显著地；尤其</td></tr>
+<tr><td>terms</td><td>/tɜːrmz/ n.</td><td>条款；地位，关系；措辞；术语；价钱（term的复数形式）v. 把…称为（term的三单形式）</td></tr>
+<tr><td>tension</td><td>/'tenʃn/ n.</td><td>张力，拉力；紧张，不安；电压vt. 使紧张；使拉紧, tensioning, tensions</td></tr>
+<tr><td>ordered</td><td>/'ɔːrdərd/ adj.</td><td>安排好的；整齐的；[数]有序的v. 命令；点餐（order的过去式和过去分词）</td></tr>
+<tr><td>strikes</td><td>/straɪk/ vi.</td><td>罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打, stricken striking, str</td></tr>
+<tr><td>vetoed</td><td>/vet/ vt.</td><td>诊疗；审查vi. 作兽医；诊疗n. 兽医, vetting, vets</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>allies</td><td>— n.</td><td>（第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者</td></tr>
+<tr><td>tense</td><td>/tens/ adj.</td><td>拉紧的；紧张的vt. 使拉紧；变得紧张vi. 拉紧，变得紧张n. 时态, tensest</td></tr>
+<tr><td>tehran</td><td>— </td><td>德黑兰</td></tr>
+<tr><td>division</td><td>/dɪ'vɪʒn/ n.</td><td>[数] 除法；部门；分配；分割；师（军队）；赛区</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day1.html" class="nav-btn">← Day 1</a>
+  <a href="day3.html" class="nav-btn">Day 3 →</a>
+</div>
+
+<div class="progress">📖 Day 2 of 45</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-06-13</div>
+
+</body>
+</html>

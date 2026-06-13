@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Science & technology</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-06-13</div>
+
+<h1 class="article-title">Science & technology</h1>
+<div class="article-section"></div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>of this is particularly novel, Dr Karpathy says. But he had missed them. “They stack up and <span class="annot" data-tooltip="actually /'æktʃuəl/ adj. 真实的，实际的；现行的，目前的副 词: actually">actually</span> improved Nanochat,” he says. Speed-ups of this kind are <span class="annot" data-tooltip="inevitable /ɪn'evɪtəbl/ adj. 不可避免的, 必然发生的〈非正〉总会发生的, 照例必有的, 惯常的名 词: inevitability">inevitable</span> as models become more <span class="annot" data-tooltip="capable /'keɪpəbl/ adj. 能干的，能胜任的；有才华的副 词: capably">capable</span>. Much of the work of building terabyte-size frontier models is less glamorous than the AI <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span>’s <span class="annot" data-tooltip="enormous /ɪ'nɔːrməs/ adj. 巨大的, 极大的, 庞大的副 词: enormously">enormous</span> salaries and <span class="annot" data-tooltip="fancy /'fænsi/ n. 想像力；爱好；幻想adj. 想象的；奇特的；精选的；昂贵的vt. 设想；喜爱；想象；自负vi. 想象；幻想副 词: fa">fancy</span> offices suggest. It involves plumbing together the layers of an <span class="annot" data-tooltip="infrastructure /'ɪnfrəstrʌktʃər/ n. 基础设施; 基础结构">infrastructure</span> stack that are bought in from third parties, debugging hardware and software set-ups and <span class="annot" data-tooltip="tweaking /twiːk/ n. 拧；扭；焦急vt. 扭；用力拉；开足马力时 态: tweaked, tweaking, tweaks">tweaking</span> “hyperparameters”, the initial set-up of a training run, until the outcome looks solid. An AI system can do much of that today, with little supervision. But even the more nuanced intellectual work is nearing <span class="annot" data-tooltip="automation /ˌɔːtə'meɪʃn/ n. 自动化(技术), 自动操作">automation</span>, says Joe Spisak, a researcher at Reflection AI, a lab based in New York that is building frontier models that are open-weight (meaning their <span class="annot" data-tooltip="parameters /pə'ræmɪtər/ n. (限定性的)因素, 特性, 界限〈物〉〈数〉参量, 参数形容词: parametric">parameters</span> are publicly released). Give a frontier system a rough sketch of an idea for efficiency gains, and it is increasingly capable of designing an experiment, running tests on a toy model, seeing what works and responding with a plan that is ready to implement at scale. AI models can carry out these sorts of tasks, which take humans hours, in around 30 minutes. Increasingly, humans play the role only of research director, <span class="annot" data-tooltip="steering /stɪr/ v. 驾驶（船、汽车等）；掌控方向盘（交通工具）行驶，沿（特定路线或方向）行进引导，带领n. 阉公牛；肉用公牛时 态: ste">steering</span> the AI to run experiments, which the models code up,</p>
+<p>debug, optimise and <span class="annot" data-tooltip="monitor /'mɑːnɪtər/ n. 显示屏；监视器；（计算机）显示器监控器；监测器班长；级长；班代表（尤指派往国外的）监督员，核查员巨蜥v. 监视；检查；跟">monitor</span> themselves. The <span class="annot" data-tooltip="productivity /ˌproʊdʌk'tɪvəti/ n. 生产率, 生产力">productivity</span> boost is alluring, but also alarming. As the role that humans play in the production <span class="annot" data-tooltip="process /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">process</span> <span class="annot" data-tooltip="shrinks /ʃrɪŋk/ vt. & vi. 收缩；退缩时 态: shrank ，shrunk shrunk，shrunken shrinking，shr">shrinks</span>, they may lose control. The end result could be models trained by models, to achieve goals set by models, whose safety is verified only by models. Some fear a disaster. Max Tegmark, a physicist and machine-learning researcher at the Massachusetts Institute of Technology who has devoted much of the past <span class="annot" data-tooltip="decade /'dekeɪd/ n. 十年，十年期；十">decade</span> to <span class="annot" data-tooltip="campaigning /kæm'peɪn/ n. 运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）时">campaigning</span> for AI safety, likens it to a driver flooring the accelerator on the motorway with their eyes closed. The result would be certain <span class="annot" data-tooltip="doom /duːm/ vt. 注定；判定n. 厄运，劫数时 态: doomed，dooming，dooms">doom</span>, he told the The Economist’s “Inside Tech” video show, as long as the driver refuses to open their eyes. Powerful AI systems could outcompete humans as the decision makers in government and <span class="annot" data-tooltip="commerce /'kɑːmɜːrs/ n. 商业, 贸易">commerce</span>, says Professor Tegmark, disempowering <span class="annot" data-tooltip="humanity /hjuː'mænəti/ n. 人类；人道；仁慈；人文学科">humanity</span>; they could offer <span class="annot" data-tooltip="supreme /su'priːm/ adj. 最高的；至上的最重要的比较级: supremer，supremest 缩 写: supr">supreme</span> power to whoever first builds them, ushering in global totalitarianism; or they could <span class="annot" data-tooltip="simply /'sɪmpli/ adv. 简单地；朴素地；简直；仅仅；坦白地">simply</span> cease to care about humanity at all, and gradually <span class="annot" data-tooltip="squeeze /skwiːz/ vt. & vi. 挤, 榨, 捏vt. 榨取, 挤出n. 挤, 榨, 捏亲切的拥抱或握手拥挤, 积压缺乏钱或时间等所引致的困难">squeeze</span> people out to make room for more data centres and power generation. Three years ago, Professor Tegmark led a call for a pause in global AI development, arguing that the creation of the then-<span class="annot" data-tooltip="cutting /'kʌtɪŋ/ n. 切断；剪辑；开凿adj. 严寒的；锋利的；尖酸刻薄的v. 切开；采伐；削减（cut的ing形式）">cutting</span> <span class="annot" data-tooltip="edge /edʒ/ n. 边缘；刀刃；优势；锋利vt. 使锐利；将…开刃；给…加上边vi. 缓缓移动；侧着移动EDGEabbr. Electron">edge</span> GPT-4 was tantamount to that <span class="annot" data-tooltip="blindfolded /'blaɪndfoʊld/ vt. (尤指用布)挡住(某人)的视线，蒙住(某人)的眼睛使不理解，使迟钝；蒙骗n. 蒙眼的绷带〔布等〕障眼物；蒙蔽人的事物ad">blindfolded</span> <span class="annot" data-tooltip="journey /'dʒɜːrni/ n. 旅行; 行程vi. 旅行">journey</span>. This year’s CSET report warned that the systems created by RSI “pose extreme risks. This warrants preparatory action now.” <span class="annot" data-tooltip="anthropic /ænˈθrɑpɪk/ adj. 人类的,有关人类的">Anthropic</span>, it seems, is close to agreeing with that idea. There are also several physical <span class="annot" data-tooltip="constraints /kən'streɪnt/ n. 强制；限制，约束强制，强迫">constraints</span> that will, for now, <span class="annot" data-tooltip="impose /ɪm'poʊz/ vi. 欺骗；利用；施加影响vt. 强加；以…欺骗；征税时 态: imposed, imposing, imposes">impose</span> limits on the speed at which models can improve themselves. The most important is access to compute. Despite efficiency gains, newer models continue to use more computing power to train than their predecessors, forcing progress to occur at the pace of data-centre development. Consumer use of AI may also slow down AI-powered research and development, says Helen Toner, <span class="annot" data-tooltip="interim /'ɪntərɪm/ adj. 临时的，暂时的；中间的；间歇的n. 过渡时期，中间时期；暂定">interim</span> executive director of CSET and a lead author of its recent report. The limited capacity in AI data centres needs to be carefully split between serving paying customers, training future models and carrying out open-ended R&D. The more demand there is in the first category, the less capacity, in the short term, there is for the other two.</p>
+<p>Then there is the <span class="annot" data-tooltip="issue /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issue</span> of training data. Much recent progress in AI has been in areas where models can teach themselves how to succeed thanks to “verifiable rewards”. A piece of software <span class="annot" data-tooltip="either /'iːðər/ pron. (两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的">either</span> runs or it does not; a mathematical proof is correct or it is not. In such cases synthetic data, generated by models purely to train other models, can be checked for accuracy and added to the training data without risking the <span class="annot" data-tooltip="degeneracy /dɪ'dʒenərəsi/ n. 堕落,退化,退步">degeneracy</span> that normally comes with training an AI on its <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> output. It is trickier to make a model better at creative writing or legal judgment. If the models need to learn from the real world, that could also limit the <span class="annot" data-tooltip="reach /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reach</span> of self- improvement. “Closing the loop” may be a step on the road to superintelligence and— depending on your <span class="annot" data-tooltip="disposition /ˌdɪspəˈzɪʃn/ n. 性情，性格">disposition</span>—utopia or <span class="annot" data-tooltip="doom /duːm/ vt. 注定；判定n. 厄运，劫数时 态: doomed，dooming，dooms">doom</span>. But it is not the only step required to produce exponential growth in AI’s <span class="annot" data-tooltip="capabilities /ˌkeɪpə'bɪləti/ n. 能做某事的素质;能力尚未发挥的天资或素质">capabilities</span>. ■ Curious about the world? To enjoy our mind-expanding science <span class="annot" data-tooltip="coverage /'kʌvərɪdʒ/ n. 新闻报道, 报道量覆盖范围">coverage</span>, sign up to <span class="annot" data-tooltip="simply /'sɪmpli/ adv. 简单地；朴素地；简直；仅仅；坦白地">Simply</span> Science, our weekly subscriber-only newsletter. This article was downloaded by zlibrary from https://www.economist.com//science-and-technology/2026/06/07/how-artificial- intelligence-got-better-at-building-itself</p>
+<p>Science & technology | Lung-range forecast New techniques can predict and prevent lung <span class="annot" data-tooltip="cancer /'kænsər/ n. 癌迅速蔓延的恶劣的或危险的事物形容词: cancerous">cancer</span> A molecular <span class="annot" data-tooltip="signature /'sɪɡnətʃər/ n. 签名, 签字">signature</span> can identify those most at risk June 11th 2026 <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">Although</span> cancer treatments are improving fast, prevention has so <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> been mostly about <span class="annot" data-tooltip="promoting /'proʊmoʊ/ n. 商品推销；商品广告，广告片">promoting</span> a healthy lifestyle. But efforts to find preventive drugs and <span class="annot" data-tooltip="vaccines /væk'siːn/ n. 疫苗;痘苗adj. 痘苗的;疫苗的">vaccines</span> are starting to bear fruit. New research shows that existing <span class="annot" data-tooltip="anti /'ænti/ adj. 反对的n. 反对者，反对论者">anti</span>-inflammatory drugs hold promise for preventing lung cancer. Despite dramatic declines in smoking, lung cancer is the most common cancer diagnosis globally. Smokers who quit face less danger but remain at higher <span class="annot" data-tooltip="lifetime /'laɪftaɪm/ n. 一生；寿命；终生；使用期adj. 一生的；终身的">lifetime</span> risk than those who never smoked. People exposed at length to high levels of air pollution, for instance around busy roads in London, are at higher risk too.</p>
+<p>Now, an international team of 80 scientists has identified a molecular <span class="annot" data-tooltip="signature /'sɪɡnətʃər/ n. 签名, 签字">signature</span> that predicts a higher risk of lung <span class="annot" data-tooltip="cancer /'kænsər/ n. 癌迅速蔓延的恶劣的或危险的事物形容词: cancerous">cancer</span>. The <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span> examined blood samples from <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> 50,000 people in the UK Biobank, a <span class="annot" data-tooltip="repository /rɪ'pɑːzətɔːri/ n. 仓库，贮藏室，存放处智囊，知识渊博的人，知识宝典">repository</span> of data, samples and scans taken <span class="annot" data-tooltip="periodically /ˌpɪri'ɑːdɪkli/ adv. 周期性地定期地;偶尔">periodically</span> from the same cohort of people. They used machine learning to analyse thousands of proteins in the samples and found a group of 14 whose levels increased five years or more before a lung cancer diagnosis. The team then confirmed that this 14-protein “signature” could predict lung cancer in eight other data sets from around the world, including a Taiwanese one in which few participants were smokers. The results were published in Cell on June 4th. In lab experiments on mice and cells, the scientists found that the 14 proteins were <span class="annot" data-tooltip="present /'preznt/ vt. 呈现；介绍；提出；赠送vi. 举枪瞄准adj. 出席的；现在的n. 现在；礼物；瞄准时 态: presented, pr">present</span> in larger quantities when an inflammatory pathway that is linked to lung cancer was activated. This pathway was identified in 2023 by a team led by Charlie Swanton, a researcher at the Francis Crick Institute in London and co-author of the new paper. The group showed that air pollution triggers the <span class="annot" data-tooltip="release /rɪ'liːs/ vt. 释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]时 态: released，rel">release</span> of a signalling molecule called interleukin-1 beta (IL- 1ß). When IL-1ß <span class="annot" data-tooltip="reaches /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reaches</span> lung cells that carry dormant cancer-causing <span class="annot" data-tooltip="mutations /mjuː'teɪʃn/ n. 突变；变化；元音变化">mutations</span>, it activates those mutations. The cells <span class="annot" data-tooltip="proliferate /prə'lɪfəreɪt/ vi. 激增；(迅速)繁殖；增生扩散时 态: proliferated，proliferating，proliferates">proliferate</span> and grow into a <span class="annot" data-tooltip="tumour /'tuːmər/ n. 肿瘤；瘤；肿块">tumour</span>. Remarkably, Dr Swanton found that blocking IL-1ß in mice exposed to air pollution stopped <span class="annot" data-tooltip="tumours /'tuːmər/ n. 肿瘤；瘤；肿块">tumours</span> forming, offering the promise of preventive drugs. The new research provides the foundations for a blood test that could identify who will benefit from such treatments. Drugs that block IL-1ß in humans already exist. They are used to treat certain auto-inflammatory conditions, such as some forms of <span class="annot" data-tooltip="arthritis /ɑːr'θraɪtɪs/ n. 关节炎形容词: arthritic">arthritis</span>. As part of the new study, Dr Swanton’s team analysed data on cancer incidence among people treated with these drugs. In 2017 Novartis, a pharmaceutical company, reported the results from a big <span class="annot" data-tooltip="trial /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">trial</span> of canakinumab, an IL-1ß blocker, as a preventive <span class="annot" data-tooltip="therapy /'θerəpi/ n. 治疗，疗法">therapy</span> for heart attacks. The drug was ineffective against heart attacks, but as part of the safety checks of the trial, Novartis collected data on cancer incidence among participants.</p>
+<p>The patients treated with canakinumab ended up with lower rates of lung <span class="annot" data-tooltip="cancer /'kænsər/ n. 癌迅速蔓延的恶劣的或危险的事物形容词: cancerous">cancer</span> than the placebo <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span>. The effect was modest though. Dr Swanton’s team reanalysed the <span class="annot" data-tooltip="trial /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">trial</span> data using the 14-protein <span class="annot" data-tooltip="signature /'sɪɡnətʃər/ n. 签名, 签字">signature</span>. In people with lower amounts of the 14 proteins, more than 1,500 would need to be treated to prevent one lung cancer. But in those with larger amounts of the proteins, canakinumab <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> halved the risk. In this group, treating 55 people prevented one case of disease. Cholesterol-lowering drugs known as statins, which are widely prescribed to prevent heart attacks, have a similar prevention rate. The next step is to develop a commercial test for <span class="annot" data-tooltip="detecting /dɪ'tekt/ vt. 发现；发觉，查明时 态: detected，detecting，detects">detecting</span> the 14-protein signature. The team is also investigating whether other <span class="annot" data-tooltip="anti /'ænti/ adj. 反对的n. 反对者，反对论者">anti</span>-inflammatory drugs could be similarly effective. Fresh UK Biobank data is expected in the next two years. It could provide similar clues about other types of cancer. A long-running trial in England, for example, has shown that aspirin prevents some colorectal <span class="annot" data-tooltip="cancers /'kænsər/ n. 癌迅速蔓延的恶劣的或危险的事物形容词: cancerous">cancers</span> in people with Lynch <span class="annot" data-tooltip="syndrome /'sɪndroʊm/ n. 综合征；征群；综合症状（特定情形下人的）典型负面特征，典型负面表现【计】校验子形容词: syndromic">syndrome</span>, a <span class="annot" data-tooltip="genetic /dʒə'netɪk/ adj. 遗传的；起源的；基因的副 词: genetically">genetic</span> condition that makes people highly predisposed to certain cancers. Cancer prevention may finally get the level of scientific attention devoted to finding new treatments. ■ Curious about the world? To enjoy our mind-expanding science <span class="annot" data-tooltip="coverage /'kʌvərɪdʒ/ n. 新闻报道, 报道量覆盖范围">coverage</span>, sign up to <span class="annot" data-tooltip="simply /'sɪmpli/ adv. 简单地；朴素地；简直；仅仅；坦白地">Simply</span> Science, our weekly subscriber-only newsletter. This article was downloaded by zlibrary from https://www.economist.com//science-and-technology/2026/06/10/new-techniques-can- predict-and-prevent-lung-cancer</p>
+<p>Science & technology | Doctors with borders Too much Chinese science is ignored by the West A bad reputation and cultural ignorance are probably responsible June 11th 2026 Chinese authors published as many papers as American, British, German and Japanese researchers combined in 2025. Yet two recent analyses drawing on databases of tens of millions of English-language scientific articles suggest they were largely <span class="annot" data-tooltip="overlooked /ˌoʊvər'lʊk/ vt.忽略；俯瞰；远眺；不计较，宽恕；施魔法于；监督；检查n.忽视；眺望；从高处能看到的景色时 态: overlooke">overlooked</span> by Western researchers. That is not for lack of <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span>: China leads the Nature index, a ranking of countries by <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of papers published in a set of respected <span class="annot" data-tooltip="journals /'dʒɜːrnl/ n. 日报，杂志；日记；[经]分类账">journals</span>. Both new analyses tracked how <span class="annot" data-tooltip="academic /ˌækə'demɪk/ adj. 学院的；学术的；理论的n. 大学生，大学教师；学者副 词: academically">academic</span> papers were cited by others. The first, a working paper by Abhishek Nagaraj of the University of California, Berkeley, and Randol Yao of the Massachusetts Institute of Technology, was published in January. It found that between 1980 and 2022, only about one- third of citations of Chinese papers came from <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span> the country,</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>actually</td><td>/'æktʃuəl/ adj.</td><td>真实的，实际的；现行的，目前的</td></tr>
+<tr><td>inevitable</td><td>/ɪn'evɪtəbl/ adj.</td><td>不可避免的, 必然发生的〈非正〉总会发生的, 照例必有的, 惯常的</td></tr>
+<tr><td>capable</td><td>/'keɪpəbl/ adj.</td><td>能干的，能胜任的；有才华的</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>enormous</td><td>/ɪ'nɔːrməs/ adj.</td><td>巨大的, 极大的, 庞大的</td></tr>
+<tr><td>fancy</td><td>/'fænsi/ n.</td><td>想像力；爱好；幻想adj. 想象的；奇特的；精选的；昂贵的vt. 设想；喜爱；想象；自负vi. 想象；幻想</td></tr>
+<tr><td>infrastructure</td><td>/'ɪnfrəstrʌktʃər/ n.</td><td>基础设施; 基础结构</td></tr>
+<tr><td>tweaking</td><td>/twiːk/ n.</td><td>拧；扭；焦急vt. 扭；用力拉；开足马力, tweaking, tweaks</td></tr>
+<tr><td>automation</td><td>/ˌɔːtə'meɪʃn/ n.</td><td>自动化(技术), 自动操作</td></tr>
+<tr><td>parameters</td><td>/pə'ræmɪtər/ n.</td><td>(限定性的)因素, 特性, 界限〈物〉〈数〉参量, 参数</td></tr>
+<tr><td>steering</td><td>/stɪr/ v.</td><td>驾驶（船、汽车等）；掌控方向盘（交通工具）行驶，沿（特定路线或方向）行进引导，带领n. 阉公牛；肉用公牛, steering, steers</td></tr>
+<tr><td>monitor</td><td>/'mɑːnɪtər/ n.</td><td>显示屏；监视器；（计算机）显示器监控器；监测器班长；级长；班代表（尤指派往国外的）监督员，核查员巨蜥v. 监视；检查；跟踪调查监听（电话、外国无线电广播等）, </td></tr>
+<tr><td>productivity</td><td>/ˌproʊdʌk'tɪvəti/ n.</td><td>生产率, 生产力</td></tr>
+<tr><td>process</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>shrinks</td><td>/ʃrɪŋk/ vt.</td><td>& vi. 收缩；退缩，shrunk shrunk，shrunken shrinking，shrinks</td></tr>
+<tr><td>decade</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>campaigning</td><td>/kæm'peɪn/ n.</td><td>运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）, campaigning, campai</td></tr>
+<tr><td>doom</td><td>/duːm/ vt.</td><td>注定；判定n. 厄运，劫数，dooming，dooms</td></tr>
+<tr><td>commerce</td><td>/'kɑːmɜːrs/ n.</td><td>商业, 贸易</td></tr>
+<tr><td>humanity</td><td>/hjuː'mænəti/ n.</td><td>人类；人道；仁慈；人文学科</td></tr>
+<tr><td>supreme</td><td>/su'priːm/ adj.</td><td>最高的；至上的最重要的，supremest 缩 写: supr</td></tr>
+<tr><td>simply</td><td>/'sɪmpli/ adv.</td><td>简单地；朴素地；简直；仅仅；坦白地</td></tr>
+<tr><td>squeeze</td><td>/skwiːz/ vt.</td><td>& vi. 挤, 榨, 捏vt. 榨取, 挤出n. 挤, 榨, 捏亲切的拥抱或握手拥挤, 积压缺乏钱或时间等所引致的困难或困苦, 拮据, 短缺, squeezi</td></tr>
+<tr><td>cutting</td><td>/'kʌtɪŋ/ n.</td><td>切断；剪辑；开凿adj. 严寒的；锋利的；尖酸刻薄的v. 切开；采伐；削减（cut的ing形式）</td></tr>
+<tr><td>edge</td><td>/edʒ/ n.</td><td>边缘；刀刃；优势；锋利vt. 使锐利；将…开刃；给…加上边vi. 缓缓移动；侧着移动EDGEabbr. Electronic Data Gathering Eq</td></tr>
+<tr><td>blindfolded</td><td>/'blaɪndfoʊld/ vt.</td><td>(尤指用布)挡住(某人)的视线，蒙住(某人)的眼睛使不理解，使迟钝；蒙骗n. 蒙眼的绷带〔布等〕障眼物；蒙蔽人的事物adj. & adv. 被蒙住眼睛的(地)，</td></tr>
+<tr><td>journey</td><td>/'dʒɜːrni/ n.</td><td>旅行; 行程vi. 旅行</td></tr>
+<tr><td>anthropic</td><td>/ænˈθrɑpɪk/ adj.</td><td>人类的,有关人类的</td></tr>
+<tr><td>constraints</td><td>/kən'streɪnt/ n.</td><td>强制；限制，约束强制，强迫</td></tr>
+<tr><td>impose</td><td>/ɪm'poʊz/ vi.</td><td>欺骗；利用；施加影响vt. 强加；以…欺骗；征税, imposing, imposes</td></tr>
+<tr><td>interim</td><td>/'ɪntərɪm/ adj.</td><td>临时的，暂时的；中间的；间歇的n. 过渡时期，中间时期；暂定</td></tr>
+<tr><td>issue</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>either</td><td>/'iːðər/ pron.</td><td>(两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的</td></tr>
+<tr><td>degeneracy</td><td>/dɪ'dʒenərəsi/ n.</td><td>堕落,退化,退步</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>reach</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>disposition</td><td>/ˌdɪspəˈzɪʃn/ n.</td><td>性情，性格</td></tr>
+<tr><td>doom</td><td>/duːm/ vt.</td><td>注定；判定n. 厄运，劫数，dooming，dooms</td></tr>
+<tr><td>capabilities</td><td>/ˌkeɪpə'bɪləti/ n.</td><td>能做某事的素质;能力尚未发挥的天资或素质</td></tr>
+<tr><td>coverage</td><td>/'kʌvərɪdʒ/ n.</td><td>新闻报道, 报道量覆盖范围</td></tr>
+<tr><td>simply</td><td>/'sɪmpli/ adv.</td><td>简单地；朴素地；简直；仅仅；坦白地</td></tr>
+<tr><td>cancer</td><td>/'kænsər/ n.</td><td>癌迅速蔓延的恶劣的或危险的事物</td></tr>
+<tr><td>signature</td><td>/'sɪɡnətʃər/ n.</td><td>签名, 签字</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>promoting</td><td>/'proʊmoʊ/ n.</td><td>商品推销；商品广告，广告片</td></tr>
+<tr><td>vaccines</td><td>/væk'siːn/ n.</td><td>疫苗;痘苗adj. 痘苗的;疫苗的</td></tr>
+<tr><td>anti</td><td>/'ænti/ adj.</td><td>反对的n. 反对者，反对论者</td></tr>
+<tr><td>lifetime</td><td>/'laɪftaɪm/ n.</td><td>一生；寿命；终生；使用期adj. 一生的；终身的</td></tr>
+<tr><td>signature</td><td>/'sɪɡnətʃər/ n.</td><td>签名, 签字</td></tr>
+<tr><td>cancer</td><td>/'kænsər/ n.</td><td>癌迅速蔓延的恶劣的或危险的事物</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>repository</td><td>/rɪ'pɑːzətɔːri/ n.</td><td>仓库，贮藏室，存放处智囊，知识渊博的人，知识宝典</td></tr>
+<tr><td>periodically</td><td>/ˌpɪri'ɑːdɪkli/ adv.</td><td>周期性地定期地;偶尔</td></tr>
+<tr><td>present</td><td>/'preznt/ vt.</td><td>呈现；介绍；提出；赠送vi. 举枪瞄准adj. 出席的；现在的n. 现在；礼物；瞄准, presenting, presents</td></tr>
+<tr><td>release</td><td>/rɪ'liːs/ vt.</td><td>释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]，releasing，releases</td></tr>
+<tr><td>reaches</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>mutations</td><td>/mjuː'teɪʃn/ n.</td><td>突变；变化；元音变化</td></tr>
+<tr><td>proliferate</td><td>/prə'lɪfəreɪt/ vi.</td><td>激增；(迅速)繁殖；增生扩散，proliferating，proliferates</td></tr>
+<tr><td>tumour</td><td>/'tuːmər/ n.</td><td>肿瘤；瘤；肿块</td></tr>
+<tr><td>tumours</td><td>/'tuːmər/ n.</td><td>肿瘤；瘤；肿块</td></tr>
+<tr><td>arthritis</td><td>/ɑːr'θraɪtɪs/ n.</td><td>关节炎</td></tr>
+<tr><td>trial</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>therapy</td><td>/'θerəpi/ n.</td><td>治疗，疗法</td></tr>
+<tr><td>cancer</td><td>/'kænsər/ n.</td><td>癌迅速蔓延的恶劣的或危险的事物</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>trial</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>signature</td><td>/'sɪɡnətʃər/ n.</td><td>签名, 签字</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>detecting</td><td>/dɪ'tekt/ vt.</td><td>发现；发觉，查明，detecting，detects</td></tr>
+<tr><td>anti</td><td>/'ænti/ adj.</td><td>反对的n. 反对者，反对论者</td></tr>
+<tr><td>cancers</td><td>/'kænsər/ n.</td><td>癌迅速蔓延的恶劣的或危险的事物</td></tr>
+<tr><td>syndrome</td><td>/'sɪndroʊm/ n.</td><td>综合征；征群；综合症状（特定情形下人的）典型负面特征，典型负面表现【计】校验子</td></tr>
+<tr><td>genetic</td><td>/dʒə'netɪk/ adj.</td><td>遗传的；起源的；基因的</td></tr>
+<tr><td>coverage</td><td>/'kʌvərɪdʒ/ n.</td><td>新闻报道, 报道量覆盖范围</td></tr>
+<tr><td>simply</td><td>/'sɪmpli/ adv.</td><td>简单地；朴素地；简直；仅仅；坦白地</td></tr>
+<tr><td>overlooked</td><td>/ˌoʊvər'lʊk/ </td><td>vt.忽略；俯瞰；远眺；不计较，宽恕；施魔法于；监督；检查n.忽视；眺望；从高处能看到的景色, overlooking, overlooks</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>journals</td><td>/'dʒɜːrnl/ n.</td><td>日报，杂志；日记；[经]分类账</td></tr>
+<tr><td>academic</td><td>/ˌækə'demɪk/ adj.</td><td>学院的；学术的；理论的n. 大学生，大学教师；学者</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day39.html" class="nav-btn">← Day 39</a>
+  <a href="day41.html" class="nav-btn">Day 41 →</a>
+</div>
+
+<div class="progress">📖 Day 40 of 45</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-06-13</div>
+
+</body>
+</html>

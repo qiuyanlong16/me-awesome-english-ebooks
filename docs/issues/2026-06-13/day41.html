@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Science & technology</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-06-13</div>
+
+<h1 class="article-title">Science & technology</h1>
+<div class="article-section"></div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>compared with around half for America and the European Union. The <span class="annot" data-tooltip="pattern /'pætərn/ n. 型，样式花样，图案方式，形式榜样，典范vt. 模仿； 仿制以图案装饰时 态: patterned，patterning，">pattern</span> was largely the same for papers published in the top 5% of <span class="annot" data-tooltip="journals /'dʒɜːrnl/ n. 日报，杂志；日记；[经]分类账">journals</span> and papers ranked in the top 1% by citations. The second analysis, posted by a Chinese-Dutch team on the preprint server arXiv in April, found that even though American, British, French, German and Japanese teams have become more likely to cite Chinese research since 2000, citations of Chinese work in 2022 were still much lower than expected based on factors like the quantity of scientific output. There was a <span class="annot" data-tooltip="striking /'straɪkɪŋ/ adj. 显著的，突出的引人注目的；容貌出众的副 词: strikingly">striking</span> imbalance: Chinese researchers cited American work more than expected; American researchers cited Chinese work less than expected. Some of this may be <span class="annot" data-tooltip="artefact /'ɑːrtɪfækt/ n. 人工制品，加工品">artefact</span>. The first result could be <span class="annot" data-tooltip="swayed /sweɪ/ vt. 使摇动；统治；影响vi. 摇摆；影响n. 摇摆；统治；影响时 态: swayed, swaying, sways">swayed</span> by colleagues excessively citing each other’s work to <span class="annot" data-tooltip="drive /draɪv/ vt. 驱赶驱使, 促使敲, 击vt. & vi. 驾驶n. 乘车旅行私人车道传动, 驱动干劲, 积极性, 能动性紧迫, 逼迫,">drive</span> up metrics. The second does not account for differences in the average quality of science done in each <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span>. At the request of The Economist, Dr Nagaraj and Dr Yao split their analysis by <span class="annot" data-tooltip="academic /ˌækə'demɪk/ adj. 学院的；学术的；理论的n. 大学生，大学教师；学者副 词: academically">academic</span> field. They found that Chinese researchers are particularly likely to cite each other’s research in fields like <span class="annot" data-tooltip="chemistry /'kemɪstri/ n. 化学">chemistry</span> and engineering where Chinese labs produce the <span class="annot" data-tooltip="bulk /bʌlk/ n. 体积，容量；大块；大多数，大部分vt. 使扩大，使形成大量；使显得重要时 态: bulked, bulking, bul">bulk</span> of <span class="annot" data-tooltip="cutting /'kʌtɪŋ/ n. 切断；剪辑；开凿adj. 严寒的；锋利的；尖酸刻薄的v. 切开；采伐；削减（cut的ing形式）">cutting</span>-<span class="annot" data-tooltip="edge /edʒ/ n. 边缘；刀刃；优势；锋利vt. 使锐利；将…开刃；给…加上边vi. 缓缓移动；侧着移动EDGEabbr. Electron">edge</span> work. With fewer scientists abroad working in these fields more citations come from home.</p>
+<p>Chinese research may be more concentrated in fields in which only local researchers are at the frontier. Another <span class="annot" data-tooltip="explanation /ˌeksplə'neɪʃn/ n. 解释, 说明能说明某事缘由的言语、事实、情况等">explanation</span> is trust. According to data from Retraction Watch, papers published by Chinese authors between 1996 and 2025 were around six times more likely to be retracted than those by American or British ones. Before the Chinese government banned the <span class="annot" data-tooltip="practices /'præktɪs/ n. 练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规时 态: practiced，practicing，">practices</span> in 2020, universities often gave researchers publication quotas or paid them <span class="annot" data-tooltip="bonuses /'boʊnəs/ n. 奖金；红利；额外津贴BONUSabbr. Boling Nuclear Superheat Reactor 沸腾式过热核">bonuses</span> for publication. <span class="annot" data-tooltip="authorities /ə'θɔːrəti/ n. 威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗">Authorities</span> have also tried to <span class="annot" data-tooltip="tackle /'tækl/ vt. 解决；应付vt. & vi. 捉住；扭倒n. 拦截；擒抱器具，器械，用具滑车，滑轮组时 态: tackled，tackl">tackle</span> the problem by <span class="annot" data-tooltip="cracking /kræk/ vt. & vi. (使…)开裂, 破裂(使)身体上或精神上垮掉打开, 砸开(使)发出爆裂声n. 裂缝, 缝隙噼啪声, 爆裂声意">cracking</span> down on paper mills and <span class="annot" data-tooltip="reforming /rɪ'fɔːrm/ n. 改革，改良，改造vt. & vi. 改革；改造；改善时 态: reformed，reforming，reforms">reforming</span> <span class="annot" data-tooltip="academic /ˌækə'demɪk/ adj. 学院的；学术的；理论的n. 大学生，大学教师；学者副 词: academically">academic</span> <span class="annot" data-tooltip="evaluation /ɪˌvælju'eɪʃn/ n. 估价，评价；估算赋值，值的计算">evaluation</span>. But reputations take time to repair. Ignorance <span class="annot" data-tooltip="compounds /'kɑːmpaʊnd/ n. 复合物；混合物；【化】化合物（语法）复合词有围栏（或围墙）的场地（内有工厂或其他建筑群）adj. 复合的v. 使加重；使">compounds</span> the problem. Western researchers are often unfamiliar with the hierarchy of Chinese institutions and struggle to distinguish similar- sounding names, says Dorothy Bishop, a retired experimental <span class="annot" data-tooltip="psychologist /saɪ'kɑːlədʒɪst/ n. 心理学研究者;心理学家">psychologist</span> at Oxford University who investigates research <span class="annot" data-tooltip="fraud /frɔːd/ n. 欺诈, 欺骗行为骗子">fraud</span>. The share of Chinese papers with international <span class="annot" data-tooltip="collaborations /kəˌlæbə'reɪʃn/ n. 合作, 协作通敌">collaborations</span> is also in decline, in part owing to geopolitical <span class="annot" data-tooltip="tensions /'tenʃn/ n. 张力，拉力；紧张，不安；电压vt. 使紧张；使拉紧时 态: tensioned, tensioning, tension">tensions</span>. In 2024, 18% had a foreign co-author, down from 24% between 2000 and 2019. Each study has its weaknesses. Whatever the cause, <span class="annot" data-tooltip="overlooking /ˌoʊvər'lʊk/ vt.忽略；俯瞰；远眺；不计较，宽恕；施魔法于；监督；检查n.忽视；眺望；从高处能看到的景色时 态: overlooke">overlooking</span> Chinese research has consequences. Ideas spread more slowly and breakthroughs take longer when researchers miss valuable work. As China becomes an ever larger source of new knowledge, the cost of such blind <span class="annot" data-tooltip="spots /spɑːt/ n. 斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Po">spots</span> will grow. ■ To track the <span class="annot" data-tooltip="trends /trend/ n. 趋势, 倾向流行时 态: trended, trending, trends">trends</span> shaping <span class="annot" data-tooltip="commerce /'kɑːmɜːrs/ n. 商业, 贸易">commerce</span>, <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> and technology, sign up to “The Bottom <span class="annot" data-tooltip="line /laɪn/ n. 绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long inter">Line</span>”, our weekly subscriber-only newsletter on global business. This article was downloaded by zlibrary from https://www.economist.com//science-and-technology/2026/06/10/too-much-chinese- science-is-ignored-by-the-west</p>
+<p>Science & technology | Well Informed The chemicals that reduce wrinkles Vitamins, applied <span class="annot" data-tooltip="properly /'prɑːpər/ adj. 适合的; 适当的; 适用的; 恰当的遵守规则的; 正确的严格意义的; 本身的合乎体统的; 正派的固有的; 特有的副 词:">properly</span>, can <span class="annot" data-tooltip="partially /'pɑːrʃl/ adj. 局部的；不公平的；[口]偏爱的名 词: partialness">partially</span> reverse the effects of ageing June 11th 2026 A BIOCHEMISTRY textbook sometimes feels like <span class="annot" data-tooltip="essential /ɪ'senʃl/ adj. 基本的；必要的；本质的；精华的">essential</span> reading when shopping for wrinkle-reducing products. Their labels list molecules like retinoids, antioxidants, peptides and exfoliating acids. The names might be familiar, but does anyone know what they do? Many of the claims that they will make skin appear more youthful rely on company-funded studies or consumer surveys rather than <span class="annot" data-tooltip="rigorous /'rɪɡərəs/ adj. 严密的；缜密的严格的，严厉的副 词: rigorously">rigorous</span> clinical evidence. Yet a handful of <span class="annot" data-tooltip="ingredients /ɪn'ɡriːdiənt/ n. (混合物的)组成部分; 配料">ingredients</span> do have a solid scientific backing. Older-looking skin comes about via two <span class="annot" data-tooltip="distinct /dɪ'stɪŋkt/ adj. 截然不同的, 完全分开的清晰的, 明白的, 明显的副 词: distinctly">distinct</span> <span class="annot" data-tooltip="processes /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">processes</span>: the passage of time and environmental <span class="annot" data-tooltip="damage /'dæmɪdʒ/ v. 损害；伤害；毁坏；破坏n. 损坏，破坏，损失，损害，伤害（法院判定的）损害赔偿金时 态: damaged, damagi">damage</span> caused by ultraviolet (UV) light, pollution and smoking. All of these harm the collagen and elastin fibres in the extracellular <span class="annot" data-tooltip="matrix /'meɪtrɪks/ n. 铸模,模型发源地；母体,基质 (内含宝石等的)岩石,矿脉矩阵复 数: matrices">matrix</span>, the skin’s structural <span class="annot" data-tooltip="scaffolding /'skæfoʊld/ n. 脚手架；绞刑台；鹰架vt. 给…搭脚手架；用支架支撑时 态: scaffolded, scaffolding, scaf">scaffolding</span>, causing wrinkles and</p>
+<p>sagging. Around 80% of ageing in white skin is caused by UV <span class="annot" data-tooltip="exposure /ɪk'spoʊʒər/ n. 暴露, 显露揭发, 揭露(软片等)曝光">exposure</span>, according to Abigail Langton, a dermatology researcher at the University of Manchester—the melanin in darker skin provides some degree of protection. If your wrinkles worry you, then the <span class="annot" data-tooltip="ingredient /ɪn'ɡriːdiənt/ n. (混合物的)组成部分; 配料">ingredient</span> with the strongest scientific backing that might help is tretinoin, also known as all-trans retinoic acid. A <span class="annot" data-tooltip="derivative /dɪ'rɪvətɪv/ n. 衍生物，派生物；派生词；【数】导数，微商adj. 缺乏独创性的；模仿他人的副 词: derivatively">derivative</span> of vitamin A, it was originally developed as a treatment for <span class="annot" data-tooltip="acne /'ækni/ n. [医]痤疮，粉刺形容词: acned">acne</span>, but in the mid-1980s dermatologists noticed that patients who used it had fewer wrinkles as well as fewer <span class="annot" data-tooltip="spots /spɑːt/ n. 斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Po">spots</span>. Studies of skin <span class="annot" data-tooltip="biopsies /'baɪɑːpsi/ n. 活组织检查；活组织切片检查；切片检查法">biopsies</span>, as well as non-<span class="annot" data-tooltip="invasive /ɪn'veɪsɪv/ adj. 有扩散危害的; 扩散性的; 蔓延性的名 词: invasiveness">invasive</span> skin imaging, <span class="annot" data-tooltip="revealed /rɪ'viːl/ vt. 显示；露出泄露；透露时 态: revealed，revealing，reveals">revealed</span> that tretinoin thickens the epidermis, the skin’s outer layer, making it look smoother and improving fine <span class="annot" data-tooltip="lines n. 台词；线；航线（line的复数）v. 排成一行；画线于（line的三单形式）">lines</span>. It also <span class="annot" data-tooltip="stimulates /'stɪmjuleɪt/ vt. 刺激；激励时 态: stimulated，stimulating，stimulates">stimulates</span> collagen production in the dermis, the layer that sits just under the epidermis. This seems to partly restore the extracellular <span class="annot" data-tooltip="matrix /'meɪtrɪks/ n. 铸模,模型发源地；母体,基质 (内含宝石等的)岩石,矿脉矩阵复 数: matrices">matrix</span> and reduce wrinkles. Tretinoin is generally only available on prescription and it can irritate the skin. Milder retinoids—molecules derived from vitamin A—such as retinol and retinal, are used in over-the-<span class="annot" data-tooltip="counter /'kaʊntər/ n. 柜台, 柜台式长桌计数器vt. & vi. 对抗, 反驳adv. 反方向地, 对立地时 态: countered, co">counter</span> creams and serums. Once they are absorbed by the skin, these chemicals are converted into tretinoin. Pricier formulations often contain those <span class="annot" data-tooltip="derivatives /dɪ'rɪvətɪv/ n. 衍生物，派生物；派生词；【数】导数，微商adj. 缺乏独创性的；模仿他人的副 词: derivatively">derivatives</span> that convert more easily or are more stable. <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">Although</span> over-the-counter retinoids are less <span class="annot" data-tooltip="aggressive /ə'ɡresɪv/ adj. 好争斗的, 挑衅的, 侵略性的副 词: aggressively">aggressive</span>, it is still <span class="annot" data-tooltip="sensible /'sensəbl/ adj. 明智的；意识到的；通晓事理的；明显的n. 可感觉到的东西；敏感的人副 词: sensibly">sensible</span> to start with a lower concentration (those as low as 0.04% can be effective) and work up to avoid irritation. There is also support for the <span class="annot" data-tooltip="anti /'ænti/ adj. 反对的n. 反对者，反对论者">anti</span>-ageing effects of certain antioxidants, chiefly vitamin C (ascorbic acid). This plays an important role in collagen production, and there is evidence it can reduce wrinkles and hyperpigmentation. The <span class="annot" data-tooltip="downside /'daʊnsaɪd/ adj. 下降趋势的">downside</span> is that it is unstable and can break down quickly if products are not <span class="annot" data-tooltip="formulated /'fɔːrmjələ/ n. 公式，准则；配方；婴儿食品形容词: formulaic">formulated</span> or stored correctly. An expensive cream can become ineffective if it is left lying around for too long. Peptides, another common ingredient, are short chains of amino acids. Some <span class="annot" data-tooltip="encourage /ɪn'kɜːrɪdʒ/ vt. 鼓励, 激励促进, 助长, 激发时 态: encouraged, encouraging, encourages">encourage</span> the production of extracellular matrix proteins, others prevent their <span class="annot" data-tooltip="breakdown /'breɪkdaʊn/ n. 损坏, 故障垮台, 破裂衰竭, 衰弱统计分析">breakdown</span> and some relax the face muscles, in a manner similar to botox. The scientific studies used by cosmetics companies to claim anti- wrinkle benefits are, however, <span class="annot" data-tooltip="typically /'tɪpɪkli/ adv. 代表性地;作为特色地;典型地">typically</span> conducted or funded by those same companies.</p>
+<p>All these <span class="annot" data-tooltip="ingredients /ɪn'ɡriːdiənt/ n. (混合物的)组成部分; 配料">ingredients</span> can be, and are, combined in different ways. And they need time to work: dermatologists recommend sticking with the same regimen for several months before judging the results and making any <span class="annot" data-tooltip="tweaks /twiːk/ n. 拧；扭；焦急vt. 扭；用力拉；开足马力时 态: tweaked, tweaking, tweaks">tweaks</span>. But though these ingredients may partly reverse the signs of ageing, prevention is more effective. Nothing beats protecting yourself against the sun.■ After a free, evidence-based guide to health and wellness? Sign up to our weekly Well Informed newsletter. This article was downloaded by zlibrary from https://www.economist.com//science-and-technology/2026/06/05/the-chemicals-that- reduce-wrinkles</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Culture</div>
+<p>Who should win the World Cup? The most hated countries at the FIFA World Cup Steven Spielberg has more to say about aliens Saint or <span class="annot" data-tooltip="sinner /'sɪnər/ n. 罪人；有错者">sinner</span>: Antoni Gaudí’s polarising style The people behind the largest art <span class="annot" data-tooltip="heist /haɪst/ vt. 抢劫，拦劫；强夺n. 抢劫；强夺vi. 抢劫时 态: heisted, heisting, heists">heist</span> in history What “Backrooms” and “<span class="annot" data-tooltip="obsession /əb'seʃn/ n. 困扰, 无法摆脱的思想(或情感)形容词: obsessional">Obsession</span>” <span class="annot" data-tooltip="reveal /rɪ'viːl/ vt. 显示；露出泄露；透露时 态: revealed，revealing，reveals">reveal</span> about Gen Z’s fears</p>
+<div class="article-separator"></div>
+<div class="article-header">Culture · Culture | Fantasy football</div>
+<p>Who should win the World Cup? It’s a better question than “Who will win?” It tells you what the tournament is for June 11th 2026 It was too much for Ángel di <span class="annot" data-tooltip="mar /mɑːr/ vt. 毁坏；损坏；玷污MARabbr. Master of Arts in Religion 宗教硕士Mar三月(March)">Mar</span>ía. After scoring in the World Cup final in 2022, the Argentine forward burst into <span class="annot" data-tooltip="tears /tɪr，ter/ v. 撕掉，扯下；撕破；拔掉；拉伤；（非正式）狂奔；饱经……摧残；流眼泪n. 眼泪；（撕破的）洞或裂缝， 撕扯时 态: tor">tears</span>. It was too much for Gonzalo Montiel. Having hit the winning penalty in the shoot-out—so becoming immortal—he pulled off his national shirt and buried his face in it. And it was almost too much for Argentina itself: when around 4m people thronged Buenos Aires for the victory parade, the team had to abandon their bus and <span class="annot" data-tooltip="wave /weɪv/ vi. 波动；起伏；摇动；呈波形；挥手示意vt. 向…挥手示意；使成波浪形；卷（烫）发n. 波浪；波动；高潮；卷曲；挥手示意时 ">wave</span> from a helicopter. For players and fans, even whole countries, winning the World Cup is a secular rapture. One team and nation will experience that euphoria at the climax of this year’s competition, which begins on June 11th. A lot of ink</p>
+<p>and airtime will be <span class="annot" data-tooltip="expended /ɪk'spend/ vt. 花费，使用(钱等)做某事用光；耗尽时 态: expended，expending，expends">expended</span> on predicting who the champions will be. But a better question than who will win the World Cup is: who should win? Answer that, and you know whom to back when your home team is knocked out. To do so, you first have to <span class="annot" data-tooltip="grasp /ɡræsp/ n. 理解；控制；抓住vt. 抓住；领会vi. 抓时 态: grasped, grasping, grasps">grasp</span> the tournament’s true purpose. The World Cup is a branch of international relations. It is an expression of power by the <span class="annot" data-tooltip="hosts /hoʊst/ n. 主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集时 态: hosted, hosting, host">hosts</span>—this year America, Canada and <span class="annot" data-tooltip="mexico /'meksɪkoʊ/ n. 墨西哥">Mexico</span>—and a form of soft diplomacy. The draw can throw up grudge matches that are <span class="annot" data-tooltip="benign /bɪ'naɪn/ adj. 良性的；吉利的；和蔼的，亲切的副 词: benignly">benign</span> <span class="annot" data-tooltip="alternatives /ɔːl'tɜːrnətɪv/ adj. 可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）">alternatives</span> to war (such as, in 2022, Iran v America) and pair nations which ordinarily have little to do with one another (this time, for example, <span class="annot" data-tooltip="cape /keɪp/ n. 披肩；海角，岬CAPEabbr. Communication Automatic Processing Equipmen">Cape</span> Verde v Saudi Arabia). It helps supporters everywhere see what they have in common, starting with a shared <span class="annot" data-tooltip="devotion /dɪ'voʊʃn/ n. 奉献, 献身, 忠诚热爱, 挚爱">devotion</span> to watching 22 men chase a ball. But for enthusiasts, the newsy headlines—about overpriced tickets, alleged <span class="annot" data-tooltip="corruption /kə'rʌpʃn/ n. 堕落;腐化;腐败;贿赂腐烂">corruption</span> or sports-washing autocrats—are not the real story. The World Cup is only <span class="annot" data-tooltip="superficially /ˌsuːpər'fɪʃl/ adj. 表面(上)的；表皮的肤浅的，浅薄的；缺乏深度的名 词: superficiality">superficially</span> a <span class="annot" data-tooltip="pageant /'pædʒənt/ n. 盛会；虚饰；游行；露天表演">pageant</span> for the powerful; underneath it is a tacit <span class="annot" data-tooltip="conspiracy /kən'spɪrəsi/ n. 阴谋, 密谋">conspiracy</span> against them. For a month or so every four years, football nuts around the globe sneakily <span class="annot" data-tooltip="tune /tuːn/ n. 曲调, 曲子vt. & vi. 调音vt. 调整时 态: tuned, tuning, tunes">tune</span> in to games on the job, knock off early to <span class="annot" data-tooltip="binge /bɪndʒ/ n. 狂欢，狂闹；放纵vt. 放纵vi. 狂饮作乐；大吃大喝时 态: binged, binging, bingeing bi">binge</span> more matches and let the children stay up for late kick-offs. No overlord, whether company boss or <span class="annot" data-tooltip="authoritarian /əˌθɔːrə'teriən/ adj. 权力主义的,专制的n. 权力主义者,专制者,独裁者名 词: authoritarian">authoritarian</span> ruler, can forbid this pleasure. The World Cup is a machine for memories, both evoking and making them. As with A-list assassinations, veteran fans remember where they watched their side’s greatest feats and most painful defeats, and with whom—from lost parents to absent friends and offspring who have since grown up. Each has their <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> personal <span class="annot" data-tooltip="squad /skwɑːd/ n. (军队中的)班, 小队">squad</span> of World Cup ghosts. Above all, the World Cup is a quadrennial festival of hope. Fans hope for an injury-time <span class="annot" data-tooltip="miracle /'mɪrəkl/ n. 奇迹令人惊奇的事">miracle</span>, the salvation of an offside flag and a <span class="annot" data-tooltip="distraction /dɪ'strækʃn/ n. 注意力分散；消遣；心烦意乱">distraction</span> from humdrum woes. They hope <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span> of failure will at last be redeemed, and that history needn’t be destiny. Teams can <span class="annot" data-tooltip="embody /ɪm'bɑːdi/ vt. 表现，象征，具体表现包括；包含时 态: embodied，embodying，embodies">embody</span> hope for a different future, like the Argentina side led by Diego Maradona (pictured) that prevailed in 1986, not long after its military dictatorship ended. Shock victories by underdogs give hope that the meek may indeed <span class="annot" data-tooltip="inherit /ɪn'herɪt/ vt. 继承；遗传而得vi. 成为继承人时 态: inherited, inheriting, inherits">inherit</span> the Earth. Global communion; indelible drama; a redemption arc; the subversive sense that anything is possible: with these goals in mind, who ought to win this</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>pattern</td><td>/'pætərn/ n.</td><td>型，样式花样，图案方式，形式榜样，典范vt. 模仿； 仿制以图案装饰，patterning，patterns</td></tr>
+<tr><td>journals</td><td>/'dʒɜːrnl/ n.</td><td>日报，杂志；日记；[经]分类账</td></tr>
+<tr><td>striking</td><td>/'straɪkɪŋ/ adj.</td><td>显著的，突出的引人注目的；容貌出众的</td></tr>
+<tr><td>artefact</td><td>/'ɑːrtɪfækt/ n.</td><td>人工制品，加工品</td></tr>
+<tr><td>swayed</td><td>/sweɪ/ vt.</td><td>使摇动；统治；影响vi. 摇摆；影响n. 摇摆；统治；影响, swaying, sways</td></tr>
+<tr><td>drive</td><td>/draɪv/ vt.</td><td>驱赶驱使, 促使敲, 击vt. & vi. 驾驶n. 乘车旅行私人车道传动, 驱动干劲, 积极性, 能动性紧迫, 逼迫, 压力, drives</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>academic</td><td>/ˌækə'demɪk/ adj.</td><td>学院的；学术的；理论的n. 大学生，大学教师；学者</td></tr>
+<tr><td>chemistry</td><td>/'kemɪstri/ n.</td><td>化学</td></tr>
+<tr><td>bulk</td><td>/bʌlk/ n.</td><td>体积，容量；大块；大多数，大部分vt. 使扩大，使形成大量；使显得重要, bulking, bulks</td></tr>
+<tr><td>cutting</td><td>/'kʌtɪŋ/ n.</td><td>切断；剪辑；开凿adj. 严寒的；锋利的；尖酸刻薄的v. 切开；采伐；削减（cut的ing形式）</td></tr>
+<tr><td>edge</td><td>/edʒ/ n.</td><td>边缘；刀刃；优势；锋利vt. 使锐利；将…开刃；给…加上边vi. 缓缓移动；侧着移动EDGEabbr. Electronic Data Gathering Eq</td></tr>
+<tr><td>explanation</td><td>/ˌeksplə'neɪʃn/ n.</td><td>解释, 说明能说明某事缘由的言语、事实、情况等</td></tr>
+<tr><td>practices</td><td>/'præktɪs/ n.</td><td>练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规，practicing，practices</td></tr>
+<tr><td>bonuses</td><td>/'boʊnəs/ n.</td><td>奖金；红利；额外津贴BONUSabbr. Boling Nuclear Superheat Reactor 沸腾式过热核反应堆</td></tr>
+<tr><td>authorities</td><td>/ə'θɔːrəti/ n.</td><td>威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗</td></tr>
+<tr><td>tackle</td><td>/'tækl/ vt.</td><td>解决；应付vt. & vi. 捉住；扭倒n. 拦截；擒抱器具，器械，用具滑车，滑轮组，tackling，tackles</td></tr>
+<tr><td>cracking</td><td>/kræk/ vt.</td><td>& vi. (使…)开裂, 破裂(使)身体上或精神上垮掉打开, 砸开(使)发出爆裂声n. 裂缝, 缝隙噼啪声, 爆裂声意外的一下重击试图, 尝试俏皮话强效可卡因</td></tr>
+<tr><td>reforming</td><td>/rɪ'fɔːrm/ n.</td><td>改革，改良，改造vt. & vi. 改革；改造；改善，reforming，reforms</td></tr>
+<tr><td>academic</td><td>/ˌækə'demɪk/ adj.</td><td>学院的；学术的；理论的n. 大学生，大学教师；学者</td></tr>
+<tr><td>evaluation</td><td>/ɪˌvælju'eɪʃn/ n.</td><td>估价，评价；估算赋值，值的计算</td></tr>
+<tr><td>compounds</td><td>/'kɑːmpaʊnd/ n.</td><td>复合物；混合物；【化】化合物（语法）复合词有围栏（或围墙）的场地（内有工厂或其他建筑群）adj. 复合的v. 使加重；使恶化由…构成（或形成）混合；掺和；拌和,</td></tr>
+<tr><td>psychologist</td><td>/saɪ'kɑːlədʒɪst/ n.</td><td>心理学研究者;心理学家</td></tr>
+<tr><td>fraud</td><td>/frɔːd/ n.</td><td>欺诈, 欺骗行为骗子</td></tr>
+<tr><td>collaborations</td><td>/kəˌlæbə'reɪʃn/ n.</td><td>合作, 协作通敌</td></tr>
+<tr><td>tensions</td><td>/'tenʃn/ n.</td><td>张力，拉力；紧张，不安；电压vt. 使紧张；使拉紧, tensioning, tensions</td></tr>
+<tr><td>overlooking</td><td>/ˌoʊvər'lʊk/ </td><td>vt.忽略；俯瞰；远眺；不计较，宽恕；施魔法于；监督；检查n.忽视；眺望；从高处能看到的景色, overlooking, overlooks</td></tr>
+<tr><td>spots</td><td>/spɑːt/ n.</td><td>斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Positioning and Tracki</td></tr>
+<tr><td>trends</td><td>/trend/ n.</td><td>趋势, 倾向流行, trending, trends</td></tr>
+<tr><td>commerce</td><td>/'kɑːmɜːrs/ n.</td><td>商业, 贸易</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>line</td><td>/laɪn/ n.</td><td>绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long interspersed element)长散在元</td></tr>
+<tr><td>properly</td><td>/'prɑːpər/ adj.</td><td>适合的; 适当的; 适用的; 恰当的遵守规则的; 正确的严格意义的; 本身的合乎体统的; 正派的固有的; 特有的</td></tr>
+<tr><td>partially</td><td>/'pɑːrʃl/ adj.</td><td>局部的；不公平的；[口]偏爱的</td></tr>
+<tr><td>essential</td><td>/ɪ'senʃl/ adj.</td><td>基本的；必要的；本质的；精华的</td></tr>
+<tr><td>rigorous</td><td>/'rɪɡərəs/ adj.</td><td>严密的；缜密的严格的，严厉的</td></tr>
+<tr><td>ingredients</td><td>/ɪn'ɡriːdiənt/ n.</td><td>(混合物的)组成部分; 配料</td></tr>
+<tr><td>distinct</td><td>/dɪ'stɪŋkt/ adj.</td><td>截然不同的, 完全分开的清晰的, 明白的, 明显的</td></tr>
+<tr><td>processes</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>damage</td><td>/'dæmɪdʒ/ v.</td><td>损害；伤害；毁坏；破坏n. 损坏，破坏，损失，损害，伤害（法院判定的）损害赔偿金, damaging, damages</td></tr>
+<tr><td>matrix</td><td>/'meɪtrɪks/ n.</td><td>铸模,模型发源地；母体,基质 (内含宝石等的)岩石,矿脉矩阵复 数: matrices</td></tr>
+<tr><td>scaffolding</td><td>/'skæfoʊld/ n.</td><td>脚手架；绞刑台；鹰架vt. 给…搭脚手架；用支架支撑, scaffolding, scaffolds</td></tr>
+<tr><td>exposure</td><td>/ɪk'spoʊʒər/ n.</td><td>暴露, 显露揭发, 揭露(软片等)曝光</td></tr>
+<tr><td>ingredient</td><td>/ɪn'ɡriːdiənt/ n.</td><td>(混合物的)组成部分; 配料</td></tr>
+<tr><td>derivative</td><td>/dɪ'rɪvətɪv/ n.</td><td>衍生物，派生物；派生词；【数】导数，微商adj. 缺乏独创性的；模仿他人的</td></tr>
+<tr><td>acne</td><td>/'ækni/ n.</td><td>[医]痤疮，粉刺</td></tr>
+<tr><td>spots</td><td>/spɑːt/ n.</td><td>斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Positioning and Tracki</td></tr>
+<tr><td>biopsies</td><td>/'baɪɑːpsi/ n.</td><td>活组织检查；活组织切片检查；切片检查法</td></tr>
+<tr><td>invasive</td><td>/ɪn'veɪsɪv/ adj.</td><td>有扩散危害的; 扩散性的; 蔓延性的</td></tr>
+<tr><td>revealed</td><td>/rɪ'viːl/ vt.</td><td>显示；露出泄露；透露，revealing，reveals</td></tr>
+<tr><td>lines</td><td>— n.</td><td>台词；线；航线（line的复数）v. 排成一行；画线于（line的三单形式）</td></tr>
+<tr><td>stimulates</td><td>/'stɪmjuleɪt/ vt.</td><td>刺激；激励，stimulating，stimulates</td></tr>
+<tr><td>matrix</td><td>/'meɪtrɪks/ n.</td><td>铸模,模型发源地；母体,基质 (内含宝石等的)岩石,矿脉矩阵复 数: matrices</td></tr>
+<tr><td>counter</td><td>/'kaʊntər/ n.</td><td>柜台, 柜台式长桌计数器vt. & vi. 对抗, 反驳adv. 反方向地, 对立地, countering, counters</td></tr>
+<tr><td>derivatives</td><td>/dɪ'rɪvətɪv/ n.</td><td>衍生物，派生物；派生词；【数】导数，微商adj. 缺乏独创性的；模仿他人的</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>aggressive</td><td>/ə'ɡresɪv/ adj.</td><td>好争斗的, 挑衅的, 侵略性的</td></tr>
+<tr><td>sensible</td><td>/'sensəbl/ adj.</td><td>明智的；意识到的；通晓事理的；明显的n. 可感觉到的东西；敏感的人</td></tr>
+<tr><td>anti</td><td>/'ænti/ adj.</td><td>反对的n. 反对者，反对论者</td></tr>
+<tr><td>downside</td><td>/'daʊnsaɪd/ adj.</td><td>下降趋势的</td></tr>
+<tr><td>formulated</td><td>/'fɔːrmjələ/ n.</td><td>公式，准则；配方；婴儿食品</td></tr>
+<tr><td>encourage</td><td>/ɪn'kɜːrɪdʒ/ vt.</td><td>鼓励, 激励促进, 助长, 激发, encouraging, encourages</td></tr>
+<tr><td>breakdown</td><td>/'breɪkdaʊn/ n.</td><td>损坏, 故障垮台, 破裂衰竭, 衰弱统计分析</td></tr>
+<tr><td>typically</td><td>/'tɪpɪkli/ adv.</td><td>代表性地;作为特色地;典型地</td></tr>
+<tr><td>ingredients</td><td>/ɪn'ɡriːdiənt/ n.</td><td>(混合物的)组成部分; 配料</td></tr>
+<tr><td>tweaks</td><td>/twiːk/ n.</td><td>拧；扭；焦急vt. 扭；用力拉；开足马力, tweaking, tweaks</td></tr>
+<tr><td>sinner</td><td>/'sɪnər/ n.</td><td>罪人；有错者</td></tr>
+<tr><td>heist</td><td>/haɪst/ vt.</td><td>抢劫，拦劫；强夺n. 抢劫；强夺vi. 抢劫, heisting, heists</td></tr>
+<tr><td>obsession</td><td>/əb'seʃn/ n.</td><td>困扰, 无法摆脱的思想(或情感)</td></tr>
+<tr><td>reveal</td><td>/rɪ'viːl/ vt.</td><td>显示；露出泄露；透露，revealing，reveals</td></tr>
+<tr><td>mar</td><td>/mɑːr/ vt.</td><td>毁坏；损坏；玷污MARabbr. Master of Arts in Religion 宗教硕士Mar三月(March)，marring，mars</td></tr>
+<tr><td>tears</td><td>/tɪr，ter/ v.</td><td>撕掉，扯下；撕破；拔掉；拉伤；（非正式）狂奔；饱经……摧残；流眼泪n. 眼泪；（撕破的）洞或裂缝， 撕扯，torn，tearing，tears</td></tr>
+<tr><td>wave</td><td>/weɪv/ vi.</td><td>波动；起伏；摇动；呈波形；挥手示意vt. 向…挥手示意；使成波浪形；卷（烫）发n. 波浪；波动；高潮；卷曲；挥手示意, waving, waves</td></tr>
+<tr><td>expended</td><td>/ɪk'spend/ vt.</td><td>花费，使用(钱等)做某事用光；耗尽，expending，expends</td></tr>
+<tr><td>grasp</td><td>/ɡræsp/ n.</td><td>理解；控制；抓住vt. 抓住；领会vi. 抓, grasping, grasps</td></tr>
+<tr><td>hosts</td><td>/hoʊst/ n.</td><td>主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集, hosting, hosts</td></tr>
+<tr><td>mexico</td><td>/'meksɪkoʊ/ n.</td><td>墨西哥</td></tr>
+<tr><td>benign</td><td>/bɪ'naɪn/ adj.</td><td>良性的；吉利的；和蔼的，亲切的</td></tr>
+<tr><td>alternatives</td><td>/ɔːl'tɜːrnətɪv/ adj.</td><td>可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）可供选择的事物；可供选择的解决办法替代物</td></tr>
+<tr><td>cape</td><td>/keɪp/ n.</td><td>披肩；海角，岬CAPEabbr. Communication Automatic Processing Equipment 通信自动处理设备</td></tr>
+<tr><td>devotion</td><td>/dɪ'voʊʃn/ n.</td><td>奉献, 献身, 忠诚热爱, 挚爱</td></tr>
+<tr><td>corruption</td><td>/kə'rʌpʃn/ n.</td><td>堕落;腐化;腐败;贿赂腐烂</td></tr>
+<tr><td>superficially</td><td>/ˌsuːpər'fɪʃl/ adj.</td><td>表面(上)的；表皮的肤浅的，浅薄的；缺乏深度的</td></tr>
+<tr><td>pageant</td><td>/'pædʒənt/ n.</td><td>盛会；虚饰；游行；露天表演</td></tr>
+<tr><td>conspiracy</td><td>/kən'spɪrəsi/ n.</td><td>阴谋, 密谋</td></tr>
+<tr><td>tune</td><td>/tuːn/ n.</td><td>曲调, 曲子vt. & vi. 调音vt. 调整, tuning, tunes</td></tr>
+<tr><td>binge</td><td>/bɪndʒ/ n.</td><td>狂欢，狂闹；放纵vt. 放纵vi. 狂饮作乐；大吃大喝, binging, bingeing binges</td></tr>
+<tr><td>authoritarian</td><td>/əˌθɔːrə'teriən/ adj.</td><td>权力主义的,专制的n. 权力主义者,专制者,独裁者</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>squad</td><td>/skwɑːd/ n.</td><td>(军队中的)班, 小队</td></tr>
+<tr><td>miracle</td><td>/'mɪrəkl/ n.</td><td>奇迹令人惊奇的事</td></tr>
+<tr><td>distraction</td><td>/dɪ'strækʃn/ n.</td><td>注意力分散；消遣；心烦意乱</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>embody</td><td>/ɪm'bɑːdi/ vt.</td><td>表现，象征，具体表现包括；包含，embodying，embodies</td></tr>
+<tr><td>inherit</td><td>/ɪn'herɪt/ vt.</td><td>继承；遗传而得vi. 成为继承人, inheriting, inherits</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day40.html" class="nav-btn">← Day 40</a>
+  <a href="day42.html" class="nav-btn">Day 42 →</a>
+</div>
+
+<div class="progress">📖 Day 41 of 45</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-06-13</div>
+
+</body>
+</html>

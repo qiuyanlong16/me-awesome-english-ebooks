@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Briefing | Music, TV and video games</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-06-13</div>
+
+<h1 class="article-title">Briefing | Music, TV and video games</h1>
+<div class="article-section">Briefing</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>The game is <span class="annot" data-tooltip="tailored /'teɪlər/ vt. 剪裁；使合适n. 裁缝vi. 做裁缝时 态: tailored, tailoring, tailors">tailored</span> to <span class="annot" data-tooltip="address /ə'dres/ v. 写（收信人）姓名地址；致函演说；演讲称呼（某人）；冠以（某种称呼）设法解决；处理；对付向…说话n. 地址；住址；通信处 ">address</span> pain points in emerging markets, Garena says. It is optimised for lower-end devices, with less storage and weaker <span class="annot" data-tooltip="processing /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">processing</span> power. (<span class="annot" data-tooltip="programmers /'proʊɡræmər/ n. (计算机的)程序员">Programmers</span> made adjustments after a player in <span class="annot" data-tooltip="mexico /'meksɪkoʊ/ n. 墨西哥">Mexico</span> showed them how he had to play next to a fan to cool down his phone.) Many gamers in these regions lack <span class="annot" data-tooltip="credit /'kredɪt/ n. 赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)时 态:">credit</span> cards or bank accounts, so Garena introduced <span class="annot" data-tooltip="alternatives /ɔːl'tɜːrnətɪv/ adj. 可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）">alternatives</span> such as pre-paid cards and phone-company <span class="annot" data-tooltip="billing /'bɪlɪŋ/ n. (节目单或戏院大门上的)演员表,(演员表上的)演员次序">billing</span>. Garena has also adapted its content for local <span class="annot" data-tooltip="tastes /teɪst/ n. 滋味, 味道鉴赏力爱好, 嗜好vt. & vi. 尝, 品尝, 尝到vt. 吃, 喝体验, 领略时 态: tasted,">tastes</span>. <span class="annot" data-tooltip="whereas /ˌwer'æz/ conj. 但是, 而">Whereas</span> “Fortnite” holds special events during mainly Western festivals like Halloween and Christmas, and features content from films such as “Back to the Future”, “Free Fire” organises <span class="annot" data-tooltip="equivalents /ɪ'kwɪvələnt/ adj. 等同的，等效的n. 对等的人（或事物），对应的人（或事物）">equivalents</span> aimed at other parts of the world. Last year it celebrated 50 years of “Sholay”, a classic Bollywood movie, by introducing items from the film into the game. It holds events around the Rio Carnival, Diwali and Ramadan (in which players can give alms by completing in-game challenges). In-country staff <span class="annot" data-tooltip="spot /spɑːt/ n. 斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Po">spot</span> local crazes. Last year, when a video of a boy dancing at the head of an <span class="annot" data-tooltip="indonesian /ˌɪndə'niːʒn/ n. 印度尼西亚人;印度尼西亚国民印度尼西亚人后裔(东印度群岛)前马来人的一员西澳特罗尼西亚语族adj. (有关)印度尼西亚的">Indonesian</span> racing boat went <span class="annot" data-tooltip="viral /'vaɪrəl/ adj. 滤过性毒菌引起的；滤过性毒菌的">viral</span> on TikTok, “Free Fire” gave players the ability to perform the dance in the game. “The assumption that American game makers would indefinitely set the <span class="annot" data-tooltip="terms /tɜːrmz/ n. 条款；地位，关系；措辞；术语；价钱（term的复数形式）v. 把…称为（term的三单形式）">terms</span> of global <span class="annot" data-tooltip="interactive /ˌɪntər'æktɪv/ adj. (指至少两个人或物)一起活动或互相合作的交互式的, 人机对话的">interactive</span> entertainment—culturally, commercially, technologically—is no longer operative,” wrote Joost <span class="annot" data-tooltip="van /væn/ n. 先锋；厢式货车；[计]增值网vt. 用车搬运Van范(男子名)时 态: vanned, vanning, vans">van</span> Dreunen of New York University’s <span class="annot" data-tooltip="stern /stɜːrn/ n. 船尾；末端adj. 严厉的；坚定的Stern斯特恩(①姓氏 ②Otto, 1888-1969, 生于德国的美国物理学家,">Stern</span> School of Business, in a recent <span class="annot" data-tooltip="essay /'eseɪ/ n. 散文, 随笔">essay</span> on the decline of “Fortnite”. “The audiences they cultivated are moving on. And the competitors they ignored are now eating their lunch.”</p>
+<p>Chief among the lunch-eaters is China. Chinese gamemakers have increased their share of the non-China market from 10.7% to 14% in the past six years. China’s publishers “have taken the mobile gaming world by storm”, says Sam Aune of <span class="annot" data-tooltip="sensor /'sensər/ n. 传感器">Sensor</span> Tower, which counts two Chinese firms in the top three globally by in-app <span class="annot" data-tooltip="revenue /'revənuː/ n. 收入，收益；财政收入，税收">revenue</span> (see chart 3). Mr Aune has tallied the highest- <span class="annot" data-tooltip="earning /ɪr/ n. 耳朵；听觉；倾听；穗vi. （美俚）听见；抽穗EARabbr. East African Railways 东非铁路公司">earning</span> mobile games so <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> this year in the ten largest markets. Two Chinese-made titles—“Kingshot”, a <span class="annot" data-tooltip="strategy /'strætədʒi/ n. 战略学, 兵法战略, 策略策略, 计谋">strategy</span> game, and “Gossip Harbor”, a puzzle game—are in the top ten in eight countries. Yet so far China’s power in the games market has not resulted in the <span class="annot" data-tooltip="transmission /trænz'mɪʃn/ n. 传送, 传播, 传达播送传动装置, 变速器形容词: transmissive">transmission</span> of much Chinese culture. Indeed, in order to succeed abroad, Chinese publishers have had to make games that are totally different from those they sell at home. Nine of the top ten games in China are not found in any other big market’s top ten, says Mr Aune. Most generate <span class="annot" data-tooltip="virtually /'vɜːrtʃuəl/ adj. 实质上的, 事实上的, 实际上的, 虚拟的名 词: virtuality">virtually</span> all their revenue at home. Many overseas hits have loosely <span class="annot" data-tooltip="adopted /ə'dɑːpt/ vt. 收养采用, 采纳, 采取正式接受, 通过时 态: adopted, adopting, adopts">adopted</span> the culture of their target markets: “Kingshot” seems set in <span class="annot" data-tooltip="medieval /ˌmedi'iːvl/ adj. 中古的, 中世纪的">medieval</span> Europe, while the characters and setting of “Gossip Harbor” recall America. In music, video and <span class="annot" data-tooltip="interactive /ˌɪntər'æktɪv/ adj. (指至少两个人或物)一起活动或互相合作的交互式的, 人机对话的">interactive</span> entertainment, global tech platforms have made it easier than ever to distribute entertainment around the world. Yet the <span class="annot" data-tooltip="sheer /ʃɪr/ adj. 完全的；十足的陡峭的；垂直的极薄的，轻的，透明的adv. 垂直地，陡峭地vi. 避开，突然转向时 态: sheered，">sheer</span> abundance of content that these platforms have helped to generate</p>
+<p>means that, more than ever, global audiences are able to <span class="annot" data-tooltip="assert /ə'sɜːrt/ vt. 断言；主张；声称；维护，坚持时 态: asserted, asserting, asserts">assert</span> <span class="annot" data-tooltip="distinctively /dɪ'stɪŋktɪv/ adj. 有特色的, 与众不同的副 词: distinctively">distinctively</span> local <span class="annot" data-tooltip="preferences /'prefrəns/ n. 较喜欢的东西, 偏爱优待, 优惠, 优先权">preferences</span>. ■ This article was downloaded by zlibrary from https://www.economist.com//briefing/2026/06/11/entertainment-is-being-deglobalised</p>
+<div class="article-separator"></div>
+<div class="article-header"> · United States</div>
+<p>America’s quintessential <span class="annot" data-tooltip="places /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">places</span> are getting old, fast The ageing protesters trying to topple Washington’s “<span class="annot" data-tooltip="ego /'iːɡoʊ/ n. 自我; 自尊; 自负">ego</span> arch” Should <span class="annot" data-tooltip="priests /priːst/ n. 牧师；神父；教士vt. 使成为神职人员；任命…为祭司时 态: priested, priesting, priests">priests</span> have to report child <span class="annot" data-tooltip="abuse /ə'bjuːs/ n. 滥用；辱骂；虐待；弊端；恶习，陋习vt. 滥用；辱骂；虐待时 态: abused, abusing, abuses">abuse</span> disclosed in confession? Social media is behind both “teen takeovers” and the outrage they fuel America’s mayors join the scrabble to become influencers Tik-Tocqueville The Knicks represent New York—and <span class="annot" data-tooltip="capitalism /'kæpɪtəlɪzəm/ n. 资本主义(制度)资本(或财富)的拥有资本(私人占有和生产盈利)的支配地位">capitalism</span>—at its best</p>
+<div class="article-separator"></div>
+<div class="article-header">United States · United States | Pleasantvilles</div>
+<p>America’s quintessential <span class="annot" data-tooltip="places /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">places</span> are getting old, fast Welcome to the greying suburbs June 11th 2026 Over the sound of a country crooner praising Jose Cuervo tequila, Julie Kaufmann <span class="annot" data-tooltip="encourages /ɪn'kɜːrɪdʒ/ vt. 鼓励, 激励促进, 助长, 激发时 态: encouraged, encouraging, encourages">encourages</span> her class of <span class="annot" data-tooltip="line /laɪn/ n. 绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long inter">line</span> dancers with some pointed advice. “This will help those neurons fire and prevent <span class="annot" data-tooltip="cognitive /'kɑːɡnətɪv/ adj. 认知的, 认识能力的">cognitive</span> decline,” she says, explaining that following steps in <span class="annot" data-tooltip="sequence /'siːkwəns/ n. 有关联的一组事物, 一连串先后次序, 顺序, 连续时 态: sequenced, sequencing, sequenc">sequence</span> will keep their memory sharp. For those with knee, hip or balance <span class="annot" data-tooltip="issues /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issues</span> she offers an <span class="annot" data-tooltip="alternative /ɔːl'tɜːrnətɪv/ adj. 可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）">alternative</span> to the grapevine, a move where dancers cross one foot in front of the other. “You are ageing <span class="annot" data-tooltip="gracefully /'ɡreɪsfəli/ adv. 优美地；优雅地；雅致地;温文地">gracefully</span>!” she calls out to the room, filled with giddy older adults <span class="annot" data-tooltip="spinning /spɪn/ vi. 旋转；纺纱；吐丝；晕眩vt. 使旋转；纺纱；编造；结网n. 旋转；疾驰时 态: spun spinning, spins">spinning</span> around in orthotic <span class="annot" data-tooltip="sneakers /'sniːkər/ n. 运动鞋；卑鄙者；鬼鬼祟祟做事的人">sneakers</span>. In Winchester, Massachusetts, a suburb of Boston, stately colonial homes sit on manicured <span class="annot" data-tooltip="lawns /lɔːn/ n. 草坪；草地">lawns</span>. The public schools are among the most sought-after in</p>
+<p>the state, which <span class="annot" data-tooltip="boasts /boʊst/ n. 自吹自擂, 自夸的话vt. & vi. 自夸vt. 有(引以为荣的事物)时 态: boasted, boasting, ">boasts</span> America’s highest-scoring public education system. But one of the most popular institutions in town is the Jenks Centre, the town’s <span class="annot" data-tooltip="senior /'siːniər/ adj. 年长的资深的; 地位高的〈美〉最高年级的n. 较年长者高年级学生〈美〉毕业班学生Senior西尼尔(姓氏)">senior</span> community centre where Ms Kaufmann’s <span class="annot" data-tooltip="line /laɪn/ n. 绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long inter">line</span> dancers gather. So many older <span class="annot" data-tooltip="residents /'rezɪdənt/ adj. 定居的; 常驻的n. 居民(旅馆的)住宿者">residents</span> now attend events at the centre that it has had to expand its private transport service and the car park can no longer accommodate the steady stream of patrons. Though the ageing of rural America is a familiar story, in the past few years the same <span class="annot" data-tooltip="pattern /'pætərn/ n. 型，样式花样，图案方式，形式榜样，典范vt. 模仿； 仿制以图案装饰时 态: patterned，patterning，">pattern</span> has crept across suburbia. Suburbs were built for young and growing families and often anchored around a public-school system; but between 2000 and 2024 the <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of <span class="annot" data-tooltip="elderly /'eldərli/ adj. 上了年纪的, 中年以上的">elderly</span> residents living in suburban counties more than doubled. Meanwhile, the number of young children <span class="annot" data-tooltip="barely /'berli/ adv. 仅仅，勉强；几乎不；公开地；贫乏地">barely</span> <span class="annot" data-tooltip="budged /bʌd/ n. 芽，萌芽；蓓蕾vi. 发芽，萌芽vt. 使发芽时 态: budded, budding, buds">budged</span> and in many <span class="annot" data-tooltip="places /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">places</span> even fell. That is steadily changing the character of many of America’s quintessential suburbs, with consequences for housing markets, schools and local politics. At an ageing-preparedness symposium at the Jenks Centre, a man informs the crowd that <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">although</span> life expectancy at birth in America is “a little under 80”, upon <span class="annot" data-tooltip="reaching /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reaching</span> age 65 the actuarial tables suggest it is 20 additional years for a man and 22 years for a woman. “Oh God,” mutters one woman in the crowd; a few others grimace or laugh uneasily. Meanwhile at Winchester Hospital, fewer babies are being born into the world. In 2014 every 100</p>
+<p>baby-boomers <span class="annot" data-tooltip="reaching /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reaching</span> retirement age in America were replaced by 109 <span class="annot" data-tooltip="infants /'ɪnfənt/ n. 婴儿；幼儿adj. 供婴幼儿用的初期的；初创期的">infants</span>. By 2024 that had fallen to just 88 newborns. But even with fewer children being born, housing <span class="annot" data-tooltip="shortages /'ʃɔːrtɪdʒ/ n. 不足; 缺少; 缺少量; 不足额">shortages</span> have created a generational <span class="annot" data-tooltip="traffic /'træfɪk/ n. 交通；贸易；运输；通信量vt. 用…作交换；在…通行vi. 交易，买卖时 态: trafficked, traffick">traffic</span> <span class="annot" data-tooltip="jam /dʒæm/ n. 果酱拥挤，堵塞困难的处境；窘境vt. & vi. (使)塞紧，(使)挤满发生故障；夹住，卡住vt. 堵塞(发射无线电波)">jam</span>. America still has plenty of families competing for limited homes in desirable suburbs. One problem is that fewer homes are being built. In 2025 a paper by two economists found that had housing supply grown between 2000 and 2020 at the same rate it did across the two previous <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span>, there would be 15m more units available. They found the problem was more acute in the suburbs. According to The Economist’s analysis of census data, the share of large, single-family homes occupied by older adults who do not live with children has risen sharply. Today, 27% of homes with three or more bedrooms are occupied <span class="annot" data-tooltip="exclusively /ɪk'skluːsɪv/ adj. 高级的，奢华的专用的；独家的n. 独家新闻，独家报道副 词: exclusively">exclusively</span> by people aged 65 or older. That share is up from 19% two decades ago. Financial incentives <span class="annot" data-tooltip="encourage /ɪn'kɜːrɪdʒ/ vt. 鼓励, 激励促进, 助长, 激发时 态: encouraged, encouraging, encourages">encourage</span> people to stay put. About two-thirds of older homeowners have no <span class="annot" data-tooltip="mortgage /'mɔːrɡɪdʒ/ n. 抵押借款抵押债款的利息vt. 抵押时 态: mortgaged, mortgaging, mortgages">mortgage</span>, meaning millions of family-size homes today are owned <span class="annot" data-tooltip="outright /'aʊtraɪt/ adv. 完全地；彻底地坦率地；直率地；无保留地立即，当场adj. 完全的；彻底的">outright</span> by <span class="annot" data-tooltip="elderly /'eldərli/ adj. 上了年纪的, 中年以上的">elderly</span> Americans. And across the country, many local governments “have bent over <span class="annot" data-tooltip="backwards /'bækwərd/ adj. 向后的；反向的；发展迟缓的adv. 相反地；向后地副 词: backwardly">backwards</span> to make staying in your home affordable for <span class="annot" data-tooltip="seniors /'siːniər/ adj. 年长的资深的; 地位高的〈美〉最高年级的n. 较年长者高年级学生〈美〉毕业班学生Senior西尼尔(姓氏)">seniors</span>”, says Jenny Schuetz, a housing-policy expert at Arnold Ventures, a research and advocacy <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span>. This is often in the form of tax benefits, she adds. The few homes that are being built do not <span class="annot" data-tooltip="cater /'keɪtər/ vt. 满足需要；投合，迎合；提供饮食及服务时 态: catered, catering, caters">cater</span> in size or kind for those older <span class="annot" data-tooltip="folk /foʊk/ n. 人们；民族；亲属（复数）adj. 民间的">folk</span> who favour downsizing. Data from the National Association of Home Builders, a trade association, show that just over 10% of new single- family homes built in 2024 had two bedrooms; almost as many built that year had five or more. There are too few <span class="annot" data-tooltip="places /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">places</span> in the suburbs where people can comfortably grow old in smaller homes or apartments that would allow them to remain in their community, close to their friends, doctors and church. The consequences spread through the suburbs. In Winchester—where, as in many towns, the <span class="annot" data-tooltip="elementary /ˌelɪ'mentri/ adj. 基本的, 初级的, 基础的, 小学的简单的, 容易的">elementary</span> schools largely draw students from the surrounding neighbourhoods—one school is preparing to welcome its smallest kindergarten class yet. As fewer young families move in, enrolment</p>
+<p><span class="annot" data-tooltip="falls /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">falls</span>. And <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">although</span> it is politically unpopular to <span class="annot" data-tooltip="propose /prə'poʊz/ vt. & vi. 提议；建议；计划；求婚时 态: proposed，proposing，proposes">propose</span> school <span class="annot" data-tooltip="closures /'kloʊʒər/ n. 关闭；终止，结束vt. 使终止时 态: closured, closuring, closures">closures</span>, maintaining the same <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of buildings and teachers for a <span class="annot" data-tooltip="shrinking /ʃrɪŋk/ vt. & vi. 收缩；退缩时 态: shrank ，shrunk shrunk，shrunken shrinking，shr">shrinking</span> body of pupils eventually makes little <span class="annot" data-tooltip="fiscal /'fɪskl/ adj. 国库的；会计的，财政的副 词: fiscally">fiscal</span> sense. Winchester is not alone. <span class="annot" data-tooltip="elementary /ˌelɪ'mentri/ adj. 基本的, 初级的, 基础的, 小学的简单的, 容易的">Elementary</span>-school enrolment has declined everywhere. But is has dropped especially fast in the suburbs, where it fell by 14% from 2012 to 2023. That is too much to be accounted for by the increase in private- and home-<span class="annot" data-tooltip="schooling /'skuːlɪŋ/ n. 学校教育；训练；学费v. 教育，培养；使学会（school的现在分词形式）；训练">schooling</span> during the covid-19 <span class="annot" data-tooltip="pandemic /pæn'demɪk/ adj. （疾病）在全国（或世界）流行的">pandemic</span>. Stefanie Mnayarji, a mother in Winchester and a member of the town’s school committee, argues that the <span class="annot" data-tooltip="trend /trend/ n. 趋势, 倾向流行时 态: trended, trending, trends">trend</span> is not <span class="annot" data-tooltip="inevitable /ɪn'evɪtəbl/ adj. 不可避免的, 必然发生的〈非正〉总会发生的, 照例必有的, 惯常的名 词: inevitability">inevitable</span>. It “can easily change if there’s new housing and multifamily units going up”, she says. “That can shift enrolment numbers almost overnight.” The effects <span class="annot" data-tooltip="spill /spɪl/ vt. 使溢出，使流出；使摔下vi. 溢出，流出；摔下；涌流n. 溢出，溅出；溢出量；摔下；小塞子时 态: spilled, s">spill</span> into local politics, too. Older <span class="annot" data-tooltip="residents /'rezɪdənt/ adj. 定居的; 常驻的n. 居民(旅馆的)住宿者">residents</span> living on fixed incomes are more sensitive to tax increases. This spring voters in Winchester rejected a <span class="annot" data-tooltip="proposal /prə'poʊzl/ n. 提议，建议；求婚">proposal</span> to override the normal tax <span class="annot" data-tooltip="cap /kæp/ n. 帽子；盖vi. 脱帽致意vt. 覆盖；胜过；给…戴帽；加盖于Cap摩羯座CAPabbr. Common Agricult">cap</span> to fix budget shortfalls in the school system and other services. “I know plenty of retired <span class="annot" data-tooltip="folks /foʊk/ n. 人们；民族；亲属（复数）adj. 民间的">folks</span> who were supportive of the recent override attempt,” says Bill McGonigle, a town-board member who was in favour. “But I stood <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span> the <span class="annot" data-tooltip="polling /'poʊlɪŋ/ n. 投票Polling轮流检测,联接到另一主机查看电子信件或新闻">polling</span> <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span> almost all day, and I saw a lot more older citizens showing up to vote than younger ones.”</p>
+<p>Pensioners not only vote more but are also more likely to take part in local politics in other ways, by writing letters to elected officials and attending town meetings. Analysis by political scientists has found that those who are older and <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> homes are more likely to attend local civic meetings and to oppose new housing construction. That creates a feedback loop. Housing <span class="annot" data-tooltip="shortages /'ʃɔːrtɪdʒ/ n. 不足; 缺少; 缺少量; 不足额">shortages</span> discourage younger families from moving in and older <span class="annot" data-tooltip="residents /'rezɪdənt/ adj. 定居的; 常驻的n. 居民(旅馆的)住宿者">residents</span> from downsizing; school enrolments <span class="annot" data-tooltip="fall /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">fall</span> and communities age even faster than they otherwise would. Phillip Beltz, the director of Winchester’s Council on Aging, tries to <span class="annot" data-tooltip="persuade /pər'sweɪd/ vt. & vi. 说服, 劝告时 态: persuaded, persuading, persuades">persuade</span> local planning boards to build more housing. “To truly make a <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span> age-friendly”, he says, “you need to have a whole menu of housing opportunities.” Too often, however, that view is the exception. Dr Schuetz laments that politicians are loth to talk about many of these generational <span class="annot" data-tooltip="issues /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issues</span> because “it’s really politically <span class="annot" data-tooltip="toxic /'tɑːksɪk/ adj. 有毒的；因中毒引起的">toxic</span>.” That <span class="annot" data-tooltip="strategy /'strætədʒi/ n. 战略学, 兵法战略, 策略策略, 计谋">strategy</span> is getting harder to maintain as <span class="annot" data-tooltip="demographic /ˌdemə'ɡræfɪk/ adj. 人口统计学的">demographic</span> change is no longer a forecast. It has come to suburbia’s front <span class="annot" data-tooltip="lawns /lɔːn/ n. 草坪；草地">lawns</span>, schoolyards and town halls. ■ Stay on top of American politics with The US in brief, our daily newsletter with fast analysis of the most important political news, and Checks and Balance, a weekly note that examines the state of American <span class="annot" data-tooltip="democracy /dɪ'mɑːkrəsi/ n. 民主, 民主制民主国家">democracy</span> and the issues that matter to voters. This article was downloaded by zlibrary from https://www.economist.com//<span class="annot" data-tooltip="interactive /ˌɪntər'æktɪv/ adj. (指至少两个人或物)一起活动或互相合作的交互式的, 人机对话的">interactive</span>/united-states/2026/06/11/americas-suburbs- are-growing-old-fast</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>tailored</td><td>/'teɪlər/ vt.</td><td>剪裁；使合适n. 裁缝vi. 做裁缝, tailoring, tailors</td></tr>
+<tr><td>address</td><td>/ə'dres/ v.</td><td>写（收信人）姓名地址；致函演说；演讲称呼（某人）；冠以（某种称呼）设法解决；处理；对付向…说话n. 地址；住址；通信处 网址；电子邮件地址 演讲，演说 称呼 【</td></tr>
+<tr><td>processing</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>programmers</td><td>/'proʊɡræmər/ n.</td><td>(计算机的)程序员</td></tr>
+<tr><td>mexico</td><td>/'meksɪkoʊ/ n.</td><td>墨西哥</td></tr>
+<tr><td>credit</td><td>/'kredɪt/ n.</td><td>赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)，crediting，credits</td></tr>
+<tr><td>alternatives</td><td>/ɔːl'tɜːrnətɪv/ adj.</td><td>可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）可供选择的事物；可供选择的解决办法替代物</td></tr>
+<tr><td>billing</td><td>/'bɪlɪŋ/ n.</td><td>(节目单或戏院大门上的)演员表,(演员表上的)演员次序</td></tr>
+<tr><td>tastes</td><td>/teɪst/ n.</td><td>滋味, 味道鉴赏力爱好, 嗜好vt. & vi. 尝, 品尝, 尝到vt. 吃, 喝体验, 领略, tasting, tastes</td></tr>
+<tr><td>whereas</td><td>/ˌwer'æz/ conj.</td><td>但是, 而</td></tr>
+<tr><td>equivalents</td><td>/ɪ'kwɪvələnt/ adj.</td><td>等同的，等效的n. 对等的人（或事物），对应的人（或事物）</td></tr>
+<tr><td>spot</td><td>/spɑːt/ n.</td><td>斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Positioning and Tracki</td></tr>
+<tr><td>indonesian</td><td>/ˌɪndə'niːʒn/ n.</td><td>印度尼西亚人;印度尼西亚国民印度尼西亚人后裔(东印度群岛)前马来人的一员西澳特罗尼西亚语族adj. (有关)印度尼西亚的;(有关)印度尼西亚人(语)的</td></tr>
+<tr><td>viral</td><td>/'vaɪrəl/ adj.</td><td>滤过性毒菌引起的；滤过性毒菌的</td></tr>
+<tr><td>terms</td><td>/tɜːrmz/ n.</td><td>条款；地位，关系；措辞；术语；价钱（term的复数形式）v. 把…称为（term的三单形式）</td></tr>
+<tr><td>interactive</td><td>/ˌɪntər'æktɪv/ adj.</td><td>(指至少两个人或物)一起活动或互相合作的交互式的, 人机对话的</td></tr>
+<tr><td>van</td><td>/væn/ n.</td><td>先锋；厢式货车；[计]增值网vt. 用车搬运Van范(男子名), vanning, vans</td></tr>
+<tr><td>stern</td><td>/stɜːrn/ n.</td><td>船尾；末端adj. 严厉的；坚定的Stern斯特恩(①姓氏 ②Otto, 1888-1969, 生于德国的美国物理学家, 曾获1943年诺贝尔物理学奖), st</td></tr>
+<tr><td>essay</td><td>/'eseɪ/ n.</td><td>散文, 随笔</td></tr>
+<tr><td>sensor</td><td>/'sensər/ n.</td><td>传感器</td></tr>
+<tr><td>revenue</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>earning</td><td>/ɪr/ n.</td><td>耳朵；听觉；倾听；穗vi. （美俚）听见；抽穗EARabbr. East African Railways 东非铁路公司, earing, ears</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>strategy</td><td>/'strætədʒi/ n.</td><td>战略学, 兵法战略, 策略策略, 计谋</td></tr>
+<tr><td>transmission</td><td>/trænz'mɪʃn/ n.</td><td>传送, 传播, 传达播送传动装置, 变速器</td></tr>
+<tr><td>virtually</td><td>/'vɜːrtʃuəl/ adj.</td><td>实质上的, 事实上的, 实际上的, 虚拟的</td></tr>
+<tr><td>adopted</td><td>/ə'dɑːpt/ vt.</td><td>收养采用, 采纳, 采取正式接受, 通过, adopting, adopts</td></tr>
+<tr><td>medieval</td><td>/ˌmedi'iːvl/ adj.</td><td>中古的, 中世纪的</td></tr>
+<tr><td>interactive</td><td>/ˌɪntər'æktɪv/ adj.</td><td>(指至少两个人或物)一起活动或互相合作的交互式的, 人机对话的</td></tr>
+<tr><td>sheer</td><td>/ʃɪr/ adj.</td><td>完全的；十足的陡峭的；垂直的极薄的，轻的，透明的adv. 垂直地，陡峭地vi. 避开，突然转向，sheering，sheers</td></tr>
+<tr><td>assert</td><td>/ə'sɜːrt/ vt.</td><td>断言；主张；声称；维护，坚持, asserting, asserts</td></tr>
+<tr><td>distinctively</td><td>/dɪ'stɪŋktɪv/ adj.</td><td>有特色的, 与众不同的</td></tr>
+<tr><td>preferences</td><td>/'prefrəns/ n.</td><td>较喜欢的东西, 偏爱优待, 优惠, 优先权</td></tr>
+<tr><td>places</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>ego</td><td>/'iːɡoʊ/ n.</td><td>自我; 自尊; 自负</td></tr>
+<tr><td>priests</td><td>/priːst/ n.</td><td>牧师；神父；教士vt. 使成为神职人员；任命…为祭司, priesting, priests</td></tr>
+<tr><td>abuse</td><td>/ə'bjuːs/ n.</td><td>滥用；辱骂；虐待；弊端；恶习，陋习vt. 滥用；辱骂；虐待, abusing, abuses</td></tr>
+<tr><td>capitalism</td><td>/'kæpɪtəlɪzəm/ n.</td><td>资本主义(制度)资本(或财富)的拥有资本(私人占有和生产盈利)的支配地位</td></tr>
+<tr><td>places</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>encourages</td><td>/ɪn'kɜːrɪdʒ/ vt.</td><td>鼓励, 激励促进, 助长, 激发, encouraging, encourages</td></tr>
+<tr><td>line</td><td>/laɪn/ n.</td><td>绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long interspersed element)长散在元</td></tr>
+<tr><td>cognitive</td><td>/'kɑːɡnətɪv/ adj.</td><td>认知的, 认识能力的</td></tr>
+<tr><td>sequence</td><td>/'siːkwəns/ n.</td><td>有关联的一组事物, 一连串先后次序, 顺序, 连续, sequencing, sequences</td></tr>
+<tr><td>issues</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>alternative</td><td>/ɔːl'tɜːrnətɪv/ adj.</td><td>可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）可供选择的事物；可供选择的解决办法替代物</td></tr>
+<tr><td>gracefully</td><td>/'ɡreɪsfəli/ adv.</td><td>优美地；优雅地；雅致地;温文地</td></tr>
+<tr><td>spinning</td><td>/spɪn/ vi.</td><td>旋转；纺纱；吐丝；晕眩vt. 使旋转；纺纱；编造；结网n. 旋转；疾驰, spins</td></tr>
+<tr><td>sneakers</td><td>/'sniːkər/ n.</td><td>运动鞋；卑鄙者；鬼鬼祟祟做事的人</td></tr>
+<tr><td>lawns</td><td>/lɔːn/ n.</td><td>草坪；草地</td></tr>
+<tr><td>boasts</td><td>/boʊst/ n.</td><td>自吹自擂, 自夸的话vt. & vi. 自夸vt. 有(引以为荣的事物), boasting, boasts</td></tr>
+<tr><td>senior</td><td>/'siːniər/ adj.</td><td>年长的资深的; 地位高的〈美〉最高年级的n. 较年长者高年级学生〈美〉毕业班学生Senior西尼尔(姓氏)</td></tr>
+<tr><td>line</td><td>/laɪn/ n.</td><td>绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long interspersed element)长散在元</td></tr>
+<tr><td>residents</td><td>/'rezɪdənt/ adj.</td><td>定居的; 常驻的n. 居民(旅馆的)住宿者</td></tr>
+<tr><td>pattern</td><td>/'pætərn/ n.</td><td>型，样式花样，图案方式，形式榜样，典范vt. 模仿； 仿制以图案装饰，patterning，patterns</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>elderly</td><td>/'eldərli/ adj.</td><td>上了年纪的, 中年以上的</td></tr>
+<tr><td>barely</td><td>/'berli/ adv.</td><td>仅仅，勉强；几乎不；公开地；贫乏地</td></tr>
+<tr><td>budged</td><td>/bʌd/ n.</td><td>芽，萌芽；蓓蕾vi. 发芽，萌芽vt. 使发芽, budding, buds</td></tr>
+<tr><td>places</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>reaching</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>reaching</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>infants</td><td>/'ɪnfənt/ n.</td><td>婴儿；幼儿adj. 供婴幼儿用的初期的；初创期的</td></tr>
+<tr><td>shortages</td><td>/'ʃɔːrtɪdʒ/ n.</td><td>不足; 缺少; 缺少量; 不足额</td></tr>
+<tr><td>traffic</td><td>/'træfɪk/ n.</td><td>交通；贸易；运输；通信量vt. 用…作交换；在…通行vi. 交易，买卖, trafficking, traffics</td></tr>
+<tr><td>jam</td><td>/dʒæm/ n.</td><td>果酱拥挤，堵塞困难的处境；窘境vt. & vi. (使)塞紧，(使)挤满发生故障；夹住，卡住vt. 堵塞(发射无线电波)干扰(信息，节目)，jamming，ja</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>exclusively</td><td>/ɪk'skluːsɪv/ adj.</td><td>高级的，奢华的专用的；独家的n. 独家新闻，独家报道</td></tr>
+<tr><td>encourage</td><td>/ɪn'kɜːrɪdʒ/ vt.</td><td>鼓励, 激励促进, 助长, 激发, encouraging, encourages</td></tr>
+<tr><td>mortgage</td><td>/'mɔːrɡɪdʒ/ n.</td><td>抵押借款抵押债款的利息vt. 抵押, mortgaging, mortgages</td></tr>
+<tr><td>outright</td><td>/'aʊtraɪt/ adv.</td><td>完全地；彻底地坦率地；直率地；无保留地立即，当场adj. 完全的；彻底的</td></tr>
+<tr><td>elderly</td><td>/'eldərli/ adj.</td><td>上了年纪的, 中年以上的</td></tr>
+<tr><td>backwards</td><td>/'bækwərd/ adj.</td><td>向后的；反向的；发展迟缓的adv. 相反地；向后地</td></tr>
+<tr><td>seniors</td><td>/'siːniər/ adj.</td><td>年长的资深的; 地位高的〈美〉最高年级的n. 较年长者高年级学生〈美〉毕业班学生Senior西尼尔(姓氏)</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>cater</td><td>/'keɪtər/ vt.</td><td>满足需要；投合，迎合；提供饮食及服务, catering, caters</td></tr>
+<tr><td>folk</td><td>/foʊk/ n.</td><td>人们；民族；亲属（复数）adj. 民间的</td></tr>
+<tr><td>places</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>elementary</td><td>/ˌelɪ'mentri/ adj.</td><td>基本的, 初级的, 基础的, 小学的简单的, 容易的</td></tr>
+<tr><td>falls</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>propose</td><td>/prə'poʊz/ vt.</td><td>& vi. 提议；建议；计划；求婚，proposing，proposes</td></tr>
+<tr><td>closures</td><td>/'kloʊʒər/ n.</td><td>关闭；终止，结束vt. 使终止, closuring, closures</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>shrinking</td><td>/ʃrɪŋk/ vt.</td><td>& vi. 收缩；退缩，shrunk shrunk，shrunken shrinking，shrinks</td></tr>
+<tr><td>fiscal</td><td>/'fɪskl/ adj.</td><td>国库的；会计的，财政的</td></tr>
+<tr><td>elementary</td><td>/ˌelɪ'mentri/ adj.</td><td>基本的, 初级的, 基础的, 小学的简单的, 容易的</td></tr>
+<tr><td>schooling</td><td>/'skuːlɪŋ/ n.</td><td>学校教育；训练；学费v. 教育，培养；使学会（school的现在分词形式）；训练</td></tr>
+<tr><td>pandemic</td><td>/pæn'demɪk/ adj.</td><td>（疾病）在全国（或世界）流行的</td></tr>
+<tr><td>trend</td><td>/trend/ n.</td><td>趋势, 倾向流行, trending, trends</td></tr>
+<tr><td>inevitable</td><td>/ɪn'evɪtəbl/ adj.</td><td>不可避免的, 必然发生的〈非正〉总会发生的, 照例必有的, 惯常的</td></tr>
+<tr><td>spill</td><td>/spɪl/ vt.</td><td>使溢出，使流出；使摔下vi. 溢出，流出；摔下；涌流n. 溢出，溅出；溢出量；摔下；小塞子, spilt spilling, spills</td></tr>
+<tr><td>residents</td><td>/'rezɪdənt/ adj.</td><td>定居的; 常驻的n. 居民(旅馆的)住宿者</td></tr>
+<tr><td>proposal</td><td>/prə'poʊzl/ n.</td><td>提议，建议；求婚</td></tr>
+<tr><td>cap</td><td>/kæp/ n.</td><td>帽子；盖vi. 脱帽致意vt. 覆盖；胜过；给…戴帽；加盖于Cap摩羯座CAPabbr. Common Agricultural Policy (欧共体)共同农</td></tr>
+<tr><td>folks</td><td>/foʊk/ n.</td><td>人们；民族；亲属（复数）adj. 民间的</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>polling</td><td>/'poʊlɪŋ/ n.</td><td>投票Polling轮流检测,联接到另一主机查看电子信件或新闻</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>shortages</td><td>/'ʃɔːrtɪdʒ/ n.</td><td>不足; 缺少; 缺少量; 不足额</td></tr>
+<tr><td>residents</td><td>/'rezɪdənt/ adj.</td><td>定居的; 常驻的n. 居民(旅馆的)住宿者</td></tr>
+<tr><td>fall</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>persuade</td><td>/pər'sweɪd/ vt.</td><td>& vi. 说服, 劝告, persuading, persuades</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>issues</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>toxic</td><td>/'tɑːksɪk/ adj.</td><td>有毒的；因中毒引起的</td></tr>
+<tr><td>strategy</td><td>/'strætədʒi/ n.</td><td>战略学, 兵法战略, 策略策略, 计谋</td></tr>
+<tr><td>demographic</td><td>/ˌdemə'ɡræfɪk/ adj.</td><td>人口统计学的</td></tr>
+<tr><td>lawns</td><td>/lɔːn/ n.</td><td>草坪；草地</td></tr>
+<tr><td>democracy</td><td>/dɪ'mɑːkrəsi/ n.</td><td>民主, 民主制民主国家</td></tr>
+<tr><td>interactive</td><td>/ˌɪntər'æktɪv/ adj.</td><td>(指至少两个人或物)一起活动或互相合作的交互式的, 人机对话的</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day7.html" class="nav-btn">← Day 7</a>
+  <a href="day9.html" class="nav-btn">Day 9 →</a>
+</div>
+
+<div class="progress">📖 Day 8 of 45</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-06-13</div>
+
+</body>
+</html>
