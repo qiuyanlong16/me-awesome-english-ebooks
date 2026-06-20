@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Science & technology</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-06-20</div>
+
+<h1 class="article-title">Science & technology</h1>
+<div class="article-section"></div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>Many of these <span class="annot" data-tooltip="places /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">places</span> are already suffering, <span class="annot" data-tooltip="due /duː/ adj. 到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）">due</span> to wars and pre-existing hunger. The blocking of the <span class="annot" data-tooltip="strait /streɪt/ n. 海峡；（尤指经济拮据引起的）困境，境况窘迫adj. 狭窄的；苦恼的副 词: straitly">Strait</span> of Hormuz has made fertiliser scarce just as many farmers need it for their next <span class="annot" data-tooltip="crop /krɑːp/ n. 农作物；庄稼；产量；平头vt. 种植；收割；修剪；剪短vi. 收获时 态: cropped, cropping, cro">crop</span> cycles (its reopening, announced on June 14th by Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>, America’s president, is uncertain and comes too late). The European <span class="annot" data-tooltip="commission /kə'mɪʃn/ n. 授权, 委托委员会佣金, 回扣vt. 委任, 委托时 态: commissioned, commissioning, c">Commission</span> has warned of humanitarian disasters in African countries including Chad, Somalia, South Sudan and Sudan, as well as Ecuador, Haiti and <span class="annot" data-tooltip="venezuela /ˌvenə'zweɪlə/ n. 委内瑞拉形容词: Venezuelan">Venezuela</span>. There are ways to <span class="annot" data-tooltip="blunt /blʌnt/ adj. 钝的，不锋利的；生硬的；直率的vt. 使迟钝比较级: blunter, bluntest">blunt</span> the impact: planting <span class="annot" data-tooltip="drought /draʊt/ n. 干旱；缺乏形容词: droughty">drought</span>-tolerant seeds, for instance, or storing fodder and water for <span class="annot" data-tooltip="livestock /'laɪvstɑːk/ n. 家畜, 牲畜">livestock</span>. But the time to start is now. ■ Curious about the world? To enjoy our mind-expanding science <span class="annot" data-tooltip="coverage /'kʌvərɪdʒ/ n. 新闻报道, 报道量覆盖范围">coverage</span>, sign up to <span class="annot" data-tooltip="simply /'sɪmpli/ adv. 简单地；朴素地；简直；仅仅；坦白地">Simply</span> Science, our weekly subscriber-only newsletter. This article was downloaded by zlibrary from https://www.economist.com//science-and-technology/2026/06/16/the-coming-el-nino- could-be-the-strongest-ever-recorded</p>
+<p>Science & technology | Sweet teeth The chocolate <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> is built on the labour of bloodsucking midges Researchers have now confirmed how cacao plants are pollinated June 18th 2026 The world’s chocolate industry <span class="annot" data-tooltip="boasts /boʊst/ n. 自吹自擂, 自夸的话vt. & vi. 自夸vt. 有(引以为荣的事物)时 态: boasted, boasting, ">boasts</span> <span class="annot" data-tooltip="revenues /'revənuː/ n. 收入，收益；财政收入，税收">revenues</span> of more than $140bn. In recent years the market for cacao beans, the <span class="annot" data-tooltip="crucial /'kruːʃl/ adj. 决定性的；重要的；定局的；决断的副 词: crucially">crucial</span> <span class="annot" data-tooltip="ingredient /ɪn'ɡriːdiənt/ n. (混合物的)组成部分; 配料">ingredient</span>, has often been tight. In April 2024, after poor harvests in West Africa, the price passed $10,000 per tonne for the first time. <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">Although</span> it has fallen back since, it remains <span class="annot" data-tooltip="significantly /sɪɡ'nɪfɪkənt/ adj. 重要的, 重大的, 可观的有意义的, 有用意的意味深长的副 词: significantly">significantly</span> higher than earlier in the <span class="annot" data-tooltip="decade /'dekeɪd/ n. 十年，十年期；十">decade</span>. A good time, then, for the world’s farmers to try to boost their harvests. One way would be to pollinate their existing plants more efficiently, so as to produce more of them in the next generation. There is a problem, though: no one has been quite sure how cocoa plants are pollinated. Now, though, work by Eliza <span class="annot" data-tooltip="van /væn/ n. 先锋；厢式货车；[计]增值网vt. 用车搬运Van范(男子名)时 态: vanned, vanning, vans">Van</span> de Sande, a PhD student at Vrije University in <span class="annot" data-tooltip="brussels /ˈbrʌsəlz/ n. 布鲁塞尔（比利时首都）">Brussels</span>, and</p>
+<p>published in Basic and Applied Ecology, suggests that a <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span> of tiny blood- sucking midges are <span class="annot" data-tooltip="essential /ɪ'senʃl/ adj. 基本的；必要的；本质的；精华的">essential</span> to the <span class="annot" data-tooltip="process /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">process</span>. Many plants rely for pollination on an evolutionary bargain with animals. The plant produces high-<span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span> nectar that entices animals (usually insects) to visit. But to get it, an animal must venture inside a flower. As it does it gets <span class="annot" data-tooltip="covered /'kʌvər/ vt. 包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替时 态: covered, covering, c">covered</span> in pollen, while also <span class="annot" data-tooltip="shedding /ʃed/ n. 棚, 库vt. 流出, 流下蜕皮, 树叶脱落时 态: shed, shedding, sheds">shedding</span> pollen <span class="annot" data-tooltip="stuck /stʌk/ v. 刺（stick的过去式）adj. 不能动的；被卡住的">stuck</span> to it by other plants. Farmers often try to enhance the process by making their farms attractive to pollinating insects. The reason cacao pollinators have remained mysterious is mostly because of <span class="annot" data-tooltip="anatomy /ə'nætəmi/ n. 解剖, 解剖学(生物体的)解剖结构(详细的)分析人体；骨骼；干尸">anatomy</span>. Cacao flowers are very small, structurally complicated and hidden by <span class="annot" data-tooltip="hoods n. 头巾；兜帽；覆盖vt. 以头巾覆盖；罩上Hood胡德(姓氏)时 态: hooded, hooding, hoods">hoods</span> that make it <span class="annot" data-tooltip="tricky /'trɪki/ adj. 机警的；狡猾的比较级: trickier, trickiest">tricky</span> to see what is going on inside. To make matters worse, many of the visitors to cacao plants are minute fly species that are <span class="annot" data-tooltip="notoriously /noʊ'tɔːriəs/ adj. 臭名昭著的, 声名狼藉的副 词: notoriously">notoriously</span> hard to identify. Ms <span class="annot" data-tooltip="van /væn/ n. 先锋；厢式货车；[计]增值网vt. 用车搬运Van范(男子名)时 态: vanned, vanning, vans">Van</span> de Sande and her colleagues observed insects visiting cacao flowers on farms in <span class="annot" data-tooltip="malaysia n. 马来西亚形容词: Malaysian">Malaysia</span> and French Guiana. Rather than <span class="annot" data-tooltip="simply /'sɪmpli/ adv. 简单地；朴素地；简直；仅仅；坦白地">simply</span> counting the visitors, as most previous studies had done, the team opened and inspected the flowers. Any insects inside were observed to work out whether they were <span class="annot" data-tooltip="interacting 相互作用">interacting</span> with the reproductive parts of the flower. The insects were then captured and checked to see if they were carrying cacao pollen. Ants, bees and midges all turned up inside the flowers. But of the 449 insects that the researchers collected, 439 were midges. Of those, 185 were biting midges that were often seen interacting with plant reproductive organs and were covered in cacao pollen about a third of the time. Few of the other bugs showed much evidence of doing anything for pollination. Those results strongly suggest that biting midges are the <span class="annot" data-tooltip="dominant /'dɑːmɪnənt/ adj. 支配的，统治的；占优势的；显性的n. 显性">dominant</span> force behind cacao pollination. They might therefore be a useful focus of efforts to enhance production. Ms Van de Sande and her colleagues also found that the midges were <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> more active when it was cool and <span class="annot" data-tooltip="humid /'hjuːmɪd/ adj. 潮湿的；湿润的；多湿气的">humid</span>. That could be bad news for cacao farmers, because—thanks to climate change—many of their plantations have been getting warmer and drier. Luckily, they have options. Ms Van de Sande points out that “agroforestry” techniques, in which native trees are grown on plantations to provide shade,</p>
+<p>lower temperatures and increase <span class="annot" data-tooltip="humidity /hjuː'mɪdəti/ n. 湿度, 潮湿, 湿气">humidity</span> could be one way to <span class="annot" data-tooltip="encourage /ɪn'kɜːrɪdʒ/ vt. 鼓励, 激励促进, 助长, 激发时 态: encouraged, encouraging, encourages">encourage</span> more pollinators to move in. Admittedly, trying to encourage more bloodsucking midges might be a hard sell for farmers themselves. But it might improve their <span class="annot" data-tooltip="yields /jiːld/ vt. 出产；屈服；放弃vi. 屈服，投降n. 收益；产量时 态: yielded, yielding, yields">yields</span>. ■ Curious about the world? To enjoy our mind-expanding science <span class="annot" data-tooltip="coverage /'kʌvərɪdʒ/ n. 新闻报道, 报道量覆盖范围">coverage</span>, sign up to <span class="annot" data-tooltip="simply /'sɪmpli/ adv. 简单地；朴素地；简直；仅仅；坦白地">Simply</span> Science, our weekly subscriber-only newsletter. This article was downloaded by zlibrary from https://www.economist.com//science-and-technology/2026/06/17/the-chocolate- <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span>-is-built-on-the-labour-of-bloodsucking-midges</p>
+<p>Science & technology | Leavesdropping How plants keep tabs on the competition They grow faster when their <span class="annot" data-tooltip="rivals /'raɪvl/ n. 竞争对手vt. 与…竞争, 与…匹敌时 态: rivaled, rivalled rivaling, rivalling">rivals</span> are doing the same June 18th 2026 Given their slow growth and sessile lives, the idea of plants battling one another may seem fanciful. Yet they do. They fight for access to water, nutrients and pollinators. Since one plant’s leaves are another’s shade, growing <span class="annot" data-tooltip="towards /tɔːrdz/ prep. 向，朝为了；有助于；用于对于，关于接近；将近；大约">towards</span> the sun can be a duel to the death. As in any conflict, espionage helps. A paper published in the <span class="annot" data-tooltip="journal /'dʒɜːrnl/ n. 日报，杂志；日记；[经]分类账">Journal</span> of Experimental Botany <span class="annot" data-tooltip="reveals /rɪ'viːl/ vt. 显示；露出泄露；透露时 态: revealed，revealing，reveals">reveals</span> how plants <span class="annot" data-tooltip="engage /ɪn'ɡeɪdʒ/ vt. 雇佣；吸引，占用；使订婚；使参加；预定vi. 答应，保证；从事；交战；啮合时 态: engaged, engaging,">engage</span> in it. Botanists have known for years that plants can communicate with each other. One way is via chemicals known as <span class="annot" data-tooltip="volatile /'vɑːlətl/ adj. （人或其情绪）不稳定的；易变的；易怒的，喜怒无常的（情况）可能急剧波动的；不稳定的；易恶化的（物质）易挥发的，易气化的【">volatile</span> <span class="annot" data-tooltip="organic /ɔːr'ɡænɪk/ adj. 器官的；器质性的有机(体)的，有机物的副 词: organically">organic</span> <span class="annot" data-tooltip="compounds /'kɑːmpaʊnd/ n. 复合物；混合物；【化】化合物（语法）复合词有围栏（或围墙）的场地（内有工厂或其他建筑群）adj. 复合的v. 使加重；使">compounds</span> (VOCs). When plants are attacked by pests, for instance, the <span class="annot" data-tooltip="composition /ˌkɑːmpə'zɪʃn/ n. 创作，写作，作曲作文，作品构图；构成，成分混合物，合成物">composition</span> of the VOCs they <span class="annot" data-tooltip="release /rɪ'liːs/ vt. 释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]时 态: released，rel">release</span> changes. Previous work has shown that this <span class="annot" data-tooltip="drives /draɪv/ vt. 驱赶驱使, 促使敲, 击vt. & vi. 驾驶n. 乘车旅行私人车道传动, 驱动干劲, 积极性, 能动性紧迫, 逼迫,">drives</span> nearby plants to <span class="annot" data-tooltip="raise /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raise</span> their <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> defences in anticipation of being attacked in</p>
+<p>turn. What has gone unexplored is whether plants <span class="annot" data-tooltip="detect /dɪ'tekt/ vt. 发现；发觉，查明时 态: detected，detecting，detects">detect</span> VOCs released by their neighbours when they are healthy. So Velemir Ninkovic, an ecologist at the Swedish University of Agricultural Sciences, decided to run an experiment. With a team of colleagues, Dr Ninkovic planted three varieties of barley that grow at different rates—one quickly, one slowly and one at a middling pace. The plants were put in growing <span class="annot" data-tooltip="chambers /'tʃeɪmbər/ n. （身体或器官内的）室，膛；房间；会所adj. 室内的；私人的，秘密的vt. 把…关在室内；装填（弹药等）时 态: cha">chambers</span> next to one another, but with no way for them to shade their neighbours. The only connection that the plants had to one another was through one-way air <span class="annot" data-tooltip="vents /vent/ n. 出口；通风孔；（感情的）发泄vt. 发泄感情；放出…；给…开孔vi. （通过排泄等）减轻压力；放出时 态: vented">vents</span> that connected their growing containers. These allowed the researchers to <span class="annot" data-tooltip="blow /bloʊ/ n. 吹；殴打；打击vi. 风吹；喘气vt. 风吹时 态: blew blown blowing, blows">blow</span> air from one <span class="annot" data-tooltip="chamber /'tʃeɪmbər/ n. （身体或器官内的）室，膛；房间；会所adj. 室内的；私人的，秘密的vt. 把…关在室内；装填（弹药等）时 态: cha">chamber</span> to the next, and to <span class="annot" data-tooltip="monitor /'mɑːnɪtər/ n. 显示屏；监视器；（计算机）显示器监控器；监测器班长；级长；班代表（尤指派往国外的）监督员，核查员巨蜥v. 监视；检查；跟">monitor</span> the effect that this had on the plants over 25 days. The results were <span class="annot" data-tooltip="striking /'straɪkɪŋ/ adj. 显著的，突出的引人注目的；容貌出众的副 词: strikingly">striking</span>. The slow-growing barley grew more quickly when it was exposed to air from the chambers of its fast-growing cousins, producing 20% more biomass than when it was placed next to slower- growing plants. This, Dr Ninkovic surmises, is because the slow-growing plants were <span class="annot" data-tooltip="detecting /dɪ'tekt/ vt. 发现；发觉，查明时 态: detected，detecting，detects">detecting</span> the <span class="annot" data-tooltip="compounds /'kɑːmpaʊnd/ n. 复合物；混合物；【化】化合物（语法）复合词有围栏（或围墙）的场地（内有工厂或其他建筑群）adj. 复合的v. 使加重；使">compounds</span> released by their neighbours and realising that, in the wild at least, they would be at risk of getting shaded out if they did not get a shift on. Fast-growing plants exposed to air from the chambers of their slow-growing cousins reacted in the opposite way. With less need to <span class="annot" data-tooltip="race /reɪs/ n. 种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACE">race</span> for the sun, they cut their growth rates <span class="annot" data-tooltip="notably /'noʊtəbli/ adv. 显著地；尤其">notably</span>. (The plants with <span class="annot" data-tooltip="intermediate /ˌɪntər'miːdiət/ adj. 中间的；中级的时 态: intermediated，intermediating，intermediates">intermediate</span> growth rates had no <span class="annot" data-tooltip="significant /sɪɡ'nɪfɪkənt/ adj. 重要的, 重大的, 可观的有意义的, 有用意的意味深长的副 词: significantly">significant</span> effects on their neighbours.) Dissection of these plants and <span class="annot" data-tooltip="genetic /dʒə'netɪk/ adj. 遗传的；起源的；基因的副 词: genetically">genetic</span> analysis of their <span class="annot" data-tooltip="tissues /'tɪʃuː/ n. 组织薄纸, 棉纸一套, 一系列形容词: tissular">tissues</span> <span class="annot" data-tooltip="revealed /rɪ'viːl/ vt. 显示；露出泄露；透露时 态: revealed，revealing，reveals">revealed</span> more details about <span class="annot" data-tooltip="exactly /ɪɡ'zækt/ adj. 精确的；准确的，精密的vt. 强求；要求；急需vi. 勒索钱财时 态: exacted, exacting, exact">exactly</span> what was going on. While the laggards were switching resources <span class="annot" data-tooltip="towards /tɔːrdz/ prep. 向，朝为了；有助于；用于对于，关于接近；将近；大约">towards</span> growth, the speedsters were able to spend more of theirs on metabolically expensive defensive measures, such as churning out chemicals that make their leaves unpalatable to herbivores. Barley plants, in other words, can chemically <span class="annot" data-tooltip="eavesdrop /'iːvzdrɑːp/ vi. 偷听(别人的谈话)时 态: eavesdropped, eavesdropping, eavesdrops">eavesdrop</span> on their competitors, and <span class="annot" data-tooltip="tweak /twiːk/ n. 拧；扭；焦急vt. 扭；用力拉；开足马力时 态: tweaked, tweaking, tweaks">tweak</span> their <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> growing <span class="annot" data-tooltip="strategies /'strætədʒi/ n. 战略学, 兵法战略, 策略策略, 计谋">strategies</span> accordingly. Farmers are already experimenting with using VOCs to boost <span class="annot" data-tooltip="productivity /ˌproʊdʌk'tɪvəti/ n. 生产率, 生产力">productivity</span>. Dr Ninkovic’s results suggest they may be able to <span class="annot" data-tooltip="nudge /nʌdʒ/ n. 用肘轻推；推动；没完没了抱怨的人vt. 用肘轻推；推进；向…不停地唠叨vi. 轻推；推进；唠叨时 态: nudged, ">nudge</span> <span class="annot" data-tooltip="crops /krɑːp/ n. 农作物；庄稼；产量；平头vt. 种植；收割；修剪；剪短vi. 收获时 态: cropped, cropping, cro">crops</span> to produce protective compounds if pests are expected to arrive, as well as inducing them to grow more quickly to boost <span class="annot" data-tooltip="yields /jiːld/ vt. 出产；屈服；放弃vi. 屈服，投降n. 收益；产量时 态: yielded, yielding, yields">yields</span> when risks are low. ■</p>
+<p>Curious about the world? To enjoy our mind-expanding science <span class="annot" data-tooltip="coverage /'kʌvərɪdʒ/ n. 新闻报道, 报道量覆盖范围">coverage</span>, sign up to <span class="annot" data-tooltip="simply /'sɪmpli/ adv. 简单地；朴素地；简直；仅仅；坦白地">Simply</span> Science, our weekly subscriber-only newsletter. This article was downloaded by zlibrary from https://www.economist.com//science-and-technology/2026/06/18/how-plants-keep-tabs- on-the-competition</p>
+<p>Science & technology | Well Informed A new drug targets one of <span class="annot" data-tooltip="cancer /'kænsər/ n. 癌迅速蔓延的恶劣的或危险的事物形容词: cancerous">cancer</span>’s <span class="annot" data-tooltip="master /mæst/ n. 船桅，桅杆；旗杆MASTabbr. Magnetic Annular Shock Tube 磁性环形激波管(风洞研究用)">master</span> switches The pancreatic-cancer drug could be the first of an <span class="annot" data-tooltip="entirely /ɪn'taɪərli/ adv. 全部地;完整地;完全地">entirely</span> new class of treatments June 18th 2026 Scientists are not usually an excitable <span class="annot" data-tooltip="bunch /bʌntʃ/ n. 串；群；突出物vi. 隆起；打褶；形成一串vt. 使成一串；使打褶时 态: bunched, bunching, bun">bunch</span>. So when many thousands of them gave a standing ovation at a <span class="annot" data-tooltip="conference /'kɑːnfərəns/ n. 会议讨论, 商谈形容词: conferential">conference</span> in Chicago, it meant something special had happened. The applause was for the results of clinical <span class="annot" data-tooltip="trials /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">trials</span> of a drug called daraxonrasib, developed by Revolution Medicines, a company based in California. It is designed to treat pancreatic cancer. The drug almost doubled median survival times from 6.7 months to 13.2 months. This victory over one of the most challenging <span class="annot" data-tooltip="cancers /'kænsər/ n. 癌迅速蔓延的恶劣的或危险的事物形容词: cancerous">cancers</span> was an emotional moment for many.</p>
+<p>The drug is not a cure. <span class="annot" data-tooltip="cancers /'kænsər/ n. 癌迅速蔓延的恶劣的或危险的事物形容词: cancerous">Cancers</span> often develop <span class="annot" data-tooltip="resistance /rɪ'zɪstəns/ n. 抵抗, 反抗, 抵抗能力阻力电阻, 热阻形容词: resistant">resistance</span> to targeted drugs such as daraxonrasib. Instead, its promise for patients is that, when used <span class="annot" data-tooltip="alongside /əˌlɔːŋ'saɪd/ adv. 靠着边，沿着边prep. (表示位置)在…旁边；沿着…的边；与…并排靠拢着(表示比较)与…放在一起比较(表示伴随)与…一">alongside</span> other treatments, it might buy them months more life. Pancreatic cancers are <span class="annot" data-tooltip="aggressive /ə'ɡresɪv/ adj. 好争斗的, 挑衅的, 侵略性的副 词: aggressively">aggressive</span> and usually symptomless. They are mostly diagnosed after they have already spread around the body. Few patients survive longer than a year. Pancreatic cancers are also <span class="annot" data-tooltip="resistant /rɪ'zɪstənt/ adj. 有抵抗力的, 抵抗的">resistant</span> toinhi immunotherapy, a class of treatment that <span class="annot" data-tooltip="encourages /ɪn'kɜːrɪdʒ/ vt. 鼓励, 激励促进, 助长, 激发时 态: encouraged, encouraging, encourages">encourages</span> the body’s immune system to fight <span class="annot" data-tooltip="tumours /'tuːmər/ n. 肿瘤；瘤；肿块">tumours</span>, and which has had great success in many other areas of oncology. A <span class="annot" data-tooltip="mutation /mjuː'teɪʃn/ n. 突变；变化；元音变化">mutation</span> in a protein called KRAS, which <span class="annot" data-tooltip="drives /draɪv/ vt. 驱赶驱使, 促使敲, 击vt. & vi. 驾驶n. 乘车旅行私人车道传动, 驱动干劲, 积极性, 能动性紧迫, 逼迫,">drives</span> most pancreatic cancers, creates an environment around the <span class="annot" data-tooltip="tumour /'tuːmər/ n. 肿瘤；瘤；肿块">tumour</span> that is hostile to immune cells. Daraxonrasib is expected to speed its way through approval in America. <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">Although</span> it was given in the <span class="annot" data-tooltip="trial /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">trial</span> to patients who had already tried chemotherapy, it seems likely to become a first-<span class="annot" data-tooltip="line /laɪn/ n. 绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long inter">line</span> treatment for the disease. The drug works by <span class="annot" data-tooltip="inhibiting /ɪn'hɪbɪt/ vt. 抑制；禁止时 态: inhibited, inhibiting, inhibits">inhibiting</span> KRAS. Other work suggests this also changes the environment around tumours in ways that might make them more <span class="annot" data-tooltip="susceptible /sə'septəbl/ adj. 易受影响的; 易动感情的过敏的; 易受…感染的能经受的副 词: susceptibly">susceptible</span> to immunotherapy. If that theory proves correct, it could improve survival times still further. There is a bigger story. KRAS is a molecular switch in the cell that is heavily <span class="annot" data-tooltip="involved /ɪn'vɑːlvd/ adj. 卷入的；有关的；复杂的v. 涉及；使参与；包含（involve的过去式和过去分词）">involved</span> in cell <span class="annot" data-tooltip="division /dɪ'vɪʒn/ n. [数] 除法；部门；分配；分割；师（军队）；赛区形容词: divisional">division</span>. It can be <span class="annot" data-tooltip="either /'iːðər/ pron. (两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的">either</span> off or on. A single mutation can leave it <span class="annot" data-tooltip="jammed /dʒæm/ n. 果酱拥挤，堵塞困难的处境；窘境vt. & vi. (使)塞紧，(使)挤满发生故障；夹住，卡住vt. 堵塞(发射无线电波)">jammed</span> on, endlessly signalling to cells that they should multiply—and endless growth is the defining <span class="annot" data-tooltip="pathology /pə'θɑːlədʒi/ n. 病理(学)n. 病理学家名 词: pathologist">pathology</span> of <span class="annot" data-tooltip="cancer /'kænsər/ n. 癌迅速蔓延的恶劣的或危险的事物形容词: cancerous">cancer</span>. Stopping KRAS might help in other sorts of tumour where the same mutation drives the disease. <span class="annot" data-tooltip="candidates /'kændɪdət，ˈkændɪdeɪt/ n. 申请求职者, 候选人报考者名 词: candidacy">Candidates</span> include some colorectal and lung cancers and, to a lesser degree, endometrial, small <span class="annot" data-tooltip="bowel /'baʊəl/ n. 肠；内部；同情vt. 将……的肚肠取出">bowel</span> and stomach cancers. What is more, KRAS is just one of a family of “oncogenes”—those often involved in cancers—that are <span class="annot" data-tooltip="collectively /kə'lektɪvli/ adv. 全体地；共同地">collectively</span> known as RAS <span class="annot" data-tooltip="mutations /mjuː'teɪʃn/ n. 突变；变化；元音变化">mutations</span>. Daraxonrasib could, in theory, work to some degree on other RAS-driven cancers such as <span class="annot" data-tooltip="multiple /'mʌltɪpl/ adj. 多样的；许多的；多重的n. 并联；倍数">multiple</span> myeloma, a type of blood cancer. RAS mutations are found in 20% of all cancers, accounting for about 3.4m cases of cancer around the world every year. They have been a promising target since their discovery in 1982. But the structure of the proteins produced by the genes has few molecular <span class="annot" data-tooltip="chinks /tʃɪŋk/ n. 裂缝；叮当声；裂口vi. 叮当响vt. 使叮当响Chinkn. 〈蔑〉中国佬时 态: chinked, chinking">chinks</span> into which drugs might get their hooks. For four <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span> they were <span class="annot" data-tooltip="considered /kən'sɪdər/ vt. & vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及时 态: considered, considering, ">considered</span> “undruggable”—but no longer.</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>places</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>due</td><td>/duː/ adj.</td><td>到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）</td></tr>
+<tr><td>strait</td><td>/streɪt/ n.</td><td>海峡；（尤指经济拮据引起的）困境，境况窘迫adj. 狭窄的；苦恼的</td></tr>
+<tr><td>crop</td><td>/krɑːp/ n.</td><td>农作物；庄稼；产量；平头vt. 种植；收割；修剪；剪短vi. 收获, cropping, crops</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>commission</td><td>/kə'mɪʃn/ n.</td><td>授权, 委托委员会佣金, 回扣vt. 委任, 委托, commissioning, commissions</td></tr>
+<tr><td>venezuela</td><td>/ˌvenə'zweɪlə/ n.</td><td>委内瑞拉</td></tr>
+<tr><td>blunt</td><td>/blʌnt/ adj.</td><td>钝的，不锋利的；生硬的；直率的vt. 使迟钝, bluntest</td></tr>
+<tr><td>drought</td><td>/draʊt/ n.</td><td>干旱；缺乏</td></tr>
+<tr><td>livestock</td><td>/'laɪvstɑːk/ n.</td><td>家畜, 牲畜</td></tr>
+<tr><td>coverage</td><td>/'kʌvərɪdʒ/ n.</td><td>新闻报道, 报道量覆盖范围</td></tr>
+<tr><td>simply</td><td>/'sɪmpli/ adv.</td><td>简单地；朴素地；简直；仅仅；坦白地</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>boasts</td><td>/boʊst/ n.</td><td>自吹自擂, 自夸的话vt. & vi. 自夸vt. 有(引以为荣的事物), boasting, boasts</td></tr>
+<tr><td>revenues</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>crucial</td><td>/'kruːʃl/ adj.</td><td>决定性的；重要的；定局的；决断的</td></tr>
+<tr><td>ingredient</td><td>/ɪn'ɡriːdiənt/ n.</td><td>(混合物的)组成部分; 配料</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>significantly</td><td>/sɪɡ'nɪfɪkənt/ adj.</td><td>重要的, 重大的, 可观的有意义的, 有用意的意味深长的</td></tr>
+<tr><td>decade</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>van</td><td>/væn/ n.</td><td>先锋；厢式货车；[计]增值网vt. 用车搬运Van范(男子名), vanning, vans</td></tr>
+<tr><td>brussels</td><td>/ˈbrʌsəlz/ n.</td><td>布鲁塞尔（比利时首都）</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>essential</td><td>/ɪ'senʃl/ adj.</td><td>基本的；必要的；本质的；精华的</td></tr>
+<tr><td>process</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>covered</td><td>/'kʌvər/ vt.</td><td>包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替, covering, covers</td></tr>
+<tr><td>shedding</td><td>/ʃed/ n.</td><td>棚, 库vt. 流出, 流下蜕皮, 树叶脱落, shedding, sheds</td></tr>
+<tr><td>stuck</td><td>/stʌk/ v.</td><td>刺（stick的过去式）adj. 不能动的；被卡住的</td></tr>
+<tr><td>anatomy</td><td>/ə'nætəmi/ n.</td><td>解剖, 解剖学(生物体的)解剖结构(详细的)分析人体；骨骼；干尸</td></tr>
+<tr><td>hoods</td><td>— n.</td><td>头巾；兜帽；覆盖vt. 以头巾覆盖；罩上Hood胡德(姓氏), hooding, hoods</td></tr>
+<tr><td>tricky</td><td>/'trɪki/ adj.</td><td>机警的；狡猾的, trickiest</td></tr>
+<tr><td>notoriously</td><td>/noʊ'tɔːriəs/ adj.</td><td>臭名昭著的, 声名狼藉的</td></tr>
+<tr><td>van</td><td>/væn/ n.</td><td>先锋；厢式货车；[计]增值网vt. 用车搬运Van范(男子名), vanning, vans</td></tr>
+<tr><td>malaysia</td><td>— n.</td><td>马来西亚</td></tr>
+<tr><td>simply</td><td>/'sɪmpli/ adv.</td><td>简单地；朴素地；简直；仅仅；坦白地</td></tr>
+<tr><td>interacting</td><td>— </td><td>相互作用</td></tr>
+<tr><td>dominant</td><td>/'dɑːmɪnənt/ adj.</td><td>支配的，统治的；占优势的；显性的n. 显性</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>humid</td><td>/'hjuːmɪd/ adj.</td><td>潮湿的；湿润的；多湿气的</td></tr>
+<tr><td>humidity</td><td>/hjuː'mɪdəti/ n.</td><td>湿度, 潮湿, 湿气</td></tr>
+<tr><td>encourage</td><td>/ɪn'kɜːrɪdʒ/ vt.</td><td>鼓励, 激励促进, 助长, 激发, encouraging, encourages</td></tr>
+<tr><td>yields</td><td>/jiːld/ vt.</td><td>出产；屈服；放弃vi. 屈服，投降n. 收益；产量, yielding, yields</td></tr>
+<tr><td>coverage</td><td>/'kʌvərɪdʒ/ n.</td><td>新闻报道, 报道量覆盖范围</td></tr>
+<tr><td>simply</td><td>/'sɪmpli/ adv.</td><td>简单地；朴素地；简直；仅仅；坦白地</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>rivals</td><td>/'raɪvl/ n.</td><td>竞争对手vt. 与…竞争, 与…匹敌, rivalled rivaling, rivalling rivals, rivals</td></tr>
+<tr><td>towards</td><td>/tɔːrdz/ prep.</td><td>向，朝为了；有助于；用于对于，关于接近；将近；大约</td></tr>
+<tr><td>journal</td><td>/'dʒɜːrnl/ n.</td><td>日报，杂志；日记；[经]分类账</td></tr>
+<tr><td>reveals</td><td>/rɪ'viːl/ vt.</td><td>显示；露出泄露；透露，revealing，reveals</td></tr>
+<tr><td>engage</td><td>/ɪn'ɡeɪdʒ/ vt.</td><td>雇佣；吸引，占用；使订婚；使参加；预定vi. 答应，保证；从事；交战；啮合, engaging, engages</td></tr>
+<tr><td>volatile</td><td>/'vɑːlətl/ adj.</td><td>（人或其情绪）不稳定的；易变的；易怒的，喜怒无常的（情况）可能急剧波动的；不稳定的；易恶化的（物质）易挥发的，易气化的【计】（计算机内存）易失的n.【罕】 挥发</td></tr>
+<tr><td>organic</td><td>/ɔːr'ɡænɪk/ adj.</td><td>器官的；器质性的有机(体)的，有机物的</td></tr>
+<tr><td>compounds</td><td>/'kɑːmpaʊnd/ n.</td><td>复合物；混合物；【化】化合物（语法）复合词有围栏（或围墙）的场地（内有工厂或其他建筑群）adj. 复合的v. 使加重；使恶化由…构成（或形成）混合；掺和；拌和,</td></tr>
+<tr><td>composition</td><td>/ˌkɑːmpə'zɪʃn/ n.</td><td>创作，写作，作曲作文，作品构图；构成，成分混合物，合成物</td></tr>
+<tr><td>release</td><td>/rɪ'liːs/ vt.</td><td>释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]，releasing，releases</td></tr>
+<tr><td>drives</td><td>/draɪv/ vt.</td><td>驱赶驱使, 促使敲, 击vt. & vi. 驾驶n. 乘车旅行私人车道传动, 驱动干劲, 积极性, 能动性紧迫, 逼迫, 压力, drives</td></tr>
+<tr><td>raise</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>detect</td><td>/dɪ'tekt/ vt.</td><td>发现；发觉，查明，detecting，detects</td></tr>
+<tr><td>chambers</td><td>/'tʃeɪmbər/ n.</td><td>（身体或器官内的）室，膛；房间；会所adj. 室内的；私人的，秘密的vt. 把…关在室内；装填（弹药等）, chambering, chambers</td></tr>
+<tr><td>vents</td><td>/vent/ n.</td><td>出口；通风孔；（感情的）发泄vt. 发泄感情；放出…；给…开孔vi. （通过排泄等）减轻压力；放出, venting, vents</td></tr>
+<tr><td>blow</td><td>/bloʊ/ n.</td><td>吹；殴打；打击vi. 风吹；喘气vt. 风吹, blows</td></tr>
+<tr><td>chamber</td><td>/'tʃeɪmbər/ n.</td><td>（身体或器官内的）室，膛；房间；会所adj. 室内的；私人的，秘密的vt. 把…关在室内；装填（弹药等）, chambering, chambers</td></tr>
+<tr><td>monitor</td><td>/'mɑːnɪtər/ n.</td><td>显示屏；监视器；（计算机）显示器监控器；监测器班长；级长；班代表（尤指派往国外的）监督员，核查员巨蜥v. 监视；检查；跟踪调查监听（电话、外国无线电广播等）, </td></tr>
+<tr><td>striking</td><td>/'straɪkɪŋ/ adj.</td><td>显著的，突出的引人注目的；容貌出众的</td></tr>
+<tr><td>detecting</td><td>/dɪ'tekt/ vt.</td><td>发现；发觉，查明，detecting，detects</td></tr>
+<tr><td>compounds</td><td>/'kɑːmpaʊnd/ n.</td><td>复合物；混合物；【化】化合物（语法）复合词有围栏（或围墙）的场地（内有工厂或其他建筑群）adj. 复合的v. 使加重；使恶化由…构成（或形成）混合；掺和；拌和,</td></tr>
+<tr><td>race</td><td>/reɪs/ n.</td><td>种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACEabbr. Radiation Adap</td></tr>
+<tr><td>notably</td><td>/'noʊtəbli/ adv.</td><td>显著地；尤其</td></tr>
+<tr><td>intermediate</td><td>/ˌɪntər'miːdiət/ adj.</td><td>中间的；中级的，intermediating，intermediates</td></tr>
+<tr><td>significant</td><td>/sɪɡ'nɪfɪkənt/ adj.</td><td>重要的, 重大的, 可观的有意义的, 有用意的意味深长的</td></tr>
+<tr><td>genetic</td><td>/dʒə'netɪk/ adj.</td><td>遗传的；起源的；基因的</td></tr>
+<tr><td>tissues</td><td>/'tɪʃuː/ n.</td><td>组织薄纸, 棉纸一套, 一系列</td></tr>
+<tr><td>revealed</td><td>/rɪ'viːl/ vt.</td><td>显示；露出泄露；透露，revealing，reveals</td></tr>
+<tr><td>exactly</td><td>/ɪɡ'zækt/ adj.</td><td>精确的；准确的，精密的vt. 强求；要求；急需vi. 勒索钱财, exacting, exacts</td></tr>
+<tr><td>towards</td><td>/tɔːrdz/ prep.</td><td>向，朝为了；有助于；用于对于，关于接近；将近；大约</td></tr>
+<tr><td>eavesdrop</td><td>/'iːvzdrɑːp/ vi.</td><td>偷听(别人的谈话), eavesdropping, eavesdrops</td></tr>
+<tr><td>tweak</td><td>/twiːk/ n.</td><td>拧；扭；焦急vt. 扭；用力拉；开足马力, tweaking, tweaks</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>strategies</td><td>/'strætədʒi/ n.</td><td>战略学, 兵法战略, 策略策略, 计谋</td></tr>
+<tr><td>productivity</td><td>/ˌproʊdʌk'tɪvəti/ n.</td><td>生产率, 生产力</td></tr>
+<tr><td>nudge</td><td>/nʌdʒ/ n.</td><td>用肘轻推；推动；没完没了抱怨的人vt. 用肘轻推；推进；向…不停地唠叨vi. 轻推；推进；唠叨, nudging, nudges</td></tr>
+<tr><td>crops</td><td>/krɑːp/ n.</td><td>农作物；庄稼；产量；平头vt. 种植；收割；修剪；剪短vi. 收获, cropping, crops</td></tr>
+<tr><td>yields</td><td>/jiːld/ vt.</td><td>出产；屈服；放弃vi. 屈服，投降n. 收益；产量, yielding, yields</td></tr>
+<tr><td>coverage</td><td>/'kʌvərɪdʒ/ n.</td><td>新闻报道, 报道量覆盖范围</td></tr>
+<tr><td>simply</td><td>/'sɪmpli/ adv.</td><td>简单地；朴素地；简直；仅仅；坦白地</td></tr>
+<tr><td>cancer</td><td>/'kænsər/ n.</td><td>癌迅速蔓延的恶劣的或危险的事物</td></tr>
+<tr><td>master</td><td>/mæst/ n.</td><td>船桅，桅杆；旗杆MASTabbr. Magnetic Annular Shock Tube 磁性环形激波管(风洞研究用)</td></tr>
+<tr><td>entirely</td><td>/ɪn'taɪərli/ adv.</td><td>全部地;完整地;完全地</td></tr>
+<tr><td>bunch</td><td>/bʌntʃ/ n.</td><td>串；群；突出物vi. 隆起；打褶；形成一串vt. 使成一串；使打褶, bunching, bunches</td></tr>
+<tr><td>conference</td><td>/'kɑːnfərəns/ n.</td><td>会议讨论, 商谈</td></tr>
+<tr><td>trials</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>cancers</td><td>/'kænsər/ n.</td><td>癌迅速蔓延的恶劣的或危险的事物</td></tr>
+<tr><td>cancers</td><td>/'kænsər/ n.</td><td>癌迅速蔓延的恶劣的或危险的事物</td></tr>
+<tr><td>resistance</td><td>/rɪ'zɪstəns/ n.</td><td>抵抗, 反抗, 抵抗能力阻力电阻, 热阻</td></tr>
+<tr><td>alongside</td><td>/əˌlɔːŋ'saɪd/ adv.</td><td>靠着边，沿着边prep. (表示位置)在…旁边；沿着…的边；与…并排靠拢着(表示比较)与…放在一起比较(表示伴随)与…一起，与…一道</td></tr>
+<tr><td>aggressive</td><td>/ə'ɡresɪv/ adj.</td><td>好争斗的, 挑衅的, 侵略性的</td></tr>
+<tr><td>resistant</td><td>/rɪ'zɪstənt/ adj.</td><td>有抵抗力的, 抵抗的</td></tr>
+<tr><td>encourages</td><td>/ɪn'kɜːrɪdʒ/ vt.</td><td>鼓励, 激励促进, 助长, 激发, encouraging, encourages</td></tr>
+<tr><td>tumours</td><td>/'tuːmər/ n.</td><td>肿瘤；瘤；肿块</td></tr>
+<tr><td>mutation</td><td>/mjuː'teɪʃn/ n.</td><td>突变；变化；元音变化</td></tr>
+<tr><td>drives</td><td>/draɪv/ vt.</td><td>驱赶驱使, 促使敲, 击vt. & vi. 驾驶n. 乘车旅行私人车道传动, 驱动干劲, 积极性, 能动性紧迫, 逼迫, 压力, drives</td></tr>
+<tr><td>tumour</td><td>/'tuːmər/ n.</td><td>肿瘤；瘤；肿块</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>trial</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>line</td><td>/laɪn/ n.</td><td>绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long interspersed element)长散在元</td></tr>
+<tr><td>inhibiting</td><td>/ɪn'hɪbɪt/ vt.</td><td>抑制；禁止, inhibiting, inhibits</td></tr>
+<tr><td>susceptible</td><td>/sə'septəbl/ adj.</td><td>易受影响的; 易动感情的过敏的; 易受…感染的能经受的</td></tr>
+<tr><td>involved</td><td>/ɪn'vɑːlvd/ adj.</td><td>卷入的；有关的；复杂的v. 涉及；使参与；包含（involve的过去式和过去分词）</td></tr>
+<tr><td>division</td><td>/dɪ'vɪʒn/ n.</td><td>[数] 除法；部门；分配；分割；师（军队）；赛区</td></tr>
+<tr><td>either</td><td>/'iːðər/ pron.</td><td>(两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的</td></tr>
+<tr><td>jammed</td><td>/dʒæm/ n.</td><td>果酱拥挤，堵塞困难的处境；窘境vt. & vi. (使)塞紧，(使)挤满发生故障；夹住，卡住vt. 堵塞(发射无线电波)干扰(信息，节目)，jamming，ja</td></tr>
+<tr><td>pathology</td><td>/pə'θɑːlədʒi/ n.</td><td>病理(学)n. 病理学家</td></tr>
+<tr><td>cancer</td><td>/'kænsər/ n.</td><td>癌迅速蔓延的恶劣的或危险的事物</td></tr>
+<tr><td>candidates</td><td>/'kændɪdət，ˈkændɪdeɪt/ n.</td><td>申请求职者, 候选人报考者</td></tr>
+<tr><td>bowel</td><td>/'baʊəl/ n.</td><td>肠；内部；同情vt. 将……的肚肠取出</td></tr>
+<tr><td>collectively</td><td>/kə'lektɪvli/ adv.</td><td>全体地；共同地</td></tr>
+<tr><td>mutations</td><td>/mjuː'teɪʃn/ n.</td><td>突变；变化；元音变化</td></tr>
+<tr><td>multiple</td><td>/'mʌltɪpl/ adj.</td><td>多样的；许多的；多重的n. 并联；倍数</td></tr>
+<tr><td>chinks</td><td>/tʃɪŋk/ n.</td><td>裂缝；叮当声；裂口vi. 叮当响vt. 使叮当响Chinkn. 〈蔑〉中国佬, chinking, chinks</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>considered</td><td>/kən'sɪdər/ vt.</td><td>& vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及, considering, considers</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day35.html" class="nav-btn">← Day 35</a>
+  <a href="day37.html" class="nav-btn">Day 37 →</a>
+</div>
+
+<div class="progress">📖 Day 36 of 40</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-06-20</div>
+
+</body>
+</html>

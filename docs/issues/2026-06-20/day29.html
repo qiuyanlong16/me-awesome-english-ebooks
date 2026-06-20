@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business | Token reckoning</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-06-20</div>
+
+<h1 class="article-title">Business | Token reckoning</h1>
+<div class="article-section">Business</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>Companies are <span class="annot" data-tooltip="scrambling 不规则性">scrambling</span> to <span class="annot" data-tooltip="curtail /kɜːr'teɪl/ vt. 截断, 缩短时 态: curtailed, curtailing, curtails">curtail</span> soaring AI costs For the heaviest users, tokenmaxxing is losing its appeal June 18th 2026 “It’s going to be an absolute <span class="annot" data-tooltip="nightmare /'naɪtmer/ n. 噩梦〈口〉可怕的事情, 无法摆脱的恐惧形容词: nightmarish">nightmare</span>,” says an executive at a big American tech company. He is talking about an emerging problem for businesses that use artificial intelligence. AI agents—bots that can read, <span class="annot" data-tooltip="interpret /ɪn'tɜːrprət/ vt. 解释；说明vt. & vi. 口译；翻译时 态: interpreted，interpreting，interprets">interpret</span> and act—use masses of <span class="annot" data-tooltip="processing /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">processing</span> power and have started to run up huge bills. As they <span class="annot" data-tooltip="proliferate /prə'lɪfəreɪt/ vi. 激增；(迅速)繁殖；增生扩散时 态: proliferated，proliferating，proliferates">proliferate</span>, the problem will grow. Big companies, the executive points out, <span class="annot" data-tooltip="typically /'tɪpɪkli/ adv. 代表性地;作为特色地;典型地">typically</span> use hundreds of software programs. If each of those offers agents (as they probably will), AI costs could <span class="annot" data-tooltip="spiral /'spaɪrəl/ n. 螺旋；旋涡；螺旋形之物adj. 盘旋的；螺旋形的vt. 使成螺旋形；使作螺旋形上升vi. 盘旋；成螺旋形；螺旋形上升（过">spiral</span> out of control. Budget management is a new worry for AI adopters. Not long ago employees were encouraged to <span class="annot" data-tooltip="binge /bɪndʒ/ n. 狂欢，狂闹；放纵vt. 放纵vi. 狂饮作乐；大吃大喝时 态: binged, binging, bingeing bi">binge</span> on the technology. Burning through vast numbers of tokens—the chunks of text that models <span class="annot" data-tooltip="process /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">process</span>, which are often used as a unit of pricing—became a badge of honour; techies dubbed it “tokenmaxxing”. Companies showed off staff’s AI use on <span class="annot" data-tooltip="internal /ɪn'tɜːrnl/ adj. 国内的；内部的；内在的名 词: internality">internal</span> <span class="annot" data-tooltip="leaderboards /ˈliːdər bɔːrd/ n. （尤指高尔夫锦标赛的）选手积分牌">leaderboards</span>. Meta’s display awarded top users titles like “Token Legend”. Such incentives partly explain the boom in AI spending. So does a change in the way enterprises use the technology. Token-heavy applications, such as <span class="annot" data-tooltip="reasoning /'riːzənɪŋ/ n. 运用思考、理解、推想等能力的做法或过程;推理">reasoning</span> models and agents, are growing more popular. In some cases agents build their <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> agents, sending costs higher still. <span class="annot" data-tooltip="ramp /ræmp/ n. 斜坡，坡道；敲诈vi. 蔓延；狂跳乱撞；敲诈vt. 敲诈；使有斜面时 态: ramped, ramping, ramps">Ramp</span>, a <span class="annot" data-tooltip="corporate /'kɔːrpərət/ adj. 社团的, 法人的副 词: corporately">corporate</span>- <span class="annot" data-tooltip="credit /'kredɪt/ n. 赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)时 态:">credit</span>-card provider, analyses its <span class="annot" data-tooltip="clients /'klaɪənt/ n. 委托人顾客, 常客">clients</span>’ <span class="annot" data-tooltip="transaction /træn'zækʃn/ n. 处理，办理，执行(一笔)交易；(一项)事务形容词: transactional">transaction</span> data to <span class="annot" data-tooltip="shed /ʃed/ n. 棚, 库vt. 流出, 流下蜕皮, 树叶脱落时 态: shed, shedding, sheds">shed</span> light on their AI use. It reckons their spending has risen 13-fold in the past year. In April Uber said that it had spent its <span class="annot" data-tooltip="annual /'ænjuəl/ adj. 年度的；每年的n. 年刊，年鉴；一年生植物副 词: annually">annual</span> AI budget in four months. Other firms have similar problems. One reportedly spent $500m on AI tokens in a month. Sam Altman, the boss of OpenAI, has called <span class="annot" data-tooltip="mounting /maʊnt/ vt. & vi. 登上；骑上vi. 增加；上升vt. 上演；配有…发动攻击；攻击n. 山峰坐骑时 态: mounted，mou">mounting</span> customer costs “a huge <span class="annot" data-tooltip="issue /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issue</span>”.</p>
+<p>For now, the problem is concentrated. The top spenders <span class="annot" data-tooltip="tend /tend/ vt. 照料，照顾，伺候vi. 往，朝向易于；倾向时 态: tended，tending，tends">tend</span> to be tech firms, because they are early adopters and because AI is particularly good at writing software. <span class="annot" data-tooltip="ramp /ræmp/ n. 斜坡，坡道；敲诈vi. 蔓延；狂跳乱撞；敲诈vt. 敲诈；使有斜面时 态: ramped, ramping, ramps">Ramp</span> reckons that the 1% of <span class="annot" data-tooltip="clients /'klaɪənt/ n. 委托人顾客, 常客">clients</span> that spend the most on AI per employee are <span class="annot" data-tooltip="racking /ræk/ n. 行李架；拷问台；齿条vi. 随风飘；小步跑；变形vt. 折磨；榨取时 态: racked, racking, racks">racking</span> up average monthly bills of about $7,450 per person; the median <span class="annot" data-tooltip="client /'klaɪənt/ n. 委托人顾客, 常客">client</span> pays $11. And <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">although</span> the big spenders’ AI bills are low compared with the cost of hiring a developer in San Francisco, they are high compared with <span class="annot" data-tooltip="employing /ɪm'plɔɪ/ vt. 使用，采用；雇用；使忙于，使从事于n. 雇用；使用时 态: employed, employing, employs">employing</span> one in <span class="annot" data-tooltip="delhi /ˈdɛli/ n. 德里（印度城市名）">Delhi</span>. Companies are responding in various ways. Although AI laggards are still racing to <span class="annot" data-tooltip="adopt /ə'dɑːpt/ vt. 收养采用, 采纳, 采取正式接受, 通过时 态: adopted, adopting, adopts">adopt</span> the technology, for the heaviest users tokenmaxxing is out. Some, including Meta and <span class="annot" data-tooltip="amazon /ˈæməˌzɑn/ n. 高大强悍的女人；（古希腊神话中的）亚马孙族女战士Amazonn. 亚马逊河(南美洲大河)">Amazon</span>, have scrapped their <span class="annot" data-tooltip="leaderboards /ˈliːdər bɔːrd/ n. （尤指高尔夫锦标赛的）选手积分牌">leaderboards</span>. Many are thinking more carefully about model choice. Plenty of tasks do not require pricey, <span class="annot" data-tooltip="cutting /'kʌtɪŋ/ n. 切断；剪辑；开凿adj. 严寒的；锋利的；尖酸刻薄的v. 切开；采伐；削减（cut的ing形式）">cutting</span>-<span class="annot" data-tooltip="edge /edʒ/ n. 边缘；刀刃；优势；锋利vt. 使锐利；将…开刃；给…加上边vi. 缓缓移动；侧着移动EDGEabbr. Electron">edge</span> models. Aran Khanna of Archera.ai, which helps companies reduce their cloud costs, points out that in some cases <span class="annot" data-tooltip="sonnet /'sɑːnɪt/ n. 十四行诗">Sonnet</span>, a <span class="annot" data-tooltip="lagging /'lægɪŋ/ n. 绝缘层材料adj. 落后的">lagging</span>-edge model from <span class="annot" data-tooltip="anthropic /ænˈθrɑpɪk/ adj. 人类的,有关人类的">Anthropic</span>, can cost a twentieth of what Opus, a <span class="annot" data-tooltip="leading /ˈliːdɪŋ/ adj. 主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）">leading</span>-edge one, does. And Kimi, an open-source model from Moonshot AI, a Chinese <span class="annot" data-tooltip="startup /ˈstɑrtˈʌp/ n. 启动；开办">startup</span>, can cost a twentieth of that. Another approach is spending <span class="annot" data-tooltip="caps abbr. Cassette Programming System 盒式磁带程序设计系统">caps</span>. Uber has limited its employees to $1,500-<span class="annot" data-tooltip="worth /wɜːrθ/ adj. 值…的n. 价值；财产时 态: worthed, worthing, worths">worth</span> of tokens each month per coding tool. How firms choose to <span class="annot" data-tooltip="allocate /'æləkeɪt/ vt. 分配；拨出；使坐落于vi. 分配；指定时 态: allocated, allocating, allocates">allocate</span> tokens depends on where they can generate the most <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span> from AI, says Rachel Laycock of Thoughtworks, a consultancy. That often means companies apportion the most tokens to their core business function, such as engineers in a tech firm, she adds. Some software <span class="annot" data-tooltip="vendors /'vendər/ n. 小贩；卖主；自动售货机">vendors</span> are experimenting with new pricing plans to <span class="annot" data-tooltip="ease /iːz/ vt. 减轻，缓和；使安心n. 安逸，悠闲；轻松，舒适vi. 减轻，缓和；放松；灵活地移动EASEabbr. Electroni">ease</span> clients’ concern over costs. Intercom, one such supplier, offers a service whereby the customer pays only for queries that are resolved by its IT- support agent. The big cloud providers have launched cost-management services, too, including <span class="annot" data-tooltip="budgeting /bʌdʒ/ vt. & vi. (使)稍微移动(使)改变主意；(使)让步n. (毛向外翻的)羔羊皮adj. 用羔羊皮装饰的浮夸的，自负的；庄">budgeting</span> tools and ways to triage queries to the most <span class="annot" data-tooltip="appropriate /ə'proʊpriət/ adj. 适当的，恰当的vt. 挪用；占用；盗用拨出(款项)时 态: appropriated，appropriating，app">appropriate</span> model. For the model-makers, the balancing act is trickier. They want their biggest customers to use as many tokens as possible without balking at the cost. Today the cost of providing AI services is subsidised by the labs. Indeed, OpenAI’s plan for winning customers from Anthropic reportedly involves drastic price cuts. But eventually the model-makers will need to turn a profit, which will mean raising prices. Pressure to do so will only intensify later</p>
+<p>this year if, as expected, <span class="annot" data-tooltip="anthropic /ænˈθrɑpɪk/ adj. 人类的,有关人类的">Anthropic</span> and OpenAI go public. Their customers, then, can look forward to more jaw-dropping AI bills. ■ To track the <span class="annot" data-tooltip="trends /trend/ n. 趋势, 倾向流行时 态: trended, trending, trends">trends</span> shaping <span class="annot" data-tooltip="commerce /'kɑːmɜːrs/ n. 商业, 贸易">commerce</span>, <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> and technology, sign up to “The Bottom <span class="annot" data-tooltip="line /laɪn/ n. 绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long inter">Line</span>”, our weekly subscriber-only newsletter on global business. This article was downloaded by zlibrary from https://www.economist.com//business/2026/06/14/companies-are-<span class="annot" data-tooltip="scrambling 不规则性">scrambling</span>-to-<span class="annot" data-tooltip="curtail /kɜːr'teɪl/ vt. 截断, 缩短时 态: curtailed, curtailing, curtails">curtail</span>- soaring-ai-costs</p>
+<div class="article-separator"></div>
+<div class="article-header">Business · Business | Tata’s troubles</div>
+<p>Tata’s big bets are yet to pay off The Indian conglomerate’s boardroom drama <span class="annot" data-tooltip="highlights 拔萃,集锦(精采会议文献选辑)">highlights</span> a speculative <span class="annot" data-tooltip="strategy /'strætədʒi/ n. 战略学, 兵法战略, 策略策略, 计谋">strategy</span> June 18th 2026 Jamsetji Tata, the Victorian founder of his family’s business empire, dreamed big. He had four ambitions: to open a world-class hotel in India; to build the country’s first steel plant; to power Bombay (now <span class="annot" data-tooltip="mumbai n. 孟买（印度城市）">Mumbai</span>) with hydroelectricity; and to <span class="annot" data-tooltip="establish /ɪ'stæblɪʃ/ vt. 建立, 成立安置确定, 证实时 态: established, establishing, establishes">establish</span> an Indian scientific institute to <span class="annot" data-tooltip="rival /'raɪvl/ n. 竞争对手vt. 与…竞争, 与…匹敌时 态: rivaled, rivalled rivaling, rivalling">rival</span> those in Europe. Though sceptics scoffed, all were eventually realised. Today the Tata <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">Group</span> is one of India’s largest conglomerates, selling everything from salt to software. It is still dreaming. But investments in its new ventures—an airline, a digital “super-app”, smartphones and <span class="annot" data-tooltip="semiconductors /'semikəndʌktər/ n. 〈物〉半导体形容词: semiconducting">semiconductors</span>—are absorbing vast amounts of capital.</p>
+<p>Concerns about capital <span class="annot" data-tooltip="allocation /ˌælə'keɪʃn/ n. 配给, 分配, 拨出分配额(或量)">allocation</span> have contributed to a boardroom <span class="annot" data-tooltip="dispute /dɪ'spjuːt/ vt. 辩论；阻止；抗拒；怀疑vi. 争论n. 辩论；争吵时 态: disputed, disputing, disputes">dispute</span>. Sixty-six per cent of Tata Sons, the <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span>’s holding company, is owned by Tata Trusts, one of the world’s largest <span class="annot" data-tooltip="charities /'tʃærəti/ n. 施舍；慈善；慈善团体；施舍物；宽容">charities</span>, <span class="annot" data-tooltip="established /ɪ'stæblɪʃt/ adj. 已建立的；已设立的；已制定的确定的，证实的">established</span> by the family over many years, which funds health care, education, poverty alleviation and culture. In February Noel Tata, the Trusts’ <span class="annot" data-tooltip="chairman /'tʃermən/ n. 主席，会长；董事长时 态: chairmanned, chairmanning, chairmans">chairman</span>, withdrew his support for Natarajan Chandrasekaran to have a third five-year term running Tata Sons. The two met to clear the air before a board meeting in May, at which some of the group’s lossmaking new entities gave presentations. At <span class="annot" data-tooltip="issue /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issue</span> are the future of these ventures, whether the company should remain private, how to find an exit for a minority <span class="annot" data-tooltip="shareholder /'ʃerhoʊldər/ n. 股东名 词: shareholding">shareholder</span> and a potential succession plan for Mr Chandrasekaran. None of these <span class="annot" data-tooltip="issues /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issues</span> was resolved at the latest board meeting on June 12th. The minority shareholder is the Mistry family, another Indian business dynasty (like the Tatas, from the Parsi religious minority), which owns 18% of Tata Sons via the Shapoorji Pallonji Group, an <span class="annot" data-tooltip="infrastructure /'ɪnfrəstrʌktʃər/ n. 基础设施; 基础结构">infrastructure</span> company. The SP Group is heavily indebted and wants to sell its stake. (Noel Tata is married to Aloo Mistry, sister of the late Cyrus Mistry, former chair of Tata Sons. In 2016 Ratan Tata, Noel’s half-brother, who ran the business for many years and died in 2024, forced Cyrus out, replacing him with Mr Chandrasekaran.) Four years ago this newspaper examined “the world’s biggest bet on India”: instead of deploying capital in foreign businesses such as Jaguar Land <span class="annot" data-tooltip="rover /'roʊvər/ n. 流浪者,漫游者">Rover</span>, a British carmaker, and Corus Steel, an Anglo-Dutch smelter, Tata was refocusing on India’s ascendant economy. The bet is yet to pay off. An analysis by The Economist finds that Tata Sons’ return on capital <span class="annot" data-tooltip="employed /ɪm'plɔɪ/ vt. 使用，采用；雇用；使忙于，使从事于n. 雇用；使用时 态: employed, employing, employs">employed</span> (ROCE), a measure of <span class="annot" data-tooltip="profitability /ˌprɑːfɪtə'bɪləti/ n. 获利(状况)，盈利(情况)">profitability</span>, has been roughly stable for the past three years, but that its new ventures are dragging performance down. The ROCE of listed businesses, including Tata Motors and Tata Steel as well as Tata Consultancy Services (TCS), a big IT firm, was 25.1% last year, up from 17.9% in 2019 (see chart). TCS <span class="annot" data-tooltip="typically /'tɪpɪkli/ adv. 代表性地;作为特色地;典型地">typically</span> provides the largest chunk of Tata Sons’ income. In the 2025 financial year, TCS’s <span class="annot" data-tooltip="dividend /'dɪvɪdend/ n. 股息；被除数；奖金">dividend</span> made up over 80% of its <span class="annot" data-tooltip="revenue /'revənuː/ n. 收入，收益；财政收入，税收">revenue</span>.</p>
+<p>But unlisted new businesses have little to show for the amounts <span class="annot" data-tooltip="lavished /'lævɪʃ/ adj. 浪费的；丰富的；大方的vt. 浪费；慷慨给予；滥用时 态: lavished, lavishing, lavishes">lavished</span> on them so <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span>. Air India, the national flag-carrier privatised in 2022, is making heavy losses. It had been mismanaged in state hands, but the <span class="annot" data-tooltip="closure /'kloʊʒər/ n. 关闭；终止，结束vt. 使终止时 态: closured, closuring, closures">closure</span> of Pakistani airspace to Indian airlines after a brief conflict in May 2025, a fatal air <span class="annot" data-tooltip="crash /kræʃ/ n. 碰撞；崩溃；坠落vt. 破碎；撞碎；坠落vi. 碰撞；坠毁；闯；突然倒台adj. 速成的时 态: crashed, cr">crash</span> last June and the Gulf war’s <span class="annot" data-tooltip="disruption n. 中断,分裂,瓦解,破坏">disruption</span> of jet-fuel markets have added to its woes. Tata Digital, an attempt to build a super-app selling Tata’s consumer range, is being scaled back. The one bright <span class="annot" data-tooltip="spot /spɑːt/ n. 斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Po">spot</span> has been Tata Electronics, which manufactures iPhones in India <span class="annot" data-tooltip="alongside /əˌlɔːŋ'saɪd/ adv. 靠着边，沿着边prep. (表示位置)在…旁边；沿着…的边；与…并排靠拢着(表示比较)与…放在一起比较(表示伴随)与…一">alongside</span> Foxconn, a Taiwanese firm. It is now modestly in the black, but will need more investment to embed itself in supply chains for phones and <span class="annot" data-tooltip="semiconductors /'semikəndʌktər/ n. 〈物〉半导体形容词: semiconducting">semiconductors</span>. With ASML, a Dutch firm, it is building an $11bn chip factory in Dholera, in western India. Agratas, a battery-making venture, is <span class="annot" data-tooltip="likewise /'laɪkwaɪz/ adv. 也；同样地">likewise</span> hungry for capital. The Indian government has provided grants for Tata’s chip and battery factories. A grant from the British government has also contributed to a battery plant in England to supply Jaguar Land <span class="annot" data-tooltip="rover /'roʊvər/ n. 流浪者,漫游者">Rover</span>. Yet the unlisted entities’ combined ROCE is -5.5%. Worse, TCS is looking less <span class="annot" data-tooltip="secure /sɪ'kjʊr/ adj. 安心的；有把握的可靠的；牢靠的；稳固的；安全的；稳妥的严密把守的；牢固的；坚固的v. （尤指经过努力）获得，取得，实现拴">secure</span>. Since the end of 2024 its share price has fallen by more than half, largely on investors’ fears that <span class="annot" data-tooltip="generative /'dʒenərətɪv/ adj. 能生产的, 有生产力的生殖的">generative</span> artificial intelligence will <span class="annot" data-tooltip="undermine /ˌʌndər'maɪn/ vt. 在某物下挖洞或挖通道；侵蚀…的基础暗中破坏；逐渐削弱时 态: undermined，undermining，underm">undermine</span> Indian IT outsourcers. Its earnings have not yet suffered: operating profit has risen by 12% in the same period. Even so, as</p>
+<p>well as turning around Air India and taking its next steps into high-tech <span class="annot" data-tooltip="manufacturing /ˌmænju'fæktʃərɪŋ/ n. 制造业，工业adj. 制造业的；制造的">manufacturing</span>, Tata Sons must find a <span class="annot" data-tooltip="strategy /'strætədʒi/ n. 战略学, 兵法战略, 策略策略, 计谋">strategy</span> for India’s largest IT firm to adapt to AI. Mr Chandrasekaran thus faces competing demands: providing <span class="annot" data-tooltip="dividends /'dɪvɪdend/ n. 股息；被除数；奖金">dividends</span> for Tata Trusts, buying out the Mistrys and <span class="annot" data-tooltip="investing /ɪn'vest/ vt. 投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买时 态: invested, investing, invests">investing</span> in the new ventures. The difficulty is <span class="annot" data-tooltip="compounded /'kɑːmpaʊnd/ n. 复合物；混合物；【化】化合物（语法）复合词有围栏（或围墙）的场地（内有工厂或其他建筑群）adj. 复合的v. 使加重；使">compounded</span> by another long-running <span class="annot" data-tooltip="dispute /dɪ'spjuːt/ vt. 辩论；阻止；抗拒；怀疑vi. 争论n. 辩论；争吵时 态: disputed, disputing, disputes">dispute</span>, over whether Tata Sons should remain private. The Reserve Bank of India, the <span class="annot" data-tooltip="central /'sentrəl/ adj. 中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的副 词: centrally">central</span> bank, has demanded that it list on the stock market. An RBI regulation requires non-bank financial corporations, which carry out banking functions but are regulated differently, to be listed. Though the holding company is in the investment business, Tata Sons argues that it is not a bank and does not <span class="annot" data-tooltip="intermediate /ˌɪntər'miːdiət/ adj. 中间的；中级的时 态: intermediated，intermediating，intermediates">intermediate</span> between savers and borrowers. It has applied for a <span class="annot" data-tooltip="waiver /'weɪvər/ n. 弃权，放弃；弃权证书">waiver</span>, which the RBI has so <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> denied. A listing would allow both Tata Sons to <span class="annot" data-tooltip="raise /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raise</span> capital for its new ventures and the SP <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">Group</span> to sell up. The company would probably be valued at $120bn- 150bn, even with a conglomerate discount analysts put at around a third. But Tata Trusts resists the idea. A public offering could mean the family loses control and could threaten Tata Sons’ particular role in India’s industrial development. It would, argues N.A. Soonawala, a former <span class="annot" data-tooltip="vice /vaɪs/ n. 堕落，邪恶；不良习气，恶习（尤指与性或毒品有关的）罪行，道德败坏行为【英式】老虎钳；台钳（【美式】vise）pref. ">vice</span>-chair of the firm, <span class="annot" data-tooltip="undermine /ˌʌndər'maɪn/ vt. 在某物下挖洞或挖通道；侵蚀…的基础暗中破坏；逐渐削弱时 态: undermined，undermining，underm">undermine</span> a structure that has evolved over a century. Jamsetji Tata did not live to see all his dreams realised: he died in 1904 with only the hotel completed. The hydro plant did not start up for over a <span class="annot" data-tooltip="decade /'dekeɪd/ n. 十年，十年期；十">decade</span>. Tata’s modern bosses may not have as long.■ To track the <span class="annot" data-tooltip="trends /trend/ n. 趋势, 倾向流行时 态: trended, trending, trends">trends</span> shaping <span class="annot" data-tooltip="commerce /'kɑːmɜːrs/ n. 商业, 贸易">commerce</span>, <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> and technology, sign up to “The Bottom <span class="annot" data-tooltip="line /laɪn/ n. 绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long inter">Line</span>”, our weekly subscriber-only newsletter on global business. This article was downloaded by zlibrary from https://www.economist.com//business/2026/06/18/tatas-big-bets-are-yet-to-pay-off</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>scrambling</td><td>— </td><td>不规则性</td></tr>
+<tr><td>curtail</td><td>/kɜːr'teɪl/ vt.</td><td>截断, 缩短, curtailing, curtails</td></tr>
+<tr><td>nightmare</td><td>/'naɪtmer/ n.</td><td>噩梦〈口〉可怕的事情, 无法摆脱的恐惧</td></tr>
+<tr><td>interpret</td><td>/ɪn'tɜːrprət/ vt.</td><td>解释；说明vt. & vi. 口译；翻译，interpreting，interprets</td></tr>
+<tr><td>processing</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>proliferate</td><td>/prə'lɪfəreɪt/ vi.</td><td>激增；(迅速)繁殖；增生扩散，proliferating，proliferates</td></tr>
+<tr><td>typically</td><td>/'tɪpɪkli/ adv.</td><td>代表性地;作为特色地;典型地</td></tr>
+<tr><td>spiral</td><td>/'spaɪrəl/ n.</td><td>螺旋；旋涡；螺旋形之物adj. 盘旋的；螺旋形的vt. 使成螺旋形；使作螺旋形上升vi. 盘旋；成螺旋形；螺旋形上升（过去式spiraled/spiralled</td></tr>
+<tr><td>binge</td><td>/bɪndʒ/ n.</td><td>狂欢，狂闹；放纵vt. 放纵vi. 狂饮作乐；大吃大喝, binging, bingeing binges</td></tr>
+<tr><td>process</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>internal</td><td>/ɪn'tɜːrnl/ adj.</td><td>国内的；内部的；内在的</td></tr>
+<tr><td>leaderboards</td><td>/ˈliːdər bɔːrd/ n.</td><td>（尤指高尔夫锦标赛的）选手积分牌</td></tr>
+<tr><td>reasoning</td><td>/'riːzənɪŋ/ n.</td><td>运用思考、理解、推想等能力的做法或过程;推理</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>ramp</td><td>/ræmp/ n.</td><td>斜坡，坡道；敲诈vi. 蔓延；狂跳乱撞；敲诈vt. 敲诈；使有斜面, ramping, ramps</td></tr>
+<tr><td>corporate</td><td>/'kɔːrpərət/ adj.</td><td>社团的, 法人的</td></tr>
+<tr><td>credit</td><td>/'kredɪt/ n.</td><td>赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)，crediting，credits</td></tr>
+<tr><td>clients</td><td>/'klaɪənt/ n.</td><td>委托人顾客, 常客</td></tr>
+<tr><td>transaction</td><td>/træn'zækʃn/ n.</td><td>处理，办理，执行(一笔)交易；(一项)事务</td></tr>
+<tr><td>shed</td><td>/ʃed/ n.</td><td>棚, 库vt. 流出, 流下蜕皮, 树叶脱落, shedding, sheds</td></tr>
+<tr><td>annual</td><td>/'ænjuəl/ adj.</td><td>年度的；每年的n. 年刊，年鉴；一年生植物</td></tr>
+<tr><td>mounting</td><td>/maʊnt/ vt.</td><td>& vi. 登上；骑上vi. 增加；上升vt. 上演；配有…发动攻击；攻击n. 山峰坐骑，mounting，mounts</td></tr>
+<tr><td>issue</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>tend</td><td>/tend/ vt.</td><td>照料，照顾，伺候vi. 往，朝向易于；倾向，tending，tends</td></tr>
+<tr><td>ramp</td><td>/ræmp/ n.</td><td>斜坡，坡道；敲诈vi. 蔓延；狂跳乱撞；敲诈vt. 敲诈；使有斜面, ramping, ramps</td></tr>
+<tr><td>clients</td><td>/'klaɪənt/ n.</td><td>委托人顾客, 常客</td></tr>
+<tr><td>racking</td><td>/ræk/ n.</td><td>行李架；拷问台；齿条vi. 随风飘；小步跑；变形vt. 折磨；榨取, racking, racks</td></tr>
+<tr><td>client</td><td>/'klaɪənt/ n.</td><td>委托人顾客, 常客</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>employing</td><td>/ɪm'plɔɪ/ vt.</td><td>使用，采用；雇用；使忙于，使从事于n. 雇用；使用, employing, employs</td></tr>
+<tr><td>delhi</td><td>/ˈdɛli/ n.</td><td>德里（印度城市名）</td></tr>
+<tr><td>adopt</td><td>/ə'dɑːpt/ vt.</td><td>收养采用, 采纳, 采取正式接受, 通过, adopting, adopts</td></tr>
+<tr><td>amazon</td><td>/ˈæməˌzɑn/ n.</td><td>高大强悍的女人；（古希腊神话中的）亚马孙族女战士Amazonn. 亚马逊河(南美洲大河)</td></tr>
+<tr><td>leaderboards</td><td>/ˈliːdər bɔːrd/ n.</td><td>（尤指高尔夫锦标赛的）选手积分牌</td></tr>
+<tr><td>cutting</td><td>/'kʌtɪŋ/ n.</td><td>切断；剪辑；开凿adj. 严寒的；锋利的；尖酸刻薄的v. 切开；采伐；削减（cut的ing形式）</td></tr>
+<tr><td>edge</td><td>/edʒ/ n.</td><td>边缘；刀刃；优势；锋利vt. 使锐利；将…开刃；给…加上边vi. 缓缓移动；侧着移动EDGEabbr. Electronic Data Gathering Eq</td></tr>
+<tr><td>sonnet</td><td>/'sɑːnɪt/ n.</td><td>十四行诗</td></tr>
+<tr><td>lagging</td><td>/'lægɪŋ/ n.</td><td>绝缘层材料adj. 落后的</td></tr>
+<tr><td>anthropic</td><td>/ænˈθrɑpɪk/ adj.</td><td>人类的,有关人类的</td></tr>
+<tr><td>leading</td><td>/ˈliːdɪŋ/ adj.</td><td>主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）</td></tr>
+<tr><td>startup</td><td>/ˈstɑrtˈʌp/ n.</td><td>启动；开办</td></tr>
+<tr><td>caps</td><td>— abbr.</td><td>Cassette Programming System 盒式磁带程序设计系统</td></tr>
+<tr><td>worth</td><td>/wɜːrθ/ adj.</td><td>值…的n. 价值；财产, worthing, worths</td></tr>
+<tr><td>allocate</td><td>/'æləkeɪt/ vt.</td><td>分配；拨出；使坐落于vi. 分配；指定, allocating, allocates</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>vendors</td><td>/'vendər/ n.</td><td>小贩；卖主；自动售货机</td></tr>
+<tr><td>ease</td><td>/iːz/ vt.</td><td>减轻，缓和；使安心n. 安逸，悠闲；轻松，舒适vi. 减轻，缓和；放松；灵活地移动EASEabbr. Electronic Airborne Systems E</td></tr>
+<tr><td>budgeting</td><td>/bʌdʒ/ vt.</td><td>& vi. (使)稍微移动(使)改变主意；(使)让步n. (毛向外翻的)羔羊皮adj. 用羔羊皮装饰的浮夸的，自负的；庄严的，budging，budges</td></tr>
+<tr><td>appropriate</td><td>/ə'proʊpriət/ adj.</td><td>适当的，恰当的vt. 挪用；占用；盗用拨出(款项)，appropriating，appropriates</td></tr>
+<tr><td>anthropic</td><td>/ænˈθrɑpɪk/ adj.</td><td>人类的,有关人类的</td></tr>
+<tr><td>trends</td><td>/trend/ n.</td><td>趋势, 倾向流行, trending, trends</td></tr>
+<tr><td>commerce</td><td>/'kɑːmɜːrs/ n.</td><td>商业, 贸易</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>line</td><td>/laɪn/ n.</td><td>绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long interspersed element)长散在元</td></tr>
+<tr><td>scrambling</td><td>— </td><td>不规则性</td></tr>
+<tr><td>curtail</td><td>/kɜːr'teɪl/ vt.</td><td>截断, 缩短, curtailing, curtails</td></tr>
+<tr><td>highlights</td><td>— </td><td>拔萃,集锦(精采会议文献选辑)</td></tr>
+<tr><td>strategy</td><td>/'strætədʒi/ n.</td><td>战略学, 兵法战略, 策略策略, 计谋</td></tr>
+<tr><td>mumbai</td><td>— n.</td><td>孟买（印度城市）</td></tr>
+<tr><td>establish</td><td>/ɪ'stæblɪʃ/ vt.</td><td>建立, 成立安置确定, 证实, establishing, establishes</td></tr>
+<tr><td>rival</td><td>/'raɪvl/ n.</td><td>竞争对手vt. 与…竞争, 与…匹敌, rivalled rivaling, rivalling rivals, rivals</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>semiconductors</td><td>/'semikəndʌktər/ n.</td><td>〈物〉半导体</td></tr>
+<tr><td>allocation</td><td>/ˌælə'keɪʃn/ n.</td><td>配给, 分配, 拨出分配额(或量)</td></tr>
+<tr><td>dispute</td><td>/dɪ'spjuːt/ vt.</td><td>辩论；阻止；抗拒；怀疑vi. 争论n. 辩论；争吵, disputing, disputes</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>charities</td><td>/'tʃærəti/ n.</td><td>施舍；慈善；慈善团体；施舍物；宽容</td></tr>
+<tr><td>established</td><td>/ɪ'stæblɪʃt/ adj.</td><td>已建立的；已设立的；已制定的确定的，证实的</td></tr>
+<tr><td>chairman</td><td>/'tʃermən/ n.</td><td>主席，会长；董事长, chairmanning, chairmans</td></tr>
+<tr><td>issue</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>shareholder</td><td>/'ʃerhoʊldər/ n.</td><td>股东</td></tr>
+<tr><td>issues</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>infrastructure</td><td>/'ɪnfrəstrʌktʃər/ n.</td><td>基础设施; 基础结构</td></tr>
+<tr><td>rover</td><td>/'roʊvər/ n.</td><td>流浪者,漫游者</td></tr>
+<tr><td>employed</td><td>/ɪm'plɔɪ/ vt.</td><td>使用，采用；雇用；使忙于，使从事于n. 雇用；使用, employing, employs</td></tr>
+<tr><td>profitability</td><td>/ˌprɑːfɪtə'bɪləti/ n.</td><td>获利(状况)，盈利(情况)</td></tr>
+<tr><td>typically</td><td>/'tɪpɪkli/ adv.</td><td>代表性地;作为特色地;典型地</td></tr>
+<tr><td>dividend</td><td>/'dɪvɪdend/ n.</td><td>股息；被除数；奖金</td></tr>
+<tr><td>revenue</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>lavished</td><td>/'lævɪʃ/ adj.</td><td>浪费的；丰富的；大方的vt. 浪费；慷慨给予；滥用, lavishing, lavishes</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>closure</td><td>/'kloʊʒər/ n.</td><td>关闭；终止，结束vt. 使终止, closuring, closures</td></tr>
+<tr><td>crash</td><td>/kræʃ/ n.</td><td>碰撞；崩溃；坠落vt. 破碎；撞碎；坠落vi. 碰撞；坠毁；闯；突然倒台adj. 速成的, crashing, crashes</td></tr>
+<tr><td>disruption</td><td>— n.</td><td>中断,分裂,瓦解,破坏</td></tr>
+<tr><td>spot</td><td>/spɑːt/ n.</td><td>斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Positioning and Tracki</td></tr>
+<tr><td>alongside</td><td>/əˌlɔːŋ'saɪd/ adv.</td><td>靠着边，沿着边prep. (表示位置)在…旁边；沿着…的边；与…并排靠拢着(表示比较)与…放在一起比较(表示伴随)与…一起，与…一道</td></tr>
+<tr><td>semiconductors</td><td>/'semikəndʌktər/ n.</td><td>〈物〉半导体</td></tr>
+<tr><td>likewise</td><td>/'laɪkwaɪz/ adv.</td><td>也；同样地</td></tr>
+<tr><td>rover</td><td>/'roʊvər/ n.</td><td>流浪者,漫游者</td></tr>
+<tr><td>secure</td><td>/sɪ'kjʊr/ adj.</td><td>安心的；有把握的可靠的；牢靠的；稳固的；安全的；稳妥的严密把守的；牢固的；坚固的v. （尤指经过努力）获得，取得，实现拴牢；扣紧；关严保护；保卫；使安全抵押；为</td></tr>
+<tr><td>generative</td><td>/'dʒenərətɪv/ adj.</td><td>能生产的, 有生产力的生殖的</td></tr>
+<tr><td>undermine</td><td>/ˌʌndər'maɪn/ vt.</td><td>在某物下挖洞或挖通道；侵蚀…的基础暗中破坏；逐渐削弱，undermining，undermines</td></tr>
+<tr><td>manufacturing</td><td>/ˌmænju'fæktʃərɪŋ/ n.</td><td>制造业，工业adj. 制造业的；制造的</td></tr>
+<tr><td>strategy</td><td>/'strætədʒi/ n.</td><td>战略学, 兵法战略, 策略策略, 计谋</td></tr>
+<tr><td>dividends</td><td>/'dɪvɪdend/ n.</td><td>股息；被除数；奖金</td></tr>
+<tr><td>investing</td><td>/ɪn'vest/ vt.</td><td>投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买, investing, invests</td></tr>
+<tr><td>compounded</td><td>/'kɑːmpaʊnd/ n.</td><td>复合物；混合物；【化】化合物（语法）复合词有围栏（或围墙）的场地（内有工厂或其他建筑群）adj. 复合的v. 使加重；使恶化由…构成（或形成）混合；掺和；拌和,</td></tr>
+<tr><td>dispute</td><td>/dɪ'spjuːt/ vt.</td><td>辩论；阻止；抗拒；怀疑vi. 争论n. 辩论；争吵, disputing, disputes</td></tr>
+<tr><td>central</td><td>/'sentrəl/ adj.</td><td>中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的</td></tr>
+<tr><td>intermediate</td><td>/ˌɪntər'miːdiət/ adj.</td><td>中间的；中级的，intermediating，intermediates</td></tr>
+<tr><td>waiver</td><td>/'weɪvər/ n.</td><td>弃权，放弃；弃权证书</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>raise</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>vice</td><td>/vaɪs/ n.</td><td>堕落，邪恶；不良习气，恶习（尤指与性或毒品有关的）罪行，道德败坏行为【英式】老虎钳；台钳（【美式】vise）pref. 副职的；副的</td></tr>
+<tr><td>undermine</td><td>/ˌʌndər'maɪn/ vt.</td><td>在某物下挖洞或挖通道；侵蚀…的基础暗中破坏；逐渐削弱，undermining，undermines</td></tr>
+<tr><td>decade</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>trends</td><td>/trend/ n.</td><td>趋势, 倾向流行, trending, trends</td></tr>
+<tr><td>commerce</td><td>/'kɑːmɜːrs/ n.</td><td>商业, 贸易</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>line</td><td>/laɪn/ n.</td><td>绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long interspersed element)长散在元</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day28.html" class="nav-btn">← Day 28</a>
+  <a href="day30.html" class="nav-btn">Day 30 →</a>
+</div>
+
+<div class="progress">📖 Day 29 of 40</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-06-20</div>
+
+</body>
+</html>

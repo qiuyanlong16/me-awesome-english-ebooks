@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leaders | Wrong prescription</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-06-20</div>
+
+<h1 class="article-title">Leaders | Wrong prescription</h1>
+<div class="article-section">Leaders</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>America’s recent choices are <span class="annot" data-tooltip="blunting /blʌnt/ adj. 钝的，不锋利的；生硬的；直率的vt. 使迟钝比较级: blunter, bluntest">blunting</span> its <span class="annot" data-tooltip="edge /edʒ/ n. 边缘；刀刃；优势；锋利vt. 使锐利；将…开刃；给…加上边vi. 缓缓移动；侧着移动EDGEabbr. Electron">edge</span>. The FDA has suffered high turnover among <span class="annot" data-tooltip="senior /'siːniər/ adj. 年长的资深的; 地位高的〈美〉最高年级的n. 较年长者高年级学生〈美〉毕业班学生Senior西尼尔(姓氏)">senior</span> officials, including the <span class="annot" data-tooltip="resignation /ˌrezɪɡ'neɪʃn/ n. 辞职辞职书顺从, 听从">resignation</span> of Marty Makary, its head. Decision-making has been politicised: firms can receive “priority vouchers” that speed up reviews in return for lowering their prices and <span class="annot" data-tooltip="investing /ɪn'vest/ vt. 投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买时 态: invested, investing, invests">investing</span> in <span class="annot" data-tooltip="domestic /də'mestɪk/ adj. 国内的；家庭的；驯养的；一心只管家务的">domestic</span> <span class="annot" data-tooltip="manufacturing /ˌmænju'fæktʃərɪŋ/ n. 制造业，工业adj. 制造业的；制造的">manufacturing</span>. Funding for the National Institutes of Health, the largest funder of biomedical research in the world, has been <span class="annot" data-tooltip="slashed /slæʃ/ v. （用利器）砍，劈割破；在…上留下深长的切口大量削减n. （用刀等）砍，劈（长而窄的）伤口，切口，砍痕斜杠；斜线号时 态:">slashed</span>. Research programmes have been cancelled for ideological reasons. At the same time, immigration policies are making America a less attractive destination for the scientists on whom the <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> depends, including many talented researchers from China. America should fix those problems rather than locking out Chinese <span class="annot" data-tooltip="innovation /ˌɪnə'veɪʃn/ n. 改革, 革新, 创新新观念, 新方法, 新发明形容词: innovational">innovation</span>. The best world for patients is one in which both China and America develop cheap and effective drugs. Diseases cross borders. So should their cures. ■ Subscribers to The Economist can sign up to our Opinion newsletter, which brings together the best of our leaders, <span class="annot" data-tooltip="columns /'kɑːləm/ n. 圆柱，柱形物；纵队，列；专栏形容词: columned">columns</span>, guest <span class="annot" data-tooltip="essays /'eseɪ/ n. 散文, 随笔">essays</span> and reader <span class="annot" data-tooltip="correspondence /ˌkɔːrə'spɑːndəns/ n. 信件, 函件通信, 通信联系一致, 相似">correspondence</span>. This article was downloaded by zlibrary from https://www.economist.com//leaders/2026/06/18/dont-restrict-chinese-biotech</p>
+<div class="article-separator"></div>
+<div class="article-header">Leaders · Leaders | The promoter Raj</div>
+<p>India’s new economy still faces an old problem Family-run conglomerates make the stock market a <span class="annot" data-tooltip="tricky /'trɪki/ adj. 机警的；狡猾的比较级: trickier, trickiest">tricky</span> <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span> to <span class="annot" data-tooltip="invest /ɪn'vest/ vt. 投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买时 态: invested, investing, invests">invest</span> June 18th 2026 Arecord-breaking initial public offering is <span class="annot" data-tooltip="heading /'hedɪŋ/ n. 标题；信头；（足球）头球v. 用头顶（head的ing形式）">heading</span> for the stock market. <span class="annot" data-tooltip="retail /ˈriːteɪl/ vt. 零售；转述vi. 零售n. 零售adv. 以零售方式adj. 零售的时 态: retailed, retailing, ">Retail</span> investors are expected to <span class="annot" data-tooltip="pile /paɪl/ n. 堆；大量；建筑群vt. 累积；打桩于vi. 积累；堆积；挤时 态: piled, piling, piles">pile</span> in. The company’s <span class="annot" data-tooltip="prospects /'prɑːspekt/ n. 景象，景色前景；前途可能成为主顾的人；有希望的候选人vi. 勘探；勘察时 态: prospected，prospecti">prospects</span> depend upon a single influential businessman, trusted by his devotees to come good, but reviled by his <span class="annot" data-tooltip="detractors /dɪ'træktər/ n. 诋毁者,贬低者">detractors</span>. This is not America and SpaceX but India and Jio, a company that brought hundreds of millions of Indians online and may soon list. It is a <span class="annot" data-tooltip="thrilling /θrɪl/ n. 强烈的兴奋、恐惧或快乐感vt. & vi. (使)兴奋, (使)激动时 态: thrilled, thrilling, ">thrilling</span> story of the new Indian economy, featuring a tech entrepreneur hoping to get rich and ordinary Indians using the stock market to get a stake in his success. Yet beside all the reasons to celebrate sits one big reason to worry: India’s <span class="annot" data-tooltip="corporate /'kɔːrpərət/ adj. 社团的, 法人的副 词: corporately">corporate</span> <span class="annot" data-tooltip="governance /'ɡʌvərnəns/ n. 统治;管理;治理;统治方式;管理方法">governance</span> is <span class="annot" data-tooltip="dismal /'dɪzməl/ adj. 凄凉的，忧郁的；阴沉的，沉闷的；可怕的n. 低落的情绪副 词: dismally">dismal</span>.</p>
+<p>Problems dog India’s family-run conglomerates. As we report, the Tata <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">Group</span>, long the gold standard of <span class="annot" data-tooltip="corporate /'kɔːrpərət/ adj. 社团的, 法人的副 词: corporately">corporate</span> probity, has been consumed by a boardroom drama. The regulator may force it to list, too. Gautam Adani, perhaps India’s best-connected <span class="annot" data-tooltip="infrastructure /'ɪnfrəstrʌktʃər/ n. 基础设施; 基础结构">infrastructure</span> mogul, has spent years battling allegations that have cast a pall over his business success. Reliance, the parent company of Jio and much else, has an <span class="annot" data-tooltip="issue /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issue</span> with succession. The three children of its boss, Mukesh Ambani, are on the board and in <span class="annot" data-tooltip="prominent /'prɑːmɪnənt/ adj. 突起的，凸出的显著的；突出的杰出的，著名的，卓越的副 词: prominently">prominent</span> operating roles. Yet the empire still seems to depend on Mr Ambani. Family-run conglomerates <span class="annot" data-tooltip="dominate /'dɑːmɪneɪt/ vt. 支配；控制；占优势；在…中占主要地位vi. 处于支配地位；占优势时 态: dominated, dominating, ">dominate</span> India’s economy; the three most prominent could be joined by the Godrejs, Mahindras, Birlas and many others. <span class="annot" data-tooltip="promoters /prə'moʊtər/ n. (房地产、证券和体育赛事的)承办人, 出资人, 赞助人">Promoters</span>, who control listed companies, still hold roughly half the equity on the National Stock Exchange; the share of “free-float” is among the lowest globally. The regulator has changed the rules to let Jio list by floating just 2.5% of its shares. That may help bring giant firms to market, but it <span class="annot" data-tooltip="raises /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raises</span> <span class="annot" data-tooltip="awkward /'ɔːkwərd/ adj. 笨拙的；尴尬的；棘手的；不合适的副 词: awkwardly">awkward</span> questions about price discovery, market discipline and <span class="annot" data-tooltip="shareholders /'ʃerhoʊldər/ n. 股东名 词: shareholding">shareholders</span>’ rights when only a sliver of a company is available for trading. This matters beyond the wealthy enclaves of South <span class="annot" data-tooltip="mumbai n. 孟买（印度城市）">Mumbai</span>. Between 2020 and 2026 the <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of Indian <span class="annot" data-tooltip="retail /ˈriːteɪl/ vt. 零售；转述vi. 零售n. 零售adv. 以零售方式adj. 零售的时 态: retailed, retailing, ">retail</span> investors rose from around 40m to 130m. First-time investors are now being asked to <span class="annot" data-tooltip="entrust /ɪn'trʌst/ vt. 委托，信托时 态: entrusted, entrusting, entrusts">entrust</span> their savings to</p>
+<p>companies whose <span class="annot" data-tooltip="governance /'ɡʌvərnəns/ n. 统治;管理;治理;统治方式;管理方法">governance</span> they have little power to influence. When <span class="annot" data-tooltip="promoters /prə'moʊtər/ n. (房地产、证券和体育赛事的)承办人, 出资人, 赞助人">promoters</span> <span class="annot" data-tooltip="dominate /'dɑːmɪneɪt/ vt. 支配；控制；占优势；在…中占主要地位vi. 处于支配地位；占优势时 态: dominated, dominating, ">dominate</span> boards, related-party <span class="annot" data-tooltip="transactions /træn'zækʃn/ n. 处理，办理，执行(一笔)交易；(一项)事务形容词: transactional">transactions</span>, <span class="annot" data-tooltip="opaque /oʊ'peɪk/ adj. 不透明的难理解的, 晦涩的副 词: opaquely">opaque</span> <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span> structures and succession decisions can be shaped around family interests rather than the company’s. No <span class="annot" data-tooltip="wonder /'wʌndər/ vt. & vi. 对…感到疑惑想知道；问自己n. 惊奇，惊叹，惊异，惊诧奇人，奇才奇观，奇景，奇迹，奇事时 态: wonder">wonder</span> many Indians would still rather put their trust in gold. Governance also matters to Indians who could never dream of opening a brokerage account. Weak governance <span class="annot" data-tooltip="raises /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raises</span> the cost of capital and makes it harder for their country to develop. India wants more foreign money, deeper <span class="annot" data-tooltip="domestic /də'mestɪk/ adj. 国内的；家庭的；驯养的；一心只管家务的">domestic</span> markets and a broader equity-owning culture, all of which is harder to achieve with dynastic leadership and pliant boards. The government rightly <span class="annot" data-tooltip="boasts /boʊst/ n. 自吹自擂, 自夸的话vt. & vi. 自夸vt. 有(引以为荣的事物)时 态: boasted, boasting, ">boasts</span> that India is “the world’s fastest-growing large economy” yet it still struggles to attract foreign capital. The sort of investment that leads to <span class="annot" data-tooltip="durable /'dʊrəbl/ adj. 耐用的，持久的n. 耐用品副 词: durably">durable</span> growth requires India to be an easy <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span> to do business for all, not just a handful of well-connected families. That means independent boards with real <span class="annot" data-tooltip="authority /ə'θɔːrəti/ n. 威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗">authority</span>; tougher scrutiny of related-party transactions; clearer <span class="annot" data-tooltip="disclosure /dɪs'kloʊʒər/ n. 公开,透露被公开的事情,被披露的秘闻">disclosure</span> of group debt, guarantees and cross-holdings; succession plans that <span class="annot" data-tooltip="allocate /'æləkeɪt/ vt. 分配；拨出；使坐落于vi. 分配；指定时 态: allocated, allocating, allocates">allocate</span> responsibility rather than merely anoint heirs; and stronger protection for minority <span class="annot" data-tooltip="shareholders /'ʃerhoʊldər/ n. 股东名 词: shareholding">shareholders</span>. Institutional investors should act more like stewards and less like <span class="annot" data-tooltip="passive /'pæsɪv/ adj. 被动的，消极的；被动语态的n. 被动语态副 词: passively">passive</span> passengers in a soaring market. Investors, whether in India or overseas, should not have to worry about family dramas to buy into India’s growth story. ■ Subscribers to The Economist can sign up to our Opinion newsletter, which brings together the best of our leaders, <span class="annot" data-tooltip="columns /'kɑːləm/ n. 圆柱，柱形物；纵队，列；专栏形容词: columned">columns</span>, guest <span class="annot" data-tooltip="essays /'eseɪ/ n. 散文, 随笔">essays</span> and reader <span class="annot" data-tooltip="correspondence /ˌkɔːrə'spɑːndəns/ n. 信件, 函件通信, 通信联系一致, 相似">correspondence</span>. This article was downloaded by zlibrary from https://www.economist.com//leaders/2026/06/18/indias-new-economy-still-faces-an- old-problem</p>
+<div class="article-separator"></div>
+<div class="article-header">Letters · Letters | A selection of correspondence</div>
+<p>Were we too quick to attack “Gen Z <span class="annot" data-tooltip="socialism /'soʊʃəlɪzəm/ n. 社会主义">socialism</span>”? Also this week <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> and judges, crime in Britain, “Star Trek” and war, Ethiopia’s prime minister, edible medical devices June 18th 2026 Letters are welcome via email to letters@economist.comFind out more about how we <span class="annot" data-tooltip="process /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">process</span> your letter The Economist was too quick to attack “Gen-Z socialism” (June 6th). Alexandria Ocasio-Cortez and Zohran Mamdani aren’t cold war socialists <span class="annot" data-tooltip="committed /kə'mɪt/ vt. 犯罪；犯错承诺；使自己受约束托付；交付时 态: committed，committing，commits">committed</span> to <span class="annot" data-tooltip="central /'sentrəl/ adj. 中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的副 词: centrally">central</span> planning, vanguardism and foreign dictatorships. They are <span class="annot" data-tooltip="democratic /ˌdemə'krætɪk/ adj. 民主的, 有民主精神或作风的副 词: democratically">democratic</span> pragmatists who support <span class="annot" data-tooltip="civil /'sɪvl/ adj. 公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的副 词: civilly">civil</span> and political liberties, good <span class="annot" data-tooltip="governance /'ɡʌvərnəns/ n. 统治;管理;治理;统治方式;管理方法">governance</span> and expanded public services. This is the <span class="annot" data-tooltip="stuff /stʌf/ n. 材料；东西；填充物；素材资料vt. 填塞；塞满；让吃饱vi. 吃得过多时 态: stuffed, stuffing, s">stuff</span> of “<span class="annot" data-tooltip="sewer /'suːər/ n. 下水道；阴沟；裁缝师vt. 为…铺设污水管道；用下水道排除…的污水vi. 清洗污水管">sewer</span> socialism”, not Stalinism. Today’s socialists want to abolish the Immigration and Customs <span class="annot" data-tooltip="enforcement /ɪn'fɔːrsmənt/ n. 强制,实施,执行">Enforcement</span> agency because they believe in freedom of movement, and because masked thugs are <span class="annot" data-tooltip="kidnapping /'kɪdnæp/ vt. 绑架；诱拐；拐骗时 态: kidnapped, kidnaped kidnapping, kidnaping kidna">kidnapping</span> people off the streets.</p>
+<p>The push to tax billionaires comes not from a zero-sum mentality, but from witnessing massive <span class="annot" data-tooltip="wealth /welθ/ n. 财富；大量；富有">wealth</span> weaponised against liberal <span class="annot" data-tooltip="democracy /dɪ'mɑːkrəsi/ n. 民主, 民主制民主国家">democracy</span> itself. Like its namesake, a Green New Deal seeks to save <span class="annot" data-tooltip="capitalism /'kæpɪtəlɪzəm/ n. 资本主义(制度)资本(或财富)的拥有资本(私人占有和生产盈利)的支配地位">capitalism</span> from capitalists, and cool the planet too. <span class="annot" data-tooltip="universal /ˌjuːnɪ'vɜːrsl/ adj. 全体的广泛的, 普遍的在世界各地的, 世界性的副 词: universally">Universal</span> health care is no more a threat to American liberalism than it was to the British kind. Finally, The Economist itself has warned of the risks apartheid poses to <span class="annot" data-tooltip="democratic /ˌdemə'krætɪk/ adj. 民主的, 有民主精神或作风的副 词: democratically">democratic</span> legitimacy. The horrors in <span class="annot" data-tooltip="gaza n. 加沙（地中海岸港市）">Gaza</span> have just <span class="annot" data-tooltip="awakened /ə'weɪkən/ vt. & vi. (使)醒；(使)觉醒；弄醒(使)意识到；(使)认识到vt. 唤起；激起(使)察觉到， 意识到， 醒悟到时 态">awakened</span> liberals to this danger. These can all be defended on liberal grounds. There are illiberal ideas on the left, but it is the liberal ideas that are attracting followers. We should ask ourselves why we so often find that socialists express our <span class="annot" data-tooltip="values /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">values</span> better than our fellow liberals. Paul CriderAssociate editorLiberal CurrentsSan Francisco Many young people in wealthy countries are frustrated by high housing costs, <span class="annot" data-tooltip="inflation /ɪn'fleɪʃn/ n. (充气而引起的)膨胀通货膨胀">inflation</span> and economic <span class="annot" data-tooltip="uncertainty /ʌn'sɜːrtnti/ n. 无把握;不确定;变化不定无把握、不确定的事物">uncertainty</span>. Yet some of the remedies now gaining popularity—price controls, wealth taxes, nationalisations and greater state <span class="annot" data-tooltip="intervention /ˌɪntər'venʃn/ n. 介入, 干涉, 干预">intervention</span>—look very different when viewed from Argentina. For much of the past century Argentina experimented with the policies now being rediscovered elsewhere. Price controls repeatedly failed to contain inflation and created <span class="annot" data-tooltip="shortages /'ʃɔːrtɪdʒ/ n. 不足; 缺少; 缺少量; 不足额">shortages</span>. <span class="annot" data-tooltip="subsidies /'sʌbsədi/ n. 津贴；补助金；补贴">Subsidies</span> intended to make <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span> affordable discouraged investment, contributing to electricity <span class="annot" data-tooltip="blackouts /'blækaʊt/ n. 断电;停电新闻封锁灯火管制(期)暂时性眼前昏黑;突然发昏(广播等)停止不透光窗罩〔窗帘〕">blackouts</span> and gas shortages. Import <span class="annot" data-tooltip="restrictions /rɪ'strɪkʃn/ n. 约束，限制管制，限定；法律，规章">restrictions</span> were imposed to protect <span class="annot" data-tooltip="domestic /də'mestɪk/ adj. 国内的；家庭的；驯养的；一心只管家务的">domestic</span> <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span>, yet they made it difficult to <span class="annot" data-tooltip="obtain /əb'teɪn/ vi. 获得；流行vt. 获得时 态: obtained, obtaining, obtains">obtain</span> consumer goods. Perhaps most damaging was the erosion of confidence in private <span class="annot" data-tooltip="property /'prɑːpərti/ n. 财产；性质，性能；所有权形容词: propertyless">property</span> and markets. Repeated <span class="annot" data-tooltip="interventions /ˌɪntər'venʃn/ n. 介入, 干涉, 干预">interventions</span>, confiscations and nationalisations weakened long-term investment and prevented the development of deep capital markets. Young people in advanced economies worry about unaffordable housing; many Argentines never even had access to a functioning <span class="annot" data-tooltip="mortgage /'mɔːrɡɪdʒ/ n. 抵押借款抵押债款的利息vt. 抵押时 态: mortgaged, mortgaging, mortgages">mortgage</span> market. The appeal of Gen-Z <span class="annot" data-tooltip="socialism /'soʊʃəlɪzəm/ n. 社会主义">socialism</span> is easy to understand. The lessons of countries that have lived under similar ideas are less appealing. Argentina’s experience suggests that prosperity is not undermined by too much economic freedom, but by too little of it.</p>
+<p>Pedro VolpeBuenos Aires More letters on this topic can be found at economist.com/genzsocialism Chief Justice John Roberts dismisses <span class="annot" data-tooltip="accusations /ˌækju'zeɪʃn/ n. 指责；指控；控告(被告发、控告的)罪名，罪状">accusations</span> that the <span class="annot" data-tooltip="supreme /su'priːm/ adj. 最高的；至上的最重要的比较级: supremer，supremest 缩 写: supr">Supreme</span> Court has become “politicised”, you say (“Where the justices draw the <span class="annot" data-tooltip="line /laɪn/ n. 绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long inter">line</span>”, May 30th). At his confirmation hearing, Mr Roberts disingenuously compared the role of chief justice to a baseball umpire. This was <span class="annot" data-tooltip="deliberate /dɪ'lɪbərət/ adj. 故意的, 蓄意的慎重的, 深思熟虑的不慌不忙的, 从容不迫的vt. & vi. 仔细考虑研讨, 商讨时 态: delib">deliberate</span> sophistry. The baseball <span class="annot" data-tooltip="strike /straɪk/ vi. 罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打时 态:">strike</span> zone is <span class="annot" data-tooltip="objective /əb'dʒektɪv/ n. 目标; 目的adj. 客观的; 不带偏见的副 词: objectively">objective</span>; an umpire’s officiating <span class="annot" data-tooltip="philosophy /fə'lɑːsəfi/ n. 哲学人生哲学, 人生观达观">philosophy</span> is <span class="annot" data-tooltip="irrelevant /ɪ'reləvənt/ adj. 不相干的,不相关的副 词: irrelevantly">irrelevant</span>. These days an automated system can call balls and <span class="annot" data-tooltip="strikes /straɪk/ vi. 罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打时 态:">strikes</span>. A much better <span class="annot" data-tooltip="analogy /ə'nælədʒi/ n. 类似, 相似类推, 类推法">analogy</span> is that of a <span class="annot" data-tooltip="soccer /'sɑːkər/ n. 英式足球，足球">soccer</span> <span class="annot" data-tooltip="referee /ˌrefə'riː/ n. 裁判员；调解人；介绍人vi. 担任裁判；仲裁vt. 为…当裁判；调停时 态: refereed, refereeing,">referee</span> assessing a <span class="annot" data-tooltip="contested /'kɑːntest/ vt. 争辩；提出质疑vi. 竞争；争辩n. 竞赛；争论；争夺时 态: contested, contesting, conte">contested</span> <span class="annot" data-tooltip="tackle /'tækl/ vt. 解决；应付vt. & vi. 捉住；扭倒n. 拦截；擒抱器具，器械，用具滑车，滑轮组时 态: tackled，tackl">tackle</span> or a basketball referee calling a “travel”, decisions that are <span class="annot" data-tooltip="subjective /səb'dʒektɪv/ adj. (思想、感情等)主观的主观的(以个人好恶、观点等为依据)副 词: subjectively">subjective</span> and allow room for an official’s personal opinion to shape the outcome. Moreover, sports <span class="annot" data-tooltip="referees /ˌrefə'riː/ n. 裁判员；调解人；介绍人vi. 担任裁判；仲裁vt. 为…当裁判；调停时 态: refereed, refereeing,">referees</span>, <span class="annot" data-tooltip="apparently /ə'pærəntli/ adv. 显然地表面上,似乎">apparently</span> like Supreme Court Justices, suffer from social-<span class="annot" data-tooltip="compliance /kəm'plaɪəns/ n. 服从,听从,顺从">compliance</span> <span class="annot" data-tooltip="bias /'baɪəs/ n. 偏见；斜纹；偏爱；乖离率vt. 使存偏见adj. 偏斜的adv. 偏斜地时 态: biased, biassed bia">bias</span>, often <span class="annot" data-tooltip="deferring /dɪ'fɜːr/ vt. 拖延, 延缓, 推迟vi. 服从某人的意愿, 遵从时 态: deferred, deferring, defers">deferring</span> to well-<span class="annot" data-tooltip="established /ɪ'stæblɪʃt/ adj. 已建立的；已设立的；已制定的确定的，证实的">established</span> and more vocal players when calling a <span class="annot" data-tooltip="foul /faʊl/ adj. 邪恶的；污秽的；犯规的；淤塞的vt. 弄脏；犯规；淤塞；缠住，妨害vi. 犯规；缠结；腐烂n. 犯规；缠绕adv. 违反">foul</span> or deciding on extra time. Now imagine the likelihood of missed calls and dubious judgments when that very vocal player just happens to represent the head referee’s favourite team and you will understand why we are where we are. Derek SteelbergPrinceton, New Jersey The “idea of widespread ‘two-<span class="annot" data-tooltip="tier /tɪr/ n. 行，列；层，排；等级vt. 使层叠vi. 成递升排列时 态: tiered, tiering, tiers">tier</span> policing’ that <span class="annot" data-tooltip="systematically /ˌsɪstəˈmætɪk l../ adj. 有系统的，成体系的有条理的有计划有步骤的；经常的，非偶然的分类上的；分类学的">systematically</span> <span class="annot" data-tooltip="discriminates /dɪ'skrɪmɪneɪt/ vt. & vi. 分别, 辨别, 区分vi. 歧视, 有差别地对待时 态: discriminated, discrimina">discriminates</span> against whites in Britain is a nonsense”, you say, “White and black people are equally likely to be <span class="annot" data-tooltip="victims /'vɪktɪm/ n. 牺牲者；受害人；牺牲品">victims</span> of crime. And black people are more than twice as likely to be arrested than their white <span class="annot" data-tooltip="counterparts /'kaʊntərpɑːrt/ n. 与对方地位相当的人, 与另一方作用相当的物">counterparts</span>” (“Was this Britain’s George Floyd moment?”, June 6th). That doesn’t support your point. Being a <span class="annot" data-tooltip="victim /'vɪktɪm/ n. 牺牲者；受害人；牺牲品">victim</span> of crime and <span class="annot" data-tooltip="committing /kə'mɪt/ vt. 犯罪；犯错承诺；使自己受约束托付；交付时 态: committed，committing，commits">committing</span> one are different things, so equal victimisation tells you nothing about who offends, and therefore nothing about whether arrests are disproportionate to offending. The <span class="annot" data-tooltip="relevant /'reləvənt/ adj. 有关的, 切题的副 词: relevantly">relevant</span> measure would be perpetration by ethnicity. If you don’t have that data it would be better to write nothing at all than to draw a conclusion from the wrong figure. Peter MüllerBerlin</p>
+<p>I read with interest your leader on the evolution of war and technology (“Smarter tech is making war a <span class="annot" data-tooltip="dumber /dʌm/ adj. 哑的说不出话的愚蠢的比较级: dumber, dumbest">dumber</span> choice”, May 30th). We seem to be <span class="annot" data-tooltip="fulfilling /fʊlˈfɪl/ vt. 履行；满足；实现；使结束（等于fulfil）时 态: fulfilled, fulfilling, fulfillsal">fulfilling</span> the predictions of science fiction and any Trekkie <span class="annot" data-tooltip="worth /wɜːrθ/ adj. 值…的n. 价值；财产时 态: worthed, worthing, worths">worth</span> his or her salt would have conjured up a classic <span class="annot" data-tooltip="episode /'epɪsoʊd/ n. 插曲；插话；一段情节；有趣的事件">episode</span> from “Star Trek” <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> 60 years ago for the <span class="annot" data-tooltip="ultimate /'ʌltɪmət/ adj. 最后的，最终的；终极的；极端的；最好（或坏、伟大、重要等）的；根本的；基本的；基础性的n. 最好（或先进、伟大等）的事物">ultimate</span> depiction of how war <span class="annot" data-tooltip="evolves /ɪ'vɑːlv/ vt. & vi. 演变；进化时 态: evolved，evolving，evolves">evolves</span>. “A <span class="annot" data-tooltip="taste /teɪst/ n. 滋味, 味道鉴赏力爱好, 嗜好vt. & vi. 尝, 品尝, 尝到vt. 吃, 喝体验, 领略时 态: tasted,">Taste</span> of Armageddon” imagined a conflict with computer-<span class="annot" data-tooltip="simulated /'sɪmjuleɪtɪd/ adj. 假装的;冒充的仿造的模仿的">simulated</span> attacks and <span class="annot" data-tooltip="counter /'kaʊntər/ n. 柜台, 柜台式长桌计数器vt. & vi. 对抗, 反驳adv. 反方向地, 对立地时 态: countered, co">counter</span>-attacks. But there was no <span class="annot" data-tooltip="damage /'dæmɪdʒ/ v. 损害；伤害；毁坏；破坏n. 损坏，破坏，损失，损害，伤害（法院判定的）损害赔偿金时 态: damaged, damagi">damage</span> at all to <span class="annot" data-tooltip="infrastructure /'ɪnfrəstrʌktʃər/ n. 基础设施; 基础结构">infrastructure</span> as no <span class="annot" data-tooltip="actual /'æktʃuəl/ adj. 真实的，实际的；现行的，目前的副 词: actually">actual</span> missiles were fired. Instead citizens of the warring countries willingly submitted to be destroyed in death <span class="annot" data-tooltip="chambers /'tʃeɪmbər/ n. （身体或器官内的）室，膛；房间；会所adj. 室内的；私人的，秘密的vt. 把…关在室内；装填（弹药等）时 态: cha">chambers</span> in order to fulfil the computers’ simulated <span class="annot" data-tooltip="casualty /'kæʒuəlti/ n. 意外事故；伤亡人员；急诊室">casualty</span> count. This was done to avoid <span class="annot" data-tooltip="mutual /'mjuːtʃuəl/ adj. 相互的, 彼此的共同的, 共有的名 词: mutuality">mutual</span> destruction and <span class="annot" data-tooltip="preserve /prɪ'zɜːrv/ vt. 保存；保护；维持；禁猎；腌n. 禁猎地；保护区；加工成的食品n. (某人或群体的）专门活动时 态: preserved,">preserve</span> civilisation in a war lasting 500 years. We’re lacking only our <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> Captain Kirk and Mr Spock to save us from these simulations, which killed millions citizens who the computer ruled were “<span class="annot" data-tooltip="casualties /'kæʒuəlti/ n. 意外事故；伤亡人员；急诊室">casualties</span>” in the episode and were marched to their very real deaths. Some things never change. GREGG VISINEAUEl Cerrito, California “The <span class="annot" data-tooltip="imperial /ɪm'pɪriəl/ adj. 皇帝的；帝国的；威严的；至高无上的n. 纸张尺寸；特等品副 词: imperially">imperial</span> <span class="annot" data-tooltip="vision /'vɪʒn/ n. 视力；眼力；幻象；美景；想象力vt. 显现；梦见；想象时 态: visioned, visioning, visions">vision</span> of Abiy Ahmed” (May 30th) correctly assessed the political and <span class="annot" data-tooltip="diplomatic /ˌdɪplə'mætɪk/ adj. 外交上的, 外交人员的有手腕的, 策略的, 善于交涉的, 圆滑的副 词: diplomatically">diplomatic</span> failure of Ethiopia’s once-promising prime minister. Ethiopia is now deeply <span class="annot" data-tooltip="fragmented /'fræɡmənt/ n. 碎片；片断或不完整部分vt. 使成碎片vi. 破碎或裂开时 态: fragmented, fragmenting, fr">fragmented</span> and edging <span class="annot" data-tooltip="towards /tɔːrdz/ prep. 向，朝为了；有助于；用于对于，关于接近；将近；大约">towards</span> state failure. Conflict has made large parts of the country <span class="annot" data-tooltip="inaccessible /ˌɪnæk'sesəbl/ adj. 达不到的, 不可及的名 词: inaccessibility">inaccessible</span> and Mr Abiy’s erratic</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>blunting</td><td>/blʌnt/ adj.</td><td>钝的，不锋利的；生硬的；直率的vt. 使迟钝, bluntest</td></tr>
+<tr><td>edge</td><td>/edʒ/ n.</td><td>边缘；刀刃；优势；锋利vt. 使锐利；将…开刃；给…加上边vi. 缓缓移动；侧着移动EDGEabbr. Electronic Data Gathering Eq</td></tr>
+<tr><td>senior</td><td>/'siːniər/ adj.</td><td>年长的资深的; 地位高的〈美〉最高年级的n. 较年长者高年级学生〈美〉毕业班学生Senior西尼尔(姓氏)</td></tr>
+<tr><td>resignation</td><td>/ˌrezɪɡ'neɪʃn/ n.</td><td>辞职辞职书顺从, 听从</td></tr>
+<tr><td>investing</td><td>/ɪn'vest/ vt.</td><td>投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买, investing, invests</td></tr>
+<tr><td>domestic</td><td>/də'mestɪk/ adj.</td><td>国内的；家庭的；驯养的；一心只管家务的</td></tr>
+<tr><td>manufacturing</td><td>/ˌmænju'fæktʃərɪŋ/ n.</td><td>制造业，工业adj. 制造业的；制造的</td></tr>
+<tr><td>slashed</td><td>/slæʃ/ v.</td><td>（用利器）砍，劈割破；在…上留下深长的切口大量削减n. （用刀等）砍，劈（长而窄的）伤口，切口，砍痕斜杠；斜线号，slashing，slashes</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>innovation</td><td>/ˌɪnə'veɪʃn/ n.</td><td>改革, 革新, 创新新观念, 新方法, 新发明</td></tr>
+<tr><td>columns</td><td>/'kɑːləm/ n.</td><td>圆柱，柱形物；纵队，列；专栏</td></tr>
+<tr><td>essays</td><td>/'eseɪ/ n.</td><td>散文, 随笔</td></tr>
+<tr><td>correspondence</td><td>/ˌkɔːrə'spɑːndəns/ n.</td><td>信件, 函件通信, 通信联系一致, 相似</td></tr>
+<tr><td>tricky</td><td>/'trɪki/ adj.</td><td>机警的；狡猾的, trickiest</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>invest</td><td>/ɪn'vest/ vt.</td><td>投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买, investing, invests</td></tr>
+<tr><td>heading</td><td>/'hedɪŋ/ n.</td><td>标题；信头；（足球）头球v. 用头顶（head的ing形式）</td></tr>
+<tr><td>retail</td><td>/ˈriːteɪl/ vt.</td><td>零售；转述vi. 零售n. 零售adv. 以零售方式adj. 零售的, retailing, retails</td></tr>
+<tr><td>pile</td><td>/paɪl/ n.</td><td>堆；大量；建筑群vt. 累积；打桩于vi. 积累；堆积；挤, piling, piles</td></tr>
+<tr><td>prospects</td><td>/'prɑːspekt/ n.</td><td>景象，景色前景；前途可能成为主顾的人；有希望的候选人vi. 勘探；勘察，prospecting，prospects</td></tr>
+<tr><td>detractors</td><td>/dɪ'træktər/ n.</td><td>诋毁者,贬低者</td></tr>
+<tr><td>thrilling</td><td>/θrɪl/ n.</td><td>强烈的兴奋、恐惧或快乐感vt. & vi. (使)兴奋, (使)激动, thrilling, thrills</td></tr>
+<tr><td>corporate</td><td>/'kɔːrpərət/ adj.</td><td>社团的, 法人的</td></tr>
+<tr><td>governance</td><td>/'ɡʌvərnəns/ n.</td><td>统治;管理;治理;统治方式;管理方法</td></tr>
+<tr><td>dismal</td><td>/'dɪzməl/ adj.</td><td>凄凉的，忧郁的；阴沉的，沉闷的；可怕的n. 低落的情绪</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>corporate</td><td>/'kɔːrpərət/ adj.</td><td>社团的, 法人的</td></tr>
+<tr><td>infrastructure</td><td>/'ɪnfrəstrʌktʃər/ n.</td><td>基础设施; 基础结构</td></tr>
+<tr><td>issue</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>prominent</td><td>/'prɑːmɪnənt/ adj.</td><td>突起的，凸出的显著的；突出的杰出的，著名的，卓越的</td></tr>
+<tr><td>dominate</td><td>/'dɑːmɪneɪt/ vt.</td><td>支配；控制；占优势；在…中占主要地位vi. 处于支配地位；占优势, dominating, dominates</td></tr>
+<tr><td>promoters</td><td>/prə'moʊtər/ n.</td><td>(房地产、证券和体育赛事的)承办人, 出资人, 赞助人</td></tr>
+<tr><td>raises</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>awkward</td><td>/'ɔːkwərd/ adj.</td><td>笨拙的；尴尬的；棘手的；不合适的</td></tr>
+<tr><td>shareholders</td><td>/'ʃerhoʊldər/ n.</td><td>股东</td></tr>
+<tr><td>mumbai</td><td>— n.</td><td>孟买（印度城市）</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>retail</td><td>/ˈriːteɪl/ vt.</td><td>零售；转述vi. 零售n. 零售adv. 以零售方式adj. 零售的, retailing, retails</td></tr>
+<tr><td>entrust</td><td>/ɪn'trʌst/ vt.</td><td>委托，信托, entrusting, entrusts</td></tr>
+<tr><td>governance</td><td>/'ɡʌvərnəns/ n.</td><td>统治;管理;治理;统治方式;管理方法</td></tr>
+<tr><td>promoters</td><td>/prə'moʊtər/ n.</td><td>(房地产、证券和体育赛事的)承办人, 出资人, 赞助人</td></tr>
+<tr><td>dominate</td><td>/'dɑːmɪneɪt/ vt.</td><td>支配；控制；占优势；在…中占主要地位vi. 处于支配地位；占优势, dominating, dominates</td></tr>
+<tr><td>transactions</td><td>/træn'zækʃn/ n.</td><td>处理，办理，执行(一笔)交易；(一项)事务</td></tr>
+<tr><td>opaque</td><td>/oʊ'peɪk/ adj.</td><td>不透明的难理解的, 晦涩的</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>wonder</td><td>/'wʌndər/ vt.</td><td>& vi. 对…感到疑惑想知道；问自己n. 惊奇，惊叹，惊异，惊诧奇人，奇才奇观，奇景，奇迹，奇事，wondering，wonders</td></tr>
+<tr><td>raises</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>domestic</td><td>/də'mestɪk/ adj.</td><td>国内的；家庭的；驯养的；一心只管家务的</td></tr>
+<tr><td>boasts</td><td>/boʊst/ n.</td><td>自吹自擂, 自夸的话vt. & vi. 自夸vt. 有(引以为荣的事物), boasting, boasts</td></tr>
+<tr><td>durable</td><td>/'dʊrəbl/ adj.</td><td>耐用的，持久的n. 耐用品</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>authority</td><td>/ə'θɔːrəti/ n.</td><td>威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗</td></tr>
+<tr><td>disclosure</td><td>/dɪs'kloʊʒər/ n.</td><td>公开,透露被公开的事情,被披露的秘闻</td></tr>
+<tr><td>allocate</td><td>/'æləkeɪt/ vt.</td><td>分配；拨出；使坐落于vi. 分配；指定, allocating, allocates</td></tr>
+<tr><td>shareholders</td><td>/'ʃerhoʊldər/ n.</td><td>股东</td></tr>
+<tr><td>passive</td><td>/'pæsɪv/ adj.</td><td>被动的，消极的；被动语态的n. 被动语态</td></tr>
+<tr><td>columns</td><td>/'kɑːləm/ n.</td><td>圆柱，柱形物；纵队，列；专栏</td></tr>
+<tr><td>essays</td><td>/'eseɪ/ n.</td><td>散文, 随笔</td></tr>
+<tr><td>correspondence</td><td>/ˌkɔːrə'spɑːndəns/ n.</td><td>信件, 函件通信, 通信联系一致, 相似</td></tr>
+<tr><td>socialism</td><td>/'soʊʃəlɪzəm/ n.</td><td>社会主义</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>process</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>committed</td><td>/kə'mɪt/ vt.</td><td>犯罪；犯错承诺；使自己受约束托付；交付，committing，commits</td></tr>
+<tr><td>central</td><td>/'sentrəl/ adj.</td><td>中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的</td></tr>
+<tr><td>democratic</td><td>/ˌdemə'krætɪk/ adj.</td><td>民主的, 有民主精神或作风的</td></tr>
+<tr><td>civil</td><td>/'sɪvl/ adj.</td><td>公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的</td></tr>
+<tr><td>governance</td><td>/'ɡʌvərnəns/ n.</td><td>统治;管理;治理;统治方式;管理方法</td></tr>
+<tr><td>stuff</td><td>/stʌf/ n.</td><td>材料；东西；填充物；素材资料vt. 填塞；塞满；让吃饱vi. 吃得过多, stuffing, stuffs</td></tr>
+<tr><td>sewer</td><td>/'suːər/ n.</td><td>下水道；阴沟；裁缝师vt. 为…铺设污水管道；用下水道排除…的污水vi. 清洗污水管</td></tr>
+<tr><td>enforcement</td><td>/ɪn'fɔːrsmənt/ n.</td><td>强制,实施,执行</td></tr>
+<tr><td>kidnapping</td><td>/'kɪdnæp/ vt.</td><td>绑架；诱拐；拐骗, kidnaped kidnapping, kidnaping kidnaps, kidnaps</td></tr>
+<tr><td>wealth</td><td>/welθ/ n.</td><td>财富；大量；富有</td></tr>
+<tr><td>democracy</td><td>/dɪ'mɑːkrəsi/ n.</td><td>民主, 民主制民主国家</td></tr>
+<tr><td>capitalism</td><td>/'kæpɪtəlɪzəm/ n.</td><td>资本主义(制度)资本(或财富)的拥有资本(私人占有和生产盈利)的支配地位</td></tr>
+<tr><td>universal</td><td>/ˌjuːnɪ'vɜːrsl/ adj.</td><td>全体的广泛的, 普遍的在世界各地的, 世界性的</td></tr>
+<tr><td>democratic</td><td>/ˌdemə'krætɪk/ adj.</td><td>民主的, 有民主精神或作风的</td></tr>
+<tr><td>gaza</td><td>— n.</td><td>加沙（地中海岸港市）</td></tr>
+<tr><td>awakened</td><td>/ə'weɪkən/ vt.</td><td>& vi. (使)醒；(使)觉醒；弄醒(使)意识到；(使)认识到vt. 唤起；激起(使)察觉到， 意识到， 醒悟到，awakening，awakens</td></tr>
+<tr><td>values</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>inflation</td><td>/ɪn'fleɪʃn/ n.</td><td>(充气而引起的)膨胀通货膨胀</td></tr>
+<tr><td>uncertainty</td><td>/ʌn'sɜːrtnti/ n.</td><td>无把握;不确定;变化不定无把握、不确定的事物</td></tr>
+<tr><td>intervention</td><td>/ˌɪntər'venʃn/ n.</td><td>介入, 干涉, 干预</td></tr>
+<tr><td>shortages</td><td>/'ʃɔːrtɪdʒ/ n.</td><td>不足; 缺少; 缺少量; 不足额</td></tr>
+<tr><td>subsidies</td><td>/'sʌbsədi/ n.</td><td>津贴；补助金；补贴</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>blackouts</td><td>/'blækaʊt/ n.</td><td>断电;停电新闻封锁灯火管制(期)暂时性眼前昏黑;突然发昏(广播等)停止不透光窗罩〔窗帘〕</td></tr>
+<tr><td>restrictions</td><td>/rɪ'strɪkʃn/ n.</td><td>约束，限制管制，限定；法律，规章</td></tr>
+<tr><td>domestic</td><td>/də'mestɪk/ adj.</td><td>国内的；家庭的；驯养的；一心只管家务的</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>obtain</td><td>/əb'teɪn/ vi.</td><td>获得；流行vt. 获得, obtaining, obtains</td></tr>
+<tr><td>property</td><td>/'prɑːpərti/ n.</td><td>财产；性质，性能；所有权</td></tr>
+<tr><td>interventions</td><td>/ˌɪntər'venʃn/ n.</td><td>介入, 干涉, 干预</td></tr>
+<tr><td>mortgage</td><td>/'mɔːrɡɪdʒ/ n.</td><td>抵押借款抵押债款的利息vt. 抵押, mortgaging, mortgages</td></tr>
+<tr><td>socialism</td><td>/'soʊʃəlɪzəm/ n.</td><td>社会主义</td></tr>
+<tr><td>accusations</td><td>/ˌækju'zeɪʃn/ n.</td><td>指责；指控；控告(被告发、控告的)罪名，罪状</td></tr>
+<tr><td>supreme</td><td>/su'priːm/ adj.</td><td>最高的；至上的最重要的，supremest 缩 写: supr</td></tr>
+<tr><td>line</td><td>/laɪn/ n.</td><td>绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long interspersed element)长散在元</td></tr>
+<tr><td>deliberate</td><td>/dɪ'lɪbərət/ adj.</td><td>故意的, 蓄意的慎重的, 深思熟虑的不慌不忙的, 从容不迫的vt. & vi. 仔细考虑研讨, 商讨, deliberating, deliberates</td></tr>
+<tr><td>strike</td><td>/straɪk/ vi.</td><td>罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打, stricken striking, str</td></tr>
+<tr><td>objective</td><td>/əb'dʒektɪv/ n.</td><td>目标; 目的adj. 客观的; 不带偏见的</td></tr>
+<tr><td>philosophy</td><td>/fə'lɑːsəfi/ n.</td><td>哲学人生哲学, 人生观达观</td></tr>
+<tr><td>irrelevant</td><td>/ɪ'reləvənt/ adj.</td><td>不相干的,不相关的</td></tr>
+<tr><td>strikes</td><td>/straɪk/ vi.</td><td>罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打, stricken striking, str</td></tr>
+<tr><td>analogy</td><td>/ə'nælədʒi/ n.</td><td>类似, 相似类推, 类推法</td></tr>
+<tr><td>soccer</td><td>/'sɑːkər/ n.</td><td>英式足球，足球</td></tr>
+<tr><td>referee</td><td>/ˌrefə'riː/ n.</td><td>裁判员；调解人；介绍人vi. 担任裁判；仲裁vt. 为…当裁判；调停, refereeing, referees</td></tr>
+<tr><td>contested</td><td>/'kɑːntest/ vt.</td><td>争辩；提出质疑vi. 竞争；争辩n. 竞赛；争论；争夺, contesting, contests</td></tr>
+<tr><td>tackle</td><td>/'tækl/ vt.</td><td>解决；应付vt. & vi. 捉住；扭倒n. 拦截；擒抱器具，器械，用具滑车，滑轮组，tackling，tackles</td></tr>
+<tr><td>subjective</td><td>/səb'dʒektɪv/ adj.</td><td>(思想、感情等)主观的主观的(以个人好恶、观点等为依据)</td></tr>
+<tr><td>referees</td><td>/ˌrefə'riː/ n.</td><td>裁判员；调解人；介绍人vi. 担任裁判；仲裁vt. 为…当裁判；调停, refereeing, referees</td></tr>
+<tr><td>apparently</td><td>/ə'pærəntli/ adv.</td><td>显然地表面上,似乎</td></tr>
+<tr><td>compliance</td><td>/kəm'plaɪəns/ n.</td><td>服从,听从,顺从</td></tr>
+<tr><td>bias</td><td>/'baɪəs/ n.</td><td>偏见；斜纹；偏爱；乖离率vt. 使存偏见adj. 偏斜的adv. 偏斜地, biassed biasing, biassing biases, biasses</td></tr>
+<tr><td>deferring</td><td>/dɪ'fɜːr/ vt.</td><td>拖延, 延缓, 推迟vi. 服从某人的意愿, 遵从, deferring, defers</td></tr>
+<tr><td>established</td><td>/ɪ'stæblɪʃt/ adj.</td><td>已建立的；已设立的；已制定的确定的，证实的</td></tr>
+<tr><td>foul</td><td>/faʊl/ adj.</td><td>邪恶的；污秽的；犯规的；淤塞的vt. 弄脏；犯规；淤塞；缠住，妨害vi. 犯规；缠结；腐烂n. 犯规；缠绕adv. 违反规则地，不正当地, foulest</td></tr>
+<tr><td>tier</td><td>/tɪr/ n.</td><td>行，列；层，排；等级vt. 使层叠vi. 成递升排列, tiering, tiers</td></tr>
+<tr><td>systematically</td><td>/ˌsɪstəˈmætɪk l../ adj.</td><td>有系统的，成体系的有条理的有计划有步骤的；经常的，非偶然的分类上的；分类学的</td></tr>
+<tr><td>discriminates</td><td>/dɪ'skrɪmɪneɪt/ vt.</td><td>& vi. 分别, 辨别, 区分vi. 歧视, 有差别地对待, discriminating, discriminates</td></tr>
+<tr><td>victims</td><td>/'vɪktɪm/ n.</td><td>牺牲者；受害人；牺牲品</td></tr>
+<tr><td>counterparts</td><td>/'kaʊntərpɑːrt/ n.</td><td>与对方地位相当的人, 与另一方作用相当的物</td></tr>
+<tr><td>victim</td><td>/'vɪktɪm/ n.</td><td>牺牲者；受害人；牺牲品</td></tr>
+<tr><td>committing</td><td>/kə'mɪt/ vt.</td><td>犯罪；犯错承诺；使自己受约束托付；交付，committing，commits</td></tr>
+<tr><td>relevant</td><td>/'reləvənt/ adj.</td><td>有关的, 切题的</td></tr>
+<tr><td>dumber</td><td>/dʌm/ adj.</td><td>哑的说不出话的愚蠢的, dumbest</td></tr>
+<tr><td>fulfilling</td><td>/fʊlˈfɪl/ vt.</td><td>履行；满足；实现；使结束（等于fulfil）, fulfilling, fulfillsalso fulfils</td></tr>
+<tr><td>worth</td><td>/wɜːrθ/ adj.</td><td>值…的n. 价值；财产, worthing, worths</td></tr>
+<tr><td>episode</td><td>/'epɪsoʊd/ n.</td><td>插曲；插话；一段情节；有趣的事件</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>ultimate</td><td>/'ʌltɪmət/ adj.</td><td>最后的，最终的；终极的；极端的；最好（或坏、伟大、重要等）的；根本的；基本的；基础性的n. 最好（或先进、伟大等）的事物；精华；极致；极限；最高典范</td></tr>
+<tr><td>evolves</td><td>/ɪ'vɑːlv/ vt.</td><td>& vi. 演变；进化，evolving，evolves</td></tr>
+<tr><td>taste</td><td>/teɪst/ n.</td><td>滋味, 味道鉴赏力爱好, 嗜好vt. & vi. 尝, 品尝, 尝到vt. 吃, 喝体验, 领略, tasting, tastes</td></tr>
+<tr><td>simulated</td><td>/'sɪmjuleɪtɪd/ adj.</td><td>假装的;冒充的仿造的模仿的</td></tr>
+<tr><td>counter</td><td>/'kaʊntər/ n.</td><td>柜台, 柜台式长桌计数器vt. & vi. 对抗, 反驳adv. 反方向地, 对立地, countering, counters</td></tr>
+<tr><td>damage</td><td>/'dæmɪdʒ/ v.</td><td>损害；伤害；毁坏；破坏n. 损坏，破坏，损失，损害，伤害（法院判定的）损害赔偿金, damaging, damages</td></tr>
+<tr><td>infrastructure</td><td>/'ɪnfrəstrʌktʃər/ n.</td><td>基础设施; 基础结构</td></tr>
+<tr><td>actual</td><td>/'æktʃuəl/ adj.</td><td>真实的，实际的；现行的，目前的</td></tr>
+<tr><td>chambers</td><td>/'tʃeɪmbər/ n.</td><td>（身体或器官内的）室，膛；房间；会所adj. 室内的；私人的，秘密的vt. 把…关在室内；装填（弹药等）, chambering, chambers</td></tr>
+<tr><td>casualty</td><td>/'kæʒuəlti/ n.</td><td>意外事故；伤亡人员；急诊室</td></tr>
+<tr><td>mutual</td><td>/'mjuːtʃuəl/ adj.</td><td>相互的, 彼此的共同的, 共有的</td></tr>
+<tr><td>preserve</td><td>/prɪ'zɜːrv/ vt.</td><td>保存；保护；维持；禁猎；腌n. 禁猎地；保护区；加工成的食品n. (某人或群体的）专门活动, preserving, preserves</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>casualties</td><td>/'kæʒuəlti/ n.</td><td>意外事故；伤亡人员；急诊室</td></tr>
+<tr><td>imperial</td><td>/ɪm'pɪriəl/ adj.</td><td>皇帝的；帝国的；威严的；至高无上的n. 纸张尺寸；特等品</td></tr>
+<tr><td>vision</td><td>/'vɪʒn/ n.</td><td>视力；眼力；幻象；美景；想象力vt. 显现；梦见；想象, visioning, visions</td></tr>
+<tr><td>diplomatic</td><td>/ˌdɪplə'mætɪk/ adj.</td><td>外交上的, 外交人员的有手腕的, 策略的, 善于交涉的, 圆滑的</td></tr>
+<tr><td>fragmented</td><td>/'fræɡmənt/ n.</td><td>碎片；片断或不完整部分vt. 使成碎片vi. 破碎或裂开, fragmenting, fragments</td></tr>
+<tr><td>towards</td><td>/tɔːrdz/ prep.</td><td>向，朝为了；有助于；用于对于，关于接近；将近；大约</td></tr>
+<tr><td>inaccessible</td><td>/ˌɪnæk'sesəbl/ adj.</td><td>达不到的, 不可及的</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day3.html" class="nav-btn">← Day 3</a>
+  <a href="day5.html" class="nav-btn">Day 5 →</a>
+</div>
+
+<div class="progress">📖 Day 4 of 40</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-06-20</div>
+
+</body>
+</html>

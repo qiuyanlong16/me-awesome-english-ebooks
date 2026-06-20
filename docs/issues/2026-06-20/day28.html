@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business | Pump v plug</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-06-20</div>
+
+<h1 class="article-title">Business | Pump v plug</h1>
+<div class="article-section">Business</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>Mark Wakefield of AlixPartners, a consultancy, says the “wall” to keep out the Chinese gives American carmakers the runway and money to catch up. Despite everything, cashflow is buoyant at both GM and Ford. <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">Although</span> some factories once <span class="annot" data-tooltip="earmarked /'ɪrmɑːrk/ vt. 指定…作为特定用途时 态: earmarked, earmarking, earmarks">earmarked</span> for ev production are being repurposed for <span class="annot" data-tooltip="petrol /'petrəl/ n. 汽油">petrol</span> <span class="annot" data-tooltip="vehicles /'viːəkl/ n. 交通工具, 车辆传播媒介, 手段">vehicles</span>, Stephanie Brinley of S&P Global, an information provider, points out that ev investment is “shifting in scale but still happening”. Thus Ford’s “skunkworks” in California brims with software engineers and other techies. A new ev platform that can underpin several models is positioned to go “head to head” with the Chinese, says Andrew Frick, president of Ford’s petrol- and electric-car businesses. The first product, a $30,000 small pickup, is expected by 2027. At GM’s global tech centre in Warren, half an hour’s <span class="annot" data-tooltip="drive /draɪv/ vt. 驱赶驱使, 促使敲, 击vt. & vi. 驾驶n. 乘车旅行私人车道传动, 驱动干劲, 积极性, 能动性紧迫, 逼迫,">drive</span> from HQ, work continues on <span class="annot" data-tooltip="developing /dɪ'veləpɪŋ/ adj. 在进行中的;走向完成阶段的;走向成熟的发展中的">developing</span> batteries with novel lithium and manganese <span class="annot" data-tooltip="chemistry /'kemɪstri/ n. 化学">chemistry</span> that will <span class="annot" data-tooltip="slash /slæʃ/ v. （用利器）砍，劈割破；在…上留下深长的切口大量削减n. （用刀等）砍，劈（长而窄的）伤口，切口，砍痕斜杠；斜线号时 态:">slash</span> costs without hurting performance. Mr Filosa insists that Stellantis is not “abandoning evs” in America and that its large European business and <span class="annot" data-tooltip="collaboration /kəˌlæbə'reɪʃn/ n. 合作, 协作通敌">collaboration</span> with Chinese partners mean it will be ready to compete. “Europe is a laboratory for EVs.” Will this be enough, at least to stay ahead at home? The <span class="annot" data-tooltip="combination /ˌkɑːmbɪ'neɪʃn/ n. 合作, 结合, 组合联合体, 组合物密码组合, 字码组合排列, 组合形容词: combinational">combination</span> of <span class="annot" data-tooltip="tariffs /'tærɪf/ n. 关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表时 态: tariffed, tariffing, tar">tariffs</span>, regulations to ban cars with Chinese software and hardware and—in a politically divided country—broad agreement on the threat of Chinese tech, seems a formidable defence. Mr Filosa reflects the thinking of many in Detroit when he says he doesn’t foresee Chinese carmakers in America “at least for a few years”. But the Chinese are <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> ahead and it is “only a matter of time” before they arrive, says Charlie Chesbrough of Cox <span class="annot" data-tooltip="automotive /ˌɔːtə'moʊtɪv/ adj. 汽车的，机动车辆的">Automotive</span>, a data firm. They are patient. Chery, a state-owned carmaker, says it will launch in America at a “suitable time”. They already have toeholds. Geely, China’s second-largest car company, owns Volvo, a Swedish firm with a factory in South Carolina. It could produce cars there, even under its Chinese Zeekr and Lynk&Co <span class="annot" data-tooltip="brands /brænd/ n. 商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责时 态: branded, branding, brands">brands</span>. Several Chinese brands have design and R&D centres in America. Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> also seems open to letting in Chinese firms. In January Detroit’s bosses were aghast when he declared in the city that it would be “great” if the Chinese built factories and provided jobs in America. Jim Farley, Ford’s boss, has said that admitting them would be “devastating”. He has reportedly</p>
+<p>also suggested that Chinese carmakers be obliged to <span class="annot" data-tooltip="enter /'entər/ vt. & vi. 进入, 进去参加, 加入登记, 登录时 态: entered, entering, enters">enter</span> <span class="annot" data-tooltip="joint /dʒɔɪnt/ n. 关节；接合处，接合点；接缝；（牛，羊等的腿）大块肉adj. 联合的，合办的；共同的；连接的vt. 连接，贴合；接合；使有">joint</span> ventures under American control. They are already just across the borders. GAC, another state firm, is about to start assembling cars in <span class="annot" data-tooltip="mexico /'meksɪkoʊ/ n. 墨西哥">Mexico</span>, where Chinese imports have <span class="annot" data-tooltip="swiftly /swɪft/ adj. 迅速的, 速度快的敏捷的, 反应快的SWIFTabbr. Society for Worldwide Interbank">swiftly</span> captured 15% of the market. BYD and Geely are said to be eyeing factories there. BYD is also <span class="annot" data-tooltip="considering /kən'sɪdərɪŋ/ prep. 考虑到, 就…而论adv. 从各方面考虑, 从通盘考虑">considering</span> a factory in Canada, which recently agreed to allow <span class="annot" data-tooltip="annual /'ænjuəl/ adj. 年度的；每年的n. 年刊，年鉴；一年生植物副 词: annually">annual</span> imports of 49,000 Chinese <span class="annot" data-tooltip="vehicles /'viːəkl/ n. 交通工具, 车辆传播媒介, 手段">vehicles</span> with <span class="annot" data-tooltip="minimal /'mɪnɪml/ adj. 〈正式〉最小的; 极少的名 词: minimality">minimal</span> <span class="annot" data-tooltip="tariffs /'tærɪf/ n. 关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表时 态: tariffed, tariffing, tar">tariffs</span>. Other foreign carmakers, battling the Chinese around the world, have also been forced to up their ev game. They will surely want to sell in America too. One way or another, competition is coming. The Big Three have their work cut out to live up to Detroit’s past grandeur. ■ To track the <span class="annot" data-tooltip="trends /trend/ n. 趋势, 倾向流行时 态: trended, trending, trends">trends</span> shaping <span class="annot" data-tooltip="commerce /'kɑːmɜːrs/ n. 商业, 贸易">commerce</span>, <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> and technology, sign up to “The Bottom <span class="annot" data-tooltip="line /laɪn/ n. 绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long inter">Line</span>”, our weekly subscriber-only newsletter on global business. This article was downloaded by zlibrary from https://www.economist.com//business/2026/06/15/americas-carmakers-cannot-<span class="annot" data-tooltip="escape /ɪ'skeɪp/ vt. 逃避，避免；被忘掉vi. 逃脱；避开；溜走n. 逃跑；逃亡时 态: escaped, escaping, escapes">escape</span>- chinese-evs-for-ever</p>
+<div class="article-separator"></div>
+<div class="article-header">Business · Business | Fox pounces</div>
+<p>Fox, Roku and the next <span class="annot" data-tooltip="phase /feɪz/ n. 阶段, 时期(月亮、行星的)位相vt. 分阶段计划[安排]时 态: phased, phasing, phases">phase</span> of the streaming wars A $22bn deal creates a formidable new power in Hollywood June 18th 2026 One of the <span class="annot" data-tooltip="main /meɪn/ adj. 主要的; 最重要的n. 总管道; 干线">main</span> winners of the streaming wars, Hollywood’s years-long content-spending free-for-all, has turned out to be a non-combatant. Fox kept its <span class="annot" data-tooltip="powder /'paʊdər/ n. 粉末；粉；火药；尘土vt. 使成粉末；搽粉于；撒粉vi. 搽粉；变成粉末时 态: powdered, powdering">powder</span> dry while companies such as Disney blew gazillions on building streaming services to compete with the likes of Netflix. The <span class="annot" data-tooltip="cable /'keɪbl/ n. (船只、桥梁等上的)巨缆, 钢索电缆vt. & vi. 给(某人)发电报, 打电报告诉(某人)Cable凯布尔(姓氏)时">cable</span> giant, which still makes most of its money from old-fashioned “linear” television, has been rewarded with a near-40% <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> in its share price in the past five years, during which time Disney’s has fallen by a similar <span class="annot" data-tooltip="proportion /prə'pɔːrʃn/ n. 均衡；相称，协调一物与他物在数量、大小等方面的关系；比例部分；份儿时 态: proportioned，proportio">proportion</span>. On June 15th Fox took a big step into the streaming business, with the surprise announcement that it had agreed to acquire Roku, an American firm</p>
+<p>which sells streaming hardware and software and operates a streaming channel of its <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span>. The deal, valued at around $22bn in cash and stock, signals a shift in <span class="annot" data-tooltip="strategy /'strætədʒi/ n. 战略学, 兵法战略, 策略策略, 计谋">strategy</span> at Fox and suggests how the next <span class="annot" data-tooltip="phase /feɪz/ n. 阶段, 时期(月亮、行星的)位相vt. 分阶段计划[安排]时 态: phased, phasing, phases">phase</span> of the streaming wars may be fought. Fox has been <span class="annot" data-tooltip="quietly /'kwaɪətli/ adv. 安静地；秘密地；平稳地">quietly</span> building up its streaming <span class="annot" data-tooltip="capabilities /ˌkeɪpə'bɪləti/ n. 能做某事的素质;能力尚未发挥的天资或素质">capabilities</span> for a while. In 2020 it acquired Tubi, a free, ad-supported service (known in the jargon as a FAST channel), for $440m. It has slowly grown the unremarkable entertainment channel into a platform accounting for 5% of streaming viewership in America (see chart), on a par with Paramount and NBCUniversal’s <span class="annot" data-tooltip="peacock /'piːkɑːk/ n. (雄)孔雀">Peacock</span>. Last year it launched Fox One, a paid- <span class="annot" data-tooltip="subscription /səb'skrɪpʃn/ n. 捐助，订阅，签名捐款；订阅费">subscription</span> streaming home for all of Fox’s news, sport and entertainment. Roku will expand Fox’s streaming operation <span class="annot" data-tooltip="significantly /sɪɡ'nɪfɪkənt/ adj. 重要的, 重大的, 可观的有意义的, 有用意的意味深长的副 词: significantly">significantly</span>. Its own FAST service, the Roku Channel, will give Fox a combined share of 11% of streaming viewership in America, overtaking Disney to claim third <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span> behind YouTube and Netflix. <span class="annot" data-tooltip="cable /'keɪbl/ n. (船只、桥梁等上的)巨缆, 钢索电缆vt. & vi. 给(某人)发电报, 打电报告诉(某人)Cable凯布尔(姓氏)时">Cable</span> will remain Fox’s bread and <span class="annot" data-tooltip="butter /bʌt/ n. 笑柄；烟头；屁股；靶垛；粗大的一端vt. 以头抵撞；碰撞时 态: butted, butting, butts">butter</span>. But streaming will now be a <span class="annot" data-tooltip="serious /'sɪriəs/ adj. 严肃的，严重的；认真的；庄重的；危急的副 词: seriously">serious</span> chunk of its business mix: Tubi and Roku will contribute about 30% of total <span class="annot" data-tooltip="revenue /'revənuː/ n. 收入，收益；财政收入，税收">revenue</span>, estimates MoffettNathanson, a firm of analysts, which sees the deal as “a way to ensure [Fox’s] future as streaming <span class="annot" data-tooltip="overtakes /ˌoʊvər'teɪk/ vt. 赶上；压倒；突然来袭vi. 超车时 态: overtook overtaken overtaking, overtake">overtakes</span> traditional distribution in the years ahead”.</p>
+<p>The deal also demonstrates how advertising is becoming a battleground of the streaming wars. <span class="annot" data-tooltip="subscription /səb'skrɪpʃn/ n. 捐助，订阅，签名捐款；订阅费">Subscription</span> streamers such as Netflix, which initially shunned ads, have come to embrace them as they court members unwilling to shell out $20 a month for an ad-free plan. More than half of new streaming subscribers in America sign up for ad-supported plans, estimates Antenna, a research firm. Advertisers, for their part, are on the hunt for new <span class="annot" data-tooltip="places /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">places</span> to sell their commercials, as viewership of traditional TV declines. FAST channels are where many are turning. Having Roku will improve Fox’s ad offering. Roku made $2.3bn selling ads last year on the Roku Channel and within its TV operating system. As well as scale, Roku will bring a trove of data. Its operating system powered 8m smart TVs sold in America last year, more than any of its <span class="annot" data-tooltip="rivals /'raɪvl/ n. 竞争对手vt. 与…竞争, 与…匹敌时 态: rivaled, rivalled rivaling, rivalling">rivals</span>, which include Samsung, <span class="annot" data-tooltip="alphabet /'ælfəbet/ n. 字母表，字母系统；入门，初步">Alphabet</span> and <span class="annot" data-tooltip="amazon /ˈæməˌzɑn/ n. 高大强悍的女人；（古希腊神话中的）亚马孙族女战士Amazonn. 亚马逊河(南美洲大河)">Amazon</span>. Worldwide, more than 100m <span class="annot" data-tooltip="households /'haʊshoʊld/ n. 同住在一所房子里的人, 一家人, 户adj. 家庭的, 家用的">households</span> use Roku’s streaming tech, providing it with information on their viewing habits which will help Fox to target ads across all its services. After several years with a streaming offering that was comparatively tame, Fox is suddenly looking rather ferocious.■ To track the <span class="annot" data-tooltip="trends /trend/ n. 趋势, 倾向流行时 态: trended, trending, trends">trends</span> shaping <span class="annot" data-tooltip="commerce /'kɑːmɜːrs/ n. 商业, 贸易">commerce</span>, <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> and technology, sign up to “The Bottom <span class="annot" data-tooltip="line /laɪn/ n. 绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long inter">Line</span>”, our weekly subscriber-only newsletter on global business. This article was downloaded by zlibrary from https://www.economist.com//business/2026/06/17/fox-roku-and-the-next-<span class="annot" data-tooltip="phase /feɪz/ n. 阶段, 时期(月亮、行星的)位相vt. 分阶段计划[安排]时 态: phased, phasing, phases">phase</span>-of-the- streaming-wars</p>
+<div class="article-separator"></div>
+<div class="article-header">Business · Business | Oil, wind and fire</div>
+<p>The Iran war has boosted Equinor, <span class="annot" data-tooltip="norway /'nɔːrweɪ/ n. 挪威（北欧国家名）">Norway</span>’s <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span> giant But it cannot turn a greying cash cow into a <span class="annot" data-tooltip="sprightly /ˈspraɪtli/ adj. 活泼的，轻快的">sprightly</span> upstart June 18th 2026 RECENT EVENTS have been kind to energy firms <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span> the Gulf— including Norway’s Equinor, the largest supplier of hydrocarbons to Europe. The <span class="annot" data-tooltip="closure /'kloʊʒər/ n. 关闭；终止，结束vt. 使终止时 态: closured, closuring, closures">closure</span> of the <span class="annot" data-tooltip="strait /streɪt/ n. 海峡；（尤指经济拮据引起的）困境，境况窘迫adj. 狭窄的；苦恼的副 词: straitly">Strait</span> of Hormuz, through which one-fifth of the world’s oil and liquefied natural gas (LNG) usually flows, has pushed European gas prices up by 40% since February; Brent <span class="annot" data-tooltip="crude /kruːd/ adj. 粗糙的；粗鲁的；天然的，未加工的；粗略的n. 天然的物质；原油比较级: cruder, crudest">crude</span> averaged $103 a <span class="annot" data-tooltip="barrel /'bærəl/ vt. 把……装入桶内n. 桶；枪管，炮管vi. 快速移动时 态: barreled, barrelled barreling,">barrel</span> in the three months to May. Equinor’s share price is up by a <span class="annot" data-tooltip="quarter /'kwɔːrtər/ n. 四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一时 ">quarter</span> (see chart). So you might have expected cheer at Equinor’s capital-markets day on June 16th, the 25th anniversary of the company’s listing in Oslo and New York. Yet Scandinavian restraint prevailed—and not just because peace between</p>
+<p>Iran and America will <span class="annot" data-tooltip="calm /kɑːm/ adj. 静的，平静的；沉着的vt. 使平静；使镇定vi. 平静下来；镇定下来n. 风平浪静比较级: calmer, calmes">calm</span> prices. Equinor remains caught between a greying fossil-fuel business and a green <span class="annot" data-tooltip="portfolio /pɔːrt'foʊlioʊ/ n. 公事包, 文件夹投资组合大臣或部长的职位或职责">portfolio</span> with <span class="annot" data-tooltip="clipped /klɪp/ vt. 修剪；夹牢；痛打vi. 修剪n. 夹子；修剪；回形针CLIPabbr. Cellular Logic Image Pro">clipped</span> ambitions. Discovered but undeveloped oil and gas on the Norwegian continental shelf, the source of 65% of Equinor’s output, peaked in 1983. Most fields are now mature. To <span class="annot" data-tooltip="sustain /sə'steɪn/ vt. 承受，支撑维持长期保持；使继续经受，遭受时 态: sustained，sustaining，sustains">sustain</span> production, in the next few years Equinor intends to deploy 60% of its capital <span class="annot" data-tooltip="expenditure /ɪk'spendɪtʃər/ n. 花费, 使用(尤指金钱的)支出额">expenditure</span> at home. It will mostly go into small <span class="annot" data-tooltip="deposits /dɪ'pɑːzɪt/ n. 存款；保证金；沉淀物vt. 存放；使沉积vi. 沉淀时 态: deposited, depositing, deposi">deposits</span> near existing pipelines, wells or plants, to break even within two and a half years and at $35 a <span class="annot" data-tooltip="barrel /'bærəl/ vt. 把……装入桶内n. 桶；枪管，炮管vi. 快速移动时 态: barreled, barrelled barreling,">barrel</span> or less. Equinor also aims to boost recovery from older fields. It expects Norwegian output to peak in 2027 at 1.4m <span class="annot" data-tooltip="barrels /'bærəl/ vt. 把……装入桶内n. 桶；枪管，炮管vi. 快速移动时 态: barreled, barrelled barreling,">barrels</span> of oil <span class="annot" data-tooltip="equivalent /ɪ'kwɪvələnt/ adj. 等同的，等效的n. 对等的人（或事物），对应的人（或事物）">equivalent</span> per day (boe/d), declining gently to 1.3m boe/d in the early 2030s. But many analysts reckon it may drop faster. Operations abroad may <span class="annot" data-tooltip="offset /'ɔːfset/ vt. 抵消, 补偿时 态: offset, offsetting, offsets">offset</span> decline at home. Equinor is <span class="annot" data-tooltip="ramping /ræmp/ n. 斜坡，坡道；敲诈vi. 蔓延；狂跳乱撞；敲诈vt. 敲诈；使有斜面时 态: ramped, ramping, ramps">ramping</span> up Bacalhau, a big Brazilian field under a thick layer of salt; Raia, a similar <span class="annot" data-tooltip="asset /'æset/ n. 资产；有用的东西；有利条件；优点">asset</span>, is expected online by 2028. The firm has also bought <span class="annot" data-tooltip="assets /'æset/ n. 资产；有用的东西；有利条件；优点">assets</span> in America’s Marcellus shale basin. Equinor expects international production to grow by 30% by 2030, to 950,000 boe/d. But hopes that foreign ventures will transform its <span class="annot" data-tooltip="fortunes /'fɔːrtʃən/ n. 运气；财富；命运vt. 给予财富vi. 偶然发生时 态: fortuned, fortuning, fortunes">fortunes</span> may be misplaced. Alastair Syme of Citigroup doubts that the Norwegian government, Equinor’s largest <span class="annot" data-tooltip="shareholder /'ʃerhoʊldər/ n. 股东名 词: shareholding">shareholder</span>, favours global adventurism. The</p>
+<p>firm is avoiding new countries and frontier exploration, preferring to boost cashflows. It expects $9bn, or 80% more, from international operations by 2030. Could its future be green? The firm’s renaming (from Statoil) in 2018 signalled a shift that way. Equinor intended renewables to make up 10% of its output by 2030, <span class="annot" data-tooltip="earmarking /'ɪrmɑːrk/ vt. 指定…作为特定用途时 态: earmarked, earmarking, earmarks">earmarking</span> $23bn for green investments from 2021 to 2026. But after the <span class="annot" data-tooltip="pandemic /pæn'demɪk/ adj. （疾病）在全国（或世界）流行的">pandemic</span>, surging costs for components and supply- chain snags drove projects over budget, just as higher interest rates made financing dearer. Permitting delays and geopolitical <span class="annot" data-tooltip="uncertainty /ʌn'sɜːrtnti/ n. 无把握;不确定;变化不定无把握、不确定的事物">uncertainty</span> further squeezed returns. Target markets also grew more slowly than expected. Losses from renewables <span class="annot" data-tooltip="mounted /maʊnt/ vt. & vi. 登上；骑上vi. 增加；上升vt. 上演；配有…发动攻击；攻击n. 山峰坐骑时 态: mounted，mou">mounted</span>. Since 2022 Equinor has scaled back, spending less than $3bn last year. It has quit projects, sold <span class="annot" data-tooltip="assets /'æset/ n. 资产；有用的东西；有利条件；优点">assets</span> and written off $1.4bn. The firm <span class="annot" data-tooltip="retains /rɪ'teɪn/ vt. 保持；雇；记住时 态: retained, retaining, retains 缩 写: ret">retains</span> three offshore-wind <span class="annot" data-tooltip="mega n. 百万adj. 许多；宏大的adv. 非常">mega</span>-projects, which it expects to be cashflow-positive by next year. It expects its power production to grow fourfold to 20 terawatt- hours by 2030, but mostly from existing projects. <span class="annot" data-tooltip="conscious /'kɑːnʃəs/ adj. 神志清醒的意识到的; 注意到的自觉的; 蓄意的副 词: consciously">Conscious</span> that this may fail to enthrall investors, Equinor is promising them lots of money. It intends to double share buybacks to $3bn in 2026, and to keep them at $2bn-4bn a year, while raising its <span class="annot" data-tooltip="dividend /'dɪvɪdend/ n. 股息；被除数；奖金">dividend</span> by more than 5% a year. The Iran windfall helps for now, but without a lasting <span class="annot" data-tooltip="bump /bʌmp/ n. 肿块，隆起物；撞击vi. 碰撞，撞击；颠簸而行vt. 碰，撞；颠簸adv. 突然地，猛烈地时 态: bumped, bu">bump</span> in prices or new growth, such payouts will soon require borrowing. Equinor is settling down as a middle-aged cash cow. ■ To track the <span class="annot" data-tooltip="trends /trend/ n. 趋势, 倾向流行时 态: trended, trending, trends">trends</span> shaping <span class="annot" data-tooltip="commerce /'kɑːmɜːrs/ n. 商业, 贸易">commerce</span>, <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> and technology, sign up to “The Bottom <span class="annot" data-tooltip="line /laɪn/ n. 绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long inter">Line</span>”, our weekly subscriber-only newsletter on global business. This article was downloaded by zlibrary from https://www.economist.com//business/2026/06/18/the-iran-war-has-boosted-equinor- <span class="annot" data-tooltip="norways /'nɔːrweɪ/ n. 挪威（北欧国家名）">norways</span>-<span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span>-giant</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>earmarked</td><td>/'ɪrmɑːrk/ vt.</td><td>指定…作为特定用途, earmarking, earmarks</td></tr>
+<tr><td>petrol</td><td>/'petrəl/ n.</td><td>汽油</td></tr>
+<tr><td>vehicles</td><td>/'viːəkl/ n.</td><td>交通工具, 车辆传播媒介, 手段</td></tr>
+<tr><td>drive</td><td>/draɪv/ vt.</td><td>驱赶驱使, 促使敲, 击vt. & vi. 驾驶n. 乘车旅行私人车道传动, 驱动干劲, 积极性, 能动性紧迫, 逼迫, 压力, drives</td></tr>
+<tr><td>developing</td><td>/dɪ'veləpɪŋ/ adj.</td><td>在进行中的;走向完成阶段的;走向成熟的发展中的</td></tr>
+<tr><td>chemistry</td><td>/'kemɪstri/ n.</td><td>化学</td></tr>
+<tr><td>slash</td><td>/slæʃ/ v.</td><td>（用利器）砍，劈割破；在…上留下深长的切口大量削减n. （用刀等）砍，劈（长而窄的）伤口，切口，砍痕斜杠；斜线号，slashing，slashes</td></tr>
+<tr><td>collaboration</td><td>/kəˌlæbə'reɪʃn/ n.</td><td>合作, 协作通敌</td></tr>
+<tr><td>combination</td><td>/ˌkɑːmbɪ'neɪʃn/ n.</td><td>合作, 结合, 组合联合体, 组合物密码组合, 字码组合排列, 组合</td></tr>
+<tr><td>tariffs</td><td>/'tærɪf/ n.</td><td>关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表, tariffing, tariffs</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>automotive</td><td>/ˌɔːtə'moʊtɪv/ adj.</td><td>汽车的，机动车辆的</td></tr>
+<tr><td>brands</td><td>/brænd/ n.</td><td>商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责, branding, brands</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>enter</td><td>/'entər/ vt.</td><td>& vi. 进入, 进去参加, 加入登记, 登录, entering, enters</td></tr>
+<tr><td>joint</td><td>/dʒɔɪnt/ n.</td><td>关节；接合处，接合点；接缝；（牛，羊等的腿）大块肉adj. 联合的，合办的；共同的；连接的vt. 连接，贴合；接合；使有接头vi. 贴合；生节, jointin</td></tr>
+<tr><td>mexico</td><td>/'meksɪkoʊ/ n.</td><td>墨西哥</td></tr>
+<tr><td>swiftly</td><td>/swɪft/ adj.</td><td>迅速的, 速度快的敏捷的, 反应快的SWIFTabbr. Society for Worldwide Interbank Financial Telecommu</td></tr>
+<tr><td>considering</td><td>/kən'sɪdərɪŋ/ prep.</td><td>考虑到, 就…而论adv. 从各方面考虑, 从通盘考虑</td></tr>
+<tr><td>annual</td><td>/'ænjuəl/ adj.</td><td>年度的；每年的n. 年刊，年鉴；一年生植物</td></tr>
+<tr><td>vehicles</td><td>/'viːəkl/ n.</td><td>交通工具, 车辆传播媒介, 手段</td></tr>
+<tr><td>minimal</td><td>/'mɪnɪml/ adj.</td><td>〈正式〉最小的; 极少的</td></tr>
+<tr><td>tariffs</td><td>/'tærɪf/ n.</td><td>关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表, tariffing, tariffs</td></tr>
+<tr><td>trends</td><td>/trend/ n.</td><td>趋势, 倾向流行, trending, trends</td></tr>
+<tr><td>commerce</td><td>/'kɑːmɜːrs/ n.</td><td>商业, 贸易</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>line</td><td>/laɪn/ n.</td><td>绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long interspersed element)长散在元</td></tr>
+<tr><td>escape</td><td>/ɪ'skeɪp/ vt.</td><td>逃避，避免；被忘掉vi. 逃脱；避开；溜走n. 逃跑；逃亡, escaping, escapes</td></tr>
+<tr><td>phase</td><td>/feɪz/ n.</td><td>阶段, 时期(月亮、行星的)位相vt. 分阶段计划[安排], phasing, phases</td></tr>
+<tr><td>main</td><td>/meɪn/ adj.</td><td>主要的; 最重要的n. 总管道; 干线</td></tr>
+<tr><td>powder</td><td>/'paʊdər/ n.</td><td>粉末；粉；火药；尘土vt. 使成粉末；搽粉于；撒粉vi. 搽粉；变成粉末, powdering, powders</td></tr>
+<tr><td>cable</td><td>/'keɪbl/ n.</td><td>(船只、桥梁等上的)巨缆, 钢索电缆vt. & vi. 给(某人)发电报, 打电报告诉(某人)Cable凯布尔(姓氏), cabling, cables</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>proportion</td><td>/prə'pɔːrʃn/ n.</td><td>均衡；相称，协调一物与他物在数量、大小等方面的关系；比例部分；份儿，proportioning，proportions</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>strategy</td><td>/'strætədʒi/ n.</td><td>战略学, 兵法战略, 策略策略, 计谋</td></tr>
+<tr><td>phase</td><td>/feɪz/ n.</td><td>阶段, 时期(月亮、行星的)位相vt. 分阶段计划[安排], phasing, phases</td></tr>
+<tr><td>quietly</td><td>/'kwaɪətli/ adv.</td><td>安静地；秘密地；平稳地</td></tr>
+<tr><td>capabilities</td><td>/ˌkeɪpə'bɪləti/ n.</td><td>能做某事的素质;能力尚未发挥的天资或素质</td></tr>
+<tr><td>peacock</td><td>/'piːkɑːk/ n.</td><td>(雄)孔雀</td></tr>
+<tr><td>subscription</td><td>/səb'skrɪpʃn/ n.</td><td>捐助，订阅，签名捐款；订阅费</td></tr>
+<tr><td>significantly</td><td>/sɪɡ'nɪfɪkənt/ adj.</td><td>重要的, 重大的, 可观的有意义的, 有用意的意味深长的</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>cable</td><td>/'keɪbl/ n.</td><td>(船只、桥梁等上的)巨缆, 钢索电缆vt. & vi. 给(某人)发电报, 打电报告诉(某人)Cable凯布尔(姓氏), cabling, cables</td></tr>
+<tr><td>butter</td><td>/bʌt/ n.</td><td>笑柄；烟头；屁股；靶垛；粗大的一端vt. 以头抵撞；碰撞, butting, butts</td></tr>
+<tr><td>serious</td><td>/'sɪriəs/ adj.</td><td>严肃的，严重的；认真的；庄重的；危急的</td></tr>
+<tr><td>revenue</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>overtakes</td><td>/ˌoʊvər'teɪk/ vt.</td><td>赶上；压倒；突然来袭vi. 超车, overtakes</td></tr>
+<tr><td>subscription</td><td>/səb'skrɪpʃn/ n.</td><td>捐助，订阅，签名捐款；订阅费</td></tr>
+<tr><td>places</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>rivals</td><td>/'raɪvl/ n.</td><td>竞争对手vt. 与…竞争, 与…匹敌, rivalled rivaling, rivalling rivals, rivals</td></tr>
+<tr><td>alphabet</td><td>/'ælfəbet/ n.</td><td>字母表，字母系统；入门，初步</td></tr>
+<tr><td>amazon</td><td>/ˈæməˌzɑn/ n.</td><td>高大强悍的女人；（古希腊神话中的）亚马孙族女战士Amazonn. 亚马逊河(南美洲大河)</td></tr>
+<tr><td>households</td><td>/'haʊshoʊld/ n.</td><td>同住在一所房子里的人, 一家人, 户adj. 家庭的, 家用的</td></tr>
+<tr><td>trends</td><td>/trend/ n.</td><td>趋势, 倾向流行, trending, trends</td></tr>
+<tr><td>commerce</td><td>/'kɑːmɜːrs/ n.</td><td>商业, 贸易</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>line</td><td>/laɪn/ n.</td><td>绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long interspersed element)长散在元</td></tr>
+<tr><td>phase</td><td>/feɪz/ n.</td><td>阶段, 时期(月亮、行星的)位相vt. 分阶段计划[安排], phasing, phases</td></tr>
+<tr><td>norway</td><td>/'nɔːrweɪ/ n.</td><td>挪威（北欧国家名）</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>sprightly</td><td>/ˈspraɪtli/ adj.</td><td>活泼的，轻快的</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>closure</td><td>/'kloʊʒər/ n.</td><td>关闭；终止，结束vt. 使终止, closuring, closures</td></tr>
+<tr><td>strait</td><td>/streɪt/ n.</td><td>海峡；（尤指经济拮据引起的）困境，境况窘迫adj. 狭窄的；苦恼的</td></tr>
+<tr><td>crude</td><td>/kruːd/ adj.</td><td>粗糙的；粗鲁的；天然的，未加工的；粗略的n. 天然的物质；原油, crudest</td></tr>
+<tr><td>barrel</td><td>/'bærəl/ vt.</td><td>把……装入桶内n. 桶；枪管，炮管vi. 快速移动, barrelled barreling, barrelling barrels, barrels</td></tr>
+<tr><td>quarter</td><td>/'kwɔːrtər/ n.</td><td>四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一, quartering, quarters</td></tr>
+<tr><td>calm</td><td>/kɑːm/ adj.</td><td>静的，平静的；沉着的vt. 使平静；使镇定vi. 平静下来；镇定下来n. 风平浪静, calmest</td></tr>
+<tr><td>portfolio</td><td>/pɔːrt'foʊlioʊ/ n.</td><td>公事包, 文件夹投资组合大臣或部长的职位或职责</td></tr>
+<tr><td>clipped</td><td>/klɪp/ vt.</td><td>修剪；夹牢；痛打vi. 修剪n. 夹子；修剪；回形针CLIPabbr. Cellular Logic Image Processor 单元逻辑映象处理器Comp</td></tr>
+<tr><td>sustain</td><td>/sə'steɪn/ vt.</td><td>承受，支撑维持长期保持；使继续经受，遭受，sustaining，sustains</td></tr>
+<tr><td>expenditure</td><td>/ɪk'spendɪtʃər/ n.</td><td>花费, 使用(尤指金钱的)支出额</td></tr>
+<tr><td>deposits</td><td>/dɪ'pɑːzɪt/ n.</td><td>存款；保证金；沉淀物vt. 存放；使沉积vi. 沉淀, depositing, deposits</td></tr>
+<tr><td>barrel</td><td>/'bærəl/ vt.</td><td>把……装入桶内n. 桶；枪管，炮管vi. 快速移动, barrelled barreling, barrelling barrels, barrels</td></tr>
+<tr><td>barrels</td><td>/'bærəl/ vt.</td><td>把……装入桶内n. 桶；枪管，炮管vi. 快速移动, barrelled barreling, barrelling barrels, barrels</td></tr>
+<tr><td>equivalent</td><td>/ɪ'kwɪvələnt/ adj.</td><td>等同的，等效的n. 对等的人（或事物），对应的人（或事物）</td></tr>
+<tr><td>offset</td><td>/'ɔːfset/ vt.</td><td>抵消, 补偿, offsetting, offsets</td></tr>
+<tr><td>ramping</td><td>/ræmp/ n.</td><td>斜坡，坡道；敲诈vi. 蔓延；狂跳乱撞；敲诈vt. 敲诈；使有斜面, ramping, ramps</td></tr>
+<tr><td>asset</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>assets</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>fortunes</td><td>/'fɔːrtʃən/ n.</td><td>运气；财富；命运vt. 给予财富vi. 偶然发生, fortuning, fortunes</td></tr>
+<tr><td>shareholder</td><td>/'ʃerhoʊldər/ n.</td><td>股东</td></tr>
+<tr><td>earmarking</td><td>/'ɪrmɑːrk/ vt.</td><td>指定…作为特定用途, earmarking, earmarks</td></tr>
+<tr><td>pandemic</td><td>/pæn'demɪk/ adj.</td><td>（疾病）在全国（或世界）流行的</td></tr>
+<tr><td>uncertainty</td><td>/ʌn'sɜːrtnti/ n.</td><td>无把握;不确定;变化不定无把握、不确定的事物</td></tr>
+<tr><td>mounted</td><td>/maʊnt/ vt.</td><td>& vi. 登上；骑上vi. 增加；上升vt. 上演；配有…发动攻击；攻击n. 山峰坐骑，mounting，mounts</td></tr>
+<tr><td>assets</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>retains</td><td>/rɪ'teɪn/ vt.</td><td>保持；雇；记住, retaining, retains 缩 写: ret</td></tr>
+<tr><td>mega</td><td>— n.</td><td>百万adj. 许多；宏大的adv. 非常</td></tr>
+<tr><td>conscious</td><td>/'kɑːnʃəs/ adj.</td><td>神志清醒的意识到的; 注意到的自觉的; 蓄意的</td></tr>
+<tr><td>dividend</td><td>/'dɪvɪdend/ n.</td><td>股息；被除数；奖金</td></tr>
+<tr><td>bump</td><td>/bʌmp/ n.</td><td>肿块，隆起物；撞击vi. 碰撞，撞击；颠簸而行vt. 碰，撞；颠簸adv. 突然地，猛烈地, bumping, bumps</td></tr>
+<tr><td>trends</td><td>/trend/ n.</td><td>趋势, 倾向流行, trending, trends</td></tr>
+<tr><td>commerce</td><td>/'kɑːmɜːrs/ n.</td><td>商业, 贸易</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>line</td><td>/laɪn/ n.</td><td>绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long interspersed element)长散在元</td></tr>
+<tr><td>norways</td><td>/'nɔːrweɪ/ n.</td><td>挪威（北欧国家名）</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day27.html" class="nav-btn">← Day 27</a>
+  <a href="day29.html" class="nav-btn">Day 29 →</a>
+</div>
+
+<div class="progress">📖 Day 28 of 40</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-06-20</div>
+
+</body>
+</html>

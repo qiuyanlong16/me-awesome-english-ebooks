@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Briefing | The AI curtain</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-06-20</div>
+
+<h1 class="article-title">Briefing | The AI curtain</h1>
+<div class="article-section">Briefing</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s blocking of <span class="annot" data-tooltip="anthropic /ænˈθrɑpɪk/ adj. 人类的,有关人类的">Anthropic</span> is capricious and <span class="annot" data-tooltip="chaotic /keɪ'ɑːtɪk/ adj. 混乱的，无秩序的；混沌的">chaotic</span> America’s closest <span class="annot" data-tooltip="allies n. （第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者">allies</span> are shellshocked June 18th 2026 IN BANNING foreigners from using Mythos 5 and Fable 5, Anthropic’s most powerful models, America’s government may <span class="annot" data-tooltip="simply /'sɪmpli/ adv. 简单地；朴素地；简直；仅仅；坦白地">simply</span> have been seeking to punish the firm by the readiest means available. But whatever its intentions, it has demonstrated the difficulty of <span class="annot" data-tooltip="curbing /kɜːrb/ n. 侧石, 边石限制, 克制, 抑制vt. 限制, 克制, 抑制时 态: curbed, curbing, curbs">curbing</span> access to <span class="annot" data-tooltip="potent /'poʊtnt/ adj. 有效的；强有力的，有权势的；有说服力的">potent</span> technology. The ban has echoes of America’s decision to restrict public-key cryptography, a technology used to <span class="annot" data-tooltip="secure /sɪ'kjʊr/ adj. 安心的；有把握的可靠的；牢靠的；稳固的；安全的；稳妥的严密把守的；牢固的；坚固的v. （尤指经过努力）获得，取得，实现拴">secure</span> digital communications, from the 1970s to the 1990s. Back then the government argued that cryptography was akin to a munition; one developer was investigated by the FBI for violating the International <span class="annot" data-tooltip="traffic /'træfɪk/ n. 交通；贸易；运输；通信量vt. 用…作交换；在…通行vi. 交易，买卖时 态: trafficked, traffick">Traffic</span> in Arms Regulations. <span class="annot" data-tooltip="civil /'sɪvl/ adj. 公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的副 词: civilly">Civil</span>-liberties <span class="annot" data-tooltip="advocates /ˈædvəkeɪt，'ædvəkət/ v. 拥护；支持；提倡n. 拥护者；支持者；提倡者；辩护律师；出庭辩护人时 态: advocated, advocating,">advocates</span></p>
+<p>eventually prevailed, securing the right to use, sell and export most <span class="annot" data-tooltip="encryption n. 编密码">encryption</span> systems. Encryption was a <span class="annot" data-tooltip="potent /'poʊtnt/ adj. 有效的；强有力的，有权势的；有说服力的">potent</span> technology, but <span class="annot" data-tooltip="narrow /'næroʊ/ adj. 狭窄的，有限的；度量小的；精密的；勉强的n. 狭窄部分，隘路；海峡vt. 使变狭窄vi. 变窄比较级: narrower">narrow</span> in its application. AI is <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> more powerful and <span class="annot" data-tooltip="versatile /'vɜːrsətl/ adj. 有多种学问、技能或职业的；多才多艺的(指工具、机器等)多用途的，多功能的副 词: versatilely">versatile</span>. On June 11th Mark Warner, the <span class="annot" data-tooltip="vice /vaɪs/ n. 堕落，邪恶；不良习气，恶习（尤指与性或毒品有关的）罪行，道德败坏行为【英式】老虎钳；台钳（【美式】vise）pref. ">vice</span>-chair of the <span class="annot" data-tooltip="senate /ˈsenət/ n.（诸如美国、澳大利亚、法国的）参议院（the Senate） （某些国家的）大学理事会，大学评议会（古罗马的）元老院">Senate</span> Intelligence Committee, said that General Joshua Rudd, who leads the National <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">Security</span> Agency and the Pentagon’s <span class="annot" data-tooltip="cyber adj. 计算机(网络)的；信息技术的">Cyber</span> Command, had told him that Mythos “broke into almost all of our <span class="annot" data-tooltip="classified /'klæsɪfaɪd/ adj. (信息)归入密级的,保密的">classified</span> systems, not in weeks, but in hours”. Advanced AI differs from encryption in another respect, too. <span class="annot" data-tooltip="whereas /ˌwer'æz/ conj. 但是, 而">Whereas</span> cryptography eventually became widely available abroad, America today enjoys a clear lead in AI. China, hobbled by American chip controls, is probably about a year behind. That advantage could become unassailable if <span class="annot" data-tooltip="anthropic /ænˈθrɑpɪk/ adj. 人类的,有关人类的">Anthropic</span> or other American labs <span class="annot" data-tooltip="crack /kræk/ vt. & vi. (使…)开裂, 破裂(使)身体上或精神上垮掉打开, 砸开(使)发出爆裂声n. 裂缝, 缝隙噼啪声, 爆裂声意">crack</span> <span class="annot" data-tooltip="recursive /rɪ'kɜːrsɪv/ adj. 回归的,递归的">recursive</span> self-improvement (RSI), whereby models write better <span class="annot" data-tooltip="versions /'vɜːrʒn/ n. 变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本">versions</span> of themselves and thereby accelerate progress. Many insiders think that is possible. A better <span class="annot" data-tooltip="analogy /ə'nælədʒi/ n. 类似, 相似类推, 类推法">analogy</span>, then, may be nuclear technology, a comparison that has inspired, fascinated and horrified AI researchers. During the second world war Britain shared its early nuclear-weapons research with America. But in 1946, with the war over and the bomb’s <span class="annot" data-tooltip="awesome /'ɔːsəm/ adj. 令人敬畏的；令人惊叹的；令人惊惧的【美，非正式】很好的；了不起的（或极好玩的等）">awesome</span> power demonstrated in Japan, Congress passed the McMahon Act, ending co-operation with all foreign countries, including close <span class="annot" data-tooltip="allies n. （第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者">allies</span>. Co-operation resumed only much later, after Britain had already shown that it could develop its <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> bomb. America’s allies are reeling again. Many had spent months securing access to Mythos for government agencies, banks and other big firms. Those permissions evaporated overnight. The ban does not even <span class="annot" data-tooltip="exempt /ɪɡ'zempt/ vt. 免除；豁免adj. 被免除的；被豁免的n. 免税者；被免除义务者时 态: exempted, exempting, ex">exempt</span> America’s partners in the Five Eyes intelligence alliance: Australia, Britain, Canada and New Zealand. They are already grappling with the recent lapse of some surveillance powers Congress had failed to renew. Britain’s AI Security Institute, the world’s <span class="annot" data-tooltip="leading /ˈliːdɪŋ/ adj. 主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）">leading</span> body for testing and jailbreaking new models, is also locked out. Some foreign policymakers see the ban as a wake-up call. “After a lesson this clear every nation will be asking what they need to achieve <span class="annot" data-tooltip="sovereignty /'sɑːvrənti/ n. 最高统治权, 君权国家的主权">sovereignty</span>,” says Tom Tugendhat, a former British security minister. But</p>
+<p>middle powers are in a tight <span class="annot" data-tooltip="spot /spɑːt/ n. 斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Po">spot</span>, writes Anton Leicht of the Carnegie Endowment, a think-<span class="annot" data-tooltip="tank /tæŋk/ n. （存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内时 态: t">tank</span>. “Do you think a <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> administration that just refused to give you access to Fable is going to let you buy enough frontier chips to train an unrestricted Fable clone yourself?” Europe, especially, also lacks the <span class="annot" data-tooltip="processing /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">processing</span> power to <span class="annot" data-tooltip="pursue /pər'suː/ vt. 从事；追赶；继续；纠缠vi. 追赶；继续进行时 态: pursued, pursuing, pursues">pursue</span> <span class="annot" data-tooltip="autonomy /ɔː'tɑːnəmi/ n. 自治，自治权名 词: autonomist">autonomy</span> in AI. <span class="annot" data-tooltip="spy /spaɪ/ vt. 侦察；发现；暗中监视vi. 侦察；当间谍n. 间谍；密探">Spy</span> agencies are likely to regain access to Mythos, says a former British intelligence official; <span class="annot" data-tooltip="negotiations /nɪˌɡoʊʃi'eɪʃn/ n. 协商，谈判完成(难事)；通过">negotiations</span> are under way. Some observers believe the American government will eventually have to relent for private firms, too. “<span class="annot" data-tooltip="allies n. （第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者">Allies</span> can perhaps take some comfort in the fact that this is a totally untenable approach to use long term, <span class="annot" data-tooltip="due /duː/ adj. 到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）">due</span> to the <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of foreigners inside American AI companies,” says Helen Toner of Georgetown University’s Centre for <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">Security</span> and Emerging Technology. “Preventing foreign nationals from <span class="annot" data-tooltip="accessing 访问">accessing</span> the models is <span class="annot" data-tooltip="essentially /ɪ'senʃəli/ adv. 本质上;根本上必需的">essentially</span> <span class="annot" data-tooltip="equivalent /ɪ'kwɪvələnt/ adj. 等同的，等效的n. 对等的人（或事物），对应的人（或事物）">equivalent</span> to preventing any company <span class="annot" data-tooltip="affected /ə'fekt/ vt. 影响；假装；感动；感染vi. 倾向；喜欢n. 情感；引起感情的因素时 态: affected, affecting, a">affected</span> from doing any further AI R&D work.” Anyway, <span class="annot" data-tooltip="restrictions /rɪ'strɪkʃn/ n. 约束，限制管制，限定；法律，规章">restrictions</span> on access often do not work. On the black market, hackers can buy American identities to gain access to AI models, as well as tools to jailbreak them, says Cynthia Kaiser, a former official in the FBI’s <span class="annot" data-tooltip="cyber adj. 计算机(网络)的；信息技术的">cyber</span> <span class="annot" data-tooltip="division /dɪ'vɪʒn/ n. [数] 除法；部门；分配；分割；师（军队）；赛区形容词: divisional">division</span>. <span class="annot" data-tooltip="anthropic /ænˈθrɑpɪk/ adj. 人类的,有关人类的">Anthropic</span> restricts use of its Claude model in China, yet some Chinese users still access it. Mr Trump has pursued a bewildering approach to AI in recent months. He reversed most of the regulations put in <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span> by the previous administration, which he has repeatedly <span class="annot" data-tooltip="mocked /mɑːk/ vt. & vi. 愚弄；嘲弄vt. 使受挫折adj. 仿制的；模拟的时 态: mocked，mocking，mocks">mocked</span>. He later permitted the sale of advanced AI chips to China. In April his hands-off approach to AI safety was called into question when Anthropic produced Mythos Preview, a model the firm judged such a threat to national security that it limited its <span class="annot" data-tooltip="release /rɪ'liːs/ vt. 释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]时 态: released，rel">release</span> to a small <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span> of approved customers. (Allies still have access to that.) On June 2nd Mr Trump issued an executive order calling for a voluntary framework whereby AI labs would give the government access to their latest models before release. The sudden, capricious restrictions on Fable and Mythos are out of step with that approach and a <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> cry from the <span class="annot" data-tooltip="consistent /kən'sɪstənt/ adj. 一贯的, 始终如一的一致的, 符合的副 词: consistently">consistent</span>, transparent <span class="annot" data-tooltip="oversight /'oʊvərsaɪt/ n. 疏忽, 失察">oversight</span> Mr Amodei <span class="annot" data-tooltip="advocates /ˈædvəkeɪt，'ædvəkət/ v. 拥护；支持；提倡n. 拥护者；支持者；提倡者；辩护律师；出庭辩护人时 态: advocated, advocating,">advocates</span>. In theory the Centre for AI Standards and <span class="annot" data-tooltip="innovation /ˌɪnə'veɪʃn/ n. 改革, 革新, 创新新观念, 新方法, 新发明形容词: innovational">Innovation</span>, a government body that vets frontier models for dangerous <span class="annot" data-tooltip="capabilities /ˌkeɪpə'bɪləti/ n. 能做某事的素质;能力尚未发挥的天资或素质">capabilities</span>, could serve as an independent arbiter in such <span class="annot" data-tooltip="disputes /dɪ'spjuːt/ vt. 辩论；阻止；抗拒；怀疑vi. 争论n. 辩论；争吵时 态: disputed, disputing, disputes">disputes</span>. But the administration</p>
+<p>recently <span class="annot" data-tooltip="instructed /ɪn'strʌkt/ vt. 命令；教授；指导；通知时 态: instructed, instructing, instructs">instructed</span> it to stop making its reports public (perhaps temporarily). As access to advanced AI becomes a matter of national <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span>, America’s management of it is increasingly <span class="annot" data-tooltip="opaque /oʊ'peɪk/ adj. 不透明的难理解的, 晦涩的副 词: opaquely">opaque</span>. ■ This article was downloaded by zlibrary from https://www.economist.com//briefing/2026/06/14/donald-<span class="annot" data-tooltip="trumps /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">trumps</span>-blocking-of-<span class="annot" data-tooltip="anthropic /ænˈθrɑpɪk/ adj. 人类的,有关人类的">anthropic</span>- is-capricious-and-<span class="annot" data-tooltip="chaotic /keɪ'ɑːtɪk/ adj. 混乱的，无秩序的；混沌的">chaotic</span></p>
+<div class="article-separator"></div>
+<div class="article-header"> · United States</div>
+<p>As American cities <span class="annot" data-tooltip="grapple /'ɡræpl/ vi. 抓住；格斗；抓斗机vt. 抓住；与…格斗n. 抓住；格斗时 态: grappled, grappling, grappl">grapple</span> with homelessness, one offers a fix <span class="annot" data-tooltip="republicans /rɪ'pʌblɪkən/ adj. 共和国的, 共和政体的n. 拥护共和政体者, 共和主义者名 词: republicanism">Republicans</span> are desperate to move on from the Iran war Populist president, meet socialist mayor Political manoeuvres are delaying a <span class="annot" data-tooltip="spy /spaɪ/ vt. 侦察；发现；暗中监视vi. 侦察；当间谍n. 间谍；密探">spy</span> law and new intelligence chief Pet-custody laws in America are changing <span class="annot" data-tooltip="scammers n. [俚]调情的人；骗子">Scammers</span> are preying on America’s illegal <span class="annot" data-tooltip="immigrants /'ɪmɪɡrənt/ n. 移民">immigrants</span> The left is coming for <span class="annot" data-tooltip="democratic /ˌdemə'krætɪk/ adj. 民主的, 有民主精神或作风的副 词: democratically">Democratic</span> incumbents</p>
+<div class="article-separator"></div>
+<div class="article-header">United States · United States | Down, not out</div>
+<p>As American cities <span class="annot" data-tooltip="grapple /'ɡræpl/ vi. 抓住；格斗；抓斗机vt. 抓住；与…格斗n. 抓住；格斗时 态: grappled, grappling, grappl">grapple</span> with homelessness, one offers a fix Denver’s answer to a <span class="annot" data-tooltip="stubborn /'stʌbərn/ adj. 顽固的；固执的难以移动、去除、医治等比较级: stubborner，stubbornest">stubborn</span> problem June 18th 2026 DENVER’s mayor is Mike Johnston, with a “t”. Its unofficial “mayor of the streets” is Mike Johnson, with a teardrop <span class="annot" data-tooltip="tattoo /tæ'tuː/ n. 纹身vt. 刺花纹于vi. 刺花样名 词: tattooer">tattoo</span> and a soft voice—your correspondent can <span class="annot" data-tooltip="barely /'berli/ adv. 仅仅，勉强；几乎不；公开地；贫乏地">barely</span> hear him over a karaoke performance of a Guns N’ Roses song in the <span class="annot" data-tooltip="cafeteria /ˌkæfə'tɪriə/ n. (常设在商店、工厂、学校中的)自助餐厅或食堂">cafeteria</span> of one of Denver’s new homeless <span class="annot" data-tooltip="shelters /'ʃeltər/ n. 避难所；遮盖物；庇护vt. 使掩蔽；保护vi. 躲避，避难时 态: sheltered, sheltering, she">shelters</span>. For years, Mr Johnson’s life was a haze of pills, heroin and street living. Now he spends his days <span class="annot" data-tooltip="helping /'helpɪŋ/ n. （进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的">helping</span> Denverites like him find <span class="annot" data-tooltip="shelter /'ʃeltər/ n. 避难所；遮盖物；庇护vt. 使掩蔽；保护vi. 躲避，避难时 态: sheltered, sheltering, she">shelter</span> or a <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span> to detox. That is easier than it used to be: Denver’s tent camps have largely disappeared. Homelessness in America declined by 3% between 2024 and 2025, yet the <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of people without a home is still 31% higher than it was before the</p>
+<p>covid-19 <span class="annot" data-tooltip="pandemic /pæn'demɪk/ adj. （疾病）在全国（或世界）流行的">pandemic</span>. Since 2020 tents have proliferated, particularly in warm western and southern cities where people can camp year-round. This is a problem—for the homeless people who lack <span class="annot" data-tooltip="shelter /'ʃeltər/ n. 避难所；遮盖物；庇护vt. 使掩蔽；保护vi. 躲避，避难时 态: sheltered, sheltering, she">shelter</span>, for locals who feel their cities have been overtaken by encampments, and for Democrats, who run many big cities and whom Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> blames for <span class="annot" data-tooltip="urban /'ɜːrbən/ adj. 城市的；住在都市的">urban</span> <span class="annot" data-tooltip="chaos /'keɪɑːs/ n. 混沌，混乱形容词: chaotic">chaos</span>. Early evidence suggests Denver, led by Mr Johnston, a Democrat, may offer a solution. In recent years policies on homelessness have swung between extremes. Officials struggled to balance <span class="annot" data-tooltip="compassion /kəm'pæʃn/ n. 怜悯, 同情">compassion</span> for <span class="annot" data-tooltip="society /sə'saɪəti/ n. 社会；社交界；交往；社团">society</span>’s most <span class="annot" data-tooltip="vulnerable /'vʌlnərəbl/ adj. 易受伤的, 脆弱的, 敏感的">vulnerable</span>— many of whom suffer from <span class="annot" data-tooltip="mental /'mentl/ adj. 精神的, 头脑的, 心理的, 智力的精神病的副 词: mentally">mental</span> illness or drug addiction—with the concerns of <span class="annot" data-tooltip="residents /'rezɪdənt/ adj. 定居的; 常驻的n. 居民(旅馆的)住宿者">residents</span> and businesses tired of <span class="annot" data-tooltip="tiptoeing /'tɪptoʊ/ n. 脚尖；趾尖vi. 用脚尖走adv. 用脚尖adj. 踮着脚走的；偷偷摸摸的时 态: tiptoed, tiptoeing">tiptoeing</span> around faeces and needles. Inaction led to a political reckoning in cities such as San Francisco, where the mayor in charge while homelessness and public drug use ballooned was ousted by a <span class="annot" data-tooltip="moderate /'mɑːdərət/ adj. 中等的，适度的，不很大的温和的；有节制的中庸的，稳健的，不走极端的vt. & vi. (使)减轻[缓和]；节制时 态: ">moderate</span> <span class="annot" data-tooltip="reformer /rɪ'fɔːrm/ n. 改革，改良，改造vt. & vi. 改革；改造；改善时 态: reformed，reforming，reforms">reformer</span>. A growing <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of cities are offering a <span class="annot" data-tooltip="blunt /blʌnt/ adj. 钝的，不锋利的；生硬的；直率的vt. 使迟钝比较级: blunter, bluntest">blunt</span> solution. In 2024 the <span class="annot" data-tooltip="supreme /su'priːm/ adj. 最高的；至上的最重要的比较级: supremer，supremest 缩 写: supr">Supreme</span> Court ruled in Grants Pass v Johnson that it was not <span class="annot" data-tooltip="cruel /'kruːəl/ adj. 残酷的, 残忍的使人痛苦的, 让人受难的比较级: crueler, crueller cruelest, cruelle">cruel</span> and <span class="annot" data-tooltip="unusual /ʌn'juːʒuəl/ adj. 与众不同的；不寻常的；不平常的副 词: unusually">unusual</span> to punish homeless people for sleeping <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span> when they have nowhere else to go. More than 300 municipalities have since enacted <span class="annot" data-tooltip="camping n. 露营；野营v. 扎营；露营；临时安顿（camp的ing形式）">camping</span> <span class="annot" data-tooltip="restrictions /rɪ'strɪkʃn/ n. 约束，限制管制，限定；法律，规章">restrictions</span>, an approach with its <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> challenges. Business <span class="annot" data-tooltip="owners /'oʊnər/ n. 所有者；物主">owners</span> may be happier, but camping bans too often shift the homeless into hiding, hospitals and jails.</p>
+<p>Denver has had a <span class="annot" data-tooltip="camping n. 露营；野营v. 扎营；露营；临时安顿（camp的ing形式）">camping</span> ban on the books for years, but saw its unsheltered population <span class="annot" data-tooltip="surge /sɜːrdʒ/ n. (情感的) 突发，涌现，突然出现（数量的）急剧上升，激增；大量；一大批奔涌向前；突然的向上运动（电流）浪涌v. 涌；汹涌">surge</span> <span class="annot" data-tooltip="nonetheless /ˌnʌnðə'les/ adv. 虽然如此,但是">nonetheless</span>. In 2023, when Mr Johnston took office, <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> 1,500 people were living on the streets, a large <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> for a city with fewer than 730,000 <span class="annot" data-tooltip="residents /'rezɪdənt/ adj. 定居的; 常驻的n. 居民(旅馆的)住宿者">residents</span>. “People are moving out of blue cities that don’t solve this problem,” the mayor explains. So he declared a state of emergency over homelessness. Since then the number of people living <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span> has fallen by 64%. For several years <span class="annot" data-tooltip="overall /ˌoʊvər'ɔːl/ adj. 总体的；全面的；综合的全面考虑的adv. 大体上，总的来说一切包括在内，全部的n. 长罩衣工装裤；工作裤">overall</span> homelessness continued to <span class="annot" data-tooltip="creep /kriːp/ vi. 爬行；慢慢地移动；起鸡皮疙瘩；蔓延n. 爬行；毛骨悚然的感觉；谄媚者时 态: crept creeping, creep">creep</span> up (see chart) with some people <span class="annot" data-tooltip="sheltered /'ʃeltər/ n. 避难所；遮盖物；庇护vt. 使掩蔽；保护vi. 躲避，避难时 态: sheltered, sheltering, she">sheltered</span> but not <span class="annot" data-tooltip="permanently /'pɜːrmənəntli/ adv. 永久地;长期不变地">permanently</span> housed. Yet Denver recently turned a corner there, too. The city’s total number of homeless fell by roughly 12% between 2025 and 2026. Like many ambitious policies, Denver’s plan has depended on targeted investment and relentless focus. First, the city used funds from the American Rescue Plan Act (ARPA), Joe Biden’s <span class="annot" data-tooltip="pandemic /pæn'demɪk/ adj. （疾病）在全国（或世界）流行的">pandemic</span> stimulus bill, to buy and <span class="annot" data-tooltip="lease /liːs/ n. 租约；租期；租赁物；租赁权vt. 出租；租得vi. 出租时 态: leased, leasing, leases">lease</span> new <span class="annot" data-tooltip="shelters /'ʃeltər/ n. 避难所；遮盖物；庇护vt. 使掩蔽；保护vi. 躲避，避难时 态: sheltered, sheltering, she">shelters</span>. Roughly half of the $158m the mayor’s office reported spending on its <span class="annot" data-tooltip="initiative /ɪ'nɪʃətɪv/ n. 主动性, 首创精神主动的行动, 倡议主动权">initiative</span> came from the <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">federal</span> government. New hotels and tiny-home communities added roughly 1,000 <span class="annot" data-tooltip="shelter /'ʃeltər/ n. 避难所；遮盖物；庇护vt. 使掩蔽；保护vi. 躲避，避难时 态: sheltered, sheltering, she">shelter</span> units. Chester Burney has been living at the <span class="annot" data-tooltip="aspen /'æspən/ adj. 山杨的；类似白杨的；颤抖的n. 山杨">Aspen</span>, a converted hotel, for 16 months. “After my wife died, I <span class="annot" data-tooltip="spiralled /'spaɪrəl/ n. 螺旋；旋涡；螺旋形之物adj. 盘旋的；螺旋形的vt. 使成螺旋形；使作螺旋形上升vi. 盘旋；成螺旋形；螺旋形上升（过">spiralled</span>,” he recalls. “It’s nice to have somewhere you can try to get back on track.” <span class="annot" data-tooltip="crucially /'kruːʃl/ adj. 决定性的；重要的；定局的；决断的副 词: crucially">Crucially</span>, the programme includes not just housing but support. Each floor has “care co-ordinators”</p>
+<p>who help “guests” get new IDs, food <span class="annot" data-tooltip="stamps /stæmp/ n. 邮票；印记；跺脚；标志vt. 铭记；标出；盖章于…；贴邮票于…；用脚踩踏vi. 捣碎；跺脚；毁掉时 态: stamped">stamps</span> and housing. Mr Burney now works at a burger <span class="annot" data-tooltip="restaurant /'restrɑːnt/ n. 饭店, 餐馆">restaurant</span> and is planning to move into his <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span> in August. At another project, Elati Village, tiny homes were built in a city car park for $25,000 apiece. The usual NIMBY concerns may have been eased by a <span class="annot" data-tooltip="preference /'prefrəns/ n. 较喜欢的东西, 偏爱优待, 优惠, 优先权">preference</span> for <span class="annot" data-tooltip="neat /niːt/ adj. 整洁的；未搀水的；优雅的；灵巧的；齐整的；平滑的比较级: neater, neatest">neat</span> cottages over camps. “This entire block was encamped,” says Cole Chandler, the head of Denver’s Department of Housing Stability. He’s staring at a post office where a tent city, home to more than 100 people, used to be. Now, the streets are clean. Rockies and Cubs fans amble <span class="annot" data-tooltip="towards /tɔːrdz/ prep. 向，朝为了；有助于；用于对于，关于接近；将近；大约">towards</span> the ballpark for an afternoon baseball game. The new <span class="annot" data-tooltip="shelters /'ʃeltər/ n. 避难所；遮盖物；庇护vt. 使掩蔽；保护vi. 躲避，避难时 态: sheltered, sheltering, she">shelters</span> allowed officials to bring entire encampments inside at once. In many cities homeless people sometimes decline <span class="annot" data-tooltip="shelter /'ʃeltər/ n. 避难所；遮盖物；庇护vt. 使掩蔽；保护vi. 躲避，避难时 态: sheltered, sheltering, she">shelter</span> because they can’t bring their pets or <span class="annot" data-tooltip="belongings /bɪ'lɔːŋɪŋz/ n. 动产;财物家眷；亲属；亲戚">belongings</span>. So Denver allowed that. Once the city <span class="annot" data-tooltip="cleared 清除的">cleared</span> tents from an area, it closed that part of <span class="annot" data-tooltip="downtown /ˌdaʊn'taʊn/ adv. 在市中心；往市中心（尤指商业中心区）adj. 商业区的；市中心的；闹市区的n. 市中心；市中心区；（市中）商业区">downtown</span> to <span class="annot" data-tooltip="camping n. 露营；野营v. 扎营；露营；临时安顿（camp的ing形式）">camping</span>. Mr Johnson, the mayor of the streets, now attends a call each morning where officials discuss reports of new camps and plan their outreach. If someone erects a tent “you might be there for a day, if you’re lucky,” says Ana Miller, an <span class="annot" data-tooltip="advocate /ˈædvəkeɪt，'ædvəkət/ v. 拥护；支持；提倡n. 拥护者；支持者；提倡者；辩护律师；出庭辩护人时 态: advocated, advocating,">advocate</span> for homeless Denverites. Ms Miller laments this change. Yet the mayor (both mayors, in fact) might <span class="annot" data-tooltip="consider /kən'sɪdər/ vt. & vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及时 态: considered, considering, ">consider</span> her testimony proof that the plan is working.</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>anthropic</td><td>/ænˈθrɑpɪk/ adj.</td><td>人类的,有关人类的</td></tr>
+<tr><td>chaotic</td><td>/keɪ'ɑːtɪk/ adj.</td><td>混乱的，无秩序的；混沌的</td></tr>
+<tr><td>allies</td><td>— n.</td><td>（第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者</td></tr>
+<tr><td>simply</td><td>/'sɪmpli/ adv.</td><td>简单地；朴素地；简直；仅仅；坦白地</td></tr>
+<tr><td>curbing</td><td>/kɜːrb/ n.</td><td>侧石, 边石限制, 克制, 抑制vt. 限制, 克制, 抑制, curbing, curbs</td></tr>
+<tr><td>potent</td><td>/'poʊtnt/ adj.</td><td>有效的；强有力的，有权势的；有说服力的</td></tr>
+<tr><td>secure</td><td>/sɪ'kjʊr/ adj.</td><td>安心的；有把握的可靠的；牢靠的；稳固的；安全的；稳妥的严密把守的；牢固的；坚固的v. （尤指经过努力）获得，取得，实现拴牢；扣紧；关严保护；保卫；使安全抵押；为</td></tr>
+<tr><td>traffic</td><td>/'træfɪk/ n.</td><td>交通；贸易；运输；通信量vt. 用…作交换；在…通行vi. 交易，买卖, trafficking, traffics</td></tr>
+<tr><td>civil</td><td>/'sɪvl/ adj.</td><td>公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的</td></tr>
+<tr><td>advocates</td><td>/ˈædvəkeɪt，'ædvəkət/ v.</td><td>拥护；支持；提倡n. 拥护者；支持者；提倡者；辩护律师；出庭辩护人, advocating, advocates</td></tr>
+<tr><td>encryption</td><td>— n.</td><td>编密码</td></tr>
+<tr><td>potent</td><td>/'poʊtnt/ adj.</td><td>有效的；强有力的，有权势的；有说服力的</td></tr>
+<tr><td>narrow</td><td>/'næroʊ/ adj.</td><td>狭窄的，有限的；度量小的；精密的；勉强的n. 狭窄部分，隘路；海峡vt. 使变狭窄vi. 变窄, narrowest</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>versatile</td><td>/'vɜːrsətl/ adj.</td><td>有多种学问、技能或职业的；多才多艺的(指工具、机器等)多用途的，多功能的</td></tr>
+<tr><td>vice</td><td>/vaɪs/ n.</td><td>堕落，邪恶；不良习气，恶习（尤指与性或毒品有关的）罪行，道德败坏行为【英式】老虎钳；台钳（【美式】vise）pref. 副职的；副的</td></tr>
+<tr><td>senate</td><td>/ˈsenət/ </td><td>n.（诸如美国、澳大利亚、法国的）参议院（the Senate） （某些国家的）大学理事会，大学评议会（古罗马的）元老院</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>cyber</td><td>— adj.</td><td>计算机(网络)的；信息技术的</td></tr>
+<tr><td>classified</td><td>/'klæsɪfaɪd/ adj.</td><td>(信息)归入密级的,保密的</td></tr>
+<tr><td>whereas</td><td>/ˌwer'æz/ conj.</td><td>但是, 而</td></tr>
+<tr><td>anthropic</td><td>/ænˈθrɑpɪk/ adj.</td><td>人类的,有关人类的</td></tr>
+<tr><td>crack</td><td>/kræk/ vt.</td><td>& vi. (使…)开裂, 破裂(使)身体上或精神上垮掉打开, 砸开(使)发出爆裂声n. 裂缝, 缝隙噼啪声, 爆裂声意外的一下重击试图, 尝试俏皮话强效可卡因</td></tr>
+<tr><td>recursive</td><td>/rɪ'kɜːrsɪv/ adj.</td><td>回归的,递归的</td></tr>
+<tr><td>versions</td><td>/'vɜːrʒn/ n.</td><td>变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本</td></tr>
+<tr><td>analogy</td><td>/ə'nælədʒi/ n.</td><td>类似, 相似类推, 类推法</td></tr>
+<tr><td>awesome</td><td>/'ɔːsəm/ adj.</td><td>令人敬畏的；令人惊叹的；令人惊惧的【美，非正式】很好的；了不起的（或极好玩的等）</td></tr>
+<tr><td>allies</td><td>— n.</td><td>（第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>exempt</td><td>/ɪɡ'zempt/ vt.</td><td>免除；豁免adj. 被免除的；被豁免的n. 免税者；被免除义务者, exempting, exempts</td></tr>
+<tr><td>leading</td><td>/ˈliːdɪŋ/ adj.</td><td>主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）</td></tr>
+<tr><td>sovereignty</td><td>/'sɑːvrənti/ n.</td><td>最高统治权, 君权国家的主权</td></tr>
+<tr><td>spot</td><td>/spɑːt/ n.</td><td>斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Positioning and Tracki</td></tr>
+<tr><td>tank</td><td>/tæŋk/ n.</td><td>（存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内, tanking, tanks</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>processing</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>pursue</td><td>/pər'suː/ vt.</td><td>从事；追赶；继续；纠缠vi. 追赶；继续进行, pursuing, pursues</td></tr>
+<tr><td>autonomy</td><td>/ɔː'tɑːnəmi/ n.</td><td>自治，自治权</td></tr>
+<tr><td>spy</td><td>/spaɪ/ vt.</td><td>侦察；发现；暗中监视vi. 侦察；当间谍n. 间谍；密探</td></tr>
+<tr><td>negotiations</td><td>/nɪˌɡoʊʃi'eɪʃn/ n.</td><td>协商，谈判完成(难事)；通过</td></tr>
+<tr><td>allies</td><td>— n.</td><td>（第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者</td></tr>
+<tr><td>due</td><td>/duː/ adj.</td><td>到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>accessing</td><td>— </td><td>访问</td></tr>
+<tr><td>essentially</td><td>/ɪ'senʃəli/ adv.</td><td>本质上;根本上必需的</td></tr>
+<tr><td>equivalent</td><td>/ɪ'kwɪvələnt/ adj.</td><td>等同的，等效的n. 对等的人（或事物），对应的人（或事物）</td></tr>
+<tr><td>affected</td><td>/ə'fekt/ vt.</td><td>影响；假装；感动；感染vi. 倾向；喜欢n. 情感；引起感情的因素, affecting, affects</td></tr>
+<tr><td>restrictions</td><td>/rɪ'strɪkʃn/ n.</td><td>约束，限制管制，限定；法律，规章</td></tr>
+<tr><td>cyber</td><td>— adj.</td><td>计算机(网络)的；信息技术的</td></tr>
+<tr><td>division</td><td>/dɪ'vɪʒn/ n.</td><td>[数] 除法；部门；分配；分割；师（军队）；赛区</td></tr>
+<tr><td>anthropic</td><td>/ænˈθrɑpɪk/ adj.</td><td>人类的,有关人类的</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>mocked</td><td>/mɑːk/ vt.</td><td>& vi. 愚弄；嘲弄vt. 使受挫折adj. 仿制的；模拟的，mocking，mocks</td></tr>
+<tr><td>release</td><td>/rɪ'liːs/ vt.</td><td>释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]，releasing，releases</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>consistent</td><td>/kən'sɪstənt/ adj.</td><td>一贯的, 始终如一的一致的, 符合的</td></tr>
+<tr><td>oversight</td><td>/'oʊvərsaɪt/ n.</td><td>疏忽, 失察</td></tr>
+<tr><td>advocates</td><td>/ˈædvəkeɪt，'ædvəkət/ v.</td><td>拥护；支持；提倡n. 拥护者；支持者；提倡者；辩护律师；出庭辩护人, advocating, advocates</td></tr>
+<tr><td>innovation</td><td>/ˌɪnə'veɪʃn/ n.</td><td>改革, 革新, 创新新观念, 新方法, 新发明</td></tr>
+<tr><td>capabilities</td><td>/ˌkeɪpə'bɪləti/ n.</td><td>能做某事的素质;能力尚未发挥的天资或素质</td></tr>
+<tr><td>disputes</td><td>/dɪ'spjuːt/ vt.</td><td>辩论；阻止；抗拒；怀疑vi. 争论n. 辩论；争吵, disputing, disputes</td></tr>
+<tr><td>instructed</td><td>/ɪn'strʌkt/ vt.</td><td>命令；教授；指导；通知, instructing, instructs</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>opaque</td><td>/oʊ'peɪk/ adj.</td><td>不透明的难理解的, 晦涩的</td></tr>
+<tr><td>trumps</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>anthropic</td><td>/ænˈθrɑpɪk/ adj.</td><td>人类的,有关人类的</td></tr>
+<tr><td>chaotic</td><td>/keɪ'ɑːtɪk/ adj.</td><td>混乱的，无秩序的；混沌的</td></tr>
+<tr><td>grapple</td><td>/'ɡræpl/ vi.</td><td>抓住；格斗；抓斗机vt. 抓住；与…格斗n. 抓住；格斗, grappling, grapples</td></tr>
+<tr><td>republicans</td><td>/rɪ'pʌblɪkən/ adj.</td><td>共和国的, 共和政体的n. 拥护共和政体者, 共和主义者</td></tr>
+<tr><td>spy</td><td>/spaɪ/ vt.</td><td>侦察；发现；暗中监视vi. 侦察；当间谍n. 间谍；密探</td></tr>
+<tr><td>scammers</td><td>— n.</td><td>[俚]调情的人；骗子</td></tr>
+<tr><td>immigrants</td><td>/'ɪmɪɡrənt/ n.</td><td>移民</td></tr>
+<tr><td>democratic</td><td>/ˌdemə'krætɪk/ adj.</td><td>民主的, 有民主精神或作风的</td></tr>
+<tr><td>grapple</td><td>/'ɡræpl/ vi.</td><td>抓住；格斗；抓斗机vt. 抓住；与…格斗n. 抓住；格斗, grappling, grapples</td></tr>
+<tr><td>stubborn</td><td>/'stʌbərn/ adj.</td><td>顽固的；固执的难以移动、去除、医治等，stubbornest</td></tr>
+<tr><td>tattoo</td><td>/tæ'tuː/ n.</td><td>纹身vt. 刺花纹于vi. 刺花样</td></tr>
+<tr><td>barely</td><td>/'berli/ adv.</td><td>仅仅，勉强；几乎不；公开地；贫乏地</td></tr>
+<tr><td>cafeteria</td><td>/ˌkæfə'tɪriə/ n.</td><td>(常设在商店、工厂、学校中的)自助餐厅或食堂</td></tr>
+<tr><td>shelters</td><td>/'ʃeltər/ n.</td><td>避难所；遮盖物；庇护vt. 使掩蔽；保护vi. 躲避，避难, sheltering, shelters</td></tr>
+<tr><td>helping</td><td>/'helpɪŋ/ n.</td><td>（进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的</td></tr>
+<tr><td>shelter</td><td>/'ʃeltər/ n.</td><td>避难所；遮盖物；庇护vt. 使掩蔽；保护vi. 躲避，避难, sheltering, shelters</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>pandemic</td><td>/pæn'demɪk/ adj.</td><td>（疾病）在全国（或世界）流行的</td></tr>
+<tr><td>shelter</td><td>/'ʃeltər/ n.</td><td>避难所；遮盖物；庇护vt. 使掩蔽；保护vi. 躲避，避难, sheltering, shelters</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>urban</td><td>/'ɜːrbən/ adj.</td><td>城市的；住在都市的</td></tr>
+<tr><td>chaos</td><td>/'keɪɑːs/ n.</td><td>混沌，混乱</td></tr>
+<tr><td>compassion</td><td>/kəm'pæʃn/ n.</td><td>怜悯, 同情</td></tr>
+<tr><td>society</td><td>/sə'saɪəti/ n.</td><td>社会；社交界；交往；社团</td></tr>
+<tr><td>vulnerable</td><td>/'vʌlnərəbl/ adj.</td><td>易受伤的, 脆弱的, 敏感的</td></tr>
+<tr><td>mental</td><td>/'mentl/ adj.</td><td>精神的, 头脑的, 心理的, 智力的精神病的</td></tr>
+<tr><td>residents</td><td>/'rezɪdənt/ adj.</td><td>定居的; 常驻的n. 居民(旅馆的)住宿者</td></tr>
+<tr><td>tiptoeing</td><td>/'tɪptoʊ/ n.</td><td>脚尖；趾尖vi. 用脚尖走adv. 用脚尖adj. 踮着脚走的；偷偷摸摸的, tiptoeing, tiptoes</td></tr>
+<tr><td>moderate</td><td>/'mɑːdərət/ adj.</td><td>中等的，适度的，不很大的温和的；有节制的中庸的，稳健的，不走极端的vt. & vi. (使)减轻[缓和]；节制，moderating，moderates</td></tr>
+<tr><td>reformer</td><td>/rɪ'fɔːrm/ n.</td><td>改革，改良，改造vt. & vi. 改革；改造；改善，reforming，reforms</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>blunt</td><td>/blʌnt/ adj.</td><td>钝的，不锋利的；生硬的；直率的vt. 使迟钝, bluntest</td></tr>
+<tr><td>supreme</td><td>/su'priːm/ adj.</td><td>最高的；至上的最重要的，supremest 缩 写: supr</td></tr>
+<tr><td>cruel</td><td>/'kruːəl/ adj.</td><td>残酷的, 残忍的使人痛苦的, 让人受难的, crueller cruelest, cruellest</td></tr>
+<tr><td>unusual</td><td>/ʌn'juːʒuəl/ adj.</td><td>与众不同的；不寻常的；不平常的</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>camping</td><td>— n.</td><td>露营；野营v. 扎营；露营；临时安顿（camp的ing形式）</td></tr>
+<tr><td>restrictions</td><td>/rɪ'strɪkʃn/ n.</td><td>约束，限制管制，限定；法律，规章</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>owners</td><td>/'oʊnər/ n.</td><td>所有者；物主</td></tr>
+<tr><td>camping</td><td>— n.</td><td>露营；野营v. 扎营；露营；临时安顿（camp的ing形式）</td></tr>
+<tr><td>surge</td><td>/sɜːrdʒ/ n.</td><td>(情感的) 突发，涌现，突然出现（数量的）急剧上升，激增；大量；一大批奔涌向前；突然的向上运动（电流）浪涌v. 涌；汹涌；涌动(感情、感觉) 突袭，涌动，突发(</td></tr>
+<tr><td>nonetheless</td><td>/ˌnʌnðə'les/ adv.</td><td>虽然如此,但是</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>residents</td><td>/'rezɪdənt/ adj.</td><td>定居的; 常驻的n. 居民(旅馆的)住宿者</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>overall</td><td>/ˌoʊvər'ɔːl/ adj.</td><td>总体的；全面的；综合的全面考虑的adv. 大体上，总的来说一切包括在内，全部的n. 长罩衣工装裤；工作裤</td></tr>
+<tr><td>creep</td><td>/kriːp/ vi.</td><td>爬行；慢慢地移动；起鸡皮疙瘩；蔓延n. 爬行；毛骨悚然的感觉；谄媚者, creeps</td></tr>
+<tr><td>sheltered</td><td>/'ʃeltər/ n.</td><td>避难所；遮盖物；庇护vt. 使掩蔽；保护vi. 躲避，避难, sheltering, shelters</td></tr>
+<tr><td>permanently</td><td>/'pɜːrmənəntli/ adv.</td><td>永久地;长期不变地</td></tr>
+<tr><td>pandemic</td><td>/pæn'demɪk/ adj.</td><td>（疾病）在全国（或世界）流行的</td></tr>
+<tr><td>lease</td><td>/liːs/ n.</td><td>租约；租期；租赁物；租赁权vt. 出租；租得vi. 出租, leasing, leases</td></tr>
+<tr><td>shelters</td><td>/'ʃeltər/ n.</td><td>避难所；遮盖物；庇护vt. 使掩蔽；保护vi. 躲避，避难, sheltering, shelters</td></tr>
+<tr><td>initiative</td><td>/ɪ'nɪʃətɪv/ n.</td><td>主动性, 首创精神主动的行动, 倡议主动权</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>shelter</td><td>/'ʃeltər/ n.</td><td>避难所；遮盖物；庇护vt. 使掩蔽；保护vi. 躲避，避难, sheltering, shelters</td></tr>
+<tr><td>aspen</td><td>/'æspən/ adj.</td><td>山杨的；类似白杨的；颤抖的n. 山杨</td></tr>
+<tr><td>spiralled</td><td>/'spaɪrəl/ n.</td><td>螺旋；旋涡；螺旋形之物adj. 盘旋的；螺旋形的vt. 使成螺旋形；使作螺旋形上升vi. 盘旋；成螺旋形；螺旋形上升（过去式spiraled/spiralled</td></tr>
+<tr><td>crucially</td><td>/'kruːʃl/ adj.</td><td>决定性的；重要的；定局的；决断的</td></tr>
+<tr><td>stamps</td><td>/stæmp/ n.</td><td>邮票；印记；跺脚；标志vt. 铭记；标出；盖章于…；贴邮票于…；用脚踩踏vi. 捣碎；跺脚；毁掉, stamping, stamps</td></tr>
+<tr><td>restaurant</td><td>/'restrɑːnt/ n.</td><td>饭店, 餐馆</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>preference</td><td>/'prefrəns/ n.</td><td>较喜欢的东西, 偏爱优待, 优惠, 优先权</td></tr>
+<tr><td>neat</td><td>/niːt/ adj.</td><td>整洁的；未搀水的；优雅的；灵巧的；齐整的；平滑的, neatest</td></tr>
+<tr><td>towards</td><td>/tɔːrdz/ prep.</td><td>向，朝为了；有助于；用于对于，关于接近；将近；大约</td></tr>
+<tr><td>shelters</td><td>/'ʃeltər/ n.</td><td>避难所；遮盖物；庇护vt. 使掩蔽；保护vi. 躲避，避难, sheltering, shelters</td></tr>
+<tr><td>shelter</td><td>/'ʃeltər/ n.</td><td>避难所；遮盖物；庇护vt. 使掩蔽；保护vi. 躲避，避难, sheltering, shelters</td></tr>
+<tr><td>belongings</td><td>/bɪ'lɔːŋɪŋz/ n.</td><td>动产;财物家眷；亲属；亲戚</td></tr>
+<tr><td>cleared</td><td>— </td><td>清除的</td></tr>
+<tr><td>downtown</td><td>/ˌdaʊn'taʊn/ adv.</td><td>在市中心；往市中心（尤指商业中心区）adj. 商业区的；市中心的；闹市区的n. 市中心；市中心区；（市中）商业区</td></tr>
+<tr><td>camping</td><td>— n.</td><td>露营；野营v. 扎营；露营；临时安顿（camp的ing形式）</td></tr>
+<tr><td>advocate</td><td>/ˈædvəkeɪt，'ædvəkət/ v.</td><td>拥护；支持；提倡n. 拥护者；支持者；提倡者；辩护律师；出庭辩护人, advocating, advocates</td></tr>
+<tr><td>consider</td><td>/kən'sɪdər/ vt.</td><td>& vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及, considering, considers</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day7.html" class="nav-btn">← Day 7</a>
+  <a href="day9.html" class="nav-btn">Day 9 →</a>
+</div>
+
+<div class="progress">📖 Day 8 of 40</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-06-20</div>
+
+</body>
+</html>

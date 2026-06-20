@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Culture | The road less travelled</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-06-20</div>
+
+<h1 class="article-title">Culture | The road less travelled</h1>
+<div class="article-section">Culture</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>The British heartthrob is not the only musician travelling less. Many of the biggest pop acts have started to expect their fans to come to them. Beyoncé spent half of her “Cowboy <span class="annot" data-tooltip="carter /kɑːrt/ n. 运货马车；手推车vt. 用马车载运时 态: carted，carting，carts">Carter</span>” tour in just three <span class="annot" data-tooltip="venues /'venjuː/ n. 聚集地点;会场;(尤指)体育比赛场所犯罪地点;审判地争论中所持的立场">venues</span>. Coldplay performed <span class="annot" data-tooltip="extensively /ɪk'stensɪv/ adj. 广阔的，广泛的；大量的，大规模的副 词: extensively">extensively</span> in certain cities; Olivia Rodrigo will do the same when she heads out on the road in September. Ariana Grande is appearing in just three countries on her tour. Longer runs in fewer <span class="annot" data-tooltip="places /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">places</span> mean a less gruelling experience for the artist— and a more lucrative one. Touring is more expensive than it has ever been, thanks to a <span class="annot" data-tooltip="combination /ˌkɑːmbɪ'neɪʃn/ n. 合作, 结合, 组合联合体, 组合物密码组合, 字码组合排列, 组合形容词: combinational">combination</span> of red tape and rising labour and fuel costs. (Fans expect elaborate sets: transporting them across the world is not cheap.) Staying in one <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span> for longer is a way of keeping outlays down and profits up. For the chosen cities, this means huge windfalls. Mr Styles’s fans are expected to spend £1bn ($1.34bn) on tickets, accommodation and other <span class="annot" data-tooltip="expenses /ɪk'spens/ n. 开支；消费；损失，代价vt. 向…收取费用vi. 被花掉时 态: expensed, expensing, expens">expenses</span> in London alone, according to Barclays, a bank. For the smaller regional cities <span class="annot" data-tooltip="bumped /bʌmp/ n. 肿块，隆起物；撞击vi. 碰撞，撞击；颠簸而行vt. 碰，撞；颠簸adv. 突然地，猛烈地时 态: bumped, bu">bumped</span> from the schedule, such as Manchester and Coventry, it means losing access to megastars and fans’ spending power. Still, fans do not seem to mind going on the road themselves. Around 25% of the fans watching Mr Styles at Wembley are travelling from <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span></p>
+<p>London, and 28% are turning the occasion into a mini-break. Today’s <span class="annot" data-tooltip="concert /'kɑːnsərt/ n. 音乐会；和谐；一致vt. 使协调；协同安排vi. 协力；协调adj. 音乐会用的；在音乐会上演出的时 态: concer">concert</span>-goers have become cultural tourists. In an age where music is cheap and easy to access, live shows have acquired a new social <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span>. <span class="annot" data-tooltip="concerts /'kɑːnsərt/ n. 音乐会；和谐；一致vt. 使协调；协同安排vi. 协力；协调adj. 音乐会用的；在音乐会上演出的时 态: concer">Concerts</span> have become a kind of modern pilgrimage—<span class="annot" data-tooltip="journeys /'dʒɜːrni/ n. 旅行; 行程vi. 旅行">journeys</span> made out of <span class="annot" data-tooltip="devotion /dɪ'voʊʃn/ n. 奉献, 献身, 忠诚热爱, 挚爱">devotion</span> to an idol. ■ For more on the latest books, films, TV shows, albums and controversies, sign up to <span class="annot" data-tooltip="plot /plɑːt/ n. 故事情节(秘密)计划，密谋小块地皮vt. 把…分成小块；划分绘制；标出vt. & vi. 密谋时 态: plotted，">Plot</span> <span class="annot" data-tooltip="twist /twɪst/ vt. 捻；拧；扭伤；编织；使苦恼n. 扭曲；扭伤；拧vi. 扭动；弯曲时 态: twisted, twisting, twis">Twist</span>, our weekly subscriber-only newsletter This article was downloaded by zlibrary from https://www.economist.com//culture/2026/06/15/harry-styles-and-other-megastars-now- expect-you-to-come-to-them</p>
+<div class="article-separator"></div>
+<div class="article-header">Culture · Culture | Man of mystery</div>
+<p>Harlan Coben, Netflix’s new darling, has a mystery you can solve Why are sometimes <span class="annot" data-tooltip="cheesy /'tʃiːzi/ adj. 干酪质的；下等的；【俚】漂亮的比较级: cheesier, cheesiest">cheesy</span> <span class="annot" data-tooltip="thrillers /'θrɪlər/ n. 使人毛骨悚然的东西；使人毛骨悚然的小说；惊险小说">thrillers</span> set in Britain so <span class="annot" data-tooltip="utterly /'ʌtər/ vt. 以口发出声音说，讲adj. 彻底的；完全的；绝对的时 态: uttered，uttering，utters">utterly</span> gripping? June 18th 2026 The first mystery—that of a missing daughter—appeared in 2018. The second—a <span class="annot" data-tooltip="vanished /'vænɪʃ/ vi. 消失；突然不见；[数]成为零vt. 使不见，使消失n. [语]弱化音时 态: vanished, vanishing, ">vanished</span> wife—in 2020. These two were followed by a mysteriously missing husband (2021), a mysteriously revived dead husband (2024) and another mysteriously missing daughter (2026). However, as so often, the deeper mystery was less the crimes than the mysterious figure <span class="annot" data-tooltip="spotted /spɑːt/ n. 斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Po">spotted</span> hanging around them. He could be seen in the very first mystery which, viewers learned, was “Harlan Coben’s Safe”. He was spotted in the next one, <span class="annot" data-tooltip="titled /tɪt/ n. 山雀；各种小鸟；乳头；小马；少妇；轻打">titled</span>—with equal mystery—“Harlan Coben’s The Stranger”. He was there in the next ones, too, which were variously titled “Harlan Coben’s Stay Close”, “Harlan</p>
+<p>Coben’s Fool Me Once” and “Harlan Coben’s Run Away”. These lead to the deepest mystery of all: who is Mr Coben, and why is Netflix so <span class="annot" data-tooltip="obsessed /əb'ses/ v. 使痴迷，使迷恋；使心神不宁，不停地困扰； 唠叨；挂牵，念念不忘时 态: obsessed, obsessing, obs">obsessed</span> by him? The question of his identity is perhaps the easiest. Mr Coben is an American <span class="annot" data-tooltip="thriller /'θrɪlər/ n. 使人毛骨悚然的东西；使人毛骨悚然的小说；惊险小说">thriller</span> writer. His spread has been <span class="annot" data-tooltip="viral /'vaɪrəl/ adj. 滤过性毒菌引起的；滤过性毒菌的">viral</span> in extent (he has sold over 100m books) and in its style (like covid-19, most did not notice him spreading until it was too late). Since last year alone, he has been behind seven series and two novels. “Harlan Coben” thus became one of those baffling word <span class="annot" data-tooltip="combinations /ˌkɑːmbɪ'neɪʃn/ n. 合作, 结合, 组合联合体, 组合物密码组合, 字码组合排列, 组合形容词: combinational">combinations</span>, like “<span class="annot" data-tooltip="vibe /vaɪb/ Ⅰn. ①(感情上的)感应，共鸣②(一地的)气氛，环境Ⅱvi. (感情上)产生共鸣">vibe</span> coding” or “tokenmaxxing”, that went from meaningless to ubiquitous <span class="annot" data-tooltip="seemingly /'siːmɪŋli/ adv. 看来似乎, 表面上看">seemingly</span> overnight. He may become more so. On June 18th Netflix is releasing a series about a man imprisoned for killing his son, <span class="annot" data-tooltip="titled /tɪt/ n. 山雀；各种小鸟；乳头；小马；少妇；轻打">titled</span> “I Will Find You”, which feels less like a promise than a threat—or perhaps a prediction, for his series have been as successful as the books. Having signed an initial deal in 2018 to develop 14 titles, Netflix has expanded it to add 12 more; <span class="annot" data-tooltip="amazon /ˈæməˌzɑn/ n. 高大强悍的女人；（古希腊神话中的）亚马孙族女战士Amazonn. 亚马逊河(南美洲大河)">Amazon</span> and CBS have now also made Harlan Coben series. Mr Coben’s shows offer other mysteries, too, such as: why does his name have such <span class="annot" data-tooltip="prominent /'prɑːmɪnənt/ adj. 突起的，凸出的显著的；突出的杰出的，著名的，卓越的副 词: prominently">prominent</span> <span class="annot" data-tooltip="billing /'bɪlɪŋ/ n. (节目单或戏院大门上的)演员表,(演员表上的)演员次序">billing</span>, when another author called Jane Austen often has a <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> smaller font? Why are such quintessential American <span class="annot" data-tooltip="thrillers /'θrɪlər/ n. 使人毛骨悚然的东西；使人毛骨悚然的小说；惊险小说">thrillers</span> being filmed, as these are, in <span class="annot" data-tooltip="places /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">places</span> such as Manchester? And above all, how do characters who have such humdrum jobs afford such astonishingly swish kitchens? His shows have also elicited some <span class="annot" data-tooltip="critical /'krɪtɪkl/ adj. 批评的，爱挑剔的；决定性的；危险的；临界的；鉴定的；评论的副 词: critically">critical</span> bafflement, too. Though some of them, including “Stay Close”, about a cold case that suddenly heats up, received <span class="annot" data-tooltip="decent /'diːsnt/ adj. 得体的；正派的；相当好的副 词: decently">decent</span> reviews, others have been less lauded. His recent Amazon series received a 44% approval rating from critics on <span class="annot" data-tooltip="rotten /'rɑːtn/ adj. 腐烂的；腐朽的道德败坏的极坏的；极讨厌的比较级: rottener，rottenest">Rotten</span> Tomatoes, a review-aggregator site. They have been called “twisty” and “confusing”— not without cause. Their <span class="annot" data-tooltip="plots /plɑːt/ n. 故事情节(秘密)计划，密谋小块地皮vt. 把…分成小块；划分绘制；标出vt. & vi. 密谋时 态: plotted，">plots</span> are what might politely be called “eventful” and less <span class="annot" data-tooltip="delicately /'delɪkət/ adj. 微妙的；易碎的；清淡可口的；柔和的；精美的，雅致的；纤弱的副 词: delicately">delicately</span> be called soap operas. Open the <span class="annot" data-tooltip="episode /'epɪsoʊd/ n. 插曲；插话；一段情节；有趣的事件">episode</span> menu for Netflix’s 2021 series “The Innocent”, for example, and over the course of four <span class="annot" data-tooltip="swift /swɪft/ adj. 迅速的, 速度快的敏捷的, 反应快的SWIFTabbr. Society for Worldwide Interbank">swift</span> <span class="annot" data-tooltip="episodes /'epɪsoʊd/ n. 插曲；插话；一段情节；有趣的事件">episodes</span> you find yourself offered: an accidental murder (episode one); an alleged suicide (episode two) and a “mysterious nun” (episode three) who is rapidly a mysteriously</p>
+<p>dead nun. This is followed by <span class="annot" data-tooltip="episode /'epɪsoʊd/ n. 插曲；插话；一段情节；有趣的事件">episode</span> four in which, as the episode summary explains, “The nun’s body is <span class="annot" data-tooltip="squirrelled /'skwɜːrəl/ n. 松鼠；松鼠毛皮vt. 贮藏时 态: squirreled, squirrelled squirreling, squir">squirrelled</span> away by <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">federal</span> agents, which infuriates Lorena.” Nun-<span class="annot" data-tooltip="corpse /kɔːrps/ n. 尸体">corpse</span> theft can be so annoying. Mr Coben’s <span class="annot" data-tooltip="plots /plɑːt/ n. 故事情节(秘密)计划，密谋小块地皮vt. 把…分成小块；划分绘制；标出vt. & vi. 密谋时 态: plotted，">plots</span>, then, are not Pinteresque. Yet they are not meant to be. His books are archetypal <span class="annot" data-tooltip="thrillers /'θrɪlər/ n. 使人毛骨悚然的东西；使人毛骨悚然的小说；惊险小说">thrillers</span>. They have dark, ominous <span class="annot" data-tooltip="covers /'kʌvər/ vt. 包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替时 态: covered, covering, c">covers</span> (fog is a feature) and ominous straplines in the “A MISSING GIRL. A DEADLY GAME” <span class="annot" data-tooltip="vein /veɪn/ n. 血管；岩脉；纹理；[动]翅脉；[植]叶脉；性情vt. 使成脉络；像脉络般分布于时 态: veined, veining,">vein</span>. Their characters have names that sound as though they might be medical <span class="annot" data-tooltip="procedures 规程">procedures</span> (“Griffin Scope”) or <span class="annot" data-tooltip="possibly /'pɑːsəbli/ adv. 可能地；大概；也许">possibly</span> Cockney rhyming <span class="annot" data-tooltip="slang /slæŋ/ n. 俚语；行话adj. 俚语的vi. 用粗话骂vt. 用俚语说时 态: slanged, slanging, slangs">slang</span> (“Larry Gandle”). <span class="annot" data-tooltip="either /'iːðər/ pron. (两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的">Either</span> way, they sound bad. But they really do <span class="annot" data-tooltip="thrill /θrɪl/ n. 强烈的兴奋、恐惧或快乐感vt. & vi. (使)兴奋, (使)激动时 态: thrilled, thrilling, ">thrill</span>. Ian Fleming, James Bond’s <span class="annot" data-tooltip="creator /kri'eɪtər/ n. 创造者,创作者">creator</span>, once said there is “only one <span class="annot" data-tooltip="recipe /'resəpi/ n. 烹饪法; 食谱方法; 秘诀; 诀窍">recipe</span> for a bestseller and it is a very simple one”: you have “to get the reader to turn over the page”. Mr Coben has that gift. He tells The Economist that he likes each first <span class="annot" data-tooltip="sentence /'sentəns/ n. 宣判，判决；句子，命题vt. 判决，宣判时 态: sentenced, sentencing, sentences">sentence</span> “to almost be a short story in and of itself”—and his are zingers. “I Will Find You”, opens with the words “I am serving the fifth year of a life sentence for murdering my <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> child.” That is why people watch them. Subscribers spent about 250m hours watching “Fool Me Once” in the week it was released. It became one of Netflix’s most-viewed shows in 2024. Which leads to another of the mysteries surrounding Mr Coben, namely: why do people find stories about family <span class="annot" data-tooltip="tragedy /'trædʒədi/ n. 悲剧；灾难；惨案">tragedy</span> so <span class="annot" data-tooltip="jolly /'dʒɑːli/ adj. 愉快的；欢乐的；宜人的adv. 非常；很vt. （口）用好话劝某人做…；（口）用好话使高兴vi. （口）开玩笑Jolly">jolly</span>? Mr Coben’s books are rich in <span class="annot" data-tooltip="lines n. 台词；线；航线（line的复数）v. 排成一行；画线于（line的三单形式）">lines</span> like “Her jaw had been ripped out of its <span class="annot" data-tooltip="hinges /hɪndʒ/ n. 铰链vt. & vi. 用铰链连接(某物), 给(某物)装上铰链时 态: hinged, hinging, hinges">hinges</span>, <span class="annot" data-tooltip="snapping /snæp/ vt. 猛咬；突然折断，拉断；啪地关上vi. 咬；厉声说；咯嗒一声关上n. 猛咬；劈啪声；突然折断adj. 突然的SNAPabb">snapping</span> all the tendons.” Yet his stories are widely seen as not merely <span class="annot" data-tooltip="compelling /kəm'pelɪŋ/ adj. 引人入胜的;扣人心弦的非常强烈的;不可抗拒的令人信服的，有说服力的">compelling</span> but even comforting (in the way <span class="annot" data-tooltip="bingeing /bɪndʒ/ n. 狂欢，狂闹；放纵vt. 放纵vi. 狂饮作乐；大吃大喝时 态: binged, binging, bingeing bi">bingeing</span> on biscuits often is). One answer is that murder can be scrumptious. In Agatha Christie’s “The ABC Murders” Hercule Poirot and a character <span class="annot" data-tooltip="wonder /'wʌndər/ vt. & vi. 对…感到疑惑想知道；问自己n. 惊奇，惊叹，惊异，惊诧奇人，奇才奇观，奇景，奇迹，奇事时 态: wonder">wonder</span> “If you could order a crime as one orders a dinner, what would you choose?” They toy with picking robbery or forgery from the menu, then <span class="annot" data-tooltip="discard /dɪ'skɑːrd/ vt. 丢弃；抛弃；放弃vi. 放弃n. 抛弃；被丢弃的东西或人时 态: discarded, discarding, disc">discard</span> the idea (“too vegetarian”) before concluding that it “must be murder—red-blooded murder—with <span class="annot" data-tooltip="trimmings /'trɪmɪŋ/ n. 装饰；修饰装饰品, 讨人喜欢的附加品修剪下来的东西(主菜之外的)花色配菜(常复数)配料,佐料">trimmings</span>, of course”. Family tragedy is—as Sophocles could have told you—similarly compelling. Mr Coben, who has four children, thinks that what appeals is less the tragedy than the family. He sees his stories, despite the splatter, as being about “love and family and redemption”. “If I asked you, ‘Would you</p>
+<p>kill somebody?’ you would say ‘No’,” he says. “If I ask you: ‘Will you kill someone to save your child?’ well the answer is ‘Yes’.” The setting matters, too. Just as Greek <span class="annot" data-tooltip="tragedy /'trædʒədi/ n. 悲剧；灾难；惨案">tragedy</span> was removed from an alarming immediacy by being set in the similar-but-different Thebes, so Mr Coben’s <span class="annot" data-tooltip="tragedies /'trædʒədi/ n. 悲剧；灾难；惨案">tragedies</span> are set in the similar-but-different world of murder-series chic: characters have luxurious coats, cars and, of course, kitchens. It is, he thinks, “part of the fun”. (The reason they are set in Britain is more complicated: partly, suggests one <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> insider, it is cost, with lower <span class="annot" data-tooltip="wages /weɪdʒ/ vi. 进行；发动；从事n. 工资；报偿；代价vt. 开展；进行时 态: waged, waging, wages">wages</span> and tax breaks making shoots there more economical. Mr Coben has also said he likes the British sensibility and the “Downton Abbey-ish” houses.) And as for the mystery of his name it is, in his telling, not such an enigma. The title of an early show sounded too much like the name of another series so, to <span class="annot" data-tooltip="differentiate /ˌdɪfə'renʃieɪt/ vt. & vi. 区分, 区别, 辨别vi. 区别对待时 态: differentiated, differentiating">differentiate</span>, “they put my name above the title,” he says. That was somewhat to the bafflement of audiences: at the time someone tweeted that “They keep talking about Harlan Coben, but I don’t know who the hell Harlan Coben is.” They probably do now. ■ For more on the latest books, films, TV shows, albums and controversies, sign up to <span class="annot" data-tooltip="plot /plɑːt/ n. 故事情节(秘密)计划，密谋小块地皮vt. 把…分成小块；划分绘制；标出vt. & vi. 密谋时 态: plotted，">Plot</span> <span class="annot" data-tooltip="twist /twɪst/ vt. 捻；拧；扭伤；编织；使苦恼n. 扭曲；扭伤；拧vi. 扭动；弯曲时 态: twisted, twisting, twis">Twist</span>, our weekly subscriber-only newsletter This article was downloaded by zlibrary from https://www.economist.com//culture/2026/06/18/harlan-coben-netflixs-new-darling- has-a-mystery-you-can-solve</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Economic &amp; financial indicators</div>
+<p>Economic data, commodities and markets</p>
+<p>Economic & financial <span class="annot" data-tooltip="indicators /'ɪndɪkeɪtər/ n. (仪器上显示温度、压力、耗油量等的)指针，指示器，记录器(车辆上的)转弯指示灯指示物；指示者">indicators</span> | Indicators Economic data, commodities and markets June 18th 2026</p>
+<p>This article was downloaded by zlibrary from https://www.economist.com//economic-and-financial-<span class="annot" data-tooltip="indicators /'ɪndɪkeɪtər/ n. (仪器上显示温度、压力、耗油量等的)指针，指示器，记录器(车辆上的)转弯指示灯指示物；指示者">indicators</span>/2026/06/18/economic- data-commodities-and-markets</p>
+<div class="article-separator"></div>
+<div class="article-header">Obituary · Obituary | The swimming-pool genius</div>
+<p>David Hockney believed in working from the heart Britain’s boldest and most <span class="annot" data-tooltip="innovative /'ɪnəveɪtɪv/ adj. 新发明的，新引进的；革新的；有改革精神的乐于引进新观念的">innovative</span> painter died on June 11th, aged 88 June 18th 2026 The painting, ten feet wide, is a window onto a world. The slim man in the peachy-pink jacket stands by the <span class="annot" data-tooltip="edge /edʒ/ n. 边缘；刀刃；优势；锋利vt. 使锐利；将…开刃；给…加上边vi. 缓缓移动；侧着移动EDGEabbr. Electron">edge</span> of the pool, looking down, uncertain. Someone is swimming underwater <span class="annot" data-tooltip="towards /tɔːrdz/ prep. 向，朝为了；有助于；用于对于，关于接近；将近；大约">towards</span> him; a young man, clad in modest white trunks. The hills beyond the pool make <span class="annot" data-tooltip="overlapping /ˌoʊvər'læp/ n. 重叠；重复vi. 部分重叠；部分的同时发生vt. 与…重叠；与…同时发生时 态: overlapped, overlap">overlapping</span> triangles of cerulean blue, of olive, <span class="annot" data-tooltip="sage /seɪdʒ/ n. 圣人, 智者adj. 贤明的, 貌似聪明的Sage塞奇(姓氏)比较级: sager, sagest">sage</span> and lime. They could be those of California or Provence—or even biblical Galilee. Ever since the <span class="annot" data-tooltip="renaissance /'renəsɑːns/ n. 文艺复兴, 文艺复兴时期">Renaissance</span>, artists have painted bathers washing off <span class="annot" data-tooltip="stains /steɪn/ v. （被）玷污；留下污渍给…染色（或着色）玷污，败坏（名声）n. 污点；污渍染色剂；着色剂（名声上的）污点时 态: stai">stains</span> and sin <span class="annot" data-tooltip="amid /ə'mɪd/ prep. 在其中，在其间">amid</span> the peace of nature. David Hockney, who created this <span class="annot" data-tooltip="scene /siːn/ n. 情景；景象；场面；事件">scene</span>, knew that. He studied them all. The swimmer’s arms are outstretched. In the blue amniotic water he could be an angel. Or a new lover. It is a double <span class="annot" data-tooltip="portrait /'pɔːrtrət/ n. 肖像, 画像生动的描写">portrait</span>, one of many that made him famous in the 1960s and 1970s on both sides of the Atlantic. The last time “Portrait of an Artist (Pool</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>carter</td><td>/kɑːrt/ n.</td><td>运货马车；手推车vt. 用马车载运，carting，carts</td></tr>
+<tr><td>venues</td><td>/'venjuː/ n.</td><td>聚集地点;会场;(尤指)体育比赛场所犯罪地点;审判地争论中所持的立场</td></tr>
+<tr><td>extensively</td><td>/ɪk'stensɪv/ adj.</td><td>广阔的，广泛的；大量的，大规模的</td></tr>
+<tr><td>places</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>combination</td><td>/ˌkɑːmbɪ'neɪʃn/ n.</td><td>合作, 结合, 组合联合体, 组合物密码组合, 字码组合排列, 组合</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>expenses</td><td>/ɪk'spens/ n.</td><td>开支；消费；损失，代价vt. 向…收取费用vi. 被花掉, expensing, expenses</td></tr>
+<tr><td>bumped</td><td>/bʌmp/ n.</td><td>肿块，隆起物；撞击vi. 碰撞，撞击；颠簸而行vt. 碰，撞；颠簸adv. 突然地，猛烈地, bumping, bumps</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>concert</td><td>/'kɑːnsərt/ n.</td><td>音乐会；和谐；一致vt. 使协调；协同安排vi. 协力；协调adj. 音乐会用的；在音乐会上演出的, concerting, concerts</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>concerts</td><td>/'kɑːnsərt/ n.</td><td>音乐会；和谐；一致vt. 使协调；协同安排vi. 协力；协调adj. 音乐会用的；在音乐会上演出的, concerting, concerts</td></tr>
+<tr><td>journeys</td><td>/'dʒɜːrni/ n.</td><td>旅行; 行程vi. 旅行</td></tr>
+<tr><td>devotion</td><td>/dɪ'voʊʃn/ n.</td><td>奉献, 献身, 忠诚热爱, 挚爱</td></tr>
+<tr><td>plot</td><td>/plɑːt/ n.</td><td>故事情节(秘密)计划，密谋小块地皮vt. 把…分成小块；划分绘制；标出vt. & vi. 密谋，plotting，plots</td></tr>
+<tr><td>twist</td><td>/twɪst/ vt.</td><td>捻；拧；扭伤；编织；使苦恼n. 扭曲；扭伤；拧vi. 扭动；弯曲, twisting, twists</td></tr>
+<tr><td>cheesy</td><td>/'tʃiːzi/ adj.</td><td>干酪质的；下等的；【俚】漂亮的, cheesiest</td></tr>
+<tr><td>thrillers</td><td>/'θrɪlər/ n.</td><td>使人毛骨悚然的东西；使人毛骨悚然的小说；惊险小说</td></tr>
+<tr><td>utterly</td><td>/'ʌtər/ vt.</td><td>以口发出声音说，讲adj. 彻底的；完全的；绝对的，uttering，utters</td></tr>
+<tr><td>vanished</td><td>/'vænɪʃ/ vi.</td><td>消失；突然不见；[数]成为零vt. 使不见，使消失n. [语]弱化音, vanishing, vanishes</td></tr>
+<tr><td>spotted</td><td>/spɑːt/ n.</td><td>斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Positioning and Tracki</td></tr>
+<tr><td>titled</td><td>/tɪt/ n.</td><td>山雀；各种小鸟；乳头；小马；少妇；轻打</td></tr>
+<tr><td>obsessed</td><td>/əb'ses/ v.</td><td>使痴迷，使迷恋；使心神不宁，不停地困扰； 唠叨；挂牵，念念不忘, obsessing, obsesses</td></tr>
+<tr><td>thriller</td><td>/'θrɪlər/ n.</td><td>使人毛骨悚然的东西；使人毛骨悚然的小说；惊险小说</td></tr>
+<tr><td>viral</td><td>/'vaɪrəl/ adj.</td><td>滤过性毒菌引起的；滤过性毒菌的</td></tr>
+<tr><td>combinations</td><td>/ˌkɑːmbɪ'neɪʃn/ n.</td><td>合作, 结合, 组合联合体, 组合物密码组合, 字码组合排列, 组合</td></tr>
+<tr><td>vibe</td><td>/vaɪb/ </td><td>Ⅰn. ①(感情上的)感应，共鸣②(一地的)气氛，环境Ⅱvi. (感情上)产生共鸣</td></tr>
+<tr><td>seemingly</td><td>/'siːmɪŋli/ adv.</td><td>看来似乎, 表面上看</td></tr>
+<tr><td>titled</td><td>/tɪt/ n.</td><td>山雀；各种小鸟；乳头；小马；少妇；轻打</td></tr>
+<tr><td>amazon</td><td>/ˈæməˌzɑn/ n.</td><td>高大强悍的女人；（古希腊神话中的）亚马孙族女战士Amazonn. 亚马逊河(南美洲大河)</td></tr>
+<tr><td>prominent</td><td>/'prɑːmɪnənt/ adj.</td><td>突起的，凸出的显著的；突出的杰出的，著名的，卓越的</td></tr>
+<tr><td>billing</td><td>/'bɪlɪŋ/ n.</td><td>(节目单或戏院大门上的)演员表,(演员表上的)演员次序</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>thrillers</td><td>/'θrɪlər/ n.</td><td>使人毛骨悚然的东西；使人毛骨悚然的小说；惊险小说</td></tr>
+<tr><td>places</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>critical</td><td>/'krɪtɪkl/ adj.</td><td>批评的，爱挑剔的；决定性的；危险的；临界的；鉴定的；评论的</td></tr>
+<tr><td>decent</td><td>/'diːsnt/ adj.</td><td>得体的；正派的；相当好的</td></tr>
+<tr><td>rotten</td><td>/'rɑːtn/ adj.</td><td>腐烂的；腐朽的道德败坏的极坏的；极讨厌的，rottenest</td></tr>
+<tr><td>plots</td><td>/plɑːt/ n.</td><td>故事情节(秘密)计划，密谋小块地皮vt. 把…分成小块；划分绘制；标出vt. & vi. 密谋，plotting，plots</td></tr>
+<tr><td>delicately</td><td>/'delɪkət/ adj.</td><td>微妙的；易碎的；清淡可口的；柔和的；精美的，雅致的；纤弱的</td></tr>
+<tr><td>episode</td><td>/'epɪsoʊd/ n.</td><td>插曲；插话；一段情节；有趣的事件</td></tr>
+<tr><td>swift</td><td>/swɪft/ adj.</td><td>迅速的, 速度快的敏捷的, 反应快的SWIFTabbr. Society for Worldwide Interbank Financial Telecommu</td></tr>
+<tr><td>episodes</td><td>/'epɪsoʊd/ n.</td><td>插曲；插话；一段情节；有趣的事件</td></tr>
+<tr><td>episode</td><td>/'epɪsoʊd/ n.</td><td>插曲；插话；一段情节；有趣的事件</td></tr>
+<tr><td>squirrelled</td><td>/'skwɜːrəl/ n.</td><td>松鼠；松鼠毛皮vt. 贮藏, squirrelled squirreling, squirrelling squirrels, squirrels</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>corpse</td><td>/kɔːrps/ n.</td><td>尸体</td></tr>
+<tr><td>plots</td><td>/plɑːt/ n.</td><td>故事情节(秘密)计划，密谋小块地皮vt. 把…分成小块；划分绘制；标出vt. & vi. 密谋，plotting，plots</td></tr>
+<tr><td>thrillers</td><td>/'θrɪlər/ n.</td><td>使人毛骨悚然的东西；使人毛骨悚然的小说；惊险小说</td></tr>
+<tr><td>covers</td><td>/'kʌvər/ vt.</td><td>包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替, covering, covers</td></tr>
+<tr><td>vein</td><td>/veɪn/ n.</td><td>血管；岩脉；纹理；[动]翅脉；[植]叶脉；性情vt. 使成脉络；像脉络般分布于, veining, veins</td></tr>
+<tr><td>procedures</td><td>— </td><td>规程</td></tr>
+<tr><td>possibly</td><td>/'pɑːsəbli/ adv.</td><td>可能地；大概；也许</td></tr>
+<tr><td>slang</td><td>/slæŋ/ n.</td><td>俚语；行话adj. 俚语的vi. 用粗话骂vt. 用俚语说, slanging, slangs</td></tr>
+<tr><td>either</td><td>/'iːðər/ pron.</td><td>(两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的</td></tr>
+<tr><td>thrill</td><td>/θrɪl/ n.</td><td>强烈的兴奋、恐惧或快乐感vt. & vi. (使)兴奋, (使)激动, thrilling, thrills</td></tr>
+<tr><td>creator</td><td>/kri'eɪtər/ n.</td><td>创造者,创作者</td></tr>
+<tr><td>recipe</td><td>/'resəpi/ n.</td><td>烹饪法; 食谱方法; 秘诀; 诀窍</td></tr>
+<tr><td>sentence</td><td>/'sentəns/ n.</td><td>宣判，判决；句子，命题vt. 判决，宣判, sentencing, sentences</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>tragedy</td><td>/'trædʒədi/ n.</td><td>悲剧；灾难；惨案</td></tr>
+<tr><td>jolly</td><td>/'dʒɑːli/ adj.</td><td>愉快的；欢乐的；宜人的adv. 非常；很vt. （口）用好话劝某人做…；（口）用好话使高兴vi. （口）开玩笑Jolly耐火砖成型机, jolliest</td></tr>
+<tr><td>lines</td><td>— n.</td><td>台词；线；航线（line的复数）v. 排成一行；画线于（line的三单形式）</td></tr>
+<tr><td>hinges</td><td>/hɪndʒ/ n.</td><td>铰链vt. & vi. 用铰链连接(某物), 给(某物)装上铰链, hinging, hinges</td></tr>
+<tr><td>snapping</td><td>/snæp/ vt.</td><td>猛咬；突然折断，拉断；啪地关上vi. 咬；厉声说；咯嗒一声关上n. 猛咬；劈啪声；突然折断adj. 突然的SNAPabbr. Satellite Navigat</td></tr>
+<tr><td>compelling</td><td>/kəm'pelɪŋ/ adj.</td><td>引人入胜的;扣人心弦的非常强烈的;不可抗拒的令人信服的，有说服力的</td></tr>
+<tr><td>bingeing</td><td>/bɪndʒ/ n.</td><td>狂欢，狂闹；放纵vt. 放纵vi. 狂饮作乐；大吃大喝, binging, bingeing binges</td></tr>
+<tr><td>wonder</td><td>/'wʌndər/ vt.</td><td>& vi. 对…感到疑惑想知道；问自己n. 惊奇，惊叹，惊异，惊诧奇人，奇才奇观，奇景，奇迹，奇事，wondering，wonders</td></tr>
+<tr><td>discard</td><td>/dɪ'skɑːrd/ vt.</td><td>丢弃；抛弃；放弃vi. 放弃n. 抛弃；被丢弃的东西或人, discarding, discards</td></tr>
+<tr><td>trimmings</td><td>/'trɪmɪŋ/ n.</td><td>装饰；修饰装饰品, 讨人喜欢的附加品修剪下来的东西(主菜之外的)花色配菜(常复数)配料,佐料</td></tr>
+<tr><td>tragedy</td><td>/'trædʒədi/ n.</td><td>悲剧；灾难；惨案</td></tr>
+<tr><td>tragedies</td><td>/'trædʒədi/ n.</td><td>悲剧；灾难；惨案</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>wages</td><td>/weɪdʒ/ vi.</td><td>进行；发动；从事n. 工资；报偿；代价vt. 开展；进行, waging, wages</td></tr>
+<tr><td>differentiate</td><td>/ˌdɪfə'renʃieɪt/ vt.</td><td>& vi. 区分, 区别, 辨别vi. 区别对待, differentiating, differentiates</td></tr>
+<tr><td>plot</td><td>/plɑːt/ n.</td><td>故事情节(秘密)计划，密谋小块地皮vt. 把…分成小块；划分绘制；标出vt. & vi. 密谋，plotting，plots</td></tr>
+<tr><td>twist</td><td>/twɪst/ vt.</td><td>捻；拧；扭伤；编织；使苦恼n. 扭曲；扭伤；拧vi. 扭动；弯曲, twisting, twists</td></tr>
+<tr><td>indicators</td><td>/'ɪndɪkeɪtər/ n.</td><td>(仪器上显示温度、压力、耗油量等的)指针，指示器，记录器(车辆上的)转弯指示灯指示物；指示者</td></tr>
+<tr><td>indicators</td><td>/'ɪndɪkeɪtər/ n.</td><td>(仪器上显示温度、压力、耗油量等的)指针，指示器，记录器(车辆上的)转弯指示灯指示物；指示者</td></tr>
+<tr><td>innovative</td><td>/'ɪnəveɪtɪv/ adj.</td><td>新发明的，新引进的；革新的；有改革精神的乐于引进新观念的</td></tr>
+<tr><td>edge</td><td>/edʒ/ n.</td><td>边缘；刀刃；优势；锋利vt. 使锐利；将…开刃；给…加上边vi. 缓缓移动；侧着移动EDGEabbr. Electronic Data Gathering Eq</td></tr>
+<tr><td>towards</td><td>/tɔːrdz/ prep.</td><td>向，朝为了；有助于；用于对于，关于接近；将近；大约</td></tr>
+<tr><td>overlapping</td><td>/ˌoʊvər'læp/ n.</td><td>重叠；重复vi. 部分重叠；部分的同时发生vt. 与…重叠；与…同时发生, overlapping, overlaps</td></tr>
+<tr><td>sage</td><td>/seɪdʒ/ n.</td><td>圣人, 智者adj. 贤明的, 貌似聪明的Sage塞奇(姓氏), sagest</td></tr>
+<tr><td>renaissance</td><td>/'renəsɑːns/ n.</td><td>文艺复兴, 文艺复兴时期</td></tr>
+<tr><td>stains</td><td>/steɪn/ v.</td><td>（被）玷污；留下污渍给…染色（或着色）玷污，败坏（名声）n. 污点；污渍染色剂；着色剂（名声上的）污点, staining, stains</td></tr>
+<tr><td>amid</td><td>/ə'mɪd/ prep.</td><td>在其中，在其间</td></tr>
+<tr><td>scene</td><td>/siːn/ n.</td><td>情景；景象；场面；事件</td></tr>
+<tr><td>portrait</td><td>/'pɔːrtrət/ n.</td><td>肖像, 画像生动的描写</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day38.html" class="nav-btn">← Day 38</a>
+  <a href="day40.html" class="nav-btn">Day 40 →</a>
+</div>
+
+<div class="progress">📖 Day 39 of 40</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-06-20</div>
+
+</body>
+</html>

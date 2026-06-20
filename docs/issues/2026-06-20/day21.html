@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Britain</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-06-20</div>
+
+<h1 class="article-title">Britain</h1>
+<div class="article-section"></div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>of a country that has left, communicating policies it never would have agreed to.■ To stay on top of the biggest European stories, sign up to Café Europa, our weekly subscriber-only newsletter. This article was downloaded by zlibrary from https://www.economist.com//europe/2026/06/18/britains-departure-made-europe-more- french</p>
+<div class="article-separator"></div>
+<div class="article-header">Europe · Europe | Going ballistic</div>
+<p>The terrifying new air war in <span class="annot" data-tooltip="ukraine n. 乌克兰（原苏联一加盟共和国，现已独立）">Ukraine</span> Russia is dominating the missile war by default, but Ukraine hopes that will change June 18th 2026 Ukrainians awoke on Monday to a familiar stench of kerosene, fire and blood. Russia’s latest attack, involving 611 <span class="annot" data-tooltip="drones /droʊn/ n. 无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫">drones</span> and 70 missiles, focused on Kyiv. The capital’s ancient Pechersk Lavra <span class="annot" data-tooltip="monastery /'mɑːnəsteri/ n. 修道院形容词: monasterial">monastery</span> complex, a unesco World <span class="annot" data-tooltip="heritage /'herɪtɪdʒ/ n. 遗产, 继承物传统">Heritage</span> site, was hit by what local <span class="annot" data-tooltip="authorities /ə'θɔːrəti/ n. 威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗">authorities</span> described as a direct <span class="annot" data-tooltip="strike /straɪk/ vi. 罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打时 态:">strike</span>. Elsewhere the primary targets appeared to be military-production facilities and power <span class="annot" data-tooltip="infrastructure /'ɪnfrəstrʌktʃər/ n. 基础设施; 基础结构">infrastructure</span>, but as usual some missiles landed in bedrooms. Eight residential blocks were hit. In Kyiv at least five people died and three dozen were injured. In Kharkiv, at least five emergency workers were killed in a <span class="annot" data-tooltip="deliberate /dɪ'lɪbərət/ adj. 故意的, 蓄意的慎重的, 深思熟虑的不慌不忙的, 从容不迫的vt. & vi. 仔细考虑研讨, 商讨时 态: delib">deliberate</span> “double-tap” strike. The deaths continue a grim <span class="annot" data-tooltip="trend /trend/ n. 趋势, 倾向流行时 态: trended, trending, trends">trend</span>: May was the deadliest month for Ukrainian civilians since 2022.</p>
+<p>The intensifying air war is in part a reflection of Russia’s increasing difficulties on the ground. Since late 2025 <span class="annot" data-tooltip="ukraine n. 乌克兰（原苏联一加盟共和国，现已独立）">Ukraine</span>’s <span class="annot" data-tooltip="drone /droʊn/ n. 无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫">drone</span>-fronted forces have been killing and <span class="annot" data-tooltip="seriously /'sɪriəs/ adj. 严肃的，严重的；认真的；庄重的；危急的副 词: seriously">seriously</span> <span class="annot" data-tooltip="wounding /wund/ n. 创伤，伤口vt. 使受伤vi. 受伤，伤害时 态: wounded, wounding, wounds">wounding</span> Russian soldiers faster than the Kremlin can <span class="annot" data-tooltip="recruit /rɪ'kruːt/ n. 新兵(机构中的)新成员vt. 招聘；吸引(新成员)吸收某人为新成员vt. & vi. 招募，征募(新兵)恢复健康，恢复体">recruit</span> them, slowing their advance to a crawl or, in some cases, even slightly reversing it. The near-stalemate is causing the war’s centre of gravity to shift from the trenches and <span class="annot" data-tooltip="towards /tɔːrdz/ prep. 向，朝为了；有助于；用于对于，关于接近；将近；大约">towards</span> the factories and supply <span class="annot" data-tooltip="lines n. 台词；线；航线（line的复数）v. 排成一行；画线于（line的三单形式）">lines</span> behind it. Each side is responding using the tools it has. Ukraine has prioritised an asymmetric mid-range drone <span class="annot" data-tooltip="campaign /kæm'peɪn/ n. 运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）时">campaign</span>, menacing Russian supply <span class="annot" data-tooltip="routes /ruːt，raʊt/ n. 路, 路途, 路线, 路程时 态: routed, routing, routes">routes</span> with new <span class="annot" data-tooltip="precision /prɪ'sɪʒn/ n. 精确度, 准确(性)">precision</span> weapons, the latest of them semi- automated. Among other things, this has caused a <span class="annot" data-tooltip="petrol /'petrəl/ n. 汽油">petrol</span> <span class="annot" data-tooltip="shortage /'ʃɔːrtɪdʒ/ n. 不足; 缺少; 缺少量; 不足额">shortage</span> in annexed Crimea. Russia, for its part, has <span class="annot" data-tooltip="simply /'sɪmpli/ adv. 简单地；朴素地；简直；仅仅；坦白地">simply</span> <span class="annot" data-tooltip="bombed abbr. 物料清单（Bill of Materiel）">bombed</span> Ukrainian cities harder and more ruthlessly. Its aims are not only military but psychological: to break locals’ morale, and foreign <span class="annot" data-tooltip="allies n. （第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者">allies</span>’ confidence that Ukraine can defend itself. In late May Russia’s foreign ministry urged diplomats to leave Kyiv. So <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span>, none have. For Ukraine’s air-defence operatives, nights like these are increasingly frantic. At the worst moments the <span class="annot" data-tooltip="waves /weɪv/ vi. 波动；起伏；摇动；呈波形；挥手示意vt. 向…挥手示意；使成波浪形；卷（烫）发n. 波浪；波动；高潮；卷曲；挥手示意时 ">waves</span> of incoming <span class="annot" data-tooltip="drones /droʊn/ n. 无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫">drones</span> and missiles turn their radar <span class="annot" data-tooltip="monitors /'mɑːnɪtər/ n. 显示屏；监视器；（计算机）显示器监控器；监测器班长；级长；班代表（尤指派往国外的）监督员，核查员巨蜥v. 监视；检查；跟">monitors</span> into a sea of red dots. “It’s like being a <span class="annot" data-tooltip="goalkeeper /'ɡoʊlkiːpər/ n. (足球队的)守门员">goalkeeper</span> facing ten balls at once,” says one officer. “You’ve only got two arms and two feet and you don’t understand how you will get through it.” Given that, the performance remains solid. On an average night Ukraine <span class="annot" data-tooltip="intercepts /ˌɪntər'sept/ vt. 拦截, 截住, 截击时 态: intercepted, intercepting, intercepts">intercepts</span> more than 90 % of the drones and cruise missiles launched at it. Interceptor drones, which are mainly domestically produced, are <span class="annot" data-tooltip="blunting /blʌnt/ adj. 钝的，不锋利的；生硬的；直率的vt. 使迟钝比较级: blunter, bluntest">blunting</span> attacks by record numbers of Shahed drones, often several hundred strong. But a shortage of <span class="annot" data-tooltip="anti /'ænti/ adj. 反对的n. 反对者，反对论者">anti</span>-ballistic interceptors has made it a losing fight against ballistic missiles, which move much faster. In the most recent attacks roughly two-thirds got through. Of the systems available to Ukraine, only the American-manufactured <span class="annot" data-tooltip="patriot /'peɪtriət/ n. 爱国者; 爱国主义者">Patriot</span> <span class="annot" data-tooltip="reliably /rɪ'laɪəbli/ adv. 可靠地；确实地">reliably</span> intercepts ballistic missiles. In three years Ukraine has fundamentally changed how the systems are used. Launchers now fire and move before Russia can find them; batteries run on fewer launchers, and mobile <span class="annot" data-tooltip="crews /kruː/ n. 全体人员，全体船员；队，组vi. 一起工作vt. 使当船员时 态: crewed, crewing, crews">crews</span> have “ambushed” Russian planes that <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span> they were farther away. The Pentagon has even assigned a team to Ukraine to watch how they are doing it. But a shortage of interceptors forces crews to make difficult decisions about what to target and what to let through. Since the</p>
+<p>Iran war started America and its Gulf <span class="annot" data-tooltip="allies n. （第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者">allies</span> have burned through stocks of <span class="annot" data-tooltip="patriots n. 深海截击战；爱国者（patriot的复数）">Patriots</span> at a dizzying rate, exacerbating an already acute global <span class="annot" data-tooltip="shortage /'ʃɔːrtɪdʒ/ n. 不足; 缺少; 缺少量; 不足额">shortage</span>. New <span class="annot" data-tooltip="manufacturing /ˌmænju'fæktʃərɪŋ/ n. 制造业，工业adj. 制造业的；制造的">manufacturing</span> <span class="annot" data-tooltip="lines n. 台词；线；航线（line的复数）v. 排成一行；画线于（line的三单形式）">lines</span> are not expected to <span class="annot" data-tooltip="yield /jiːld/ vt. 出产；屈服；放弃vi. 屈服，投降n. 收益；产量时 态: yielded, yielding, yields">yield</span> <span class="annot" data-tooltip="significant /sɪɡ'nɪfɪkənt/ adj. 重要的, 重大的, 可观的有意义的, 有用意的意味深长的副 词: significantly">significant</span> results for years. Fire Point, a Ukrainian start-up with a reputation for over-promising, says it is <span class="annot" data-tooltip="developing /dɪ'veləpɪŋ/ adj. 在进行中的;走向完成阶段的;走向成熟的发展中的">developing</span> a new <span class="annot" data-tooltip="anti /'ænti/ adj. 反对的n. 反对者，反对论者">anti</span>-ballistic missile. Few insiders believe it will work in the near term. Russia is using the window to press its <span class="annot" data-tooltip="overwhelming /ˌoʊvər'welmɪŋ/ adj. 势不可挡的，压倒一切的；巨大的副 词: overwhelmingly">overwhelming</span> missile superiority. <span class="annot" data-tooltip="ukraine n. 乌克兰（原苏联一加盟共和国，现已独立）">Ukraine</span>’s missile-engineering school was largely dismantled after the <span class="annot" data-tooltip="fall /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">fall</span> of the <span class="annot" data-tooltip="soviet /'soʊviet/ adj. 苏维埃的；苏联的；委员会的n. 苏维埃（代表会议）；委员会；代表会议Sovietn. 苏维埃adj. 苏维埃的,前苏联的">Soviet</span> Union, at Russia’s and America’s behest. The Kremlin, in <span class="annot" data-tooltip="contrast /'kɑːntræst/ n. 对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照时 态: contrasted, cont">contrast</span>, kept working on its catalogue of designs and its working production lines. This year Ukrainian military intelligence estimates Russia will produce roughly 700 Iskander ground-launched ballistic missiles, <span class="annot" data-tooltip="alongside /əˌlɔːŋ'saɪd/ adv. 靠着边，沿着边prep. (表示位置)在…旁边；沿着…的边；与…并排靠拢着(表示比较)与…放在一起比较(表示伴随)与…一">alongside</span> 60 Kinzhal aeroballistic missiles, which are launched from planes, and 30 Zircon <span class="annot" data-tooltip="hypersonic /ˌhaɪpɚ'sɑnɪk/ adj. 极超音速的,远超过音速的">hypersonic</span> cruise missiles. Combined attacks on Kyiv have held roughly steady this year at about one per week, but ballistic and Zircon missiles make up a growing share of the mix. Ukraine has made a <span class="annot" data-tooltip="virtue /'vɜːrtʃuː/ n. 美德, 德行优点, 长处">virtue</span> of its missile poverty by turning to mass attacks with <span class="annot" data-tooltip="simpler adj. 更简单的（simple的比较级）">simpler</span> <span class="annot" data-tooltip="drones /droʊn/ n. 无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫">drones</span> and cruise missiles. It has had success with long-range <span class="annot" data-tooltip="drone /droʊn/ n. 无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫">drone</span> <span class="annot" data-tooltip="raids /reɪd/ n. 袭击；突袭；搜捕；抢劫vi. 对…进行突然袭击vt. 袭击，突袭RAID磁盘冗余阵列时 态: raided, raidi">raids</span>, hitting targets deep inside Russia. It <span class="annot" data-tooltip="embarrassed /ɪm'bærəst/ adj. 局促不安的；为难的；尴尬的窘迫的；陷入困境的；拮据的">embarrassed</span> Vladimir Putin with hits on St Petersburg’s <span class="annot" data-tooltip="port /pɔːrt/ n. 港口，口岸；左舷；舱门；（计算机的）端口vi. 转向左舷vt. 左转舵；持（枪）PORTabbr. Photo Opit">port</span> during his <span class="annot" data-tooltip="annual /'ænjuəl/ adj. 年度的；每年的n. 年刊，年鉴；一年生植物副 词: annually">annual</span> economic <span class="annot" data-tooltip="showcase /'ʃoʊkeɪs/ n. （商店或博物馆等的）玻璃柜台，玻璃陈列柜展示（本领、才华或优良品质）的场合v. 展示（优点）时 态: showcased">showcase</span> there</p>
+<p>in early June. But while gaps in Russian air defence offer ever more opportunities, the mass operations remain <span class="annot" data-tooltip="wildly /'waɪldli/ adv. 野生地；野蛮地；狂暴地；鲁莽地">wildly</span> inefficient. Only a small minority get through, mainly the fastest weapons (over 350kph). Success rates range from 2% to 35%, depending on the model. <span class="annot" data-tooltip="ukraine n. 乌克兰（原苏联一加盟共和国，现已独立）">Ukraine</span> desperately wants to return to the select <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span> of states that can mass-produce ballistic and advanced cruise missiles, which are harder to <span class="annot" data-tooltip="intercept /ˌɪntər'sept/ vt. 拦截, 截住, 截击时 态: intercepted, intercepting, intercepts">intercept</span> and more <span class="annot" data-tooltip="destructive /dɪ'strʌktɪv/ adj. 破坏性的, 毁灭性的副 词: destructively">destructive</span> on impact. It has at least two ballistic missiles in testing <span class="annot" data-tooltip="phase /feɪz/ n. 阶段, 时期(月亮、行星的)位相vt. 分阶段计划[安排]时 态: phased, phasing, phases">phase</span>. The Sapsan/Hrim-2, developed by Pivdenmash, the <span class="annot" data-tooltip="soviet /'soʊviet/ adj. 苏维埃的；苏联的；委员会的n. 苏维埃（代表会议）；委员会；代表会议Sovietn. 苏维埃adj. 苏维埃的,前苏联的">Soviet</span>-era centre of Ukrainian rocket- making, has been in development for <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span> but has been undermined by <span class="annot" data-tooltip="corruption /kə'rʌpʃn/ n. 堕落;腐化;腐败;贿赂腐烂">corruption</span> and Russian infiltration. The fp-7, a smaller, shorter-range project from Fire Point, combines new Western avionics with an existing Soviet airframe design. The latter is probably closer to <span class="annot" data-tooltip="serial /'sɪriəl/ adj. 连续的；连载的；分期偿还的n. 连载小说；电视连续剧；期刊副 词: serially">serial</span> production. But producing enough missiles that can beat Russian defences is not <span class="annot" data-tooltip="straightforward /ˌstreɪt'fɔːrwərd/ adj. (人或其态度)正直的，坦率的；老实的简单的；易懂的副 词: straightforwardly">straightforward</span>. Rockets are <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> more complicated than <span class="annot" data-tooltip="drones /droʊn/ n. 无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫">drones</span>, requiring <span class="annot" data-tooltip="precision /prɪ'sɪʒn/ n. 精确度, 准确(性)">precision</span> in everything from engines to <span class="annot" data-tooltip="terminal /'tɜːrmɪnl/ n. 终端机；终点；末端；极限adj. 末端的；终点的；晚期的Terminal终端，终端设备(仿真程序)，端子；终结符(T,T">terminal</span>-guidance avionics. Making something fly a long distance is one thing; making it hit the target even harder. Financing serial production might be the most difficult part. “You can’t make <span class="annot" data-tooltip="spades /speɪd/ n. 铁锹，铲子vt. 铲；把……弄实抹平vi. 铲SPADEabbr. Spare Parts Analysis,Docum">spades</span> today and rockets tomorrow,” says Andriy Ryzhenko, a former <span class="annot" data-tooltip="deputy /'depjuti/ n. 代理人，代表adj. 副的；代理的">deputy</span> chief of staff of the Ukrainian navy. “Ukraine does have a rocket school, just, but our technology has been frozen for 40 years.” How close Ukraine is depends on whom you ask. Volodymyr Zelensky, in an interview with British media, insisted Ukraine was “very close” to bringing the ballistic war to the Kremlin. If so, the war could take a new shape. Long- range Ukrainian missiles could threaten Russia’s military <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> and <span class="annot" data-tooltip="logistics /lə'dʒɪstɪk/ adj. 后勤学的；符号逻辑的副 词: logistically">logistics</span>, and <span class="annot" data-tooltip="deter /dɪ'tɜːr/ vt. 制止，阻止；使打消念头时 态: deterred, deterring, deters">deter</span> Russia from hitting Ukrainian cities indiscriminately. But an experienced player in the arms industry (whose drones were among those that <span class="annot" data-tooltip="reached /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reached</span> St Petersburg) urges <span class="annot" data-tooltip="realistic /ˌriːə'lɪstɪk/ adj. 现实的，实际可行的；现实主义的副 词: realistically">realistic</span> expectations. “The best we can hope for is an ersatz missile,” he says―ie, one cobbled together from Western spare parts. A <span class="annot" data-tooltip="senior /'siːniər/ adj. 年长的资深的; 地位高的〈美〉最高年级的n. 较年长者高年级学生〈美〉毕业班学生Senior西尼尔(姓氏)">senior</span> official played down hopes of a Russian-style “missile conveyor <span class="annot" data-tooltip="belt /belt/ n. 腰带, 带子区域, 地带vt.（用带子）系住；（作为惩罚用皮带等）抽打；击打vi.（尤指驾车）疾驰；飞奔时 态: bel">belt</span>“ any time soon. The near-term risk is that Russia will escalate. It could use even more destructive weapons, or target Ukraine’s government and citizens with no pretence of restraint. Ukraine is bracing for a new generation of jet-powered</p>
+<p>Shahed <span class="annot" data-tooltip="drones /droʊn/ n. 无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫">drones</span>, built with Chinese engines, that are expected to make up 80% of the fleet from October. The new drones fly too fast for current interceptor drones, and will make it much harder for <span class="annot" data-tooltip="ukraine n. 乌克兰（原苏联一加盟共和国，现已独立）">Ukraine</span>’s air defenders. Ukraine’s great cities face still more destruction. History suggests that will not break the country’s resolve. But it can make life <span class="annot" data-tooltip="miserable /'mɪzrəbl/ adj. 悲惨的，不幸的，可怜的令人痛苦的；令人不快的低劣的；贫乏的卑鄙的，可耻的，可恶的名 词: miserable">miserable</span> indeed. ■ To stay on top of the biggest European stories, sign up to Café Europa, our weekly subscriber-only newsletter. This article was downloaded by zlibrary from https://www.economist.com//europe/2026/06/15/the-terrifying-new-air-war-in-ukraine</p>
+<div class="article-separator"></div>
+<div class="article-header">Europe · Europe | The kids are all red</div>
+<p>Germany’s left-<span class="annot" data-tooltip="wing /wɪŋ/ n. 翅膀；翼；飞翔；派别vt. 使飞；飞过；空运；增加…速度；装以翼vi. 飞行时 态: winged, winging, ">wing</span> Die Linke party has won over the young The populists promise a “scorching hot socialist summer” of <span class="annot" data-tooltip="protest /'proʊtest/ n. 抗议；反对vt. & vi. 声明；抗议时 态: protested，protesting，protests">protest</span> June 18th 2026 “MERZ…LECK…” <span class="annot" data-tooltip="yells /jel/ n. 叫喊, 号叫vt. & vi. 叫喊, 号叫, 叫着说时 态: yelled, yelling, yells">yells</span> Heidi Reichinnek, a young leader of Germany’s Die Linke (The Left) party. “Eier!” her younger audience hollers back, erupting in giggles and cheers. Urging Friedrich Merz, the country’s chancellor, to “<span class="annot" data-tooltip="lick /lɪk/ vt. 舔；卷过；鞭打vi. 舔；轻轻拍打n. 舔；打；少许时 态: licked, licking, licks">lick</span> eggs” (ie, balls) is not the sort of thing expected of <span class="annot" data-tooltip="senior /'siːniər/ adj. 年长的资深的; 地位高的〈美〉最高年级的n. 较年长者高年级学生〈美〉毕业班学生Senior西尼尔(姓氏)">senior</span> German politicians. But the lively patter of Ms Reichinnek, a social-media superstar with a <span class="annot" data-tooltip="tattoo /tæ'tuː/ n. 纹身vt. 刺花纹于vi. 刺花样名 词: tattooer">tattoo</span> of the <span class="annot" data-tooltip="communist /'kɑːmjənɪst/ n. 共产主义者adj. 共产主义的, 信仰共产主义的">communist</span> <span class="annot" data-tooltip="heroine /'heroʊɪn/ n. 女英雄；女杰adj. 英雄式的">heroine</span> Rosa Luxemburg on her left arm, is one reason why the populist Die Linke is enjoying a moment. Sitting at around 11% in <span class="annot" data-tooltip="polls /poʊl/ n. 民意测验；投票；投票数；投票所vt. 剪短；对…进行民意测验；获得选票；投票vi. 投票adj. 剪过毛的；修过枝的；无">polls</span> (see chart), it hopes to <span class="annot" data-tooltip="overtake /ˌoʊvər'teɪk/ vt. 赶上；压倒；突然来袭vi. 超车时 态: overtook overtaken overtaking, overtake">overtake</span> the ailing Social Democrats (SPD), the <span class="annot" data-tooltip="junior /'dʒuːniər/ adj. 年少的, 较年幼的资历较浅的, 地位较低的n. 年少者地位较低者, 晚辈(美国中学或大学的)三年级学生">junior</span> coalition partner to Mr Merz’s Christian Democrats (CDU). “<span class="annot" data-tooltip="speaking /'spikɪŋ/ adj. 演讲的；富于表情的，雄辩的n. 说话；演讲v. 讲（speak的ing形式）">Speaking</span> young people’s language isn’t easy,” says Antonia, a fan. “Heidi seems like she can relate to us.”</p>
+<p>Just 18 months ago Die Linke looked on the <span class="annot" data-tooltip="verge /vɜːrdʒ/ n. 边缘；绿地；极限；山墙突瓦；权杖（作为职位标志）">verge</span> of <span class="annot" data-tooltip="extinction /ɪk'stɪŋkʃn/ n. 熄灭，消灭，灭绝；废除">extinction</span>. An acrimonious split with Sahra Wagenknecht, a party star-turned-gadfly, had left it bruised and shorn of many MPs. In eastern Germany, once its heartland, its electorate was dying out or turning to the hard-right <span class="annot" data-tooltip="alternative /ɔːl'tɜːrnətɪv/ adj. 可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）">Alternative</span> for Germany (AfD). Yet thanks to skilled organisation, a disciplined <span class="annot" data-tooltip="campaign /kæm'peɪn/ n. 运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）时">campaign</span> focused on rent and redistribution and an unwise decision by Mr Merz to vote with the AfD on <span class="annot" data-tooltip="anti /'ænti/ adj. 反对的n. 反对者，反对论者">anti</span>-immigration measures, Die Linke <span class="annot" data-tooltip="tripled /trɪp/ vi. 绊倒；犯错误；远足；轻快地走n. 旅行；绊倒；差错vt. 绊倒；使犯错TRIPabbr. transformation-">tripled</span> its support in weeks, drew 9% of the vote in the general election in February 2025 and saw its <span class="annot" data-tooltip="membership /'membərʃɪp/ n. 全体会员会员身份, 会员资格">membership</span> more than double. Its success was the most surprising story of the campaign. It also meant that “our electorate and our membership changed <span class="annot" data-tooltip="completely /kəm'pliːt/ adj. 完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善比较级: complete">completely</span>,” notes Janis Ehling, the party’s campaign <span class="annot" data-tooltip="mastermind /'mæstərmaɪnd/ n. 策划者；操纵者；策划；操纵vt. 巧妙地计划，策划(某一行动)时 态: masterminded，mastermindi">mastermind</span>. Die Linke has become more western, more female and much younger: it is the most popular party among Germans under 24. Ms Reichinnek’s potty-mouthed speech was delivered at “Unfollow Bundeswehr”, an event in Berlin organised to oppose the potential reintroduction of conscription. Many of her fans there were too young to vote. The influx of members has turned Die Linke, formed in 2007 as a <span class="annot" data-tooltip="fusion /'fjuːʒn/ n. 融合物；熔化；融合；熔接">fusion</span> of the old East German <span class="annot" data-tooltip="communists /'kɑːmjənɪst/ n. 共产主义者adj. 共产主义的, 信仰共产主义的">communists</span> and an SPD splinter <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span>, into a different party. The newcomers’ political education is “very online and very</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>ukraine</td><td>— n.</td><td>乌克兰（原苏联一加盟共和国，现已独立）</td></tr>
+<tr><td>drones</td><td>/droʊn/ n.</td><td>无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫；嗡嗡响(人)絮絮叨叨地说，喋喋不休地说</td></tr>
+<tr><td>monastery</td><td>/'mɑːnəsteri/ n.</td><td>修道院</td></tr>
+<tr><td>heritage</td><td>/'herɪtɪdʒ/ n.</td><td>遗产, 继承物传统</td></tr>
+<tr><td>authorities</td><td>/ə'θɔːrəti/ n.</td><td>威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗</td></tr>
+<tr><td>strike</td><td>/straɪk/ vi.</td><td>罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打, stricken striking, str</td></tr>
+<tr><td>infrastructure</td><td>/'ɪnfrəstrʌktʃər/ n.</td><td>基础设施; 基础结构</td></tr>
+<tr><td>deliberate</td><td>/dɪ'lɪbərət/ adj.</td><td>故意的, 蓄意的慎重的, 深思熟虑的不慌不忙的, 从容不迫的vt. & vi. 仔细考虑研讨, 商讨, deliberating, deliberates</td></tr>
+<tr><td>trend</td><td>/trend/ n.</td><td>趋势, 倾向流行, trending, trends</td></tr>
+<tr><td>ukraine</td><td>— n.</td><td>乌克兰（原苏联一加盟共和国，现已独立）</td></tr>
+<tr><td>drone</td><td>/droʊn/ n.</td><td>无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫；嗡嗡响(人)絮絮叨叨地说，喋喋不休地说</td></tr>
+<tr><td>seriously</td><td>/'sɪriəs/ adj.</td><td>严肃的，严重的；认真的；庄重的；危急的</td></tr>
+<tr><td>wounding</td><td>/wund/ n.</td><td>创伤，伤口vt. 使受伤vi. 受伤，伤害, wounding, wounds</td></tr>
+<tr><td>recruit</td><td>/rɪ'kruːt/ n.</td><td>新兵(机构中的)新成员vt. 招聘；吸引(新成员)吸收某人为新成员vt. & vi. 招募，征募(新兵)恢复健康，恢复体力，recruiting，recruit</td></tr>
+<tr><td>towards</td><td>/tɔːrdz/ prep.</td><td>向，朝为了；有助于；用于对于，关于接近；将近；大约</td></tr>
+<tr><td>lines</td><td>— n.</td><td>台词；线；航线（line的复数）v. 排成一行；画线于（line的三单形式）</td></tr>
+<tr><td>campaign</td><td>/kæm'peɪn/ n.</td><td>运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）, campaigning, campai</td></tr>
+<tr><td>routes</td><td>/ruːt，raʊt/ n.</td><td>路, 路途, 路线, 路程, routing, routes</td></tr>
+<tr><td>precision</td><td>/prɪ'sɪʒn/ n.</td><td>精确度, 准确(性)</td></tr>
+<tr><td>petrol</td><td>/'petrəl/ n.</td><td>汽油</td></tr>
+<tr><td>shortage</td><td>/'ʃɔːrtɪdʒ/ n.</td><td>不足; 缺少; 缺少量; 不足额</td></tr>
+<tr><td>simply</td><td>/'sɪmpli/ adv.</td><td>简单地；朴素地；简直；仅仅；坦白地</td></tr>
+<tr><td>bombed</td><td>— abbr.</td><td>物料清单（Bill of Materiel）</td></tr>
+<tr><td>allies</td><td>— n.</td><td>（第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>waves</td><td>/weɪv/ vi.</td><td>波动；起伏；摇动；呈波形；挥手示意vt. 向…挥手示意；使成波浪形；卷（烫）发n. 波浪；波动；高潮；卷曲；挥手示意, waving, waves</td></tr>
+<tr><td>drones</td><td>/droʊn/ n.</td><td>无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫；嗡嗡响(人)絮絮叨叨地说，喋喋不休地说</td></tr>
+<tr><td>monitors</td><td>/'mɑːnɪtər/ n.</td><td>显示屏；监视器；（计算机）显示器监控器；监测器班长；级长；班代表（尤指派往国外的）监督员，核查员巨蜥v. 监视；检查；跟踪调查监听（电话、外国无线电广播等）, </td></tr>
+<tr><td>goalkeeper</td><td>/'ɡoʊlkiːpər/ n.</td><td>(足球队的)守门员</td></tr>
+<tr><td>intercepts</td><td>/ˌɪntər'sept/ vt.</td><td>拦截, 截住, 截击, intercepting, intercepts</td></tr>
+<tr><td>blunting</td><td>/blʌnt/ adj.</td><td>钝的，不锋利的；生硬的；直率的vt. 使迟钝, bluntest</td></tr>
+<tr><td>anti</td><td>/'ænti/ adj.</td><td>反对的n. 反对者，反对论者</td></tr>
+<tr><td>patriot</td><td>/'peɪtriət/ n.</td><td>爱国者; 爱国主义者</td></tr>
+<tr><td>reliably</td><td>/rɪ'laɪəbli/ adv.</td><td>可靠地；确实地</td></tr>
+<tr><td>crews</td><td>/kruː/ n.</td><td>全体人员，全体船员；队，组vi. 一起工作vt. 使当船员, crewing, crews</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>allies</td><td>— n.</td><td>（第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者</td></tr>
+<tr><td>patriots</td><td>— n.</td><td>深海截击战；爱国者（patriot的复数）</td></tr>
+<tr><td>shortage</td><td>/'ʃɔːrtɪdʒ/ n.</td><td>不足; 缺少; 缺少量; 不足额</td></tr>
+<tr><td>manufacturing</td><td>/ˌmænju'fæktʃərɪŋ/ n.</td><td>制造业，工业adj. 制造业的；制造的</td></tr>
+<tr><td>lines</td><td>— n.</td><td>台词；线；航线（line的复数）v. 排成一行；画线于（line的三单形式）</td></tr>
+<tr><td>yield</td><td>/jiːld/ vt.</td><td>出产；屈服；放弃vi. 屈服，投降n. 收益；产量, yielding, yields</td></tr>
+<tr><td>significant</td><td>/sɪɡ'nɪfɪkənt/ adj.</td><td>重要的, 重大的, 可观的有意义的, 有用意的意味深长的</td></tr>
+<tr><td>developing</td><td>/dɪ'veləpɪŋ/ adj.</td><td>在进行中的;走向完成阶段的;走向成熟的发展中的</td></tr>
+<tr><td>anti</td><td>/'ænti/ adj.</td><td>反对的n. 反对者，反对论者</td></tr>
+<tr><td>overwhelming</td><td>/ˌoʊvər'welmɪŋ/ adj.</td><td>势不可挡的，压倒一切的；巨大的</td></tr>
+<tr><td>ukraine</td><td>— n.</td><td>乌克兰（原苏联一加盟共和国，现已独立）</td></tr>
+<tr><td>fall</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>soviet</td><td>/'soʊviet/ adj.</td><td>苏维埃的；苏联的；委员会的n. 苏维埃（代表会议）；委员会；代表会议Sovietn. 苏维埃adj. 苏维埃的,前苏联的,前苏联人的</td></tr>
+<tr><td>contrast</td><td>/'kɑːntræst/ n.</td><td>对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照, contrasting, contrasts</td></tr>
+<tr><td>alongside</td><td>/əˌlɔːŋ'saɪd/ adv.</td><td>靠着边，沿着边prep. (表示位置)在…旁边；沿着…的边；与…并排靠拢着(表示比较)与…放在一起比较(表示伴随)与…一起，与…一道</td></tr>
+<tr><td>hypersonic</td><td>/ˌhaɪpɚ'sɑnɪk/ adj.</td><td>极超音速的,远超过音速的</td></tr>
+<tr><td>virtue</td><td>/'vɜːrtʃuː/ n.</td><td>美德, 德行优点, 长处</td></tr>
+<tr><td>simpler</td><td>— adj.</td><td>更简单的（simple的比较级）</td></tr>
+<tr><td>drones</td><td>/droʊn/ n.</td><td>无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫；嗡嗡响(人)絮絮叨叨地说，喋喋不休地说</td></tr>
+<tr><td>drone</td><td>/droʊn/ n.</td><td>无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫；嗡嗡响(人)絮絮叨叨地说，喋喋不休地说</td></tr>
+<tr><td>raids</td><td>/reɪd/ n.</td><td>袭击；突袭；搜捕；抢劫vi. 对…进行突然袭击vt. 袭击，突袭RAID磁盘冗余阵列, raiding, raids</td></tr>
+<tr><td>embarrassed</td><td>/ɪm'bærəst/ adj.</td><td>局促不安的；为难的；尴尬的窘迫的；陷入困境的；拮据的</td></tr>
+<tr><td>port</td><td>/pɔːrt/ n.</td><td>港口，口岸；左舷；舱门；（计算机的）端口vi. 转向左舷vt. 左转舵；持（枪）PORTabbr. Photo Opitical Recorder Tracke</td></tr>
+<tr><td>annual</td><td>/'ænjuəl/ adj.</td><td>年度的；每年的n. 年刊，年鉴；一年生植物</td></tr>
+<tr><td>showcase</td><td>/'ʃoʊkeɪs/ n.</td><td>（商店或博物馆等的）玻璃柜台，玻璃陈列柜展示（本领、才华或优良品质）的场合v. 展示（优点）, showcasing, showcases</td></tr>
+<tr><td>wildly</td><td>/'waɪldli/ adv.</td><td>野生地；野蛮地；狂暴地；鲁莽地</td></tr>
+<tr><td>ukraine</td><td>— n.</td><td>乌克兰（原苏联一加盟共和国，现已独立）</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>intercept</td><td>/ˌɪntər'sept/ vt.</td><td>拦截, 截住, 截击, intercepting, intercepts</td></tr>
+<tr><td>destructive</td><td>/dɪ'strʌktɪv/ adj.</td><td>破坏性的, 毁灭性的</td></tr>
+<tr><td>phase</td><td>/feɪz/ n.</td><td>阶段, 时期(月亮、行星的)位相vt. 分阶段计划[安排], phasing, phases</td></tr>
+<tr><td>soviet</td><td>/'soʊviet/ adj.</td><td>苏维埃的；苏联的；委员会的n. 苏维埃（代表会议）；委员会；代表会议Sovietn. 苏维埃adj. 苏维埃的,前苏联的,前苏联人的</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>corruption</td><td>/kə'rʌpʃn/ n.</td><td>堕落;腐化;腐败;贿赂腐烂</td></tr>
+<tr><td>serial</td><td>/'sɪriəl/ adj.</td><td>连续的；连载的；分期偿还的n. 连载小说；电视连续剧；期刊</td></tr>
+<tr><td>straightforward</td><td>/ˌstreɪt'fɔːrwərd/ adj.</td><td>(人或其态度)正直的，坦率的；老实的简单的；易懂的</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>drones</td><td>/droʊn/ n.</td><td>无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫；嗡嗡响(人)絮絮叨叨地说，喋喋不休地说</td></tr>
+<tr><td>precision</td><td>/prɪ'sɪʒn/ n.</td><td>精确度, 准确(性)</td></tr>
+<tr><td>terminal</td><td>/'tɜːrmɪnl/ n.</td><td>终端机；终点；末端；极限adj. 末端的；终点的；晚期的Terminal终端，终端设备(仿真程序)，端子；终结符(T,TERM)</td></tr>
+<tr><td>spades</td><td>/speɪd/ n.</td><td>铁锹，铲子vt. 铲；把……弄实抹平vi. 铲SPADEabbr. Spare Parts Analysis,Documentation andEvaluati</td></tr>
+<tr><td>deputy</td><td>/'depjuti/ n.</td><td>代理人，代表adj. 副的；代理的</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>logistics</td><td>/lə'dʒɪstɪk/ adj.</td><td>后勤学的；符号逻辑的</td></tr>
+<tr><td>deter</td><td>/dɪ'tɜːr/ vt.</td><td>制止，阻止；使打消念头, deterring, deters</td></tr>
+<tr><td>reached</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>realistic</td><td>/ˌriːə'lɪstɪk/ adj.</td><td>现实的，实际可行的；现实主义的</td></tr>
+<tr><td>senior</td><td>/'siːniər/ adj.</td><td>年长的资深的; 地位高的〈美〉最高年级的n. 较年长者高年级学生〈美〉毕业班学生Senior西尼尔(姓氏)</td></tr>
+<tr><td>belt</td><td>/belt/ n.</td><td>腰带, 带子区域, 地带vt.（用带子）系住；（作为惩罚用皮带等）抽打；击打vi.（尤指驾车）疾驰；飞奔, belting, belts</td></tr>
+<tr><td>drones</td><td>/droʊn/ n.</td><td>无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫；嗡嗡响(人)絮絮叨叨地说，喋喋不休地说</td></tr>
+<tr><td>ukraine</td><td>— n.</td><td>乌克兰（原苏联一加盟共和国，现已独立）</td></tr>
+<tr><td>miserable</td><td>/'mɪzrəbl/ adj.</td><td>悲惨的，不幸的，可怜的令人痛苦的；令人不快的低劣的；贫乏的卑鄙的，可耻的，可恶的</td></tr>
+<tr><td>wing</td><td>/wɪŋ/ n.</td><td>翅膀；翼；飞翔；派别vt. 使飞；飞过；空运；增加…速度；装以翼vi. 飞行, winging, wings</td></tr>
+<tr><td>protest</td><td>/'proʊtest/ n.</td><td>抗议；反对vt. & vi. 声明；抗议，protesting，protests</td></tr>
+<tr><td>yells</td><td>/jel/ n.</td><td>叫喊, 号叫vt. & vi. 叫喊, 号叫, 叫着说, yelling, yells</td></tr>
+<tr><td>lick</td><td>/lɪk/ vt.</td><td>舔；卷过；鞭打vi. 舔；轻轻拍打n. 舔；打；少许, licking, licks</td></tr>
+<tr><td>senior</td><td>/'siːniər/ adj.</td><td>年长的资深的; 地位高的〈美〉最高年级的n. 较年长者高年级学生〈美〉毕业班学生Senior西尼尔(姓氏)</td></tr>
+<tr><td>tattoo</td><td>/tæ'tuː/ n.</td><td>纹身vt. 刺花纹于vi. 刺花样</td></tr>
+<tr><td>communist</td><td>/'kɑːmjənɪst/ n.</td><td>共产主义者adj. 共产主义的, 信仰共产主义的</td></tr>
+<tr><td>heroine</td><td>/'heroʊɪn/ n.</td><td>女英雄；女杰adj. 英雄式的</td></tr>
+<tr><td>polls</td><td>/poʊl/ n.</td><td>民意测验；投票；投票数；投票所vt. 剪短；对…进行民意测验；获得选票；投票vi. 投票adj. 剪过毛的；修过枝的；无角的, polling, polls</td></tr>
+<tr><td>overtake</td><td>/ˌoʊvər'teɪk/ vt.</td><td>赶上；压倒；突然来袭vi. 超车, overtakes</td></tr>
+<tr><td>junior</td><td>/'dʒuːniər/ adj.</td><td>年少的, 较年幼的资历较浅的, 地位较低的n. 年少者地位较低者, 晚辈(美国中学或大学的)三年级学生</td></tr>
+<tr><td>speaking</td><td>/'spikɪŋ/ adj.</td><td>演讲的；富于表情的，雄辩的n. 说话；演讲v. 讲（speak的ing形式）</td></tr>
+<tr><td>verge</td><td>/vɜːrdʒ/ n.</td><td>边缘；绿地；极限；山墙突瓦；权杖（作为职位标志）</td></tr>
+<tr><td>extinction</td><td>/ɪk'stɪŋkʃn/ n.</td><td>熄灭，消灭，灭绝；废除</td></tr>
+<tr><td>alternative</td><td>/ɔːl'tɜːrnətɪv/ adj.</td><td>可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）可供选择的事物；可供选择的解决办法替代物</td></tr>
+<tr><td>campaign</td><td>/kæm'peɪn/ n.</td><td>运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）, campaigning, campai</td></tr>
+<tr><td>anti</td><td>/'ænti/ adj.</td><td>反对的n. 反对者，反对论者</td></tr>
+<tr><td>tripled</td><td>/trɪp/ vi.</td><td>绊倒；犯错误；远足；轻快地走n. 旅行；绊倒；差错vt. 绊倒；使犯错TRIPabbr. transformation-induced plasticity 高</td></tr>
+<tr><td>membership</td><td>/'membərʃɪp/ n.</td><td>全体会员会员身份, 会员资格</td></tr>
+<tr><td>completely</td><td>/kəm'pliːt/ adj.</td><td>完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善, completest 缩 写: comp, cpl</td></tr>
+<tr><td>mastermind</td><td>/'mæstərmaɪnd/ n.</td><td>策划者；操纵者；策划；操纵vt. 巧妙地计划，策划(某一行动)，masterminding，masterminds</td></tr>
+<tr><td>fusion</td><td>/'fjuːʒn/ n.</td><td>融合物；熔化；融合；熔接</td></tr>
+<tr><td>communists</td><td>/'kɑːmjənɪst/ n.</td><td>共产主义者adj. 共产主义的, 信仰共产主义的</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day20.html" class="nav-btn">← Day 20</a>
+  <a href="day22.html" class="nav-btn">Day 22 →</a>
+</div>
+
+<div class="progress">📖 Day 21 of 40</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-06-20</div>
+
+</body>
+</html>
