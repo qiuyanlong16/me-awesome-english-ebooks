@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>United States | Quantifying power</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-07-04</div>
+
+<h1 class="article-title">United States | Quantifying power</h1>
+<div class="article-section">United States</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>America is mighty—but becoming less <span class="annot" data-tooltip="dominant /'dɑːmɪnənt/ adj. 支配的，统治的；占优势的；显性的n. 显性">dominant</span> Ahead of its 250th birthday, an empirical look shows the world’s <span class="annot" data-tooltip="leading /ˈliːdɪŋ/ adj. 主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）">leading</span> country no longer stands so <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> apart July 2nd 2026 Discussions of American power are <span class="annot" data-tooltip="prone /proʊn/ adj. 易于…的; 很可能…的俯卧的名 词: proneness">prone</span> to <span class="annot" data-tooltip="hyperbole /haɪ'pɜːrbəli/ n. 夸张法">hyperbole</span>. In his first inauguration speech, in 2017, Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> lamented “American carnage”. In his second, in 2025, he declared that “America will <span class="annot" data-tooltip="reclaim /rɪ'kleɪm/ vt. 要求收回开拓(荒地)；开垦从废料中回收(有用的材料)纠正；教化，改造时 态: reclaimed，reclaiming，">reclaim</span> its rightful <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span> as the greatest, most powerful, most respected nation on earth.” Americans themselves are gloomier. Six in ten now think that by 2050 their country will be less important on the global stage. But has America’s power <span class="annot" data-tooltip="actually /'æktʃuəl/ adj. 真实的，实际的；现行的，目前的副 词: actually">actually</span> been in decline? And what is the nature of American strength? These are questions on which many politicians offer opinions, which in turn can help win elections, guide policy and reshape the world.</p>
+<p>So, to mark America’s 250th anniversary, The Economist set out to move from the <span class="annot" data-tooltip="subjective /səb'dʒektɪv/ adj. (思想、感情等)主观的主观的(以个人好恶、观点等为依据)副 词: subjectively">subjective</span> to the quantifiable, with an empirical look at America’s global might. Economically, militarily and technologically, the country is richer, stronger and cleverer than ever. However, its relative position is not what it was. By the numbers, its dominance appears to be eroding—with decisions being made now that may <span class="annot" data-tooltip="bulk /bʌlk/ n. 体积，容量；大块；大多数，大部分vt. 使扩大，使形成大量；使显得重要时 态: bulked, bulking, bul">bulk</span> up some forms of power and starve others. The nation’s rocketing trajectory can be tracked most easily through the <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> of its economy. In 1820, the year in which comparable economic figures began, America was a small country of roughly 10m people, including European settlers, <span class="annot" data-tooltip="slaves /sleɪv/ n. 奴隶；从动装置vi. 苦干；拼命工作时 态: slaved, slaving, slaves">slaves</span> and Native Americans. Its land area was less than half its current size; its economy about one-tenth that of the British Empire, itself overshadowed by Qing-dynasty China, which controlled roughly a <span class="annot" data-tooltip="quarter /'kwɔːrtər/ n. 四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一时 ">quarter</span> of the world’s economic output. Fuelled by war, colonisation and the industrial revolution, the British Empire overtook China as the world’s largest economy around 1840, when the first opium war between the countries was under way. America was, however, catching up fast. The invention of the <span class="annot" data-tooltip="cotton /'kɑːtn/ n. 棉花；棉线；棉布vi. 和谐；一致；理解；亲近adj. 棉的；棉制的Cotton科顿（姓氏）时 态: cottoned,">cotton</span> gin in 1793 and <span class="annot" data-tooltip="brutal /'bruːtl/ adj. 残忍的；野蛮的，不讲理的副 词: brutally">brutal</span> deployment of <span class="annot" data-tooltip="slave /sleɪv/ n. 奴隶；从动装置vi. 苦干；拼命工作时 态: slaved, slaving, slaves">slave</span> labour meant that the country produced most of the world’s cotton by the 1850s. America expanded, often <span class="annot" data-tooltip="violently /'vaɪələnt/ adj. 暴力引起的, 粗暴的剧烈的, 强烈的副 词: violently">violently</span>, westward, gaining natural resources that would be the <span class="annot" data-tooltip="envy /'envi/ n. 羡慕；嫉妒，妒忌vt. 羡慕；嫉妒，妒忌vi. 感到妒忌；显示出妒忌名 词: envier">envy</span> of the world. Sprawling forests supplied timber for rapid construction. Well-positioned <span class="annot" data-tooltip="ports /pɔːrt/ n. 港口，口岸；左舷；舱门；（计算机的）端口vi. 转向左舷vt. 左转舵；持（枪）PORTabbr. Photo Opit">ports</span> and the <span class="annot" data-tooltip="sweeping /'swiːpɪŋ/ n. 扫除；垃圾adj. 扫荡的；彻底的；广泛的v. 打扫；扫除（sweep的现在分词形式）副 词: sweepingly">sweeping</span> <span class="annot" data-tooltip="mississippi n. 密西西比河(发源于美国中北部湖沼区,南注墨西哥湾,是世界上最大的河流之一),密西西比州(美国州名)">Mississippi</span> river provided <span class="annot" data-tooltip="routes /ruːt，raʊt/ n. 路, 路途, 路线, 路程时 态: routed, routing, routes">routes</span> for export. Coal mines in Pennsylvania, Appalachia and the Midwest powered railroads and factories; the Great Lakes’ rich <span class="annot" data-tooltip="deposits /dɪ'pɑːzɪt/ n. 存款；保证金；沉淀物vt. 存放；使沉积vi. 沉淀时 态: deposited, depositing, deposi">deposits</span> of iron ore fed steel mills. <span class="annot" data-tooltip="civil /'sɪvl/ adj. 公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的副 词: civilly">Civil</span> war ravaged the country but did not destroy it, ending slavery in 1865. Industrialising rapidly, America overtook Great Britain as a guzzler of <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span> in 1891. We calculate that in 1899—after the Spanish-American war and the Treaty of Paris, which gave it control of Puerto Rico, Guam and the Philippines—it controlled more fertile land than any country bar the Russian empire. A few years later, in 1903, America had the world’s largest economy.</p>
+<p>America’s dominance grew as Europe was drained by war. In 1945, as much of the world lay in smouldering <span class="annot" data-tooltip="ruins /'ruːɪn/ vt. 破坏，毁掉使破产，使沦落n. 毁坏，毁灭，灭亡完全丧失，断送；垮台(的原因)破败、坍塌或毁坏的状态废墟；遗迹时 态: r">ruins</span>, its economy peaked in relative <span class="annot" data-tooltip="terms /tɜːrmz/ n. 条款；地位，关系；措辞；术语；价钱（term的复数形式）v. 把…称为（term的三单形式）">terms</span>. A country with 6% of the world’s population controlled roughly a third of its output. America’s economy then took off, driven by industrial strength, ravenous consumer demand and state investment—in national laboratories, for instance, and highways. It helped that oil, discovered in Pennsylvania in the mid-19th century, began gushing from <span class="annot" data-tooltip="texas /'teksəs/ n. 德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室">Texas</span> wells in the 20th. Add immigration, a <span class="annot" data-tooltip="reliable /rɪ'laɪəbl/ adj. 可靠的, 可信赖的副 词: reliably">reliable</span> rule of law, ample capital and animal <span class="annot" data-tooltip="spirits /'spɪrɪt/ n. 精神；心灵；志气；烈酒；情绪vt. 鼓励；鼓舞；诱拐时 态: spirited, spiriting, spirits">spirits</span>, and America’s economy raced ahead, growing more in absolute terms between 1945 and 1999 than that of any other country. Its researchers developed the building blocks of modern life, including the transistor, the computer chip, the personal computer and the internet. Today America’s economy is smaller than China’s, adjusted for local prices. But it is still by <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> the world’s largest at 2025 exchange rates, with a <span class="annot" data-tooltip="gross /ɡroʊs/ adj. 总共的；粗野的；恶劣的；显而易见的vt. 总共收入n. 总额，总数比较级: grosser, grossest">gross</span> <span class="annot" data-tooltip="domestic /də'mestɪk/ adj. 国内的；家庭的；驯养的；一心只管家务的">domestic</span> product (GDP) of $32.4trn, 55% bigger than China’s, at <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> two. It is <span class="annot" data-tooltip="leading /ˈliːdɪŋ/ adj. 主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）">leading</span> the development of <span class="annot" data-tooltip="generative /'dʒenərətɪv/ adj. 能生产的, 有生产力的生殖的">generative</span> artificial intelligence and has become the world’s biggest producer of oil and natural gas. Unlike many other countries—including China, Russia and much of Europe—it has a</p>
+<p>growing population. The dollar accounts for the highest share of global trade <span class="annot" data-tooltip="invoices /'ɪnvɔɪs/ n. 发票；发货单；货物vt. 开发票；记清单时 态: invoiced, invoicing, invoices">invoices</span> and about half of international payments. Its entrepreneurs are the world’s most successful: eight of the world’s ten most valuable firms are American, and four of them were founded at least in part by <span class="annot" data-tooltip="immigrants /'ɪmɪɡrənt/ n. 移民">immigrants</span> in the past 40 years. With the country at the centre of the world’s economy, America has used its might to <span class="annot" data-tooltip="elevate /'elɪveɪt/ vt. 举起；提升；振奋情绪等；提升…的职位时 态: elevated, elevating, elevates">elevate</span> the world’s poor and punish its enemies. It has given some $2trn, in 2026 dollars, in official development assistance since 1960, according to tallies by the OECD, a club of mostly rich countries. The pervasive dollar lets America use economic sanctions to <span class="annot" data-tooltip="isolate /'aɪsəleɪt/ vt. 使孤立；使绝缘；使隔离n. 隔离种群vi. 孤立；隔离adj. 隔离的；孤立的时 态: isolated, isolat">isolate</span> individuals, companies and entire countries. An examination of American military power produces a similar <span class="annot" data-tooltip="portrait /'pɔːrtrət/ n. 肖像, 画像生动的描写">portrait</span> of unmatched strength. America was at its mightiest, in relative <span class="annot" data-tooltip="terms /tɜːrmz/ n. 条款；地位，关系；措辞；术语；价钱（term的复数形式）v. 把…称为（term的三单形式）">terms</span>, in 1945, not least because it was the only country with nuclear weapons. In the <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span> that followed, its role became more complex. America helped create the post-war order, then set about defending it—British and American troops sometimes met in doorways of remote outposts, as one left and the other moved in. By 1965 America had over 600,000 soldiers stationed abroad, spread across 108 countries. In the years since, it has spent much more than other countries on its armed forces. The might and animosity of the Warsaw Pact nations, staring down America’s soldiers across the Fulda Gap during the cold war, provided one reason. America’s position within NATO supplied another. In grand alliances, game theory suggests the largest power will spend disproportionately more, as it has more to lose. Even comparisons of military spending may understate America’s hard power. No country has more advanced military technology or, <span class="annot" data-tooltip="arguably /'ɑːrɡjuəbli/ adv. 可论证地,正如可提出证据加以证明的那样">arguably</span>, is more experienced deploying it at scale (in some areas, generals in <span class="annot" data-tooltip="ukraine n. 乌克兰（原苏联一加盟共和国，现已独立）">Ukraine</span> now have an <span class="annot" data-tooltip="edge /edʒ/ n. 边缘；刀刃；优势；锋利vt. 使锐利；将…开刃；给…加上边vi. 缓缓移动；侧着移动EDGEabbr. Electron">edge</span>, showing the <span class="annot" data-tooltip="expertise /ˌekspɜːr'tiːz/ n. 专门知识或技能">expertise</span> that springs from desperation). America’s outlay over the decades has <span class="annot" data-tooltip="yielded /jiːld/ vt. 出产；屈服；放弃vi. 屈服，投降n. 收益；产量时 态: yielded, yielding, yields">yielded</span> kit that lasts: an <span class="annot" data-tooltip="aircraft /'erkræft/ n. 飞机，航空器">aircraft</span>- carrier, of which it has 11, may remain <span class="annot" data-tooltip="operational /ˌɑːpə'reɪʃənl/ adj. 即可使用的(用于)操作的, 经营的">operational</span> for half a century. China has just three, none of which has seen combat.</p>
+<p>Why, then, all the doomsaying on America’s vertiginous decline? There is a difference between strength and dominance—a relative term that happens to be one of Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s favourites. America is stronger than ever, but on some economic measures it is less <span class="annot" data-tooltip="dominant /'dɑːmɪnənt/ adj. 支配的，统治的；占优势的；显性的n. 显性">dominant</span>. The dollar’s share of global foreign- exchange reserves has been on a <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span>-long decline, to 57% last year. Most important, an American-led world order has buoyed other countries. That is <span class="annot" data-tooltip="either /'iːðər/ pron. (两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的">either</span> a feature or a <span class="annot" data-tooltip="flaw /flɔː/ n.瑕疵，缺点；一阵狂风；短暂的风暴；裂缝，裂纹">flaw</span>, depending on your <span class="annot" data-tooltip="vantage /ˈvæntɪdʒ/ n. 优势,有利地位">vantage</span> point. Since 1945 the world economy has grown by a factor of 19, and average incomes have risen roughly fivefold. China’s <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span>, particularly after joining the World Trade Organisation in 2001, has infuriated Mr Trump. It became the world’s largest economy at local prices about a <span class="annot" data-tooltip="decade /'dekeɪd/ n. 十年，十年期；十">decade</span> ago. On two measures dear to Mr Trump—<span class="annot" data-tooltip="manufacturing /ˌmænju'fæktʃərɪŋ/ n. 制造业，工业adj. 制造业的；制造的">manufacturing</span> output and the export of goods —America has <span class="annot" data-tooltip="lagged /læɡ/ n. 迟延；防护套；囚犯；桶板；落后vt. 押往监狱；落后于；加上外套vi. 滞后；缓缓而行；蹒跚adj. 最后的时 态: l">lagged</span> in relative <span class="annot" data-tooltip="terms /tɜːrmz/ n. 条款；地位，关系；措辞；术语；价钱（term的复数形式）v. 把…称为（term的三单形式）">terms</span>. In 1945 America produced about half of the world’s manufactured goods; by 2024 it accounted for about 15%, with China’s share of manufacturing more than twice that. Never mind that America exports twice as many services. There is also a <span class="annot" data-tooltip="perception /pər'sepʃn/ n. 感知(能力)；觉察(力)认识，观念，看法形容词: perceptional">perception</span>, at least among some, that the post-war order has brought ordinary citizens a measly return on investment. It has become clear —in <span class="annot" data-tooltip="iraq n. 伊拉克（西南亚国家）">Iraq</span>, <span class="annot" data-tooltip="afghanistan /æf'ɡænɪstæn/ n. 阿富汗">Afghanistan</span> and, more recently, Iran—that military <span class="annot" data-tooltip="capability /ˌkeɪpə'bɪləti/ n. 能做某事的素质;能力尚未发挥的天资或素质">capability</span> alone does not guarantee military success. All those <span class="annot" data-tooltip="aircraft /'erkræft/ n. 飞机，航空器">aircraft</span>-carriers cannot prevent Iran from choking off the passage of oil through the <span class="annot" data-tooltip="strait /streɪt/ n. 海峡；（尤指经济拮据引起的）困境，境况窘迫adj. 狭窄的；苦恼的副 词: straitly">Strait</span> of Hormuz or stop China from limiting access to rare earths. <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">Nearly</span> six in ten Americans surveyed in 2024 <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span> that America had lost more than it had gained from trade with other countries. “The <span class="annot" data-tooltip="wealth /welθ/ n. 财富；大量；富有">wealth</span> of our middle class”, Mr Trump declared in 2017, “has been ripped from their homes and then redistributed across the entire world.” The so-called “China shock” did have an impact, accounting for the loss of up to 2.4m jobs from 1999 to 2011, according to research from David Autor, David Dorn and Gordon Hanson. However painful for those individuals, that did not <span class="annot" data-tooltip="rattle /'rætl/ vt. 使发出咯咯声；喋喋不休；使慌乱，使惊慌vi. 喋喋不休地讲话；发出卡嗒卡嗒声n. 喋喋不休的人；咯吱声，格格声时 态: ">rattle</span> America’s broader job market. At the end of 2011 America saw a regular churn of about 4m jobs each month. The post-war order clearly <span class="annot" data-tooltip="promoted /'proʊmoʊ/ n. 商品推销；商品广告，广告片">promoted</span> American prosperity. Since 1960 real incomes have increased more in America in absolute terms than in any other large country or region, rising more than five times as much as in India and</p>
+<p>twice as much as in China. Median family income has more than doubled in real <span class="annot" data-tooltip="terms /tɜːrmz/ n. 条款；地位，关系；措辞；术语；价钱（term的复数形式）v. 把…称为（term的三单形式）">terms</span> since 1960. <span class="annot" data-tooltip="inequality /ˌɪnɪ'kwɑːləti/ n. 不平等,不均等,不等量">Inequality</span> in America is real, and above the average in rich countries. That has much to do with rising returns to <span class="annot" data-tooltip="wealth /welθ/ n. 财富；大量；富有">wealth</span> and America’s tax structure. Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> and his acolytes are now <span class="annot" data-tooltip="keen /kiːn/ adj. 锋利的热衷的，热心的，渴望(做某事)激烈的，紧张的良好的；敏锐的，敏捷的比较级: keener，keenest">keen</span> to renew American strength, or at least to <span class="annot" data-tooltip="forge /fɔːrdʒ/ vt. 锻造伪造，仿造vi. 突然向前n. 锻造车间；铁匠铺熔铁炉时 态: forged，forging，forges">forge</span> a new <span class="annot" data-tooltip="version /'vɜːrʒn/ n. 变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本">version</span> of it. He has a <span class="annot" data-tooltip="distinctly /dɪ'stɪŋkt/ adj. 截然不同的, 完全分开的清晰的, 明白的, 明显的副 词: distinctly">distinctly</span> 19th-century interest in new <span class="annot" data-tooltip="territory /'terətɔːri/ n. 领土, 版图管区, 营业地区地盘, 领域, 范围">territory</span>, and the resources that come with it. Last year military spending by America’s <span class="annot" data-tooltip="allies n. （第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者">allies</span>, when adjusted for local prices, exceeded America’s. But the White House has proposed a $1.5trn defence budget for the 2027 <span class="annot" data-tooltip="fiscal /'fɪskl/ adj. 国库的；会计的，财政的副 词: fiscally">fiscal</span> year, a 44% increase on 2026. After adjusting for factors such as higher <span class="annot" data-tooltip="wages /weɪdʒ/ vi. 进行；发动；从事n. 工资；报偿；代价vt. 开展；进行时 态: waged, waging, wages">wages</span> for soldiers to make figures comparable across countries, America’s military spending would still be twice that of any other country. However, the president is <span class="annot" data-tooltip="explicit /ɪk'splɪsɪt/ adj. 详述的, 明确的, 明晰的直言的, 毫不隐瞒的, 露骨的副 词: explicitly">explicit</span> that American strength does not guarantee protection of allies. A NATO summit on July 7th and 8th will centre on Europe’s need to take more responsibility for defending itself. AI may become an important new tool of <span class="annot" data-tooltip="leverage /'levərɪdʒ/ n. （能够操控形势的）影响力，手段，优势 杠杆力；杠杆作用v. 举债经营；为…融资有效利用某物（资源、优势、工具等）时 态:">leverage</span>. Mr Trump seems happy to let America’s power atrophy in other areas where it was once strong. Last year USAID, the country’s <span class="annot" data-tooltip="main /meɪn/ adj. 主要的; 最重要的n. 总管道; 干线">main</span> development agency, was fed “into the woodchipper”, in the words and at the direction of Elon Musk, now a trillionaire. <span class="annot" data-tooltip="annual /'ænjuəl/ adj. 年度的；每年的n. 年刊，年鉴；一年生植物副 词: annually">Annual</span> <span class="annot" data-tooltip="transfers /træns'fɜːr/ n. 转移；转让；过户；传递vi. 转移；转让；转学；换车vt. 转让；调任；传递；使转移时 态: transferred, ">transfers</span> were <span class="annot" data-tooltip="slashed /slæʃ/ v. （用利器）砍，劈割破；在…上留下深长的切口大量削减n. （用刀等）砍，劈（长而窄的）伤口，切口，砍痕斜杠；斜线号时 态:">slashed</span> to $29bn, about</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>dominant</td><td>/'dɑːmɪnənt/ adj.</td><td>支配的，统治的；占优势的；显性的n. 显性</td></tr>
+<tr><td>leading</td><td>/ˈliːdɪŋ/ adj.</td><td>主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>prone</td><td>/proʊn/ adj.</td><td>易于…的; 很可能…的俯卧的</td></tr>
+<tr><td>hyperbole</td><td>/haɪ'pɜːrbəli/ n.</td><td>夸张法</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>reclaim</td><td>/rɪ'kleɪm/ vt.</td><td>要求收回开拓(荒地)；开垦从废料中回收(有用的材料)纠正；教化，改造，reclaiming，reclaims</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>actually</td><td>/'æktʃuəl/ adj.</td><td>真实的，实际的；现行的，目前的</td></tr>
+<tr><td>subjective</td><td>/səb'dʒektɪv/ adj.</td><td>(思想、感情等)主观的主观的(以个人好恶、观点等为依据)</td></tr>
+<tr><td>bulk</td><td>/bʌlk/ n.</td><td>体积，容量；大块；大多数，大部分vt. 使扩大，使形成大量；使显得重要, bulking, bulks</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>slaves</td><td>/sleɪv/ n.</td><td>奴隶；从动装置vi. 苦干；拼命工作, slaving, slaves</td></tr>
+<tr><td>quarter</td><td>/'kwɔːrtər/ n.</td><td>四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一, quartering, quarters</td></tr>
+<tr><td>cotton</td><td>/'kɑːtn/ n.</td><td>棉花；棉线；棉布vi. 和谐；一致；理解；亲近adj. 棉的；棉制的Cotton科顿（姓氏）, cottoning, cottons</td></tr>
+<tr><td>brutal</td><td>/'bruːtl/ adj.</td><td>残忍的；野蛮的，不讲理的</td></tr>
+<tr><td>slave</td><td>/sleɪv/ n.</td><td>奴隶；从动装置vi. 苦干；拼命工作, slaving, slaves</td></tr>
+<tr><td>violently</td><td>/'vaɪələnt/ adj.</td><td>暴力引起的, 粗暴的剧烈的, 强烈的</td></tr>
+<tr><td>envy</td><td>/'envi/ n.</td><td>羡慕；嫉妒，妒忌vt. 羡慕；嫉妒，妒忌vi. 感到妒忌；显示出妒忌</td></tr>
+<tr><td>ports</td><td>/pɔːrt/ n.</td><td>港口，口岸；左舷；舱门；（计算机的）端口vi. 转向左舷vt. 左转舵；持（枪）PORTabbr. Photo Opitical Recorder Tracke</td></tr>
+<tr><td>sweeping</td><td>/'swiːpɪŋ/ n.</td><td>扫除；垃圾adj. 扫荡的；彻底的；广泛的v. 打扫；扫除（sweep的现在分词形式）</td></tr>
+<tr><td>mississippi</td><td>— n.</td><td>密西西比河(发源于美国中北部湖沼区,南注墨西哥湾,是世界上最大的河流之一),密西西比州(美国州名)</td></tr>
+<tr><td>routes</td><td>/ruːt，raʊt/ n.</td><td>路, 路途, 路线, 路程, routing, routes</td></tr>
+<tr><td>deposits</td><td>/dɪ'pɑːzɪt/ n.</td><td>存款；保证金；沉淀物vt. 存放；使沉积vi. 沉淀, depositing, deposits</td></tr>
+<tr><td>civil</td><td>/'sɪvl/ adj.</td><td>公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>ruins</td><td>/'ruːɪn/ vt.</td><td>破坏，毁掉使破产，使沦落n. 毁坏，毁灭，灭亡完全丧失，断送；垮台(的原因)破败、坍塌或毁坏的状态废墟；遗迹，ruining，ruins</td></tr>
+<tr><td>terms</td><td>/tɜːrmz/ n.</td><td>条款；地位，关系；措辞；术语；价钱（term的复数形式）v. 把…称为（term的三单形式）</td></tr>
+<tr><td>texas</td><td>/'teksəs/ n.</td><td>德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室)</td></tr>
+<tr><td>reliable</td><td>/rɪ'laɪəbl/ adj.</td><td>可靠的, 可信赖的</td></tr>
+<tr><td>spirits</td><td>/'spɪrɪt/ n.</td><td>精神；心灵；志气；烈酒；情绪vt. 鼓励；鼓舞；诱拐, spiriting, spirits</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>gross</td><td>/ɡroʊs/ adj.</td><td>总共的；粗野的；恶劣的；显而易见的vt. 总共收入n. 总额，总数, grossest</td></tr>
+<tr><td>domestic</td><td>/də'mestɪk/ adj.</td><td>国内的；家庭的；驯养的；一心只管家务的</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>leading</td><td>/ˈliːdɪŋ/ adj.</td><td>主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）</td></tr>
+<tr><td>generative</td><td>/'dʒenərətɪv/ adj.</td><td>能生产的, 有生产力的生殖的</td></tr>
+<tr><td>invoices</td><td>/'ɪnvɔɪs/ n.</td><td>发票；发货单；货物vt. 开发票；记清单, invoicing, invoices</td></tr>
+<tr><td>immigrants</td><td>/'ɪmɪɡrənt/ n.</td><td>移民</td></tr>
+<tr><td>elevate</td><td>/'elɪveɪt/ vt.</td><td>举起；提升；振奋情绪等；提升…的职位, elevating, elevates</td></tr>
+<tr><td>isolate</td><td>/'aɪsəleɪt/ vt.</td><td>使孤立；使绝缘；使隔离n. 隔离种群vi. 孤立；隔离adj. 隔离的；孤立的, isolating, isolates</td></tr>
+<tr><td>portrait</td><td>/'pɔːrtrət/ n.</td><td>肖像, 画像生动的描写</td></tr>
+<tr><td>terms</td><td>/tɜːrmz/ n.</td><td>条款；地位，关系；措辞；术语；价钱（term的复数形式）v. 把…称为（term的三单形式）</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>arguably</td><td>/'ɑːrɡjuəbli/ adv.</td><td>可论证地,正如可提出证据加以证明的那样</td></tr>
+<tr><td>ukraine</td><td>— n.</td><td>乌克兰（原苏联一加盟共和国，现已独立）</td></tr>
+<tr><td>edge</td><td>/edʒ/ n.</td><td>边缘；刀刃；优势；锋利vt. 使锐利；将…开刃；给…加上边vi. 缓缓移动；侧着移动EDGEabbr. Electronic Data Gathering Eq</td></tr>
+<tr><td>expertise</td><td>/ˌekspɜːr'tiːz/ n.</td><td>专门知识或技能</td></tr>
+<tr><td>yielded</td><td>/jiːld/ vt.</td><td>出产；屈服；放弃vi. 屈服，投降n. 收益；产量, yielding, yields</td></tr>
+<tr><td>aircraft</td><td>/'erkræft/ n.</td><td>飞机，航空器</td></tr>
+<tr><td>operational</td><td>/ˌɑːpə'reɪʃənl/ adj.</td><td>即可使用的(用于)操作的, 经营的</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>dominant</td><td>/'dɑːmɪnənt/ adj.</td><td>支配的，统治的；占优势的；显性的n. 显性</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>either</td><td>/'iːðər/ pron.</td><td>(两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的</td></tr>
+<tr><td>flaw</td><td>/flɔː/ </td><td>n.瑕疵，缺点；一阵狂风；短暂的风暴；裂缝，裂纹</td></tr>
+<tr><td>vantage</td><td>/ˈvæntɪdʒ/ n.</td><td>优势,有利地位</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>decade</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>manufacturing</td><td>/ˌmænju'fæktʃərɪŋ/ n.</td><td>制造业，工业adj. 制造业的；制造的</td></tr>
+<tr><td>lagged</td><td>/læɡ/ n.</td><td>迟延；防护套；囚犯；桶板；落后vt. 押往监狱；落后于；加上外套vi. 滞后；缓缓而行；蹒跚adj. 最后的, lagging, lags</td></tr>
+<tr><td>terms</td><td>/tɜːrmz/ n.</td><td>条款；地位，关系；措辞；术语；价钱（term的复数形式）v. 把…称为（term的三单形式）</td></tr>
+<tr><td>perception</td><td>/pər'sepʃn/ n.</td><td>感知(能力)；觉察(力)认识，观念，看法</td></tr>
+<tr><td>iraq</td><td>— n.</td><td>伊拉克（西南亚国家）</td></tr>
+<tr><td>afghanistan</td><td>/æf'ɡænɪstæn/ n.</td><td>阿富汗</td></tr>
+<tr><td>capability</td><td>/ˌkeɪpə'bɪləti/ n.</td><td>能做某事的素质;能力尚未发挥的天资或素质</td></tr>
+<tr><td>aircraft</td><td>/'erkræft/ n.</td><td>飞机，航空器</td></tr>
+<tr><td>strait</td><td>/streɪt/ n.</td><td>海峡；（尤指经济拮据引起的）困境，境况窘迫adj. 狭窄的；苦恼的</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>wealth</td><td>/welθ/ n.</td><td>财富；大量；富有</td></tr>
+<tr><td>rattle</td><td>/'rætl/ vt.</td><td>使发出咯咯声；喋喋不休；使慌乱，使惊慌vi. 喋喋不休地讲话；发出卡嗒卡嗒声n. 喋喋不休的人；咯吱声，格格声, rattling, rattles</td></tr>
+<tr><td>promoted</td><td>/'proʊmoʊ/ n.</td><td>商品推销；商品广告，广告片</td></tr>
+<tr><td>terms</td><td>/tɜːrmz/ n.</td><td>条款；地位，关系；措辞；术语；价钱（term的复数形式）v. 把…称为（term的三单形式）</td></tr>
+<tr><td>inequality</td><td>/ˌɪnɪ'kwɑːləti/ n.</td><td>不平等,不均等,不等量</td></tr>
+<tr><td>wealth</td><td>/welθ/ n.</td><td>财富；大量；富有</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>keen</td><td>/kiːn/ adj.</td><td>锋利的热衷的，热心的，渴望(做某事)激烈的，紧张的良好的；敏锐的，敏捷的，keenest</td></tr>
+<tr><td>forge</td><td>/fɔːrdʒ/ vt.</td><td>锻造伪造，仿造vi. 突然向前n. 锻造车间；铁匠铺熔铁炉，forging，forges</td></tr>
+<tr><td>version</td><td>/'vɜːrʒn/ n.</td><td>变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本</td></tr>
+<tr><td>distinctly</td><td>/dɪ'stɪŋkt/ adj.</td><td>截然不同的, 完全分开的清晰的, 明白的, 明显的</td></tr>
+<tr><td>territory</td><td>/'terətɔːri/ n.</td><td>领土, 版图管区, 营业地区地盘, 领域, 范围</td></tr>
+<tr><td>allies</td><td>— n.</td><td>（第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者</td></tr>
+<tr><td>fiscal</td><td>/'fɪskl/ adj.</td><td>国库的；会计的，财政的</td></tr>
+<tr><td>wages</td><td>/weɪdʒ/ vi.</td><td>进行；发动；从事n. 工资；报偿；代价vt. 开展；进行, waging, wages</td></tr>
+<tr><td>explicit</td><td>/ɪk'splɪsɪt/ adj.</td><td>详述的, 明确的, 明晰的直言的, 毫不隐瞒的, 露骨的</td></tr>
+<tr><td>leverage</td><td>/'levərɪdʒ/ n.</td><td>（能够操控形势的）影响力，手段，优势 杠杆力；杠杆作用v. 举债经营；为…融资有效利用某物（资源、优势、工具等）, leveraging, leverages</td></tr>
+<tr><td>main</td><td>/meɪn/ adj.</td><td>主要的; 最重要的n. 总管道; 干线</td></tr>
+<tr><td>annual</td><td>/'ænjuəl/ adj.</td><td>年度的；每年的n. 年刊，年鉴；一年生植物</td></tr>
+<tr><td>transfers</td><td>/træns'fɜːr/ n.</td><td>转移；转让；过户；传递vi. 转移；转让；转学；换车vt. 转让；调任；传递；使转移, transferring, transfers</td></tr>
+<tr><td>slashed</td><td>/slæʃ/ v.</td><td>（用利器）砍，劈割破；在…上留下深长的切口大量削减n. （用刀等）砍，劈（长而窄的）伤口，切口，砍痕斜杠；斜线号，slashing，slashes</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day11.html" class="nav-btn">← Day 11</a>
+  <a href="day13.html" class="nav-btn">Day 13 →</a>
+</div>
+
+<div class="progress">📖 Day 12 of 47</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-07-04</div>
+
+</body>
+</html>

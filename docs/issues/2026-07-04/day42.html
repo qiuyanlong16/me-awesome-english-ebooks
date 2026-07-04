@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Science & technology</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-07-04</div>
+
+<h1 class="article-title">Science & technology</h1>
+<div class="article-section"></div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>Science & technology | Small people; big data Should every baby’s DNA be sequenced? The genomic generation is on its way July 2nd 2026 Shortly after Freddie was born in April 2025, he was diagnosed with retinoblastoma, a rare form of eye <span class="annot" data-tooltip="cancer /'kænsər/ n. 癌迅速蔓延的恶劣的或危险的事物形容词: cancerous">cancer</span>. It was <span class="annot" data-tooltip="spotted /spɑːt/ n. 斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Po">spotted</span> early and treated <span class="annot" data-tooltip="promptly /'prɑːmptli/ adv. 敏捷地；迅速地；立即地准时地，正好">promptly</span>, which means he has a much better chance of growing up with normal <span class="annot" data-tooltip="vision /'vɪʒn/ n. 视力；眼力；幻象；美景；想象力vt. 显现；梦见；想象时 态: visioned, visioning, visions">vision</span>. That quick diagnosis was no accident. Freddie is part of the Generation Study, an English programme which plans to <span class="annot" data-tooltip="sequence /'siːkwəns/ n. 有关联的一组事物, 一连串先后次序, 顺序, 连续时 态: sequenced, sequencing, sequenc">sequence</span> the <span class="annot" data-tooltip="complete /kəm'pliːt/ adj. 完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善比较级: complete">complete</span> <span class="annot" data-tooltip="genetic /dʒə'netɪk/ adj. 遗传的；起源的；基因的副 词: genetically">genetic</span> code of 100,000 babies. The idea is both to screen them for genetic diseases and to use the collected genomic data to boost medical research in future. Similar <span class="annot" data-tooltip="trials /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">trials</span> are under way in America, Australia and parts of Europe, to test whether such screening should be offered for all newborns. Supporters hope to transform the diagnosis and treatment of rare diseases. Critics <span class="annot" data-tooltip="fret /fret/ vt. 焦急；使磨损；使烦恼vi. 磨损；烦恼；焦急n. 烦躁；焦急；磨损时 态: fretted, fretting, fre">fret</span></p>
+<p>that genomic sequencing may cause needless worry, and require parents to hand over sensitive data about their children. Many countries screen <span class="annot" data-tooltip="infants /'ɪnfənt/ n. 婴儿；幼儿adj. 供婴幼儿用的初期的；初创期的">infants</span> for diseases already, usually by taking a blood sample and looking for <span class="annot" data-tooltip="markers /'mɑːrkər/ n. 书签；记分员；标识物；作记号的人">markers</span> of conditions such as sickle-cell anaemia or cystic fibrosis. The most <span class="annot" data-tooltip="comprehensive /ˌkɑːmprɪ'hensɪv/ adj. 广泛的, 综合的副 词: comprehensively">comprehensive</span> screens, such as Italy’s, look for markers of around 50 diseases. Analysing DNA rather than blood can increase that <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> <span class="annot" data-tooltip="dramatically /drə'mætɪkli/ adv. 戏剧性地;引人注目地">dramatically</span>, as well as flagging <span class="annot" data-tooltip="mutations /mjuː'teɪʃn/ n. 突变；变化；元音变化">mutations</span> that are not causing problems yet, but might in future. The Generation Study is screening for around 200 conditions that arise in childhood. In America the BabySeq2 project screened for around 1,000 genes, some linked to diseases that emerge in adulthood such as <span class="annot" data-tooltip="breast /brest/ n. 乳房，胸部；胸怀；心情vt. 以胸对着；与…搏斗时 态: breasted, breasting, breasts">breast</span> or ovarian <span class="annot" data-tooltip="cancer /'kænsər/ n. 癌迅速蔓延的恶劣的或危险的事物形容词: cancerous">cancer</span>. Catching more diseases earlier could help many more babies like Freddie. But there are worries to go with the <span class="annot" data-tooltip="enthusiasm /ɪn'θuːziæzəm/ n. 热情, 热心巨大兴趣, 热衷的事物">enthusiasm</span>. One is that genes are not always destiny. The average person carries scores of <span class="annot" data-tooltip="genetic /dʒə'netɪk/ adj. 遗传的；起源的；基因的副 词: genetically">genetic</span> <span class="annot" data-tooltip="variants /'veriənt/ n. 变体；变种；变型(词等的)变体；异读(书等的)不同版本；改编adj. 不同的；差别的；变异的；易变的，不定的；各种各样的">variants</span> that have been linked to diseases. But because of environmental factors, the influence of other genes or chance, most of those conditions never develop. Geneticists use a concept called “penetrance” to describe the <span class="annot" data-tooltip="proportion /prə'pɔːrʃn/ n. 均衡；相称，协调一物与他物在数量、大小等方面的关系；比例部分；份儿时 态: proportioned，proportio">proportion</span> of people with a disease-causing <span class="annot" data-tooltip="mutation /mjuː'teɪʃn/ n. 突变；变化；元音变化">mutation</span> who <span class="annot" data-tooltip="actually /'æktʃuəl/ adj. 真实的，实际的；现行的，目前的副 词: actually">actually</span> go on to become ill. It can <span class="annot" data-tooltip="vary /'veri/ vi. 变化；违反；[生]变异vt. 改变；使多样化；[音]变奏时 态: varied varying, varies">vary</span> greatly for different conditions—and many estimates may be too high. Many disease-causing mutations are found by working <span class="annot" data-tooltip="backwards /'bækwərd/ adj. 向后的；反向的；发展迟缓的adv. 相反地；向后地副 词: backwardly">backwards</span> from people who are already ill, which risks inflating the numbers. Take retinoblastoma. Early studies estimated that mutations in a gene called RB1 had penetrance of more than 90%. But a paper posted online in December found that less than a third of adults with risky variants have ever had the cancer. “I think historically people have equated genetic information with certainty,” says Caroline Wright a geneticist at the University of Exeter, who conducted the study, “which is quite outdated now.” Testing hundreds of genes with low or middling penetrance could create “patients-in-waiting” many of whom will never become ill. Such <span class="annot" data-tooltip="diagnostic /ˌdaɪəɡ'nɑːstɪk/ adj. 诊断的, 判断的副 词: diagnostically">diagnostic</span> purgatory is stressful enough that, in the case of cystic fibrosis, it has a name: “cystic fibrosis, screen positive inconclusive diagnosis” (CFSPID). Parents of CFSPID children often question the <span class="annot" data-tooltip="worth /wɜːrθ/ adj. 值…的n. 价值；财产时 态: worthed, worthing, worths">worth</span> of getting the test results at all, says Anneke Lucassen, a geneticist at the University of Oxford.</p>
+<p><span class="annot" data-tooltip="uncertainty /ʌn'sɜːrtnti/ n. 无把握;不确定;变化不定无把握、不确定的事物">Uncertainty</span> is not the only worry. Some treatments can cause harm too. In the case of retinoblastoma a risky <span class="annot" data-tooltip="mutation /mjuː'teɪʃn/ n. 突变；变化；元音变化">mutation</span> triggers only eye tests. But for medullary thyroid <span class="annot" data-tooltip="cancer /'kænsər/ n. 癌迅速蔓延的恶劣的或危险的事物形容词: cancerous">cancer</span> caused by <span class="annot" data-tooltip="mutations /mjuː'teɪʃn/ n. 突变；变化；元音变化">mutations</span> in the RET gene (where new research also suggests penetrance is much lower than had been <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span>), a common follow-up is to surgically remove the thyroid gland. That leaves patients dependent on artificial thyroid hormones for the rest of their lives. Some of the <span class="annot" data-tooltip="issues /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issues</span> have solutions. Results could be given for only <span class="annot" data-tooltip="genetic /dʒə'netɪk/ adj. 遗传的；起源的；基因的副 词: genetically">genetic</span> <span class="annot" data-tooltip="variants /'veriənt/ n. 变体；变种；变型(词等的)变体；异读(书等的)不同版本；改编adj. 不同的；差别的；变异的；易变的，不定的；各种各样的">variants</span> which give <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> to treatable illnesses, and which are known to have high penetrance—though that might upset those who would prefer to know everything. Careful communication can improve understanding of a test’s limitations. Part of the point of the <span class="annot" data-tooltip="trials /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">trials</span> is to explore <span class="annot" data-tooltip="exactly /ɪɡ'zækt/ adj. 精确的；准确的，精密的vt. 强求；要求；急需vi. 勒索钱财时 态: exacted, exacting, exact">exactly</span> these sorts of questions. But screening is only half the story. A second goal of most programmes is to store the genomes for use in future research. Such databases can be very useful. Data from Britain’s 100,000 Genomes Project, which collected genomes from patients with rare diseases and their families, allowed researchers at Oxford to <span class="annot" data-tooltip="spot /spɑːt/ n. 斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Po">spot</span> genetic variants that cause a neurodevelopmental <span class="annot" data-tooltip="disorder /dɪs'ɔːrdər/ n. 混乱；骚乱vt. 扰乱；使失调时 态: disordered, disordering, disorders">disorder</span> in children. The data could also be used to predict drug side-effects and predict how well a patient will respond to treatment. It could also be used to flag people who might benefit from new treatments that did not exist when their genomes were first stored. “I’m <span class="annot" data-tooltip="completely /kəm'pliːt/ adj. 完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善比较级: complete">completely</span> confident that our ability to understand the genome will improve,” says Ewan Birney, director of the European Bioinformatics Institute. “AI is giving us a massive boost to that.” On the other hand, a person’s genome is among the most personal and sensitive information there is. For some researchers and parents, the idea of storing it indefinitely is a sticking-point. There have been several <span class="annot" data-tooltip="leaks /liːk/ n. 漏洞，裂缝；泄漏vt. 使渗漏，泄露vi. 漏，渗；泄漏出去时 态: leaked, leaking, leaks">leaks</span> of genetic or medical information in recent years. In 2023, for instance, hackers stole the genetic and personal information of 6.9m customers of 23andMe, a beleaguered direct-to-consumer genetic-testing company. The same advances in <span class="annot" data-tooltip="genetics /dʒə'netɪk/ adj. 遗传的；起源的；基因的副 词: genetically">genetics</span> that <span class="annot" data-tooltip="enable /ɪ'neɪbl/ vt. 使能够；提供做…的权利[措施]使可能时 态: enabled，enabling，enables">enable</span> new treatments are also likely to enable new uses for genetic information <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span> medicine. In America some insurers can already use genetic-test results when setting <span class="annot" data-tooltip="premiums /'priːmiəm/ n. 奖金，津贴；加价；附加费；保险费；额外费用adj. （品质）高级的；优质的，顶级的">premiums</span> (in</p>
+<p>Australia and Britain this is mostly banned). Insights from DNA could be used for <span class="annot" data-tooltip="blackmail /'blækmeɪl/ n. 敲诈, 勒索动 词: blackmail">blackmail</span>, for instance around questions of paternity. Jan Friedman, a geneticist at the University of British Columbia, worries that many of the proposed screening programmes suffer from “mission <span class="annot" data-tooltip="creep /kriːp/ vi. 爬行；慢慢地移动；起鸡皮疙瘩；蔓延n. 爬行；毛骨悚然的感觉；谄媚者时 态: crept creeping, creep">creep</span>”, with most requiring parents to sign up to both screening and the long-term storage of their child’s data for research. “You can’t take part in one without taking part in the other,” says Dr Lucassen of the University of Oxford, yet “they’re so different”. Screening programmes are usually judged on whether the benefits to the patients outweigh the costs. Medical research, by <span class="annot" data-tooltip="contrast /'kɑːntræst/ n. 对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照时 态: contrasted, cont">contrast</span>, is justified by benefits that are uncertain and often accrue to other people. Current genomic-screening <span class="annot" data-tooltip="trials /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">trials</span> for newborns are trying to do both at once, and with patients who are incapable of <span class="annot" data-tooltip="consenting /kən'sent/ n. 准许，同意，赞成vi. 同意；赞成时 态: consented，consenting，consents">consenting</span> to <span class="annot" data-tooltip="boot /buːt/ vt. 使穿靴；引导；踢；解雇n. 靴子；汽车行李箱；踢时 态: booted, booting, boots">boot</span>. The benefits could be <span class="annot" data-tooltip="enormous /ɪ'nɔːrməs/ adj. 巨大的, 极大的, 庞大的副 词: enormously">enormous</span>. But the ethics look <span class="annot" data-tooltip="tricky /'trɪki/ adj. 机警的；狡猾的比较级: trickier, trickiest">tricky</span>. ■ <span class="annot" data-tooltip="correction /kə'rekʃn/ n. 改〔纠〕正修改；纠正有待改正adj. 改正的，纠正的形容词: correctional">Correction</span>: an earlier <span class="annot" data-tooltip="version /'vɜːrʒn/ n. 变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本">version</span> of this article said Freddie had been treated with photo-activated chemotherapy. This has been amended. Curious about the world? To enjoy our mind-expanding science <span class="annot" data-tooltip="coverage /'kʌvərɪdʒ/ n. 新闻报道, 报道量覆盖范围">coverage</span>, sign up to <span class="annot" data-tooltip="simply /'sɪmpli/ adv. 简单地；朴素地；简直；仅仅；坦白地">Simply</span> Science, our weekly subscriber-only newsletter. This article was downloaded by zlibrary from https://www.economist.com//science-and-technology/2026/06/29/should-every-babys- dna-be-sequenced</p>
+<p>Science & technology | Digging deeper Scientists can now study the event <span class="annot" data-tooltip="horizons /hə'raɪzn/ n. 地平线；眼界；范围；视野">horizons</span> of black <span class="annot" data-tooltip="holes /hoʊl/ n. 洞，孔；洞穴，穴；突破口vi. 凿洞，穿孔；（高尔夫球等）进洞vt. 凿洞时 态: holed, holing, hol">holes</span> They make the universe’s most extreme gravitational laboratories July 2nd 2026 A LONG TIME ago, in a <span class="annot" data-tooltip="galaxy /'ɡæləksi/ n. 星系银河系, 银河一群(杰出或著名的人物)">galaxy</span> <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span>, far away—somewhere in the general direction of the <span class="annot" data-tooltip="constellation /ˌkɑːnstə'leɪʃn/ n. 星座一群杰出人物">constellation</span> of <span class="annot" data-tooltip="leo /'liːoʊ/ n. [天文]狮子座；狮子（用于儿童故事寓言等）；利奥（男子名）">Leo</span>—two black holes <span class="annot" data-tooltip="crashed /kræʃ/ n. 碰撞；崩溃；坠落vt. 破碎；撞碎；坠落vi. 碰撞；坠毁；闯；突然倒台adj. 速成的时 态: crashed, cr">crashed</span> together and <span class="annot" data-tooltip="merged 〈美俚〉结了婚的">merged</span>. About 1.3bn years later, on January 14th 2025, a blip appeared in the detectors at the <span class="annot" data-tooltip="laser /'leɪzər/ n. 激光LASERabbr. Light Amplification by Stimulated Emission of R">Laser</span> Interferometer Gravitational-<span class="annot" data-tooltip="wave /weɪv/ vi. 波动；起伏；摇动；呈波形；挥手示意vt. 向…挥手示意；使成波浪形；卷（烫）发n. 波浪；波动；高潮；卷曲；挥手示意时 ">Wave</span> <span class="annot" data-tooltip="observatory /əb'zɜːrvətɔːri/ n. 天文台;气象台">Observatory</span> (LIGO), an instrument based in Louisiana and Washington state. The blip <span class="annot" data-tooltip="marked /mɑːr/ vt. 毁坏；损坏；玷污MARabbr. Master of Arts in Religion 宗教硕士Mar三月(March)">marked</span> the arrival of the pulse of gravitational <span class="annot" data-tooltip="waves /weɪv/ vi. 波动；起伏；摇动；呈波形；挥手示意vt. 向…挥手示意；使成波浪形；卷（烫）发n. 波浪；波动；高潮；卷曲；挥手示意时 ">waves</span>—ripples in the fabric of the universe—<span class="annot" data-tooltip="emitted /i'mɪt/ vt. 发出，放射；发行；发表EMITabbr. Electromagnetic Induction Tweeter 电磁感应高">emitted</span> as the black holes collided. In a paper published in Nature on June 24th, a team led by Sizheng Ma of <span class="annot" data-tooltip="perimeter /pə'rɪmɪtər/ n. 周边;周围;边缘形容词: perimetric">Perimeter</span> Institute for Theoretical Physics, in Ontario, report that they have used those</p>
+<p><span class="annot" data-tooltip="waves /weɪv/ vi. 波动；起伏；摇动；呈波形；挥手示意vt. 向…挥手示意；使成波浪形；卷（烫）发n. 波浪；波动；高潮；卷曲；挥手示意时 ">waves</span> to glimpse one of nature’s strangest phenomena: the “event <span class="annot" data-tooltip="horizons /hə'raɪzn/ n. 地平线；眼界；范围；视野">horizons</span>” that surround black <span class="annot" data-tooltip="holes /hoʊl/ n. 洞，孔；洞穴，穴；突破口vi. 凿洞，穿孔；（高尔夫球等）进洞vt. 凿洞时 态: holed, holing, hol">holes</span>. An event <span class="annot" data-tooltip="horizon /hə'raɪzn/ n. 地平线；眼界；范围；视野">horizon</span> marks the point beyond which gravity so warps spacetime that nothing, not even light, can <span class="annot" data-tooltip="escape /ɪ'skeɪp/ vt. 逃避，避免；被忘掉vi. 逃脱；避开；溜走n. 逃跑；逃亡时 态: escaped, escaping, escapes">escape</span>. An object that crosses the horizon is cut off from the rest of the universe, with all possible roads <span class="annot" data-tooltip="leading /ˈliːdɪŋ/ adj. 主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）">leading</span> to the black <span class="annot" data-tooltip="hole /hoʊl/ n. 洞，孔；洞穴，穴；突破口vi. 凿洞，穿孔；（高尔夫球等）进洞vt. 凿洞时 态: holed, holing, hol">hole</span>’s centre. Event horizons are invisible, <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">although</span> their effects can often be seen when a black hole is swallowing hot, <span class="annot" data-tooltip="glowing /ɡloʊ/ vi. (无焰地)燃烧；发炽热；烧红脸红，身体发热n. 光亮，光辉脸红，(身体)发热热情；强烈的感情时 态: glowed，gl">glowing</span> gas. Physicists nevertheless know a great deal about how they work, thanks to Albert Einstein’s theory of general relativity. But physics is an empirical science as well as a theoretical one. Dr Ma <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span> that gravitational waves might offer a way to check that Einstein’s theory does indeed match <span class="annot" data-tooltip="reality /ri'æləti/ n. 现实；真实；实际">reality</span> at the boundary of a black hole. General relativity predicts that as two black holes collide and merge, the <span class="annot" data-tooltip="properties 道具">properties</span> of the new hole’s event horizon should be imprinted on the gravitational waves released. To test this, Dr Ma teamed up with physicists from LIGO, who are used to <span class="annot" data-tooltip="interpreting /ɪn'tɜːrprət/ vt. 解释；说明vt. & vi. 口译；翻译时 态: interpreted，interpreting，interprets">interpreting</span> the complex signals that show up in their detectors. Since the <span class="annot" data-tooltip="wave /weɪv/ vi. 波动；起伏；摇动；呈波形；挥手示意vt. 向…挥手示意；使成波浪形；卷（烫）发n. 波浪；波动；高潮；卷曲；挥手示意时 ">wave</span> <span class="annot" data-tooltip="detected /dɪ'tekt/ vt. 发现；发觉，查明时 态: detected，detecting，detects">detected</span> last year is the clearest from a binary merger so <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> detected, the team focused their attention there. Sure enough, they were able to decipher the part of the signal in question. And it matched their theoretical prediction <span class="annot" data-tooltip="exactly /ɪɡ'zækt/ adj. 精确的；准确的，精密的vt. 强求；要求；急需vi. 勒索钱财时 态: exacted, exacting, exact">exactly</span>. The team’s new technique provides an unprecedented view of the bizarre environment just <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span> an event horizon. Here light loses <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span> as it attempts to climb out of the black hole’s <span class="annot" data-tooltip="immense /ɪ'mens/ adj. 极大的, 巨大的副 词: immensely">immense</span> gravitational field. That makes objects approaching the horizon appear redder and redder to outside observers. As the black hole rotates it tugs the fabric of spacetime around with it, warping distances and the passage of time. The physics of both of these effects are captured in the rumble of the gravitational waves, allowing physicists to probe gravity at its most extreme. Or <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> its most extreme. Hidden behind the event horizon, at the heart of the black hole, is an even stranger region: the singularity. There the gravitational field is so <span class="annot" data-tooltip="intense /ɪn'tens/ adj. 强烈的；紧张的；热情的；非常的比较级: intenser, intensest">intense</span> that Einstein’s theory starts to give nonsensical results. Most physicists see that as a hint that some new, more fundamental theory remains to be discovered—probably one that combines</p>
+<p>gravity with <span class="annot" data-tooltip="quantum /'kwɑːntəm/ n. 量子定量;总量剧增；突飞猛进；重大进展复 数: quanta">quantum</span> <span class="annot" data-tooltip="mechanics /mə'kænɪks/ n. 力学;机械学机件;过程;方法">mechanics</span>, a feat that has eluded physicists for <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span>. Event <span class="annot" data-tooltip="horizons /hə'raɪzn/ n. 地平线；眼界；范围；视野">horizons</span> are as close as the universe allows physicists to get to singularities. That makes them “very interesting from the point of view of understanding the incompatibility between quantum mechanics and general relativity”, says Nicolas Yunes, a physicist at the University of Illinois Urbana-Champaign, who was not <span class="annot" data-tooltip="involved /ɪn'vɑːlvd/ adj. 卷入的；有关的；复杂的v. 涉及；使参与；包含（involve的过去式和过去分词）">involved</span> in the new study. He hopes that “<span class="annot" data-tooltip="whispers /'wɪspər/ n. 私语；谣传；飒飒的声音vi. 耳语；密谈；飒飒地响vt. 低声说出时 态: whispered, whispering,">whispers</span> of quantum-gravitational effects” may <span class="annot" data-tooltip="linger /'lɪŋɡər/ vi. 逗留, 徘徊缓慢消失时 态: lingered, lingering, lingers">linger</span> near the event <span class="annot" data-tooltip="horizon /hə'raɪzn/ n. 地平线；眼界；范围；视野">horizon</span>. Now it may be possible to check. ■ Curious about the world? To enjoy our mind-expanding science <span class="annot" data-tooltip="coverage /'kʌvərɪdʒ/ n. 新闻报道, 报道量覆盖范围">coverage</span>, sign up to <span class="annot" data-tooltip="simply /'sɪmpli/ adv. 简单地；朴素地；简直；仅仅；坦白地">Simply</span> Science, our weekly subscriber-only newsletter. This article was downloaded by zlibrary from https://www.economist.com//science-and-technology/2026/07/01/scientists-can-now- study-the-event-horizons-of-black-<span class="annot" data-tooltip="holes /hoʊl/ n. 洞，孔；洞穴，穴；突破口vi. 凿洞，穿孔；（高尔夫球等）进洞vt. 凿洞时 态: holed, holing, hol">holes</span></p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>cancer</td><td>/'kænsər/ n.</td><td>癌迅速蔓延的恶劣的或危险的事物</td></tr>
+<tr><td>spotted</td><td>/spɑːt/ n.</td><td>斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Positioning and Tracki</td></tr>
+<tr><td>promptly</td><td>/'prɑːmptli/ adv.</td><td>敏捷地；迅速地；立即地准时地，正好</td></tr>
+<tr><td>vision</td><td>/'vɪʒn/ n.</td><td>视力；眼力；幻象；美景；想象力vt. 显现；梦见；想象, visioning, visions</td></tr>
+<tr><td>sequence</td><td>/'siːkwəns/ n.</td><td>有关联的一组事物, 一连串先后次序, 顺序, 连续, sequencing, sequences</td></tr>
+<tr><td>complete</td><td>/kəm'pliːt/ adj.</td><td>完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善, completest 缩 写: comp, cpl</td></tr>
+<tr><td>genetic</td><td>/dʒə'netɪk/ adj.</td><td>遗传的；起源的；基因的</td></tr>
+<tr><td>trials</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>fret</td><td>/fret/ vt.</td><td>焦急；使磨损；使烦恼vi. 磨损；烦恼；焦急n. 烦躁；焦急；磨损, fretting, frets</td></tr>
+<tr><td>infants</td><td>/'ɪnfənt/ n.</td><td>婴儿；幼儿adj. 供婴幼儿用的初期的；初创期的</td></tr>
+<tr><td>markers</td><td>/'mɑːrkər/ n.</td><td>书签；记分员；标识物；作记号的人</td></tr>
+<tr><td>comprehensive</td><td>/ˌkɑːmprɪ'hensɪv/ adj.</td><td>广泛的, 综合的</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>dramatically</td><td>/drə'mætɪkli/ adv.</td><td>戏剧性地;引人注目地</td></tr>
+<tr><td>mutations</td><td>/mjuː'teɪʃn/ n.</td><td>突变；变化；元音变化</td></tr>
+<tr><td>breast</td><td>/brest/ n.</td><td>乳房，胸部；胸怀；心情vt. 以胸对着；与…搏斗, breasting, breasts</td></tr>
+<tr><td>cancer</td><td>/'kænsər/ n.</td><td>癌迅速蔓延的恶劣的或危险的事物</td></tr>
+<tr><td>enthusiasm</td><td>/ɪn'θuːziæzəm/ n.</td><td>热情, 热心巨大兴趣, 热衷的事物</td></tr>
+<tr><td>genetic</td><td>/dʒə'netɪk/ adj.</td><td>遗传的；起源的；基因的</td></tr>
+<tr><td>variants</td><td>/'veriənt/ n.</td><td>变体；变种；变型(词等的)变体；异读(书等的)不同版本；改编adj. 不同的；差别的；变异的；易变的，不定的；各种各样的</td></tr>
+<tr><td>proportion</td><td>/prə'pɔːrʃn/ n.</td><td>均衡；相称，协调一物与他物在数量、大小等方面的关系；比例部分；份儿，proportioning，proportions</td></tr>
+<tr><td>mutation</td><td>/mjuː'teɪʃn/ n.</td><td>突变；变化；元音变化</td></tr>
+<tr><td>actually</td><td>/'æktʃuəl/ adj.</td><td>真实的，实际的；现行的，目前的</td></tr>
+<tr><td>vary</td><td>/'veri/ vi.</td><td>变化；违反；[生]变异vt. 改变；使多样化；[音]变奏, varies</td></tr>
+<tr><td>backwards</td><td>/'bækwərd/ adj.</td><td>向后的；反向的；发展迟缓的adv. 相反地；向后地</td></tr>
+<tr><td>diagnostic</td><td>/ˌdaɪəɡ'nɑːstɪk/ adj.</td><td>诊断的, 判断的</td></tr>
+<tr><td>worth</td><td>/wɜːrθ/ adj.</td><td>值…的n. 价值；财产, worthing, worths</td></tr>
+<tr><td>uncertainty</td><td>/ʌn'sɜːrtnti/ n.</td><td>无把握;不确定;变化不定无把握、不确定的事物</td></tr>
+<tr><td>mutation</td><td>/mjuː'teɪʃn/ n.</td><td>突变；变化；元音变化</td></tr>
+<tr><td>cancer</td><td>/'kænsər/ n.</td><td>癌迅速蔓延的恶劣的或危险的事物</td></tr>
+<tr><td>mutations</td><td>/mjuː'teɪʃn/ n.</td><td>突变；变化；元音变化</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>issues</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>genetic</td><td>/dʒə'netɪk/ adj.</td><td>遗传的；起源的；基因的</td></tr>
+<tr><td>variants</td><td>/'veriənt/ n.</td><td>变体；变种；变型(词等的)变体；异读(书等的)不同版本；改编adj. 不同的；差别的；变异的；易变的，不定的；各种各样的</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>trials</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>exactly</td><td>/ɪɡ'zækt/ adj.</td><td>精确的；准确的，精密的vt. 强求；要求；急需vi. 勒索钱财, exacting, exacts</td></tr>
+<tr><td>spot</td><td>/spɑːt/ n.</td><td>斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Positioning and Tracki</td></tr>
+<tr><td>disorder</td><td>/dɪs'ɔːrdər/ n.</td><td>混乱；骚乱vt. 扰乱；使失调, disordering, disorders</td></tr>
+<tr><td>completely</td><td>/kəm'pliːt/ adj.</td><td>完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善, completest 缩 写: comp, cpl</td></tr>
+<tr><td>leaks</td><td>/liːk/ n.</td><td>漏洞，裂缝；泄漏vt. 使渗漏，泄露vi. 漏，渗；泄漏出去, leaking, leaks</td></tr>
+<tr><td>genetics</td><td>/dʒə'netɪk/ adj.</td><td>遗传的；起源的；基因的</td></tr>
+<tr><td>enable</td><td>/ɪ'neɪbl/ vt.</td><td>使能够；提供做…的权利[措施]使可能，enabling，enables</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>premiums</td><td>/'priːmiəm/ n.</td><td>奖金，津贴；加价；附加费；保险费；额外费用adj. （品质）高级的；优质的，顶级的</td></tr>
+<tr><td>blackmail</td><td>/'blækmeɪl/ n.</td><td>敲诈, 勒索动 词: blackmail</td></tr>
+<tr><td>creep</td><td>/kriːp/ vi.</td><td>爬行；慢慢地移动；起鸡皮疙瘩；蔓延n. 爬行；毛骨悚然的感觉；谄媚者, creeps</td></tr>
+<tr><td>contrast</td><td>/'kɑːntræst/ n.</td><td>对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照, contrasting, contrasts</td></tr>
+<tr><td>trials</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>consenting</td><td>/kən'sent/ n.</td><td>准许，同意，赞成vi. 同意；赞成，consenting，consents</td></tr>
+<tr><td>boot</td><td>/buːt/ vt.</td><td>使穿靴；引导；踢；解雇n. 靴子；汽车行李箱；踢, booting, boots</td></tr>
+<tr><td>enormous</td><td>/ɪ'nɔːrməs/ adj.</td><td>巨大的, 极大的, 庞大的</td></tr>
+<tr><td>tricky</td><td>/'trɪki/ adj.</td><td>机警的；狡猾的, trickiest</td></tr>
+<tr><td>correction</td><td>/kə'rekʃn/ n.</td><td>改〔纠〕正修改；纠正有待改正adj. 改正的，纠正的</td></tr>
+<tr><td>version</td><td>/'vɜːrʒn/ n.</td><td>变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本</td></tr>
+<tr><td>coverage</td><td>/'kʌvərɪdʒ/ n.</td><td>新闻报道, 报道量覆盖范围</td></tr>
+<tr><td>simply</td><td>/'sɪmpli/ adv.</td><td>简单地；朴素地；简直；仅仅；坦白地</td></tr>
+<tr><td>horizons</td><td>/hə'raɪzn/ n.</td><td>地平线；眼界；范围；视野</td></tr>
+<tr><td>holes</td><td>/hoʊl/ n.</td><td>洞，孔；洞穴，穴；突破口vi. 凿洞，穿孔；（高尔夫球等）进洞vt. 凿洞, holing, holes</td></tr>
+<tr><td>galaxy</td><td>/'ɡæləksi/ n.</td><td>星系银河系, 银河一群(杰出或著名的人物)</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>constellation</td><td>/ˌkɑːnstə'leɪʃn/ n.</td><td>星座一群杰出人物</td></tr>
+<tr><td>leo</td><td>/'liːoʊ/ n.</td><td>[天文]狮子座；狮子（用于儿童故事寓言等）；利奥（男子名）</td></tr>
+<tr><td>crashed</td><td>/kræʃ/ n.</td><td>碰撞；崩溃；坠落vt. 破碎；撞碎；坠落vi. 碰撞；坠毁；闯；突然倒台adj. 速成的, crashing, crashes</td></tr>
+<tr><td>merged</td><td>— </td><td>〈美俚〉结了婚的</td></tr>
+<tr><td>laser</td><td>/'leɪzər/ n.</td><td>激光LASERabbr. Light Amplification by Stimulated Emission of Radiation 激光器, 受激辐射式光</td></tr>
+<tr><td>wave</td><td>/weɪv/ vi.</td><td>波动；起伏；摇动；呈波形；挥手示意vt. 向…挥手示意；使成波浪形；卷（烫）发n. 波浪；波动；高潮；卷曲；挥手示意, waving, waves</td></tr>
+<tr><td>observatory</td><td>/əb'zɜːrvətɔːri/ n.</td><td>天文台;气象台</td></tr>
+<tr><td>marked</td><td>/mɑːr/ vt.</td><td>毁坏；损坏；玷污MARabbr. Master of Arts in Religion 宗教硕士Mar三月(March)，marring，mars</td></tr>
+<tr><td>waves</td><td>/weɪv/ vi.</td><td>波动；起伏；摇动；呈波形；挥手示意vt. 向…挥手示意；使成波浪形；卷（烫）发n. 波浪；波动；高潮；卷曲；挥手示意, waving, waves</td></tr>
+<tr><td>emitted</td><td>/i'mɪt/ vt.</td><td>发出，放射；发行；发表EMITabbr. Electromagnetic Induction Tweeter 电磁感应高频扬声器, emitting, emit</td></tr>
+<tr><td>perimeter</td><td>/pə'rɪmɪtər/ n.</td><td>周边;周围;边缘</td></tr>
+<tr><td>waves</td><td>/weɪv/ vi.</td><td>波动；起伏；摇动；呈波形；挥手示意vt. 向…挥手示意；使成波浪形；卷（烫）发n. 波浪；波动；高潮；卷曲；挥手示意, waving, waves</td></tr>
+<tr><td>horizons</td><td>/hə'raɪzn/ n.</td><td>地平线；眼界；范围；视野</td></tr>
+<tr><td>holes</td><td>/hoʊl/ n.</td><td>洞，孔；洞穴，穴；突破口vi. 凿洞，穿孔；（高尔夫球等）进洞vt. 凿洞, holing, holes</td></tr>
+<tr><td>horizon</td><td>/hə'raɪzn/ n.</td><td>地平线；眼界；范围；视野</td></tr>
+<tr><td>escape</td><td>/ɪ'skeɪp/ vt.</td><td>逃避，避免；被忘掉vi. 逃脱；避开；溜走n. 逃跑；逃亡, escaping, escapes</td></tr>
+<tr><td>leading</td><td>/ˈliːdɪŋ/ adj.</td><td>主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）</td></tr>
+<tr><td>hole</td><td>/hoʊl/ n.</td><td>洞，孔；洞穴，穴；突破口vi. 凿洞，穿孔；（高尔夫球等）进洞vt. 凿洞, holing, holes</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>glowing</td><td>/ɡloʊ/ vi.</td><td>(无焰地)燃烧；发炽热；烧红脸红，身体发热n. 光亮，光辉脸红，(身体)发热热情；强烈的感情，glowing，glows</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>reality</td><td>/ri'æləti/ n.</td><td>现实；真实；实际</td></tr>
+<tr><td>properties</td><td>— </td><td>道具</td></tr>
+<tr><td>interpreting</td><td>/ɪn'tɜːrprət/ vt.</td><td>解释；说明vt. & vi. 口译；翻译，interpreting，interprets</td></tr>
+<tr><td>wave</td><td>/weɪv/ vi.</td><td>波动；起伏；摇动；呈波形；挥手示意vt. 向…挥手示意；使成波浪形；卷（烫）发n. 波浪；波动；高潮；卷曲；挥手示意, waving, waves</td></tr>
+<tr><td>detected</td><td>/dɪ'tekt/ vt.</td><td>发现；发觉，查明，detecting，detects</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>exactly</td><td>/ɪɡ'zækt/ adj.</td><td>精确的；准确的，精密的vt. 强求；要求；急需vi. 勒索钱财, exacting, exacts</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>immense</td><td>/ɪ'mens/ adj.</td><td>极大的, 巨大的</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>intense</td><td>/ɪn'tens/ adj.</td><td>强烈的；紧张的；热情的；非常的, intensest</td></tr>
+<tr><td>quantum</td><td>/'kwɑːntəm/ n.</td><td>量子定量;总量剧增；突飞猛进；重大进展复 数: quanta</td></tr>
+<tr><td>mechanics</td><td>/mə'kænɪks/ n.</td><td>力学;机械学机件;过程;方法</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>horizons</td><td>/hə'raɪzn/ n.</td><td>地平线；眼界；范围；视野</td></tr>
+<tr><td>involved</td><td>/ɪn'vɑːlvd/ adj.</td><td>卷入的；有关的；复杂的v. 涉及；使参与；包含（involve的过去式和过去分词）</td></tr>
+<tr><td>whispers</td><td>/'wɪspər/ n.</td><td>私语；谣传；飒飒的声音vi. 耳语；密谈；飒飒地响vt. 低声说出, whispering, whispers</td></tr>
+<tr><td>linger</td><td>/'lɪŋɡər/ vi.</td><td>逗留, 徘徊缓慢消失, lingering, lingers</td></tr>
+<tr><td>horizon</td><td>/hə'raɪzn/ n.</td><td>地平线；眼界；范围；视野</td></tr>
+<tr><td>coverage</td><td>/'kʌvərɪdʒ/ n.</td><td>新闻报道, 报道量覆盖范围</td></tr>
+<tr><td>simply</td><td>/'sɪmpli/ adv.</td><td>简单地；朴素地；简直；仅仅；坦白地</td></tr>
+<tr><td>holes</td><td>/hoʊl/ n.</td><td>洞，孔；洞穴，穴；突破口vi. 凿洞，穿孔；（高尔夫球等）进洞vt. 凿洞, holing, holes</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day41.html" class="nav-btn">← Day 41</a>
+  <a href="day43.html" class="nav-btn">Day 43 →</a>
+</div>
+
+<div class="progress">📖 Day 42 of 47</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-07-04</div>
+
+</body>
+</html>

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-07-04</div>
+
+<h1 class="article-title">Business</h1>
+<div class="article-section"></div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>The future of the free-trade agreement between America, Canada and <span class="annot" data-tooltip="mexico /'meksɪkoʊ/ n. 墨西哥">Mexico</span> (USMCA) was in some doubt after the <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> administration declined to renew it. The US trade <span class="annot" data-tooltip="representative /ˌreprɪ'zentətɪv/ n. 代表代理人adj. 有代表性的, 典型的名 词: representativeness">representative</span>, Jamieson Greer, said America would now <span class="annot" data-tooltip="negotiate /nɪ'ɡoʊʃieɪt/ vt. 谈判，商议；转让；越过">negotiate</span> with Canada and Mexico about the USMCA’s “<span class="annot" data-tooltip="shortcomings /'ʃɔːrtkʌmɪŋ/ n. 短处; 缺点">shortcomings</span>”. Reports emerged that Volkswagen will lay off 100,000 employees worldwide, about a sixth of its <span class="annot" data-tooltip="workforce /'wɜːrkfɔːrs/ n. 全体员工(国家或行业等)劳动力,劳动大军,劳动人口">workforce</span>, and end production at four factories in Germany. The carmaker has been aiming for 50,000 job cuts by 2030. VW’s powerful unions were not happy; reports suggested they had not been told of the extra <span class="annot" data-tooltip="redundancies /rɪ'dʌndənsi/ n. 失业，被解雇，裁员，被裁减（尤指词、短语等的）多余，累赘，啰唆复置装置，冗余（机器、系统等某部件发生故障后的替代装置）">redundancies</span>. The company has been trying to catch up with the switch to electric cars and its sales in China are <span class="annot" data-tooltip="falling /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">falling</span>. It says American <span class="annot" data-tooltip="tariffs /'tærɪf/ n. 关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表时 态: tariffed, tariffing, tar">tariffs</span> on EU <span class="annot" data-tooltip="vehicles /'viːəkl/ n. 交通工具, 车辆传播媒介, 手段">vehicles</span> and the conflict in the Middle East have also hurt its bottom <span class="annot" data-tooltip="line /laɪn/ n. 绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long inter">line</span>. Rocket Lab, a rockets-and-space firm founded in New Zealand but now based in America, said it would buy Iridium, a satellite operator. Iridium runs a network of internet satellites, but has been eclipsed by the success of SpaceX’s <span class="annot" data-tooltip="rival /'raɪvl/ n. 竞争对手vt. 与…竞争, 与…匹敌时 态: rivaled, rivalled rivaling, rivalling">rival</span> Starlink system. Another big shake-up to America’s media <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> loomed, as Comcast said it would <span class="annot" data-tooltip="spin /spɪn/ vi. 旋转；纺纱；吐丝；晕眩vt. 使旋转；纺纱；编造；结网n. 旋转；疾驰时 态: spun spinning, spins">spin</span> off its NBCUniversal and Sky subsidiaries into a separate company, leaving it to focus on its <span class="annot" data-tooltip="cable /'keɪbl/ n. (船只、桥梁等上的)巨缆, 钢索电缆vt. & vi. 给(某人)发电报, 打电报告诉(某人)Cable凯布尔(姓氏)时">cable</span> and tech business. It hopes to <span class="annot" data-tooltip="complete /kəm'pliːt/ adj. 完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善比较级: complete">complete</span> the spin-off by mid-2027, but noted there were no <span class="annot" data-tooltip="assurances /ə'ʃʊrəns/ n. 保证, 担保, 确信把握, 信心(人寿)保险">assurances</span> the <span class="annot" data-tooltip="transaction /træn'zækʃn/ n. 处理，办理，执行(一笔)交易；(一项)事务形容词: transactional">transaction</span> would be completed. Nike announced a <span class="annot" data-tooltip="quarterly /'kwɔːrtərli/ n. 季刊adj. 一年四次的, 每季的adv. 一年四次地, 每季地">quarterly</span> profit of $1.1bn thanks mostly to $986m it received in refunded <span class="annot" data-tooltip="tariff /'tærɪf/ n. 关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表时 态: tariffed, tariffing, tar">tariff</span> costs from the government. Its footwear sales rose in America but fell in Europe, and China, where they declined by 13%, year on year. Total <span class="annot" data-tooltip="revenue /'revənuː/ n. 收入，收益；财政收入，税收">revenue</span> of $11bn was the company’s lowest since 2022. Nike’s share price is down by 30% this year. In <span class="annot" data-tooltip="indonesia /ˌɪndə'niːʒə/ n. 印度尼西亚(东南亚岛国)">Indonesia</span>, the founder of Gojek, a superapp offering 20 services across South-East Asia, including ride-hailing and food deliveries, was sentenced to at least ten years in prison for <span class="annot" data-tooltip="corruption /kə'rʌpʃn/ n. 堕落;腐化;腐败;贿赂腐烂">corruption</span>. Nadiem Makarim left Gojek to become the government’s education minister in 2019. He was found guilty of procuring overpriced Chromebook laptops running on software made by</p>
+<p>Google, an investor in Gojek, which the court decided was an <span class="annot" data-tooltip="abuse /ə'bjuːs/ n. 滥用；辱骂；虐待；弊端；恶习，陋习vt. 滥用；辱骂；虐待时 态: abused, abusing, abuses">abuse</span> of <span class="annot" data-tooltip="authority /ə'θɔːrəti/ n. 威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗">authority</span>. Mr Nadiem is to appeal against the <span class="annot" data-tooltip="verdict /'vɜːrdɪkt/ n. (陪审团的)裁决, 裁定(经过试验、检验或体验发表的)决定, 意见">verdict</span>. Loved and <span class="annot" data-tooltip="loathed /loʊθ/ adj. 勉强的；不情愿的（等于loth）">loathed</span> in equal measure, Lime started selling shares on the <span class="annot" data-tooltip="nasdaq 纳斯达克指数〈美〉全国证券交易商自动报价系统协会">Nasdaq</span> exchange in an IPO that raised $167m. The stock rose by 4% on the first day of trading. The company hires out white and pale-green electric bikes in 230 cities around the world and is backed by Uber, which allows users to rent Lime’s bikes through its app. Its global user base rose by 21% last year. In London local councils man hotlines to deal with complaints about <span class="annot" data-tooltip="rental /'rentl/ n. 租赁；租金收入，租金adj. 租赁的；收取租金的">rental</span> bikes left strewn across pavements. Lime created a responsible- parking scheme in 2022; not much has been heard of it since. This article was downloaded by zlibrary from https://www.economist.com//the-world-this-week/2026/07/02/business</p>
+<div class="article-separator"></div>
+<div class="article-header"> · The world this week</div>
+<p>Cartoon: A toast to America’s 250th birthday A <span class="annot" data-tooltip="lighter /'laɪtər/ n. 打火机；驳船；点火者vt. 驳运时 态: lightered, lightering, lighters">lighter</span> take on the news July 2nd 2026 Dig deeper into the subjects of this week’s cartoon: America is anxious, and <span class="annot" data-tooltip="awesomely /'ɔːsəm/ adj. 令人敬畏的；令人惊叹的；令人惊惧的【美，非正式】很好的；了不起的（或极好玩的等）">awesomely</span> powerful America is mighty—but becoming less <span class="annot" data-tooltip="dominant /'dɑːmɪnənt/ adj. 支配的，统治的；占优势的；显性的n. 显性">dominant</span> Hope, backlash and the battle for America America’s <span class="annot" data-tooltip="wrecking /rek/ n. 失事；残骸；破坏；[口]失去健康的人vt. 破坏；使失事；拆毁vi. 失事；营救失事船只时 态: wrecked, wr">wrecking</span>-ball revolution What remains of the city upon the hill? You can see previous ones here.</p>
+<p>This article was downloaded by zlibrary from https://www.economist.com//the-world-this-week/2026/07/02/cartoon-a-toast-to- americas-250th-birthday</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Leaders</div>
+<p>America is anxious, and <span class="annot" data-tooltip="awesomely /'ɔːsəm/ adj. 令人敬畏的；令人惊叹的；令人惊惧的【美，非正式】很好的；了不起的（或极好玩的等）">awesomely</span> powerful America should not imprison frontier AI Turkey and Israel should trade <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span>, not insults <span class="annot" data-tooltip="venezuela /ˌvenə'zweɪlə/ n. 委内瑞拉形容词: Venezuelan">Venezuela</span>’s earthquakes are partly America’s problem We woz wrong about oil</p>
+<div class="article-separator"></div>
+<div class="article-header">Leaders · Leaders | Our cover</div>
+<p>America is anxious, and <span class="annot" data-tooltip="awesomely /'ɔːsəm/ adj. 令人敬畏的；令人惊叹的；令人惊惧的【美，非正式】很好的；了不起的（或极好玩的等）">awesomely</span> powerful Restlessness is what prevents the republic from sinking into stagnation July 2nd 2026 FROM THE start, 250 years ago, America’s founders believed that their republic would <span class="annot" data-tooltip="shine /ʃaɪn/ vi. 发光；反射光；照耀表现突出，出众vt. 照射〈美〉擦亮n. 光亮；光泽磨，擦时 态: shone ，shined shi">shine</span> out as an example to all <span class="annot" data-tooltip="humanity /hjuː'mænəti/ n. 人类；人道；仁慈；人文学科">humanity</span>. But the republic was also an experiment, and they feared that it could soon <span class="annot" data-tooltip="collapse /kə'læps/ vi. 倒塌；瓦解；暴跌vt. 使倒塌，使崩溃；使萎陷n. 倒塌；失败；衰竭时 态: collapsed, collapsing">collapse</span> into <span class="annot" data-tooltip="disorder /dɪs'ɔːrdər/ n. 混乱；骚乱vt. 扰乱；使失调时 态: disordered, disordering, disorders">disorder</span> or tyranny. Such has been the dance throughout America’s <span class="annot" data-tooltip="extraordinary /ɪk'strɔːrdəneri/ adj. 非常奇怪的非同寻常的, 特别的额外安排的, 临时的副 词: extraordinarily">extraordinary</span> history. Slavery and xenophobia, <span class="annot" data-tooltip="corruption /kə'rʌpʃn/ n. 堕落;腐化;腐败;贿赂腐烂">corruption</span> and robber barons, <span class="annot" data-tooltip="civil /'sɪvl/ adj. 公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的副 词: civilly">civil</span> war and world war have all jostled the republic even as America rose to become the beacon of the free world. On July 4th Americans are celebrating their semiquincentennial. All those syllables rebut the founders’ gloom. <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">Far</span> from succumbing to tyranny, America saved the world from <span class="annot" data-tooltip="tyrants /'taɪrənt/ n. 专制统治者；暴君暴君似的人；专横的人严酷的事物，苛刻的事物(古希腊的)僭主，僭王">tyrants</span> three times over. Glorious disorder created a dynamism that has long <span class="annot" data-tooltip="sustained /sə'steɪnd/ adj. 持久的;持续的">sustained</span> America as a superpower.</p>
+<p>Dominance comes with temptations, but the United States has by and large held out <span class="annot" data-tooltip="republican /rɪ'pʌblɪkən/ adj. 共和国的, 共和政体的n. 拥护共和政体者, 共和主义者名 词: republicanism">republican</span> <span class="annot" data-tooltip="virtues /'vɜːrtʃuː/ n. 美德, 德行优点, 长处">virtues</span> as the salvation of people everywhere. Yet this birthday comes at another anxious moment in America’s story. <span class="annot" data-tooltip="virtue /'vɜːrtʃuː/ n. 美德, 德行优点, 长处">Virtue</span> is under threat and talk of decline is in the air. Even as citizens celebrate together, public life is scarred by <span class="annot" data-tooltip="division /dɪ'vɪʒn/ n. [数] 除法；部门；分配；分割；师（军队）；赛区形容词: divisional">division</span>. America is demolishing the world order that it created after the defeat of fascism in 1945. The restless republic is opening a new chapter, but does that signal retreat, as some Americans worry, or instead <span class="annot" data-tooltip="herald /'herəld/ n. 使者, 预报者vi. 预示时 态: heralded, heralding, heralds">herald</span> a <span class="annot" data-tooltip="renewal /rɪ'nuːəl/ n. 重建;更新重生">renewal</span>? To understand this moment, and to mark the 250th anniversary, The Economist retraced the footsteps of Alexis de Tocqueville, a French aristocrat whose tour of the country in the early 1830s furnished the material for “<span class="annot" data-tooltip="democracy /dɪ'mɑːkrəsi/ n. 民主, 民主制民主国家">Democracy</span> in America”, a trove of enduring insights into the republic. If you listen to our <span class="annot" data-tooltip="podcast /'pɑːdkæst/ n. 播客">podcast</span>, you will discover that many Americans today echo the founders’ fears. They worry that the separation of powers is degenerating into a White House-takes-all world. Congress was meant to be the <span class="annot" data-tooltip="leading /ˈliːdɪŋ/ adj. 主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）">leading</span> branch of government, but it is gripped by a vicious partisanship in which “we” are right and “they” are bad. To pass laws requires give and take, but the parties punish <span class="annot" data-tooltip="compromise /'kɑːmprəmaɪz/ n. 妥协, 折中方法vi. 折中解决vt. 连累, 危害, 损害时 态: compromised, compromising">compromise</span> and gerrymandering rewards extreme views. The <span class="annot" data-tooltip="supreme /su'priːm/ adj. 最高的；至上的最重要的比较级: supremer，supremest 缩 写: supr">Supreme</span> Court is adding to the might of the executive. This week, though it struck down one of the president’s schemes, over birthright citizenship, it also expanded his power by ruling that he can <span class="annot" data-tooltip="sack /sæk/ n. 麻袋, 包一袋的量开除, 解雇洗劫, 劫掠vt. 装入袋中解雇洗劫, 劫掠时 态: sacked, sacking, s">sack</span> officials in <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">federal</span> agencies. A nation of <span class="annot" data-tooltip="immigrants /'ɪmɪɡrənt/ n. 移民">immigrants</span>, the United States has at its best treated the people <span class="annot" data-tooltip="flocking /flɑːk/ n. 群；棉束（等于floc）vt. 用棉束填满vi. 聚集；成群而行Flock(瑞士)弗洛克(很短的粘胶短纤维)时 态: f">flocking</span> to its shores as a source of vitality and a validation of the American dream. China has a dream, too, but foreigners are excluded by the unalterable fact that they were not born Chinese. By <span class="annot" data-tooltip="contrast /'kɑːntræst/ n. 对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照时 态: contrasted, cont">contrast</span>, people of any <span class="annot" data-tooltip="race /reɪs/ n. 种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACE">race</span> or faith can become American. Their welcome is the promise that what they and their children can accomplish is limited only by their imagination and capacity for hard work. But the American dream has <span class="annot" data-tooltip="soured /'saʊər/ adj. 有酸味的，酸的有发酵味道的，酸腐的，馊的坏脾气的；别扭的vt. & vi. (使某物)变酸，变馊；(使某人)阴郁比较级:">soured</span>. Bits of the MAGA movement want to shut down legal immigration, not just the illegal sort. This year <span class="annot" data-tooltip="net /net/ n. 网；净利；网络；实价vi. 编网vt. 净赚；得到；用网捕adj. 纯粹的；净余的时 态: netted, nettin">net</span> <span class="annot" data-tooltip="migration /maɪ'ɡreɪʃn/ n. 迁移, 移居">migration</span> could be zero. As the share of Americans who call themselves “white” sinks</p>
+<p><span class="annot" data-tooltip="towards /tɔːrdz/ prep. 向，朝为了；有助于；用于对于，关于接近；将近；大约">towards</span> 50%, some on the right want to give a special status to “<span class="annot" data-tooltip="heritage /'herɪtɪdʒ/ n. 遗产, 继承物传统">heritage</span> Americans”, whose forebears have been in the country for generations. This is an ugly throwback to the <span class="annot" data-tooltip="racism /'reɪsɪzəm/ n. 种族主义，种族歧视；人种偏见形容词: racist">racism</span> that Americans rejected as part of the moral and material progress that best define the republic’s success. Abroad, America is also retreating from its <span class="annot" data-tooltip="values /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">values</span>. As our <span class="annot" data-tooltip="essay /'eseɪ/ n. 散文, 随笔">essay</span> this week describes, Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> is <span class="annot" data-tooltip="leading /ˈliːdɪŋ/ adj. 主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）">leading</span> a <span class="annot" data-tooltip="wrecking /rek/ n. 失事；残骸；破坏；[口]失去健康的人vt. 破坏；使失事；拆毁vi. 失事；营救失事船只时 态: wrecked, wr">Wrecking</span>-ball revolution to <span class="annot" data-tooltip="smash /smæʃ/ n. 破碎(声)猛击；猛撞大成功；极为成功的新书[新戏，电影等]vt. & vi. 打碎；捣烂vt. 重击；打败时 态: sm">smash</span> the institutions and alliances that the postwar generation set up to keep the world safe from despotism. He and many Americans on the right and left feel <span class="annot" data-tooltip="contempt /kən'tempt/ n. 轻视，蔑视；耻辱">contempt</span> for a global system that they blame—misguidedly, in the view of The Economist—for aiding China, punishing America’s workers and sending its young soldiers to <span class="annot" data-tooltip="spill /spɪl/ vt. 使溢出，使流出；使摔下vi. 溢出，流出；摔下；涌流n. 溢出，溅出；溢出量；摔下；小塞子时 态: spilled, s">spill</span> their blood in <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span>-off countries. Accordingly, America is throwing its weight around like any other country chasing <span class="annot" data-tooltip="wealth /welθ/ n. 财富；大量；富有">wealth</span> and power. Freedom and <span class="annot" data-tooltip="democracy /dɪ'mɑːkrəsi/ n. 民主, 民主制民主国家">democracy</span> for foreigners are off the <span class="annot" data-tooltip="agenda /ə'dʒendə/ n. （政治）议题；议事日程；目的">agenda</span>. Trade used to be a system of <span class="annot" data-tooltip="mutual /'mjuːtʃuəl/ adj. 相互的, 彼此的共同的, 共有的名 词: mutuality">mutual</span> benefit; it has become a tool for <span class="annot" data-tooltip="extracting /'ekstrækt/ v. 提取；提炼索取，设法得到（对方不愿提供的信息、钱财等）选取；摘录；选录（用力）取出，拔出【正式】获得，得到（某种感觉或品">extracting</span> <span class="annot" data-tooltip="concessions /kən'seʃn/ n. 承认, 允许妥协, 让步特许权形容词: concessional">concessions</span>. Shared values once united America and its <span class="annot" data-tooltip="allies n. （第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者">allies</span>; now allies are seen as dependants to be <span class="annot" data-tooltip="exploited /ɪk'splɔɪt/ vt. 开发，开拓；剥削；开采n. 勋绩；功绩时 态: exploited, exploiting, exploits">exploited</span>. Many people conclude that America is in decline. That <span class="annot" data-tooltip="strikes /straɪk/ vi. 罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打时 态:">strikes</span> this newspaper as a grave misreading. America’s power is <span class="annot" data-tooltip="immense /ɪ'mens/ adj. 极大的, 巨大的副 词: immensely">immense</span>—and it could be about to grow beyond all <span class="annot" data-tooltip="recognition /ˌrekəɡ'nɪʃn/ n. 认识；认出；承认〈正〉酬谢，酬劳形容词: recognitory">recognition</span>. For evidence of the country’s unabated dynamism, look <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span> its dysfunctional politics. America’s artificial-intelligence companies have rapidly mobilised hundreds of billions of dollars to finance the pursuit of a technological lead. If, as they predict, AI changes everything, then America and its AI stack may become <span class="annot" data-tooltip="utterly /'ʌtər/ vt. 以口发出声音说，讲adj. 彻底的；完全的；绝对的时 态: uttered，uttering，utters">utterly</span> <span class="annot" data-tooltip="dominant /'dɑːmɪnənt/ adj. 支配的，统治的；占优势的；显性的n. 显性">dominant</span>—for a time, at least. Some of that is <span class="annot" data-tooltip="bound /baʊnd/ vi. 跳；弹回vt. 给…划界，限制n. 跳，跳跃，跃进界限，范围adj. 被捆绑的，被束缚的一定的，必定的去，准备去时 态:">bound</span> to <span class="annot" data-tooltip="rub /rʌb/ vt. 擦；摩擦；惹怒vi. 摩擦；擦；擦破n. 摩擦；障碍；磨损处时 态: rubbed, rubbing, rubs">rub</span> off on America’s businesses and its formidable armed forces. Its allies, however much they have been antagonised by Mr Trump, would face a <span class="annot" data-tooltip="bleak /bliːk/ adj. 荒凉的，无遮蔽的；阴冷的；黯淡的，无希望的；冷酷的；单调的比较级: bleaker, bleakest">bleak</span> choice between submitting to America or siding with <span class="annot" data-tooltip="authoritarian /əˌθɔːrə'teriən/ adj. 权力主义的,专制的n. 权力主义者,专制者,独裁者名 词: authoritarian">authoritarian</span> China. As America amasses <span class="annot" data-tooltip="awesome /'ɔːsəm/ adj. 令人敬畏的；令人惊叹的；令人惊惧的【美，非正式】很好的；了不起的（或极好玩的等）">awesome</span> power, the great experiment could go <span class="annot" data-tooltip="disastrously /dɪ'zæstrəs/ adj. 灾难性的, 造成灾害的极坏的, 很糟的副 词: disastrously">disastrously</span> wrong. Mr Trump has tainted public life with an ugly cynicism that always sees the worst in everyone. Boosted by AI-enhanced agencies, executive power could become <span class="annot" data-tooltip="overwhelming /ˌoʊvər'welmɪŋ/ adj. 势不可挡的，压倒一切的；巨大的副 词: overwhelmingly">overwhelming</span>. The concentration of wealth and political power could <span class="annot" data-tooltip="foster /'fɑːstər/ v. 促进；助长；培养；鼓励收养，代养，抚育（他人子女，通常指有限的一段时间）adj. （与某些代养有关的名词连用）（在有限的">foster</span> a predatory <span class="annot" data-tooltip="elite /eɪ'liːt/ n. （社会）上层集团；掌权人物；出类拔萃的人，精英adj.（社会）上层集团的；掌权人物的；精英的">elite</span>. Partisanship, fanned by social media, gerrymandering and party primaries dominated by zealots,</p>
+<p>could become further entrenched. Politicians might prove unable to deal with the economic and social upheaval that lies ahead. As <span class="annot" data-tooltip="domestic /də'mestɪk/ adj. 国内的；家庭的；驯养的；一心只管家务的">domestic</span> politics grows dirtier and nastier, America could also become more predatory abroad. Imagine that its abandonment of the project to promote liberty is permanent. Other countries will copy it. <span class="annot" data-tooltip="violent /'vaɪələnt/ adj. 暴力引起的, 粗暴的剧烈的, 强烈的副 词: violently">Violent</span>, ambitious leaders will feel emboldened to conquer or coerce their neighbours. The world will <span class="annot" data-tooltip="descend /dɪ'send/ vi. 下降；下来；遗传；屈尊；下去vt. 下去；沿…向下时 态: descended, descending, descend">descend</span> into <span class="annot" data-tooltip="chaos /'keɪɑːs/ n. 混沌，混乱形容词: chaotic">chaos</span>. However, as the founders would <span class="annot" data-tooltip="attest /ə'test/ vt. 证明；证实；为…作证vi. 证明；作证时 态: attested, attesting, attests">attest</span>, that dark future is not certain—or even likely. The corollary of America’s dynamism is its capacity for reinvention. <span class="annot" data-tooltip="episodes /'epɪsoʊd/ n. 插曲；插话；一段情节；有趣的事件">Episodes</span> that set the republic back—<span class="annot" data-tooltip="pearl /pɜːrl/ n. 珍珠；杰出者；珍珠色；珍品adj. 镶珍珠的；珍珠状的vi. 采珍珠；成珍珠状vt. 使成珠状；用珍珠装饰；使呈珍珠色P">Pearl</span> Harbour, Sputnik, Watergate—spurred it to recover and charge ahead. Roused, Americans set about making sure that next time they would do better and be better. One way or another, change is coming to America, because too much today is unsustainable. The social <span class="annot" data-tooltip="contract /'kɑːntrækt/ vi. 感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约时 态: contracted, contracting, c">contract</span>, which is financed by borrowing, is <span class="annot" data-tooltip="fiscally /'fɪskl/ adj. 国库的；会计的，财政的副 词: fiscally">fiscally</span> unsustainable. Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s generation is biologically unsustainable: his successor will belong to a new, younger <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span> of Americans. The hope must be that voters will decide that the two parties’ sterile <span class="annot" data-tooltip="mutual /'mjuːtʃuəl/ adj. 相互的, 彼此的共同的, 共有的名 词: mutuality">mutual</span> <span class="annot" data-tooltip="contempt /kən'tempt/ n. 轻视，蔑视；耻辱">contempt</span> has become politically unsustainable, too. As celebratory <span class="annot" data-tooltip="fireworks /'faɪərwɜːrk/ n. 烟火；激烈情绪">fireworks</span> light up cities and towns across America, remember that restlessness is <span class="annot" data-tooltip="precisely /prɪ'saɪsli/ adv. 精确地；恰好；细心地对，的确如此">precisely</span> what prevents the republic from sinking into stagnation. All those arguments and fights are a <span class="annot" data-tooltip="precondition /ˌpriːkən'dɪʃn/ n. 前提, 先决条件时 态: preconditioned, preconditioning, preconditions">precondition</span> for the creative destruction that <span class="annot" data-tooltip="precedes /prɪ'siːd/ v. 在…之前发生（或出现）；先于走在…前面（句、段、章节）在…之前时 态: preceded, preceding, pre">precedes</span> the nation’s <span class="annot" data-tooltip="renewal /rɪ'nuːəl/ n. 重建;更新重生">renewal</span>. Naturally, the founders would be worried today, just as they were 250 years ago. Yet their revolutionary insight was to build their great experiment on the wisdom of the people. Time and again, that faith has been richly rewarded. ■ For subscribers only: to see how we design each week’s <span class="annot" data-tooltip="cover /'kʌvər/ vt. 包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替时 态: covered, covering, c">cover</span>, sign up to our weekly Cover Story newsletter. This article was downloaded by zlibrary from https://www.economist.com//leaders/2026/07/02/america-is-anxious-and-<span class="annot" data-tooltip="awesomely /'ɔːsəm/ adj. 令人敬畏的；令人惊叹的；令人惊惧的【美，非正式】很好的；了不起的（或极好玩的等）">awesomely</span>- powerful</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>mexico</td><td>/'meksɪkoʊ/ n.</td><td>墨西哥</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>representative</td><td>/ˌreprɪ'zentətɪv/ n.</td><td>代表代理人adj. 有代表性的, 典型的</td></tr>
+<tr><td>negotiate</td><td>/nɪ'ɡoʊʃieɪt/ vt.</td><td>谈判，商议；转让；越过</td></tr>
+<tr><td>shortcomings</td><td>/'ʃɔːrtkʌmɪŋ/ n.</td><td>短处; 缺点</td></tr>
+<tr><td>workforce</td><td>/'wɜːrkfɔːrs/ n.</td><td>全体员工(国家或行业等)劳动力,劳动大军,劳动人口</td></tr>
+<tr><td>redundancies</td><td>/rɪ'dʌndənsi/ n.</td><td>失业，被解雇，裁员，被裁减（尤指词、短语等的）多余，累赘，啰唆复置装置，冗余（机器、系统等某部件发生故障后的替代装置）</td></tr>
+<tr><td>falling</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>tariffs</td><td>/'tærɪf/ n.</td><td>关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表, tariffing, tariffs</td></tr>
+<tr><td>vehicles</td><td>/'viːəkl/ n.</td><td>交通工具, 车辆传播媒介, 手段</td></tr>
+<tr><td>line</td><td>/laɪn/ n.</td><td>绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long interspersed element)长散在元</td></tr>
+<tr><td>rival</td><td>/'raɪvl/ n.</td><td>竞争对手vt. 与…竞争, 与…匹敌, rivalled rivaling, rivalling rivals, rivals</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>spin</td><td>/spɪn/ vi.</td><td>旋转；纺纱；吐丝；晕眩vt. 使旋转；纺纱；编造；结网n. 旋转；疾驰, spins</td></tr>
+<tr><td>cable</td><td>/'keɪbl/ n.</td><td>(船只、桥梁等上的)巨缆, 钢索电缆vt. & vi. 给(某人)发电报, 打电报告诉(某人)Cable凯布尔(姓氏), cabling, cables</td></tr>
+<tr><td>complete</td><td>/kəm'pliːt/ adj.</td><td>完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善, completest 缩 写: comp, cpl</td></tr>
+<tr><td>assurances</td><td>/ə'ʃʊrəns/ n.</td><td>保证, 担保, 确信把握, 信心(人寿)保险</td></tr>
+<tr><td>transaction</td><td>/træn'zækʃn/ n.</td><td>处理，办理，执行(一笔)交易；(一项)事务</td></tr>
+<tr><td>quarterly</td><td>/'kwɔːrtərli/ n.</td><td>季刊adj. 一年四次的, 每季的adv. 一年四次地, 每季地</td></tr>
+<tr><td>tariff</td><td>/'tærɪf/ n.</td><td>关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表, tariffing, tariffs</td></tr>
+<tr><td>revenue</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>indonesia</td><td>/ˌɪndə'niːʒə/ n.</td><td>印度尼西亚(东南亚岛国)</td></tr>
+<tr><td>corruption</td><td>/kə'rʌpʃn/ n.</td><td>堕落;腐化;腐败;贿赂腐烂</td></tr>
+<tr><td>abuse</td><td>/ə'bjuːs/ n.</td><td>滥用；辱骂；虐待；弊端；恶习，陋习vt. 滥用；辱骂；虐待, abusing, abuses</td></tr>
+<tr><td>authority</td><td>/ə'θɔːrəti/ n.</td><td>威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗</td></tr>
+<tr><td>verdict</td><td>/'vɜːrdɪkt/ n.</td><td>(陪审团的)裁决, 裁定(经过试验、检验或体验发表的)决定, 意见</td></tr>
+<tr><td>loathed</td><td>/loʊθ/ adj.</td><td>勉强的；不情愿的（等于loth）</td></tr>
+<tr><td>nasdaq</td><td>— </td><td>纳斯达克指数〈美〉全国证券交易商自动报价系统协会</td></tr>
+<tr><td>rental</td><td>/'rentl/ n.</td><td>租赁；租金收入，租金adj. 租赁的；收取租金的</td></tr>
+<tr><td>lighter</td><td>/'laɪtər/ n.</td><td>打火机；驳船；点火者vt. 驳运, lightering, lighters</td></tr>
+<tr><td>awesomely</td><td>/'ɔːsəm/ adj.</td><td>令人敬畏的；令人惊叹的；令人惊惧的【美，非正式】很好的；了不起的（或极好玩的等）</td></tr>
+<tr><td>dominant</td><td>/'dɑːmɪnənt/ adj.</td><td>支配的，统治的；占优势的；显性的n. 显性</td></tr>
+<tr><td>wrecking</td><td>/rek/ n.</td><td>失事；残骸；破坏；[口]失去健康的人vt. 破坏；使失事；拆毁vi. 失事；营救失事船只, wrecking, wrecks</td></tr>
+<tr><td>awesomely</td><td>/'ɔːsəm/ adj.</td><td>令人敬畏的；令人惊叹的；令人惊惧的【美，非正式】很好的；了不起的（或极好玩的等）</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>venezuela</td><td>/ˌvenə'zweɪlə/ n.</td><td>委内瑞拉</td></tr>
+<tr><td>awesomely</td><td>/'ɔːsəm/ adj.</td><td>令人敬畏的；令人惊叹的；令人惊惧的【美，非正式】很好的；了不起的（或极好玩的等）</td></tr>
+<tr><td>shine</td><td>/ʃaɪn/ vi.</td><td>发光；反射光；照耀表现突出，出众vt. 照射〈美〉擦亮n. 光亮；光泽磨，擦，shined shining，shines</td></tr>
+<tr><td>humanity</td><td>/hjuː'mænəti/ n.</td><td>人类；人道；仁慈；人文学科</td></tr>
+<tr><td>collapse</td><td>/kə'læps/ vi.</td><td>倒塌；瓦解；暴跌vt. 使倒塌，使崩溃；使萎陷n. 倒塌；失败；衰竭, collapsing, collapses</td></tr>
+<tr><td>disorder</td><td>/dɪs'ɔːrdər/ n.</td><td>混乱；骚乱vt. 扰乱；使失调, disordering, disorders</td></tr>
+<tr><td>extraordinary</td><td>/ɪk'strɔːrdəneri/ adj.</td><td>非常奇怪的非同寻常的, 特别的额外安排的, 临时的</td></tr>
+<tr><td>corruption</td><td>/kə'rʌpʃn/ n.</td><td>堕落;腐化;腐败;贿赂腐烂</td></tr>
+<tr><td>civil</td><td>/'sɪvl/ adj.</td><td>公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>tyrants</td><td>/'taɪrənt/ n.</td><td>专制统治者；暴君暴君似的人；专横的人严酷的事物，苛刻的事物(古希腊的)僭主，僭王</td></tr>
+<tr><td>sustained</td><td>/sə'steɪnd/ adj.</td><td>持久的;持续的</td></tr>
+<tr><td>republican</td><td>/rɪ'pʌblɪkən/ adj.</td><td>共和国的, 共和政体的n. 拥护共和政体者, 共和主义者</td></tr>
+<tr><td>virtues</td><td>/'vɜːrtʃuː/ n.</td><td>美德, 德行优点, 长处</td></tr>
+<tr><td>virtue</td><td>/'vɜːrtʃuː/ n.</td><td>美德, 德行优点, 长处</td></tr>
+<tr><td>division</td><td>/dɪ'vɪʒn/ n.</td><td>[数] 除法；部门；分配；分割；师（军队）；赛区</td></tr>
+<tr><td>herald</td><td>/'herəld/ n.</td><td>使者, 预报者vi. 预示, heralding, heralds</td></tr>
+<tr><td>renewal</td><td>/rɪ'nuːəl/ n.</td><td>重建;更新重生</td></tr>
+<tr><td>democracy</td><td>/dɪ'mɑːkrəsi/ n.</td><td>民主, 民主制民主国家</td></tr>
+<tr><td>podcast</td><td>/'pɑːdkæst/ n.</td><td>播客</td></tr>
+<tr><td>leading</td><td>/ˈliːdɪŋ/ adj.</td><td>主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）</td></tr>
+<tr><td>compromise</td><td>/'kɑːmprəmaɪz/ n.</td><td>妥协, 折中方法vi. 折中解决vt. 连累, 危害, 损害, compromising, compromises</td></tr>
+<tr><td>supreme</td><td>/su'priːm/ adj.</td><td>最高的；至上的最重要的，supremest 缩 写: supr</td></tr>
+<tr><td>sack</td><td>/sæk/ n.</td><td>麻袋, 包一袋的量开除, 解雇洗劫, 劫掠vt. 装入袋中解雇洗劫, 劫掠, sacking, sacks</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>immigrants</td><td>/'ɪmɪɡrənt/ n.</td><td>移民</td></tr>
+<tr><td>flocking</td><td>/flɑːk/ n.</td><td>群；棉束（等于floc）vt. 用棉束填满vi. 聚集；成群而行Flock(瑞士)弗洛克(很短的粘胶短纤维), flocking, flocks</td></tr>
+<tr><td>contrast</td><td>/'kɑːntræst/ n.</td><td>对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照, contrasting, contrasts</td></tr>
+<tr><td>race</td><td>/reɪs/ n.</td><td>种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACEabbr. Radiation Adap</td></tr>
+<tr><td>soured</td><td>/'saʊər/ adj.</td><td>有酸味的，酸的有发酵味道的，酸腐的，馊的坏脾气的；别扭的vt. & vi. (使某物)变酸，变馊；(使某人)阴郁，sourest</td></tr>
+<tr><td>net</td><td>/net/ n.</td><td>网；净利；网络；实价vi. 编网vt. 净赚；得到；用网捕adj. 纯粹的；净余的, netting, nets</td></tr>
+<tr><td>migration</td><td>/maɪ'ɡreɪʃn/ n.</td><td>迁移, 移居</td></tr>
+<tr><td>towards</td><td>/tɔːrdz/ prep.</td><td>向，朝为了；有助于；用于对于，关于接近；将近；大约</td></tr>
+<tr><td>heritage</td><td>/'herɪtɪdʒ/ n.</td><td>遗产, 继承物传统</td></tr>
+<tr><td>racism</td><td>/'reɪsɪzəm/ n.</td><td>种族主义，种族歧视；人种偏见</td></tr>
+<tr><td>values</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>essay</td><td>/'eseɪ/ n.</td><td>散文, 随笔</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>leading</td><td>/ˈliːdɪŋ/ adj.</td><td>主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）</td></tr>
+<tr><td>wrecking</td><td>/rek/ n.</td><td>失事；残骸；破坏；[口]失去健康的人vt. 破坏；使失事；拆毁vi. 失事；营救失事船只, wrecking, wrecks</td></tr>
+<tr><td>smash</td><td>/smæʃ/ n.</td><td>破碎(声)猛击；猛撞大成功；极为成功的新书[新戏，电影等]vt. & vi. 打碎；捣烂vt. 重击；打败，smashing，smashes</td></tr>
+<tr><td>contempt</td><td>/kən'tempt/ n.</td><td>轻视，蔑视；耻辱</td></tr>
+<tr><td>spill</td><td>/spɪl/ vt.</td><td>使溢出，使流出；使摔下vi. 溢出，流出；摔下；涌流n. 溢出，溅出；溢出量；摔下；小塞子, spilt spilling, spills</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>wealth</td><td>/welθ/ n.</td><td>财富；大量；富有</td></tr>
+<tr><td>democracy</td><td>/dɪ'mɑːkrəsi/ n.</td><td>民主, 民主制民主国家</td></tr>
+<tr><td>agenda</td><td>/ə'dʒendə/ n.</td><td>（政治）议题；议事日程；目的</td></tr>
+<tr><td>mutual</td><td>/'mjuːtʃuəl/ adj.</td><td>相互的, 彼此的共同的, 共有的</td></tr>
+<tr><td>extracting</td><td>/'ekstrækt/ v.</td><td>提取；提炼索取，设法得到（对方不愿提供的信息、钱财等）选取；摘录；选录（用力）取出，拔出【正式】获得，得到（某种感觉或品质）n. 摘录；选录；选曲；节录（尤指食</td></tr>
+<tr><td>concessions</td><td>/kən'seʃn/ n.</td><td>承认, 允许妥协, 让步特许权</td></tr>
+<tr><td>allies</td><td>— n.</td><td>（第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者</td></tr>
+<tr><td>exploited</td><td>/ɪk'splɔɪt/ vt.</td><td>开发，开拓；剥削；开采n. 勋绩；功绩, exploiting, exploits</td></tr>
+<tr><td>strikes</td><td>/straɪk/ vi.</td><td>罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打, stricken striking, str</td></tr>
+<tr><td>immense</td><td>/ɪ'mens/ adj.</td><td>极大的, 巨大的</td></tr>
+<tr><td>recognition</td><td>/ˌrekəɡ'nɪʃn/ n.</td><td>认识；认出；承认〈正〉酬谢，酬劳</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>utterly</td><td>/'ʌtər/ vt.</td><td>以口发出声音说，讲adj. 彻底的；完全的；绝对的，uttering，utters</td></tr>
+<tr><td>dominant</td><td>/'dɑːmɪnənt/ adj.</td><td>支配的，统治的；占优势的；显性的n. 显性</td></tr>
+<tr><td>bound</td><td>/baʊnd/ vi.</td><td>跳；弹回vt. 给…划界，限制n. 跳，跳跃，跃进界限，范围adj. 被捆绑的，被束缚的一定的，必定的去，准备去，bounding，bounds</td></tr>
+<tr><td>rub</td><td>/rʌb/ vt.</td><td>擦；摩擦；惹怒vi. 摩擦；擦；擦破n. 摩擦；障碍；磨损处, rubbing, rubs</td></tr>
+<tr><td>bleak</td><td>/bliːk/ adj.</td><td>荒凉的，无遮蔽的；阴冷的；黯淡的，无希望的；冷酷的；单调的, bleakest</td></tr>
+<tr><td>authoritarian</td><td>/əˌθɔːrə'teriən/ adj.</td><td>权力主义的,专制的n. 权力主义者,专制者,独裁者</td></tr>
+<tr><td>awesome</td><td>/'ɔːsəm/ adj.</td><td>令人敬畏的；令人惊叹的；令人惊惧的【美，非正式】很好的；了不起的（或极好玩的等）</td></tr>
+<tr><td>disastrously</td><td>/dɪ'zæstrəs/ adj.</td><td>灾难性的, 造成灾害的极坏的, 很糟的</td></tr>
+<tr><td>overwhelming</td><td>/ˌoʊvər'welmɪŋ/ adj.</td><td>势不可挡的，压倒一切的；巨大的</td></tr>
+<tr><td>foster</td><td>/'fɑːstər/ v.</td><td>促进；助长；培养；鼓励收养，代养，抚育（他人子女，通常指有限的一段时间）adj. （与某些代养有关的名词连用）（在有限的一段时间内）（所）收养的，（所）代养的F</td></tr>
+<tr><td>elite</td><td>/eɪ'liːt/ n.</td><td>（社会）上层集团；掌权人物；出类拔萃的人，精英adj.（社会）上层集团的；掌权人物的；精英的</td></tr>
+<tr><td>domestic</td><td>/də'mestɪk/ adj.</td><td>国内的；家庭的；驯养的；一心只管家务的</td></tr>
+<tr><td>violent</td><td>/'vaɪələnt/ adj.</td><td>暴力引起的, 粗暴的剧烈的, 强烈的</td></tr>
+<tr><td>descend</td><td>/dɪ'send/ vi.</td><td>下降；下来；遗传；屈尊；下去vt. 下去；沿…向下, descending, descends</td></tr>
+<tr><td>chaos</td><td>/'keɪɑːs/ n.</td><td>混沌，混乱</td></tr>
+<tr><td>attest</td><td>/ə'test/ vt.</td><td>证明；证实；为…作证vi. 证明；作证, attesting, attests</td></tr>
+<tr><td>episodes</td><td>/'epɪsoʊd/ n.</td><td>插曲；插话；一段情节；有趣的事件</td></tr>
+<tr><td>pearl</td><td>/pɜːrl/ n.</td><td>珍珠；杰出者；珍珠色；珍品adj. 镶珍珠的；珍珠状的vi. 采珍珠；成珍珠状vt. 使成珠状；用珍珠装饰；使呈珍珠色Pearln. 珀尔（女子名）, pear</td></tr>
+<tr><td>contract</td><td>/'kɑːntrækt/ vi.</td><td>感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约, contracting, contracts</td></tr>
+<tr><td>fiscally</td><td>/'fɪskl/ adj.</td><td>国库的；会计的，财政的</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>mutual</td><td>/'mjuːtʃuəl/ adj.</td><td>相互的, 彼此的共同的, 共有的</td></tr>
+<tr><td>contempt</td><td>/kən'tempt/ n.</td><td>轻视，蔑视；耻辱</td></tr>
+<tr><td>fireworks</td><td>/'faɪərwɜːrk/ n.</td><td>烟火；激烈情绪</td></tr>
+<tr><td>precisely</td><td>/prɪ'saɪsli/ adv.</td><td>精确地；恰好；细心地对，的确如此</td></tr>
+<tr><td>precondition</td><td>/ˌpriːkən'dɪʃn/ n.</td><td>前提, 先决条件, preconditioning, preconditions</td></tr>
+<tr><td>precedes</td><td>/prɪ'siːd/ v.</td><td>在…之前发生（或出现）；先于走在…前面（句、段、章节）在…之前, preceding, precedes</td></tr>
+<tr><td>renewal</td><td>/rɪ'nuːəl/ n.</td><td>重建;更新重生</td></tr>
+<tr><td>cover</td><td>/'kʌvər/ vt.</td><td>包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替, covering, covers</td></tr>
+<tr><td>awesomely</td><td>/'ɔːsəm/ adj.</td><td>令人敬畏的；令人惊叹的；令人惊惧的【美，非正式】很好的；了不起的（或极好玩的等）</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day1.html" class="nav-btn">← Day 1</a>
+  <a href="day3.html" class="nav-btn">Day 3 →</a>
+</div>
+
+<div class="progress">📖 Day 2 of 47</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-07-04</div>
+
+</body>
+</html>
