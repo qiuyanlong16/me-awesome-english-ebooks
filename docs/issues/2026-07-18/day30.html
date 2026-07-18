@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business | Rules and measures</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-07-18</div>
+
+<h1 class="article-title">Business | Rules and measures</h1>
+<div class="article-section">Business</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>Sir Demis suggests that the new agency should focus on the labs making the most <span class="annot" data-tooltip="capable /'keɪpəbl/ adj. 能干的，能胜任的；有才华的副 词: capably">capable</span> AI models (which includes his <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span>). Earlier <span class="annot" data-tooltip="proposals /prə'poʊzl/ n. 提议，建议；求婚">proposals</span> from America and the European Union looked to the amount of computing power used to train a model as a rough guide for when <span class="annot" data-tooltip="oversight /'oʊvərsaɪt/ n. 疏忽, 失察">oversight</span> was required. Sir Demis instead suggests designating AI models as “frontier” if they meet certain <span class="annot" data-tooltip="thresholds /'θreʃhoʊld/ n. 门槛; 〈喻〉开始">thresholds</span> across a selected set of <span class="annot" data-tooltip="benchmarks /'bentʃmɑːrk/ 基准时 态: benchmarked, benchmarking, benchmarks">benchmarks</span>. The <span class="annot" data-tooltip="creators /kri'eɪtər/ n. 创造者,创作者">creators</span> of those models would then be designated as “frontier labs”, placing extra responsibilities on them. Sir Demis is proud of the “elegant” way that approach sidesteps the question of whether <span class="annot" data-tooltip="academic /ˌækə'demɪk/ adj. 学院的；学术的；理论的n. 大学生，大学教师；学者副 词: academically">academic</span> or open-source models should be included or not. What matters is their <span class="annot" data-tooltip="capabilities /ˌkeɪpə'bɪləti/ n. 能做某事的素质;能力尚未发挥的天资或素质">capabilities</span>. Selecting the right benchmarks would be an important function of the new agency. Existing tests of AI models focus largely on commercial capabilities, including software coding and general knowledge. Some organisations have gone further: Britain’s AI <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">Security</span> Institute, for example, has developed a well-regarded test for <span class="annot" data-tooltip="hacking /hæk/ vt. & vi. 劈, 砍vt. 狠踢, 乱踢vi. 咳嗽(发出刺耳声音)(以普通速度)骑马驾驶计程车n. 砍, 劈用靴头踢骑">hacking</span> capabilities which simulates breaking into a power station. But other <span class="annot" data-tooltip="characteristics /ˌkærəktə'rɪstɪk/ adj. 典型的；特有的；表示特性的">characteristics</span>, such as how willing a model is to ignore a user’s <span class="annot" data-tooltip="instructions /ɪnˈstrʌkʃənz/ n. 操作指南；用法说明（instruction 的复数）">instructions</span> or pretend to be less capable than it is, are rarely examined in a systematic way that could be used to set a safety <span class="annot" data-tooltip="threshold /'θreʃhoʊld/ n. 门槛; 〈喻〉开始">threshold</span>. Securing support from within the increasingly fractious AI community will not be easy, though the areas in common with Mr Altman’s <span class="annot" data-tooltip="proposal /prə'poʊzl/ n. 提议，建议；求婚">proposal</span> suggest it is not impossible. The American government also appears to have been listening, and is said to be close to <span class="annot" data-tooltip="unveiling /ˌʌn'veɪl/ vt. 揭去…的面罩，除去…的遮盖物使公之于众；揭露vi. 除去面纱(或覆盖物)；揭幕揭露出来时 态: unveiled，unv">unveiling</span> its preferred approach. Then will come the hard part. “No proposal would be immune to being executed poorly,” Sir Demis admits. “There are obviously <span class="annot" data-tooltip="versions /'vɜːrʒn/ n. 变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本">versions</span> of this that could be not very useful.” Yet the Nobel laureate argues that <span class="annot" data-tooltip="urgent /'ɜːrdʒənt/ adj. 紧急的；急迫的副 词: urgently">urgent</span> action is required. “Time is short, the hour is late,” he says. “We’ve seen the <span class="annot" data-tooltip="cyber adj. 计算机(网络)的；信息技术的">cyber</span> threat; there’s much more <span class="annot" data-tooltip="serious /'sɪriəs/ adj. 严肃的，严重的；认真的；庄重的；危急的副 词: seriously">serious</span> threats coming down the <span class="annot" data-tooltip="line /laɪn/ n. 绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long inter">line</span>. Something has to be done: this is the time.” ■ To track the <span class="annot" data-tooltip="trends /trend/ n. 趋势, 倾向流行时 态: trended, trending, trends">trends</span> shaping <span class="annot" data-tooltip="commerce /'kɑːmɜːrs/ n. 商业, 贸易">commerce</span>, <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> and technology, sign up to “The Bottom Line”, our weekly subscriber-only newsletter on global business.</p>
+<p>This article was downloaded by zlibrary from https://www.economist.com//business/2026/07/14/demis-hassabis-has-a-plan-to- <span class="annot" data-tooltip="harness /'hɑːrnɪs/ n. 马具, 挽具vt. 给(马等)装上挽具治理, 利用时 态: harnessed, harnessing, harness">harness</span>-ai-safely</p>
+<div class="article-separator"></div>
+<div class="article-header">Business · Business | Wings up</div>
+<p>How high can Red Bull fly? The world’s most formidable marketing machine faces growing threats July 16th 2026 CAn Red Bull give die Mannschaft wiiings? After Germany was bundled out of the World Cup on June 29th the national football federation turned to Jürgen Klopp to take charge of the team. The celebrated coach—who has agreed in principle to take the job—is currently the Austrian company’s “global head of <span class="annot" data-tooltip="soccer /'sɑːkər/ n. 英式足球，足球">soccer</span>”, <span class="annot" data-tooltip="overseeing /ˌoʊvər'siː/ vt. 监督；俯瞰；审查；偷看到，无意中看到时 态: oversaw overseen overseeing, oversees">overseeing</span> eight clubs around the world. Over the <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span> the world’s <span class="annot" data-tooltip="leading /ˈliːdɪŋ/ adj. 主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）">leading</span> maker of <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span> drinks has come to play an <span class="annot" data-tooltip="outsize /'aʊtsaɪz/ adj. 特大的n. 特大号">outsize</span> role in all manner of sports, from football to <span class="annot" data-tooltip="formula /'fɔːrmjələ/ n. 公式，准则；配方；婴儿食品形容词: formulaic">Formula</span> One. It is a marketing <span class="annot" data-tooltip="strategy /'strætədʒi/ n. 战略学, 兵法战略, 策略策略, 计谋">strategy</span> that Dietrich Mateschitz, Red Bull’s founder, pursued with gusto. Mateschitz adapted his drink in the 1980s from Krating Daeng, a Thai energy tonic. (The Yoovidhya family, its <span class="annot" data-tooltip="creator /kri'eɪtər/ n. 创造者,创作者">creator</span>’s heirs, <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> 51% of Red Bull.) The Austrian <span class="annot" data-tooltip="proved /proʊ/ n. 从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞">proved</span> to have a rare talent for marketing. “Red</p>
+<p>Bull verleiht Flüüügel” (”Red Bull gives you wiiings”) was his idea. So was <span class="annot" data-tooltip="sponsoring /'spɑːnsər/ vt. 赞助, 发起n. 赞助者；主办者；保证人">sponsoring</span> Felix Baumgartner, an Austrian skydiver who in 2012 jumped to Earth from a helium balloon in the stratosphere. When Mateschitz died in 2022, some <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span> Red Bull would <span class="annot" data-tooltip="fall /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">fall</span> as quickly as it had risen. He had no clear successor: a three-man board, all of whom keep a low profile, took over management. (Mateschitz’s son Mark <span class="annot" data-tooltip="inherited /ɪn'herɪt/ vt. 继承；遗传而得vi. 成为继承人时 态: inherited, inheriting, inherits">inherited</span> his 49% stake, but has no operative role.) Yet Red Bull has continued to fly. Last year it sold 14bn cans, up by 10% from 2024. It has 28% of the global market, well ahead of Monster, its <span class="annot" data-tooltip="main /meɪn/ adj. 主要的; 最重要的n. 总管道; 干线">main</span> <span class="annot" data-tooltip="rival /'raɪvl/ n. 竞争对手vt. 与…竞争, 与…匹敌时 态: rivaled, rivalled rivaling, rivalling">rival</span>, with 17%. It has stayed aloft mainly by sticking to Mateschitz’s <span class="annot" data-tooltip="strategy /'strætədʒi/ n. 战略学, 兵法战略, 策略策略, 计谋">strategy</span>. Even so, threats from regulators and new competitors loom. The triumvirate that now runs Red Bull has kept to the pricier end of the market. A standard 250ml can costs around $2.40 at Walmart, America’s biggest supermarket. The company still <span class="annot" data-tooltip="outsources /'aʊtsɔːrs/ vt. ①外购(指从外国供应商等处获得货物或服务)②外包(工程)时 态: outsourced, outsourcing, ou">outsources</span> <span class="annot" data-tooltip="manufacturing /ˌmænju'fæktʃərɪŋ/ n. 制造业，工业adj. 制造业的；制造的">manufacturing</span> to long- term business partners: Rauch Fruchtsäfte, another Austrian firm, mixes and cans the drinks; America’s Ball Corporation supplies the aluminium cans. This has helped Red Bull stay debt-free. Red Bull continues to spend around 30% of sales on marketing—more than €3bn ($3.4bn) last year. Coca-Cola, the world leader in soft drinks, spends around 10% and Monster 7.5%. It eschews conventional advertising, instead making its <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> content through Red Bull Media House, Austria’s biggest media company after ORF, the state broadcaster. It <span class="annot" data-tooltip="encompasses /ɪn'kʌmpəs/ vt. 围绕；包围时 态: encompassed，encompassing，encompasses">encompasses</span> a TV network, film and TV studios, a record label and several magazines. Not everybody is a fan. Some <span class="annot" data-tooltip="criticise vt. & vi. 评论, 批评">criticise</span> its <span class="annot" data-tooltip="sponsorship /'spɑːnsərʃɪp/ n. 赞助；发起；保证人的地位；教父母身份">sponsorship</span> of extreme sports. Almost two dozen athletes have died while performing its stunts. Last year the European <span class="annot" data-tooltip="commission /kə'mɪʃn/ n. 授权, 委托委员会佣金, 回扣vt. 委任, 委托时 态: commissioned, commissioning, c">Commission</span> began investigating whether Red Bull had broken EU competition rules by using its <span class="annot" data-tooltip="dominant /'dɑːmɪnənt/ adj. 支配的，统治的；占优势的；显性的n. 显性">dominant</span> position to press <span class="annot" data-tooltip="retailers /'riːteɪlər/ n. 传播的人；零售商">retailers</span> to stop selling <span class="annot" data-tooltip="rivals /'raɪvl/ n. 竞争对手vt. 与…竞争, 与…匹敌时 态: rivaled, rivalled rivaling, rivalling">rivals</span>’ wares or to <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span> them unfavourably. Another <span class="annot" data-tooltip="line /laɪn/ n. 绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long inter">line</span> of criticism concerns the side-effects of its <span class="annot" data-tooltip="signature /'sɪɡnətʃər/ n. 签名, 签字">signature</span> product, which contains <span class="annot" data-tooltip="caffeine /kæ'fiːn/ n. 咖啡因；咖啡碱">caffeine</span>, taurine and sugar. The company says that “health <span class="annot" data-tooltip="authorities /ə'θɔːrəti/ n. 威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗">authorities</span> around the world have concluded that Red Bull is safe to <span class="annot" data-tooltip="consume /kən'suːm/ vt. 消耗, 消费, 耗尽大吃, 大喝烧毁, 毁灭时 态: consumed, consuming, consumes">consume</span>,” and points out that a 250ml can contains the same amount of</p>
+<p><span class="annot" data-tooltip="caffeine /kæ'fiːn/ n. 咖啡因；咖啡碱">caffeine</span> as a cup of home-<span class="annot" data-tooltip="brewed /bruː/ vt. 酿造；酝酿vi. 酿酒；被冲泡；即将发生n. 啤酒；质地时 态: brewed, brewing, brews">brewed</span> coffee. But studies show that, even in <span class="annot" data-tooltip="moderate /'mɑːdərət/ adj. 中等的，适度的，不很大的温和的；有节制的中庸的，稳健的，不走极端的vt. & vi. (使)减轻[缓和]；节制时 态: ">moderate</span> amounts, it is harmful for children, as it increases heart rate and blood pressure. The American Academy of Paediatrics and the Food and Drug Administration recommend that children should avoid <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span> drinks. Latvia, Lithuania and Poland are among the countries that ban their sale to under-18s. Britain is <span class="annot" data-tooltip="mulling /mʌl/ vt. 研磨；思索或思考某事物；使醉n. 混乱；软薄布vi. 深思熟虑时 态: mulled, mulling, mulls">mulling</span> doing so for under-16s. For its part, Red Bull notes that energy drinks “are not recommended for children”, and that it does not market its products to them. New competitors are eager to position themselves as a healthier <span class="annot" data-tooltip="alternative /ɔːl'tɜːrnətɪv/ adj. 可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）">alternative</span>. <span class="annot" data-tooltip="celsius /'selsiəs/ adj. 摄氏的n. 摄氏度">Celsius</span>, an American <span class="annot" data-tooltip="brand /brænd/ n. 商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责时 态: branded, branding, brands">brand</span>, contains no added sugar and <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> fewer calories than Red Bull (but more than twice the caffeine). Known to some as “Red Bull for women”, it has become the <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> three energy drink in America, after Red Bull and Monster. For now, Red Bull remains on top. When Mateschitz originally adapted Krating Daeng to European palates, experts told him that no one would want it. He ignored them, charged a <span class="annot" data-tooltip="premium /'priːmiəm/ n. 奖金，津贴；加价；附加费；保险费；额外费用adj. （品质）高级的；优质的，顶级的">premium</span> price for the concoction and built a market for it based largely on its adventurous image. You might call it gravity-defying. ■ To track the <span class="annot" data-tooltip="trends /trend/ n. 趋势, 倾向流行时 态: trended, trending, trends">trends</span> shaping <span class="annot" data-tooltip="commerce /'kɑːmɜːrs/ n. 商业, 贸易">commerce</span>, <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> and technology, sign up to “The Bottom <span class="annot" data-tooltip="line /laɪn/ n. 绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long inter">Line</span>”, our weekly subscriber-only newsletter on global business. This article was downloaded by zlibrary from https://www.economist.com//business/2026/07/13/how-high-can-red-bull-fly</p>
+<div class="article-separator"></div>
+<div class="article-header">Business · Business | Bartleby</div>
+<p>How to sell a <span class="annot" data-tooltip="kettle /'ketl/ n. (烧水用的)壶">kettle</span> <span class="annot" data-tooltip="brand /brænd/ n. 商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责时 态: branded, branding, brands">Brand</span> positioning <span class="annot" data-tooltip="reaches /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reaches</span> <span class="annot" data-tooltip="boiling /bɔɪl/ vi. 煮沸，沸腾；激动，激昂vt. 煮沸，烧开；使…激动；使…蒸发n. 沸腾，煮沸；疖子时 态: boiled, boilin">boiling</span> point July 16th 2026 You asked me to develop ideas for a new brand <span class="annot" data-tooltip="strategy /'strætədʒi/ n. 战略学, 兵法战略, 策略策略, 计谋">strategy</span>. As a reminder, this is the messaging that we use at the moment: “If you want to <span class="annot" data-tooltip="boil /bɔɪl/ vi. 煮沸，沸腾；激动，激昂vt. 煮沸，烧开；使…激动；使…蒸发n. 沸腾，煮沸；疖子时 态: boiled, boilin">boil</span> water, you need a kettle. If you need a kettle, you want the Brewmaster. The fast, <span class="annot" data-tooltip="reliable /rɪ'laɪəbl/ adj. 可靠的, 可信赖的副 词: reliably">reliable</span> and affordable way to make the perfect drink.” The positioning is <span class="annot" data-tooltip="practical /'præktɪkl/ adj. 实际的，实践的实用的注重实际的；有实际工作能力的名 词: practicality">practical</span>, price-<span class="annot" data-tooltip="conscious /'kɑːnʃəs/ adj. 神志清醒的意识到的; 注意到的自觉的; 蓄意的副 词: consciously">conscious</span> and successful. But it is also unexciting. If we want to grow, we need to take a higher share of mind with a different sort of consumer. I have put some sample copy for each positioning strategy below, and taken the liberty of adapting the product name and stressing planned new features where that feels <span class="annot" data-tooltip="appropriate /ə'proʊpriət/ adj. 适当的，恰当的vt. 挪用；占用；盗用拨出(款项)时 态: appropriated，appropriating，app">appropriate</span>. I look forward to hearing your comments when we meet in a couple of weeks.</p>
+<p>Luxury. Water is the wellspring of life, the <span class="annot" data-tooltip="faint /feɪnt/ vi. 晕倒，昏倒adj. 微弱的，模糊的，暗淡的(体力)无力的，虚弱的；易失去知觉的，昏眩的(动作等)无力的，似无太大效果的n">faint</span> promise of evolution, the pulsing aquifer of quintessence. Water is the bringer of dreams, <span class="annot" data-tooltip="fragile /'frædʒl/ adj. 易碎的，脆的虚弱的，脆弱的；经不起折腾的名 词: fragility">fragile</span> and precious. Water is the mark of organisms taking shape, of mighty civilisations marching through the centuries, of the search for habitable planets in distant <span class="annot" data-tooltip="galaxies /'ɡæləksi/ n. 星系银河系, 银河一群(杰出或著名的人物)">galaxies</span>. And here on Earth, water is the source of <span class="annot" data-tooltip="profound /prə'faʊnd/ adj. 深度的；深切的；深远的知识渊博的，见解深刻的，深奥的比较级: profounder，profoundest">profound</span> moments of human connection. The Eau Chaud is an idea more than it is an object. You never <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> a <span class="annot" data-tooltip="kettle /'ketl/ n. (烧水用的)壶">kettle</span>. You merely look after it until the next conversation. <span class="annot" data-tooltip="premium /'priːmiəm/ n. 奖金，津贴；加价；附加费；保险费；额外费用adj. （品质）高级的；优质的，顶级的">Premium</span>, design-led. You would know it by its silhouette alone. The unmistakable spout-and-<span class="annot" data-tooltip="handle /'hændl/ n. 柄；把手；手感；口实vt. 买卖；处理；操作；触摸；运用vi. 易于操纵；搬运时 态: handled, handlin">handle</span> shape of the Kettöl adds lustre to every kitchen. Its muted tones ensure that it <span class="annot" data-tooltip="blends /blend/ vt. & vi. (使)混合, (使)混杂n. 混合物时 态: blended, blent blending, blends">blends</span> with every aesthetic choice. The mid-century-inspired design features a classic <span class="annot" data-tooltip="plug /plʌɡ/ n. 栓；插头；塞子vi. 塞住；用插头将与电源接通vt. 塞住；插入；接插头时 态: plugged, plugging, ">plug</span> and <span class="annot" data-tooltip="cable /'keɪbl/ n. (船只、桥梁等上的)巨缆, 钢索电缆vt. & vi. 给(某人)发电报, 打电报告诉(某人)Cable凯布尔(姓氏)时">cable</span>, which connects to a perfectly rounded base station. <span class="annot" data-tooltip="brushed /brʌʃ/ n. 刷子；画笔；毛笔；争吵vt. 刷；画vi. 刷；擦过；掠过时 态: brushed, brushing, brushes">Brushed</span> steel surrounds a transparent water <span class="annot" data-tooltip="indicator /'ɪndɪkeɪtər/ n. (仪器上显示温度、压力、耗油量等的)指针，指示器，记录器(车辆上的)转弯指示灯指示物；指示者">indicator</span> with stylised <span class="annot" data-tooltip="pictures /'pɪktʃər/ n. 图画，肖像；照片(生动的)描述，写照影片；电影；画面美景，景色情况，事态，局面vt. 绘画；描绘想象时 态: pictu">pictures</span> of cups, so you always know how full the Kettöl is. A warm blue light tells you that the kettle is on, as does the gently <span class="annot" data-tooltip="immersive adj. 拟真的；沉浸式的；沉浸感的；增加沉浸感的">immersive</span> sound of <span class="annot" data-tooltip="boiling /bɔɪl/ vi. 煮沸，沸腾；激动，激昂vt. 煮沸，烧开；使…激动；使…蒸发n. 沸腾，煮沸；疖子时 态: boiled, boilin">boiling</span>. Once the kettle has <span class="annot" data-tooltip="boiled /bɔɪl/ vi. 煮沸，沸腾；激动，激昂vt. 煮沸，烧开；使…激动；使…蒸发n. 沸腾，煮沸；疖子时 态: boiled, boilin">boiled</span>, it can be lifted from the base station by using a laminated <span class="annot" data-tooltip="blond /blɑnd/ adj. 淡黄色的, 亚麻色的(皮肤)白皙的(人)白肤金发碧眼的浅色的n. 肤色白皙的金发女人比较级: blonder, blon">blond</span>-wood handle and taken directly to your waiting cups. And so on. For early adopters. The KetGPT takes the kettle into the agentic era. At the front door and <span class="annot" data-tooltip="fancy /'fænsi/ n. 想像力；爱好；幻想adj. 想象的；奇特的；精选的；昂贵的vt. 设想；喜爱；想象；自负vi. 想象；幻想副 词: fa">fancy</span> a cup of tea? Just woken up and desperate for your first coffee? Get out your phone, fire up the KetGPT app, <span class="annot" data-tooltip="enter /'entər/ vt. & vi. 进入, 进去参加, 加入登记, 登录时 态: entered, entering, enters">enter</span> your login details and tell your kettle to start boiling. That’s not all. You can ask your kettle how the boiling <span class="annot" data-tooltip="process /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">process</span> is going in text or voice mode, and it will reply. It will even send a notification to your phone when the boiling process is <span class="annot" data-tooltip="complete /kəm'pliːt/ adj. 完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善比较级: complete">complete</span>. You set the task. The KetGPT will take it from there, <span class="annot" data-tooltip="entirely /ɪn'taɪərli/ adv. 全部地;完整地;完全地">entirely</span> <span class="annot" data-tooltip="autonomously adv. 自律地，自治地">autonomously</span>. (Token costs not included.) Environmental. Introducing the Keco—for people who care. Our latest kettle is designed to <span class="annot" data-tooltip="retain /rɪ'teɪn/ vt. 保持；雇；记住时 态: retained, retaining, retains 缩 写: ret">retain</span> heat, meaning that water is still tepid four hours after it has boiled. It runs on electricity. It can be recycled. A kettle should warm water, not the planet. (No children are <span class="annot" data-tooltip="involved /ɪn'vɑːlvd/ adj. 卷入的；有关的；复杂的v. 涉及；使参与；包含（involve的过去式和过去分词）">involved</span> in <span class="annot" data-tooltip="manufacturing /ˌmænju'fæktʃərɪŋ/ n. 制造业，工业adj. 制造业的；制造的">manufacturing</span> of the Keco.) Gen Z. Enjoy some coastal grandma and eclectic grandpa core with the new Vintage kettle. For content <span class="annot" data-tooltip="creators /kri'eɪtər/ n. 创造者,创作者">creators</span> who <span class="annot" data-tooltip="crave /kreɪv/ vt. 恳求；渴望vi. 渴望；恳求时 态: craved, craving, craves">crave</span> cosy-cottage <span class="annot" data-tooltip="vibes /vaɪb/ Ⅰn. ①(感情上的)感应，共鸣②(一地的)气氛，环境Ⅱvi. (感情上)产生共鸣">vibes</span>. [If we go</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>capable</td><td>/'keɪpəbl/ adj.</td><td>能干的，能胜任的；有才华的</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>proposals</td><td>/prə'poʊzl/ n.</td><td>提议，建议；求婚</td></tr>
+<tr><td>oversight</td><td>/'oʊvərsaɪt/ n.</td><td>疏忽, 失察</td></tr>
+<tr><td>thresholds</td><td>/'θreʃhoʊld/ n.</td><td>门槛; 〈喻〉开始</td></tr>
+<tr><td>benchmarks</td><td>/'bentʃmɑːrk/ </td><td>基准, benchmarking, benchmarks</td></tr>
+<tr><td>creators</td><td>/kri'eɪtər/ n.</td><td>创造者,创作者</td></tr>
+<tr><td>academic</td><td>/ˌækə'demɪk/ adj.</td><td>学院的；学术的；理论的n. 大学生，大学教师；学者</td></tr>
+<tr><td>capabilities</td><td>/ˌkeɪpə'bɪləti/ n.</td><td>能做某事的素质;能力尚未发挥的天资或素质</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>hacking</td><td>/hæk/ vt.</td><td>& vi. 劈, 砍vt. 狠踢, 乱踢vi. 咳嗽(发出刺耳声音)(以普通速度)骑马驾驶计程车n. 砍, 劈用靴头踢骑用马, 供出租的马受雇于出版商的文人出租</td></tr>
+<tr><td>characteristics</td><td>/ˌkærəktə'rɪstɪk/ adj.</td><td>典型的；特有的；表示特性的</td></tr>
+<tr><td>instructions</td><td>/ɪnˈstrʌkʃənz/ n.</td><td>操作指南；用法说明（instruction 的复数）</td></tr>
+<tr><td>threshold</td><td>/'θreʃhoʊld/ n.</td><td>门槛; 〈喻〉开始</td></tr>
+<tr><td>proposal</td><td>/prə'poʊzl/ n.</td><td>提议，建议；求婚</td></tr>
+<tr><td>unveiling</td><td>/ˌʌn'veɪl/ vt.</td><td>揭去…的面罩，除去…的遮盖物使公之于众；揭露vi. 除去面纱(或覆盖物)；揭幕揭露出来，unveiling，unveils</td></tr>
+<tr><td>versions</td><td>/'vɜːrʒn/ n.</td><td>变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本</td></tr>
+<tr><td>urgent</td><td>/'ɜːrdʒənt/ adj.</td><td>紧急的；急迫的</td></tr>
+<tr><td>cyber</td><td>— adj.</td><td>计算机(网络)的；信息技术的</td></tr>
+<tr><td>serious</td><td>/'sɪriəs/ adj.</td><td>严肃的，严重的；认真的；庄重的；危急的</td></tr>
+<tr><td>line</td><td>/laɪn/ n.</td><td>绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long interspersed element)长散在元</td></tr>
+<tr><td>trends</td><td>/trend/ n.</td><td>趋势, 倾向流行, trending, trends</td></tr>
+<tr><td>commerce</td><td>/'kɑːmɜːrs/ n.</td><td>商业, 贸易</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>harness</td><td>/'hɑːrnɪs/ n.</td><td>马具, 挽具vt. 给(马等)装上挽具治理, 利用, harnessing, harnesses</td></tr>
+<tr><td>soccer</td><td>/'sɑːkər/ n.</td><td>英式足球，足球</td></tr>
+<tr><td>overseeing</td><td>/ˌoʊvər'siː/ vt.</td><td>监督；俯瞰；审查；偷看到，无意中看到, oversees</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>leading</td><td>/ˈliːdɪŋ/ adj.</td><td>主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>outsize</td><td>/'aʊtsaɪz/ adj.</td><td>特大的n. 特大号</td></tr>
+<tr><td>formula</td><td>/'fɔːrmjələ/ n.</td><td>公式，准则；配方；婴儿食品</td></tr>
+<tr><td>strategy</td><td>/'strætədʒi/ n.</td><td>战略学, 兵法战略, 策略策略, 计谋</td></tr>
+<tr><td>creator</td><td>/kri'eɪtər/ n.</td><td>创造者,创作者</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>proved</td><td>/proʊ/ n.</td><td>从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞成；支持Pro脯氨酸PROabbr. P</td></tr>
+<tr><td>sponsoring</td><td>/'spɑːnsər/ vt.</td><td>赞助, 发起n. 赞助者；主办者；保证人</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>fall</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>inherited</td><td>/ɪn'herɪt/ vt.</td><td>继承；遗传而得vi. 成为继承人, inheriting, inherits</td></tr>
+<tr><td>main</td><td>/meɪn/ adj.</td><td>主要的; 最重要的n. 总管道; 干线</td></tr>
+<tr><td>rival</td><td>/'raɪvl/ n.</td><td>竞争对手vt. 与…竞争, 与…匹敌, rivalled rivaling, rivalling rivals, rivals</td></tr>
+<tr><td>strategy</td><td>/'strætədʒi/ n.</td><td>战略学, 兵法战略, 策略策略, 计谋</td></tr>
+<tr><td>outsources</td><td>/'aʊtsɔːrs/ vt.</td><td>①外购(指从外国供应商等处获得货物或服务)②外包(工程), outsourcing, outsources</td></tr>
+<tr><td>manufacturing</td><td>/ˌmænju'fæktʃərɪŋ/ n.</td><td>制造业，工业adj. 制造业的；制造的</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>encompasses</td><td>/ɪn'kʌmpəs/ vt.</td><td>围绕；包围，encompassing，encompasses</td></tr>
+<tr><td>criticise</td><td>— vt.</td><td>& vi. 评论, 批评</td></tr>
+<tr><td>sponsorship</td><td>/'spɑːnsərʃɪp/ n.</td><td>赞助；发起；保证人的地位；教父母身份</td></tr>
+<tr><td>commission</td><td>/kə'mɪʃn/ n.</td><td>授权, 委托委员会佣金, 回扣vt. 委任, 委托, commissioning, commissions</td></tr>
+<tr><td>dominant</td><td>/'dɑːmɪnənt/ adj.</td><td>支配的，统治的；占优势的；显性的n. 显性</td></tr>
+<tr><td>retailers</td><td>/'riːteɪlər/ n.</td><td>传播的人；零售商</td></tr>
+<tr><td>rivals</td><td>/'raɪvl/ n.</td><td>竞争对手vt. 与…竞争, 与…匹敌, rivalled rivaling, rivalling rivals, rivals</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>line</td><td>/laɪn/ n.</td><td>绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long interspersed element)长散在元</td></tr>
+<tr><td>signature</td><td>/'sɪɡnətʃər/ n.</td><td>签名, 签字</td></tr>
+<tr><td>caffeine</td><td>/kæ'fiːn/ n.</td><td>咖啡因；咖啡碱</td></tr>
+<tr><td>authorities</td><td>/ə'θɔːrəti/ n.</td><td>威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗</td></tr>
+<tr><td>consume</td><td>/kən'suːm/ vt.</td><td>消耗, 消费, 耗尽大吃, 大喝烧毁, 毁灭, consuming, consumes</td></tr>
+<tr><td>caffeine</td><td>/kæ'fiːn/ n.</td><td>咖啡因；咖啡碱</td></tr>
+<tr><td>brewed</td><td>/bruː/ vt.</td><td>酿造；酝酿vi. 酿酒；被冲泡；即将发生n. 啤酒；质地, brewing, brews</td></tr>
+<tr><td>moderate</td><td>/'mɑːdərət/ adj.</td><td>中等的，适度的，不很大的温和的；有节制的中庸的，稳健的，不走极端的vt. & vi. (使)减轻[缓和]；节制，moderating，moderates</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>mulling</td><td>/mʌl/ vt.</td><td>研磨；思索或思考某事物；使醉n. 混乱；软薄布vi. 深思熟虑, mulling, mulls</td></tr>
+<tr><td>alternative</td><td>/ɔːl'tɜːrnətɪv/ adj.</td><td>可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）可供选择的事物；可供选择的解决办法替代物</td></tr>
+<tr><td>celsius</td><td>/'selsiəs/ adj.</td><td>摄氏的n. 摄氏度</td></tr>
+<tr><td>brand</td><td>/brænd/ n.</td><td>商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责, branding, brands</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>premium</td><td>/'priːmiəm/ n.</td><td>奖金，津贴；加价；附加费；保险费；额外费用adj. （品质）高级的；优质的，顶级的</td></tr>
+<tr><td>trends</td><td>/trend/ n.</td><td>趋势, 倾向流行, trending, trends</td></tr>
+<tr><td>commerce</td><td>/'kɑːmɜːrs/ n.</td><td>商业, 贸易</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>line</td><td>/laɪn/ n.</td><td>绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long interspersed element)长散在元</td></tr>
+<tr><td>kettle</td><td>/'ketl/ n.</td><td>(烧水用的)壶</td></tr>
+<tr><td>brand</td><td>/brænd/ n.</td><td>商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责, branding, brands</td></tr>
+<tr><td>reaches</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>boiling</td><td>/bɔɪl/ vi.</td><td>煮沸，沸腾；激动，激昂vt. 煮沸，烧开；使…激动；使…蒸发n. 沸腾，煮沸；疖子, boiling, boils</td></tr>
+<tr><td>strategy</td><td>/'strætədʒi/ n.</td><td>战略学, 兵法战略, 策略策略, 计谋</td></tr>
+<tr><td>boil</td><td>/bɔɪl/ vi.</td><td>煮沸，沸腾；激动，激昂vt. 煮沸，烧开；使…激动；使…蒸发n. 沸腾，煮沸；疖子, boiling, boils</td></tr>
+<tr><td>reliable</td><td>/rɪ'laɪəbl/ adj.</td><td>可靠的, 可信赖的</td></tr>
+<tr><td>practical</td><td>/'præktɪkl/ adj.</td><td>实际的，实践的实用的注重实际的；有实际工作能力的</td></tr>
+<tr><td>conscious</td><td>/'kɑːnʃəs/ adj.</td><td>神志清醒的意识到的; 注意到的自觉的; 蓄意的</td></tr>
+<tr><td>appropriate</td><td>/ə'proʊpriət/ adj.</td><td>适当的，恰当的vt. 挪用；占用；盗用拨出(款项)，appropriating，appropriates</td></tr>
+<tr><td>faint</td><td>/feɪnt/ vi.</td><td>晕倒，昏倒adj. 微弱的，模糊的，暗淡的(体力)无力的，虚弱的；易失去知觉的，昏眩的(动作等)无力的，似无太大效果的n. 昏倒，faintest</td></tr>
+<tr><td>fragile</td><td>/'frædʒl/ adj.</td><td>易碎的，脆的虚弱的，脆弱的；经不起折腾的</td></tr>
+<tr><td>galaxies</td><td>/'ɡæləksi/ n.</td><td>星系银河系, 银河一群(杰出或著名的人物)</td></tr>
+<tr><td>profound</td><td>/prə'faʊnd/ adj.</td><td>深度的；深切的；深远的知识渊博的，见解深刻的，深奥的，profoundest</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>kettle</td><td>/'ketl/ n.</td><td>(烧水用的)壶</td></tr>
+<tr><td>premium</td><td>/'priːmiəm/ n.</td><td>奖金，津贴；加价；附加费；保险费；额外费用adj. （品质）高级的；优质的，顶级的</td></tr>
+<tr><td>handle</td><td>/'hændl/ n.</td><td>柄；把手；手感；口实vt. 买卖；处理；操作；触摸；运用vi. 易于操纵；搬运, handling, handles</td></tr>
+<tr><td>blends</td><td>/blend/ vt.</td><td>& vi. (使)混合, (使)混杂n. 混合物, blent blending, blends</td></tr>
+<tr><td>plug</td><td>/plʌɡ/ n.</td><td>栓；插头；塞子vi. 塞住；用插头将与电源接通vt. 塞住；插入；接插头, plugging, plugs</td></tr>
+<tr><td>cable</td><td>/'keɪbl/ n.</td><td>(船只、桥梁等上的)巨缆, 钢索电缆vt. & vi. 给(某人)发电报, 打电报告诉(某人)Cable凯布尔(姓氏), cabling, cables</td></tr>
+<tr><td>brushed</td><td>/brʌʃ/ n.</td><td>刷子；画笔；毛笔；争吵vt. 刷；画vi. 刷；擦过；掠过, brushing, brushes</td></tr>
+<tr><td>indicator</td><td>/'ɪndɪkeɪtər/ n.</td><td>(仪器上显示温度、压力、耗油量等的)指针，指示器，记录器(车辆上的)转弯指示灯指示物；指示者</td></tr>
+<tr><td>pictures</td><td>/'pɪktʃər/ n.</td><td>图画，肖像；照片(生动的)描述，写照影片；电影；画面美景，景色情况，事态，局面vt. 绘画；描绘想象，picturing，pictures</td></tr>
+<tr><td>immersive</td><td>— adj.</td><td>拟真的；沉浸式的；沉浸感的；增加沉浸感的</td></tr>
+<tr><td>boiling</td><td>/bɔɪl/ vi.</td><td>煮沸，沸腾；激动，激昂vt. 煮沸，烧开；使…激动；使…蒸发n. 沸腾，煮沸；疖子, boiling, boils</td></tr>
+<tr><td>boiled</td><td>/bɔɪl/ vi.</td><td>煮沸，沸腾；激动，激昂vt. 煮沸，烧开；使…激动；使…蒸发n. 沸腾，煮沸；疖子, boiling, boils</td></tr>
+<tr><td>blond</td><td>/blɑnd/ adj.</td><td>淡黄色的, 亚麻色的(皮肤)白皙的(人)白肤金发碧眼的浅色的n. 肤色白皙的金发女人, blondest</td></tr>
+<tr><td>fancy</td><td>/'fænsi/ n.</td><td>想像力；爱好；幻想adj. 想象的；奇特的；精选的；昂贵的vt. 设想；喜爱；想象；自负vi. 想象；幻想</td></tr>
+<tr><td>enter</td><td>/'entər/ vt.</td><td>& vi. 进入, 进去参加, 加入登记, 登录, entering, enters</td></tr>
+<tr><td>process</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>complete</td><td>/kəm'pliːt/ adj.</td><td>完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善, completest 缩 写: comp, cpl</td></tr>
+<tr><td>entirely</td><td>/ɪn'taɪərli/ adv.</td><td>全部地;完整地;完全地</td></tr>
+<tr><td>autonomously</td><td>— adv.</td><td>自律地，自治地</td></tr>
+<tr><td>retain</td><td>/rɪ'teɪn/ vt.</td><td>保持；雇；记住, retaining, retains 缩 写: ret</td></tr>
+<tr><td>involved</td><td>/ɪn'vɑːlvd/ adj.</td><td>卷入的；有关的；复杂的v. 涉及；使参与；包含（involve的过去式和过去分词）</td></tr>
+<tr><td>manufacturing</td><td>/ˌmænju'fæktʃərɪŋ/ n.</td><td>制造业，工业adj. 制造业的；制造的</td></tr>
+<tr><td>creators</td><td>/kri'eɪtər/ n.</td><td>创造者,创作者</td></tr>
+<tr><td>crave</td><td>/kreɪv/ vt.</td><td>恳求；渴望vi. 渴望；恳求, craving, craves</td></tr>
+<tr><td>vibes</td><td>/vaɪb/ </td><td>Ⅰn. ①(感情上的)感应，共鸣②(一地的)气氛，环境Ⅱvi. (感情上)产生共鸣</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day29.html" class="nav-btn">← Day 29</a>
+  <a href="day31.html" class="nav-btn">Day 31 →</a>
+</div>
+
+<div class="progress">📖 Day 30 of 41</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-07-18</div>
+
+</body>
+</html>

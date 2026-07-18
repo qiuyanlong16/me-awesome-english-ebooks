@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Obituary | Drinking by the rules</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-07-18</div>
+
+<h1 class="article-title">Obituary | Drinking by the rules</h1>
+<div class="article-section">Obituary</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>there were a lot of them: almost 300 <span class="annot" data-tooltip="scattered /'skætər/ vi. 分散，散开；散射vt. 使散开，使分散；使散射；使散播，使撒播n. 分散；散播，撒播时 态: scattered, sc">scattered</span> up and down Britain, mostly in small villages in the north, but also in Bristol and Bath, and 39 in London. There he owned some famous hostelries, including Ye Olde Cheshire Cheese in Fleet Street, the <span class="annot" data-tooltip="haunt /hɔːnt/ vt. 经常出没于缠绕, 萦绕n. 某人常去的地方时 态: haunted, haunting, haunts">haunt</span> of Dickens and Dr Johnson. Accordingly, all his pubs had a certain look and sound about them. Dark, cosy, heavy on the leather and brass, with not a TV or a piano about. No Muzak, <span class="annot" data-tooltip="either /'iːðər/ pron. (两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的">either</span>; just the <span class="annot" data-tooltip="buzz /bʌz/ v. 发嗡嗡声；发蜂鸣声用蜂鸣器（给…）发信号繁忙；充满活力（飞机）低空飞过（尤指作为警告或威胁）（用特殊的机器）将头发剪得非">buzz</span> of conversation. Nothing was for sale that was not <span class="annot" data-tooltip="brewed /bruː/ vt. 酿造；酝酿vi. 酿酒；被冲泡；即将发生n. 啤酒；质地时 态: brewed, brewing, brews">brewed</span> by Samuel Smith or grown in Yorkshire, even to the crisps; but no <span class="annot" data-tooltip="branding /brænd/ n. 商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责时 态: branded, branding, brands">branding</span> was allowed, inside or out. The beer (Old Brewery Bitter, Nut Brown Ale and Yorkshire Stingo, to name but a few) had been brewed from Tadcaster spring water filtered through Permian limestone, and the worts had been fermented in rare slate <span class="annot" data-tooltip="tanks /tæŋk/ n. （存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内时 态: t">tanks</span> called Yorkshire squares. <span class="annot" data-tooltip="barrels /'bærəl/ vt. 把……装入桶内n. 桶；枪管，炮管vi. 快速移动时 态: barreled, barrelled barreling,">Barrels</span> were made on the premises by his <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> coopers, and those going to pubs round Tadcaster were delivered on a dray by two <span class="annot" data-tooltip="magnificent /mæɡ'nɪfɪsnt/ adj. 壮丽的, 伟大的, 华丽的, 高贵的副 词: magnificently">magnificent</span> grey shire horses stabled in the brewery. After all this care, he was not about to let his pubs let him down. So they also featured notices asking customers to respect the rules. There were many. No dogs, no mobile phones except <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span>, no laptops or <span class="annot" data-tooltip="tablets /'tæblət/ n. 药片(木、竹)简；碑，牌匾时 态: tableted，tableting，tablets">tablets</span>. No children, unless dining. No bikers or general undesirables. No men kissing each other, and no swearing. This last rule, <span class="annot" data-tooltip="relatively /'relətɪvli/ adv. 相对地，比较而言；相当相对来说；相比较而言">relatively</span> new, came in after he overheard a man using the F-word outside the Fox and Goose in Droitwich. Any staff hearing such a word were to ask the <span class="annot" data-tooltip="culprit /'kʌlprɪt/ n. 犯人，罪犯；被控犯罪的人">culprit</span> to <span class="annot" data-tooltip="refrain /rɪ'freɪn/ vi. 制止；避免；节制，克制n. 叠句，副歌；重复时 态: refrained, refraining, refrains">refrain</span>. If the culprit did not do so, they must refuse to serve him. Humphrey could enforce these rules because, in 1984, he had imposed an important rule himself. Henceforth all those who ran Samuel Smith pubs were not <span class="annot" data-tooltip="tenants /'tenənt/ n. 房客, 佃户, 承租人〈律〉占用者, 占有者时 态: tenanted, tenanting, tenants">tenants</span> who could act on their own <span class="annot" data-tooltip="initiative /ɪ'nɪʃətɪv/ n. 主动性, 首创精神主动的行动, 倡议主动权">initiative</span>, but managers, <span class="annot" data-tooltip="employed /ɪm'plɔɪ/ vt. 使用，采用；雇用；使忙于，使从事于n. 雇用；使用时 态: employed, employing, employs">employed</span> by the brewery (himself) directly. Couples were strongly preferred, and were paid around £50,000 ($67,000) a year. Aspiring <span class="annot" data-tooltip="applicants /'æplɪkənt/ n. 申请人, 求职人">applicants</span> went on a week-long course to learn, among other things, about the brewery’s traditions. And woe betide if they fell short. He did <span class="annot" data-tooltip="spot /spɑːt/ n. 斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Po">spot</span>-checks himself, turning up suddenly with a little folder under his arm. Having visited the gents first, he would order a half of Old Brewery Bitter, always that, and sup it in a corner, looking carefully round. The upshot could be <span class="annot" data-tooltip="dire /'daɪər/ adj. 可怕的, 恐怖的比较级: direr, direst">dire</span>. If he found anything amiss, he would close the <span class="annot" data-tooltip="pub /pʌb/ n. 酒馆；客栈">pub</span></p>
+<p>down with <span class="annot" data-tooltip="immediate /ɪ'miːdiət/ adj. 立即的，即刻的；紧迫的目前的，当前的直接的最接近的名 词: immediateness">immediate</span> effect. The next day his men would remove the alcohol, and the managers, who had to live on-site, would be out on the street. He did not always give his reasons. At The Abbey near Derby they offended him by posting <span class="annot" data-tooltip="pictures /'pɪktʃər/ n. 图画，肖像；照片(生动的)描述，写照影片；电影；画面美景，景色情况，事态，局面vt. 绘画；描绘想象时 态: pictu">pictures</span> of the <span class="annot" data-tooltip="pub /pʌb/ n. 酒馆；客栈">pub</span> on the internet, at the New Inn in Stamford Bridge by putting <span class="annot" data-tooltip="perfume /pər'fjuːm/ n. 香气, 芳香香水vt. 使充满香气喷香水于时 态: perfumed, perfuming, perfumes">perfume</span>, he <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span>, in his beer, at the Cow and Calf <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span> Sheffield by failing to produce a chocolate fondant for <span class="annot" data-tooltip="dessert /dɪ'zɜːrt/ n. 餐后甜点；甜点心">dessert</span>. That was his favourite, as they should have known. But then no one truly did know him, when all was said. Few men were as private as he was. He wanted no outsiders poking around in the brewery or nosing in the accounts, and in 1982 he had made his company unlimited, so no one could. (In 2018, when he refused to divulge information to the tiresome <span class="annot" data-tooltip="pensions /ˈpenʃn/ n. 津贴；退休金，抚恤金；膳宿费vt. 发给养老金或抚恤金时 态: pensioned, pensioning, pensi">pensions</span> regulator, he and the brewery ended up being fined <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> £28,000.) School had been at Eton, where it was hard to fit in with the posh boys, and after that it was back to the brewery. As lord of it he gave no interviews, ducked his head out of the way of any camera, and lived in such secrecy in Oxton Hall, outside Tadcaster, that the only up-to-date <span class="annot" data-tooltip="picture /'pɪktʃər/ n. 图画，肖像；照片(生动的)描述，写照影片；电影；画面美景，景色情况，事态，局面vt. 绘画；描绘想象时 态: pictu">picture</span> of it showed just the <span class="annot" data-tooltip="drive /draɪv/ vt. 驱赶驱使, 促使敲, 击vt. & vi. 驾驶n. 乘车旅行私人车道传动, 驱动干劲, 积极性, 能动性紧迫, 逼迫,">drive</span>-in and a <span class="annot" data-tooltip="hedge /hedʒ/ vt. 用树篱笆围住；避免作正面答复vi. 用树篱围住；避免作正面答复n. 树篱；障碍时 态: hedged, hedging,">hedge</span>. In Tadcaster itself, where he seemed to <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span>, house or <span class="annot" data-tooltip="employ /ɪm'plɔɪ/ vt. 使用，采用；雇用；使忙于，使从事于n. 雇用；使用时 态: employed, employing, employs">employ</span> at least half the town, he was often seen about in his old wax jacket and wellies. A lot of what he did for the <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span> was secret, apart from the building of the very popular Community Swimming Pool. The townsfolk, who were mostly deferential, assumed he was extremely rich, not least because he had been the first <span class="annot" data-tooltip="brewer /bruː/ vt. 酿造；酝酿vi. 酿酒；被冲泡；即将发生n. 啤酒；质地时 态: brewed, brewing, brews">brewer</span> to catch the American export market. Yet he was <span class="annot" data-tooltip="frugal /'fruːɡl/ adj. 节俭的；朴素的；花钱少的名 词: frugality">frugal</span>, living in only one <span class="annot" data-tooltip="wing /wɪŋ/ n. 翅膀；翼；飞翔；派别vt. 使飞；飞过；空运；增加…速度；装以翼vi. 飞行时 态: winged, winging, ">wing</span> of Oxton Hall and travelling free on his bus pass. He also, however, kept a planning barrister on a <span class="annot" data-tooltip="retainer /rɪ'teɪn/ vt. 保持；雇；记住时 态: retained, retaining, retains 缩 写: ret">retainer</span>. His fights with town and county councils were legion, mostly because he wanted things to stay as they were. The worst was when the Tadcaster <span class="annot" data-tooltip="bypass /'baɪpæs/ vt. 绕过, 避开不顾n. 旁道时 态: bypassed, bypassing, bypasses">bypass</span> was built through his own parkland; but that was by <span class="annot" data-tooltip="compulsory /kəm'pʌlsəri/ adj. 必须做的, 强制性的副 词: compulsorily">compulsory</span> <span class="annot" data-tooltip="purchase /'pɜːrtʃəs/ n. 购买；紧握；起重装置vt. 购买；赢得vi. 购买东西时 态: purchased, purchasing, purch">purchase</span>, so nothing to be done. His plan for Tadcaster, unrealised, was to pedestrianise the centre and put back the cobblestones. Modern intrusions were kept at bay. In 2015, when the River Wharfe flooded the town and broke the 18th-century bridge that linked its two halves, he refused to spend £300,000 of public money on a temporary bridge in its place. Everyone would just have to drive the nine miles round.</p>
+<p>The same unsparing attitude applied to his pubs. By the 2020s half of them were closed, awaiting his approved sort of manager. They included the Angel and White Horse, the <span class="annot" data-tooltip="flagship /'flæɡʃɪp/ n. 旗舰；佼佼者；（作定语）一流">flagship</span> <span class="annot" data-tooltip="pub /pʌb/ n. 酒馆；客栈">pub</span> and his <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> favourite, right by the brewery. There was nothing wrong with <span class="annot" data-tooltip="either /'iːðər/ pron. (两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的">either</span> his beer, or his <span class="annot" data-tooltip="relatively /'relətɪvli/ adv. 相对地，比较而言；相当相对来说；相比较而言">relatively</span> cheap prices; all pubs were struggling, with around 300 closing every year. But Humphrey’s had an extra disadvantage: his rules. Like Orwell, he <span class="annot" data-tooltip="yearned /jɜːrn/ vi. 渴望，向往；思念，想念；怀念；同情，怜悯时 态: yearned, yearning, yearns">yearned</span> to hang on to an idyll of the past. But Orwell had admitted that The Moon Under Water did not, and probably could not, exist. ■ This article was downloaded by zlibrary from https://www.economist.com//obituary/2026/07/16/humphrey-smith-dictated-what-a-good- pub-should-be</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Leaders</div>
+<p>Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s <span class="annot" data-tooltip="gutting /ɡʌt/ n. 内脏；肠子；胆量；海峡；剧情vt. 取出内脏；摧毁内部装置adj. 本质的，根本的；简单的GUT大统一理论时 态: gu">gutting</span> of the Department of Justice It’s too <span class="annot" data-tooltip="darn /dɑːrn/ vt. & vi. 织补(衣物)见鬼(婉辞，与damn同义，表示生气或恼怒)n. 织补之处时 态: darned, darnin">darn</span> hot. Blame global dimming Donald Trump’s blind alley China’s rulers have a woman problem How to make AI safe—and lessen dependence on America and China America should stop making it so hard to have fun</p>
+<div class="article-separator"></div>
+<div class="article-header"> · United States</div>
+<p>Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s transformation of the Department of Justice will be hard to undo Democrats challenge a big Hollywood tie-up Cities are rethinking what happens after dark America’s other elections problem Lindsey Graham tried to save the wrong countries from Donald Trump</p>
+<div class="article-separator"></div>
+<div class="article-header"> · The Americas</div>
+<p>The Panama Canal is growing more important The biggest schools training America’s doctors are in the Caribbean Argentina v England is one of the most <span class="annot" data-tooltip="intense /ɪn'tens/ adj. 强烈的；紧张的；热情的；非常的比较级: intenser, intensest">intense</span> rivalries in sport</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Asia</div>
+<p>Is Aung San Suu Kyi dead? An unreliable America is drawing Asia’s middle powers closer <span class="annot" data-tooltip="haunted /hɔːnt/ vt. 经常出没于缠绕, 萦绕n. 某人常去的地方时 态: haunted, haunting, haunts">Haunted</span> houses are in demand in Japan A real but selective <span class="annot" data-tooltip="crackdown /'krækdaʊn/ n. 压迫,镇压,打击">crackdown</span> on Cambodia’s <span class="annot" data-tooltip="scam /skæm/ n. 骗局，诡计；故事vt. 欺诈；诓骗vi. 欺诈；诓骗时 态: scammed, scamming, scams">scam</span> <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> An incomplete list of <span class="annot" data-tooltip="falling /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">falling</span> objects in India</p>
+<div class="article-separator"></div>
+<div class="article-header"> · China</div>
+<p>China is dealing with its <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> manosphere Xi Jinping <span class="annot" data-tooltip="expels /ɪk'spel/ vt. 驱逐；开除时 态: expelled, expelling, expels">expels</span> another leader from his top team China wants to end AI romances A squeezed China is trying to wring more from its state <span class="annot" data-tooltip="assets /'æset/ n. 资产；有用的东西；有利条件；优点">assets</span></p>
+<div class="article-separator"></div>
+<div class="article-header"> · Middle East &amp; Africa</div>
+<p>Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> has no good options for reopening the <span class="annot" data-tooltip="strait /streɪt/ n. 海峡；（尤指经济拮据引起的）困境，境况窘迫adj. 狭窄的；苦恼的副 词: straitly">Strait</span> of Hormuz America’s other battle with Iran The Ebola epidemic is getting out of control A hit new show takes on polygamy in modern South Africa How to <span class="annot" data-tooltip="preserve /prɪ'zɜːrv/ vt. 保存；保护；维持；禁猎；腌n. 禁猎地；保护区；加工成的食品n. (某人或群体的）专门活动时 态: preserved,">preserve</span> Africa’s architectural gems</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Europe</div>
+<p><span class="annot" data-tooltip="ukraine n. 乌克兰（原苏联一加盟共和国，现已独立）">Ukraine</span>’s reformist defence minister is ousted Europe seems set to <span class="annot" data-tooltip="ease /iːz/ vt. 减轻，缓和；使安心n. 安逸，悠闲；轻松，舒适vi. 减轻，缓和；放松；灵活地移动EASEabbr. Electroni">ease</span> its carbon pricing Sweden <span class="annot" data-tooltip="squashed /skwɑːʃ/ vt. 将(某人[某物])压扁，压烂，挤碎将(某人[某物])向某方挤粗暴地使(某人)住嘴挤进平定(叛乱等)；镇压；制服n. 拥挤">squashed</span> <span class="annot" data-tooltip="migration /maɪ'ɡreɪʃn/ n. 迁移, 移居">migration</span>. The populist right wants to go further Opening the border between Spain and Gibraltar Why Berlin’s airport is still <span class="annot" data-tooltip="completely /kəm'pliːt/ adj. 完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善比较级: complete">completely</span> hopeless In praise of Scandinavia’s risky and dirty playgrounds</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Britain</div>
+<p>Can Andy Burnham keep his <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> MPs under control? Lessons from a cat about to outlast yet another prime minister Glasgow, rescuer of the Commonwealth Games, needs saving too Violence is reshaping British political life Britain’s bookies have weathered a <span class="annot" data-tooltip="tricky /'trɪki/ adj. 机警的；狡猾的比较级: trickier, trickiest">tricky</span> World Cup London’s private members’ clubs are proliferating Sir Keir’s bucket list</p>
+<div class="article-separator"></div>
+<div class="article-header"> · International</div>
+<p><span class="annot" data-tooltip="sovereign /'sɑːvrɪn/ n. 君主，国王，女王旧时价值为一镑的英国金币adj. 控制国家的；统治的独立自主的">Sovereign</span> AI, independent of America and China, is a pipe dream When China’s open-source AI is a trap</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Business</div>
+<p>Eli Lilly is reinventing the pharma business Demis Hassabis has a plan to <span class="annot" data-tooltip="harness /'hɑːrnɪs/ n. 马具, 挽具vt. 给(马等)装上挽具治理, 利用时 态: harnessed, harnessing, harness">harness</span> AI safely How high can Red Bull fly? How to sell a <span class="annot" data-tooltip="kettle /'ketl/ n. (烧水用的)壶">kettle</span> How SK Hynix became the king of advanced memory chips Meet the committee to buy Europe</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Finance &amp; economics</div>
+<p>Storm clouds gather over America’s financial supremacy America’s Hormuz brinkmanship is <span class="annot" data-tooltip="worsening /'wɜːrsn/ vt. & vi. (使)变得更坏,(使)恶化时 态: worsened, worsening, worsens">worsening</span> a global fuel <span class="annot" data-tooltip="crunch /krʌntʃ/ n. 咬碎，咬碎声；扎扎地踏vt. 压碎；嘎扎嘎扎的咬嚼；扎扎地踏过vi. 嘎吱作响地咀嚼；嘎吱嘎吱地踏过时 态: crunc">crunch</span> China’s trade gap is <span class="annot" data-tooltip="narrowing /'næroʊ/ adj. 狭窄的，有限的；度量小的；精密的；勉强的n. 狭窄部分，隘路；海峡vt. 使变狭窄vi. 变窄比较级: narrower">narrowing</span>. And other surprises Can Kevin Warsh’s Fed force 5 reimagine monetary policymaking? What investment gurus get wrong How to <span class="annot" data-tooltip="shrink /ʃrɪŋk/ vt. & vi. 收缩；退缩时 态: shrank ，shrunk shrunk，shrunken shrinking，shr">shrink</span> the Fed’s $7trn balance-sheet</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Science &amp; technology</div>
+<p>The rate at which Earth is absorbing <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span> is alarming climate scientists How to train for a heatwave</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Culture</div>
+<p>A very <span class="annot" data-tooltip="silly /'sɪli/ adj. 蠢的，傻的；糊涂的，可笑的〈非正〉不省人事的，失去知觉的；晕头转向的比较级: sillier，silliest">silly</span> <span class="annot" data-tooltip="adaptation /ˌædæp'teɪʃn/ n. 适应,适合改编，改写改编本，改写本">adaptation</span> of “The Odyssey” Why Sir Christopher Nolan inspires such <span class="annot" data-tooltip="devotion /dɪ'voʊʃn/ n. 奉献, 献身, 忠诚热爱, 挚爱">devotion</span>—and <span class="annot" data-tooltip="contempt /kən'tempt/ n. 轻视，蔑视；耻辱">contempt</span> Emo culture was not just a <span class="annot" data-tooltip="phase /feɪz/ n. 阶段, 时期(月亮、行星的)位相vt. 分阶段计划[安排]时 态: phased, phasing, phases">phase</span>, as it turns out A mystery street artist is taking over cities George Sand’s life was a heady mix of sex and <span class="annot" data-tooltip="serious /'sɪriəs/ adj. 严肃的，严重的；认真的；庄重的；危急的副 词: seriously">serious</span> fiction The wild, gripping story of the Nord Stream pipeline <span class="annot" data-tooltip="bombing abbr. 物料清单（Bill of Materiel）">bombing</span></p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>scattered</td><td>/'skætər/ vi.</td><td>分散，散开；散射vt. 使散开，使分散；使散射；使散播，使撒播n. 分散；散播，撒播, scattering, scatters</td></tr>
+<tr><td>haunt</td><td>/hɔːnt/ vt.</td><td>经常出没于缠绕, 萦绕n. 某人常去的地方, haunting, haunts</td></tr>
+<tr><td>either</td><td>/'iːðər/ pron.</td><td>(两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的</td></tr>
+<tr><td>buzz</td><td>/bʌz/ v.</td><td>发嗡嗡声；发蜂鸣声用蜂鸣器（给…）发信号繁忙；充满活力（飞机）低空飞过（尤指作为警告或威胁）（用特殊的机器）将头发剪得非常短n. 嗡嗡声；蜂鸣声（愉快、兴奋或成</td></tr>
+<tr><td>brewed</td><td>/bruː/ vt.</td><td>酿造；酝酿vi. 酿酒；被冲泡；即将发生n. 啤酒；质地, brewing, brews</td></tr>
+<tr><td>branding</td><td>/brænd/ n.</td><td>商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责, branding, brands</td></tr>
+<tr><td>tanks</td><td>/tæŋk/ n.</td><td>（存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内, tanking, tanks</td></tr>
+<tr><td>barrels</td><td>/'bærəl/ vt.</td><td>把……装入桶内n. 桶；枪管，炮管vi. 快速移动, barrelled barreling, barrelling barrels, barrels</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>magnificent</td><td>/mæɡ'nɪfɪsnt/ adj.</td><td>壮丽的, 伟大的, 华丽的, 高贵的</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>tablets</td><td>/'tæblət/ n.</td><td>药片(木、竹)简；碑，牌匾，tableting，tablets</td></tr>
+<tr><td>relatively</td><td>/'relətɪvli/ adv.</td><td>相对地，比较而言；相当相对来说；相比较而言</td></tr>
+<tr><td>culprit</td><td>/'kʌlprɪt/ n.</td><td>犯人，罪犯；被控犯罪的人</td></tr>
+<tr><td>refrain</td><td>/rɪ'freɪn/ vi.</td><td>制止；避免；节制，克制n. 叠句，副歌；重复, refraining, refrains</td></tr>
+<tr><td>tenants</td><td>/'tenənt/ n.</td><td>房客, 佃户, 承租人〈律〉占用者, 占有者, tenanting, tenants</td></tr>
+<tr><td>initiative</td><td>/ɪ'nɪʃətɪv/ n.</td><td>主动性, 首创精神主动的行动, 倡议主动权</td></tr>
+<tr><td>employed</td><td>/ɪm'plɔɪ/ vt.</td><td>使用，采用；雇用；使忙于，使从事于n. 雇用；使用, employing, employs</td></tr>
+<tr><td>applicants</td><td>/'æplɪkənt/ n.</td><td>申请人, 求职人</td></tr>
+<tr><td>spot</td><td>/spɑːt/ n.</td><td>斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Positioning and Tracki</td></tr>
+<tr><td>dire</td><td>/'daɪər/ adj.</td><td>可怕的, 恐怖的, direst</td></tr>
+<tr><td>pub</td><td>/pʌb/ n.</td><td>酒馆；客栈</td></tr>
+<tr><td>immediate</td><td>/ɪ'miːdiət/ adj.</td><td>立即的，即刻的；紧迫的目前的，当前的直接的最接近的</td></tr>
+<tr><td>pictures</td><td>/'pɪktʃər/ n.</td><td>图画，肖像；照片(生动的)描述，写照影片；电影；画面美景，景色情况，事态，局面vt. 绘画；描绘想象，picturing，pictures</td></tr>
+<tr><td>pub</td><td>/pʌb/ n.</td><td>酒馆；客栈</td></tr>
+<tr><td>perfume</td><td>/pər'fjuːm/ n.</td><td>香气, 芳香香水vt. 使充满香气喷香水于, perfuming, perfumes</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>dessert</td><td>/dɪ'zɜːrt/ n.</td><td>餐后甜点；甜点心</td></tr>
+<tr><td>pensions</td><td>/ˈpenʃn/ n.</td><td>津贴；退休金，抚恤金；膳宿费vt. 发给养老金或抚恤金, pensioning, pensions</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>picture</td><td>/'pɪktʃər/ n.</td><td>图画，肖像；照片(生动的)描述，写照影片；电影；画面美景，景色情况，事态，局面vt. 绘画；描绘想象，picturing，pictures</td></tr>
+<tr><td>drive</td><td>/draɪv/ vt.</td><td>驱赶驱使, 促使敲, 击vt. & vi. 驾驶n. 乘车旅行私人车道传动, 驱动干劲, 积极性, 能动性紧迫, 逼迫, 压力, drives</td></tr>
+<tr><td>hedge</td><td>/hedʒ/ vt.</td><td>用树篱笆围住；避免作正面答复vi. 用树篱围住；避免作正面答复n. 树篱；障碍, hedging, hedges</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>employ</td><td>/ɪm'plɔɪ/ vt.</td><td>使用，采用；雇用；使忙于，使从事于n. 雇用；使用, employing, employs</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>brewer</td><td>/bruː/ vt.</td><td>酿造；酝酿vi. 酿酒；被冲泡；即将发生n. 啤酒；质地, brewing, brews</td></tr>
+<tr><td>frugal</td><td>/'fruːɡl/ adj.</td><td>节俭的；朴素的；花钱少的</td></tr>
+<tr><td>wing</td><td>/wɪŋ/ n.</td><td>翅膀；翼；飞翔；派别vt. 使飞；飞过；空运；增加…速度；装以翼vi. 飞行, winging, wings</td></tr>
+<tr><td>retainer</td><td>/rɪ'teɪn/ vt.</td><td>保持；雇；记住, retaining, retains 缩 写: ret</td></tr>
+<tr><td>bypass</td><td>/'baɪpæs/ vt.</td><td>绕过, 避开不顾n. 旁道, bypassing, bypasses</td></tr>
+<tr><td>compulsory</td><td>/kəm'pʌlsəri/ adj.</td><td>必须做的, 强制性的</td></tr>
+<tr><td>purchase</td><td>/'pɜːrtʃəs/ n.</td><td>购买；紧握；起重装置vt. 购买；赢得vi. 购买东西, purchasing, purchases</td></tr>
+<tr><td>flagship</td><td>/'flæɡʃɪp/ n.</td><td>旗舰；佼佼者；（作定语）一流</td></tr>
+<tr><td>pub</td><td>/pʌb/ n.</td><td>酒馆；客栈</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>either</td><td>/'iːðər/ pron.</td><td>(两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的</td></tr>
+<tr><td>relatively</td><td>/'relətɪvli/ adv.</td><td>相对地，比较而言；相当相对来说；相比较而言</td></tr>
+<tr><td>yearned</td><td>/jɜːrn/ vi.</td><td>渴望，向往；思念，想念；怀念；同情，怜悯, yearning, yearns</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>gutting</td><td>/ɡʌt/ n.</td><td>内脏；肠子；胆量；海峡；剧情vt. 取出内脏；摧毁内部装置adj. 本质的，根本的；简单的GUT大统一理论, gutting, guts</td></tr>
+<tr><td>darn</td><td>/dɑːrn/ vt.</td><td>& vi. 织补(衣物)见鬼(婉辞，与damn同义，表示生气或恼怒)n. 织补之处, darning, darns</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>intense</td><td>/ɪn'tens/ adj.</td><td>强烈的；紧张的；热情的；非常的, intensest</td></tr>
+<tr><td>haunted</td><td>/hɔːnt/ vt.</td><td>经常出没于缠绕, 萦绕n. 某人常去的地方, haunting, haunts</td></tr>
+<tr><td>crackdown</td><td>/'krækdaʊn/ n.</td><td>压迫,镇压,打击</td></tr>
+<tr><td>scam</td><td>/skæm/ n.</td><td>骗局，诡计；故事vt. 欺诈；诓骗vi. 欺诈；诓骗, scamming, scams</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>falling</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>expels</td><td>/ɪk'spel/ vt.</td><td>驱逐；开除, expelling, expels</td></tr>
+<tr><td>assets</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>strait</td><td>/streɪt/ n.</td><td>海峡；（尤指经济拮据引起的）困境，境况窘迫adj. 狭窄的；苦恼的</td></tr>
+<tr><td>preserve</td><td>/prɪ'zɜːrv/ vt.</td><td>保存；保护；维持；禁猎；腌n. 禁猎地；保护区；加工成的食品n. (某人或群体的）专门活动, preserving, preserves</td></tr>
+<tr><td>ukraine</td><td>— n.</td><td>乌克兰（原苏联一加盟共和国，现已独立）</td></tr>
+<tr><td>ease</td><td>/iːz/ vt.</td><td>减轻，缓和；使安心n. 安逸，悠闲；轻松，舒适vi. 减轻，缓和；放松；灵活地移动EASEabbr. Electronic Airborne Systems E</td></tr>
+<tr><td>squashed</td><td>/skwɑːʃ/ vt.</td><td>将(某人[某物])压扁，压烂，挤碎将(某人[某物])向某方挤粗暴地使(某人)住嘴挤进平定(叛乱等)；镇压；制服n. 拥挤的人群果汁汽水(软式)墙网球，壁球，sq</td></tr>
+<tr><td>migration</td><td>/maɪ'ɡreɪʃn/ n.</td><td>迁移, 移居</td></tr>
+<tr><td>completely</td><td>/kəm'pliːt/ adj.</td><td>完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善, completest 缩 写: comp, cpl</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>tricky</td><td>/'trɪki/ adj.</td><td>机警的；狡猾的, trickiest</td></tr>
+<tr><td>sovereign</td><td>/'sɑːvrɪn/ n.</td><td>君主，国王，女王旧时价值为一镑的英国金币adj. 控制国家的；统治的独立自主的</td></tr>
+<tr><td>harness</td><td>/'hɑːrnɪs/ n.</td><td>马具, 挽具vt. 给(马等)装上挽具治理, 利用, harnessing, harnesses</td></tr>
+<tr><td>kettle</td><td>/'ketl/ n.</td><td>(烧水用的)壶</td></tr>
+<tr><td>worsening</td><td>/'wɜːrsn/ vt.</td><td>& vi. (使)变得更坏,(使)恶化, worsening, worsens</td></tr>
+<tr><td>crunch</td><td>/krʌntʃ/ n.</td><td>咬碎，咬碎声；扎扎地踏vt. 压碎；嘎扎嘎扎的咬嚼；扎扎地踏过vi. 嘎吱作响地咀嚼；嘎吱嘎吱地踏过, crunching, crunches</td></tr>
+<tr><td>narrowing</td><td>/'næroʊ/ adj.</td><td>狭窄的，有限的；度量小的；精密的；勉强的n. 狭窄部分，隘路；海峡vt. 使变狭窄vi. 变窄, narrowest</td></tr>
+<tr><td>shrink</td><td>/ʃrɪŋk/ vt.</td><td>& vi. 收缩；退缩，shrunk shrunk，shrunken shrinking，shrinks</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>silly</td><td>/'sɪli/ adj.</td><td>蠢的，傻的；糊涂的，可笑的〈非正〉不省人事的，失去知觉的；晕头转向的，silliest</td></tr>
+<tr><td>adaptation</td><td>/ˌædæp'teɪʃn/ n.</td><td>适应,适合改编，改写改编本，改写本</td></tr>
+<tr><td>devotion</td><td>/dɪ'voʊʃn/ n.</td><td>奉献, 献身, 忠诚热爱, 挚爱</td></tr>
+<tr><td>contempt</td><td>/kən'tempt/ n.</td><td>轻视，蔑视；耻辱</td></tr>
+<tr><td>phase</td><td>/feɪz/ n.</td><td>阶段, 时期(月亮、行星的)位相vt. 分阶段计划[安排], phasing, phases</td></tr>
+<tr><td>serious</td><td>/'sɪriəs/ adj.</td><td>严肃的，严重的；认真的；庄重的；危急的</td></tr>
+<tr><td>bombing</td><td>— abbr.</td><td>物料清单（Bill of Materiel）</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day40.html" class="nav-btn">← Day 40</a>
+  
+</div>
+
+<div class="progress">📖 Day 41 of 41</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-07-18</div>
+
+</body>
+</html>

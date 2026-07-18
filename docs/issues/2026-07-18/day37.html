@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Science & technology</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-07-18</div>
+
+<h1 class="article-title">Science & technology</h1>
+<div class="article-section"></div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>They concluded that even when the models came close to getting the right EEI, they got there in the wrong way. They <span class="annot" data-tooltip="tended /tend/ vt. 照料，照顾，伺候vi. 往，朝向易于；倾向时 态: tended，tending，tends">tended</span> to have a lower increase in absorption and a lower increase in emission; in balance-sheet <span class="annot" data-tooltip="terms /tɜːrmz/ n. 条款；地位，关系；措辞；术语；价钱（term的复数形式）v. 把…称为（term的三单形式）">terms</span>, less income and less outgoings, even if the gap between the two was almost the same. But if all the models were wrong in the same direction, some were wronger than others. And the most wrong all had one thing in common: low “climate sensitivity”. Climate sensitivity is a way of thinking about the sum of all feedbacks—an estimate of the temperature <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> to be expected for a given increase in forcing. In 2021 the IPCC reckoned that the best estimate of this sensitivity, given understanding of forcing at the time, was 3°C, with a 90% chance of a <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span> between 2°C and 5°C. Dr Myhre and his colleagues found that, when judged by their performance on the EEI, models with a sensitivity estimate of less than 2.94ºC could, with high confidence, be ruled out. The IPCC’s best estimate of climate sensitivity is, in other words, the lowest still plausible (see chart 2). Moreover, a recent study led by Gergana Gyuleva, a colleague of Dr Knutti’s at ETH Zurich, using a different measure of climate sensitivity, gets a similar result. A long-time champion of higher climate sensitivities is James Hansen of the Earth Institute at Columbia University. Dr Hansen, a veteran who has been working on climate models and climate sensitivity since the 1970s, thinks the answer to the question “forcings or feedbacks?” is a resounding both. Sulphate effects are big; climate sensitivity is high. As a result he believes warming is currently growing not at 0.27°C per <span class="annot" data-tooltip="decade /'dekeɪd/ n. 十年，十年期；十">decade</span>, the rate Dr Forster and his colleagues currently calculate, but at a whopping 0.4°C a decade. On that basis he expects the current El Niño to make both this year and next the hottest on record (most prognosticators think that its full effects will make this happen only next year). His projections see warming since the 19th century <span class="annot" data-tooltip="reaching /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reaching</span> 2°C—and thus <span class="annot" data-tooltip="surpassing /sər'pæs/ vt. 胜过，优于；超越；非…所能办到或理解时 态: surpassed, surpassing, surpasses">surpassing</span> the limit enshrined in the Paris agreement on climate in 2015— by the end of the 2030s.</p>
+<p>Few of Dr Hansen’s peers agree with all of this. They take <span class="annot" data-tooltip="issue /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issue</span> with the way he <span class="annot" data-tooltip="derives /dɪ'raɪv/ vt. & vi. 得到源于时 态: derived, deriving, derives">derives</span> his high climate sensitivity from analysis of the ice ages and the warm periods between them. According to Dr Armour the <span class="annot" data-tooltip="pattern /'pætərn/ n. 型，样式花样，图案方式，形式榜样，典范vt. 模仿； 仿制以图案装饰时 态: patterned，patterning，">pattern</span> of the warming at the end of the most recent ice age did not look like the pattern of warming being seen today. Most discussions of climate sensitivity deal in global averages. But it is becoming increasingly clear that <span class="annot" data-tooltip="patterns /'pætərn/ n. 型，样式花样，图案方式，形式榜样，典范vt. 模仿； 仿制以图案装饰时 态: patterned，patterning，">patterns</span> matter. The oceans are not warming homogeneously, and some parts of the world are better at losing heat than others. The classic example is the “warm pool” in the western Pacific. Surface heat <span class="annot" data-tooltip="drives /draɪv/ vt. 驱赶驱使, 促使敲, 击vt. & vi. 驾驶n. 乘车旅行私人车道传动, 驱动干劲, 积极性, 能动性紧迫, 逼迫,">drives</span> powerful convection into the atmosphere above, producing towering thunderclouds. This convection moves heat up <span class="annot" data-tooltip="towards /tɔːrdz/ prep. 向，朝为了；有助于；用于对于，关于接近；将近；大约">towards</span> the top of the atmosphere very efficiently. And once there that heat is more easily lost to space as <span class="annot" data-tooltip="infrared /ˌɪnfrə'red/ adj. 〈物〉红外线的">infrared</span>. The planet gets a radiator; its climate sensitivity goes down. Work by Vince Cooper of MIT, a former student of Dr Armour, applies similar ideas to the end of the ice age. The bits of the sea surface which were most anomalously cold back then were in northern high-latitudes. And for a given amount of warming, a world where that warming is concentrated in the high-latitudes will have a higher climate sensitivity than a world of more homogeneous warming like today’s. The changes in global average temperature seen then do not imply particularly high sensitivity now. In fact, Dr Cooper thinks they suggest that today’s sensitivity is unlikely to be more than 4°C. But the importance of patterns does not lie only in the past. Dr Rugenstein and others have been working for some time on the problem that the patterns of warming found in climate models do not, by and large, reflect those seen in the real world. And some aspect of this disjunction might explain why the models are not matching the real EEI. At the Ringberg meeting the <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of people who <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span> that pattern effects might yet explain the EEI was smaller than the “forcings are wrong” crowd, but larger than any other <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span>.</p>
+<p>Unfortunately, it is not clear quite what that <span class="annot" data-tooltip="explanation /ˌeksplə'neɪʃn/ n. 解释, 说明能说明某事缘由的言语、事实、情况等">explanation</span> would look like— not least because, as Dr Stevens puts it, “No one knows what makes the <span class="annot" data-tooltip="patterns /'pætərn/ n. 型，样式花样，图案方式，形式榜样，典范vt. 模仿； 仿制以图案装饰时 态: patterned，patterning，">patterns</span>.” Are they the result of natural variability, with their arrangement over the past few <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span>—during some of which the warm pool radiator was working very well— largely a matter of chance? Or might they be explained through a <span class="annot" data-tooltip="mechanism /'mekənɪzəm/ n. 机械装置构造, 机制办法, 技巧, 途径">mechanism</span> that the models do not yet know how to capture? “My <span class="annot" data-tooltip="intuition /ˌɪntu'ɪʃn/ n. 直觉凭直觉感知的知识形容词: intuitional">intuition</span>”, says Dr Rugenstein, “is that the models’ ocean heat uptake is wrong.” This would lead to problems with the sea-surface temperature patterns. Getting models to mirror the way the ocean couples to the atmosphere is a longstanding problem, and one that looks hard to solve. But it matters <span class="annot" data-tooltip="immensely /ɪ'mens/ adj. 极大的, 巨大的副 词: immensely">immensely</span>. The oceans of the dimming Earth have been absorbing ever more <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span>. They are storing up that energy. Understanding the <span class="annot" data-tooltip="processes /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">processes</span> <span class="annot" data-tooltip="involved /ɪn'vɑːlvd/ adj. 卷入的；有关的；复杂的v. 涉及；使参与；包含（involve的过去式和过去分词）">involved</span> is a matter of urgency—and a certain frustration. “What the last 25 years <span class="annot" data-tooltip="actually /'æktʃuəl/ adj. 真实的，实际的；现行的，目前的副 词: actually">actually</span> tell us about the next 25 years is open,” says Dr Rugenstein. “And that’s embarrassing as a field.” Last year Dr Stevens and Tiffany Shaw, a researcher at the University of Chicago who looks at predictions of regional climate change, published a paper called “The Other Climate Crisis”. The first climate crisis is familiar enough: the world is heating up quickly. The other crisis, they argue, is in climate science itself, where an accumulation of <span class="annot" data-tooltip="anomalies /ə'nɑːməli/ n. 异常,反常,不规则畸形人〔物〕；异常现象近点角形容词: anomalistic">anomalies</span> suggests that some assumptions needed questioning. Progress in understanding what the increasing amount of energy being stored in Earth’s land, sea and air system is actually going to do, they say, requires climate scientists to concentrate on the processes and predictions where models and data diverge the most. There is no more consequential divergence to get started with than the dimming of Earth. ■ For more <span class="annot" data-tooltip="coverage /'kʌvərɪdʒ/ n. 新闻报道, 报道量覆盖范围">coverage</span> of climate change, sign up for the Climate <span class="annot" data-tooltip="issue /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">Issue</span>, our fortnightly subscriber-only newsletter, or visit our climate-change <span class="annot" data-tooltip="hub /hʌb/ n. 中心；毂；木片">hub</span>. This article was downloaded by zlibrary from https://www.economist.com//science-and-technology/2026/07/15/the-rate-at-which- earth-is-absorbing-energy-is-alarming-climate-scientists</p>
+<p>Science & technology | Well informed How to train for a heatwave A nice, hot bath can go a long way July 16th 2026 ENGLAND’S football team set up camp in West Palm Beach, Florida, on June 1st, almost two weeks before the start of the 2026 World Cup. That was so the players, many of whom were used to training in the mild climate of Britain, could adapt to the blistering heat of the <span class="annot" data-tooltip="host /hoʊst/ n. 主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集时 态: hosted, hosting, host">host</span> nations. But as July has brought western Europe’s third heatwave of 2026, even those not competing in <span class="annot" data-tooltip="elite /eɪ'liːt/ n. （社会）上层集团；掌权人物；出类拔萃的人，精英adj.（社会）上层集团的；掌权人物的；精英的">elite</span> sports might <span class="annot" data-tooltip="wonder /'wʌndər/ vt. & vi. 对…感到疑惑想知道；问自己n. 惊奇，惊叹，惊异，惊诧奇人，奇才奇观，奇景，奇迹，奇事时 态: wonder">wonder</span> how they can train <span class="annot" data-tooltip="appropriately /ə'proʊpriət/ adj. 适当的，恰当的vt. 挪用；占用；盗用拨出(款项)时 态: appropriated，appropriating，app">appropriately</span> to beat the heat. Preparing for heat requires <span class="annot" data-tooltip="exposure /ɪk'spoʊʒər/ n. 暴露, 显露揭发, 揭露(软片等)曝光">exposure</span> to heat. That increases levels of blood plasma—the watery <span class="annot" data-tooltip="stuff /stʌf/ n. 材料；东西；填充物；素材资料vt. 填塞；塞满；让吃饱vi. 吃得过多时 态: stuffed, stuffing, s">stuff</span> which carries blood cells around the body— meaning the heart does not have to work as hard to pump blood, and can beat in a more <span class="annot" data-tooltip="leisurely /'liːʒər/ n. 闲暇；空闲；安逸adj. 空闲的；有闲的；业余的">leisurely</span> manner for longer.</p>
+<p>More plasma also improves blood flow to the skin. There, tiny <span class="annot" data-tooltip="sweat /swet/ v. 出汗；流汗（物体表面）渗出水分，结水珠艰苦努力；辛苦地干担心；焦虑；不安n. 汗；出汗；流汗；一身汗繁重的工作；艰苦的劳">sweat</span> glands <span class="annot" data-tooltip="release /rɪ'liːs/ vt. 释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]时 态: released，rel">release</span> water and electrolytes onto the skin’s surface, whence the water evaporates, <span class="annot" data-tooltip="cooling /ˈkulɪŋ/ n. 冷却adj. 凉的；凉爽的冷却的">cooling</span> the body. As the body adapts to heat it lowers the temperature at which <span class="annot" data-tooltip="perspiration /ˌpɜːrspə'reɪʃn/ n. 汗;汗水出汗;流汗形容词: perspiratory">perspiration</span> begins, as well as the amount of electrolytes lost. The best way to bring about such changes is “controlled hyperthermia”. Unfortunately, that involves being locked in a heat <span class="annot" data-tooltip="chamber /'tʃeɪmbər/ n. （身体或器官内的）室，膛；房间；会所adj. 室内的；私人的，秘密的vt. 把…关在室内；装填（弹药等）时 态: cha">chamber</span> for 90 minutes and <span class="annot" data-tooltip="monitored /'mɑːnɪtər/ n. 显示屏；监视器；（计算机）显示器监控器；监测器班长；级长；班代表（尤指派往国外的）监督员，核查员巨蜥v. 监视；检查；跟">monitored</span> with a rectal thermometer. In the sweltering heat, participants spend 30 minutes exercising to <span class="annot" data-tooltip="raise /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raise</span> their core body temperatures to a target <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span>—usually 38.5°C. The next hour is then spent alternating between <span class="annot" data-tooltip="exercise /'eksərsaɪz/ n. 练习；运动；运用；操练；典礼；礼拜vt. 练习；锻炼；使用；使忙碌；使惊恐vi. 运动；练习时 态: exercised">exercise</span> and rest to keep their temperature fixed at the target. And you have to repeat this daily for five to seven days. Few people, however, have a heat chamber—or the necessary <span class="annot" data-tooltip="monitoring /'mɑːnɪtər/ n. 显示屏；监视器；（计算机）显示器监控器；监测器班长；级长；班代表（尤指派往国外的）监督员，核查员巨蜥v. 监视；检查；跟">monitoring</span> equipment—in their living room. Fortunately, scientists have devised methods more <span class="annot" data-tooltip="appropriate /ə'proʊpriət/ adj. 适当的，恰当的vt. 挪用；占用；盗用拨出(款项)时 态: appropriated，appropriating，app">appropriate</span> for everyday life. The simplest is to exercise <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span> in the heat, says Neil Maxwell, an environmental physiologist at the University of Brighton, in Britain. “That will naturally acclimatise you.” Even better is to add a hot bath. A study published in 2016, in the Scandinavian <span class="annot" data-tooltip="journal /'dʒɜːrnl/ n. 日报，杂志；日记；[经]分类账">Journal</span> of Medicine & Science in Sports, found that 40 minutes on a <span class="annot" data-tooltip="treadmill /'tredmɪl/ n. 枯燥无味的工作〔生活方式〕(尤指旧时由人或牲畜踩动踏板使之转动的)踏车(锻炼身体的)跑步机,走步机">treadmill</span> in 18°C heat followed by 40 minutes in a hot bath, daily for six days, improved several measures of acclimatisation. In fact, as work published in April in Healthcare found, hot baths alone can do the trick. This research, which looked at healthy adults aged over 65, showed that an hour a day in a 40°C bath produced signs of acclimatisation after just four days. So there is, as it were, no need to sweat it. <span class="annot" data-tooltip="simply /'sɪmpli/ adv. 简单地；朴素地；简直；仅仅；坦白地">Simply</span> immersing yourself in hot water brings about the necessary increase in core temperature, says Laura Wilson of Middlesex University, also in Britain, who led the study. Acclimatisation is not permanent. “If you don’t keep exposing yourself to heat, then you’re going to start losing the adaptive benefits,” says Dr Maxwell. Still, only a few days of training are needed in the lead-up to a</p>
+<p>heatwave. The evidence suggests 75-80% of <span class="annot" data-tooltip="adaptations /ˌædæp'teɪʃn/ n. 适应,适合改编，改写改编本，改写本">adaptations</span> build up in the first four to seven days. Heat can be dangerous. And acclimatisation is not immunity. The usual risks from heat still apply. “Try and replace 150% of the fluid you lose during any kind of session to acclimatise,” says Dr Wilson. “If you’re starting to feel <span class="annot" data-tooltip="faint /feɪnt/ vi. 晕倒，昏倒adj. 微弱的，模糊的，暗淡的(体力)无力的，虚弱的；易失去知觉的，昏眩的(动作等)无力的，似无太大效果的n">faint</span> or dizzy or lightheaded, take yourself out of the environment.” When done safely, however, some simple tactics could help take the <span class="annot" data-tooltip="edge /edʒ/ n. 边缘；刀刃；优势；锋利vt. 使锐利；将…开刃；给…加上边vi. 缓缓移动；侧着移动EDGEabbr. Electron">edge</span> off the weather. Jumping in a hot bath may not be appealing as temperatures begin to <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span>. But your future self will thank you for it. ■ After a free, evidence-based guide to health and wellness? Sign up to our weekly Well Informed newsletter. This article was downloaded by zlibrary from https://www.economist.com//science-and-technology/2026/07/10/how-to-train-for-a- heatwave</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Culture</div>
+<p>A very <span class="annot" data-tooltip="silly /'sɪli/ adj. 蠢的，傻的；糊涂的，可笑的〈非正〉不省人事的，失去知觉的；晕头转向的比较级: sillier，silliest">silly</span> <span class="annot" data-tooltip="adaptation /ˌædæp'teɪʃn/ n. 适应,适合改编，改写改编本，改写本">adaptation</span> of “The Odyssey” Why Sir Christopher Nolan inspires such <span class="annot" data-tooltip="devotion /dɪ'voʊʃn/ n. 奉献, 献身, 忠诚热爱, 挚爱">devotion</span>—and <span class="annot" data-tooltip="contempt /kən'tempt/ n. 轻视，蔑视；耻辱">contempt</span> Emo culture was not just a <span class="annot" data-tooltip="phase /feɪz/ n. 阶段, 时期(月亮、行星的)位相vt. 分阶段计划[安排]时 态: phased, phasing, phases">phase</span>, as it turns out A mystery street artist is taking over cities George Sand’s life was a heady mix of sex and <span class="annot" data-tooltip="serious /'sɪriəs/ adj. 严肃的，严重的；认真的；庄重的；危急的副 词: seriously">serious</span> fiction The wild, gripping story of the Nord Stream pipeline <span class="annot" data-tooltip="bombing abbr. 物料清单（Bill of Materiel）">bombing</span></p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>tended</td><td>/tend/ vt.</td><td>照料，照顾，伺候vi. 往，朝向易于；倾向，tending，tends</td></tr>
+<tr><td>terms</td><td>/tɜːrmz/ n.</td><td>条款；地位，关系；措辞；术语；价钱（term的复数形式）v. 把…称为（term的三单形式）</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>decade</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>reaching</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>surpassing</td><td>/sər'pæs/ vt.</td><td>胜过，优于；超越；非…所能办到或理解, surpassing, surpasses</td></tr>
+<tr><td>issue</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>derives</td><td>/dɪ'raɪv/ vt.</td><td>& vi. 得到源于, deriving, derives</td></tr>
+<tr><td>pattern</td><td>/'pætərn/ n.</td><td>型，样式花样，图案方式，形式榜样，典范vt. 模仿； 仿制以图案装饰，patterning，patterns</td></tr>
+<tr><td>patterns</td><td>/'pætərn/ n.</td><td>型，样式花样，图案方式，形式榜样，典范vt. 模仿； 仿制以图案装饰，patterning，patterns</td></tr>
+<tr><td>drives</td><td>/draɪv/ vt.</td><td>驱赶驱使, 促使敲, 击vt. & vi. 驾驶n. 乘车旅行私人车道传动, 驱动干劲, 积极性, 能动性紧迫, 逼迫, 压力, drives</td></tr>
+<tr><td>towards</td><td>/tɔːrdz/ prep.</td><td>向，朝为了；有助于；用于对于，关于接近；将近；大约</td></tr>
+<tr><td>infrared</td><td>/ˌɪnfrə'red/ adj.</td><td>〈物〉红外线的</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>explanation</td><td>/ˌeksplə'neɪʃn/ n.</td><td>解释, 说明能说明某事缘由的言语、事实、情况等</td></tr>
+<tr><td>patterns</td><td>/'pætərn/ n.</td><td>型，样式花样，图案方式，形式榜样，典范vt. 模仿； 仿制以图案装饰，patterning，patterns</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>mechanism</td><td>/'mekənɪzəm/ n.</td><td>机械装置构造, 机制办法, 技巧, 途径</td></tr>
+<tr><td>intuition</td><td>/ˌɪntu'ɪʃn/ n.</td><td>直觉凭直觉感知的知识</td></tr>
+<tr><td>immensely</td><td>/ɪ'mens/ adj.</td><td>极大的, 巨大的</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>processes</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>involved</td><td>/ɪn'vɑːlvd/ adj.</td><td>卷入的；有关的；复杂的v. 涉及；使参与；包含（involve的过去式和过去分词）</td></tr>
+<tr><td>actually</td><td>/'æktʃuəl/ adj.</td><td>真实的，实际的；现行的，目前的</td></tr>
+<tr><td>anomalies</td><td>/ə'nɑːməli/ n.</td><td>异常,反常,不规则畸形人〔物〕；异常现象近点角</td></tr>
+<tr><td>coverage</td><td>/'kʌvərɪdʒ/ n.</td><td>新闻报道, 报道量覆盖范围</td></tr>
+<tr><td>issue</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>hub</td><td>/hʌb/ n.</td><td>中心；毂；木片</td></tr>
+<tr><td>host</td><td>/hoʊst/ n.</td><td>主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集, hosting, hosts</td></tr>
+<tr><td>elite</td><td>/eɪ'liːt/ n.</td><td>（社会）上层集团；掌权人物；出类拔萃的人，精英adj.（社会）上层集团的；掌权人物的；精英的</td></tr>
+<tr><td>wonder</td><td>/'wʌndər/ vt.</td><td>& vi. 对…感到疑惑想知道；问自己n. 惊奇，惊叹，惊异，惊诧奇人，奇才奇观，奇景，奇迹，奇事，wondering，wonders</td></tr>
+<tr><td>appropriately</td><td>/ə'proʊpriət/ adj.</td><td>适当的，恰当的vt. 挪用；占用；盗用拨出(款项)，appropriating，appropriates</td></tr>
+<tr><td>exposure</td><td>/ɪk'spoʊʒər/ n.</td><td>暴露, 显露揭发, 揭露(软片等)曝光</td></tr>
+<tr><td>stuff</td><td>/stʌf/ n.</td><td>材料；东西；填充物；素材资料vt. 填塞；塞满；让吃饱vi. 吃得过多, stuffing, stuffs</td></tr>
+<tr><td>leisurely</td><td>/'liːʒər/ n.</td><td>闲暇；空闲；安逸adj. 空闲的；有闲的；业余的</td></tr>
+<tr><td>sweat</td><td>/swet/ v.</td><td>出汗；流汗（物体表面）渗出水分，结水珠艰苦努力；辛苦地干担心；焦虑；不安n. 汗；出汗；流汗；一身汗繁重的工作；艰苦的劳动；累活儿；艰苦努力运动服；运动裤（sw</td></tr>
+<tr><td>release</td><td>/rɪ'liːs/ vt.</td><td>释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]，releasing，releases</td></tr>
+<tr><td>cooling</td><td>/ˈkulɪŋ/ n.</td><td>冷却adj. 凉的；凉爽的冷却的</td></tr>
+<tr><td>perspiration</td><td>/ˌpɜːrspə'reɪʃn/ n.</td><td>汗;汗水出汗;流汗</td></tr>
+<tr><td>chamber</td><td>/'tʃeɪmbər/ n.</td><td>（身体或器官内的）室，膛；房间；会所adj. 室内的；私人的，秘密的vt. 把…关在室内；装填（弹药等）, chambering, chambers</td></tr>
+<tr><td>monitored</td><td>/'mɑːnɪtər/ n.</td><td>显示屏；监视器；（计算机）显示器监控器；监测器班长；级长；班代表（尤指派往国外的）监督员，核查员巨蜥v. 监视；检查；跟踪调查监听（电话、外国无线电广播等）, </td></tr>
+<tr><td>raise</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>exercise</td><td>/'eksərsaɪz/ n.</td><td>练习；运动；运用；操练；典礼；礼拜vt. 练习；锻炼；使用；使忙碌；使惊恐vi. 运动；练习, exercising, exercises</td></tr>
+<tr><td>monitoring</td><td>/'mɑːnɪtər/ n.</td><td>显示屏；监视器；（计算机）显示器监控器；监测器班长；级长；班代表（尤指派往国外的）监督员，核查员巨蜥v. 监视；检查；跟踪调查监听（电话、外国无线电广播等）, </td></tr>
+<tr><td>appropriate</td><td>/ə'proʊpriət/ adj.</td><td>适当的，恰当的vt. 挪用；占用；盗用拨出(款项)，appropriating，appropriates</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>journal</td><td>/'dʒɜːrnl/ n.</td><td>日报，杂志；日记；[经]分类账</td></tr>
+<tr><td>treadmill</td><td>/'tredmɪl/ n.</td><td>枯燥无味的工作〔生活方式〕(尤指旧时由人或牲畜踩动踏板使之转动的)踏车(锻炼身体的)跑步机,走步机</td></tr>
+<tr><td>simply</td><td>/'sɪmpli/ adv.</td><td>简单地；朴素地；简直；仅仅；坦白地</td></tr>
+<tr><td>adaptations</td><td>/ˌædæp'teɪʃn/ n.</td><td>适应,适合改编，改写改编本，改写本</td></tr>
+<tr><td>faint</td><td>/feɪnt/ vi.</td><td>晕倒，昏倒adj. 微弱的，模糊的，暗淡的(体力)无力的，虚弱的；易失去知觉的，昏眩的(动作等)无力的，似无太大效果的n. 昏倒，faintest</td></tr>
+<tr><td>edge</td><td>/edʒ/ n.</td><td>边缘；刀刃；优势；锋利vt. 使锐利；将…开刃；给…加上边vi. 缓缓移动；侧着移动EDGEabbr. Electronic Data Gathering Eq</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>silly</td><td>/'sɪli/ adj.</td><td>蠢的，傻的；糊涂的，可笑的〈非正〉不省人事的，失去知觉的；晕头转向的，silliest</td></tr>
+<tr><td>adaptation</td><td>/ˌædæp'teɪʃn/ n.</td><td>适应,适合改编，改写改编本，改写本</td></tr>
+<tr><td>devotion</td><td>/dɪ'voʊʃn/ n.</td><td>奉献, 献身, 忠诚热爱, 挚爱</td></tr>
+<tr><td>contempt</td><td>/kən'tempt/ n.</td><td>轻视，蔑视；耻辱</td></tr>
+<tr><td>phase</td><td>/feɪz/ n.</td><td>阶段, 时期(月亮、行星的)位相vt. 分阶段计划[安排], phasing, phases</td></tr>
+<tr><td>serious</td><td>/'sɪriəs/ adj.</td><td>严肃的，严重的；认真的；庄重的；危急的</td></tr>
+<tr><td>bombing</td><td>— abbr.</td><td>物料清单（Bill of Materiel）</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day36.html" class="nav-btn">← Day 36</a>
+  <a href="day38.html" class="nav-btn">Day 38 →</a>
+</div>
+
+<div class="progress">📖 Day 37 of 41</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-07-18</div>
+
+</body>
+</html>

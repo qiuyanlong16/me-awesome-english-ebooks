@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance & economics</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-07-18</div>
+
+<h1 class="article-title">Finance & economics</h1>
+<div class="article-section"></div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p><span class="annot" data-tooltip="circuits /'sɜːrkɪt/ n. 电路，回路；环道；一圈；巡回vi. 环行vt. 绕回…环行时 态: circuited, circuiting, cir">circuits</span> in May, for example, were up by some 70% year on year in dollar <span class="annot" data-tooltip="terms /tɜːrmz/ n. 条款；地位，关系；措辞；术语；价钱（term的复数形式）v. 把…称为（term的三单形式）">terms</span>. That <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> was <span class="annot" data-tooltip="entirely /ɪn'taɪərli/ adv. 全部地;完整地;完全地">entirely</span> <span class="annot" data-tooltip="due /duː/ adj. 到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）">due</span> to higher chip prices. China’s overdependence on exports has been clear for some time. Many analysts therefore hope its leaders will turn again to <span class="annot" data-tooltip="fiscal /'fɪskl/ adj. 国库的；会计的，财政的副 词: fiscally">fiscal</span> stimulus to lift <span class="annot" data-tooltip="domestic /də'mestɪk/ adj. 国内的；家庭的；驯养的；一心只管家务的">domestic</span> spending. Meanwhile, the opposite is happening. The government is stumbling into “de facto austerity”, as Xiangrong Yu and Xinyu Ji of Citigroup, a bank, have put it. Tax <span class="annot" data-tooltip="revenues /'revənuː/ n. 收入，收益；财政收入，税收">revenues</span> have grown strongly in recent months. From January to May the <span class="annot" data-tooltip="authorities /ə'θɔːrəti/ n. 威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗">authorities</span> gathered 6.2% more in <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span>-added tax and 12.2% more in personal-income taxes than they did a year before. Thanks to energetic trading in China’s stock markets, <span class="annot" data-tooltip="stamp /stæmp/ n. 邮票；印记；跺脚；标志vt. 铭记；标出；盖章于…；贴邮票于…；用脚踩踏vi. 捣碎；跺脚；毁掉时 态: stamped">stamp</span> duties also brought in <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> more than usual, rising by 89%. Some of this reflects the return of <span class="annot" data-tooltip="inflation /ɪn'fleɪʃn/ n. (充气而引起的)膨胀通货膨胀">inflation</span>, which increases the nominal value of <span class="annot" data-tooltip="purchases /'pɜːrtʃəs/ n. 购买；紧握；起重装置vt. 购买；赢得vi. 购买东西时 态: purchased, purchasing, purch">purchases</span>, boosting VAT. The tax authorities have also put more effort into <span class="annot" data-tooltip="enforcement /ɪn'fɔːrsmənt/ n. 强制,实施,执行">enforcement</span>. Since last year, for instance, automated text messages have <span class="annot" data-tooltip="instructed /ɪn'strʌkt/ vt. 命令；教授；指导；通知时 态: instructed, instructing, instructs">instructed</span> taxpayers to declare all their overseas income and <span class="annot" data-tooltip="assets /'æset/ n. 资产；有用的东西；有利条件；优点">assets</span> going back to 2022. So <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">although</span> the <span class="annot" data-tooltip="central /'sentrəl/ adj. 中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的副 词: centrally">central</span> government is spending more, it is also collecting more. The budget deficit, combining central and local governments, has <span class="annot" data-tooltip="narrowed /'næroʊ/ adj. 狭窄的，有限的；度量小的；精密的；勉强的n. 狭窄部分，隘路；海峡vt. 使变狭窄vi. 变窄比较级: narrower">narrowed</span> a little over the past 12 months. That is the opposite of what stimulus requires—and of what a weak economy needs. The mix of fiscal spending has also changed in counterintuitive ways. China’s leader, Xi Jinping, champions high-tech <span class="annot" data-tooltip="manufacturing /ˌmænju'fæktʃərɪŋ/ n. 制造业，工业adj. 制造业的；制造的">manufacturing</span>, calling on entrepreneurs and local officials to <span class="annot" data-tooltip="cultivate /'kʌltɪveɪt/ vt. 耕作, 种植陶冶思想[感情]培养(友谊)时 态: cultivated, cultivating, cultivates">cultivate</span> “new <span class="annot" data-tooltip="productive /prə'dʌktɪv/ adj. 多产的，富饶的富有成效的；有益的副 词: productively">productive</span> forces”. He has also warned in the past against “welfarism”, arguing that handouts can make people lazy. You might assume, then, that public spending had <span class="annot" data-tooltip="drifted /drɪft/ n. 漂流，漂移；漂流物；趋势vi. 漂流，漂移；漂泊vt. 使…漂流；使…受风吹积DRIFTabbr. Diversity ">drifted</span> <span class="annot" data-tooltip="towards /tɔːrdz/ prep. 向，朝为了；有助于；用于对于，关于接近；将近；大约">towards</span> technology and education and away from social safety-nets.</p>
+<p>But as Citi’s economists point out, the emerging <span class="annot" data-tooltip="fiscal /'fɪskl/ adj. 国库的；会计的，财政的副 词: fiscally">fiscal</span> “pecking order” seems instead to favour social <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span> (which includes <span class="annot" data-tooltip="pensions /ˈpenʃn/ n. 津贴；退休金，抚恤金；膳宿费vt. 发给养老金或抚恤金时 态: pensioned, pensioning, pensi">pensions</span>, unemployment insurance, <span class="annot" data-tooltip="anti /'ænti/ adj. 反对的n. 反对者，反对论者">anti</span>-poverty handouts and efforts to put people back to work). These items’ share of the government’s <span class="annot" data-tooltip="main /meɪn/ adj. 主要的; 最重要的n. 总管道; 干线">main</span> budget has grown in recent years (see chart 2). The slice devoted to technology and education has remained steady, and the share ploughed into <span class="annot" data-tooltip="infrastructure /'ɪnfrəstrʌktʃər/ n. 基础设施; 基础结构">infrastructure</span> has declined. This <span class="annot" data-tooltip="picture /'pɪktʃər/ n. 图画，肖像；照片(生动的)描述，写照影片；电影；画面美景，景色情况，事态，局面vt. 绘画；描绘想象时 态: pictu">picture</span> does not capture everything. It leaves out China’s state-owned enterprises. It also <span class="annot" data-tooltip="excludes /ɪk'skluːd/ vt. 排除；排斥；拒绝接纳；逐出时 态: excluded, excluding, excludes">excludes</span> special government funds, which have their <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> missions and money. <span class="annot" data-tooltip="nonetheless /ˌnʌnðə'les/ adv. 虽然如此,但是">Nonetheless</span>, the numbers <span class="annot" data-tooltip="reveal /rɪ'viːl/ vt. 显示；露出泄露；透露时 态: revealed，revealing，reveals">reveal</span> some fiscal home truths. In a weak economy and an ageing <span class="annot" data-tooltip="society /sə'saɪəti/ n. 社会；社交界；交往；社团">society</span>, the humdrum demands of the <span class="annot" data-tooltip="elderly /'eldərli/ adj. 上了年纪的, 中年以上的">elderly</span>, the unemployed and the poor will always make their presence felt, whatever the leader’s <span class="annot" data-tooltip="preferences /'prefrəns/ n. 较喜欢的东西, 偏爱优待, 优惠, 优先权">preferences</span>. Chinese technology may be white- hot. But its economy is <span class="annot" data-tooltip="cooling /ˈkulɪŋ/ n. 冷却adj. 凉的；凉爽的冷却的">cooling</span>. And its population is increasingly grey.■ For more expert analysis of the biggest stories in economics, finance and markets, sign up to Money Talks, our weekly subscriber-only newsletter. This article was downloaded by zlibrary from https://www.economist.com//finance-and-economics/2026/07/15/chinas-trade-gap-is- <span class="annot" data-tooltip="narrowing /'næroʊ/ adj. 狭窄的，有限的；度量小的；精密的；勉强的n. 狭窄部分，隘路；海峡vt. 使变狭窄vi. 变窄比较级: narrower">narrowing</span>-and-other-surprises</p>
+<p>Finance & economics | Taskmaster Can Kevin Warsh’s Fed force 5 reimagine monetary policymaking? The new <span class="annot" data-tooltip="chairman /'tʃermən/ n. 主席，会长；董事长时 态: chairmanned, chairmanning, chairmans">chairman</span> enlists heavy-hitters to fight a handful of gnarly problems July 16th 2026 <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">FEDERAL</span> RESERVE chairs like to leave a mark. Ben Bernanke, in charge during the global financial crisis of 2007-09, ushered in a formal <span class="annot" data-tooltip="inflation /ɪn'fleɪʃn/ n. (充气而引起的)膨胀通货膨胀">inflation</span> target and changed how the Fed talked to the world by making its deliberations less <span class="annot" data-tooltip="opaque /oʊ'peɪk/ adj. 不透明的难理解的, 晦涩的副 词: opaquely">opaque</span>. In 2015 his successor, Janet Yellen, raised interest rates after seven years near zero. Jerome Powell, who came next, launched the Fed’s first <span class="annot" data-tooltip="comprehensive /ˌkɑːmprɪ'hensɪv/ adj. 广泛的, 综合的副 词: comprehensively">comprehensive</span> review of its monetary-policy framework. Kevin Warsh, the new chair, also has big ideas. One is to limit how much of its <span class="annot" data-tooltip="internal /ɪn'tɜːrnl/ adj. 国内的；内部的；内在的名 词: internality">internal</span> deliberations the Fed <span class="annot" data-tooltip="reveals /rɪ'viːl/ vt. 显示；露出泄露；透露时 态: revealed，revealing，reveals">reveals</span>, on the grounds that public pronouncements <span class="annot" data-tooltip="subsequently /'sʌbsɪkwənt/ adj. 随后的, 继…之后的副 词: subsequently">subsequently</span> may make it harder for policymakers to <span class="annot" data-tooltip="revise /rɪ'vaɪz/ vt. 修订, 修改vt. & vi. 复习时 态: revised, revising, revises">revise</span></p>
+<p>their views. Another is to subject the Fed to more open external scrutiny. To that less <span class="annot" data-tooltip="controversial /ˌkɑːntrə'vɜːrʃl/ adj. 有争议的, 引起争议的名 词: controversialist">controversial</span> end, on July 9th Mr Warsh announced the formation of five task-forces which will review <span class="annot" data-tooltip="critical /'krɪtɪkl/ adj. 批评的，爱挑剔的；决定性的；危险的；临界的；鉴定的；评论的副 词: critically">critical</span> areas of monetary policy. Such brains trusts are not a new idea. In 2014 Mr Warsh, who served as a Fed governor in the financial crisis, was himself invited by the Bank of England to join one reviewing its communication <span class="annot" data-tooltip="practices /'præktɪs/ n. 练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规时 态: practiced，practicing，">practices</span>. But <span class="annot" data-tooltip="whereas /ˌwer'æz/ conj. 但是, 而">whereas</span> his predecessors at the Fed have always listened to <span class="annot" data-tooltip="leading /ˈliːdɪŋ/ adj. 主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）">leading</span> figures in <span class="annot" data-tooltip="academic /ˌækə'demɪk/ adj. 学院的；学术的；理论的n. 大学生，大学教师；学者副 词: academically">academic</span> economics, business and finance behind closed doors, Mr Warsh has handed them a microphone. Each task-force is led by a trio of <span class="annot" data-tooltip="notables /'noʊtəbl/ adj. 值得注意的，显著的；著名的n. 名人，显要人物副 词: notably">notables</span>. The one looking at how the Fed communicates includes two former <span class="annot" data-tooltip="central /'sentrəl/ adj. 中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的副 词: centrally">central</span>-bank presidents (from Brazil and Britain). A fellow ex-head (from India) co-chairs the team examining the Fed’s <span class="annot" data-tooltip="bloated /bloʊt/ vt. （使）肿胀；使膨胀；腌制vi. 膨胀；肿起；得意n. 膨胀的东西，肿胀的人；肿胀病人；自满的人时 态: bloated,">bloated</span> balance-sheet. The former boss of Walmart, America’s biggest supermarket, will help run the <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span> investigating <span class="annot" data-tooltip="alternative /ɔːl'tɜːrnətɪv/ adj. 可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）">alternative</span> data sources. The group exploring the impact of artificial intelligence on jobs and <span class="annot" data-tooltip="productivity /ˌproʊdʌk'tɪvəti/ n. 生产率, 生产力">productivity</span> is co-led by an eminent Stanford University economist on secondment to <span class="annot" data-tooltip="anthropic /ænˈθrɑpɪk/ adj. 人类的,有关人类的">Anthropic</span>, a top AI lab, an even more eminent <span class="annot" data-tooltip="silicon /'sɪlɪkən/ n. 〈化〉硅">Silicon</span> <span class="annot" data-tooltip="valley /'væli/ n. 流域；山谷；溪谷">Valley</span> venture capitalist and a Microsoft executive. A Nobel prizewinner is among the trio leading the task-force on understanding the causes of <span class="annot" data-tooltip="inflation /ɪn'fleɪʃn/ n. (充气而引起的)膨胀通货膨胀">inflation</span>. These heavy-hitters will, with the help of Fed staffers, <span class="annot" data-tooltip="cobble /'kɑːbl/ vt. 粗劣地制作,草率地拼凑修(鞋)匆匆制作； 胡乱拼凑； 粗制滥造时 态: cobbled, cobbling, cobbl">cobble</span> together policy recommendations and <span class="annot" data-tooltip="present /'preznt/ vt. 呈现；介绍；提出；赠送vi. 举枪瞄准adj. 出席的；现在的n. 现在；礼物；瞄准时 态: presented, pr">present</span> these first to the Fed board and then to the public. If things go <span class="annot" data-tooltip="smoothly /'smuːðli/ adv. 平稳地，平滑地；流畅地，流利地">smoothly</span>, all this will happen by the end of the year. Going smoothly will, first of all, require reconciling the co-chairs’ often divergent opinions in their areas of <span class="annot" data-tooltip="expertise /ˌekspɜːr'tiːz/ n. 专门知识或技能">expertise</span>. <span class="annot" data-tooltip="consider /kən'sɪdər/ vt. & vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及时 态: considered, considering, ">Consider</span> the team tasked with reviewing how the Fed thinks about inflation. Thomas Sargeant of New York University, who won the Nobel prize in 2011 for empirical work on cause and effect in the macroeconomy, is an unabashed fan of inflation targets. William White of the C.D. Howe Institute, a Canadian think-<span class="annot" data-tooltip="tank /tæŋk/ n. （存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内时 态: t">tank</span>, is an equally staunch critic, arguing that targets have played a role in making the world more indebted and exacerbated financial boom-<span class="annot" data-tooltip="bust /bʌst/ vi. 爆裂；破产；降低级别vt. 使爆裂；使破产；逮捕n. 半身像；胸部；萧条；破产adj. 破产了的；毁坏了的时 态: bu">bust</span> cycles. Greg Mankiw of Harvard University, who headed the Council of Economic Advisers under President George W. Bush, is in favour of targets but against spuriously precise ones like the Fed’s 2.0%.</p>
+<p><span class="annot" data-tooltip="sparks /spɑːrk/ n. 火花，火星；电火花；一丝，略微；导火线，诱因v. 引发，触发；产生火花（电火花）；点燃；增加趣味（或活力、风味等）时 态">Sparks</span> may <span class="annot" data-tooltip="likewise /'laɪkwaɪz/ adv. 也；同样地">likewise</span> fly in the other teams. The possible exception is the one concerned with AI. All its members are, like Mr Warsh, bullish on the technology’s <span class="annot" data-tooltip="transformative adj. 有改革能力的,变化的,变形的">transformative</span> potential, differing only in the degree of bullishness (from the gung-ho venture capitalist, Marc Andreessen, to the more guarded Asha Sharma of Microsoft and Chad Jones, a respected <span class="annot" data-tooltip="academic /ˌækə'demɪk/ adj. 学院的；学术的；理论的n. 大学生，大学教师；学者副 词: academically">academic</span> economist). Each also has an interest in <span class="annot" data-tooltip="promoting /'proʊmoʊ/ n. 商品推销；商品广告，广告片">promoting</span> an optimistic <span class="annot" data-tooltip="outlook /'aʊtlʊk/ n. 展望；态度，观点；景色">outlook</span>, given their ties to the tech <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span>. They must nevertheless, like their opposite numbers on the other teams, <span class="annot" data-tooltip="persuade /pər'sweɪd/ vt. & vi. 说服, 劝告时 态: persuaded, persuading, persuades">persuade</span> the Fed to take their recommendations <span class="annot" data-tooltip="seriously /'sɪriəs/ adj. 严肃的，严重的；认真的；庄重的；危急的副 词: seriously">seriously</span>—the second <span class="annot" data-tooltip="prerequisite /ˌpriː'rekwəzɪt/ n. 先决条件,前提">prerequisite</span> for the smooth completion of Mr Warsh’s effort. In most cases, <span class="annot" data-tooltip="notably /'noʊtəbli/ adv. 显著地；尤其">notably</span> on the Fed’s balance-sheet and <span class="annot" data-tooltip="inflation /ɪn'fleɪʃn/ n. (充气而引起的)膨胀通货膨胀">inflation</span> targeting, the conclusions would need the <span class="annot" data-tooltip="consent /kən'sent/ n. 准许，同意，赞成vi. 同意；赞成时 态: consented，consenting，consents">consent</span> of the Fed board or the <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">Federal</span> Open Markets Committee (FOMC), on which Mr Warsh has just one vote out of seven and 12, <span class="annot" data-tooltip="respectively /rɪ'spektɪv/ adj. 各自的; 各个的">respectively</span>, to become policy. Mr Bernanke famously spent hours discussing proposed changes to which economic forecasts the Fed would publicise, and sought a <span class="annot" data-tooltip="thumbs /θʌm/ vt. 以拇指拨弄；作搭车手势；笨拙地摆弄；翻阅vi. 用拇指翻书页；竖起拇指要求搭车n. 拇指时 态: thumbed, th">thumbs</span>-up even from the FOMC’s handful of non-voting members. Given this culture of collegiality, Mr Warsh will have to build <span class="annot" data-tooltip="consensus /kən'sensəs/ n. (意见等)一致, 一致同意">consensus</span> around the five sets of conclusions. He will also need to decide how to communicate those conclusions to the world.■ For more expert analysis of the biggest stories in economics, finance and markets, sign up to Money Talks, our weekly subscriber-only newsletter. This article was downloaded by zlibrary from https://www.economist.com//finance-and-economics/2026/07/16/can-kevin-warshs-fed- force-5-reimagine-monetary-policymaking</p>
+<p>Finance & economics | Buttonwood What investment gurus get wrong To see a country’s financial follies, look to its <span class="annot" data-tooltip="celebrity /sə'lebrəti/ n. (尤指娱乐界的)名人, 名流名声, 名誉">celebrity</span> advisers July 16th 2026 FINANCIAL ADVICE was once doled out <span class="annot" data-tooltip="solely /'soʊlli/ adv. 唯一地;仅仅;独一无二地">solely</span> by well-paid professionals, and solely to the wealthy. Then, from the 1980s, celebrity advisers took their tips to large radio and TV audiences, especially in America. Today legions of social-media “finfluencers” spout off recommendations to anyone, anywhere. As in previous <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span>, the recommendations of investment gurus—how to cut <span class="annot" data-tooltip="expenses /ɪk'spens/ n. 开支；消费；损失，代价vt. 向…收取费用vi. 被花掉时 态: expensed, expensing, expens">expenses</span>, build a savings fund or avoid <span class="annot" data-tooltip="scams /skæm/ n. 骗局，诡计；故事vt. 欺诈；诓骗vi. 欺诈；诓骗时 态: scammed, scamming, scams">scams</span>—are <span class="annot" data-tooltip="sensible /'sensəbl/ adj. 明智的；意识到的；通晓事理的；明显的n. 可感觉到的东西；敏感的人副 词: sensibly">sensible</span> and <span class="annot" data-tooltip="universal /ˌjuːnɪ'vɜːrsl/ adj. 全体的广泛的, 普遍的在世界各地的, 世界性的副 词: universally">universal</span>. Beyond the shared basics, though, their <span class="annot" data-tooltip="counsel /'kaʊnsl/ n. 忠告；讨论；商议；决策；法律顾问vt. 劝告；建议vi. 提出忠告；商讨时 态: counseled, counsell">counsel</span> differs in telling ways. They may not know it, but they hold up a mirror to their countries’ financial mores, resisting audiences’ <span class="annot" data-tooltip="vices /vaɪs/ n. 堕落，邪恶；不良习气，恶习（尤指与性或毒品有关的）罪行，道德败坏行为【英式】老虎钳；台钳（【美式】vise）pref. ">vices</span> or <span class="annot" data-tooltip="accidentally /ˌæksɪ'dentəli/ adv. 偶然地；意外地；非故意地故作意外地；有意装无意地">accidentally</span> reinforcing them.</p>
+<p>In America no young finfluencer yet matches the <span class="annot" data-tooltip="stature /'stætʃər/ n. 身高，身材；（精神、道德等的）高度">stature</span> of Dave Ramsey, a <span class="annot" data-tooltip="gruff /ɡrʌf/ adj. 粗暴的；脾气坏的；粗哑的vt. 粗鲁地说；生硬地说vi. 粗鲁地说；生硬地说话比较级: gruffer, gruffes">gruff</span> 65-year-old radio star turned <span class="annot" data-tooltip="podcaster /'pɑːdkæst/ n. 播客">podcaster</span>. Much of his advice—offered in a <span class="annot" data-tooltip="stern /stɜːrn/ n. 船尾；末端adj. 严厉的；坚定的Stern斯特恩(①姓氏 ②Otto, 1888-1969, 生于德国的美国物理学家,">stern</span>, fatherly style—is evergreen, built around emergency funds, <span class="annot" data-tooltip="sensible /'sensəbl/ adj. 明智的；意识到的；通晓事理的；明显的n. 可感觉到的东西；敏感的人副 词: sensibly">sensible</span> saving and buying shares for the long term. Mr Ramsey’s guidance, however, is puritanical in its attitude to debt. Sensibly, he urges listeners to pay off high-interest consumer debts early. But he also suggests that anyone already saving for retirement or children’s education should pay off their <span class="annot" data-tooltip="mortgages /'mɔːrɡɪdʒ/ n. 抵押借款抵押债款的利息vt. 抵押时 态: mortgaged, mortgaging, mortgages">mortgages</span> as fast as possible, too—even low- interest loans secured before 2022. The rigid advice is in part a reaction against Americans’ proclivity to spend, spend, spend beyond their means. Even in periods of strong economic growth many <span class="annot" data-tooltip="households /'haʊshoʊld/ n. 同住在一所房子里的人, 一家人, 户adj. 家庭的, 家用的">households</span> find themselves in financial <span class="annot" data-tooltip="distress /dɪ'stres/ n. 悲痛, 痛苦, 忧伤, 苦恼贫困, 窘迫危险, 困难, 危难vt. 使痛苦, 使忧伤时 态: distressed, d">distress</span> through debt. In the first <span class="annot" data-tooltip="quarter /'kwɔːrtər/ n. 四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一时 ">quarter</span> of 2026, 13% of <span class="annot" data-tooltip="credit /'kredɪt/ n. 赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)时 态:">credit</span>-card balances were 90 days or more overdue, close to the record high from 2010, following the global financial crisis. Britain’s undisputed heavyweight financial guru is Martin Lewis, the founder of “Money Saving Expert”, a website. He channels a different failing: an <span class="annot" data-tooltip="aversion /ə'vɜːrʒn/ n. 厌恶，讨厌，反感讨厌的人或东西">aversion</span> to investment. Mr Lewis’s stock-in-trade is <span class="annot" data-tooltip="practical /'præktɪkl/ adj. 实际的，实践的实用的注重实际的；有实际工作能力的名 词: practicality">practical</span> <span class="annot" data-tooltip="penny /'peni/ n. 便士；（美）分Penny彭妮(女子名, Penelope 的昵称)">penny</span>-<span class="annot" data-tooltip="pinching /pɪntʃ/ vt. 捏；勒索；使苦恼；掐掉某物，修剪n. 匮乏；少量；夹痛vi. 夹痛；节省时 态: pinched, pinching, ">pinching</span>: supermarket bargains, introductory offers and the benefits of switching banks or <span class="annot" data-tooltip="utility /juː'tɪləti/ n. 效用；实用；功用；公共设施adj. 有多种用途的；通用的；实用的">utility</span> providers. By his <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> account, until recently he <span class="annot" data-tooltip="barely /'berli/ adv. 仅仅，勉强；几乎不；公开地；贫乏地">barely</span> touched the stock market. Only in the past year has he turned his attention to Britain’s individual savings accounts for shares, a generous scheme that allows people to <span class="annot" data-tooltip="invest /ɪn'vest/ vt. 投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买时 态: invested, investing, invests">invest</span> up to £20,000 ($26,700) per year without incurring the usual investment taxes. The attitude of Mr Lewis reflects the <span class="annot" data-tooltip="bleak /bliːk/ adj. 荒凉的，无遮蔽的；阴冷的；黯淡的，无希望的；冷酷的；单调的比较级: bleaker, bleakest">bleak</span> <span class="annot" data-tooltip="reality /ri'æləti/ n. 现实；真实；实际">reality</span> that many Brits own barely any equities. A measly 13% of the financial <span class="annot" data-tooltip="assets /'æset/ n. 资产；有用的东西；有利条件；优点">assets</span> of British households are shares, the lowest in almost any large developed economy. In Ramseyan America the figure is 44%. No amount of scrimping and saving will <span class="annot" data-tooltip="compensate /'kɑːmpenseɪt/ vt. & vi. 补偿, 报酬时 态: compensated, compensating, compensates">compensate</span> Britons for missing out on the <span class="annot" data-tooltip="profound /prə'faʊnd/ adj. 深度的；深切的；深远的知识渊博的，见解深刻的，深奥的比较级: profounder，profoundest">profound</span> benefits of long- term <span class="annot" data-tooltip="compound /'kɑːmpaʊnd/ n. 复合物；混合物；【化】化合物（语法）复合词有围栏（或围墙）的场地（内有工厂或其他建筑群）adj. 复合的v. 使加重；使">compound</span> returns. Asian personal-finance <span class="annot" data-tooltip="sages /seɪdʒ/ n. 圣人, 智者adj. 贤明的, 貌似聪明的Sage塞奇(姓氏)比较级: sager, sagest">sages</span> often <span class="annot" data-tooltip="pepper /'pepər/ n. 胡椒粉辣椒vt. 在…上撒胡椒粉；使布满以…密击，接二连三地提问时 态: peppered，peppering，pepp">pepper</span> advice with research on individual stocks. Rachana Phadke Ranade, a chartered accountant with 5.4m YouTube followers, is one of India’s most <span class="annot" data-tooltip="prominent /'prɑːmɪnənt/ adj. 突起的，凸出的显著的；突出的杰出的，著名的，卓越的副 词: prominently">prominent</span> finfluencers. Her</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>circuits</td><td>/'sɜːrkɪt/ n.</td><td>电路，回路；环道；一圈；巡回vi. 环行vt. 绕回…环行, circuiting, circuits</td></tr>
+<tr><td>terms</td><td>/tɜːrmz/ n.</td><td>条款；地位，关系；措辞；术语；价钱（term的复数形式）v. 把…称为（term的三单形式）</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>entirely</td><td>/ɪn'taɪərli/ adv.</td><td>全部地;完整地;完全地</td></tr>
+<tr><td>due</td><td>/duː/ adj.</td><td>到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）</td></tr>
+<tr><td>fiscal</td><td>/'fɪskl/ adj.</td><td>国库的；会计的，财政的</td></tr>
+<tr><td>domestic</td><td>/də'mestɪk/ adj.</td><td>国内的；家庭的；驯养的；一心只管家务的</td></tr>
+<tr><td>revenues</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>authorities</td><td>/ə'θɔːrəti/ n.</td><td>威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>stamp</td><td>/stæmp/ n.</td><td>邮票；印记；跺脚；标志vt. 铭记；标出；盖章于…；贴邮票于…；用脚踩踏vi. 捣碎；跺脚；毁掉, stamping, stamps</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>inflation</td><td>/ɪn'fleɪʃn/ n.</td><td>(充气而引起的)膨胀通货膨胀</td></tr>
+<tr><td>purchases</td><td>/'pɜːrtʃəs/ n.</td><td>购买；紧握；起重装置vt. 购买；赢得vi. 购买东西, purchasing, purchases</td></tr>
+<tr><td>enforcement</td><td>/ɪn'fɔːrsmənt/ n.</td><td>强制,实施,执行</td></tr>
+<tr><td>instructed</td><td>/ɪn'strʌkt/ vt.</td><td>命令；教授；指导；通知, instructing, instructs</td></tr>
+<tr><td>assets</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>central</td><td>/'sentrəl/ adj.</td><td>中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的</td></tr>
+<tr><td>narrowed</td><td>/'næroʊ/ adj.</td><td>狭窄的，有限的；度量小的；精密的；勉强的n. 狭窄部分，隘路；海峡vt. 使变狭窄vi. 变窄, narrowest</td></tr>
+<tr><td>manufacturing</td><td>/ˌmænju'fæktʃərɪŋ/ n.</td><td>制造业，工业adj. 制造业的；制造的</td></tr>
+<tr><td>cultivate</td><td>/'kʌltɪveɪt/ vt.</td><td>耕作, 种植陶冶思想[感情]培养(友谊), cultivating, cultivates</td></tr>
+<tr><td>productive</td><td>/prə'dʌktɪv/ adj.</td><td>多产的，富饶的富有成效的；有益的</td></tr>
+<tr><td>drifted</td><td>/drɪft/ n.</td><td>漂流，漂移；漂流物；趋势vi. 漂流，漂移；漂泊vt. 使…漂流；使…受风吹积DRIFTabbr. Diversity Receiving Instrument</td></tr>
+<tr><td>towards</td><td>/tɔːrdz/ prep.</td><td>向，朝为了；有助于；用于对于，关于接近；将近；大约</td></tr>
+<tr><td>fiscal</td><td>/'fɪskl/ adj.</td><td>国库的；会计的，财政的</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>pensions</td><td>/ˈpenʃn/ n.</td><td>津贴；退休金，抚恤金；膳宿费vt. 发给养老金或抚恤金, pensioning, pensions</td></tr>
+<tr><td>anti</td><td>/'ænti/ adj.</td><td>反对的n. 反对者，反对论者</td></tr>
+<tr><td>main</td><td>/meɪn/ adj.</td><td>主要的; 最重要的n. 总管道; 干线</td></tr>
+<tr><td>infrastructure</td><td>/'ɪnfrəstrʌktʃər/ n.</td><td>基础设施; 基础结构</td></tr>
+<tr><td>picture</td><td>/'pɪktʃər/ n.</td><td>图画，肖像；照片(生动的)描述，写照影片；电影；画面美景，景色情况，事态，局面vt. 绘画；描绘想象，picturing，pictures</td></tr>
+<tr><td>excludes</td><td>/ɪk'skluːd/ vt.</td><td>排除；排斥；拒绝接纳；逐出, excluding, excludes</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>nonetheless</td><td>/ˌnʌnðə'les/ adv.</td><td>虽然如此,但是</td></tr>
+<tr><td>reveal</td><td>/rɪ'viːl/ vt.</td><td>显示；露出泄露；透露，revealing，reveals</td></tr>
+<tr><td>society</td><td>/sə'saɪəti/ n.</td><td>社会；社交界；交往；社团</td></tr>
+<tr><td>elderly</td><td>/'eldərli/ adj.</td><td>上了年纪的, 中年以上的</td></tr>
+<tr><td>preferences</td><td>/'prefrəns/ n.</td><td>较喜欢的东西, 偏爱优待, 优惠, 优先权</td></tr>
+<tr><td>cooling</td><td>/ˈkulɪŋ/ n.</td><td>冷却adj. 凉的；凉爽的冷却的</td></tr>
+<tr><td>narrowing</td><td>/'næroʊ/ adj.</td><td>狭窄的，有限的；度量小的；精密的；勉强的n. 狭窄部分，隘路；海峡vt. 使变狭窄vi. 变窄, narrowest</td></tr>
+<tr><td>chairman</td><td>/'tʃermən/ n.</td><td>主席，会长；董事长, chairmanning, chairmans</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>inflation</td><td>/ɪn'fleɪʃn/ n.</td><td>(充气而引起的)膨胀通货膨胀</td></tr>
+<tr><td>opaque</td><td>/oʊ'peɪk/ adj.</td><td>不透明的难理解的, 晦涩的</td></tr>
+<tr><td>comprehensive</td><td>/ˌkɑːmprɪ'hensɪv/ adj.</td><td>广泛的, 综合的</td></tr>
+<tr><td>internal</td><td>/ɪn'tɜːrnl/ adj.</td><td>国内的；内部的；内在的</td></tr>
+<tr><td>reveals</td><td>/rɪ'viːl/ vt.</td><td>显示；露出泄露；透露，revealing，reveals</td></tr>
+<tr><td>subsequently</td><td>/'sʌbsɪkwənt/ adj.</td><td>随后的, 继…之后的</td></tr>
+<tr><td>revise</td><td>/rɪ'vaɪz/ vt.</td><td>修订, 修改vt. & vi. 复习, revising, revises</td></tr>
+<tr><td>controversial</td><td>/ˌkɑːntrə'vɜːrʃl/ adj.</td><td>有争议的, 引起争议的</td></tr>
+<tr><td>critical</td><td>/'krɪtɪkl/ adj.</td><td>批评的，爱挑剔的；决定性的；危险的；临界的；鉴定的；评论的</td></tr>
+<tr><td>practices</td><td>/'præktɪs/ n.</td><td>练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规，practicing，practices</td></tr>
+<tr><td>whereas</td><td>/ˌwer'æz/ conj.</td><td>但是, 而</td></tr>
+<tr><td>leading</td><td>/ˈliːdɪŋ/ adj.</td><td>主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）</td></tr>
+<tr><td>academic</td><td>/ˌækə'demɪk/ adj.</td><td>学院的；学术的；理论的n. 大学生，大学教师；学者</td></tr>
+<tr><td>notables</td><td>/'noʊtəbl/ adj.</td><td>值得注意的，显著的；著名的n. 名人，显要人物</td></tr>
+<tr><td>central</td><td>/'sentrəl/ adj.</td><td>中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的</td></tr>
+<tr><td>bloated</td><td>/bloʊt/ vt.</td><td>（使）肿胀；使膨胀；腌制vi. 膨胀；肿起；得意n. 膨胀的东西，肿胀的人；肿胀病人；自满的人, bloating, bloats</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>alternative</td><td>/ɔːl'tɜːrnətɪv/ adj.</td><td>可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）可供选择的事物；可供选择的解决办法替代物</td></tr>
+<tr><td>productivity</td><td>/ˌproʊdʌk'tɪvəti/ n.</td><td>生产率, 生产力</td></tr>
+<tr><td>anthropic</td><td>/ænˈθrɑpɪk/ adj.</td><td>人类的,有关人类的</td></tr>
+<tr><td>silicon</td><td>/'sɪlɪkən/ n.</td><td>〈化〉硅</td></tr>
+<tr><td>valley</td><td>/'væli/ n.</td><td>流域；山谷；溪谷</td></tr>
+<tr><td>inflation</td><td>/ɪn'fleɪʃn/ n.</td><td>(充气而引起的)膨胀通货膨胀</td></tr>
+<tr><td>cobble</td><td>/'kɑːbl/ vt.</td><td>粗劣地制作,草率地拼凑修(鞋)匆匆制作； 胡乱拼凑； 粗制滥造, cobbling, cobbles</td></tr>
+<tr><td>present</td><td>/'preznt/ vt.</td><td>呈现；介绍；提出；赠送vi. 举枪瞄准adj. 出席的；现在的n. 现在；礼物；瞄准, presenting, presents</td></tr>
+<tr><td>smoothly</td><td>/'smuːðli/ adv.</td><td>平稳地，平滑地；流畅地，流利地</td></tr>
+<tr><td>expertise</td><td>/ˌekspɜːr'tiːz/ n.</td><td>专门知识或技能</td></tr>
+<tr><td>consider</td><td>/kən'sɪdər/ vt.</td><td>& vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及, considering, considers</td></tr>
+<tr><td>tank</td><td>/tæŋk/ n.</td><td>（存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内, tanking, tanks</td></tr>
+<tr><td>bust</td><td>/bʌst/ vi.</td><td>爆裂；破产；降低级别vt. 使爆裂；使破产；逮捕n. 半身像；胸部；萧条；破产adj. 破产了的；毁坏了的, busting, busts</td></tr>
+<tr><td>sparks</td><td>/spɑːrk/ n.</td><td>火花，火星；电火花；一丝，略微；导火线，诱因v. 引发，触发；产生火花（电火花）；点燃；增加趣味（或活力、风味等）, sparking, sparks</td></tr>
+<tr><td>likewise</td><td>/'laɪkwaɪz/ adv.</td><td>也；同样地</td></tr>
+<tr><td>transformative</td><td>— adj.</td><td>有改革能力的,变化的,变形的</td></tr>
+<tr><td>academic</td><td>/ˌækə'demɪk/ adj.</td><td>学院的；学术的；理论的n. 大学生，大学教师；学者</td></tr>
+<tr><td>promoting</td><td>/'proʊmoʊ/ n.</td><td>商品推销；商品广告，广告片</td></tr>
+<tr><td>outlook</td><td>/'aʊtlʊk/ n.</td><td>展望；态度，观点；景色</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>persuade</td><td>/pər'sweɪd/ vt.</td><td>& vi. 说服, 劝告, persuading, persuades</td></tr>
+<tr><td>seriously</td><td>/'sɪriəs/ adj.</td><td>严肃的，严重的；认真的；庄重的；危急的</td></tr>
+<tr><td>prerequisite</td><td>/ˌpriː'rekwəzɪt/ n.</td><td>先决条件,前提</td></tr>
+<tr><td>notably</td><td>/'noʊtəbli/ adv.</td><td>显著地；尤其</td></tr>
+<tr><td>inflation</td><td>/ɪn'fleɪʃn/ n.</td><td>(充气而引起的)膨胀通货膨胀</td></tr>
+<tr><td>consent</td><td>/kən'sent/ n.</td><td>准许，同意，赞成vi. 同意；赞成，consenting，consents</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>respectively</td><td>/rɪ'spektɪv/ adj.</td><td>各自的; 各个的</td></tr>
+<tr><td>thumbs</td><td>/θʌm/ vt.</td><td>以拇指拨弄；作搭车手势；笨拙地摆弄；翻阅vi. 用拇指翻书页；竖起拇指要求搭车n. 拇指, thumbing, thumbs</td></tr>
+<tr><td>consensus</td><td>/kən'sensəs/ n.</td><td>(意见等)一致, 一致同意</td></tr>
+<tr><td>celebrity</td><td>/sə'lebrəti/ n.</td><td>(尤指娱乐界的)名人, 名流名声, 名誉</td></tr>
+<tr><td>solely</td><td>/'soʊlli/ adv.</td><td>唯一地;仅仅;独一无二地</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>expenses</td><td>/ɪk'spens/ n.</td><td>开支；消费；损失，代价vt. 向…收取费用vi. 被花掉, expensing, expenses</td></tr>
+<tr><td>scams</td><td>/skæm/ n.</td><td>骗局，诡计；故事vt. 欺诈；诓骗vi. 欺诈；诓骗, scamming, scams</td></tr>
+<tr><td>sensible</td><td>/'sensəbl/ adj.</td><td>明智的；意识到的；通晓事理的；明显的n. 可感觉到的东西；敏感的人</td></tr>
+<tr><td>universal</td><td>/ˌjuːnɪ'vɜːrsl/ adj.</td><td>全体的广泛的, 普遍的在世界各地的, 世界性的</td></tr>
+<tr><td>counsel</td><td>/'kaʊnsl/ n.</td><td>忠告；讨论；商议；决策；法律顾问vt. 劝告；建议vi. 提出忠告；商讨, counselled counseling, counselling counsel</td></tr>
+<tr><td>vices</td><td>/vaɪs/ n.</td><td>堕落，邪恶；不良习气，恶习（尤指与性或毒品有关的）罪行，道德败坏行为【英式】老虎钳；台钳（【美式】vise）pref. 副职的；副的</td></tr>
+<tr><td>accidentally</td><td>/ˌæksɪ'dentəli/ adv.</td><td>偶然地；意外地；非故意地故作意外地；有意装无意地</td></tr>
+<tr><td>stature</td><td>/'stætʃər/ n.</td><td>身高，身材；（精神、道德等的）高度</td></tr>
+<tr><td>gruff</td><td>/ɡrʌf/ adj.</td><td>粗暴的；脾气坏的；粗哑的vt. 粗鲁地说；生硬地说vi. 粗鲁地说；生硬地说话, gruffest</td></tr>
+<tr><td>podcaster</td><td>/'pɑːdkæst/ n.</td><td>播客</td></tr>
+<tr><td>stern</td><td>/stɜːrn/ n.</td><td>船尾；末端adj. 严厉的；坚定的Stern斯特恩(①姓氏 ②Otto, 1888-1969, 生于德国的美国物理学家, 曾获1943年诺贝尔物理学奖), st</td></tr>
+<tr><td>sensible</td><td>/'sensəbl/ adj.</td><td>明智的；意识到的；通晓事理的；明显的n. 可感觉到的东西；敏感的人</td></tr>
+<tr><td>mortgages</td><td>/'mɔːrɡɪdʒ/ n.</td><td>抵押借款抵押债款的利息vt. 抵押, mortgaging, mortgages</td></tr>
+<tr><td>households</td><td>/'haʊshoʊld/ n.</td><td>同住在一所房子里的人, 一家人, 户adj. 家庭的, 家用的</td></tr>
+<tr><td>distress</td><td>/dɪ'stres/ n.</td><td>悲痛, 痛苦, 忧伤, 苦恼贫困, 窘迫危险, 困难, 危难vt. 使痛苦, 使忧伤, distressing, distresses</td></tr>
+<tr><td>quarter</td><td>/'kwɔːrtər/ n.</td><td>四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一, quartering, quarters</td></tr>
+<tr><td>credit</td><td>/'kredɪt/ n.</td><td>赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)，crediting，credits</td></tr>
+<tr><td>aversion</td><td>/ə'vɜːrʒn/ n.</td><td>厌恶，讨厌，反感讨厌的人或东西</td></tr>
+<tr><td>practical</td><td>/'præktɪkl/ adj.</td><td>实际的，实践的实用的注重实际的；有实际工作能力的</td></tr>
+<tr><td>penny</td><td>/'peni/ n.</td><td>便士；（美）分Penny彭妮(女子名, Penelope 的昵称)</td></tr>
+<tr><td>pinching</td><td>/pɪntʃ/ vt.</td><td>捏；勒索；使苦恼；掐掉某物，修剪n. 匮乏；少量；夹痛vi. 夹痛；节省, pinching, pinches</td></tr>
+<tr><td>utility</td><td>/juː'tɪləti/ n.</td><td>效用；实用；功用；公共设施adj. 有多种用途的；通用的；实用的</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>barely</td><td>/'berli/ adv.</td><td>仅仅，勉强；几乎不；公开地；贫乏地</td></tr>
+<tr><td>invest</td><td>/ɪn'vest/ vt.</td><td>投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买, investing, invests</td></tr>
+<tr><td>bleak</td><td>/bliːk/ adj.</td><td>荒凉的，无遮蔽的；阴冷的；黯淡的，无希望的；冷酷的；单调的, bleakest</td></tr>
+<tr><td>reality</td><td>/ri'æləti/ n.</td><td>现实；真实；实际</td></tr>
+<tr><td>assets</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>compensate</td><td>/'kɑːmpenseɪt/ vt.</td><td>& vi. 补偿, 报酬, compensating, compensates</td></tr>
+<tr><td>profound</td><td>/prə'faʊnd/ adj.</td><td>深度的；深切的；深远的知识渊博的，见解深刻的，深奥的，profoundest</td></tr>
+<tr><td>compound</td><td>/'kɑːmpaʊnd/ n.</td><td>复合物；混合物；【化】化合物（语法）复合词有围栏（或围墙）的场地（内有工厂或其他建筑群）adj. 复合的v. 使加重；使恶化由…构成（或形成）混合；掺和；拌和,</td></tr>
+<tr><td>sages</td><td>/seɪdʒ/ n.</td><td>圣人, 智者adj. 贤明的, 貌似聪明的Sage塞奇(姓氏), sagest</td></tr>
+<tr><td>pepper</td><td>/'pepər/ n.</td><td>胡椒粉辣椒vt. 在…上撒胡椒粉；使布满以…密击，接二连三地提问，peppering，peppers</td></tr>
+<tr><td>prominent</td><td>/'prɑːmɪnənt/ adj.</td><td>突起的，凸出的显著的；突出的杰出的，著名的，卓越的</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day33.html" class="nav-btn">← Day 33</a>
+  <a href="day35.html" class="nav-btn">Day 35 →</a>
+</div>
+
+<div class="progress">📖 Day 34 of 41</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-07-18</div>
+
+</body>
+</html>

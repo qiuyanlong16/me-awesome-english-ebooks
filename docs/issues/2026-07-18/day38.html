@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Culture | An epic mistake</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-07-18</div>
+
+<h1 class="article-title">Culture | An epic mistake</h1>
+<div class="article-section">Culture</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>A very <span class="annot" data-tooltip="silly /'sɪli/ adj. 蠢的，傻的；糊涂的，可笑的〈非正〉不省人事的，失去知觉的；晕头转向的比较级: sillier，silliest">silly</span> <span class="annot" data-tooltip="adaptation /ˌædæp'teɪʃn/ n. 适应,适合改编，改写改编本，改写本">adaptation</span> of “The Odyssey” Sir Christopher Nolan’s film is emblematic of its time July 16th 2026 The squabbles have been <span class="annot" data-tooltip="epic /'epɪk/ adj. 史诗的，叙事诗的n. 史诗；叙事诗；史诗般的作品EPICabbr. Earth-Pointing Instrument ">epic</span>. Sir Christopher Nolan’s adaptation of “The Odyssey” was causing conniptions long before anyone had even seen the thing. Ahead of its <span class="annot" data-tooltip="release /rɪ'liːs/ vt. 释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]时 态: released，rel">release</span> on July 17th, there was harrumphing over everything from the actress playing Helen (too black); the colour of the <span class="annot" data-tooltip="plume /pluːm/ vt. 用羽毛装饰n. 羽毛vi. 骚首弄姿时 态: plumed, pluming, plumes">plume</span> on Odysseus’s helmet (too red); the soldiers’ armour (also too black, and too Batman-like) and the vocabulary of Odysseus’s son (too American: at one point he says “Dad”). On YouTube the film’s <span class="annot" data-tooltip="trailer /'treɪlər/ n. 预告片；拖车；追踪者vi. 乘拖车式活动房屋旅行vt. 用拖车载运时 态: trailered, trailering,">trailer</span> was met with criticism. “If I saw this on a plane, I’d still walk out,” reads one disgruntled comment. The film itself is unlikely to allay any <span class="annot" data-tooltip="anxieties /æŋ'zaɪəti/ n. 焦虑；挂念；渴望；令人焦虑的事">anxieties</span> about anachronisms. In everything from its scenery to its psychology it says <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> more about the</p>
+<p>modern West than about ancient Greece. Startling liberties are taken with the <span class="annot" data-tooltip="plot /plɑːt/ n. 故事情节(秘密)计划，密谋小块地皮vt. 把…分成小块；划分绘制；标出vt. & vi. 密谋时 态: plotted，">plot</span> to turn Odysseus, the archetypally <span class="annot" data-tooltip="flawed /flɔː/ n.瑕疵，缺点；一阵狂风；短暂的风暴；裂缝，裂纹">flawed</span> ancient hero, into a simple modern goody by flattening his <span class="annot" data-tooltip="flaws /flɔː/ n.瑕疵，缺点；一阵狂风；短暂的风暴；裂缝，裂纹">flaws</span>. Any bad behaviour is explained away <span class="annot" data-tooltip="either /'iːðər/ pron. (两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的">either</span> by drug use or hinted to be <span class="annot" data-tooltip="due /duː/ adj. 到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）">due</span> to proto-PTSD (the overdiagnosis epidemic having <span class="annot" data-tooltip="apparently /ə'pærəntli/ adv. 显然地表面上,似乎">apparently</span> <span class="annot" data-tooltip="reached /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reached</span> the ancient shores of Ithaca). The ending, which has him <span class="annot" data-tooltip="pierced /pɪr/ n. 水上平台, 码头">pierced</span> by arrows and turned into a St Sebastian- style pincushion, is sillier still. The scenery is similarly unsuitable, and often <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> too pretty. Soldiers in elegant gunmetal grey look less like ancient <span class="annot" data-tooltip="warriors /'wɔːriər/ n. 战士，勇士；鼓吹战争的人Warrior猎户星座">warriors</span> than Warhammer toys. The ochre, candlelit palaces do not <span class="annot" data-tooltip="resemble /rɪ'zembl/ vt. 像…, 类似于时 态: resembled, resembling, resembles">resemble</span> warlords’ lairs but boutique hotels. During the beach <span class="annot" data-tooltip="scenes /siːn/ n. 情景；景象；场面；事件">scenes</span> with the nymph Calypso (Charlize Theron), Odysseus (Matt Damon) seems less to be in agonising exile than on a Caribbean mini-break (they are wearing lots of linen). And the less said about the Cyclops, the better. This is irksome but typical. Every <span class="annot" data-tooltip="adaptation /ˌædæp'teɪʃn/ n. 适应,适合改编，改写改编本，改写本">adaptation</span> of an ancient text is as much about its <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> era as the original work; less a lens than a mirror. The ancient Athenians transformed Homeric <span class="annot" data-tooltip="epic /'epɪk/ adj. 史诗的，叙事诗的n. 史诗；叙事诗；史诗般的作品EPICabbr. Earth-Pointing Instrument ">epic</span> into psychologically acute <span class="annot" data-tooltip="tragedy /'trædʒədi/ n. 悲剧；灾难；惨案">tragedy</span>. In the 18th century Alexander Pope’s <span class="annot" data-tooltip="translation /trænz'leɪʃn/ n. 翻译译本, 译文形容词: translational">translation</span> managed to make Odysseus sound like an effete Enlightenment poet rather than an ancient <span class="annot" data-tooltip="warrior /'wɔːriər/ n. 战士，勇士；鼓吹战争的人Warrior猎户星座">warrior</span>-king. In 1922 James Joyce’s <span class="annot" data-tooltip="version /'vɜːrʒn/ n. 变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本">version</span> offered sex, stream of <span class="annot" data-tooltip="consciousness /'kɑːnʃəsnəs/ n. 知觉意识, 观念, 觉悟察觉, 感觉">consciousness</span> and that Modernist literary <span class="annot" data-tooltip="staple /'steɪpl/ n. 主要产品；钉书钉；主题；主食vt. 用钉书钉钉住；把……分级adj.主要的，大宗生产的；常用的；纺织纤维的时 态: st">staple</span>: boredom. In this way, Sir Christopher’s retelling is part of a time-honoured tradition. It is <span class="annot" data-tooltip="manifestly /'mænɪfest/ vt. 证明，表明；显示vi. 显示，出现n. 旅客名单；载货单，货单adj. 明白的；显然的，明显的时 态: manifest">manifestly</span> a product of the <span class="annot" data-tooltip="present /'preznt/ vt. 呈现；介绍；提出；赠送vi. 举枪瞄准adj. 出席的；现在的n. 现在；礼物；瞄准时 态: presented, pr">present</span> day. Female characters offer frequent apologias for feminism (not a noted strong suit of the ancients). The casus belli of the Trojan war is given as a desire to improve trade <span class="annot" data-tooltip="routes /ruːt，raʊt/ n. 路, 路途, 路线, 路程时 态: routed, routing, routes">routes</span>, as if Agamemnon were merely a blameless <span class="annot" data-tooltip="advocate /ˈædvəkeɪt，'ædvəkət/ v. 拥护；支持；提倡n. 拥护者；支持者；提倡者；辩护律师；出庭辩护人时 态: advocated, advocating,">advocate</span> for free trade rather than one of antiquity’s greatest thugs. <span class="annot" data-tooltip="adaptations /ˌædæp'teɪʃn/ n. 适应,适合改编，改写改编本，改写本">Adaptations</span> have some latitude, for “The Odyssey” contains <span class="annot" data-tooltip="multitudes /'mʌltɪtuːd/ n. 大量, 许多大众, 民众, 群众">multitudes</span>. In one of the most famous scenes, the god Proteus transforms into a lion, then a snake, then rushing water. “The Odyssey” is more protean still. In the three millennia since it was composed, it has been on an odyssey all its own. The poem has become a noun (an odyssey) and an adjective (Odyssean). It has become a play, a TV series, a novel (“Ulysses”) and a <span class="annot" data-tooltip="porn /pɔːrn/ n. 〈口〉色情文学,色情描写形容词: porny">porn</span> film</p>
+<p>(“Odyssey: The <span class="annot" data-tooltip="ultimate /'ʌltɪmət/ adj. 最后的，最终的；终极的；极端的；最好（或坏、伟大、重要等）的；根本的；基本的；基础性的n. 最好（或先进、伟大等）的事物">Ultimate</span> <span class="annot" data-tooltip="trip /trɪp/ vi. 绊倒；犯错误；远足；轻快地走n. 旅行；绊倒；差错vt. 绊倒；使犯错TRIPabbr. transformation-">Trip</span>”). It has become a <span class="annot" data-tooltip="lunar /'luːnər/ adj. 月的, 月球的；；阴历的；银的；微亮的">lunar</span> lander (IM-1 Odysseus), a large asteroid (1143 Odysseus) and a body lotion (which, with notes of black <span class="annot" data-tooltip="pepper /'pepər/ n. 胡椒粉辣椒vt. 在…上撒胡椒粉；使布满以…密击，接二连三地提问时 态: peppered，peppering，pepp">pepper</span> and sandalwood, no doubt smells better than its namesake would have). It is therefore not surprising that Odysseus, the <span class="annot" data-tooltip="sacker /sæk/ n. 麻袋, 包一袋的量开除, 解雇洗劫, 劫掠vt. 装入袋中解雇洗劫, 劫掠时 态: sacked, sacking, s">sacker</span> of cities, has been transformed once again by Sir Christopher. In other ways it is surprising, as “The Odyssey” has been a <span class="annot" data-tooltip="wrecker /rek/ n. 失事；残骸；破坏；[口]失去健康的人vt. 破坏；使失事；拆毁vi. 失事；营救失事船只时 态: wrecked, wr">wrecker</span> of reputations. In 2024 a film <span class="annot" data-tooltip="starring n. 扮演主角，领衔主演；纯锑表面呈星状花纹">starring</span> Ralph Fiennes was dismissed as “dull” and a “slog”. A movie of 1954, starring Kirk Douglas, was described as “weird” and “vapid”. Sir Christopher has form on <span class="annot" data-tooltip="tricky /'trɪki/ adj. 机警的；狡猾的比较级: trickier, trickiest">tricky</span> topics: his previous film, “Oppenheimer”, about particle physics and nuclear weapons, <span class="annot" data-tooltip="grossed /ɡroʊs/ adj. 总共的；粗野的；恶劣的；显而易见的vt. 总共收入n. 总额，总数比较级: grosser, grossest">grossed</span> almost $1bn at the box office. Still, he has learned that “The Odyssey” is not an easy book to film. That <span class="annot" data-tooltip="porn /pɔːrn/ n. 〈口〉色情文学,色情描写形容词: porny">porn</span> flick hints at why: it describes itself, with admirable artistic honesty, as “Three unrelated stories”. The original “Odyssey” is not much better. It tells the tale of Odysseus’s ten-year <span class="annot" data-tooltip="journey /'dʒɜːrni/ n. 旅行; 行程vi. 旅行">journey</span> home from the Trojan war and thus is commonly <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span> of as a kind of watery Greek road trip. But it is also a sex-and-sea-monsters film, a father-and-son film and a husband-and-wife film. Its structure is fiendishly twisty. It is about Odysseus—but readers do not meet him for four books. Moreover, many of the stories that you think of as archetypally Odyssean are <span class="annot" data-tooltip="either /'iːðər/ pron. (两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的">either</span> not told at all or told in brisk <span class="annot" data-tooltip="narrative /'nærətɪv/ n. 记叙文；故事n. 叙述，讲述；叙述部分adj. 叙述的；叙事体的副 词: narratively">narrative</span> flashback: the Sirens slip by in some 60 <span class="annot" data-tooltip="lines n. 台词；线；航线（line的复数）v. 排成一行；画线于（line的三单形式）">lines</span> and the Lotus-Eaters in about 20. It is, as Sir Christopher said, “the original non-linear narrative”. It is, says Emily Wilson, a classicist who published a dazzling <span class="annot" data-tooltip="translation /trænz'leɪʃn/ n. 翻译译本, 译文形容词: translational">translation</span> in 2017, “complicated”. It is also very famous. The second work of Western literature, it was once assumed to be <span class="annot" data-tooltip="secondary /'sekənderi/ adj. 次要的, 次等的中级的, 第二的副 词: secondarily">secondary</span> in seriousness to its more manly prequel, “The Iliad”. Yet in recent years its fame has <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> eclipsed it. The first Penguin Classic ever printed was “The Odyssey”. The pyramid of intellectual biomass resting upon it is vast. It is only 12,000 lines long, but look up “Odyssey” in the British Library and you are offered 34,000 titles: almost three for every <span class="annot" data-tooltip="line /laɪn/ n. 绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long inter">line</span>. “Iliad” returns a <span class="annot" data-tooltip="mere /mɪr/ adj. 仅仅, 只不过纯粹的Superlative merest">mere</span> 9,000.</p>
+<p>That it has become yet another film—and created yet more debates—is further proof of its permanence. There are two ways to see such squabbles. One is to <span class="annot" data-tooltip="engage /ɪn'ɡeɪdʒ/ vt. 雇佣；吸引，占用；使订婚；使参加；预定vi. 答应，保证；从事；交战；啮合时 态: engaged, engaging,">engage</span> with them on their <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> <span class="annot" data-tooltip="terms /tɜːrmz/ n. 条款；地位，关系；措辞；术语；价钱（term的复数形式）v. 把…称为（term的三单形式）">terms</span>. These gripes have some validity: in Homer, Helen is clearly described as “white-armed”; Odysseus probably didn’t wear a red-plumed helmet (red was a Spartan habit); ancient Greek armour was bronze, not Batman-ish; and Odysseus’s son definitely didn’t say “Dad”. As Tim Whitmarsh, Regius professor of Greek at <span class="annot" data-tooltip="cambridge /'keɪmbrɪdʒ/ n. 剑桥">Cambridge</span> University, points out: “The ancient Greeks spoke Greek.” The other way to see these arguments is as proof of the malleability of “The Odyssey”. In an era in which people bristle at American influence in Europe, it lets people bristle at Americanisms (“Dad!”) in ancient Greece. In an era anxious about the excessively manly manosphere, people can <span class="annot" data-tooltip="fret /fret/ vt. 焦急；使磨损；使烦恼vi. 磨损；烦恼；焦急n. 烦躁；焦急；磨损时 态: fretted, fretting, fre">fret</span> over excessively manly armour. In an era riven by debates about <span class="annot" data-tooltip="race /reɪs/ n. 种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACE">race</span>, people have engaged in bad-<span class="annot" data-tooltip="tempered /'tempər/ n. 脾气；（钢等）回火；性情；倾向vt. 调和；锻炼；使缓和；使回火vi. 回火；调和时 态: tempered, temp">tempered</span> rows over casting. We are not arguing about “The Odyssey” when we argue about “The Odyssey”. We are arguing about ourselves. Each generation remakes “The Odyssey” in its own image: you get the <span class="annot" data-tooltip="version /'vɜːrʒn/ n. 变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本">version</span> you deserve. The clever, quarrelsome ancient Athenians took Homer and transformed him into clever, quarrelsome <span class="annot" data-tooltip="tragedy /'trædʒədi/ n. 悲剧；灾难；惨案">tragedy</span>. The Modernists turned him into Modernist prose and <span class="annot" data-tooltip="poetry /'poʊətri/ n. 诗篇, 诗歌, 诗集作诗法, 诗歌艺术诗情, 诗意, 诗一般的美">poetry</span>. The simplistic, <span class="annot" data-tooltip="visual /'vɪʒuəl/ adj. 视力的；视觉的；可见的n. 视觉材料（指用于展示或说明的图画、表格、影片等）副 词: visually">visual</span> modern world has taken Homer and turned him into social-media spats and an absurd Cyclops—and thus into a tragedy that is all its own. ■ For more on the latest books, films, TV shows, albums and controversies, sign up to <span class="annot" data-tooltip="plot /plɑːt/ n. 故事情节(秘密)计划，密谋小块地皮vt. 把…分成小块；划分绘制；标出vt. & vi. 密谋时 态: plotted，">Plot</span> <span class="annot" data-tooltip="twist /twɪst/ vt. 捻；拧；扭伤；编织；使苦恼n. 扭曲；扭伤；拧vi. 扭动；弯曲时 态: twisted, twisting, twis">Twist</span>, our weekly subscriber-only newsletter This article was downloaded by zlibrary from https://www.economist.com//culture/2026/07/15/a-very-<span class="annot" data-tooltip="silly /'sɪli/ adj. 蠢的，傻的；糊涂的，可笑的〈非正〉不省人事的，失去知觉的；晕头转向的比较级: sillier，silliest">silly</span>-<span class="annot" data-tooltip="adaptation /ˌædæp'teɪʃn/ n. 适应,适合改编，改写改编本，改写本">adaptation</span>-of-the- odyssey</p>
+<div class="article-separator"></div>
+<div class="article-header">Culture · Culture | Prestige or pretension?</div>
+<p>Why Sir Christopher Nolan inspires such <span class="annot" data-tooltip="devotion /dɪ'voʊʃn/ n. 奉献, 献身, 忠诚热爱, 挚爱">devotion</span> —and <span class="annot" data-tooltip="contempt /kən'tempt/ n. 轻视，蔑视；耻辱">contempt</span> His films are ambitious and technically <span class="annot" data-tooltip="brilliant /'brɪliənt/ adj. 闪光的, 明亮的光辉的, 辉煌的副 词: brilliantly">brilliant</span>, but often emotionally <span class="annot" data-tooltip="detached /dɪ'tætʃ/ vt. 分离；派遣；使超然时 态: detached, detaching, detaches">detached</span> July 16th 2026 THE SEVEN most dangerous words anyone can say to a film aficionado are: “What do you think of Christopher Nolan?” The question will almost certainly elicit one of two reactions: a long, fevered disquisition on the <span class="annot" data-tooltip="masterful /'mæstərfl/ adj. 善于控制别人的;善于控制形势的熟练的;娴熟的副 词: masterfully">masterful</span> craftsmanship of his 12 feature films (now 13, with the <span class="annot" data-tooltip="release /rɪ'liːs/ vt. 释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]时 态: released，rel">release</span> of “The Odyssey”)—or eye-rolling contempt. Almost nobody will shrug and say, “Eh, he’s fine.” Perhaps that is unsurprising: ambitious artists <span class="annot" data-tooltip="tend /tend/ vt. 照料，照顾，伺候vi. 往，朝向易于；倾向时 态: tended，tending，tends">tend</span> to provoke strong reactions, and Sir Christopher Nolan is nothing if not ambitious. He is the seventh-highest-<span class="annot" data-tooltip="grossing /ɡroʊs/ adj. 总共的；粗野的；恶劣的；显而易见的vt. 总共收入n. 总额，总数比较级: grosser, grossest">grossing</span> film director ever, and the most important British</p>
+<p>film-maker since Alfred Hitchcock. Like Hitchcock, he is devoted to the technical work of film-making: “The Odyssey” is the first blockbuster to be shot <span class="annot" data-tooltip="entirely /ɪn'taɪərli/ adv. 全部地;完整地;完全地">entirely</span> on IMAX film, a format that produces sumptuous images but is harder to work with than digital cinematography. Sir Christopher stands out from his peers for having the widest-ranging, most original and brainiest oeuvre. Like many directors working today, he has done franchise flicks—he made three Batman films between 2005 and 2012—but they were an interlude rather than the capstone of his career. So what is it about Sir Christopher that makes him such a divisive film-maker? Start with the man himself. He was born in 1970 to a British father and an American mother. He works with family: his wife, Emma Thomas, produces his films; his uncle, John Nolan, acted in some of them; he writes with his brother Jonathan; and his four children worked on “The Odyssey”. He is efficient, known for shooting films quickly and often to budget. Tom Shone, a film critic who wrote a book about Sir Christopher, has described him as “a very familiar type of Englishman…the kind of upper- middle-class son of the home counties one could imagine with a career in the City who plays rugby with his fellow brokers on the weekend”. That implies a <span class="annot" data-tooltip="streak /striːk/ n. 条纹，线条；倾向vi. 飞跑，疾驶；加上条纹vt. 飞跑，疾驰；加条纹于时 态: streaked, streaking">streak</span> of conservatism, which emerges in his work. His final Batman film, “The Dark Knight <span class="annot" data-tooltip="rises /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">Rises</span>” (2012), warns against the <span class="annot" data-tooltip="tempting /tempt/ vt. 引诱或怂恿(某人)干不正当的事使想要时 态: tempted, tempting, tempts">tempting</span>, corrosive zeal of revolutionary violence. Paternal duty powers “Interstellar” (2014). “Dunkirk” (2017) celebrates British doughtiness. However, his films are defined less by conservatism than by their slipperiness. His breakout film, “Memento” (2000), about an amnesiac trying to solve his wife’s murder, would be chewed over by fans and <span class="annot" data-tooltip="detractors /dɪ'træktər/ n. 诋毁者,贬低者">detractors</span> for years afterwards. Many viewers praised its structural inventiveness: black-and-white <span class="annot" data-tooltip="scenes /siːn/ n. 情景；景象；场面；事件">scenes</span> tell a story <span class="annot" data-tooltip="chronologically /ˌkrɑːnə'lɑːdʒɪkl/ adj. 按时间的前后顺序排列的adv. 按时间的前后顺序排列地">chronologically</span> and colour ones tell one in reverse. They meet at the end. More tricksiness would follow. “Inception” (2010) imagined the manipulation of dreams for <span class="annot" data-tooltip="corporate /'kɔːrpərət/ adj. 社团的, 法人的副 词: corporately">corporate</span> espionage. “Interstellar” takes <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span> on <span class="annot" data-tooltip="multiple /'mʌltɪpl/ adj. 多样的；许多的；多重的n. 并联；倍数">multiple</span> planets and features a wormhole and a black <span class="annot" data-tooltip="hole /hoʊl/ n. 洞，孔；洞穴，穴；突破口vi. 凿洞，穿孔；（高尔夫球等）进洞vt. 凿洞时 态: holed, holing, hol">hole</span>. Three <span class="annot" data-tooltip="narratives /'nærətɪv/ n. 记叙文；故事n. 叙述，讲述；叙述部分adj. 叙述的；叙事体的副 词: narratively">narratives</span> come together in “Dunkirk”. In “Tenet” (2020) people and objects move forwards and <span class="annot" data-tooltip="backwards /'bækwərd/ adj. 向后的；反向的；发展迟缓的adv. 相反地；向后地副 词: backwardly">backwards</span> through time. Even “Oppenheimer” (2023), a</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>silly</td><td>/'sɪli/ adj.</td><td>蠢的，傻的；糊涂的，可笑的〈非正〉不省人事的，失去知觉的；晕头转向的，silliest</td></tr>
+<tr><td>adaptation</td><td>/ˌædæp'teɪʃn/ n.</td><td>适应,适合改编，改写改编本，改写本</td></tr>
+<tr><td>epic</td><td>/'epɪk/ adj.</td><td>史诗的，叙事诗的n. 史诗；叙事诗；史诗般的作品EPICabbr. Earth-Pointing Instrument Carrier 指向地球的仪器运载卫星</td></tr>
+<tr><td>release</td><td>/rɪ'liːs/ vt.</td><td>释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]，releasing，releases</td></tr>
+<tr><td>plume</td><td>/pluːm/ vt.</td><td>用羽毛装饰n. 羽毛vi. 骚首弄姿, pluming, plumes</td></tr>
+<tr><td>trailer</td><td>/'treɪlər/ n.</td><td>预告片；拖车；追踪者vi. 乘拖车式活动房屋旅行vt. 用拖车载运, trailering, trailers</td></tr>
+<tr><td>anxieties</td><td>/æŋ'zaɪəti/ n.</td><td>焦虑；挂念；渴望；令人焦虑的事</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>plot</td><td>/plɑːt/ n.</td><td>故事情节(秘密)计划，密谋小块地皮vt. 把…分成小块；划分绘制；标出vt. & vi. 密谋，plotting，plots</td></tr>
+<tr><td>flawed</td><td>/flɔː/ </td><td>n.瑕疵，缺点；一阵狂风；短暂的风暴；裂缝，裂纹</td></tr>
+<tr><td>flaws</td><td>/flɔː/ </td><td>n.瑕疵，缺点；一阵狂风；短暂的风暴；裂缝，裂纹</td></tr>
+<tr><td>either</td><td>/'iːðər/ pron.</td><td>(两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的</td></tr>
+<tr><td>due</td><td>/duː/ adj.</td><td>到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）</td></tr>
+<tr><td>apparently</td><td>/ə'pærəntli/ adv.</td><td>显然地表面上,似乎</td></tr>
+<tr><td>reached</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>pierced</td><td>/pɪr/ n.</td><td>水上平台, 码头</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>warriors</td><td>/'wɔːriər/ n.</td><td>战士，勇士；鼓吹战争的人Warrior猎户星座</td></tr>
+<tr><td>resemble</td><td>/rɪ'zembl/ vt.</td><td>像…, 类似于, resembling, resembles</td></tr>
+<tr><td>scenes</td><td>/siːn/ n.</td><td>情景；景象；场面；事件</td></tr>
+<tr><td>adaptation</td><td>/ˌædæp'teɪʃn/ n.</td><td>适应,适合改编，改写改编本，改写本</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>epic</td><td>/'epɪk/ adj.</td><td>史诗的，叙事诗的n. 史诗；叙事诗；史诗般的作品EPICabbr. Earth-Pointing Instrument Carrier 指向地球的仪器运载卫星</td></tr>
+<tr><td>tragedy</td><td>/'trædʒədi/ n.</td><td>悲剧；灾难；惨案</td></tr>
+<tr><td>translation</td><td>/trænz'leɪʃn/ n.</td><td>翻译译本, 译文</td></tr>
+<tr><td>warrior</td><td>/'wɔːriər/ n.</td><td>战士，勇士；鼓吹战争的人Warrior猎户星座</td></tr>
+<tr><td>version</td><td>/'vɜːrʒn/ n.</td><td>变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本</td></tr>
+<tr><td>consciousness</td><td>/'kɑːnʃəsnəs/ n.</td><td>知觉意识, 观念, 觉悟察觉, 感觉</td></tr>
+<tr><td>staple</td><td>/'steɪpl/ n.</td><td>主要产品；钉书钉；主题；主食vt. 用钉书钉钉住；把……分级adj.主要的，大宗生产的；常用的；纺织纤维的, stapling, staples</td></tr>
+<tr><td>manifestly</td><td>/'mænɪfest/ vt.</td><td>证明，表明；显示vi. 显示，出现n. 旅客名单；载货单，货单adj. 明白的；显然的，明显的, manifesting, manifests</td></tr>
+<tr><td>present</td><td>/'preznt/ vt.</td><td>呈现；介绍；提出；赠送vi. 举枪瞄准adj. 出席的；现在的n. 现在；礼物；瞄准, presenting, presents</td></tr>
+<tr><td>routes</td><td>/ruːt，raʊt/ n.</td><td>路, 路途, 路线, 路程, routing, routes</td></tr>
+<tr><td>advocate</td><td>/ˈædvəkeɪt，'ædvəkət/ v.</td><td>拥护；支持；提倡n. 拥护者；支持者；提倡者；辩护律师；出庭辩护人, advocating, advocates</td></tr>
+<tr><td>adaptations</td><td>/ˌædæp'teɪʃn/ n.</td><td>适应,适合改编，改写改编本，改写本</td></tr>
+<tr><td>multitudes</td><td>/'mʌltɪtuːd/ n.</td><td>大量, 许多大众, 民众, 群众</td></tr>
+<tr><td>porn</td><td>/pɔːrn/ n.</td><td>〈口〉色情文学,色情描写</td></tr>
+<tr><td>ultimate</td><td>/'ʌltɪmət/ adj.</td><td>最后的，最终的；终极的；极端的；最好（或坏、伟大、重要等）的；根本的；基本的；基础性的n. 最好（或先进、伟大等）的事物；精华；极致；极限；最高典范</td></tr>
+<tr><td>trip</td><td>/trɪp/ vi.</td><td>绊倒；犯错误；远足；轻快地走n. 旅行；绊倒；差错vt. 绊倒；使犯错TRIPabbr. transformation-induced plasticity 高</td></tr>
+<tr><td>lunar</td><td>/'luːnər/ adj.</td><td>月的, 月球的；；阴历的；银的；微亮的</td></tr>
+<tr><td>pepper</td><td>/'pepər/ n.</td><td>胡椒粉辣椒vt. 在…上撒胡椒粉；使布满以…密击，接二连三地提问，peppering，peppers</td></tr>
+<tr><td>sacker</td><td>/sæk/ n.</td><td>麻袋, 包一袋的量开除, 解雇洗劫, 劫掠vt. 装入袋中解雇洗劫, 劫掠, sacking, sacks</td></tr>
+<tr><td>wrecker</td><td>/rek/ n.</td><td>失事；残骸；破坏；[口]失去健康的人vt. 破坏；使失事；拆毁vi. 失事；营救失事船只, wrecking, wrecks</td></tr>
+<tr><td>starring</td><td>— n.</td><td>扮演主角，领衔主演；纯锑表面呈星状花纹</td></tr>
+<tr><td>tricky</td><td>/'trɪki/ adj.</td><td>机警的；狡猾的, trickiest</td></tr>
+<tr><td>grossed</td><td>/ɡroʊs/ adj.</td><td>总共的；粗野的；恶劣的；显而易见的vt. 总共收入n. 总额，总数, grossest</td></tr>
+<tr><td>porn</td><td>/pɔːrn/ n.</td><td>〈口〉色情文学,色情描写</td></tr>
+<tr><td>journey</td><td>/'dʒɜːrni/ n.</td><td>旅行; 行程vi. 旅行</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>either</td><td>/'iːðər/ pron.</td><td>(两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的</td></tr>
+<tr><td>narrative</td><td>/'nærətɪv/ n.</td><td>记叙文；故事n. 叙述，讲述；叙述部分adj. 叙述的；叙事体的</td></tr>
+<tr><td>lines</td><td>— n.</td><td>台词；线；航线（line的复数）v. 排成一行；画线于（line的三单形式）</td></tr>
+<tr><td>translation</td><td>/trænz'leɪʃn/ n.</td><td>翻译译本, 译文</td></tr>
+<tr><td>secondary</td><td>/'sekənderi/ adj.</td><td>次要的, 次等的中级的, 第二的</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>line</td><td>/laɪn/ n.</td><td>绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long interspersed element)长散在元</td></tr>
+<tr><td>mere</td><td>/mɪr/ adj.</td><td>仅仅, 只不过纯粹的Superlative merest</td></tr>
+<tr><td>engage</td><td>/ɪn'ɡeɪdʒ/ vt.</td><td>雇佣；吸引，占用；使订婚；使参加；预定vi. 答应，保证；从事；交战；啮合, engaging, engages</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>terms</td><td>/tɜːrmz/ n.</td><td>条款；地位，关系；措辞；术语；价钱（term的复数形式）v. 把…称为（term的三单形式）</td></tr>
+<tr><td>cambridge</td><td>/'keɪmbrɪdʒ/ n.</td><td>剑桥</td></tr>
+<tr><td>fret</td><td>/fret/ vt.</td><td>焦急；使磨损；使烦恼vi. 磨损；烦恼；焦急n. 烦躁；焦急；磨损, fretting, frets</td></tr>
+<tr><td>race</td><td>/reɪs/ n.</td><td>种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACEabbr. Radiation Adap</td></tr>
+<tr><td>tempered</td><td>/'tempər/ n.</td><td>脾气；（钢等）回火；性情；倾向vt. 调和；锻炼；使缓和；使回火vi. 回火；调和, tempering, tempers</td></tr>
+<tr><td>version</td><td>/'vɜːrʒn/ n.</td><td>变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本</td></tr>
+<tr><td>tragedy</td><td>/'trædʒədi/ n.</td><td>悲剧；灾难；惨案</td></tr>
+<tr><td>poetry</td><td>/'poʊətri/ n.</td><td>诗篇, 诗歌, 诗集作诗法, 诗歌艺术诗情, 诗意, 诗一般的美</td></tr>
+<tr><td>visual</td><td>/'vɪʒuəl/ adj.</td><td>视力的；视觉的；可见的n. 视觉材料（指用于展示或说明的图画、表格、影片等）</td></tr>
+<tr><td>plot</td><td>/plɑːt/ n.</td><td>故事情节(秘密)计划，密谋小块地皮vt. 把…分成小块；划分绘制；标出vt. & vi. 密谋，plotting，plots</td></tr>
+<tr><td>twist</td><td>/twɪst/ vt.</td><td>捻；拧；扭伤；编织；使苦恼n. 扭曲；扭伤；拧vi. 扭动；弯曲, twisting, twists</td></tr>
+<tr><td>silly</td><td>/'sɪli/ adj.</td><td>蠢的，傻的；糊涂的，可笑的〈非正〉不省人事的，失去知觉的；晕头转向的，silliest</td></tr>
+<tr><td>adaptation</td><td>/ˌædæp'teɪʃn/ n.</td><td>适应,适合改编，改写改编本，改写本</td></tr>
+<tr><td>devotion</td><td>/dɪ'voʊʃn/ n.</td><td>奉献, 献身, 忠诚热爱, 挚爱</td></tr>
+<tr><td>contempt</td><td>/kən'tempt/ n.</td><td>轻视，蔑视；耻辱</td></tr>
+<tr><td>brilliant</td><td>/'brɪliənt/ adj.</td><td>闪光的, 明亮的光辉的, 辉煌的</td></tr>
+<tr><td>detached</td><td>/dɪ'tætʃ/ vt.</td><td>分离；派遣；使超然, detaching, detaches</td></tr>
+<tr><td>masterful</td><td>/'mæstərfl/ adj.</td><td>善于控制别人的;善于控制形势的熟练的;娴熟的</td></tr>
+<tr><td>release</td><td>/rɪ'liːs/ vt.</td><td>释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]，releasing，releases</td></tr>
+<tr><td>tend</td><td>/tend/ vt.</td><td>照料，照顾，伺候vi. 往，朝向易于；倾向，tending，tends</td></tr>
+<tr><td>grossing</td><td>/ɡroʊs/ adj.</td><td>总共的；粗野的；恶劣的；显而易见的vt. 总共收入n. 总额，总数, grossest</td></tr>
+<tr><td>entirely</td><td>/ɪn'taɪərli/ adv.</td><td>全部地;完整地;完全地</td></tr>
+<tr><td>streak</td><td>/striːk/ n.</td><td>条纹，线条；倾向vi. 飞跑，疾驶；加上条纹vt. 飞跑，疾驰；加条纹于, streaking, streaks</td></tr>
+<tr><td>rises</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>tempting</td><td>/tempt/ vt.</td><td>引诱或怂恿(某人)干不正当的事使想要, tempting, tempts</td></tr>
+<tr><td>detractors</td><td>/dɪ'træktər/ n.</td><td>诋毁者,贬低者</td></tr>
+<tr><td>scenes</td><td>/siːn/ n.</td><td>情景；景象；场面；事件</td></tr>
+<tr><td>chronologically</td><td>/ˌkrɑːnə'lɑːdʒɪkl/ adj.</td><td>按时间的前后顺序排列的adv. 按时间的前后顺序排列地</td></tr>
+<tr><td>corporate</td><td>/'kɔːrpərət/ adj.</td><td>社团的, 法人的</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>multiple</td><td>/'mʌltɪpl/ adj.</td><td>多样的；许多的；多重的n. 并联；倍数</td></tr>
+<tr><td>hole</td><td>/hoʊl/ n.</td><td>洞，孔；洞穴，穴；突破口vi. 凿洞，穿孔；（高尔夫球等）进洞vt. 凿洞, holing, holes</td></tr>
+<tr><td>narratives</td><td>/'nærətɪv/ n.</td><td>记叙文；故事n. 叙述，讲述；叙述部分adj. 叙述的；叙事体的</td></tr>
+<tr><td>backwards</td><td>/'bækwərd/ adj.</td><td>向后的；反向的；发展迟缓的adv. 相反地；向后地</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day37.html" class="nav-btn">← Day 37</a>
+  <a href="day39.html" class="nav-btn">Day 39 →</a>
+</div>
+
+<div class="progress">📖 Day 38 of 41</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-07-18</div>
+
+</body>
+</html>

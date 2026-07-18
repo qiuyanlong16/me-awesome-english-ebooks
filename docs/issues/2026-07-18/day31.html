@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business | Bartleby</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-07-18</div>
+
+<h1 class="article-title">Business | Bartleby</h1>
+<div class="article-section">Business</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>down this <span class="annot" data-tooltip="route /ruːt，raʊt/ n. 路, 路途, 路线, 路程时 态: routed, routing, routes">route</span>, I will really need some help. I talked to a few young people and they suggested these words, but none of it makes any sense.] <span class="annot" data-tooltip="heritage /'herɪtɪdʒ/ n. 遗产, 继承物传统">Heritage</span>. The <span class="annot" data-tooltip="stove /stoʊv/ n. 火炉；窑；温室vt. 用火炉烤">Stove</span> Top has been warming water and hearts for well over 100 years. Still today, its comforting digital whistle marks the end of every <span class="annot" data-tooltip="boil /bɔɪl/ vi. 煮沸，沸腾；激动，激昂vt. 煮沸，烧开；使…激动；使…蒸发n. 沸腾，煮沸；疖子时 态: boiled, boilin">boil</span>, the start of every pour. Each Stove Top is assembled and put into its box by employees who have spent their lives around <span class="annot" data-tooltip="kettles /'ketl/ n. (烧水用的)壶">kettles</span>. Our <span class="annot" data-tooltip="master /mæst/ n. 船桅，桅杆；旗杆MASTabbr. Magnetic Annular Shock Tube 磁性环形激波管(风洞研究用)">master</span> kettlers live in an industrial heartland and some of them wear <span class="annot" data-tooltip="overalls /ˌoʊvər'ɔːl/ adj. 总体的；全面的；综合的全面考虑的adv. 大体上，总的来说一切包括在内，全部的n. 长罩衣工装裤；工作裤">overalls</span>. Anyone can make a hot drink. Only the Stove Top can make you feel part of history. Wellness. The Kato is a <span class="annot" data-tooltip="central /'sentrəl/ adj. 中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的副 词: centrally">central</span> part of your health and fitness <span class="annot" data-tooltip="regime /reɪ'ʒiːm/ n. 政权，政体；社会制度；管理体制">regime</span>. Its water-heating technology fits <span class="annot" data-tooltip="seamlessly /'siːmləs/ adj. 无缝合线的；无缝的；无伤痕的副 词: seamlessly">seamlessly</span> into every nutrition plan, from turmeric lattes and bone broths to chicory coffees and matcha green teas. Our trained team of advisers is on hand 24 hours a day, seven days a week to answer your queries. Worried about the effect of steam on your <span class="annot" data-tooltip="breathing /breθ/ n. 气息；呼吸(一次)呼吸，一口气；微风">breathing</span>? Uncertain what all those flaky bits at the bottom are doing to your microbiome? The Kato is with you every step of the way on your <span class="annot" data-tooltip="journey /'dʒɜːrni/ n. 旅行; 行程vi. 旅行">journey</span> to becoming a better you. (Comes with a small wearable <span class="annot" data-tooltip="sensor /'sensər/ n. 传感器">sensor</span> that tells you whether you are still <span class="annot" data-tooltip="alive /ə'laɪv/ adj. 活着的, 在世的, 存在的有活力的, 活跃的, 有生气的">alive</span>.) Populist. If scalding hot water and the risk of a burn do not scare you, buy the <span class="annot" data-tooltip="boiler /bɔɪl/ vi. 煮沸，沸腾；激动，激昂vt. 煮沸，烧开；使…激动；使…蒸发n. 沸腾，煮沸；疖子时 态: boiled, boilin">Boiler</span>. A <span class="annot" data-tooltip="kettle /'ketl/ n. (烧水用的)壶">kettle</span> for real <span class="annot" data-tooltip="patriots n. 深海截击战；爱国者（patriot的复数）">patriots</span>. Not suitable for herbal teas and other woke <span class="annot" data-tooltip="beverages /'bevərɪdʒ/ n. 饮料">beverages</span>. Used by veterans, among others. Made in this country, except for some <span class="annot" data-tooltip="essential /ɪ'senʃl/ adj. 基本的；必要的；本质的；精华的">essential</span> components. ■ Step inside the world of work with our Bartleby newsletter. Each week our white-collar oracle muses on the agonies of office life. This article was downloaded by zlibrary from https://www.economist.com//business/2026/07/16/how-to-sell-a-kettle</p>
+<div class="article-separator"></div>
+<div class="article-header">Business · Business | Memory bank</div>
+<p>How SK Hynix became the king of advanced memory chips Its advantages will not protect it if demand falters July 16th 2026 In the early 2000s a sharp downturn in the market for memory chips pushed Hynix <span class="annot" data-tooltip="semiconductor /'semikəndʌktər/ n. 〈物〉半导体形容词: semiconducting">Semiconductor</span>, as it was known at the time, to the <span class="annot" data-tooltip="brink /brɪŋk/ n. (悬崖峭壁的)边沿(危险的)边沿">brink</span> of <span class="annot" data-tooltip="collapse /kə'læps/ vi. 倒塌；瓦解；暴跌vt. 使倒塌，使崩溃；使萎陷n. 倒塌；失败；衰竭时 态: collapsed, collapsing">collapse</span>. Sales fell by half, and the South Korean company’s market capitalisation sank to just above $500m. A <span class="annot" data-tooltip="decade /'dekeɪd/ n. 十年，十年期；十">decade</span> of <span class="annot" data-tooltip="brutal /'bruːtl/ adj. 残忍的；野蛮的，不讲理的副 词: brutally">brutal</span> restructuring ensued, during which it <span class="annot" data-tooltip="narrowly /'næroʊ/ adj. 狭窄的，有限的；度量小的；精密的；勉强的n. 狭窄部分，隘路；海峡vt. 使变狭窄vi. 变窄比较级: narrower">narrowly</span> survived an effort by Micron, an American competitor, to buy it for parts. In 2012 the floundering chipmaker was acquired by SK <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">Group</span>, a local conglomerate. These days things look very different for SK Hynix. In June it briefly dethroned Samsung Electronics as South Korea’s most valuable company. It is now neck-and-neck with its long-time <span class="annot" data-tooltip="rival /'raɪvl/ n. 竞争对手vt. 与…竞争, 与…匹敌时 态: rivaled, rivalled rivaling, rivalling">rival</span> in the global market for</p>
+<p>memory chips, and well ahead in the high-<span class="annot" data-tooltip="bandwidth /'bændwɪdθ/ n. 带宽">bandwidth</span> memory (HBM) required for artificial intelligence. The AI boom has fuelled a vertiginous <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> in SK Hynix’s market capitalisation, which in May passed $1trn. On July 10th the company listed its shares on America’s <span class="annot" data-tooltip="nasdaq 纳斯达克指数〈美〉全国证券交易商自动报价系统协会">Nasdaq</span> exchange, raising $26.5bn in the <span class="annot" data-tooltip="process /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">process</span>, a record for a foreign company. <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">Although</span> its share price <span class="annot" data-tooltip="slumped /slʌmp/ vi. 大幅度下降, 暴跌沉重或突然地落下[倒下]n. 萧条期〈美〉(个人、球队等的)低潮状态时 态: slumped, slu">slumped</span> on the following trading day, with investors <span class="annot" data-tooltip="wary /'weri/ adj. 机警的；谨慎的；惟恐的；考虑周到的比较级: warier, wariest">wary</span> of the increasingly lofty valuations of chipmakers, it is still up by around 1,000% since the start of 2025. The money raised in the listing, along with the $50bn of cash its operations generated in the 12 months to March, will fund an ambitious expansion (see chart). “We’re going to double our whole capacity in the next five years,” Chey Tae-won, the <span class="annot" data-tooltip="chairman /'tʃermən/ n. 主席，会长；董事长时 态: chairmanned, chairmanning, chairmans">chairman</span> of SK <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">Group</span>, pledged last month. Appetite for its chips is voracious: sales in its most recent <span class="annot" data-tooltip="quarter /'kwɔːrtər/ n. 四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一时 ">quarter</span> were <span class="annot" data-tooltip="triple /'trɪpl/ adj. 三倍的；三方的n. 三倍数；三个一组vi. 增至三倍vt. 使成三倍时 态: tripled, tripling, tr">triple</span> the level a year earlier. SK Hynix cannot take <span class="annot" data-tooltip="credit /'kredɪt/ n. 赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)时 态:">credit</span> for the AI boom. But its <span class="annot" data-tooltip="turnaround /'tɜːrnəraʊnd/ n. 车辆回转场(为给飞机检修和加油之类使其重新进入飞行状态所需的)周转时间">turnaround</span> is remarkable <span class="annot" data-tooltip="nonetheless /ˌnʌnðə'les/ adv. 虽然如此,但是">nonetheless</span>. The chipmaking <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span>’s <span class="annot" data-tooltip="intense /ɪn'tens/ adj. 强烈的；紧张的；热情的；非常的比较级: intenser, intensest">intense</span> capital requirements and technological sophistication favour incumbents. Underdogs rarely pull ahead. How has SK Hynix done it?</p>
+<p>Part of the <span class="annot" data-tooltip="explanation /ˌeksplə'neɪʃn/ n. 解释, 说明能说明某事缘由的言语、事实、情况等">explanation</span> lies in its nimbleness. <span class="annot" data-tooltip="stuck /stʌk/ v. 刺（stick的过去式）adj. 不能动的；被卡住的">Stuck</span> in the shadow of Samsung, which controlled around 40% of the memory market (against Hynix’s roughly 25%) in the early 2010s, the runner-up started looking for ways to leapfrog the competition. Identifying novel ways to circumvent the physical limits of increasingly tiny chips became a focus, recalls Park Sung- wook, its chief executive in 2013-18. Opportunity struck in 2008 when AMD, an American company that itself played second fiddle to Intel, asked SK Hynix to create a new form of <span class="annot" data-tooltip="stacked /stækt/ adj. [俚]妖艳的；（女人）身材丰满匀称的v. 堆放（stack的过去分词）">stacked</span> memory chip for a <span class="annot" data-tooltip="graphics /'ɡræfɪks/ n. 制图学；制图法；图表算法">graphics</span> <span class="annot" data-tooltip="processor /'prɑːsesər/ n. 加工、处理事物的人〔设备、产业〕(计算机的)中央处理器数据处理机">processor</span>. The pair had previously worked together on an earlier graphics- memory chip that had <span class="annot" data-tooltip="proved /proʊ/ n. 从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞">proved</span> a great success. <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">Although</span> the early <span class="annot" data-tooltip="trial /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">trial</span> of HBM, launched in 2013, proved too pricey for customers, it demonstrated that <span class="annot" data-tooltip="stacking n. 堆垛v. 堆叠，堆积（stack的ing形式）">stacking</span> memory chips vertically could achieve <span class="annot" data-tooltip="significantly /sɪɡ'nɪfɪkənt/ adj. 重要的, 重大的, 可观的有意义的, 有用意的意味深长的副 词: significantly">significantly</span> faster speeds. Missteps from <span class="annot" data-tooltip="rivals /'raɪvl/ n. 竞争对手vt. 与…竞争, 与…匹敌时 态: rivaled, rivalled rivaling, rivalling">rivals</span> provided an added boost. In 2019 Samsung downsized its HBM team to <span class="annot" data-tooltip="invest /ɪn'vest/ vt. 投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买时 态: invested, investing, invests">invest</span> in other types of chips. Engineers who still believed in the technology fled to SK Hynix. A <span class="annot" data-tooltip="crop /krɑːp/ n. 农作物；庄稼；产量；平头vt. 种植；收割；修剪；剪短vi. 收获时 态: cropped, cropping, cro">crop</span> of engineers from Intel, which was struggling with product delays, joined the South Korean memory-maker too. <span class="annot" data-tooltip="corporate /'kɔːrpərət/ adj. 社团的, 法人的副 词: corporately">Corporate</span> culture has also played an important part. Samsung is known to reward <span class="annot" data-tooltip="internal /ɪn'tɜːrnl/ adj. 国内的；内部的；内在的名 词: internality">internal</span> competition through a cut-throat meritocracy. SK Hynix, on the other hand, embraces <span class="annot" data-tooltip="collaboration /kəˌlæbə'reɪʃn/ n. 合作, 协作通敌">collaboration</span>. Hyun Sun-yeop, its former human- resources chief, argues that company-wide <span class="annot" data-tooltip="practices /'præktɪs/ n. 练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规时 态: practiced，practicing，">practices</span> such as frequent one- on-ones let employees speak out and share information, in <span class="annot" data-tooltip="contrast /'kɑːntræst/ n. 对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照时 态: contrasted, cont">contrast</span> with Samsung’s more <span class="annot" data-tooltip="hierarchical /ˌhaɪə'rɑːrkɪkl/ adj. 分等级的副 词: hierarchically">hierarchical</span> and siloed environment. Engineers are also encouraged to <span class="annot" data-tooltip="tinker /'tɪŋkər/ n. (补壶、锅等流动的)补锅工人能做各种小修小补的人；什么事情都会干一手的人笨拙的工人，不熟练的工人小鲭鱼粗劣的修补vi. ">tinker</span>, with unsuccessful projects turned into “failure case studies”. That has led to <span class="annot" data-tooltip="innovations /ˌɪnə'veɪʃn/ n. 改革, 革新, 创新新观念, 新方法, 新发明形容词: innovational">innovations</span> such as “mass reflow- molded underfill”, which packages together stacked chips by filling gaps between them with a moulding liquid, <span class="annot" data-tooltip="helping /'helpɪŋ/ n. （进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的">helping</span> to <span class="annot" data-tooltip="dissipate /'dɪsɪpeɪt/ vt. & vi. 驱散；消失vt. 浪费时 态: dissipated，dissipating，dissipates">dissipate</span> heat. Such techniques helped SK Hynix beat Samsung to market with HBM3, the fourth generation of the product, in 2022, making it the <span class="annot" data-tooltip="sole /soʊl/ n. 鞋底；脚底；基础；鳎目鱼adj. 唯一的；单独的；仅有的vt. 上鞋底；触底时 态: soled, soling, so">sole</span> supplier of <span class="annot" data-tooltip="cutting /'kʌtɪŋ/ n. 切断；剪辑；开凿adj. 严寒的；锋利的；尖酸刻薄的v. 切开；采伐；削减（cut的ing形式）">cutting</span>- <span class="annot" data-tooltip="edge /edʒ/ n. 边缘；刀刃；优势；锋利vt. 使锐利；将…开刃；给…加上边vi. 缓缓移动；侧着移动EDGEabbr. Electron">edge</span> memory to <span class="annot" data-tooltip="nvidia 恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商">Nvidia</span>, the king of AI chips. SK Hynix could still falter. It has never faced such a position, as a market leader during a period of relentless expansion. Samsung and Micron are catching up; both are set to supply some HBM for Nvidia’s <span class="annot" data-tooltip="upcoming /'ʌpkʌmɪŋ/ adj. 即将来到的, 即将出现的">upcoming</span> Vera</p>
+<p>Rubin server <span class="annot" data-tooltip="rack /ræk/ n. 行李架；拷问台；齿条vi. 随风飘；小步跑；变形vt. 折磨；榨取时 态: racked, racking, racks">rack</span>, and Samsung has been regaining its lead in conventional memory. The three businesses, which together <span class="annot" data-tooltip="dominate /'dɑːmɪneɪt/ vt. 支配；控制；占优势；在…中占主要地位vi. 处于支配地位；占优势时 态: dominated, dominating, ">dominate</span> the memory market, have all <span class="annot" data-tooltip="unveiled /ˌʌn'veɪl/ vt. 揭去…的面罩，除去…的遮盖物使公之于众；揭露vi. 除去面纱(或覆盖物)；揭幕揭露出来时 态: unveiled，unv">unveiled</span> dizzying investment plans. Last month the two South Korean giants announced over $2trn of investment up to 2040, including in a “<span class="annot" data-tooltip="mega n. 百万adj. 许多；宏大的adv. 非常">mega</span>-<span class="annot" data-tooltip="cluster /'klʌstər/ n. (果实、花等的)串, 簇(人、物等的)群, 组vt. & vi. (使)集中时 态: clustered, cluste">cluster</span>” of chip facilities in Yongin, a city near <span class="annot" data-tooltip="seoul /sol/ n. 首尔(韩国首都)">Seoul</span>. Soaring demand and fierce competition increase the risk of over-investment, a regular feature of boom periods in the <span class="annot" data-tooltip="notoriously /noʊ'tɔːriəs/ adj. 臭名昭著的, 声名狼藉的副 词: notoriously">notoriously</span> <span class="annot" data-tooltip="cyclical /ˈsaɪklɪkl/ adj. 周期的，循环的">cyclical</span> memory market. At the peak of the last cycle, in 2018, SK Hynix’s capital <span class="annot" data-tooltip="expenditure /ɪk'spendɪtʃər/ n. 花费, 使用(尤指金钱的)支出额">expenditure</span> hit $15bn (or 40% of <span class="annot" data-tooltip="revenue /'revənuː/ n. 收入，收益；财政收入，税收">revenue</span>). Then in 2019 a slowing server market led to a halving of memory prices. The firm’s sales fell by 33% the following year, while steep fixed costs meant operating profits collapsed by 87%. This time the company has promised to limit capital spending to about a third of revenue (over the past 12 months it has averaged 22%). It also insists that long-term supply agreements, negotiated on more stringent <span class="annot" data-tooltip="terms /tɜːrmz/ n. 条款；地位，关系；措辞；术语；价钱（term的复数形式）v. 把…称为（term的三单形式）">terms</span> than in the past, give it years of visibility on sales. That may help the eventual down-cycle to “not be as <span class="annot" data-tooltip="violent /'vaɪələnt/ adj. 暴力引起的, 粗暴的剧烈的, 强烈的副 词: violently">violent</span>”, says Jing Jie Yu of Morningstar, a research firm. But even if demand remains high relative to the past, any <span class="annot" data-tooltip="reduction /rɪ'dʌkʃn/ n. 减少，缩小；减少的量，降价">reduction</span> could arrive just as the new capacity currently being built comes online. Bernstein, a broker, reckons that memory prices, which have risen <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> ten-fold in the past year, will probably peak next year, precipitating a 45% drop in sales at SK Hynix in 2028. Rising Chinese memory-makers such as CXMT and YMTC could add to the <span class="annot" data-tooltip="excess /ɪk'ses/ n. 无节制；过度，过量；超过，超额adj. 额外的，过量的；附加的时 态: excessed, excessing, exc">excess</span> supply. SK Hynix also faces growing demands from politicians. It is under pressure from Lee Jae Myung, South Korea’s president, to expand capacity in the country’s less-developed south-west, where SK Hynix recently announced over $260bn-<span class="annot" data-tooltip="worth /wɜːrθ/ adj. 值…的n. 价值；财产时 态: worthed, worthing, worths">worth</span> of investments to create another chipmaking cluster. <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">Although</span> the region is abundant in water and power, executives are <span class="annot" data-tooltip="wary /'weri/ adj. 机警的；谨慎的；惟恐的；考虑周到的比较级: warier, wariest">wary</span> of moving too much capacity away from Seoul, where talent and industrial networks concentrate. America, too, is prodding. Howard Lutnick, its <span class="annot" data-tooltip="commerce /'kɑːmɜːrs/ n. 商业, 贸易">commerce</span> <span class="annot" data-tooltip="secretary /'sekrəteri/ n. 秘书书记部长, 大臣形容词: secretarial">secretary</span>, is reportedly in talks with the chipmaker to build more in America. The firm has already <span class="annot" data-tooltip="committed /kə'mɪt/ vt. 犯罪；犯错承诺；使自己受约束托付；交付时 态: committed，committing，commits">committed</span> to a $4bn facility in Indiana. SK Hynix is discovering that success brings challenges of its <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span>. ■</p>
+<p>To track the <span class="annot" data-tooltip="trends /trend/ n. 趋势, 倾向流行时 态: trended, trending, trends">trends</span> shaping <span class="annot" data-tooltip="commerce /'kɑːmɜːrs/ n. 商业, 贸易">commerce</span>, <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> and technology, sign up to “The Bottom <span class="annot" data-tooltip="line /laɪn/ n. 绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long inter">Line</span>”, our weekly subscriber-only newsletter on global business. This article was downloaded by zlibrary from https://www.economist.com//business/2026/07/16/how-sk-hynix-became-the-king-of- advanced-memory-chips</p>
+<div class="article-separator"></div>
+<div class="article-header">Business · Business | Schumpeter</div>
+<p>Meet the committee to buy Europe The continent’s dealmakers deserve much more attention July 16th 2026 Europe wants bigger firms. Its apparatchiks say so every time they talk about integration and competitiveness. “The leaders want true European champions,” announced António Costa, the Portuguese head of the European Council, in February. “We limited consolidation, <span class="annot" data-tooltip="constrained /kən'streɪn/ vt. 强迫，强使；限制，约束时 态: constrained，constraining，constrains">constrained</span> risk and postponed cross-border investments,” complained Mario Draghi, an <span class="annot" data-tooltip="italian /ɪ'tæliən/ adj. 意大利的；意大利文化的；意大利语的n. 意大利人；意大利语">Italian</span> banker who wrote a door-stopper of a report on the topic, in a speech in May. <span class="annot" data-tooltip="ideally /aɪ'diːəli/ adv. 理想地；观念上地">Ideally</span> these “champions” would be born loyal to the European project: golden geese <span class="annot" data-tooltip="reared /rɪr/ vt. 培养；树立；栽种vi. 暴跳；高耸adv. 在后面；向后adj. 后面的；[军]后方的；背面的n. 后面；[美俚]屁股；">reared</span> under <span class="annot" data-tooltip="brussels /ˈbrʌsəlz/ n. 布鲁塞尔（比利时首都）">Brussels</span>’ proposed “EU Inc” incorporation rules. In <span class="annot" data-tooltip="practice /'præktɪs/ n. 练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规时 态: practiced，practicing，">practice</span> they must be forged by mergers. Big pan-European deals require big pan-European dealmakers. Can the continent produce such figures? Can</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>route</td><td>/ruːt，raʊt/ n.</td><td>路, 路途, 路线, 路程, routing, routes</td></tr>
+<tr><td>heritage</td><td>/'herɪtɪdʒ/ n.</td><td>遗产, 继承物传统</td></tr>
+<tr><td>stove</td><td>/stoʊv/ n.</td><td>火炉；窑；温室vt. 用火炉烤</td></tr>
+<tr><td>boil</td><td>/bɔɪl/ vi.</td><td>煮沸，沸腾；激动，激昂vt. 煮沸，烧开；使…激动；使…蒸发n. 沸腾，煮沸；疖子, boiling, boils</td></tr>
+<tr><td>kettles</td><td>/'ketl/ n.</td><td>(烧水用的)壶</td></tr>
+<tr><td>master</td><td>/mæst/ n.</td><td>船桅，桅杆；旗杆MASTabbr. Magnetic Annular Shock Tube 磁性环形激波管(风洞研究用)</td></tr>
+<tr><td>overalls</td><td>/ˌoʊvər'ɔːl/ adj.</td><td>总体的；全面的；综合的全面考虑的adv. 大体上，总的来说一切包括在内，全部的n. 长罩衣工装裤；工作裤</td></tr>
+<tr><td>central</td><td>/'sentrəl/ adj.</td><td>中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的</td></tr>
+<tr><td>regime</td><td>/reɪ'ʒiːm/ n.</td><td>政权，政体；社会制度；管理体制</td></tr>
+<tr><td>seamlessly</td><td>/'siːmləs/ adj.</td><td>无缝合线的；无缝的；无伤痕的</td></tr>
+<tr><td>breathing</td><td>/breθ/ n.</td><td>气息；呼吸(一次)呼吸，一口气；微风</td></tr>
+<tr><td>journey</td><td>/'dʒɜːrni/ n.</td><td>旅行; 行程vi. 旅行</td></tr>
+<tr><td>sensor</td><td>/'sensər/ n.</td><td>传感器</td></tr>
+<tr><td>alive</td><td>/ə'laɪv/ adj.</td><td>活着的, 在世的, 存在的有活力的, 活跃的, 有生气的</td></tr>
+<tr><td>boiler</td><td>/bɔɪl/ vi.</td><td>煮沸，沸腾；激动，激昂vt. 煮沸，烧开；使…激动；使…蒸发n. 沸腾，煮沸；疖子, boiling, boils</td></tr>
+<tr><td>kettle</td><td>/'ketl/ n.</td><td>(烧水用的)壶</td></tr>
+<tr><td>patriots</td><td>— n.</td><td>深海截击战；爱国者（patriot的复数）</td></tr>
+<tr><td>beverages</td><td>/'bevərɪdʒ/ n.</td><td>饮料</td></tr>
+<tr><td>essential</td><td>/ɪ'senʃl/ adj.</td><td>基本的；必要的；本质的；精华的</td></tr>
+<tr><td>semiconductor</td><td>/'semikəndʌktər/ n.</td><td>〈物〉半导体</td></tr>
+<tr><td>brink</td><td>/brɪŋk/ n.</td><td>(悬崖峭壁的)边沿(危险的)边沿</td></tr>
+<tr><td>collapse</td><td>/kə'læps/ vi.</td><td>倒塌；瓦解；暴跌vt. 使倒塌，使崩溃；使萎陷n. 倒塌；失败；衰竭, collapsing, collapses</td></tr>
+<tr><td>decade</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>brutal</td><td>/'bruːtl/ adj.</td><td>残忍的；野蛮的，不讲理的</td></tr>
+<tr><td>narrowly</td><td>/'næroʊ/ adj.</td><td>狭窄的，有限的；度量小的；精密的；勉强的n. 狭窄部分，隘路；海峡vt. 使变狭窄vi. 变窄, narrowest</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>rival</td><td>/'raɪvl/ n.</td><td>竞争对手vt. 与…竞争, 与…匹敌, rivalled rivaling, rivalling rivals, rivals</td></tr>
+<tr><td>bandwidth</td><td>/'bændwɪdθ/ n.</td><td>带宽</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>nasdaq</td><td>— </td><td>纳斯达克指数〈美〉全国证券交易商自动报价系统协会</td></tr>
+<tr><td>process</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>slumped</td><td>/slʌmp/ vi.</td><td>大幅度下降, 暴跌沉重或突然地落下[倒下]n. 萧条期〈美〉(个人、球队等的)低潮状态, slumping, slumps</td></tr>
+<tr><td>wary</td><td>/'weri/ adj.</td><td>机警的；谨慎的；惟恐的；考虑周到的, wariest</td></tr>
+<tr><td>chairman</td><td>/'tʃermən/ n.</td><td>主席，会长；董事长, chairmanning, chairmans</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>quarter</td><td>/'kwɔːrtər/ n.</td><td>四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一, quartering, quarters</td></tr>
+<tr><td>triple</td><td>/'trɪpl/ adj.</td><td>三倍的；三方的n. 三倍数；三个一组vi. 增至三倍vt. 使成三倍, tripling, triples</td></tr>
+<tr><td>credit</td><td>/'kredɪt/ n.</td><td>赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)，crediting，credits</td></tr>
+<tr><td>turnaround</td><td>/'tɜːrnəraʊnd/ n.</td><td>车辆回转场(为给飞机检修和加油之类使其重新进入飞行状态所需的)周转时间</td></tr>
+<tr><td>nonetheless</td><td>/ˌnʌnðə'les/ adv.</td><td>虽然如此,但是</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>intense</td><td>/ɪn'tens/ adj.</td><td>强烈的；紧张的；热情的；非常的, intensest</td></tr>
+<tr><td>explanation</td><td>/ˌeksplə'neɪʃn/ n.</td><td>解释, 说明能说明某事缘由的言语、事实、情况等</td></tr>
+<tr><td>stuck</td><td>/stʌk/ v.</td><td>刺（stick的过去式）adj. 不能动的；被卡住的</td></tr>
+<tr><td>stacked</td><td>/stækt/ adj.</td><td>[俚]妖艳的；（女人）身材丰满匀称的v. 堆放（stack的过去分词）</td></tr>
+<tr><td>graphics</td><td>/'ɡræfɪks/ n.</td><td>制图学；制图法；图表算法</td></tr>
+<tr><td>processor</td><td>/'prɑːsesər/ n.</td><td>加工、处理事物的人〔设备、产业〕(计算机的)中央处理器数据处理机</td></tr>
+<tr><td>proved</td><td>/proʊ/ n.</td><td>从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞成；支持Pro脯氨酸PROabbr. P</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>trial</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>stacking</td><td>— n.</td><td>堆垛v. 堆叠，堆积（stack的ing形式）</td></tr>
+<tr><td>significantly</td><td>/sɪɡ'nɪfɪkənt/ adj.</td><td>重要的, 重大的, 可观的有意义的, 有用意的意味深长的</td></tr>
+<tr><td>rivals</td><td>/'raɪvl/ n.</td><td>竞争对手vt. 与…竞争, 与…匹敌, rivalled rivaling, rivalling rivals, rivals</td></tr>
+<tr><td>invest</td><td>/ɪn'vest/ vt.</td><td>投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买, investing, invests</td></tr>
+<tr><td>crop</td><td>/krɑːp/ n.</td><td>农作物；庄稼；产量；平头vt. 种植；收割；修剪；剪短vi. 收获, cropping, crops</td></tr>
+<tr><td>corporate</td><td>/'kɔːrpərət/ adj.</td><td>社团的, 法人的</td></tr>
+<tr><td>internal</td><td>/ɪn'tɜːrnl/ adj.</td><td>国内的；内部的；内在的</td></tr>
+<tr><td>collaboration</td><td>/kəˌlæbə'reɪʃn/ n.</td><td>合作, 协作通敌</td></tr>
+<tr><td>practices</td><td>/'præktɪs/ n.</td><td>练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规，practicing，practices</td></tr>
+<tr><td>contrast</td><td>/'kɑːntræst/ n.</td><td>对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照, contrasting, contrasts</td></tr>
+<tr><td>hierarchical</td><td>/ˌhaɪə'rɑːrkɪkl/ adj.</td><td>分等级的</td></tr>
+<tr><td>tinker</td><td>/'tɪŋkər/ n.</td><td>(补壶、锅等流动的)补锅工人能做各种小修小补的人；什么事情都会干一手的人笨拙的工人，不熟练的工人小鲭鱼粗劣的修补vi. 做焊锅匠；焊补胡乱修补；笨手笨脚地做某事</td></tr>
+<tr><td>innovations</td><td>/ˌɪnə'veɪʃn/ n.</td><td>改革, 革新, 创新新观念, 新方法, 新发明</td></tr>
+<tr><td>helping</td><td>/'helpɪŋ/ n.</td><td>（进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的</td></tr>
+<tr><td>dissipate</td><td>/'dɪsɪpeɪt/ vt.</td><td>& vi. 驱散；消失vt. 浪费，dissipating，dissipates</td></tr>
+<tr><td>sole</td><td>/soʊl/ n.</td><td>鞋底；脚底；基础；鳎目鱼adj. 唯一的；单独的；仅有的vt. 上鞋底；触底, soling, soles</td></tr>
+<tr><td>cutting</td><td>/'kʌtɪŋ/ n.</td><td>切断；剪辑；开凿adj. 严寒的；锋利的；尖酸刻薄的v. 切开；采伐；削减（cut的ing形式）</td></tr>
+<tr><td>edge</td><td>/edʒ/ n.</td><td>边缘；刀刃；优势；锋利vt. 使锐利；将…开刃；给…加上边vi. 缓缓移动；侧着移动EDGEabbr. Electronic Data Gathering Eq</td></tr>
+<tr><td>nvidia</td><td>— </td><td>恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商</td></tr>
+<tr><td>upcoming</td><td>/'ʌpkʌmɪŋ/ adj.</td><td>即将来到的, 即将出现的</td></tr>
+<tr><td>rack</td><td>/ræk/ n.</td><td>行李架；拷问台；齿条vi. 随风飘；小步跑；变形vt. 折磨；榨取, racking, racks</td></tr>
+<tr><td>dominate</td><td>/'dɑːmɪneɪt/ vt.</td><td>支配；控制；占优势；在…中占主要地位vi. 处于支配地位；占优势, dominating, dominates</td></tr>
+<tr><td>unveiled</td><td>/ˌʌn'veɪl/ vt.</td><td>揭去…的面罩，除去…的遮盖物使公之于众；揭露vi. 除去面纱(或覆盖物)；揭幕揭露出来，unveiling，unveils</td></tr>
+<tr><td>mega</td><td>— n.</td><td>百万adj. 许多；宏大的adv. 非常</td></tr>
+<tr><td>cluster</td><td>/'klʌstər/ n.</td><td>(果实、花等的)串, 簇(人、物等的)群, 组vt. & vi. (使)集中, clustering, clusters</td></tr>
+<tr><td>seoul</td><td>/sol/ n.</td><td>首尔(韩国首都)</td></tr>
+<tr><td>notoriously</td><td>/noʊ'tɔːriəs/ adj.</td><td>臭名昭著的, 声名狼藉的</td></tr>
+<tr><td>cyclical</td><td>/ˈsaɪklɪkl/ adj.</td><td>周期的，循环的</td></tr>
+<tr><td>expenditure</td><td>/ɪk'spendɪtʃər/ n.</td><td>花费, 使用(尤指金钱的)支出额</td></tr>
+<tr><td>revenue</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>terms</td><td>/tɜːrmz/ n.</td><td>条款；地位，关系；措辞；术语；价钱（term的复数形式）v. 把…称为（term的三单形式）</td></tr>
+<tr><td>violent</td><td>/'vaɪələnt/ adj.</td><td>暴力引起的, 粗暴的剧烈的, 强烈的</td></tr>
+<tr><td>reduction</td><td>/rɪ'dʌkʃn/ n.</td><td>减少，缩小；减少的量，降价</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>excess</td><td>/ɪk'ses/ n.</td><td>无节制；过度，过量；超过，超额adj. 额外的，过量的；附加的, excessing, excesses</td></tr>
+<tr><td>worth</td><td>/wɜːrθ/ adj.</td><td>值…的n. 价值；财产, worthing, worths</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>wary</td><td>/'weri/ adj.</td><td>机警的；谨慎的；惟恐的；考虑周到的, wariest</td></tr>
+<tr><td>commerce</td><td>/'kɑːmɜːrs/ n.</td><td>商业, 贸易</td></tr>
+<tr><td>secretary</td><td>/'sekrəteri/ n.</td><td>秘书书记部长, 大臣</td></tr>
+<tr><td>committed</td><td>/kə'mɪt/ vt.</td><td>犯罪；犯错承诺；使自己受约束托付；交付，committing，commits</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>trends</td><td>/trend/ n.</td><td>趋势, 倾向流行, trending, trends</td></tr>
+<tr><td>commerce</td><td>/'kɑːmɜːrs/ n.</td><td>商业, 贸易</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>line</td><td>/laɪn/ n.</td><td>绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long interspersed element)长散在元</td></tr>
+<tr><td>constrained</td><td>/kən'streɪn/ vt.</td><td>强迫，强使；限制，约束，constraining，constrains</td></tr>
+<tr><td>italian</td><td>/ɪ'tæliən/ adj.</td><td>意大利的；意大利文化的；意大利语的n. 意大利人；意大利语</td></tr>
+<tr><td>ideally</td><td>/aɪ'diːəli/ adv.</td><td>理想地；观念上地</td></tr>
+<tr><td>reared</td><td>/rɪr/ vt.</td><td>培养；树立；栽种vi. 暴跳；高耸adv. 在后面；向后adj. 后面的；[军]后方的；背面的n. 后面；[美俚]屁股；后方部队, rearing, rears</td></tr>
+<tr><td>brussels</td><td>/ˈbrʌsəlz/ n.</td><td>布鲁塞尔（比利时首都）</td></tr>
+<tr><td>practice</td><td>/'præktɪs/ n.</td><td>练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规，practicing，practices</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day30.html" class="nav-btn">← Day 30</a>
+  <a href="day32.html" class="nav-btn">Day 32 →</a>
+</div>
+
+<div class="progress">📖 Day 31 of 41</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-07-18</div>
+
+</body>
+</html>

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-07-18</div>
+
+<h1 class="article-title">Business</h1>
+<div class="article-section"></div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>claiming, often on dubious evidence, that they use too much water and <span class="annot" data-tooltip="raise /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raise</span> electricity prices. SpaceX’s stock slipped below the $135 it was listed at in its initial public offering on June 12th. More than $1trn has been wiped off the company’s market <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span> since the share price hit a peak in mid-June. Speculation that artificial intelligence is causing a market <span class="annot" data-tooltip="bubble /'bʌbl/ n. 气泡，泡沫，泡状物；透明圆形罩，圆形顶vi. 沸腾，冒泡；发出气泡声vt. 使冒泡；滔滔不绝地说时 态: bubbled">bubble</span> was dismissed as “absurd” by Masayoshi Son, the boss of SoftBank. Mr Son was an early backer of the technology. He indulged in some speculation of his <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span>. By 2040 humans will no longer be the “highest life form”, predicted Mr Son, $5trn a year will be spent on AI, and data centres will be powered by nuclear <span class="annot" data-tooltip="fusion /'fjuːʒn/ n. 融合物；熔化；融合；熔接">fusion</span>. In June Mr Son compared worries about an AI bubble to “blasphemy”. Sir Demis Hassabis, the co-founder of Google DeepMind, called for the establishment of a regulatory body to <span class="annot" data-tooltip="oversee /ˌoʊvər'siː/ vt. 监督；俯瞰；审查；偷看到，无意中看到时 态: oversaw overseen overseeing, oversees">oversee</span> potential threats from the most-advanced AI models to national <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span>. The organisation should be led by America, said Sir Demis, and modelled on the Financial <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">Industry</span> Regulatory <span class="annot" data-tooltip="authority /ə'θɔːrəti/ n. 威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗">Authority</span>, an American non-governmental body that protects investors. This article was downloaded by zlibrary from https://www.economist.com//the-world-this-week/2026/07/16/business</p>
+<div class="article-separator"></div>
+<div class="article-header"> · The world this week</div>
+<p>Cartoon: Continuing <span class="annot" data-tooltip="uncertainty /ʌn'sɜːrtnti/ n. 无把握;不确定;变化不定无把握、不确定的事物">uncertainty</span> over the <span class="annot" data-tooltip="strait /streɪt/ n. 海峡；（尤指经济拮据引起的）困境，境况窘迫adj. 狭窄的；苦恼的副 词: straitly">Strait</span> of Hormuz A <span class="annot" data-tooltip="lighter /'laɪtər/ n. 打火机；驳船；点火者vt. 驳运时 态: lightered, lightering, lighters">lighter</span> take on the news July 16th 2026 Dig deeper into the subjects of this cartoon: America’s president looks bereft of good options for solving the stand-off in the Gulf But the stand-off also has costs for cash-strapped Iran America’s other battle with Iran You can see previous ones here. This article was downloaded by zlibrary from https://www.economist.com//the-world-this-week/2026/07/16/cartoon-continuing- uncertainty-over-the-strait-of-hormuz</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Leaders</div>
+<p>Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s <span class="annot" data-tooltip="gutting /ɡʌt/ n. 内脏；肠子；胆量；海峡；剧情vt. 取出内脏；摧毁内部装置adj. 本质的，根本的；简单的GUT大统一理论时 态: gu">gutting</span> of the Department of Justice It’s too <span class="annot" data-tooltip="darn /dɑːrn/ vt. & vi. 织补(衣物)见鬼(婉辞，与damn同义，表示生气或恼怒)n. 织补之处时 态: darned, darnin">darn</span> hot. Blame global dimming Donald Trump’s blind alley China’s rulers have a woman problem How to make AI safe—and lessen dependence on America and China America should stop making it so hard to have fun</p>
+<div class="article-separator"></div>
+<div class="article-header">Leaders · Leaders | Our cover</div>
+<p>Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s <span class="annot" data-tooltip="gutting /ɡʌt/ n. 内脏；肠子；胆量；海峡；剧情vt. 取出内脏；摧毁内部装置adj. 本质的，根本的；简单的GUT大统一理论时 态: gu">gutting</span> of the Department of Justice What the degraded institution means for America July 16th 2026 THE PURsUIT of enemies grabs all the attention, and for good reason. Markets were shocked to see President Donald Trump set the Department of Justice (DoJ) on Jerome Powell when he was still the <span class="annot" data-tooltip="chairman /'tʃermən/ n. 主席，会长；董事长时 态: chairmanned, chairmanning, chairmans">chairman</span> of the <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">Federal</span> Reserve. Champions of press freedom cried <span class="annot" data-tooltip="foul /faʊl/ adj. 邪恶的；污秽的；犯规的；淤塞的vt. 弄脏；犯规；淤塞；缠住，妨害vi. 犯规；缠结；腐烂n. 犯规；缠绕adv. 违反">foul</span> last week when the department issued subpoenas to New York Times journalists for explaining the truth about Qatar’s gift of a jet to the president. But Mr Trump’s grievance <span class="annot" data-tooltip="agenda /ə'dʒendə/ n. （政治）议题；议事日程；目的">agenda</span> isn’t the half of it. In a sign of how much he treats the department as his <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> personal law firm, he wants his <span class="annot" data-tooltip="actual /'æktʃuəl/ adj. 真实的，实际的；现行的，目前的副 词: actually">actual</span> lawyer to become <span class="annot" data-tooltip="attorney /ə'tɜːrni/ n. 代理人, 律师名 词: attorneyship">attorney</span>-general. <span class="annot" data-tooltip="senate /ˈsenət/ n.（诸如美国、澳大利亚、法国的）参议院（the Senate） （某些国家的）大学理事会，大学评议会（古罗马的）元老院">Senate</span> hearings begin this week for Todd Blanche, who is currently the acting attorney- general. Those on Mr Trump’s enemies list are not the only ones who should</p>
+<p>be worried. The president is also inflicting less-noticed harms on the DoJ that are as bad as the attention-grabbing ones. The <span class="annot" data-tooltip="damage /'dæmɪdʒ/ v. 损害；伤害；毁坏；破坏n. 损坏，破坏，损失，损害，伤害（法院判定的）损害赔偿金时 态: damaged, damagi">damage</span> is likely to be <span class="annot" data-tooltip="profound /prə'faʊnd/ adj. 深度的；深切的；深远的知识渊博的，见解深刻的，深奥的比较级: profounder，profoundest">profound</span>. The DoJ is the government’s lawyer, but it also serves as the guardian of the law, especially since Watergate. In 2019 Bill Barr, then Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s pick for <span class="annot" data-tooltip="attorney /ə'tɜːrni/ n. 代理人, 律师名 词: attorneyship">attorney</span>-general, said that Americans “have to know that there are <span class="annot" data-tooltip="places /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">places</span> in the government where the rule of law—not politics—holds <span class="annot" data-tooltip="sway /sweɪ/ vt. 使摇动；统治；影响vi. 摇摆；影响n. 摇摆；统治；影响时 态: swayed, swaying, sways">sway</span>” and that the Department of Justice “must be such a <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span>”. Mr Trump has no time for that. Less than halfway through his second term, he has turned the DoJ from an arm of the law into a muscular <span class="annot" data-tooltip="limb /lɪm/ n. 肢，臂；枝干；分支vt. 切断…的手足；从…上截下树枝时 态: limbed, limbing, limbs">limb</span> of the presidency. For a start, he has <span class="annot" data-tooltip="dramatically /drə'mætɪkli/ adv. 戏剧性地;引人注目地">dramatically</span> redefined the department’s priorities, which is <span class="annot" data-tooltip="legitimate /lɪ'dʒɪtɪmət/ adj. 合情合理的；合法的时 态: legitimated，legitimating，legitimates">legitimate</span>, often by setting goals that blur policy and politics, which is not. Health-care <span class="annot" data-tooltip="fraud /frɔːd/ n. 欺诈, 欺骗行为骗子">fraud</span> is being chased with particular zeal in states run by Democrats, such as California and Minnesota, where it can be used to discredit Mr Trump’s <span class="annot" data-tooltip="opponents /ə'poʊnənt/ n. 对手, 敌手；反对者名 词: opponency">opponents</span>, including the states’ governors, Gavin Newsom and Tim Walz. The DoJ is also an effective tool for pursuing his political <span class="annot" data-tooltip="agenda /ə'dʒendə/ n. （政治）议题；议事日程；目的">agenda</span>. Election fraud is <span class="annot" data-tooltip="consuming /kən'suːmɪŋ/ adj. 消费的；强烈的">consuming</span> ever more of its resources—not because it is a real problem, but because it is a presidential <span class="annot" data-tooltip="obsession /əb'seʃn/ n. 困扰, 无法摆脱的思想(或情感)形容词: obsessional">obsession</span>. The DoJ has sued states for access to their voter rolls. In January the FBI seized hundreds of boxes filled with <span class="annot" data-tooltip="ballots /'bælət/ n. 投票表决, 选举选票vt. & vi. (使)投票表决时 态: balloted, balloting, ballots">ballots</span> and other documents in Georgia’s most populous county, part of an investigation of the presidential election in 2020. More recently, some 260 FBI analysts were dispatched to pore over Georgia’s files, with a deadline to review records by July 17th. At the very least, this will shake voters’ faith that elections are trustworthy—indeed, that may be its sinister design. Matters of <span class="annot" data-tooltip="genuine /'dʒenjuɪn/ adj. 真实的，真正的；诚恳的副 词: genuinely">genuine</span> public interest are left to languish. About a <span class="annot" data-tooltip="quarter /'kwɔːrtər/ n. 四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一时 ">quarter</span> of the DoJ’s lawyers have left. <span class="annot" data-tooltip="divisions /dɪ'vɪʒn/ n. [数] 除法；部门；分配；分割；师（军队）；赛区形容词: divisional">Divisions</span> that investigated cryptocurrency fraud and public <span class="annot" data-tooltip="corruption /kə'rʌpʃn/ n. 堕落;腐化;腐败;贿赂腐烂">corruption</span> have <span class="annot" data-tooltip="withered /'wɪðər/ vt. & vi. (使)枯萎, (使)干枯, (使)凋谢时 态: withered, withering, withers">withered</span>. Financial-fraud indictments by prosecutors at DoJ <span class="annot" data-tooltip="headquarters /ˈhɛdˈkwɔrtɚ/ vi. 设总部vt. 将…的总部设在把…放在总部里时 态: headquartered, headquartering, hea">headquarters</span> and in <span class="annot" data-tooltip="manhattan 曼哈顿名 词: Manhattanite">Manhattan</span> are down by 30% from the ten-year average. About 300 special agents who specialise in national <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span> have quit the FBI, taking <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span> of experience in counterterrorism and <span class="annot" data-tooltip="cyber adj. 计算机(网络)的；信息技术的">cyber</span>-<span class="annot" data-tooltip="warfare /'wɔːrfer/ n. 战争, 战争状态">warfare</span> with them.</p>
+<p>The department has also become more <span class="annot" data-tooltip="chaotic /keɪ'ɑːtɪk/ adj. 混乱的，无秩序的；混沌的">chaotic</span>. Too often, cases <span class="annot" data-tooltip="encounter /ɪn'kaʊntər/ vt. 遇到, 遭遇偶然碰到, 邂逅n. 突然遇到时 态: encountered, encountering, encount">encounter</span> problems in court, though it is hard to distinguish sloppiness by DoJ staff from <span class="annot" data-tooltip="deliberate /dɪ'lɪbərət/ adj. 故意的, 蓄意的慎重的, 深思熟虑的不慌不忙的, 从容不迫的vt. & vi. 仔细考虑研讨, 商讨时 态: delib">deliberate</span> ill-<span class="annot" data-tooltip="intent /ɪn'tent/ n. 意图；目的；含义adj. 专心的；急切的；坚决的副 词: intently">intent</span>. <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">Nearly</span> 100 times in Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s first 14 months, the DoJ supplied courts with inaccurate information. It is quite something for the state to lose the benefit of the doubt in its <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> courtrooms. More than 61,000 petitions from <span class="annot" data-tooltip="detained /dɪ'teɪn/ vt. 拘留；留住；耽搁时 态: detained, detaining, detains">detained</span> <span class="annot" data-tooltip="immigrants /'ɪmɪɡrənt/ n. 移民">immigrants</span> have <span class="annot" data-tooltip="bogged /bɑːɡ/ n. 沼泽；泥塘vt. 使陷于泥沼；使动弹不得vi. 陷于泥沼；动弹不得时 态: bogged, bogging, bogs">bogged</span> down courts and frustrated judges and <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">federal</span> prosecutors, who have moved lawyers from criminal <span class="annot" data-tooltip="divisions /dɪ'vɪʒn/ n. [数] 除法；部门；分配；分割；师（军队）；赛区形容词: divisional">divisions</span> to help. By September last year, about a fifth of FBI agents had been diverted to immigration <span class="annot" data-tooltip="enforcement /ɪn'fɔːrsmənt/ n. 强制,实施,执行">enforcement</span>. Meanwhile, the president’s powers are increasing. In Trump v Slaughter last month the <span class="annot" data-tooltip="supreme /su'priːm/ adj. 最高的；至上的最重要的比较级: supremer，supremest 缩 写: supr">Supreme</span> Court ruled that the president could <span class="annot" data-tooltip="sack /sæk/ n. 麻袋, 包一袋的量开除, 解雇洗劫, 劫掠vt. 装入袋中解雇洗劫, 劫掠时 态: sacked, sacking, s">sack</span> leaders of semi-independent agencies, such as the Federal Trade <span class="annot" data-tooltip="commission /kə'mɪʃn/ n. 授权, 委托委员会佣金, 回扣vt. 委任, 委托时 态: commissioned, commissioning, c">Commission</span> (FTC) and the <span class="annot" data-tooltip="securities /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">Securities</span> and Exchange Commission (SEC). That gives the president the capacity to force agencies to work in <span class="annot" data-tooltip="league /liːɡ/ n. 联盟；社团；范畴vt. 使…结盟；与…联合vi. 结盟；团结时 态: leagued, leaguing, league">league</span> with the DoJ. Imagine a co-ordinated <span class="annot" data-tooltip="campaign /kæm'peɪn/ n. 运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）时">campaign</span> of pressure, in which the DoJ opens an antitrust inquiry, the FTC explores consumer <span class="annot" data-tooltip="fraud /frɔːd/ n. 欺诈, 欺骗行为骗子">fraud</span> and the SEC investigates <span class="annot" data-tooltip="corporate /'kɔːrpərət/ adj. 社团的, 法人的副 词: corporately">corporate</span> <span class="annot" data-tooltip="disclosures /dɪs'kloʊʒər/ n. 公开,透露被公开的事情,被披露的秘闻">disclosures</span>. Unfortunately, the permanent appointment of Mr Blanche is unlikely to mark an improvement. He has done as much as anyone to advance Mr Trump’s <span class="annot" data-tooltip="agenda /ə'dʒendə/ n. （政治）议题；议事日程；目的">agenda</span> of prosecuting his enemies and protecting his friends—a powerful <span class="annot" data-tooltip="combination /ˌkɑːmbɪ'neɪʃn/ n. 合作, 结合, 组合联合体, 组合物密码组合, 字码组合排列, 组合形容词: combinational">combination</span> for encouraging people to <span class="annot" data-tooltip="comply /kəm'plaɪ/ vi. 答应；遵守；顺从，遵从时 态: complied, complying, complies">comply</span> with Mr Trump’s wishes. Under Mr Blanche, the DoJ has recently threatened state election officials with criminal prosecution if they knowingly let non-citizens remain on voting rolls. Democrats and more than 1,200 former DoJ lawyers have demanded that the <span class="annot" data-tooltip="senate /ˈsenət/ n.（诸如美国、澳大利亚、法国的）参议院（the Senate） （某些国家的）大学理事会，大学评议会（古罗马的）元老院">Senate</span> reject Mr Blanche’s <span class="annot" data-tooltip="nomination /ˌnɑːmɪ'neɪʃn/ n. 提名,任命">nomination</span>. The Senate now has the choice of confirming him, and thereby seeming to endorse Mr Trump’s broader agenda, or blocking him in a rare rebuke to the president. Unfortunately, a rejection may not accomplish all that much. Mr Trump can <span class="annot" data-tooltip="retain /rɪ'teɪn/ vt. 保持；雇；记住时 态: retained, retaining, retains 缩 写: ret">retain</span> Mr Blanche as acting <span class="annot" data-tooltip="attorney /ə'tɜːrni/ n. 代理人, 律师名 词: attorneyship">attorney</span>-general for months or nominate someone just as pliable. The best Americans can hope for, in the next two years, is that courts stand firm. So <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> they have generally checked the DoJ’s worst impulses. On July</p>
+<p>7th a <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">federal</span> judge blocked the department’s effort to subpoena the names of election workers in Georgia. On July 13th another federal judge nullified a settlement organised by the DoJ in response to a <span class="annot" data-tooltip="civil /'sɪvl/ adj. 公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的副 词: civilly">civil</span> case brought by Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> that would have protected the president and his family from tax <span class="annot" data-tooltip="audits /'ɔːdɪt/ v. 查（账）；审计；稽核【美式】旁听（大学课程）n. 审计；稽核（质量或标准的）审查，检查时 态: audited, aud">audits</span>. Even if Americans elect a president who wants to restore the DoJ, the <span class="annot" data-tooltip="damage /'dæmɪdʒ/ v. 损害；伤害；毁坏；破坏n. 损坏，破坏，损失，损害，伤害（法院判定的）损害赔偿金时 态: damaged, damagi">damage</span> will be hard to reverse. Mr Trump’s acolytes would see the ejection of his partisan lawyers as a witch hunt that justifies the next <span class="annot" data-tooltip="purge /pɜːrdʒ/ vi. 净化；通便vt. 净化；清洗；通便n. 泻药；净化时 态: purged, purging, purges">purge</span> when they take back power. Once the arrival of any new administration <span class="annot" data-tooltip="routinely /ruː'tiːnli/ adv. 常规地,惯常地老一套地,令人厌烦地">routinely</span> <span class="annot" data-tooltip="entails /ɪn'teɪl/ vt. 使…成为必要, 需要限定继承时 态: entailed, entailing, entails">entails</span> a fresh round of sackings, professionals who care about the rule of law will think twice about signing up. After Watergate, statesmanship and a bipartisan effort were needed to create the modern DoJ. Today the stakes are as high, and the task is harder. ■ For subscribers only: to see how we design each week’s <span class="annot" data-tooltip="cover /'kʌvər/ vt. 包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替时 态: covered, covering, c">cover</span>, sign up to our weekly Cover Story newsletter. This article was downloaded by zlibrary from https://www.economist.com//leaders/2026/07/16/donald-<span class="annot" data-tooltip="trumps /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">trumps</span>-<span class="annot" data-tooltip="gutting /ɡʌt/ n. 内脏；肠子；胆量；海峡；剧情vt. 取出内脏；摧毁内部装置adj. 本质的，根本的；简单的GUT大统一理论时 态: gu">gutting</span>-of-the- department-of-justice</p>
+<p>It’s too <span class="annot" data-tooltip="darn /dɑːrn/ vt. & vi. 织补(衣物)见鬼(婉辞，与damn同义，表示生气或恼怒)n. 织补之处时 态: darned, darnin">darn</span> hot. Blame global dimming Earth is absorbing a lot more sunshine July 16th 2026 Cole <span class="annot" data-tooltip="porter /pɔːrt/ n. 港口，口岸；左舷；舱门；（计算机的）端口vi. 转向左舷vt. 左转舵；持（枪）PORTabbr. Photo Opit">Porter</span> had it right. It is too darn hot. On July 14th the surface temperature of Earth’s <span class="annot" data-tooltip="tropical /'trɑːpɪkl/ adj. 热带的；酷热的；热情的">tropical</span> and mid-latitude oceans was higher than on any other July 14th in modern records. The same was true for every other day in July, and for almost all of the days in June, too. Europe has gone through three heatwaves since May, and though the continent is better prepared for such things than it used to be, tens of thousands will have died as a result. America’s Fourth of July celebrations took <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span> under a sweltering “heat dome”. Supertyphoon Bavi, which saw well over a million people evacuated from the Chinese coast, owed much of its power to the rate at which it was able to suck up <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span> from the overheated sea. Fires are spreading <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> and wide. Worse is to come. The chances of this year being the hottest on record</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>raise</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>bubble</td><td>/'bʌbl/ n.</td><td>气泡，泡沫，泡状物；透明圆形罩，圆形顶vi. 沸腾，冒泡；发出气泡声vt. 使冒泡；滔滔不绝地说, bubbling, bubbles</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>fusion</td><td>/'fjuːʒn/ n.</td><td>融合物；熔化；融合；熔接</td></tr>
+<tr><td>oversee</td><td>/ˌoʊvər'siː/ vt.</td><td>监督；俯瞰；审查；偷看到，无意中看到, oversees</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>authority</td><td>/ə'θɔːrəti/ n.</td><td>威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗</td></tr>
+<tr><td>uncertainty</td><td>/ʌn'sɜːrtnti/ n.</td><td>无把握;不确定;变化不定无把握、不确定的事物</td></tr>
+<tr><td>strait</td><td>/streɪt/ n.</td><td>海峡；（尤指经济拮据引起的）困境，境况窘迫adj. 狭窄的；苦恼的</td></tr>
+<tr><td>lighter</td><td>/'laɪtər/ n.</td><td>打火机；驳船；点火者vt. 驳运, lightering, lighters</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>gutting</td><td>/ɡʌt/ n.</td><td>内脏；肠子；胆量；海峡；剧情vt. 取出内脏；摧毁内部装置adj. 本质的，根本的；简单的GUT大统一理论, gutting, guts</td></tr>
+<tr><td>darn</td><td>/dɑːrn/ vt.</td><td>& vi. 织补(衣物)见鬼(婉辞，与damn同义，表示生气或恼怒)n. 织补之处, darning, darns</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>gutting</td><td>/ɡʌt/ n.</td><td>内脏；肠子；胆量；海峡；剧情vt. 取出内脏；摧毁内部装置adj. 本质的，根本的；简单的GUT大统一理论, gutting, guts</td></tr>
+<tr><td>chairman</td><td>/'tʃermən/ n.</td><td>主席，会长；董事长, chairmanning, chairmans</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>foul</td><td>/faʊl/ adj.</td><td>邪恶的；污秽的；犯规的；淤塞的vt. 弄脏；犯规；淤塞；缠住，妨害vi. 犯规；缠结；腐烂n. 犯规；缠绕adv. 违反规则地，不正当地, foulest</td></tr>
+<tr><td>agenda</td><td>/ə'dʒendə/ n.</td><td>（政治）议题；议事日程；目的</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>actual</td><td>/'æktʃuəl/ adj.</td><td>真实的，实际的；现行的，目前的</td></tr>
+<tr><td>attorney</td><td>/ə'tɜːrni/ n.</td><td>代理人, 律师</td></tr>
+<tr><td>senate</td><td>/ˈsenət/ </td><td>n.（诸如美国、澳大利亚、法国的）参议院（the Senate） （某些国家的）大学理事会，大学评议会（古罗马的）元老院</td></tr>
+<tr><td>damage</td><td>/'dæmɪdʒ/ v.</td><td>损害；伤害；毁坏；破坏n. 损坏，破坏，损失，损害，伤害（法院判定的）损害赔偿金, damaging, damages</td></tr>
+<tr><td>profound</td><td>/prə'faʊnd/ adj.</td><td>深度的；深切的；深远的知识渊博的，见解深刻的，深奥的，profoundest</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>attorney</td><td>/ə'tɜːrni/ n.</td><td>代理人, 律师</td></tr>
+<tr><td>places</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>sway</td><td>/sweɪ/ vt.</td><td>使摇动；统治；影响vi. 摇摆；影响n. 摇摆；统治；影响, swaying, sways</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>limb</td><td>/lɪm/ n.</td><td>肢，臂；枝干；分支vt. 切断…的手足；从…上截下树枝, limbing, limbs</td></tr>
+<tr><td>dramatically</td><td>/drə'mætɪkli/ adv.</td><td>戏剧性地;引人注目地</td></tr>
+<tr><td>legitimate</td><td>/lɪ'dʒɪtɪmət/ adj.</td><td>合情合理的；合法的，legitimating，legitimates</td></tr>
+<tr><td>fraud</td><td>/frɔːd/ n.</td><td>欺诈, 欺骗行为骗子</td></tr>
+<tr><td>opponents</td><td>/ə'poʊnənt/ n.</td><td>对手, 敌手；反对者</td></tr>
+<tr><td>agenda</td><td>/ə'dʒendə/ n.</td><td>（政治）议题；议事日程；目的</td></tr>
+<tr><td>consuming</td><td>/kən'suːmɪŋ/ adj.</td><td>消费的；强烈的</td></tr>
+<tr><td>obsession</td><td>/əb'seʃn/ n.</td><td>困扰, 无法摆脱的思想(或情感)</td></tr>
+<tr><td>ballots</td><td>/'bælət/ n.</td><td>投票表决, 选举选票vt. & vi. (使)投票表决, balloting, ballots</td></tr>
+<tr><td>genuine</td><td>/'dʒenjuɪn/ adj.</td><td>真实的，真正的；诚恳的</td></tr>
+<tr><td>quarter</td><td>/'kwɔːrtər/ n.</td><td>四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一, quartering, quarters</td></tr>
+<tr><td>divisions</td><td>/dɪ'vɪʒn/ n.</td><td>[数] 除法；部门；分配；分割；师（军队）；赛区</td></tr>
+<tr><td>corruption</td><td>/kə'rʌpʃn/ n.</td><td>堕落;腐化;腐败;贿赂腐烂</td></tr>
+<tr><td>withered</td><td>/'wɪðər/ vt.</td><td>& vi. (使)枯萎, (使)干枯, (使)凋谢, withering, withers</td></tr>
+<tr><td>headquarters</td><td>/ˈhɛdˈkwɔrtɚ/ vi.</td><td>设总部vt. 将…的总部设在把…放在总部里, headquartering, headquarters</td></tr>
+<tr><td>manhattan</td><td>— </td><td>曼哈顿</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>cyber</td><td>— adj.</td><td>计算机(网络)的；信息技术的</td></tr>
+<tr><td>warfare</td><td>/'wɔːrfer/ n.</td><td>战争, 战争状态</td></tr>
+<tr><td>chaotic</td><td>/keɪ'ɑːtɪk/ adj.</td><td>混乱的，无秩序的；混沌的</td></tr>
+<tr><td>encounter</td><td>/ɪn'kaʊntər/ vt.</td><td>遇到, 遭遇偶然碰到, 邂逅n. 突然遇到, encountering, encounters</td></tr>
+<tr><td>deliberate</td><td>/dɪ'lɪbərət/ adj.</td><td>故意的, 蓄意的慎重的, 深思熟虑的不慌不忙的, 从容不迫的vt. & vi. 仔细考虑研讨, 商讨, deliberating, deliberates</td></tr>
+<tr><td>intent</td><td>/ɪn'tent/ n.</td><td>意图；目的；含义adj. 专心的；急切的；坚决的</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>detained</td><td>/dɪ'teɪn/ vt.</td><td>拘留；留住；耽搁, detaining, detains</td></tr>
+<tr><td>immigrants</td><td>/'ɪmɪɡrənt/ n.</td><td>移民</td></tr>
+<tr><td>bogged</td><td>/bɑːɡ/ n.</td><td>沼泽；泥塘vt. 使陷于泥沼；使动弹不得vi. 陷于泥沼；动弹不得, bogging, bogs</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>divisions</td><td>/dɪ'vɪʒn/ n.</td><td>[数] 除法；部门；分配；分割；师（军队）；赛区</td></tr>
+<tr><td>enforcement</td><td>/ɪn'fɔːrsmənt/ n.</td><td>强制,实施,执行</td></tr>
+<tr><td>supreme</td><td>/su'priːm/ adj.</td><td>最高的；至上的最重要的，supremest 缩 写: supr</td></tr>
+<tr><td>sack</td><td>/sæk/ n.</td><td>麻袋, 包一袋的量开除, 解雇洗劫, 劫掠vt. 装入袋中解雇洗劫, 劫掠, sacking, sacks</td></tr>
+<tr><td>commission</td><td>/kə'mɪʃn/ n.</td><td>授权, 委托委员会佣金, 回扣vt. 委任, 委托, commissioning, commissions</td></tr>
+<tr><td>securities</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>league</td><td>/liːɡ/ n.</td><td>联盟；社团；范畴vt. 使…结盟；与…联合vi. 结盟；团结, leaguing, leagues</td></tr>
+<tr><td>campaign</td><td>/kæm'peɪn/ n.</td><td>运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）, campaigning, campai</td></tr>
+<tr><td>fraud</td><td>/frɔːd/ n.</td><td>欺诈, 欺骗行为骗子</td></tr>
+<tr><td>corporate</td><td>/'kɔːrpərət/ adj.</td><td>社团的, 法人的</td></tr>
+<tr><td>disclosures</td><td>/dɪs'kloʊʒər/ n.</td><td>公开,透露被公开的事情,被披露的秘闻</td></tr>
+<tr><td>agenda</td><td>/ə'dʒendə/ n.</td><td>（政治）议题；议事日程；目的</td></tr>
+<tr><td>combination</td><td>/ˌkɑːmbɪ'neɪʃn/ n.</td><td>合作, 结合, 组合联合体, 组合物密码组合, 字码组合排列, 组合</td></tr>
+<tr><td>comply</td><td>/kəm'plaɪ/ vi.</td><td>答应；遵守；顺从，遵从, complying, complies</td></tr>
+<tr><td>senate</td><td>/ˈsenət/ </td><td>n.（诸如美国、澳大利亚、法国的）参议院（the Senate） （某些国家的）大学理事会，大学评议会（古罗马的）元老院</td></tr>
+<tr><td>nomination</td><td>/ˌnɑːmɪ'neɪʃn/ n.</td><td>提名,任命</td></tr>
+<tr><td>retain</td><td>/rɪ'teɪn/ vt.</td><td>保持；雇；记住, retaining, retains 缩 写: ret</td></tr>
+<tr><td>attorney</td><td>/ə'tɜːrni/ n.</td><td>代理人, 律师</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>civil</td><td>/'sɪvl/ adj.</td><td>公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>audits</td><td>/'ɔːdɪt/ v.</td><td>查（账）；审计；稽核【美式】旁听（大学课程）n. 审计；稽核（质量或标准的）审查，检查, auditing, audits</td></tr>
+<tr><td>damage</td><td>/'dæmɪdʒ/ v.</td><td>损害；伤害；毁坏；破坏n. 损坏，破坏，损失，损害，伤害（法院判定的）损害赔偿金, damaging, damages</td></tr>
+<tr><td>purge</td><td>/pɜːrdʒ/ vi.</td><td>净化；通便vt. 净化；清洗；通便n. 泻药；净化, purging, purges</td></tr>
+<tr><td>routinely</td><td>/ruː'tiːnli/ adv.</td><td>常规地,惯常地老一套地,令人厌烦地</td></tr>
+<tr><td>entails</td><td>/ɪn'teɪl/ vt.</td><td>使…成为必要, 需要限定继承, entailing, entails</td></tr>
+<tr><td>cover</td><td>/'kʌvər/ vt.</td><td>包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替, covering, covers</td></tr>
+<tr><td>trumps</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>gutting</td><td>/ɡʌt/ n.</td><td>内脏；肠子；胆量；海峡；剧情vt. 取出内脏；摧毁内部装置adj. 本质的，根本的；简单的GUT大统一理论, gutting, guts</td></tr>
+<tr><td>darn</td><td>/dɑːrn/ vt.</td><td>& vi. 织补(衣物)见鬼(婉辞，与damn同义，表示生气或恼怒)n. 织补之处, darning, darns</td></tr>
+<tr><td>porter</td><td>/pɔːrt/ n.</td><td>港口，口岸；左舷；舱门；（计算机的）端口vi. 转向左舷vt. 左转舵；持（枪）PORTabbr. Photo Opitical Recorder Tracke</td></tr>
+<tr><td>tropical</td><td>/'trɑːpɪkl/ adj.</td><td>热带的；酷热的；热情的</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day1.html" class="nav-btn">← Day 1</a>
+  <a href="day3.html" class="nav-btn">Day 3 →</a>
+</div>
+
+<div class="progress">📖 Day 2 of 41</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-07-18</div>
+
+</body>
+</html>

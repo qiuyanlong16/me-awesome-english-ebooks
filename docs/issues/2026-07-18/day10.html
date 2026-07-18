@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>United States | Not so fast</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-07-18</div>
+
+<h1 class="article-title">United States | Not so fast</h1>
+<div class="article-section">United States</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>It is <span class="annot" data-tooltip="notable /'noʊtəbl/ adj. 值得注意的，显著的；著名的n. 名人，显要人物副 词: notably">notable</span>, then, that Mr Bonta and the other <span class="annot" data-tooltip="attorneys /ə'tɜːrni/ n. 代理人, 律师名 词: attorneyship">attorneys</span>-general have made little <span class="annot" data-tooltip="reference /'refrəns/ n. 提及，涉及参考，查阅引文；参考书目证明书；推荐信；证明人；推荐人时 态: referenced，referencing，">reference</span> to one aspect of the deal that has worried Democrats: the shift in <span class="annot" data-tooltip="ownership /'oʊnərʃɪp/ n. 物主的身份；所有(权)，所有制">ownership</span> of two of America’s best known news <span class="annot" data-tooltip="brands /brænd/ n. 商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责时 态: branded, branding, brands">brands</span>, CBS News and CNN, to the Ellisons. Mr Bonta has denied that a sale of CNN by the combined company could result in a settlement, though he suggested on “The Town” that some members of his party may welcome that idea. Californians have a particular interest in the deal. State politicians face pressure to help Hollywood, where the merger has turbocharged fears of job losses. Hollywood’s <span class="annot" data-tooltip="workforce /'wɜːrkfɔːrs/ n. 全体员工(国家或行业等)劳动力,劳动大军,劳动人口">workforce</span> is <span class="annot" data-tooltip="shrinking /ʃrɪŋk/ vt. & vi. 收缩；退缩时 态: shrank ，shrunk shrunk，shrunken shrinking，shr">shrinking</span> as production migrates to cheaper locations such as Canada and Britain. Last year the legislature responded by more than doubling the state’s film and television tax <span class="annot" data-tooltip="credits /'kredɪt/ n. 赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)时 态:">credits</span>, to $750m. Now <span class="annot" data-tooltip="candidates /'kændɪdət，ˈkændɪdeɪt/ n. 申请求职者, 候选人报考者名 词: candidacy">candidates</span> for governor and mayor of Los Angeles are proposing further incentives. Opposing the Paramount deal is <span class="annot" data-tooltip="considered /kən'sɪdər/ vt. & vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及时 态: considered, considering, ">considered</span> another way to help. Hollywood’s powerful labour unions lobbied for months for a legal challenge to the tie-up. The Writers Guild of America West was quick to celebrate the states’ <span class="annot" data-tooltip="lawsuit /'lɔːsuːt/ n. 诉讼（尤指非刑事案件）；诉讼案件">lawsuit</span>, calling the deal “one of the worst proposed mergers we’ve seen”. Paramount, for its part, has dismissed the lawsuit as “wrong on both the facts and the law”. Semafor, an online news <span class="annot" data-tooltip="outlet /'aʊtlet/ n. 出口, 出路发泄的途径经销店">outlet</span>, reported that Mr Ellison’s advisers are nudging him to <span class="annot" data-tooltip="consider /kən'sɪdər/ vt. & vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及时 态: considered, considering, ">consider</span> moving Paramount’s <span class="annot" data-tooltip="headquarters /ˈhɛdˈkwɔrtɚ/ vi. 设总部vt. 将…的总部设在把…放在总部里时 态: headquartered, headquartering, hea">headquarters</span> out of California. The rumour could be a <span class="annot" data-tooltip="bluff /blʌf/ n. 绝壁；断崖；吓唬vt. 吓唬；愚弄vi. 吓唬adj. 直率的；陡峭的时 态: bluffed, bluffing, b">bluff</span> to force Mr Bonta to the negotiating table. But the Ellisons have done this before. Larry moved the offices of Oracle, his software giant, from <span class="annot" data-tooltip="silicon /'sɪlɪkən/ n. 〈化〉硅">Silicon</span> <span class="annot" data-tooltip="valley /'væli/ n. 流域；山谷；溪谷">Valley</span> to <span class="annot" data-tooltip="texas /'teksəs/ n. 德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室">Texas</span> in 2020. The possibility of a Paramount move <span class="annot" data-tooltip="raises /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raises</span> a broader question about how many regulations and costs California can <span class="annot" data-tooltip="impose /ɪm'poʊz/ vi. 欺骗；利用；施加影响vt. 强加；以…欺骗；征税时 态: imposed, imposing, imposes">impose</span> before more companies choose to <span class="annot" data-tooltip="opt /ɑːpt/ vi. 选择OPTabbr. VC开发环境自动生成的用来存放WorkSpace中各种选项的文件。时 态: opted, opti">opt</span> out. “We support businesses”, insists Mr Bonta. “We are <span class="annot" data-tooltip="pro /proʊ/ n. 从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞">pro</span>- business.” If that were unquestionably true, perhaps he wouldn’t need to say it twice. ■ Stay on top of American politics with The US in brief, our daily newsletter with fast analysis of the most important political news, and Checks and Balance, a weekly note that examines the state of American <span class="annot" data-tooltip="democracy /dɪ'mɑːkrəsi/ n. 民主, 民主制民主国家">democracy</span> and the <span class="annot" data-tooltip="issues /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issues</span> that matter to voters.</p>
+<p>This article was downloaded by zlibrary from https://www.economist.com//united-states/2026/07/16/democrats-challenge-a-big- hollywood-tie-up</p>
+<div class="article-separator"></div>
+<div class="article-header">United States · United States | The night shift</div>
+<p>Cities are rethinking what happens after dark Making it easier to party is becoming <span class="annot" data-tooltip="serious /'sɪriəs/ adj. 严肃的，严重的；认真的；庄重的；危急的副 词: seriously">serious</span> public policy July 16th 2026 THE JOB OF nightlife czar sounds almost hedonistic. Then Corean Reynolds explains what it <span class="annot" data-tooltip="entails /ɪn'teɪl/ vt. 使…成为必要, 需要限定继承时 态: entailed, entailing, entails">entails</span>. Officially Boston’s director of the nightlife economy, Ms Reynolds can sometimes be found standing <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span> a bar at 2am, watching how staff manage crowds <span class="annot" data-tooltip="spilling /spɪl/ vt. 使溢出，使流出；使摔下vi. 溢出，流出；摔下；涌流n. 溢出，溅出；溢出量；摔下；小塞子时 态: spilled, s">spilling</span> into the street. When <span class="annot" data-tooltip="residents /'rezɪdənt/ adj. 定居的; 常驻的n. 居民(旅馆的)住宿者">residents</span> complain about noise, she may be nearby with a decibel meter, with a plan not to kill the <span class="annot" data-tooltip="buzz /bʌz/ v. 发嗡嗡声；发蜂鸣声用蜂鸣器（给…）发信号繁忙；充满活力（飞机）低空飞过（尤指作为警告或威胁）（用特殊的机器）将头发剪得非">buzz</span> but measure it. “I’m like, hey, <span class="annot" data-tooltip="actually /'æktʃuəl/ adj. 真实的，实际的；现行的，目前的副 词: actually">actually</span> it didn’t seem that loud,” she says she tells them. Her task is, <span class="annot" data-tooltip="essentially /ɪ'senʃəli/ adv. 本质上;根本上必需的">essentially</span>, to help more people have fun without making nearby residents <span class="annot" data-tooltip="miserable /'mɪzrəbl/ adj. 悲惨的，不幸的，可怜的令人痛苦的；令人不快的低劣的；贫乏的卑鄙的，可耻的，可恶的名 词: miserable">miserable</span>. She is the first person to hold the job in Boston and one of a rising <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of officials across the country tasked with livening up life after dark.</p>
+<p>For <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span> cities were interested mainly in enforcing <span class="annot" data-tooltip="strict /strɪkt/ adj. 严格的, 严厉的严谨的, 精确的绝对的, 完全的比较级: stricter, strictest">strict</span> rules, some dating to Prohibition, on pubs, music <span class="annot" data-tooltip="venues /'venjuː/ n. 聚集地点;会场;(尤指)体育比赛场所犯罪地点;审判地争论中所持的立场">venues</span> and dance halls. Now roughly a dozen American municipalities, from Iowa City to Philadelphia, have an official responsible for <span class="annot" data-tooltip="promoting /'proʊmoʊ/ n. 商品推销；商品广告，广告片">promoting</span> the nightlife economy. This evolution in thinking can be seen in New York. A measure known as the Cabaret Law, which required venues to <span class="annot" data-tooltip="obtain /əb'teɪn/ vi. 获得；流行vt. 获得时 态: obtained, obtaining, obtains">obtain</span> special licences before allowing more than three people to dance, was introduced in 1926. In the 1990s Rudy Giuliani, then the city’s mayor, revived the law as part of his administration’s “Broken Windows” <span class="annot" data-tooltip="strategy /'strætədʒi/ n. 战略学, 兵法战略, 策略策略, 计谋">strategy</span>, an approach to policing that sought to <span class="annot" data-tooltip="deter /dɪ'tɜːr/ vt. 制止，阻止；使打消念头时 态: deterred, deterring, deters">deter</span> <span class="annot" data-tooltip="serious /'sɪriəs/ adj. 严肃的，严重的；认真的；庄重的；危急的副 词: seriously">serious</span> crime by <span class="annot" data-tooltip="cracking /kræk/ vt. & vi. (使…)开裂, 破裂(使)身体上或精神上垮掉打开, 砸开(使)发出爆裂声n. 裂缝, 缝隙噼啪声, 爆裂声意">cracking</span> down on <span class="annot" data-tooltip="minor /'maɪnər/ adj. 较小的, 较少的, 低级的, 次要的n. 未成年人副修科目时 态: minored, minoring, minors">minor</span> offences. The law was finally repealed in 2017, and the city’s first nightlife mayor, Ariel Palitz, was appointed to her post the year after. Her office set up mediation services to help <span class="annot" data-tooltip="residents /'rezɪdənt/ adj. 定居的; 常驻的n. 居民(旅馆的)住宿者">residents</span> and business <span class="annot" data-tooltip="owners /'oʊnər/ n. 所有者；物主">owners</span> resolve noise complaints (Ms Palitz cautions that the correct term is “sound—not noise”). The <span class="annot" data-tooltip="prior /'praɪər/ adj. 在先的，在前的；优先的adv. 在前，居先">prior</span> system was “purely punitive”, she says, with each complaint <span class="annot" data-tooltip="automatically /ˌɔːtə'mætɪkli/ adv. 自动地无意识地,不自觉地,机械地">automatically</span> dispatching police. Her office also assisted bars, clubs and <span class="annot" data-tooltip="restaurants /'restrɑːnt/ n. 饭店, 餐馆">restaurants</span> navigate permits and city <span class="annot" data-tooltip="bureaucracy /bjʊ'rɑːkrəsi/ n. 政府机构官僚主义, 官僚作风">bureaucracy</span>. But enacting change has been <span class="annot" data-tooltip="arduous /'ɑːrdʒuəs/ adj. 费力的；努力的；险峻的副 词: arduously">arduous</span>. Until May <span class="annot" data-tooltip="applicants /'æplɪkənt/ n. 申请人, 求职人">applicants</span> for liquor licences in New York City still had to notify state officials if they wanted to allow dancing. For officials like Ms Reynolds, the biggest limits to her <span class="annot" data-tooltip="agenda /ə'dʒendə/ n. （政治）议题；议事日程；目的">agenda</span> remain red tape surrounding liquor licences, zoning and permitting. Boston is one of many cities that <span class="annot" data-tooltip="caps abbr. Cassette Programming System 盒式磁带程序设计系统">caps</span> the <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of liquor licences well below market demand. But in 2024, after Ms Reynolds pushed for change, the city created 225 new licences. According to the local government, it was “the single largest <span class="annot" data-tooltip="addition /ə'dɪʃn/ n. 添加；增加物；加法形容词: additional">addition</span> to Boston’s liquor licence quota since the end of Prohibition”. Other cities are experimenting with new approaches that, if successful, could spread. San Francisco has created entertainment zones where patrons may <span class="annot" data-tooltip="consume /kən'suːm/ vt. 消耗, 消费, 耗尽大吃, 大喝烧毁, 毁灭时 态: consumed, consuming, consumes">consume</span> alcohol on streets and sidewalks. Boston and some neighbouring municipalities have done the same as part of the World Cup. The tournament has become an opportunity to test looser rules, with several <span class="annot" data-tooltip="host /hoʊst/ n. 主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集时 态: hosted, hosting, host">host</span> cities temporarily <span class="annot" data-tooltip="extending /ɪk'stend/ vt. & vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出时 态:">extending</span> bar hours. Meanwhile Austin, <span class="annot" data-tooltip="texas /'teksəs/ n. 德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室">Texas</span>, known for its live music, has <span class="annot" data-tooltip="adopted /ə'dɑːpt/ vt. 收养采用, 采纳, 采取正式接受, 通过时 态: adopted, adopting, adopts">adopted</span> a policy that protects venues from noise complaints</p>
+<p>by occupants of new residential buildings, putting the onus on developers to provide <span class="annot" data-tooltip="adequate /'ædɪkwət/ adj. 充分的, 足够的适当的, 胜任的名 词: adequacy">adequate</span> <span class="annot" data-tooltip="soundproofing /'saʊndpruːf/ adj. 隔音的vt. 给(房屋等)装以隔音设备,使隔音动 词: soundproof">soundproofing</span>. Smaller cities are following suit. Syracuse, a college town of 145,000 in upstate New York, recently announced plans to hire a nightlife co-ordinator. A thriving after-dark <span class="annot" data-tooltip="scene /siːn/ n. 情景；景象；场面；事件">scene</span>, city officials hope, will keep young professionals from moving away. It may also create jobs not just in <span class="annot" data-tooltip="hospitality /ˌhɑːspɪ'tæləti/ n. 殷勤, 好客(提供给客人的)食宿招待">hospitality</span> and entertainment, but in <span class="annot" data-tooltip="sanitation /ˌsænɪ'teɪʃn/ n. 卫生系统或设备">sanitation</span>, transport and <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span>, as well as generate more tax <span class="annot" data-tooltip="revenue /'revənuː/ n. 收入，收益；财政收入，税收">revenue</span>. At a time when remote work has left <span class="annot" data-tooltip="downtown /ˌdaʊn'taʊn/ adv. 在市中心；往市中心（尤指商业中心区）adj. 商业区的；市中心的；闹市区的n. 市中心；市中心区；（市中）商业区">downtown</span> areas <span class="annot" data-tooltip="quieter n. 消音装置；消声器adj. 更安静的（quiet的比较级）">quieter</span>, encouraging nightlife is one way to <span class="annot" data-tooltip="sustain /sə'steɪn/ vt. 承受，支撑维持长期保持；使继续经受，遭受时 态: sustained，sustaining，sustains">sustain</span> commercial activity after office hours while giving people more reasons to gather in person. Nightlife czars have a different challenge now, too. Between 2003 and 2023 data from the Bureau of Labour Statistics’ American Time Use Survey shows that the average amount of time 18- to 30-year-olds spent socialising each day fell by 38%. Andreina Seijas, an international nightlife consultant, says her <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> is now in a war against the couch. In Boston, Ms Reynolds’s mission to <span class="annot" data-tooltip="reclaim /rɪ'kleɪm/ vt. 要求收回开拓(荒地)；开垦从废料中回收(有用的材料)纠正；教化，改造时 态: reclaimed，reclaiming，">reclaim</span> the night continues. Next on her to-do list is persuading the city’s public-transport operator to run later into the night. The job of a nightlife czar is not always fun, but <span class="annot" data-tooltip="hopefully /'hoʊpfəli/ adv. 怀有希望地；如果顺利的话，可望">hopefully</span> the cities they <span class="annot" data-tooltip="oversee /ˌoʊvər'siː/ vt. 监督；俯瞰；审查；偷看到，无意中看到时 态: oversaw overseen overseeing, oversees">oversee</span> will be. ■ Stay on top of American politics with The US in brief, our daily newsletter with fast analysis of the most important political news, and Checks and Balance, a weekly note that examines the state of American <span class="annot" data-tooltip="democracy /dɪ'mɑːkrəsi/ n. 民主, 民主制民主国家">democracy</span> and the <span class="annot" data-tooltip="issues /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issues</span> that matter to voters. This article was downloaded by zlibrary from https://www.economist.com//united-states/2026/07/14/cities-are-rethinking-what- happens-after-dark</p>
+<div class="article-separator"></div>
+<div class="article-header">United States · United States | Tortured voters</div>
+<p>America’s other elections problem No other rich <span class="annot" data-tooltip="democracy /dɪ'mɑːkrəsi/ n. 民主, 民主制民主国家">democracy</span> hands as many decisions directly to its voters July 16th 2026 IT IS OFTEN said that Americans love to work. Perhaps that is why they have made one of their fundamental obligations as citizens—voting—feel like work, too. A civically minded person in Houston, <span class="annot" data-tooltip="texas /'teksəs/ n. 德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室">Texas</span>, may already have voted six times this year. When voters in California cast their <span class="annot" data-tooltip="ballots /'bælət/ n. 投票表决, 选举选票vt. & vi. (使)投票表决时 态: balloted, balloting, ballots">ballots</span> in November, they will <span class="annot" data-tooltip="consider /kən'sɪdər/ vt. & vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及时 态: considered, considering, ">consider</span> a <span class="annot" data-tooltip="wealth /welθ/ n. 财富；大量；富有">wealth</span> tax from three different angles. In Idaho, home to just 2m people, voters will elect 49 judges, a slew of county coroners and decide which of six firearms should become the state’s official gun. Much attention is paid to whether the rules of democracy are being broken. Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> claims that American elections are <span class="annot" data-tooltip="marred /mɑːr/ vt. 毁坏；损坏；玷污MARabbr. Master of Arts in Religion 宗教硕士Mar三月(March)">marred</span> by voter <span class="annot" data-tooltip="fraud /frɔːd/ n. 欺诈, 欺骗行为骗子">fraud</span>, despite scant evidence. This month his administration dispatched more than</p>
+<p>250 <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">federal</span> investigators to probe Fulton County’s handling of the 2020 election, which he lost. But there is a more prosaic question: does America’s voting system make sense? No other rich <span class="annot" data-tooltip="democracy /dɪ'mɑːkrəsi/ n. 民主, 民主制民主国家">democracy</span> hands as many decisions directly to its people. Americans are expected to vote for judges, <span class="annot" data-tooltip="sheriffs /'ʃerɪf/ n. (美国)县的司法长官">sheriffs</span>, coroners and school- board members. Through <span class="annot" data-tooltip="ballot /'bælət/ n. 投票表决, 选举选票vt. & vi. (使)投票表决时 态: balloted, balloting, ballots">ballot</span> <span class="annot" data-tooltip="initiatives /ɪ'nɪʃətɪv/ n. 主动性, 首创精神主动的行动, 倡议主动权">initiatives</span> they also <span class="annot" data-tooltip="weigh /weɪ/ vt. & vi. 称…的重量link v. 重达vt. 权衡；考虑时 态: weighed，weighing，weighs">weigh</span> in on everything from whether actors in pornographic films must wear condoms to <span class="annot" data-tooltip="arcane /ɑːr'keɪn/ adj. 晦涩难解的；神秘的；秘传的">arcane</span> details of prescription-drug pricing. The assumption is that more voting makes for a healthier democracy. But <span class="annot" data-tooltip="ballots /'bælət/ n. 投票表决, 选举选票vt. & vi. (使)投票表决时 态: balloted, balloting, ballots">ballots</span> of biblical length often do the opposite, making government less efficient and less accountable. America’s electoral sprawl happened in two stages. The first came under Andrew Jackson, the country’s seventh president, who handed more power to non-landowning white men by allowing them to elect more officials. The second stage came at the turn of the 20th century, when reformers gave citizens more direct influence through ballot initiatives and referendums. Both moments reflected concern that <span class="annot" data-tooltip="elites /eɪ'liːt/ n. （社会）上层集团；掌权人物；出类拔萃的人，精英adj.（社会）上层集团的；掌权人物的；精英的">elites</span> and political parties had amassed too much control over government, says David Schleicher of Yale University. The solution, he says, was to “diffuse power to the people as a check” on those <span class="annot" data-tooltip="groups /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">groups</span>. In total Americans choose some 500,000 officials, roughly five times as many per person as in Britain. Even with a population of 340m, America has struggled to find enough <span class="annot" data-tooltip="candidates /'kændɪdət，ˈkændɪdeɪt/ n. 申请求职者, 候选人报考者名 词: candidacy">candidates</span> to <span class="annot" data-tooltip="contest /'kɑːntest/ vt. 争辩；提出质疑vi. 竞争；争辩n. 竞赛；争论；争夺时 态: contested, contesting, conte">contest</span> all of these <span class="annot" data-tooltip="races /reɪs/ n. 种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACE">races</span>. Between 2018 and 2025 <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> two-thirds of candidates ran unopposed, according to analysis by Ballotpedia, an online resource.</p>
+<p>About half of states also allow citizens who gather enough <span class="annot" data-tooltip="signatures /'sɪɡnətʃər/ n. 签名, 签字">signatures</span> to <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span> <span class="annot" data-tooltip="initiatives /ɪ'nɪʃətɪv/ n. 主动性, 首创精神主动的行动, 倡议主动权">initiatives</span> on the <span class="annot" data-tooltip="ballot /'bælət/ n. 投票表决, 选举选票vt. & vi. (使)投票表决时 态: balloted, balloting, ballots">ballot</span>. These ask voters to decide questions that in most other <span class="annot" data-tooltip="democracies /dɪ'mɑːkrəsi/ n. 民主, 民主制民主国家">democracies</span> are left to legislatures. The Economist scraped data from Ballotpedia <span class="annot" data-tooltip="covering /'kʌvər/ vt. 包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替时 态: covered, covering, c">covering</span> 1,728 ballot measures from the past three <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span>. They <span class="annot" data-tooltip="cover /'kʌvər/ vt. 包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替时 态: covered, covering, c">cover</span> everything from taxation to contentious social <span class="annot" data-tooltip="issues /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issues</span> (see chart). No voter can reasonably be expected to make an informed decision about every item on the ballot. The <span class="annot" data-tooltip="sheer /ʃɪr/ adj. 完全的；十足的陡峭的；垂直的极薄的，轻的，透明的adv. 垂直地，陡峭地vi. 避开，突然转向时 态: sheered，">sheer</span> <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of elected officials makes it difficult to know who is responsible for what. Even an expert steeped in local <span class="annot" data-tooltip="governance /'ɡʌvərnəns/ n. 统治;管理;治理;统治方式;管理方法">governance</span> might struggle to judge whether a county comptroller has succeeded or failed in office, says Mr Schleicher. Yet on many <span class="annot" data-tooltip="ballots /'bælət/ n. 投票表决, 选举选票vt. & vi. (使)投票表决时 态: balloted, balloting, ballots">ballots</span>, voters face that challenge dozens of times. When they <span class="annot" data-tooltip="reach /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reach</span> the more <span class="annot" data-tooltip="obscure /əb'skjʊr/ adj. 无名的；鲜为人知的；默默无闻的费解的，晦涩的；模糊的，朦胧的；不清楚的v. 遮掩；遮蔽；使不分明隐藏，掩盖；使难理解，使">obscure</span> <span class="annot" data-tooltip="races /reɪs/ n. 种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACE">races</span>, they are “flying blind”, says Todd Donovan of Western Washington University. Ballot initiatives can be even harder to understand. The Economist analysed the text of 130 initiatives in California since 2000. Using a metric that scores text based on <span class="annot" data-tooltip="sentence /'sentəns/ n. 宣判，判决；句子，命题vt. 判决，宣判时 态: sentenced, sentencing, sentences">sentence</span> and word <span class="annot" data-tooltip="complexity /kəm'pleksəti/ n. 复杂性,错综复杂的状态复杂的事物">complexity</span>, we found that most required college-level reading comprehension (see chart). One in four demanded the reading comprehension of someone with a graduate degree. Yet only a third of Americans have at least a <span class="annot" data-tooltip="bachelor /'bætʃələr/ n. 单身男子，单身汉学士；学士学位">bachelor</span>’s degree.</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>notable</td><td>/'noʊtəbl/ adj.</td><td>值得注意的，显著的；著名的n. 名人，显要人物</td></tr>
+<tr><td>attorneys</td><td>/ə'tɜːrni/ n.</td><td>代理人, 律师</td></tr>
+<tr><td>reference</td><td>/'refrəns/ n.</td><td>提及，涉及参考，查阅引文；参考书目证明书；推荐信；证明人；推荐人，referencing，references</td></tr>
+<tr><td>ownership</td><td>/'oʊnərʃɪp/ n.</td><td>物主的身份；所有(权)，所有制</td></tr>
+<tr><td>brands</td><td>/brænd/ n.</td><td>商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责, branding, brands</td></tr>
+<tr><td>workforce</td><td>/'wɜːrkfɔːrs/ n.</td><td>全体员工(国家或行业等)劳动力,劳动大军,劳动人口</td></tr>
+<tr><td>shrinking</td><td>/ʃrɪŋk/ vt.</td><td>& vi. 收缩；退缩，shrunk shrunk，shrunken shrinking，shrinks</td></tr>
+<tr><td>credits</td><td>/'kredɪt/ n.</td><td>赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)，crediting，credits</td></tr>
+<tr><td>candidates</td><td>/'kændɪdət，ˈkændɪdeɪt/ n.</td><td>申请求职者, 候选人报考者</td></tr>
+<tr><td>considered</td><td>/kən'sɪdər/ vt.</td><td>& vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及, considering, considers</td></tr>
+<tr><td>lawsuit</td><td>/'lɔːsuːt/ n.</td><td>诉讼（尤指非刑事案件）；诉讼案件</td></tr>
+<tr><td>outlet</td><td>/'aʊtlet/ n.</td><td>出口, 出路发泄的途径经销店</td></tr>
+<tr><td>consider</td><td>/kən'sɪdər/ vt.</td><td>& vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及, considering, considers</td></tr>
+<tr><td>headquarters</td><td>/ˈhɛdˈkwɔrtɚ/ vi.</td><td>设总部vt. 将…的总部设在把…放在总部里, headquartering, headquarters</td></tr>
+<tr><td>bluff</td><td>/blʌf/ n.</td><td>绝壁；断崖；吓唬vt. 吓唬；愚弄vi. 吓唬adj. 直率的；陡峭的, bluffing, bluffs</td></tr>
+<tr><td>silicon</td><td>/'sɪlɪkən/ n.</td><td>〈化〉硅</td></tr>
+<tr><td>valley</td><td>/'væli/ n.</td><td>流域；山谷；溪谷</td></tr>
+<tr><td>texas</td><td>/'teksəs/ n.</td><td>德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室)</td></tr>
+<tr><td>raises</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>impose</td><td>/ɪm'poʊz/ vi.</td><td>欺骗；利用；施加影响vt. 强加；以…欺骗；征税, imposing, imposes</td></tr>
+<tr><td>opt</td><td>/ɑːpt/ vi.</td><td>选择OPTabbr. VC开发环境自动生成的用来存放WorkSpace中各种选项的文件。, opting, opts</td></tr>
+<tr><td>pro</td><td>/proʊ/ n.</td><td>从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞成；支持Pro脯氨酸PROabbr. P</td></tr>
+<tr><td>democracy</td><td>/dɪ'mɑːkrəsi/ n.</td><td>民主, 民主制民主国家</td></tr>
+<tr><td>issues</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>serious</td><td>/'sɪriəs/ adj.</td><td>严肃的，严重的；认真的；庄重的；危急的</td></tr>
+<tr><td>entails</td><td>/ɪn'teɪl/ vt.</td><td>使…成为必要, 需要限定继承, entailing, entails</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>spilling</td><td>/spɪl/ vt.</td><td>使溢出，使流出；使摔下vi. 溢出，流出；摔下；涌流n. 溢出，溅出；溢出量；摔下；小塞子, spilt spilling, spills</td></tr>
+<tr><td>residents</td><td>/'rezɪdənt/ adj.</td><td>定居的; 常驻的n. 居民(旅馆的)住宿者</td></tr>
+<tr><td>buzz</td><td>/bʌz/ v.</td><td>发嗡嗡声；发蜂鸣声用蜂鸣器（给…）发信号繁忙；充满活力（飞机）低空飞过（尤指作为警告或威胁）（用特殊的机器）将头发剪得非常短n. 嗡嗡声；蜂鸣声（愉快、兴奋或成</td></tr>
+<tr><td>actually</td><td>/'æktʃuəl/ adj.</td><td>真实的，实际的；现行的，目前的</td></tr>
+<tr><td>essentially</td><td>/ɪ'senʃəli/ adv.</td><td>本质上;根本上必需的</td></tr>
+<tr><td>miserable</td><td>/'mɪzrəbl/ adj.</td><td>悲惨的，不幸的，可怜的令人痛苦的；令人不快的低劣的；贫乏的卑鄙的，可耻的，可恶的</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>strict</td><td>/strɪkt/ adj.</td><td>严格的, 严厉的严谨的, 精确的绝对的, 完全的, strictest</td></tr>
+<tr><td>venues</td><td>/'venjuː/ n.</td><td>聚集地点;会场;(尤指)体育比赛场所犯罪地点;审判地争论中所持的立场</td></tr>
+<tr><td>promoting</td><td>/'proʊmoʊ/ n.</td><td>商品推销；商品广告，广告片</td></tr>
+<tr><td>obtain</td><td>/əb'teɪn/ vi.</td><td>获得；流行vt. 获得, obtaining, obtains</td></tr>
+<tr><td>strategy</td><td>/'strætədʒi/ n.</td><td>战略学, 兵法战略, 策略策略, 计谋</td></tr>
+<tr><td>deter</td><td>/dɪ'tɜːr/ vt.</td><td>制止，阻止；使打消念头, deterring, deters</td></tr>
+<tr><td>serious</td><td>/'sɪriəs/ adj.</td><td>严肃的，严重的；认真的；庄重的；危急的</td></tr>
+<tr><td>cracking</td><td>/kræk/ vt.</td><td>& vi. (使…)开裂, 破裂(使)身体上或精神上垮掉打开, 砸开(使)发出爆裂声n. 裂缝, 缝隙噼啪声, 爆裂声意外的一下重击试图, 尝试俏皮话强效可卡因</td></tr>
+<tr><td>minor</td><td>/'maɪnər/ adj.</td><td>较小的, 较少的, 低级的, 次要的n. 未成年人副修科目, minoring, minors</td></tr>
+<tr><td>residents</td><td>/'rezɪdənt/ adj.</td><td>定居的; 常驻的n. 居民(旅馆的)住宿者</td></tr>
+<tr><td>owners</td><td>/'oʊnər/ n.</td><td>所有者；物主</td></tr>
+<tr><td>prior</td><td>/'praɪər/ adj.</td><td>在先的，在前的；优先的adv. 在前，居先</td></tr>
+<tr><td>automatically</td><td>/ˌɔːtə'mætɪkli/ adv.</td><td>自动地无意识地,不自觉地,机械地</td></tr>
+<tr><td>restaurants</td><td>/'restrɑːnt/ n.</td><td>饭店, 餐馆</td></tr>
+<tr><td>bureaucracy</td><td>/bjʊ'rɑːkrəsi/ n.</td><td>政府机构官僚主义, 官僚作风</td></tr>
+<tr><td>arduous</td><td>/'ɑːrdʒuəs/ adj.</td><td>费力的；努力的；险峻的</td></tr>
+<tr><td>applicants</td><td>/'æplɪkənt/ n.</td><td>申请人, 求职人</td></tr>
+<tr><td>agenda</td><td>/ə'dʒendə/ n.</td><td>（政治）议题；议事日程；目的</td></tr>
+<tr><td>caps</td><td>— abbr.</td><td>Cassette Programming System 盒式磁带程序设计系统</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>addition</td><td>/ə'dɪʃn/ n.</td><td>添加；增加物；加法</td></tr>
+<tr><td>consume</td><td>/kən'suːm/ vt.</td><td>消耗, 消费, 耗尽大吃, 大喝烧毁, 毁灭, consuming, consumes</td></tr>
+<tr><td>host</td><td>/hoʊst/ n.</td><td>主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集, hosting, hosts</td></tr>
+<tr><td>extending</td><td>/ɪk'stend/ vt.</td><td>& vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出，extending，extends</td></tr>
+<tr><td>texas</td><td>/'teksəs/ n.</td><td>德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室)</td></tr>
+<tr><td>adopted</td><td>/ə'dɑːpt/ vt.</td><td>收养采用, 采纳, 采取正式接受, 通过, adopting, adopts</td></tr>
+<tr><td>adequate</td><td>/'ædɪkwət/ adj.</td><td>充分的, 足够的适当的, 胜任的</td></tr>
+<tr><td>soundproofing</td><td>/'saʊndpruːf/ adj.</td><td>隔音的vt. 给(房屋等)装以隔音设备,使隔音动 词: soundproof</td></tr>
+<tr><td>scene</td><td>/siːn/ n.</td><td>情景；景象；场面；事件</td></tr>
+<tr><td>hospitality</td><td>/ˌhɑːspɪ'tæləti/ n.</td><td>殷勤, 好客(提供给客人的)食宿招待</td></tr>
+<tr><td>sanitation</td><td>/ˌsænɪ'teɪʃn/ n.</td><td>卫生系统或设备</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>revenue</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>downtown</td><td>/ˌdaʊn'taʊn/ adv.</td><td>在市中心；往市中心（尤指商业中心区）adj. 商业区的；市中心的；闹市区的n. 市中心；市中心区；（市中）商业区</td></tr>
+<tr><td>quieter</td><td>— n.</td><td>消音装置；消声器adj. 更安静的（quiet的比较级）</td></tr>
+<tr><td>sustain</td><td>/sə'steɪn/ vt.</td><td>承受，支撑维持长期保持；使继续经受，遭受，sustaining，sustains</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>reclaim</td><td>/rɪ'kleɪm/ vt.</td><td>要求收回开拓(荒地)；开垦从废料中回收(有用的材料)纠正；教化，改造，reclaiming，reclaims</td></tr>
+<tr><td>hopefully</td><td>/'hoʊpfəli/ adv.</td><td>怀有希望地；如果顺利的话，可望</td></tr>
+<tr><td>oversee</td><td>/ˌoʊvər'siː/ vt.</td><td>监督；俯瞰；审查；偷看到，无意中看到, oversees</td></tr>
+<tr><td>democracy</td><td>/dɪ'mɑːkrəsi/ n.</td><td>民主, 民主制民主国家</td></tr>
+<tr><td>issues</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>democracy</td><td>/dɪ'mɑːkrəsi/ n.</td><td>民主, 民主制民主国家</td></tr>
+<tr><td>texas</td><td>/'teksəs/ n.</td><td>德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室)</td></tr>
+<tr><td>ballots</td><td>/'bælət/ n.</td><td>投票表决, 选举选票vt. & vi. (使)投票表决, balloting, ballots</td></tr>
+<tr><td>consider</td><td>/kən'sɪdər/ vt.</td><td>& vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及, considering, considers</td></tr>
+<tr><td>wealth</td><td>/welθ/ n.</td><td>财富；大量；富有</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>marred</td><td>/mɑːr/ vt.</td><td>毁坏；损坏；玷污MARabbr. Master of Arts in Religion 宗教硕士Mar三月(March)，marring，mars</td></tr>
+<tr><td>fraud</td><td>/frɔːd/ n.</td><td>欺诈, 欺骗行为骗子</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>democracy</td><td>/dɪ'mɑːkrəsi/ n.</td><td>民主, 民主制民主国家</td></tr>
+<tr><td>sheriffs</td><td>/'ʃerɪf/ n.</td><td>(美国)县的司法长官</td></tr>
+<tr><td>ballot</td><td>/'bælət/ n.</td><td>投票表决, 选举选票vt. & vi. (使)投票表决, balloting, ballots</td></tr>
+<tr><td>initiatives</td><td>/ɪ'nɪʃətɪv/ n.</td><td>主动性, 首创精神主动的行动, 倡议主动权</td></tr>
+<tr><td>weigh</td><td>/weɪ/ vt.</td><td>& vi. 称…的重量link v. 重达vt. 权衡；考虑，weighing，weighs</td></tr>
+<tr><td>arcane</td><td>/ɑːr'keɪn/ adj.</td><td>晦涩难解的；神秘的；秘传的</td></tr>
+<tr><td>ballots</td><td>/'bælət/ n.</td><td>投票表决, 选举选票vt. & vi. (使)投票表决, balloting, ballots</td></tr>
+<tr><td>elites</td><td>/eɪ'liːt/ n.</td><td>（社会）上层集团；掌权人物；出类拔萃的人，精英adj.（社会）上层集团的；掌权人物的；精英的</td></tr>
+<tr><td>groups</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>candidates</td><td>/'kændɪdət，ˈkændɪdeɪt/ n.</td><td>申请求职者, 候选人报考者</td></tr>
+<tr><td>contest</td><td>/'kɑːntest/ vt.</td><td>争辩；提出质疑vi. 竞争；争辩n. 竞赛；争论；争夺, contesting, contests</td></tr>
+<tr><td>races</td><td>/reɪs/ n.</td><td>种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACEabbr. Radiation Adap</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>signatures</td><td>/'sɪɡnətʃər/ n.</td><td>签名, 签字</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>initiatives</td><td>/ɪ'nɪʃətɪv/ n.</td><td>主动性, 首创精神主动的行动, 倡议主动权</td></tr>
+<tr><td>ballot</td><td>/'bælət/ n.</td><td>投票表决, 选举选票vt. & vi. (使)投票表决, balloting, ballots</td></tr>
+<tr><td>democracies</td><td>/dɪ'mɑːkrəsi/ n.</td><td>民主, 民主制民主国家</td></tr>
+<tr><td>covering</td><td>/'kʌvər/ vt.</td><td>包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替, covering, covers</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>cover</td><td>/'kʌvər/ vt.</td><td>包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替, covering, covers</td></tr>
+<tr><td>issues</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>sheer</td><td>/ʃɪr/ adj.</td><td>完全的；十足的陡峭的；垂直的极薄的，轻的，透明的adv. 垂直地，陡峭地vi. 避开，突然转向，sheering，sheers</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>governance</td><td>/'ɡʌvərnəns/ n.</td><td>统治;管理;治理;统治方式;管理方法</td></tr>
+<tr><td>ballots</td><td>/'bælət/ n.</td><td>投票表决, 选举选票vt. & vi. (使)投票表决, balloting, ballots</td></tr>
+<tr><td>reach</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>obscure</td><td>/əb'skjʊr/ adj.</td><td>无名的；鲜为人知的；默默无闻的费解的，晦涩的；模糊的，朦胧的；不清楚的v. 遮掩；遮蔽；使不分明隐藏，掩盖；使难理解，使晦涩, obscurest</td></tr>
+<tr><td>races</td><td>/reɪs/ n.</td><td>种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACEabbr. Radiation Adap</td></tr>
+<tr><td>sentence</td><td>/'sentəns/ n.</td><td>宣判，判决；句子，命题vt. 判决，宣判, sentencing, sentences</td></tr>
+<tr><td>complexity</td><td>/kəm'pleksəti/ n.</td><td>复杂性,错综复杂的状态复杂的事物</td></tr>
+<tr><td>bachelor</td><td>/'bætʃələr/ n.</td><td>单身男子，单身汉学士；学士学位</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day9.html" class="nav-btn">← Day 9</a>
+  <a href="day11.html" class="nav-btn">Day 11 →</a>
+</div>
+
+<div class="progress">📖 Day 10 of 41</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-07-18</div>
+
+</body>
+</html>
