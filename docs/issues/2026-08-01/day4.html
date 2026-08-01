@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leaders | Prose and cons</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-08-01</div>
+
+<h1 class="article-title">Leaders | Prose and cons</h1>
+<div class="article-section">Leaders</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>AI is getting better at writing. Humans must get better at editing Our investigation suggests how Jul 30th 2026 WRITING IS HARD. For Franz Kafka, putting words on the page was a <span class="annot" data-tooltip="process /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">process</span> of “unending torments”. George Orwell said it felt like “a long bout of some painful illness”. Hunter S. Thompson, a journalist, saw it as the opposite of sex: “only good when it’s over”. Now AI has come to the rescue. Large language models (LLMs) <span class="annot" data-tooltip="eagerly /'iːɡərli/ adv. 渴望地；急切地；热心地">eagerly</span> offer reams of text without any pain or torment. Bots can spew out emails (excellently), longer prose (passably) and <span class="annot" data-tooltip="poetry /'poʊətri/ n. 诗篇, 诗歌, 诗集作诗法, 诗歌艺术诗情, 诗意, 诗一般的美">poetry</span> (poorly). To them, writer’s block is a 500-sheet pack of paper: any user of an LLM can produce as many words in a day as Kafka did in his life.</p>
+<p>For human writers this is a blessing and a <span class="annot" data-tooltip="curse /kɜːrs/ vt. & vi. 诅咒；骂n. 诅咒，咒语；骂人的话祸害，祸根时 态: cursed，curst cursing，curses">curse</span>. If you claim to be an author but use AI, you look like a <span class="annot" data-tooltip="fraud /frɔːd/ n. 欺诈, 欺骗行为骗子">fraud</span>—<span class="annot" data-tooltip="bot /bɑːt/ n. 马蝇幼虫，马蝇">bot</span>-<span class="annot" data-tooltip="busting /bʌst/ vi. 爆裂；破产；降低级别vt. 使爆裂；使破产；逮捕n. 半身像；胸部；萧条；破产adj. 破产了的；毁坏了的时 态: bu">busting</span> tools like Pangram are good at <span class="annot" data-tooltip="spotting /spɑːt/ n. 斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Po">spotting</span> when someone has had an AI <span class="annot" data-tooltip="helping /'helpɪŋ/ n. （进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的">helping</span> hand. Take the hundreds of people who have used LLMs to write applications for The Economist’s internships, or the government ministers who have submitted AI-generated works to our By <span class="annot" data-tooltip="invitation /ˌɪnvɪ'teɪʃn/ n. 邀请请柬, 请帖">Invitation</span> <span class="annot" data-tooltip="column /'kɑːləm/ n. 圆柱，柱形物；纵队，列；专栏形容词: columned">column</span> (it’s <span class="annot" data-tooltip="tempting /tempt/ vt. 引诱或怂恿(某人)干不正当的事使想要时 态: tempted, tempting, tempts">tempting</span>, but we won’t name them). Our investigation of the stylistic <span class="annot" data-tooltip="quirks /kwɜːrk/ n. 怪癖；急转；借口副 词: quirkily">quirks</span> of the big bots <span class="annot" data-tooltip="reveals /rɪ'viːl/ vt. 显示；露出泄露；透露时 态: revealed，revealing，reveals">reveals</span> how, with every update, AI writing is getting closer to human writing. We compared the outputs of LLMs to prose we know is produced by humans: our <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span>. We asked 14 <span class="annot" data-tooltip="variants /'veriənt/ n. 变体；变种；变型(词等的)变体；异读(书等的)不同版本；改编adj. 不同的；差别的；变异的；易变的，不定的；各种各样的">variants</span> of ChatGPT, Claude, <span class="annot" data-tooltip="gemini /ˈdʒɛməˌnaɪ/ n. 双生子；双胎Geminin. 双子宫,双子(星)座">Gemini</span> and <span class="annot" data-tooltip="grok /ɡrɑːk/ v. 〈美俚〉通过神入作用而理解,体验(神入)时 态: grokked, grokking, groks">Grok</span> released since 2024 to write <span class="annot" data-tooltip="versions /'vɜːrʒn/ n. 变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本">versions</span> of our articles without <span class="annot" data-tooltip="consulting /kən'sʌlt/ vt. 商量；查阅；向…请教vi. 请教；商议；当顾问时 态: consulted, consulting, consults">consulting</span> the web. We compared our <span class="annot" data-tooltip="corpus /'kɔːrpəs/ n. 文集；本金；语料库复 数: corpora">corpus</span> across 55,940 <span class="annot" data-tooltip="sentences /'sentəns/ n. 宣判，判决；句子，命题vt. 判决，宣判时 态: sentenced, sentencing, sentences">sentences</span> and 1.2m words, and checked our results against other newspapers and hit fiction books. We found that some of AI’s former tricks—using lots of em-<span class="annot" data-tooltip="dashes /dæʃ/ n. 破折号；冲撞vt. 使…破灭；猛撞；泼溅vi. 猛冲；撞击DASHabbr. Drone Antisubmarine H">dashes</span>, for instance, or words like “leveraging”—are no longer leveraged much in its writing. It’s a good thing that AI writing is getting better. Sifting through today’s <span class="annot" data-tooltip="slop /slɑːp/ vi. 溢出；泼出在泥浆(或雪泥)中走vt. 使(某物)溢出或泼出(液体)晃荡；(常指)溢出，溅出(在水、泥等里)趟来趟去，走动">slop</span> is a drain on your brain and your time. LLMs have <span class="annot" data-tooltip="tripled /trɪp/ vi. 绊倒；犯错误；远足；轻快地走n. 旅行；绊倒；差错vt. 绊倒；使犯错TRIPabbr. transformation-">tripled</span> the <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of new e-books published on <span class="annot" data-tooltip="amazon /ˈæməˌzɑn/ n. 高大强悍的女人；（古希腊神话中的）亚马孙族女战士Amazonn. 亚马逊河(南美洲大河)">Amazon</span> every month, to 300,000, a recent study found, and <span class="annot" data-tooltip="draft /dræft/ n. 汇票；草稿；选派；（尤指房间、烟囱、炉子等供暖系统中的）（小股）气流">draft</span> more than a third of new websites by one count. If LLMs keep improving, in a few years they could be as good as professional wordsmiths. In the meantime, though, their baggy prose puts a <span class="annot" data-tooltip="premium /'priːmiəm/ n. 奖金，津贴；加价；附加费；保险费；额外费用adj. （品质）高级的；优质的，顶级的">premium</span> on editing skills. After all, even the best writers need a good editor to keep them sharp. Editing is something The Economist deals with day in, day out, so here are our tips for re-writing AI prose. First, <span class="annot" data-tooltip="commission /kə'mɪʃn/ n. 授权, 委托委员会佣金, 回扣vt. 委任, 委托时 态: commissioned, commissioning, c">commission</span> well. George R.R. Martin once said the job of editors is to “<span class="annot" data-tooltip="clip /klɪp/ vt. 修剪；夹牢；痛打vi. 修剪n. 夹子；修剪；回形针CLIPabbr. Cellular Logic Image Pro">clip</span> the <span class="annot" data-tooltip="wings /wɪŋ/ n. 翅膀；翼；飞翔；派别vt. 使飞；飞过；空运；增加…速度；装以翼vi. 飞行时 态: winged, winging, ">wings</span>” of writers, and “tell them in which direction to fly”. When it comes to LLMs, that means giving clear <span class="annot" data-tooltip="instructions /ɪnˈstrʌkʃənz/ n. 操作指南；用法说明（instruction 的复数）">instructions</span> about <span class="annot" data-tooltip="exactly /ɪɡ'zækt/ adj. 精确的；准确的，精密的vt. 强求；要求；急需vi. 勒索钱财时 态: exacted, exacting, exact">exactly</span> what you want, and asking them to <span class="annot" data-tooltip="refine /rɪ'faɪn/ vt. 精炼，提纯；使…文雅；改善时 态: refined, refining, refines">refine</span> their output as many times as necessary. You’ll get less pushback from machines than men. Mr Martin said editors were “the writer’s natural enemy”; AI would probably say “great <span class="annot" data-tooltip="observation /ˌɑːbzər'veɪʃn/ n. 注意；观察观察力言论，评论，意见观察资料，观察数据形容词: observational">observation</span>!” and “love the enemy <span class="annot" data-tooltip="analogy /ə'nælədʒi/ n. 类似, 相似类推, 类推法">analogy</span>!” Second, pay attention to detail. AI writers will make mistakes and offer phrases that sound good but mean nothing. They like to <span class="annot" data-tooltip="lavish /'lævɪʃ/ adj. 浪费的；丰富的；大方的vt. 浪费；慷慨给予；滥用时 态: lavished, lavishing, lavishes">lavish</span> their prose</p>
+<p>with Latinate words, talking about the “bi-directional flow” and how to “<span class="annot" data-tooltip="expedite /'ekspədaɪt/ vt. 加快进展迅速完成时 态: expedited, expediting, expedites">expedite</span> <span class="annot" data-tooltip="grid /ɡrɪd/ n. 格子,格栏地图上的坐标方格输电网">grid</span> enhancements”; remind them that Anglo-Saxon words are often punchier. They like clichéd <span class="annot" data-tooltip="metaphors /'metəfər/ n. 隐喻形容词: metaphoric">metaphors</span>: there are lots of “Achilles’ <span class="annot" data-tooltip="heels /hilz/ n. 脚踝；残余料；高跟鞋（heel的复数）v. 紧跟；给（鞋等）装跟（heel的三单形式）">heels</span>”. And AI <span class="annot" data-tooltip="tends /tend/ vt. 照料，照顾，伺候vi. 往，朝向易于；倾向时 态: tended，tending，tends">tends</span> to use the “rule of three” <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> more than humans. The Economist also likes this <span class="annot" data-tooltip="rhetorical /rɪ'tɔːrɪkl/ adj. 修辞的, 用来产生修辞效果的言辞的，口头的副 词: rhetorically">rhetorical</span> trick. But <span class="annot" data-tooltip="whereas /ˌwer'æz/ conj. 但是, 而">whereas</span> we try to <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span> three <span class="annot" data-tooltip="sensible /'sensəbl/ adj. 明智的；意识到的；通晓事理的；明显的n. 可感觉到的东西；敏感的人副 词: sensibly">sensible</span> bits of advice, AI offers such <span class="annot" data-tooltip="redundant /rɪ'dʌndənt/ adj. 因人员过剩而被解雇的不需要的; 多余的副 词: redundantly">redundant</span> <span class="annot" data-tooltip="sentences /'sentəns/ n. 宣判，判决；句子，命题vt. 判决，宣判时 态: sentenced, sentencing, sentences">sentences</span> as: “The mystery has been solved—not <span class="annot" data-tooltip="partially /'pɑːrʃl/ adj. 局部的；不公平的；[口]偏爱的名 词: partialness">partially</span>, not <span class="annot" data-tooltip="ambiguously /æm'bɪɡjuəs/ adj. 引起歧义的；模棱两可的，含糊不清的">ambiguously</span>, but definitively.” Such <span class="annot" data-tooltip="lines n. 台词；线；航线（line的复数）v. 排成一行；画线于（line的三单形式）">lines</span> should be cut—definitively. Finally, know your audience. The editor is an <span class="annot" data-tooltip="intermediary /ˌɪntər'miːdieri/ n. 中间人;调解人">intermediary</span> between writer and reader. LLMs are sycophants and their smarmy tone is often off-key. If you are writing an email to break some bad news to your boss, tell your <span class="annot" data-tooltip="bot /bɑːt/ n. 马蝇幼虫，马蝇">bot</span> to skip the <span class="annot" data-tooltip="exclamation /ˌeksklə'meɪʃn/ n. 呼喊, 惊叫">exclamation</span> marks. AI can be pretentious or pontificating (it was trained on human writing, after all). Most people are short of time, but a <span class="annot" data-tooltip="verbose /vɜːr'boʊs/ adj. 冗长的；啰嗦的副 词: verbosely">verbose</span> AI pins you to the wall like a bore at a party. “Write drunk, edit <span class="annot" data-tooltip="sober /'soʊbər/ adj. 冷静的，清醒的；未醉的vt. 使醒酒，使清醒；使严肃比较级: soberer, soberest">sober</span>,” goes the old writers’ maxim. If that’s right, when the AI-human team gets down to work, the AIs will have all the fun. ■ This article was downloaded by zlibrary from https://www.economist.com/leaders/2026/07/30/ai-is-getting-better-at-writing- humans-must-get-better-at-editing</p>
+<div class="article-separator"></div>
+<div class="article-header">Leaders · Leaders | Yeomen in the cloud</div>
+<p>America’s <span class="annot" data-tooltip="startup /ˈstɑrtˈʌp/ n. 启动；开办">startup</span> boom offers hope for the future of work AI could make more people their <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> boss Jul 30th 2026 MANY AMERICANS long to be their own boss. Their <span class="annot" data-tooltip="yearning /jɜːrn/ vi. 渴望，向往；思念，想念；怀念；同情，怜悯时 态: yearned, yearning, yearns">yearning</span> is as old as the Republic itself: Thomas Jefferson <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span> the ideal citizen was a yeoman farmer, whose economic independence allowed him to participate in civic life. For <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span>, 60% of Americans have said they want to be self- <span class="annot" data-tooltip="employed /ɪm'plɔɪ/ vt. 使用，采用；雇用；使忙于，使从事于n. 雇用；使用时 态: employed, employing, employs">employed</span>. Yet in recent years fewer than 10% have been. That is now changing. As we report, America is in the <span class="annot" data-tooltip="midst /mɪdst/ n. 当中，中间prep. 在…中间（等于amidst）">midst</span> of a small- business boom. It began during the covid-19 <span class="annot" data-tooltip="pandemic /pæn'demɪk/ adj. （疾病）在全国（或世界）流行的">pandemic</span> and has since picked up steam, fuelled by artificial intelligence, low hiring and the growing <span class="annot" data-tooltip="ease /iːz/ vt. 减轻，缓和；使安心n. 安逸，悠闲；轻松，舒适vi. 减轻，缓和；放松；灵活地移动EASEabbr. Electroni">ease</span> of starting small online shops on platforms such as Etsy, Shopify and TikTok Shop. In June the Census Bureau recorded more than 531,000 new business</p>
+<p>applications, a <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> of 81% compared with the average month in 2019. Such factors have buoyed self-employment in Britain and France, according to <span class="annot" data-tooltip="stripe /straɪp/ n. 条纹，斑纹；种类vt. 加条纹于…时 态: striped, striping, stripes">Stripe</span>, a payments firm. But it is America where the <span class="annot" data-tooltip="trend /trend/ n. 趋势, 倾向流行时 态: trended, trending, trends">trend</span> is most pronounced. It is a welcome one. Small businesses are popular with politicians, but economists can turn up their <span class="annot" data-tooltip="noses /noʊz/ n. 鼻子似鼻子的东西嗅觉vt. 嗅vi. 窥探, 探听, 四处查看vt. & vi. 小心翼翼地前进时 态: nosed, ">noses</span>. Many fail. Those that survive often suffer from low <span class="annot" data-tooltip="productivity /ˌproʊdʌk'tɪvəti/ n. 生产率, 生产力">productivity</span>: small American firms are only 70% as <span class="annot" data-tooltip="productive /prə'dʌktɪv/ adj. 多产的，富饶的富有成效的；有益的副 词: productively">productive</span> as big ones. In recent years much <span class="annot" data-tooltip="innovation /ˌɪnə'veɪʃn/ n. 改革, 革新, 创新新观念, 新方法, 新发明形容词: innovational">innovation</span> has come from large “superstar” firms. Small companies often lack the digital tools and <span class="annot" data-tooltip="administrative /əd'mɪnɪstreɪtɪv/ adj. 行政的，管理的；经营的后方勤务的">administrative</span> efficiency that come with scale. Yet there are signs that AI can help small businesses become more sophisticated, even as it <span class="annot" data-tooltip="automates /'ɔːtəmeɪt/ vt. 使自动化，使自动操作vi. 自动化，自动操作时 态: automated, automating, automates">automates</span> away some jobs with big employers. Basic chatbots can help firms register with local <span class="annot" data-tooltip="authorities /ə'θɔːrəti/ n. 威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗">authorities</span>, <span class="annot" data-tooltip="draft /dræft/ n. 汇票；草稿；选派；（尤指房间、烟囱、炉子等供暖系统中的）（小股）气流">draft</span> business plans and market themselves to <span class="annot" data-tooltip="clients /'klaɪənt/ n. 委托人顾客, 常客">clients</span>. AI agents can carry out repetitive administrative tasks and make sense of sales <span class="annot" data-tooltip="trends /trend/ n. 趋势, 倾向流行时 态: trended, trending, trends">trends</span> and other data. Many of America’s new businesses are one-man bands, categorised by the government as unlikely to hire within their first few years of operation. They may be able to scale up anyway, using AI agents instead of employees.</p>
+<p>All this <span class="annot" data-tooltip="raises /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raises</span> the tantalising <span class="annot" data-tooltip="prospect /'prɑːspekt/ n. 景象，景色前景；前途可能成为主顾的人；有希望的候选人vi. 勘探；勘察时 态: prospected，prospecti">prospect</span> that self-employment could provide meaningful <span class="annot" data-tooltip="alternative /ɔːl'tɜːrnətɪv/ adj. 可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）">alternative</span> work for some who lose their jobs to ai. <span class="annot" data-tooltip="gloomy /'ɡluːmi/ adj. 黑暗的；沮丧的；阴郁的比较级: gloomier, gloomiest">Gloomy</span> futurists in <span class="annot" data-tooltip="silicon /'sɪlɪkən/ n. 〈化〉硅">Silicon</span> <span class="annot" data-tooltip="valley /'væli/ n. 流域；山谷；溪谷">Valley</span> warn that AI will create a “permanent underclass” of people who <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> little capital and, with the professional classes displaced, perform only <span class="annot" data-tooltip="menial /'miːniəl/ adj. (指工作)卑贱的,不体面的n. (干粗活的)家仆副 词: menially">menial</span> jobs. A more hopeful possibility is that the technology democratises the ability to put ideas into <span class="annot" data-tooltip="practice /'præktɪs/ n. 练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规时 态: practiced，practicing，">practice</span> and become a successful business <span class="annot" data-tooltip="owner /'oʊnər/ n. 所有者；物主">owner</span>. There are some signs of such an effect: a rising share of new entrepreneurs are low-income, according to Bank of America. True, becoming a “solopreneur” will provide <span class="annot" data-tooltip="neither /'niːðər/ conj. 既不；也不adv. 两个都不；既不……也不adj. 两者都不的det./pron. 两者都不">neither</span> the <span class="annot" data-tooltip="manufacturing /ˌmænju'fæktʃərɪŋ/ n. 制造业，工业adj. 制造业的；制造的">manufacturing</span> jobs craved by populists nor a <span class="annot" data-tooltip="predictable /prɪ'dɪktəbl/ adj. 可预言〔预报〕的不出所料的，可以想见的；平庸的；墨守成规的；毫无想像力的n. 可预测性">predictable</span> 9-5 office life and a <span class="annot" data-tooltip="corporate /'kɔːrpərət/ adj. 社团的, 法人的副 词: corporately">corporate</span> ladder. The new <span class="annot" data-tooltip="startups /ˈstɑrtˈʌp/ n. 启动；开办">startups</span> are mainly services firms, many in tech, <span class="annot" data-tooltip="retail /ˈriːteɪl/ vt. 零售；转述vi. 零售n. 零售adv. 以零售方式adj. 零售的时 态: retailed, retailing, ">retail</span> or health care. But, when asked, their founders say they are happy with service work. It is an encouraging precedent that many of these new businesses have sprung up in <span class="annot" data-tooltip="places /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">places</span> formerly <span class="annot" data-tooltip="hollowed /'hɑːloʊ/ adj. 空的；凹的；虚伪的；中空的，空腹的n. 洞；山谷；窟窿vt. 使成为空洞vi. 形成空洞adv. 无用地；彻底地比较级:">hollowed</span> out by the loss of manufacturing. Shopify reckons that the share of new businesses from rural areas has been rising. The government could make life easier still for entrepreneurs. <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">Although</span> Obamacare, a health-care <span class="annot" data-tooltip="reform /rɪ'fɔːrm/ n. 改革，改良，改造vt. & vi. 改革；改造；改善时 态: reformed，reforming，reforms">reform</span> in the 2010s, helped, it is often still too hard for self-<span class="annot" data-tooltip="employed /ɪm'plɔɪ/ vt. 使用，采用；雇用；使忙于，使从事于n. 雇用；使用时 态: employed, employing, employs">employed</span> Americans to access health insurance. Employees should not have to <span class="annot" data-tooltip="cling /klɪŋ/ vi. 坚持，墨守；紧贴；附着时 态: clung clinging, clings">cling</span> to their jobs to stay <span class="annot" data-tooltip="covered /'kʌvər/ vt. 包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替时 态: covered, covering, c">covered</span>. And swathes of the economy suffer from burdensome occupational-licensing requirements, which act as a barrier to entry for anyone looking to set up shop. They should be pared back. Nobody knows how AI will reshape work, but across-the-board pessimism is unwarranted. An economy powered by individual entrepreneurship, with AI handling <span class="annot" data-tooltip="tedious /'tiːdiəs/ adj. 乏味的, 单调的副 词: tediously">tedious</span> back-end tasks, could yet prove <span class="annot" data-tooltip="fulfilling /fʊlˈfɪl/ vt. 履行；满足；实现；使结束（等于fulfil）时 态: fulfilled, fulfilling, fulfillsal">fulfilling</span> and lucrative for many people. It might even help more Americans realise Jefferson’s <span class="annot" data-tooltip="vision /'vɪʒn/ n. 视力；眼力；幻象；美景；想象力vt. 显现；梦见；想象时 态: visioned, visioning, visions">vision</span> of self-reliance as a path to liberty. ■ This article was downloaded by zlibrary from https://www.economist.com/leaders/2026/07/30/americas-<span class="annot" data-tooltip="startup /ˈstɑrtˈʌp/ n. 启动；开办">startup</span>-boom-offers-hope-for- the-future-of-work</p>
+<div class="article-separator"></div>
+<div class="article-header">Letters · Letters | A selection of correspondence</div>
+<p>Does Britain’s social housing subsidise the wrong people? Also this week, weather forecasts, using AI in law, <span class="annot" data-tooltip="falling /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">falling</span> cows, <span class="annot" data-tooltip="drones /droʊn/ n. 无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫">drones</span> and zebras, questions Jul 30th 2026 Letters are welcome via email to letters@economist.comFind out more about how we <span class="annot" data-tooltip="process /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">process</span> your letter As <span class="annot" data-tooltip="representatives /ˌreprɪ'zentətɪv/ n. 代表代理人adj. 有代表性的, 典型的名 词: representativeness">representatives</span> of both social-housing <span class="annot" data-tooltip="residents /'rezɪdənt/ adj. 定居的; 常驻的n. 居民(旅馆的)住宿者">residents</span> and providers we were struck by the way your recent article described people who live in social housing (“The rent is too damn low”, July 11th). Phrases such as “subsidises the wrong people”, <span class="annot" data-tooltip="references /'refrəns/ n. 提及，涉及参考，查阅引文；参考书目证明书；推荐信；证明人；推荐人时 态: referenced，referencing，">references</span> to residents who “<span class="annot" data-tooltip="cling /klɪŋ/ vi. 坚持，墨守；紧贴；附着时 态: clung clinging, clings">cling</span>” to their homes and examples chosen to <span class="annot" data-tooltip="illustrate /'ɪləstreɪt/ vt. 给…加插图说明，阐明；表明时 态: illustrated，illustrating，illustrates">illustrate</span> perceived unfairness all contribute to a familiar <span class="annot" data-tooltip="narrative /'nærətɪv/ n. 记叙文；故事n. 叙述，讲述；叙述部分adj. 叙述的；叙事体的副 词: narratively">narrative</span>: that social-housing residents on good incomes are recipients of undeserved <span class="annot" data-tooltip="subsidies /'sʌbsədi/ n. 津贴；补助金；补贴">subsidies</span>.</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>process</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>eagerly</td><td>/'iːɡərli/ adv.</td><td>渴望地；急切地；热心地</td></tr>
+<tr><td>poetry</td><td>/'poʊətri/ n.</td><td>诗篇, 诗歌, 诗集作诗法, 诗歌艺术诗情, 诗意, 诗一般的美</td></tr>
+<tr><td>curse</td><td>/kɜːrs/ vt.</td><td>& vi. 诅咒；骂n. 诅咒，咒语；骂人的话祸害，祸根，curst cursing，curses</td></tr>
+<tr><td>fraud</td><td>/frɔːd/ n.</td><td>欺诈, 欺骗行为骗子</td></tr>
+<tr><td>bot</td><td>/bɑːt/ n.</td><td>马蝇幼虫，马蝇</td></tr>
+<tr><td>busting</td><td>/bʌst/ vi.</td><td>爆裂；破产；降低级别vt. 使爆裂；使破产；逮捕n. 半身像；胸部；萧条；破产adj. 破产了的；毁坏了的, busting, busts</td></tr>
+<tr><td>spotting</td><td>/spɑːt/ n.</td><td>斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Positioning and Tracki</td></tr>
+<tr><td>helping</td><td>/'helpɪŋ/ n.</td><td>（进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的</td></tr>
+<tr><td>invitation</td><td>/ˌɪnvɪ'teɪʃn/ n.</td><td>邀请请柬, 请帖</td></tr>
+<tr><td>column</td><td>/'kɑːləm/ n.</td><td>圆柱，柱形物；纵队，列；专栏</td></tr>
+<tr><td>tempting</td><td>/tempt/ vt.</td><td>引诱或怂恿(某人)干不正当的事使想要, tempting, tempts</td></tr>
+<tr><td>quirks</td><td>/kwɜːrk/ n.</td><td>怪癖；急转；借口</td></tr>
+<tr><td>reveals</td><td>/rɪ'viːl/ vt.</td><td>显示；露出泄露；透露，revealing，reveals</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>variants</td><td>/'veriənt/ n.</td><td>变体；变种；变型(词等的)变体；异读(书等的)不同版本；改编adj. 不同的；差别的；变异的；易变的，不定的；各种各样的</td></tr>
+<tr><td>gemini</td><td>/ˈdʒɛməˌnaɪ/ n.</td><td>双生子；双胎Geminin. 双子宫,双子(星)座</td></tr>
+<tr><td>grok</td><td>/ɡrɑːk/ v.</td><td>〈美俚〉通过神入作用而理解,体验(神入), grokking, groks</td></tr>
+<tr><td>versions</td><td>/'vɜːrʒn/ n.</td><td>变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本</td></tr>
+<tr><td>consulting</td><td>/kən'sʌlt/ vt.</td><td>商量；查阅；向…请教vi. 请教；商议；当顾问, consulting, consults</td></tr>
+<tr><td>corpus</td><td>/'kɔːrpəs/ n.</td><td>文集；本金；语料库复 数: corpora</td></tr>
+<tr><td>sentences</td><td>/'sentəns/ n.</td><td>宣判，判决；句子，命题vt. 判决，宣判, sentencing, sentences</td></tr>
+<tr><td>dashes</td><td>/dæʃ/ n.</td><td>破折号；冲撞vt. 使…破灭；猛撞；泼溅vi. 猛冲；撞击DASHabbr. Drone Antisubmarine Helicopter 无线电遥控反潜艇直升</td></tr>
+<tr><td>slop</td><td>/slɑːp/ vi.</td><td>溢出；泼出在泥浆(或雪泥)中走vt. 使(某物)溢出或泼出(液体)晃荡；(常指)溢出，溅出(在水、泥等里)趟来趟去，走动休息；放松；偷懒(囚犯)倒便桶(液体)晃</td></tr>
+<tr><td>tripled</td><td>/trɪp/ vi.</td><td>绊倒；犯错误；远足；轻快地走n. 旅行；绊倒；差错vt. 绊倒；使犯错TRIPabbr. transformation-induced plasticity 高</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>amazon</td><td>/ˈæməˌzɑn/ n.</td><td>高大强悍的女人；（古希腊神话中的）亚马孙族女战士Amazonn. 亚马逊河(南美洲大河)</td></tr>
+<tr><td>draft</td><td>/dræft/ n.</td><td>汇票；草稿；选派；（尤指房间、烟囱、炉子等供暖系统中的）（小股）气流</td></tr>
+<tr><td>premium</td><td>/'priːmiəm/ n.</td><td>奖金，津贴；加价；附加费；保险费；额外费用adj. （品质）高级的；优质的，顶级的</td></tr>
+<tr><td>commission</td><td>/kə'mɪʃn/ n.</td><td>授权, 委托委员会佣金, 回扣vt. 委任, 委托, commissioning, commissions</td></tr>
+<tr><td>clip</td><td>/klɪp/ vt.</td><td>修剪；夹牢；痛打vi. 修剪n. 夹子；修剪；回形针CLIPabbr. Cellular Logic Image Processor 单元逻辑映象处理器Comp</td></tr>
+<tr><td>wings</td><td>/wɪŋ/ n.</td><td>翅膀；翼；飞翔；派别vt. 使飞；飞过；空运；增加…速度；装以翼vi. 飞行, winging, wings</td></tr>
+<tr><td>instructions</td><td>/ɪnˈstrʌkʃənz/ n.</td><td>操作指南；用法说明（instruction 的复数）</td></tr>
+<tr><td>exactly</td><td>/ɪɡ'zækt/ adj.</td><td>精确的；准确的，精密的vt. 强求；要求；急需vi. 勒索钱财, exacting, exacts</td></tr>
+<tr><td>refine</td><td>/rɪ'faɪn/ vt.</td><td>精炼，提纯；使…文雅；改善, refining, refines</td></tr>
+<tr><td>observation</td><td>/ˌɑːbzər'veɪʃn/ n.</td><td>注意；观察观察力言论，评论，意见观察资料，观察数据</td></tr>
+<tr><td>analogy</td><td>/ə'nælədʒi/ n.</td><td>类似, 相似类推, 类推法</td></tr>
+<tr><td>lavish</td><td>/'lævɪʃ/ adj.</td><td>浪费的；丰富的；大方的vt. 浪费；慷慨给予；滥用, lavishing, lavishes</td></tr>
+<tr><td>expedite</td><td>/'ekspədaɪt/ vt.</td><td>加快进展迅速完成, expediting, expedites</td></tr>
+<tr><td>grid</td><td>/ɡrɪd/ n.</td><td>格子,格栏地图上的坐标方格输电网</td></tr>
+<tr><td>metaphors</td><td>/'metəfər/ n.</td><td>隐喻</td></tr>
+<tr><td>heels</td><td>/hilz/ n.</td><td>脚踝；残余料；高跟鞋（heel的复数）v. 紧跟；给（鞋等）装跟（heel的三单形式）</td></tr>
+<tr><td>tends</td><td>/tend/ vt.</td><td>照料，照顾，伺候vi. 往，朝向易于；倾向，tending，tends</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>rhetorical</td><td>/rɪ'tɔːrɪkl/ adj.</td><td>修辞的, 用来产生修辞效果的言辞的，口头的</td></tr>
+<tr><td>whereas</td><td>/ˌwer'æz/ conj.</td><td>但是, 而</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>sensible</td><td>/'sensəbl/ adj.</td><td>明智的；意识到的；通晓事理的；明显的n. 可感觉到的东西；敏感的人</td></tr>
+<tr><td>redundant</td><td>/rɪ'dʌndənt/ adj.</td><td>因人员过剩而被解雇的不需要的; 多余的</td></tr>
+<tr><td>sentences</td><td>/'sentəns/ n.</td><td>宣判，判决；句子，命题vt. 判决，宣判, sentencing, sentences</td></tr>
+<tr><td>partially</td><td>/'pɑːrʃl/ adj.</td><td>局部的；不公平的；[口]偏爱的</td></tr>
+<tr><td>ambiguously</td><td>/æm'bɪɡjuəs/ adj.</td><td>引起歧义的；模棱两可的，含糊不清的</td></tr>
+<tr><td>lines</td><td>— n.</td><td>台词；线；航线（line的复数）v. 排成一行；画线于（line的三单形式）</td></tr>
+<tr><td>intermediary</td><td>/ˌɪntər'miːdieri/ n.</td><td>中间人;调解人</td></tr>
+<tr><td>bot</td><td>/bɑːt/ n.</td><td>马蝇幼虫，马蝇</td></tr>
+<tr><td>exclamation</td><td>/ˌeksklə'meɪʃn/ n.</td><td>呼喊, 惊叫</td></tr>
+<tr><td>verbose</td><td>/vɜːr'boʊs/ adj.</td><td>冗长的；啰嗦的</td></tr>
+<tr><td>sober</td><td>/'soʊbər/ adj.</td><td>冷静的，清醒的；未醉的vt. 使醒酒，使清醒；使严肃, soberest</td></tr>
+<tr><td>startup</td><td>/ˈstɑrtˈʌp/ n.</td><td>启动；开办</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>yearning</td><td>/jɜːrn/ vi.</td><td>渴望，向往；思念，想念；怀念；同情，怜悯, yearning, yearns</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>employed</td><td>/ɪm'plɔɪ/ vt.</td><td>使用，采用；雇用；使忙于，使从事于n. 雇用；使用, employing, employs</td></tr>
+<tr><td>midst</td><td>/mɪdst/ n.</td><td>当中，中间prep. 在…中间（等于amidst）</td></tr>
+<tr><td>pandemic</td><td>/pæn'demɪk/ adj.</td><td>（疾病）在全国（或世界）流行的</td></tr>
+<tr><td>ease</td><td>/iːz/ vt.</td><td>减轻，缓和；使安心n. 安逸，悠闲；轻松，舒适vi. 减轻，缓和；放松；灵活地移动EASEabbr. Electronic Airborne Systems E</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>stripe</td><td>/straɪp/ n.</td><td>条纹，斑纹；种类vt. 加条纹于…, striping, stripes</td></tr>
+<tr><td>trend</td><td>/trend/ n.</td><td>趋势, 倾向流行, trending, trends</td></tr>
+<tr><td>noses</td><td>/noʊz/ n.</td><td>鼻子似鼻子的东西嗅觉vt. 嗅vi. 窥探, 探听, 四处查看vt. & vi. 小心翼翼地前进, nosing, noses</td></tr>
+<tr><td>productivity</td><td>/ˌproʊdʌk'tɪvəti/ n.</td><td>生产率, 生产力</td></tr>
+<tr><td>productive</td><td>/prə'dʌktɪv/ adj.</td><td>多产的，富饶的富有成效的；有益的</td></tr>
+<tr><td>innovation</td><td>/ˌɪnə'veɪʃn/ n.</td><td>改革, 革新, 创新新观念, 新方法, 新发明</td></tr>
+<tr><td>administrative</td><td>/əd'mɪnɪstreɪtɪv/ adj.</td><td>行政的，管理的；经营的后方勤务的</td></tr>
+<tr><td>automates</td><td>/'ɔːtəmeɪt/ vt.</td><td>使自动化，使自动操作vi. 自动化，自动操作, automating, automates</td></tr>
+<tr><td>authorities</td><td>/ə'θɔːrəti/ n.</td><td>威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗</td></tr>
+<tr><td>draft</td><td>/dræft/ n.</td><td>汇票；草稿；选派；（尤指房间、烟囱、炉子等供暖系统中的）（小股）气流</td></tr>
+<tr><td>clients</td><td>/'klaɪənt/ n.</td><td>委托人顾客, 常客</td></tr>
+<tr><td>trends</td><td>/trend/ n.</td><td>趋势, 倾向流行, trending, trends</td></tr>
+<tr><td>raises</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>prospect</td><td>/'prɑːspekt/ n.</td><td>景象，景色前景；前途可能成为主顾的人；有希望的候选人vi. 勘探；勘察，prospecting，prospects</td></tr>
+<tr><td>alternative</td><td>/ɔːl'tɜːrnətɪv/ adj.</td><td>可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）可供选择的事物；可供选择的解决办法替代物</td></tr>
+<tr><td>gloomy</td><td>/'ɡluːmi/ adj.</td><td>黑暗的；沮丧的；阴郁的, gloomiest</td></tr>
+<tr><td>silicon</td><td>/'sɪlɪkən/ n.</td><td>〈化〉硅</td></tr>
+<tr><td>valley</td><td>/'væli/ n.</td><td>流域；山谷；溪谷</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>menial</td><td>/'miːniəl/ adj.</td><td>(指工作)卑贱的,不体面的n. (干粗活的)家仆</td></tr>
+<tr><td>practice</td><td>/'præktɪs/ n.</td><td>练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规，practicing，practices</td></tr>
+<tr><td>owner</td><td>/'oʊnər/ n.</td><td>所有者；物主</td></tr>
+<tr><td>neither</td><td>/'niːðər/ conj.</td><td>既不；也不adv. 两个都不；既不……也不adj. 两者都不的det./pron. 两者都不</td></tr>
+<tr><td>manufacturing</td><td>/ˌmænju'fæktʃərɪŋ/ n.</td><td>制造业，工业adj. 制造业的；制造的</td></tr>
+<tr><td>predictable</td><td>/prɪ'dɪktəbl/ adj.</td><td>可预言〔预报〕的不出所料的，可以想见的；平庸的；墨守成规的；毫无想像力的n. 可预测性</td></tr>
+<tr><td>corporate</td><td>/'kɔːrpərət/ adj.</td><td>社团的, 法人的</td></tr>
+<tr><td>startups</td><td>/ˈstɑrtˈʌp/ n.</td><td>启动；开办</td></tr>
+<tr><td>retail</td><td>/ˈriːteɪl/ vt.</td><td>零售；转述vi. 零售n. 零售adv. 以零售方式adj. 零售的, retailing, retails</td></tr>
+<tr><td>places</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>hollowed</td><td>/'hɑːloʊ/ adj.</td><td>空的；凹的；虚伪的；中空的，空腹的n. 洞；山谷；窟窿vt. 使成为空洞vi. 形成空洞adv. 无用地；彻底地, hollowest</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>reform</td><td>/rɪ'fɔːrm/ n.</td><td>改革，改良，改造vt. & vi. 改革；改造；改善，reforming，reforms</td></tr>
+<tr><td>employed</td><td>/ɪm'plɔɪ/ vt.</td><td>使用，采用；雇用；使忙于，使从事于n. 雇用；使用, employing, employs</td></tr>
+<tr><td>cling</td><td>/klɪŋ/ vi.</td><td>坚持，墨守；紧贴；附着, clings</td></tr>
+<tr><td>covered</td><td>/'kʌvər/ vt.</td><td>包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替, covering, covers</td></tr>
+<tr><td>tedious</td><td>/'tiːdiəs/ adj.</td><td>乏味的, 单调的</td></tr>
+<tr><td>fulfilling</td><td>/fʊlˈfɪl/ vt.</td><td>履行；满足；实现；使结束（等于fulfil）, fulfilling, fulfillsalso fulfils</td></tr>
+<tr><td>vision</td><td>/'vɪʒn/ n.</td><td>视力；眼力；幻象；美景；想象力vt. 显现；梦见；想象, visioning, visions</td></tr>
+<tr><td>startup</td><td>/ˈstɑrtˈʌp/ n.</td><td>启动；开办</td></tr>
+<tr><td>falling</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>drones</td><td>/droʊn/ n.</td><td>无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫；嗡嗡响(人)絮絮叨叨地说，喋喋不休地说</td></tr>
+<tr><td>process</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>representatives</td><td>/ˌreprɪ'zentətɪv/ n.</td><td>代表代理人adj. 有代表性的, 典型的</td></tr>
+<tr><td>residents</td><td>/'rezɪdənt/ adj.</td><td>定居的; 常驻的n. 居民(旅馆的)住宿者</td></tr>
+<tr><td>references</td><td>/'refrəns/ n.</td><td>提及，涉及参考，查阅引文；参考书目证明书；推荐信；证明人；推荐人，referencing，references</td></tr>
+<tr><td>cling</td><td>/klɪŋ/ vi.</td><td>坚持，墨守；紧贴；附着, clings</td></tr>
+<tr><td>illustrate</td><td>/'ɪləstreɪt/ vt.</td><td>给…加插图说明，阐明；表明，illustrating，illustrates</td></tr>
+<tr><td>narrative</td><td>/'nærətɪv/ n.</td><td>记叙文；故事n. 叙述，讲述；叙述部分adj. 叙述的；叙事体的</td></tr>
+<tr><td>subsidies</td><td>/'sʌbsədi/ n.</td><td>津贴；补助金；补贴</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day3.html" class="nav-btn">← Day 3</a>
+  <a href="day5.html" class="nav-btn">Day 5 →</a>
+</div>
+
+<div class="progress">📖 Day 4 of 39</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-08-01</div>
+
+</body>
+</html>

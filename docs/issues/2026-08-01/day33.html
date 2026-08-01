@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Europe</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-08-01</div>
+
+<h1 class="article-title">Europe</h1>
+<div class="article-section"></div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>in 18th-century Japan, they were used to trade rice. Since then, they have been applied to everything from corn to electricity. Ten years ago, Mr Hayes reimagined them as a means for betting on bitcoin. Attentive readers can perhaps guess where this is going. Mr Hayes’ <span class="annot" data-tooltip="innovation /ˌɪnə'veɪʃn/ n. 改革, 革新, 创新新观念, 新方法, 新发明形容词: innovational">innovation</span> was to <span class="annot" data-tooltip="ditch /dɪtʃ/ vt. 在…上掘沟；把…开入沟里；[俚]丢弃vi. 开沟；掘沟n. 沟渠；壕沟时 态: ditched, ditching, d">ditch</span> the expiry date. To make sense of this, think of an old-school future not as a <span class="annot" data-tooltip="contract /'kɑːntrækt/ vi. 感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约时 态: contracted, contracting, c">contract</span> to trade the <span class="annot" data-tooltip="underlying /ˌʌndər'laɪɪŋ/ adj. 根本的, 基础的含蓄的, 潜在的">underlying</span> <span class="annot" data-tooltip="asset /'æset/ n. 资产；有用的东西；有利条件；优点">asset</span>, but as a bet on its price. If this <span class="annot" data-tooltip="rises /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rises</span> after the future is agreed, the “long” side is in profit, since it is <span class="annot" data-tooltip="due /duː/ adj. 到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）">due</span> to buy the underlying asset for less than market <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span>. Its mirror image, the “short” side, is in the red by the same amount. <span class="annot" data-tooltip="conversely /kənˈvɜːrs/ adj. 相反的，逆向的；颠倒的vi. 交谈，谈话；认识n. 相反的事物；逆行，逆向；倒时 态: conversed, conve">Conversely</span>, if the price <span class="annot" data-tooltip="falls /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">falls</span>, the long loses and the short wins. Parties to a <span class="annot" data-tooltip="perpetual /pər'petʃuəl/ adj. 永久的; 终身的不断的; 常发生的副 词: perpetually">perpetual</span> future (or “perp”) sign up to roughly this profit-and-loss structure, without agreeing to <span class="annot" data-tooltip="actually /'æktʃuəl/ adj. 真实的，实际的；现行的，目前的副 词: actually">actually</span> trade the underlying asset. Why bother? One reason is that lots of people love gambling, lots of gamblers frequent crypto exchanges and futures are great gambling tools. A bitcoin costs $64,000 or so, meaning that $100 gets you only a tiny <span class="annot" data-tooltip="fraction /'frækʃn/ n. 小部分；部分；稍微；[数]分数">fraction</span> of one. If bitcoin’s price rises by 1%, you profit by a measly $1. Bet on bitcoin with a future, meanwhile, and some exchanges will let you multiply your <span class="annot" data-tooltip="exposure /ɪk'spoʊʒər/ n. 暴露, 显露揭发, 揭露(软片等)曝光">exposure</span> as much as 200 times over. Do this, and the same 1% price <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> nets you a profit of $200—while a 1% drop loses you $200. The trouble, says Mr Hayes, was that his <span class="annot" data-tooltip="clients /'klaɪənt/ n. 委托人顾客, 常客">clients</span>’ financial knowledge was “very limited”, so traditional futures <span class="annot" data-tooltip="presented /'preznt/ vt. 呈现；介绍；提出；赠送vi. 举枪瞄准adj. 出席的；现在的n. 现在；礼物；瞄准时 态: presented, pr">presented</span> them with “a big, steep learning <span class="annot" data-tooltip="curve /kɜːrv/ n. 曲线；弯曲；曲线球；曲线图表vt. 使弯曲；弯vi. 成曲形adj. 弯曲的；曲线形的时 态: curved, curv">curve</span>”. In particular, they kept asking him why their <span class="annot" data-tooltip="contracts /'kɑːntrækt/ vi. 感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约时 态: contracted, contracting, c">contracts</span> expired: “They <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span> we were doing something dodgy.” His solution was to invent perps, which do not run out. This took some clever financial engineering. Because a perp never settles, it needs a <span class="annot" data-tooltip="mechanism /'mekənɪzəm/ n. 机械装置构造, 机制办法, 技巧, 途径">mechanism</span> to keep its price close to that of its underlying asset. This job is done by the “funding rate”, an <span class="annot" data-tooltip="automatic /ˌɔːtə'mætɪk/ adj. 自动的不假思索的, 无意识的必然发生的n. 能自动运转的机器或器械副 词: automatically">automatic</span> payment made every few hours. If the perp’s price is <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> above the underlying’s, the long side pays the short in <span class="annot" data-tooltip="proportion /prə'pɔːrʃn/ n. 均衡；相称，协调一物与他物在数量、大小等方面的关系；比例部分；份儿时 态: proportioned，proportio">proportion</span> to the difference—<span class="annot" data-tooltip="prompting /prɑːmpt/ adj. 敏捷的，迅速的；立刻的vt. 促进；激起；提示；（给演员）提白n. 提示；付款期限；DOS命令：改变DOS系统提示符的风">prompting</span> more people to short perps and pull their prices down. If the perp’s price is far below the underlying’s, the reverse happens. To a cynic, though, the funding rate <span class="annot" data-tooltip="conceals /kən'siːl/ vt. 隐藏；隐瞒时 态: concealed, concealing, conceals">conceals</span> a bigger reason for <span class="annot" data-tooltip="manufacturing /ˌmænju'fæktʃərɪŋ/ n. 制造业，工业adj. 制造业的；制造的">manufacturing</span> perps. It also includes a <span class="annot" data-tooltip="straightforward /ˌstreɪt'fɔːrwərd/ adj. (人或其态度)正直的，坦率的；老实的简单的；易懂的副 词: straightforwardly">straightforward</span> interest payment of</p>
+<p>0.01% of the perp’s notional <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span>, made every eight hours, from the long side to the short. Over a year the magic of <span class="annot" data-tooltip="compounding /'kɑːmpaʊnd/ n. 复合物；混合物；【化】化合物（语法）复合词有围栏（或围墙）的场地（内有工厂或其他建筑群）adj. 复合的v. 使加重；使">compounding</span> ensures that this measly-sounding fee costs longs more than 10% of their position’s value. Needless to say, it is mostly <span class="annot" data-tooltip="retail /ˈriːteɪl/ vt. 零售；转述vi. 零售n. 零售adv. 以零售方式adj. 零售的时 态: retailed, retailing, ">retail</span> traders using perps to go long and professional <span class="annot" data-tooltip="shorts /ʃɔːrts/ n. 短裤">shorts</span> collecting the fees. Mr Hayes is disarmingly open about this. “Basically I set it there,” he says. “I said I want to make 10% on my money…and no one’s changed it since.” Why would they, when punters can’t get enough? Hyperliquid, another exchange, trades $10bn-<span class="annot" data-tooltip="worth /wɜːrθ/ adj. 值…的n. 价值；财产时 态: worthed, worthing, worths">worth</span> of perps a day; globally, the <span class="annot" data-tooltip="annual /'ænjuəl/ adj. 年度的；每年的n. 年刊，年鉴；一年生植物副 词: annually">annual</span> volume is probably over $90trn. Americans used to have to trade perps offshore but, since May, have been able to do so onshore via Kalshi, a betting platform (which charges no interest-rate component). The Commodity Futures Trading <span class="annot" data-tooltip="commission /kə'mɪʃn/ n. 授权, 委托委员会佣金, 回扣vt. 委任, 委托时 态: commissioned, commissioning, c">Commission</span>, a regulator, is being sued for having approved this by CME <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">Group</span>, yet another exchange. And perps have spread <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> beyond crypto. These days there is a smorgasbord of them, <span class="annot" data-tooltip="helping /'helpɪŋ/ n. （进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的">helping</span> punters bet on share indices, single stocks, gold, oil and more. BitMEX, alas, has had a rough time of things and must let others reap the harvest. Last year a <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">federal</span> judge fined it $100m for, among other things, violating <span class="annot" data-tooltip="anti /'ænti/ adj. 反对的n. 反对者，反对论者">anti</span>-money-laundering rules. On July 23rd the exchange announced it would shut down <span class="annot" data-tooltip="permanently /'pɜːrmənəntli/ adv. 永久地;长期不变地">permanently</span> in September. Still, if you are looking for a perp-mediated <span class="annot" data-tooltip="flutter /'flʌtər/ vi. 飘动(心)快速跳动vt. & vi. 振翼, 拍翅膀n. 紧张, 激动不安时 态: fluttered, flutter">flutter</span>, there are plenty of others who will happily take your money. ■ This article was downloaded by zlibrary from https://www.economist.com/finance-and-economics/2026/07/28/retail-investors-should- beware-<span class="annot" data-tooltip="perpetual /pər'petʃuəl/ adj. 永久的; 终身的不断的; 常发生的副 词: perpetually">perpetual</span>-futures</p>
+<p>Finance & economics | Free Exchange How many people are dying as a result of USAID’s <span class="annot" data-tooltip="demise /dɪ'maɪz/ n. 死亡，终止；转让；传位vt.遗赠；禅让时 态: demised, demising, demises">demise</span>? Fewer than <span class="annot" data-tooltip="academics /ˌækə'demɪk/ adj. 学院的；学术的；理论的n. 大学生，大学教师；学者副 词: academically">academics</span> imagine, but more than Elon Musk will admit Jul 30th 2026 Elon Musk is unrepentant. Starting in January 2025, in his brief stint as Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s cost-<span class="annot" data-tooltip="slasher /slæʃ/ v. （用利器）砍，劈割破；在…上留下深长的切口大量削减n. （用刀等）砍，劈（长而窄的）伤口，切口，砍痕斜杠；斜线号时 态:">slasher</span>-in-chief, SpaceX’s boss helped the president dismantle the world’s biggest foreign-aid agency. Eighteen months on, he insists the end of USAID has not cost any human lives: “Zero point zero,” he says. Aid bureaucrats disagree. Bill Gates has accused Mr Musk of killing the world’s poorest children. Researchers started back-of-the-<span class="annot" data-tooltip="envelope /'envəloʊp/ n. 信封，封皮；[生]包膜；[天]包层；[数]包迹">envelope</span> calculations of the human cost of cuts soon after they began. The most influential, published in the Lancet in July 2025, estimates that by 2030 14m people will die as a result of USAID’s demise.</p>
+<p><span class="annot" data-tooltip="neither /'niːðər/ conj. 既不；也不adv. 两个都不；既不……也不adj. 两者都不的det./pron. 两者都不">Neither</span> a claim of zero nor one of so many millions survives a <span class="annot" data-tooltip="thorough /'θɜːroʊ/ adj. 彻底的；十分的；周密的副 词: thoroughly">thorough</span> interrogation. USAID once doled out $60bn, or roughly a <span class="annot" data-tooltip="quarter /'kwɔːrtər/ n. 四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一时 ">quarter</span> of foreign aid globally, paying for everything from HIV drugs and disaster relief to radio stations and justice think-<span class="annot" data-tooltip="tanks /tæŋk/ n. （存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内时 态: t">tanks</span>. The abruptness of its <span class="annot" data-tooltip="closure /'kloʊʒər/ n. 关闭；终止，结束vt. 使终止时 态: closured, closuring, closures">closure</span> <span class="annot" data-tooltip="disrupted /dɪs'rʌpt/ vt. 使混乱, 扰乱时 态: disrupted, disrupting, disrupts">disrupted</span> life-saving assistance. That has cost lives, and permanent cuts will cost more. But the biggest estimates of lives lost assume that Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> planned to <span class="annot" data-tooltip="eliminate /ɪ'lɪmɪneɪt/ vt. 消除, 排除忽略淘汰〈口〉干掉时 态: eliminated, eliminating, eliminates">eliminate</span> everything USAID once funded. In fact much was preserved, and is now distributed by different government bodies. The stories are not always simple. A week after Mr Trump cut off all funding, he temporarily provided a <span class="annot" data-tooltip="waiver /'weɪvər/ n. 弃权，放弃；弃权证书">waiver</span> for “life-saving” services. But confusion over who qualified meant some services never restarted, while others were <span class="annot" data-tooltip="permanently /'pɜːrmənəntli/ adv. 永久地;长期不变地">permanently</span> cut loose in the following months. Tread in one of the world’s poorest countries, and tragic consequences from the end of USAID will soon emerge. In Malawi, most maternity clinics stayed open, but the firm providing ambulances from remote villages did not. In March 2025 your columnist met the family of Prudence, who had died in her village two weeks before, aged 25, from complications in labour. Health workers said she was one of ten mothers who had died since January but would have got to a clinic had transport been available. In Somalia, where food <span class="annot" data-tooltip="shortages /'ʃɔːrtɪdʒ/ n. 不足; 缺少; 缺少量; 不足额">shortages</span> are spreading, a quarter of UNICEF clinics closed, owing in part to American cuts. They had mostly treated <span class="annot" data-tooltip="severely /sɪ'vɪr/ adj. 严厉的；苛刻的；剧烈的；严峻的比较级: severer, severest">severely</span> malnourished children. The <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> hospitalised doubled in 2025 to 768; some died. In all these cases, some would have <span class="annot" data-tooltip="perished /'perɪʃ/ vt. 使麻木；毁坏vi. 死亡；毁灭；腐烂；枯萎时 态: perished, perishing, perishes">perished</span> even with treatment. But some would not have done. How many? Policymakers cannot tot up all the cases like Prudence’s. And aid cuts also reduced funding for health surveys, complicating efforts to <span class="annot" data-tooltip="quantify /'kwɑːntɪfaɪ/ vt. 量化；为…定量；确定数量vi. 量化；定量时 态: quantified, quantifying, quantifie">quantify</span> the consequences of USAID’s closure. Estimates of deaths are the product of higher-level and less <span class="annot" data-tooltip="reliable /rɪ'laɪəbl/ adj. 可靠的, 可信赖的副 词: reliably">reliable</span> methods. The paper in the Lancet, by Daniella Medeiros Cavalcanti and Lucas de Oliveira Ferreira de Sales, of the <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">Federal</span> University of Bahia in Brazil, and others, compared the decline in <span class="annot" data-tooltip="mortality /mɔːr'tæləti/ n. 必死性大量死亡死亡率">mortality</span> rates of countries with different levels of USAID funding per person between 2001 and 2021. They found that the more money a country received, on average, the more its mortality declined.</p>
+<p>But it is also well known that the poorest countries, which got the most aid, saw the biggest decline in <span class="annot" data-tooltip="mortality /mɔːr'tæləti/ n. 必死性大量死亡死亡率">mortality</span>. The authors controlled for GDP per person. Yet that alone does not <span class="annot" data-tooltip="isolate /'aɪsəleɪt/ vt. 使孤立；使绝缘；使隔离n. 隔离种群vi. 孤立；隔离adj. 隔离的；孤立的时 态: isolated, isolat">isolate</span> the effect of aid. There are <span class="annot" data-tooltip="alternative /ɔːl'tɜːrnətɪv/ adj. 可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）">alternative</span> <span class="annot" data-tooltip="explanations /ˌeksplə'neɪʃn/ n. 解释, 说明能说明某事缘由的言语、事实、情况等">explanations</span> for different rates of mortality decline—eg, aid bureaucrats <span class="annot" data-tooltip="tend /tend/ vt. 照料，照顾，伺候vi. 往，朝向易于；倾向时 态: tended，tending，tends">tend</span> to favour countries with the best health-care systems, which also reduce deaths. Nevertheless, the authors projected the relationship they found onto the next five years. Assuming, wrongly, that American aid would <span class="annot" data-tooltip="fall /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">fall</span> by 83% <span class="annot" data-tooltip="yielded /jiːld/ vt. 出产；屈服；放弃vi. 屈服，投降n. 收益；产量时 态: yielded, yielding, yields">yielded</span> their figure of 14m, including 4.5m children, compared with a <span class="annot" data-tooltip="scenario /sə'nærioʊ/ n. 情节；剧本；方案">scenario</span> in which funding stayed at 2024 levels. Other studies are also questionable. Researchers at Boston University estimated extra child deaths from malnutrition by dividing the $160m cost of USAID’s nutrition programme by the $150 cost of the food package a child is given when near death. That implies 1.1m lost packages. Without them 10-20% of children die, implying at least 168,000 lost lives. But little of the $160m would have gone on such aid. Most went to women and children in poor countries to prevent starvation rather than treat it. And in the end the programme was moved to another department and not cut. Fundamentally, such estimates suffer from two problems. The first is that the drop in health funding has been less cataclysmic than many predicted. Since Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s return, American aid has been cut by about a third, but the cuts have been heaviest in areas such as education and <span class="annot" data-tooltip="promoting /'proʊmoʊ/ n. 商品推销；商品广告，广告片">promoting</span> <span class="annot" data-tooltip="democracy /dɪ'mɑːkrəsi/ n. 民主, 民主制民主国家">democracy</span>. Health and humanitarian funding, which save the most lives, have been less hard hit. In 2026 Mr Trump’s global health budget will be $10bn, only $2.4bn less than Joe Biden’s for 2025. The second is that researchers assume that aid’s impact in future would be the same as in the past. Many economists, though, regard the early 21st century as an anomalous period of <span class="annot" data-tooltip="extraordinary /ɪk'strɔːrdəneri/ adj. 非常奇怪的非同寻常的, 特别的额外安排的, 临时的副 词: extraordinarily">extraordinary</span> gains that were slowing before aid cuts began. Most of the easy fixes, such as <span class="annot" data-tooltip="vaccines /væk'siːn/ n. 疫苗;痘苗adj. 痘苗的;疫苗的">vaccines</span> and malaria nets, are already in <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span>. Childhood mortality in <span class="annot" data-tooltip="developing /dɪ'veləpɪŋ/ adj. 在进行中的;走向完成阶段的;走向成熟的发展中的">developing</span> countries plummeted from 79 deaths per 1,000 births in 2000 to 42 by 2016. Yet by 2022 the figure had dropped only a little more, to 37. To assume that extra dollars today would have the same effect as 20 years ago is fanciful. If many fewer people are dying than supposed, that does not vindicate Mr Musk. His notion of zero deaths is plainly wrong. Prudence’s story alone</p>
+<p>shows that. The human cost has been limited because the cuts were more modest than he planned. Mr Musk also claims that he was encouraging other organisations to step in. Poor countries’ governments may have, and all to the good if so. Rich countries’ governments have not. They have instead taken America’s <span class="annot" data-tooltip="withdrawal /wɪð'drɔːəl/ n. 收回，取回，撤回；撤退，撤走收回[取回，撤回；撤退，撤走]的实例">withdrawal</span> as their cue to do the same. It is a grim fact that politics involves choices that cost lives. Fewer of them have been lost than feared. But it cannot be denied that lives have been lost all the same. ■ This article was downloaded by zlibrary from https://www.economist.com/finance-and-economics/2026/07/30/how-many-people-are- dying-as-a-result-of-usaids-<span class="annot" data-tooltip="demise /dɪ'maɪz/ n. 死亡，终止；转让；传位vt.遗赠；禅让时 态: demised, demising, demises">demise</span></p>
+<div class="article-separator"></div>
+<div class="article-header"> · Science &amp; technology</div>
+<p><span class="annot" data-tooltip="quantum /'kwɑːntəm/ n. 量子定量;总量剧增；突飞猛进；重大进展复 数: quanta">Quantum</span> computers promise mathematical superpowers AI and quantum computers will be frenemies</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>innovation</td><td>/ˌɪnə'veɪʃn/ n.</td><td>改革, 革新, 创新新观念, 新方法, 新发明</td></tr>
+<tr><td>ditch</td><td>/dɪtʃ/ vt.</td><td>在…上掘沟；把…开入沟里；[俚]丢弃vi. 开沟；掘沟n. 沟渠；壕沟, ditching, ditches</td></tr>
+<tr><td>contract</td><td>/'kɑːntrækt/ vi.</td><td>感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约, contracting, contracts</td></tr>
+<tr><td>underlying</td><td>/ˌʌndər'laɪɪŋ/ adj.</td><td>根本的, 基础的含蓄的, 潜在的</td></tr>
+<tr><td>asset</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>rises</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>due</td><td>/duː/ adj.</td><td>到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>conversely</td><td>/kənˈvɜːrs/ adj.</td><td>相反的，逆向的；颠倒的vi. 交谈，谈话；认识n. 相反的事物；逆行，逆向；倒, conversing, converses</td></tr>
+<tr><td>falls</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>perpetual</td><td>/pər'petʃuəl/ adj.</td><td>永久的; 终身的不断的; 常发生的</td></tr>
+<tr><td>actually</td><td>/'æktʃuəl/ adj.</td><td>真实的，实际的；现行的，目前的</td></tr>
+<tr><td>fraction</td><td>/'frækʃn/ n.</td><td>小部分；部分；稍微；[数]分数</td></tr>
+<tr><td>exposure</td><td>/ɪk'spoʊʒər/ n.</td><td>暴露, 显露揭发, 揭露(软片等)曝光</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>clients</td><td>/'klaɪənt/ n.</td><td>委托人顾客, 常客</td></tr>
+<tr><td>presented</td><td>/'preznt/ vt.</td><td>呈现；介绍；提出；赠送vi. 举枪瞄准adj. 出席的；现在的n. 现在；礼物；瞄准, presenting, presents</td></tr>
+<tr><td>curve</td><td>/kɜːrv/ n.</td><td>曲线；弯曲；曲线球；曲线图表vt. 使弯曲；弯vi. 成曲形adj. 弯曲的；曲线形的, curving, curves</td></tr>
+<tr><td>contracts</td><td>/'kɑːntrækt/ vi.</td><td>感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约, contracting, contracts</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>mechanism</td><td>/'mekənɪzəm/ n.</td><td>机械装置构造, 机制办法, 技巧, 途径</td></tr>
+<tr><td>automatic</td><td>/ˌɔːtə'mætɪk/ adj.</td><td>自动的不假思索的, 无意识的必然发生的n. 能自动运转的机器或器械</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>proportion</td><td>/prə'pɔːrʃn/ n.</td><td>均衡；相称，协调一物与他物在数量、大小等方面的关系；比例部分；份儿，proportioning，proportions</td></tr>
+<tr><td>prompting</td><td>/prɑːmpt/ adj.</td><td>敏捷的，迅速的；立刻的vt. 促进；激起；提示；（给演员）提白n. 提示；付款期限；DOS命令：改变DOS系统提示符的风格adv. 准时地, promptest</td></tr>
+<tr><td>conceals</td><td>/kən'siːl/ vt.</td><td>隐藏；隐瞒, concealing, conceals</td></tr>
+<tr><td>manufacturing</td><td>/ˌmænju'fæktʃərɪŋ/ n.</td><td>制造业，工业adj. 制造业的；制造的</td></tr>
+<tr><td>straightforward</td><td>/ˌstreɪt'fɔːrwərd/ adj.</td><td>(人或其态度)正直的，坦率的；老实的简单的；易懂的</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>compounding</td><td>/'kɑːmpaʊnd/ n.</td><td>复合物；混合物；【化】化合物（语法）复合词有围栏（或围墙）的场地（内有工厂或其他建筑群）adj. 复合的v. 使加重；使恶化由…构成（或形成）混合；掺和；拌和,</td></tr>
+<tr><td>retail</td><td>/ˈriːteɪl/ vt.</td><td>零售；转述vi. 零售n. 零售adv. 以零售方式adj. 零售的, retailing, retails</td></tr>
+<tr><td>shorts</td><td>/ʃɔːrts/ n.</td><td>短裤</td></tr>
+<tr><td>worth</td><td>/wɜːrθ/ adj.</td><td>值…的n. 价值；财产, worthing, worths</td></tr>
+<tr><td>annual</td><td>/'ænjuəl/ adj.</td><td>年度的；每年的n. 年刊，年鉴；一年生植物</td></tr>
+<tr><td>commission</td><td>/kə'mɪʃn/ n.</td><td>授权, 委托委员会佣金, 回扣vt. 委任, 委托, commissioning, commissions</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>helping</td><td>/'helpɪŋ/ n.</td><td>（进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>anti</td><td>/'ænti/ adj.</td><td>反对的n. 反对者，反对论者</td></tr>
+<tr><td>permanently</td><td>/'pɜːrmənəntli/ adv.</td><td>永久地;长期不变地</td></tr>
+<tr><td>flutter</td><td>/'flʌtər/ vi.</td><td>飘动(心)快速跳动vt. & vi. 振翼, 拍翅膀n. 紧张, 激动不安, fluttering, flutters</td></tr>
+<tr><td>perpetual</td><td>/pər'petʃuəl/ adj.</td><td>永久的; 终身的不断的; 常发生的</td></tr>
+<tr><td>demise</td><td>/dɪ'maɪz/ n.</td><td>死亡，终止；转让；传位vt.遗赠；禅让, demising, demises</td></tr>
+<tr><td>academics</td><td>/ˌækə'demɪk/ adj.</td><td>学院的；学术的；理论的n. 大学生，大学教师；学者</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>slasher</td><td>/slæʃ/ v.</td><td>（用利器）砍，劈割破；在…上留下深长的切口大量削减n. （用刀等）砍，劈（长而窄的）伤口，切口，砍痕斜杠；斜线号，slashing，slashes</td></tr>
+<tr><td>envelope</td><td>/'envəloʊp/ n.</td><td>信封，封皮；[生]包膜；[天]包层；[数]包迹</td></tr>
+<tr><td>neither</td><td>/'niːðər/ conj.</td><td>既不；也不adv. 两个都不；既不……也不adj. 两者都不的det./pron. 两者都不</td></tr>
+<tr><td>thorough</td><td>/'θɜːroʊ/ adj.</td><td>彻底的；十分的；周密的</td></tr>
+<tr><td>quarter</td><td>/'kwɔːrtər/ n.</td><td>四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一, quartering, quarters</td></tr>
+<tr><td>tanks</td><td>/tæŋk/ n.</td><td>（存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内, tanking, tanks</td></tr>
+<tr><td>closure</td><td>/'kloʊʒər/ n.</td><td>关闭；终止，结束vt. 使终止, closuring, closures</td></tr>
+<tr><td>disrupted</td><td>/dɪs'rʌpt/ vt.</td><td>使混乱, 扰乱, disrupting, disrupts</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>eliminate</td><td>/ɪ'lɪmɪneɪt/ vt.</td><td>消除, 排除忽略淘汰〈口〉干掉, eliminating, eliminates</td></tr>
+<tr><td>waiver</td><td>/'weɪvər/ n.</td><td>弃权，放弃；弃权证书</td></tr>
+<tr><td>permanently</td><td>/'pɜːrmənəntli/ adv.</td><td>永久地;长期不变地</td></tr>
+<tr><td>shortages</td><td>/'ʃɔːrtɪdʒ/ n.</td><td>不足; 缺少; 缺少量; 不足额</td></tr>
+<tr><td>severely</td><td>/sɪ'vɪr/ adj.</td><td>严厉的；苛刻的；剧烈的；严峻的, severest</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>perished</td><td>/'perɪʃ/ vt.</td><td>使麻木；毁坏vi. 死亡；毁灭；腐烂；枯萎, perishing, perishes</td></tr>
+<tr><td>quantify</td><td>/'kwɑːntɪfaɪ/ vt.</td><td>量化；为…定量；确定数量vi. 量化；定量, quantifying, quantifies</td></tr>
+<tr><td>reliable</td><td>/rɪ'laɪəbl/ adj.</td><td>可靠的, 可信赖的</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>mortality</td><td>/mɔːr'tæləti/ n.</td><td>必死性大量死亡死亡率</td></tr>
+<tr><td>mortality</td><td>/mɔːr'tæləti/ n.</td><td>必死性大量死亡死亡率</td></tr>
+<tr><td>isolate</td><td>/'aɪsəleɪt/ vt.</td><td>使孤立；使绝缘；使隔离n. 隔离种群vi. 孤立；隔离adj. 隔离的；孤立的, isolating, isolates</td></tr>
+<tr><td>alternative</td><td>/ɔːl'tɜːrnətɪv/ adj.</td><td>可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）可供选择的事物；可供选择的解决办法替代物</td></tr>
+<tr><td>explanations</td><td>/ˌeksplə'neɪʃn/ n.</td><td>解释, 说明能说明某事缘由的言语、事实、情况等</td></tr>
+<tr><td>tend</td><td>/tend/ vt.</td><td>照料，照顾，伺候vi. 往，朝向易于；倾向，tending，tends</td></tr>
+<tr><td>fall</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>yielded</td><td>/jiːld/ vt.</td><td>出产；屈服；放弃vi. 屈服，投降n. 收益；产量, yielding, yields</td></tr>
+<tr><td>scenario</td><td>/sə'nærioʊ/ n.</td><td>情节；剧本；方案</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>promoting</td><td>/'proʊmoʊ/ n.</td><td>商品推销；商品广告，广告片</td></tr>
+<tr><td>democracy</td><td>/dɪ'mɑːkrəsi/ n.</td><td>民主, 民主制民主国家</td></tr>
+<tr><td>extraordinary</td><td>/ɪk'strɔːrdəneri/ adj.</td><td>非常奇怪的非同寻常的, 特别的额外安排的, 临时的</td></tr>
+<tr><td>vaccines</td><td>/væk'siːn/ n.</td><td>疫苗;痘苗adj. 痘苗的;疫苗的</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>developing</td><td>/dɪ'veləpɪŋ/ adj.</td><td>在进行中的;走向完成阶段的;走向成熟的发展中的</td></tr>
+<tr><td>withdrawal</td><td>/wɪð'drɔːəl/ n.</td><td>收回，取回，撤回；撤退，撤走收回[取回，撤回；撤退，撤走]的实例</td></tr>
+<tr><td>demise</td><td>/dɪ'maɪz/ n.</td><td>死亡，终止；转让；传位vt.遗赠；禅让, demising, demises</td></tr>
+<tr><td>quantum</td><td>/'kwɑːntəm/ n.</td><td>量子定量;总量剧增；突飞猛进；重大进展复 数: quanta</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day32.html" class="nav-btn">← Day 32</a>
+  <a href="day34.html" class="nav-btn">Day 34 →</a>
+</div>
+
+<div class="progress">📖 Day 33 of 39</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-08-01</div>
+
+</body>
+</html>

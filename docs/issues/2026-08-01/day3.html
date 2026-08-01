@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leaders | Quantum and solace</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-08-01</div>
+
+<h1 class="article-title">Leaders | Quantum and solace</h1>
+<div class="article-section">Leaders</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>stopped supporting an old product, there may be no one to provide updates —and even if <span class="annot" data-tooltip="patches /pætʃ/ n. 眼罩；斑点；碎片；小块土地vt. 修补；掩饰；解决vi. 打补丁时 态: patched, patching, patc">patches</span> exist, they may not be applied. One reason why Britain’s health service suffered so badly from a <span class="annot" data-tooltip="malware 恶意软件">malware</span> attack in 2017 was because it used thousands of machines running an unpatched <span class="annot" data-tooltip="version /'vɜːrʒn/ n. 变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本">version</span> of Microsoft Windows. Companies and governments should <span class="annot" data-tooltip="invest /ɪn'vest/ vt. 投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买时 态: invested, investing, invests">invest</span> <span class="annot" data-tooltip="urgently /'ɜːrdʒənt/ adj. 紧急的；急迫的副 词: urgently">urgently</span> to upgrade their systems. Switching does not guarantee <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span>. PQC is new, so it may have undiscovered <span class="annot" data-tooltip="vulnerabilities /ˌvʌlnərə'bɪləti/ n. 弱点,攻击">vulnerabilities</span>. If so, pqc-protected <span class="annot" data-tooltip="traffic /'træfɪk/ n. 交通；贸易；运输；通信量vt. 用…作交换；在…通行vi. 交易，买卖时 态: trafficked, traffick">traffic</span> harvested today could yet be decrypted and abused. But upgrading now—and having researchers stress-test the new methods—offers the best hope of securing data, today and into the future. ■ This article was downloaded by zlibrary from https://www.economist.com/leaders/2026/07/29/it-is-past-time-to-upgrade-to-post- <span class="annot" data-tooltip="quantum /'kwɑːntəm/ n. 量子定量;总量剧增；突飞猛进；重大进展复 数: quanta">quantum</span>-<span class="annot" data-tooltip="encryption n. 编密码">encryption</span></p>
+<div class="article-separator"></div>
+<div class="article-header">Leaders · Leaders | Pacific security</div>
+<p>China is testing America’s defence <span class="annot" data-tooltip="lines n. 台词；线；航线（line的复数）v. 排成一行；画线于（line的三单形式）">lines</span> in Asia The <span class="annot" data-tooltip="allies n. （第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者">allies</span> must work to strengthen themselves, but also to strengthen America’s <span class="annot" data-tooltip="commitment /kə'mɪtmənt/ n. 承诺；保证；信奉；献身；委任；花费金钱、时间、人力等">commitment</span> Jul 30th 2026 A <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">GROUP</span> OF Chinese and Russian warships sailed side-by-side through Japan’s southernmost <span class="annot" data-tooltip="exclusive /ɪk'skluːsɪv/ adj. 高级的，奢华的专用的；独家的n. 独家新闻，独家报道副 词: exclusively">exclusive</span> economic zone (EEZ) on July 19th. Japanese sailors observing from a <span class="annot" data-tooltip="vessel /'vesl/ n. 容器，器皿；船，舰；脉管，血管">vessel</span> nearby photographed them holding <span class="annot" data-tooltip="exercises /'eksərsaɪz/ n. 练习；运动；运用；操练；典礼；礼拜vt. 练习；锻炼；使用；使忙碌；使惊恐vi. 运动；练习时 态: exercised">exercises</span>, fire spitting from a Chinese destroyer’s turret. It was the first time Japan had captured and publicised a Chinese live-fire <span class="annot" data-tooltip="drill /drɪl/ n. 钻子；钻孔机；播种机；训练vi. 钻孔；训练vt. 训练；钻孔；条播时 态: drilled, drilling, dr">drill</span> inside its EEZ. The images themselves were <span class="annot" data-tooltip="grainy /'ɡreɪni/ adj. 粒状的；木纹状的；多粒的；有纹理的比较级: grainier, grainiest">grainy</span>, but the message was clear: Chinese pressure is rising. The incident was only the latest in a series of recent provocations against America’s Asian allies, in particular the Philippines, Japan and Australia. In late June the Chinese and Russian air forces conducted a <span class="annot" data-tooltip="joint /dʒɔɪnt/ n. 关节；接合处，接合点；接缝；（牛，羊等的腿）大块肉adj. 联合的，合办的；共同的；连接的vt. 连接，贴合；接合；使有">joint</span> <span class="annot" data-tooltip="flight /flaɪt/ n. 飞翔, 飞行航班, 航机楼梯的一段逃跑, 溃退时 态: flighted, flighting, flights">flight</span> of</p>
+<p>nuclear-<span class="annot" data-tooltip="capable /'keɪpəbl/ adj. 能干的，能胜任的；有才华的副 词: capably">capable</span> bombers over the Sea of Japan and the East China Sea, before passing between Japan’s south-western isles into the Pacific Ocean, the second such passage since December. China has intensified coastguard patrols east of Taiwan. In early July it fired a ballistic missile from a submarine off its southern coast over the Philippines and into the Pacific Ocean—only the second time it has launched a ballistic missile into international waters since 1980. A few days later Chinese and Philippine sailors <span class="annot" data-tooltip="skirmished /'skɜːrmɪʃ/ n. 小规模战斗；小冲突时 态: skirmished, skirmishing, skirmishes">skirmished</span> with oars and water cannon over two disputed islets in the South China Sea. Growing Chinese assertiveness is nothing new. But a <span class="annot" data-tooltip="pattern /'pætərn/ n. 型，样式花样，图案方式，形式榜样，典范vt. 模仿； 仿制以图案装饰时 态: patterned，patterning，">pattern</span> has been <span class="annot" data-tooltip="noticeable /'noʊtɪsəbl/ adj. 显而易见的, 明显的, 显著的副 词: noticeably">noticeable</span> since President Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> met his <span class="annot" data-tooltip="counterpart /'kaʊntərpɑːrt/ n. 与对方地位相当的人, 与另一方作用相当的物">counterpart</span>, Xi Jinping, in South Korea last October and signalled a desire to improve relations, followed in May by a <span class="annot" data-tooltip="cordial /'kɔːrdʒəl/ adj. 兴奋的；热忱的，诚恳的n. 补品；兴奋剂；甜香酒，甘露酒名 词: cordiality">cordial</span> meeting in Beijing. Mr Trump and many of his officials have since then contorted themselves to avoid <span class="annot" data-tooltip="uttering /'ʌtər/ vt. 以口发出声音说，讲adj. 彻底的；完全的；绝对的时 态: uttered，uttering，utters">uttering</span> an ill word about China, and been slow to stand up for <span class="annot" data-tooltip="allies n. （第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者">allies</span> facing Chinese <span class="annot" data-tooltip="bullying /'bʊli/ v. 迫使；胁迫欺负；恐吓；欺凌n. 恃强凌弱者；恶霸adj. 顶好的，快活的，第一流的时 态: bullied，bullyi">bullying</span>, <span class="annot" data-tooltip="seemingly /'siːmɪŋli/ adv. 看来似乎, 表面上看">seemingly</span> in the hope that three further summits planned for this year will thereby come off more <span class="annot" data-tooltip="smoothly /'smuːðli/ adv. 平稳地，平滑地；流畅地，流利地">smoothly</span>. Mr Trump is ensnared in Iran, diverting resources and attention from the Pacific. Now China appears to be <span class="annot" data-tooltip="probing /proʊ/ n. 从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞">probing</span> America’s defence <span class="annot" data-tooltip="lines n. 台词；线；航线（line的复数）v. 排成一行；画线于（line的三单形式）">lines</span> and testing its <span class="annot" data-tooltip="commitments /kə'mɪtmənt/ n. 承诺；保证；信奉；献身；委任；花费金钱、时间、人力等">commitments</span> in the region. Faced with an unreliable America and an <span class="annot" data-tooltip="aggressive /ə'ɡresɪv/ adj. 好争斗的, 挑衅的, 侵略性的副 词: aggressively">aggressive</span> China, America’s allies in Asia need to do three things to improve their <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span>: strengthen themselves, strengthen their ties with each other and strengthen America’s <span class="annot" data-tooltip="commitment /kə'mɪtmənt/ n. 承诺；保证；信奉；献身；委任；花费金钱、时间、人力等">commitment</span> to them. Progress on the first two tasks has been <span class="annot" data-tooltip="substantial /səb'stænʃl/ adj. 坚固的；结实的大量的，可观的重大的，重要的实质的，基本的，大体上的名 词: substantiality">substantial</span>, though still <span class="annot" data-tooltip="insufficient /ˌɪnsə'fɪʃnt/ adj. 不足的,不够的副 词: insufficiently">insufficient</span>. Australia, Japan and the Philippines are all raising their defence spending and modernising their armed forces; Australia and Japan are both offering aid to the Philippines to help build up its maritime defences. But that will be too little if America chooses to be absent. In Europe <span class="annot" data-tooltip="uncertainty /ʌn'sɜːrtnti/ n. 无把握;不确定;变化不定无把握、不确定的事物">uncertainty</span> over American <span class="annot" data-tooltip="reliability /rɪˌlaɪə'bɪləti/ n. 可靠，可信赖">reliability</span> triggers talk of Plan Bs. Even without America, the remaining 31 NATO members’ combined defence spending is more than three times that of Russia, their <span class="annot" data-tooltip="main /meɪn/ adj. 主要的; 最重要的n. 总管道; 干线">main</span> adversary, and two of them —Britain and France—have nuclear weapons. But allies in Asia rightly understand that they are too small to form a coalition that can maintain the balance of power in their backyard. There is no NATO-style collective- security pact, only a series of <span class="annot" data-tooltip="bilateral /ˌbaɪ'lætərəl/ adj. 双边的, 双方的名 词: bilateralism">bilateral</span> security treaties with America. The</p>
+<p><span class="annot" data-tooltip="cumulative /'kjuːmjəleɪtɪv/ adj. 累积的, 渐增的副 词: cumulatively">cumulative</span> defence spending of America’s treaty <span class="annot" data-tooltip="allies n. （第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者">allies</span> is less than half that of China; and none of them has nukes. That makes the third task as <span class="annot" data-tooltip="essential /ɪ'senʃl/ adj. 基本的；必要的；本质的；精华的">essential</span> as the first two. One <span class="annot" data-tooltip="strategy /'strætədʒi/ n. 战略学, 兵法战略, 策略策略, 计谋">strategy</span> is to <span class="annot" data-tooltip="collaborate /kə'læbəreɪt/ vi. 合作勾结叛国n. 协作者，合作者；勾结者时 态: collaborated，collaborating，collabor">collaborate</span> more deeply with the bits of the American system that still care about <span class="annot" data-tooltip="deterring /dɪ'tɜːr/ vt. 制止，阻止；使打消念头时 态: deterred, deterring, deters">deterring</span> China, such as the military brass. But credible deterrence must come from the top—and China hawks <span class="annot" data-tooltip="fret /fret/ vt. 焦急；使磨损；使烦恼vi. 磨损；烦恼；焦急n. 烦躁；焦急；磨损时 态: fretted, fretting, fre">fret</span> that Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> seems to have lost all interest in getting tough on Chinese expansionism, not least because he has learned that China is willing to use its grip on the supply of rare earths as a chokepoint. Can he be persuaded to change his mind? Perhaps. Volodymyr Zelensky has convinced him, for example, that <span class="annot" data-tooltip="ukraine n. 乌克兰（原苏联一加盟共和国，现已独立）">Ukraine</span> does in fact hold some cards. The best evidence that Mr Trump could <span class="annot" data-tooltip="flip /flɪp/ vt. 轻击；掷vi. 用指轻弹；蹦跳adj. 无礼的；轻率的n. 筋斗；弹FLIPabbr. Floating Indeved">flip</span> on China again is that he has done so before. During his first term, he attacked China as the destroyer of American jobs and the thief of American intellectual <span class="annot" data-tooltip="property /'prɑːpərti/ n. 财产；性质，性能；所有权形容词: propertyless">property</span>. He was egged on by Asian leaders such as Abe Shinzo, Japan’s late prime minister, who spent hours encouraging him to take a hard look at the military threat China poses. Asian leaders need to make the case directly to the president that China threatens America’s position as the world’s <span class="annot" data-tooltip="leading /ˈliːdɪŋ/ adj. 主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）">leading</span> superpower—and that its military ambitions go hand in glove with its industrial, technological and economic ambitions. If Mr Trump accepts that China remains a <span class="annot" data-tooltip="shrewd /ʃruːd/ adj. 机灵的, 精明的比较级: shrewder, shrewdest">shrewd</span> and potentially dangerous competitor, he may be willing to take a broader view of America’s interests in the Pacific. ■ This article was downloaded by zlibrary from https://www.economist.com/leaders/2026/07/30/china-is-testing-americas-defence- <span class="annot" data-tooltip="lines n. 台词；线；航线（line的复数）v. 排成一行；画线于（line的三单形式）">lines</span>-in-asia</p>
+<div class="article-separator"></div>
+<div class="article-header">Leaders · Leaders | Climate change</div>
+<p>Europe’s fires are just the start They are not a new normal. But worse can <span class="annot" data-tooltip="nonetheless /ˌnʌnðə'les/ adv. 虽然如此,但是">nonetheless</span> be expected Jul 30th 2026 From 2006 to 2025 the total area burned by fires in France every year averaged some 15,000 hectares—a bit smaller than Washington, DC. By July 28th, the fire to the west of Bordeaux which started just six days earlier had burned almost three times that. Meanwhile, some 500km to the south, savage fires advanced perilously close to Madrid. More than 300,000 people have been evacuated. These fires may end up being the worst that Europe sees this summer. But do not bank on it. A series of heatwaves has left lots of <span class="annot" data-tooltip="places /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">places</span> desiccated and <span class="annot" data-tooltip="flammable /'flæməbl/ adj. 易燃的,可燃的名 词: flammability">flammable</span>—and more hot weather is to come. Last year the European Union saw more than 1m hectares burn; this year could break that record.</p>
+<p>And it is not just one summer. The continent is heating up faster than any other. Because it has <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span> of <span class="annot" data-tooltip="worsening /'wɜːrsn/ vt. & vi. (使)变得更坏,(使)恶化时 态: worsened, worsening, worsens">worsening</span> hazards ahead, it needs to get ready. The rest of the world is not <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> behind. Wildfires are not purely a matter of climate, but climate does matter. The frequency and extremity of fire- friendly weather have been increasing for 40 years; conditions very unlikely before climate change are becoming increasingly common. Measured against a definition of extreme fires that combines size and <span class="annot" data-tooltip="intensity /ɪn'tensəti/ n. 强烈, 剧烈(感情的)强烈程度">intensity</span>, the past <span class="annot" data-tooltip="decade /'dekeɪd/ n. 十年，十年期；十">decade</span> has been particularly bad. In a world that is about 0.5°C (0.9°F) above the average temperature of the first decades of this century (and thus about 1.5°C above that of the 19th century), fire risks are projected to increase across 88% of the planet’s fire- <span class="annot" data-tooltip="prone /proʊn/ adj. 易于…的; 很可能…的俯卧的名 词: proneness">prone</span> area—pretty much everywhere that is not a desert or an ice sheet. The increase from 1.5°C to 2°C <span class="annot" data-tooltip="raises /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raises</span> the risks by even more. This will bring more heroism, more concerned politicians being briefed by begrimed firefighters, more <span class="annot" data-tooltip="disrupted /dɪs'rʌpt/ vt. 使混乱, 扰乱时 态: disrupted, disrupting, disrupts">disrupted</span> lives, more destruction and destitution. It will also greatly increase the risks from wildfires’ less obvious, but more baleful, effects on the lungs of people who never come even within a thousand kilometres of the flames. Most of the deaths associated with wildfires come from smoke inhalation. The wind-blown particles that choked cities in Canada and the United States alike in the middle of July will have shortened hundreds or thousands of lives. Smoke from fires in <span class="annot" data-tooltip="indonesia /ˌɪndə'niːʒə/ n. 印度尼西亚(东南亚岛国)">Indonesia</span> is estimated to have killed 100,000 people in 2015. Something similar is all too likely there this year. Demand for biofuels in a world of pricey oil leads to the <span class="annot" data-tooltip="destructive /dɪ'strʌktɪv/ adj. 破坏性的, 毁灭性的副 词: destructively">destructive</span> <span class="annot" data-tooltip="slash /slæʃ/ v. （用利器）砍，劈割破；在…上留下深长的切口大量削减n. （用刀等）砍，劈（长而窄的）伤口，切口，砍痕斜杠；斜线号时 态:">slash</span>-and-burn agriculture at the heart of the problem, and a strengthening El Niño will promote fire weather across the region in the months to come, as happened in 2015. Projections on the basis of a fairly <span class="annot" data-tooltip="moderate /'mɑːdərət/ adj. 中等的，适度的，不很大的温和的；有节制的中庸的，稳健的，不走极端的vt. & vi. (使)减轻[缓和]；节制时 态: ">moderate</span> emissions <span class="annot" data-tooltip="scenario /sə'nærioʊ/ n. 情节；剧本；方案">scenario</span>—and taking account of the ageing global population—suggest that deaths from wildfire smoke, estimated at 240,000 a year in the 2010s, will <span class="annot" data-tooltip="reach /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reach</span> 1.4m a year by the end of the century. A recent study suggested up to 30,000 <span class="annot" data-tooltip="excess /ɪk'ses/ n. 无节制；过度，过量；超过，超额adj. 额外的，过量的；附加的时 态: excessed, excessing, exc">excess</span> deaths a</p>
+<p>year from wildfire smoke in America by 2050. That would put all other direct climate impacts in the shade. Firefighting is, to some extent, like fighting wars; if the enemy attacks more frequently and with greater ferocity, you need greater force on your side. So <span class="annot" data-tooltip="places /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">places</span> that have not previously felt threatened need to up their game. They may also wish to bring new technologies into play. Satellites can <span class="annot" data-tooltip="spot /spɑːt/ n. 斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Po">spot</span> fires almost as soon as they start—intelligence which could sometimes prove <span class="annot" data-tooltip="crucial /'kruːʃl/ adj. 决定性的；重要的；定局的；决断的副 词: crucially">crucial</span>, provided systems are <span class="annot" data-tooltip="capable /'keɪpəbl/ adj. 能干的，能胜任的；有才华的副 词: capably">capable</span> of acting on it. <span class="annot" data-tooltip="drones /droʊn/ n. 无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫">Drones</span> will doubtless have a role. <span class="annot" data-tooltip="allies n. （第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者">Allies</span> can help, too. Europe has pooled firefighting resources now being deployed in Spain and France; <span class="annot" data-tooltip="mexico /'meksɪkoʊ/ n. 墨西哥">Mexico</span> is <span class="annot" data-tooltip="helping /'helpɪŋ/ n. （进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的">helping</span> Canada. Being better at fighting fires, though, is not enough. The greatest benefits will come from being better at preventing them and living with their effects. The diktats of danger and urgency <span class="annot" data-tooltip="tend /tend/ vt. 照料，照顾，伺候vi. 往，朝向易于；倾向时 态: tended，tending，tends">tend</span> to mean fire-<span class="annot" data-tooltip="suppression /sə'preʃn/ n. 压制;镇压;禁止抑制;阻止;忍住;隐瞒压抑;被压抑的思想(或冲动等)">suppression</span> eats into budgets for managing <span class="annot" data-tooltip="landscapes /'lændskeɪp/ n. 风景, 景色风景画, 风景照时 态: landscaped, landscaping, landscapes">landscapes</span>, teaching the public about when to filter the air or how to protect a house, and so on. No such projects are ever needed in the same way as a planeload of cold water on a fire-front. But they are <span class="annot" data-tooltip="vital /'vaɪtl/ adj. 极重要的，必不可少的维持生命所必需的；生命的有生气的，充满生机的副 词: vitally">vital</span> <span class="annot" data-tooltip="nonetheless /ˌnʌnðə'les/ adv. 虽然如此,但是">nonetheless</span>. The fires in France and Spain are not, as some say, the new normal. Fire is capricious. It does not repeat itself from one year to the next. But this year’s fires are <span class="annot" data-tooltip="firmly /'fɜːrmli/ adv. 坚固地;稳固地坚定地;坚决地">firmly</span> within the limits of the new possible—and the extremities of that new possible have yet to be mapped. ■ This article was downloaded by zlibrary from https://www.economist.com/leaders/2026/07/28/europes-fires-are-just-the-start</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>patches</td><td>/pætʃ/ n.</td><td>眼罩；斑点；碎片；小块土地vt. 修补；掩饰；解决vi. 打补丁, patching, patches</td></tr>
+<tr><td>malware</td><td>— </td><td>恶意软件</td></tr>
+<tr><td>version</td><td>/'vɜːrʒn/ n.</td><td>变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本</td></tr>
+<tr><td>invest</td><td>/ɪn'vest/ vt.</td><td>投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买, investing, invests</td></tr>
+<tr><td>urgently</td><td>/'ɜːrdʒənt/ adj.</td><td>紧急的；急迫的</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>vulnerabilities</td><td>/ˌvʌlnərə'bɪləti/ n.</td><td>弱点,攻击</td></tr>
+<tr><td>traffic</td><td>/'træfɪk/ n.</td><td>交通；贸易；运输；通信量vt. 用…作交换；在…通行vi. 交易，买卖, trafficking, traffics</td></tr>
+<tr><td>quantum</td><td>/'kwɑːntəm/ n.</td><td>量子定量;总量剧增；突飞猛进；重大进展复 数: quanta</td></tr>
+<tr><td>encryption</td><td>— n.</td><td>编密码</td></tr>
+<tr><td>lines</td><td>— n.</td><td>台词；线；航线（line的复数）v. 排成一行；画线于（line的三单形式）</td></tr>
+<tr><td>allies</td><td>— n.</td><td>（第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者</td></tr>
+<tr><td>commitment</td><td>/kə'mɪtmənt/ n.</td><td>承诺；保证；信奉；献身；委任；花费金钱、时间、人力等</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>exclusive</td><td>/ɪk'skluːsɪv/ adj.</td><td>高级的，奢华的专用的；独家的n. 独家新闻，独家报道</td></tr>
+<tr><td>vessel</td><td>/'vesl/ n.</td><td>容器，器皿；船，舰；脉管，血管</td></tr>
+<tr><td>exercises</td><td>/'eksərsaɪz/ n.</td><td>练习；运动；运用；操练；典礼；礼拜vt. 练习；锻炼；使用；使忙碌；使惊恐vi. 运动；练习, exercising, exercises</td></tr>
+<tr><td>drill</td><td>/drɪl/ n.</td><td>钻子；钻孔机；播种机；训练vi. 钻孔；训练vt. 训练；钻孔；条播, drilling, drills</td></tr>
+<tr><td>grainy</td><td>/'ɡreɪni/ adj.</td><td>粒状的；木纹状的；多粒的；有纹理的, grainiest</td></tr>
+<tr><td>joint</td><td>/dʒɔɪnt/ n.</td><td>关节；接合处，接合点；接缝；（牛，羊等的腿）大块肉adj. 联合的，合办的；共同的；连接的vt. 连接，贴合；接合；使有接头vi. 贴合；生节, jointin</td></tr>
+<tr><td>flight</td><td>/flaɪt/ n.</td><td>飞翔, 飞行航班, 航机楼梯的一段逃跑, 溃退, flighting, flights</td></tr>
+<tr><td>capable</td><td>/'keɪpəbl/ adj.</td><td>能干的，能胜任的；有才华的</td></tr>
+<tr><td>skirmished</td><td>/'skɜːrmɪʃ/ n.</td><td>小规模战斗；小冲突, skirmishing, skirmishes</td></tr>
+<tr><td>pattern</td><td>/'pætərn/ n.</td><td>型，样式花样，图案方式，形式榜样，典范vt. 模仿； 仿制以图案装饰，patterning，patterns</td></tr>
+<tr><td>noticeable</td><td>/'noʊtɪsəbl/ adj.</td><td>显而易见的, 明显的, 显著的</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>counterpart</td><td>/'kaʊntərpɑːrt/ n.</td><td>与对方地位相当的人, 与另一方作用相当的物</td></tr>
+<tr><td>cordial</td><td>/'kɔːrdʒəl/ adj.</td><td>兴奋的；热忱的，诚恳的n. 补品；兴奋剂；甜香酒，甘露酒</td></tr>
+<tr><td>uttering</td><td>/'ʌtər/ vt.</td><td>以口发出声音说，讲adj. 彻底的；完全的；绝对的，uttering，utters</td></tr>
+<tr><td>allies</td><td>— n.</td><td>（第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者</td></tr>
+<tr><td>bullying</td><td>/'bʊli/ v.</td><td>迫使；胁迫欺负；恐吓；欺凌n. 恃强凌弱者；恶霸adj. 顶好的，快活的，第一流的，bullying，bullies</td></tr>
+<tr><td>seemingly</td><td>/'siːmɪŋli/ adv.</td><td>看来似乎, 表面上看</td></tr>
+<tr><td>smoothly</td><td>/'smuːðli/ adv.</td><td>平稳地，平滑地；流畅地，流利地</td></tr>
+<tr><td>probing</td><td>/proʊ/ n.</td><td>从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞成；支持Pro脯氨酸PROabbr. P</td></tr>
+<tr><td>lines</td><td>— n.</td><td>台词；线；航线（line的复数）v. 排成一行；画线于（line的三单形式）</td></tr>
+<tr><td>commitments</td><td>/kə'mɪtmənt/ n.</td><td>承诺；保证；信奉；献身；委任；花费金钱、时间、人力等</td></tr>
+<tr><td>aggressive</td><td>/ə'ɡresɪv/ adj.</td><td>好争斗的, 挑衅的, 侵略性的</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>commitment</td><td>/kə'mɪtmənt/ n.</td><td>承诺；保证；信奉；献身；委任；花费金钱、时间、人力等</td></tr>
+<tr><td>substantial</td><td>/səb'stænʃl/ adj.</td><td>坚固的；结实的大量的，可观的重大的，重要的实质的，基本的，大体上的</td></tr>
+<tr><td>insufficient</td><td>/ˌɪnsə'fɪʃnt/ adj.</td><td>不足的,不够的</td></tr>
+<tr><td>uncertainty</td><td>/ʌn'sɜːrtnti/ n.</td><td>无把握;不确定;变化不定无把握、不确定的事物</td></tr>
+<tr><td>reliability</td><td>/rɪˌlaɪə'bɪləti/ n.</td><td>可靠，可信赖</td></tr>
+<tr><td>main</td><td>/meɪn/ adj.</td><td>主要的; 最重要的n. 总管道; 干线</td></tr>
+<tr><td>bilateral</td><td>/ˌbaɪ'lætərəl/ adj.</td><td>双边的, 双方的</td></tr>
+<tr><td>cumulative</td><td>/'kjuːmjəleɪtɪv/ adj.</td><td>累积的, 渐增的</td></tr>
+<tr><td>allies</td><td>— n.</td><td>（第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者</td></tr>
+<tr><td>essential</td><td>/ɪ'senʃl/ adj.</td><td>基本的；必要的；本质的；精华的</td></tr>
+<tr><td>strategy</td><td>/'strætədʒi/ n.</td><td>战略学, 兵法战略, 策略策略, 计谋</td></tr>
+<tr><td>collaborate</td><td>/kə'læbəreɪt/ vi.</td><td>合作勾结叛国n. 协作者，合作者；勾结者，collaborating，collaborates</td></tr>
+<tr><td>deterring</td><td>/dɪ'tɜːr/ vt.</td><td>制止，阻止；使打消念头, deterring, deters</td></tr>
+<tr><td>fret</td><td>/fret/ vt.</td><td>焦急；使磨损；使烦恼vi. 磨损；烦恼；焦急n. 烦躁；焦急；磨损, fretting, frets</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>ukraine</td><td>— n.</td><td>乌克兰（原苏联一加盟共和国，现已独立）</td></tr>
+<tr><td>flip</td><td>/flɪp/ vt.</td><td>轻击；掷vi. 用指轻弹；蹦跳adj. 无礼的；轻率的n. 筋斗；弹FLIPabbr. Floating Indeved Point Arithmetic 变址</td></tr>
+<tr><td>property</td><td>/'prɑːpərti/ n.</td><td>财产；性质，性能；所有权</td></tr>
+<tr><td>leading</td><td>/ˈliːdɪŋ/ adj.</td><td>主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）</td></tr>
+<tr><td>shrewd</td><td>/ʃruːd/ adj.</td><td>机灵的, 精明的, shrewdest</td></tr>
+<tr><td>lines</td><td>— n.</td><td>台词；线；航线（line的复数）v. 排成一行；画线于（line的三单形式）</td></tr>
+<tr><td>nonetheless</td><td>/ˌnʌnðə'les/ adv.</td><td>虽然如此,但是</td></tr>
+<tr><td>places</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>flammable</td><td>/'flæməbl/ adj.</td><td>易燃的,可燃的</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>worsening</td><td>/'wɜːrsn/ vt.</td><td>& vi. (使)变得更坏,(使)恶化, worsening, worsens</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>intensity</td><td>/ɪn'tensəti/ n.</td><td>强烈, 剧烈(感情的)强烈程度</td></tr>
+<tr><td>decade</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>prone</td><td>/proʊn/ adj.</td><td>易于…的; 很可能…的俯卧的</td></tr>
+<tr><td>raises</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>disrupted</td><td>/dɪs'rʌpt/ vt.</td><td>使混乱, 扰乱, disrupting, disrupts</td></tr>
+<tr><td>indonesia</td><td>/ˌɪndə'niːʒə/ n.</td><td>印度尼西亚(东南亚岛国)</td></tr>
+<tr><td>destructive</td><td>/dɪ'strʌktɪv/ adj.</td><td>破坏性的, 毁灭性的</td></tr>
+<tr><td>slash</td><td>/slæʃ/ v.</td><td>（用利器）砍，劈割破；在…上留下深长的切口大量削减n. （用刀等）砍，劈（长而窄的）伤口，切口，砍痕斜杠；斜线号，slashing，slashes</td></tr>
+<tr><td>moderate</td><td>/'mɑːdərət/ adj.</td><td>中等的，适度的，不很大的温和的；有节制的中庸的，稳健的，不走极端的vt. & vi. (使)减轻[缓和]；节制，moderating，moderates</td></tr>
+<tr><td>scenario</td><td>/sə'nærioʊ/ n.</td><td>情节；剧本；方案</td></tr>
+<tr><td>reach</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>excess</td><td>/ɪk'ses/ n.</td><td>无节制；过度，过量；超过，超额adj. 额外的，过量的；附加的, excessing, excesses</td></tr>
+<tr><td>places</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>spot</td><td>/spɑːt/ n.</td><td>斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Positioning and Tracki</td></tr>
+<tr><td>crucial</td><td>/'kruːʃl/ adj.</td><td>决定性的；重要的；定局的；决断的</td></tr>
+<tr><td>capable</td><td>/'keɪpəbl/ adj.</td><td>能干的，能胜任的；有才华的</td></tr>
+<tr><td>drones</td><td>/droʊn/ n.</td><td>无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫；嗡嗡响(人)絮絮叨叨地说，喋喋不休地说</td></tr>
+<tr><td>allies</td><td>— n.</td><td>（第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者</td></tr>
+<tr><td>mexico</td><td>/'meksɪkoʊ/ n.</td><td>墨西哥</td></tr>
+<tr><td>helping</td><td>/'helpɪŋ/ n.</td><td>（进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的</td></tr>
+<tr><td>tend</td><td>/tend/ vt.</td><td>照料，照顾，伺候vi. 往，朝向易于；倾向，tending，tends</td></tr>
+<tr><td>suppression</td><td>/sə'preʃn/ n.</td><td>压制;镇压;禁止抑制;阻止;忍住;隐瞒压抑;被压抑的思想(或冲动等)</td></tr>
+<tr><td>landscapes</td><td>/'lændskeɪp/ n.</td><td>风景, 景色风景画, 风景照, landscaping, landscapes</td></tr>
+<tr><td>vital</td><td>/'vaɪtl/ adj.</td><td>极重要的，必不可少的维持生命所必需的；生命的有生气的，充满生机的</td></tr>
+<tr><td>nonetheless</td><td>/ˌnʌnðə'les/ adv.</td><td>虽然如此,但是</td></tr>
+<tr><td>firmly</td><td>/'fɜːrmli/ adv.</td><td>坚固地;稳固地坚定地;坚决地</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day2.html" class="nav-btn">← Day 2</a>
+  <a href="day4.html" class="nav-btn">Day 4 →</a>
+</div>
+
+<div class="progress">📖 Day 3 of 39</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-08-01</div>
+
+</body>
+</html>

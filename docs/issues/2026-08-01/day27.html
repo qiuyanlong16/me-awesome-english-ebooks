@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business | Small but mighty</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-08-01</div>
+
+<h1 class="article-title">Business | Small but mighty</h1>
+<div class="article-section">Business</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>bought one. It is partly why his <span class="annot" data-tooltip="cart /kɑːrt/ n. 运货马车；手推车vt. 用马车载运时 态: carted，carting，carts">cart</span> now brings in between $10,000 and $15,000 each month. The third and perhaps most important <span class="annot" data-tooltip="explanation /ˌeksplə'neɪʃn/ n. 解释, 说明能说明某事缘由的言语、事实、情况等">explanation</span> relates to AI. Chatbots have made it easier to get a business going by allowing even the tech-shy to build a website and navigate local regulations. The share of founders who used AI to help launch their business doubled to 60% between 2023 and 2025, according to a survey by Gusto, a payroll platform. New cohorts of small businesses are <span class="annot" data-tooltip="adopting /ə'dɑːpt/ vt. 收养采用, 采纳, 采取正式接受, 通过时 态: adopted, adopting, adopts">adopting</span> AI earlier and at higher rates, found JPMorgan Chase, a bank. The technology has allowed people who already wanted to <span class="annot" data-tooltip="strike /straɪk/ vi. 罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打时 态:">strike</span> out on their <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> to do so much more easily. “It’s like chemical reactions that have an <span class="annot" data-tooltip="activation n. 活化,激活,[化]活化作用">activation</span> potential,” says Miquel Llobet, who launched an AI-powered commercial-insurance broker last year. AI lowers the bar for those reactions to occur. Politicians on the <span class="annot" data-tooltip="campaign /kæm'peɪn/ n. 运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）时">campaign</span> <span class="annot" data-tooltip="trail /treɪl/ vt. & vi. (使某物)被拖在后面vt. 跟踪，追踪vi. (在比赛等中)输，失败n. 足迹；臭迹小径一缕，一股时 态: ">trail</span> love to speak of small businesses as “job <span class="annot" data-tooltip="creators /kri'eɪtər/ n. 创造者,创作者">creators</span>”. Yet the share of new-business applications that the Census Bureau deems “high-propensity” (meaning they are likely to <span class="annot" data-tooltip="employ /ɪm'plɔɪ/ vt. 使用，采用；雇用；使忙于，使从事于n. 雇用；使用时 态: employed, employing, employs">employ</span> at least one person other than the founder in the near future) was only 30% last year, down from 38% in 2019. “AI is filling the <span class="annot" data-tooltip="capability /ˌkeɪpə'bɪləti/ n. 能做某事的素质;能力尚未发挥的天资或素质">capability</span> gaps that once made hiring necessary”, ushering in “the age of the solopreneur”, argued a team of economists at <span class="annot" data-tooltip="stripe /straɪp/ n. 条纹，斑纹；种类vt. 加条纹于…时 态: striped, striping, stripes">Stripe</span>, a payments platform, in a recent blog post. Kelly Loeffler, head of the Small Business Administration, a government agency, disagrees. She expects that small businesses powered by AI will eventually hire at similar or higher rates to their predecessors. Mr Shaw, the Tennessean coffee entrepreneur, has automated much of his back-office work but has hired five baristas as his business expands into weddings and <span class="annot" data-tooltip="corporate /'kɔːrpərət/ adj. 社团的, 法人的副 词: corporately">corporate</span> events. It has been a similar story for Jake Levine, who last year founded a business that helps pharmaceutical companies manage clinical <span class="annot" data-tooltip="trials /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">trials</span>. “We always had the intention of scaling,” he says. Economic and technological shifts have created fertile ground for a nation already enamoured with entrepreneurship, reducing the capital and brain- power it takes to grow a business. Aaron Terrazas, an economist at Gusto, reckons that much of the <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span> generated by AI could end up accruing not to corporate giants, but to Etsy-sellers and small-town accountants. That would reverse a century-long shift toward working for The Man. ■</p>
+<p>This article was downloaded by zlibrary from https://www.economist.com/business/2026/07/27/america-has-become-an-entrepreneurs- paradise</p>
+<div class="article-separator"></div>
+<div class="article-header">Business · Business | Crime without punishment</div>
+<p>There’s never been a better time to <span class="annot" data-tooltip="commit /kə'mɪt/ vt. 犯罪；犯错承诺；使自己受约束托付；交付时 态: committed，committing，commits">commit</span> financial <span class="annot" data-tooltip="fraud /frɔːd/ n. 欺诈, 欺骗行为骗子">fraud</span> American <span class="annot" data-tooltip="enforcement /ɪn'fɔːrsmənt/ n. 强制,实施,执行">enforcement</span> has collapsed and conditions are ripe for skulduggery Jul 30th 2026 In 1955 the economist John Kenneth Galbraith wrote of the “<span class="annot" data-tooltip="inventory /'ɪnvəntɔːri/ n. 详细目录, 存货清单">inventory</span> of undiscovered embezzlement” that <span class="annot" data-tooltip="tends /tend/ vt. 照料，照顾，伺候vi. 往，朝向易于；倾向时 态: tended，tending，tends">tends</span> to grow during periods of market euphoria. The “bezzle”, as Galbraith called it, is exposed when the good times end and “commercial morality is <span class="annot" data-tooltip="enormously /ɪ'nɔːrməs/ adj. 巨大的, 极大的, 庞大的副 词: enormously">enormously</span> improved”. Past <span class="annot" data-tooltip="bubbles /'bʌbl/ n. 气泡，泡沫，泡状物；透明圆形罩，圆形顶vi. 沸腾，冒泡；发出气泡声vt. 使冒泡；滔滔不绝地说时 态: bubbled">bubbles</span> and <span class="annot" data-tooltip="crashes /kræʃ/ n. 碰撞；崩溃；坠落vt. 破碎；撞碎；坠落vi. 碰撞；坠毁；闯；突然倒台adj. 速成的时 态: crashed, cr">crashes</span> have indeed led to a <span class="annot" data-tooltip="bumper /bʌmp/ n. 肿块，隆起物；撞击vi. 碰撞，撞击；颠簸而行vt. 碰，撞；颠簸adv. 突然地，猛烈地时 态: bumped, bu">bumper</span> <span class="annot" data-tooltip="crop /krɑːp/ n. 农作物；庄稼；产量；平头vt. 种植；收割；修剪；剪短vi. 收获时 态: cropped, cropping, cro">crop</span> of white-collar prosecutions (think Enron and WorldCom after the dotcom boom). If Galbraith was right, today’s frothy valuations suggest bezzlers may be <span class="annot" data-tooltip="lurking /lɜːrk/ vi. 潜伏；埋伏；潜藏n. 埋伏；潜伏时 态: lurked, lurking, lurks">lurking</span> in the shadows. But what if their <span class="annot" data-tooltip="mischief /'mɪstʃɪf/ n. 损害, 危害, 伤害胡闹, 调皮捣蛋, 恶作剧调皮捣蛋的人, 淘气鬼">mischief</span> is never discovered? That is the grand experiment on which America has lately <span class="annot" data-tooltip="embarked /ɪm'bɑːrk/ vi. 上船或飞机；从事，着手vt. 使上船；使从事时 态: embarked, embarking, embarks">embarked</span>.</p>
+<p>In the six months to the end of March <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">federal</span> prosecutors brought 2,008 white-collar crime cases, putting them on course for a little over 4,000 by the end of the government’s <span class="annot" data-tooltip="fiscal /'fɪskl/ adj. 国库的；会计的，财政的副 词: fiscally">fiscal</span> year in September, according to figures from the Transactional Records Access Clearinghouse (TRAC), a data <span class="annot" data-tooltip="repository /rɪ'pɑːzətɔːri/ n. 仓库，贮藏室，存放处智囊，知识渊博的人，知识宝典">repository</span>. That would be a drop of a sixth from five years ago and half from 20 years ago (see chart). It is <span class="annot" data-tooltip="tempting /tempt/ vt. 引诱或怂恿(某人)干不正当的事使想要时 态: tempted, tempting, tempts">tempting</span> to lay such figures at the feet of Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>, whose dismantling of the Department of Justice has not helped. But the decline <span class="annot" data-tooltip="precedes /prɪ'siːd/ v. 在…之前发生（或出现）；先于走在…前面（句、段、章节）在…之前时 态: preceded, preceding, pre">precedes</span> him—and may continue well after. Aside from a brief <span class="annot" data-tooltip="spike /spaɪk/ n. 尖头，尖刺，（尤指金属的）尖状物（某些运动鞋上的）防滑鞋钉，钉鞋（spikes）（通常在指下跌前）非常高的数量，价格或程">spike</span> after the financial crisis of 2007-09, white-collar prosecutions in America have <span class="annot" data-tooltip="trended /trend/ n. 趋势, 倾向流行时 态: trended, trending, trends">trended</span> down for <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> three <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span>. There is little reason to believe the country’s financiers and executives have become more virtuous during that time. Instead, the answer lies in a shift in focus <span class="annot" data-tooltip="towards /tɔːrdz/ prep. 向，朝为了；有助于；用于对于，关于接近；将近；大约">towards</span> prosecuting other criminal activity. After the September 11th attacks bevies of federal investigators and lawyers moved into <span class="annot" data-tooltip="counter /'kaʊntər/ n. 柜台, 柜台式长桌计数器vt. & vi. 对抗, 反驳adv. 反方向地, 对立地时 态: countered, co">counter</span>- terrorism work, notes a 2021 paper by economist Trung Nguyen, then of Harvard Business School. More recently immigration and drug <span class="annot" data-tooltip="enforcement /ɪn'fɔːrsmənt/ n. 强制,实施,执行">enforcement</span> have taken priority in voters’ and politicians’ minds. Even a small budget cut can have a big impact on white-collar-crime prosecutions. Financial <span class="annot" data-tooltip="frauds /frɔːd/ n. 欺诈, 欺骗行为骗子">frauds</span> often require dozens of lawyers to work for years on a single investigation, notes Sam Buell, a former federal prosector</p>
+<p>now at Duke University. A study by TRAC found that white-collar referrals in the 12 months to September 2022 that resulted in charges took <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">federal</span> prosecutors 452 days on average to review, more than three-and-a-half times the average for all case types. Even <span class="annot" data-tooltip="amid /ə'mɪd/ prep. 在其中，在其间">amid</span> the long-term decline, the drop in <span class="annot" data-tooltip="enforcement /ɪn'fɔːrsmənt/ n. 强制,实施,执行">enforcement</span> during the <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> administrations has been <span class="annot" data-tooltip="eyebrow /'aɪbraʊ/ n. 眉毛v. 为…描眉；用皱眉蹙额迫使">eyebrow</span>-raising. Ten years ago <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> half of white-collar-crime referrals to federal prosecutors resulted in a case; that figure fell to a third in 2025. <span class="annot" data-tooltip="contrast /'kɑːntræst/ n. 对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照时 态: contrasted, cont">Contrast</span> that with immigration prosecutions, for which nearly all referrals still lead to charges. The <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of lawyers in the Department of Justice has shrunk by a fifth under Mr Trump, with many of the remaining <span class="annot" data-tooltip="bunch /bʌntʃ/ n. 串；群；突出物vi. 隆起；打褶；形成一串vt. 使成一串；使打褶时 态: bunched, bunching, bun">bunch</span> <span class="annot" data-tooltip="reassigned /ˌriːə'saɪn/ vt. 再分配,再指定时 态: reassigned, reassigning, reassigns">reassigned</span> away from crypto or tax inquiries to immigration. The government has also <span class="annot" data-tooltip="slashed /slæʃ/ v. （用利器）砍，劈割破；在…上留下深长的切口大量削减n. （用刀等）砍，劈（长而窄的）伤口，切口，砍痕斜杠；斜线号时 态:">slashed</span> <span class="annot" data-tooltip="headcount /'hedkaʊnt/ n. 点人头数 总人数,职员总数">headcount</span> at the investigative and regulatory agencies on which prosecutors rely for tips. Experienced investigators at the FBI or the US Postal Service— a surprisingly <span class="annot" data-tooltip="significant /sɪɡ'nɪfɪkənt/ adj. 重要的, 重大的, 可观的有意义的, 有用意的意味深长的副 词: significantly">significant</span> source of referrals—used to stay for much of their career. No longer. <span class="annot" data-tooltip="civil /'sɪvl/ adj. 公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的副 词: civilly">Civil</span> enforcement has also waned. Take <span class="annot" data-tooltip="audit /'ɔːdɪt/ v. 查（账）；审计；稽核【美式】旁听（大学课程）n. 审计；稽核（质量或标准的）审查，检查时 态: audited, aud">audit</span> checks, an unsexy-yet-<span class="annot" data-tooltip="vital /'vaɪtl/ adj. 极重要的，必不可少的维持生命所必需的；生命的有生气的，充满生机的副 词: vitally">vital</span> corner of the regulatory world built up after the <span class="annot" data-tooltip="collapse /kə'læps/ vi. 倒塌；瓦解；暴跌vt. 使倒塌，使崩溃；使萎陷n. 倒塌；失败；衰竭时 态: collapsed, collapsing">collapse</span> of Enron, a fraudulent <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span> company, in 2001. The <span class="annot" data-tooltip="securities /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">Securities</span> and Exchange <span class="annot" data-tooltip="commission /kə'mɪʃn/ n. 授权, 委托委员会佣金, 回扣vt. 委任, 委托时 态: commissioned, commissioning, c">Commission</span> in 2025 brought a <span class="annot" data-tooltip="mere /mɪr/ adj. 仅仅, 只不过纯粹的Superlative merest">mere</span> ten enforcement actions against accountants and auditors, one fifth of the <span class="annot" data-tooltip="annual /'ænjuəl/ adj. 年度的；每年的n. 年刊，年鉴；一年生植物副 词: annually">annual</span> average in the preceding eight years, according to <span class="annot" data-tooltip="cornerstone /'kɔːrnərstoʊn/ n. 奠基石基础">Cornerstone</span> Research, a consultancy. At the same time, the commission has slashed staff pay at the <span class="annot" data-tooltip="main /meɪn/ adj. 主要的; 最重要的n. 总管道; 干线">main</span> audit <span class="annot" data-tooltip="oversight /'oʊvərsaɪt/ n. 疏忽, 失察">oversight</span> board, which for years offered high salaries to <span class="annot" data-tooltip="lure /lʊr/ n. 诱惑物；诱惑；饵vt. 引诱；诱惑时 态: lured, luring, lures">lure</span> expert accountants. It has also suggested it might shift from <span class="annot" data-tooltip="sniffing /snɪf/ vi. 嗤之以鼻；嗅vt. 用力吸；发觉；闻；嗅n. 以鼻吸气；气味；吸，闻；吸气声；嗤之以鼻时 态: sniffed, sni">sniffing</span> out errors in individual <span class="annot" data-tooltip="audits /'ɔːdɪt/ v. 查（账）；审计；稽核【美式】旁听（大学课程）n. 审计；稽核（质量或标准的）审查，检查时 态: audited, aud">audits</span> <span class="annot" data-tooltip="towards /tɔːrdz/ prep. 向，朝为了；有助于；用于对于，关于接近；将近；大约">towards</span> examining the <span class="annot" data-tooltip="processes /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">processes</span> followed by the auditors. Officials say the new approach is more efficient. But it may make balance-sheet shenanigans easier to hide. All this will come at a cost. A paper from 2023 by Alexander Dyck of the University of Toronto and his co-authors suggests only about a third of <span class="annot" data-tooltip="corporate /'kɔːrpərət/ adj. 社团的, 法人的副 词: corporately">corporate</span> <span class="annot" data-tooltip="frauds /frɔːd/ n. 欺诈, 欺骗行为骗子">frauds</span> are ever <span class="annot" data-tooltip="detected /dɪ'tekt/ vt. 发现；发觉，查明时 态: detected，detecting，detects">detected</span>, let alone prosecuted. Extrapolating from the cost of detected frauds, they estimate that <span class="annot" data-tooltip="actual /'æktʃuəl/ adj. 真实的，实际的；现行的，目前的副 词: actually">actual</span> hijinks destroy some 1.6% of <span class="annot" data-tooltip="shareholder /'ʃerhoʊldər/ n. 股东名 词: shareholding">shareholder</span> <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span> in America each year, a figure that would have amounted to $1.1trn in 2025. “Losses to America from white-collar crime</p>
+<p>dwarf every other crime category,” notes Julie O’Sullivan of Georgetown University, another former prosecutor. Even if a future administration reprioritises rooting out white-collar crime, it will be hard to pin down today’s fraudsters. Many white-collar crimes carry a five-year statute of limitations, points out Daniel Richman of Columbia University, a criminal-law expert. America’s bezzlers are rejoicing. Everyone else should worry. ■ This article was downloaded by zlibrary from https://www.economist.com/business/2026/07/29/theres-never-been-a-better-time-to- <span class="annot" data-tooltip="commit /kə'mɪt/ vt. 犯罪；犯错承诺；使自己受约束托付；交付时 态: committed，committing，commits">commit</span>-financial-<span class="annot" data-tooltip="fraud /frɔːd/ n. 欺诈, 欺骗行为骗子">fraud</span></p>
+<div class="article-separator"></div>
+<div class="article-header">Business · Business | Red card</div>
+<p>Selling stakes in the beautiful game. What could go wrong? FIFA’s plan to tap private investors is causing outrage Jul 30th 2026 Football <span class="annot" data-tooltip="stirs /stɜːr/ vt. & vi. 搅拌(使)移动；(使)激动n. 搅动；搅和；搅拌激动；纷乱；骚乱STIRabbr. Surveillance">stirs</span> heated passions. But Gianni Infantino, president of FIFA, pushes them to <span class="annot" data-tooltip="boiling /bɔɪl/ vi. 煮沸，沸腾；激动，激昂vt. 煮沸，烧开；使…激动；使…蒸发n. 沸腾，煮沸；疖子时 态: boiled, boilin">boiling</span> point. On July 28th football’s governing body <span class="annot" data-tooltip="unveiled /ˌʌn'veɪl/ vt. 揭去…的面罩，除去…的遮盖物使公之于众；揭露vi. 除去面纱(或覆盖物)；揭幕揭露出来时 态: unveiled，unv">unveiled</span> plans to <span class="annot" data-tooltip="raise /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raise</span> $4.2bn by selling stakes in the running of future tournaments to private investors. UEFA, which <span class="annot" data-tooltip="oversees /ˌoʊvər'siː/ vt. 监督；俯瞰；审查；偷看到，无意中看到时 态: oversaw overseen overseeing, oversees">oversees</span> European football, <span class="annot" data-tooltip="protested /'proʊtest/ n. 抗议；反对vt. & vi. 声明；抗议时 态: protested，protesting，protests">protested</span> that the game “is not FIFA’s to sell”. A source close to UEFA says that if the plan goes ahead, it may boycott future World Cups. Hot on the <span class="annot" data-tooltip="heels /hilz/ n. 脚踝；残余料；高跟鞋（heel的复数）v. 紧跟；给（鞋等）装跟（heel的三单形式）">heels</span> of a tournament that generated up to $15bn in <span class="annot" data-tooltip="revenue /'revənuː/ n. 收入，收益；财政收入，税收">revenue</span> (and one especially contentious red card), FIFA said it intends to set up a subsidiary that would <span class="annot" data-tooltip="consolidate /kən'sɑːlɪdeɪt/ vt. & vi. (使)巩固；(使)加强(使)合并时 态: consolidated，consolidating，consol">consolidate</span> its commercial operations. Those include broadcasting, <span class="annot" data-tooltip="sponsorship /'spɑːnsərʃɪp/ n. 赞助；发起；保证人的地位；教父母身份">sponsorship</span>, ticketing and licensing, as well as the staging of</p>
+<p>men’s and women’s World Cups. Called FIFA Forward Enterprise (FFE), it would be valued at $20bn. The sale of a roughly 20% stake would boost funding for FIFA’s 211 national member associations, a majority of which must approve the plan. Joshua Kushner, founder of Thrive Capital, an investment firm, is in talks to lead the funding round. He is the brother of Jared Kushner, President Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s son-in-law. Jared reportedly would have no investment in FFE, but the family connection has given fresh <span class="annot" data-tooltip="ammunition /ˌæmjə'nɪʃn/ n. 弹药, 军火">ammunition</span> to Mr Infantino’s critics, who bristle at his close relationship with Mr Trump. On X, a social-media platform, a <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span> of Democrats described FIFA as Mr Trump’s “favourite <span class="annot" data-tooltip="corrupt /kə'rʌpt/ adj. 腐败的，贪污的；堕落的vt. 使堕落，使恶化；使腐烂vi. 腐烂；堕落，腐化时 态: corrupted, corrup">corrupt</span> racketeering enterprise in world sports”, and accused it of going “directly into business with the Trump family”. UEFA is understood to be holding talks with other football bodies, as well as concerned governments, to <span class="annot" data-tooltip="plot /plɑːt/ n. 故事情节(秘密)计划，密谋小块地皮vt. 把…分成小块；划分绘制；标出vt. & vi. 密谋时 态: plotted，">plot</span> its <span class="annot" data-tooltip="counter /'kaʊntər/ n. 柜台, 柜台式长桌计数器vt. & vi. 对抗, 反驳adv. 反方向地, 对立地时 态: countered, co">counter</span>-attack. Andy Burnham, Britain’s new prime minister, <span class="annot" data-tooltip="weighed /weɪ/ vt. & vi. 称…的重量link v. 重达vt. 权衡；考虑时 态: weighed，weighing，weighs">weighed</span> in, declaring that “Football does not belong to investors” (though his favourite team, Everton FC, is owned by an American billionaire). The introduction of private investment into the governing bodies of sports is not new. One of the <span class="annot" data-tooltip="architects /'ɑːrkɪtekt/ n. 建筑师, 设计师">architects</span> of the deal is Greg Maffei, former chief executive of Liberty Media, who led its $4.4bn <span class="annot" data-tooltip="acquisition /ˌækwɪ'zɪʃn/ n. 获得物，获得；收购">acquisition</span> of <span class="annot" data-tooltip="formula /'fɔːrmjələ/ n. 公式，准则；配方；婴儿食品形容词: formulaic">Formula</span> One in 2017 and helped turn a fading motorsports franchise into an entertainment juggernaut. Another example is PGA Tour, golf’s most important event organiser, which set up a commercial arm in 2024 backed by private investors. FIFA says it will <span class="annot" data-tooltip="retain /rɪ'teɪn/ vt. 保持；雇；记住时 态: retained, retaining, retains 缩 写: ret">retain</span> full <span class="annot" data-tooltip="authority /ə'θɔːrəti/ n. 威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗">authority</span> over competitions, match calendars and other decisions. But the experience of PGA Tour suggests that private investors may end up putting their <span class="annot" data-tooltip="thumbs /θʌm/ vt. 以拇指拨弄；作搭车手势；笨拙地摆弄；翻阅vi. 用拇指翻书页；竖起拇指要求搭车n. 拇指时 态: thumbed, th">thumbs</span> on the scale, reckons Sam Nursall of Ampere Analysis, a media-research firm. He notes that <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span> money may help FIFA spend more in poorer <span class="annot" data-tooltip="places /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">places</span>, but that the quest for profit may also push it <span class="annot" data-tooltip="towards /tɔːrdz/ prep. 向，朝为了；有助于；用于对于，关于接近；将近；大约">towards</span> locating future World Cups in the most lucrative countries, having more frequent tournaments and <span class="annot" data-tooltip="possibly /'pɑːsəbli/ adv. 可能地；大概；也许">possibly</span> raising ticket prices.</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>cart</td><td>/kɑːrt/ n.</td><td>运货马车；手推车vt. 用马车载运，carting，carts</td></tr>
+<tr><td>explanation</td><td>/ˌeksplə'neɪʃn/ n.</td><td>解释, 说明能说明某事缘由的言语、事实、情况等</td></tr>
+<tr><td>adopting</td><td>/ə'dɑːpt/ vt.</td><td>收养采用, 采纳, 采取正式接受, 通过, adopting, adopts</td></tr>
+<tr><td>strike</td><td>/straɪk/ vi.</td><td>罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打, stricken striking, str</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>activation</td><td>— n.</td><td>活化,激活,[化]活化作用</td></tr>
+<tr><td>campaign</td><td>/kæm'peɪn/ n.</td><td>运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）, campaigning, campai</td></tr>
+<tr><td>trail</td><td>/treɪl/ vt.</td><td>& vi. (使某物)被拖在后面vt. 跟踪，追踪vi. (在比赛等中)输，失败n. 足迹；臭迹小径一缕，一股，trailing，trails</td></tr>
+<tr><td>creators</td><td>/kri'eɪtər/ n.</td><td>创造者,创作者</td></tr>
+<tr><td>employ</td><td>/ɪm'plɔɪ/ vt.</td><td>使用，采用；雇用；使忙于，使从事于n. 雇用；使用, employing, employs</td></tr>
+<tr><td>capability</td><td>/ˌkeɪpə'bɪləti/ n.</td><td>能做某事的素质;能力尚未发挥的天资或素质</td></tr>
+<tr><td>stripe</td><td>/straɪp/ n.</td><td>条纹，斑纹；种类vt. 加条纹于…, striping, stripes</td></tr>
+<tr><td>corporate</td><td>/'kɔːrpərət/ adj.</td><td>社团的, 法人的</td></tr>
+<tr><td>trials</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>commit</td><td>/kə'mɪt/ vt.</td><td>犯罪；犯错承诺；使自己受约束托付；交付，committing，commits</td></tr>
+<tr><td>fraud</td><td>/frɔːd/ n.</td><td>欺诈, 欺骗行为骗子</td></tr>
+<tr><td>enforcement</td><td>/ɪn'fɔːrsmənt/ n.</td><td>强制,实施,执行</td></tr>
+<tr><td>inventory</td><td>/'ɪnvəntɔːri/ n.</td><td>详细目录, 存货清单</td></tr>
+<tr><td>tends</td><td>/tend/ vt.</td><td>照料，照顾，伺候vi. 往，朝向易于；倾向，tending，tends</td></tr>
+<tr><td>enormously</td><td>/ɪ'nɔːrməs/ adj.</td><td>巨大的, 极大的, 庞大的</td></tr>
+<tr><td>bubbles</td><td>/'bʌbl/ n.</td><td>气泡，泡沫，泡状物；透明圆形罩，圆形顶vi. 沸腾，冒泡；发出气泡声vt. 使冒泡；滔滔不绝地说, bubbling, bubbles</td></tr>
+<tr><td>crashes</td><td>/kræʃ/ n.</td><td>碰撞；崩溃；坠落vt. 破碎；撞碎；坠落vi. 碰撞；坠毁；闯；突然倒台adj. 速成的, crashing, crashes</td></tr>
+<tr><td>bumper</td><td>/bʌmp/ n.</td><td>肿块，隆起物；撞击vi. 碰撞，撞击；颠簸而行vt. 碰，撞；颠簸adv. 突然地，猛烈地, bumping, bumps</td></tr>
+<tr><td>crop</td><td>/krɑːp/ n.</td><td>农作物；庄稼；产量；平头vt. 种植；收割；修剪；剪短vi. 收获, cropping, crops</td></tr>
+<tr><td>lurking</td><td>/lɜːrk/ vi.</td><td>潜伏；埋伏；潜藏n. 埋伏；潜伏, lurking, lurks</td></tr>
+<tr><td>mischief</td><td>/'mɪstʃɪf/ n.</td><td>损害, 危害, 伤害胡闹, 调皮捣蛋, 恶作剧调皮捣蛋的人, 淘气鬼</td></tr>
+<tr><td>embarked</td><td>/ɪm'bɑːrk/ vi.</td><td>上船或飞机；从事，着手vt. 使上船；使从事, embarking, embarks</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>fiscal</td><td>/'fɪskl/ adj.</td><td>国库的；会计的，财政的</td></tr>
+<tr><td>repository</td><td>/rɪ'pɑːzətɔːri/ n.</td><td>仓库，贮藏室，存放处智囊，知识渊博的人，知识宝典</td></tr>
+<tr><td>tempting</td><td>/tempt/ vt.</td><td>引诱或怂恿(某人)干不正当的事使想要, tempting, tempts</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>precedes</td><td>/prɪ'siːd/ v.</td><td>在…之前发生（或出现）；先于走在…前面（句、段、章节）在…之前, preceding, precedes</td></tr>
+<tr><td>spike</td><td>/spaɪk/ n.</td><td>尖头，尖刺，（尤指金属的）尖状物（某些运动鞋上的）防滑鞋钉，钉鞋（spikes）（通常在指下跌前）非常高的数量，价格或程度v. 拒绝刊登，弃置（文章）不用将烈酒</td></tr>
+<tr><td>trended</td><td>/trend/ n.</td><td>趋势, 倾向流行, trending, trends</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>towards</td><td>/tɔːrdz/ prep.</td><td>向，朝为了；有助于；用于对于，关于接近；将近；大约</td></tr>
+<tr><td>counter</td><td>/'kaʊntər/ n.</td><td>柜台, 柜台式长桌计数器vt. & vi. 对抗, 反驳adv. 反方向地, 对立地, countering, counters</td></tr>
+<tr><td>enforcement</td><td>/ɪn'fɔːrsmənt/ n.</td><td>强制,实施,执行</td></tr>
+<tr><td>frauds</td><td>/frɔːd/ n.</td><td>欺诈, 欺骗行为骗子</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>amid</td><td>/ə'mɪd/ prep.</td><td>在其中，在其间</td></tr>
+<tr><td>enforcement</td><td>/ɪn'fɔːrsmənt/ n.</td><td>强制,实施,执行</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>eyebrow</td><td>/'aɪbraʊ/ n.</td><td>眉毛v. 为…描眉；用皱眉蹙额迫使</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>contrast</td><td>/'kɑːntræst/ n.</td><td>对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照, contrasting, contrasts</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>bunch</td><td>/bʌntʃ/ n.</td><td>串；群；突出物vi. 隆起；打褶；形成一串vt. 使成一串；使打褶, bunching, bunches</td></tr>
+<tr><td>reassigned</td><td>/ˌriːə'saɪn/ vt.</td><td>再分配,再指定, reassigning, reassigns</td></tr>
+<tr><td>slashed</td><td>/slæʃ/ v.</td><td>（用利器）砍，劈割破；在…上留下深长的切口大量削减n. （用刀等）砍，劈（长而窄的）伤口，切口，砍痕斜杠；斜线号，slashing，slashes</td></tr>
+<tr><td>headcount</td><td>/'hedkaʊnt/ n.</td><td>点人头数 总人数,职员总数</td></tr>
+<tr><td>significant</td><td>/sɪɡ'nɪfɪkənt/ adj.</td><td>重要的, 重大的, 可观的有意义的, 有用意的意味深长的</td></tr>
+<tr><td>civil</td><td>/'sɪvl/ adj.</td><td>公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的</td></tr>
+<tr><td>audit</td><td>/'ɔːdɪt/ v.</td><td>查（账）；审计；稽核【美式】旁听（大学课程）n. 审计；稽核（质量或标准的）审查，检查, auditing, audits</td></tr>
+<tr><td>vital</td><td>/'vaɪtl/ adj.</td><td>极重要的，必不可少的维持生命所必需的；生命的有生气的，充满生机的</td></tr>
+<tr><td>collapse</td><td>/kə'læps/ vi.</td><td>倒塌；瓦解；暴跌vt. 使倒塌，使崩溃；使萎陷n. 倒塌；失败；衰竭, collapsing, collapses</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>securities</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>commission</td><td>/kə'mɪʃn/ n.</td><td>授权, 委托委员会佣金, 回扣vt. 委任, 委托, commissioning, commissions</td></tr>
+<tr><td>mere</td><td>/mɪr/ adj.</td><td>仅仅, 只不过纯粹的Superlative merest</td></tr>
+<tr><td>annual</td><td>/'ænjuəl/ adj.</td><td>年度的；每年的n. 年刊，年鉴；一年生植物</td></tr>
+<tr><td>cornerstone</td><td>/'kɔːrnərstoʊn/ n.</td><td>奠基石基础</td></tr>
+<tr><td>main</td><td>/meɪn/ adj.</td><td>主要的; 最重要的n. 总管道; 干线</td></tr>
+<tr><td>oversight</td><td>/'oʊvərsaɪt/ n.</td><td>疏忽, 失察</td></tr>
+<tr><td>lure</td><td>/lʊr/ n.</td><td>诱惑物；诱惑；饵vt. 引诱；诱惑, luring, lures</td></tr>
+<tr><td>sniffing</td><td>/snɪf/ vi.</td><td>嗤之以鼻；嗅vt. 用力吸；发觉；闻；嗅n. 以鼻吸气；气味；吸，闻；吸气声；嗤之以鼻, sniffing, sniffs</td></tr>
+<tr><td>audits</td><td>/'ɔːdɪt/ v.</td><td>查（账）；审计；稽核【美式】旁听（大学课程）n. 审计；稽核（质量或标准的）审查，检查, auditing, audits</td></tr>
+<tr><td>towards</td><td>/tɔːrdz/ prep.</td><td>向，朝为了；有助于；用于对于，关于接近；将近；大约</td></tr>
+<tr><td>processes</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>corporate</td><td>/'kɔːrpərət/ adj.</td><td>社团的, 法人的</td></tr>
+<tr><td>frauds</td><td>/frɔːd/ n.</td><td>欺诈, 欺骗行为骗子</td></tr>
+<tr><td>detected</td><td>/dɪ'tekt/ vt.</td><td>发现；发觉，查明，detecting，detects</td></tr>
+<tr><td>actual</td><td>/'æktʃuəl/ adj.</td><td>真实的，实际的；现行的，目前的</td></tr>
+<tr><td>shareholder</td><td>/'ʃerhoʊldər/ n.</td><td>股东</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>commit</td><td>/kə'mɪt/ vt.</td><td>犯罪；犯错承诺；使自己受约束托付；交付，committing，commits</td></tr>
+<tr><td>fraud</td><td>/frɔːd/ n.</td><td>欺诈, 欺骗行为骗子</td></tr>
+<tr><td>stirs</td><td>/stɜːr/ vt.</td><td>& vi. 搅拌(使)移动；(使)激动n. 搅动；搅和；搅拌激动；纷乱；骚乱STIRabbr. Surveillance and Target Indicati</td></tr>
+<tr><td>boiling</td><td>/bɔɪl/ vi.</td><td>煮沸，沸腾；激动，激昂vt. 煮沸，烧开；使…激动；使…蒸发n. 沸腾，煮沸；疖子, boiling, boils</td></tr>
+<tr><td>unveiled</td><td>/ˌʌn'veɪl/ vt.</td><td>揭去…的面罩，除去…的遮盖物使公之于众；揭露vi. 除去面纱(或覆盖物)；揭幕揭露出来，unveiling，unveils</td></tr>
+<tr><td>raise</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>oversees</td><td>/ˌoʊvər'siː/ vt.</td><td>监督；俯瞰；审查；偷看到，无意中看到, oversees</td></tr>
+<tr><td>protested</td><td>/'proʊtest/ n.</td><td>抗议；反对vt. & vi. 声明；抗议，protesting，protests</td></tr>
+<tr><td>heels</td><td>/hilz/ n.</td><td>脚踝；残余料；高跟鞋（heel的复数）v. 紧跟；给（鞋等）装跟（heel的三单形式）</td></tr>
+<tr><td>revenue</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>consolidate</td><td>/kən'sɑːlɪdeɪt/ vt.</td><td>& vi. (使)巩固；(使)加强(使)合并，consolidating，consolidates</td></tr>
+<tr><td>sponsorship</td><td>/'spɑːnsərʃɪp/ n.</td><td>赞助；发起；保证人的地位；教父母身份</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>ammunition</td><td>/ˌæmjə'nɪʃn/ n.</td><td>弹药, 军火</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>corrupt</td><td>/kə'rʌpt/ adj.</td><td>腐败的，贪污的；堕落的vt. 使堕落，使恶化；使腐烂vi. 腐烂；堕落，腐化, corrupting, corrupts</td></tr>
+<tr><td>plot</td><td>/plɑːt/ n.</td><td>故事情节(秘密)计划，密谋小块地皮vt. 把…分成小块；划分绘制；标出vt. & vi. 密谋，plotting，plots</td></tr>
+<tr><td>counter</td><td>/'kaʊntər/ n.</td><td>柜台, 柜台式长桌计数器vt. & vi. 对抗, 反驳adv. 反方向地, 对立地, countering, counters</td></tr>
+<tr><td>weighed</td><td>/weɪ/ vt.</td><td>& vi. 称…的重量link v. 重达vt. 权衡；考虑，weighing，weighs</td></tr>
+<tr><td>architects</td><td>/'ɑːrkɪtekt/ n.</td><td>建筑师, 设计师</td></tr>
+<tr><td>acquisition</td><td>/ˌækwɪ'zɪʃn/ n.</td><td>获得物，获得；收购</td></tr>
+<tr><td>formula</td><td>/'fɔːrmjələ/ n.</td><td>公式，准则；配方；婴儿食品</td></tr>
+<tr><td>retain</td><td>/rɪ'teɪn/ vt.</td><td>保持；雇；记住, retaining, retains 缩 写: ret</td></tr>
+<tr><td>authority</td><td>/ə'θɔːrəti/ n.</td><td>威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗</td></tr>
+<tr><td>thumbs</td><td>/θʌm/ vt.</td><td>以拇指拨弄；作搭车手势；笨拙地摆弄；翻阅vi. 用拇指翻书页；竖起拇指要求搭车n. 拇指, thumbing, thumbs</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>places</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>towards</td><td>/tɔːrdz/ prep.</td><td>向，朝为了；有助于；用于对于，关于接近；将近；大约</td></tr>
+<tr><td>possibly</td><td>/'pɑːsəbli/ adv.</td><td>可能地；大概；也许</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day26.html" class="nav-btn">← Day 26</a>
+  <a href="day28.html" class="nav-btn">Day 28 →</a>
+</div>
+
+<div class="progress">📖 Day 27 of 39</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-08-01</div>
+
+</body>
+</html>

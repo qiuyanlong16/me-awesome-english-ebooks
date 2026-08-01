@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance & economics</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-08-01</div>
+
+<h1 class="article-title">Finance & economics</h1>
+<div class="article-section"></div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>investments—which implies they would need to spend trillions of dollars a year if AI is to <span class="annot" data-tooltip="reach /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reach</span> its potential. So <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span>, however, there is little evidence of an intangible-investment boom. Data-organisation firms like Palantir have <span class="annot" data-tooltip="revenues /'revənuː/ n. 收入，收益；财政收入，税收">revenues</span> in the billions, not hundreds of billions. The share of American workers leaving their jobs is close to an all-time low, suggesting little reorganisation of labour. New data indicate that American companies’ investment in “organisational capital”— <span class="annot" data-tooltip="essentially /ɪ'senʃəli/ adv. 本质上;根本上必需的">essentially</span> efforts to improve their <span class="annot" data-tooltip="routines n. 日常生活；日常活动；常规，惯例（routine的复数）">routines</span>, <span class="annot" data-tooltip="processes /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">processes</span>, culture, supplier relationships and data flows—has been declining as a share of GDP (see chart 3). When AI takes over the economy, you will be able to feel it. ■ This article was downloaded by zlibrary from https://www.economist.com/finance-and-economics/2026/07/28/ai-revenues-are-growing- fast-but-not-fast-enough</p>
+<p>Finance & economics | Smoke signals Oil prices remain highly <span class="annot" data-tooltip="flammable /'flæməbl/ adj. 易燃的,可燃的名 词: flammability">flammable</span> As <span class="annot" data-tooltip="tensions /'tenʃn/ n. 张力，拉力；紧张，不安；电压vt. 使紧张；使拉紧时 态: tensioned, tensioning, tension">tensions</span> flare in the Gulf, <span class="annot" data-tooltip="triple /'trɪpl/ adj. 三倍的；三方的n. 三倍数；三个一组vi. 增至三倍vt. 使成三倍时 态: tripled, tripling, tr">triple</span> digits could return in a flash Jul 30th 2026 A CYNIC MIGHT say that <span class="annot" data-tooltip="ceasefires /'siːsfaɪər/ n. (通常指永久性的)停火; 停战">ceasefires</span> between Iran and America hold well between attacks. In the past fortnight a <span class="annot" data-tooltip="pattern /'pætərn/ n. 型，样式花样，图案方式，形式榜样，典范vt. 模仿； 仿制以图案装饰时 态: patterned，patterning，">pattern</span> has become familiar. A pause in fighting is declared; one party <span class="annot" data-tooltip="breaches /briːtʃ/ n. 破坏, 违反破裂, 不和缺口, 裂口vt. 攻破破坏, 违反时 态: breached, breaching, brea">breaches</span> it; <span class="annot" data-tooltip="tit /tɪt/ n. 山雀；各种小鸟；乳头；小马；少妇；轻打">tit</span>-for-tat <span class="annot" data-tooltip="strikes /straɪk/ vi. 罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打时 态:">strikes</span> and <span class="annot" data-tooltip="superlative /suː'pɜːrlətɪv/ adj. 最高级的最好的;最优秀的n. (形容词或副词的)最高级(形式)最高级形容词或副词副 词: superlatively">superlative</span> threats ensue; détente is announced once again. This cycle changes little of the <span class="annot" data-tooltip="reality /ri'æləti/ n. 现实；真实；实际">reality</span> on the ground: <span class="annot" data-tooltip="traffic /'træfɪk/ n. 交通；贸易；运输；通信量vt. 用…作交换；在…通行vi. 交易，买卖时 态: trafficked, traffick">traffic</span> through the <span class="annot" data-tooltip="strait /streɪt/ n. 海峡；（尤指经济拮据引起的）困境，境况窘迫adj. 狭窄的；苦恼的副 词: straitly">Strait</span> of Hormuz remains anaemic and the global <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span> system is under strain. Talks have not progressed and Iran insists it wants <span class="annot" data-tooltip="sole /soʊl/ n. 鞋底；脚底；基础；鳎目鱼adj. 唯一的；单独的；仅有的vt. 上鞋底；触底时 态: soled, soling, so">sole</span> control of the strait. Yet oil markets remain optimistic that a lasting truce is around the corner. At $90-odd a <span class="annot" data-tooltip="barrel /'bærəl/ vt. 把……装入桶内n. 桶；枪管，炮管vi. 快速移动时 态: barreled, barrelled barreling,">barrel</span>, Brent <span class="annot" data-tooltip="crude /kruːd/ adj. 粗糙的；粗鲁的；天然的，未加工的；粗略的n. 天然的物质；原油比较级: cruder, crudest">crude</span>, the global <span class="annot" data-tooltip="benchmark /'bentʃmɑːrk/ 基准时 态: benchmarked, benchmarking, benchmarks">benchmark</span>, is well short of its $102 intraday peak on July 23rd.</p>
+<p>How big is the <span class="annot" data-tooltip="ongoing /'ɑːnɡoʊɪŋ/ adj. 前进的；不间断的，进行的n. 前进；行为，举止">ongoing</span> risk to the oil price? Five months of war have failed to propel Brent futures to, say, $150 a <span class="annot" data-tooltip="barrel /'bærəl/ vt. 把……装入桶内n. 桶；枪管，炮管vi. 快速移动时 态: barreled, barrelled barreling,">barrel</span>. But today oil markets are more <span class="annot" data-tooltip="fragile /'frædʒl/ adj. 易碎的，脆的虚弱的，脆弱的；经不起折腾的名 词: fragility">fragile</span> than in March, for three reasons: the Hormuz problem has grown more intractable; new threats have emerged; and protective buffers have worn thin. Hormuz is at the heart of recent <span class="annot" data-tooltip="escalations /ˌeskə'leɪʃn/ n. 扩大,增加">escalations</span>. A loosely worded <span class="annot" data-tooltip="ceasefire /'siːsfaɪər/ n. (通常指永久性的)停火; 停战">ceasefire</span> signed by America and Iran in June recognised Iran’s right to help “define the future administration” of the <span class="annot" data-tooltip="strait /streɪt/ n. 海峡；（尤指经济拮据引起的）困境，境况窘迫adj. 狭窄的；苦恼的副 词: straitly">strait</span>. So each time America <span class="annot" data-tooltip="facilitates /fə'sɪlɪteɪt/ vt. 使便利, 减轻…的困难时 态: facilitated, facilitating, facilitates">facilitates</span> the passage of tankers in a channel Iran does not control, Iran takes that as a <span class="annot" data-tooltip="breach /briːtʃ/ n. 破坏, 违反破裂, 不和缺口, 裂口vt. 攻破破坏, 违反时 态: breached, breaching, brea">breach</span>, and some tankers are attacked. Other shipowners take <span class="annot" data-tooltip="fright /fraɪt/ n. 惊恐, 惊吓吓死了；吓了一大跳被…吓着；受惊吓时 态: frighted, frighting, frights">fright</span>, as do insurers. War-risk insurance <span class="annot" data-tooltip="premiums /'priːmiəm/ n. 奖金，津贴；加价；附加费；保险费；额外费用adj. （品质）高级的；优质的，顶级的">premiums</span> can now <span class="annot" data-tooltip="reach /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reach</span> 12% of a <span class="annot" data-tooltip="ship /ʃɪp/ vt. 运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Di">ship</span>’s <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span>, up from roughly 0.25% before the war, says a trader. The result is a <span class="annot" data-tooltip="severe /sɪ'vɪr/ adj. 严厉的；苛刻的；剧烈的；严峻的比较级: severer, severest">severe</span> slowdown in <span class="annot" data-tooltip="traffic /'træfɪk/ n. 交通；贸易；运输；通信量vt. 用…作交换；在…通行vi. 交易，买卖时 态: trafficked, traffick">traffic</span>, which struggles to rebound even after the fighting ebbs. Just nine <span class="annot" data-tooltip="ships /ʃɪp/ vt. 运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Di">ships</span> crossed the strait on July 28th, down from a peak of 60 in late June. Flows of oil have shrunk by nine-tenths, to 800,000 <span class="annot" data-tooltip="barrels /'bærəl/ vt. 把……装入桶内n. 桶；枪管，炮管vi. 快速移动时 态: barreled, barrelled barreling,">barrels</span> per day (b/d). The tankers that do cross almost always have their transponders off. Only 8m barrels offered by the Emirati national oil firm in mid-July were awarded to refiners in South Korea, Taiwan and Japan, compared with 20m per <span class="annot" data-tooltip="tender /tend/ vt. 照料，照顾，伺候vi. 往，朝向易于；倾向时 态: tended，tending，tends">tender</span> in June. Iran seems unlikely to <span class="annot" data-tooltip="release /rɪ'liːs/ vt. 释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]时 态: released，rel">release</span> its chokehold before America makes <span class="annot" data-tooltip="serious /'sɪriəs/ adj. 严肃的，严重的；认真的；庄重的；危急的副 词: seriously">serious</span> <span class="annot" data-tooltip="concessions /kən'seʃn/ n. 承认, 允许妥协, 让步特许权形容词: concessional">concessions</span>. Gulf countries that</p>
+<p>had begun cranking up output are <span class="annot" data-tooltip="cutting /'kʌtɪŋ/ n. 切断；剪辑；开凿adj. 严寒的；锋利的；尖酸刻薄的v. 切开；采伐；削减（cut的ing形式）">cutting</span> it again, which may delay a return to normal flows to the start of 2027. Of the new threats, the more <span class="annot" data-tooltip="serious /'sɪriəs/ adj. 严肃的，严重的；认真的；庄重的；危急的副 词: seriously">serious</span> is a <span class="annot" data-tooltip="blockade /blɑː'keɪd/ vt. 封锁n. 阻塞时 态: blockaded, blockading, blockades">blockade</span> on Saudi exports declared by Yemen’s Houthi <span class="annot" data-tooltip="rebels /'rebl/ n. 反政府的人；反叛者；造反者叛逆者vi. 反抗政府；造反反抗权威；叛逆时 态: rebelled，rebelling，re">rebels</span> on July 20th, in retaliation for Saudi Arabia’s <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> blockade of <span class="annot" data-tooltip="ports /pɔːrt/ n. 港口，口岸；左舷；舱门；（计算机的）端口vi. 转向左舷vt. 左转舵；持（枪）PORTabbr. Photo Opit">ports</span> they control. The Iran-backed <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span> has since struck some Saudi oil facilities and several <span class="annot" data-tooltip="ships /ʃɪp/ vt. 运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Di">ships</span> that were ferrying Saudi <span class="annot" data-tooltip="crude /kruːd/ adj. 粗糙的；粗鲁的；天然的，未加工的；粗略的n. 天然的物质；原油比较级: cruder, crudest">crude</span> in the Red Sea, or were en <span class="annot" data-tooltip="route /ruːt，raʊt/ n. 路, 路途, 路线, 路程时 态: routed, routing, routes">route</span> to pick up some. The Houthis’ actions have opened a new front in the Iran war and fixed traders’ <span class="annot" data-tooltip="anxieties /æŋ'zaɪəti/ n. 焦虑；挂念；渴望；令人焦虑的事">anxieties</span> on a second chokepoint. Since April Saudi Arabia, unable to export through Hormuz, has sent an extra 2.5m-3.5m b/d of crude— around half its daily exports in 2025—via a pipeline to Yanbu, a <span class="annot" data-tooltip="port /pɔːrt/ n. 港口，口岸；左舷；舱门；（计算机的）端口vi. 转向左舷vt. 左转舵；持（枪）PORTabbr. Photo Opit">port</span> on the Red Sea which used to <span class="annot" data-tooltip="handle /'hændl/ n. 柄；把手；手感；口实vt. 买卖；处理；操作；触摸；运用vi. 易于操纵；搬运时 态: handled, handlin">handle</span> just 700,000 b/d, and then on to Asia via the Bab al-Mandab <span class="annot" data-tooltip="strait /streɪt/ n. 海峡；（尤指经济拮据引起的）困境，境况窘迫adj. 狭窄的；苦恼的副 词: straitly">strait</span>. Japan and South Korea have become especially dependent on these supplies. But Saudi exports through Bab al-Mandab have fallen by three-<span class="annot" data-tooltip="quarters n. 住处,岗位">quarters</span> since early July, to less than 1m b/d, according to Kpler, a data firm (see chart 1). That worries Asian refiners, which face delays on deliveries they were expecting in August. Some are cancelling shipments from Yanbu or switching them to the port of Sidi Kerir on Egypt’s Mediterranean coast, to</p>
+<p>which some Saudi oil can be re-routed via pipeline, at a cost. Omani <span class="annot" data-tooltip="crude /kruːd/ adj. 粗糙的；粗鲁的；天然的，未加工的；粗略的n. 天然的物质；原油比较级: cruder, crudest">crude</span> has grown pricier as buyers bid higher for the Gulf supplies that remain available. In the Black Sea, Ukrainian <span class="annot" data-tooltip="strikes /straɪk/ vi. 罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打时 态:">strikes</span> on the Caspian Pipeline Consortium <span class="annot" data-tooltip="terminal /'tɜːrmɪnl/ n. 终端机；终点；末端；极限adj. 末端的；终点的；晚期的Terminal终端，终端设备(仿真程序)，端子；终结符(T,T">terminal</span> knocked out roughly 1.8m b/d of Kazakh and Russian exports for a week in mid-July. Loadings at Russia’s Sheskharis terminal, which normally <span class="annot" data-tooltip="handles n. 把；柄；控键（handle的复数形式）v. 操纵；掌握（handle的第三人称单数）">handles</span> 650,000 b/d, were also halted. Both facilities have since restarted but could be struck again. The market’s protective buffers—<span class="annot" data-tooltip="reductions /rɪ'dʌkʃn/ n. 减少，缩小；减少的量，降价">reductions</span> in demand and drawdowns from stocks—cannot absorb much more. China’s crude imports have dropped by more than 5m b/d since February. Demand there, and in many poorer countries, has been cut to the bone. America’s <span class="annot" data-tooltip="strategic /strə'tiːdʒɪk/ adj. 战略(上)的有战略意义的; 至关重要的副 词: strategically">strategic</span> reserve, from which 108m <span class="annot" data-tooltip="barrels /'bærəl/ vt. 把……装入桶内n. 桶；枪管，炮管vi. 快速移动时 态: barreled, barrelled barreling,">barrels</span> have been released since March, is at its emptiest since 1983 (see chart 2), and commercial stocks are near their <span class="annot" data-tooltip="practical /'præktɪkl/ adj. 实际的，实践的实用的注重实际的；有实际工作能力的名 词: practicality">practical</span> minimum.</p>
+<p>The headline Brent <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> masks rising worries: the futures <span class="annot" data-tooltip="curve /kɜːrv/ n. 曲线；弯曲；曲线球；曲线图表vt. 使弯曲；弯vi. 成曲形adj. 弯曲的；曲线形的时 态: curved, curv">curve</span>, which briefly <span class="annot" data-tooltip="sloped /slɑːp/ vi. 溢出；泼出在泥浆(或雪泥)中走vt. 使(某物)溢出或泼出(液体)晃荡；(常指)溢出，溅出(在水、泥等里)趟来趟去，走动">sloped</span> upwards at the start of July, has <span class="annot" data-tooltip="flipped /flɪp/ vt. 轻击；掷vi. 用指轻弹；蹦跳adj. 无礼的；轻率的n. 筋斗；弹FLIPabbr. Floating Indeved">flipped</span> again, a sign that traders expect <span class="annot" data-tooltip="shortages /'ʃɔːrtɪdʒ/ n. 不足; 缺少; 缺少量; 不足额">shortages</span> soon. The <span class="annot" data-tooltip="crunch /krʌntʃ/ n. 咬碎，咬碎声；扎扎地踏vt. 压碎；嘎扎嘎扎的咬嚼；扎扎地踏过vi. 嘎吱作响地咀嚼；嘎吱嘎吱地踏过时 态: crunc">crunch</span> is worse in refined products: <span class="annot" data-tooltip="petrol /'petrəl/ n. 汽油">petrol</span> is $150 a <span class="annot" data-tooltip="barrel /'bærəl/ vt. 把……装入桶内n. 桶；枪管，炮管vi. 快速移动时 态: barreled, barrelled barreling,">barrel</span> in America, jet fuel the same in Asia and <span class="annot" data-tooltip="diesel /'diːzl/ n. 柴油机；柴油；（俚）健康的身体adj. 内燃机传动的；供内燃机用的">diesel</span> is over $170 a barrel in Europe (see chart 3). Other commodities are <span class="annot" data-tooltip="affected /ə'fekt/ vt. 影响；假装；感动；感染vi. 倾向；喜欢n. 情感；引起感情的因素时 态: affected, affecting, a">affected</span> too. Gas prices in Europe are near their highest since January 2023 as the bloc competes for supplies with Asia. Qatar, which usually provides a fifth of the world’s liquefied natural gas, is warning it may not honour some <span class="annot" data-tooltip="commitments /kə'mɪtmənt/ n. 承诺；保证；信奉；献身；委任；花费金钱、时间、人力等">commitments</span> before mid-October. If it drags on, countries other than America will have to dip deeper into <span class="annot" data-tooltip="shrinking /ʃrɪŋk/ vt. & vi. 收缩；退缩时 态: shrank ，shrunk shrunk，shrunken shrinking，shr">shrinking</span> stocks. Analysts warn that each extra month of <span class="annot" data-tooltip="disruption n. 中断,分裂,瓦解,破坏">disruption</span> would add $7-10 to the price of a barrel. Add a higher risk <span class="annot" data-tooltip="premium /'priːmiəm/ n. 奖金，津贴；加价；附加费；保险费；额外费用adj. （品质）高级的；优质的，顶级的">premium</span>, and <span class="annot" data-tooltip="crude /kruːd/ adj. 粗糙的；粗鲁的；天然的，未加工的；粗略的n. 天然的物质；原油比较级: cruder, crudest">crude</span> <span class="annot" data-tooltip="consistently /kən'sɪstənt/ adj. 一贯的, 始终如一的一致的, 符合的副 词: consistently">consistently</span> above $110 a barrel by the end of summer looks credible. That would push American petrol prices <span class="annot" data-tooltip="towards /tɔːrdz/ prep. 向，朝为了；有助于；用于对于，关于接近；将近；大约">towards</span> $4.50 a gallon, weeks before the midterm elections. Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s efforts to manage oil markets through tweets —you might call it “truce social”—cannot defy physical <span class="annot" data-tooltip="reality /ri'æləti/ n. 现实；真实；实际">reality</span> for ever. ■ This article was downloaded by zlibrary from https://www.economist.com/finance-and-economics/2026/07/30/oil-prices-remain- highly-<span class="annot" data-tooltip="flammable /'flæməbl/ adj. 易燃的,可燃的名 词: flammability">flammable</span></p>
+<p>Finance & economics | Freude, schöner Banknoten How to design paper money that represents</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Europe</div>
+<p>The euro gets a makeover Jul 30th 2026 In the eyes of many of its citizens, the European Union is more than a technocratic bloc. Besides Europe’s unity, it symbolises a shared culture and way of life. In the eyes of the euro area’s leaders, an upgrade of its banknotes—used by 21 of the EU’s 27 member states, and more than 20 years old—is a chance to show confidence in the continent. The original notes, issued in 2002 and given a facelift in 2013, display <span class="annot" data-tooltip="imaginary /ɪ'mædʒɪneri/ adj. 想像中的, 假想的, 虚构的名 词: imaginariness">imaginary</span> bridges, doorways and windows—intended to reflect Europe’s openness and connectedness, but also to avoid <span class="annot" data-tooltip="rubbing /rʌb/ vt. 擦；摩擦；惹怒vi. 摩擦；擦；擦破n. 摩擦；障碍；磨损处时 态: rubbed, rubbing, rubs">rubbing</span> any country up the wrong way. Each denomination shows a European architectural style, from</p>
+<p>Romanesque to rococo. But they were a dull, soulless choice. The <span class="annot" data-tooltip="novelty /'nɑːvlti/ n. 新颖; 新奇性新奇的人[事物]新颖小巧而价廉的物品">novelty</span> of the euro provided most of the excitement. The European <span class="annot" data-tooltip="central /'sentrəl/ adj. 中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的副 词: centrally">Central</span> Bank and its classical-music-loving president, Christine Lagarde, want the new notes to represent more. The bank has <span class="annot" data-tooltip="narrowed /'næroʊ/ adj. 狭窄的，有限的；度量小的；精密的；勉强的n. 狭窄部分，隘路；海峡vt. 使变狭窄vi. 变窄比较级: narrower">narrowed</span> the field to two thematic options. The first is to charm users with beautiful birds and rivers on the front of the notes, while hiding buildings hardly anyone will recognise—the EU’s <span class="annot" data-tooltip="principal /'prɪnsəpl/ adj. 最重要的；主要的n. 负责人，校长资本，本金被代理人，委托人副 词: principally">principal</span> edifices, including the ECB tower—on the reverse. The other is a more confident attempt to show off European culture. On the front are great scientists and artists, such as Maria Sklodowska Curie, who won Nobel prizes in physics and <span class="annot" data-tooltip="chemistry /'kemɪstri/ n. 化学">chemistry</span>, or Ludwig <span class="annot" data-tooltip="van /væn/ n. 先锋；厢式货车；[计]增值网vt. 用车搬运Van范(男子名)时 态: vanned, vanning, vans">van</span> Beethoven, whose final symphony concludes with “Ode to Joy”, the EU’s anthem. The reverse shows everyday <span class="annot" data-tooltip="spheres /sfɪr/ n. 范围；球体vt. 包围；放入球内；使…成球形adj. 球体的时 态: sphered, sphering, sphere">spheres</span> of culture, such as <span class="annot" data-tooltip="choirs /'kwaɪər/ n. 合唱队；唱诗班；舞蹈队vt. 合唱vi. 合唱时 态: choired, choiring, choirs">choirs</span>, libraries or city squares (though these are hardly <span class="annot" data-tooltip="peculiar /pɪ'kjuːliər/ adj. 奇怪的, 异常的特有的, 独具的〈非正〉不舒服, 有病的副 词: peculiarly">peculiar</span> to Europe).</p>
+<p>Bravely, the ECB has asked for public feedback on ten sets of mostly well- <span class="annot" data-tooltip="crafted /kræft/ n. 手艺；工艺；太空船vt. 精巧地制作时 态: crafted, crafting, crafts">crafted</span> designs. On social media Europeans are taking the opportunity to provide their <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> images of what is truly European: disused barriers at borders; an open plastic bottle with an attached <span class="annot" data-tooltip="cap /kæp/ n. 帽子；盖vi. 脱帽致意vt. 覆盖；胜过；给…戴帽；加盖于Cap摩羯座CAPabbr. Common Agricult">cap</span>; two <span class="annot" data-tooltip="italian /ɪ'tæliən/ adj. 意大利的；意大利文化的；意大利语的n. 意大利人；意大利语">Italian</span> DJs on a balcony, oblivious to the world’s troubles, making music while smoking and drinking Campari. Another idea is to print an out-of-office reply on notes, saying “Back in September”. The Economist’s favourite, though, is for a note <span class="annot" data-tooltip="bearing /'berɪŋ/ n. 轴承；方位；举止；关系v. 忍受（bear的ing形式）">bearing</span> half a dozen famous faces: Britain’s prime ministers since Brexit. ■ This article was downloaded by zlibrary from https://www.economist.com/finance-and-economics/2026/07/27/how-to-design-paper- money-that-represents-europe</p>
+<p>Finance & economics | <span class="annot" data-tooltip="joint /dʒɔɪnt/ n. 关节；接合处，接合点；接缝；（牛，羊等的腿）大块肉adj. 联合的，合办的；共同的；连接的vt. 连接，贴合；接合；使有">Joint</span> and separate A common European safe <span class="annot" data-tooltip="asset /'æset/ n. 资产；有用的东西；有利条件；优点">asset</span> is still unlikely For that, blame high national debts Jul 30th 2026 Germany’s chancellor, Friedrich Merz, flew to Dublin on July 28th just to hand-deliver a four-letter message: Nein. The recipient, Micheál Martin, his Irish <span class="annot" data-tooltip="counterpart /'kaʊntərpɑːrt/ n. 与对方地位相当的人, 与另一方作用相当的物">counterpart</span>, took over the rotating presidency of the Council of the European Union at the start of the month, and a new seven-year EU budget needs to be hammered out. Embattled at home, in part because of spending cuts and tax increases, Mr Merz insisted that the current <span class="annot" data-tooltip="proposal /prə'poʊzl/ n. 提议，建议；求婚">proposal</span>, around €1.7trn ($2trn), was unacceptable. “We need a budget <span class="annot" data-tooltip="draft /dræft/ n. 汇票；草稿；选派；（尤指房间、烟囱、炉子等供暖系统中的）（小股）气流">draft</span> that cuts across the board—to the <span class="annot" data-tooltip="tune /tuːn/ n. 曲调, 曲子vt. & vi. 调音vt. 调整时 态: tuned, tuning, tunes">tune</span> of several hundred billion euros.” The cuts have to be even larger if the EU also has to start repaying its debt. The bloc has issued €840bn (<span class="annot" data-tooltip="worth /wɜːrθ/ adj. 值…的n. 价值；财产时 态: worthed, worthing, worths">worth</span> about 4.5% of GDP) in the past, mostly to back its post-<span class="annot" data-tooltip="pandemic /pæn'demɪk/ adj. （疾病）在全国（或世界）流行的">pandemic</span> recovery fund (see chart). Servicing and repaying</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>reach</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>revenues</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>essentially</td><td>/ɪ'senʃəli/ adv.</td><td>本质上;根本上必需的</td></tr>
+<tr><td>routines</td><td>— n.</td><td>日常生活；日常活动；常规，惯例（routine的复数）</td></tr>
+<tr><td>processes</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>flammable</td><td>/'flæməbl/ adj.</td><td>易燃的,可燃的</td></tr>
+<tr><td>tensions</td><td>/'tenʃn/ n.</td><td>张力，拉力；紧张，不安；电压vt. 使紧张；使拉紧, tensioning, tensions</td></tr>
+<tr><td>triple</td><td>/'trɪpl/ adj.</td><td>三倍的；三方的n. 三倍数；三个一组vi. 增至三倍vt. 使成三倍, tripling, triples</td></tr>
+<tr><td>ceasefires</td><td>/'siːsfaɪər/ n.</td><td>(通常指永久性的)停火; 停战</td></tr>
+<tr><td>pattern</td><td>/'pætərn/ n.</td><td>型，样式花样，图案方式，形式榜样，典范vt. 模仿； 仿制以图案装饰，patterning，patterns</td></tr>
+<tr><td>breaches</td><td>/briːtʃ/ n.</td><td>破坏, 违反破裂, 不和缺口, 裂口vt. 攻破破坏, 违反, breaching, breaches</td></tr>
+<tr><td>tit</td><td>/tɪt/ n.</td><td>山雀；各种小鸟；乳头；小马；少妇；轻打</td></tr>
+<tr><td>strikes</td><td>/straɪk/ vi.</td><td>罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打, stricken striking, str</td></tr>
+<tr><td>superlative</td><td>/suː'pɜːrlətɪv/ adj.</td><td>最高级的最好的;最优秀的n. (形容词或副词的)最高级(形式)最高级形容词或副词</td></tr>
+<tr><td>reality</td><td>/ri'æləti/ n.</td><td>现实；真实；实际</td></tr>
+<tr><td>traffic</td><td>/'træfɪk/ n.</td><td>交通；贸易；运输；通信量vt. 用…作交换；在…通行vi. 交易，买卖, trafficking, traffics</td></tr>
+<tr><td>strait</td><td>/streɪt/ n.</td><td>海峡；（尤指经济拮据引起的）困境，境况窘迫adj. 狭窄的；苦恼的</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>sole</td><td>/soʊl/ n.</td><td>鞋底；脚底；基础；鳎目鱼adj. 唯一的；单独的；仅有的vt. 上鞋底；触底, soling, soles</td></tr>
+<tr><td>barrel</td><td>/'bærəl/ vt.</td><td>把……装入桶内n. 桶；枪管，炮管vi. 快速移动, barrelled barreling, barrelling barrels, barrels</td></tr>
+<tr><td>crude</td><td>/kruːd/ adj.</td><td>粗糙的；粗鲁的；天然的，未加工的；粗略的n. 天然的物质；原油, crudest</td></tr>
+<tr><td>benchmark</td><td>/'bentʃmɑːrk/ </td><td>基准, benchmarking, benchmarks</td></tr>
+<tr><td>ongoing</td><td>/'ɑːnɡoʊɪŋ/ adj.</td><td>前进的；不间断的，进行的n. 前进；行为，举止</td></tr>
+<tr><td>barrel</td><td>/'bærəl/ vt.</td><td>把……装入桶内n. 桶；枪管，炮管vi. 快速移动, barrelled barreling, barrelling barrels, barrels</td></tr>
+<tr><td>fragile</td><td>/'frædʒl/ adj.</td><td>易碎的，脆的虚弱的，脆弱的；经不起折腾的</td></tr>
+<tr><td>escalations</td><td>/ˌeskə'leɪʃn/ n.</td><td>扩大,增加</td></tr>
+<tr><td>ceasefire</td><td>/'siːsfaɪər/ n.</td><td>(通常指永久性的)停火; 停战</td></tr>
+<tr><td>strait</td><td>/streɪt/ n.</td><td>海峡；（尤指经济拮据引起的）困境，境况窘迫adj. 狭窄的；苦恼的</td></tr>
+<tr><td>facilitates</td><td>/fə'sɪlɪteɪt/ vt.</td><td>使便利, 减轻…的困难, facilitating, facilitates</td></tr>
+<tr><td>breach</td><td>/briːtʃ/ n.</td><td>破坏, 违反破裂, 不和缺口, 裂口vt. 攻破破坏, 违反, breaching, breaches</td></tr>
+<tr><td>fright</td><td>/fraɪt/ n.</td><td>惊恐, 惊吓吓死了；吓了一大跳被…吓着；受惊吓, frighting, frights</td></tr>
+<tr><td>premiums</td><td>/'priːmiəm/ n.</td><td>奖金，津贴；加价；附加费；保险费；额外费用adj. （品质）高级的；优质的，顶级的</td></tr>
+<tr><td>reach</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>ship</td><td>/ʃɪp/ vt.</td><td>运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Division of the Nation</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>severe</td><td>/sɪ'vɪr/ adj.</td><td>严厉的；苛刻的；剧烈的；严峻的, severest</td></tr>
+<tr><td>traffic</td><td>/'træfɪk/ n.</td><td>交通；贸易；运输；通信量vt. 用…作交换；在…通行vi. 交易，买卖, trafficking, traffics</td></tr>
+<tr><td>ships</td><td>/ʃɪp/ vt.</td><td>运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Division of the Nation</td></tr>
+<tr><td>barrels</td><td>/'bærəl/ vt.</td><td>把……装入桶内n. 桶；枪管，炮管vi. 快速移动, barrelled barreling, barrelling barrels, barrels</td></tr>
+<tr><td>tender</td><td>/tend/ vt.</td><td>照料，照顾，伺候vi. 往，朝向易于；倾向，tending，tends</td></tr>
+<tr><td>release</td><td>/rɪ'liːs/ vt.</td><td>释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]，releasing，releases</td></tr>
+<tr><td>serious</td><td>/'sɪriəs/ adj.</td><td>严肃的，严重的；认真的；庄重的；危急的</td></tr>
+<tr><td>concessions</td><td>/kən'seʃn/ n.</td><td>承认, 允许妥协, 让步特许权</td></tr>
+<tr><td>cutting</td><td>/'kʌtɪŋ/ n.</td><td>切断；剪辑；开凿adj. 严寒的；锋利的；尖酸刻薄的v. 切开；采伐；削减（cut的ing形式）</td></tr>
+<tr><td>serious</td><td>/'sɪriəs/ adj.</td><td>严肃的，严重的；认真的；庄重的；危急的</td></tr>
+<tr><td>blockade</td><td>/blɑː'keɪd/ vt.</td><td>封锁n. 阻塞, blockading, blockades</td></tr>
+<tr><td>rebels</td><td>/'rebl/ n.</td><td>反政府的人；反叛者；造反者叛逆者vi. 反抗政府；造反反抗权威；叛逆，rebelling，rebels</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>ports</td><td>/pɔːrt/ n.</td><td>港口，口岸；左舷；舱门；（计算机的）端口vi. 转向左舷vt. 左转舵；持（枪）PORTabbr. Photo Opitical Recorder Tracke</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>ships</td><td>/ʃɪp/ vt.</td><td>运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Division of the Nation</td></tr>
+<tr><td>crude</td><td>/kruːd/ adj.</td><td>粗糙的；粗鲁的；天然的，未加工的；粗略的n. 天然的物质；原油, crudest</td></tr>
+<tr><td>route</td><td>/ruːt，raʊt/ n.</td><td>路, 路途, 路线, 路程, routing, routes</td></tr>
+<tr><td>anxieties</td><td>/æŋ'zaɪəti/ n.</td><td>焦虑；挂念；渴望；令人焦虑的事</td></tr>
+<tr><td>port</td><td>/pɔːrt/ n.</td><td>港口，口岸；左舷；舱门；（计算机的）端口vi. 转向左舷vt. 左转舵；持（枪）PORTabbr. Photo Opitical Recorder Tracke</td></tr>
+<tr><td>handle</td><td>/'hændl/ n.</td><td>柄；把手；手感；口实vt. 买卖；处理；操作；触摸；运用vi. 易于操纵；搬运, handling, handles</td></tr>
+<tr><td>strait</td><td>/streɪt/ n.</td><td>海峡；（尤指经济拮据引起的）困境，境况窘迫adj. 狭窄的；苦恼的</td></tr>
+<tr><td>quarters</td><td>— n.</td><td>住处,岗位</td></tr>
+<tr><td>crude</td><td>/kruːd/ adj.</td><td>粗糙的；粗鲁的；天然的，未加工的；粗略的n. 天然的物质；原油, crudest</td></tr>
+<tr><td>strikes</td><td>/straɪk/ vi.</td><td>罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打, stricken striking, str</td></tr>
+<tr><td>terminal</td><td>/'tɜːrmɪnl/ n.</td><td>终端机；终点；末端；极限adj. 末端的；终点的；晚期的Terminal终端，终端设备(仿真程序)，端子；终结符(T,TERM)</td></tr>
+<tr><td>handles</td><td>— n.</td><td>把；柄；控键（handle的复数形式）v. 操纵；掌握（handle的第三人称单数）</td></tr>
+<tr><td>reductions</td><td>/rɪ'dʌkʃn/ n.</td><td>减少，缩小；减少的量，降价</td></tr>
+<tr><td>strategic</td><td>/strə'tiːdʒɪk/ adj.</td><td>战略(上)的有战略意义的; 至关重要的</td></tr>
+<tr><td>barrels</td><td>/'bærəl/ vt.</td><td>把……装入桶内n. 桶；枪管，炮管vi. 快速移动, barrelled barreling, barrelling barrels, barrels</td></tr>
+<tr><td>practical</td><td>/'præktɪkl/ adj.</td><td>实际的，实践的实用的注重实际的；有实际工作能力的</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>curve</td><td>/kɜːrv/ n.</td><td>曲线；弯曲；曲线球；曲线图表vt. 使弯曲；弯vi. 成曲形adj. 弯曲的；曲线形的, curving, curves</td></tr>
+<tr><td>sloped</td><td>/slɑːp/ vi.</td><td>溢出；泼出在泥浆(或雪泥)中走vt. 使(某物)溢出或泼出(液体)晃荡；(常指)溢出，溅出(在水、泥等里)趟来趟去，走动休息；放松；偷懒(囚犯)倒便桶(液体)晃</td></tr>
+<tr><td>flipped</td><td>/flɪp/ vt.</td><td>轻击；掷vi. 用指轻弹；蹦跳adj. 无礼的；轻率的n. 筋斗；弹FLIPabbr. Floating Indeved Point Arithmetic 变址</td></tr>
+<tr><td>shortages</td><td>/'ʃɔːrtɪdʒ/ n.</td><td>不足; 缺少; 缺少量; 不足额</td></tr>
+<tr><td>crunch</td><td>/krʌntʃ/ n.</td><td>咬碎，咬碎声；扎扎地踏vt. 压碎；嘎扎嘎扎的咬嚼；扎扎地踏过vi. 嘎吱作响地咀嚼；嘎吱嘎吱地踏过, crunching, crunches</td></tr>
+<tr><td>petrol</td><td>/'petrəl/ n.</td><td>汽油</td></tr>
+<tr><td>barrel</td><td>/'bærəl/ vt.</td><td>把……装入桶内n. 桶；枪管，炮管vi. 快速移动, barrelled barreling, barrelling barrels, barrels</td></tr>
+<tr><td>diesel</td><td>/'diːzl/ n.</td><td>柴油机；柴油；（俚）健康的身体adj. 内燃机传动的；供内燃机用的</td></tr>
+<tr><td>affected</td><td>/ə'fekt/ vt.</td><td>影响；假装；感动；感染vi. 倾向；喜欢n. 情感；引起感情的因素, affecting, affects</td></tr>
+<tr><td>commitments</td><td>/kə'mɪtmənt/ n.</td><td>承诺；保证；信奉；献身；委任；花费金钱、时间、人力等</td></tr>
+<tr><td>shrinking</td><td>/ʃrɪŋk/ vt.</td><td>& vi. 收缩；退缩，shrunk shrunk，shrunken shrinking，shrinks</td></tr>
+<tr><td>disruption</td><td>— n.</td><td>中断,分裂,瓦解,破坏</td></tr>
+<tr><td>premium</td><td>/'priːmiəm/ n.</td><td>奖金，津贴；加价；附加费；保险费；额外费用adj. （品质）高级的；优质的，顶级的</td></tr>
+<tr><td>crude</td><td>/kruːd/ adj.</td><td>粗糙的；粗鲁的；天然的，未加工的；粗略的n. 天然的物质；原油, crudest</td></tr>
+<tr><td>consistently</td><td>/kən'sɪstənt/ adj.</td><td>一贯的, 始终如一的一致的, 符合的</td></tr>
+<tr><td>towards</td><td>/tɔːrdz/ prep.</td><td>向，朝为了；有助于；用于对于，关于接近；将近；大约</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>reality</td><td>/ri'æləti/ n.</td><td>现实；真实；实际</td></tr>
+<tr><td>flammable</td><td>/'flæməbl/ adj.</td><td>易燃的,可燃的</td></tr>
+<tr><td>imaginary</td><td>/ɪ'mædʒɪneri/ adj.</td><td>想像中的, 假想的, 虚构的</td></tr>
+<tr><td>rubbing</td><td>/rʌb/ vt.</td><td>擦；摩擦；惹怒vi. 摩擦；擦；擦破n. 摩擦；障碍；磨损处, rubbing, rubs</td></tr>
+<tr><td>novelty</td><td>/'nɑːvlti/ n.</td><td>新颖; 新奇性新奇的人[事物]新颖小巧而价廉的物品</td></tr>
+<tr><td>central</td><td>/'sentrəl/ adj.</td><td>中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的</td></tr>
+<tr><td>narrowed</td><td>/'næroʊ/ adj.</td><td>狭窄的，有限的；度量小的；精密的；勉强的n. 狭窄部分，隘路；海峡vt. 使变狭窄vi. 变窄, narrowest</td></tr>
+<tr><td>principal</td><td>/'prɪnsəpl/ adj.</td><td>最重要的；主要的n. 负责人，校长资本，本金被代理人，委托人</td></tr>
+<tr><td>chemistry</td><td>/'kemɪstri/ n.</td><td>化学</td></tr>
+<tr><td>van</td><td>/væn/ n.</td><td>先锋；厢式货车；[计]增值网vt. 用车搬运Van范(男子名), vanning, vans</td></tr>
+<tr><td>spheres</td><td>/sfɪr/ n.</td><td>范围；球体vt. 包围；放入球内；使…成球形adj. 球体的, sphering, spheres</td></tr>
+<tr><td>choirs</td><td>/'kwaɪər/ n.</td><td>合唱队；唱诗班；舞蹈队vt. 合唱vi. 合唱, choiring, choirs</td></tr>
+<tr><td>peculiar</td><td>/pɪ'kjuːliər/ adj.</td><td>奇怪的, 异常的特有的, 独具的〈非正〉不舒服, 有病的</td></tr>
+<tr><td>crafted</td><td>/kræft/ n.</td><td>手艺；工艺；太空船vt. 精巧地制作, crafting, crafts</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>cap</td><td>/kæp/ n.</td><td>帽子；盖vi. 脱帽致意vt. 覆盖；胜过；给…戴帽；加盖于Cap摩羯座CAPabbr. Common Agricultural Policy (欧共体)共同农</td></tr>
+<tr><td>italian</td><td>/ɪ'tæliən/ adj.</td><td>意大利的；意大利文化的；意大利语的n. 意大利人；意大利语</td></tr>
+<tr><td>bearing</td><td>/'berɪŋ/ n.</td><td>轴承；方位；举止；关系v. 忍受（bear的ing形式）</td></tr>
+<tr><td>joint</td><td>/dʒɔɪnt/ n.</td><td>关节；接合处，接合点；接缝；（牛，羊等的腿）大块肉adj. 联合的，合办的；共同的；连接的vt. 连接，贴合；接合；使有接头vi. 贴合；生节, jointin</td></tr>
+<tr><td>asset</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>counterpart</td><td>/'kaʊntərpɑːrt/ n.</td><td>与对方地位相当的人, 与另一方作用相当的物</td></tr>
+<tr><td>proposal</td><td>/prə'poʊzl/ n.</td><td>提议，建议；求婚</td></tr>
+<tr><td>draft</td><td>/dræft/ n.</td><td>汇票；草稿；选派；（尤指房间、烟囱、炉子等供暖系统中的）（小股）气流</td></tr>
+<tr><td>tune</td><td>/tuːn/ n.</td><td>曲调, 曲子vt. & vi. 调音vt. 调整, tuning, tunes</td></tr>
+<tr><td>worth</td><td>/wɜːrθ/ adj.</td><td>值…的n. 价值；财产, worthing, worths</td></tr>
+<tr><td>pandemic</td><td>/pæn'demɪk/ adj.</td><td>（疾病）在全国（或世界）流行的</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day30.html" class="nav-btn">← Day 30</a>
+  <a href="day32.html" class="nav-btn">Day 32 →</a>
+</div>
+
+<div class="progress">📖 Day 31 of 39</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-08-01</div>
+
+</body>
+</html>

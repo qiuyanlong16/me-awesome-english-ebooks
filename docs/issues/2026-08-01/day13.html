@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>United States | With friends like these</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-08-01</div>
+
+<h1 class="article-title">United States | With friends like these</h1>
+<div class="article-section">United States</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p><span class="annot" data-tooltip="skirmishes /'skɜːrmɪʃ/ n. 小规模战斗；小冲突时 态: skirmished, skirmishing, skirmishes">skirmishes</span>, the bridge is a <span class="annot" data-tooltip="neat /niːt/ adj. 整洁的；未搀水的；优雅的；灵巧的；齐整的；平滑的比较级: neater, neatest">neat</span> parable of how trifling some of these efforts have <span class="annot" data-tooltip="proved /proʊ/ n. 从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞">proved</span> to be. It should instead have been a case study in <span class="annot" data-tooltip="mutual /'mjuːtʃuəl/ adj. 相互的, 彼此的共同的, 共有的名 词: mutuality">mutual</span> benefit. For <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span> there had been only one bridge, the privately owned Ambassador, <span class="annot" data-tooltip="spanning /spæn/ n. 跨度，跨径两个界限间的距离一段时间vt. 建造跨越(某物的)桥或拱；横跨跨越，穿越，贯穿SPANabbr. Statis">spanning</span> the <span class="annot" data-tooltip="stretch /stretʃ/ vt. 伸展,张开vi. 伸展adj. 可伸缩的n. 伸展，延伸时 态: stretched, stretching, stre">stretch</span> of the Detroit river that separates the city from Windsor, Ontario. The bridge has been among the busiest in the Canadian-American trade corridor, handling about a <span class="annot" data-tooltip="quarter /'kwɔːrtər/ n. 四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一时 ">quarter</span> of the countries’ freight trade by lorry. So in 2012, Canada and Michigan agreed to co-<span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> a second bridge, to <span class="annot" data-tooltip="ease /iːz/ vt. 减轻，缓和；使安心n. 安逸，悠闲；轻松，舒适vi. 减轻，缓和；放松；灵活地移动EASEabbr. Electroni">ease</span> <span class="annot" data-tooltip="traffic /'træfɪk/ n. 交通；贸易；运输；通信量vt. 用…作交换；在…通行vi. 交易，买卖时 态: trafficked, traffick">traffic</span> and charge cheaper <span class="annot" data-tooltip="tolls /toʊl/ vt. 征收；敲钟n. 通行费；代价；钟声vi. 鸣钟；征税时 态: tolled, tolling, tolls">tolls</span>. Canada would pay for construction and keep <span class="annot" data-tooltip="toll /toʊl/ vt. 征收；敲钟n. 通行费；代价；钟声vi. 鸣钟；征税时 态: tolled, tolling, tolls">toll</span> profits until it recouped its costs. “This is one of those situations where you should just be happy,” said Rick Snyder, Michigan’s <span class="annot" data-tooltip="republican /rɪ'pʌblɪkən/ adj. 共和国的, 共和政体的n. 拥护共和政体者, 共和主义者名 词: republicanism">Republican</span> governor at the time. After covid-related delays, the bridge was slated to open early this year. Then, in February, Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> threatened to block the opening until America received a 50% <span class="annot" data-tooltip="ownership /'oʊnərʃɪp/ n. 物主的身份；所有(权)，所有制">ownership</span> stake and Canada “compensated” its neighbour for alleged trade <span class="annot" data-tooltip="violations /ˌvaɪə'leɪʃn/ n. 违反, 冒犯, 侵害违反(行为、事例)强奸">violations</span>. More <span class="annot" data-tooltip="narrowly /'næroʊ/ adj. 狭窄的，有限的；度量小的；精密的；勉强的n. 狭窄部分，隘路；海峡vt. 使变狭窄vi. 变窄比较级: narrower">narrowly</span>, he also appears to have been lobbied by Matthew Moroun, who owns the Ambassador bridge and who had given $1m to a MAGA super political-action committee. Democrats in Congress launched an inquiry, to which Mr Moroun did not respond. A planned opening in June was cancelled. In mid-July the countries announced they had struck a new “agreement in principle”. Canada would give an American fund 50% of <span class="annot" data-tooltip="net /net/ n. 网；净利；网络；实价vi. 编网vt. 净赚；得到；用网捕adj. 纯粹的；净余的时 态: netted, nettin">net</span> profits, minus undefined “operating costs”, over 15 years. But any profits will take years to materialise. The new deal is “a face-saving exit” for the Trump administration, says Christopher Sands of Johns Hopkins University. It is unclear what has been gained from this spat. It imposed real costs on companies seeking transport between Canada and America, as well as on Canada’s bridge <span class="annot" data-tooltip="authority /ə'θɔːrəti/ n. 威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗">authority</span>, of $6m-7m a week since February, according to the Anderson Economic <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">Group</span>, a consultancy. Talks over a renewed trade deal with Canada continue, with Mr Trump using the threat of new <span class="annot" data-tooltip="tariffs /'tærɪf/ n. 关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表时 态: tariffed, tariffing, tar">tariffs</span> to try to win <span class="annot" data-tooltip="concessions /kən'seʃn/ n. 承认, 允许妥协, 让步特许权形容词: concessional">concessions</span>. But the bridge fight is over, and may not make Mark Carney, Canada’s prime minister, more inclined to accept Mr Trump’s <span class="annot" data-tooltip="terms /tɜːrmz/ n. 条款；地位，关系；措辞；术语；价钱（term的复数形式）v. 把…称为（term的三单形式）">terms</span> on trade. Vexed Canadians have taken an “elbows up” approach to American <span class="annot" data-tooltip="bullying /'bʊli/ v. 迫使；胁迫欺负；恐吓；欺凌n. 恃强凌弱者；恶霸adj. 顶好的，快活的，第一流的时 态: bullied，bullyi">bullying</span>. It was Howe’s preferred tactic.■</p>
+<p>Stay on top of American politics with The US in brief, our daily newsletter with fast analysis of the most important political news, and Checks and Balance, a weekly note that examines the state of American <span class="annot" data-tooltip="democracy /dɪ'mɑːkrəsi/ n. 民主, 民主制民主国家">democracy</span> and the <span class="annot" data-tooltip="issues /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issues</span> that matter to voters. This article was downloaded by zlibrary from https://www.economist.com/united-states/2026/07/30/how-to-turn-solutions-into- problems</p>
+<div class="article-separator"></div>
+<div class="article-header">United States · United States | Doom to boom</div>
+<p>The <span class="annot" data-tooltip="tide /taɪd/ n. 潮汐；趋势，潮流vt. 随潮漂流时 态: tided, tiding, tides">tide</span> turns for a Florida darling and California loser Miami faces new problems as San Francisco makes a comeback Jul 30th 2026 ON A <span class="annot" data-tooltip="chilly /'tʃɪli/ adj. （天气、房间或人体）寒冷的，凉飕飕的；冷淡的，不友好的比较级: chillier, chilliest">CHILLY</span> night in San Francisco this summer, Persia, a drag queen in a gold dress, danced around a crowd gathered before a big screen to watch the World Cup. “<span class="annot" data-tooltip="hopefully /'hoʊpfəli/ adv. 怀有希望地；如果顺利的话，可望">Hopefully</span> that <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span> will go to Team USA!” she wheezed, out of <span class="annot" data-tooltip="breath /breθ/ n. 气息；呼吸(一次)呼吸，一口气；微风">breath</span> (it didn’t). As Daniel Lurie, the city’s mayor, talked about San Francisco’s recovery from the <span class="annot" data-tooltip="pandemic /pæn'demɪk/ adj. （疾病）在全国（或世界）流行的">pandemic</span>, he <span class="annot" data-tooltip="jerked /dʒɜːrk/ n. 肌肉抽搐；性情古怪的人；蠢人；急拉vi. 痉挛；急拉；颠簸地行进vt. 猛拉时 态: jerked, jerking, ">jerked</span> his head around to check the score. “The city is on the <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span>,” he insisted, as he gestured at the party before him. “But it’s <span class="annot" data-tooltip="fragile /'frædʒl/ adj. 易碎的，脆的虚弱的，脆弱的；经不起折腾的名 词: fragility">fragile</span>.” Such a <span class="annot" data-tooltip="scene /siːn/ n. 情景；景象；场面；事件">scene</span> would have been unthinkable a few years ago. During and after the covid pandemic, tech workers toiled remotely, the Financial District was a ghost town and homelessness and public drug use were ubiquitous. Pundits</p>
+<p><span class="annot" data-tooltip="wondered /'wʌndər/ vt. & vi. 对…感到疑惑想知道；问自己n. 惊奇，惊叹，惊异，惊诧奇人，奇才奇观，奇景，奇迹，奇事时 态: wonder">wondered</span> whether a “<span class="annot" data-tooltip="doom /duːm/ vt. 注定；判定n. 厄运，劫数时 态: doomed，dooming，dooms">doom</span> loop” would sink the world’s tech capital. People <span class="annot" data-tooltip="flocked /flɑːk/ n. 群；棉束（等于floc）vt. 用棉束填满vi. 聚集；成群而行Flock(瑞士)弗洛克(很短的粘胶短纤维)时 态: f">flocked</span> to cities with lower taxes and cheaper housing, like Austin, <span class="annot" data-tooltip="texas /'teksəs/ n. 德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室">Texas</span> and Miami, Florida. <span class="annot" data-tooltip="republicans /rɪ'pʌblɪkən/ adj. 共和国的, 共和政体的n. 拥护共和政体者, 共和主义者名 词: republicanism">Republicans</span> argued that Americans were voting with their feet by leaving states run by Democrats. New political rivalries were born. During “The Great Red v Blue State Debate” in 2023, Fox News <span class="annot" data-tooltip="pitted /pɪt/ n. 深坑；矿井；陷阱；（英国剧场的）正厅后排；（物体或人体表面上的）凹陷；正厅后排的观众vt. 窖藏；使竞争；使凹下；去…之">pitted</span> Gavin Newsom, the governor of California, against Ron DeSantis, the governor of Florida. Mr DeSantis gloated that California “ran out of U- Hauls” because so many <span class="annot" data-tooltip="residents /'rezɪdənt/ adj. 定居的; 常驻的n. 居民(旅馆的)住宿者">residents</span> were fleeing. He held up a map of San Francisco that <span class="annot" data-tooltip="marked /mɑːr/ vt. 毁坏；损坏；玷污MARabbr. Master of Arts in Religion 宗教硕士Mar三月(March)">marked</span> all the <span class="annot" data-tooltip="places /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">places</span> where human faeces had been found. Yet <span class="annot" data-tooltip="pandemic /pæn'demɪk/ adj. （疾病）在全国（或世界）流行的">pandemic</span> losers and pandemic darlings do not always stay thus. Six years after the world locked down, San Francisco and Miami have seen a reversal in their <span class="annot" data-tooltip="fortunes /'fɔːrtʃən/ n. 运气；财富；命运vt. 给予财富vi. 偶然发生时 态: fortuned, fortuning, fortunes">fortunes</span>. In 2021, San Francisco lost the <span class="annot" data-tooltip="equivalent /ɪ'kwɪvələnt/ adj. 等同的，等效的n. 对等的人（或事物），对应的人（或事物）">equivalent</span> of <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> 7% of its population to out-<span class="annot" data-tooltip="migration /maɪ'ɡreɪʃn/ n. 迁移, 移居">migration</span>, but the exodus has subsided (see chart). Greater Miami lost the equivalent of 3% of its population <span class="annot" data-tooltip="due /duː/ adj. 到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）">due</span> to <span class="annot" data-tooltip="domestic /də'mestɪk/ adj. 国内的；家庭的；驯养的；一心只管家务的">domestic</span> out-migration in 2025, a higher share than any other large county in America. There are two <span class="annot" data-tooltip="main /meɪn/ adj. 主要的; 最重要的n. 总管道; 干线">main</span> <span class="annot" data-tooltip="trends /trend/ n. 趋势, 倾向流行时 态: trended, trending, trends">trends</span> behind San Francisco’s recovery. The first is a political reckoning that began in 2022, when voters <span class="annot" data-tooltip="booted /buːt/ vt. 使穿靴；引导；踢；解雇n. 靴子；汽车行李箱；踢时 态: booted, booting, boots">booted</span> their <span class="annot" data-tooltip="progressive /prə'ɡresɪv/ adj. 不断前进的, 有进展的, 逐渐上升的进步的, 先进的副 词: progressively">progressive</span> district <span class="annot" data-tooltip="attorney /ə'tɜːrni/ n. 代理人, 律师名 词: attorneyship">attorney</span> and three school board members from office. The city’s <span class="annot" data-tooltip="moderate /'mɑːdərət/ adj. 中等的，适度的，不很大的温和的；有节制的中庸的，稳健的，不走极端的vt. & vi. (使)减轻[缓和]；节制时 态: ">moderate</span> moment continued in 2024, when San Franciscans elected Mr</p>
+<p>Lurie, an heir to the Levi Strauss <span class="annot" data-tooltip="fortune /'fɔːrtʃən/ n. 运气；财富；命运vt. 给予财富vi. 偶然发生时 态: fortuned, fortuning, fortunes">fortune</span>, who promised to clean up the streets and boost the city’s economy. Mr Lurie has set about <span class="annot" data-tooltip="plugging /plʌɡ/ n. 栓；插头；塞子vi. 塞住；用插头将与电源接通vt. 塞住；插入；接插头时 态: plugged, plugging, ">plugging</span> budget deficits, trying to speed up permitting and advocating against new business taxes. At a moment when some other big cities are <span class="annot" data-tooltip="flirting /flɜːrt/ v. 调情玩儿似地想做某事；冒险；不顾危险后果（flirt with）n. 与多人调情的人时 态: flirted, flir">flirting</span> with <span class="annot" data-tooltip="socialism /'soʊʃəlɪzəm/ n. 社会主义">socialism</span>, San Francisco, usually a standard-bearer for <span class="annot" data-tooltip="progressive /prə'ɡresɪv/ adj. 不断前进的, 有进展的, 逐渐上升的进步的, 先进的副 词: progressively">progressive</span> politics, has become an unlikely paragon of pragmatism. Second, the AI boom has injected new life into <span class="annot" data-tooltip="downtown /ˌdaʊn'taʊn/ adv. 在市中心；往市中心（尤指商业中心区）adj. 商业区的；市中心的；闹市区的n. 市中心；市中心区；（市中）商业区">downtown</span>. The city’s office- vacancy rate is still higher than in other global tech hubs, but it is <span class="annot" data-tooltip="falling /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">falling</span>. Between 2019 and 2026 San Francisco and <span class="annot" data-tooltip="silicon /'sɪlɪkən/ n. 〈化〉硅">Silicon</span> <span class="annot" data-tooltip="valley /'væli/ n. 流域；山谷；溪谷">Valley</span>, just down the road, accounted for two-thirds of all square <span class="annot" data-tooltip="footage /'fʊtɪdʒ/ n. 连续镜头；英尺长度；以尺计算长度">footage</span> leased by AI firms in the six largest AI markets, according to CBRE, a <span class="annot" data-tooltip="property /'prɑːpərti/ n. 财产；性质，性能；所有权形容词: propertyless">property</span> firm. Yet fears of a <span class="annot" data-tooltip="bubble /'bʌbl/ n. 气泡，泡沫，泡状物；透明圆形罩，圆形顶vi. 沸腾，冒泡；发出气泡声vt. 使冒泡；滔滔不绝地说时 态: bubbled">bubble</span> can make it hard to plan. “The thing about AI is nobody knows how big the iceberg is that you’re looking at the tip of,” says Ted Egan, San Francisco’s chief economist. Enrique Landa, a developer, has a sunnier view. “This city has a 150-year track record of setting itself on fire every 20 years and coming back,” says Mr Landa. He offers the gold rush, the 1906 earthquake and the dotcom bubble as evidence of a boom-<span class="annot" data-tooltip="bust /bʌst/ vi. 爆裂；破产；降低级别vt. 使爆裂；使破产；逮捕n. 半身像；胸部；萧条；破产adj. 破产了的；毁坏了的时 态: bu">bust</span> cycle. For now, he’s content to “make hay when the sun is shining”. In recent years Miami has enjoyed its <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> boom, with total <span class="annot" data-tooltip="net /net/ n. 网；净利；网络；实价vi. 编网vt. 净赚；得到；用网捕adj. 纯粹的；净余的时 态: netted, nettin">net</span> <span class="annot" data-tooltip="migration /maɪ'ɡreɪʃn/ n. 迁移, 移居">migration</span>, including from abroad, jumping from -25,000 to 50,000 from 2021 to 2023. “Hope is what Miami has always sold,” says Fernand Amandi, a longtime <span class="annot" data-tooltip="democratic /ˌdemə'krætɪk/ adj. 民主的, 有民主精神或作风的副 词: democratically">Democratic</span> operative in the city. “It’s the appeal of the <span class="annot" data-tooltip="velvet /'velvɪt/ n. 天鹅绒，丝绒；天鹅绒似的东西adj. 天鹅绒的">velvet</span> rope at the nightclub that one day you’ll be able to get past.” Low taxes, lax <span class="annot" data-tooltip="pandemic /pæn'demɪk/ adj. （疾病）在全国（或世界）流行的">pandemic</span> policies and sandy beaches haven’t hurt. However the population of Miami-Dade County, which contains the city, is now ebbing. International migration halved from 2023 to 2025, <span class="annot" data-tooltip="due /duː/ adj. 到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）">due</span> largely to Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s immigration policies. The city’s other problem is borne of success. Home prices in the county have risen by 58% since 2020, compared with a national average of 44%. As a share of income, Miamians now pay more for housing than <span class="annot" data-tooltip="residents /'rezɪdənt/ adj. 定居的; 常驻的n. 居民(旅馆的)住宿者">residents</span> in any other big American city, including San Francisco and New York. Residents who cannot afford these costs are now leaving. The average <span class="annot" data-tooltip="household /'haʊshoʊld/ n. 同住在一所房子里的人, 一家人, 户adj. 家庭的, 家用的">household</span> that moved out of Miami-Dade County in 2023 <span class="annot" data-tooltip="earned /ɪr/ n. 耳朵；听觉；倾听；穗vi. （美俚）听见；抽穗EARabbr. East African Railways 东非铁路公司">earned</span> about 40% less than the average newcomer, according to the most recent data from the</p>
+<p><span class="annot" data-tooltip="internal /ɪn'tɜːrnl/ adj. 国内的；内部的；内在的名 词: internality">Internal</span> <span class="annot" data-tooltip="revenue /'revənuː/ n. 收入，收益；财政收入，税收">Revenue</span> Service. This imbalance may become more extreme. “During covid we had lots of millionaires and multimillionaires move here; now you’re really seeing a billionaire movement,” says Daniel de la Vega of ONE Sotheby’s, a top luxury developer in Miami. He reckons that animus toward the uber-rich in other cities is one reason billionaires are fleeing to the beach. New York has a new tax on pieds-à-terre, and California is <span class="annot" data-tooltip="considering /kən'sɪdərɪŋ/ prep. 考虑到, 就…而论adv. 从各方面考虑, 从通盘考虑">considering</span> a <span class="annot" data-tooltip="wealth /welθ/ n. 财富；大量；富有">wealth</span> tax on billionaires. Sergey Brin and Larry Page, Google’s founders, fled <span class="annot" data-tooltip="silicon /'sɪlɪkən/ n. 〈化〉硅">Silicon</span> <span class="annot" data-tooltip="valley /'væli/ n. 流域；山谷；溪谷">Valley</span> for Miami last year. Locals in Miami fear they are <span class="annot" data-tooltip="falling /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">falling</span> into a familiar trap. “We could become a San Francisco, with massive wealth <span class="annot" data-tooltip="alongside /əˌlɔːŋ'saɪd/ adv. 靠着边，沿着边prep. (表示位置)在…旁边；沿着…的边；与…并排靠拢着(表示比较)与…放在一起比较(表示伴随)与…一">alongside</span> homelessness,” says Annie Lord of Miami Homes for All, a non-profit. Tax data suggest that San Francisco’s new <span class="annot" data-tooltip="residents /'rezɪdənt/ adj. 定居的; 常驻的n. 居民(旅馆的)住宿者">residents</span> earn about 25% less than those leaving it. Nevertheless, both Miami and San Francisco face the possibility of becoming <span class="annot" data-tooltip="places /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">places</span> for plutocrats to enjoy their palazzos, while their housekeepers live two hours away. The task for Miami’s politicians, and one that continues to vex San Francisco’s, is to ensure their cities can work for a wide swathe of residents, rather than a select few. When one of your correspondents met Mr Egan at Holbrook House, a newish <span class="annot" data-tooltip="restaurant /'restrɑːnt/ n. 饭店, 餐馆">restaurant</span> in San Francisco, a waiter offered her a tableside champagne <span class="annot" data-tooltip="cart /kɑːrt/ n. 运货马车；手推车vt. 用马车载运时 态: carted，carting，carts">cart</span> (she declined). “The seafood tower and <span class="annot" data-tooltip="caviar /'kæviɑːr/ n. 鱼子酱">caviar</span> are new since the last time I was here,” says Mr Egan. “Walk in, have a $250 spoon of caviar, walk out like it’s a Starbucks.” Eileen Higgins, Miami’s new mayor, wants to build more affordable homes. “There’s all kinds of ways you can do this,” she told her fellow mayors at a recent <span class="annot" data-tooltip="conference /'kɑːnfərəns/ n. 会议讨论, 商谈形容词: conferential">conference</span> in California, including making it easier to build housing near public transport. For private developers, however, the more obvious <span class="annot" data-tooltip="immediate /ɪ'miːdiət/ adj. 立即的，即刻的；紧迫的目前的，当前的直接的最接近的名 词: immediateness">immediate</span> opportunity is to serve the rich. The average home price in Pacific Heights, a posh part of San Francisco, has risen 14% in the past year. Building <span class="annot" data-tooltip="crews /kruː/ n. 全体人员，全体船员；队，组vi. 一起工作vt. 使当船员时 态: crewed, crewing, crews">crews</span> are hard at work on Miami Beach’s gated islands; they’re <span class="annot" data-tooltip="tearing /tɪr，ter/ v. 撕掉，扯下；撕破；拔掉；拉伤；（非正式）狂奔；饱经……摧残；流眼泪n. 眼泪；（撕破的）洞或裂缝， 撕扯时 态: tor">tearing</span> down stucco bungalows to build “<span class="annot" data-tooltip="tropical /'trɑːpɪkl/ adj. 热带的；酷热的；热情的">tropical</span> modern” megamansions.■ Stay on top of American politics with The US in brief, our daily newsletter with fast analysis of the most important political news, and Checks and Balance, a weekly note that examines the state of American <span class="annot" data-tooltip="democracy /dɪ'mɑːkrəsi/ n. 民主, 民主制民主国家">democracy</span> and the <span class="annot" data-tooltip="issues /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issues</span> that matter to voters.</p>
+<p>This article was downloaded by zlibrary from https://www.economist.com/united-states/2026/07/28/the-<span class="annot" data-tooltip="tide /taɪd/ n. 潮汐；趋势，潮流vt. 随潮漂流时 态: tided, tiding, tides">tide</span>-turns-for-a-florida- darling-and-california-loser</p>
+<div class="article-separator"></div>
+<div class="article-header">United States · United States | Who’s picking up the tab?</div>
+<p>Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s food-<span class="annot" data-tooltip="stamp /stæmp/ n. 邮票；印记；跺脚；标志vt. 铭记；标出；盖章于…；贴邮票于…；用脚踩踏vi. 捣碎；跺脚；毁掉时 态: stamped">stamp</span> overhaul is beginning to <span class="annot" data-tooltip="bite /baɪt/ vt. & vi. 咬, 叮n. 咬咬伤, 叮伤">bite</span> <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">Federal</span> <span class="annot" data-tooltip="reforms /rɪ'fɔːrm/ n. 改革，改良，改造vt. & vi. 改革；改造；改善时 态: reformed，reforming，reforms">reforms</span> have left the states with a growing bill Jul 30th 2026 On a recent morning in Tucson, Wayne Zhang pulled his car around the back of a church. His 92-year-old father, Youde, who has <span class="annot" data-tooltip="dementia /dɪ'menʃə/ n. 〈医〉痴呆">dementia</span>, sat beside him. They parked <span class="annot" data-tooltip="alongside /əˌlɔːŋ'saɪd/ adv. 靠着边，沿着边prep. (表示位置)在…旁边；沿着…的边；与…并排靠拢着(表示比较)与…放在一起比较(表示伴随)与…一">alongside</span> a row of saguaro cacti and palo verde trees as volunteers from the Interfaith Community Services food bank loaded boxes of tuna, peanut <span class="annot" data-tooltip="butter /bʌt/ n. 笑柄；烟头；屁股；靶垛；粗大的一端vt. 以头抵撞；碰撞时 态: butted, butting, butts">butter</span> and rice into their trunk. Youde receives money from the Supplemental Nutrition Assistance Programme (<span class="annot" data-tooltip="snap /snæp/ vt. 猛咬；突然折断，拉断；啪地关上vi. 咬；厉声说；咯嗒一声关上n. 猛咬；劈啪声；突然折断adj. 突然的SNAPabb">snap</span>), a federal welfare scheme known as food <span class="annot" data-tooltip="stamps /stæmp/ n. 邮票；印记；跺脚；标志vt. 铭记；标出；盖章于…；贴邮票于…；用脚踩踏vi. 捣碎；跺脚；毁掉时 态: stamped">stamps</span>. But recently his monthly benefits were cut from $293 to $161. Adjusting has been difficult, says Wayne. “Here we can get my dad a little bit more food.”</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>skirmishes</td><td>/'skɜːrmɪʃ/ n.</td><td>小规模战斗；小冲突, skirmishing, skirmishes</td></tr>
+<tr><td>neat</td><td>/niːt/ adj.</td><td>整洁的；未搀水的；优雅的；灵巧的；齐整的；平滑的, neatest</td></tr>
+<tr><td>proved</td><td>/proʊ/ n.</td><td>从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞成；支持Pro脯氨酸PROabbr. P</td></tr>
+<tr><td>mutual</td><td>/'mjuːtʃuəl/ adj.</td><td>相互的, 彼此的共同的, 共有的</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>spanning</td><td>/spæn/ n.</td><td>跨度，跨径两个界限间的距离一段时间vt. 建造跨越(某物的)桥或拱；横跨跨越，穿越，贯穿SPANabbr. Statistical Processing and</td></tr>
+<tr><td>stretch</td><td>/stretʃ/ vt.</td><td>伸展,张开vi. 伸展adj. 可伸缩的n. 伸展，延伸, stretching, stretches</td></tr>
+<tr><td>quarter</td><td>/'kwɔːrtər/ n.</td><td>四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一, quartering, quarters</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>ease</td><td>/iːz/ vt.</td><td>减轻，缓和；使安心n. 安逸，悠闲；轻松，舒适vi. 减轻，缓和；放松；灵活地移动EASEabbr. Electronic Airborne Systems E</td></tr>
+<tr><td>traffic</td><td>/'træfɪk/ n.</td><td>交通；贸易；运输；通信量vt. 用…作交换；在…通行vi. 交易，买卖, trafficking, traffics</td></tr>
+<tr><td>tolls</td><td>/toʊl/ vt.</td><td>征收；敲钟n. 通行费；代价；钟声vi. 鸣钟；征税, tolling, tolls</td></tr>
+<tr><td>toll</td><td>/toʊl/ vt.</td><td>征收；敲钟n. 通行费；代价；钟声vi. 鸣钟；征税, tolling, tolls</td></tr>
+<tr><td>republican</td><td>/rɪ'pʌblɪkən/ adj.</td><td>共和国的, 共和政体的n. 拥护共和政体者, 共和主义者</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>ownership</td><td>/'oʊnərʃɪp/ n.</td><td>物主的身份；所有(权)，所有制</td></tr>
+<tr><td>violations</td><td>/ˌvaɪə'leɪʃn/ n.</td><td>违反, 冒犯, 侵害违反(行为、事例)强奸</td></tr>
+<tr><td>narrowly</td><td>/'næroʊ/ adj.</td><td>狭窄的，有限的；度量小的；精密的；勉强的n. 狭窄部分，隘路；海峡vt. 使变狭窄vi. 变窄, narrowest</td></tr>
+<tr><td>net</td><td>/net/ n.</td><td>网；净利；网络；实价vi. 编网vt. 净赚；得到；用网捕adj. 纯粹的；净余的, netting, nets</td></tr>
+<tr><td>authority</td><td>/ə'θɔːrəti/ n.</td><td>威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>tariffs</td><td>/'tærɪf/ n.</td><td>关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表, tariffing, tariffs</td></tr>
+<tr><td>concessions</td><td>/kən'seʃn/ n.</td><td>承认, 允许妥协, 让步特许权</td></tr>
+<tr><td>terms</td><td>/tɜːrmz/ n.</td><td>条款；地位，关系；措辞；术语；价钱（term的复数形式）v. 把…称为（term的三单形式）</td></tr>
+<tr><td>bullying</td><td>/'bʊli/ v.</td><td>迫使；胁迫欺负；恐吓；欺凌n. 恃强凌弱者；恶霸adj. 顶好的，快活的，第一流的，bullying，bullies</td></tr>
+<tr><td>democracy</td><td>/dɪ'mɑːkrəsi/ n.</td><td>民主, 民主制民主国家</td></tr>
+<tr><td>issues</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>tide</td><td>/taɪd/ n.</td><td>潮汐；趋势，潮流vt. 随潮漂流, tiding, tides</td></tr>
+<tr><td>chilly</td><td>/'tʃɪli/ adj.</td><td>（天气、房间或人体）寒冷的，凉飕飕的；冷淡的，不友好的, chilliest</td></tr>
+<tr><td>hopefully</td><td>/'hoʊpfəli/ adv.</td><td>怀有希望地；如果顺利的话，可望</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>breath</td><td>/breθ/ n.</td><td>气息；呼吸(一次)呼吸，一口气；微风</td></tr>
+<tr><td>pandemic</td><td>/pæn'demɪk/ adj.</td><td>（疾病）在全国（或世界）流行的</td></tr>
+<tr><td>jerked</td><td>/dʒɜːrk/ n.</td><td>肌肉抽搐；性情古怪的人；蠢人；急拉vi. 痉挛；急拉；颠簸地行进vt. 猛拉, jerking, jerks</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>fragile</td><td>/'frædʒl/ adj.</td><td>易碎的，脆的虚弱的，脆弱的；经不起折腾的</td></tr>
+<tr><td>scene</td><td>/siːn/ n.</td><td>情景；景象；场面；事件</td></tr>
+<tr><td>wondered</td><td>/'wʌndər/ vt.</td><td>& vi. 对…感到疑惑想知道；问自己n. 惊奇，惊叹，惊异，惊诧奇人，奇才奇观，奇景，奇迹，奇事，wondering，wonders</td></tr>
+<tr><td>doom</td><td>/duːm/ vt.</td><td>注定；判定n. 厄运，劫数，dooming，dooms</td></tr>
+<tr><td>flocked</td><td>/flɑːk/ n.</td><td>群；棉束（等于floc）vt. 用棉束填满vi. 聚集；成群而行Flock(瑞士)弗洛克(很短的粘胶短纤维), flocking, flocks</td></tr>
+<tr><td>texas</td><td>/'teksəs/ n.</td><td>德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室)</td></tr>
+<tr><td>republicans</td><td>/rɪ'pʌblɪkən/ adj.</td><td>共和国的, 共和政体的n. 拥护共和政体者, 共和主义者</td></tr>
+<tr><td>pitted</td><td>/pɪt/ n.</td><td>深坑；矿井；陷阱；（英国剧场的）正厅后排；（物体或人体表面上的）凹陷；正厅后排的观众vt. 窖藏；使竞争；使凹下；去…之核；使留疤痕vi. 凹陷；起凹点PITa</td></tr>
+<tr><td>residents</td><td>/'rezɪdənt/ adj.</td><td>定居的; 常驻的n. 居民(旅馆的)住宿者</td></tr>
+<tr><td>marked</td><td>/mɑːr/ vt.</td><td>毁坏；损坏；玷污MARabbr. Master of Arts in Religion 宗教硕士Mar三月(March)，marring，mars</td></tr>
+<tr><td>places</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>pandemic</td><td>/pæn'demɪk/ adj.</td><td>（疾病）在全国（或世界）流行的</td></tr>
+<tr><td>fortunes</td><td>/'fɔːrtʃən/ n.</td><td>运气；财富；命运vt. 给予财富vi. 偶然发生, fortuning, fortunes</td></tr>
+<tr><td>equivalent</td><td>/ɪ'kwɪvələnt/ adj.</td><td>等同的，等效的n. 对等的人（或事物），对应的人（或事物）</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>migration</td><td>/maɪ'ɡreɪʃn/ n.</td><td>迁移, 移居</td></tr>
+<tr><td>due</td><td>/duː/ adj.</td><td>到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）</td></tr>
+<tr><td>domestic</td><td>/də'mestɪk/ adj.</td><td>国内的；家庭的；驯养的；一心只管家务的</td></tr>
+<tr><td>main</td><td>/meɪn/ adj.</td><td>主要的; 最重要的n. 总管道; 干线</td></tr>
+<tr><td>trends</td><td>/trend/ n.</td><td>趋势, 倾向流行, trending, trends</td></tr>
+<tr><td>booted</td><td>/buːt/ vt.</td><td>使穿靴；引导；踢；解雇n. 靴子；汽车行李箱；踢, booting, boots</td></tr>
+<tr><td>progressive</td><td>/prə'ɡresɪv/ adj.</td><td>不断前进的, 有进展的, 逐渐上升的进步的, 先进的</td></tr>
+<tr><td>attorney</td><td>/ə'tɜːrni/ n.</td><td>代理人, 律师</td></tr>
+<tr><td>moderate</td><td>/'mɑːdərət/ adj.</td><td>中等的，适度的，不很大的温和的；有节制的中庸的，稳健的，不走极端的vt. & vi. (使)减轻[缓和]；节制，moderating，moderates</td></tr>
+<tr><td>fortune</td><td>/'fɔːrtʃən/ n.</td><td>运气；财富；命运vt. 给予财富vi. 偶然发生, fortuning, fortunes</td></tr>
+<tr><td>plugging</td><td>/plʌɡ/ n.</td><td>栓；插头；塞子vi. 塞住；用插头将与电源接通vt. 塞住；插入；接插头, plugging, plugs</td></tr>
+<tr><td>flirting</td><td>/flɜːrt/ v.</td><td>调情玩儿似地想做某事；冒险；不顾危险后果（flirt with）n. 与多人调情的人, flirting, flirts</td></tr>
+<tr><td>socialism</td><td>/'soʊʃəlɪzəm/ n.</td><td>社会主义</td></tr>
+<tr><td>progressive</td><td>/prə'ɡresɪv/ adj.</td><td>不断前进的, 有进展的, 逐渐上升的进步的, 先进的</td></tr>
+<tr><td>downtown</td><td>/ˌdaʊn'taʊn/ adv.</td><td>在市中心；往市中心（尤指商业中心区）adj. 商业区的；市中心的；闹市区的n. 市中心；市中心区；（市中）商业区</td></tr>
+<tr><td>falling</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>silicon</td><td>/'sɪlɪkən/ n.</td><td>〈化〉硅</td></tr>
+<tr><td>valley</td><td>/'væli/ n.</td><td>流域；山谷；溪谷</td></tr>
+<tr><td>footage</td><td>/'fʊtɪdʒ/ n.</td><td>连续镜头；英尺长度；以尺计算长度</td></tr>
+<tr><td>property</td><td>/'prɑːpərti/ n.</td><td>财产；性质，性能；所有权</td></tr>
+<tr><td>bubble</td><td>/'bʌbl/ n.</td><td>气泡，泡沫，泡状物；透明圆形罩，圆形顶vi. 沸腾，冒泡；发出气泡声vt. 使冒泡；滔滔不绝地说, bubbling, bubbles</td></tr>
+<tr><td>bust</td><td>/bʌst/ vi.</td><td>爆裂；破产；降低级别vt. 使爆裂；使破产；逮捕n. 半身像；胸部；萧条；破产adj. 破产了的；毁坏了的, busting, busts</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>net</td><td>/net/ n.</td><td>网；净利；网络；实价vi. 编网vt. 净赚；得到；用网捕adj. 纯粹的；净余的, netting, nets</td></tr>
+<tr><td>migration</td><td>/maɪ'ɡreɪʃn/ n.</td><td>迁移, 移居</td></tr>
+<tr><td>democratic</td><td>/ˌdemə'krætɪk/ adj.</td><td>民主的, 有民主精神或作风的</td></tr>
+<tr><td>velvet</td><td>/'velvɪt/ n.</td><td>天鹅绒，丝绒；天鹅绒似的东西adj. 天鹅绒的</td></tr>
+<tr><td>pandemic</td><td>/pæn'demɪk/ adj.</td><td>（疾病）在全国（或世界）流行的</td></tr>
+<tr><td>due</td><td>/duː/ adj.</td><td>到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>residents</td><td>/'rezɪdənt/ adj.</td><td>定居的; 常驻的n. 居民(旅馆的)住宿者</td></tr>
+<tr><td>household</td><td>/'haʊshoʊld/ n.</td><td>同住在一所房子里的人, 一家人, 户adj. 家庭的, 家用的</td></tr>
+<tr><td>earned</td><td>/ɪr/ n.</td><td>耳朵；听觉；倾听；穗vi. （美俚）听见；抽穗EARabbr. East African Railways 东非铁路公司, earing, ears</td></tr>
+<tr><td>internal</td><td>/ɪn'tɜːrnl/ adj.</td><td>国内的；内部的；内在的</td></tr>
+<tr><td>revenue</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>considering</td><td>/kən'sɪdərɪŋ/ prep.</td><td>考虑到, 就…而论adv. 从各方面考虑, 从通盘考虑</td></tr>
+<tr><td>wealth</td><td>/welθ/ n.</td><td>财富；大量；富有</td></tr>
+<tr><td>silicon</td><td>/'sɪlɪkən/ n.</td><td>〈化〉硅</td></tr>
+<tr><td>valley</td><td>/'væli/ n.</td><td>流域；山谷；溪谷</td></tr>
+<tr><td>falling</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>alongside</td><td>/əˌlɔːŋ'saɪd/ adv.</td><td>靠着边，沿着边prep. (表示位置)在…旁边；沿着…的边；与…并排靠拢着(表示比较)与…放在一起比较(表示伴随)与…一起，与…一道</td></tr>
+<tr><td>residents</td><td>/'rezɪdənt/ adj.</td><td>定居的; 常驻的n. 居民(旅馆的)住宿者</td></tr>
+<tr><td>places</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>restaurant</td><td>/'restrɑːnt/ n.</td><td>饭店, 餐馆</td></tr>
+<tr><td>cart</td><td>/kɑːrt/ n.</td><td>运货马车；手推车vt. 用马车载运，carting，carts</td></tr>
+<tr><td>caviar</td><td>/'kæviɑːr/ n.</td><td>鱼子酱</td></tr>
+<tr><td>conference</td><td>/'kɑːnfərəns/ n.</td><td>会议讨论, 商谈</td></tr>
+<tr><td>immediate</td><td>/ɪ'miːdiət/ adj.</td><td>立即的，即刻的；紧迫的目前的，当前的直接的最接近的</td></tr>
+<tr><td>crews</td><td>/kruː/ n.</td><td>全体人员，全体船员；队，组vi. 一起工作vt. 使当船员, crewing, crews</td></tr>
+<tr><td>tearing</td><td>/tɪr，ter/ v.</td><td>撕掉，扯下；撕破；拔掉；拉伤；（非正式）狂奔；饱经……摧残；流眼泪n. 眼泪；（撕破的）洞或裂缝， 撕扯，torn，tearing，tears</td></tr>
+<tr><td>tropical</td><td>/'trɑːpɪkl/ adj.</td><td>热带的；酷热的；热情的</td></tr>
+<tr><td>democracy</td><td>/dɪ'mɑːkrəsi/ n.</td><td>民主, 民主制民主国家</td></tr>
+<tr><td>issues</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>tide</td><td>/taɪd/ n.</td><td>潮汐；趋势，潮流vt. 随潮漂流, tiding, tides</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>stamp</td><td>/stæmp/ n.</td><td>邮票；印记；跺脚；标志vt. 铭记；标出；盖章于…；贴邮票于…；用脚踩踏vi. 捣碎；跺脚；毁掉, stamping, stamps</td></tr>
+<tr><td>bite</td><td>/baɪt/ vt.</td><td>& vi. 咬, 叮n. 咬咬伤, 叮伤</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>reforms</td><td>/rɪ'fɔːrm/ n.</td><td>改革，改良，改造vt. & vi. 改革；改造；改善，reforming，reforms</td></tr>
+<tr><td>dementia</td><td>/dɪ'menʃə/ n.</td><td>〈医〉痴呆</td></tr>
+<tr><td>alongside</td><td>/əˌlɔːŋ'saɪd/ adv.</td><td>靠着边，沿着边prep. (表示位置)在…旁边；沿着…的边；与…并排靠拢着(表示比较)与…放在一起比较(表示伴随)与…一起，与…一道</td></tr>
+<tr><td>butter</td><td>/bʌt/ n.</td><td>笑柄；烟头；屁股；靶垛；粗大的一端vt. 以头抵撞；碰撞, butting, butts</td></tr>
+<tr><td>snap</td><td>/snæp/ vt.</td><td>猛咬；突然折断，拉断；啪地关上vi. 咬；厉声说；咯嗒一声关上n. 猛咬；劈啪声；突然折断adj. 突然的SNAPabbr. Satellite Navigat</td></tr>
+<tr><td>stamps</td><td>/stæmp/ n.</td><td>邮票；印记；跺脚；标志vt. 铭记；标出；盖章于…；贴邮票于…；用脚踩踏vi. 捣碎；跺脚；毁掉, stamping, stamps</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day12.html" class="nav-btn">← Day 12</a>
+  <a href="day14.html" class="nav-btn">Day 14 →</a>
+</div>
+
+<div class="progress">📖 Day 13 of 39</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-08-01</div>
+
+</body>
+</html>

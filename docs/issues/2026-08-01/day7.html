@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Briefing | Patties, prices and puns</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-08-01</div>
+
+<h1 class="article-title">Briefing | Patties, prices and puns</h1>
+<div class="article-section">Briefing</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>A look back over the index’s life is a reminder that across the <span class="annot" data-tooltip="span /spæn/ n. 跨度，跨径两个界限间的距离一段时间vt. 建造跨越(某物的)桥或拱；横跨跨越，穿越，贯穿SPANabbr. Statis">span</span> of four <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span>, currencies—and even countries—can come and go. The original article featured West Germany, which dropped the modifier in 1990. The <span class="annot" data-tooltip="soviet /'soʊviet/ adj. 苏维埃的；苏联的；委员会的n. 苏维埃（代表会议）；委员会；代表会议Sovietn. 苏维埃adj. 苏维埃的,前苏联的">Soviet</span> Union made a brief appearance after McDonald’s opened a <span class="annot" data-tooltip="restaurant /'restrɑːnt/ n. 饭店, 餐馆">restaurant</span> in Moscow’s Pushkin Square in January 1990. On its first day, it served the Bolshoi Mak and other marvels to over 30,000 people, some of whom had queued for six hours. “In Moscow,” we reported, “fast food comes slow.” The Soviet Union was replaced by Russia in the index of 1992. Then Russia itself disappeared from the menu 20 years later after its invasion of <span class="annot" data-tooltip="ukraine n. 乌克兰（原苏联一加盟共和国，现已独立）">Ukraine</span> <span class="annot" data-tooltip="prompted /prɑːmpt/ adj. 敏捷的，迅速的；立刻的vt. 促进；激起；提示；（给演员）提白n. 提示；付款期限；DOS命令：改变DOS系统提示符的风">prompted</span> McDonald’s to depart. Yugoslavia dropped out of the index in 1991. It would have been nice if it had <span class="annot" data-tooltip="stuck /stʌk/ v. 刺（stick的过去式）adj. 不能动的；被卡住的">stuck</span> around. Its novi dinar, introduced after many parts of the country had broken away, was given the three-letter currency code YUM. Even when countries remain <span class="annot" data-tooltip="intact /ɪn'tækt/ adj. 完整的；原封不动的；未受损伤的名 词: intactness">intact</span>, their currencies sometimes <span class="annot" data-tooltip="fall /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">fall</span> apart. The Big Mac index has provided grim <span class="annot" data-tooltip="snapshots /'snæpʃɑːt/ n. (拍)快照">snapshots</span> of catastrophic losses of purchasing power. Back in 1986, for example, it took 2.5 cruzeiros to buy the burger in Brazil. By 1993 it required 77,000. The cruzeiro was retired shortly afterwards. Even those crazy prices were later <span class="annot" data-tooltip="surpassed /sər'pæs/ vt. 胜过，优于；超越；非…所能办到或理解时 态: surpassed, surpassing, surpasses">surpassed</span> in <span class="annot" data-tooltip="venezuela /ˌvenə'zweɪlə/ n. 委内瑞拉形容词: Venezuelan">Venezuela</span>. In July 2021 a Big Mac cost 16.02m Venezuelan bolívares, the highest <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> ever recorded in the index. With the benefit of hindsight, the early indices <span class="annot" data-tooltip="yield /jiːld/ vt. 出产；屈服；放弃vi. 屈服，投降n. 收益；产量时 态: yielded, yielding, yields">yield</span> a particular surprise. In the first edition, we asked not whether other currencies were misaligned against the dollar, but whether the dollar was misaligned against them. That was <span class="annot" data-tooltip="revealing /rɪ'viːlɪŋ/ adj. 暴露部分身体的，袒胸露肩的揭露(事实等)的,暴露真相的展现或显示(某物)的,显露的">revealing</span>. The index first appeared a year after the Plaza Accord, a <span class="annot" data-tooltip="concerted /'kɑːnsərt/ n. 音乐会；和谐；一致vt. 使协调；协同安排vi. 协力；协调adj. 音乐会用的；在音乐会上演出的时 态: concer">concerted</span> effort by America, Britain, France, Germany and Japan to weaken the dollar, which was too strong for comfort. The article was followed a few months later by the Louvre Accord, in which the same countries (plus Canada) tried instead to stabilise the dollar, which had fallen too <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> too fast. The dollar, in other words, could not be taken for granted as the prime meridian against which other currencies should be judged. It was a problem that America and the rest of the world were trying to resolve.</p>
+<p>Currencies are once again moving out of whack. According to the Big Mac index, the world price of burgers (converted into dollars, then averaged across countries, <span class="annot" data-tooltip="weighted /weɪ/ vt. & vi. 称…的重量link v. 重达vt. 权衡；考虑时 态: weighed，weighing，weighs">weighted</span> by their GDP) moved closer to the American price in the first <span class="annot" data-tooltip="decade /'dekeɪd/ n. 十年，十年期；十">decade</span> of this century. But since 2010 it has once again diverged (see chart 2). Recent editions of the index show that currency misalignments in <span class="annot" data-tooltip="either /'iːðər/ pron. (两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的">either</span> direction are at their widest since the mid-1990s (see chart 3). American <span class="annot" data-tooltip="inflation /ɪn'fleɪʃn/ n. (充气而引起的)膨胀通货膨胀">inflation</span> after 2021 is one <span class="annot" data-tooltip="culprit /'kʌlprɪt/ n. 犯人，罪犯；被控犯罪的人">culprit</span>. The growing prominence of an undervalued Chinese yuan is another. A third contributor is the plunging yen. <span class="annot" data-tooltip="incredibly /ɪn'kredəbli/ adv. 难以置信地；很，极为">Incredibly</span>, it is now about 20% cheaper to buy a Big Mac in Japan than in China. This story is broadly confirmed by the more sophisticated purchasing-power <span class="annot" data-tooltip="parities /'pærəti/ n. 同等,相等,对等奇偶校验">parities</span> calculated by international financial institutions. According to the IMF, for example, the average dollar price of goods and services across countries (again, weighted by the size of their economies) was only 56% of the American price in 2025, the biggest gap in the past 40 years. The <span class="annot" data-tooltip="diminished /dɪ'mɪnɪʃ/ vt. 使减少；使变小vi. 变小；减少，缩小时 态: diminished, diminishing, diminishes">diminished</span> global price may partly reflect the growing economic weight of emerging economies. These countries often look cheap on our index; rich countries <span class="annot" data-tooltip="tend /tend/ vt. 照料，照顾，伺候vi. 往，朝向易于；倾向时 态: tended，tending，tends">tend</span> to be expensive. One reason is <span class="annot" data-tooltip="productivity /ˌproʊdʌk'tɪvəti/ n. 生产率, 生产力">productivity</span> gaps within countries. In <span class="annot" data-tooltip="prosperous /'prɑːspərəs/ adj. 成功的, 繁荣的, 兴旺的副 词: prosperously">prosperous</span> parts of the world, a <span class="annot" data-tooltip="critical /'krɪtɪkl/ adj. 批评的，爱挑剔的；决定性的；危险的；临界的；鉴定的；评论的副 词: critically">critical</span> mass of tradable <span class="annot" data-tooltip="industries /'ɪndəstri/ n. 工业；产业；勤勉">industries</span> is highly <span class="annot" data-tooltip="productive /prə'dʌktɪv/ adj. 多产的，富饶的富有成效的；有益的副 词: productively">productive</span> and can thus afford to pay workers high</p>
+<p><span class="annot" data-tooltip="wages /weɪdʒ/ vi. 进行；发动；从事n. 工资；报偿；代价vt. 开展；进行时 态: waged, waging, wages">wages</span>. The generous pay bids up the wages of workers even in more <span class="annot" data-tooltip="sheltered /'ʃeltər/ n. 避难所；遮盖物；庇护vt. 使掩蔽；保护vi. 躲避，避难时 态: sheltered, sheltering, she">sheltered</span>, less <span class="annot" data-tooltip="productive /prə'dʌktɪv/ adj. 多产的，富饶的富有成效的；有益的副 词: productively">productive</span> bits of the economy. These <span class="annot" data-tooltip="trailing /treɪl/ vt. & vi. (使某物)被拖在后面vt. 跟踪，追踪vi. (在比赛等中)输，失败n. 足迹；臭迹小径一缕，一股时 态: ">trailing</span> <span class="annot" data-tooltip="industries /'ɪndəstri/ n. 工业；产业；勤勉">industries</span> pass on the higher labour costs to customers in the form of higher prices. That makes rich countries expensive, relative to poorer ones, where both <span class="annot" data-tooltip="productivity /ˌproʊdʌk'tɪvəti/ n. 生产率, 生产力">productivity</span> and wages are low. To take account of this <span class="annot" data-tooltip="pattern /'pætərn/ n. 型，样式花样，图案方式，形式榜样，典范vt. 模仿； 仿制以图案装饰时 态: patterned，patterning，">pattern</span>, we introduced an <span class="annot" data-tooltip="alternative /ɔːl'tɜːrnətɪv/ adj. 可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）">alternative</span> <span class="annot" data-tooltip="version /'vɜːrʒn/ n. 变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本">version</span> of the index in 2011. Adjusted for GDP per person, it assesses whether a country’s currency is more undervalued than you would expect for an economy at its level of development. The Peruvian sol, for example, is 20% undervalued on our raw index, but about fair <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span> on the adjusted version. No <span class="annot" data-tooltip="serious /'sɪriəs/ adj. 严肃的，严重的；认真的；庄重的；危急的副 词: seriously">serious</span> economist thinks currencies will ever move by enough to equalise dollar prices across all countries, rich and poor. But they should adjust enough to correct <span class="annot" data-tooltip="abnormally /æb'nɔːrml/ adj. 反常的，异常的；变态的副 词: abnormally">abnormally</span> large misalignments. Recent studies suggest that floating exchange rates largely <span class="annot" data-tooltip="offset /'ɔːfset/ vt. 抵消, 补偿时 态: offset, offsetting, offsets">offset</span> differences in <span class="annot" data-tooltip="inflation /ɪn'fleɪʃn/ n. (充气而引起的)膨胀通货膨胀">inflation</span> over a <span class="annot" data-tooltip="span /spæn/ n. 跨度，跨径两个界限间的距离一段时间vt. 建造跨越(某物的)桥或拱；横跨跨越，穿越，贯穿SPANabbr. Statis">span</span> of 5-6 years. Some currency traders might even be <span class="annot" data-tooltip="tempted /tempt/ vt. 引诱或怂恿(某人)干不正当的事使想要时 态: tempted, tempting, tempts">tempted</span> to bet on this idea. But be warned, the predictive record of the Big Mac index is decidedly hit and miss. In 1996 Robert Cumby of Georgetown University tested the index’s predictive powers over the first <span class="annot" data-tooltip="decade /'dekeɪd/ n. 十年，十年期；十">decade</span> of its existence. He pointed</p>
+<p>out what is obvious to any faithful reader: many currencies remain overvalued year after year; others are <span class="annot" data-tooltip="stubbornly /'stʌbərn/ adj. 顽固的；固执的难以移动、去除、医治等比较级: stubborner，stubbornest">stubbornly</span> cheap. The Taiwan dollar, for example, has not been overvalued by our yardstick in 25 years; the Swiss franc has never been undervalued. But Mr Cumby pointed out that clever traders can take these <span class="annot" data-tooltip="persistent /pər'sɪstənt/ adj. 持续的; 不断的副 词: persistently">persistent</span> misalignments into account. They can then look to profit from currencies that are not merely out of whack, but more out of whack than they usually are. Based on such calculations he offered forecasts for 13 currencies. A year later, nine of them had moved in the direction he predicted. This <span class="annot" data-tooltip="strategy /'strætədʒi/ n. 战略学, 兵法战略, 策略策略, 计谋">strategy</span> worked in the early years of the index. It seems less effective over a longer time <span class="annot" data-tooltip="span /spæn/ n. 跨度，跨径两个界限间的距离一段时间vt. 建造跨越(某物的)桥或拱；横跨跨越，穿越，贯穿SPANabbr. Statis">span</span>. Our attempt to apply Mr Cumby’s method to the same currencies (plus the euro) over the past 40 years <span class="annot" data-tooltip="yielded /jiːld/ vt. 出产；屈服；放弃vi. 屈服，投降n. 收益；产量时 态: yielded, yielding, yields">yielded</span> less impressive results. The longer period may make it harder to figure out what counts as a “normal” misalignment. A lot can change in 40 years. Some currencies that were once structurally weak or strong may have <span class="annot" data-tooltip="flipped /flɪp/ vt. 轻击；掷vi. 用指轻弹；蹦跳adj. 无礼的；轻率的n. 筋斗；弹FLIPabbr. Floating Indeved">flipped</span> over the intervening <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span>. <span class="annot" data-tooltip="alternatively /ɔːl'tɜːrnətɪvli/ adv. 做为选择,二者择一地">Alternatively</span> perhaps clever traders have already digested Mr Cumby’s work and added his special sauce to their trading <span class="annot" data-tooltip="strategies /'strætədʒi/ n. 战略学, 兵法战略, 策略策略, 计谋">strategies</span>. Some of them may even be checking the price of burgers themselves.</p>
+<p>The index’s greatest predictive <span class="annot" data-tooltip="triumph /'traɪʌmf/ n. 胜利，成功巨大的成就[成功]vi. 获胜，得胜；克服时 态: triumphed，triumphing，triumphs">triumph</span> concerned the euro. Many economists had forecast that the new currency would strengthen after its introduction in 1999. But the Big Mac index showed it was 13% overvalued. Soros Fund Management, a big <span class="annot" data-tooltip="hedge /hedʒ/ vt. 用树篱笆围住；避免作正面答复vi. 用树篱围住；避免作正面答复n. 树篱；障碍时 态: hedged, hedging,">hedge</span> fund owned by George Soros, later admitted that it had <span class="annot" data-tooltip="considered /kən'sɪdər/ vt. & vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及时 态: considered, considering, ">considered</span> acting on this sell signal at the time. In the end, however, it chose to ignore our cue, thus missing out when the euro duly tumbled. Mr Soros, as we put it at the time, must have been “cheesed off”. The Big Mac index invites puns. And our journalists have enthusiastically accepted the offer. Rising currencies are often described as “sizzling”. Weak ones are “undercooked”. The index itself is a “bun-loving guide” to currencies. An article about President Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s efforts to punish countries with undervalued exchange rates, said that his threats should be taken with a “<span class="annot" data-tooltip="pinch /pɪntʃ/ vt. 捏；勒索；使苦恼；掐掉某物，修剪n. 匮乏；少量；夹痛vi. 夹痛；节省时 态: pinched, pinching, ">pinch</span> of salt”. (A Big Mac contains about 2g.) In few other articles in The Economist would you get away with so many gags, recalls Ms Woodall. Inventing puns was often the hardest part of the <span class="annot" data-tooltip="exercise /'eksərsaɪz/ n. 练习；运动；运用；操练；典礼；礼拜vt. 练习；锻炼；使用；使忙碌；使惊恐vi. 运动；练习时 态: exercised">exercise</span>: “We were desperate to think of something new.” And we did not always succeed. Some puns made <span class="annot" data-tooltip="multiple /'mʌltɪpl/ adj. 多样的；许多的；多重的n. 并联；倍数">multiple</span> appearances over the years, and many were a bit “corny”, she admits. But they served a useful purpose. In a world where powerful policymakers are browbeating smaller countries about their exchange rates, the puns help “make sure that people don’t take us too <span class="annot" data-tooltip="seriously /'sɪriəs/ adj. 严肃的，严重的；认真的；庄重的；危急的副 词: seriously">seriously</span>”, she says. “It’s the concept that’s <span class="annot" data-tooltip="serious /'sɪriəs/ adj. 严肃的，严重的；认真的；庄重的；危急的副 词: seriously">serious</span>, not the <span class="annot" data-tooltip="actual /'æktʃuəl/ adj. 真实的，实际的；现行的，目前的副 词: actually">actual</span> numbers.” ■ This article was downloaded by zlibrary from https://www.economist.com/<span class="annot" data-tooltip="interactive /ˌɪntər'æktɪv/ adj. (指至少两个人或物)一起活动或互相合作的交互式的, 人机对话的">interactive</span>/briefing/2026/07/30/the-big-mac-index-at-40</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Asia</div>
+<p>China bets that Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> won’t mind it <span class="annot" data-tooltip="bullying /'bʊli/ v. 迫使；胁迫欺负；恐吓；欺凌n. 恃强凌弱者；恶霸adj. 顶好的，快活的，第一流的时 态: bullied，bullyi">bullying</span> American <span class="annot" data-tooltip="allies n. （第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者">allies</span> Behind India’s <span class="annot" data-tooltip="protests /'proʊtest/ n. 抗议；反对vt. & vi. 声明；抗议时 态: protested，protesting，protests">protests</span> is a crisis in the graduate-jobs market Japanese politics is becoming less of a turn-off for the young Beerlao: probably the most important lager in the world Narendra Modi is on a quest to regain his <span class="annot" data-tooltip="aura /'ɔːrə/ n. 气氛；气味；光环；[医]（中风等的）预兆">aura</span></p>
+<div class="article-separator"></div>
+<div class="article-header">Asia · Asia | Troubled waters</div>
+<p>China bets that Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> won’t mind it <span class="annot" data-tooltip="bullying /'bʊli/ v. 迫使；胁迫欺负；恐吓；欺凌n. 恃强凌弱者；恶霸adj. 顶好的，快活的，第一流的时 态: bullied，bullyi">bullying</span> American <span class="annot" data-tooltip="allies n. （第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者">allies</span> It has stepped up its <span class="annot" data-tooltip="abuse /ə'bjuːs/ n. 滥用；辱骂；虐待；弊端；恶习，陋习vt. 滥用；辱骂；虐待时 态: abused, abusing, abuses">abuse</span> of Australia, the Philippines and Japan Jul 30th 2026 “THEY ARE making fools of us,” Gilbert Teodoro <span class="annot" data-tooltip="junior /'dʒuːniər/ adj. 年少的, 较年幼的资历较浅的, 地位较低的n. 年少者地位较低者, 晚辈(美国中学或大学的)三年级学生">junior</span>, the Philippines’ defence <span class="annot" data-tooltip="secretary /'sekrəteri/ n. 秘书书记部长, 大臣形容词: secretarial">secretary</span>, complained to reporters in Manila on July 23rd. Three days earlier, Chinese coastguards had been filmed using oars to <span class="annot" data-tooltip="batter /'bætər/ n. 击球手；（用鸡蛋、牛奶、面粉等调成的）糊状物；墙面的倾斜vt. 猛击；打坏；使向上倾斜vi. 接连猛击；向上倾斜时 态:">batter</span> Philippine sailors aboard a navy <span class="annot" data-tooltip="vessel /'vesl/ n. 容器，器皿；船，舰；脉管，血管">vessel</span> at Second Thomas Shoal, an atoll claimed by both countries in the South China Sea. After a brief brawl, the Filipinos, in <span class="annot" data-tooltip="shorts /ʃɔːrts/ n. 短裤">shorts</span> and T-shirts, repulsed the Chinese coastguards clad in navy uniforms and orange high-viz vests. Two of the Filipinos were later hospitalised. The fracas was just one in a series of recent incidents along archipelagic Asia that add up to a <span class="annot" data-tooltip="picture /'pɪktʃər/ n. 图画，肖像；照片(生动的)描述，写照影片；电影；画面美景，景色情况，事态，局面vt. 绘画；描绘想象时 态: pictu">picture</span> of a more <span class="annot" data-tooltip="aggressive /ə'ɡresɪv/ adj. 好争斗的, 挑衅的, 侵略性的副 词: aggressively">aggressive</span> China. In March an</p>
+<p>Australian helicopter enforcing United Nations sanctions against North Korea reported a dangerous interception by Chinese <span class="annot" data-tooltip="aircraft /'erkræft/ n. 飞机，航空器">aircraft</span> over the Yellow Sea. In early July China launched a ballistic missile from a submarine in the South China Sea over the Philippines and into the South Pacific. And just a day before the punch-up at Second Thomas Shoal, Chinese <span class="annot" data-tooltip="vessels n. 容器；船舶；血管（vessel的复数）">vessels</span> staged a live-fire <span class="annot" data-tooltip="exercise /'eksərsaɪz/ n. 练习；运动；运用；操练；典礼；礼拜vt. 练习；锻炼；使用；使忙碌；使惊恐vi. 运动；练习时 态: exercised">exercise</span> in Japan’s <span class="annot" data-tooltip="exclusive /ɪk'skluːsɪv/ adj. 高级的，奢华的专用的；独家的n. 独家新闻，独家报道副 词: exclusively">exclusive</span> economic zone east of the Philippines. There is a <span class="annot" data-tooltip="pattern /'pætərn/ n. 型，样式花样，图案方式，形式榜样，典范vt. 模仿； 仿制以图案装饰时 态: patterned，patterning，">pattern</span> to this uptick in <span class="annot" data-tooltip="aggressive /ə'ɡresɪv/ adj. 好争斗的, 挑衅的, 侵略性的副 词: aggressively">aggressive</span> acts. China began <span class="annot" data-tooltip="probing /proʊ/ n. 从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞">probing</span> American <span class="annot" data-tooltip="allies n. （第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者">allies</span> soon after a meeting between Presidents Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> and Xi Jinping in Busan in October 2025, escalated its activities in March as America became <span class="annot" data-tooltip="bogged /bɑːɡ/ n. 沼泽；泥塘vt. 使陷于泥沼；使动弹不得vi. 陷于泥沼；动弹不得时 态: bogged, bogging, bogs">bogged</span> down in the Persian Gulf, and has gone even further since Mr Trump and Mr Xi held a summit in Beijing in May. “It’s a test of how much Washington is going to react and defend its allies in the region,” says Huong Le Thu of the International Crisis <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">Group</span>, a think-<span class="annot" data-tooltip="tank /tæŋk/ n. （存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内时 态: t">tank</span> with <span class="annot" data-tooltip="headquarters /ˈhɛdˈkwɔrtɚ/ vi. 设总部vt. 将…的总部设在把…放在总部里时 态: headquartered, headquartering, hea">headquarters</span> in <span class="annot" data-tooltip="brussels /ˈbrʌsəlz/ n. 布鲁塞尔（比利时首都）">Brussels</span>. Yet over the same period relations between China and America have improved. China, say Asian diplomats, is betting that Mr Trump won’t do anything to upset that <span class="annot" data-tooltip="trend /trend/ n. 趋势, 倾向流行时 态: trended, trending, trends">trend</span>, much less tell China to leave its allies alone. The incidents range along the so-called “first island chain”, the string of archipelagoes <span class="annot" data-tooltip="stretching /stretʃ/ vt. 伸展,张开vi. 伸展adj. 可伸缩的n. 伸展，延伸时 态: stretched, stretching, stre">stretching</span> from northern Japan through Taiwan to the</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>span</td><td>/spæn/ n.</td><td>跨度，跨径两个界限间的距离一段时间vt. 建造跨越(某物的)桥或拱；横跨跨越，穿越，贯穿SPANabbr. Statistical Processing and</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>soviet</td><td>/'soʊviet/ adj.</td><td>苏维埃的；苏联的；委员会的n. 苏维埃（代表会议）；委员会；代表会议Sovietn. 苏维埃adj. 苏维埃的,前苏联的,前苏联人的</td></tr>
+<tr><td>restaurant</td><td>/'restrɑːnt/ n.</td><td>饭店, 餐馆</td></tr>
+<tr><td>ukraine</td><td>— n.</td><td>乌克兰（原苏联一加盟共和国，现已独立）</td></tr>
+<tr><td>prompted</td><td>/prɑːmpt/ adj.</td><td>敏捷的，迅速的；立刻的vt. 促进；激起；提示；（给演员）提白n. 提示；付款期限；DOS命令：改变DOS系统提示符的风格adv. 准时地, promptest</td></tr>
+<tr><td>stuck</td><td>/stʌk/ v.</td><td>刺（stick的过去式）adj. 不能动的；被卡住的</td></tr>
+<tr><td>intact</td><td>/ɪn'tækt/ adj.</td><td>完整的；原封不动的；未受损伤的</td></tr>
+<tr><td>fall</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>snapshots</td><td>/'snæpʃɑːt/ n.</td><td>(拍)快照</td></tr>
+<tr><td>surpassed</td><td>/sər'pæs/ vt.</td><td>胜过，优于；超越；非…所能办到或理解, surpassing, surpasses</td></tr>
+<tr><td>venezuela</td><td>/ˌvenə'zweɪlə/ n.</td><td>委内瑞拉</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>yield</td><td>/jiːld/ vt.</td><td>出产；屈服；放弃vi. 屈服，投降n. 收益；产量, yielding, yields</td></tr>
+<tr><td>revealing</td><td>/rɪ'viːlɪŋ/ adj.</td><td>暴露部分身体的，袒胸露肩的揭露(事实等)的,暴露真相的展现或显示(某物)的,显露的</td></tr>
+<tr><td>concerted</td><td>/'kɑːnsərt/ n.</td><td>音乐会；和谐；一致vt. 使协调；协同安排vi. 协力；协调adj. 音乐会用的；在音乐会上演出的, concerting, concerts</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>weighted</td><td>/weɪ/ vt.</td><td>& vi. 称…的重量link v. 重达vt. 权衡；考虑，weighing，weighs</td></tr>
+<tr><td>decade</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>either</td><td>/'iːðər/ pron.</td><td>(两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的</td></tr>
+<tr><td>inflation</td><td>/ɪn'fleɪʃn/ n.</td><td>(充气而引起的)膨胀通货膨胀</td></tr>
+<tr><td>culprit</td><td>/'kʌlprɪt/ n.</td><td>犯人，罪犯；被控犯罪的人</td></tr>
+<tr><td>incredibly</td><td>/ɪn'kredəbli/ adv.</td><td>难以置信地；很，极为</td></tr>
+<tr><td>parities</td><td>/'pærəti/ n.</td><td>同等,相等,对等奇偶校验</td></tr>
+<tr><td>diminished</td><td>/dɪ'mɪnɪʃ/ vt.</td><td>使减少；使变小vi. 变小；减少，缩小, diminishing, diminishes</td></tr>
+<tr><td>tend</td><td>/tend/ vt.</td><td>照料，照顾，伺候vi. 往，朝向易于；倾向，tending，tends</td></tr>
+<tr><td>productivity</td><td>/ˌproʊdʌk'tɪvəti/ n.</td><td>生产率, 生产力</td></tr>
+<tr><td>prosperous</td><td>/'prɑːspərəs/ adj.</td><td>成功的, 繁荣的, 兴旺的</td></tr>
+<tr><td>critical</td><td>/'krɪtɪkl/ adj.</td><td>批评的，爱挑剔的；决定性的；危险的；临界的；鉴定的；评论的</td></tr>
+<tr><td>industries</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>productive</td><td>/prə'dʌktɪv/ adj.</td><td>多产的，富饶的富有成效的；有益的</td></tr>
+<tr><td>wages</td><td>/weɪdʒ/ vi.</td><td>进行；发动；从事n. 工资；报偿；代价vt. 开展；进行, waging, wages</td></tr>
+<tr><td>sheltered</td><td>/'ʃeltər/ n.</td><td>避难所；遮盖物；庇护vt. 使掩蔽；保护vi. 躲避，避难, sheltering, shelters</td></tr>
+<tr><td>productive</td><td>/prə'dʌktɪv/ adj.</td><td>多产的，富饶的富有成效的；有益的</td></tr>
+<tr><td>trailing</td><td>/treɪl/ vt.</td><td>& vi. (使某物)被拖在后面vt. 跟踪，追踪vi. (在比赛等中)输，失败n. 足迹；臭迹小径一缕，一股，trailing，trails</td></tr>
+<tr><td>industries</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>productivity</td><td>/ˌproʊdʌk'tɪvəti/ n.</td><td>生产率, 生产力</td></tr>
+<tr><td>pattern</td><td>/'pætərn/ n.</td><td>型，样式花样，图案方式，形式榜样，典范vt. 模仿； 仿制以图案装饰，patterning，patterns</td></tr>
+<tr><td>alternative</td><td>/ɔːl'tɜːrnətɪv/ adj.</td><td>可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）可供选择的事物；可供选择的解决办法替代物</td></tr>
+<tr><td>version</td><td>/'vɜːrʒn/ n.</td><td>变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>serious</td><td>/'sɪriəs/ adj.</td><td>严肃的，严重的；认真的；庄重的；危急的</td></tr>
+<tr><td>abnormally</td><td>/æb'nɔːrml/ adj.</td><td>反常的，异常的；变态的</td></tr>
+<tr><td>offset</td><td>/'ɔːfset/ vt.</td><td>抵消, 补偿, offsetting, offsets</td></tr>
+<tr><td>inflation</td><td>/ɪn'fleɪʃn/ n.</td><td>(充气而引起的)膨胀通货膨胀</td></tr>
+<tr><td>span</td><td>/spæn/ n.</td><td>跨度，跨径两个界限间的距离一段时间vt. 建造跨越(某物的)桥或拱；横跨跨越，穿越，贯穿SPANabbr. Statistical Processing and</td></tr>
+<tr><td>tempted</td><td>/tempt/ vt.</td><td>引诱或怂恿(某人)干不正当的事使想要, tempting, tempts</td></tr>
+<tr><td>decade</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>stubbornly</td><td>/'stʌbərn/ adj.</td><td>顽固的；固执的难以移动、去除、医治等，stubbornest</td></tr>
+<tr><td>persistent</td><td>/pər'sɪstənt/ adj.</td><td>持续的; 不断的</td></tr>
+<tr><td>strategy</td><td>/'strætədʒi/ n.</td><td>战略学, 兵法战略, 策略策略, 计谋</td></tr>
+<tr><td>span</td><td>/spæn/ n.</td><td>跨度，跨径两个界限间的距离一段时间vt. 建造跨越(某物的)桥或拱；横跨跨越，穿越，贯穿SPANabbr. Statistical Processing and</td></tr>
+<tr><td>yielded</td><td>/jiːld/ vt.</td><td>出产；屈服；放弃vi. 屈服，投降n. 收益；产量, yielding, yields</td></tr>
+<tr><td>flipped</td><td>/flɪp/ vt.</td><td>轻击；掷vi. 用指轻弹；蹦跳adj. 无礼的；轻率的n. 筋斗；弹FLIPabbr. Floating Indeved Point Arithmetic 变址</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>alternatively</td><td>/ɔːl'tɜːrnətɪvli/ adv.</td><td>做为选择,二者择一地</td></tr>
+<tr><td>strategies</td><td>/'strætədʒi/ n.</td><td>战略学, 兵法战略, 策略策略, 计谋</td></tr>
+<tr><td>triumph</td><td>/'traɪʌmf/ n.</td><td>胜利，成功巨大的成就[成功]vi. 获胜，得胜；克服，triumphing，triumphs</td></tr>
+<tr><td>hedge</td><td>/hedʒ/ vt.</td><td>用树篱笆围住；避免作正面答复vi. 用树篱围住；避免作正面答复n. 树篱；障碍, hedging, hedges</td></tr>
+<tr><td>considered</td><td>/kən'sɪdər/ vt.</td><td>& vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及, considering, considers</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>pinch</td><td>/pɪntʃ/ vt.</td><td>捏；勒索；使苦恼；掐掉某物，修剪n. 匮乏；少量；夹痛vi. 夹痛；节省, pinching, pinches</td></tr>
+<tr><td>exercise</td><td>/'eksərsaɪz/ n.</td><td>练习；运动；运用；操练；典礼；礼拜vt. 练习；锻炼；使用；使忙碌；使惊恐vi. 运动；练习, exercising, exercises</td></tr>
+<tr><td>multiple</td><td>/'mʌltɪpl/ adj.</td><td>多样的；许多的；多重的n. 并联；倍数</td></tr>
+<tr><td>seriously</td><td>/'sɪriəs/ adj.</td><td>严肃的，严重的；认真的；庄重的；危急的</td></tr>
+<tr><td>serious</td><td>/'sɪriəs/ adj.</td><td>严肃的，严重的；认真的；庄重的；危急的</td></tr>
+<tr><td>actual</td><td>/'æktʃuəl/ adj.</td><td>真实的，实际的；现行的，目前的</td></tr>
+<tr><td>interactive</td><td>/ˌɪntər'æktɪv/ adj.</td><td>(指至少两个人或物)一起活动或互相合作的交互式的, 人机对话的</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>bullying</td><td>/'bʊli/ v.</td><td>迫使；胁迫欺负；恐吓；欺凌n. 恃强凌弱者；恶霸adj. 顶好的，快活的，第一流的，bullying，bullies</td></tr>
+<tr><td>allies</td><td>— n.</td><td>（第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者</td></tr>
+<tr><td>protests</td><td>/'proʊtest/ n.</td><td>抗议；反对vt. & vi. 声明；抗议，protesting，protests</td></tr>
+<tr><td>aura</td><td>/'ɔːrə/ n.</td><td>气氛；气味；光环；[医]（中风等的）预兆</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>bullying</td><td>/'bʊli/ v.</td><td>迫使；胁迫欺负；恐吓；欺凌n. 恃强凌弱者；恶霸adj. 顶好的，快活的，第一流的，bullying，bullies</td></tr>
+<tr><td>allies</td><td>— n.</td><td>（第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者</td></tr>
+<tr><td>abuse</td><td>/ə'bjuːs/ n.</td><td>滥用；辱骂；虐待；弊端；恶习，陋习vt. 滥用；辱骂；虐待, abusing, abuses</td></tr>
+<tr><td>junior</td><td>/'dʒuːniər/ adj.</td><td>年少的, 较年幼的资历较浅的, 地位较低的n. 年少者地位较低者, 晚辈(美国中学或大学的)三年级学生</td></tr>
+<tr><td>secretary</td><td>/'sekrəteri/ n.</td><td>秘书书记部长, 大臣</td></tr>
+<tr><td>batter</td><td>/'bætər/ n.</td><td>击球手；（用鸡蛋、牛奶、面粉等调成的）糊状物；墙面的倾斜vt. 猛击；打坏；使向上倾斜vi. 接连猛击；向上倾斜, battering, batters</td></tr>
+<tr><td>vessel</td><td>/'vesl/ n.</td><td>容器，器皿；船，舰；脉管，血管</td></tr>
+<tr><td>shorts</td><td>/ʃɔːrts/ n.</td><td>短裤</td></tr>
+<tr><td>picture</td><td>/'pɪktʃər/ n.</td><td>图画，肖像；照片(生动的)描述，写照影片；电影；画面美景，景色情况，事态，局面vt. 绘画；描绘想象，picturing，pictures</td></tr>
+<tr><td>aggressive</td><td>/ə'ɡresɪv/ adj.</td><td>好争斗的, 挑衅的, 侵略性的</td></tr>
+<tr><td>aircraft</td><td>/'erkræft/ n.</td><td>飞机，航空器</td></tr>
+<tr><td>vessels</td><td>— n.</td><td>容器；船舶；血管（vessel的复数）</td></tr>
+<tr><td>exercise</td><td>/'eksərsaɪz/ n.</td><td>练习；运动；运用；操练；典礼；礼拜vt. 练习；锻炼；使用；使忙碌；使惊恐vi. 运动；练习, exercising, exercises</td></tr>
+<tr><td>exclusive</td><td>/ɪk'skluːsɪv/ adj.</td><td>高级的，奢华的专用的；独家的n. 独家新闻，独家报道</td></tr>
+<tr><td>pattern</td><td>/'pætərn/ n.</td><td>型，样式花样，图案方式，形式榜样，典范vt. 模仿； 仿制以图案装饰，patterning，patterns</td></tr>
+<tr><td>aggressive</td><td>/ə'ɡresɪv/ adj.</td><td>好争斗的, 挑衅的, 侵略性的</td></tr>
+<tr><td>probing</td><td>/proʊ/ n.</td><td>从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞成；支持Pro脯氨酸PROabbr. P</td></tr>
+<tr><td>allies</td><td>— n.</td><td>（第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>bogged</td><td>/bɑːɡ/ n.</td><td>沼泽；泥塘vt. 使陷于泥沼；使动弹不得vi. 陷于泥沼；动弹不得, bogging, bogs</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>tank</td><td>/tæŋk/ n.</td><td>（存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内, tanking, tanks</td></tr>
+<tr><td>headquarters</td><td>/ˈhɛdˈkwɔrtɚ/ vi.</td><td>设总部vt. 将…的总部设在把…放在总部里, headquartering, headquarters</td></tr>
+<tr><td>brussels</td><td>/ˈbrʌsəlz/ n.</td><td>布鲁塞尔（比利时首都）</td></tr>
+<tr><td>trend</td><td>/trend/ n.</td><td>趋势, 倾向流行, trending, trends</td></tr>
+<tr><td>stretching</td><td>/stretʃ/ vt.</td><td>伸展,张开vi. 伸展adj. 可伸缩的n. 伸展，延伸, stretching, stretches</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day6.html" class="nav-btn">← Day 6</a>
+  <a href="day8.html" class="nav-btn">Day 8 →</a>
+</div>
+
+<div class="progress">📖 Day 7 of 39</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-08-01</div>
+
+</body>
+</html>

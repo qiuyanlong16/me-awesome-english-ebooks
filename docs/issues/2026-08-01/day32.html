@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Europe</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-08-01</div>
+
+<h1 class="article-title">Europe</h1>
+<div class="article-section"></div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>that will take about €168bn out of the budget. The European <span class="annot" data-tooltip="commission /kə'mɪʃn/ n. 授权, 委托委员会佣金, 回扣vt. 委任, 委托时 态: commissioned, commissioning, c">Commission</span> would like to add more debt, above what is already planned for a defence- loan programme and €90bn in help for <span class="annot" data-tooltip="ukraine n. 乌克兰（原苏联一加盟共和国，现已独立）">Ukraine</span>; it wants a debt-funded tool, <span class="annot" data-tooltip="worth /wɜːrθ/ adj. 值…的n. 价值；财产时 态: worthed, worthing, worths">worth</span> over €300bn, to respond to unforeseen crises. Perhaps Mr Merz should <span class="annot" data-tooltip="consider /kən'sɪdər/ vt. & vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及时 态: considered, considering, ">consider</span> the upside. A more debt-funded EU could help create a thriving market in European rather than national bonds. So <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span>, EU debt is trading at a discount to <span class="annot" data-tooltip="equivalent /ɪ'kwɪvələnt/ adj. 等同的，等效的n. 对等的人（或事物），对应的人（或事物）">equivalent</span> German paper, the continental <span class="annot" data-tooltip="benchmark /'bentʃmɑːrk/ 基准时 态: benchmarked, benchmarking, benchmarks">benchmark</span>: <span class="annot" data-tooltip="yields /jiːld/ vt. 出产；屈服；放弃vi. 屈服，投降n. 收益；产量时 态: yielded, yielding, yields">yields</span> are about 0.3 percentage points higher. This is largely because the EU has no tax-raising powers and in a crisis Germany would surely honour its <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> debts first. Nor is EU debt permanent; it is supposed to be repaid and not rolled over. That is one reason why it is <span class="annot" data-tooltip="omitted /ə'mɪt/ vt. 省略，遗漏；删掉忘记做时 态: omitted，omitting，omits">omitted</span> from <span class="annot" data-tooltip="sovereign /'sɑːvrɪn/ n. 君主，国王，女王旧时价值为一镑的英国金币adj. 控制国家的；统治的独立自主的">sovereign</span>-bond indices—which is unlikely to change, says an executive at an index provider. “You also need <span class="annot" data-tooltip="compensation /ˌkɑːmpen'seɪʃn/ n. 补偿[赔偿]物, 补偿[赔偿]金">compensation</span> for the lower liquidity,” adds Konstantin Veit of Pimco, a fixed-income <span class="annot" data-tooltip="asset /'æset/ n. 资产；有用的东西；有利条件；优点">asset</span> manager. A liquid futures market for EU debt, say, would make hedging risk cheaper. Today’s <span class="annot" data-tooltip="derivatives /dɪ'rɪvətɪv/ n. 衍生物，派生物；派生词；【数】导数，微商adj. 缺乏独创性的；模仿他人的副 词: derivatively">derivatives</span> market is too thin. Even new, debt-funded EU programmes are likely to be too small to make the market for EU debt sufficiently large and permanent. A potential solution is to convert existing national debt into European debt. Olivier Blanchard, a former chief economist of the IMF, and Ángel Ubide of</p>
+<p>Citadel, a <span class="annot" data-tooltip="hedge /hedʒ/ vt. 用树篱笆围住；避免作正面答复vi. 用树篱围住；避免作正面答复n. 树篱；障碍时 态: hedged, hedging,">hedge</span> fund, have argued that countries should <span class="annot" data-tooltip="issue /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issue</span> debt <span class="annot" data-tooltip="worth /wɜːrθ/ adj. 值…的n. 价值；财产时 态: worthed, worthing, worths">worth</span> 25% of GDP via the EU, as <span class="annot" data-tooltip="senior /'siːniər/ adj. 年长的资深的; 地位高的〈美〉最高年级的n. 较年长者高年级学生〈美〉毕业班学生Senior西尼尔(姓氏)">senior</span> “blue” bonds. Spain has recently put a <span class="annot" data-tooltip="variant /'veriənt/ n. 变体；变种；变型(词等的)变体；异读(书等的)不同版本；改编adj. 不同的；差别的；变异的；易变的，不定的；各种各样的">variant</span> of that idea to the rest of the EU. Another idea is to issue all bills—short-term government bonds with a maturity of up to one year—<span class="annot" data-tooltip="jointly /dʒɔɪnt/ n. 关节；接合处，接合点；接缝；（牛，羊等的腿）大块肉adj. 联合的，合办的；共同的；连接的vt. 连接，贴合；接合；使有">jointly</span> through the EU. Since bills are rarely included in debt restructurings, they are in effect senior debt. But the problem with both <span class="annot" data-tooltip="proposals /prə'poʊzl/ n. 提议，建议；求婚">proposals</span> is that they create some <span class="annot" data-tooltip="joint /dʒɔɪnt/ n. 关节；接合处，接合点；接缝；（牛，羊等的腿）大块肉adj. 联合的，合办的；共同的；连接的vt. 连接，贴合；接合；使有">joint</span> liabilities: who pays if things go wrong? “If you mutualise debt without a <span class="annot" data-tooltip="fiscal /'fɪskl/ adj. 国库的；会计的，财政的副 词: fiscally">fiscal</span> and political union, it is just a <span class="annot" data-tooltip="leap /liːp/ vi. 跳，跳跃n. 跳跃；飞跃vt. 跳跃，跳过；使跃过时 态: leaped, leapt leaping, leaps">leap</span> of faith,” says a senior <span class="annot" data-tooltip="commission /kə'mɪʃn/ n. 授权, 委托委员会佣金, 回扣vt. 委任, 委托时 态: commissioned, commissioning, c">commission</span> official. Countries with low debts would have to trust those with lots. By international standards, the euro area’s combined debt-to-GDP <span class="annot" data-tooltip="ratio /'reɪʃioʊ/ n. 比, 比率">ratio</span>, of 90%, looks manageable. America’s exceeds 120%; China’s has risen fast to 100%. But some EU countries, such as France, Italy and Spain, have <span class="annot" data-tooltip="ratios /'reɪʃioʊ/ n. 比, 比率">ratios</span> above 100%. And Europe’s expected nominal growth rate of around 3.5%—at best 1.4% real, plus 2% <span class="annot" data-tooltip="inflation /ɪn'fleɪʃn/ n. (充气而引起的)膨胀通货膨胀">inflation</span>, says the IMF—is on par with its current long- term interest rate. That means debt-to-gdp ratios will not <span class="annot" data-tooltip="shrink /ʃrɪŋk/ vt. & vi. 收缩；退缩时 态: shrank ，shrunk shrunk，shrunken shrinking，shr">shrink</span> without primary budget <span class="annot" data-tooltip="surpluses /'sɜːrplʌs/ adj. 过剩的, 多余的n. 过剩">surpluses</span> (ie, before interest payments). Morgan Stanley, a bank, reckons that interest costs, ageing and defence needs will add 3-5% of GDP to public spending by 2040. To put the debt ratio on a downward path by 2035 deficits must <span class="annot" data-tooltip="fall /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">fall</span> by 4-9% of GDP in the next <span class="annot" data-tooltip="decade /'dekeɪd/ n. 十年，十年期；十">decade</span>, estimates the European Stability <span class="annot" data-tooltip="mechanism /'mekənɪzəm/ n. 机械装置构造, 机制办法, 技巧, 途径">Mechanism</span>, the euro zone’s <span class="annot" data-tooltip="main /meɪn/ adj. 主要的; 最重要的n. 总管道; 干线">main</span> bail-out fund. Even Germany, normally a model of <span class="annot" data-tooltip="rectitude /'rektɪtuːd/ n. 操行端正">rectitude</span>, is unsure how to fill budget gaps beyond 2028. That puts bold proposals for common EU debt out of <span class="annot" data-tooltip="reach /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reach</span> for now. EU debt will remain limited and tied to common spending programmes such as that for <span class="annot" data-tooltip="ukraine n. 乌克兰（原苏联一加盟共和国，现已独立）">Ukraine</span>. Deeper financial-market integration, and raising the euro’s international standing, will have to happen without a shared European <span class="annot" data-tooltip="benchmark /'bentʃmɑːrk/ 基准时 态: benchmarked, benchmarking, benchmarks">benchmark</span> bond. And do not bank on German debt being the <span class="annot" data-tooltip="substitute /'sʌbstɪtuːt/ vt. & vi. 代替, 替换, 代用时 态: substituted, substituting, substitutes">substitute</span> for ever. “There is a plausible <span class="annot" data-tooltip="scenario /sə'nærioʊ/ n. 情节；剧本；方案">scenario</span>”, says one investor, “in which Spain ends up being more solid than Germany a decade from now.” ■ This article was downloaded by zlibrary from https://www.economist.com/finance-and-economics/2026/07/30/a-common-european-safe- <span class="annot" data-tooltip="asset /'æset/ n. 资产；有用的东西；有利条件；优点">asset</span>-is-still-unlikely</p>
+<p>Finance & economics | Sanaenomics, not Abenomics Japan <span class="annot" data-tooltip="pursues /pər'suː/ vt. 从事；追赶；继续；纠缠vi. 追赶；继续进行时 态: pursued, pursuing, pursues">pursues</span> an ill-timed <span class="annot" data-tooltip="fiscal /'fɪskl/ adj. 国库的；会计的，财政的副 词: fiscally">fiscal</span> stimulus Takaichi Sanae’s economic <span class="annot" data-tooltip="agenda /ə'dʒendə/ n. （政治）议题；议事日程；目的">agenda</span> bears little <span class="annot" data-tooltip="resemblance /rɪ'zembləns/ n. 相似, 形似">resemblance</span> to her <span class="annot" data-tooltip="mentor /'mentɔːr/ n. (无经验之人的)有经验可信赖的顾问时 态: mentored, mentoring, mentors">mentor</span>’s Jul 30th 2026 Takaichi Sanae, Japan’s prime minister since October, positions herself as heir to the late Abe Shinzo, the country’s longest-serving leader. Many expected her to revive his “Abenomics” agenda, with its “three arrows” of loose money, expansionary fiscal policy and structural <span class="annot" data-tooltip="reform /rɪ'fɔːrm/ n. 改革，改良，改造vt. & vi. 改革；改造；改善时 态: reformed，reforming，reforms">reform</span>. Two plans published this month instead signal a departure. <span class="annot" data-tooltip="whereas /ˌwer'æz/ conj. 但是, 而">Whereas</span> Abenomics sought to relegate Japan’s deflationary <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span> to history, Sanaenomics aims to steel Japan for geopolitical conflict. The honebuto, an <span class="annot" data-tooltip="annual /'ænjuəl/ adj. 年度的；每年的n. 年刊，年鉴；一年生植物副 词: annually">annual</span> economic <span class="annot" data-tooltip="blueprint /'bluːprɪnt/ n. 蓝图, 设计图时 态: blueprinted, blueprinting, blueprints">blueprint</span>, declares that Japan must keep pace with a global “Copernican revolution” in industrial policy. A new growth- <span class="annot" data-tooltip="strategy /'strætədʒi/ n. 战略学, 兵法战略, 策略策略, 计谋">strategy</span> paper calls for ¥120trn ($733bn, or 18% of last year’s GDP) in new</p>
+<p>public investment by 2040, to catalyse ¥250trn in private capital. Cash is to be spread across 17 sectors and 62 products, from <span class="annot" data-tooltip="ships /ʃɪp/ vt. 运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Di">ships</span> to chips. For good measure Ms Takaichi wants a cut in sales tax on food, too. Of Abenomics’ three arrows, Sanaenomics keeps only one, <span class="annot" data-tooltip="fiscal /'fɪskl/ adj. 国库的；会计的，财政的副 词: fiscally">fiscal</span> stimulus. Though Ms Takaichi has pressed the Bank of Japan (BoJ) to keep interest rates low, it has raised them, from 0.5% when she took office to 1%. Political appetite for structural <span class="annot" data-tooltip="reform /rɪ'fɔːrm/ n. 改革，改良，改造vt. & vi. 改革；改造；改善时 态: reformed，reforming，reforms">reform</span>, such as boosting immigration and improving <span class="annot" data-tooltip="corporate /'kɔːrpərət/ adj. 社团的, 法人的副 词: corporately">corporate</span> <span class="annot" data-tooltip="governance /'ɡʌvərnəns/ n. 统治;管理;治理;统治方式;管理方法">governance</span>, has waned. Yet it is an odd time for big- bang spending. Japan no longer faces a demand shortfall, as it did during the Abe years. <span class="annot" data-tooltip="inflation /ɪn'fleɪʃn/ n. (充气而引起的)膨胀通货膨胀">Inflation</span> has largely stayed above 2% since 2022, though it has dipped recently. The BoJ estimates that Japan has a positive “output gap” of 0.5%, implying that the economy is running slightly hot. Sanaenomics justifies stimulus another way. Ms Takaichi fears losing economic <span class="annot" data-tooltip="sovereignty /'sɑːvrənti/ n. 最高统治权, 君权国家的主权">sovereignty</span>, especially to a <span class="annot" data-tooltip="bullying /'bʊli/ v. 迫使；胁迫欺负；恐吓；欺凌n. 恃强凌弱者；恶霸adj. 顶好的，快活的，第一流的时 态: bullied，bullyi">bullying</span> China. She believes that Japan has suffered from <span class="annot" data-tooltip="chronic /'krɑːnɪk/ adj. 慢性的；长期的；习惯性的副 词: chronically">chronic</span> underinvestment and “excessive austerity”. Real public investment remains around 8% below 2019 levels, notes Stefan Angrick of <span class="annot" data-tooltip="moodys /'muːdi/ adj. 喜怒无常的；易怒的；郁郁寡欢的Moody穆迪(姓氏)比较级: moodier, moodiest">Moodys</span> Analytics, a consultancy. That, say Sanaenomics’ <span class="annot" data-tooltip="advocates /ˈædvəkeɪt，'ædvəkət/ v. 拥护；支持；提倡n. 拥护者；支持者；提倡者；辩护律师；出庭辩护人时 态: advocated, advocating,">advocates</span>, has perpetuated Japan’s deepest economic rot: cash <span class="annot" data-tooltip="hoarding /hɔːrd/ n. (钱财、食物或其他珍贵物品的)储藏, 积存vt. & vi. 积蓄并储藏(某物)时 态: hoarded, hoardi">hoarding</span> by its firms. Much of that flows into investment abroad. To bring it back home,</p>
+<p>Japan should use public investment to heat up its economy, argues Aida Takuji, a <span class="annot" data-tooltip="prominent /'prɑːmɪnənt/ adj. 突起的，凸出的显著的；突出的杰出的，著名的，卓越的副 词: prominently">prominent</span> Sanaeconomist. He <span class="annot" data-tooltip="advocates /ˈædvəkeɪt，'ædvəkət/ v. 拥护；支持；提倡n. 拥护者；支持者；提倡者；辩护律师；出庭辩护人时 态: advocated, advocating,">advocates</span> an output gap of 2%. According to Ms Takaichi’s growth <span class="annot" data-tooltip="strategy /'strætədʒi/ n. 战略学, 兵法战略, 策略策略, 计谋">strategy</span>, public investment will not only beget private investment but also <span class="annot" data-tooltip="raise /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raise</span> employment, consumer confidence and profits, starting a “virtuous cycle” of growth; taxes will <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> without a rise in tax rates. This focus on growth, in turn, underpins an ambivalence <span class="annot" data-tooltip="towards /tɔːrdz/ prep. 向，朝为了；有助于；用于对于，关于接近；将近；大约">towards</span> Japan’s <span class="annot" data-tooltip="fiscal /'fɪskl/ adj. 国库的；会计的，财政的副 词: fiscally">fiscal</span> limits. In the honebuto, the old budget target of achieving a primary <span class="annot" data-tooltip="surplus /'sɜːrplʌs/ adj. 过剩的, 多余的n. 过剩">surplus</span> (excluding interest) has been replaced by one <span class="annot" data-tooltip="emphasising /'emfəsɪs/ n. 强调, 重点">emphasising</span> a <span class="annot" data-tooltip="falling /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">falling</span> debt-to-GDP <span class="annot" data-tooltip="ratio /'reɪʃioʊ/ n. 比, 比率">ratio</span>, from which new “bridging bonds” will be <span class="annot" data-tooltip="exempted /ɪɡ'zempt/ vt. 免除；豁免adj. 被免除的；被豁免的n. 免税者；被免除义务者时 态: exempted, exempting, ex">exempted</span>. New multi-year <span class="annot" data-tooltip="budgeting /bʌdʒ/ vt. & vi. (使)稍微移动(使)改变主意；(使)让步n. (毛向外翻的)羔羊皮adj. 用羔羊皮装饰的浮夸的，自负的；庄">budgeting</span> will fund favoured projects while sidelining the <span class="annot" data-tooltip="cautious /'kɔːʃəs/ adj. 小心的, 谨慎的副 词: cautiously">cautious</span> finance ministry, notes Tobias Harris of Japan Foresight, a consultancy. <span class="annot" data-tooltip="watering /'wɔtərɪŋ/ n. 洒水，浇水；(指动物)饮水">Watering</span> down the fiscal target could unshackle spending. Thanks to <span class="annot" data-tooltip="inflation /ɪn'fleɪʃn/ n. (充气而引起的)膨胀通货膨胀">inflation</span>, the <span class="annot" data-tooltip="net /net/ n. 网；净利；网络；实价vi. 编网vt. 净赚；得到；用网捕adj. 纯粹的；净余的时 态: netted, nettin">net</span> debt-to-GDP ratio, of around 130%, has been falling since the <span class="annot" data-tooltip="pandemic /pæn'demɪk/ adj. （疾病）在全国（或世界）流行的">pandemic</span>. That will continue for years so long as the nominal growth rate, now above 3%, exceeds the effective interest rate on Japan’s liabilities, which because of locked-in low rates is below 1%, estimates Goldman Sachs, a bank. The temptation is clear. As Mr Aida puts it: “The only fiscal <span class="annot" data-tooltip="burden /'bɜːrdn/ n. 负担；责任；船的载货量vt. 烦扰；使负担；装货于时 态: burdened, burdening, burdens">burden</span> is the interest cost. <span class="annot" data-tooltip="strategic /strə'tiːdʒɪk/ adj. 战略(上)的有战略意义的; 至关重要的副 词: strategically">Strategic</span> investments whose future benefits exceed their interest costs should therefore be financed through government bond issuance without hesitation.” In <span class="annot" data-tooltip="practice /'præktɪs/ n. 练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规时 态: practiced，practicing，">practice</span>, Sanaenomics will face tighter <span class="annot" data-tooltip="constraints /kən'streɪnt/ n. 强制；限制，约束强制，强迫">constraints</span> than its <span class="annot" data-tooltip="architects /'ɑːrkɪtekt/ n. 建筑师, 设计师">architects</span> imagine. One is the bond market. Ten-year <span class="annot" data-tooltip="yields /jiːld/ vt. 出产；屈服；放弃vi. 屈服，投降n. 收益；产量时 态: yielded, yielding, yields">yields</span> have risen sharply this year, to 2.8% from 2% in January. A further sell-off would gradually raise financing costs. If the budget deficit <span class="annot" data-tooltip="swelled /swel/ vi. 膨胀；[病理]肿胀；隆起vt. 使膨胀；使隆起n. 肿胀；隆起adj. 漂亮的；一流的时 态: swelled, swe">swelled</span> to around 2% of GDP but ten- year yields stayed near current levels, the debt ratio would <span class="annot" data-tooltip="fall /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">fall</span> for the next <span class="annot" data-tooltip="decade /'dekeɪd/ n. 十年，十年期；十">decade</span>, estimates Goldman. Yet were yields to rise to 3.5%, it would stop falling after five. This creates a <span class="annot" data-tooltip="timing /'taɪmɪŋ/ n. 定时；时间选择；调速v. 为…安排时间；测定…的时间（time的ing形式）">timing</span> problem. Any growth from Ms Takaichi’s investments could take <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span> to materialise, but the borrowing to finance them will hit markets right away. And the bond market is more sensitive that it used to be, as once-<span class="annot" data-tooltip="reliable /rɪ'laɪəbl/ adj. 可靠的, 可信赖的副 词: reliably">reliable</span> <span class="annot" data-tooltip="domestic /də'mestɪk/ adj. 国内的；家庭的；驯养的；一心只管家务的">domestic</span> investors have been replaced by pickier foreigners. A second <span class="annot" data-tooltip="constraint /kən'streɪnt/ n. 强制；限制，约束强制，强迫">constraint</span> is the BoJ, which looks likely to keep tightening. Every percentage point on interest rates costs the government an additional ¥5trn</p>
+<p>(0.7% of GDP) in interest, reckons Deutsche Bank. Ms Takaichi, who before taking office called rate hikes “stupid”, may be <span class="annot" data-tooltip="tempted /tempt/ vt. 引诱或怂恿(某人)干不正当的事使想要时 态: tempted, tempting, tempts">tempted</span> to bring the <span class="annot" data-tooltip="central /'sentrəl/ adj. 中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的副 词: centrally">central</span> bank to heel, as Abe did. But bond markets may <span class="annot" data-tooltip="rebel /'rebl/ n. 反政府的人；反叛者；造反者叛逆者vi. 反抗政府；造反反抗权威；叛逆时 态: rebelled，rebelling，re">rebel</span> if she does. <span class="annot" data-tooltip="gruff /ɡrʌf/ adj. 粗暴的；脾气坏的；粗哑的vt. 粗鲁地说；生硬地说vi. 粗鲁地说；生硬地说话比较级: gruffer, gruffes">Gruff</span> language about the BoJ in a <span class="annot" data-tooltip="preliminary /prɪ'lɪmɪneri/ adj. 初步的, 预备的, 开端的n. 准备工作, 初步行动">preliminary</span> <span class="annot" data-tooltip="release /rɪ'liːs/ vt. 释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]时 态: released，rel">release</span> of the honebuto last month coincided with a three-<span class="annot" data-tooltip="decade /'dekeɪd/ n. 十年，十年期；十">decade</span> high in ten-year <span class="annot" data-tooltip="yields /jiːld/ vt. 出产；屈服；放弃vi. 屈服，投降n. 收益；产量时 态: yielded, yielding, yields">yields</span> (the final <span class="annot" data-tooltip="version /'vɜːrʒn/ n. 变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本">version</span> nodded to its independence). Then there is <span class="annot" data-tooltip="inflation /ɪn'fleɪʃn/ n. (充气而引起的)膨胀通货膨胀">inflation</span>, where Ms Takaichi faces a <span class="annot" data-tooltip="dual /'duːəl/ adj. 双的；双重的n. 双数；双数词">dual</span> bind. A spending- driven price <span class="annot" data-tooltip="surge /sɜːrdʒ/ n. (情感的) 突发，涌现，突然出现（数量的）急剧上升，激增；大量；一大批奔涌向前；突然的向上运动（电流）浪涌v. 涌；汹涌">surge</span> would inflict pain on <span class="annot" data-tooltip="households /'haʊshoʊld/ n. 同住在一所房子里的人, 一家人, 户adj. 家庭的, 家用的">households</span>, to which the cut in the sales tax on food is a response. But too little inflation, by dragging down nominal growth, could <span class="annot" data-tooltip="damage /'dæmɪdʒ/ v. 损害；伤害；毁坏；破坏n. 损坏，破坏，损失，损害，伤害（法院判定的）损害赔偿金时 态: damaged, damagi">damage</span> the <span class="annot" data-tooltip="fiscal /'fɪskl/ adj. 国库的；会计的，财政的副 词: fiscally">fiscal</span> <span class="annot" data-tooltip="outlook /'aʊtlʊk/ n. 展望；态度，观点；景色">outlook</span>. The growth <span class="annot" data-tooltip="strategy /'strætədʒi/ n. 战略学, 兵法战略, 策略策略, 计谋">strategy</span> <span class="annot" data-tooltip="simply /'sɪmpli/ adv. 简单地；朴素地；简直；仅仅；坦白地">simply</span> envisions Japan <span class="annot" data-tooltip="threading /θred/ n. 线；细线线索，思路vt. 将(针、线等)穿过…将(影片)装入放映机时 态: threaded，threading，thr">threading</span> the needle: 1% real growth with 2% inflation. But even 1% real growth requires a permanent boost to <span class="annot" data-tooltip="productivity /ˌproʊdʌk'tɪvəti/ n. 生产率, 生产力">productivity</span>. In an ageing, <span class="annot" data-tooltip="sluggish /'slʌɡɪʃ/ adj. 萧条的；迟钝的；懒惰的；行动迟缓的n. 市况呆滞；市势疲弱名 词: sluggishness">sluggish</span> economy, that would be <span class="annot" data-tooltip="tricky /'trɪki/ adj. 机警的；狡猾的比较级: trickier, trickiest">tricky</span> even for an ambitious structural <span class="annot" data-tooltip="reformer /rɪ'fɔːrm/ n. 改革，改良，改造vt. & vi. 改革；改造；改善时 态: reformed，reforming，reforms">reformer</span>, which Ms Takaichi is not. In effect, Sanaenomics is a bet that Japan’s <span class="annot" data-tooltip="capable /'keɪpəbl/ adj. 能干的，能胜任的；有才华的副 词: capably">capable</span> bureaucrats can pick winners in 17 sectors so wisely that little else matters. Even for them, that is a tall order. ■ This article was downloaded by zlibrary from https://www.economist.com/finance-and-economics/2026/07/30/japan-<span class="annot" data-tooltip="pursues /pər'suː/ vt. 从事；追赶；继续；纠缠vi. 追赶；继续进行时 态: pursued, pursuing, pursues">pursues</span>-an-ill- timed-fiscal-stimulus</p>
+<p>Finance & economics | Buttonwood <span class="annot" data-tooltip="retail /ˈriːteɪl/ vt. 零售；转述vi. 零售n. 零售adv. 以零售方式adj. 零售的时 态: retailed, retailing, ">Retail</span> investors should beware <span class="annot" data-tooltip="perpetual /pər'petʃuəl/ adj. 永久的; 终身的不断的; 常发生的副 词: perpetually">perpetual</span> futures These <span class="annot" data-tooltip="peculiar /pɪ'kjuːliər/ adj. 奇怪的, 异常的特有的, 独具的〈非正〉不舒服, 有病的副 词: peculiarly">peculiar</span> products, popular in the crypto world, are hitting the <span class="annot" data-tooltip="mainstream /'meɪnstriːm/ n. (思想或行为的)主流时 态: mainstreamed, mainstreaming, mainstreams">mainstream</span> Jul 30th 2026 Anyone who says they have reinvented an old idea is inviting suspicion. But if the idea concerns money, it is wiser to skip the suspicion and back away <span class="annot" data-tooltip="immediately /ɪ'miːdiət/ adj. 立即的，即刻的；紧迫的目前的，当前的直接的最接近的名 词: immediateness">immediately</span>. This is because “I have reinvented an old financial idea” means “I am about to take your money if you give me half a chance.” Perpetual futures were first traded in 2016 by Arthur Hayes, who co-founded the BitMEX exchange for cryptocurrency <span class="annot" data-tooltip="derivatives /dɪ'rɪvətɪv/ n. 衍生物，派生物；派生词；【数】导数，微商adj. 缺乏独创性的；模仿他人的副 词: derivatively">derivatives</span>. Derivatives are financial <span class="annot" data-tooltip="contracts /'kɑːntrækt/ vi. 感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约时 态: contracted, contracting, c">contracts</span>. Some have finer points that make even most traders’ eyes glaze over; traditional futures, though, are pretty simple and have been around for centuries. A future is an agreement to buy or sell something for an agreed price, on a set expiry date in the future. At the Dojima Exchange,</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>commission</td><td>/kə'mɪʃn/ n.</td><td>授权, 委托委员会佣金, 回扣vt. 委任, 委托, commissioning, commissions</td></tr>
+<tr><td>ukraine</td><td>— n.</td><td>乌克兰（原苏联一加盟共和国，现已独立）</td></tr>
+<tr><td>worth</td><td>/wɜːrθ/ adj.</td><td>值…的n. 价值；财产, worthing, worths</td></tr>
+<tr><td>consider</td><td>/kən'sɪdər/ vt.</td><td>& vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及, considering, considers</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>equivalent</td><td>/ɪ'kwɪvələnt/ adj.</td><td>等同的，等效的n. 对等的人（或事物），对应的人（或事物）</td></tr>
+<tr><td>benchmark</td><td>/'bentʃmɑːrk/ </td><td>基准, benchmarking, benchmarks</td></tr>
+<tr><td>yields</td><td>/jiːld/ vt.</td><td>出产；屈服；放弃vi. 屈服，投降n. 收益；产量, yielding, yields</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>omitted</td><td>/ə'mɪt/ vt.</td><td>省略，遗漏；删掉忘记做，omitting，omits</td></tr>
+<tr><td>sovereign</td><td>/'sɑːvrɪn/ n.</td><td>君主，国王，女王旧时价值为一镑的英国金币adj. 控制国家的；统治的独立自主的</td></tr>
+<tr><td>compensation</td><td>/ˌkɑːmpen'seɪʃn/ n.</td><td>补偿[赔偿]物, 补偿[赔偿]金</td></tr>
+<tr><td>asset</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>derivatives</td><td>/dɪ'rɪvətɪv/ n.</td><td>衍生物，派生物；派生词；【数】导数，微商adj. 缺乏独创性的；模仿他人的</td></tr>
+<tr><td>hedge</td><td>/hedʒ/ vt.</td><td>用树篱笆围住；避免作正面答复vi. 用树篱围住；避免作正面答复n. 树篱；障碍, hedging, hedges</td></tr>
+<tr><td>issue</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>worth</td><td>/wɜːrθ/ adj.</td><td>值…的n. 价值；财产, worthing, worths</td></tr>
+<tr><td>senior</td><td>/'siːniər/ adj.</td><td>年长的资深的; 地位高的〈美〉最高年级的n. 较年长者高年级学生〈美〉毕业班学生Senior西尼尔(姓氏)</td></tr>
+<tr><td>variant</td><td>/'veriənt/ n.</td><td>变体；变种；变型(词等的)变体；异读(书等的)不同版本；改编adj. 不同的；差别的；变异的；易变的，不定的；各种各样的</td></tr>
+<tr><td>jointly</td><td>/dʒɔɪnt/ n.</td><td>关节；接合处，接合点；接缝；（牛，羊等的腿）大块肉adj. 联合的，合办的；共同的；连接的vt. 连接，贴合；接合；使有接头vi. 贴合；生节, jointin</td></tr>
+<tr><td>proposals</td><td>/prə'poʊzl/ n.</td><td>提议，建议；求婚</td></tr>
+<tr><td>joint</td><td>/dʒɔɪnt/ n.</td><td>关节；接合处，接合点；接缝；（牛，羊等的腿）大块肉adj. 联合的，合办的；共同的；连接的vt. 连接，贴合；接合；使有接头vi. 贴合；生节, jointin</td></tr>
+<tr><td>fiscal</td><td>/'fɪskl/ adj.</td><td>国库的；会计的，财政的</td></tr>
+<tr><td>leap</td><td>/liːp/ vi.</td><td>跳，跳跃n. 跳跃；飞跃vt. 跳跃，跳过；使跃过, leapt leaping, leaps</td></tr>
+<tr><td>commission</td><td>/kə'mɪʃn/ n.</td><td>授权, 委托委员会佣金, 回扣vt. 委任, 委托, commissioning, commissions</td></tr>
+<tr><td>ratio</td><td>/'reɪʃioʊ/ n.</td><td>比, 比率</td></tr>
+<tr><td>ratios</td><td>/'reɪʃioʊ/ n.</td><td>比, 比率</td></tr>
+<tr><td>inflation</td><td>/ɪn'fleɪʃn/ n.</td><td>(充气而引起的)膨胀通货膨胀</td></tr>
+<tr><td>shrink</td><td>/ʃrɪŋk/ vt.</td><td>& vi. 收缩；退缩，shrunk shrunk，shrunken shrinking，shrinks</td></tr>
+<tr><td>surpluses</td><td>/'sɜːrplʌs/ adj.</td><td>过剩的, 多余的n. 过剩</td></tr>
+<tr><td>fall</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>decade</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>mechanism</td><td>/'mekənɪzəm/ n.</td><td>机械装置构造, 机制办法, 技巧, 途径</td></tr>
+<tr><td>main</td><td>/meɪn/ adj.</td><td>主要的; 最重要的n. 总管道; 干线</td></tr>
+<tr><td>rectitude</td><td>/'rektɪtuːd/ n.</td><td>操行端正</td></tr>
+<tr><td>reach</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>ukraine</td><td>— n.</td><td>乌克兰（原苏联一加盟共和国，现已独立）</td></tr>
+<tr><td>benchmark</td><td>/'bentʃmɑːrk/ </td><td>基准, benchmarking, benchmarks</td></tr>
+<tr><td>substitute</td><td>/'sʌbstɪtuːt/ vt.</td><td>& vi. 代替, 替换, 代用, substituting, substitutes</td></tr>
+<tr><td>scenario</td><td>/sə'nærioʊ/ n.</td><td>情节；剧本；方案</td></tr>
+<tr><td>asset</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>pursues</td><td>/pər'suː/ vt.</td><td>从事；追赶；继续；纠缠vi. 追赶；继续进行, pursuing, pursues</td></tr>
+<tr><td>fiscal</td><td>/'fɪskl/ adj.</td><td>国库的；会计的，财政的</td></tr>
+<tr><td>agenda</td><td>/ə'dʒendə/ n.</td><td>（政治）议题；议事日程；目的</td></tr>
+<tr><td>resemblance</td><td>/rɪ'zembləns/ n.</td><td>相似, 形似</td></tr>
+<tr><td>mentor</td><td>/'mentɔːr/ n.</td><td>(无经验之人的)有经验可信赖的顾问, mentoring, mentors</td></tr>
+<tr><td>reform</td><td>/rɪ'fɔːrm/ n.</td><td>改革，改良，改造vt. & vi. 改革；改造；改善，reforming，reforms</td></tr>
+<tr><td>whereas</td><td>/ˌwer'æz/ conj.</td><td>但是, 而</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>annual</td><td>/'ænjuəl/ adj.</td><td>年度的；每年的n. 年刊，年鉴；一年生植物</td></tr>
+<tr><td>blueprint</td><td>/'bluːprɪnt/ n.</td><td>蓝图, 设计图, blueprinting, blueprints</td></tr>
+<tr><td>strategy</td><td>/'strætədʒi/ n.</td><td>战略学, 兵法战略, 策略策略, 计谋</td></tr>
+<tr><td>ships</td><td>/ʃɪp/ vt.</td><td>运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Division of the Nation</td></tr>
+<tr><td>fiscal</td><td>/'fɪskl/ adj.</td><td>国库的；会计的，财政的</td></tr>
+<tr><td>reform</td><td>/rɪ'fɔːrm/ n.</td><td>改革，改良，改造vt. & vi. 改革；改造；改善，reforming，reforms</td></tr>
+<tr><td>corporate</td><td>/'kɔːrpərət/ adj.</td><td>社团的, 法人的</td></tr>
+<tr><td>governance</td><td>/'ɡʌvərnəns/ n.</td><td>统治;管理;治理;统治方式;管理方法</td></tr>
+<tr><td>inflation</td><td>/ɪn'fleɪʃn/ n.</td><td>(充气而引起的)膨胀通货膨胀</td></tr>
+<tr><td>sovereignty</td><td>/'sɑːvrənti/ n.</td><td>最高统治权, 君权国家的主权</td></tr>
+<tr><td>bullying</td><td>/'bʊli/ v.</td><td>迫使；胁迫欺负；恐吓；欺凌n. 恃强凌弱者；恶霸adj. 顶好的，快活的，第一流的，bullying，bullies</td></tr>
+<tr><td>chronic</td><td>/'krɑːnɪk/ adj.</td><td>慢性的；长期的；习惯性的</td></tr>
+<tr><td>moodys</td><td>/'muːdi/ adj.</td><td>喜怒无常的；易怒的；郁郁寡欢的Moody穆迪(姓氏), moodiest</td></tr>
+<tr><td>advocates</td><td>/ˈædvəkeɪt，'ædvəkət/ v.</td><td>拥护；支持；提倡n. 拥护者；支持者；提倡者；辩护律师；出庭辩护人, advocating, advocates</td></tr>
+<tr><td>hoarding</td><td>/hɔːrd/ n.</td><td>(钱财、食物或其他珍贵物品的)储藏, 积存vt. & vi. 积蓄并储藏(某物), hoarding, hoards</td></tr>
+<tr><td>prominent</td><td>/'prɑːmɪnənt/ adj.</td><td>突起的，凸出的显著的；突出的杰出的，著名的，卓越的</td></tr>
+<tr><td>advocates</td><td>/ˈædvəkeɪt，'ædvəkət/ v.</td><td>拥护；支持；提倡n. 拥护者；支持者；提倡者；辩护律师；出庭辩护人, advocating, advocates</td></tr>
+<tr><td>strategy</td><td>/'strætədʒi/ n.</td><td>战略学, 兵法战略, 策略策略, 计谋</td></tr>
+<tr><td>raise</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>towards</td><td>/tɔːrdz/ prep.</td><td>向，朝为了；有助于；用于对于，关于接近；将近；大约</td></tr>
+<tr><td>fiscal</td><td>/'fɪskl/ adj.</td><td>国库的；会计的，财政的</td></tr>
+<tr><td>surplus</td><td>/'sɜːrplʌs/ adj.</td><td>过剩的, 多余的n. 过剩</td></tr>
+<tr><td>emphasising</td><td>/'emfəsɪs/ n.</td><td>强调, 重点</td></tr>
+<tr><td>falling</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>ratio</td><td>/'reɪʃioʊ/ n.</td><td>比, 比率</td></tr>
+<tr><td>exempted</td><td>/ɪɡ'zempt/ vt.</td><td>免除；豁免adj. 被免除的；被豁免的n. 免税者；被免除义务者, exempting, exempts</td></tr>
+<tr><td>budgeting</td><td>/bʌdʒ/ vt.</td><td>& vi. (使)稍微移动(使)改变主意；(使)让步n. (毛向外翻的)羔羊皮adj. 用羔羊皮装饰的浮夸的，自负的；庄严的，budging，budges</td></tr>
+<tr><td>cautious</td><td>/'kɔːʃəs/ adj.</td><td>小心的, 谨慎的</td></tr>
+<tr><td>watering</td><td>/'wɔtərɪŋ/ n.</td><td>洒水，浇水；(指动物)饮水</td></tr>
+<tr><td>inflation</td><td>/ɪn'fleɪʃn/ n.</td><td>(充气而引起的)膨胀通货膨胀</td></tr>
+<tr><td>net</td><td>/net/ n.</td><td>网；净利；网络；实价vi. 编网vt. 净赚；得到；用网捕adj. 纯粹的；净余的, netting, nets</td></tr>
+<tr><td>pandemic</td><td>/pæn'demɪk/ adj.</td><td>（疾病）在全国（或世界）流行的</td></tr>
+<tr><td>burden</td><td>/'bɜːrdn/ n.</td><td>负担；责任；船的载货量vt. 烦扰；使负担；装货于, burdening, burdens</td></tr>
+<tr><td>strategic</td><td>/strə'tiːdʒɪk/ adj.</td><td>战略(上)的有战略意义的; 至关重要的</td></tr>
+<tr><td>practice</td><td>/'præktɪs/ n.</td><td>练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规，practicing，practices</td></tr>
+<tr><td>constraints</td><td>/kən'streɪnt/ n.</td><td>强制；限制，约束强制，强迫</td></tr>
+<tr><td>architects</td><td>/'ɑːrkɪtekt/ n.</td><td>建筑师, 设计师</td></tr>
+<tr><td>yields</td><td>/jiːld/ vt.</td><td>出产；屈服；放弃vi. 屈服，投降n. 收益；产量, yielding, yields</td></tr>
+<tr><td>swelled</td><td>/swel/ vi.</td><td>膨胀；[病理]肿胀；隆起vt. 使膨胀；使隆起n. 肿胀；隆起adj. 漂亮的；一流的, swelled, swollen swelling, swells</td></tr>
+<tr><td>fall</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>decade</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>timing</td><td>/'taɪmɪŋ/ n.</td><td>定时；时间选择；调速v. 为…安排时间；测定…的时间（time的ing形式）</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>reliable</td><td>/rɪ'laɪəbl/ adj.</td><td>可靠的, 可信赖的</td></tr>
+<tr><td>domestic</td><td>/də'mestɪk/ adj.</td><td>国内的；家庭的；驯养的；一心只管家务的</td></tr>
+<tr><td>constraint</td><td>/kən'streɪnt/ n.</td><td>强制；限制，约束强制，强迫</td></tr>
+<tr><td>tempted</td><td>/tempt/ vt.</td><td>引诱或怂恿(某人)干不正当的事使想要, tempting, tempts</td></tr>
+<tr><td>central</td><td>/'sentrəl/ adj.</td><td>中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的</td></tr>
+<tr><td>rebel</td><td>/'rebl/ n.</td><td>反政府的人；反叛者；造反者叛逆者vi. 反抗政府；造反反抗权威；叛逆，rebelling，rebels</td></tr>
+<tr><td>gruff</td><td>/ɡrʌf/ adj.</td><td>粗暴的；脾气坏的；粗哑的vt. 粗鲁地说；生硬地说vi. 粗鲁地说；生硬地说话, gruffest</td></tr>
+<tr><td>preliminary</td><td>/prɪ'lɪmɪneri/ adj.</td><td>初步的, 预备的, 开端的n. 准备工作, 初步行动</td></tr>
+<tr><td>release</td><td>/rɪ'liːs/ vt.</td><td>释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]，releasing，releases</td></tr>
+<tr><td>decade</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>yields</td><td>/jiːld/ vt.</td><td>出产；屈服；放弃vi. 屈服，投降n. 收益；产量, yielding, yields</td></tr>
+<tr><td>version</td><td>/'vɜːrʒn/ n.</td><td>变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本</td></tr>
+<tr><td>inflation</td><td>/ɪn'fleɪʃn/ n.</td><td>(充气而引起的)膨胀通货膨胀</td></tr>
+<tr><td>dual</td><td>/'duːəl/ adj.</td><td>双的；双重的n. 双数；双数词</td></tr>
+<tr><td>surge</td><td>/sɜːrdʒ/ n.</td><td>(情感的) 突发，涌现，突然出现（数量的）急剧上升，激增；大量；一大批奔涌向前；突然的向上运动（电流）浪涌v. 涌；汹涌；涌动(感情、感觉) 突袭，涌动，突发(</td></tr>
+<tr><td>households</td><td>/'haʊshoʊld/ n.</td><td>同住在一所房子里的人, 一家人, 户adj. 家庭的, 家用的</td></tr>
+<tr><td>damage</td><td>/'dæmɪdʒ/ v.</td><td>损害；伤害；毁坏；破坏n. 损坏，破坏，损失，损害，伤害（法院判定的）损害赔偿金, damaging, damages</td></tr>
+<tr><td>fiscal</td><td>/'fɪskl/ adj.</td><td>国库的；会计的，财政的</td></tr>
+<tr><td>outlook</td><td>/'aʊtlʊk/ n.</td><td>展望；态度，观点；景色</td></tr>
+<tr><td>strategy</td><td>/'strætədʒi/ n.</td><td>战略学, 兵法战略, 策略策略, 计谋</td></tr>
+<tr><td>simply</td><td>/'sɪmpli/ adv.</td><td>简单地；朴素地；简直；仅仅；坦白地</td></tr>
+<tr><td>threading</td><td>/θred/ n.</td><td>线；细线线索，思路vt. 将(针、线等)穿过…将(影片)装入放映机，threading，threads</td></tr>
+<tr><td>productivity</td><td>/ˌproʊdʌk'tɪvəti/ n.</td><td>生产率, 生产力</td></tr>
+<tr><td>sluggish</td><td>/'slʌɡɪʃ/ adj.</td><td>萧条的；迟钝的；懒惰的；行动迟缓的n. 市况呆滞；市势疲弱</td></tr>
+<tr><td>tricky</td><td>/'trɪki/ adj.</td><td>机警的；狡猾的, trickiest</td></tr>
+<tr><td>reformer</td><td>/rɪ'fɔːrm/ n.</td><td>改革，改良，改造vt. & vi. 改革；改造；改善，reforming，reforms</td></tr>
+<tr><td>capable</td><td>/'keɪpəbl/ adj.</td><td>能干的，能胜任的；有才华的</td></tr>
+<tr><td>pursues</td><td>/pər'suː/ vt.</td><td>从事；追赶；继续；纠缠vi. 追赶；继续进行, pursuing, pursues</td></tr>
+<tr><td>retail</td><td>/ˈriːteɪl/ vt.</td><td>零售；转述vi. 零售n. 零售adv. 以零售方式adj. 零售的, retailing, retails</td></tr>
+<tr><td>perpetual</td><td>/pər'petʃuəl/ adj.</td><td>永久的; 终身的不断的; 常发生的</td></tr>
+<tr><td>peculiar</td><td>/pɪ'kjuːliər/ adj.</td><td>奇怪的, 异常的特有的, 独具的〈非正〉不舒服, 有病的</td></tr>
+<tr><td>mainstream</td><td>/'meɪnstriːm/ n.</td><td>(思想或行为的)主流, mainstreaming, mainstreams</td></tr>
+<tr><td>immediately</td><td>/ɪ'miːdiət/ adj.</td><td>立即的，即刻的；紧迫的目前的，当前的直接的最接近的</td></tr>
+<tr><td>derivatives</td><td>/dɪ'rɪvətɪv/ n.</td><td>衍生物，派生物；派生词；【数】导数，微商adj. 缺乏独创性的；模仿他人的</td></tr>
+<tr><td>contracts</td><td>/'kɑːntrækt/ vi.</td><td>感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约, contracting, contracts</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day31.html" class="nav-btn">← Day 31</a>
+  <a href="day33.html" class="nav-btn">Day 33 →</a>
+</div>
+
+<div class="progress">📖 Day 32 of 39</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-08-01</div>
+
+</body>
+</html>

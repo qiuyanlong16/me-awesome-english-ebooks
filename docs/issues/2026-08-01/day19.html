@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Europe</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-08-01</div>
+
+<h1 class="article-title">Europe</h1>
+<div class="article-section"></div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>day care, walking, grooming and training for purebred dogs, now a status symbol for Rwanda’s <span class="annot" data-tooltip="urban /'ɜːrbən/ adj. 城市的；住在都市的">urban</span> middle class. Dogs, along with houses and cars, are signs of new <span class="annot" data-tooltip="wealth /welθ/ n. 财富；大量；富有">wealth</span> in a country that recorded <span class="annot" data-tooltip="annual /'ænjuəl/ adj. 年度的；每年的n. 年刊，年鉴；一年生植物副 词: annually">annual</span> GDP growth of 9.4% in 2025. They are not cheap. A German shepherd costs 200,000-500,000 Rwandan francs ($135-$340). A Dogo Argentino recently sold for 2m francs ($1,360), more than the country’s annual GDP per person of $1,124. There is no data on how many purebred dogs Rwanda has. Yet they support a sizeable market in Kigali. Pet shops and doggy day-care centres have sprung up around the city. <span class="annot" data-tooltip="owners /'oʊnər/ n. 所有者；物主">Owners</span> fork out for walkers, groomers and trainers. Mr Ineza, who is 28, started training dogs ten years ago, initially <span class="annot" data-tooltip="earning /ɪr/ n. 耳朵；听觉；倾听；穗vi. （美俚）听见；抽穗EARabbr. East African Railways 东非铁路公司">earning</span> 30,000 francs (then $38) a month. Now he <span class="annot" data-tooltip="employs /ɪm'plɔɪ/ vt. 使用，采用；雇用；使忙于，使从事于n. 雇用；使用时 态: employed, employing, employs">employs</span> 15 people. Mr Ineza partly <span class="annot" data-tooltip="credits /'kredɪt/ n. 赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)时 态:">credits</span> Rwanda’s police with starting the furry <span class="annot" data-tooltip="trend /trend/ n. 趋势, 倾向流行时 态: trended, trending, trends">trend</span>. In 2017 a news segment showed off their German shepherd unit. People did not associate the <span class="annot" data-tooltip="sleek /sliːk/ adj. 圆滑的；井然有序的vt. 使…光滑；掩盖vi. 打扮整洁；滑动比较级: sleeker, sleekest">sleek</span> police dogs with the street dogs they had seen during the genocide, and “suddenly everyone wanted one,” he says. The love for purebred dogs does not yet <span class="annot" data-tooltip="extend /ɪk'stend/ vt. & vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出时 态:">extend</span> to <span class="annot" data-tooltip="strays /streɪ/ vi. 走失，离群；迷路走入歧途；犯罪n. 走失的动物adj. 独自的；零散的时 态: strayed，straying，str">strays</span>, says Olivia Clarke, who runs Wags, a <span class="annot" data-tooltip="shelter /'ʃeltər/ n. 避难所；遮盖物；庇护vt. 使掩蔽；保护vi. 躲避，避难时 态: sheltered, sheltering, she">shelter</span> for abandoned dogs. Unwanted puppies are often thrown over the organisation’s wall. Finding a home for a local mutt is hard. Yet that may be merely a question of <span class="annot" data-tooltip="branding /brænd/ n. 商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责时 态: branded, branding, brands">branding</span>. In Rwanda’s unregulated dog-breeding market, any white dog can be sold as a “Maltese”. And some of the “German shepherds” in Kigali’s doggy day-care centres look suspiciously like their <span class="annot" data-tooltip="stray /streɪ/ vi. 走失，离群；迷路走入歧途；犯罪n. 走失的动物adj. 独自的；零散的时 态: strayed，straying，str">stray</span> cousins. ■ Sign up to the Analysing Africa, a weekly newsletter that keeps you in the loop about the world’s youngest—and least understood—continent. This article was downloaded by zlibrary from https://www.economist.com/middle-east-and-africa/2026/07/30/why-rwandans-are- warming-to-dogs</p>
+<p>France and Spain are suffering their biggest wildfires on record The Berlin <span class="annot" data-tooltip="terror /'terər/ n. 恐怖; 恐怖活动引起恐怖的人[事]讨厌的人">terror</span> attack <span class="annot" data-tooltip="exposes /ɪk'spoʊz/ vt. 使曝光；揭露，揭发；显示时 态: exposed, exposing, exposes">exposes</span> deep failings in the state A new party <span class="annot" data-tooltip="breathes /briːð/ vi. 呼吸；低语；松口气；（风）轻拂vt. 呼吸；流露；使喘息；低声说时 态: breathed, breathing, br">breathes</span> life into Turkey’s opposition Russian <span class="annot" data-tooltip="strikes /straɪk/ vi. 罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打时 态:">strikes</span> may keep Ukraine's <span class="annot" data-tooltip="grain /ɡreɪn/ n. 谷物；谷粒颗粒；细粒（尤用于否定句） 少量；微量；一点儿（木、织物或石头等的）纹理（表面的）质地；触感格令（重量单位，等">grain</span> from <span class="annot" data-tooltip="reaching /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reaching</span> markets In Italy, America does business on the ambassador’s <span class="annot" data-tooltip="yacht /jɑːt/ n. 快艇, 帆船, 游艇时 态: yachted, yachting, yachts">yacht</span></p>
+<div class="article-separator"></div>
+<div class="article-header">Europe · Europe | Rising flames</div>
+<p>France and Spain are suffering their biggest wildfires on record Bordeaux is on alert, and worse is yet to come Jul 30th 2026 France is facing the “toughest situation since the second world war”, declared Emmanuel Macron on July 27th on a visit to firefighters in the Gironde area around Bordeaux. He was referring to the scale of the wildfires, but at times it felt as if he was referring to a crisis of any sort. Even in a country well used to rebellion and riot his words felt only slightly excessive. Images of the wildfires that began five days earlier in one of south-west France’s most forested areas have shaken the country. Firefighters called the <span class="annot" data-tooltip="scenes /siːn/ n. 情景；景象；场面；事件">scenes</span> apocalyptic and Dantesque. The area destroyed, 42,000 hectares, is four times the size of Paris. Over 200,000 people have been evacuated. A week after they broke out, the fires were still not under control and were just 15km from the city of Bordeaux itself.</p>
+<p>The wildfires started in the village of Saumos, west of Bordeaux, <span class="annot" data-tooltip="possibly /'pɑːsəbli/ adv. 可能地；大概；也许">possibly</span> when a motorised device used for <span class="annot" data-tooltip="brush /brʌʃ/ n. 刷子；画笔；毛笔；争吵vt. 刷；画vi. 刷；擦过；掠过时 态: brushed, brushing, brushes">brush</span>-clearing caught alight. That they spread so fast was the result of exceptional conditions. In June and July France had two canicules, or spells of extreme heat, with temperatures at 40°C and above; this parched the land and turned pine forests into tinder. At one point <span class="annot" data-tooltip="intense /ɪn'tens/ adj. 强烈的；紧张的；热情的；非常的比较级: intenser, intensest">intense</span> heat created a weather phenomenon known as pyrocumulonimbus, whereby smoke from the fire generated its <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> thunderclouds and lightning that struck the ground and set off new fires. France has never witnessed one before. The evacuations have been anguished but orderly. Despite <span class="annot" data-tooltip="traffic /'træfɪk/ n. 交通；贸易；运输；通信量vt. 用…作交换；在…通行vi. 交易，买卖时 态: trafficked, traffick">traffic</span> jams on the <span class="annot" data-tooltip="narrow /'næroʊ/ adj. 狭窄的，有限的；度量小的；精密的；勉强的n. 狭窄部分，隘路；海峡vt. 使变狭窄vi. 变窄比较级: narrower">narrow</span> <span class="annot" data-tooltip="cap /kæp/ n. 帽子；盖vi. 脱帽致意vt. 覆盖；胜过；给…戴帽；加盖于Cap摩羯座CAPabbr. Common Agricult">Cap</span> Ferret peninsula, motorists were able to leave; others were evacuated by boat. Some 7,000 people have been housed on camp beds in a vast exhibition hall, thanks to the Bordeaux town hall. Thomas Cazenave, the mayor, told evacuees the <span class="annot" data-tooltip="shelter /'ʃeltər/ n. 避难所；遮盖物；庇护vt. 使掩蔽；保护vi. 躲避，避难时 态: sheltered, sheltering, she">shelter</span> was temporary and that they would be given beds in student accommodations or rooms offered by volunteers. Some will not be returning home at all. In the village of Le Porge, 183 homes were burnt to the ground; <span class="annot" data-tooltip="twisted /twɪst/ vt. 捻；拧；扭伤；编织；使苦恼n. 扭曲；扭伤；拧vi. 扭动；弯曲时 态: twisted, twisting, twis">twisted</span> remains of bicycles and garden chairs lay beside the <span class="annot" data-tooltip="ruins /'ruːɪn/ vt. 破坏，毁掉使破产，使沦落n. 毁坏，毁灭，灭亡完全丧失，断送；垮台(的原因)破败、坍塌或毁坏的状态废墟；遗迹时 态: r">ruins</span>. Neighbouring Spain has been hit just as hard. In early July, 14 people were killed by a <span class="annot" data-tooltip="swift /swɪft/ adj. 迅速的, 速度快的敏捷的, 反应快的SWIFTabbr. Society for Worldwide Interbank">swift</span> conflagration in a village in Almería province. Later in the month, two wildfires in Ávila province and the Madrid region <span class="annot" data-tooltip="merged 〈美俚〉结了婚的">merged</span> into the country’s biggest-ever <span class="annot" data-tooltip="blaze /bleɪz/ n. 火焰, 烈火光辉, 闪耀迸发, 爆发vi. 猛烈地燃烧发光, 照耀时 态: blazed, blazing, blaze">blaze</span>, destroying 77,000 hectares, more even than in France. A further 9,300 have burned near Valencia. On July 24th a large <span class="annot" data-tooltip="plume /pluːm/ vt. 用羽毛装饰n. 羽毛vi. 骚首弄姿时 态: plumed, pluming, plumes">plume</span> of smoke was visible from <span class="annot" data-tooltip="central /'sentrəl/ adj. 中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的副 词: centrally">central</span> Madrid; the fire threatened a 16th- century <span class="annot" data-tooltip="monastery /'mɑːnəsteri/ n. 修道院形容词: monasterial">monastery</span> at El Escorial before the wind mercifully changed direction.</p>
+<p>Visiting Ávila on July 26th, Pedro Sánchez, the prime minister, warned of “complex hours ahead”. Two days of lower temperatures and <span class="annot" data-tooltip="lighter /'laɪtər/ n. 打火机；驳船；点火者vt. 驳运时 态: lightered, lightering, lighters">lighter</span> winds then helped thousands of firefighters bring the flames under control. Around 100,000 people were evacuated or told to stay put, with only one further fatality. Yet the fires are <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> from over. Spain’s fourth heatwave of the summer began on July 29th. It will bring a return of the “30/30/30” conditions that firefighters dread: temperatures of above 30°C, less than 30% <span class="annot" data-tooltip="humidity /hjuː'mɪdəti/ n. 湿度, 潮湿, 湿气">humidity</span> and winds over 30kph. Throw in an exceptionally wet spring that increased vegetation and a bone-dry early summer that dried it out, and Spain has become a tinder box. In some respects, the wildfires have shown off effective crisis management. In France, firefighting protocols are well-known and practised. The country has a fleet of Canadair water-dropping <span class="annot" data-tooltip="aircraft /'erkræft/ n. 飞机，航空器">aircraft</span> and a huge reserve of 200,000 volunteer firefighters, who make up 78% of all firefighters. An Airbus A400M military plane was used for firefighting for the first time, using special kit to drop 20 tonnes of retardant. Farmers towing water cisterns joined convoys of rescue <span class="annot" data-tooltip="vehicles /'viːəkl/ n. 交通工具, 车辆传播媒介, 手段">vehicles</span>. Mr Macron activated the EU’s <span class="annot" data-tooltip="civil /'sɪvl/ adj. 公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的副 词: civilly">civil</span>- protection <span class="annot" data-tooltip="mechanism /'mekənɪzəm/ n. 机械装置构造, 机制办法, 技巧, 途径">mechanism</span>; firefighting aircraft and vehicles poured in, not just from union members such as Sweden, Germany, Portugal and Slovakia, but from non-members Turkey and Switzerland.</p>
+<p>In Spain, there has been little of the political <span class="annot" data-tooltip="bickering /'bɪkər/ vi. 闪动；斗嘴；潺潺而流n. 吵嘴；口角；（水的）潺潺声时 态: bickered, bickering, bickers">bickering</span> that often disfigures disaster response. Madrid’s <span class="annot" data-tooltip="conservative /kən'sɜːrvətɪv/ n. 保守的人adj. 保守的, 守旧的(式样等)不时新的, 传统的副 词: conservatively">conservative</span>-run regional government quickly got Mr Sánchez’s Socialist-led administration to declare a national emergency. The <span class="annot" data-tooltip="interior /ɪn'tɪriər/ n. 内部内地adj. 内部的内地的, 国内的名 词: interiority">Interior</span> Ministry took charge of an impressive firefighting effort, which has <span class="annot" data-tooltip="blended /blend/ vt. & vi. (使)混合, (使)混杂n. 混合物时 态: blended, blent blending, blends">blended</span> regional forces, the army and volunteers. Yet the disaster has also exposed <span class="annot" data-tooltip="shortcomings /'ʃɔːrtkʌmɪŋ/ n. 短处; 缺点">shortcomings</span> in both countries, not least the difficulty of planning for what has until now been judged a low- <span class="annot" data-tooltip="probability /ˌprɑːbə'bɪləti/ n. 可能性, 可能发生的事〈数〉概率">probability</span> event. France's 12 Canadairs, eight <span class="annot" data-tooltip="dash /dæʃ/ n. 破折号；冲撞vt. 使…破灭；猛撞；泼溅vi. 猛冲；撞击DASHabbr. Drone Antisubmarine H">Dash</span> <span class="annot" data-tooltip="aircraft /'erkræft/ n. 飞机，航空器">aircraft</span>, six Air Tractors and about 30 firefighting helicopters <span class="annot" data-tooltip="suffice /sə'faɪs/ vt. 使满足；足够…用；合格vi. 足够；有能力时 态: sufficed, sufficing, suffices">suffice</span> in a normal year, especially when supported by other EU countries. But opposition politicians, including from Marine Le Pen’s populist-right National Rally, have rounded on the government for not buying more and <span class="annot" data-tooltip="sooner /ˈsunɚ/ n. （美）抢先占有土地者（在政府开放西部前）">sooner</span>. A new <span class="annot" data-tooltip="batch /bætʃ/ n. 一炉一批, 一组, 一群时 态: batched, batching, batches">batch</span> of Canadairs is <span class="annot" data-tooltip="due /duː/ adj. 到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）">due</span> to be delivered in 2028 at the earliest. As for Spain, only seven of the government’s 14 Canadairs are <span class="annot" data-tooltip="operational /ˌɑːpə'reɪʃənl/ adj. 即可使用的(用于)操作的, 经营的">operational</span>, <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">although</span> <span class="annot" data-tooltip="allies n. （第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者">allies</span> loaned six more.</p>
+<p>The new generation of <span class="annot" data-tooltip="blazes /bleɪz/ n. 火焰, 烈火光辉, 闪耀迸发, 爆发vi. 猛烈地燃烧发光, 照耀时 态: blazed, blazing, blaze">blazes</span>, fired by climate change and variations in land use, are of almost uncontrollable ferocity—and are getting closer to cities. In Spain rural depopulation means less attention is paid to forest management. Regional governments <span class="annot" data-tooltip="slashed /slæʃ/ v. （用利器）砍，劈割破；在…上留下深长的切口大量削减n. （用刀等）砍，劈（长而窄的）伤口，切口，砍痕斜杠；斜线号时 态:">slashed</span> spending on fire prevention after the great recession, and it has yet to recover. Eduardo Tolosana, president of the national association of forestry engineers, told El Mundo that Spain needs more <span class="annot" data-tooltip="cleared 清除的">cleared</span> <span class="annot" data-tooltip="strips /strɪp/ vt. 剥去；剥夺；脱去衣服n. 带；条状；脱衣舞vi. 脱去衣服时 态: stripped, stripping, strip">strips</span> around housing <span class="annot" data-tooltip="estates /ɪ'steɪt/ n.（位于乡村的）大片私有土地，庄园，种植园【英式】（按规划建造的）住宅区，工业区【法律】（个人死后留下的全部）财产，遗">estates</span>, more evacuation <span class="annot" data-tooltip="routes /ruːt，raʊt/ n. 路, 路途, 路线, 路程时 态: routed, routing, routes">routes</span> and hydrants and active forest management. As he visited the sites of fires this week, Mr Sánchez called for a national pact against climate change. He knows that some on the right are climate deniers. But he is not a <span class="annot" data-tooltip="consensus /kən'sensəs/ n. (意见等)一致, 一致同意">consensus</span>-builder. When the flames recede, France and Spain will have to reassess the risks. In France the area destroyed so <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> this year, around 115,000 hectares, is <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> twice the most recent peak in a whole year, in 2022. Wildfires have broken out not only in southern forests known to be at risk but in <span class="annot" data-tooltip="places /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">places</span> like Fontainebleau, <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span> Paris. In Spain the damaged area stands at 170,000 hectares, more than six times the figure for the same period last year. The summer’s drama is far from over: the city of Bordeaux remains on high alert, and both countries are bracing for fresh heatwaves. With every year, such blazes become less an exception and more the rule. ■</p>
+<p>This article was downloaded by zlibrary from https://www.economist.com/<span class="annot" data-tooltip="interactive /ˌɪntər'æktɪv/ adj. (指至少两个人或物)一起活动或互相合作的交互式的, 人机对话的">interactive</span>/europe/2026/07/30/france-and-spain-are- suffering-their-biggest-wildfires-on-record</p>
+<div class="article-separator"></div>
+<div class="article-header">Europe · Europe | An attack in plain sight</div>
+<p>The Berlin <span class="annot" data-tooltip="terror /'terər/ n. 恐怖; 恐怖活动引起恐怖的人[事]讨厌的人">terror</span> attack <span class="annot" data-tooltip="exposes /ɪk'spoʊz/ vt. 使曝光；揭露，揭发；显示时 态: exposed, exposing, exposes">exposes</span> deep failings in the state Germany knew Abdul Ballout was dangerous. It let him go anyway Jul 30th 2026 “<span class="annot" data-tooltip="lone /loʊn/ adj. 独自的；寂寞的；单身的；人迹稀少的">LONE</span> WOLF” <span class="annot" data-tooltip="terrorists /'terərɪst/ n. 恐怖主义者, 恐怖分子形容词: terroristic">terrorists</span> are a headache for <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span> officials. It is hard to <span class="annot" data-tooltip="detect /dɪ'tekt/ vt. 发现；发觉，查明时 态: detected，detecting，detects">detect</span> extremists who self-radicalise online, do not attend <span class="annot" data-tooltip="mosques /mɑːsk/ n. 清真寺, 伊斯兰教寺院">mosques</span> and plan attacks alone. Germany, where the Islamist <span class="annot" data-tooltip="terrorist /'terərɪst/ n. 恐怖主义者, 恐怖分子形容词: terroristic">terrorist</span> threat arrived <span class="annot" data-tooltip="relatively /'relətɪvli/ adv. 相对地，比较而言；相当相对来说；相比较而言">relatively</span> late, has had to learn this lesson. In 2024 a Syrian failed <span class="annot" data-tooltip="asylum /ə'saɪləm/ n. 庇护；收容所，救济院">asylum</span>-<span class="annot" data-tooltip="seeker /'siːkər/ n. 探求者；[法]搜查人">seeker</span> who had evaded deportation killed three people in a stabbing spree in Solingen, near Düsseldorf. <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">Although</span> he was <span class="annot" data-tooltip="aligned /ə'laɪn/ vt. 使结盟；使成一行；匹配vi. 排列；排成一行时 态: alignedalso alined aligningalinin">aligned</span> with Islamic State (is), he was never identified as a security threat. But with Abdul Ballout the warning lights could not have flashed more brightly. On July 25th Mr Ballout is alleged to have driven a <span class="annot" data-tooltip="van /væn/ n. 先锋；厢式货车；[计]增值网vt. 用车搬运Van范(男子名)时 态: vanned, vanning, vans">van</span> into crowds leaving Berlin’s Christopher Street Day parade, a gay-pride event, before</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>urban</td><td>/'ɜːrbən/ adj.</td><td>城市的；住在都市的</td></tr>
+<tr><td>wealth</td><td>/welθ/ n.</td><td>财富；大量；富有</td></tr>
+<tr><td>annual</td><td>/'ænjuəl/ adj.</td><td>年度的；每年的n. 年刊，年鉴；一年生植物</td></tr>
+<tr><td>owners</td><td>/'oʊnər/ n.</td><td>所有者；物主</td></tr>
+<tr><td>earning</td><td>/ɪr/ n.</td><td>耳朵；听觉；倾听；穗vi. （美俚）听见；抽穗EARabbr. East African Railways 东非铁路公司, earing, ears</td></tr>
+<tr><td>employs</td><td>/ɪm'plɔɪ/ vt.</td><td>使用，采用；雇用；使忙于，使从事于n. 雇用；使用, employing, employs</td></tr>
+<tr><td>credits</td><td>/'kredɪt/ n.</td><td>赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)，crediting，credits</td></tr>
+<tr><td>trend</td><td>/trend/ n.</td><td>趋势, 倾向流行, trending, trends</td></tr>
+<tr><td>sleek</td><td>/sliːk/ adj.</td><td>圆滑的；井然有序的vt. 使…光滑；掩盖vi. 打扮整洁；滑动, sleekest</td></tr>
+<tr><td>extend</td><td>/ɪk'stend/ vt.</td><td>& vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出，extending，extends</td></tr>
+<tr><td>strays</td><td>/streɪ/ vi.</td><td>走失，离群；迷路走入歧途；犯罪n. 走失的动物adj. 独自的；零散的，straying，strays</td></tr>
+<tr><td>shelter</td><td>/'ʃeltər/ n.</td><td>避难所；遮盖物；庇护vt. 使掩蔽；保护vi. 躲避，避难, sheltering, shelters</td></tr>
+<tr><td>branding</td><td>/brænd/ n.</td><td>商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责, branding, brands</td></tr>
+<tr><td>stray</td><td>/streɪ/ vi.</td><td>走失，离群；迷路走入歧途；犯罪n. 走失的动物adj. 独自的；零散的，straying，strays</td></tr>
+<tr><td>terror</td><td>/'terər/ n.</td><td>恐怖; 恐怖活动引起恐怖的人[事]讨厌的人</td></tr>
+<tr><td>exposes</td><td>/ɪk'spoʊz/ vt.</td><td>使曝光；揭露，揭发；显示, exposing, exposes</td></tr>
+<tr><td>breathes</td><td>/briːð/ vi.</td><td>呼吸；低语；松口气；（风）轻拂vt. 呼吸；流露；使喘息；低声说, breathing, breathes</td></tr>
+<tr><td>strikes</td><td>/straɪk/ vi.</td><td>罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打, stricken striking, str</td></tr>
+<tr><td>grain</td><td>/ɡreɪn/ n.</td><td>谷物；谷粒颗粒；细粒（尤用于否定句） 少量；微量；一点儿（木、织物或石头等的）纹理（表面的）质地；触感格令（重量单位，等于0.00143磅或0.0648克，用于</td></tr>
+<tr><td>reaching</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>yacht</td><td>/jɑːt/ n.</td><td>快艇, 帆船, 游艇, yachting, yachts</td></tr>
+<tr><td>scenes</td><td>/siːn/ n.</td><td>情景；景象；场面；事件</td></tr>
+<tr><td>possibly</td><td>/'pɑːsəbli/ adv.</td><td>可能地；大概；也许</td></tr>
+<tr><td>brush</td><td>/brʌʃ/ n.</td><td>刷子；画笔；毛笔；争吵vt. 刷；画vi. 刷；擦过；掠过, brushing, brushes</td></tr>
+<tr><td>intense</td><td>/ɪn'tens/ adj.</td><td>强烈的；紧张的；热情的；非常的, intensest</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>traffic</td><td>/'træfɪk/ n.</td><td>交通；贸易；运输；通信量vt. 用…作交换；在…通行vi. 交易，买卖, trafficking, traffics</td></tr>
+<tr><td>narrow</td><td>/'næroʊ/ adj.</td><td>狭窄的，有限的；度量小的；精密的；勉强的n. 狭窄部分，隘路；海峡vt. 使变狭窄vi. 变窄, narrowest</td></tr>
+<tr><td>cap</td><td>/kæp/ n.</td><td>帽子；盖vi. 脱帽致意vt. 覆盖；胜过；给…戴帽；加盖于Cap摩羯座CAPabbr. Common Agricultural Policy (欧共体)共同农</td></tr>
+<tr><td>shelter</td><td>/'ʃeltər/ n.</td><td>避难所；遮盖物；庇护vt. 使掩蔽；保护vi. 躲避，避难, sheltering, shelters</td></tr>
+<tr><td>twisted</td><td>/twɪst/ vt.</td><td>捻；拧；扭伤；编织；使苦恼n. 扭曲；扭伤；拧vi. 扭动；弯曲, twisting, twists</td></tr>
+<tr><td>ruins</td><td>/'ruːɪn/ vt.</td><td>破坏，毁掉使破产，使沦落n. 毁坏，毁灭，灭亡完全丧失，断送；垮台(的原因)破败、坍塌或毁坏的状态废墟；遗迹，ruining，ruins</td></tr>
+<tr><td>swift</td><td>/swɪft/ adj.</td><td>迅速的, 速度快的敏捷的, 反应快的SWIFTabbr. Society for Worldwide Interbank Financial Telecommu</td></tr>
+<tr><td>merged</td><td>— </td><td>〈美俚〉结了婚的</td></tr>
+<tr><td>blaze</td><td>/bleɪz/ n.</td><td>火焰, 烈火光辉, 闪耀迸发, 爆发vi. 猛烈地燃烧发光, 照耀, blazing, blazes</td></tr>
+<tr><td>plume</td><td>/pluːm/ vt.</td><td>用羽毛装饰n. 羽毛vi. 骚首弄姿, pluming, plumes</td></tr>
+<tr><td>central</td><td>/'sentrəl/ adj.</td><td>中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的</td></tr>
+<tr><td>monastery</td><td>/'mɑːnəsteri/ n.</td><td>修道院</td></tr>
+<tr><td>lighter</td><td>/'laɪtər/ n.</td><td>打火机；驳船；点火者vt. 驳运, lightering, lighters</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>humidity</td><td>/hjuː'mɪdəti/ n.</td><td>湿度, 潮湿, 湿气</td></tr>
+<tr><td>aircraft</td><td>/'erkræft/ n.</td><td>飞机，航空器</td></tr>
+<tr><td>vehicles</td><td>/'viːəkl/ n.</td><td>交通工具, 车辆传播媒介, 手段</td></tr>
+<tr><td>civil</td><td>/'sɪvl/ adj.</td><td>公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的</td></tr>
+<tr><td>mechanism</td><td>/'mekənɪzəm/ n.</td><td>机械装置构造, 机制办法, 技巧, 途径</td></tr>
+<tr><td>bickering</td><td>/'bɪkər/ vi.</td><td>闪动；斗嘴；潺潺而流n. 吵嘴；口角；（水的）潺潺声, bickering, bickers</td></tr>
+<tr><td>conservative</td><td>/kən'sɜːrvətɪv/ n.</td><td>保守的人adj. 保守的, 守旧的(式样等)不时新的, 传统的</td></tr>
+<tr><td>interior</td><td>/ɪn'tɪriər/ n.</td><td>内部内地adj. 内部的内地的, 国内的</td></tr>
+<tr><td>blended</td><td>/blend/ vt.</td><td>& vi. (使)混合, (使)混杂n. 混合物, blent blending, blends</td></tr>
+<tr><td>shortcomings</td><td>/'ʃɔːrtkʌmɪŋ/ n.</td><td>短处; 缺点</td></tr>
+<tr><td>probability</td><td>/ˌprɑːbə'bɪləti/ n.</td><td>可能性, 可能发生的事〈数〉概率</td></tr>
+<tr><td>dash</td><td>/dæʃ/ n.</td><td>破折号；冲撞vt. 使…破灭；猛撞；泼溅vi. 猛冲；撞击DASHabbr. Drone Antisubmarine Helicopter 无线电遥控反潜艇直升</td></tr>
+<tr><td>aircraft</td><td>/'erkræft/ n.</td><td>飞机，航空器</td></tr>
+<tr><td>suffice</td><td>/sə'faɪs/ vt.</td><td>使满足；足够…用；合格vi. 足够；有能力, sufficing, suffices</td></tr>
+<tr><td>sooner</td><td>/ˈsunɚ/ n.</td><td>（美）抢先占有土地者（在政府开放西部前）</td></tr>
+<tr><td>batch</td><td>/bætʃ/ n.</td><td>一炉一批, 一组, 一群, batching, batches</td></tr>
+<tr><td>due</td><td>/duː/ adj.</td><td>到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）</td></tr>
+<tr><td>operational</td><td>/ˌɑːpə'reɪʃənl/ adj.</td><td>即可使用的(用于)操作的, 经营的</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>allies</td><td>— n.</td><td>（第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者</td></tr>
+<tr><td>blazes</td><td>/bleɪz/ n.</td><td>火焰, 烈火光辉, 闪耀迸发, 爆发vi. 猛烈地燃烧发光, 照耀, blazing, blazes</td></tr>
+<tr><td>slashed</td><td>/slæʃ/ v.</td><td>（用利器）砍，劈割破；在…上留下深长的切口大量削减n. （用刀等）砍，劈（长而窄的）伤口，切口，砍痕斜杠；斜线号，slashing，slashes</td></tr>
+<tr><td>cleared</td><td>— </td><td>清除的</td></tr>
+<tr><td>strips</td><td>/strɪp/ vt.</td><td>剥去；剥夺；脱去衣服n. 带；条状；脱衣舞vi. 脱去衣服, stripping, strips</td></tr>
+<tr><td>estates</td><td>/ɪ'steɪt/ </td><td>n.（位于乡村的）大片私有土地，庄园，种植园【英式】（按规划建造的）住宅区，工业区【法律】（个人死后留下的全部）财产，遗产【英式】旅游汽车；客货两用轿车（est</td></tr>
+<tr><td>routes</td><td>/ruːt，raʊt/ n.</td><td>路, 路途, 路线, 路程, routing, routes</td></tr>
+<tr><td>consensus</td><td>/kən'sensəs/ n.</td><td>(意见等)一致, 一致同意</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>places</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>interactive</td><td>/ˌɪntər'æktɪv/ adj.</td><td>(指至少两个人或物)一起活动或互相合作的交互式的, 人机对话的</td></tr>
+<tr><td>terror</td><td>/'terər/ n.</td><td>恐怖; 恐怖活动引起恐怖的人[事]讨厌的人</td></tr>
+<tr><td>exposes</td><td>/ɪk'spoʊz/ vt.</td><td>使曝光；揭露，揭发；显示, exposing, exposes</td></tr>
+<tr><td>lone</td><td>/loʊn/ adj.</td><td>独自的；寂寞的；单身的；人迹稀少的</td></tr>
+<tr><td>terrorists</td><td>/'terərɪst/ n.</td><td>恐怖主义者, 恐怖分子</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>detect</td><td>/dɪ'tekt/ vt.</td><td>发现；发觉，查明，detecting，detects</td></tr>
+<tr><td>mosques</td><td>/mɑːsk/ n.</td><td>清真寺, 伊斯兰教寺院</td></tr>
+<tr><td>terrorist</td><td>/'terərɪst/ n.</td><td>恐怖主义者, 恐怖分子</td></tr>
+<tr><td>relatively</td><td>/'relətɪvli/ adv.</td><td>相对地，比较而言；相当相对来说；相比较而言</td></tr>
+<tr><td>asylum</td><td>/ə'saɪləm/ n.</td><td>庇护；收容所，救济院</td></tr>
+<tr><td>seeker</td><td>/'siːkər/ n.</td><td>探求者；[法]搜查人</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>aligned</td><td>/ə'laɪn/ vt.</td><td>使结盟；使成一行；匹配vi. 排列；排成一行</td></tr>
+<tr><td>van</td><td>/væn/ n.</td><td>先锋；厢式货车；[计]增值网vt. 用车搬运Van范(男子名), vanning, vans</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day18.html" class="nav-btn">← Day 18</a>
+  <a href="day20.html" class="nav-btn">Day 20 →</a>
+</div>
+
+<div class="progress">📖 Day 19 of 39</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-08-01</div>
+
+</body>
+</html>

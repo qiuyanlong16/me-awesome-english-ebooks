@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business | Red card</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-08-01</div>
+
+<h1 class="article-title">Business | Red card</h1>
+<div class="article-section">Business</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>Thrive Capital’s investment in FIFA is being channelled through Thrive <span class="annot" data-tooltip="eternal /ɪ'tɜːrnl/ adj. 永恒的；不朽的副 词: eternally">Eternal</span>, a <span class="annot" data-tooltip="vehicle /'viːəkl/ n. 交通工具, 车辆传播媒介, 手段">vehicle</span> that can hold <span class="annot" data-tooltip="assets /'æset/ n. 资产；有用的东西；有利条件；优点">assets</span> indefinitely, unlike conventional venture-capital or private-equity funds. That may make it less inclined to seek changes that generate a quick profit but alienate fans over the long term. Even so, it will have an interest in FIFA milking the sport for more money. A person close to the firm says it is counting on the <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span> of its stake rising as FFE takes an increasingly commercial approach to selling broadcast and other rights. Thrive Capital is perhaps best known as one of the biggest backers of OpenAI. Its sizeable stake in the artificial-intelligence lab, and its belief in the disruptive power of the technology, may help explain its interest in live sports. A source close to the investment firm says it has been hunting for businesses that are likely to <span class="annot" data-tooltip="retain /rɪ'teɪn/ vt. 保持；雇；记住时 态: retained, retaining, retains 缩 写: ret">retain</span> their value in a world of widespread AI. “If you <span class="annot" data-tooltip="consider /kən'sɪdər/ vt. & vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及时 态: considered, considering, ">consider</span> it from the perspective of things that will remain human as Ai becomes more abundant, global football is a pretty good bet,” argues the source. Still, Mr Infantino and his money-men will have to keep the crowd on their side. ■ This article was downloaded by zlibrary from https://www.economist.com/business/2026/07/29/selling-stakes-in-the-beautiful-game- what-could-go-wrong</p>
+<div class="article-separator"></div>
+<div class="article-header">Business · Business | Barbarians at the crease</div>
+<p>Private equity is coming for the Indian Premier <span class="annot" data-tooltip="league /liːɡ/ n. 联盟；社团；范畴vt. 使…结盟；与…联合vi. 结盟；团结时 态: leagued, leaguing, league">League</span> The <span class="annot" data-tooltip="cricket /'krɪkɪt/ n. 蟋蟀；板球，板球运动时 态: cricketed, cricketing, crickets">cricket</span> tournament has <span class="annot" data-tooltip="proved /proʊ/ n. 从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞">proved</span> hugely <span class="annot" data-tooltip="profitable /'prɑːfɪtəbl/ adj. 有利可图的; 有益的副 词: profitably">profitable</span> Jul 30th 2026 WHEN THE Indian Premier League (ipl) launched in 2008, the <span class="annot" data-tooltip="owners /'oʊnər/ n. 所有者；物主">owners</span> of the new cricket tournament’s city-based franchises were chiefly India’s glitterati. Bollywood stars and tycoons spent <span class="annot" data-tooltip="fortunes /'fɔːrtʃən/ n. 运气；财富；命运vt. 给予财富vi. 偶然发生时 态: fortuned, fortuning, fortunes">fortunes</span> on these <span class="annot" data-tooltip="trophy /'troʊfi/ n.（为竞赛获胜者颁发的）奖品，奖杯（尤指狩猎或战争中获得的）纪念品，战利品">trophy</span> <span class="annot" data-tooltip="assets /'æset/ n. 资产；有用的东西；有利条件；优点">assets</span>. The involvement of such <span class="annot" data-tooltip="celebrities /sə'lebrəti/ n. (尤指娱乐界的)名人, 名流名声, 名誉">celebrities</span> helped make the league a <span class="annot" data-tooltip="smashing /smæʃ/ n. 破碎(声)猛击；猛撞大成功；极为成功的新书[新戏，电影等]vt. & vi. 打碎；捣烂vt. 重击；打败时 态: sm">smashing</span> success. Estimating viewership is <span class="annot" data-tooltip="tricky /'trɪki/ adj. 机警的；狡猾的比较级: trickier, trickiest">tricky</span>, but anywhere from 400m to 900m people regularly watch the matches. Increasingly, however, Indian A-listers are vying with institutional capital from abroad. In March a consortium including Blackstone, an American private-equity (PE) giant, and <span class="annot" data-tooltip="bolt /boʊlt/ n. 闪电；螺栓；门闩；弩箭vt. 囫囵吞下；上门闩vi. 逃跑；冲出adv. 直立地；突然地时 态: bolted, bol">Bolt</span> Ventures, an investment <span class="annot" data-tooltip="vehicle /'viːəkl/ n. 交通工具, 车辆传播媒介, 手段">vehicle</span> run by David Blitzer, who owns stakes in various sports teams in America and</p>
+<p>elsewhere, acquired the Royal Challengers Bengaluru for $1.8bn. Now Temasek, a Singaporean <span class="annot" data-tooltip="sovereign /'sɑːvrɪn/ n. 君主，国王，女王旧时价值为一镑的英国金币adj. 控制国家的；统治的独立自主的">sovereign</span> <span class="annot" data-tooltip="wealth /welθ/ n. 财富；大量；富有">wealth</span> fund, is on the hunt for a team, according to Reuters. KKR, another American PE titan (not to be confused with the Kolkata Knight Riders), is also eager. In 2021 CVC, a European PE firm, bankrolled the launch of the Gujarat Titans. Last year it sold a two- thirds stake in the team to an Indian conglomerate for a hefty profit. Foreign interest in the IPL is <span class="annot" data-tooltip="understandable /ˌʌndər'stændəbl/ adj. 能懂的;可理解的;可同情的名 词: understandability">understandable</span>. The Board of Control for <span class="annot" data-tooltip="cricket /'krɪkɪt/ n. 蟋蟀；板球，板球运动时 态: cricketed, cricketing, crickets">Cricket</span> in India (BCCI), which runs the <span class="annot" data-tooltip="league /liːɡ/ n. 联盟；社团；范畴vt. 使…结盟；与…联合vi. 结盟；团结时 态: leagued, leaguing, league">league</span>, made just $724m from the original auction. Houlihan Lokey, an investment bank, estimates that the IPL is now <span class="annot" data-tooltip="worth /wɜːrθ/ adj. 值…的n. 价值；财产时 态: worthed, worthing, worths">worth</span> more than $20bn, reflecting the rapid <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> of the Indian consumer. <span class="annot" data-tooltip="revenue /'revənuː/ n. 收入，收益；财政收入，税收">Revenue</span> chiefly comes from media rights. Broadcasters and streamers will pay top rupee for the matches, which last for three-and-a-half hours—speedy by cricket standards. They are one of the few <span class="annot" data-tooltip="spectacles /'spektəkl/ n. 壮观的场面或景象可笑的事物; 愚蠢的景象眼镜">spectacles</span> that can guarantee a live audience, and ad slots command a big <span class="annot" data-tooltip="premium /'priːmiəm/ n. 奖金，津贴；加价；附加费；保险费；额外费用adj. （品质）高级的；优质的，顶级的">premium</span>. And <span class="annot" data-tooltip="unusually /ʌn'juːʒuəl/ adj. 与众不同的；不寻常的；不平常的副 词: unusually">unusually</span> for a big sports league, <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> half of viewers are women, making match days a family <span class="annot" data-tooltip="affair /ə'fer/ n. 事情；事务；私事；（尤指关系不长久的）风流韵事">affair</span>. Scarcity is assured. The league has only ten teams, which <span class="annot" data-tooltip="negotiate /nɪ'ɡoʊʃieɪt/ vt. 谈判，商议；转让；越过">negotiate</span> media rights as a collective, and any expansion will be modest. There is no possibility of relegation. Costs are also contained. Unlike the English Premier League, where footballers’ <span class="annot" data-tooltip="wages /weɪdʒ/ vi. 进行；发动；从事n. 工资；报偿；代价vt. 开展；进行时 态: waged, waging, wages">wages</span> can <span class="annot" data-tooltip="soak /soʊk/ vt. 吸收，吸入；使……上下湿透；沉浸在（工作或学习中）vi. 渗透；浸泡n. 浸；湿透；大雨时 态: soaked, soa">soak</span> up a big chunk of <span class="annot" data-tooltip="revenues /'revənuː/ n. 收入，收益；财政收入，税收">revenues</span>, player salaries are <span class="annot" data-tooltip="capped /kæp/ n. 帽子；盖vi. 脱帽致意vt. 覆盖；胜过；给…戴帽；加盖于Cap摩羯座CAPabbr. Common Agricult">capped</span>. Stadiums are provided by state governments and the BCCI. India has few other <span class="annot" data-tooltip="trophy /'troʊfi/ n.（为竞赛获胜者颁发的）奖品，奖杯（尤指狩猎或战争中获得的）纪念品，战利品">trophy</span> <span class="annot" data-tooltip="assets /'æset/ n. 资产；有用的东西；有利条件；优点">assets</span> for its wealthiest to buy. There are <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> more billionaires per sports club in the country than in America, notes Siddharth Patel of CVC. But for India’s <span class="annot" data-tooltip="elite /eɪ'liːt/ n. （社会）上层集团；掌权人物；出类拔萃的人，精英adj.（社会）上层集团的；掌权人物的；精英的">elite</span>, the competition for teams is stiffening.■ This article was downloaded by zlibrary from https://www.economist.com/business/2026/07/30/private-equity-is-coming-for-the- indian-premier-league</p>
+<div class="article-separator"></div>
+<div class="article-header">Business · Business | In the ascent</div>
+<p>Forget Airbus and Boeing. Embraer is soaring Its boss has ambitious plans for the future Jul 30th 2026 Some passenger planes are named with purely utilitarian alphanumerics: think Airbus’s A380. Occasionally the aerospace giants aim to <span class="annot" data-tooltip="convey /kən'veɪ/ vt. 运输；运送表达，转达时 态: conveyed，conveying，conveys">convey</span> something loftier. Boeing’s 787 Dreamliner <span class="annot" data-tooltip="presents /'preznt/ vt. 呈现；介绍；提出；赠送vi. 举枪瞄准adj. 出席的；现在的n. 现在；礼物；瞄准时 态: presented, pr">presents</span> an image of modern comfort; Airbus’s A320neo <span class="annot" data-tooltip="highlights 拔萃,集锦(精采会议文献选辑)">highlights</span> its use of the latest in aviation technology. Embraer, the world’s third-largest maker of passenger jets, takes a <span class="annot" data-tooltip="blunter /blʌnt/ adj. 钝的，不锋利的；生硬的；直率的vt. 使迟钝比较级: blunter, bluntest">blunter</span> approach. Since 2017 it has marketed its fuel-efficient E2 regional jet as the “Profit Hunter”. The Brazilian company is a <span class="annot" data-tooltip="fraction /'frækʃn/ n. 小部分；部分；稍微；[数]分数">fraction</span> of the size of Airbus and Boeing. But it has had a remarkable few years. Demand is soaring not only for its smaller passenger planes, but also for the private and military jets it offers. In 2021 the company delivered a total of 141 planes. This year it might <span class="annot" data-tooltip="reach /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reach</span> 255.</p>
+<p>On July 24th the company reported that its order <span class="annot" data-tooltip="backlog /'bæklɔːɡ/ n. 积压未办之事，积压的工作；没交付的订货备用；备用物；储备金 (壁炉中垫底的)大木柴vt. (使)积压储存(为日后装运而)">backlog</span> had <span class="annot" data-tooltip="reached /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reached</span> a record $34.5bn. Francisco Gomes Neto, Embraer’s boss, sees an opportunity for “<span class="annot" data-tooltip="substantial /səb'stænʃl/ adj. 坚固的；结实的大量的，可观的重大的，重要的实质的，基本的，大体上的名 词: substantiality">substantial</span> growth” ahead. Investors agree. Since the start of 2021 its share price has risen roughly ten-fold, <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> outpacing those of Airbus or Boeing (see chart). Some now <span class="annot" data-tooltip="speculate /'spekjuleɪt/ vt. & vi. 思索；猜测，推测vi. 投机时 态: speculated，speculating，speculates">speculate</span> that Embraer may take a <span class="annot" data-tooltip="tilt /tɪlt/ vi. 倾斜；翘起；以言词或文字抨击vt. 使倾斜；使翘起n. 倾斜时 态: tilted, tilting, tilts">tilt</span> at the market for larger jets, going <span class="annot" data-tooltip="nose /noʊz/ n. 鼻子似鼻子的东西嗅觉vt. 嗅vi. 窥探, 探听, 四处查看vt. & vi. 小心翼翼地前进时 态: nosed, ">nose</span>-to-nose with the aerospace <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span>’s twin giants. Embraer is benefiting from a <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of <span class="annot" data-tooltip="tailwinds n. (从后面吹来的)顺风">tailwinds</span>. Airlines these days must wait eight to ten years for a large <span class="annot" data-tooltip="narrow /'næroʊ/ adj. 狭窄的，有限的；度量小的；精密的；勉强的n. 狭窄部分，隘路；海峡vt. 使变狭窄vi. 变窄比较级: narrower">narrow</span>-body plane from Airbus or Boeing, which have a combined order backlog of 16,000 passenger jets thanks to rising demand for air travel and long-running supply-chain snags dating back to the covid-19 <span class="annot" data-tooltip="pandemic /pæn'demɪk/ adj. （疾病）在全国（或世界）流行的">pandemic</span>. That has led to a <span class="annot" data-tooltip="surge /sɜːrdʒ/ n. (情感的) 突发，涌现，突然出现（数量的）急剧上升，激增；大量；一大批奔涌向前；突然的向上运动（电流）浪涌v. 涌；汹涌">surge</span> in demand for the smaller E2, which can be delivered in less than two years. A growing <span class="annot" data-tooltip="preference /'prefrəns/ n. 较喜欢的东西, 偏爱优待, 优惠, 优先权">preference</span> for direct travel between smaller airports rather than through giant hubs will further boost demand for smaller planes to fly new <span class="annot" data-tooltip="routes /ruːt，raʊt/ n. 路, 路途, 路线, 路程时 态: routed, routing, routes">routes</span>, says Ron Baur of Azorra, a leasing firm that has over 50 e2s on order. The <span class="annot" data-tooltip="aircraft /'erkræft/ n. 飞机，航空器">aircraft</span>’s only direct competitor by size is the a220 from Airbus, in a market that Embraer forecasts at 8,500 such planes over the next two <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span>. As Mr Gomes Neto points out, even if it is only half that number and Embraer gets half the orders, the demand will still occupy its production</p>
+<p>capacity for 20 years. Moreover, Embraer’s even smaller E175 jet is the only <span class="annot" data-tooltip="aircraft /'erkræft/ n. 飞机，航空器">aircraft</span> in production that is available to regional feeder airlines in America, owing to collective bargaining agreements with pilots’ unions that restrict the maximum size of plane they can use. Then there is the <span class="annot" data-tooltip="surge /sɜːrdʒ/ n. (情感的) 突发，涌现，突然出现（数量的）急剧上升，激增；大量；一大批奔涌向前；突然的向上运动（电流）浪涌v. 涌；汹涌">surge</span> in private-jet sales that has been under way since the <span class="annot" data-tooltip="pandemic /pæn'demɪk/ adj. （疾病）在全国（或世界）流行的">pandemic</span>. Embraer is <span class="annot" data-tooltip="dominant /'dɑːmɪnənt/ adj. 支配的，统治的；占优势的；显性的n. 显性">dominant</span> in the market for small and medium-sized models. Its Phenom 300, which seats up to ten passengers, has been the best seller in its class for 14 years. Booming defence spending around the world has also lifted orders for the kc390, a military-transport plane. And a controlling stake in EVE, a flying-taxi firm, looks a better bet now that the vast <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of <span class="annot" data-tooltip="startups /ˈstɑrtˈʌp/ n. 启动；开办">startups</span> in the field has been whittled down to a handful of plausible survivors. Yet Mr Gomes Neto thinks he must “prepare the company for a new cycle of products that will support more ambitious growth”. One possibility is to make a large private jet. A bolder and riskier step would be to develop a bigger commercial jet to take on Airbus and Boeing, which are expected to roll out replacements for their core <span class="annot" data-tooltip="narrow /'næroʊ/ adj. 狭窄的，有限的；度量小的；精密的；勉强的n. 狭窄部分，隘路；海峡vt. 使变狭窄vi. 变窄比较级: narrower">narrow</span>-body planes <span class="annot" data-tooltip="towards /tɔːrdz/ prep. 向，朝为了；有助于；用于对于，关于接近；将近；大约">towards</span> the end of the 2030s. <span class="annot" data-tooltip="neither /'niːðər/ conj. 既不；也不adv. 两个都不；既不……也不adj. 两者都不的det./pron. 两者都不">Neither</span> has much incentive to make big investments while the current ones are selling well, which could create an opening for Embraer. Breaking the duopoly’s grip would be a huge undertaking. Bombardier’s attempt <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> <span class="annot" data-tooltip="bankrupted /'bæŋkrʌpt/ adj. 破产的, 倒闭的完全缺乏的n. 破产者vt. 使破产, 使枯竭, 使极端贫困时 态: bankrupted, bankr">bankrupted</span> it and ended in a forced sale of the programme for a nominal sum to Airbus in 2018 (where it became the A220). Guillaume Faury, Airbus’s boss, has warned Embraer to “think twice”. Yet the rewards of taking even a small share of a market that Boeing puts at 36,000 jets over the next two <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span> would also be <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> greater than for a new private jet. Ron Epstein of Bank of America says it would take Embraer to the “next level”. Embraer may never again have such an opportunity to put its experience in <span class="annot" data-tooltip="manufacturing /ˌmænju'fæktʃərɪŋ/ n. 制造业，工业adj. 制造业的；制造的">manufacturing</span> and marketing commercial jets to work. Mr Gomes Neto points out that over 20 years or so it has certified almost 20 new aircraft—an impressive performance. The firm’s reputation means that prospective customers would take it <span class="annot" data-tooltip="seriously /'sɪriəs/ adj. 严肃的，严重的；认真的；庄重的；危急的副 词: seriously">seriously</span>. But it would need to find partners to stump up some of the $10bn or so that the new plane would cost to develop,</p>
+<p>says Alberto Valerio of UBS, a bank, including perhaps an engine-maker and other suppliers, as well as customers and <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span> investors. The question of whether to go after the duopoly is rumoured to divide opinion at Embraer. Luckily it has plenty of time to make a decision. As Mr Gomes Neto insists: “We are very comfortable with the situation we have”. ■ This article was downloaded by zlibrary from https://www.economist.com/business/2026/07/30/forget-airbus-and-boeing-embraer-is- soaring</p>
+<div class="article-separator"></div>
+<div class="article-header">Business · Business | Boss move</div>
+<p>The battle for Hugo Boss A British <span class="annot" data-tooltip="retail /ˈriːteɪl/ vt. 零售；转述vi. 零售n. 零售adv. 以零售方式adj. 零售的时 态: retailed, retailing, ">retail</span> magnate tries to go upmarket Jul 30th 2026 Hugo Boss once made brown shirts for the Nazi Party and uniforms for the Wehrmacht. Before long the German fashion label may be controlled by a Tommy. Last month Mike Ashley, a British retail tycoon, <span class="annot" data-tooltip="unveiled /ˌʌn'veɪl/ vt. 揭去…的面罩，除去…的遮盖物使公之于众；揭露vi. 除去面纱(或覆盖物)；揭幕揭露出来时 态: unveiled，unv">unveiled</span> a €2bn ($2.3bn) cash offer for the 74% of shares in Hugo Boss that he did not already <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span>, subject to regulatory approval. On July 27th the European <span class="annot" data-tooltip="commission /kə'mɪʃn/ n. 授权, 委托委员会佣金, 回扣vt. 委任, 委托时 态: commissioned, commissioning, c">Commission</span> gave its clearance for a deal. <span class="annot" data-tooltip="shareholders /'ʃerhoʊldər/ n. 股东名 词: shareholding">Shareholders</span> of Hugo Boss now have until August 13th to decide whether to accept Mr Ashley’s offer. The management and supervisory boards of Hugo Boss oppose the deal, arguing that it “does not <span class="annot" data-tooltip="adequately /'ædɪkwət/ adj. 充分的, 足够的适当的, 胜任的名 词: adequacy">adequately</span> reflect the company’s <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span> and its future potential”. Many investors seem to agree. Uwe Rathausky, chief executive of GANÉ Investment, a fund manager with a stake in the fashion</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>eternal</td><td>/ɪ'tɜːrnl/ adj.</td><td>永恒的；不朽的</td></tr>
+<tr><td>vehicle</td><td>/'viːəkl/ n.</td><td>交通工具, 车辆传播媒介, 手段</td></tr>
+<tr><td>assets</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>retain</td><td>/rɪ'teɪn/ vt.</td><td>保持；雇；记住, retaining, retains 缩 写: ret</td></tr>
+<tr><td>consider</td><td>/kən'sɪdər/ vt.</td><td>& vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及, considering, considers</td></tr>
+<tr><td>league</td><td>/liːɡ/ n.</td><td>联盟；社团；范畴vt. 使…结盟；与…联合vi. 结盟；团结, leaguing, leagues</td></tr>
+<tr><td>cricket</td><td>/'krɪkɪt/ n.</td><td>蟋蟀；板球，板球运动, cricketing, crickets</td></tr>
+<tr><td>proved</td><td>/proʊ/ n.</td><td>从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞成；支持Pro脯氨酸PROabbr. P</td></tr>
+<tr><td>profitable</td><td>/'prɑːfɪtəbl/ adj.</td><td>有利可图的; 有益的</td></tr>
+<tr><td>owners</td><td>/'oʊnər/ n.</td><td>所有者；物主</td></tr>
+<tr><td>fortunes</td><td>/'fɔːrtʃən/ n.</td><td>运气；财富；命运vt. 给予财富vi. 偶然发生, fortuning, fortunes</td></tr>
+<tr><td>trophy</td><td>/'troʊfi/ </td><td>n.（为竞赛获胜者颁发的）奖品，奖杯（尤指狩猎或战争中获得的）纪念品，战利品</td></tr>
+<tr><td>assets</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>celebrities</td><td>/sə'lebrəti/ n.</td><td>(尤指娱乐界的)名人, 名流名声, 名誉</td></tr>
+<tr><td>smashing</td><td>/smæʃ/ n.</td><td>破碎(声)猛击；猛撞大成功；极为成功的新书[新戏，电影等]vt. & vi. 打碎；捣烂vt. 重击；打败，smashing，smashes</td></tr>
+<tr><td>tricky</td><td>/'trɪki/ adj.</td><td>机警的；狡猾的, trickiest</td></tr>
+<tr><td>bolt</td><td>/boʊlt/ n.</td><td>闪电；螺栓；门闩；弩箭vt. 囫囵吞下；上门闩vi. 逃跑；冲出adv. 直立地；突然地, bolting, bolts</td></tr>
+<tr><td>vehicle</td><td>/'viːəkl/ n.</td><td>交通工具, 车辆传播媒介, 手段</td></tr>
+<tr><td>sovereign</td><td>/'sɑːvrɪn/ n.</td><td>君主，国王，女王旧时价值为一镑的英国金币adj. 控制国家的；统治的独立自主的</td></tr>
+<tr><td>wealth</td><td>/welθ/ n.</td><td>财富；大量；富有</td></tr>
+<tr><td>understandable</td><td>/ˌʌndər'stændəbl/ adj.</td><td>能懂的;可理解的;可同情的</td></tr>
+<tr><td>cricket</td><td>/'krɪkɪt/ n.</td><td>蟋蟀；板球，板球运动, cricketing, crickets</td></tr>
+<tr><td>league</td><td>/liːɡ/ n.</td><td>联盟；社团；范畴vt. 使…结盟；与…联合vi. 结盟；团结, leaguing, leagues</td></tr>
+<tr><td>worth</td><td>/wɜːrθ/ adj.</td><td>值…的n. 价值；财产, worthing, worths</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>revenue</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>spectacles</td><td>/'spektəkl/ n.</td><td>壮观的场面或景象可笑的事物; 愚蠢的景象眼镜</td></tr>
+<tr><td>premium</td><td>/'priːmiəm/ n.</td><td>奖金，津贴；加价；附加费；保险费；额外费用adj. （品质）高级的；优质的，顶级的</td></tr>
+<tr><td>unusually</td><td>/ʌn'juːʒuəl/ adj.</td><td>与众不同的；不寻常的；不平常的</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>affair</td><td>/ə'fer/ n.</td><td>事情；事务；私事；（尤指关系不长久的）风流韵事</td></tr>
+<tr><td>negotiate</td><td>/nɪ'ɡoʊʃieɪt/ vt.</td><td>谈判，商议；转让；越过</td></tr>
+<tr><td>wages</td><td>/weɪdʒ/ vi.</td><td>进行；发动；从事n. 工资；报偿；代价vt. 开展；进行, waging, wages</td></tr>
+<tr><td>soak</td><td>/soʊk/ vt.</td><td>吸收，吸入；使……上下湿透；沉浸在（工作或学习中）vi. 渗透；浸泡n. 浸；湿透；大雨, soaking, soaks</td></tr>
+<tr><td>revenues</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>capped</td><td>/kæp/ n.</td><td>帽子；盖vi. 脱帽致意vt. 覆盖；胜过；给…戴帽；加盖于Cap摩羯座CAPabbr. Common Agricultural Policy (欧共体)共同农</td></tr>
+<tr><td>trophy</td><td>/'troʊfi/ </td><td>n.（为竞赛获胜者颁发的）奖品，奖杯（尤指狩猎或战争中获得的）纪念品，战利品</td></tr>
+<tr><td>assets</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>elite</td><td>/eɪ'liːt/ n.</td><td>（社会）上层集团；掌权人物；出类拔萃的人，精英adj.（社会）上层集团的；掌权人物的；精英的</td></tr>
+<tr><td>convey</td><td>/kən'veɪ/ vt.</td><td>运输；运送表达，转达，conveying，conveys</td></tr>
+<tr><td>presents</td><td>/'preznt/ vt.</td><td>呈现；介绍；提出；赠送vi. 举枪瞄准adj. 出席的；现在的n. 现在；礼物；瞄准, presenting, presents</td></tr>
+<tr><td>highlights</td><td>— </td><td>拔萃,集锦(精采会议文献选辑)</td></tr>
+<tr><td>blunter</td><td>/blʌnt/ adj.</td><td>钝的，不锋利的；生硬的；直率的vt. 使迟钝, bluntest</td></tr>
+<tr><td>fraction</td><td>/'frækʃn/ n.</td><td>小部分；部分；稍微；[数]分数</td></tr>
+<tr><td>reach</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>backlog</td><td>/'bæklɔːɡ/ n.</td><td>积压未办之事，积压的工作；没交付的订货备用；备用物；储备金 (壁炉中垫底的)大木柴vt. (使)积压储存(为日后装运而)登账确认(订货)，backlogging</td></tr>
+<tr><td>reached</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>substantial</td><td>/səb'stænʃl/ adj.</td><td>坚固的；结实的大量的，可观的重大的，重要的实质的，基本的，大体上的</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>speculate</td><td>/'spekjuleɪt/ vt.</td><td>& vi. 思索；猜测，推测vi. 投机，speculating，speculates</td></tr>
+<tr><td>tilt</td><td>/tɪlt/ vi.</td><td>倾斜；翘起；以言词或文字抨击vt. 使倾斜；使翘起n. 倾斜, tilting, tilts</td></tr>
+<tr><td>nose</td><td>/noʊz/ n.</td><td>鼻子似鼻子的东西嗅觉vt. 嗅vi. 窥探, 探听, 四处查看vt. & vi. 小心翼翼地前进, nosing, noses</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>tailwinds</td><td>— n.</td><td>(从后面吹来的)顺风</td></tr>
+<tr><td>narrow</td><td>/'næroʊ/ adj.</td><td>狭窄的，有限的；度量小的；精密的；勉强的n. 狭窄部分，隘路；海峡vt. 使变狭窄vi. 变窄, narrowest</td></tr>
+<tr><td>pandemic</td><td>/pæn'demɪk/ adj.</td><td>（疾病）在全国（或世界）流行的</td></tr>
+<tr><td>surge</td><td>/sɜːrdʒ/ n.</td><td>(情感的) 突发，涌现，突然出现（数量的）急剧上升，激增；大量；一大批奔涌向前；突然的向上运动（电流）浪涌v. 涌；汹涌；涌动(感情、感觉) 突袭，涌动，突发(</td></tr>
+<tr><td>preference</td><td>/'prefrəns/ n.</td><td>较喜欢的东西, 偏爱优待, 优惠, 优先权</td></tr>
+<tr><td>routes</td><td>/ruːt，raʊt/ n.</td><td>路, 路途, 路线, 路程, routing, routes</td></tr>
+<tr><td>aircraft</td><td>/'erkræft/ n.</td><td>飞机，航空器</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>aircraft</td><td>/'erkræft/ n.</td><td>飞机，航空器</td></tr>
+<tr><td>surge</td><td>/sɜːrdʒ/ n.</td><td>(情感的) 突发，涌现，突然出现（数量的）急剧上升，激增；大量；一大批奔涌向前；突然的向上运动（电流）浪涌v. 涌；汹涌；涌动(感情、感觉) 突袭，涌动，突发(</td></tr>
+<tr><td>pandemic</td><td>/pæn'demɪk/ adj.</td><td>（疾病）在全国（或世界）流行的</td></tr>
+<tr><td>dominant</td><td>/'dɑːmɪnənt/ adj.</td><td>支配的，统治的；占优势的；显性的n. 显性</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>startups</td><td>/ˈstɑrtˈʌp/ n.</td><td>启动；开办</td></tr>
+<tr><td>narrow</td><td>/'næroʊ/ adj.</td><td>狭窄的，有限的；度量小的；精密的；勉强的n. 狭窄部分，隘路；海峡vt. 使变狭窄vi. 变窄, narrowest</td></tr>
+<tr><td>towards</td><td>/tɔːrdz/ prep.</td><td>向，朝为了；有助于；用于对于，关于接近；将近；大约</td></tr>
+<tr><td>neither</td><td>/'niːðər/ conj.</td><td>既不；也不adv. 两个都不；既不……也不adj. 两者都不的det./pron. 两者都不</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>bankrupted</td><td>/'bæŋkrʌpt/ adj.</td><td>破产的, 倒闭的完全缺乏的n. 破产者vt. 使破产, 使枯竭, 使极端贫困, bankrupting, bankrupts</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>manufacturing</td><td>/ˌmænju'fæktʃərɪŋ/ n.</td><td>制造业，工业adj. 制造业的；制造的</td></tr>
+<tr><td>seriously</td><td>/'sɪriəs/ adj.</td><td>严肃的，严重的；认真的；庄重的；危急的</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>retail</td><td>/ˈriːteɪl/ vt.</td><td>零售；转述vi. 零售n. 零售adv. 以零售方式adj. 零售的, retailing, retails</td></tr>
+<tr><td>unveiled</td><td>/ˌʌn'veɪl/ vt.</td><td>揭去…的面罩，除去…的遮盖物使公之于众；揭露vi. 除去面纱(或覆盖物)；揭幕揭露出来，unveiling，unveils</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>commission</td><td>/kə'mɪʃn/ n.</td><td>授权, 委托委员会佣金, 回扣vt. 委任, 委托, commissioning, commissions</td></tr>
+<tr><td>shareholders</td><td>/'ʃerhoʊldər/ n.</td><td>股东</td></tr>
+<tr><td>adequately</td><td>/'ædɪkwət/ adj.</td><td>充分的, 足够的适当的, 胜任的</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day27.html" class="nav-btn">← Day 27</a>
+  <a href="day29.html" class="nav-btn">Day 29 →</a>
+</div>
+
+<div class="progress">📖 Day 28 of 39</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-08-01</div>
+
+</body>
+</html>

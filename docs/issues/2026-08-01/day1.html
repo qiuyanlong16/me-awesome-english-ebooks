@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Politics</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-08-01</div>
+
+<h1 class="article-title">Politics</h1>
+<div class="article-section"></div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>Jul 30th 2026 America and Iran returned to fighting after an informal five-day truce. After Iran attacked American bases in Jordan, Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> retaliated, <span class="annot" data-tooltip="bombing abbr. 物料清单（Bill of Materiel）">bombing</span> targets in southern Iran. Iran’s insistence on controlling <span class="annot" data-tooltip="shipping /ʃɪp/ vt. 运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Di">shipping</span> in the <span class="annot" data-tooltip="strait /streɪt/ n. 海峡；（尤指经济拮据引起的）困境，境况窘迫adj. 狭窄的；苦恼的副 词: straitly">Strait</span> of Hormuz has caused <span class="annot" data-tooltip="negotiations /nɪˌɡoʊʃi'eɪʃn/ n. 协商，谈判完成(难事)；通过">negotiations</span> to stall, though Mr Trump said he would “let them keep talking”. Meanwhile the Houthis, an Iran-backed Yemeni militia, struck tankers linked to Saudi Arabia in the Red Sea. The price of Brent <span class="annot" data-tooltip="crude /kruːd/ adj. 粗糙的；粗鲁的；天然的，未加工的；粗略的n. 天然的物质；原油比较级: cruder, crudest">crude</span>, the global <span class="annot" data-tooltip="benchmark /'bentʃmɑːrk/ 基准时 态: benchmarked, benchmarking, benchmarks">benchmark</span>, rose to around $90 a <span class="annot" data-tooltip="barrel /'bærəl/ vt. 把……装入桶内n. 桶；枪管，炮管vi. 快速移动时 态: barreled, barrelled barreling,">barrel</span>, having fallen to $84 on July 28th. Mourners gathered in Washington, DC, for the <span class="annot" data-tooltip="funeral /'fjuːnərəl/ n. 葬礼；[口]麻烦事adj. 丧葬的，出殡的">funeral</span> of Lindsey Graham, a <span class="annot" data-tooltip="republican /rɪ'pʌblɪkən/ adj. 共和国的, 共和政体的n. 拥护共和政体者, 共和主义者名 词: republicanism">Republican</span> senator who died on July 11th. Israel’s prime minister, Binyamin Netanyahu, and <span class="annot" data-tooltip="ukraine n. 乌克兰（原苏联一加盟共和国，现已独立）">Ukraine</span>’s president, Volodymyr Zelensky, attended the ceremony after joining separate meetings with Donald Trump. Mr Graham</p>
+<p>was a strong supporter of both countries. Meanwhile senators advanced a bill, proposed by Graham, that would toughen sanctions on Russia and Iran. Democrats in Maine chose Troy Jackson as their new <span class="annot" data-tooltip="candidate /'kændɪdət，ˈkændɪdeɪt/ n. 申请求职者, 候选人报考者名 词: candidacy">candidate</span> for a <span class="annot" data-tooltip="senate /ˈsenət/ n.（诸如美国、澳大利亚、法国的）参议院（the Senate） （某些国家的）大学理事会，大学评议会（古罗马的）元老院">Senate</span> <span class="annot" data-tooltip="race /reɪs/ n. 种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACE">race</span> in November. The previous nominee, Graham Platner, dropped out following allegations of <span class="annot" data-tooltip="sexual /'sekʃuəl/ adj. 性交的, 性行为的, 性吸引的, 两性的, 肉体吸引的性别的, 性的, 男性或女性的生殖的, 有性生殖的副 词: sex">sexual</span> <span class="annot" data-tooltip="assault /ə'sɔːlt/ n. 攻击；袭击vt. 袭击；攻击vi. 袭击；动武时 态: assaulted, assaulting, assaults">assault</span> (which he denies). Mr Jackson is a fifth-generation logger and former president of the Maine Senate. He will take on Susan Collins, a five-term <span class="annot" data-tooltip="republican /rɪ'pʌblɪkən/ adj. 共和国的, 共和政体的n. 拥护共和政体者, 共和主义者名 词: republicanism">Republican</span>. Democrats need a <span class="annot" data-tooltip="net /net/ n. 网；净利；网络；实价vi. 编网vt. 净赚；得到；用网捕adj. 纯粹的；净余的时 态: netted, nettin">net</span> gain of four seats in the midterms for a Senate majority. Andy Burnham, Britain’s prime minister, said he was willing to “spend political capital” to <span class="annot" data-tooltip="reform /rɪ'fɔːrm/ n. 改革，改良，改造vt. & vi. 改革；改造；改善时 态: reformed，reforming，reforms">reform</span> social care, calling the system “as unfair as American health care”. Mr Burnham wants to <span class="annot" data-tooltip="raise /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raise</span> pay for workers in the social-care sector, which has struggled with recruitment in recent years. He did not rule out raising taxes to pay for his <span class="annot" data-tooltip="reforms /rɪ'fɔːrm/ n. 改革，改良，改造vt. & vi. 改革；改造；改善时 态: reformed，reforming，reforms">reforms</span>. The prime minister also opened <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">Number</span> 10 North, a branch of 10 Downing Street, in Manchester. <span class="annot" data-tooltip="protests /'proʊtest/ n. 抗议；反对vt. & vi. 声明；抗议时 态: protested，protesting，protests">Protests</span> in <span class="annot" data-tooltip="delhi /ˈdɛli/ n. 德里（印度城市名）">Delhi</span> and elsewhere in India led by the Cockroach Janta Party, an upstart youth movement, <span class="annot" data-tooltip="wound /wund/ n. 创伤，伤口vt. 使受伤vi. 受伤，伤害时 态: wounded, wounding, wounds">wound</span> down, after it achieved its core aim, the <span class="annot" data-tooltip="resignation /ˌrezɪɡ'neɪʃn/ n. 辞职辞职书顺从, 听从">resignation</span> of Dharmendra Pradhan, the education minister, because of the <span class="annot" data-tooltip="leaking /liːk/ n. 漏洞，裂缝；泄漏vt. 使渗漏，泄露vi. 漏，渗；泄漏出去时 态: leaked, leaking, leaks">leaking</span> of important exam papers. For the government of Narendra Modi, the prime minister, which makes a point of not succumbing to pressure, the outcome was humiliating. The Kumamoto area of Japan’s southern island of Kyushu was rocked by an earthquake of <span class="annot" data-tooltip="magnitude /'mæɡnɪtuːd/ n. 巨大; 重要性〈天〉星等">magnitude</span> 6.8, killing at least 18 people. Some died in a shopping mall in the town of Kashima, where a gas <span class="annot" data-tooltip="explosion /ɪk'sploʊʒn/ n. 爆炸；爆发激增，扩大">explosion</span> occurred 50 minutes after the quake. Kassym-Jomart Tokayev, Kazakhstan’s leader, urged Vladimir Putin, Russia’s president, to “freeze” the war in <span class="annot" data-tooltip="ukraine n. 乌克兰（原苏联一加盟共和国，现已独立）">Ukraine</span>. <span class="annot" data-tooltip="speaking /'spikɪŋ/ adj. 演讲的；富于表情的，雄辩的n. 说话；演讲v. 讲（speak的ing形式）">Speaking</span> at a meeting in Siberia, Mr Tokayev urged Mr Putin to <span class="annot" data-tooltip="negotiate /nɪ'ɡoʊʃieɪt/ vt. 谈判，商议；转让；越过">negotiate</span> because “the fraternal peoples of Russia and Ukraine are dying”. Kazakhstan is an important ally and trading partner for Russia. Mr Tokayev’s remarks are his most direct criticism of the war. The Sudanese Armed Forces (SAF), Sudan’s army, launched an <span class="annot" data-tooltip="offensive /ə'fensɪv/ adj. 讨厌的；令人不快的攻击的n. 进攻，攻势副 词: offensively">offensive</span> against the paramilitary Rapid Support Forces (RSF) around el-Obeid, the</p>
+<p>capital of North Kordofan state. On July 26th the SAF said it had recaptured cities and towns along the road between the city and Khartoum, the national capital. That should <span class="annot" data-tooltip="enable /ɪ'neɪbl/ vt. 使能够；提供做…的权利[措施]使可能时 态: enabled，enabling，enables">enable</span> the army to resupply its forces in el-Obeid. Confirmed cases of Ebola in the <span class="annot" data-tooltip="democratic /ˌdemə'krætɪk/ adj. 民主的, 有民主精神或作风的副 词: democratically">Democratic</span> Republic of Congo <span class="annot" data-tooltip="reached /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reached</span> 3,360, according to the latest data from the ministry of health. Just under half that <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> died of the disease. The number of confirmed cases is <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> as high as the total recorded in Congo and Uganda during the last Ebola outbreak between 2018 and 2020. Wildfires raged in France and Spain as temperatures in Europe soared. Emmanuel Macron, France’s president, said the <span class="annot" data-tooltip="blazes /bleɪz/ n. 火焰, 烈火光辉, 闪耀迸发, 爆发vi. 猛烈地燃烧发光, 照耀时 态: blazed, blazing, blaze">blazes</span> were the worst “since the second world war”. More than 350,000 people have been evacuated in the two countries. Dry weather, high temperatures and strong winds have caused the fires to spread quickly. Mr Macron warned that “the coming weeks will be tough.” Russia’s <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">Federal</span> <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">Security</span> Service (FSB) charged Pavel Durov, the founder of Telegram, with “facilitating <span class="annot" data-tooltip="terrorist /'terərɪst/ n. 恐怖主义者, 恐怖分子形容词: terroristic">terrorist</span> activity”. The intelligence agency accused him of allowing Ukrainians to “co-ordinate acts of sabotage and terrorism, mass killings and <span class="annot" data-tooltip="cyber adj. 计算机(网络)的；信息技术的">cyber</span>-<span class="annot" data-tooltip="fraud /frɔːd/ n. 欺诈, 欺骗行为骗子">fraud</span>” on the messaging platform. The</p>
+<p>FSB issued an international warrant for Mr Durov, who was born in Russia and is a citizen of France and the United Arab Emirates. Jaroslaw Kaczynski, the leader of Poland’s hard-right Law and Justice (PiS) party, <span class="annot" data-tooltip="expelled /ɪk'spel/ vt. 驱逐；开除时 态: expelled, expelling, expels">expelled</span> Matuesz Morawiecki, a former prime minister. He also expelled from PiS more than 30 MPs who were Mr Morawiecki’s <span class="annot" data-tooltip="allies n. （第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者">allies</span>. Mr Morawiecki had set up a <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span> to push for PiS to <span class="annot" data-tooltip="adopt /ə'dɑːpt/ vt. 收养采用, 采纳, 采取正式接受, 通过时 态: adopted, adopting, adopts">adopt</span> policies that would help the party gain support among centre-right voters. Mr Kaczynski had <span class="annot" data-tooltip="ordered /'ɔːrdərd/ adj. 安排好的；整齐的；[数]有序的v. 命令；点餐（order的过去式和过去分词）">ordered</span> him to dissolve it or be expelled. <span class="annot" data-tooltip="romania /ru'meɪniə/ n. 罗马尼亚（欧洲巴尔干半岛东北部国家）">Romania</span> shot down three Russian <span class="annot" data-tooltip="drones /droʊn/ n. 无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫">drones</span> over its <span class="annot" data-tooltip="territory /'terətɔːri/ n. 领土, 版图管区, 营业地区地盘, 领域, 范围">territory</span>. Nicusor Dan, Romania’s president, said the incursions were “intolerable”. In recent months Russian drones have repeatedly crossed into Romania, which is part of NATO. In May a <span class="annot" data-tooltip="stray /streɪ/ vi. 走失，离群；迷路走入歧途；犯罪n. 走失的动物adj. 独自的；零散的时 态: strayed，straying，str">stray</span> <span class="annot" data-tooltip="drone /droʊn/ n. 无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫">drone</span> hit an apartment building in Galati, a city near the border with <span class="annot" data-tooltip="ukraine n. 乌克兰（原苏联一加盟共和国，现已独立）">Ukraine</span>, injuring two civilians. Keiko Fujimori was sworn in as <span class="annot" data-tooltip="peru n. 秘鲁形容词: Peruvian">Peru</span>’s president. She is the ninth person to lead the country in a <span class="annot" data-tooltip="decade /'dekeɪd/ n. 十年，十年期；十">decade</span>. Ms Fujimori <span class="annot" data-tooltip="narrowly /'næroʊ/ adj. 狭窄的，有限的；度量小的；精密的；勉强的n. 狭窄部分，隘路；海峡vt. 使变狭窄vi. 变窄比较级: narrower">narrowly</span> beat her left-<span class="annot" data-tooltip="wing /wɪŋ/ n. 翅膀；翼；飞翔；派别vt. 使飞；飞过；空运；增加…速度；装以翼vi. 飞行时 态: winged, winging, ">wing</span> <span class="annot" data-tooltip="rival /'raɪvl/ n. 竞争对手vt. 与…竞争, 与…匹敌时 态: rivaled, rivalled rivaling, rivalling">rival</span> in a run-off. She is a polarising figure, best known as the eldest daughter of the late Alberto Fujimori, an autocrat. She vowed to bring “order and national reconciliation” to Peru’s unstable politics. Flávio Bolsonaro launched his <span class="annot" data-tooltip="campaign /kæm'peɪn/ n. 运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）时">campaign</span> ahead of Brazil’s presidential election this October. Mr Bolsonaro is the son of Jair Bolsonaro, a hard-right former president, who is <span class="annot" data-tooltip="barred /bɑrd/ adj. 有木栅的,隔绝的,被禁止的">barred</span> from seeking office for <span class="annot" data-tooltip="plotting /plɑːt/ n. 故事情节(秘密)计划，密谋小块地皮vt. 把…分成小块；划分绘制；标出vt. & vi. 密谋时 态: plotted，">plotting</span> a military coup in 2022. The <span class="annot" data-tooltip="senior /'siːniər/ adj. 年长的资深的; 地位高的〈美〉最高年级的n. 较年长者高年级学生〈美〉毕业班学生Senior西尼尔(姓氏)">senior</span> Bolsonaro, who is under house arrest and banned from <span class="annot" data-tooltip="campaigning /kæm'peɪn/ n. 运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）时">campaigning</span>, delivered his endorsement via an AI-generated video. Right-wing <span class="annot" data-tooltip="candidates /'kændɪdət，ˈkændɪdeɪt/ n. 申请求职者, 候选人报考者名 词: candidacy">candidates</span> have won the past seven presidential elections in Latin America. <span class="annot" data-tooltip="mar /mɑːr/ vt. 毁坏；损坏；玷污MARabbr. Master of Arts in Religion 宗教硕士Mar三月(March)">Mar</span>ía Corina Machado, <span class="annot" data-tooltip="venezuela /ˌvenə'zweɪlə/ n. 委内瑞拉形容词: Venezuelan">Venezuela</span>’s <span class="annot" data-tooltip="leading /ˈliːdɪŋ/ adj. 主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）">leading</span> opposition politician, announced she would not join American-backed talks with the Venezuelan government. She urged participants to clarify their “<span class="annot" data-tooltip="objectives /əb'dʒektɪv/ n. 目标; 目的adj. 客观的; 不带偏见的副 词: objectively">objectives</span>, <span class="annot" data-tooltip="methodology /ˌmeθə'dɑːlədʒi/ n. 一套方法方法学,方法论adj. 方法学的n. 方法论者,方法学者形容词: methodological">methodology</span> and timeline”. America hopes the talks can help Venezuela prepare to hold free elections. This article was downloaded by zlibrary from https://www.economist.com/the-world-this-week/2026/07/30/politics</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Business</div>
+<p>Jul 30th 2026 America’s <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">Federal</span> Reserve held its <span class="annot" data-tooltip="main /meɪn/ adj. 主要的; 最重要的n. 总管道; 干线">main</span> interest rate in the range of 3.5- 3.75%. Three of 12 members of the <span class="annot" data-tooltip="central /'sentrəl/ adj. 中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的副 词: centrally">central</span> bank’s rate-setting committee voted to <span class="annot" data-tooltip="raise /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raise</span> rates by a <span class="annot" data-tooltip="quarter /'kwɔːrtər/ n. 四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一时 ">quarter</span> of a percentage point. Kevin Warsh, the Fed’s chair, hinted that the bank could raise rates if the rate of <span class="annot" data-tooltip="inflation /ɪn'fleɪʃn/ n. (充气而引起的)膨胀通货膨胀">inflation</span>— which has been running above the bank’s 2% target—continues to remain high. Bond markets seemed unconvinced by his <span class="annot" data-tooltip="commentary /'kɑːmənteri/ n. 实况报道，解说词评论；评注">commentary</span>. The <span class="annot" data-tooltip="yield /jiːld/ vt. 出产；屈服；放弃vi. 屈服，投降n. 收益；产量时 态: yielded, yielding, yields">yield</span> on 30-year <span class="annot" data-tooltip="treasury /'treʒəri/ n. 财政部；国库，金库；宝库">Treasury</span> bonds rose above 5.2%, its highest since 2007. Meta, an American tech giant, made $16bn in profit in the second quarter, down by 14% from the same period last year. Its cashflow fell by 91%, as it increased its spending on artificial-intelligence <span class="annot" data-tooltip="infrastructure /'ɪnfrəstrʌktʃər/ n. 基础设施; 基础结构">infrastructure</span> such as data centres. Meta’s share price fell by about 7.5% in after-hours trading.</p>
+<p>Financial regulators in South Korea said they would limit access to some leveraged exchange-traded funds (ETFs) after the KOSPI, the country’s <span class="annot" data-tooltip="main /meɪn/ adj. 主要的; 最重要的n. 总管道; 干线">main</span> stock index, fell sharply. Officials blame the funds for exaggerating moves in the share prices of South Korean companies. After rising sharply in the first half of the year, the index has fallen by <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> 40% from its peak in late June (though it is still 30% higher than at the start of the year). SK Hynix, a South Korean chipmaker, made profits of 93.9trn won ($64.6bn) in the second <span class="annot" data-tooltip="quarter /'kwɔːrtər/ n. 四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一时 ">quarter</span>, up 1,240% year on year. Yet this was still below analysts’ expectations. Investors are concerned about the firm’s spending. Its share price fell by 6% on July 30th. Over 50 companies, including Microsoft, <span class="annot" data-tooltip="nvidia 恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商">Nvidia</span> and OpenAI, signed a letter in support of open-weight AI models (which users can customise) as American firms seek to compete with cheaper Chinese competitors. <span class="annot" data-tooltip="anthropic /ænˈθrɑpɪk/ adj. 人类的,有关人类的">Anthropic</span>, a <span class="annot" data-tooltip="rival /'raɪvl/ n. 竞争对手vt. 与…竞争, 与…匹敌时 态: rivaled, rivalled rivaling, rivalling">rival</span> of OpenAI, published its <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> letter in response, saying it does not support a ban on open-weight models, but that they <span class="annot" data-tooltip="present /'preznt/ vt. 呈现；介绍；提出；赠送vi. 举枪瞄准adj. 出席的；现在的n. 现在；礼物；瞄准时 态: presented, pr">present</span> safety risks by <span class="annot" data-tooltip="possibly /'pɑːsəbli/ adv. 可能地；大概；也许">possibly</span> allowing bad actors to modify <span class="annot" data-tooltip="leading /ˈliːdɪŋ/ adj. 主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）">leading</span>-<span class="annot" data-tooltip="edge /edʒ/ n. 边缘；刀刃；优势；锋利vt. 使锐利；将…开刃；给…加上边vi. 缓缓移动；侧着移动EDGEabbr. Electron">edge</span> models. Shares of ASML, the company that manufactures the tools used to make the most advanced <span class="annot" data-tooltip="semiconductors /'semikəndʌktər/ n. 〈物〉半导体形容词: semiconducting">semiconductors</span>, has fallen by 13% since July 24th. The drop came after the Information, a news <span class="annot" data-tooltip="outlet /'aʊtlet/ n. 出口, 出路发泄的途径经销店">outlet</span>, reported that China has started</p>
+<p>making its <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> deep ultraviolet lithography machines. Such machines are not the <span class="annot" data-tooltip="cutting /'kʌtɪŋ/ n. 切断；剪辑；开凿adj. 严寒的；锋利的；尖酸刻薄的v. 切开；采伐；削减（cut的ing形式）">cutting</span> <span class="annot" data-tooltip="edge /edʒ/ n. 边缘；刀刃；优势；锋利vt. 使锐利；将…开刃；给…加上边vi. 缓缓移动；侧着移动EDGEabbr. Electron">edge</span> of chipmaking tech, but they would represent a breakthrough for China. CXMT, a chipmaker, became China’s most valuable onshore firm when its shares rose by 466% following its IPO in Shanghai. The company is China’s largest producer of memory chips, whose price has soared worldwide as the data-centre buildout <span class="annot" data-tooltip="raises /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raises</span> demand. CXMT, which makes around 8% of DRAM chips (the kind used in smartphones and laptops), is likely to grow quickly if American firms pivot to buying Chinese chips for their consumer goods. Paramount Skydance said it would pause its $111bn takeover of Warner Bros as courts <span class="annot" data-tooltip="consider /kən'sɪdər/ vt. & vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及时 态: considered, considering, ">consider</span> a challenge to the deal from 12 American states. The <span class="annot" data-tooltip="trial /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">trial</span> will add hefty legal fees on top of the costs of the debt-heavy <span class="annot" data-tooltip="transaction /træn'zækʃn/ n. 处理，办理，执行(一笔)交易；(一项)事务形容词: transactional">transaction</span>. <span class="annot" data-tooltip="neither /'niːðər/ conj. 既不；也不adv. 两个都不；既不……也不adj. 两者都不的det./pron. 两者都不">Neither</span> firm is likely to take big risks while the <span class="annot" data-tooltip="acquisition /ˌækwɪ'zɪʃn/ n. 获得物，获得；收购">acquisition</span> is on hold, leaving Hollywood short of buyers for ambitious projects. Kering, a luxury firm, reported <span class="annot" data-tooltip="organic /ɔːr'ɡænɪk/ adj. 器官的；器质性的有机(体)的，有机物的副 词: organically">organic</span> sales growth for the first time in three years. The <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span>, which operates <span class="annot" data-tooltip="brands /brænd/ n. 商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责时 态: branded, branding, brands">brands</span> such as Gucci and Saint Laurent, has suffered many of the same problems as other luxury firms as consumers tired of price hikes. Its boss, Luca de Meo, hopes new designers at many brands and closing underperforming stores will help the group grow again. Hermès and LVMH, two other luxury firms, also had positive sales in important <span class="annot" data-tooltip="divisions /dɪ'vɪʒn/ n. [数] 除法；部门；分配；分割；师（军队）；赛区形容词: divisional">divisions</span>. Apple launched a leasing scheme for many of its devices with Klarna, a payments firm. The iPhone-maker has raised prices for its products because of rising memory-chip costs. The <span class="annot" data-tooltip="initiative /ɪ'nɪʃətɪv/ n. 主动性, 首创精神主动的行动, 倡议主动权">initiative</span> aims to attract thrifty consumers while limiting financial risk through the partnership. Prices to <span class="annot" data-tooltip="lease /liːs/ n. 租约；租期；租赁物；租赁权vt. 出租；租得vi. 出租时 态: leased, leasing, leases">lease</span> an iPhone start at $17.99 a month. America banned imports of humanoid robots, citing “unacceptable risks” to national <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span>. The <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">Federal</span> Communications <span class="annot" data-tooltip="commission /kə'mɪʃn/ n. 授权, 委托委员会佣金, 回扣vt. 委任, 委托时 态: commissioned, commissioning, c">Commission</span> said the devices, which are mostly made in China, could “surveil Americans”. The regulator also blocked foreign-made power inverters, which are used in data centres and <span class="annot" data-tooltip="solar /'soʊlər/ adj. 太阳的；日光的；利用太阳光的；与太阳相关的n. 日光浴室">solar</span> <span class="annot" data-tooltip="panels /'pænl/ n. 仪表板；嵌板；座谈小组，全体陪审员vt. 嵌镶板时 态: paneled, panelled paneling, pan">panels</span>.</p>
+<p>FIFA, football’s governing body, proposed raising $4.2bn by selling stakes in a venture to help run its tournaments, including the World Cup. Josh Kushner, the brother of Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s son-in-law, has been tapped as an investor. FIFA’s member associations must approve the plan. UEFA, which governs the European game, said FIFA was selling the “soul...of football”. The European Union vowed to investigate it. This article was downloaded by zlibrary from https://www.economist.com/the-world-this-week/2026/07/30/business</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>bombing</td><td>— abbr.</td><td>物料清单（Bill of Materiel）</td></tr>
+<tr><td>shipping</td><td>/ʃɪp/ vt.</td><td>运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Division of the Nation</td></tr>
+<tr><td>strait</td><td>/streɪt/ n.</td><td>海峡；（尤指经济拮据引起的）困境，境况窘迫adj. 狭窄的；苦恼的</td></tr>
+<tr><td>negotiations</td><td>/nɪˌɡoʊʃi'eɪʃn/ n.</td><td>协商，谈判完成(难事)；通过</td></tr>
+<tr><td>crude</td><td>/kruːd/ adj.</td><td>粗糙的；粗鲁的；天然的，未加工的；粗略的n. 天然的物质；原油, crudest</td></tr>
+<tr><td>benchmark</td><td>/'bentʃmɑːrk/ </td><td>基准, benchmarking, benchmarks</td></tr>
+<tr><td>barrel</td><td>/'bærəl/ vt.</td><td>把……装入桶内n. 桶；枪管，炮管vi. 快速移动, barrelled barreling, barrelling barrels, barrels</td></tr>
+<tr><td>funeral</td><td>/'fjuːnərəl/ n.</td><td>葬礼；[口]麻烦事adj. 丧葬的，出殡的</td></tr>
+<tr><td>republican</td><td>/rɪ'pʌblɪkən/ adj.</td><td>共和国的, 共和政体的n. 拥护共和政体者, 共和主义者</td></tr>
+<tr><td>ukraine</td><td>— n.</td><td>乌克兰（原苏联一加盟共和国，现已独立）</td></tr>
+<tr><td>candidate</td><td>/'kændɪdət，ˈkændɪdeɪt/ n.</td><td>申请求职者, 候选人报考者</td></tr>
+<tr><td>senate</td><td>/ˈsenət/ </td><td>n.（诸如美国、澳大利亚、法国的）参议院（the Senate） （某些国家的）大学理事会，大学评议会（古罗马的）元老院</td></tr>
+<tr><td>race</td><td>/reɪs/ n.</td><td>种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACEabbr. Radiation Adap</td></tr>
+<tr><td>sexual</td><td>/'sekʃuəl/ adj.</td><td>性交的, 性行为的, 性吸引的, 两性的, 肉体吸引的性别的, 性的, 男性或女性的生殖的, 有性生殖的</td></tr>
+<tr><td>assault</td><td>/ə'sɔːlt/ n.</td><td>攻击；袭击vt. 袭击；攻击vi. 袭击；动武, assaulting, assaults</td></tr>
+<tr><td>republican</td><td>/rɪ'pʌblɪkən/ adj.</td><td>共和国的, 共和政体的n. 拥护共和政体者, 共和主义者</td></tr>
+<tr><td>net</td><td>/net/ n.</td><td>网；净利；网络；实价vi. 编网vt. 净赚；得到；用网捕adj. 纯粹的；净余的, netting, nets</td></tr>
+<tr><td>reform</td><td>/rɪ'fɔːrm/ n.</td><td>改革，改良，改造vt. & vi. 改革；改造；改善，reforming，reforms</td></tr>
+<tr><td>raise</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>reforms</td><td>/rɪ'fɔːrm/ n.</td><td>改革，改良，改造vt. & vi. 改革；改造；改善，reforming，reforms</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>protests</td><td>/'proʊtest/ n.</td><td>抗议；反对vt. & vi. 声明；抗议，protesting，protests</td></tr>
+<tr><td>delhi</td><td>/ˈdɛli/ n.</td><td>德里（印度城市名）</td></tr>
+<tr><td>wound</td><td>/wund/ n.</td><td>创伤，伤口vt. 使受伤vi. 受伤，伤害, wounding, wounds</td></tr>
+<tr><td>resignation</td><td>/ˌrezɪɡ'neɪʃn/ n.</td><td>辞职辞职书顺从, 听从</td></tr>
+<tr><td>leaking</td><td>/liːk/ n.</td><td>漏洞，裂缝；泄漏vt. 使渗漏，泄露vi. 漏，渗；泄漏出去, leaking, leaks</td></tr>
+<tr><td>magnitude</td><td>/'mæɡnɪtuːd/ n.</td><td>巨大; 重要性〈天〉星等</td></tr>
+<tr><td>explosion</td><td>/ɪk'sploʊʒn/ n.</td><td>爆炸；爆发激增，扩大</td></tr>
+<tr><td>ukraine</td><td>— n.</td><td>乌克兰（原苏联一加盟共和国，现已独立）</td></tr>
+<tr><td>speaking</td><td>/'spikɪŋ/ adj.</td><td>演讲的；富于表情的，雄辩的n. 说话；演讲v. 讲（speak的ing形式）</td></tr>
+<tr><td>negotiate</td><td>/nɪ'ɡoʊʃieɪt/ vt.</td><td>谈判，商议；转让；越过</td></tr>
+<tr><td>offensive</td><td>/ə'fensɪv/ adj.</td><td>讨厌的；令人不快的攻击的n. 进攻，攻势</td></tr>
+<tr><td>enable</td><td>/ɪ'neɪbl/ vt.</td><td>使能够；提供做…的权利[措施]使可能，enabling，enables</td></tr>
+<tr><td>democratic</td><td>/ˌdemə'krætɪk/ adj.</td><td>民主的, 有民主精神或作风的</td></tr>
+<tr><td>reached</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>blazes</td><td>/bleɪz/ n.</td><td>火焰, 烈火光辉, 闪耀迸发, 爆发vi. 猛烈地燃烧发光, 照耀, blazing, blazes</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>terrorist</td><td>/'terərɪst/ n.</td><td>恐怖主义者, 恐怖分子</td></tr>
+<tr><td>cyber</td><td>— adj.</td><td>计算机(网络)的；信息技术的</td></tr>
+<tr><td>fraud</td><td>/frɔːd/ n.</td><td>欺诈, 欺骗行为骗子</td></tr>
+<tr><td>expelled</td><td>/ɪk'spel/ vt.</td><td>驱逐；开除, expelling, expels</td></tr>
+<tr><td>allies</td><td>— n.</td><td>（第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>adopt</td><td>/ə'dɑːpt/ vt.</td><td>收养采用, 采纳, 采取正式接受, 通过, adopting, adopts</td></tr>
+<tr><td>ordered</td><td>/'ɔːrdərd/ adj.</td><td>安排好的；整齐的；[数]有序的v. 命令；点餐（order的过去式和过去分词）</td></tr>
+<tr><td>romania</td><td>/ru'meɪniə/ n.</td><td>罗马尼亚（欧洲巴尔干半岛东北部国家）</td></tr>
+<tr><td>drones</td><td>/droʊn/ n.</td><td>无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫；嗡嗡响(人)絮絮叨叨地说，喋喋不休地说</td></tr>
+<tr><td>territory</td><td>/'terətɔːri/ n.</td><td>领土, 版图管区, 营业地区地盘, 领域, 范围</td></tr>
+<tr><td>stray</td><td>/streɪ/ vi.</td><td>走失，离群；迷路走入歧途；犯罪n. 走失的动物adj. 独自的；零散的，straying，strays</td></tr>
+<tr><td>drone</td><td>/droʊn/ n.</td><td>无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫；嗡嗡响(人)絮絮叨叨地说，喋喋不休地说</td></tr>
+<tr><td>ukraine</td><td>— n.</td><td>乌克兰（原苏联一加盟共和国，现已独立）</td></tr>
+<tr><td>peru</td><td>— n.</td><td>秘鲁</td></tr>
+<tr><td>decade</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>narrowly</td><td>/'næroʊ/ adj.</td><td>狭窄的，有限的；度量小的；精密的；勉强的n. 狭窄部分，隘路；海峡vt. 使变狭窄vi. 变窄, narrowest</td></tr>
+<tr><td>wing</td><td>/wɪŋ/ n.</td><td>翅膀；翼；飞翔；派别vt. 使飞；飞过；空运；增加…速度；装以翼vi. 飞行, winging, wings</td></tr>
+<tr><td>rival</td><td>/'raɪvl/ n.</td><td>竞争对手vt. 与…竞争, 与…匹敌, rivalled rivaling, rivalling rivals, rivals</td></tr>
+<tr><td>campaign</td><td>/kæm'peɪn/ n.</td><td>运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）, campaigning, campai</td></tr>
+<tr><td>barred</td><td>/bɑrd/ adj.</td><td>有木栅的,隔绝的,被禁止的</td></tr>
+<tr><td>plotting</td><td>/plɑːt/ n.</td><td>故事情节(秘密)计划，密谋小块地皮vt. 把…分成小块；划分绘制；标出vt. & vi. 密谋，plotting，plots</td></tr>
+<tr><td>senior</td><td>/'siːniər/ adj.</td><td>年长的资深的; 地位高的〈美〉最高年级的n. 较年长者高年级学生〈美〉毕业班学生Senior西尼尔(姓氏)</td></tr>
+<tr><td>campaigning</td><td>/kæm'peɪn/ n.</td><td>运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）, campaigning, campai</td></tr>
+<tr><td>candidates</td><td>/'kændɪdət，ˈkændɪdeɪt/ n.</td><td>申请求职者, 候选人报考者</td></tr>
+<tr><td>mar</td><td>/mɑːr/ vt.</td><td>毁坏；损坏；玷污MARabbr. Master of Arts in Religion 宗教硕士Mar三月(March)，marring，mars</td></tr>
+<tr><td>venezuela</td><td>/ˌvenə'zweɪlə/ n.</td><td>委内瑞拉</td></tr>
+<tr><td>leading</td><td>/ˈliːdɪŋ/ adj.</td><td>主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）</td></tr>
+<tr><td>objectives</td><td>/əb'dʒektɪv/ n.</td><td>目标; 目的adj. 客观的; 不带偏见的</td></tr>
+<tr><td>methodology</td><td>/ˌmeθə'dɑːlədʒi/ n.</td><td>一套方法方法学,方法论adj. 方法学的n. 方法论者,方法学者</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>main</td><td>/meɪn/ adj.</td><td>主要的; 最重要的n. 总管道; 干线</td></tr>
+<tr><td>central</td><td>/'sentrəl/ adj.</td><td>中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的</td></tr>
+<tr><td>raise</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>quarter</td><td>/'kwɔːrtər/ n.</td><td>四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一, quartering, quarters</td></tr>
+<tr><td>inflation</td><td>/ɪn'fleɪʃn/ n.</td><td>(充气而引起的)膨胀通货膨胀</td></tr>
+<tr><td>commentary</td><td>/'kɑːmənteri/ n.</td><td>实况报道，解说词评论；评注</td></tr>
+<tr><td>yield</td><td>/jiːld/ vt.</td><td>出产；屈服；放弃vi. 屈服，投降n. 收益；产量, yielding, yields</td></tr>
+<tr><td>treasury</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>infrastructure</td><td>/'ɪnfrəstrʌktʃər/ n.</td><td>基础设施; 基础结构</td></tr>
+<tr><td>main</td><td>/meɪn/ adj.</td><td>主要的; 最重要的n. 总管道; 干线</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>quarter</td><td>/'kwɔːrtər/ n.</td><td>四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一, quartering, quarters</td></tr>
+<tr><td>nvidia</td><td>— </td><td>恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商</td></tr>
+<tr><td>anthropic</td><td>/ænˈθrɑpɪk/ adj.</td><td>人类的,有关人类的</td></tr>
+<tr><td>rival</td><td>/'raɪvl/ n.</td><td>竞争对手vt. 与…竞争, 与…匹敌, rivalled rivaling, rivalling rivals, rivals</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>present</td><td>/'preznt/ vt.</td><td>呈现；介绍；提出；赠送vi. 举枪瞄准adj. 出席的；现在的n. 现在；礼物；瞄准, presenting, presents</td></tr>
+<tr><td>possibly</td><td>/'pɑːsəbli/ adv.</td><td>可能地；大概；也许</td></tr>
+<tr><td>leading</td><td>/ˈliːdɪŋ/ adj.</td><td>主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）</td></tr>
+<tr><td>edge</td><td>/edʒ/ n.</td><td>边缘；刀刃；优势；锋利vt. 使锐利；将…开刃；给…加上边vi. 缓缓移动；侧着移动EDGEabbr. Electronic Data Gathering Eq</td></tr>
+<tr><td>semiconductors</td><td>/'semikəndʌktər/ n.</td><td>〈物〉半导体</td></tr>
+<tr><td>outlet</td><td>/'aʊtlet/ n.</td><td>出口, 出路发泄的途径经销店</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>cutting</td><td>/'kʌtɪŋ/ n.</td><td>切断；剪辑；开凿adj. 严寒的；锋利的；尖酸刻薄的v. 切开；采伐；削减（cut的ing形式）</td></tr>
+<tr><td>edge</td><td>/edʒ/ n.</td><td>边缘；刀刃；优势；锋利vt. 使锐利；将…开刃；给…加上边vi. 缓缓移动；侧着移动EDGEabbr. Electronic Data Gathering Eq</td></tr>
+<tr><td>raises</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>consider</td><td>/kən'sɪdər/ vt.</td><td>& vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及, considering, considers</td></tr>
+<tr><td>trial</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>transaction</td><td>/træn'zækʃn/ n.</td><td>处理，办理，执行(一笔)交易；(一项)事务</td></tr>
+<tr><td>neither</td><td>/'niːðər/ conj.</td><td>既不；也不adv. 两个都不；既不……也不adj. 两者都不的det./pron. 两者都不</td></tr>
+<tr><td>acquisition</td><td>/ˌækwɪ'zɪʃn/ n.</td><td>获得物，获得；收购</td></tr>
+<tr><td>organic</td><td>/ɔːr'ɡænɪk/ adj.</td><td>器官的；器质性的有机(体)的，有机物的</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>brands</td><td>/brænd/ n.</td><td>商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责, branding, brands</td></tr>
+<tr><td>divisions</td><td>/dɪ'vɪʒn/ n.</td><td>[数] 除法；部门；分配；分割；师（军队）；赛区</td></tr>
+<tr><td>initiative</td><td>/ɪ'nɪʃətɪv/ n.</td><td>主动性, 首创精神主动的行动, 倡议主动权</td></tr>
+<tr><td>lease</td><td>/liːs/ n.</td><td>租约；租期；租赁物；租赁权vt. 出租；租得vi. 出租, leasing, leases</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>commission</td><td>/kə'mɪʃn/ n.</td><td>授权, 委托委员会佣金, 回扣vt. 委任, 委托, commissioning, commissions</td></tr>
+<tr><td>solar</td><td>/'soʊlər/ adj.</td><td>太阳的；日光的；利用太阳光的；与太阳相关的n. 日光浴室</td></tr>
+<tr><td>panels</td><td>/'pænl/ n.</td><td>仪表板；嵌板；座谈小组，全体陪审员vt. 嵌镶板, panelled paneling, panelling panels, panels</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  
+  <a href="day2.html" class="nav-btn">Day 2 →</a>
+</div>
+
+<div class="progress">📖 Day 1 of 39</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-08-01</div>
+
+</body>
+</html>
