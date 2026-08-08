@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Europe | Shifting plates</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-08-08</div>
+
+<h1 class="article-title">Europe | Shifting plates</h1>
+<div class="article-section">Europe</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s Arctic threats are pushing Iceland <span class="annot" data-tooltip="towards /tɔːrdz/ prep. 向，朝为了；有助于；用于对于，关于接近；将近；大约">towards</span> Europe The island is voting on whether to restart EU <span class="annot" data-tooltip="membership /'membərʃɪp/ n. 全体会员会员身份, 会员资格">membership</span> talks Aug 6th 2026 Iceland sits on the geological boundary between North America and Eurasia, equidistant from New York and Athens. It is tied to America by long- standing defence arrangements and <span class="annot" data-tooltip="hosts /hoʊst/ n. 主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集时 态: hosted, hosting, host">hosts</span> a NATO base in Keflavik. It is linked to Europe by history (it won independence from <span class="annot" data-tooltip="denmark /'denmɑːrk/ n. 丹麦(北欧国家,首都哥本哈根)">Denmark</span> in 1944) and <span class="annot" data-tooltip="commerce /'kɑːmɜːrs/ n. 商业, 贸易">commerce</span> (it belongs to the European Economic Area). Now, <span class="annot" data-tooltip="amid /ə'mɪd/ prep. 在其中，在其间">amid</span> transatlantic <span class="annot" data-tooltip="tension /'tenʃn/ n. 张力，拉力；紧张，不安；电压vt. 使紧张；使拉紧时 态: tensioned, tensioning, tension">tension</span> and concerns about Donald Trump’s intentions in the Arctic, the country is about to vote on whether to take a step closer to the European Union. On August 29th the island of 400,000 people will hold a referendum on whether to restart membership talks with the EU. Iceland began these <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span></p>
+<p>two <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span> ago, but ended them in 2013 after electing a Eurosceptic government. Voting yes will not <span class="annot" data-tooltip="commit /kə'mɪt/ vt. 犯罪；犯错承诺；使自己受约束托付；交付时 态: committed，committing，commits">commit</span> the country to joining the EU; another vote would take <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span> when talks conclude. Yet the <span class="annot" data-tooltip="pro /proʊ/ n. 从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞">pro</span>-European camp is worried. Two <span class="annot" data-tooltip="polls /poʊl/ n. 民意测验；投票；投票数；投票所vt. 剪短；对…进行民意测验；获得选票；投票vi. 投票adj. 剪过毛的；修过枝的；无">polls</span> in June and one in July showed a majority of just 52-53% for restarting talks. That lead is too close for comfort and could easily be reversed. Weak Euro-<span class="annot" data-tooltip="enthusiasm /ɪn'θuːziæzəm/ n. 热情, 热心巨大兴趣, 热衷的事物">enthusiasm</span> appears to fly in the face of today’s geopolitics. Iceland does not have its <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> armed forces. It relies on rotating air-force deployments from NATO countries to Keflavik. With only coastguard <span class="annot" data-tooltip="ships /ʃɪp/ vt. 运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Di">ships</span> at its <span class="annot" data-tooltip="disposal /dɪ'spoʊzl/ n. 清除, 处理, 处置排列, 布置">disposal</span>, Iceland <span class="annot" data-tooltip="leans /liːn/ vi. 倾斜；倚靠；倾向；依赖adj. 瘦的；贫乏的，歉收的vt. 使倾斜n. 倾斜；倾斜度；瘦肉时 态: leaned, le">leans</span> on American and European <span class="annot" data-tooltip="aircraft /'erkræft/ n. 飞机，航空器">aircraft</span> to <span class="annot" data-tooltip="monitor /'mɑːnɪtər/ n. 显示屏；监视器；（计算机）显示器监控器；监测器班长；级长；班代表（尤指派往国外的）监督员，核查员巨蜥v. 监视；检查；跟">monitor</span> the growing activity of Russian submarines nearby; in June a Russian <span class="annot" data-tooltip="spy /spaɪ/ vt. 侦察；发现；暗中监视vi. 侦察；当间谍n. 间谍；密探">spy</span> <span class="annot" data-tooltip="ship /ʃɪp/ vt. 运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Di">ship</span> was <span class="annot" data-tooltip="detected /dɪ'tekt/ vt. 发现；发觉，查明时 态: detected，detecting，detects">detected</span> just <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span> its waters. The government worries about <span class="annot" data-tooltip="hybrid /'haɪbrɪd/ n. 混合物；杂种，混血儿adj. 杂种的；混合的名 词: hybridism">hybrid</span> <span class="annot" data-tooltip="warfare /'wɔːrfer/ n. 战争, 战争状态">warfare</span> and attacks on <span class="annot" data-tooltip="infrastructure /'ɪnfrəstrʌktʃər/ n. 基础设施; 基础结构">infrastructure</span>. These days such arrangements seem less solid. On a <span class="annot" data-tooltip="chilly /'tʃɪli/ adj. （天气、房间或人体）寒冷的，凉飕飕的；冷淡的，不友好的比较级: chillier, chilliest">chilly</span> day in July the NATO base in Keflavik was strangely quiet. American planes were “a little bit occupied in the Mediterranean”, said an Icelandic official. Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s threats to annex Greenland, just 300km away, feel uncomfortably close to home. The EU is not primarily a <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span> club, <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">although</span> it does have a <span class="annot" data-tooltip="mutual /'mjuːtʃuəl/ adj. 相互的, 彼此的共同的, 共有的名 词: mutuality">mutual</span>- defence clause. For a small country, however, the union offers collective support against <span class="annot" data-tooltip="bullying /'bʊli/ v. 迫使；胁迫欺负；恐吓；欺凌n. 恃强凌弱者；恶霸adj. 顶好的，快活的，第一流的时 态: bullied，bullyi">bullying</span> over <span class="annot" data-tooltip="territory /'terətɔːri/ n. 领土, 版图管区, 营业地区地盘, 领域, 范围">territory</span> or trade. After Mr Trump’s threats to Greenland, which is an <span class="annot" data-tooltip="autonomous /ɔː'tɑːnəməs/ adj. 自治的副 词: autonomously">autonomous</span> Danish territory, several EU countries sent <span class="annot" data-tooltip="symbolic /sɪm'bɑːlɪk/ adj. 象征的, 象征性的副 词: symbolically">symbolic</span> detachments of troops at <span class="annot" data-tooltip="denmark /'denmɑːrk/ n. 丹麦(北欧国家,首都哥本哈根)">Denmark</span>’s request. France’s president, Emmanuel Macron, flew to Greenland to show support. “When trade and <span class="annot" data-tooltip="tariffs /'tærɪf/ n. 关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表时 态: tariffed, tariffing, tar">tariffs</span> have been weaponised,” says Thorgerdur Katrin Gunnarsdottir, Iceland’s pro-European foreign minister, “we should at least as a small nation <span class="annot" data-tooltip="consider /kən'sɪdər/ vt. & vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及时 态: considered, considering, ">consider</span> where we <span class="annot" data-tooltip="secure /sɪ'kjʊr/ adj. 安心的；有把握的可靠的；牢靠的；稳固的；安全的；稳妥的严密把守的；牢固的；坚固的v. （尤指经过努力）获得，取得，实现拴">secure</span> our interests…For us it was important to see how <span class="annot" data-tooltip="steadfast /'stedfæst/ adj. 坚定的;不动摇的不动的;不变的副 词: steadfastly">steadfast</span> the European Union stepped in.” In recent weeks, however, <span class="annot" data-tooltip="anti /'ænti/ adj. 反对的n. 反对者，反对论者">anti</span>-EU campaigners have stepped up their efforts. They are a motley coalition of hard-left and hard-right nationalists, as well as <span class="annot" data-tooltip="conservatives /kən'sɜːrvətɪv/ n. 保守的人adj. 保守的, 守旧的(式样等)不时新的, 传统的副 词: conservatively">conservatives</span>, backed by the country’s big fishing-<span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> <span class="annot" data-tooltip="lobby /'lɑːbi/ n. 前厅, 厅堂议会休息室游说议员的团体vt. & vi. 向…进行游说[疏通]名 词: lobbyism">lobby</span> and media interests. In a fiercely independent country, they draw on long- standing worries about protecting fishing waters and agriculture, as well as submitting to the EU rulebook. But the debate has hardened. False claims</p>
+<p>abound. One is that this is a referendum on joining the EU; another, that Icelanders would have to join a European army. For the EU, the <span class="annot" data-tooltip="prospect /'prɑːspekt/ n. 景象，景色前景；前途可能成为主顾的人；有希望的候选人vi. 勘探；勘察时 态: prospected，prospecti">prospect</span> of a new <span class="annot" data-tooltip="recruit /rɪ'kruːt/ n. 新兵(机构中的)新成员vt. 招聘；吸引(新成员)吸收某人为新成员vt. & vi. 招募，征募(新兵)恢复健康，恢复体">recruit</span> on the north-western periphery is welcome. Unlike <span class="annot" data-tooltip="applicants /'æplɪkənt/ n. 申请人, 求职人">applicants</span> to the union’s south and east, Iceland has an income per head well above the EU average, and much of the accession homework has already been done. The European <span class="annot" data-tooltip="commission /kə'mɪʃn/ n. 授权, 委托委员会佣金, 回扣vt. 委任, 委托时 态: commissioned, commissioning, c">Commission</span> has said there is “room for flexibility” on fishing rights. Yet European leaders are treading carefully to avoid any hint of interference. When Jean-Noël Barrot, France’s foreign minister, visited Reykjavik on July 20th (in part to discuss <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span> co-operation), he declared <span class="annot" data-tooltip="cautiously /'kɔːʃəsli/ adv. 小心地,谨慎地">cautiously</span> that “the Icelandic people have nothing to lose by opening <span class="annot" data-tooltip="negotiations /nɪˌɡoʊʃi'eɪʃn/ n. 协商，谈判完成(难事)；通过">negotiations</span>.” The choice about joining, he stressed, would come later. A no vote would <span class="annot" data-tooltip="nonetheless /ˌnʌnðə'les/ adv. 虽然如此,但是">nonetheless</span> be a <span class="annot" data-tooltip="symbolic /sɪm'bɑːlɪk/ adj. 象征的, 象征性的副 词: symbolically">symbolic</span> <span class="annot" data-tooltip="blow /bloʊ/ n. 吹；殴打；打击vi. 风吹；喘气vt. 风吹时 态: blew blown blowing, blows">blow</span>. “We haven’t known anything except security protection by the US,” says Bogi Agustsson, a veteran Icelandic broadcaster. “A lot of people in the country are in a state of <span class="annot" data-tooltip="denial /dɪ'naɪəl/ n. 否认拒绝, 拒绝给予">denial</span> and don’t yet see Europe as a security <span class="annot" data-tooltip="alternative /ɔːl'tɜːrnətɪv/ adj. 可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）">alternative</span>.” ■ This article was downloaded by zlibrary from https://www.economist.com/europe/2026/08/06/donald-<span class="annot" data-tooltip="trumps /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">trumps</span>-arctic-threats-are- pushing-iceland-<span class="annot" data-tooltip="towards /tɔːrdz/ prep. 向，朝为了；有助于；用于对于，关于接近；将近；大约">towards</span>-europe</p>
+<div class="article-separator"></div>
+<div class="article-header">Europe · Europe | Half a boost</div>
+<p>Why the EU’s big covid-recovery fund lost steam Spain used it better than Italy, but it was not a game-changer Aug 6th 2026 NOT SINCE the great flood of 1966 has Florence known such <span class="annot" data-tooltip="disruption n. 中断,分裂,瓦解,破坏">disruption</span>. A tramway extension has turned the road fringing the city centre into a construction site. Costing €500m ($576m), it is the city’s biggest project financed by NextGenerationEU, the European Union’s post-covid recovery programme. The scheme is paying for 55 other projects in the Tuscan capital, from crèches to cycle paths. Sara Funaro, the mayor, calls it “a momentous juncture in the history of Florence”. Across the Mediterranean, Madrid’s <span class="annot" data-tooltip="wholesale /'hoʊlseɪl/ n. 批发adj. &adv. 批发(的)大规模(的)vt. 批发时 态: wholesaled, wholesaling, ">wholesale</span> market is abuzz at 5am. It includes one of the world’s biggest fish markets. With a grant of €400,000 in NextGenerationEU funds, the fishmongers’ association has set up a digital payment-and-order system, replacing handwritten orders and long <span class="annot" data-tooltip="queues /kjuː/ n. 队列；长队；辫子vi. 排队；排队等候vt. 将…梳成辫子；使…排队时 态: queued, queuing, queu">queues</span> at</p>
+<p>the bank. “It’s saved us a huge amount of time,” says Christian Cobo, as he prepares to sell tuna from huge <span class="annot" data-tooltip="carcasses /'kɑːrkəs/ n. (动物的)尸体烹调过的禽鸟骨骼">carcasses</span>. At NextGenerationEU’s heart is its Recovery and <span class="annot" data-tooltip="resilience /rɪ'zɪliəns/ n. 弹回;弹性恢复力；适应力">Resilience</span> Facility (RRF), created during the <span class="annot" data-tooltip="pandemic /pæn'demɪk/ adj. （疾病）在全国（或世界）流行的">pandemic</span> in 2020, which has approved €577bn in grants and loans. The EU had never spent so much, so fast. Most important, it was funded by <span class="annot" data-tooltip="joint /dʒɔɪnt/ n. 关节；接合处，接合点；接缝；（牛，羊等的腿）大块肉adj. 联合的，合办的；共同的；连接的vt. 连接，贴合；接合；使有">joint</span> bonds; <span class="annot" data-tooltip="advocates /ˈædvəkeɪt，'ædvəkət/ v. 拥护；支持；提倡n. 拥护者；支持者；提倡者；辩护律师；出庭辩护人时 态: advocated, advocating,">advocates</span> of a stronger EU termed it a “Hamiltonian moment”, citing the decision by America’s first <span class="annot" data-tooltip="treasury /'treʒəri/ n. 财政部；国库，金库；宝库">treasury</span> <span class="annot" data-tooltip="secretary /'sekrəteri/ n. 秘书书记部长, 大臣形容词: secretarial">secretary</span> to <span class="annot" data-tooltip="empower /ɪm'paʊər/ vt. 授权, 准许时 态: empowered, empowering, empowers">empower</span> the <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">federal</span> government by assuming the states’ debts. It aimed to speed recovery from the pandemic <span class="annot" data-tooltip="slump /slʌmp/ vi. 大幅度下降, 暴跌沉重或突然地落下[倒下]n. 萧条期〈美〉(个人、球队等的)低潮状态时 态: slumped, slu">slump</span>, especially in the poorer south, and to make the continent greener and more digital. Disbursements were supposed to be linked to <span class="annot" data-tooltip="reforms /rɪ'fɔːrm/ n. 改革，改良，改造vt. & vi. 改革；改造；改善时 态: reformed，reforming，reforms">reforms</span> to make economies more efficient. The last payments are <span class="annot" data-tooltip="due /duː/ adj. 到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）">due</span> by the end of 2026. Has it worked? The answer seems to be: sort of. The biggest recipients were Italy (€194bn) and Spain (€103bn), which together account for 52% of the funds. At first glance Spain has done a lot better than Italy (see chart). When the RRF started, Italy’s government reckoned its rate of economic growth would soar from its previous <span class="annot" data-tooltip="annual /'ænjuəl/ adj. 年度的；每年的n. 年刊，年鉴；一年生植物副 词: annually">annual</span> average of around 1% to 3.6% this year. In the event, annual GDP growth has been below 1% since 2023. By <span class="annot" data-tooltip="contrast /'kɑːntræst/ n. 对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照时 态: contrasted, cont">contrast</span>, Spain has achieved <span class="annot" data-tooltip="robust /roʊ'bʌst/ adj. 强健的；健康的；粗野的；粗鲁的副 词: robustly">robust</span> growth of at least 2.5% in each year since 2021.</p>
+<p>Some of this divergent performance is explained by the way each country used the RRF. Italy risks emerging from the programme “more indebted than before, without having solved its structural weaknesses”, according to a paper by Tito Boeri and Roberto Perotti of Bocconi University in Milan. Many of Italy’s schemes were “<span class="annot" data-tooltip="trivial /'trɪviəl/ adj. 不重要的，琐碎的；琐细的副 词: trivially">trivial</span> or unfeasible”, the economists conclude. Unlike Greece's <span class="annot" data-tooltip="strategic /strə'tiːdʒɪk/ adj. 战略(上)的有战略意义的; 至关重要的副 词: strategically">strategic</span> plan for the funds, Italy’s lacked <span class="annot" data-tooltip="coherence /koʊ'hɪrəns/ n. 条理性,连贯性,一致性">coherence</span>. Much of Spain’s economic performance has little to do with the RRF. “The recovery from the <span class="annot" data-tooltip="pandemic /pæn'demɪk/ adj. （疾病）在全国（或世界）流行的">pandemic</span> recession was much faster than everyone expected,” says Ignacio de la Torre of Arcano Partners, a financial firm. Spain has approved some useful <span class="annot" data-tooltip="reforms /rɪ'fɔːrm/ n. 改革，改良，改造vt. & vi. 改革；改造；改善时 态: reformed，reforming，reforms">reforms</span>. It has <span class="annot" data-tooltip="barred /bɑrd/ adj. 有木栅的,隔绝的,被禁止的">barred</span> employers from abusing workers by keeping them on temporary <span class="annot" data-tooltip="contracts /'kɑːntrækt/ vi. 感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约时 态: contracted, contracting, c">contracts</span> indefinitely, and has reduced regulatory <span class="annot" data-tooltip="obstacles /'ɑːbstəkl/ n. 障碍(物), 妨碍">obstacles</span> that <span class="annot" data-tooltip="hinder /'hɪndər/ vt. & vi. 阻碍；妨碍时 态: hindered，hindering，hinders">hinder</span> small businesses and <span class="annot" data-tooltip="startups /ˈstɑrtˈʌp/ n. 启动；开办">startups</span>. Still, <span class="annot" data-tooltip="productivity /ˌproʊdʌk'tɪvəti/ n. 生产率, 生产力">productivity</span> growth remains modest, at 0.7% last year, according to Eurostat. Massive immigration, which has added labour, accounts for around half of the headline growth and two-thirds of additional jobs, according to the Bank of Spain. (Italy, for its part, has <span class="annot" data-tooltip="curbed /kɜːrb/ n. 侧石, 边石限制, 克制, 抑制vt. 限制, 克制, 抑制时 态: curbed, curbing, curbs">curbed</span> immigration.) An increase in tourism and the export of other services has helped, too. Carlos Cuerpo, the economy minister, thinks the RRF has added three percentage points to GDP. But Funcas, a think-<span class="annot" data-tooltip="tank /tæŋk/ n. （存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内时 态: t">tank</span> in Madrid, reckons that at most only 14% of the total growth of the economy between 2021 and 2025 was <span class="annot" data-tooltip="due /duː/ adj. 到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）">due</span> to the RRF money. Still, the funds may support longer-term growth. “Things are happening, but we can only know the impact in several years’ time,” says Manuel Hidalgo of the University of Seville. Spain has used some of the cash to <span class="annot" data-tooltip="invest /ɪn'vest/ vt. 投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买时 态: invested, investing, invests">invest</span> in big capital projects, including schemes for electric <span class="annot" data-tooltip="vehicles /'viːəkl/ n. 交通工具, 车辆传播媒介, 手段">vehicles</span> and batteries. In Andalucía, Moeve, a Spanish <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span> company, is building a €1bn green- hydrogen plant—which will be southern Europe’s largest—with €300m from the RRF. Moeve’s boss, Maarten Wetselaar, says that he expects the electrolysers used to make hydrogen to be 30% cheaper in five years’ time. “The state funds <span class="annot" data-tooltip="compensate /'kɑːmpenseɪt/ vt. & vi. 补偿, 报酬时 态: compensated, compensating, compensates">compensate</span> for the first-mover disadvantage,” he says. Italy may see more benefits over time, too. One of the reforms the European <span class="annot" data-tooltip="commission /kə'mɪʃn/ n. 授权, 委托委员会佣金, 回扣vt. 委任, 委托时 态: commissioned, commissioning, c">Commission</span> wanted was to speed up the justice system. The slow pace of cases involving debt recovery and <span class="annot" data-tooltip="dispute /dɪ'spjuːt/ vt. 辩论；阻止；抗拒；怀疑vi. 争论n. 辩论；争吵时 态: disputed, disputing, disputes">dispute</span> settlement discourages foreign</p>
+<p>companies from <span class="annot" data-tooltip="investing /ɪn'vest/ vt. 投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买时 态: invested, investing, invests">investing</span> in Italy. Gian Luigi Gatta of the University of Milan noted in a paper that the average length of court proceedings has been cut by 28% since 2019. Italy is also on track to increase <span class="annot" data-tooltip="nursery /'nɜːrsəri/ n. 托儿所；苗圃；温床">nursery</span> <span class="annot" data-tooltip="places /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">places</span>—needed to <span class="annot" data-tooltip="raise /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raise</span> women’s <span class="annot" data-tooltip="workforce /'wɜːrkfɔːrs/ n. 全体员工(国家或行业等)劳动力,劳动大军,劳动人口">workforce</span> participation—by around 150,000 (compared with 378,500 in 2024), though funding them after the RRF <span class="annot" data-tooltip="expires /ɪk'spaɪər/ vi. 期满, (期限)终止断气, 死亡时 态: expired, expiring, expires">expires</span> will be a challenge. The fund has helped build a high-speed railway between Naples and Bari which by 2030 should link the two biggest cities in the poorer south. The RRF’s <span class="annot" data-tooltip="flaws /flɔː/ n.瑕疵，缺点；一阵狂风；短暂的风暴；裂缝，裂纹">flaws</span> are partly built into its structure. During the <span class="annot" data-tooltip="pandemic /pæn'demɪk/ adj. （疾病）在全国（或世界）流行的">pandemic</span>, the EU wanted to get money flowing quickly to prevent a lasting <span class="annot" data-tooltip="slump /slʌmp/ vi. 大幅度下降, 暴跌沉重或突然地落下[倒下]n. 萧条期〈美〉(个人、球队等的)低潮状态时 态: slumped, slu">slump</span>. One consequence is that some of it went on investments that would have happened anyway. Another is that the programme gave money to national governments instead of pan-European projects or cross-border <span class="annot" data-tooltip="infrastructure /'ɪnfrəstrʌktʃər/ n. 基础设施; 基础结构">infrastructure</span>. “In Europe we haven’t yet understood that we need to do things on a more continental scale,” says Mr Hidalgo. The EU’s next generation may regret that. ■ This article was downloaded by zlibrary from https://www.economist.com/europe/2026/08/04/why-the-eus-big-covid-recovery-fund- lost-steam</p>
+<div class="article-separator"></div>
+<div class="article-header">Europe · Europe | The glory of competition</div>
+<p><span class="annot" data-tooltip="italians /ɪ'tæliən/ adj. 意大利的；意大利文化的；意大利语的n. 意大利人；意大利语">Italians</span> may help Germany get its trains to run on time Opening up national markets has worked <span class="annot" data-tooltip="wonders /'wʌndər/ vt. & vi. 对…感到疑惑想知道；问自己n. 惊奇，惊叹，惊异，惊诧奇人，奇才奇观，奇景，奇迹，奇事时 态: wonder">wonders</span> for European railways Aug 6th 2026 Non-Europeans relying on <span class="annot" data-tooltip="stereotypes /'steriətaɪp/ n. 老套, 模式化的见解, 有老一套固定想法的人vt. 把…模式化, 使成陈规时 态: stereotyped, stere">stereotypes</span> are often bemused to find that nowadays Italy’s trains are tip-top while Germany’s are in <span class="annot" data-tooltip="chaos /'keɪɑːs/ n. 混沌，混乱形容词: chaotic">chaos</span>. In July Friedrich Merz, the German chancellor, <span class="annot" data-tooltip="sacked /sæk/ n. 麻袋, 包一袋的量开除, 解雇洗劫, 劫掠vt. 装入袋中解雇洗劫, 劫掠时 态: sacked, sacking, s">sacked</span> Patrick Schnieder, his transport minister, over his <span class="annot" data-tooltip="inability /ˌɪnə'bɪləti/ n. 无能,无力">inability</span> to fix Deutsche Bahn (DB), the state- owned railway operator, whose troubles range from a dilapidated network to a <span class="annot" data-tooltip="bloated /bloʊt/ vt. （使）肿胀；使膨胀；腌制vi. 膨胀；肿起；得意n. 膨胀的东西，肿胀的人；肿胀病人；自满的人时 态: bloated,">bloated</span> <span class="annot" data-tooltip="bureaucracy /bjʊ'rɑːkrəsi/ n. 政府机构官僚主义, 官僚作风">bureaucracy</span>. His successor, Steffen Bilger, <span class="annot" data-tooltip="inherits /ɪn'herɪt/ vt. 继承；遗传而得vi. 成为继承人时 态: inherited, inheriting, inherits">inherits</span> a <span class="annot" data-tooltip="mammoth /'mæməθ/ n. 长毛象；猛犸象；庞然大物adj. 猛犸似的；巨大的，庞大的">mammoth</span> task. DB is <span class="annot" data-tooltip="notoriously /noʊ'tɔːriəs/ adj. 臭名昭著的, 声名狼藉的副 词: notoriously">notoriously</span> <span class="annot" data-tooltip="resistant /rɪ'zɪstənt/ adj. 有抵抗力的, 抵抗的">resistant</span> to change, and its unions can paralyse the country, as they did with a six-day <span class="annot" data-tooltip="strike /straɪk/ vi. 罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打时 态:">strike</span> in 2024. Fortunately, Mr Bilger may get help from efficient Italians. In early July Italo, an <span class="annot" data-tooltip="italian /ɪ'tæliən/ adj. 意大利的；意大利文化的；意大利语的n. 意大利人；意大利语">Italian</span> high-speed operator, <span class="annot" data-tooltip="obtained /əb'teɪn/ vi. 获得；流行vt. 获得时 态: obtained, obtaining, obtains">obtained</span> access to German rails via an</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>towards</td><td>/tɔːrdz/ prep.</td><td>向，朝为了；有助于；用于对于，关于接近；将近；大约</td></tr>
+<tr><td>membership</td><td>/'membərʃɪp/ n.</td><td>全体会员会员身份, 会员资格</td></tr>
+<tr><td>hosts</td><td>/hoʊst/ n.</td><td>主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集, hosting, hosts</td></tr>
+<tr><td>denmark</td><td>/'denmɑːrk/ n.</td><td>丹麦(北欧国家,首都哥本哈根)</td></tr>
+<tr><td>commerce</td><td>/'kɑːmɜːrs/ n.</td><td>商业, 贸易</td></tr>
+<tr><td>amid</td><td>/ə'mɪd/ prep.</td><td>在其中，在其间</td></tr>
+<tr><td>tension</td><td>/'tenʃn/ n.</td><td>张力，拉力；紧张，不安；电压vt. 使紧张；使拉紧, tensioning, tensions</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>commit</td><td>/kə'mɪt/ vt.</td><td>犯罪；犯错承诺；使自己受约束托付；交付，committing，commits</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>pro</td><td>/proʊ/ n.</td><td>从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞成；支持Pro脯氨酸PROabbr. P</td></tr>
+<tr><td>polls</td><td>/poʊl/ n.</td><td>民意测验；投票；投票数；投票所vt. 剪短；对…进行民意测验；获得选票；投票vi. 投票adj. 剪过毛的；修过枝的；无角的, polling, polls</td></tr>
+<tr><td>enthusiasm</td><td>/ɪn'θuːziæzəm/ n.</td><td>热情, 热心巨大兴趣, 热衷的事物</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>ships</td><td>/ʃɪp/ vt.</td><td>运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Division of the Nation</td></tr>
+<tr><td>disposal</td><td>/dɪ'spoʊzl/ n.</td><td>清除, 处理, 处置排列, 布置</td></tr>
+<tr><td>leans</td><td>/liːn/ vi.</td><td>倾斜；倚靠；倾向；依赖adj. 瘦的；贫乏的，歉收的vt. 使倾斜n. 倾斜；倾斜度；瘦肉, leaning, leans</td></tr>
+<tr><td>aircraft</td><td>/'erkræft/ n.</td><td>飞机，航空器</td></tr>
+<tr><td>monitor</td><td>/'mɑːnɪtər/ n.</td><td>显示屏；监视器；（计算机）显示器监控器；监测器班长；级长；班代表（尤指派往国外的）监督员，核查员巨蜥v. 监视；检查；跟踪调查监听（电话、外国无线电广播等）, </td></tr>
+<tr><td>spy</td><td>/spaɪ/ vt.</td><td>侦察；发现；暗中监视vi. 侦察；当间谍n. 间谍；密探</td></tr>
+<tr><td>ship</td><td>/ʃɪp/ vt.</td><td>运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Division of the Nation</td></tr>
+<tr><td>detected</td><td>/dɪ'tekt/ vt.</td><td>发现；发觉，查明，detecting，detects</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>hybrid</td><td>/'haɪbrɪd/ n.</td><td>混合物；杂种，混血儿adj. 杂种的；混合的</td></tr>
+<tr><td>warfare</td><td>/'wɔːrfer/ n.</td><td>战争, 战争状态</td></tr>
+<tr><td>infrastructure</td><td>/'ɪnfrəstrʌktʃər/ n.</td><td>基础设施; 基础结构</td></tr>
+<tr><td>chilly</td><td>/'tʃɪli/ adj.</td><td>（天气、房间或人体）寒冷的，凉飕飕的；冷淡的，不友好的, chilliest</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>mutual</td><td>/'mjuːtʃuəl/ adj.</td><td>相互的, 彼此的共同的, 共有的</td></tr>
+<tr><td>bullying</td><td>/'bʊli/ v.</td><td>迫使；胁迫欺负；恐吓；欺凌n. 恃强凌弱者；恶霸adj. 顶好的，快活的，第一流的，bullying，bullies</td></tr>
+<tr><td>territory</td><td>/'terətɔːri/ n.</td><td>领土, 版图管区, 营业地区地盘, 领域, 范围</td></tr>
+<tr><td>autonomous</td><td>/ɔː'tɑːnəməs/ adj.</td><td>自治的</td></tr>
+<tr><td>symbolic</td><td>/sɪm'bɑːlɪk/ adj.</td><td>象征的, 象征性的</td></tr>
+<tr><td>denmark</td><td>/'denmɑːrk/ n.</td><td>丹麦(北欧国家,首都哥本哈根)</td></tr>
+<tr><td>tariffs</td><td>/'tærɪf/ n.</td><td>关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表, tariffing, tariffs</td></tr>
+<tr><td>consider</td><td>/kən'sɪdər/ vt.</td><td>& vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及, considering, considers</td></tr>
+<tr><td>secure</td><td>/sɪ'kjʊr/ adj.</td><td>安心的；有把握的可靠的；牢靠的；稳固的；安全的；稳妥的严密把守的；牢固的；坚固的v. （尤指经过努力）获得，取得，实现拴牢；扣紧；关严保护；保卫；使安全抵押；为</td></tr>
+<tr><td>steadfast</td><td>/'stedfæst/ adj.</td><td>坚定的;不动摇的不动的;不变的</td></tr>
+<tr><td>anti</td><td>/'ænti/ adj.</td><td>反对的n. 反对者，反对论者</td></tr>
+<tr><td>conservatives</td><td>/kən'sɜːrvətɪv/ n.</td><td>保守的人adj. 保守的, 守旧的(式样等)不时新的, 传统的</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>lobby</td><td>/'lɑːbi/ n.</td><td>前厅, 厅堂议会休息室游说议员的团体vt. & vi. 向…进行游说[疏通]</td></tr>
+<tr><td>prospect</td><td>/'prɑːspekt/ n.</td><td>景象，景色前景；前途可能成为主顾的人；有希望的候选人vi. 勘探；勘察，prospecting，prospects</td></tr>
+<tr><td>recruit</td><td>/rɪ'kruːt/ n.</td><td>新兵(机构中的)新成员vt. 招聘；吸引(新成员)吸收某人为新成员vt. & vi. 招募，征募(新兵)恢复健康，恢复体力，recruiting，recruit</td></tr>
+<tr><td>applicants</td><td>/'æplɪkənt/ n.</td><td>申请人, 求职人</td></tr>
+<tr><td>commission</td><td>/kə'mɪʃn/ n.</td><td>授权, 委托委员会佣金, 回扣vt. 委任, 委托, commissioning, commissions</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>cautiously</td><td>/'kɔːʃəsli/ adv.</td><td>小心地,谨慎地</td></tr>
+<tr><td>negotiations</td><td>/nɪˌɡoʊʃi'eɪʃn/ n.</td><td>协商，谈判完成(难事)；通过</td></tr>
+<tr><td>nonetheless</td><td>/ˌnʌnðə'les/ adv.</td><td>虽然如此,但是</td></tr>
+<tr><td>symbolic</td><td>/sɪm'bɑːlɪk/ adj.</td><td>象征的, 象征性的</td></tr>
+<tr><td>blow</td><td>/bloʊ/ n.</td><td>吹；殴打；打击vi. 风吹；喘气vt. 风吹, blows</td></tr>
+<tr><td>denial</td><td>/dɪ'naɪəl/ n.</td><td>否认拒绝, 拒绝给予</td></tr>
+<tr><td>alternative</td><td>/ɔːl'tɜːrnətɪv/ adj.</td><td>可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）可供选择的事物；可供选择的解决办法替代物</td></tr>
+<tr><td>trumps</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>towards</td><td>/tɔːrdz/ prep.</td><td>向，朝为了；有助于；用于对于，关于接近；将近；大约</td></tr>
+<tr><td>disruption</td><td>— n.</td><td>中断,分裂,瓦解,破坏</td></tr>
+<tr><td>wholesale</td><td>/'hoʊlseɪl/ n.</td><td>批发adj. &adv. 批发(的)大规模(的)vt. 批发, wholesaling, wholesales</td></tr>
+<tr><td>queues</td><td>/kjuː/ n.</td><td>队列；长队；辫子vi. 排队；排队等候vt. 将…梳成辫子；使…排队, queuing, queues</td></tr>
+<tr><td>carcasses</td><td>/'kɑːrkəs/ n.</td><td>(动物的)尸体烹调过的禽鸟骨骼</td></tr>
+<tr><td>resilience</td><td>/rɪ'zɪliəns/ n.</td><td>弹回;弹性恢复力；适应力</td></tr>
+<tr><td>pandemic</td><td>/pæn'demɪk/ adj.</td><td>（疾病）在全国（或世界）流行的</td></tr>
+<tr><td>joint</td><td>/dʒɔɪnt/ n.</td><td>关节；接合处，接合点；接缝；（牛，羊等的腿）大块肉adj. 联合的，合办的；共同的；连接的vt. 连接，贴合；接合；使有接头vi. 贴合；生节, jointin</td></tr>
+<tr><td>advocates</td><td>/ˈædvəkeɪt，'ædvəkət/ v.</td><td>拥护；支持；提倡n. 拥护者；支持者；提倡者；辩护律师；出庭辩护人, advocating, advocates</td></tr>
+<tr><td>treasury</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>secretary</td><td>/'sekrəteri/ n.</td><td>秘书书记部长, 大臣</td></tr>
+<tr><td>empower</td><td>/ɪm'paʊər/ vt.</td><td>授权, 准许, empowering, empowers</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>slump</td><td>/slʌmp/ vi.</td><td>大幅度下降, 暴跌沉重或突然地落下[倒下]n. 萧条期〈美〉(个人、球队等的)低潮状态, slumping, slumps</td></tr>
+<tr><td>reforms</td><td>/rɪ'fɔːrm/ n.</td><td>改革，改良，改造vt. & vi. 改革；改造；改善，reforming，reforms</td></tr>
+<tr><td>due</td><td>/duː/ adj.</td><td>到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）</td></tr>
+<tr><td>annual</td><td>/'ænjuəl/ adj.</td><td>年度的；每年的n. 年刊，年鉴；一年生植物</td></tr>
+<tr><td>contrast</td><td>/'kɑːntræst/ n.</td><td>对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照, contrasting, contrasts</td></tr>
+<tr><td>robust</td><td>/roʊ'bʌst/ adj.</td><td>强健的；健康的；粗野的；粗鲁的</td></tr>
+<tr><td>trivial</td><td>/'trɪviəl/ adj.</td><td>不重要的，琐碎的；琐细的</td></tr>
+<tr><td>strategic</td><td>/strə'tiːdʒɪk/ adj.</td><td>战略(上)的有战略意义的; 至关重要的</td></tr>
+<tr><td>coherence</td><td>/koʊ'hɪrəns/ n.</td><td>条理性,连贯性,一致性</td></tr>
+<tr><td>pandemic</td><td>/pæn'demɪk/ adj.</td><td>（疾病）在全国（或世界）流行的</td></tr>
+<tr><td>reforms</td><td>/rɪ'fɔːrm/ n.</td><td>改革，改良，改造vt. & vi. 改革；改造；改善，reforming，reforms</td></tr>
+<tr><td>barred</td><td>/bɑrd/ adj.</td><td>有木栅的,隔绝的,被禁止的</td></tr>
+<tr><td>contracts</td><td>/'kɑːntrækt/ vi.</td><td>感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约, contracting, contracts</td></tr>
+<tr><td>obstacles</td><td>/'ɑːbstəkl/ n.</td><td>障碍(物), 妨碍</td></tr>
+<tr><td>hinder</td><td>/'hɪndər/ vt.</td><td>& vi. 阻碍；妨碍，hindering，hinders</td></tr>
+<tr><td>startups</td><td>/ˈstɑrtˈʌp/ n.</td><td>启动；开办</td></tr>
+<tr><td>productivity</td><td>/ˌproʊdʌk'tɪvəti/ n.</td><td>生产率, 生产力</td></tr>
+<tr><td>curbed</td><td>/kɜːrb/ n.</td><td>侧石, 边石限制, 克制, 抑制vt. 限制, 克制, 抑制, curbing, curbs</td></tr>
+<tr><td>tank</td><td>/tæŋk/ n.</td><td>（存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内, tanking, tanks</td></tr>
+<tr><td>due</td><td>/duː/ adj.</td><td>到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）</td></tr>
+<tr><td>invest</td><td>/ɪn'vest/ vt.</td><td>投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买, investing, invests</td></tr>
+<tr><td>vehicles</td><td>/'viːəkl/ n.</td><td>交通工具, 车辆传播媒介, 手段</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>compensate</td><td>/'kɑːmpenseɪt/ vt.</td><td>& vi. 补偿, 报酬, compensating, compensates</td></tr>
+<tr><td>commission</td><td>/kə'mɪʃn/ n.</td><td>授权, 委托委员会佣金, 回扣vt. 委任, 委托, commissioning, commissions</td></tr>
+<tr><td>dispute</td><td>/dɪ'spjuːt/ vt.</td><td>辩论；阻止；抗拒；怀疑vi. 争论n. 辩论；争吵, disputing, disputes</td></tr>
+<tr><td>investing</td><td>/ɪn'vest/ vt.</td><td>投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买, investing, invests</td></tr>
+<tr><td>nursery</td><td>/'nɜːrsəri/ n.</td><td>托儿所；苗圃；温床</td></tr>
+<tr><td>places</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>raise</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>workforce</td><td>/'wɜːrkfɔːrs/ n.</td><td>全体员工(国家或行业等)劳动力,劳动大军,劳动人口</td></tr>
+<tr><td>expires</td><td>/ɪk'spaɪər/ vi.</td><td>期满, (期限)终止断气, 死亡, expiring, expires</td></tr>
+<tr><td>flaws</td><td>/flɔː/ </td><td>n.瑕疵，缺点；一阵狂风；短暂的风暴；裂缝，裂纹</td></tr>
+<tr><td>pandemic</td><td>/pæn'demɪk/ adj.</td><td>（疾病）在全国（或世界）流行的</td></tr>
+<tr><td>slump</td><td>/slʌmp/ vi.</td><td>大幅度下降, 暴跌沉重或突然地落下[倒下]n. 萧条期〈美〉(个人、球队等的)低潮状态, slumping, slumps</td></tr>
+<tr><td>infrastructure</td><td>/'ɪnfrəstrʌktʃər/ n.</td><td>基础设施; 基础结构</td></tr>
+<tr><td>italians</td><td>/ɪ'tæliən/ adj.</td><td>意大利的；意大利文化的；意大利语的n. 意大利人；意大利语</td></tr>
+<tr><td>wonders</td><td>/'wʌndər/ vt.</td><td>& vi. 对…感到疑惑想知道；问自己n. 惊奇，惊叹，惊异，惊诧奇人，奇才奇观，奇景，奇迹，奇事，wondering，wonders</td></tr>
+<tr><td>stereotypes</td><td>/'steriətaɪp/ n.</td><td>老套, 模式化的见解, 有老一套固定想法的人vt. 把…模式化, 使成陈规, stereotyping, stereotypes</td></tr>
+<tr><td>chaos</td><td>/'keɪɑːs/ n.</td><td>混沌，混乱</td></tr>
+<tr><td>sacked</td><td>/sæk/ n.</td><td>麻袋, 包一袋的量开除, 解雇洗劫, 劫掠vt. 装入袋中解雇洗劫, 劫掠, sacking, sacks</td></tr>
+<tr><td>inability</td><td>/ˌɪnə'bɪləti/ n.</td><td>无能,无力</td></tr>
+<tr><td>bloated</td><td>/bloʊt/ vt.</td><td>（使）肿胀；使膨胀；腌制vi. 膨胀；肿起；得意n. 膨胀的东西，肿胀的人；肿胀病人；自满的人, bloating, bloats</td></tr>
+<tr><td>bureaucracy</td><td>/bjʊ'rɑːkrəsi/ n.</td><td>政府机构官僚主义, 官僚作风</td></tr>
+<tr><td>inherits</td><td>/ɪn'herɪt/ vt.</td><td>继承；遗传而得vi. 成为继承人, inheriting, inherits</td></tr>
+<tr><td>mammoth</td><td>/'mæməθ/ n.</td><td>长毛象；猛犸象；庞然大物adj. 猛犸似的；巨大的，庞大的</td></tr>
+<tr><td>notoriously</td><td>/noʊ'tɔːriəs/ adj.</td><td>臭名昭著的, 声名狼藉的</td></tr>
+<tr><td>resistant</td><td>/rɪ'zɪstənt/ adj.</td><td>有抵抗力的, 抵抗的</td></tr>
+<tr><td>strike</td><td>/straɪk/ vi.</td><td>罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打, stricken striking, str</td></tr>
+<tr><td>italian</td><td>/ɪ'tæliən/ adj.</td><td>意大利的；意大利文化的；意大利语的n. 意大利人；意大利语</td></tr>
+<tr><td>obtained</td><td>/əb'teɪn/ vi.</td><td>获得；流行vt. 获得, obtaining, obtains</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day21.html" class="nav-btn">← Day 21</a>
+  <a href="day23.html" class="nav-btn">Day 23 →</a>
+</div>
+
+<div class="progress">📖 Day 22 of 41</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-08-08</div>
+
+</body>
+</html>

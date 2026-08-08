@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Science & technology</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-08-08</div>
+
+<h1 class="article-title">Science & technology</h1>
+<div class="article-section"></div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>financial contributions are specified in the MOUs along with America’s. The third is that the MOUs are time-limited. They last until 2030, with at least the aspiration that from then on American assistance will shift to being technical rather than financial. Some see a good-faith attempt both to do the best with available resources and to execute at last the <span class="annot" data-tooltip="handover /'hændoʊvər/ n. 移交">handover</span>, long-promised, of responsibility from donors to recipients. Others see a <span class="annot" data-tooltip="sleight /slaɪt/ n. 熟练，灵巧；手法，技巧；诡计">sleight</span> of hand intended to <span class="annot" data-tooltip="shuffle /'ʃʌfl/ vi. 拖着脚走；把脚动来动去；坐立不安；洗牌；把……变换位置；调动；搪塞">shuffle</span> off budgetary responsibility in as seemly a manner as possible. So <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> 34 countries have signed an MOU. Kenya’s government has promised to <span class="annot" data-tooltip="pitch /pɪtʃ/ n. 球场音调，音高程度；强度；高度沥青颠簸斜度，坡度商贩摊位，艺人表演场地推销商品的话vt. 投，掷，扔为…定音调用人们易懂">pitch</span> in $850m to its plan, compared with America’s $1.5bn; Nigeria will contribute $3bn to America’s $2bn. Some countries, such as Ghana, Zambia and Zimbabwe, are refusing to sign, citing what they say are demands for unreasonable levels of data sharing, and <span class="annot" data-tooltip="amid /ə'mɪd/ prep. 在其中，在其间">amid</span> reports of pressure to concede <span class="annot" data-tooltip="mineral /'mɪnərəl/ n. 矿物; 矿石; 矿物质">mineral</span> rights—things that Mr Graham denies are true. How the new policy pans out will depend on whether the recipients are able to honour their sides of the bargain and the attitude of America’s next president. Mr Graham was <span class="annot" data-tooltip="vague /veɪɡ/ adj. 不明确的；含糊的；模糊的；暧昧的比较级: vaguer, vaguest">vague</span> about what would happen to <span class="annot" data-tooltip="places /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">places</span> which did not stump up their agreed sums, suggesting it would depend on the circumstances. The future of the White House is anyone’s guess. On the matter of tools, all eyes are focused on PrEP, which both protects individuals from <span class="annot" data-tooltip="infection /ɪn'fekʃn/ n. 〈医〉传染, 感染传染病">infection</span> and helps break the chain of <span class="annot" data-tooltip="transmission /trænz'mɪʃn/ n. 传送, 传播, 传达播送传动装置, 变速器形容词: transmissive">transmission</span>. The first PrEP drug was a daily pill called Truvada. That was followed by Cabotegravir, an injection given every two months. The current star is Lenacapavir, a twice-yearly injection to which America’s Food and Drug Administration gave its blessing in June 2025. There is also much excitement about Alimatravir, a monthly pill. <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">Although</span> it has yet to finish its clinical <span class="annot" data-tooltip="trials /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">trials</span> Merck, which makes it, has already signed deals in several parts of the world, including Africa, to produce it for sale cheaply. Lencapavir’s ascent is being helped by the Global Fund, an AIDS-fighting organisation funded partly by America in an arrangement separate from its deals with individual countries. The fund announced in July 2025 that it had arranged with Lenacapavir’s maker, Gilead Sciences, to buy enough doses for 2m people—a <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> raised this April, with extra American money, to</p>
+<p>3m. But it would be good if that <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> went up still further, for UNAIDS estimates that, around the world, some 20m people would benefit from PrEP. Prevention and treatment, though, are not the same as cure, something that has eluded scientists for <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span>. But maybe, just maybe, not for much longer. The key, as a <span class="annot" data-tooltip="panel /'pænl/ n. 仪表板；嵌板；座谈小组，全体陪审员vt. 嵌镶板时 态: paneled, panelled paneling, pan">panel</span> moderated by Sarah Fidler, of <span class="annot" data-tooltip="imperial /ɪm'pɪriəl/ adj. 皇帝的；帝国的；威严的；至高无上的n. 纸张尺寸；特等品副 词: imperially">Imperial</span> College, London, discussed, may be a <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span> of molecules called broadly neutralising antibodies (bNAbs). Most of the antibodies people’s immune systems generate in response to HIV are <span class="annot" data-tooltip="specific /spə'sɪfɪk/ adj. 特殊的，特定的；明确的；详细的；具有特效的n. 特效药；细节；特性副 词: specifically">specific</span> to a particular strain of the virus, and thus lose their potency as it virus <span class="annot" data-tooltip="evolves /ɪ'vɑːlv/ vt. & vi. 演变；进化时 态: evolved，evolving，evolves">evolves</span>. But bNAbs target bits of the virus that are so <span class="annot" data-tooltip="crucial /'kruːʃl/ adj. 决定性的；重要的；定局的；决断的副 词: crucially">crucial</span> that evolution has much less leeway to change them. The idea of using bNAbs as drugs to control hidden reservoirs of HIV within the body that conventional medicines cannot <span class="annot" data-tooltip="reach /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reach</span> has been around for many years. <span class="annot" data-tooltip="trials /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">Trials</span> now suggest there might be something in the idea. Though most participants receive only temporary relief, in some of them the effects last longer. In a few cases recipients continue to have no detectable virus load after almost two years. That is <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> longer than the antibodies themselves could hang around, which suggests they have somehow trained the immune system to carry on the good work in their absence. This may, depending on your level of optimism, be <span class="annot" data-tooltip="either /'iːðər/ pron. (两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的">either</span> clutching at straws, or a straw in the wind. Even if it is the latter, it is a long way from an <span class="annot" data-tooltip="actual /'æktʃuəl/ adj. 真实的，实际的；现行的，目前的副 词: actually">actual</span> medicine. But it is hope. ■ This article was downloaded by zlibrary from https://www.economist.com/science-and-technology/2026/08/03/how-poor-countries-are- dealing-with-americas-aids-cuts</p>
+<p>Science & technology | Well Informed How to stop procrastinating Thwarting the thief of time Aug 6th 2026 PUTTING THINGS off <span class="annot" data-tooltip="exacts /ɪɡ'zækt/ adj. 精确的；准确的，精密的vt. 强求；要求；急需vi. 勒索钱财时 态: exacted, exacting, exact">exacts</span> a hefty <span class="annot" data-tooltip="toll /toʊl/ vt. 征收；敲钟n. 通行费；代价；钟声vi. 鸣钟；征税时 态: tolled, tolling, tolls">toll</span>. One study published in 2013 ranked 22,053 people on a procrastination scale of one to five. Each increase of one point was associated with a drop of <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> $15,000 in <span class="annot" data-tooltip="annual /'ænjuəl/ adj. 年度的；每年的n. 年刊，年鉴；一年生植物副 词: annually">annual</span> earnings. Those who <span class="annot" data-tooltip="habitually /hə'bɪtʃuəl/ adj. 习惯的, 惯常的副 词: habitually">habitually</span> <span class="annot" data-tooltip="engage /ɪn'ɡeɪdʒ/ vt. 雇佣；吸引，占用；使订婚；使参加；预定vi. 答应，保证；从事；交战；啮合时 态: engaged, engaging,">engage</span> in “self-regulatory failure”, as procrastination is also known, are more <span class="annot" data-tooltip="prone /proʊn/ adj. 易于…的; 很可能…的俯卧的名 词: proneness">prone</span> to delaying medical treatment. A study of 3,525 Swedish university students published in 2023 found that those who scored highly for procrastination were more likely to suffer debilitating pain. It gets worse. The same Swedish study also found procrastinators more prone to <span class="annot" data-tooltip="anxiety /æŋ'zaɪəti/ n. 焦虑；挂念；渴望；令人焦虑的事">anxiety</span>, stress and loneliness. A 2025 meta-analysis, published in Frontiers in Psychiatry and <span class="annot" data-tooltip="covering /'kʌvər/ vt. 包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替时 态: covered, covering, c">covering</span> 88 studies involving 63,323 people in</p>
+<p>17 countries, found procrastination and its resulting erosion of self-<span class="annot" data-tooltip="esteem /ɪ'stiːm/ vt. 认为；尊敬；考虑；估价n. 尊重；尊敬时 态: esteemed, esteeming, esteems">esteem</span> to be a predictor of future depression. How might procrastination be <span class="annot" data-tooltip="curbed /kɜːrb/ n. 侧石, 边石限制, 克制, 抑制vt. 限制, 克制, 抑制时 态: curbed, curbing, curbs">curbed</span>? <span class="annot" data-tooltip="mental /'mentl/ adj. 精神的, 头脑的, 心理的, 智力的精神病的副 词: mentally">Mental</span> <span class="annot" data-tooltip="exercises /'eksərsaɪz/ n. 练习；运动；运用；操练；典礼；礼拜vt. 练习；锻炼；使用；使忙碌；使惊恐vi. 运动；练习时 态: exercised">exercises</span> appear to help. One set is known as mental <span class="annot" data-tooltip="contrasting /'kɑːntræst/ n. 对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照时 态: contrasted, cont">contrasting</span> with <span class="annot" data-tooltip="implementation /ˌɪmplɪmen'teɪʃn/ n. 贯彻，执行">implementation</span> intentions (MCII). Popularised in a <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of smartphone apps, the idea is simple: <span class="annot" data-tooltip="picture /'pɪktʃər/ n. 图画，肖像；照片(生动的)描述，写照影片；电影；画面美景，景色情况，事态，局面vt. 绘画；描绘想象时 态: pictu">picture</span> the benefits of achieving a goal; <span class="annot" data-tooltip="contrast /'kɑːntræst/ n. 对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照时 态: contrasted, cont">contrast</span> that image with the <span class="annot" data-tooltip="main /meɪn/ adj. 主要的; 最重要的n. 总管道; 干线">main</span> <span class="annot" data-tooltip="obstacle /'ɑːbstəkl/ n. 障碍(物), 妨碍">obstacle</span>; and devise a tactic to <span class="annot" data-tooltip="overcome /ˌoʊvər'kʌm/ vt. & vi. 战胜；克服vt. 被(烟、感情等)熏[压]倒，使受不了时 态: overcame overcome，over">overcome</span> it. In two randomised <span class="annot" data-tooltip="trials /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">trials</span> reported in 2020 undergraduates were given online MCII exercises designed to reduce the delaying of bedtime, which research has linked to procrastination in general. They missed their intended bedtimes by around 38 minutes less each night than those in a control <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span> given advice about healthy sleeping habits. <span class="annot" data-tooltip="exercise /'eksərsaɪz/ n. 练习；运动；运用；操练；典礼；礼拜vt. 练习；锻炼；使用；使忙碌；使惊恐vi. 运动；练习时 态: exercised">Exercise</span> shows promise too. A Chinese <span class="annot" data-tooltip="trial /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">trial</span> published in March assessed procrastination in 77 male teenagers. Those randomly assigned to 12 weeks of strength training, high-<span class="annot" data-tooltip="intensity /ɪn'tensəti/ n. 强烈, 剧烈(感情的)强烈程度">intensity</span> interval training, or a <span class="annot" data-tooltip="combination /ˌkɑːmbɪ'neɪʃn/ n. 合作, 结合, 组合联合体, 组合物密码组合, 字码组合排列, 组合形容词: combinational">combination</span> of the two, showed “<span class="annot" data-tooltip="significant /sɪɡ'nɪfɪkənt/ adj. 重要的, 重大的, 可观的有意义的, 有用意的意味深长的副 词: significantly">significant</span> <span class="annot" data-tooltip="reductions /rɪ'dʌkʃn/ n. 减少，缩小；减少的量，降价">reductions</span>” in putting things off. An earlier study of 564 Chinese university students, published in 2022, found that the most physically active also procrastinated less. The researchers speculated that overcoming the stress of exertion gave them a “sense of mastery” that boosted confidence and motivation. Then there is the question of diet and other habits. A 2024 study of <span class="annot" data-tooltip="italian /ɪ'tæliən/ adj. 意大利的；意大利文化的；意大利语的n. 意大利人；意大利语">Italian</span> university students found higher procrastination among breakfast-skippers, heavy drinkers and poor sleepers. The researchers speculated that missing the <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span> from breakfast might <span class="annot" data-tooltip="hinder /'hɪndər/ vt. & vi. 阻碍；妨碍时 态: hindered，hindering，hinders">hinder</span> “motivation and ability to focus on tasks”. But the skipped breakfasts may have been a consequence of procrastination, rather than a cause: studies have yet to show convincingly that diet <span class="annot" data-tooltip="affects /ə'fekt/ vt. 影响；假装；感动；感染vi. 倾向；喜欢n. 情感；引起感情的因素时 态: affected, affecting, a">affects</span> it. As for medications, none as yet targets procrastination. But an intriguing finding emerged in 2021 from an American randomised controlled trial. Adults with attention-deficit/hyperactivity <span class="annot" data-tooltip="disorder /dɪs'ɔːrdər/ n. 混乱；骚乱vt. 扰乱；使失调时 态: disordered, disordering, disorders">disorder</span> showed significant gains in <span class="annot" data-tooltip="cognitive /'kɑːɡnətɪv/ adj. 认知的, 认识能力的">cognitive</span> executive function, including the ability to get started on tasks, while taking the stimulant lisdexamfetamine rather than a placebo. These days, opportunities for procrastination are greater than before. Many people work from home, out of the boss’s sight. Smartphones offer endless</p>
+<p><span class="annot" data-tooltip="distractions /dɪ'strækʃn/ n. 注意力分散；消遣；心烦意乱">distractions</span>. In one review published in 2022, each of the 18 studies assessed linked excessive smartphone use to procrastination. Scrolling often delays bedtime, too. Lack of sleep <span class="annot" data-tooltip="impedes /ɪm'piːd/ vt. 阻止；妨碍；阻碍时 态: impeded, impeding, impedes">impedes</span> executive function, <span class="annot" data-tooltip="leading /ˈliːdɪŋ/ adj. 主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）">leading</span> to more failures of self-regulation. It would be helpful if the scientists <span class="annot" data-tooltip="involved /ɪn'vɑːlvd/ adj. 卷入的；有关的；复杂的v. 涉及；使参与；包含（involve的过去式和过去分词）">involved</span> could stop dawdling.■ After a free, evidence-based guide to health and wellness? Sign up to our weekly Well Informed newsletter. This article was downloaded by zlibrary from https://www.economist.com/science-and-technology/2026/07/31/how-to-stop- procrastinating</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Culture</div>
+<p>Why you should sit through 15 hours of opera A long-lost <span class="annot" data-tooltip="memoir /'memwɑːr/ n. 自传；实录；回忆录；研究报告名 词: memoirist">memoir</span> brings the horrors of <span class="annot" data-tooltip="atomic /ə'tɑːmɪk/ adj. 原子的，原子能的；微粒子的副 词: atomically">atomic</span> <span class="annot" data-tooltip="warfare /'wɔːrfer/ n. 战争, 战争状态">warfare</span> to life The rock-star chef is off the menu at Noma Hollywood’s latest <span class="annot" data-tooltip="obsession /əb'seʃn/ n. 困扰, 无法摆脱的思想(或情感)形容词: obsessional">obsession</span>: older women and younger men The problem with AI <span class="annot" data-tooltip="companion /kəm'pænjən/ n. 同伴, 伙伴成双成对的物品之一时 态: companioned, companioning, companions">companion</span> toys for children</p>
+<div class="article-separator"></div>
+<div class="article-header">Culture · Culture | The other Wagner group</div>
+<p>Why you should sit through 15 hours of opera At 150 years old, Richard Wagner’s “Ring” cycle still commands attention Aug 6th 2026 KAISER WILHELM I was there. So was Ludwig II of Bavaria, who had footed much of the bill. Dom Pedro II of Brazil had sailed over. Friedrich Nietzsche, a philosopher, was also <span class="annot" data-tooltip="present /'preznt/ vt. 呈现；介绍；提出；赠送vi. 举枪瞄准adj. 出席的；现在的n. 现在；礼物；瞄准时 态: presented, pr">present</span>—though he pretended he hadn’t been. Bayreuth was a Bavarian backwater, but 150 years ago it seemed like the centre of the world. The “Ring of the Nibelung” (known as the “Ring” cycle), which Richard Wagner had composed and written over 26 years, had its first <span class="annot" data-tooltip="complete /kəm'pliːt/ adj. 完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善比较级: complete">complete</span> performance in August 1876 in the opera house that he had built to present the monumental work. In his influence, audacity and divisiveness, Wagner was art’s analogue of Elon Musk. His ideas “overran intellectual discourse for several generations”, writes Alex Ross in “Wagnerism”. His works remain lodged in</p>
+<p>Western culture’s subconscious, <span class="annot" data-tooltip="revealing /rɪ'viːlɪŋ/ adj. 暴露部分身体的，袒胸露肩的揭露(事实等)的,暴露真相的展现或显示(某物)的,显露的">revealing</span> both the human condition and the age that <span class="annot" data-tooltip="encounters /ɪn'kaʊntər/ vt. 遇到, 遭遇偶然碰到, 邂逅n. 突然遇到时 态: encountered, encountering, encount">encounters</span> them. That is especially true of the “Ring”, the most magnum of Wagner’s opuses. If you’ve read or watched “The Lord of the Rings”, you’ve fallen under its spell at second hand. If you experience it you may find yourself <span class="annot" data-tooltip="obsessing /əb'ses/ v. 使痴迷，使迷恋；使心神不宁，不停地困扰； 唠叨；挂牵，念念不忘时 态: obsessed, obsessing, obs">obsessing</span> the way Wagner’s <span class="annot" data-tooltip="contemporaries /kən'tempəreri/ adj. 当代的同时代的, 同属一个时期的n. 同代人, 同龄人">contemporaries</span> did. Though <span class="annot" data-tooltip="royalty /'rɔɪəlti/ n. 王权；皇室；版税；专利税">royalty</span> attended its birth, the “Ring” is a child of revolution. In 1849, a year of European insurgency, Wagner was doing his bit to dethrone the king of Saxony by reporting troop movements. He fled to Zurich soon after starting work on the “Ring” cycle. His starting point was Germanic and Scandinavian <span class="annot" data-tooltip="legends n. 传说，传奇（legend的复数）">legends</span> written down in the 13th century, in particular the “Nibelungenlied”, the Icelandic Eddas and the Volsunga <span class="annot" data-tooltip="saga /'sɑːɡə/ n. 冒险故事；传说；英雄事迹">saga</span>. This was natural source material for a revolutionary who wanted Germany’s patchwork of principalities to become a nation state. From this Wagner fashioned a tale of gods, heroes, dwarves and giants that <span class="annot" data-tooltip="stretches /stretʃ/ vt. 伸展,张开vi. 伸展adj. 可伸缩的n. 伸展，延伸时 态: stretched, stretching, stre">stretches</span> out over four “music dramas”—15 hours of opera in all. It begins when Alberich, a Nibelung (dwarf), spurned by the Rhine maidens, renounces love in order to seize their gold. He <span class="annot" data-tooltip="forges /fɔːrdʒ/ vt. 锻造伪造，仿造vi. 突然向前n. 锻造车间；铁匠铺熔铁炉时 态: forged，forging，forges">forges</span> a ring that gives him world-ruling power. When Wotan, the chief god, wrests the ring from him, Alberich <span class="annot" data-tooltip="curses /kɜːrs/ vt. & vi. 诅咒；骂n. 诅咒，咒语；骂人的话祸害，祸根时 态: cursed，curst cursing，curses">curses</span> anyone who <span class="annot" data-tooltip="possesses /pə'zes/ vt. 具有占据时 态: possessed, possessing, possesses">possesses</span> it. The thefts and the <span class="annot" data-tooltip="curse /kɜːrs/ vt. & vi. 诅咒；骂n. 诅咒，咒语；骂人的话祸害，祸根时 态: cursed，curst cursing，curses">curse</span> bring</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>handover</td><td>/'hændoʊvər/ n.</td><td>移交</td></tr>
+<tr><td>sleight</td><td>/slaɪt/ n.</td><td>熟练，灵巧；手法，技巧；诡计</td></tr>
+<tr><td>shuffle</td><td>/'ʃʌfl/ vi.</td><td>拖着脚走；把脚动来动去；坐立不安；洗牌；把……变换位置；调动；搪塞</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>pitch</td><td>/pɪtʃ/ n.</td><td>球场音调，音高程度；强度；高度沥青颠簸斜度，坡度商贩摊位，艺人表演场地推销商品的话vt. 投，掷，扔为…定音调用人们易懂的方式表述vt. & vi. 搭(帐篷)</td></tr>
+<tr><td>amid</td><td>/ə'mɪd/ prep.</td><td>在其中，在其间</td></tr>
+<tr><td>mineral</td><td>/'mɪnərəl/ n.</td><td>矿物; 矿石; 矿物质</td></tr>
+<tr><td>vague</td><td>/veɪɡ/ adj.</td><td>不明确的；含糊的；模糊的；暧昧的, vaguest</td></tr>
+<tr><td>places</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>infection</td><td>/ɪn'fekʃn/ n.</td><td>〈医〉传染, 感染传染病</td></tr>
+<tr><td>transmission</td><td>/trænz'mɪʃn/ n.</td><td>传送, 传播, 传达播送传动装置, 变速器</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>trials</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>panel</td><td>/'pænl/ n.</td><td>仪表板；嵌板；座谈小组，全体陪审员vt. 嵌镶板, panelled paneling, panelling panels, panels</td></tr>
+<tr><td>imperial</td><td>/ɪm'pɪriəl/ adj.</td><td>皇帝的；帝国的；威严的；至高无上的n. 纸张尺寸；特等品</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>specific</td><td>/spə'sɪfɪk/ adj.</td><td>特殊的，特定的；明确的；详细的；具有特效的n. 特效药；细节；特性</td></tr>
+<tr><td>evolves</td><td>/ɪ'vɑːlv/ vt.</td><td>& vi. 演变；进化，evolving，evolves</td></tr>
+<tr><td>crucial</td><td>/'kruːʃl/ adj.</td><td>决定性的；重要的；定局的；决断的</td></tr>
+<tr><td>reach</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>trials</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>either</td><td>/'iːðər/ pron.</td><td>(两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的</td></tr>
+<tr><td>actual</td><td>/'æktʃuəl/ adj.</td><td>真实的，实际的；现行的，目前的</td></tr>
+<tr><td>exacts</td><td>/ɪɡ'zækt/ adj.</td><td>精确的；准确的，精密的vt. 强求；要求；急需vi. 勒索钱财, exacting, exacts</td></tr>
+<tr><td>toll</td><td>/toʊl/ vt.</td><td>征收；敲钟n. 通行费；代价；钟声vi. 鸣钟；征税, tolling, tolls</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>annual</td><td>/'ænjuəl/ adj.</td><td>年度的；每年的n. 年刊，年鉴；一年生植物</td></tr>
+<tr><td>habitually</td><td>/hə'bɪtʃuəl/ adj.</td><td>习惯的, 惯常的</td></tr>
+<tr><td>engage</td><td>/ɪn'ɡeɪdʒ/ vt.</td><td>雇佣；吸引，占用；使订婚；使参加；预定vi. 答应，保证；从事；交战；啮合, engaging, engages</td></tr>
+<tr><td>prone</td><td>/proʊn/ adj.</td><td>易于…的; 很可能…的俯卧的</td></tr>
+<tr><td>anxiety</td><td>/æŋ'zaɪəti/ n.</td><td>焦虑；挂念；渴望；令人焦虑的事</td></tr>
+<tr><td>covering</td><td>/'kʌvər/ vt.</td><td>包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替, covering, covers</td></tr>
+<tr><td>esteem</td><td>/ɪ'stiːm/ vt.</td><td>认为；尊敬；考虑；估价n. 尊重；尊敬, esteeming, esteems</td></tr>
+<tr><td>curbed</td><td>/kɜːrb/ n.</td><td>侧石, 边石限制, 克制, 抑制vt. 限制, 克制, 抑制, curbing, curbs</td></tr>
+<tr><td>mental</td><td>/'mentl/ adj.</td><td>精神的, 头脑的, 心理的, 智力的精神病的</td></tr>
+<tr><td>exercises</td><td>/'eksərsaɪz/ n.</td><td>练习；运动；运用；操练；典礼；礼拜vt. 练习；锻炼；使用；使忙碌；使惊恐vi. 运动；练习, exercising, exercises</td></tr>
+<tr><td>contrasting</td><td>/'kɑːntræst/ n.</td><td>对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照, contrasting, contrasts</td></tr>
+<tr><td>implementation</td><td>/ˌɪmplɪmen'teɪʃn/ n.</td><td>贯彻，执行</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>picture</td><td>/'pɪktʃər/ n.</td><td>图画，肖像；照片(生动的)描述，写照影片；电影；画面美景，景色情况，事态，局面vt. 绘画；描绘想象，picturing，pictures</td></tr>
+<tr><td>contrast</td><td>/'kɑːntræst/ n.</td><td>对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照, contrasting, contrasts</td></tr>
+<tr><td>main</td><td>/meɪn/ adj.</td><td>主要的; 最重要的n. 总管道; 干线</td></tr>
+<tr><td>obstacle</td><td>/'ɑːbstəkl/ n.</td><td>障碍(物), 妨碍</td></tr>
+<tr><td>overcome</td><td>/ˌoʊvər'kʌm/ vt.</td><td>& vi. 战胜；克服vt. 被(烟、感情等)熏[压]倒，使受不了，overcoming，overcomes</td></tr>
+<tr><td>trials</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>exercise</td><td>/'eksərsaɪz/ n.</td><td>练习；运动；运用；操练；典礼；礼拜vt. 练习；锻炼；使用；使忙碌；使惊恐vi. 运动；练习, exercising, exercises</td></tr>
+<tr><td>trial</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>intensity</td><td>/ɪn'tensəti/ n.</td><td>强烈, 剧烈(感情的)强烈程度</td></tr>
+<tr><td>combination</td><td>/ˌkɑːmbɪ'neɪʃn/ n.</td><td>合作, 结合, 组合联合体, 组合物密码组合, 字码组合排列, 组合</td></tr>
+<tr><td>significant</td><td>/sɪɡ'nɪfɪkənt/ adj.</td><td>重要的, 重大的, 可观的有意义的, 有用意的意味深长的</td></tr>
+<tr><td>reductions</td><td>/rɪ'dʌkʃn/ n.</td><td>减少，缩小；减少的量，降价</td></tr>
+<tr><td>italian</td><td>/ɪ'tæliən/ adj.</td><td>意大利的；意大利文化的；意大利语的n. 意大利人；意大利语</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>hinder</td><td>/'hɪndər/ vt.</td><td>& vi. 阻碍；妨碍，hindering，hinders</td></tr>
+<tr><td>affects</td><td>/ə'fekt/ vt.</td><td>影响；假装；感动；感染vi. 倾向；喜欢n. 情感；引起感情的因素, affecting, affects</td></tr>
+<tr><td>disorder</td><td>/dɪs'ɔːrdər/ n.</td><td>混乱；骚乱vt. 扰乱；使失调, disordering, disorders</td></tr>
+<tr><td>cognitive</td><td>/'kɑːɡnətɪv/ adj.</td><td>认知的, 认识能力的</td></tr>
+<tr><td>distractions</td><td>/dɪ'strækʃn/ n.</td><td>注意力分散；消遣；心烦意乱</td></tr>
+<tr><td>impedes</td><td>/ɪm'piːd/ vt.</td><td>阻止；妨碍；阻碍, impeding, impedes</td></tr>
+<tr><td>leading</td><td>/ˈliːdɪŋ/ adj.</td><td>主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）</td></tr>
+<tr><td>involved</td><td>/ɪn'vɑːlvd/ adj.</td><td>卷入的；有关的；复杂的v. 涉及；使参与；包含（involve的过去式和过去分词）</td></tr>
+<tr><td>memoir</td><td>/'memwɑːr/ n.</td><td>自传；实录；回忆录；研究报告</td></tr>
+<tr><td>atomic</td><td>/ə'tɑːmɪk/ adj.</td><td>原子的，原子能的；微粒子的</td></tr>
+<tr><td>warfare</td><td>/'wɔːrfer/ n.</td><td>战争, 战争状态</td></tr>
+<tr><td>obsession</td><td>/əb'seʃn/ n.</td><td>困扰, 无法摆脱的思想(或情感)</td></tr>
+<tr><td>companion</td><td>/kəm'pænjən/ n.</td><td>同伴, 伙伴成双成对的物品之一, companioning, companions</td></tr>
+<tr><td>present</td><td>/'preznt/ vt.</td><td>呈现；介绍；提出；赠送vi. 举枪瞄准adj. 出席的；现在的n. 现在；礼物；瞄准, presenting, presents</td></tr>
+<tr><td>complete</td><td>/kəm'pliːt/ adj.</td><td>完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善, completest 缩 写: comp, cpl</td></tr>
+<tr><td>revealing</td><td>/rɪ'viːlɪŋ/ adj.</td><td>暴露部分身体的，袒胸露肩的揭露(事实等)的,暴露真相的展现或显示(某物)的,显露的</td></tr>
+<tr><td>encounters</td><td>/ɪn'kaʊntər/ vt.</td><td>遇到, 遭遇偶然碰到, 邂逅n. 突然遇到, encountering, encounters</td></tr>
+<tr><td>obsessing</td><td>/əb'ses/ v.</td><td>使痴迷，使迷恋；使心神不宁，不停地困扰； 唠叨；挂牵，念念不忘, obsessing, obsesses</td></tr>
+<tr><td>contemporaries</td><td>/kən'tempəreri/ adj.</td><td>当代的同时代的, 同属一个时期的n. 同代人, 同龄人</td></tr>
+<tr><td>royalty</td><td>/'rɔɪəlti/ n.</td><td>王权；皇室；版税；专利税</td></tr>
+<tr><td>legends</td><td>— n.</td><td>传说，传奇（legend的复数）</td></tr>
+<tr><td>saga</td><td>/'sɑːɡə/ n.</td><td>冒险故事；传说；英雄事迹</td></tr>
+<tr><td>stretches</td><td>/stretʃ/ vt.</td><td>伸展,张开vi. 伸展adj. 可伸缩的n. 伸展，延伸, stretching, stretches</td></tr>
+<tr><td>forges</td><td>/fɔːrdʒ/ vt.</td><td>锻造伪造，仿造vi. 突然向前n. 锻造车间；铁匠铺熔铁炉，forging，forges</td></tr>
+<tr><td>curses</td><td>/kɜːrs/ vt.</td><td>& vi. 诅咒；骂n. 诅咒，咒语；骂人的话祸害，祸根，curst cursing，curses</td></tr>
+<tr><td>possesses</td><td>/pə'zes/ vt.</td><td>具有占据, possessing, possesses</td></tr>
+<tr><td>curse</td><td>/kɜːrs/ vt.</td><td>& vi. 诅咒；骂n. 诅咒，咒语；骂人的话祸害，祸根，curst cursing，curses</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day36.html" class="nav-btn">← Day 36</a>
+  <a href="day38.html" class="nav-btn">Day 38 →</a>
+</div>
+
+<div class="progress">📖 Day 37 of 41</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-08-08</div>
+
+</body>
+</html>

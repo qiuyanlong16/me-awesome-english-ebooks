@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>economics</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-08-08</div>
+
+<h1 class="article-title">economics</h1>
+<div class="article-section"></div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>In 2020 Anja Roth and Michaela Slotwinski used a Swiss data set combining survey and <span class="annot" data-tooltip="administrative /əd'mɪnɪstreɪtɪv/ adj. 行政的，管理的；经营的后方勤务的">administrative</span> information for the same individual and their partner. They found that individuals misreport incomes in surveys, that this misreporting is <span class="annot" data-tooltip="consistent /kən'sɪstənt/ adj. 一贯的, 始终如一的一致的, 符合的副 词: consistently">consistent</span> with the male breadwinner norm and that it <span class="annot" data-tooltip="essentially /ɪ'senʃəli/ adv. 本质上;根本上必需的">essentially</span> explains the observed discontinuity in reported earnings. In a recent paper that I co-authored using Dutch tax data, we similarly failed to find any evidence of the 50% <span class="annot" data-tooltip="threshold /'θreʃhoʊld/ n. 门槛; 〈喻〉开始">threshold</span>. It is probable that gender norms can <span class="annot" data-tooltip="motivate /'moʊtɪveɪt/ vt. 刺激；使有动机；激发…的积极性时 态: motivated, motivating, motivates">motivate</span> <span class="annot" data-tooltip="spouses /spaʊs/ n. 配偶, 夫或妻时 态: spoused, spousing, spouses">spouses</span> to marginally misreport their <span class="annot" data-tooltip="actual /'æktʃuəl/ adj. 真实的，实际的；现行的，目前的副 词: actually">actual</span> incomes, but the economic consequences of a reporting <span class="annot" data-tooltip="bias /'baɪəs/ n. 偏见；斜纹；偏爱；乖离率vt. 使存偏见adj. 偏斜的adv. 偏斜地时 态: biased, biassed bia">bias</span> are quite different from those of actual economic decisions. More important, Claudia Goldin has repeatedly shown that gender differences in <span class="annot" data-tooltip="wages /weɪdʒ/ vi. 进行；发动；从事n. 工资；报偿；代价vt. 开展；进行时 态: waged, waging, wages">wages</span> and incomes often reflect <span class="annot" data-tooltip="subtle /'sʌtl/ adj. 微妙的；难以捉摸的；细微的狡猾的，狡诈的敏感的，敏锐的，有辨别力的比较级: subtler，subtlest">subtle</span> differences in occupational choices. For instance, women are more likely to <span class="annot" data-tooltip="opt /ɑːpt/ vi. 选择OPTabbr. VC开发环境自动生成的用来存放WorkSpace中各种选项的文件。时 态: opted, opti">opt</span> for the flexible job that allows for child-care pick-ups, sick days and <span class="annot" data-tooltip="household /'haʊshoʊld/ n. 同住在一所房子里的人, 一家人, 户adj. 家庭的, 家用的">household</span> management, <span class="annot" data-tooltip="whereas /ˌwer'æz/ conj. 但是, 而">whereas</span> men are more likely to go for the “greedy” jobs. <span class="annot" data-tooltip="exclusively /ɪk'skluːsɪv/ adj. 高级的，奢华的专用的；独家的n. 独家新闻，独家报道副 词: exclusively">Exclusively</span> <span class="annot" data-tooltip="interpreting /ɪn'tɜːrprət/ vt. 解释；说明vt. & vi. 口译；翻译时 态: interpreted，interpreting，interprets">interpreting</span> this tendency as the outcome of deeply entrenched gender norms is too simplistic, if only because such specialisation may, in some circumstances, be efficient for the household under consideration, particularly in the presence of children. What is needed is a deeper understanding of the technology of human- capital <span class="annot" data-tooltip="acquisition /ˌækwɪ'zɪʃn/ n. 获得物，获得；收购">acquisition</span> by young children. For example, are a mother’s and a father’s times perfect <span class="annot" data-tooltip="substitutes /'sʌbstɪtuːt/ vt. & vi. 代替, 替换, 代用时 态: substituted, substituting, substitutes">substitutes</span>, <span class="annot" data-tooltip="imperfect /ɪm'pɜːrfɪkt/ adj. 有缺点的,有瑕疵的不完整的，未完成的未完成时的，未完成过去时的n. (动词)未完成时，未完成过去时adv. 有缺点地,有">imperfect</span> substitutes, or complements? This is a very active area of current research, involving economists and developmental <span class="annot" data-tooltip="psychologists /saɪ'kɑːlədʒɪst/ n. 心理学研究者;心理学家">psychologists</span>. In basically all developed countries, and in a <span class="annot" data-tooltip="significant /sɪɡ'nɪfɪkənt/ adj. 重要的, 重大的, 可观的有意义的, 有用意的意味深长的副 词: significantly">significant</span> <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of middle- or even low-income ones, women are now more educated than men. This <span class="annot" data-tooltip="crucially /'kruːʃl/ adj. 决定性的；重要的；定局的；决断的副 词: crucially">crucially</span> important change remains largely underdiscussed, despite its potentially <span class="annot" data-tooltip="major /'meɪdʒər/ adj. 主要的；主修的；重要的；较多的n. 成年人；主修科目；陆军少校vi. 主修时 态: majored, majoring,">major</span> consequences. In the end, the scarcity of female breadwinners may <span class="annot" data-tooltip="progressively /prə'ɡresɪv/ adj. 不断前进的, 有进展的, 逐渐上升的进步的, 先进的副 词: progressively">progressively</span> <span class="annot" data-tooltip="wane /weɪn/ vi. 变小；衰落；亏缺；退潮；消逝n. 月亏；衰退；衰退期；缺损时 态: waned, waning, wanes">wane</span>, but much is still to be learned about this <span class="annot" data-tooltip="process /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">process</span>. Pierre-André ChiapporiProfessor of economicsColumbia UniversityNew York</p>
+<p>It is indeed better to plan for an <span class="annot" data-tooltip="urban /'ɜːrbən/ adj. 城市的；住在都市的">urban</span> future in Africa than react after the fact (“Sprawl for all”, July 4th). Planning <span class="annot" data-tooltip="infrastructure /'ɪnfrəstrʌktʃər/ n. 基础设施; 基础结构">infrastructure</span> pays for itself. Your piece shows that basic street plans raised land <span class="annot" data-tooltip="values /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">values</span> in Dar es Salaam’s suburbs, but that the gains flowed to grey-market speculators and the well- connected. Half of urban Africa’s <span class="annot" data-tooltip="footprint /'fʊtprɪnt/ n. (尤指软地上的)脚印，足迹；(地板上的)脚印，鞋印(建筑物或设备，尤指计算机)占用的空间 (尤指来自卫星的)广播信号覆盖">footprint</span> in 2050 is not yet built, so the <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span> its future roads and pipes will create has not yet been pocketed. African cities now collect around $8 a head in <span class="annot" data-tooltip="property /'prɑːpərti/ n. 财产；性质，性能；所有权形容词: propertyless">property</span> tax, against $220 worldwide. Capture just a part of that gain and the urbanisation that connects people to <span class="annot" data-tooltip="productive /prə'dʌktɪv/ adj. 多产的，富饶的富有成效的；有益的副 词: productively">productive</span> jobs can start to finance itself. With the world’s largest <span class="annot" data-tooltip="surge /sɜːrdʒ/ n. (情感的) 突发，涌现，突然出现（数量的）急剧上升，激增；大量；一大批奔涌向前；突然的向上运动（电流）浪涌v. 涌；汹涌">surge</span> in working-age people ahead, few <span class="annot" data-tooltip="fiscal /'fɪskl/ adj. 国库的；会计的，财政的副 词: fiscally">fiscal</span> <span class="annot" data-tooltip="reforms /rɪ'fɔːrm/ n. 改革，改良，改造vt. & vi. 改革；改造；改善时 态: reformed，reforming，reforms">reforms</span> would do more for Africa’s growth. Mark HenstridgeChief executive officerOxford Policy ManagementOxford Rosa Parks is rightly celebrated for refusing to give up her seat to a white person on a bus in Montgomery, Alabama, thus <span class="annot" data-tooltip="sparking /ˈspɑrkɪŋ/ n. 发火花；点火v. 发出火星；使大感兴趣；导致（spark的现在分词）">sparking</span> the <span class="annot" data-tooltip="civil /'sɪvl/ adj. 公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的副 词: civilly">civil</span>-rights movement (America at 250). That was on December 1st 1955. Several black people had been arrested before Parks during 1955 for doing the same thing, <span class="annot" data-tooltip="notably /'noʊtəbli/ adv. 显著地；尤其">notably</span> 15-year-old Claudette Colvin, who was arrested on March 2nd. In 1956, Colvin was one of the four plaintiffs in Browder v Gayle, a <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">federal</span> <span class="annot" data-tooltip="lawsuit /'lɔːsuːt/ n. 诉讼（尤指非刑事案件）；诉讼案件">lawsuit</span> that ended <span class="annot" data-tooltip="segregation /ˌseɡrɪ'ɡeɪʃn/ n. 分开；隔离">segregation</span> not only on Montgomery’s buses, but also on public transport throughout America. After that she was mostly forgotten. Her <span class="annot" data-tooltip="courageous /kə'reɪdʒəs/ adj. 勇敢的;无畏的adv. 勇敢地;无畏地n. 勇敢;无畏副 词: courageously">courageous</span> act in part inspired Montgomery’s black community to <span class="annot" data-tooltip="protest /'proʊtest/ n. 抗议；反对vt. & vi. 声明；抗议时 态: protested，protesting，protests">protest</span> against segregation laws, though it was the arrest of Parks that <span class="annot" data-tooltip="sparked /spɑːrk/ n. 火花，火星；电火花；一丝，略微；导火线，诱因v. 引发，触发；产生火花（电火花）；点燃；增加趣味（或活力、风味等）时 态">sparked</span> a boycott of the city’s transport system that lasted over a year. <span class="annot" data-tooltip="strikingly /'straɪkɪŋ/ adj. 显著的，突出的引人注目的；容貌出众的副 词: strikingly">Strikingly</span>, part of the reason for Colvin’s disappearance from the history of the civil-rights movement lay with the black community at the time. Black <span class="annot" data-tooltip="residents /'rezɪdənt/ adj. 定居的; 常驻的n. 居民(旅馆的)住宿者">residents</span> <span class="annot" data-tooltip="considered /kən'sɪdər/ vt. & vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及时 态: considered, considering, ">considered</span> the young Colvin a troublemaker and local activists found Parks to be a more suitable person to rally round. By Colvin’s <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> account she <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span> she was too dark-skinned and too poor to win the <span class="annot" data-tooltip="crucial /'kruːʃl/ adj. 决定性的；重要的；定局的；决断的副 词: crucially">crucial</span> support of Montgomery’s black middle class. She also became <span class="annot" data-tooltip="pregnant /'preɡnənt/ adj. 怀孕的, 怀胎的含蓄的, 意味深长的孕育着…的, 预示着…前景的">pregnant</span> out of wedlock during the year, which didn’t help. Colvin died in January this year.</p>
+<p>Magaly Rodríguez GarcíaAssociate professorKU LeuvenLeuven, <span class="annot" data-tooltip="belgium n. 比利时（西欧国家，首都布鲁塞尔Brussels）">Belgium</span> I read your great obituary of Humphrey Smith, the <span class="annot" data-tooltip="owner /'oʊnər/ n. 所有者；物主">owner</span> of the “proudly independent Samuel Smith Old Brewery” in Tadcaster, North Yorkshire (July 18th). His <span class="annot" data-tooltip="strictly /'strɪktli/ adv. 严格地；完全地；确实地">strictly</span> enforced <span class="annot" data-tooltip="restrictions /rɪ'strɪkʃn/ n. 约束，限制管制，限定；法律，规章">restrictions</span> on the use of mobile technology at his pubs (“no mobile phones except <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span>, no laptops or <span class="annot" data-tooltip="tablets /'tæblət/ n. 药片(木、竹)简；碑，牌匾时 态: tableted，tableting，tablets">tablets</span>”) and a music-free environment (“no Muzak <span class="annot" data-tooltip="either /'iːðər/ pron. (两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的">either</span>, just the <span class="annot" data-tooltip="buzz /bʌz/ v. 发嗡嗡声；发蜂鸣声用蜂鸣器（给…）发信号繁忙；充满活力（飞机）低空飞过（尤指作为警告或威胁）（用特殊的机器）将头发剪得非">buzz</span> of conversation”) created uniquely <span class="annot" data-tooltip="sociable /'soʊʃəbl/ adj. 好交际的；友善的；社交的n. 联谊会副 词: sociably">sociable</span> surroundings. Sadly, in recent years the rules in London have been relaxed and phones and even laptops are now common in Samuel Smith’s pubs, even in Ye Olde Cheshire Cheese. Often it is only the sound of young city types chatting away on <span class="annot" data-tooltip="telecoms /ˈtɛlɪˌkɑm/ n. 电信，远距通信；电讯">telecoms</span> that <span class="annot" data-tooltip="interrupts /ˌɪntə'rʌpt/ vt. & vi. 打断时 态: interrupted, interrupting, interrupts">interrupts</span> the <span class="annot" data-tooltip="doom /duːm/ vt. 注定；判定n. 厄运，劫数时 态: doomed，dooming，dooms">doom</span> scrolling. Mr Smith will be turning in his Yorkshire grave. CHRIS DRAKELeicester When Sir Francis Galton famously asked people to guess the weight of an ox at a fair in Plymouth in 1906, he did not offer the participants the option of giving him money in order to <span class="annot" data-tooltip="enter /'entər/ vt. & vi. 进入, 进去参加, 加入登记, 登录时 态: entered, entering, enters">enter</span> 99 additional guesses and skew the average. But this is in effect how current prediction markets work, and is also why they don’t work (“Fixing the truth machine”, July 25th).</p>
+<p>Bob FisherHouston I can confirm that software designed to <span class="annot" data-tooltip="detect /dɪ'tekt/ vt. 发现；发觉，查明时 态: detected，detecting，detects">detect</span> AI-generated text are indeed “black-box algorithms that can give false positives” (“Paper <span class="annot" data-tooltip="trails /treɪl/ vt. & vi. (使某物)被拖在后面vt. 跟踪，追踪vi. (在比赛等中)输，失败n. 足迹；臭迹小径一缕，一股时 态: ">trails</span>”, August 1st). I ran some texts through an AI detector. Samuel Beckett’s “Krapp’s Last Tape” and “Happy Days” were judged likely to be 86% and 84% AI-generated. The <span class="annot" data-tooltip="sermon /'sɜːrmən/ n. 布道, 讲道, 说教讲道文章一大通教训形容词: sermonic">Sermon</span> on the <span class="annot" data-tooltip="mount /maʊnt/ vt. & vi. 登上；骑上vi. 增加；上升vt. 上演；配有…发动攻击；攻击n. 山峰坐骑时 态: mounted，mou">Mount</span> was <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span> to be 100% AI-generated. The programme judged a speech by Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> to be 100% human-generated. Brendan LyonsDublin This article was downloaded by zlibrary from https://www.economist.com/letters/2026/08/06/letters-to-the-editor</p>
+<div class="article-separator"></div>
+<div class="article-header"> · By Invitation</div>
+<p>The new era of finance needs <span class="annot" data-tooltip="innovation /ˌɪnə'veɪʃn/ n. 改革, 革新, 创新新观念, 新方法, 新发明形容词: innovational">innovation</span> more than <span class="annot" data-tooltip="consensus /kən'sensəs/ n. (意见等)一致, 一致同意">consensus</span> FIFA needs a constitution for the commercial age</p>
+<div class="article-separator"></div>
+<div class="article-header">By Invitation · By Invitation | A contract for the future</div>
+<p>The new era of finance needs <span class="annot" data-tooltip="innovation /ˌɪnə'veɪʃn/ n. 改革, 革新, 创新新观念, 新方法, 新发明形容词: innovational">innovation</span> more than <span class="annot" data-tooltip="consensus /kən'sensəs/ n. (意见等)一致, 一致同意">consensus</span> America won’t import regulatory fashions that hold markets back, writes Michael Selig Aug 6th 2026 ThE GLOBAL <span class="annot" data-tooltip="derivatives /dɪ'rɪvətɪv/ n. 衍生物，派生物；派生词；【数】导数，微商adj. 缺乏独创性的；模仿他人的副 词: derivatively">derivatives</span> market has <span class="annot" data-tooltip="entered /'entər/ vt. & vi. 进入, 进去参加, 加入登记, 登录时 态: entered, entering, enters">entered</span> a new era, and the United States is <span class="annot" data-tooltip="leading /ˈliːdɪŋ/ adj. 主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）">leading</span> it. For <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span>, derivatives—financial <span class="annot" data-tooltip="contracts /'kɑːntrækt/ vi. 感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约时 态: contracted, contracting, c">contracts</span> such as futures, options and swaps, whose <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span> is based on the price or performance of an <span class="annot" data-tooltip="underlying /ˌʌndər'laɪɪŋ/ adj. 根本的, 基础的含蓄的, 潜在的">underlying</span> <span class="annot" data-tooltip="asset /'æset/ n. 资产；有用的东西；有利条件；优点">asset</span>—have served as a tool for businesses, farmers, investors and financial institutions to manage risk and <span class="annot" data-tooltip="allocate /'æləkeɪt/ vt. 分配；拨出；使坐落于vi. 分配；指定时 态: allocated, allocating, allocates">allocate</span> capital efficiently. What was once a <span class="annot" data-tooltip="niche /niːʃ，nɪtʃ/ n. （尤指本人合意的）适合的工作（或职位）;称心的工作合宜的小环境（尤指用来放置塑像的）壁龛adj. （产品）针对特定小群体">niche</span> financial tool now underpins a market with over $1.2 quadrillion (million billion) in notional value. <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">Nearly</span> half of that market <span class="annot" data-tooltip="falls /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">falls</span> under the jurisdiction of the Commodity Futures Trading <span class="annot" data-tooltip="commission /kə'mɪʃn/ n. 授权, 委托委员会佣金, 回扣vt. 委任, 委托时 态: commissioned, commissioning, c">Commission</span> (CFTC), which I have led since December.</p>
+<p>American leadership in <span class="annot" data-tooltip="derivatives /dɪ'rɪvətɪv/ n. 衍生物，派生物；派生词；【数】导数，微商adj. 缺乏独创性的；模仿他人的副 词: derivatively">derivatives</span> was built over generations through competitive markets, strong institutions, sound regulation and a willingness to embrace <span class="annot" data-tooltip="innovation /ˌɪnə'veɪʃn/ n. 改革, 革新, 创新新观念, 新方法, 新发明形容词: innovational">innovation</span>. In many market segments, gone are the days of traders shouting in pits in New York and Chicago, or even the screen-based trading of the 2000s. Derivatives markets have evolved into increasingly <span class="annot" data-tooltip="autonomous /ɔː'tɑːnəməs/ adj. 自治的副 词: autonomously">autonomous</span> ecosystems driven by automated trading, artificial intelligence, <span class="annot" data-tooltip="algorithmic adj. 算法的,规则系统的">algorithmic</span> execution and real-time decision-making, reacting to information thousands of times faster than any human could. For many years, international financial regulation has operated under an assumption that regulatory priorities would emerge through broad <span class="annot" data-tooltip="consensus /kən'sensəs/ n. (意见等)一致, 一致同意">consensus</span> among global institutions and regulators from different countries. <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">Although</span> international co-operation remains important, America is not in the business of importing regulatory <span class="annot" data-tooltip="trends /trend/ n. 趋势, 倾向流行时 态: trended, trending, trends">trends</span> designed by agencies that are <span class="annot" data-tooltip="considering /kən'sɪdərɪŋ/ prep. 考虑到, 就…而论adv. 从各方面考虑, 从通盘考虑">considering</span> yesterday’s markets built around limited trading hours, single exchanges and screen-based trading. Instead, America is once again a <span class="annot" data-tooltip="hub /hʌb/ n. 中心；毂；木片">hub</span> of financial innovation. During President Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s first term, the launch and expansion of CFTC- regulated bitcoin futures helped bring crypto <span class="annot" data-tooltip="assets /'æset/ n. 资产；有用的东西；有利条件；优点">assets</span> into <span class="annot" data-tooltip="mainstream /'meɪnstriːm/ n. (思想或行为的)主流时 态: mainstreamed, mainstreaming, mainstreams">mainstream</span> finance by providing institutional investors with transparent, regulated <span class="annot" data-tooltip="exposure /ɪk'spoʊʒər/ n. 暴露, 显露揭发, 揭露(软片等)曝光">exposure</span> to such assets. That foundation transformed bitcoin from a fringe <span class="annot" data-tooltip="asset /'æset/ n. 资产；有用的东西；有利条件；优点">asset</span> into one increasingly integrated within the broader financial system: bitcoin exchange-traded products now hold over 1.2m bitcoins, compared with <span class="annot" data-tooltip="essentially /ɪ'senʃəli/ adv. 本质上;根本上必需的">essentially</span> none in 2016. During Mr Trump’s second term the CFTC has approved the first “true” bitcoin <span class="annot" data-tooltip="perpetual /pər'petʃuəl/ adj. 永久的; 终身的不断的; 常发生的副 词: perpetually">perpetual</span> <span class="annot" data-tooltip="contract /'kɑːntrækt/ vi. 感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约时 态: contracted, contracting, c">contract</span> as a futures contract. A perpetual, or “perp”, is a <span class="annot" data-tooltip="derivative /dɪ'rɪvətɪv/ n. 衍生物，派生物；派生词；【数】导数，微商adj. 缺乏独创性的；模仿他人的副 词: derivatively">derivative</span> contract with no fixed expiry date, instead relying on a periodic funding rate <span class="annot" data-tooltip="mechanism /'mekənɪzəm/ n. 机械装置构造, 机制办法, 技巧, 途径">mechanism</span>—a payment between traders—designed to maintain relative price <span class="annot" data-tooltip="parity /'pærəti/ n. 同等,相等,对等奇偶校验">parity</span> with the <span class="annot" data-tooltip="underlying /ˌʌndər'laɪɪŋ/ adj. 根本的, 基础的含蓄的, 潜在的">underlying</span> asset’s <span class="annot" data-tooltip="spot /spɑːt/ n. 斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Po">spot</span> price. Now the CFTC is <span class="annot" data-tooltip="helping /'helpɪŋ/ n. （进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的">helping</span> <span class="annot" data-tooltip="extend /ɪk'stend/ vt. & vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出时 态:">extend</span> the foundations laid in crypto markets to the broader financial system as capital markets <span class="annot" data-tooltip="enter /'entər/ vt. & vi. 进入, 进去参加, 加入登记, 登录时 态: entered, entering, enters">enter</span> the digital age. Congress recently passed <span class="annot" data-tooltip="legislation /ˌledʒɪs'leɪʃn/ n. 法律；法规立法，法律的制定[通过]">legislation</span> creating the first <span class="annot" data-tooltip="comprehensive /ˌkɑːmprɪ'hensɪv/ adj. 广泛的, 综合的副 词: comprehensively">comprehensive</span> <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">federal</span> framework for dollar-backed stablecoins usable for payments, and laying the foundation for broader integration of crypto assets into the financial system. The CFTC is exploring how regulated stablecoins can be used as <span class="annot" data-tooltip="collateral /kə'lætərəl/ n. 附属担保品adj. 相关的">collateral</span>,</p>
+<p>modernising market <span class="annot" data-tooltip="infrastructure /'ɪnfrəstrʌktʃər/ n. 基础设施; 基础结构">infrastructure</span> while maintaining the safety and <span class="annot" data-tooltip="integrity /ɪn'teɡrəti/ n. 正直；诚实，诚恳完整，完全，完善">integrity</span> that have made American <span class="annot" data-tooltip="derivatives /dɪ'rɪvətɪv/ n. 衍生物，派生物；派生词；【数】导数，微商adj. 缺乏独创性的；模仿他人的副 词: derivatively">derivatives</span> markets world-<span class="annot" data-tooltip="leading /ˈliːdɪŋ/ adj. 主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）">leading</span>. Our <span class="annot" data-tooltip="innovation /ˌɪnə'veɪʃn/ n. 改革, 革新, 创新新观念, 新方法, 新发明形容词: innovational">innovation</span> <span class="annot" data-tooltip="extends /ɪk'stend/ vt. & vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出时 态:">extends</span> well beyond crypto <span class="annot" data-tooltip="assets /'æset/ n. 资产；有用的东西；有利条件；优点">assets</span>. This year we launched America’s first <span class="annot" data-tooltip="major /'meɪdʒər/ adj. 主要的；主修的；重要的；较多的n. 成年人；主修科目；陆军少校vi. 主修时 态: majored, majoring,">major</span> exchange offering round-the-clock trading for gold futures. The CFTC is also <span class="annot" data-tooltip="engaging /ɪn'ɡeɪdʒɪŋ/ adj. 迷人的v. 保证；雇用；参加（engage的ing形式）副 词: engagingly">engaging</span> with market participants in the potential development of <span class="annot" data-tooltip="perpetual /pər'petʃuəl/ adj. 永久的; 终身的不断的; 常发生的副 词: perpetually">perpetual</span> futures for non-crypto assets. At the same time, prediction markets, which <span class="annot" data-tooltip="exclusively /ɪk'skluːsɪv/ adj. 高级的，奢华的专用的；独家的n. 独家新闻，独家报道副 词: exclusively">exclusively</span> <span class="annot" data-tooltip="fall /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">fall</span> under the <span class="annot" data-tooltip="commission /kə'mɪʃn/ n. 授权, 委托委员会佣金, 回扣vt. 委任, 委托时 态: commissioned, commissioning, c">Commission</span>’s jurisdiction, have shown their <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span> as a powerful tool for price discovery. <span class="annot" data-tooltip="whereas /ˌwer'æz/ conj. 但是, 而">Whereas</span> America is embracing responsible innovation, many of our international <span class="annot" data-tooltip="counterparts /'kaʊntərpɑːrt/ n. 与对方地位相当的人, 与另一方作用相当的物">counterparts</span> are moving in the opposite direction. Recently, nine European financial regulators argued that the event <span class="annot" data-tooltip="contracts /'kɑːntrækt/ vi. 感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约时 态: contracted, contracting, c">contracts</span> traded on prediction markets should be treated as gambling rather than financial instruments. That view misunderstands how these contracts are structured and underappreciates the fact that they are traded on marketplaces and not wagers placed with a “house”. It also ignores the role these markets play in aggregating information, improving forecasting and enhancing price discovery. Prediction markets often <span class="annot" data-tooltip="outperform /ˌaʊtpər'fɔːrm/ vt. 做得比…更好；胜过时 态: outperformed，outperforming，outperforms">outperform</span> traditional <span class="annot" data-tooltip="polls /poʊl/ n. 民意测验；投票；投票数；投票所vt. 剪短；对…进行民意测验；获得选票；投票vi. 投票adj. 剪过毛的；修过枝的；无">polls</span> and experts —they alone correctly forecast Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s electoral victory against Kamala Harris in 2024. Research from the <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">Federal</span> Reserve shows that prediction markets perform as well as or better than traditional estimates for economic <span class="annot" data-tooltip="indicators /'ɪndɪkeɪtər/ n. (仪器上显示温度、压力、耗油量等的)指针，指示器，记录器(车辆上的)转弯指示灯指示物；指示者">indicators</span> like the Fed Funds rate and consumer-price index. To remain effective, global regulatory frameworks must <span class="annot" data-tooltip="evolve /ɪ'vɑːlv/ vt. & vi. 演变；进化时 态: evolved，evolving，evolves">evolve</span> as quickly as the markets they <span class="annot" data-tooltip="oversee /ˌoʊvər'siː/ vt. 监督；俯瞰；审查；偷看到，无意中看到时 态: oversaw overseen overseeing, oversees">oversee</span>. History has shown that American leadership has been strongest when we have embraced innovation early, from the railroads and aviation to the internet and electronic trading, shaping global standards rather than waiting for others to do so. That <span class="annot" data-tooltip="philosophy /fə'lɑːsəfi/ n. 哲学人生哲学, 人生观达观">philosophy</span> extends to our international regulatory relationships. Cross-border co-operation remains valuable, but access to the world’s deepest and most trusted derivatives markets is a privilege. International agreements, Foreign Board of Trade registrations and supervisory arrangements should be regularly modernised to reflect evolving market structures and technology advances, while furthering the interests of American markets and protecting market participants.</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>administrative</td><td>/əd'mɪnɪstreɪtɪv/ adj.</td><td>行政的，管理的；经营的后方勤务的</td></tr>
+<tr><td>consistent</td><td>/kən'sɪstənt/ adj.</td><td>一贯的, 始终如一的一致的, 符合的</td></tr>
+<tr><td>essentially</td><td>/ɪ'senʃəli/ adv.</td><td>本质上;根本上必需的</td></tr>
+<tr><td>threshold</td><td>/'θreʃhoʊld/ n.</td><td>门槛; 〈喻〉开始</td></tr>
+<tr><td>motivate</td><td>/'moʊtɪveɪt/ vt.</td><td>刺激；使有动机；激发…的积极性, motivating, motivates</td></tr>
+<tr><td>spouses</td><td>/spaʊs/ n.</td><td>配偶, 夫或妻, spousing, spouses</td></tr>
+<tr><td>actual</td><td>/'æktʃuəl/ adj.</td><td>真实的，实际的；现行的，目前的</td></tr>
+<tr><td>bias</td><td>/'baɪəs/ n.</td><td>偏见；斜纹；偏爱；乖离率vt. 使存偏见adj. 偏斜的adv. 偏斜地, biassed biasing, biassing biases, biasses</td></tr>
+<tr><td>wages</td><td>/weɪdʒ/ vi.</td><td>进行；发动；从事n. 工资；报偿；代价vt. 开展；进行, waging, wages</td></tr>
+<tr><td>subtle</td><td>/'sʌtl/ adj.</td><td>微妙的；难以捉摸的；细微的狡猾的，狡诈的敏感的，敏锐的，有辨别力的，subtlest</td></tr>
+<tr><td>opt</td><td>/ɑːpt/ vi.</td><td>选择OPTabbr. VC开发环境自动生成的用来存放WorkSpace中各种选项的文件。, opting, opts</td></tr>
+<tr><td>household</td><td>/'haʊshoʊld/ n.</td><td>同住在一所房子里的人, 一家人, 户adj. 家庭的, 家用的</td></tr>
+<tr><td>whereas</td><td>/ˌwer'æz/ conj.</td><td>但是, 而</td></tr>
+<tr><td>exclusively</td><td>/ɪk'skluːsɪv/ adj.</td><td>高级的，奢华的专用的；独家的n. 独家新闻，独家报道</td></tr>
+<tr><td>interpreting</td><td>/ɪn'tɜːrprət/ vt.</td><td>解释；说明vt. & vi. 口译；翻译，interpreting，interprets</td></tr>
+<tr><td>acquisition</td><td>/ˌækwɪ'zɪʃn/ n.</td><td>获得物，获得；收购</td></tr>
+<tr><td>substitutes</td><td>/'sʌbstɪtuːt/ vt.</td><td>& vi. 代替, 替换, 代用, substituting, substitutes</td></tr>
+<tr><td>imperfect</td><td>/ɪm'pɜːrfɪkt/ adj.</td><td>有缺点的,有瑕疵的不完整的，未完成的未完成时的，未完成过去时的n. (动词)未完成时，未完成过去时adv. 有缺点地,有瑕疵地</td></tr>
+<tr><td>psychologists</td><td>/saɪ'kɑːlədʒɪst/ n.</td><td>心理学研究者;心理学家</td></tr>
+<tr><td>significant</td><td>/sɪɡ'nɪfɪkənt/ adj.</td><td>重要的, 重大的, 可观的有意义的, 有用意的意味深长的</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>crucially</td><td>/'kruːʃl/ adj.</td><td>决定性的；重要的；定局的；决断的</td></tr>
+<tr><td>major</td><td>/'meɪdʒər/ adj.</td><td>主要的；主修的；重要的；较多的n. 成年人；主修科目；陆军少校vi. 主修, majoring, majors</td></tr>
+<tr><td>progressively</td><td>/prə'ɡresɪv/ adj.</td><td>不断前进的, 有进展的, 逐渐上升的进步的, 先进的</td></tr>
+<tr><td>wane</td><td>/weɪn/ vi.</td><td>变小；衰落；亏缺；退潮；消逝n. 月亏；衰退；衰退期；缺损, waning, wanes</td></tr>
+<tr><td>process</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>urban</td><td>/'ɜːrbən/ adj.</td><td>城市的；住在都市的</td></tr>
+<tr><td>infrastructure</td><td>/'ɪnfrəstrʌktʃər/ n.</td><td>基础设施; 基础结构</td></tr>
+<tr><td>values</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>footprint</td><td>/'fʊtprɪnt/ n.</td><td>(尤指软地上的)脚印，足迹；(地板上的)脚印，鞋印(建筑物或设备，尤指计算机)占用的空间 (尤指来自卫星的)广播信号覆盖区</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>property</td><td>/'prɑːpərti/ n.</td><td>财产；性质，性能；所有权</td></tr>
+<tr><td>productive</td><td>/prə'dʌktɪv/ adj.</td><td>多产的，富饶的富有成效的；有益的</td></tr>
+<tr><td>surge</td><td>/sɜːrdʒ/ n.</td><td>(情感的) 突发，涌现，突然出现（数量的）急剧上升，激增；大量；一大批奔涌向前；突然的向上运动（电流）浪涌v. 涌；汹涌；涌动(感情、感觉) 突袭，涌动，突发(</td></tr>
+<tr><td>fiscal</td><td>/'fɪskl/ adj.</td><td>国库的；会计的，财政的</td></tr>
+<tr><td>reforms</td><td>/rɪ'fɔːrm/ n.</td><td>改革，改良，改造vt. & vi. 改革；改造；改善，reforming，reforms</td></tr>
+<tr><td>sparking</td><td>/ˈspɑrkɪŋ/ n.</td><td>发火花；点火v. 发出火星；使大感兴趣；导致（spark的现在分词）</td></tr>
+<tr><td>civil</td><td>/'sɪvl/ adj.</td><td>公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的</td></tr>
+<tr><td>notably</td><td>/'noʊtəbli/ adv.</td><td>显著地；尤其</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>lawsuit</td><td>/'lɔːsuːt/ n.</td><td>诉讼（尤指非刑事案件）；诉讼案件</td></tr>
+<tr><td>segregation</td><td>/ˌseɡrɪ'ɡeɪʃn/ n.</td><td>分开；隔离</td></tr>
+<tr><td>courageous</td><td>/kə'reɪdʒəs/ adj.</td><td>勇敢的;无畏的adv. 勇敢地;无畏地n. 勇敢;无畏</td></tr>
+<tr><td>protest</td><td>/'proʊtest/ n.</td><td>抗议；反对vt. & vi. 声明；抗议，protesting，protests</td></tr>
+<tr><td>sparked</td><td>/spɑːrk/ n.</td><td>火花，火星；电火花；一丝，略微；导火线，诱因v. 引发，触发；产生火花（电火花）；点燃；增加趣味（或活力、风味等）, sparking, sparks</td></tr>
+<tr><td>strikingly</td><td>/'straɪkɪŋ/ adj.</td><td>显著的，突出的引人注目的；容貌出众的</td></tr>
+<tr><td>residents</td><td>/'rezɪdənt/ adj.</td><td>定居的; 常驻的n. 居民(旅馆的)住宿者</td></tr>
+<tr><td>considered</td><td>/kən'sɪdər/ vt.</td><td>& vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及, considering, considers</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>crucial</td><td>/'kruːʃl/ adj.</td><td>决定性的；重要的；定局的；决断的</td></tr>
+<tr><td>pregnant</td><td>/'preɡnənt/ adj.</td><td>怀孕的, 怀胎的含蓄的, 意味深长的孕育着…的, 预示着…前景的</td></tr>
+<tr><td>belgium</td><td>— n.</td><td>比利时（西欧国家，首都布鲁塞尔Brussels）</td></tr>
+<tr><td>owner</td><td>/'oʊnər/ n.</td><td>所有者；物主</td></tr>
+<tr><td>strictly</td><td>/'strɪktli/ adv.</td><td>严格地；完全地；确实地</td></tr>
+<tr><td>restrictions</td><td>/rɪ'strɪkʃn/ n.</td><td>约束，限制管制，限定；法律，规章</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>tablets</td><td>/'tæblət/ n.</td><td>药片(木、竹)简；碑，牌匾，tableting，tablets</td></tr>
+<tr><td>either</td><td>/'iːðər/ pron.</td><td>(两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的</td></tr>
+<tr><td>buzz</td><td>/bʌz/ v.</td><td>发嗡嗡声；发蜂鸣声用蜂鸣器（给…）发信号繁忙；充满活力（飞机）低空飞过（尤指作为警告或威胁）（用特殊的机器）将头发剪得非常短n. 嗡嗡声；蜂鸣声（愉快、兴奋或成</td></tr>
+<tr><td>sociable</td><td>/'soʊʃəbl/ adj.</td><td>好交际的；友善的；社交的n. 联谊会</td></tr>
+<tr><td>telecoms</td><td>/ˈtɛlɪˌkɑm/ n.</td><td>电信，远距通信；电讯</td></tr>
+<tr><td>interrupts</td><td>/ˌɪntə'rʌpt/ vt.</td><td>& vi. 打断, interrupting, interrupts</td></tr>
+<tr><td>doom</td><td>/duːm/ vt.</td><td>注定；判定n. 厄运，劫数，dooming，dooms</td></tr>
+<tr><td>enter</td><td>/'entər/ vt.</td><td>& vi. 进入, 进去参加, 加入登记, 登录, entering, enters</td></tr>
+<tr><td>detect</td><td>/dɪ'tekt/ vt.</td><td>发现；发觉，查明，detecting，detects</td></tr>
+<tr><td>trails</td><td>/treɪl/ vt.</td><td>& vi. (使某物)被拖在后面vt. 跟踪，追踪vi. (在比赛等中)输，失败n. 足迹；臭迹小径一缕，一股，trailing，trails</td></tr>
+<tr><td>sermon</td><td>/'sɜːrmən/ n.</td><td>布道, 讲道, 说教讲道文章一大通教训</td></tr>
+<tr><td>mount</td><td>/maʊnt/ vt.</td><td>& vi. 登上；骑上vi. 增加；上升vt. 上演；配有…发动攻击；攻击n. 山峰坐骑，mounting，mounts</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>innovation</td><td>/ˌɪnə'veɪʃn/ n.</td><td>改革, 革新, 创新新观念, 新方法, 新发明</td></tr>
+<tr><td>consensus</td><td>/kən'sensəs/ n.</td><td>(意见等)一致, 一致同意</td></tr>
+<tr><td>innovation</td><td>/ˌɪnə'veɪʃn/ n.</td><td>改革, 革新, 创新新观念, 新方法, 新发明</td></tr>
+<tr><td>consensus</td><td>/kən'sensəs/ n.</td><td>(意见等)一致, 一致同意</td></tr>
+<tr><td>derivatives</td><td>/dɪ'rɪvətɪv/ n.</td><td>衍生物，派生物；派生词；【数】导数，微商adj. 缺乏独创性的；模仿他人的</td></tr>
+<tr><td>entered</td><td>/'entər/ vt.</td><td>& vi. 进入, 进去参加, 加入登记, 登录, entering, enters</td></tr>
+<tr><td>leading</td><td>/ˈliːdɪŋ/ adj.</td><td>主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>contracts</td><td>/'kɑːntrækt/ vi.</td><td>感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约, contracting, contracts</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>underlying</td><td>/ˌʌndər'laɪɪŋ/ adj.</td><td>根本的, 基础的含蓄的, 潜在的</td></tr>
+<tr><td>asset</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>allocate</td><td>/'æləkeɪt/ vt.</td><td>分配；拨出；使坐落于vi. 分配；指定, allocating, allocates</td></tr>
+<tr><td>niche</td><td>/niːʃ，nɪtʃ/ n.</td><td>（尤指本人合意的）适合的工作（或职位）;称心的工作合宜的小环境（尤指用来放置塑像的）壁龛adj. （产品）针对特定小群体的v. 把……放在壁龛中, nichin</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>falls</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>commission</td><td>/kə'mɪʃn/ n.</td><td>授权, 委托委员会佣金, 回扣vt. 委任, 委托, commissioning, commissions</td></tr>
+<tr><td>derivatives</td><td>/dɪ'rɪvətɪv/ n.</td><td>衍生物，派生物；派生词；【数】导数，微商adj. 缺乏独创性的；模仿他人的</td></tr>
+<tr><td>innovation</td><td>/ˌɪnə'veɪʃn/ n.</td><td>改革, 革新, 创新新观念, 新方法, 新发明</td></tr>
+<tr><td>autonomous</td><td>/ɔː'tɑːnəməs/ adj.</td><td>自治的</td></tr>
+<tr><td>algorithmic</td><td>— adj.</td><td>算法的,规则系统的</td></tr>
+<tr><td>consensus</td><td>/kən'sensəs/ n.</td><td>(意见等)一致, 一致同意</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>trends</td><td>/trend/ n.</td><td>趋势, 倾向流行, trending, trends</td></tr>
+<tr><td>considering</td><td>/kən'sɪdərɪŋ/ prep.</td><td>考虑到, 就…而论adv. 从各方面考虑, 从通盘考虑</td></tr>
+<tr><td>hub</td><td>/hʌb/ n.</td><td>中心；毂；木片</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>assets</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>mainstream</td><td>/'meɪnstriːm/ n.</td><td>(思想或行为的)主流, mainstreaming, mainstreams</td></tr>
+<tr><td>exposure</td><td>/ɪk'spoʊʒər/ n.</td><td>暴露, 显露揭发, 揭露(软片等)曝光</td></tr>
+<tr><td>asset</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>essentially</td><td>/ɪ'senʃəli/ adv.</td><td>本质上;根本上必需的</td></tr>
+<tr><td>perpetual</td><td>/pər'petʃuəl/ adj.</td><td>永久的; 终身的不断的; 常发生的</td></tr>
+<tr><td>contract</td><td>/'kɑːntrækt/ vi.</td><td>感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约, contracting, contracts</td></tr>
+<tr><td>derivative</td><td>/dɪ'rɪvətɪv/ n.</td><td>衍生物，派生物；派生词；【数】导数，微商adj. 缺乏独创性的；模仿他人的</td></tr>
+<tr><td>mechanism</td><td>/'mekənɪzəm/ n.</td><td>机械装置构造, 机制办法, 技巧, 途径</td></tr>
+<tr><td>parity</td><td>/'pærəti/ n.</td><td>同等,相等,对等奇偶校验</td></tr>
+<tr><td>underlying</td><td>/ˌʌndər'laɪɪŋ/ adj.</td><td>根本的, 基础的含蓄的, 潜在的</td></tr>
+<tr><td>spot</td><td>/spɑːt/ n.</td><td>斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Positioning and Tracki</td></tr>
+<tr><td>helping</td><td>/'helpɪŋ/ n.</td><td>（进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的</td></tr>
+<tr><td>extend</td><td>/ɪk'stend/ vt.</td><td>& vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出，extending，extends</td></tr>
+<tr><td>enter</td><td>/'entər/ vt.</td><td>& vi. 进入, 进去参加, 加入登记, 登录, entering, enters</td></tr>
+<tr><td>legislation</td><td>/ˌledʒɪs'leɪʃn/ n.</td><td>法律；法规立法，法律的制定[通过]</td></tr>
+<tr><td>comprehensive</td><td>/ˌkɑːmprɪ'hensɪv/ adj.</td><td>广泛的, 综合的</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>collateral</td><td>/kə'lætərəl/ n.</td><td>附属担保品adj. 相关的</td></tr>
+<tr><td>infrastructure</td><td>/'ɪnfrəstrʌktʃər/ n.</td><td>基础设施; 基础结构</td></tr>
+<tr><td>integrity</td><td>/ɪn'teɡrəti/ n.</td><td>正直；诚实，诚恳完整，完全，完善</td></tr>
+<tr><td>derivatives</td><td>/dɪ'rɪvətɪv/ n.</td><td>衍生物，派生物；派生词；【数】导数，微商adj. 缺乏独创性的；模仿他人的</td></tr>
+<tr><td>leading</td><td>/ˈliːdɪŋ/ adj.</td><td>主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）</td></tr>
+<tr><td>innovation</td><td>/ˌɪnə'veɪʃn/ n.</td><td>改革, 革新, 创新新观念, 新方法, 新发明</td></tr>
+<tr><td>extends</td><td>/ɪk'stend/ vt.</td><td>& vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出，extending，extends</td></tr>
+<tr><td>assets</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>major</td><td>/'meɪdʒər/ adj.</td><td>主要的；主修的；重要的；较多的n. 成年人；主修科目；陆军少校vi. 主修, majoring, majors</td></tr>
+<tr><td>engaging</td><td>/ɪn'ɡeɪdʒɪŋ/ adj.</td><td>迷人的v. 保证；雇用；参加（engage的ing形式）</td></tr>
+<tr><td>perpetual</td><td>/pər'petʃuəl/ adj.</td><td>永久的; 终身的不断的; 常发生的</td></tr>
+<tr><td>exclusively</td><td>/ɪk'skluːsɪv/ adj.</td><td>高级的，奢华的专用的；独家的n. 独家新闻，独家报道</td></tr>
+<tr><td>fall</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>commission</td><td>/kə'mɪʃn/ n.</td><td>授权, 委托委员会佣金, 回扣vt. 委任, 委托, commissioning, commissions</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>whereas</td><td>/ˌwer'æz/ conj.</td><td>但是, 而</td></tr>
+<tr><td>counterparts</td><td>/'kaʊntərpɑːrt/ n.</td><td>与对方地位相当的人, 与另一方作用相当的物</td></tr>
+<tr><td>contracts</td><td>/'kɑːntrækt/ vi.</td><td>感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约, contracting, contracts</td></tr>
+<tr><td>outperform</td><td>/ˌaʊtpər'fɔːrm/ vt.</td><td>做得比…更好；胜过，outperforming，outperforms</td></tr>
+<tr><td>polls</td><td>/poʊl/ n.</td><td>民意测验；投票；投票数；投票所vt. 剪短；对…进行民意测验；获得选票；投票vi. 投票adj. 剪过毛的；修过枝的；无角的, polling, polls</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>indicators</td><td>/'ɪndɪkeɪtər/ n.</td><td>(仪器上显示温度、压力、耗油量等的)指针，指示器，记录器(车辆上的)转弯指示灯指示物；指示者</td></tr>
+<tr><td>evolve</td><td>/ɪ'vɑːlv/ vt.</td><td>& vi. 演变；进化，evolving，evolves</td></tr>
+<tr><td>oversee</td><td>/ˌoʊvər'siː/ vt.</td><td>监督；俯瞰；审查；偷看到，无意中看到, oversees</td></tr>
+<tr><td>philosophy</td><td>/fə'lɑːsəfi/ n.</td><td>哲学人生哲学, 人生观达观</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day5.html" class="nav-btn">← Day 5</a>
+  <a href="day7.html" class="nav-btn">Day 7 →</a>
+</div>
+
+<div class="progress">📖 Day 6 of 41</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-08-08</div>
+
+</body>
+</html>
