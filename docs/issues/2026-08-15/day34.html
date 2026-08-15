@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance & economics</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-08-15</div>
+
+<h1 class="article-title">Finance & economics</h1>
+<div class="article-section"></div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>Half a century on, there is no sign of that. Over 50% of <span class="annot" data-tooltip="net /net/ n. 网；净利；网络；实价vi. 编网vt. 净赚；得到；用网捕adj. 纯粹的；净余的时 态: netted, nettin">net</span> <span class="annot" data-tooltip="assets /'æset/ n. 资产；有用的东西；有利条件；优点">assets</span> overseen by American investment funds are in trackers, estimates the Investment Company Institute, an <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span>. For funds focused on <span class="annot" data-tooltip="domestic /də'mestɪk/ adj. 国内的；家庭的；驯养的；一心只管家务的">domestic</span> stocks, the share is 64%. Whether through your <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> savings, a <span class="annot" data-tooltip="corporate /'kɔːrpərət/ adj. 社团的, 法人的副 词: corporately">corporate</span> <span class="annot" data-tooltip="pension /ˈpenʃn/ n. 津贴；退休金，抚恤金；膳宿费vt. 发给养老金或抚恤金时 态: pensioned, pensioning, pensi">pension</span> scheme or a university endowment, you probably have a stake in at least one. Predictably, the professional stock-pickers whose lunch has been eaten are as <span class="annot" data-tooltip="furious /'fjʊriəs/ adj. 狂怒的, 暴怒的强烈的, 激烈的副 词: furiously">furious</span> as ever. “Worse than Marxism,” thundered Bernstein, a broker, in 2016. Last month Terry Smith, a favourite fund manager of British <span class="annot" data-tooltip="retail /ˈriːteɪl/ vt. 零售；转述vi. 零售n. 零售adv. 以零售方式adj. 零售的时 态: retailed, retailing, ">retail</span> savers, spent much of his half-yearly investor letter blaming his long underperformance on “a market which is dominated by so-called <span class="annot" data-tooltip="passive /'pæsɪv/ adj. 被动的，消极的；被动语态的n. 被动语态副 词: passively">passive</span> or index funds”. Full <span class="annot" data-tooltip="disclosure /dɪs'kloʊʒər/ n. 公开,透露被公开的事情,被披露的秘闻">disclosure</span>: your columnist, who used to own units in one of Mr Smith’s funds, took this <span class="annot" data-tooltip="rant /rænt/ vt. & vi. 夸夸其谈，大叫大嚷地以…说教气愤地)大叫大嚷；不停地大声抱怨时 态: ranted, ranting, ra">rant</span> as his cue to sell them and reinvest in a global-equity tracker. On one count, however, Mr Smith is right. Bogle’s creation ranks among the most important financial <span class="annot" data-tooltip="innovations /ˌɪnə'veɪʃn/ n. 改革, 革新, 创新新观念, 新方法, 新发明形容词: innovational">innovations</span> of the 20th century, and deserves its <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span> in most investors’ <span class="annot" data-tooltip="portfolios /pɔːrt'foʊlioʊ/ n. 公事包, 文件夹投资组合大臣或部长的职位或职责">portfolios</span>. Yet the idea that index funds are passive is <span class="annot" data-tooltip="bunk /bʌŋk/ n. 铺位；座床；床铺vi. 睡在铺上；逃跑vt. 为…提供铺位时 态: bunked, bunking, bunks">bunk</span>. Over the past five <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span> these <span class="annot" data-tooltip="vehicles /'viːəkl/ n. 交通工具, 车辆传播媒介, 手段">vehicles</span> have reshaped markets— and <span class="annot" data-tooltip="investing /ɪn'vest/ vt. 投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买时 态: invested, investing, invests">investing</span> in one involves plenty of choices. The most obvious decision is which index to track. Suppose you want <span class="annot" data-tooltip="exposure /ɪk'spoʊʒər/ n. 暴露, 显露揭发, 揭露(软片等)曝光">exposure</span> to European shares. Should you choose 50 of the biggest firms via the STOXX Europe 50 index or 396 via the MSCI Europe? Plenty of people “<span class="annot" data-tooltip="passively /'pæsɪv/ adj. 被动的，消极的；被动语态的n. 被动语态副 词: passively">passively</span>” <span class="annot" data-tooltip="invest /ɪn'vest/ vt. 投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买时 态: invested, investing, invests">invest</span> in America’s stock-market by tracking the <span class="annot" data-tooltip="nasdaq 纳斯达克指数〈美〉全国证券交易商自动报价系统协会">NASDAQ</span> 100, a tech-focused bet that ignores whole sectors such as finance and real <span class="annot" data-tooltip="estate /ɪ'steɪt/ n.（位于乡村的）大片私有土地，庄园，种植园【英式】（按规划建造的）住宅区，工业区【法律】（个人死后留下的全部）财产，遗">estate</span>. Even if you <span class="annot" data-tooltip="opt /ɑːpt/ vi. 选择OPTabbr. VC开发环境自动生成的用来存放WorkSpace中各种选项的文件。时 态: opted, opti">opt</span> for an index like the FTSE Global All-<span class="annot" data-tooltip="cap /kæp/ n. 帽子；盖vi. 脱帽致意vt. 覆盖；胜过；给…戴帽；加盖于Cap摩羯座CAPabbr. Common Agricult">Cap</span>, which captures over 10,000 firms across the whole world, why stop there? To a purist, true passivity <span class="annot" data-tooltip="entails /ɪn'teɪl/ vt. 使…成为必要, 需要限定继承时 态: entailed, entailing, entails">entails</span> buying the “market <span class="annot" data-tooltip="portfolio /pɔːrt'foʊlioʊ/ n. 公事包, 文件夹投资组合大臣或部长的职位或职责">portfolio</span>”, meaning an impractical one including all investible assets, from private <span class="annot" data-tooltip="credit /'kredɪt/ n. 赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)时 态:">credit</span> and <span class="annot" data-tooltip="property /'prɑːpərti/ n. 财产；性质，性能；所有权形容词: propertyless">property</span> to art and fine wine. A 60/40 split between a stock tracker and a bond tracker is an active decision (why 60/40?)—and a big one at that. Index funds themselves are not passive, <span class="annot" data-tooltip="either /'iːðər/ pron. (两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的">either</span>. Rodney Comegys, Vanguard’s head of equities, explains that managers have more discretion than many investors realise. At its launch, for instance, the First Index fund</p>
+<p>was too small to buy every share in the S&P 500. So it “sampled” 300 or so of them, a <span class="annot" data-tooltip="practice /'præktɪs/ n. 练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规时 态: practiced，practicing，">practice</span> others still use today. Managers can also trade to <span class="annot" data-tooltip="minimise vt. 把…减至最低数量〔程度〕对(某事物)作最低估计;极力贬低(某事物)的价值〔重要性〕">minimise</span> taxable gains, or to avoid getting <span class="annot" data-tooltip="screwed /skruː/ vt. 旋，拧；压榨；强迫">screwed</span> when everyone knows they must rebalance (when a firm such as SpaceX joins an index, say). Some juice returns by lending stocks to short-sellers for fees. Most important, and worrying, index funds seem increasingly to influence <span class="annot" data-tooltip="asset /'æset/ n. 资产；有用的东西；有利条件；优点">asset</span> prices. This is not just because they are so big. Prices are set by trades, and slow-trading trackers, even <span class="annot" data-tooltip="enormous /ɪ'nɔːrməs/ adj. 巨大的, 极大的, 庞大的副 词: enormously">enormous</span> ones, account for a tiny <span class="annot" data-tooltip="fraction /'frækʃn/ n. 小部分；部分；稍微；[数]分数">fraction</span> of these. But a series of studies have suggested they nevertheless cause <span class="annot" data-tooltip="distortions /dɪ'stɔːrʃn/ n. 变形；[物] 失真；扭曲；曲解形容词: distortional or">distortions</span>. A particularly widely circulated one <span class="annot" data-tooltip="outlines /'aʊtlaɪn/ n. 轮廓；大纲；概要；略图vt. 概述；描画…轮廓；略述时 态: outlined, outlining, outlines">outlines</span> the “inelastic markets <span class="annot" data-tooltip="hypothesis /haɪ'pɑːθəsɪs/ n. 假说, 假设, 前提">hypothesis</span>”. This finds evidence that the presence of fixed- <span class="annot" data-tooltip="allocation /ˌælə'keɪʃn/ n. 配给, 分配, 拨出分配额(或量)">allocation</span> funds (such as trackers <span class="annot" data-tooltip="investing /ɪn'vest/ vt. 投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买时 态: invested, investing, invests">investing</span> all their <span class="annot" data-tooltip="assets /'æset/ n. 资产；有用的东西；有利条件；优点">assets</span> in shares) ensures $1 flowing into the stock-market pushes up <span class="annot" data-tooltip="overall /ˌoʊvər'ɔːl/ adj. 总体的；全面的；综合的全面考虑的adv. 大体上，总的来说一切包括在内，全部的n. 长罩衣工装裤；工作裤">overall</span> market <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span> by $3-8. Others have argued that flows into index funds disproportionately <span class="annot" data-tooltip="raise /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raise</span> the share prices of the biggest firms. Perhaps, then, the popularity of index funds is storing up trouble, <span class="annot" data-tooltip="helping /'helpɪŋ/ n. （进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的">helping</span> to inflate a stock-market <span class="annot" data-tooltip="bubble /'bʌbl/ n. 气泡，泡沫，泡状物；透明圆形罩，圆形顶vi. 沸腾，冒泡；发出气泡声vt. 使冒泡；滔滔不绝地说时 态: bubbled">bubble</span> while also entrenching the dominance of a few <span class="annot" data-tooltip="corporate /'kɔːrpərət/ adj. 社团的, 法人的副 词: corporately">corporate</span> giants. Ironically, even that would not be an argument to divest. When share prices next <span class="annot" data-tooltip="crash /kræʃ/ n. 碰撞；崩溃；坠落vt. 破碎；撞碎；坠落vi. 碰撞；坠毁；闯；突然倒台adj. 速成的时 态: crashed, cr">crash</span>, just as when they soar, trackers will clock their average—doing better than the average stock-picker, who will get the same return minus heftier fees. In 50 years’ time, it is a good bet that index funds will be mightier yet. ■ This article was downloaded by zlibrary from https://www.economist.com/finance-and-economics/2026/08/11/<span class="annot" data-tooltip="hooray /hu'reɪ/ vi. 呼万岁vt. 呼万岁n. 万岁int. 万岁">hooray</span>-for-index-funds- just-dont-call-them-<span class="annot" data-tooltip="passive /'pæsɪv/ adj. 被动的，消极的；被动语态的n. 被动语态副 词: passively">passive</span></p>
+<p>Finance & economics | Same Fed, different day Kevin Warsh is struggling to <span class="annot" data-tooltip="escape /ɪ'skeɪp/ vt. 逃避，避免；被忘掉vi. 逃脱；避开；溜走n. 逃跑；逃亡时 态: escaped, escaping, escapes">escape</span> his predecessor’s problems High <span class="annot" data-tooltip="inflation /ɪn'fleɪʃn/ n. (充气而引起的)膨胀通货膨胀">inflation</span>, weak jobs numbers and presidential interference trouble the <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">Federal</span> Reserve Aug 13th 2026 Kevin Warsh enjoys <span class="annot" data-tooltip="marking /mɑːr/ vt. 毁坏；损坏；玷污MARabbr. Master of Arts in Religion 宗教硕士Mar三月(March)">marking</span> a “new chapter”. The newish chair of the Federal Reserve has invoked that writerly <span class="annot" data-tooltip="metaphor /'metəfər/ n. 隐喻形容词: metaphoric">metaphor</span> at <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> every public appearance since taking charge in May. He wants markets, politicians and <span class="annot" data-tooltip="households /'haʊshoʊld/ n. 同住在一所房子里的人, 一家人, 户adj. 家庭的, 家用的">households</span> to understand that now things at the Fed will be different. Yet the first months of his <span class="annot" data-tooltip="tenure /'tenjər/ n. 占有；任期vt. 授予…终身职位形容词: tenurial">tenure</span> have stood out not for <span class="annot" data-tooltip="novelty /'nɑːvlti/ n. 新颖; 新奇性新奇的人[事物]新颖小巧而价廉的物品">novelty</span> but for continuity. Leaf back a year, to the summer of 2025. Then, Jerome Powell’s Fed was uncomfortably caught between wobbly jobs numbers and above-target inflation, fuelled by <span class="annot" data-tooltip="tariffs /'tærɪf/ n. 关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表时 态: tariffed, tariffing, tar">tariffs</span>: a quintessential but fiddly <span class="annot" data-tooltip="central /'sentrəl/ adj. 中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的副 词: centrally">central</span>-banking <span class="annot" data-tooltip="dilemma /dɪ'lemə/ n. （进退两难的）窘境，困境形容词: dilemmatic">dilemma</span>. To that, Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> added a more <span class="annot" data-tooltip="unusual /ʌn'juːʒuəl/ adj. 与众不同的；不寻常的；不平常的副 词: unusually">unusual</span> political bind. The</p>
+<p>president’s attempt to <span class="annot" data-tooltip="sack /sæk/ n. 麻袋, 包一袋的量开除, 解雇洗劫, 劫掠vt. 装入袋中解雇洗劫, 劫掠时 态: sacked, sacking, s">sack</span> Lisa <span class="annot" data-tooltip="cook /kʊk/ v. 做饭，烹调；（食物）被烧煮；（非正式）篡改，伪造；密谋；干得起劲n.. 厨师n.(Cook) （美）库克（人名）时 态:">Cook</span>, a Fed governor, over alleged wrongdoing on <span class="annot" data-tooltip="mortgage /'mɔːrɡɪdʒ/ n. 抵押借款抵押债款的利息vt. 抵押时 态: mortgaged, mortgaging, mortgages">mortgage</span> paperwork threatened to jeopardise the Fed’s independence. America’s <span class="annot" data-tooltip="central /'sentrəl/ adj. 中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的副 词: centrally">central</span> bankers might think twice before defying demands from the White House for lower rates if this could get them fired. A year on the same story holds, almost beat-for-beat. <span class="annot" data-tooltip="inflation /ɪn'fleɪʃn/ n. (充气而引起的)膨胀通货膨胀">Inflation</span> is still not back to the 2% target. The latest consumer-price figures for July, released on August 12th, showed that these rose by 3.4% year on year. Monthly “core” goods prices—excluding food and <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span>—picked up too, suggesting that companies are once again passing <span class="annot" data-tooltip="tariffs /'tærɪf/ n. 关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表时 态: tariffed, tariffing, tar">tariffs</span> on to shoppers. <span class="annot" data-tooltip="overall /ˌoʊvər'ɔːl/ adj. 总体的；全面的；综合的全面考虑的adv. 大体上，总的来说一切包括在内，全部的n. 长罩衣工装裤；工作裤">Overall</span> core inflation, which includes services, was a little more reassuring, at 2.5%. Still, above-target inflation has already persuaded several rate-setters to dissent in favour of higher rates. Markets now peg the <span class="annot" data-tooltip="odds /ɑːdz/ n. 不平等；几率；胜算；差别">odds</span> of a hike at the Fed’s next meeting in mid-September at roughly 40%. Meanwhile, employment numbers point to the opposite risk: a softening economy in need of lower rates. America <span class="annot" data-tooltip="shed /ʃed/ n. 棚, 库vt. 流出, 流下蜕皮, 树叶脱落时 态: shed, shedding, sheds">shed</span> 23,000 jobs in July and previous months’ gains were <span class="annot" data-tooltip="revised 改进的">revised</span> sharply down. Despite Mr Warsh’s long-standing reputation as a rate-raising hawk, he might find that outcome a more comfortable one. Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> bangs on about how he wants rate cuts at every opportunity. Then there is Ms Cook. In June the <span class="annot" data-tooltip="supreme /su'priːm/ adj. 最高的；至上的最重要的比较级: supremer，supremest 缩 写: supr">Supreme</span> Court blocked Mr Trump’s effort to fire her and carved out special protections for the “unique” constitutional position of the Fed. Unfussed, the president has doubled down. On August 5th the White House wrote to Ms Cook reiterating that Mr Trump was <span class="annot" data-tooltip="considering /kən'sɪdərɪŋ/ prep. 考虑到, 就…而论adv. 从各方面考虑, 从通盘考虑">considering</span> firing her and giving her three weeks to respond. In a statement, Ms Cook’s lawyers called the allegations “baseless” and the Supreme Court precedent “clear”. Mr Warsh may have to wait for that new chapter. ■ This article was downloaded by zlibrary from https://www.economist.com/finance-and-economics/2026/08/12/kevin-warsh-is- struggling-to-<span class="annot" data-tooltip="escape /ɪ'skeɪp/ vt. 逃避，避免；被忘掉vi. 逃脱；避开；溜走n. 逃跑；逃亡时 态: escaped, escaping, escapes">escape</span>-his-predecessors-problems</p>
+<p>Finance & economics | Free Exchange When Japan buys yen, it unwinds a dangerous trade The world’s biggest carry trader begins to exit its position Aug 13th 2026 AMERICA’S <span class="annot" data-tooltip="treasury /'treʒəri/ n. 财政部；国库，金库；宝库">TREASURY</span> <span class="annot" data-tooltip="secretary /'sekrəteri/ n. 秘书书记部长, 大臣形容词: secretarial">secretary</span>, Scott Bessent, is used to making audacious bets against <span class="annot" data-tooltip="central /'sentrəl/ adj. 中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的副 词: centrally">central</span> banks. He once worked for Soros Fund Management, the <span class="annot" data-tooltip="hedge /hedʒ/ vt. 用树篱笆围住；避免作正面答复vi. 用树篱围住；避免作正面答复n. 树篱；障碍时 态: hedged, hedging,">hedge</span> fund famous for “breaking” the Bank of England during the sterling crisis of 1992. But in late July Mr Bessent bet the other way, lining up <span class="annot" data-tooltip="alongside /əˌlɔːŋ'saɪd/ adv. 靠着边，沿着边prep. (表示位置)在…旁边；沿着…的边；与…并排靠拢着(表示比较)与…放在一起比较(表示伴随)与…一">alongside</span> a central bank in defence of its currency. He dipped into America’s foreign-exchange reserves to help the Bank of Japan (BoJ) buy yen, which had weakened past ¥163 to the dollar for the first time since 1986. Mr Bessent was not shy about his latest trade. In a <span class="annot" data-tooltip="cabinet /'kæbɪnət/ n. 内阁；橱柜；展览艺术品的小陈列室adj. 内阁的；私下的，秘密的">cabinet</span> meeting partly open to the press, he left a to-do list visible on the Camp David <span class="annot" data-tooltip="conference /'kɑːnfərəns/ n. 会议讨论, 商谈形容词: conferential">conference</span></p>
+<p>table: “Buy Japanese yen,” it said. His boss was also proud of the <span class="annot" data-tooltip="intervention /ˌɪntər'venʃn/ n. 介入, 干涉, 干预">intervention</span>. “We’re…very, very strong financially,” President Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> proudly explained. “They wanted a little bit of help.” Japan was no doubt grateful. But it would be wrong to think of it as a helpless naïf. On the <span class="annot" data-tooltip="contrary /ˈkɑːntreri/ adj. 相反的, 相违的n. 相反, 反面, 对立面副 词: contrarily">contrary</span>, in teaming up with Japan’s government, America was joining forces with one of the biggest currency traders of all time—an institution accustomed to making bets on a scale that would make any <span class="annot" data-tooltip="hedge /hedʒ/ vt. 用树篱笆围住；避免作正面答复vi. 用树篱围住；避免作正面答复n. 树篱；障碍时 态: hedged, hedging,">hedge</span> fund <span class="annot" data-tooltip="tremble /'trembl/ vi. 战栗；焦虑；发抖；摇晃vt. 使挥动；用颤抖的声音说出n. 颤抖；战栗；摇晃时 态: trembled, trembli">tremble</span>. In its latest <span class="annot" data-tooltip="interventions /ˌɪntər'venʃn/ n. 介入, 干涉, 干预">interventions</span> the BoJ, acting on behalf of Japan’s finance ministry, may have spent more than $95bn, according to Reuters, a news agency. It sold the dollars for about ¥160 apiece. A big chunk of its reserves were accumulated when a dollar could be had for less than ¥100. In making the trade, therefore, Japan’s government was taking vast profits. Back-of- the-<span class="annot" data-tooltip="envelope /'envəloʊp/ n. 信封，封皮；[生]包膜；[天]包层；[数]包迹">envelope</span> <span class="annot" data-tooltip="arithmetic /ə'rɪθmətɪk/ n. 算术计算形容词: arithmetic">arithmetic</span> suggests it may have reaped as much as ¥5.7trn ($36bn). George Soros reportedly made about $1bn (<span class="annot" data-tooltip="worth /wɜːrθ/ adj. 值…的n. 价值；财产时 态: worthed, worthing, worths">worth</span> some $2.4bn in today’s money) from betting against the <span class="annot" data-tooltip="pound /paʊnd/ n. 英镑；兽栏；重击，重击声；拘留所vt. 捣烂；敲打；监禁，拘留vi. 连续重击，猛击Pound庞德(姓氏)名 词: po">pound</span>. The government’s cross-border holdings have been good for its finances. In their paper <span class="annot" data-tooltip="titled /tɪt/ n. 山雀；各种小鸟；乳头；小马；少妇；轻打">titled</span> “What About Japan?”, YiLi Chien of the <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">Federal</span> Reserve Bank of St Louis, Harold Cole of the University of Pennsylvania and Hanno Lustig of Stanford University calculate that the government, the BoJ and Japan’s public <span class="annot" data-tooltip="pension /ˈpenʃn/ n. 津贴；退休金，抚恤金；膳宿费vt. 发给养老金或抚恤金时 态: pensioned, pensioning, pensi">pension</span> funds together hold foreign <span class="annot" data-tooltip="assets /'æset/ n. 资产；有用的东西；有利条件；优点">assets</span> worth more than 56% of GDP. Over the <span class="annot" data-tooltip="quarter /'kwɔːrtər/ n. 四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一时 ">quarter</span>-century to 2023 these assets <span class="annot" data-tooltip="earned /ɪr/ n. 耳朵；听觉；倾听；穗vi. （美俚）听见；抽穗EARabbr. East African Railways 东非铁路公司">earned</span> average <span class="annot" data-tooltip="annual /'ænjuəl/ adj. 年度的；每年的n. 年刊，年鉴；一年生植物副 词: annually">annual</span> returns of 5.8% (only a <span class="annot" data-tooltip="fraction /'frækʃn/ n. 小部分；部分；稍微；[数]分数">fraction</span> of which have been realised through trades). What about the other side of the ledger? The public sector’s liabilities are chiefly in <span class="annot" data-tooltip="relatively /'relətɪvli/ adv. 相对地，比较而言；相当相对来说；相比较而言">relatively</span> low-<span class="annot" data-tooltip="yielding /jiːld/ vt. 出产；屈服；放弃vi. 屈服，投降n. 收益；产量时 态: yielded, yielding, yields">yielding</span> yen. The government sells bonds in its <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> currency, many of which have been bought by the <span class="annot" data-tooltip="central /'sentrəl/ adj. 中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的副 词: centrally">central</span> bank. The central bank in turn owes yen to the commercial banks which hold accounts with it. The public sector’s balance-sheet has thus benefited both from favourable currency movements and from the difference in <span class="annot" data-tooltip="yields /jiːld/ vt. 出产；屈服；放弃vi. 屈服，投降n. 收益；产量时 态: yielded, yielding, yields">yields</span> between the foreign assets it owns and the yen liabilities it owes, known as the “carry”. “The <span class="annot" data-tooltip="sheer /ʃɪr/ adj. 完全的；十足的陡峭的；垂直的极薄的，轻的，透明的adv. 垂直地，陡峭地vi. 避开，突然转向时 态: sheered，">sheer</span> scale of Japan’s public sector holdings makes it the world’s largest carry trade investor”, as Mr Chien, Mr Lustig and Wenxin Du of Harvard University put it in another article.</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>net</td><td>/net/ n.</td><td>网；净利；网络；实价vi. 编网vt. 净赚；得到；用网捕adj. 纯粹的；净余的, netting, nets</td></tr>
+<tr><td>assets</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>domestic</td><td>/də'mestɪk/ adj.</td><td>国内的；家庭的；驯养的；一心只管家务的</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>corporate</td><td>/'kɔːrpərət/ adj.</td><td>社团的, 法人的</td></tr>
+<tr><td>pension</td><td>/ˈpenʃn/ n.</td><td>津贴；退休金，抚恤金；膳宿费vt. 发给养老金或抚恤金, pensioning, pensions</td></tr>
+<tr><td>furious</td><td>/'fjʊriəs/ adj.</td><td>狂怒的, 暴怒的强烈的, 激烈的</td></tr>
+<tr><td>retail</td><td>/ˈriːteɪl/ vt.</td><td>零售；转述vi. 零售n. 零售adv. 以零售方式adj. 零售的, retailing, retails</td></tr>
+<tr><td>passive</td><td>/'pæsɪv/ adj.</td><td>被动的，消极的；被动语态的n. 被动语态</td></tr>
+<tr><td>disclosure</td><td>/dɪs'kloʊʒər/ n.</td><td>公开,透露被公开的事情,被披露的秘闻</td></tr>
+<tr><td>rant</td><td>/rænt/ vt.</td><td>& vi. 夸夸其谈，大叫大嚷地以…说教气愤地)大叫大嚷；不停地大声抱怨, ranting, rants</td></tr>
+<tr><td>innovations</td><td>/ˌɪnə'veɪʃn/ n.</td><td>改革, 革新, 创新新观念, 新方法, 新发明</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>portfolios</td><td>/pɔːrt'foʊlioʊ/ n.</td><td>公事包, 文件夹投资组合大臣或部长的职位或职责</td></tr>
+<tr><td>bunk</td><td>/bʌŋk/ n.</td><td>铺位；座床；床铺vi. 睡在铺上；逃跑vt. 为…提供铺位, bunking, bunks</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>vehicles</td><td>/'viːəkl/ n.</td><td>交通工具, 车辆传播媒介, 手段</td></tr>
+<tr><td>investing</td><td>/ɪn'vest/ vt.</td><td>投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买, investing, invests</td></tr>
+<tr><td>exposure</td><td>/ɪk'spoʊʒər/ n.</td><td>暴露, 显露揭发, 揭露(软片等)曝光</td></tr>
+<tr><td>passively</td><td>/'pæsɪv/ adj.</td><td>被动的，消极的；被动语态的n. 被动语态</td></tr>
+<tr><td>invest</td><td>/ɪn'vest/ vt.</td><td>投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买, investing, invests</td></tr>
+<tr><td>nasdaq</td><td>— </td><td>纳斯达克指数〈美〉全国证券交易商自动报价系统协会</td></tr>
+<tr><td>estate</td><td>/ɪ'steɪt/ </td><td>n.（位于乡村的）大片私有土地，庄园，种植园【英式】（按规划建造的）住宅区，工业区【法律】（个人死后留下的全部）财产，遗产【英式】旅游汽车；客货两用轿车（est</td></tr>
+<tr><td>opt</td><td>/ɑːpt/ vi.</td><td>选择OPTabbr. VC开发环境自动生成的用来存放WorkSpace中各种选项的文件。, opting, opts</td></tr>
+<tr><td>cap</td><td>/kæp/ n.</td><td>帽子；盖vi. 脱帽致意vt. 覆盖；胜过；给…戴帽；加盖于Cap摩羯座CAPabbr. Common Agricultural Policy (欧共体)共同农</td></tr>
+<tr><td>entails</td><td>/ɪn'teɪl/ vt.</td><td>使…成为必要, 需要限定继承, entailing, entails</td></tr>
+<tr><td>portfolio</td><td>/pɔːrt'foʊlioʊ/ n.</td><td>公事包, 文件夹投资组合大臣或部长的职位或职责</td></tr>
+<tr><td>credit</td><td>/'kredɪt/ n.</td><td>赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)，crediting，credits</td></tr>
+<tr><td>property</td><td>/'prɑːpərti/ n.</td><td>财产；性质，性能；所有权</td></tr>
+<tr><td>either</td><td>/'iːðər/ pron.</td><td>(两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的</td></tr>
+<tr><td>practice</td><td>/'præktɪs/ n.</td><td>练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规，practicing，practices</td></tr>
+<tr><td>minimise</td><td>— vt.</td><td>把…减至最低数量〔程度〕对(某事物)作最低估计;极力贬低(某事物)的价值〔重要性〕</td></tr>
+<tr><td>screwed</td><td>/skruː/ vt.</td><td>旋，拧；压榨；强迫</td></tr>
+<tr><td>asset</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>enormous</td><td>/ɪ'nɔːrməs/ adj.</td><td>巨大的, 极大的, 庞大的</td></tr>
+<tr><td>fraction</td><td>/'frækʃn/ n.</td><td>小部分；部分；稍微；[数]分数</td></tr>
+<tr><td>distortions</td><td>/dɪ'stɔːrʃn/ n.</td><td>变形；[物] 失真；扭曲；曲解</td></tr>
+<tr><td>outlines</td><td>/'aʊtlaɪn/ n.</td><td>轮廓；大纲；概要；略图vt. 概述；描画…轮廓；略述, outlining, outlines</td></tr>
+<tr><td>hypothesis</td><td>/haɪ'pɑːθəsɪs/ n.</td><td>假说, 假设, 前提</td></tr>
+<tr><td>allocation</td><td>/ˌælə'keɪʃn/ n.</td><td>配给, 分配, 拨出分配额(或量)</td></tr>
+<tr><td>investing</td><td>/ɪn'vest/ vt.</td><td>投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买, investing, invests</td></tr>
+<tr><td>assets</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>overall</td><td>/ˌoʊvər'ɔːl/ adj.</td><td>总体的；全面的；综合的全面考虑的adv. 大体上，总的来说一切包括在内，全部的n. 长罩衣工装裤；工作裤</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>raise</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>helping</td><td>/'helpɪŋ/ n.</td><td>（进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的</td></tr>
+<tr><td>bubble</td><td>/'bʌbl/ n.</td><td>气泡，泡沫，泡状物；透明圆形罩，圆形顶vi. 沸腾，冒泡；发出气泡声vt. 使冒泡；滔滔不绝地说, bubbling, bubbles</td></tr>
+<tr><td>corporate</td><td>/'kɔːrpərət/ adj.</td><td>社团的, 法人的</td></tr>
+<tr><td>crash</td><td>/kræʃ/ n.</td><td>碰撞；崩溃；坠落vt. 破碎；撞碎；坠落vi. 碰撞；坠毁；闯；突然倒台adj. 速成的, crashing, crashes</td></tr>
+<tr><td>hooray</td><td>/hu'reɪ/ vi.</td><td>呼万岁vt. 呼万岁n. 万岁int. 万岁</td></tr>
+<tr><td>passive</td><td>/'pæsɪv/ adj.</td><td>被动的，消极的；被动语态的n. 被动语态</td></tr>
+<tr><td>escape</td><td>/ɪ'skeɪp/ vt.</td><td>逃避，避免；被忘掉vi. 逃脱；避开；溜走n. 逃跑；逃亡, escaping, escapes</td></tr>
+<tr><td>inflation</td><td>/ɪn'fleɪʃn/ n.</td><td>(充气而引起的)膨胀通货膨胀</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>marking</td><td>/mɑːr/ vt.</td><td>毁坏；损坏；玷污MARabbr. Master of Arts in Religion 宗教硕士Mar三月(March)，marring，mars</td></tr>
+<tr><td>metaphor</td><td>/'metəfər/ n.</td><td>隐喻</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>households</td><td>/'haʊshoʊld/ n.</td><td>同住在一所房子里的人, 一家人, 户adj. 家庭的, 家用的</td></tr>
+<tr><td>tenure</td><td>/'tenjər/ n.</td><td>占有；任期vt. 授予…终身职位</td></tr>
+<tr><td>novelty</td><td>/'nɑːvlti/ n.</td><td>新颖; 新奇性新奇的人[事物]新颖小巧而价廉的物品</td></tr>
+<tr><td>tariffs</td><td>/'tærɪf/ n.</td><td>关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表, tariffing, tariffs</td></tr>
+<tr><td>central</td><td>/'sentrəl/ adj.</td><td>中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的</td></tr>
+<tr><td>dilemma</td><td>/dɪ'lemə/ n.</td><td>（进退两难的）窘境，困境</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>unusual</td><td>/ʌn'juːʒuəl/ adj.</td><td>与众不同的；不寻常的；不平常的</td></tr>
+<tr><td>sack</td><td>/sæk/ n.</td><td>麻袋, 包一袋的量开除, 解雇洗劫, 劫掠vt. 装入袋中解雇洗劫, 劫掠, sacking, sacks</td></tr>
+<tr><td>cook</td><td>/kʊk/ v.</td><td>做饭，烹调；（食物）被烧煮；（非正式）篡改，伪造；密谋；干得起劲n.. 厨师n.(Cook) （美）库克（人名）, cooking, cooks</td></tr>
+<tr><td>mortgage</td><td>/'mɔːrɡɪdʒ/ n.</td><td>抵押借款抵押债款的利息vt. 抵押, mortgaging, mortgages</td></tr>
+<tr><td>central</td><td>/'sentrəl/ adj.</td><td>中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的</td></tr>
+<tr><td>inflation</td><td>/ɪn'fleɪʃn/ n.</td><td>(充气而引起的)膨胀通货膨胀</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>tariffs</td><td>/'tærɪf/ n.</td><td>关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表, tariffing, tariffs</td></tr>
+<tr><td>overall</td><td>/ˌoʊvər'ɔːl/ adj.</td><td>总体的；全面的；综合的全面考虑的adv. 大体上，总的来说一切包括在内，全部的n. 长罩衣工装裤；工作裤</td></tr>
+<tr><td>odds</td><td>/ɑːdz/ n.</td><td>不平等；几率；胜算；差别</td></tr>
+<tr><td>shed</td><td>/ʃed/ n.</td><td>棚, 库vt. 流出, 流下蜕皮, 树叶脱落, shedding, sheds</td></tr>
+<tr><td>revised</td><td>— </td><td>改进的</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>supreme</td><td>/su'priːm/ adj.</td><td>最高的；至上的最重要的，supremest 缩 写: supr</td></tr>
+<tr><td>considering</td><td>/kən'sɪdərɪŋ/ prep.</td><td>考虑到, 就…而论adv. 从各方面考虑, 从通盘考虑</td></tr>
+<tr><td>escape</td><td>/ɪ'skeɪp/ vt.</td><td>逃避，避免；被忘掉vi. 逃脱；避开；溜走n. 逃跑；逃亡, escaping, escapes</td></tr>
+<tr><td>treasury</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>secretary</td><td>/'sekrəteri/ n.</td><td>秘书书记部长, 大臣</td></tr>
+<tr><td>central</td><td>/'sentrəl/ adj.</td><td>中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的</td></tr>
+<tr><td>hedge</td><td>/hedʒ/ vt.</td><td>用树篱笆围住；避免作正面答复vi. 用树篱围住；避免作正面答复n. 树篱；障碍, hedging, hedges</td></tr>
+<tr><td>alongside</td><td>/əˌlɔːŋ'saɪd/ adv.</td><td>靠着边，沿着边prep. (表示位置)在…旁边；沿着…的边；与…并排靠拢着(表示比较)与…放在一起比较(表示伴随)与…一起，与…一道</td></tr>
+<tr><td>cabinet</td><td>/'kæbɪnət/ n.</td><td>内阁；橱柜；展览艺术品的小陈列室adj. 内阁的；私下的，秘密的</td></tr>
+<tr><td>conference</td><td>/'kɑːnfərəns/ n.</td><td>会议讨论, 商谈</td></tr>
+<tr><td>intervention</td><td>/ˌɪntər'venʃn/ n.</td><td>介入, 干涉, 干预</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>contrary</td><td>/ˈkɑːntreri/ adj.</td><td>相反的, 相违的n. 相反, 反面, 对立面</td></tr>
+<tr><td>hedge</td><td>/hedʒ/ vt.</td><td>用树篱笆围住；避免作正面答复vi. 用树篱围住；避免作正面答复n. 树篱；障碍, hedging, hedges</td></tr>
+<tr><td>tremble</td><td>/'trembl/ vi.</td><td>战栗；焦虑；发抖；摇晃vt. 使挥动；用颤抖的声音说出n. 颤抖；战栗；摇晃, trembling, trembles</td></tr>
+<tr><td>interventions</td><td>/ˌɪntər'venʃn/ n.</td><td>介入, 干涉, 干预</td></tr>
+<tr><td>envelope</td><td>/'envəloʊp/ n.</td><td>信封，封皮；[生]包膜；[天]包层；[数]包迹</td></tr>
+<tr><td>arithmetic</td><td>/ə'rɪθmətɪk/ n.</td><td>算术计算</td></tr>
+<tr><td>worth</td><td>/wɜːrθ/ adj.</td><td>值…的n. 价值；财产, worthing, worths</td></tr>
+<tr><td>pound</td><td>/paʊnd/ n.</td><td>英镑；兽栏；重击，重击声；拘留所vt. 捣烂；敲打；监禁，拘留vi. 连续重击，猛击Pound庞德(姓氏)</td></tr>
+<tr><td>titled</td><td>/tɪt/ n.</td><td>山雀；各种小鸟；乳头；小马；少妇；轻打</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>pension</td><td>/ˈpenʃn/ n.</td><td>津贴；退休金，抚恤金；膳宿费vt. 发给养老金或抚恤金, pensioning, pensions</td></tr>
+<tr><td>assets</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>quarter</td><td>/'kwɔːrtər/ n.</td><td>四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一, quartering, quarters</td></tr>
+<tr><td>earned</td><td>/ɪr/ n.</td><td>耳朵；听觉；倾听；穗vi. （美俚）听见；抽穗EARabbr. East African Railways 东非铁路公司, earing, ears</td></tr>
+<tr><td>annual</td><td>/'ænjuəl/ adj.</td><td>年度的；每年的n. 年刊，年鉴；一年生植物</td></tr>
+<tr><td>fraction</td><td>/'frækʃn/ n.</td><td>小部分；部分；稍微；[数]分数</td></tr>
+<tr><td>relatively</td><td>/'relətɪvli/ adv.</td><td>相对地，比较而言；相当相对来说；相比较而言</td></tr>
+<tr><td>yielding</td><td>/jiːld/ vt.</td><td>出产；屈服；放弃vi. 屈服，投降n. 收益；产量, yielding, yields</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>central</td><td>/'sentrəl/ adj.</td><td>中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的</td></tr>
+<tr><td>yields</td><td>/jiːld/ vt.</td><td>出产；屈服；放弃vi. 屈服，投降n. 收益；产量, yielding, yields</td></tr>
+<tr><td>sheer</td><td>/ʃɪr/ adj.</td><td>完全的；十足的陡峭的；垂直的极薄的，轻的，透明的adv. 垂直地，陡峭地vi. 避开，突然转向，sheering，sheers</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day33.html" class="nav-btn">← Day 33</a>
+  <a href="day35.html" class="nav-btn">Day 35 →</a>
+</div>
+
+<div class="progress">📖 Day 34 of 40</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-08-15</div>
+
+</body>
+</html>

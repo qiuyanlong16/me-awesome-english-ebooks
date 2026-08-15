@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business | Press restart</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-08-15</div>
+
+<h1 class="article-title">Business | Press restart</h1>
+<div class="article-section">Business</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>ambitious plan to <span class="annot" data-tooltip="cultivate /'kʌltɪveɪt/ vt. 耕作, 种植陶冶思想[感情]培养(友谊)时 态: cultivated, cultivating, cultivates">cultivate</span> new firms, including by mobilising public funds and putting a minister in charge of <span class="annot" data-tooltip="startups /ˈstɑrtˈʌp/ n. 启动；开办">startups</span>. In May the country’s economy ministry released fresh guidance encouraging startups to <span class="annot" data-tooltip="consider /kən'sɪdər/ vt. & vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及时 态: considered, considering, ">consider</span> a buy-out as an exit option. Such attention has improved the image of startups. One founder notes that younger employees increasingly prefer working in fast- moving, new firms rather than the stodgy, seniority-based ones their parents worked for. Helpfully the tse has begun <span class="annot" data-tooltip="cracking /kræk/ vt. & vi. (使…)开裂, 破裂(使)身体上或精神上垮掉打开, 砸开(使)发出爆裂声n. 裂缝, 缝隙噼啪声, 爆裂声意">cracking</span> down on tiny, poorly performing firms. Last year it announced a plan to delist firms unable to maintain a market capitalisation of ¥10bn after being public for five years, up from ¥4bn over 10 years, though the rule will not take effect until 2030. “We want to make [an ipo] the starting point, not the end goal,” says Yamaji Hiromi, the exchange’s boss. Japan has further to go. Having one decacorn operating at global scale might create a motivated acquirer of promising young companies, notes Mr Fisher, who draws a comparison with <span class="annot" data-tooltip="silicon /'sɪlɪkən/ n. 〈化〉硅">Silicon</span> <span class="annot" data-tooltip="valley /'væli/ n. 流域；山谷；溪谷">Valley</span>’s titans buying startups founded by ex-employees. Japan’s 20th-century <span class="annot" data-tooltip="startup /ˈstɑrtˈʌp/ n. 启动；开办">startup</span> pioneers built huge businesses from lowly beginnings. Today’s founders will need the same <span class="annot" data-tooltip="drive /draɪv/ vt. 驱赶驱使, 促使敲, 击vt. & vi. 驾驶n. 乘车旅行私人车道传动, 驱动干劲, 积极性, 能动性紧迫, 逼迫,">drive</span> to make it to the big time.■ This article was downloaded by zlibrary from https://www.economist.com/business/2026/08/13/japans-downbeat-startups-need-a-lift</p>
+<div class="article-separator"></div>
+<div class="article-header">Business · Business | Opening time</div>
+<p>The world’s biggest fast-food chain is moving into pubs Why China’s Mixue Bingcheng is serving up beer Aug 13th 2026 Even in the most remote corner of China a frothy Fulujia beer is waiting for you. The company, whose name translates as “Lucky Deer”, has opened more than 3,200 mini-pubs across the country since 2021, making it the world’s largest bar chain. More impressive than its scale are its prices. A pint is poured for as little as 5.9 yuan ($0.87), whether it is served in a big city or a border town. Fulujia premises are small but uniform micro-<span class="annot" data-tooltip="watering /'wɔtərɪŋ/ n. 洒水，浇水；(指动物)饮水">watering</span> <span class="annot" data-tooltip="holes /hoʊl/ n. 洞，孔；洞穴，穴；突破口vi. 凿洞，穿孔；（高尔夫球等）进洞vt. 凿洞时 态: holed, holing, hol">holes</span> that have 20 beers on <span class="annot" data-tooltip="draft /dræft/ n. 汇票；草稿；选派；（尤指房间、烟囱、炉子等供暖系统中的）（小股）气流">draft</span> and a bijou seating area. They often sell bar <span class="annot" data-tooltip="snacks /snæk/ n. 小吃；点心；快餐vi. 吃快餐；吃点心时 态: snacked，snacking，snacks">snacks</span> such as fried pork and edamame beans. When asked why prices are so low, the proprietor of a recently opened Fulujia in Lushui, a town in the deep south-</p>
+<p>west, says it is because the company is owned by Mixue Bingcheng, a tea and cold-drinks <span class="annot" data-tooltip="mega n. 百万adj. 许多；宏大的adv. 非常">mega</span>-chain that has around 60,000 <span class="annot" data-tooltip="outlets /'aʊtlet/ n. 出口, 出路发泄的途径经销店">outlets</span> worldwide. Last year it overtook McDonald’s, the American burger giant, to become the world’s largest fast-food operator by <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of locations. Mixue bought a controlling stake in Fulujia in October. Both are run on similar franchise models. Franchisees pay an <span class="annot" data-tooltip="upfront /ˌʌp'frʌnt/ adj. 预付的；在前面的adv. 在前面；提前支付（工资）">upfront</span> cost of about 60,000 yuan for everything that is needed to launch a mini-<span class="annot" data-tooltip="pub /pʌb/ n. 酒馆；客栈">pub</span>, such as beer pumps and <span class="annot" data-tooltip="branded /brænd/ n. 商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责时 态: branded, branding, brands">branded</span> decorations (though rent and renovation costs are not included). They are <span class="annot" data-tooltip="exempt /ɪɡ'zempt/ vt. 免除；豁免adj. 被免除的；被豁免的n. 免税者；被免除义务者时 态: exempted, exempting, ex">exempt</span> from paying <span class="annot" data-tooltip="royalties /'rɔɪəlti/ n. 王权；皇室；版税；专利税">royalties</span> for three years. The secret to Mixue’s success is its mastery of supply chains. It is often described as a <span class="annot" data-tooltip="logistics /lə'dʒɪstɪk/ adj. 后勤学的；符号逻辑的副 词: logistically">logistics</span> company rather than a fast-food chain. The efficiency with which Mixue has been able to move supplies has kept costs for consumers remarkably low—its marquee drink is a four-yuan lemonade. Fulujia uses the same logistics networks to <span class="annot" data-tooltip="ship /ʃɪp/ vt. 运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Di">ship</span> its beer from Henan province, where both Mixue and Fulujia are based, to its franchisees, who do not pay transport costs, even when they are as <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> away as Lushui, more than 2,000km from the brewery. A franchising model coupled with a highly efficient supply chain has turbocharged the openings of Mixue outlets—roughly 40 a day appeared in 2025. The effects have been similar for Fulujia. <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">Nearly</span> two-thirds of its 3,200 bars have been launched since Mixue bought its stake late last year. This also appears to be working for the <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span>’s café chain, Lucky Cup, of which there were at least 10,000 in China at the end of last year. The model is enjoying some success <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span> China, too. Mixue has around 5,000 outlets abroad, making it by far the most successful Chinese fast-food chain outside the country. It has also opened Lucky Cup branches in <span class="annot" data-tooltip="malaysia n. 马来西亚形容词: Malaysian">Malaysia</span> and <span class="annot" data-tooltip="thailand n. 泰国">Thailand</span>. Fulujia has not yet announced plans to go overseas. But with pubs in New York and London serving up painfully expensive pints, cheap Chinese <span class="annot" data-tooltip="brews /bruː/ vt. 酿造；酝酿vi. 酿酒；被冲泡；即将发生n. 啤酒；质地时 态: brewed, brewing, brews">brews</span> would be sure to receive a welcome from drinkers.■ This article was downloaded by zlibrary from https://www.economist.com/business/2026/08/13/the-worlds-biggest-fast-food-chain- is-moving-into-pubs</p>
+<div class="article-separator"></div>
+<div class="article-header">Business · Business | Jump shot</div>
+<p>Is the LA Lakers’ sale a sign of sports investment gone mad? $12.5bn price tag is highest ever for an American sports team Aug 13th 2026 WHAT IS A worthy consolation prize for a billionaire investor whose attempt to buy a stake in fifa’s football World Cup recently blew up in his face? Answer: pivot sharply and <span class="annot" data-tooltip="snap /snæp/ vt. 猛咬；突然折断，拉断；啪地关上vi. 咬；厉声说；咯嗒一声关上n. 猛咬；劈啪声；突然折断adj. 突然的SNAPabb">snap</span> up one of America’s most valuable basketball teams, the Los Angeles Lakers, instead. In a $12.5bn deal announced on August 12th, Joshua Kushner, founder of Thrive Capital, an investment firm, will become the Lakers’ controlling <span class="annot" data-tooltip="shareholder /'ʃerhoʊldər/ n. 股东名 词: shareholding">shareholder</span>, with Bob Iger, an ex-CEO of Walt Disney, as his wingman, insiders say. The price tag is the highest ever for an American sports team, reflecting institutional investors’ feverish appetite for sports franchises.</p>
+<p>The sum is a whopping $2.5bn more than Mark Walter, the seller of the team, paid for the Lakers around a year ago, also a record amount at the time. A day earlier a unit of Apollo Global Management, another <span class="annot" data-tooltip="asset /'æset/ n. 资产；有用的东西；有利条件；优点">asset</span> manager, said that it had put $2.6bn of debt and equity behind the <span class="annot" data-tooltip="owner /'oʊnər/ n. 所有者；物主">owner</span> of the New York Yankees, a baseball team. Does this mean that sports investment is overheating? Messrs Kushner and Iger have compared buying the Lakers to getting hold of the Mona Lisa. The team is indeed one of a kind. No basketball team earns <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> as much from local broadcasting rights as the Lakers. Nor does any American sports team come close to matching its international name <span class="annot" data-tooltip="recognition /ˌrekəɡ'nɪʃn/ n. 认识；认出；承认〈正〉酬谢，酬劳形容词: recognitory">recognition</span> and fanbase, according to Ampere Analysis, a media-research firm. Basketball itself has unique attractions for investors. In 2024 the National Basketball Association (NBA) negotiated a nationwide $76bn, 11-year media-rights package with several broadcasters, including Disney’s ESPN and ABC networks (negotiated while Mr Iger was still boss), providing long-term certainty on future broadcasting <span class="annot" data-tooltip="revenues /'revənuː/ n. 收入，收益；财政收入，税收">revenues</span>. The sport appeals to young fans, involves high-scoring games and has plenty of drama, such as this year’s victory by the New York Knicks in the NBA Championship. Its international appeal is also likely to continue to grow. Next year the NBA plans to launch a 16-team <span class="annot" data-tooltip="league /liːɡ/ n. 联盟；社团；范畴vt. 使…结盟；与…联合vi. 结盟；团结时 态: leagued, leaguing, league">league</span> in Europe. But Mr Kushner is also on the rebound. His attempt to lead a $4.2bn investment in the commercial arm of fifa, world football’s governing body, ended in fiasco after a global backlash over the possible sale of the World Cup. Days after the rebuff, he and Mr Iger switched from trying to set up a new basketball team in Las Vegas to buying the Lakers instead. Their investments will be backed by Thrive <span class="annot" data-tooltip="eternal /ɪ'tɜːrnl/ adj. 永恒的；不朽的副 词: eternally">Eternal</span>, a long-term investment <span class="annot" data-tooltip="vehicle /'viːəkl/ n. 交通工具, 车辆传播媒介, 手段">vehicle</span> focused on businesses that Mr Kushner’s firm thinks will withstand <span class="annot" data-tooltip="disruption n. 中断,分裂,瓦解,破坏">disruption</span> by AI (Thrive is also a big investor in OpenAI, just in case). The logic sounds rational. But even without a bidding war he is putting more than twice as much <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span> on the Lakers as another <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span> of investors paid last year for the Boston Celtics, one of America’s most valuable basketball teams. That sounds extravagant.</p>
+<p>If the NBA approves the deal, Mr Walter will pocket a <span class="annot" data-tooltip="fortune /'fɔːrtʃən/ n. 运气；财富；命运vt. 给予财富vi. 偶然发生时 态: fortuned, fortuning, fortunes">fortune</span>. But it is not clear why he was in such a hurry to sell the Lakers. He will <span class="annot" data-tooltip="apparently /ə'pærəntli/ adv. 显然地表面上,似乎">apparently</span> <span class="annot" data-tooltip="retain /rɪ'teɪn/ vt. 保持；雇；记住时 态: retained, retaining, retains 缩 写: ret">retain</span> a controlling stake in the Los Angeles Dodgers, a baseball team, as well as large investments in several other big sports teams. Bloomberg, a news agency, reported that his firm, TWG Global, is trying to <span class="annot" data-tooltip="raise /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raise</span> cash <span class="annot" data-tooltip="amid /ə'mɪd/ prep. 在其中，在其间">amid</span> scrutiny by <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">federal</span> investigators into loans it received that were put on the books of Mr Walter’s insurance companies. He is also said to be unwell. Perhaps he just saw the merits of a quick <span class="annot" data-tooltip="flip /flɪp/ vt. 轻击；掷vi. 用指轻弹；蹦跳adj. 无礼的；轻率的n. 筋斗；弹FLIPabbr. Floating Indeved">flip</span>. ■ This article was downloaded by zlibrary from https://www.economist.com/business/2026/08/13/is-the-la-lakers-sale-a-sign-of- sports-investment-gone-mad</p>
+<div class="article-separator"></div>
+<div class="article-header">Business · Business | Battle of the hyperscalers</div>
+<p><span class="annot" data-tooltip="nvidia 恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商">Nvidia</span>’s great <span class="annot" data-tooltip="silicon /'sɪlɪkən/ n. 〈化〉硅">silicon</span> <span class="annot" data-tooltip="showdown /'ʃoʊdaʊn/ n. 摊牌, 一决胜负">showdown</span> The chipmaker’s biggest customers want a piece of its business. It is fighting back with a $500bn deal Aug 13th 2026 The relationship between Nvidia and the hyperscalers—cloud giants such as <span class="annot" data-tooltip="amazon /ˈæməˌzɑn/ n. 高大强悍的女人；（古希腊神话中的）亚马孙族女战士Amazonn. 亚马逊河(南美洲大河)">Amazon</span>, Google, Meta and Microsoft—used to be <span class="annot" data-tooltip="straightforward /ˌstreɪt'fɔːrwərd/ adj. (人或其态度)正直的，坦率的；老实的简单的；易懂的副 词: straightforwardly">straightforward</span>. Nvidia designed and supplied chips; the hyperscalers built data centres using them. For now, the two sides still need one another (see chart). Yet both are preparing for a future in which they <span class="annot" data-tooltip="lean /liːn/ vi. 倾斜；倚靠；倾向；依赖adj. 瘦的；贫乏的，歉收的vt. 使倾斜n. 倾斜；倾斜度；瘦肉时 态: leaned, le">lean</span> on each other less.</p>
+<p>A sign of impending separation came on August 10th, when <span class="annot" data-tooltip="nvidia 恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商">Nvidia</span> announced a partnership with six of Wall Street’s biggest investors, including BlackRock and Goldman Sachs, to “mobilise over $500bn” for ai <span class="annot" data-tooltip="infrastructure /'ɪnfrəstrʌktʃər/ n. 基础设施; 基础结构">infrastructure</span>. The aim is to help customers, such as smaller ai labs and businesses that face steeper borrowing costs than Google or Microsoft, to find the vast sums needed to build data centres. Under the plan, the consortium will <span class="annot" data-tooltip="raise /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raise</span> pools of capital from institutional investors and lend it to Nvidia's customers at attractive rates to build infrastructure using Nvidia's <span class="annot" data-tooltip="gear /ɡɪr/ n. 用具，设备，衣服齿轮；传动装置；(排)挡vi. 换挡vt. 使兴奋起来；使准备好vt. & vi. (使)搭配；(使)适">gear</span>. Infrastructure is expensive: a large data centre costs around $50bn. Most firms do not need anywhere near that scale, but the cost is steep regardless. Nvidia's approach is to use compute as <span class="annot" data-tooltip="collateral /kə'lætərəl/ n. 附属担保品adj. 相关的">collateral</span>, allowing institutional investors to take part. One challenge is that <span class="annot" data-tooltip="processors /'prɑːsesər/ n. 加工、处理事物的人〔设备、产业〕(计算机的)中央处理器数据处理机">processors</span> have a shelf life, <span class="annot" data-tooltip="typically /'tɪpɪkli/ adv. 代表性地;作为特色地;典型地">typically</span> four to five years, which complicates valuing loans made against them. Another is what happens to the infrastructure if demand fails to materialise. Nvidia's response is to backstop as much as a <span class="annot" data-tooltip="quarter /'kwɔːrtər/ n. 四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一时 ">quarter</span> of a project's cost through a <span class="annot" data-tooltip="mechanism /'mekənɪzəm/ n. 机械装置构造, 机制办法, 技巧, 途径">mechanism</span> which keeps the company on the hook if the <span class="annot" data-tooltip="asset /'æset/ n. 资产；有用的东西；有利条件；优点">asset</span> backing the loan <span class="annot" data-tooltip="falls /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">falls</span> below a certain <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span>. It is ingenious financial engineering from a firm better known for the technical kind.</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>cultivate</td><td>/'kʌltɪveɪt/ vt.</td><td>耕作, 种植陶冶思想[感情]培养(友谊), cultivating, cultivates</td></tr>
+<tr><td>startups</td><td>/ˈstɑrtˈʌp/ n.</td><td>启动；开办</td></tr>
+<tr><td>consider</td><td>/kən'sɪdər/ vt.</td><td>& vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及, considering, considers</td></tr>
+<tr><td>cracking</td><td>/kræk/ vt.</td><td>& vi. (使…)开裂, 破裂(使)身体上或精神上垮掉打开, 砸开(使)发出爆裂声n. 裂缝, 缝隙噼啪声, 爆裂声意外的一下重击试图, 尝试俏皮话强效可卡因</td></tr>
+<tr><td>silicon</td><td>/'sɪlɪkən/ n.</td><td>〈化〉硅</td></tr>
+<tr><td>valley</td><td>/'væli/ n.</td><td>流域；山谷；溪谷</td></tr>
+<tr><td>startup</td><td>/ˈstɑrtˈʌp/ n.</td><td>启动；开办</td></tr>
+<tr><td>drive</td><td>/draɪv/ vt.</td><td>驱赶驱使, 促使敲, 击vt. & vi. 驾驶n. 乘车旅行私人车道传动, 驱动干劲, 积极性, 能动性紧迫, 逼迫, 压力, drives</td></tr>
+<tr><td>watering</td><td>/'wɔtərɪŋ/ n.</td><td>洒水，浇水；(指动物)饮水</td></tr>
+<tr><td>holes</td><td>/hoʊl/ n.</td><td>洞，孔；洞穴，穴；突破口vi. 凿洞，穿孔；（高尔夫球等）进洞vt. 凿洞, holing, holes</td></tr>
+<tr><td>draft</td><td>/dræft/ n.</td><td>汇票；草稿；选派；（尤指房间、烟囱、炉子等供暖系统中的）（小股）气流</td></tr>
+<tr><td>snacks</td><td>/snæk/ n.</td><td>小吃；点心；快餐vi. 吃快餐；吃点心，snacking，snacks</td></tr>
+<tr><td>mega</td><td>— n.</td><td>百万adj. 许多；宏大的adv. 非常</td></tr>
+<tr><td>outlets</td><td>/'aʊtlet/ n.</td><td>出口, 出路发泄的途径经销店</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>upfront</td><td>/ˌʌp'frʌnt/ adj.</td><td>预付的；在前面的adv. 在前面；提前支付（工资）</td></tr>
+<tr><td>pub</td><td>/pʌb/ n.</td><td>酒馆；客栈</td></tr>
+<tr><td>branded</td><td>/brænd/ n.</td><td>商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责, branding, brands</td></tr>
+<tr><td>exempt</td><td>/ɪɡ'zempt/ vt.</td><td>免除；豁免adj. 被免除的；被豁免的n. 免税者；被免除义务者, exempting, exempts</td></tr>
+<tr><td>royalties</td><td>/'rɔɪəlti/ n.</td><td>王权；皇室；版税；专利税</td></tr>
+<tr><td>logistics</td><td>/lə'dʒɪstɪk/ adj.</td><td>后勤学的；符号逻辑的</td></tr>
+<tr><td>ship</td><td>/ʃɪp/ vt.</td><td>运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Division of the Nation</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>malaysia</td><td>— n.</td><td>马来西亚</td></tr>
+<tr><td>thailand</td><td>— n.</td><td>泰国</td></tr>
+<tr><td>brews</td><td>/bruː/ vt.</td><td>酿造；酝酿vi. 酿酒；被冲泡；即将发生n. 啤酒；质地, brewing, brews</td></tr>
+<tr><td>snap</td><td>/snæp/ vt.</td><td>猛咬；突然折断，拉断；啪地关上vi. 咬；厉声说；咯嗒一声关上n. 猛咬；劈啪声；突然折断adj. 突然的SNAPabbr. Satellite Navigat</td></tr>
+<tr><td>shareholder</td><td>/'ʃerhoʊldər/ n.</td><td>股东</td></tr>
+<tr><td>asset</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>owner</td><td>/'oʊnər/ n.</td><td>所有者；物主</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>recognition</td><td>/ˌrekəɡ'nɪʃn/ n.</td><td>认识；认出；承认〈正〉酬谢，酬劳</td></tr>
+<tr><td>revenues</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>league</td><td>/liːɡ/ n.</td><td>联盟；社团；范畴vt. 使…结盟；与…联合vi. 结盟；团结, leaguing, leagues</td></tr>
+<tr><td>eternal</td><td>/ɪ'tɜːrnl/ adj.</td><td>永恒的；不朽的</td></tr>
+<tr><td>vehicle</td><td>/'viːəkl/ n.</td><td>交通工具, 车辆传播媒介, 手段</td></tr>
+<tr><td>disruption</td><td>— n.</td><td>中断,分裂,瓦解,破坏</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>fortune</td><td>/'fɔːrtʃən/ n.</td><td>运气；财富；命运vt. 给予财富vi. 偶然发生, fortuning, fortunes</td></tr>
+<tr><td>apparently</td><td>/ə'pærəntli/ adv.</td><td>显然地表面上,似乎</td></tr>
+<tr><td>retain</td><td>/rɪ'teɪn/ vt.</td><td>保持；雇；记住, retaining, retains 缩 写: ret</td></tr>
+<tr><td>raise</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>amid</td><td>/ə'mɪd/ prep.</td><td>在其中，在其间</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>flip</td><td>/flɪp/ vt.</td><td>轻击；掷vi. 用指轻弹；蹦跳adj. 无礼的；轻率的n. 筋斗；弹FLIPabbr. Floating Indeved Point Arithmetic 变址</td></tr>
+<tr><td>nvidia</td><td>— </td><td>恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商</td></tr>
+<tr><td>silicon</td><td>/'sɪlɪkən/ n.</td><td>〈化〉硅</td></tr>
+<tr><td>showdown</td><td>/'ʃoʊdaʊn/ n.</td><td>摊牌, 一决胜负</td></tr>
+<tr><td>amazon</td><td>/ˈæməˌzɑn/ n.</td><td>高大强悍的女人；（古希腊神话中的）亚马孙族女战士Amazonn. 亚马逊河(南美洲大河)</td></tr>
+<tr><td>straightforward</td><td>/ˌstreɪt'fɔːrwərd/ adj.</td><td>(人或其态度)正直的，坦率的；老实的简单的；易懂的</td></tr>
+<tr><td>lean</td><td>/liːn/ vi.</td><td>倾斜；倚靠；倾向；依赖adj. 瘦的；贫乏的，歉收的vt. 使倾斜n. 倾斜；倾斜度；瘦肉, leaning, leans</td></tr>
+<tr><td>nvidia</td><td>— </td><td>恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商</td></tr>
+<tr><td>infrastructure</td><td>/'ɪnfrəstrʌktʃər/ n.</td><td>基础设施; 基础结构</td></tr>
+<tr><td>raise</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>gear</td><td>/ɡɪr/ n.</td><td>用具，设备，衣服齿轮；传动装置；(排)挡vi. 换挡vt. 使兴奋起来；使准备好vt. & vi. (使)搭配；(使)适合，gearing，gears</td></tr>
+<tr><td>collateral</td><td>/kə'lætərəl/ n.</td><td>附属担保品adj. 相关的</td></tr>
+<tr><td>processors</td><td>/'prɑːsesər/ n.</td><td>加工、处理事物的人〔设备、产业〕(计算机的)中央处理器数据处理机</td></tr>
+<tr><td>typically</td><td>/'tɪpɪkli/ adv.</td><td>代表性地;作为特色地;典型地</td></tr>
+<tr><td>quarter</td><td>/'kwɔːrtər/ n.</td><td>四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一, quartering, quarters</td></tr>
+<tr><td>mechanism</td><td>/'mekənɪzəm/ n.</td><td>机械装置构造, 机制办法, 技巧, 途径</td></tr>
+<tr><td>asset</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>falls</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day29.html" class="nav-btn">← Day 29</a>
+  <a href="day31.html" class="nav-btn">Day 31 →</a>
+</div>
+
+<div class="progress">📖 Day 30 of 40</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-08-15</div>
+
+</body>
+</html>

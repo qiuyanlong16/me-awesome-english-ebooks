@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance & economics</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-08-15</div>
+
+<h1 class="article-title">Finance & economics</h1>
+<div class="article-section"></div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>The BoJ has been no less successful a carry trader for being an accidental one. The aim of its currency <span class="annot" data-tooltip="interventions /ˌɪntər'venʃn/ n. 介入, 干涉, 干预">interventions</span> over the past 25 years has not been to make money. It has instead sought to stabilise the yen and undo the exchange rate’s wildest misalignments. An uncomfortably strong yen hurt Japan’s exporters and <span class="annot" data-tooltip="worsened /'wɜːrsn/ vt. & vi. (使)变得更坏,(使)恶化时 态: worsened, worsening, worsens">worsened</span> its deflationary tendencies after its <span class="annot" data-tooltip="asset /'æset/ n. 资产；有用的东西；有利条件；优点">asset</span>- price <span class="annot" data-tooltip="bubble /'bʌbl/ n. 气泡，泡沫，泡状物；透明圆形罩，圆形顶vi. 沸腾，冒泡；发出气泡声vt. 使冒泡；滔滔不绝地说时 态: bubbled">bubble</span> burst in the 1990s. An excessively weak yen, by <span class="annot" data-tooltip="contrast /'kɑːntræst/ n. 对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照时 态: contrasted, cont">contrast</span>, <span class="annot" data-tooltip="raises /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raises</span> the cost of food and fuel, most of which are imported. For as long as Japan was fighting stagnant demand and deflationary pressure, its gigantic carry trade was <span class="annot" data-tooltip="sustainable adj. (对自然资源和能源的利用)不破坏生态平衡的, 合理利用的；可持续的">sustainable</span>. In those conditions, the <span class="annot" data-tooltip="central /'sentrəl/ adj. 中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的副 词: centrally">central</span> bank was always going to keep interest rates low and the yen weak. But <span class="annot" data-tooltip="underlying /ˌʌndər'laɪɪŋ/ adj. 根本的, 基础的含蓄的, 潜在的">underlying</span> <span class="annot" data-tooltip="inflation /ɪn'fleɪʃn/ n. (充气而引起的)膨胀通货膨胀">inflation</span> has now increased and is close to the BoJ’s <span class="annot" data-tooltip="annual /'ænjuəl/ adj. 年度的；每年的n. 年刊，年鉴；一年生植物副 词: annually">annual</span> target of 2%. Several members of its rate-setting committee fear inflation will overshoot. Forecasters expect the committee to <span class="annot" data-tooltip="raise /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raise</span> interest rates three times by July 2027. For the world’s largest carry trader, that is an <span class="annot" data-tooltip="awkward /'ɔːkwərd/ adj. 笨拙的；尴尬的；棘手的；不合适的副 词: awkwardly">awkward</span> <span class="annot" data-tooltip="prospect /'prɑːspekt/ n. 景象，景色前景；前途可能成为主顾的人；有希望的候选人vi. 勘探；勘察时 态: prospected，prospecti">prospect</span>. It would quickly raise the borrowing costs for Japan’s combined public sector by 0.75% of GDP, according to Mr Lustig’s figures, with more to come when longer-term liabilities are rolled over. These dangers cast Japan’s <span class="annot" data-tooltip="intervention /ˌɪntər'venʃn/ n. 介入, 干涉, 干预">intervention</span> in a new light. With rate increases looming but the currency still <span class="annot" data-tooltip="dirt /dɜːrt/ n. 污垢，灰尘，脏土泥土，散土下流想法；下流话恶言，丑闻">dirt</span> cheap, the government has picked an opportune time to <span class="annot" data-tooltip="prune /pruːn/ n. 西梅脯，西梅干vt. 修剪(树木等)精简某事物；除去某事物多余的部分Prune(植物生长调节剂)苯磺素时 态: prun">prune</span> its yen liabilities. By selling dollars and purchasing yen, it is, in effect, buying back some of the IOUs it has issued. And because Japan’s currency has yet to rally <span class="annot" data-tooltip="decisively /dɪ'saɪsɪv/ adj. 决定性的；果断的，坚定的副 词: decisively">decisively</span>, the BoJ can <span class="annot" data-tooltip="extinguish /ɪk'stɪŋɡwɪʃ/ vt. 使熄灭, 扑灭使…不复存在时 态: extinguished, extinguishing, extinguishes">extinguish</span> lots of yen liabilities for every dollar sold. With each such defence of the currency, the world’s biggest carry trade becomes a little less big. The <span class="annot" data-tooltip="mechanics /mə'kænɪks/ n. 力学;机械学机件;过程;方法">mechanics</span> are a little <span class="annot" data-tooltip="involved /ɪn'vɑːlvd/ adj. 卷入的；有关的；复杂的v. 涉及；使参与；包含（involve的过去式和过去分词）">involved</span>. Any dollars the BoJ sells to commercial banks will drain their yen accounts at the central bank, reducing the amount the public sector owes to them. That is not the end of the story, for the BoJ’s interventions are <span class="annot" data-tooltip="typically /'tɪpɪkli/ adv. 代表性地;作为特色地;典型地">typically</span> “sterilised”: the central bank buys government <span class="annot" data-tooltip="securities /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">securities</span> from the banks (usually bills issued by the finance ministry) thus restoring their yen balances. But the <span class="annot" data-tooltip="net /net/ n. 网；净利；网络；实价vi. 编网vt. 净赚；得到；用网捕adj. 纯粹的；净余的时 态: netted, nettin">net</span> result is still that the exchequer, and therefore Japan’s consolidated public sector, has fewer yen liabilities to worry about. This <span class="annot" data-tooltip="delicate /'delɪkət/ adj. 微妙的；易碎的；清淡可口的；柔和的；精美的，雅致的；纤弱的副 词: delicately">delicate</span> pruning does not remove the dangers. If the <span class="annot" data-tooltip="purchases /'pɜːrtʃəs/ n. 购买；紧握；起重装置vt. 购买；赢得vi. 购买东西时 态: purchased, purchasing, purch">purchases</span> last month did amount to $95bn, they would have <span class="annot" data-tooltip="extinguished /ɪk'stɪŋɡwɪʃ/ vt. 使熄灭, 扑灭使…不复存在时 态: extinguished, extinguishing, extinguishes">extinguished</span> less than 1% of</p>
+<p>the public sector’s interest-<span class="annot" data-tooltip="bearing /'berɪŋ/ n. 轴承；方位；举止；关系v. 忍受（bear的ing形式）">bearing</span> liabilities. But the <span class="annot" data-tooltip="intervention /ˌɪntər'venʃn/ n. 介入, 干涉, 干预">intervention</span> was <span class="annot" data-tooltip="nonetheless /ˌnʌnðə'les/ adv. 虽然如此,但是">nonetheless</span> a well-timed step in the right direction. And judging by the currency market’s lack of conviction about the yen, the BoJ, with or without its American friends, may have several future opportunities to repeat the trade. “Buy yen” could remain on the Japanese government’s to-do list for a good while yet.■ This article was downloaded by zlibrary from https://www.economist.com/finance-and-economics/2026/08/13/when-japan-buys-yen-it- unwinds-a-dangerous-trade</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Science &amp; technology</div>
+<p>The brain may be about to have its Ozempic moment Maybe scientific progress isn’t slowing, after all NASA takes aim at fire storms Can you <span class="annot" data-tooltip="hack /hæk/ vt. & vi. 劈, 砍vt. 狠踢, 乱踢vi. 咳嗽(发出刺耳声音)(以普通速度)骑马驾驶计程车n. 砍, 劈用靴头踢骑">hack</span> your <span class="annot" data-tooltip="gut /ɡʌt/ n. 内脏；肠子；胆量；海峡；剧情vt. 取出内脏；摧毁内部装置adj. 本质的，根本的；简单的GUT大统一理论时 态: gu">gut</span> microbiome?</p>
+<p>Science & technology | Wide awake The brain may be about to have its Ozempic moment Pharma’s newest <span class="annot" data-tooltip="obsession /əb'seʃn/ n. 困扰, 无法摆脱的思想(或情感)形容词: obsessional">obsession</span> involves <span class="annot" data-tooltip="mimicking /'mɪmɪk/ vt. 模仿，摹拟n. 小丑；仿制品；效颦者，模仿者adj. 模仿的，模拟的；假装的时 态: mimicked, mimicki">mimicking</span> the system that keeps people awake Aug 13th 2026 ONE PEPTIDE has recently transformed medicine. Drugs based on glucagon-like peptide-1 (GLP-1), a hormone released by the <span class="annot" data-tooltip="gut /ɡʌt/ n. 内脏；肠子；胆量；海峡；剧情vt. 取出内脏；摧毁内部装置adj. 本质的，根本的；简单的GUT大统一理论时 态: gu">gut</span> after a meal, began as treatments for <span class="annot" data-tooltip="diabetes /ˌdaɪə'biːtiːz/ n. 糖尿病">diabetes</span> before <span class="annot" data-tooltip="proving /proʊ/ n. 从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞">proving</span> remarkably good at <span class="annot" data-tooltip="helping /'helpɪŋ/ n. （进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的">helping</span> people <span class="annot" data-tooltip="shed /ʃed/ n. 棚, 库vt. 流出, 流下蜕皮, 树叶脱落时 态: shed, shedding, sheds">shed</span> weight. They have since shown benefits in the fields of heart disease, <span class="annot" data-tooltip="kidney /'kɪdni/ n. 肾, 肾脏(可食用的动物的)腰子">kidney</span> disease, sleep apnoea and other <span class="annot" data-tooltip="ailments /'eɪlmənt/ n. 小病；不安">ailments</span>. Drugmakers are now betting that two other peptides, the orexins, could follow a similar path for a variety of brain-related ailments. Orexins are a pair of neurotransmitters—chemicals that carry messages between neurons. One of the <span class="annot" data-tooltip="main /meɪn/ adj. 主要的; 最重要的n. 总管道; 干线">main</span> jobs of these particular neurotransmitters</p>
+<p>is to regulate wakefulness. And a new generation of drugs designed to <span class="annot" data-tooltip="mimic /'mɪmɪk/ vt. 模仿，摹拟n. 小丑；仿制品；效颦者，模仿者adj. 模仿的，模拟的；假装的时 态: mimicked, mimicki">mimic</span> their effects is approaching the market. On August 5th America’s drug regulator approved oveporexton, made by Takeda, a Japanese pharmaceutical firm, as the first orexin agonist (ie, molecule that <span class="annot" data-tooltip="stimulates /'stɪmjuleɪt/ vt. 刺激；激励时 态: stimulated，stimulating，stimulates">stimulates</span> the same cell-surface receptors) for narcolepsy, a <span class="annot" data-tooltip="disorder /dɪs'ɔːrdər/ n. 混乱；骚乱vt. 扰乱；使失调时 态: disordered, disordering, disorders">disorder</span> that leaves patients excessively sleepy by day and <span class="annot" data-tooltip="prone /proʊn/ adj. 易于…的; 很可能…的俯卧的名 词: proneness">prone</span> to nod off without warning. Alkermes, an Irish biotech, is <span class="annot" data-tooltip="developing /dɪ'veləpɪŋ/ adj. 在进行中的;走向完成阶段的;走向成熟的发展中的">developing</span> a competitor. Eli Lilly, whose <span class="annot" data-tooltip="fortunes /'fɔːrtʃən/ n. 运气；财富；命运vt. 给予财富vi. 偶然发生时 态: fortuned, fortuning, fortunes">fortunes</span> GLP-1s have transformed, does not intend to miss another peptide boom. In June it bought Centessa, a biotech with an orexin drug in early <span class="annot" data-tooltip="trials /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">trials</span>, in a deal <span class="annot" data-tooltip="worth /wɜːrθ/ adj. 值…的n. 价值；财产时 态: worthed, worthing, worths">worth</span> up to $7.8bn, depending on the trials’ success. Morgan Stanley, a bank, reckons orexin medicines could generate $16bn a year by 2035 from narcolepsy and related sleep <span class="annot" data-tooltip="disorders /dɪs'ɔːrdər/ n. 混乱；骚乱vt. 扰乱；使失调时 态: disordered, disordering, disorders">disorders</span> alone. The current <span class="annot" data-tooltip="crop /krɑːp/ n. 农作物；庄稼；产量；平头vt. 种植；收割；修剪；剪短vi. 收获时 态: cropped, cropping, cro">crop</span> of narcolepsy drugs, by <span class="annot" data-tooltip="contrast /'kɑːntræst/ n. 对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照时 态: contrasted, cont">contrast</span>, have <span class="annot" data-tooltip="annual /'ænjuəl/ adj. 年度的；每年的n. 年刊，年鉴；一年生植物副 词: annually">annual</span> sales of some $3bn. And the excitement is not just about narcolepsy, which is estimated to afflict one person in 2,000 in America. Orexins help co-ordinate sleep, attention, motivation and the brain’s reward system. Drugmakers hope orexin medicines could eventually treat depression, attention-deficit hyperactivity disorder (<span class="annot" data-tooltip="adhd abbr. 注意力不集中症（ attention deficit hyperactivity disorder ）">ADHD</span>) and addiction, conditions that <span class="annot" data-tooltip="burden /'bɜːrdn/ n. 负担；责任；船的载货量vt. 烦扰；使负担；装货于时 态: burdened, burdening, burdens">burden</span> hundreds of millions of people. Orexins were discovered <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> three <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span> ago by two teams working independently. In January 1998 Luis de Lecea and his colleagues at the Scripps Research Institute in La Jolla, California found the peptides and called them hypocretins. Weeks later a <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span> led by Yanagisawa Masashi, of the University of <span class="annot" data-tooltip="texas /'teksəs/ n. 德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室">Texas</span> Southwestern Medical Centre in Dallas, reported that injecting the same peptides into rats’ brains made the animals eat more. They named the molecules orexins, from the Greek orexis, meaning appetite. Orexins’ true role emerged the following year. Emmanuel Mignot, of Stanford University, was studying hereditary narcolepsy in Doberman pinschers and Labrador retrievers, dog breeds prone to sudden <span class="annot" data-tooltip="collapse /kə'læps/ vi. 倒塌；瓦解；暴跌vt. 使倒塌，使崩溃；使萎陷n. 倒塌；失败；衰竭时 态: collapsed, collapsing">collapse</span> mid- play. He showed that a <span class="annot" data-tooltip="mutation /mjuː'teɪʃn/ n. 突变；变化；元音变化">mutation</span> blocked the brain’s ability to respond to them. That same year, Dr Yanagisawa’s laboratory found that mice engineered to lack orexins repeatedly fell asleep and collapsed. Human</p>
+<p>confirmation followed: narcoleptic patients had lost the specialised neurons that produce orexins. These neurons inhabit the hypothalamus, a brain region <span class="annot" data-tooltip="tucked /tʌk/ vt. 卷起；挤进；用某物舒适地裹住；使有褶裥；收拢；大口吃；使隐藏n. 船尾突出部；食物；缝摺；抱膝式跳水；活力；鼓声vi. ">tucked</span> behind the eyes. Once released, orexins lock, depending on their nature, onto one of two types of cell-surface receptors, OX1R and OX2R, in neighbouring neurons, switching them on. It is OX2R that is important for maintaining wakefulness. Its <span class="annot" data-tooltip="activation n. 活化,激活,[化]活化作用">activation</span> <span class="annot" data-tooltip="stimulates /'stɪmjuleɪt/ vt. 刺激；激励时 态: stimulated，stimulating，stimulates">stimulates</span> several wakefulness-<span class="annot" data-tooltip="promoting /'proʊmoʊ/ n. 商品推销；商品广告，广告片">promoting</span> systems that rely on other neurotransmitters—norepinephrine, serotonin, <span class="annot" data-tooltip="dopamine /'doʊpəmiːn/ n. 多巴胺（一种治脑神经病的药物）">dopamine</span> and so on—and keeps them working together, rather like the conductor of an <span class="annot" data-tooltip="orchestra /'ɔːrkɪstrə/ n. 管弦乐队形容词: orchestral">orchestra</span>. OX1R, is more <span class="annot" data-tooltip="involved /ɪn'vɑːlvd/ adj. 卷入的；有关的；复杂的v. 涉及；使参与；包含（involve的过去式和过去分词）">involved</span> with reward and motivation. Drugmakers first learned how to turn the OX2R conductor off. Orexin antagonists (which block the molecules’ actions rather than <span class="annot" data-tooltip="mimicking /'mɪmɪk/ vt. 模仿，摹拟n. 小丑；仿制品；效颦者，模仿者adj. 模仿的，模拟的；假装的时 态: mimicked, mimicki">mimicking</span> them, and thus promote sleep), have been available since 2014 as treatments for <span class="annot" data-tooltip="insomnia /ɪn'sɑːmniə/ n. 失眠症，失眠">insomnia</span>. They work differently from conventional sleeping pills, which enhance GABA, one of the brain’s <span class="annot" data-tooltip="main /meɪn/ adj. 主要的; 最重要的n. 总管道; 干线">main</span> inhibitory neurotransmitters. Birgitte Kornum, an orexins expert at Copenhagen University, says such pills induce sedation rather than natural sleep and often lose efficacy with continued use. Orexin antagonists instead turn down the brain’s wakefulness signal, letting its sleep-promoting systems take over. The bigger prize may lie not in blocking orexin’s signal, but restoring it—for many sleep <span class="annot" data-tooltip="disorders /dɪs'ɔːrdər/ n. 混乱；骚乱vt. 扰乱；使失调时 态: disordered, disordering, disorders">disorders</span> <span class="annot" data-tooltip="stem /stem/ n. (花草的)茎, (树木的)干词干vt. 遏制[阻止](液体的流动等)时 态: stemmed, stemming, st">stem</span> from faulty orexin signalling. The <span class="annot" data-tooltip="immediate /ɪ'miːdiət/ adj. 立即的，即刻的；紧迫的目前的，当前的直接的最接近的名 词: immediateness">immediate</span> application people have in mind is for narcolepsy type 1 (NT1), in which excessive daytime sleepiness is accompanied by cataplexy, a sudden loss of muscle control <span class="annot" data-tooltip="typically /'tɪpɪkli/ adv. 代表性地;作为特色地;典型地">typically</span> <span class="annot" data-tooltip="triggered adj. 触发的">triggered</span> by strong emotion. Further down the <span class="annot" data-tooltip="line /laɪn/ n. 绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long inter">line</span> narcolepsy type 2 (NT2), which lacks cataplexy, and idiopathic hypersomnia, a related type of excessive daytime sleepiness, are also in drugmakers’ crosshairs. NT1 is caused by <span class="annot" data-tooltip="abnormally /æb'nɔːrml/ adj. 反常的，异常的；变态的副 词: abnormally">abnormally</span> low levels of the orexin that binds to OX2R. During REM (rapid eye movement) sleep, the <span class="annot" data-tooltip="phase /feɪz/ n. 阶段, 时期(月亮、行星的)位相vt. 分阶段计划[安排]时 态: phased, phasing, phases">phase</span> when dreams are most <span class="annot" data-tooltip="intense /ɪn'tens/ adj. 强烈的；紧张的；热情的；非常的比较级: intenser, intensest">intense</span>, the brain paralyses the body to stop it <span class="annot" data-tooltip="actually /'æktʃuəl/ adj. 真实的，实际的；现行的，目前的副 词: actually">actually</span> acting out movements involved in such dreams. When someone is awake, this paralysis is held in check by norepinephrine and serotonin—two neurotransmitters that orexin</p>
+<p><span class="annot" data-tooltip="sustains /sə'steɪn/ vt. 承受，支撑维持长期保持；使继续经受，遭受时 态: sustained，sustaining，sustains">sustains</span>. With <span class="annot" data-tooltip="insufficient /ˌɪnsə'fɪʃnt/ adj. 不足的,不够的副 词: insufficiently">insufficient</span> orexin, the paralysis <span class="annot" data-tooltip="circuit /'sɜːrkɪt/ n. 电路，回路；环道；一圈；巡回vi. 环行vt. 绕回…环行时 态: circuited, circuiting, cir">circuit</span> may fire even if a person is fully <span class="annot" data-tooltip="conscious /'kɑːnʃəs/ adj. 神志清醒的意识到的; 注意到的自觉的; 蓄意的副 词: consciously">conscious</span>. They might be wide awake, in the middle of a burst of laughter for example, and then lose muscle control and crumple to the floor. Turning orexins back on is, however, harder than switching them off. An antagonist need only fit into a receptor to prevent an orexin from binding. An agonist must <span class="annot" data-tooltip="actually /'æktʃuəl/ adj. 真实的，实际的；现行的，目前的副 词: actually">actually</span> <span class="annot" data-tooltip="reproduce /ˌriːprə'duːs/ vt. & vi. 复制；重现；再版生殖，繁殖时 态: reproduced，reproducing，reproduces">reproduce</span> the effect of a peptide many times the drug’s <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> size. It must also cross the blood-brain barrier, which keeps potentially harmful molecules out of that organ. Takeda’s first attempt, an agonist called firazorexton, showed early promise, but was discontinued in 2021 after it caused <span class="annot" data-tooltip="liver /'lɪvər/ n. 肝脏；生活者，居民">liver</span> <span class="annot" data-tooltip="damage /'dæmɪdʒ/ v. 损害；伤害；毁坏；破坏n. 损坏，破坏，损失，损害，伤害（法院判定的）损害赔偿金时 态: damaged, damagi">damage</span> to several patients. But results published in May 2025 on oveporexton, their follow-up OX2R agonist, created a <span class="annot" data-tooltip="stir /stɜːr/ vt. & vi. 搅拌(使)移动；(使)激动n. 搅动；搅和；搅拌激动；纷乱；骚乱STIRabbr. Surveillance">stir</span>. In an eight-week <span class="annot" data-tooltip="trial /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">trial</span> involving 90 patients, volunteers sat in a darkened room to see how long they could stay awake—a <span class="annot" data-tooltip="procedure /prə'siːdʒər/ n. 程序, 步骤手续">procedure</span> called the <span class="annot" data-tooltip="maintenance /'meɪntənəns/ n. 维持; 维护; 保养; 维修赡养费">Maintenance</span> of Wakefulness test. Without oveporexton many fell asleep in a minute or so. On it, they managed to stay awake 12.5 to 25 minutes longer, depending on the dose, pushing many into the normal range. Cataplexy attacks were roughly a third as frequent in those taking the drug, compared with participants on a placebo. Side-effects included <span class="annot" data-tooltip="insomnia /ɪn'sɑːmniə/ n. 失眠症，失眠">insomnia</span> and, in about a third of patients, an uncomfortable urge to <span class="annot" data-tooltip="urinate /'jʊrɪneɪt/ vi. 小便，撒尿时 态: urinated, urinating, urinates">urinate</span>. What makes oveporexton different is not just its effect, but how that effect is achieved. Existing treatments, including stimulants such as methylphenidate and wakefulness-<span class="annot" data-tooltip="promoting /'proʊmoʊ/ n. 商品推销；商品广告，广告片">promoting</span> agents such as modafinil, manage <span class="annot" data-tooltip="symptoms /'sɪmptəm/ n. 征兆；症状">symptoms</span> rather than the disease itself. They increase the activity of neurotransmitters such as <span class="annot" data-tooltip="dopamine /'doʊpəmiːn/ n. 多巴胺（一种治脑神经病的药物）">dopamine</span> and norepinephrine in many parts of the brain. That can improve alertness but may also cause <span class="annot" data-tooltip="anxiety /æŋ'zaɪəti/ n. 焦虑；挂念；渴望；令人焦虑的事">anxiety</span>, elevated blood pressure and poor sleep. Some drugs also carry a risk of addiction. Orexins work further <span class="annot" data-tooltip="upstream /ˌʌp'striːm/ adv. &adj. 向上游(的);逆流(的)">upstream</span>. Rather than stimulating individual parts of the alertness system, they help bring them into <span class="annot" data-tooltip="line /laɪn/ n. 绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long inter">line</span>. Dr Yanagisawa says orexin agonists should produce more natural and stable wakefulness, with fewer side-effects and less potential for <span class="annot" data-tooltip="abuse /ə'bjuːs/ n. 滥用；辱骂；虐待；弊端；恶习，陋习vt. 滥用；辱骂；虐待时 态: abused, abusing, abuses">abuse</span> than stimulants. As to NT2 and idiopathic hypersomnia, Lilly’s orexin agonist, acquired through Centessa, is being tested against both of these, as well as NT1.</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>interventions</td><td>/ˌɪntər'venʃn/ n.</td><td>介入, 干涉, 干预</td></tr>
+<tr><td>worsened</td><td>/'wɜːrsn/ vt.</td><td>& vi. (使)变得更坏,(使)恶化, worsening, worsens</td></tr>
+<tr><td>asset</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>bubble</td><td>/'bʌbl/ n.</td><td>气泡，泡沫，泡状物；透明圆形罩，圆形顶vi. 沸腾，冒泡；发出气泡声vt. 使冒泡；滔滔不绝地说, bubbling, bubbles</td></tr>
+<tr><td>contrast</td><td>/'kɑːntræst/ n.</td><td>对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照, contrasting, contrasts</td></tr>
+<tr><td>raises</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>sustainable</td><td>— adj.</td><td>(对自然资源和能源的利用)不破坏生态平衡的, 合理利用的；可持续的</td></tr>
+<tr><td>central</td><td>/'sentrəl/ adj.</td><td>中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的</td></tr>
+<tr><td>underlying</td><td>/ˌʌndər'laɪɪŋ/ adj.</td><td>根本的, 基础的含蓄的, 潜在的</td></tr>
+<tr><td>inflation</td><td>/ɪn'fleɪʃn/ n.</td><td>(充气而引起的)膨胀通货膨胀</td></tr>
+<tr><td>annual</td><td>/'ænjuəl/ adj.</td><td>年度的；每年的n. 年刊，年鉴；一年生植物</td></tr>
+<tr><td>raise</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>awkward</td><td>/'ɔːkwərd/ adj.</td><td>笨拙的；尴尬的；棘手的；不合适的</td></tr>
+<tr><td>prospect</td><td>/'prɑːspekt/ n.</td><td>景象，景色前景；前途可能成为主顾的人；有希望的候选人vi. 勘探；勘察，prospecting，prospects</td></tr>
+<tr><td>intervention</td><td>/ˌɪntər'venʃn/ n.</td><td>介入, 干涉, 干预</td></tr>
+<tr><td>dirt</td><td>/dɜːrt/ n.</td><td>污垢，灰尘，脏土泥土，散土下流想法；下流话恶言，丑闻</td></tr>
+<tr><td>prune</td><td>/pruːn/ n.</td><td>西梅脯，西梅干vt. 修剪(树木等)精简某事物；除去某事物多余的部分Prune(植物生长调节剂)苯磺素，pruning，prunes</td></tr>
+<tr><td>decisively</td><td>/dɪ'saɪsɪv/ adj.</td><td>决定性的；果断的，坚定的</td></tr>
+<tr><td>extinguish</td><td>/ɪk'stɪŋɡwɪʃ/ vt.</td><td>使熄灭, 扑灭使…不复存在, extinguishing, extinguishes</td></tr>
+<tr><td>mechanics</td><td>/mə'kænɪks/ n.</td><td>力学;机械学机件;过程;方法</td></tr>
+<tr><td>involved</td><td>/ɪn'vɑːlvd/ adj.</td><td>卷入的；有关的；复杂的v. 涉及；使参与；包含（involve的过去式和过去分词）</td></tr>
+<tr><td>typically</td><td>/'tɪpɪkli/ adv.</td><td>代表性地;作为特色地;典型地</td></tr>
+<tr><td>securities</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>net</td><td>/net/ n.</td><td>网；净利；网络；实价vi. 编网vt. 净赚；得到；用网捕adj. 纯粹的；净余的, netting, nets</td></tr>
+<tr><td>delicate</td><td>/'delɪkət/ adj.</td><td>微妙的；易碎的；清淡可口的；柔和的；精美的，雅致的；纤弱的</td></tr>
+<tr><td>purchases</td><td>/'pɜːrtʃəs/ n.</td><td>购买；紧握；起重装置vt. 购买；赢得vi. 购买东西, purchasing, purchases</td></tr>
+<tr><td>extinguished</td><td>/ɪk'stɪŋɡwɪʃ/ vt.</td><td>使熄灭, 扑灭使…不复存在, extinguishing, extinguishes</td></tr>
+<tr><td>bearing</td><td>/'berɪŋ/ n.</td><td>轴承；方位；举止；关系v. 忍受（bear的ing形式）</td></tr>
+<tr><td>intervention</td><td>/ˌɪntər'venʃn/ n.</td><td>介入, 干涉, 干预</td></tr>
+<tr><td>nonetheless</td><td>/ˌnʌnðə'les/ adv.</td><td>虽然如此,但是</td></tr>
+<tr><td>hack</td><td>/hæk/ vt.</td><td>& vi. 劈, 砍vt. 狠踢, 乱踢vi. 咳嗽(发出刺耳声音)(以普通速度)骑马驾驶计程车n. 砍, 劈用靴头踢骑用马, 供出租的马受雇于出版商的文人出租</td></tr>
+<tr><td>gut</td><td>/ɡʌt/ n.</td><td>内脏；肠子；胆量；海峡；剧情vt. 取出内脏；摧毁内部装置adj. 本质的，根本的；简单的GUT大统一理论, gutting, guts</td></tr>
+<tr><td>obsession</td><td>/əb'seʃn/ n.</td><td>困扰, 无法摆脱的思想(或情感)</td></tr>
+<tr><td>mimicking</td><td>/'mɪmɪk/ vt.</td><td>模仿，摹拟n. 小丑；仿制品；效颦者，模仿者adj. 模仿的，模拟的；假装的, mimicking, mimics</td></tr>
+<tr><td>gut</td><td>/ɡʌt/ n.</td><td>内脏；肠子；胆量；海峡；剧情vt. 取出内脏；摧毁内部装置adj. 本质的，根本的；简单的GUT大统一理论, gutting, guts</td></tr>
+<tr><td>diabetes</td><td>/ˌdaɪə'biːtiːz/ n.</td><td>糖尿病</td></tr>
+<tr><td>proving</td><td>/proʊ/ n.</td><td>从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞成；支持Pro脯氨酸PROabbr. P</td></tr>
+<tr><td>helping</td><td>/'helpɪŋ/ n.</td><td>（进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的</td></tr>
+<tr><td>shed</td><td>/ʃed/ n.</td><td>棚, 库vt. 流出, 流下蜕皮, 树叶脱落, shedding, sheds</td></tr>
+<tr><td>kidney</td><td>/'kɪdni/ n.</td><td>肾, 肾脏(可食用的动物的)腰子</td></tr>
+<tr><td>ailments</td><td>/'eɪlmənt/ n.</td><td>小病；不安</td></tr>
+<tr><td>main</td><td>/meɪn/ adj.</td><td>主要的; 最重要的n. 总管道; 干线</td></tr>
+<tr><td>mimic</td><td>/'mɪmɪk/ vt.</td><td>模仿，摹拟n. 小丑；仿制品；效颦者，模仿者adj. 模仿的，模拟的；假装的, mimicking, mimics</td></tr>
+<tr><td>stimulates</td><td>/'stɪmjuleɪt/ vt.</td><td>刺激；激励，stimulating，stimulates</td></tr>
+<tr><td>disorder</td><td>/dɪs'ɔːrdər/ n.</td><td>混乱；骚乱vt. 扰乱；使失调, disordering, disorders</td></tr>
+<tr><td>prone</td><td>/proʊn/ adj.</td><td>易于…的; 很可能…的俯卧的</td></tr>
+<tr><td>developing</td><td>/dɪ'veləpɪŋ/ adj.</td><td>在进行中的;走向完成阶段的;走向成熟的发展中的</td></tr>
+<tr><td>fortunes</td><td>/'fɔːrtʃən/ n.</td><td>运气；财富；命运vt. 给予财富vi. 偶然发生, fortuning, fortunes</td></tr>
+<tr><td>trials</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>worth</td><td>/wɜːrθ/ adj.</td><td>值…的n. 价值；财产, worthing, worths</td></tr>
+<tr><td>disorders</td><td>/dɪs'ɔːrdər/ n.</td><td>混乱；骚乱vt. 扰乱；使失调, disordering, disorders</td></tr>
+<tr><td>crop</td><td>/krɑːp/ n.</td><td>农作物；庄稼；产量；平头vt. 种植；收割；修剪；剪短vi. 收获, cropping, crops</td></tr>
+<tr><td>contrast</td><td>/'kɑːntræst/ n.</td><td>对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照, contrasting, contrasts</td></tr>
+<tr><td>annual</td><td>/'ænjuəl/ adj.</td><td>年度的；每年的n. 年刊，年鉴；一年生植物</td></tr>
+<tr><td>adhd</td><td>— abbr.</td><td>注意力不集中症（ attention deficit hyperactivity disorder ）</td></tr>
+<tr><td>burden</td><td>/'bɜːrdn/ n.</td><td>负担；责任；船的载货量vt. 烦扰；使负担；装货于, burdening, burdens</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>texas</td><td>/'teksəs/ n.</td><td>德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室)</td></tr>
+<tr><td>collapse</td><td>/kə'læps/ vi.</td><td>倒塌；瓦解；暴跌vt. 使倒塌，使崩溃；使萎陷n. 倒塌；失败；衰竭, collapsing, collapses</td></tr>
+<tr><td>mutation</td><td>/mjuː'teɪʃn/ n.</td><td>突变；变化；元音变化</td></tr>
+<tr><td>tucked</td><td>/tʌk/ vt.</td><td>卷起；挤进；用某物舒适地裹住；使有褶裥；收拢；大口吃；使隐藏n. 船尾突出部；食物；缝摺；抱膝式跳水；活力；鼓声vi. 缝褶裥；缩拢；舒服地裹在里面；大口吃, </td></tr>
+<tr><td>activation</td><td>— n.</td><td>活化,激活,[化]活化作用</td></tr>
+<tr><td>stimulates</td><td>/'stɪmjuleɪt/ vt.</td><td>刺激；激励，stimulating，stimulates</td></tr>
+<tr><td>promoting</td><td>/'proʊmoʊ/ n.</td><td>商品推销；商品广告，广告片</td></tr>
+<tr><td>dopamine</td><td>/'doʊpəmiːn/ n.</td><td>多巴胺（一种治脑神经病的药物）</td></tr>
+<tr><td>orchestra</td><td>/'ɔːrkɪstrə/ n.</td><td>管弦乐队</td></tr>
+<tr><td>involved</td><td>/ɪn'vɑːlvd/ adj.</td><td>卷入的；有关的；复杂的v. 涉及；使参与；包含（involve的过去式和过去分词）</td></tr>
+<tr><td>mimicking</td><td>/'mɪmɪk/ vt.</td><td>模仿，摹拟n. 小丑；仿制品；效颦者，模仿者adj. 模仿的，模拟的；假装的, mimicking, mimics</td></tr>
+<tr><td>insomnia</td><td>/ɪn'sɑːmniə/ n.</td><td>失眠症，失眠</td></tr>
+<tr><td>main</td><td>/meɪn/ adj.</td><td>主要的; 最重要的n. 总管道; 干线</td></tr>
+<tr><td>disorders</td><td>/dɪs'ɔːrdər/ n.</td><td>混乱；骚乱vt. 扰乱；使失调, disordering, disorders</td></tr>
+<tr><td>stem</td><td>/stem/ n.</td><td>(花草的)茎, (树木的)干词干vt. 遏制[阻止](液体的流动等), stemming, stems</td></tr>
+<tr><td>immediate</td><td>/ɪ'miːdiət/ adj.</td><td>立即的，即刻的；紧迫的目前的，当前的直接的最接近的</td></tr>
+<tr><td>typically</td><td>/'tɪpɪkli/ adv.</td><td>代表性地;作为特色地;典型地</td></tr>
+<tr><td>triggered</td><td>— adj.</td><td>触发的</td></tr>
+<tr><td>line</td><td>/laɪn/ n.</td><td>绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long interspersed element)长散在元</td></tr>
+<tr><td>abnormally</td><td>/æb'nɔːrml/ adj.</td><td>反常的，异常的；变态的</td></tr>
+<tr><td>phase</td><td>/feɪz/ n.</td><td>阶段, 时期(月亮、行星的)位相vt. 分阶段计划[安排], phasing, phases</td></tr>
+<tr><td>intense</td><td>/ɪn'tens/ adj.</td><td>强烈的；紧张的；热情的；非常的, intensest</td></tr>
+<tr><td>actually</td><td>/'æktʃuəl/ adj.</td><td>真实的，实际的；现行的，目前的</td></tr>
+<tr><td>sustains</td><td>/sə'steɪn/ vt.</td><td>承受，支撑维持长期保持；使继续经受，遭受，sustaining，sustains</td></tr>
+<tr><td>insufficient</td><td>/ˌɪnsə'fɪʃnt/ adj.</td><td>不足的,不够的</td></tr>
+<tr><td>circuit</td><td>/'sɜːrkɪt/ n.</td><td>电路，回路；环道；一圈；巡回vi. 环行vt. 绕回…环行, circuiting, circuits</td></tr>
+<tr><td>conscious</td><td>/'kɑːnʃəs/ adj.</td><td>神志清醒的意识到的; 注意到的自觉的; 蓄意的</td></tr>
+<tr><td>actually</td><td>/'æktʃuəl/ adj.</td><td>真实的，实际的；现行的，目前的</td></tr>
+<tr><td>reproduce</td><td>/ˌriːprə'duːs/ vt.</td><td>& vi. 复制；重现；再版生殖，繁殖，reproducing，reproduces</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>liver</td><td>/'lɪvər/ n.</td><td>肝脏；生活者，居民</td></tr>
+<tr><td>damage</td><td>/'dæmɪdʒ/ v.</td><td>损害；伤害；毁坏；破坏n. 损坏，破坏，损失，损害，伤害（法院判定的）损害赔偿金, damaging, damages</td></tr>
+<tr><td>stir</td><td>/stɜːr/ vt.</td><td>& vi. 搅拌(使)移动；(使)激动n. 搅动；搅和；搅拌激动；纷乱；骚乱STIRabbr. Surveillance and Target Indicati</td></tr>
+<tr><td>trial</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>procedure</td><td>/prə'siːdʒər/ n.</td><td>程序, 步骤手续</td></tr>
+<tr><td>maintenance</td><td>/'meɪntənəns/ n.</td><td>维持; 维护; 保养; 维修赡养费</td></tr>
+<tr><td>insomnia</td><td>/ɪn'sɑːmniə/ n.</td><td>失眠症，失眠</td></tr>
+<tr><td>urinate</td><td>/'jʊrɪneɪt/ vi.</td><td>小便，撒尿, urinating, urinates</td></tr>
+<tr><td>promoting</td><td>/'proʊmoʊ/ n.</td><td>商品推销；商品广告，广告片</td></tr>
+<tr><td>symptoms</td><td>/'sɪmptəm/ n.</td><td>征兆；症状</td></tr>
+<tr><td>dopamine</td><td>/'doʊpəmiːn/ n.</td><td>多巴胺（一种治脑神经病的药物）</td></tr>
+<tr><td>anxiety</td><td>/æŋ'zaɪəti/ n.</td><td>焦虑；挂念；渴望；令人焦虑的事</td></tr>
+<tr><td>upstream</td><td>/ˌʌp'striːm/ adv.</td><td>&adj. 向上游(的);逆流(的)</td></tr>
+<tr><td>line</td><td>/laɪn/ n.</td><td>绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long interspersed element)长散在元</td></tr>
+<tr><td>abuse</td><td>/ə'bjuːs/ n.</td><td>滥用；辱骂；虐待；弊端；恶习，陋习vt. 滥用；辱骂；虐待, abusing, abuses</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day34.html" class="nav-btn">← Day 34</a>
+  <a href="day36.html" class="nav-btn">Day 36 →</a>
+</div>
+
+<div class="progress">📖 Day 35 of 40</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-08-15</div>
+
+</body>
+</html>

@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Americas | Shaken</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-08-15</div>
+
+<h1 class="article-title">The Americas | Shaken</h1>
+<div class="article-section">The Americas</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>Mr de la Espriella seems <span class="annot" data-tooltip="aware /ə'wer/ adj. 知道的；意识到的；有…方面知识的；懂世故的名 词: awareness">aware</span> of the disparities. His <span class="annot" data-tooltip="cabinet /'kæbɪnət/ n. 内阁；橱柜；展览艺术品的小陈列室adj. 内阁的；私下的，秘密的">cabinet</span> has been dispatched to the worst-<span class="annot" data-tooltip="affected /ə'fekt/ vt. 影响；假装；感动；感染vi. 倾向；喜欢n. 情感；引起感情的因素时 态: affected, affecting, a">affected</span> areas. <span class="annot" data-tooltip="speaking /'spikɪŋ/ adj. 演讲的；富于表情的，雄辩的n. 说话；演讲v. 讲（speak的ing形式）">Speaking</span> in Quibdó, he said that <span class="annot" data-tooltip="victims /'vɪktɪm/ n. 牺牲者；受害人；牺牲品">victims</span> would receive temporary housing aid. Yet many families are <span class="annot" data-tooltip="wondering /'wʌndər/ vt. & vi. 对…感到疑惑想知道；问自己n. 惊奇，惊叹，惊异，惊诧奇人，奇才奇观，奇景，奇迹，奇事时 态: wonder">wondering</span> where that is. “We have no water, no <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span>, no nothing,” says Rosa Mercedes, staring at the <span class="annot" data-tooltip="ruin /'ruːɪn/ vt. 破坏，毁掉使破产，使沦落n. 毁坏，毁灭，灭亡完全丧失，断送；垮台(的原因)破败、坍塌或毁坏的状态废墟；遗迹时 态: r">ruin</span> of her apartment in Quibdó. “No one has come to ask us what happened, to ask us how we are,” she says. <span class="annot" data-tooltip="colombia n. 哥伦比亚（拉丁美洲国家）形容词: Colombian">Colombia</span>’s new president also faces the problem of how to pay for recovery from the quake. He has declared an economic emergency, letting him spend the national budget by decree, <span class="annot" data-tooltip="bypassing /'baɪpæs/ vt. 绕过, 避开不顾n. 旁道时 态: bypassed, bypassing, bypasses">bypassing</span> Congress. His new government has <span class="annot" data-tooltip="inherited /ɪn'herɪt/ vt. 继承；遗传而得vi. 成为继承人时 态: inherited, inheriting, inherits">inherited</span> a <span class="annot" data-tooltip="mess /mes/ vt. 弄脏；弄乱n. 杂乱，脏乱；脏东西不整洁[乱七八糟]的人[事]粪便时 态: messed，messing，messes">mess</span> in the key agency for natural-disaster response. The National Unit for Disaster Risk Management is cash-strapped after being robbed by <span class="annot" data-tooltip="corrupt /kə'rʌpt/ adj. 腐败的，贪污的；堕落的vt. 使堕落，使恶化；使腐烂vi. 腐烂；堕落，腐化时 态: corrupted, corrup">corrupt</span> politicians and functionaries over the past few years. Some talk of the country’s population suffering as badly as it did in 1999 when an earthquake killed around 1,230 Colombians. This earthquake has forced Mr de la Espriella to be more <span class="annot" data-tooltip="pragmatic /præɡ'mætɪk/ adj. 务实的；实事求是的；注重实效的实用主义的，实用主义观点的形容词: pragmatical">pragmatic</span> than his <span class="annot" data-tooltip="campaign /kæm'peɪn/ n. 运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）时">campaign</span> promises suggested he might be. He had previously vowed to shun Bogotá, home to what he calls the “same as always” <span class="annot" data-tooltip="elites /eɪ'liːt/ n. （社会）上层集团；掌权人物；出类拔萃的人，精英adj.（社会）上层集团的；掌权人物的；精英的">elites</span>. But his talk of running things instead from his home city of Barranquilla, on the other side of the country from where the quake struck, now looks even more unwise. It is in the capital where ministries, big media <span class="annot" data-tooltip="outlets /'aʊtlet/ n. 出口, 出路发泄的途径经销店">outlets</span> or international partners can be accessed. He is paying, too, for his foolish refusal to co-operate with the <span class="annot" data-tooltip="handover /'hændoʊvər/ n. 移交">handover</span> <span class="annot" data-tooltip="process /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">process</span> initiated by the previous government. That was a “<span class="annot" data-tooltip="silly /'sɪli/ adj. 蠢的，傻的；糊涂的，可笑的〈非正〉不省人事的，失去知觉的；晕头转向的比较级: sillier，silliest">silly</span> populist idea”, says Luis Ernesto Gómez, a former <span class="annot" data-tooltip="interior /ɪn'tɪriər/ n. 内部内地adj. 内部的内地的, 国内的名 词: interiority">interior</span> <span class="annot" data-tooltip="vice /vaɪs/ n. 堕落，邪恶；不良习气，恶习（尤指与性或毒品有关的）罪行，道德败坏行为【英式】老虎钳；台钳（【美式】vise）pref. ">vice</span>-minister. Badmouthing Gustavo Petro, his leftist predecessor, was popular on social media. The erratic Mr Petro himself was posting with—if anything—even more ferocity. This means the new government lacks information and <span class="annot" data-tooltip="capabilities /ˌkeɪpə'bɪləti/ n. 能做某事的素质;能力尚未发挥的天资或素质">capabilities</span> that it <span class="annot" data-tooltip="urgently /'ɜːrdʒənt/ adj. 紧急的；急迫的副 词: urgently">urgently</span> needs. The executive is having to act mostly through local governments. That just about works in wealthier <span class="annot" data-tooltip="places /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">places</span> like the parts of the country that grow coffee, and Valle del Cauca. In Quibdó, Ms Mercedes is still waiting. ■ This article was downloaded by zlibrary from https://www.economist.com/the-americas/2026/08/12/a-big-earthquake-<span class="annot" data-tooltip="reveals /rɪ'viːl/ vt. 显示；露出泄露；透露时 态: revealed，revealing，reveals">reveals</span>-two- very-different-<span class="annot" data-tooltip="colombias n. 哥伦比亚（拉丁美洲国家）形容词: Colombian">colombias</span></p>
+<div class="article-separator"></div>
+<div class="article-header"> · Middle East &amp; Africa</div>
+<p>Mogadishu no longer deserves its deadly reputation Zambia’s election is a test of metal War in the Gulf has weakened two of America’s Arab <span class="annot" data-tooltip="allies n. （第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者">allies</span> What to make of a new Saudi-led defence pact The Muslim Brotherhood is more divided and weaker than ever</p>
+<p>Middle East & Africa | From the ashes Mogadishu no longer deserves its deadly reputation Why <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span> in the Somali capital is improving Aug 13th 2026 One evening six years ago Saakin Abdi, a young <span class="annot" data-tooltip="civil /'sɪvl/ adj. 公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的副 词: civilly">civil</span> servant, enjoyed an ice-cream in <span class="annot" data-tooltip="central /'sentrəl/ adj. 中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的副 词: centrally">central</span> Mogadishu. Back then, residing in the Somali capital meant living with the knowledge that at any moment you could be the next <span class="annot" data-tooltip="victim /'vɪktɪm/ n. 牺牲者；受害人；牺牲品">victim</span> of al-Shabab, al-Qaeda’s richest and deadliest <span class="annot" data-tooltip="affiliate /ə'fɪlieɪt/ v. （使）附属，隶属；加入，加盟，并入；接纳；紧密联系">affiliate</span>. The next evening, a friend of Ms Abdi’s was in the same ice-cream parlour when a militant burst through the door and blew himself up. Her friend and six others were killed. They were among at least 320 people who died in al- Shabab attacks in the city in 2020. Mogadishu has been synonymous with violence ever since Somalia’s central state collapsed in the 1990s. Yet in recent years it has undergone a quiet</p>
+<p>transformation. Al-Shabab’s attacks in the city have fallen from 144 in the third <span class="annot" data-tooltip="quarter /'kwɔːrtər/ n. 四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一时 ">quarter</span> of 2022, when Hassan Sheikh Mohamud took office as president, to just five in the second quarter of this year. Data collected by the Armed Conflict Location and Event Data project (ACLED), a <span class="annot" data-tooltip="monitoring /'mɑːnɪtər/ n. 显示屏；监视器；（计算机）显示器监控器；监测器班长；级长；班代表（尤指派往国外的）监督员，核查员巨蜥v. 监视；检查；跟">monitoring</span> <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span>, suggest the <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of deaths in Mogadishu linked to al-Shabab is on track in 2026 to be the lowest since the group emerged in the mid-2000s (see chart). “This is the biggest achievement of Hassan Sheikh Mohamud’s administration,” says Omar Mahmood of the International Crisis Group (ICG), a think-<span class="annot" data-tooltip="tank /tæŋk/ n. （存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内时 态: t">tank</span>. <span class="annot" data-tooltip="residents /'rezɪdənt/ adj. 定居的; 常驻的n. 居民(旅馆的)住宿者">Residents</span> used to avoid venturing out after dark, because “al-Shabab, or those fighting it, might kill you,” recalls Ms Abdi. Today, dozens of new cafés are open past midnight, thronged with young Somalis posting videos on TikTok and Instagram. On July 1st Mr Mohamud, who has survived <span class="annot" data-tooltip="multiple /'mʌltɪpl/ adj. 多样的；许多的；多重的n. 并联；倍数">multiple</span> assassination attempts including one in Baidoa, the seat of government of South-West state, earlier this year, <span class="annot" data-tooltip="marked /mɑːr/ vt. 毁坏；损坏；玷污MARabbr. Master of Arts in Religion 宗教硕士Mar三月(March)">marked</span> Somalia’s independence day by giving an unprecedented public <span class="annot" data-tooltip="address /ə'dres/ v. 写（收信人）姓名地址；致函演说；演讲称呼（某人）；冠以（某种称呼）设法解决；处理；对付向…说话n. 地址；住址；通信处 ">address</span> at one of Mogadishu’s most frequently targeted junctions. Hundreds joined him. That is a marked change from the late 2010s, when “we never knew if we’d return home <span class="annot" data-tooltip="alive /ə'laɪv/ adj. 活着的, 在世的, 存在的有活力的, 活跃的, 有生气的">alive</span> when we went out in the morning,” recalls a Somali MP.</p>
+<p>An official says he survived six different <span class="annot" data-tooltip="explosions /ɪk'sploʊʒn/ n. 爆炸；爆发激增，扩大">explosions</span> after joining the government in 2014. A lorry bomb in 2017 killed almost 600 people. The fruits of better <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span> are plain to see. “Business is booming,” says Gamal Hassan, the <span class="annot" data-tooltip="commerce /'kɑːmɜːrs/ n. 商业, 贸易">commerce</span> minister. New buildings are going up at a frenetic pace. The district around the airport, in particular, has grown much denser (see satellite images). Dahab Tower, a 26-floor confection of luxury flats, a mall, a gym and a <span class="annot" data-tooltip="mosque /mɑːsk/ n. 清真寺, 伊斯兰教寺院">mosque</span>, is <span class="annot" data-tooltip="due /duː/ adj. 到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）">due</span> to open this year. It sits close to the <span class="annot" data-tooltip="spot /spɑːt/ n. 斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Po">spot</span> where, in 1993, the bodies of two American soldiers were dragged through the streets after militiamen shot down a Black Hawk helicopter. Nearby is Beydan Coffee, a thriving pan-African chain founded by a Somali who returned from Sweden in the 2010s.</p>
+<p>What explains the lull in attacks is less obvious. The government <span class="annot" data-tooltip="boasts /boʊst/ n. 自吹自擂, 自夸的话vt. & vi. 自夸vt. 有(引以为荣的事物)时 态: boasted, boasting, ">boasts</span> that, in the words of a former intelligence officer, it has “<span class="annot" data-tooltip="completely /kəm'pliːt/ adj. 完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善比较级: complete">completely</span> closed the doors” on al-Shabab. Mr Mahmood of the ICG <span class="annot" data-tooltip="credits /'kredɪt/ n. 赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)时 态:">credits</span> “prosaic” measures such as the spread of CCTV cameras, and an electronic database that police equipped with iPads use to identify civilian cars at checkpoints. Plainclothes intelligence officers have been deployed in large numbers. Turkey, the staunchest foreign backer of Mr Mohamud’s government, has played a big role. “It’s the Turks,” says a Western diplomat in Mogadishu, asked to explain improved <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span>. Under Recep Tayyip Erdogan, Turkey’s president, the country has become Somalia’s most important investor, with business interests including the airport and the <span class="annot" data-tooltip="port /pɔːrt/ n. 港口，口岸；左舷；舱门；（计算机的）端口vi. 转向左舷vt. 左转舵；持（枪）PORTabbr. Photo Opit">port</span>, a new spaceport and offshore oil-and-gas exploration, all <span class="annot" data-tooltip="clustered /ˈklʌstəd/ adj. 聚集的，簇拥的（cluster 的过去分词）">clustered</span> in or around the capital. Since Turkey opened its largest overseas military base in Mogadishu in 2017, its forces have trained Somali soldiers, conducted <span class="annot" data-tooltip="drone /droʊn/ n. 无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫">drone</span> <span class="annot" data-tooltip="strikes /straɪk/ vi. 罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打时 态:">strikes</span> and joined Somalia’s national army in operations against al-Shabab. How much this has weakened al-Shabab beyond the capital is unclear. Since Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> returned to office in 2025, Turkish and Somali air strikes <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span> Mogadishu have been accompanied by the most <span class="annot" data-tooltip="intensive /ɪn'tensɪv/ adj. 加强的, 集中的, 密集的彻底的加强语气的副 词: intensively">intensive</span> American aerial <span class="annot" data-tooltip="campaign /kæm'peɪn/ n. 运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）时">campaign</span> in Somalia’s history. Yet the <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">federal</span> government’s territorial</p>
+<p><span class="annot" data-tooltip="reach /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reach</span> has <span class="annot" data-tooltip="barely /'berli/ adv. 仅仅，勉强；几乎不；公开地；贫乏地">barely</span> <span class="annot" data-tooltip="budged /bʌd/ n. 芽，萌芽；蓓蕾vi. 发芽，萌芽vt. 使发芽时 态: budded, budding, buds">budged</span> in 18 months. Much of Mogadishu’s hinterland remains under al-Shabab’s control. Some analysts suspect the <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span> may be purposefully restraining itself. “Al- Shabab itself has changed its <span class="annot" data-tooltip="strategy /'strætədʒi/ n. 战略学, 兵法战略, 策略策略, 计谋">strategy</span> and tactics,” argues Afyare Abdi Elmi of City University of Mogadishu. Fewer mass-<span class="annot" data-tooltip="casualty /'kæʒuəlti/ n. 意外事故；伤亡人员；急诊室">casualty</span> attacks in the capital may be a bid to soften its image. Al-Shabab is benefiting from a status quo where it can <span class="annot" data-tooltip="extort /ɪk'stɔːrt/ vt. 敲诈曲解时 态: extorted, extorting, extorts">extort</span> businesses in the capital largely unchecked. For now, it may see little cause to step up attacks. Yet there are several reasons to mistrust the <span class="annot" data-tooltip="calm /kɑːm/ adj. 静的，平静的；沉着的vt. 使平静；使镇定vi. 平静下来；镇定下来n. 风平浪静比较级: calmer, calmes">calm</span>. The first is a stand-off over delayed elections between the president and his <span class="annot" data-tooltip="rivals /'raɪvl/ n. 竞争对手vt. 与…竞争, 与…匹敌时 态: rivaled, rivalled rivaling, rivalling">rivals</span>. In June brief clashes between the army and militias linked to two opposition leaders killed at least 13 people. Even more worrying is the president’s escalating <span class="annot" data-tooltip="confrontation /ˌkɑːnfrən'teɪʃn/ n. 对抗, 对抗的事物形容词: confrontational">confrontation</span> with Somalia’s regional states. In March Mr Mohamud sent troops into Baidoa to <span class="annot" data-tooltip="depose /dɪ'poʊz/ vt. 免职；作证；废黜vi. 宣誓作证时 态: deposed, deposing, deposes">depose</span> the governor. In recent weeks he has been trying to mobilise local forces against the leadership of the northern state of Puntland. “They started well against al-Shabab in 2022,” says Ahmed Koshin, a former defence official, of Mr Mohamud’s government. “But since then they’ve put the state’s resources into political infighting.” Those resources are <span class="annot" data-tooltip="shrinking /ʃrɪŋk/ vt. & vi. 收缩；退缩时 态: shrank ，shrunk shrunk，shrunken shrinking，shr">shrinking</span>. On July 1st America said it would no longer support UNSOS, the UN’s <span class="annot" data-tooltip="logistics /lə'dʒɪstɪk/ adj. 后勤学的；符号逻辑的副 词: logistically">logistics</span> body responsible for supplying the African Union peacekeepers that have <span class="annot" data-tooltip="propped /prɑːp/ n. 支柱, 支柱物vt. 支撑, 支持, 维持时 态: propped, propping, props">propped</span> up the <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">federal</span> government since 2007. European sources say the EU will not <span class="annot" data-tooltip="plug /plʌɡ/ n. 栓；插头；塞子vi. 塞住；用插头将与电源接通vt. 塞住；插入；接插头时 态: plugged, plugging, ">plug</span> the gap, leaving the peacekeeping mission in the lurch. Without an <span class="annot" data-tooltip="alternative /ɔːl'tɜːrnətɪv/ adj. 可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）">alternative</span>, Mr Mahmood reckons it could fold as early as 2027. Somali officials appear confident that the country’s <span class="annot" data-tooltip="strategic /strə'tiːdʒɪk/ adj. 战略(上)的有战略意义的; 至关重要的副 词: strategically">strategic</span> position at one of the two gateways to the Red Sea means foreign partners will not step back <span class="annot" data-tooltip="entirely /ɪn'taɪərli/ adv. 全部地;完整地;完全地">entirely</span>. A jihadist takeover of Mogadishu remains remote. But it would take much less to <span class="annot" data-tooltip="shatter /'ʃætər/ vt. 打碎；破掉；使散开；粉碎；破坏vi. 粉碎；损坏；落叶n. 碎片；乱七八糟的状态时 态: shattered, shat">shatter</span> the newfound sense of <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span>. “You never know,” says Ms Abdi. “It sometimes feels like things can go back.”■ Sign up to the Analysing Africa, a weekly newsletter that keeps you in the loop about the world’s youngest—and least understood—continent.</p>
+<p>This article was downloaded by zlibrary from https://www.economist.com/middle-east-and-africa/2026/08/13/mogadishu-no-longer- deserves-its-deadly-reputation</p>
+<p>Middle East & Africa | Keep digging Zambia’s election is a test of metal High <span class="annot" data-tooltip="copper /'kɑːpər/ n. 铜；铜币；[俚]警察adj. 铜的vt. 镀铜于时 态: coppered, coppering, coppers">copper</span> prices are a boon. But voters want to feel it Aug 13th 2026 In one way or another, everyone is working the earth <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span> Kitwe, in Zambia’s Copperbelt province. The local mine is back in business, boosted by record copper prices (see chart). But that means little to the women weeding their onions outside. “We don’t know where they take the money,” says one, gesturing at the mine gate. Historically, the rate at which growth translates into poverty <span class="annot" data-tooltip="reduction /rɪ'dʌkʃn/ n. 减少，缩小；减少的量，降价">reduction</span> has been lower in Zambia than almost anywhere else in the world. The cost of living will have been on voters’ minds when they voted for a president on August 13th. Many feel <span class="annot" data-tooltip="burdened /'bɜːrdn/ n. 负担；责任；船的载货量vt. 烦扰；使负担；装货于时 态: burdened, burdening, burdens">burdened</span> by high prices, despite <span class="annot" data-tooltip="falling /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">falling</span> <span class="annot" data-tooltip="inflation /ɪn'fleɪʃn/ n. (充气而引起的)膨胀通货膨胀">inflation</span> and a stronger kwacha. Their frustration energised the <span class="annot" data-tooltip="campaign /kæm'peɪn/ n. 运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）时">campaign</span> of Brian Mundubile, the <span class="annot" data-tooltip="main /meɪn/ adj. 主要的; 最重要的n. 总管道; 干线">main</span> challenger, who describes himself as an elder</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>aware</td><td>/ə'wer/ adj.</td><td>知道的；意识到的；有…方面知识的；懂世故的</td></tr>
+<tr><td>cabinet</td><td>/'kæbɪnət/ n.</td><td>内阁；橱柜；展览艺术品的小陈列室adj. 内阁的；私下的，秘密的</td></tr>
+<tr><td>affected</td><td>/ə'fekt/ vt.</td><td>影响；假装；感动；感染vi. 倾向；喜欢n. 情感；引起感情的因素, affecting, affects</td></tr>
+<tr><td>speaking</td><td>/'spikɪŋ/ adj.</td><td>演讲的；富于表情的，雄辩的n. 说话；演讲v. 讲（speak的ing形式）</td></tr>
+<tr><td>victims</td><td>/'vɪktɪm/ n.</td><td>牺牲者；受害人；牺牲品</td></tr>
+<tr><td>wondering</td><td>/'wʌndər/ vt.</td><td>& vi. 对…感到疑惑想知道；问自己n. 惊奇，惊叹，惊异，惊诧奇人，奇才奇观，奇景，奇迹，奇事，wondering，wonders</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>ruin</td><td>/'ruːɪn/ vt.</td><td>破坏，毁掉使破产，使沦落n. 毁坏，毁灭，灭亡完全丧失，断送；垮台(的原因)破败、坍塌或毁坏的状态废墟；遗迹，ruining，ruins</td></tr>
+<tr><td>colombia</td><td>— n.</td><td>哥伦比亚（拉丁美洲国家）</td></tr>
+<tr><td>bypassing</td><td>/'baɪpæs/ vt.</td><td>绕过, 避开不顾n. 旁道, bypassing, bypasses</td></tr>
+<tr><td>inherited</td><td>/ɪn'herɪt/ vt.</td><td>继承；遗传而得vi. 成为继承人, inheriting, inherits</td></tr>
+<tr><td>mess</td><td>/mes/ vt.</td><td>弄脏；弄乱n. 杂乱，脏乱；脏东西不整洁[乱七八糟]的人[事]粪便，messing，messes</td></tr>
+<tr><td>corrupt</td><td>/kə'rʌpt/ adj.</td><td>腐败的，贪污的；堕落的vt. 使堕落，使恶化；使腐烂vi. 腐烂；堕落，腐化, corrupting, corrupts</td></tr>
+<tr><td>pragmatic</td><td>/præɡ'mætɪk/ adj.</td><td>务实的；实事求是的；注重实效的实用主义的，实用主义观点的</td></tr>
+<tr><td>campaign</td><td>/kæm'peɪn/ n.</td><td>运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）, campaigning, campai</td></tr>
+<tr><td>elites</td><td>/eɪ'liːt/ n.</td><td>（社会）上层集团；掌权人物；出类拔萃的人，精英adj.（社会）上层集团的；掌权人物的；精英的</td></tr>
+<tr><td>outlets</td><td>/'aʊtlet/ n.</td><td>出口, 出路发泄的途径经销店</td></tr>
+<tr><td>handover</td><td>/'hændoʊvər/ n.</td><td>移交</td></tr>
+<tr><td>process</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>silly</td><td>/'sɪli/ adj.</td><td>蠢的，傻的；糊涂的，可笑的〈非正〉不省人事的，失去知觉的；晕头转向的，silliest</td></tr>
+<tr><td>interior</td><td>/ɪn'tɪriər/ n.</td><td>内部内地adj. 内部的内地的, 国内的</td></tr>
+<tr><td>vice</td><td>/vaɪs/ n.</td><td>堕落，邪恶；不良习气，恶习（尤指与性或毒品有关的）罪行，道德败坏行为【英式】老虎钳；台钳（【美式】vise）pref. 副职的；副的</td></tr>
+<tr><td>capabilities</td><td>/ˌkeɪpə'bɪləti/ n.</td><td>能做某事的素质;能力尚未发挥的天资或素质</td></tr>
+<tr><td>urgently</td><td>/'ɜːrdʒənt/ adj.</td><td>紧急的；急迫的</td></tr>
+<tr><td>places</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>reveals</td><td>/rɪ'viːl/ vt.</td><td>显示；露出泄露；透露，revealing，reveals</td></tr>
+<tr><td>colombias</td><td>— n.</td><td>哥伦比亚（拉丁美洲国家）</td></tr>
+<tr><td>allies</td><td>— n.</td><td>（第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>civil</td><td>/'sɪvl/ adj.</td><td>公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的</td></tr>
+<tr><td>central</td><td>/'sentrəl/ adj.</td><td>中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的</td></tr>
+<tr><td>victim</td><td>/'vɪktɪm/ n.</td><td>牺牲者；受害人；牺牲品</td></tr>
+<tr><td>affiliate</td><td>/ə'fɪlieɪt/ v.</td><td>（使）附属，隶属；加入，加盟，并入；接纳；紧密联系</td></tr>
+<tr><td>quarter</td><td>/'kwɔːrtər/ n.</td><td>四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一, quartering, quarters</td></tr>
+<tr><td>monitoring</td><td>/'mɑːnɪtər/ n.</td><td>显示屏；监视器；（计算机）显示器监控器；监测器班长；级长；班代表（尤指派往国外的）监督员，核查员巨蜥v. 监视；检查；跟踪调查监听（电话、外国无线电广播等）, </td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>tank</td><td>/tæŋk/ n.</td><td>（存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内, tanking, tanks</td></tr>
+<tr><td>residents</td><td>/'rezɪdənt/ adj.</td><td>定居的; 常驻的n. 居民(旅馆的)住宿者</td></tr>
+<tr><td>multiple</td><td>/'mʌltɪpl/ adj.</td><td>多样的；许多的；多重的n. 并联；倍数</td></tr>
+<tr><td>marked</td><td>/mɑːr/ vt.</td><td>毁坏；损坏；玷污MARabbr. Master of Arts in Religion 宗教硕士Mar三月(March)，marring，mars</td></tr>
+<tr><td>address</td><td>/ə'dres/ v.</td><td>写（收信人）姓名地址；致函演说；演讲称呼（某人）；冠以（某种称呼）设法解决；处理；对付向…说话n. 地址；住址；通信处 网址；电子邮件地址 演讲，演说 称呼 【</td></tr>
+<tr><td>alive</td><td>/ə'laɪv/ adj.</td><td>活着的, 在世的, 存在的有活力的, 活跃的, 有生气的</td></tr>
+<tr><td>explosions</td><td>/ɪk'sploʊʒn/ n.</td><td>爆炸；爆发激增，扩大</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>commerce</td><td>/'kɑːmɜːrs/ n.</td><td>商业, 贸易</td></tr>
+<tr><td>mosque</td><td>/mɑːsk/ n.</td><td>清真寺, 伊斯兰教寺院</td></tr>
+<tr><td>due</td><td>/duː/ adj.</td><td>到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）</td></tr>
+<tr><td>spot</td><td>/spɑːt/ n.</td><td>斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Positioning and Tracki</td></tr>
+<tr><td>boasts</td><td>/boʊst/ n.</td><td>自吹自擂, 自夸的话vt. & vi. 自夸vt. 有(引以为荣的事物), boasting, boasts</td></tr>
+<tr><td>completely</td><td>/kəm'pliːt/ adj.</td><td>完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善, completest 缩 写: comp, cpl</td></tr>
+<tr><td>credits</td><td>/'kredɪt/ n.</td><td>赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)，crediting，credits</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>port</td><td>/pɔːrt/ n.</td><td>港口，口岸；左舷；舱门；（计算机的）端口vi. 转向左舷vt. 左转舵；持（枪）PORTabbr. Photo Opitical Recorder Tracke</td></tr>
+<tr><td>clustered</td><td>/ˈklʌstəd/ adj.</td><td>聚集的，簇拥的（cluster 的过去分词）</td></tr>
+<tr><td>drone</td><td>/droʊn/ n.</td><td>无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫；嗡嗡响(人)絮絮叨叨地说，喋喋不休地说</td></tr>
+<tr><td>strikes</td><td>/straɪk/ vi.</td><td>罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打, stricken striking, str</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>intensive</td><td>/ɪn'tensɪv/ adj.</td><td>加强的, 集中的, 密集的彻底的加强语气的</td></tr>
+<tr><td>campaign</td><td>/kæm'peɪn/ n.</td><td>运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）, campaigning, campai</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>reach</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>barely</td><td>/'berli/ adv.</td><td>仅仅，勉强；几乎不；公开地；贫乏地</td></tr>
+<tr><td>budged</td><td>/bʌd/ n.</td><td>芽，萌芽；蓓蕾vi. 发芽，萌芽vt. 使发芽, budding, buds</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>strategy</td><td>/'strætədʒi/ n.</td><td>战略学, 兵法战略, 策略策略, 计谋</td></tr>
+<tr><td>casualty</td><td>/'kæʒuəlti/ n.</td><td>意外事故；伤亡人员；急诊室</td></tr>
+<tr><td>extort</td><td>/ɪk'stɔːrt/ vt.</td><td>敲诈曲解, extorting, extorts</td></tr>
+<tr><td>calm</td><td>/kɑːm/ adj.</td><td>静的，平静的；沉着的vt. 使平静；使镇定vi. 平静下来；镇定下来n. 风平浪静, calmest</td></tr>
+<tr><td>rivals</td><td>/'raɪvl/ n.</td><td>竞争对手vt. 与…竞争, 与…匹敌, rivalled rivaling, rivalling rivals, rivals</td></tr>
+<tr><td>confrontation</td><td>/ˌkɑːnfrən'teɪʃn/ n.</td><td>对抗, 对抗的事物</td></tr>
+<tr><td>depose</td><td>/dɪ'poʊz/ vt.</td><td>免职；作证；废黜vi. 宣誓作证, deposing, deposes</td></tr>
+<tr><td>shrinking</td><td>/ʃrɪŋk/ vt.</td><td>& vi. 收缩；退缩，shrunk shrunk，shrunken shrinking，shrinks</td></tr>
+<tr><td>logistics</td><td>/lə'dʒɪstɪk/ adj.</td><td>后勤学的；符号逻辑的</td></tr>
+<tr><td>propped</td><td>/prɑːp/ n.</td><td>支柱, 支柱物vt. 支撑, 支持, 维持, propping, props</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>plug</td><td>/plʌɡ/ n.</td><td>栓；插头；塞子vi. 塞住；用插头将与电源接通vt. 塞住；插入；接插头, plugging, plugs</td></tr>
+<tr><td>alternative</td><td>/ɔːl'tɜːrnətɪv/ adj.</td><td>可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）可供选择的事物；可供选择的解决办法替代物</td></tr>
+<tr><td>strategic</td><td>/strə'tiːdʒɪk/ adj.</td><td>战略(上)的有战略意义的; 至关重要的</td></tr>
+<tr><td>entirely</td><td>/ɪn'taɪərli/ adv.</td><td>全部地;完整地;完全地</td></tr>
+<tr><td>shatter</td><td>/'ʃætər/ vt.</td><td>打碎；破掉；使散开；粉碎；破坏vi. 粉碎；损坏；落叶n. 碎片；乱七八糟的状态, shattering, shatters</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>copper</td><td>/'kɑːpər/ n.</td><td>铜；铜币；[俚]警察adj. 铜的vt. 镀铜于, coppering, coppers</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>reduction</td><td>/rɪ'dʌkʃn/ n.</td><td>减少，缩小；减少的量，降价</td></tr>
+<tr><td>burdened</td><td>/'bɜːrdn/ n.</td><td>负担；责任；船的载货量vt. 烦扰；使负担；装货于, burdening, burdens</td></tr>
+<tr><td>falling</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>inflation</td><td>/ɪn'fleɪʃn/ n.</td><td>(充气而引起的)膨胀通货膨胀</td></tr>
+<tr><td>campaign</td><td>/kæm'peɪn/ n.</td><td>运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）, campaigning, campai</td></tr>
+<tr><td>main</td><td>/meɪn/ adj.</td><td>主要的; 最重要的n. 总管道; 干线</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day17.html" class="nav-btn">← Day 17</a>
+  <a href="day19.html" class="nav-btn">Day 19 →</a>
+</div>
+
+<div class="progress">📖 Day 18 of 40</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-08-15</div>
+
+</body>
+</html>

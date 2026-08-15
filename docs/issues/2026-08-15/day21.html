@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Europe</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-08-15</div>
+
+<h1 class="article-title">Europe</h1>
+<div class="article-section"></div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>there were some 100,000 cases of gonorrhoea in Europe, over three times as many as in 2015. Cases of syphilis more than doubled, to around 46,000. Chlamydia is an exception: after peaking in 2022, prevalence has fallen back to the level of 2015. The jump just after covid could be partly explained by testing facilities coming back online, says Dr Andrew Winter, an STI specialist in Glasgow. But the continued <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> since then cannot. “There is a true increase in <span class="annot" data-tooltip="transmission /trænz'mɪʃn/ n. 传送, 传播, 传达播送传动装置, 变速器形容词: transmissive">transmission</span> happening,” says Dr Stela Bivol, who runs the World Health Organisation’s European office for STIs. Why the venereal <span class="annot" data-tooltip="renaissance /'renəsɑːns/ n. 文艺复兴, 文艺复兴时期">renaissance</span>? Some blame <span class="annot" data-tooltip="reckless /'rekləs/ adj. 轻率的; 鲁莽的; 不顾危险的副 词: recklessly">reckless</span> bed-<span class="annot" data-tooltip="hopping /'hɑːpɪŋ/ adj. 卖力的,忙碌的">hopping</span> enabled by dating apps, but evidence is <span class="annot" data-tooltip="sparse /spɑːrs/ adj. 稀疏的；稀少的比较级: sparser, sparsest">sparse</span>. Users of such apps are more likely to have <span class="annot" data-tooltip="multiple /'mʌltɪpl/ adj. 多样的；许多的；多重的n. 并联；倍数">multiple</span> partners, but that is partly because people seeking multiple partners are more likely to use them. Dr Henry de Vries, a specialist in the Netherlands, notes that dating apps long predate the rise in STI prevalence. “I would be <span class="annot" data-tooltip="cautious /'kɔːʃəs/ adj. 小心的, 谨慎的副 词: cautiously">cautious</span>,” he says. Another <span class="annot" data-tooltip="explanation /ˌeksplə'neɪʃn/ n. 解释, 说明能说明某事缘由的言语、事实、情况等">explanation</span> is that people are using condoms less. But here too, the data are only suggestive. A study by the WHO of <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> 250,000 15-year- olds across Europe from 2014 to 2022 found a <span class="annot" data-tooltip="significant /sɪɡ'nɪfɪkənt/ adj. 重要的, 重大的, 可观的有意义的, 有用意的意味深长的副 词: significantly">significant</span> drop in reported</p>
+<p>condom use. But there are few data on population-wide condom usage among those aged 20 and up. A more <span class="annot" data-tooltip="specific /spə'sɪfɪk/ adj. 特殊的，特定的；明确的；详细的；具有特效的n. 特效药；细节；特性副 词: specifically">specific</span> <span class="annot" data-tooltip="hypothesis /haɪ'pɑːθəsɪs/ n. 假说, 假设, 前提">hypothesis</span> is that using pre-<span class="annot" data-tooltip="exposure /ɪk'spoʊʒər/ n. 暴露, 显露揭发, 揭露(软片等)曝光">exposure</span> prophylaxis (PrEP), a pill that fights the spread of HIV, leads more men (especially gay men) to dispense with condoms. A study of patients at a British clinic between 2015 and 2019, by Louis MacGregor of the University of Bristol and colleagues, supported that idea. What is not disputed is the danger. <span class="annot" data-tooltip="sexual /'sekʃuəl/ adj. 性交的, 性行为的, 性吸引的, 两性的, 肉体吸引的性别的, 性的, 男性或女性的生殖的, 有性生殖的副 词: sex">Sexual</span> diseases are usually treatable, but they can be devastating if not caught soon enough. Over time, chlamydia and gonorrhoea can cause <span class="annot" data-tooltip="testicular /te'stɪkjələr/ adj. 双丸状的(例如两个并列的块茎)">testicular</span> <span class="annot" data-tooltip="infections /ɪn'fekʃn/ n. 〈医〉传染, 感染传染病">infections</span> in men and infertility in women. One of the grimmest phenomena noted by the ECDC is a jump in <span class="annot" data-tooltip="congenital /kən'dʒenɪtl/ adj. 先天的,天生的副 词: congenitally">congenital</span> syphilis, passed on by mothers to their babies. This is rare but often fatal. Between 2023 and 2024 the <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of cases doubled to 140, with <span class="annot" data-tooltip="clusters /'klʌstər/ n. (果实、花等的)串, 簇(人、物等的)群, 组vt. & vi. (使)集中时 态: clustered, cluste">clusters</span> in Bulgaria, Hungary and Portugal. Fighting STIs starts with working out where they are spreading. Young men do not seem to be the focus. In the latest data, for 2023-24, gonorrhoea rates fell among males aged 15-24 but rose among older ones. Among women, gonorrhoea rates fell, while syphilis rates rose by 15%. The biggest increase was among those aged 20 to 34. Syphilis <span class="annot" data-tooltip="transmission /trænz'mɪʃn/ n. 传送, 传播, 传达播送传动装置, 变速器形容词: transmissive">transmission</span> seems to be especially high among men who have sex with men, but rates among heterosexual men and women have risen sharply too. Geographically, the increase <span class="annot" data-tooltip="spans /spæn/ n. 跨度，跨径两个界限间的距离一段时间vt. 建造跨越(某物的)桥或拱；横跨跨越，穿越，贯穿SPANabbr. Statis">spans</span> the continent. Some of the steepest <span class="annot" data-tooltip="rises /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rises</span> in gonorrhoea in 2023-24 were in Bulgaria, France and Italy, while <span class="annot" data-tooltip="belgium n. 比利时（西欧国家，首都布鲁塞尔Brussels）">Belgium</span> and Hungary saw sharp increases in syphilis. Some poor countries report <span class="annot" data-tooltip="misleadingly /ˌmɪs'liːdɪŋ/ adj. 欺骗的;误导性的">misleadingly</span> low rates because of <span class="annot" data-tooltip="inadequate /ɪn'ædɪkwət/ adj. 不充足的，不适当的不足胜任的，信心不足的adv. 不充足地，不适当地；不足胜任地副 词: inadequately">inadequate</span> surveillance: in <span class="annot" data-tooltip="romania /ru'meɪniə/ n. 罗马尼亚（欧洲巴尔干半岛东北部国家）">Romania</span>, with a population of 19m, just 24 chlamydia cases were recorded in 2024. The ECDC says better <span class="annot" data-tooltip="monitoring /'mɑːnɪtər/ n. 显示屏；监视器；（计算机）显示器监控器；监测器班长；级长；班代表（尤指派往国外的）监督员，核查员巨蜥v. 监视；检查；跟">monitoring</span> is needed, including information on the <span class="annot" data-tooltip="proportion /prə'pɔːrʃn/ n. 均衡；相称，协调一物与他物在数量、大小等方面的关系；比例部分；份儿时 态: proportioned，proportio">proportion</span> of <span class="annot" data-tooltip="vulnerable /'vʌlnərəbl/ adj. 易受伤的, 脆弱的, 敏感的">vulnerable</span> <span class="annot" data-tooltip="groups /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">groups</span> that are tested in each country. Only a third of European countries provide this data. Knowing whether infections were passed on through homosexual or heterosexual contact could help shape better public-health decisions, says Dr Otilia Mardh, an epidemiologist at the ECDC.</p>
+<p>Countries with widespread testing have a different problem. Doctors treat STIs with antibiotics, which leads them to develop immunity. Gonorrhoea already has highly <span class="annot" data-tooltip="resistant /rɪ'zɪstənt/ adj. 有抵抗力的, 抵抗的">resistant</span> strains. Chlamydia and syphilis do not, but the decision to treat involves <span class="annot" data-tooltip="weighing /weɪ/ vt. & vi. 称…的重量link v. 重达vt. 权衡；考虑时 态: weighed，weighing，weighs">weighing</span> benefits against risk. The Netherlands recently cancelled chlamydia screening for people with no <span class="annot" data-tooltip="symptoms /'sɪmptəm/ n. 征兆；症状">symptoms</span>, after studies showed that asymptomatic <span class="annot" data-tooltip="infections /ɪn'fekʃn/ n. 〈医〉传染, 感染传染病">infections</span> were less likely to <span class="annot" data-tooltip="damage /'dæmɪdʒ/ v. 损害；伤害；毁坏；破坏n. 损坏，破坏，损失，损害，伤害（法院判定的）损害赔偿金时 态: damaged, damagi">damage</span> fertility than had been feared. Even with syphilis, resources could be used more efficiently. <span class="annot" data-tooltip="congenital /kən'dʒenɪtl/ adj. 先天的,天生的副 词: congenitally">Congenital</span> syphilis, which is easily treated, could be tackled with focused testing during pregnancy. Most EU countries test women for syphilis in the first trimester, but fewer than half test those who are most at risk in the third trimester or at delivery. One of the <span class="annot" data-tooltip="obstacles /'ɑːbstəkl/ n. 障碍(物), 妨碍">obstacles</span> to reducing STIs is that many <span class="annot" data-tooltip="societies /sə'saɪəti/ n. 社会；社交界；交往；社团">societies</span> care less about the <span class="annot" data-tooltip="groups /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">groups</span> most at risk: men who have sex with men, migrants and sex workers. In parts of <span class="annot" data-tooltip="central /'sentrəl/ adj. 中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的副 词: centrally">central</span> and eastern Europe new HIV infections continue to <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span>, even as they have fallen elsewhere in the world. Stigma and <span class="annot" data-tooltip="discrimination /dɪˌskrɪmɪ'neɪʃn/ n. 歧视辨别；辨别力，识别力">discrimination</span>, which <span class="annot" data-tooltip="deter /dɪ'tɜːr/ vt. 制止，阻止；使打消念头时 态: deterred, deterring, deters">deter</span> people from seeking testing and treatment, are partly responsible. But higher rates can themselves <span class="annot" data-tooltip="prompt /prɑːmpt/ adj. 敏捷的，迅速的；立刻的vt. 促进；激起；提示；（给演员）提白n. 提示；付款期限；DOS命令：改变DOS系统提示符的风">prompt</span> a response. In Hungary a sharp rise in reports of congenital syphilis, which went from three cases in 2020 to 91 in 2024 (in part <span class="annot" data-tooltip="due /duː/ adj. 到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）">due</span> to greater testing), led to much more <span class="annot" data-tooltip="rigorous /'rɪɡərəs/ adj. 严密的；缜密的严格的，严厉的副 词: rigorously">rigorous</span> screening. Dr Mardh notes that a recent study in which she took part found a drop in reported chlamydia cases in seven countries in 2023-24. A <span class="annot" data-tooltip="spike /spaɪk/ n. 尖头，尖刺，（尤指金属的）尖状物（某些运动鞋上的）防滑鞋钉，钉鞋（spikes）（通常在指下跌前）非常高的数量，价格或程">spike</span> in gonorrhoea rates in the years before had led to public-health <span class="annot" data-tooltip="campaigns /kæm'peɪn/ n. 运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）时">campaigns</span>. Sometimes fear is the best medicine.■ This article was downloaded by zlibrary from https://www.economist.com/europe/2026/08/09/<span class="annot" data-tooltip="sexually /'sekʃuəl/ adj. 性交的, 性行为的, 性吸引的, 两性的, 肉体吸引的性别的, 性的, 男性或女性的生殖的, 有性生殖的副 词: sex">sexually</span>-transmitted-infections-are- surging-in-europe</p>
+<div class="article-separator"></div>
+<div class="article-header">Europe · Europe | Russia</div>
+<p>A liberal party is <span class="annot" data-tooltip="barred /bɑrd/ adj. 有木栅的,隔绝的,被禁止的">barred</span> in Russia for <span class="annot" data-tooltip="implicitly /ɪm'plɪsɪtli/ adv. 含蓄地;暗示地无疑问地；无保留地；绝对地">implicitly</span> opposing the war Russia’s <span class="annot" data-tooltip="authorities /ə'θɔːrəti/ n. 威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗">authorities</span> are increasingly fearful of the slightest sign of dissent Aug 13th 2026 ON August 10th several hundred mostly young people gathered in front of Russia’s <span class="annot" data-tooltip="supreme /su'priːm/ adj. 最高的；至上的最重要的比较级: supremer，supremest 缩 写: supr">Supreme</span> Court. The pavement was <span class="annot" data-tooltip="covered /'kʌvər/ vt. 包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替时 态: covered, covering, c">covered</span> in chalk messages: “For Yabloko, for peace”; Alexei Navalny’s slogan “Russia will be free”; and in Ukrainian, “We have no fear, we have love”. They listened on their smartphones to the court’s proceedings, as it decided whether to allow Yabloko (Apple), Russia’s oldest liberal party and the only openly <span class="annot" data-tooltip="anti /'ænti/ adj. 反对的n. 反对者，反对论者">anti</span>-war one, to run in legislative elections set for September 20th. The party’s electoral manifesto consists of 43 words, the first two <span class="annot" data-tooltip="sentences /'sentəns/ n. 宣判，判决；句子，命题vt. 判决，宣判时 态: sentenced, sentencing, sentences">sentences</span> in capital letters: FOR PEACE AND FREEDOM! FOR A LIFE WITHOUT FEAR!</p>
+<p>Several young people sat in a row, eating apples. Someone holding a green apple and a Russian flag was <span class="annot" data-tooltip="hoisted /hɔɪst/ vt. 把…吊起，升起n. 吊起；举起；提升起重器械时 态: hoisted，hoisting，hoists">hoisted</span> above the crowd. A woman with dyed orange hair sat showily reading Kafka. After a few hours the judge, Vyacheslav Kirillov, disqualified Yabloko from the elections for the Duma, the lower house of Russia’s legislature. “<span class="annot" data-tooltip="whereas /ˌwer'æz/ conj. 但是, 而">Whereas</span> previously it was forbidden to speak out against the war, now it is forbidden even to <span class="annot" data-tooltip="simply /'sɪmpli/ adv. 简单地；朴素地；简直；仅仅；坦白地">simply</span> speak out in favour of peace,” notes Dmitry Kisiev, a political strategist in Moscow. The case against Yabloko was a <span class="annot" data-tooltip="lawsuit /'lɔːsuːt/ n. 诉讼（尤指非刑事案件）；诉讼案件">lawsuit</span> filed by Rodina (Motherland), a Kremlin-controlled nationalist party, accusing it of “extremism”. “‘Yabloko are national <span class="annot" data-tooltip="traitors /'treɪtər/ n. 卖国贼;叛徒背叛者;背信弃义的人">traitors</span>. They are people who embrace Western <span class="annot" data-tooltip="values /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">values</span> and are demanding our <span class="annot" data-tooltip="surrender /sə'rendər/ vt. & vi. 投降vt. 放弃；抛弃n. 投降，放弃时 态: surrendered，surrendering，surre">surrender</span>,” Alexei Zhuravlyov, Rodina’s <span class="annot" data-tooltip="chairman /'tʃermən/ n. 主席，会长；董事长时 态: chairmanned, chairmanning, chairmans">chairman</span>, said after filing the suit. It also accused Yabloko of copyright <span class="annot" data-tooltip="violations /ˌvaɪə'leɪʃn/ n. 违反, 冒犯, 侵害违反(行为、事例)强奸">violations</span> for using old <span class="annot" data-tooltip="soviet /'soʊviet/ adj. 苏维埃的；苏联的；委员会的n. 苏维埃（代表会议）；委员会；代表会议Sovietn. 苏维埃adj. 苏维埃的,前苏联的">Soviet</span> pacifist songs and for displaying photos of the <span class="annot" data-tooltip="bombing abbr. 物料清单（Bill of Materiel）">bombing</span> of Hiroshima, <span class="annot" data-tooltip="allegedly adv. 依其申述">allegedly</span> infringing the copyright of the American army. It was less surprising that Yabloko had been struck from the <span class="annot" data-tooltip="ballot /'bælət/ n. 投票表决, 选举选票vt. & vi. (使)投票表决时 态: balloted, balloting, ballots">ballot</span> than that it had been allowed to register on July 29th. <span class="annot" data-tooltip="apparently /ə'pærəntli/ adv. 显然地表面上,似乎">Apparently</span> the Kremlin’s election advisers, often known in Russia as “political technologists”, <span class="annot" data-tooltip="considered /kən'sɪdər/ vt. & vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及时 态: considered, considering, ">considered</span> it safe. Since 2007 Yabloko has failed to meet the 5% <span class="annot" data-tooltip="threshold /'θreʃhoʊld/ n. 门槛; 〈喻〉开始">threshold</span> to make it into the Duma, not only because of election <span class="annot" data-tooltip="fraud /frɔːd/ n. 欺诈, 欺骗行为骗子">fraud</span> but because its support is low. Until this summer, <span class="annot" data-tooltip="polls /poʊl/ n. 民意测验；投票；投票数；投票所vt. 剪短；对…进行民意测验；获得选票；投票vi. 投票adj. 剪过毛的；修过枝的；无">polls</span> put it at around 3%. It was seen as independent but accommodating, willing to make <span class="annot" data-tooltip="concessions /kən'seʃn/ n. 承认, 允许妥协, 让步特许权形容词: concessional">concessions</span> to the Kremlin—and therefore unappealing to opposition-minded Russians. Its <span class="annot" data-tooltip="main /meɪn/ adj. 主要的; 最重要的n. 总管道; 干线">main</span> constituency was the ageing Soviet-era intelligentsia. By the time it registered, the Kremlin had depleted its leadership, knocking its most recognisable <span class="annot" data-tooltip="candidates /'kændɪdət，ˈkændɪdeɪt/ n. 申请求职者, 候选人报考者名 词: candidacy">candidates</span> off the list. Several, including Lev Shlosberg, have been arrested; others have been declared foreign agents. The Kremlin reckoned that Yabloko posed no threat, and would allow it to paint the opposition as marginal. But on July 27th Yabloko declared it would run as the party of peace. “We support the earliest possible agreement for a <span class="annot" data-tooltip="ceasefire /'siːsfaɪər/ n. (通常指永久性的)停火; 停战">ceasefire</span>. We support diplomacy and <span class="annot" data-tooltip="negotiations /nɪˌɡoʊʃi'eɪʃn/ n. 协商，谈判完成(难事)；通过">negotiations</span>. We stand for the absolute <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span> of human life, freedom from fear and repression,” the party’s leader, Nikolai Rybakov, said</p>
+<p>in a keynote speech. Opinion <span class="annot" data-tooltip="polls /poʊl/ n. 民意测验；投票；投票数；投票所vt. 剪短；对…进行民意测验；获得选票；投票vi. 投票adj. 剪过毛的；修过枝的；无">polls</span> suggest two-thirds of Russians back peace <span class="annot" data-tooltip="negotiations /nɪˌɡoʊʃi'eɪʃn/ n. 协商，谈判完成(难事)；通过">negotiations</span> with <span class="annot" data-tooltip="ukraine n. 乌克兰（原苏联一加盟共和国，现已独立）">Ukraine</span>. Yabloko’s popularity began to grow. Its support quickly <span class="annot" data-tooltip="reached /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reached</span> 5.3% in surveys by Russian Field, a pollster. By the time it was disqualified it had hit 9.3%. Social-media posts of young Russians eating apples, singing about apples or featuring an apple emoji gathered millions of views. Yabloko’s Telegram channel grew to have more followers than that of United Russia, Vladimir Putin’s party. It was endorsed by Russian politicians <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span> the country, including Navalny’s widow, Yulia Navalnaya. The <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span> services that <span class="annot" data-tooltip="dominate /'dɑːmɪneɪt/ vt. 支配；控制；占优势；在…中占主要地位vi. 处于支配地位；占优势时 态: dominated, dominating, ">dominate</span> the Kremlin decided that keeping up the pretence of a real election by allowing the party to <span class="annot" data-tooltip="campaign /kæm'peɪn/ n. 运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）时">campaign</span> was too risky. The danger, says Vladislav Inozemtsev, a political analyst, was not so much that Yabloko might re-<span class="annot" data-tooltip="enter /'entər/ vt. & vi. 进入, 进去参加, 加入登记, 登录时 态: entered, entering, enters">enter</span> the Duma, but that “they will once again be able to openly and legally speak everywhere about the need for peace.” Letting them win seats would have signalled political change; none has taken <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span>. The show <span class="annot" data-tooltip="trial /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">trial</span> highlighted public desire to halt the war. What lesson the <span class="annot" data-tooltip="authorities /ə'θɔːrəti/ n. 威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗">authorities</span> draw is a different matter. If they <span class="annot" data-tooltip="perceive /pər'siːv/ vt. 察觉，感觉；理解；认知vi. 感到，感知；认识到时 态: perceived, perceiving, perceive">perceive</span> an increasingly bold populace and a growing potential for <span class="annot" data-tooltip="protest /'proʊtest/ n. 抗议；反对vt. & vi. 声明；抗议时 态: protested，protesting，protests">protest</span>, they will probably conclude that <span class="annot" data-tooltip="insufficient /ˌɪnsə'fɪʃnt/ adj. 不足的,不够的副 词: insufficiently">insufficient</span> pressure, censorship and repression have been applied, argues Mr Kisiev. The Kremlin may attempt another military mobilisation after the Duma elections are over. The threat of forced conscription is one of the <span class="annot" data-tooltip="regime /reɪ'ʒiːm/ n. 政权，政体；社会制度；管理体制">regime</span>’s most powerful tools. As soon as the court’s decision barring Yabloko from the elections had been announced, the young people in front of the courthouse began chanting “Shame! Shame!” A police officer facing them from across the road delivered a warning through a megaphone: “We’re going to round you all up now. If anyone has got something in their head, I ask you to leave—to the <span class="annot" data-tooltip="metro /'metroʊ/ n. 地铁；大都市；伦敦地下铁道；麦德隆（财富500强公司之一，总部所在地德国，主要经营零售）Metron. 地下铁路">metro</span>, to the discos,” he said. “If you don’t disperse, don’t take offence, but no one will come to rescue you from the military recruitment station.”■ This article was downloaded by zlibrary from https://www.economist.com/europe/2026/08/13/a-liberal-party-is-<span class="annot" data-tooltip="barred /bɑrd/ adj. 有木栅的,隔绝的,被禁止的">barred</span>-in-russia- for-<span class="annot" data-tooltip="implicitly /ɪm'plɪsɪtli/ adv. 含蓄地;暗示地无疑问地；无保留地；绝对地">implicitly</span>-opposing-the-war</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>transmission</td><td>/trænz'mɪʃn/ n.</td><td>传送, 传播, 传达播送传动装置, 变速器</td></tr>
+<tr><td>renaissance</td><td>/'renəsɑːns/ n.</td><td>文艺复兴, 文艺复兴时期</td></tr>
+<tr><td>reckless</td><td>/'rekləs/ adj.</td><td>轻率的; 鲁莽的; 不顾危险的</td></tr>
+<tr><td>hopping</td><td>/'hɑːpɪŋ/ adj.</td><td>卖力的,忙碌的</td></tr>
+<tr><td>sparse</td><td>/spɑːrs/ adj.</td><td>稀疏的；稀少的, sparsest</td></tr>
+<tr><td>multiple</td><td>/'mʌltɪpl/ adj.</td><td>多样的；许多的；多重的n. 并联；倍数</td></tr>
+<tr><td>cautious</td><td>/'kɔːʃəs/ adj.</td><td>小心的, 谨慎的</td></tr>
+<tr><td>explanation</td><td>/ˌeksplə'neɪʃn/ n.</td><td>解释, 说明能说明某事缘由的言语、事实、情况等</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>significant</td><td>/sɪɡ'nɪfɪkənt/ adj.</td><td>重要的, 重大的, 可观的有意义的, 有用意的意味深长的</td></tr>
+<tr><td>specific</td><td>/spə'sɪfɪk/ adj.</td><td>特殊的，特定的；明确的；详细的；具有特效的n. 特效药；细节；特性</td></tr>
+<tr><td>hypothesis</td><td>/haɪ'pɑːθəsɪs/ n.</td><td>假说, 假设, 前提</td></tr>
+<tr><td>exposure</td><td>/ɪk'spoʊʒər/ n.</td><td>暴露, 显露揭发, 揭露(软片等)曝光</td></tr>
+<tr><td>sexual</td><td>/'sekʃuəl/ adj.</td><td>性交的, 性行为的, 性吸引的, 两性的, 肉体吸引的性别的, 性的, 男性或女性的生殖的, 有性生殖的</td></tr>
+<tr><td>testicular</td><td>/te'stɪkjələr/ adj.</td><td>双丸状的(例如两个并列的块茎)</td></tr>
+<tr><td>infections</td><td>/ɪn'fekʃn/ n.</td><td>〈医〉传染, 感染传染病</td></tr>
+<tr><td>congenital</td><td>/kən'dʒenɪtl/ adj.</td><td>先天的,天生的</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>clusters</td><td>/'klʌstər/ n.</td><td>(果实、花等的)串, 簇(人、物等的)群, 组vt. & vi. (使)集中, clustering, clusters</td></tr>
+<tr><td>transmission</td><td>/trænz'mɪʃn/ n.</td><td>传送, 传播, 传达播送传动装置, 变速器</td></tr>
+<tr><td>spans</td><td>/spæn/ n.</td><td>跨度，跨径两个界限间的距离一段时间vt. 建造跨越(某物的)桥或拱；横跨跨越，穿越，贯穿SPANabbr. Statistical Processing and</td></tr>
+<tr><td>rises</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>belgium</td><td>— n.</td><td>比利时（西欧国家，首都布鲁塞尔Brussels）</td></tr>
+<tr><td>misleadingly</td><td>/ˌmɪs'liːdɪŋ/ adj.</td><td>欺骗的;误导性的</td></tr>
+<tr><td>inadequate</td><td>/ɪn'ædɪkwət/ adj.</td><td>不充足的，不适当的不足胜任的，信心不足的adv. 不充足地，不适当地；不足胜任地</td></tr>
+<tr><td>romania</td><td>/ru'meɪniə/ n.</td><td>罗马尼亚（欧洲巴尔干半岛东北部国家）</td></tr>
+<tr><td>monitoring</td><td>/'mɑːnɪtər/ n.</td><td>显示屏；监视器；（计算机）显示器监控器；监测器班长；级长；班代表（尤指派往国外的）监督员，核查员巨蜥v. 监视；检查；跟踪调查监听（电话、外国无线电广播等）, </td></tr>
+<tr><td>proportion</td><td>/prə'pɔːrʃn/ n.</td><td>均衡；相称，协调一物与他物在数量、大小等方面的关系；比例部分；份儿，proportioning，proportions</td></tr>
+<tr><td>vulnerable</td><td>/'vʌlnərəbl/ adj.</td><td>易受伤的, 脆弱的, 敏感的</td></tr>
+<tr><td>groups</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>resistant</td><td>/rɪ'zɪstənt/ adj.</td><td>有抵抗力的, 抵抗的</td></tr>
+<tr><td>weighing</td><td>/weɪ/ vt.</td><td>& vi. 称…的重量link v. 重达vt. 权衡；考虑，weighing，weighs</td></tr>
+<tr><td>symptoms</td><td>/'sɪmptəm/ n.</td><td>征兆；症状</td></tr>
+<tr><td>infections</td><td>/ɪn'fekʃn/ n.</td><td>〈医〉传染, 感染传染病</td></tr>
+<tr><td>damage</td><td>/'dæmɪdʒ/ v.</td><td>损害；伤害；毁坏；破坏n. 损坏，破坏，损失，损害，伤害（法院判定的）损害赔偿金, damaging, damages</td></tr>
+<tr><td>congenital</td><td>/kən'dʒenɪtl/ adj.</td><td>先天的,天生的</td></tr>
+<tr><td>obstacles</td><td>/'ɑːbstəkl/ n.</td><td>障碍(物), 妨碍</td></tr>
+<tr><td>societies</td><td>/sə'saɪəti/ n.</td><td>社会；社交界；交往；社团</td></tr>
+<tr><td>groups</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>central</td><td>/'sentrəl/ adj.</td><td>中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>discrimination</td><td>/dɪˌskrɪmɪ'neɪʃn/ n.</td><td>歧视辨别；辨别力，识别力</td></tr>
+<tr><td>deter</td><td>/dɪ'tɜːr/ vt.</td><td>制止，阻止；使打消念头, deterring, deters</td></tr>
+<tr><td>prompt</td><td>/prɑːmpt/ adj.</td><td>敏捷的，迅速的；立刻的vt. 促进；激起；提示；（给演员）提白n. 提示；付款期限；DOS命令：改变DOS系统提示符的风格adv. 准时地, promptest</td></tr>
+<tr><td>due</td><td>/duː/ adj.</td><td>到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）</td></tr>
+<tr><td>rigorous</td><td>/'rɪɡərəs/ adj.</td><td>严密的；缜密的严格的，严厉的</td></tr>
+<tr><td>spike</td><td>/spaɪk/ n.</td><td>尖头，尖刺，（尤指金属的）尖状物（某些运动鞋上的）防滑鞋钉，钉鞋（spikes）（通常在指下跌前）非常高的数量，价格或程度v. 拒绝刊登，弃置（文章）不用将烈酒</td></tr>
+<tr><td>campaigns</td><td>/kæm'peɪn/ n.</td><td>运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）, campaigning, campai</td></tr>
+<tr><td>sexually</td><td>/'sekʃuəl/ adj.</td><td>性交的, 性行为的, 性吸引的, 两性的, 肉体吸引的性别的, 性的, 男性或女性的生殖的, 有性生殖的</td></tr>
+<tr><td>barred</td><td>/bɑrd/ adj.</td><td>有木栅的,隔绝的,被禁止的</td></tr>
+<tr><td>implicitly</td><td>/ɪm'plɪsɪtli/ adv.</td><td>含蓄地;暗示地无疑问地；无保留地；绝对地</td></tr>
+<tr><td>authorities</td><td>/ə'θɔːrəti/ n.</td><td>威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗</td></tr>
+<tr><td>supreme</td><td>/su'priːm/ adj.</td><td>最高的；至上的最重要的，supremest 缩 写: supr</td></tr>
+<tr><td>covered</td><td>/'kʌvər/ vt.</td><td>包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替, covering, covers</td></tr>
+<tr><td>anti</td><td>/'ænti/ adj.</td><td>反对的n. 反对者，反对论者</td></tr>
+<tr><td>sentences</td><td>/'sentəns/ n.</td><td>宣判，判决；句子，命题vt. 判决，宣判, sentencing, sentences</td></tr>
+<tr><td>hoisted</td><td>/hɔɪst/ vt.</td><td>把…吊起，升起n. 吊起；举起；提升起重器械，hoisting，hoists</td></tr>
+<tr><td>whereas</td><td>/ˌwer'æz/ conj.</td><td>但是, 而</td></tr>
+<tr><td>simply</td><td>/'sɪmpli/ adv.</td><td>简单地；朴素地；简直；仅仅；坦白地</td></tr>
+<tr><td>lawsuit</td><td>/'lɔːsuːt/ n.</td><td>诉讼（尤指非刑事案件）；诉讼案件</td></tr>
+<tr><td>traitors</td><td>/'treɪtər/ n.</td><td>卖国贼;叛徒背叛者;背信弃义的人</td></tr>
+<tr><td>values</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>surrender</td><td>/sə'rendər/ vt.</td><td>& vi. 投降vt. 放弃；抛弃n. 投降，放弃，surrendering，surrenders</td></tr>
+<tr><td>chairman</td><td>/'tʃermən/ n.</td><td>主席，会长；董事长, chairmanning, chairmans</td></tr>
+<tr><td>violations</td><td>/ˌvaɪə'leɪʃn/ n.</td><td>违反, 冒犯, 侵害违反(行为、事例)强奸</td></tr>
+<tr><td>soviet</td><td>/'soʊviet/ adj.</td><td>苏维埃的；苏联的；委员会的n. 苏维埃（代表会议）；委员会；代表会议Sovietn. 苏维埃adj. 苏维埃的,前苏联的,前苏联人的</td></tr>
+<tr><td>bombing</td><td>— abbr.</td><td>物料清单（Bill of Materiel）</td></tr>
+<tr><td>allegedly</td><td>— adv.</td><td>依其申述</td></tr>
+<tr><td>ballot</td><td>/'bælət/ n.</td><td>投票表决, 选举选票vt. & vi. (使)投票表决, balloting, ballots</td></tr>
+<tr><td>apparently</td><td>/ə'pærəntli/ adv.</td><td>显然地表面上,似乎</td></tr>
+<tr><td>considered</td><td>/kən'sɪdər/ vt.</td><td>& vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及, considering, considers</td></tr>
+<tr><td>threshold</td><td>/'θreʃhoʊld/ n.</td><td>门槛; 〈喻〉开始</td></tr>
+<tr><td>fraud</td><td>/frɔːd/ n.</td><td>欺诈, 欺骗行为骗子</td></tr>
+<tr><td>polls</td><td>/poʊl/ n.</td><td>民意测验；投票；投票数；投票所vt. 剪短；对…进行民意测验；获得选票；投票vi. 投票adj. 剪过毛的；修过枝的；无角的, polling, polls</td></tr>
+<tr><td>concessions</td><td>/kən'seʃn/ n.</td><td>承认, 允许妥协, 让步特许权</td></tr>
+<tr><td>main</td><td>/meɪn/ adj.</td><td>主要的; 最重要的n. 总管道; 干线</td></tr>
+<tr><td>candidates</td><td>/'kændɪdət，ˈkændɪdeɪt/ n.</td><td>申请求职者, 候选人报考者</td></tr>
+<tr><td>ceasefire</td><td>/'siːsfaɪər/ n.</td><td>(通常指永久性的)停火; 停战</td></tr>
+<tr><td>negotiations</td><td>/nɪˌɡoʊʃi'eɪʃn/ n.</td><td>协商，谈判完成(难事)；通过</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>polls</td><td>/poʊl/ n.</td><td>民意测验；投票；投票数；投票所vt. 剪短；对…进行民意测验；获得选票；投票vi. 投票adj. 剪过毛的；修过枝的；无角的, polling, polls</td></tr>
+<tr><td>negotiations</td><td>/nɪˌɡoʊʃi'eɪʃn/ n.</td><td>协商，谈判完成(难事)；通过</td></tr>
+<tr><td>ukraine</td><td>— n.</td><td>乌克兰（原苏联一加盟共和国，现已独立）</td></tr>
+<tr><td>reached</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>dominate</td><td>/'dɑːmɪneɪt/ vt.</td><td>支配；控制；占优势；在…中占主要地位vi. 处于支配地位；占优势, dominating, dominates</td></tr>
+<tr><td>campaign</td><td>/kæm'peɪn/ n.</td><td>运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）, campaigning, campai</td></tr>
+<tr><td>enter</td><td>/'entər/ vt.</td><td>& vi. 进入, 进去参加, 加入登记, 登录, entering, enters</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>trial</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>authorities</td><td>/ə'θɔːrəti/ n.</td><td>威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗</td></tr>
+<tr><td>perceive</td><td>/pər'siːv/ vt.</td><td>察觉，感觉；理解；认知vi. 感到，感知；认识到, perceiving, perceives</td></tr>
+<tr><td>protest</td><td>/'proʊtest/ n.</td><td>抗议；反对vt. & vi. 声明；抗议，protesting，protests</td></tr>
+<tr><td>insufficient</td><td>/ˌɪnsə'fɪʃnt/ adj.</td><td>不足的,不够的</td></tr>
+<tr><td>regime</td><td>/reɪ'ʒiːm/ n.</td><td>政权，政体；社会制度；管理体制</td></tr>
+<tr><td>metro</td><td>/'metroʊ/ n.</td><td>地铁；大都市；伦敦地下铁道；麦德隆（财富500强公司之一，总部所在地德国，主要经营零售）Metron. 地下铁路</td></tr>
+<tr><td>barred</td><td>/bɑrd/ adj.</td><td>有木栅的,隔绝的,被禁止的</td></tr>
+<tr><td>implicitly</td><td>/ɪm'plɪsɪtli/ adv.</td><td>含蓄地;暗示地无疑问地；无保留地；绝对地</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day20.html" class="nav-btn">← Day 20</a>
+  <a href="day22.html" class="nav-btn">Day 22 →</a>
+</div>
+
+<div class="progress">📖 Day 21 of 40</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-08-15</div>
+
+</body>
+</html>

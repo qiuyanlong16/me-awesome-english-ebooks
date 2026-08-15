@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Politics</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-08-15</div>
+
+<h1 class="article-title">Politics</h1>
+<div class="article-section"></div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>Aug 13th 2026 Iranian-backed Houthi <span class="annot" data-tooltip="rebels /'rebl/ n. 反政府的人；反叛者；造反者叛逆者vi. 反抗政府；造反反抗权威；叛逆时 态: rebelled，rebelling，re">rebels</span> stepped up their attacks on <span class="annot" data-tooltip="shipping /ʃɪp/ vt. 运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Di">shipping</span> trying to <span class="annot" data-tooltip="traverse /trə'vɜːrs/ n. (爬山时的)Z形攀登vt. 横越, 穿越, 横贯vi. (爬山时)作Z形攀登时 态: traversed, traver">traverse</span> the Red Sea. The Houthis struck an Egyptian-owned cargo <span class="annot" data-tooltip="vessel /'vesl/ n. 容器，器皿；船，舰；脉管，血管">vessel</span>, killing six people, the first deaths from a Houthi <span class="annot" data-tooltip="assault /ə'sɔːlt/ n. 攻击；袭击vt. 袭击；攻击vi. 袭击；动武时 态: assaulted, assaulting, assaults">assault</span> on shipping since the war with Iran started in February. The Houthis are fighting Saudi Arabia in Yemen and are trying to <span class="annot" data-tooltip="impose /ɪm'poʊz/ vi. 欺骗；利用；施加影响vt. 强加；以…欺骗；征税时 态: imposed, imposing, imposes">impose</span> a <span class="annot" data-tooltip="blockade /blɑː'keɪd/ vt. 封锁n. 阻塞时 态: blockaded, blockading, blockades">blockade</span> on Saudi <span class="annot" data-tooltip="ships /ʃɪp/ vt. 运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Di">ships</span>; they also attacked a Saudi oil refinery at the <span class="annot" data-tooltip="port /pɔːrt/ n. 港口，口岸；左舷；舱门；（计算机的）端口vi. 转向左舷vt. 左转舵；持（枪）PORTabbr. Photo Opit">port</span> of Jazan. America fired missiles at a vessel in the Gulf of Oman that was <span class="annot" data-tooltip="heading /'hedɪŋ/ n. 标题；信头；（足球）头球v. 用头顶（head的ing形式）">heading</span> for an Iranian port. There was little progress <span class="annot" data-tooltip="towards /tɔːrdz/ prep. 向，朝为了；有助于；用于对于，关于接近；将近；大约">towards</span> a peace deal between America and Iran. Pakistan, Turkey and Saudi Arabia signed a defence co-operation agreement, which was described as similar to NATO’s Article 5, when an attack on one member of the alliance triggers a collective response. The pact builds on an existing accord between Pakistan and Saudi Arabia; Pakistan has deployed fighter jets to Saudi Arabia to defend it from Iranian attacks. The Saudis</p>
+<p>were <span class="annot" data-tooltip="keen /kiːn/ adj. 锋利的热衷的，热心的，渴望(做某事)激烈的，紧张的良好的；敏锐的，敏捷的比较级: keener，keenest">keen</span> to stress that the new pact did not represent a Sunni “military axis”, and that other countries could join. Details emerged of a ploy to thwart an Iranian threat to assassinate Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>. As he was leaving last month’s NATO summit in Turkey, the president was <span class="annot" data-tooltip="secretly /'siːkrətli/ adv. 秘密地;背地里">secretly</span> <span class="annot" data-tooltip="transferred /træns'fɜːr/ n. 转移；转让；过户；传递vi. 转移；转让；转学；换车vt. 转让；调任；传递；使转移时 态: transferred, ">transferred</span> to a military jet that then flew to Britain. The media reported at the time that Mr Trump left Turkey on an older <span class="annot" data-tooltip="version /'vɜːrʒn/ n. 变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本">version</span> of Air Force One. He did board that plane, but was then <span class="annot" data-tooltip="squirrelled /'skwɜːrəl/ n. 松鼠；松鼠毛皮vt. 贮藏时 态: squirreled, squirrelled squirreling, squir">squirrelled</span> out through a side exit into a <span class="annot" data-tooltip="catering /'keɪtər/ vt. 满足需要；投合，迎合；提供饮食及服务时 态: catered, catering, caters">catering</span> <span class="annot" data-tooltip="van /væn/ n. 先锋；厢式货车；[计]增值网vt. 用车搬运Van范(男子名)时 态: vanned, vanning, vans">van</span> and onto the waiting jet, out of the view of journalists. A fire at sofa factory in Riyadh, the Saudi capital, killed at least 16 Bangladeshi workers. Around 3.5m Bangladeshi migrants live and work in Saudi Arabia. Bashar al-Assad, who was overthrown as Syria’s president in 2024 following a 14-year <span class="annot" data-tooltip="civil /'sɪvl/ adj. 公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的副 词: civilly">civil</span> war, was sentenced to death in absentia for killings and <span class="annot" data-tooltip="torture /'tɔːrtʃər/ vt. 折磨；拷问；歪曲n. 拷问；折磨；歪曲时 态: tortured, torturing, tortures">torture</span> <span class="annot" data-tooltip="committed /kə'mɪt/ vt. 犯罪；犯错承诺；使自己受约束托付；交付时 态: committed，committing，commits">committed</span> under his <span class="annot" data-tooltip="regime /reɪ'ʒiːm/ n. 政权，政体；社会制度；管理体制">regime</span>. Mr Assad and his family live in Russia. Death <span class="annot" data-tooltip="sentences /'sentəns/ n. 宣判，判决；句子，命题vt. 判决，宣判时 态: sentenced, sentencing, sentences">sentences</span> were also handed down to other regime officials, including Atef Najib, the <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span> chief of Deraa, in southern Syria. Concerns have been raised that the <span class="annot" data-tooltip="trial /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">trial</span> was conducted at great speed and without an agreement on its legal framework. The <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of deaths from Ebola in the <span class="annot" data-tooltip="democratic /ˌdemə'krætɪk/ adj. 民主的, 有民主精神或作风的副 词: democratically">Democratic</span> Republic of Congo passed 2,060. The WHO said it could be the worst Ebola outbreak ever and has called for a stronger response in Congo to contain the disease, including better early detection and contact follow-up. It pointed to the success of Uganda, which has declared the outbreak of Ebola there to be over (after just 20 confirmed cases and two deaths). An earthquake of <span class="annot" data-tooltip="magnitude /'mæɡnɪtuːd/ n. 巨大; 重要性〈天〉星等">magnitude</span> 7.4 struck <span class="annot" data-tooltip="colombia n. 哥伦比亚（拉丁美洲国家）形容词: Colombian">Colombia</span>, killing at least 265 people. The quake came three days after Abelardo de la Espriella was sworn in as the country’s new right-<span class="annot" data-tooltip="wing /wɪŋ/ n. 翅膀；翼；飞翔；派别vt. 使飞；飞过；空运；增加…速度；装以翼vi. 飞行时 态: winged, winging, ">wing</span> president. In his inauguration speech Mr de la Espriella reiterated his <span class="annot" data-tooltip="pledge /pledʒ/ n. 抵押；保证，誓言；抵押品，典当物vt. 保证，许诺；用……抵押；举杯祝……健康时 态: pledged, pledgin">pledge</span> to <span class="annot" data-tooltip="crack /kræk/ vt. & vi. (使…)开裂, 破裂(使)身体上或精神上垮掉打开, 砸开(使)发出爆裂声n. 裂缝, 缝隙噼啪声, 爆裂声意">crack</span> down on drug gangs and criminal violence. Zhu Rongji died at the age of 97. Mr Zhu became China’s prime minister in 1998 and pushed for the great <span class="annot" data-tooltip="reforms /rɪ'fɔːrm/ n. 改革，改良，改造vt. & vi. 改革；改造；改善时 态: reformed，reforming，reforms">reforms</span> that integrated China into the global</p>
+<p>economy, negotiating its entry into the World Trade Organisation in 2001. <span class="annot" data-tooltip="articulate /ɑːr'tɪkjuleɪt/ adj. （人）善于表达的（说话）口齿清楚的；发音清晰的v. 明确表达；清楚说明口齿清楚；清晰吐（字）；清晰发（音）与…合成整体用">Articulate</span> and urbane, he often talked to Western officials and economists about complex policy <span class="annot" data-tooltip="issues /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issues</span>. Observers say China’s leadership today lacks his technical prowess. The Taiwanese government is proposing to increase defence spending by 16%, according to Taiwan’s official news agency, to <span class="annot" data-tooltip="counter /'kaʊntər/ n. 柜台, 柜台式长桌计数器vt. & vi. 对抗, 反驳adv. 反方向地, 对立地时 态: countered, co">counter</span> the increased threat from China. The defence budget will exceed 3% of GDP when it is <span class="annot" data-tooltip="unveiled /ˌʌn'veɪl/ vt. 揭去…的面罩，除去…的遮盖物使公之于众；揭露vi. 除去面纱(或覆盖物)；揭幕揭露出来时 态: unveiled，unv">unveiled</span> on August 20th. America would like Taiwan to spend more. <span class="annot" data-tooltip="thailand n. 泰国">Thailand</span>’s prime minister, Anutin Charnvirakul, took steps to tighten gun laws, following the mass shooting of six people at a school. The 14-year-old gunman also shot dead two of his grandparents before killing himself. Mr Anutin <span class="annot" data-tooltip="ordered /'ɔːrdərd/ adj. 安排好的；整齐的；[数]有序的v. 命令；点餐（order的过去式和过去分词）">ordered</span> a halt to the <span class="annot" data-tooltip="renewal /rɪ'nuːəl/ n. 重建;更新重生">renewal</span> of certain weapon licences and <span class="annot" data-tooltip="instructed /ɪn'strʌkt/ vt. 命令；教授；指导；通知时 态: instructed, instructing, instructs">instructed</span> officials to intensify their <span class="annot" data-tooltip="enforcement /ɪn'fɔːrsmənt/ n. 强制,实施,执行">enforcement</span> of gun-control laws. Police in Ranchi, the capital of the Indian state of Jharkhand, used <span class="annot" data-tooltip="tear /tɪr，ter/ v. 撕掉，扯下；撕破；拔掉；拉伤；（非正式）狂奔；饱经……摧残；流眼泪n. 眼泪；（撕破的）洞或裂缝， 撕扯时 态: tor">tear</span>-gas and water cannon to disperse thousands of young demonstrators who were <span class="annot" data-tooltip="protesting /'proʊtest/ n. 抗议；反对vt. & vi. 声明；抗议时 态: protested，protesting，protests">protesting</span> against the <span class="annot" data-tooltip="leaking /liːk/ n. 漏洞，裂缝；泄漏vt. 使渗漏，泄露vi. 漏，渗；泄漏出去时 态: leaked, leaking, leaks">leaking</span> of test papers in <span class="annot" data-tooltip="civil /'sɪvl/ adj. 公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的副 词: civilly">civil</span>-service exams. Similar <span class="annot" data-tooltip="protests /'proʊtest/ n. 抗议；反对vt. & vi. 声明；抗议时 态: protested，protesting，protests">protests</span> have taken <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span> in <span class="annot" data-tooltip="delhi /ˈdɛli/ n. 德里（印度城市名）">Delhi</span> recently over a <span class="annot" data-tooltip="leak /liːk/ n. 漏洞，裂缝；泄漏vt. 使渗漏，泄露vi. 漏，渗；泄漏出去时 态: leaked, leaking, leaks">leak</span> of medical test papers, which led to the annulment of nationwide exams. Russia attacked the Ukrainian city of Zaporizhia, killing at least six people. Russia deployed North Korean ballistic missiles in the bombardment, according to Volodymyr Zelensky. <span class="annot" data-tooltip="ukraine n. 乌克兰（原苏联一加盟共和国，现已独立）">Ukraine</span>, meanwhile, <span class="annot" data-tooltip="pounded /paʊnd/ n. 英镑；兽栏；重击，重击声；拘留所vt. 捣烂；敲打；监禁，拘留vi. 连续重击，猛击Pound庞德(姓氏)名 词: po">pounded</span> Russia’s Black Sea <span class="annot" data-tooltip="port /pɔːrt/ n. 港口，口岸；左舷；舱门；（计算机的）端口vi. 转向左舷vt. 左转舵；持（枪）PORTabbr. Photo Opit">port</span> of Novorossiysk, hitting warships and <span class="annot" data-tooltip="grain /ɡreɪn/ n. 谷物；谷粒颗粒；细粒（尤用于否定句） 少量；微量；一点儿（木、织物或石头等的）纹理（表面的）质地；触感格令（重量单位，等">grain</span>-export <span class="annot" data-tooltip="terminals /'tɜːrmɪnl/ n. 终端机；终点；末端；极限adj. 末端的；终点的；晚期的Terminal终端，终端设备(仿真程序)，端子；终结符(T,T">terminals</span>. It also struck oil refineries in the Russian republic of Tatarstan with <span class="annot" data-tooltip="drones /droʊn/ n. 无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫">drones</span>, killing at least 13 people. America’s <span class="annot" data-tooltip="senate /ˈsenət/ n.（诸如美国、澳大利亚、法国的）参议院（the Senate） （某些国家的）大学理事会，大学评议会（古罗马的）元老院">Senate</span> passed a long-delayed bill authorising Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> to <span class="annot" data-tooltip="impose /ɪm'poʊz/ vi. 欺骗；利用；施加影响vt. 强加；以…欺骗；征税时 态: imposed, imposing, imposes">impose</span> new sanctions on Russian officials, oligarchs, companies and institutions. It also allows him to impose <span class="annot" data-tooltip="tariffs /'tærɪf/ n. 关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表时 态: tariffed, tariffing, tar">tariffs</span> on big importers of Russian oil and gas. The <span class="annot" data-tooltip="legislation /ˌledʒɪs'leɪʃn/ n. 法律；法规立法，法律的制定[通过]">legislation</span> attracted bipartisan support. It must now clear the House of <span class="annot" data-tooltip="representatives /ˌreprɪ'zentətɪv/ n. 代表代理人adj. 有代表性的, 典型的名 词: representativeness">Representatives</span>. Critics worry that Mr Trump will use his new powers in ways that escalate his trade wars. Russia’s <span class="annot" data-tooltip="supreme /su'priːm/ adj. 最高的；至上的最重要的比较级: supremer，supremest 缩 写: supr">Supreme</span> Court ruled that Yabloko, the only liberal <span class="annot" data-tooltip="anti /'ænti/ adj. 反对的n. 反对者，反对论者">anti</span>-war party in Russia, could not take part in next month’s elections for <span class="annot" data-tooltip="parliament /'pɑːrləmənt/ n. 议会, 国会">parliament</span>. A</p>
+<p>nationalist party had accused Yabloko of <span class="annot" data-tooltip="hosting /hoʊst/ n. 主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集时 态: hosted, hosting, host">hosting</span> material on its website supportive of the international gay movement, which the court has deemed to be an extremist crusade. Hundreds of mostly young people braved the <span class="annot" data-tooltip="authorities /ə'θɔːrəti/ n. 威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗">authorities</span> by <span class="annot" data-tooltip="protesting /'proʊtest/ n. 抗议；反对vt. & vi. 声明；抗议时 态: protested，protesting，protests">protesting</span> against the ban <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span> the court in Moscow. Continuing its dismantling of the old <span class="annot" data-tooltip="regime /reɪ'ʒiːm/ n. 政权，政体；社会制度；管理体制">regime</span> under Viktor Orban, Hungary’s <span class="annot" data-tooltip="parliament /'pɑːrləmənt/ n. 议会, 国会">parliament</span> elected Andras Baka as the country’s president. Mr Baka had been removed as head of the <span class="annot" data-tooltip="supreme /su'priːm/ adj. 最高的；至上的最重要的比较级: supremer，supremest 缩 写: supr">Supreme</span> Court in 2011 for criticising Mr Orban. He now has the difficult task of <span class="annot" data-tooltip="overseeing /ˌoʊvər'siː/ vt. 监督；俯瞰；审查；偷看到，无意中看到时 态: oversaw overseen overseeing, oversees">overseeing</span> the development of a new constitution. Karoline Leavitt is stepping down as White House press <span class="annot" data-tooltip="secretary /'sekrəteri/ n. 秘书书记部长, 大臣形容词: secretarial">secretary</span> to spend more time with her children. Ms Leavitt was one of the president’s most loyal aides; he said she had done a “phenomenal job”. At the age of 27 she was the youngest person ever to be appointed to the job, but soon settled into a combative relationship with journalists. Todd Blanche was sworn in as America’s <span class="annot" data-tooltip="attorney /ə'tɜːrni/ n. 代理人, 律师名 词: attorneyship">attorney</span>-general, after the <span class="annot" data-tooltip="senate /ˈsenət/ n.（诸如美国、澳大利亚、法国的）参议院（the Senate） （某些国家的）大学理事会，大学评议会（古罗马的）元老院">Senate</span> voted to confirm him by 50 votes to 49. Two <span class="annot" data-tooltip="republicans /rɪ'pʌblɪkən/ adj. 共和国的, 共和政体的n. 拥护共和政体者, 共和主义者名 词: republicanism">Republicans</span> opposed his <span class="annot" data-tooltip="nomination /ˌnɑːmɪ'neɪʃn/ n. 提名,任命">nomination</span>. Mr Blanche has been acting attorney-general since April, but his ambition to keep the job ran into opposition. To win approval, he provided written <span class="annot" data-tooltip="assurances /ə'ʃʊrəns/ n. 保证, 担保, 确信把握, 信心(人寿)保险">assurances</span> that the Justice Department had rescinded parts of a deal it struck with Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>, including a $1.8bn fund to <span class="annot" data-tooltip="compensate /'kɑːmpenseɪt/ vt. & vi. 补偿, 报酬时 态: compensated, compensating, compensates">compensate</span> people claiming to have been targeted by the <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">federal</span> government. The fund was widely seen as benefiting Mr Trump and his <span class="annot" data-tooltip="allies n. （第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者">allies</span>. The <span class="annot" data-tooltip="democratic /ˌdemə'krætɪk/ adj. 民主的, 有民主精神或作风的副 词: democratically">Democratic</span> establishment <span class="annot" data-tooltip="breathed /breθ/ n. 气息；呼吸(一次)呼吸，一口气；微风">breathed</span> a sigh of relief when David Crowley, a <span class="annot" data-tooltip="moderate /'mɑːdərət/ adj. 中等的，适度的，不很大的温和的；有节制的中庸的，稳健的，不走极端的vt. & vi. (使)减轻[缓和]；节制时 态: ">moderate</span>, defeated Francesca Hong, a left-<span class="annot" data-tooltip="winger /wɪŋ/ n. 翅膀；翼；飞翔；派别vt. 使飞；飞过；空运；增加…速度；装以翼vi. 飞行时 态: winged, winging, ">winger</span>, in the party’s primary for governor of Wisconsin. <span class="annot" data-tooltip="polling /'poʊlɪŋ/ n. 投票Polling轮流检测,联接到另一主机查看电子信件或新闻">Polling</span> had suggested Ms Hong would win the primary handily. Party leaders feared she would lose in November to the <span class="annot" data-tooltip="republican /rɪ'pʌblɪkən/ adj. 共和国的, 共和政体的n. 拥护共和政体者, 共和主义者名 词: republicanism">Republican</span> nominee. Ms Hong once said that Thanksgiving was a celebration of colonialism.</p>
+<p>Millions of people in northern Spain and in Greenland and Iceland enjoyed Europe’s first total <span class="annot" data-tooltip="eclipse /ɪ'klɪps/ vt. 形成蚀；使黯然失色n. 日蚀，月蚀；黯然失色时 态: eclipsed, eclipsing, eclipses">eclipse</span> of the sun in 27 years. Home-<span class="annot" data-tooltip="rental /'rentl/ n. 租赁；租金收入，租金adj. 租赁的；收取租金的">rental</span> rates rocketed in Spain as umbraphiles from around the world <span class="annot" data-tooltip="flocked /flɑːk/ n. 群；棉束（等于floc）vt. 用棉束填满vi. 聚集；成群而行Flock(瑞士)弗洛克(很短的粘胶短纤维)时 态: f">flocked</span> to the area. Other parts of Europe, including Britain, France and Portugal, caught a <span class="annot" data-tooltip="partial /'pɑːrʃl/ adj. 局部的；不公平的；[口]偏爱的名 词: partialness">partial</span> eclipse. The next total eclipse is on August 2nd 2027, which will be visible from southern Spain, north Africa and Saudi Arabia. This article was downloaded by zlibrary from https://www.economist.com/the-world-this-week/2026/08/13/politics</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Business</div>
+<p>Aug 13th 2026 <span class="annot" data-tooltip="nvidia 恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商">Nvidia</span> struck partnerships with six <span class="annot" data-tooltip="leading /ˈliːdɪŋ/ adj. 主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）">leading</span> financial firms, including BlackRock, Goldman Sachs and KKR, to eventually channel $500bn to its customers by tapping into “third-party capital”. The proceeds will finance the buildout of AI <span class="annot" data-tooltip="infrastructure /'ɪnfrəstrʌktʃər/ n. 基础设施; 基础结构">infrastructure</span> using Nvidia’s chips. The biggest cloud- computing companies, such as <span class="annot" data-tooltip="alphabet /'ælfəbet/ n. 字母表，字母系统；入门，初步">Alphabet</span>, <span class="annot" data-tooltip="amazon /ˈæməˌzɑn/ n. 高大强悍的女人；（古希腊神话中的）亚马孙族女战士Amazonn. 亚马逊河(南美洲大河)">Amazon</span> and Microsoft, are increasingly designing their <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> customised AI chips, which could eventually compete with Nvidia’s. As well as selling to hyperscalers, Nvidia is seeking new business from other customers, such as governments and companies trying to build their own AI infrastructure. Intel announced a $15bn sale of new stock in part to <span class="annot" data-tooltip="raise /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raise</span> capital for spending on AI. The next day it raised the share sale to $20bn. It was the company’s first public offering of new common equity since listing on the stock market in 1971.</p>
+<p>AI fever is not limited to America. Unitree, a Chinese developer of humanoid robots, said its forthcoming stock-market <span class="annot" data-tooltip="debut /deɪ'bjuː/ n. 〈法〉演员首次演出时 态: debuted debuting debuts">debut</span> on Shanghai’s tech-heavy STAR exchange was heavily oversubscribed. Unitree has priced its IPO at 150.8 yuan ($22) a share for a valuation of 60bn yuan, <span class="annot" data-tooltip="relatively /'relətɪvli/ adv. 相对地，比较而言；相当相对来说；相比较而言">relatively</span> high for China. The STAR 50 index has risen by 27% this year, <span class="annot" data-tooltip="outperforming /ˌaʊtpər'fɔːrm/ vt. 做得比…更好；胜过时 态: outperformed，outperforming，outperforms">outperforming</span> the <span class="annot" data-tooltip="nasdaq 纳斯达克指数〈美〉全国证券交易商自动报价系统协会">NASDAQ</span> Composite. Underlining the rapid development of AI models, Meta launched Muse Glimmer, which can run locally on laptops without relying on computer power from data centres. The model is open-weight, meaning that its <span class="annot" data-tooltip="parameters /pə'ræmɪtər/ n. (限定性的)因素, 特性, 界限〈物〉〈数〉参量, 参数形容词: parametric">parameters</span> can be adjusted locally, enabling developers to create their <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> products <span class="annot" data-tooltip="tailored /'teɪlər/ vt. 剪裁；使合适n. 裁缝vi. 做裁缝时 态: tailored, tailoring, tailors">tailored</span> around the model. A <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">federal</span> <span class="annot" data-tooltip="trial /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">trial</span> got under way after 29 states claimed that Meta engineered its platforms to be addictive to children. The proceedings came soon after a judge in New <span class="annot" data-tooltip="mexico /'meksɪkoʊ/ n. 墨西哥">Mexico</span> deemed that the company must pay an extra $567m on top of the $375m it was <span class="annot" data-tooltip="ordered /'ɔːrdərd/ adj. 安排好的；整齐的；[数]有序的v. 命令；点餐（order的过去式和过去分词）">ordered</span> to pay in May, when it was found liable for causing harm to children. Most of the extra money will go <span class="annot" data-tooltip="towards /tɔːrdz/ prep. 向，朝为了；有助于；用于对于，关于接近；将近；大约">towards</span> treatment services for young people. The judge’s ruling found that Meta had contributed to a <span class="annot" data-tooltip="mental /'mentl/ adj. 精神的, 头脑的, 心理的, 智力的精神病的副 词: mentally">mental</span>-health crisis and he described the firm as a “public nuisance”. It will appeal against the decision. Natarajan Chandrasekaran surprised markets by announcing that he would step down as <span class="annot" data-tooltip="chairman /'tʃermən/ n. 主席，会长；董事长时 态: chairmanned, chairmanning, chairmans">chairman</span> of Tata Sons, <span class="annot" data-tooltip="amid /ə'mɪd/ prep. 在其中，在其间">amid</span> a long-running leadership battle. Mr Chandrasekaran has fallen out with Tata Trusts, the charitable <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span> led by Noel Tata, a scion of the business dynasty, that controls the Indian conglomerate. Mr Chandrasekaran’s potential reappointment as chairman might have been challenged at the forthcoming <span class="annot" data-tooltip="annual /'ænjuəl/ adj. 年度的；每年的n. 年刊，年鉴；一年生植物副 词: annually">annual</span> meeting. America’s consumer-price index rose by 3.4% in the 12 months to July, a slighter lower annual <span class="annot" data-tooltip="inflation /ɪn'fleɪʃn/ n. (充气而引起的)膨胀通货膨胀">inflation</span> rate than June’s 3.5%. Core inflation, excluding food and <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span>, dipped to 2.5%. Meanwhile, American employers unexpectedly <span class="annot" data-tooltip="shed /ʃed/ n. 棚, 库vt. 流出, 流下蜕皮, 树叶脱落时 态: shed, shedding, sheds">shed</span> 23,000 jobs in July and job gains registered in May and June were <span class="annot" data-tooltip="revised 改进的">revised</span> down. Britain’s GDP grew by 1.2% in the second <span class="annot" data-tooltip="quarter /'kwɔːrtər/ n. 四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一时 ">quarter</span>, year on year. The Office for National Statistics suggested that the World Cup and good weather may</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>rebels</td><td>/'rebl/ n.</td><td>反政府的人；反叛者；造反者叛逆者vi. 反抗政府；造反反抗权威；叛逆，rebelling，rebels</td></tr>
+<tr><td>shipping</td><td>/ʃɪp/ vt.</td><td>运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Division of the Nation</td></tr>
+<tr><td>traverse</td><td>/trə'vɜːrs/ n.</td><td>(爬山时的)Z形攀登vt. 横越, 穿越, 横贯vi. (爬山时)作Z形攀登, traversing, traverses</td></tr>
+<tr><td>vessel</td><td>/'vesl/ n.</td><td>容器，器皿；船，舰；脉管，血管</td></tr>
+<tr><td>assault</td><td>/ə'sɔːlt/ n.</td><td>攻击；袭击vt. 袭击；攻击vi. 袭击；动武, assaulting, assaults</td></tr>
+<tr><td>impose</td><td>/ɪm'poʊz/ vi.</td><td>欺骗；利用；施加影响vt. 强加；以…欺骗；征税, imposing, imposes</td></tr>
+<tr><td>blockade</td><td>/blɑː'keɪd/ vt.</td><td>封锁n. 阻塞, blockading, blockades</td></tr>
+<tr><td>ships</td><td>/ʃɪp/ vt.</td><td>运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Division of the Nation</td></tr>
+<tr><td>port</td><td>/pɔːrt/ n.</td><td>港口，口岸；左舷；舱门；（计算机的）端口vi. 转向左舷vt. 左转舵；持（枪）PORTabbr. Photo Opitical Recorder Tracke</td></tr>
+<tr><td>heading</td><td>/'hedɪŋ/ n.</td><td>标题；信头；（足球）头球v. 用头顶（head的ing形式）</td></tr>
+<tr><td>towards</td><td>/tɔːrdz/ prep.</td><td>向，朝为了；有助于；用于对于，关于接近；将近；大约</td></tr>
+<tr><td>keen</td><td>/kiːn/ adj.</td><td>锋利的热衷的，热心的，渴望(做某事)激烈的，紧张的良好的；敏锐的，敏捷的，keenest</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>secretly</td><td>/'siːkrətli/ adv.</td><td>秘密地;背地里</td></tr>
+<tr><td>transferred</td><td>/træns'fɜːr/ n.</td><td>转移；转让；过户；传递vi. 转移；转让；转学；换车vt. 转让；调任；传递；使转移, transferring, transfers</td></tr>
+<tr><td>version</td><td>/'vɜːrʒn/ n.</td><td>变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本</td></tr>
+<tr><td>squirrelled</td><td>/'skwɜːrəl/ n.</td><td>松鼠；松鼠毛皮vt. 贮藏, squirrelled squirreling, squirrelling squirrels, squirrels</td></tr>
+<tr><td>catering</td><td>/'keɪtər/ vt.</td><td>满足需要；投合，迎合；提供饮食及服务, catering, caters</td></tr>
+<tr><td>van</td><td>/væn/ n.</td><td>先锋；厢式货车；[计]增值网vt. 用车搬运Van范(男子名), vanning, vans</td></tr>
+<tr><td>civil</td><td>/'sɪvl/ adj.</td><td>公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的</td></tr>
+<tr><td>torture</td><td>/'tɔːrtʃər/ vt.</td><td>折磨；拷问；歪曲n. 拷问；折磨；歪曲, torturing, tortures</td></tr>
+<tr><td>committed</td><td>/kə'mɪt/ vt.</td><td>犯罪；犯错承诺；使自己受约束托付；交付，committing，commits</td></tr>
+<tr><td>regime</td><td>/reɪ'ʒiːm/ n.</td><td>政权，政体；社会制度；管理体制</td></tr>
+<tr><td>sentences</td><td>/'sentəns/ n.</td><td>宣判，判决；句子，命题vt. 判决，宣判, sentencing, sentences</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>trial</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>democratic</td><td>/ˌdemə'krætɪk/ adj.</td><td>民主的, 有民主精神或作风的</td></tr>
+<tr><td>magnitude</td><td>/'mæɡnɪtuːd/ n.</td><td>巨大; 重要性〈天〉星等</td></tr>
+<tr><td>colombia</td><td>— n.</td><td>哥伦比亚（拉丁美洲国家）</td></tr>
+<tr><td>wing</td><td>/wɪŋ/ n.</td><td>翅膀；翼；飞翔；派别vt. 使飞；飞过；空运；增加…速度；装以翼vi. 飞行, winging, wings</td></tr>
+<tr><td>pledge</td><td>/pledʒ/ n.</td><td>抵押；保证，誓言；抵押品，典当物vt. 保证，许诺；用……抵押；举杯祝……健康, pledging, pledges</td></tr>
+<tr><td>crack</td><td>/kræk/ vt.</td><td>& vi. (使…)开裂, 破裂(使)身体上或精神上垮掉打开, 砸开(使)发出爆裂声n. 裂缝, 缝隙噼啪声, 爆裂声意外的一下重击试图, 尝试俏皮话强效可卡因</td></tr>
+<tr><td>reforms</td><td>/rɪ'fɔːrm/ n.</td><td>改革，改良，改造vt. & vi. 改革；改造；改善，reforming，reforms</td></tr>
+<tr><td>articulate</td><td>/ɑːr'tɪkjuleɪt/ adj.</td><td>（人）善于表达的（说话）口齿清楚的；发音清晰的v. 明确表达；清楚说明口齿清楚；清晰吐（字）；清晰发（音）与…合成整体用关节连接；联结；铰接，articulat</td></tr>
+<tr><td>issues</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>counter</td><td>/'kaʊntər/ n.</td><td>柜台, 柜台式长桌计数器vt. & vi. 对抗, 反驳adv. 反方向地, 对立地, countering, counters</td></tr>
+<tr><td>unveiled</td><td>/ˌʌn'veɪl/ vt.</td><td>揭去…的面罩，除去…的遮盖物使公之于众；揭露vi. 除去面纱(或覆盖物)；揭幕揭露出来，unveiling，unveils</td></tr>
+<tr><td>thailand</td><td>— n.</td><td>泰国</td></tr>
+<tr><td>ordered</td><td>/'ɔːrdərd/ adj.</td><td>安排好的；整齐的；[数]有序的v. 命令；点餐（order的过去式和过去分词）</td></tr>
+<tr><td>renewal</td><td>/rɪ'nuːəl/ n.</td><td>重建;更新重生</td></tr>
+<tr><td>instructed</td><td>/ɪn'strʌkt/ vt.</td><td>命令；教授；指导；通知, instructing, instructs</td></tr>
+<tr><td>enforcement</td><td>/ɪn'fɔːrsmənt/ n.</td><td>强制,实施,执行</td></tr>
+<tr><td>tear</td><td>/tɪr，ter/ v.</td><td>撕掉，扯下；撕破；拔掉；拉伤；（非正式）狂奔；饱经……摧残；流眼泪n. 眼泪；（撕破的）洞或裂缝， 撕扯，torn，tearing，tears</td></tr>
+<tr><td>protesting</td><td>/'proʊtest/ n.</td><td>抗议；反对vt. & vi. 声明；抗议，protesting，protests</td></tr>
+<tr><td>leaking</td><td>/liːk/ n.</td><td>漏洞，裂缝；泄漏vt. 使渗漏，泄露vi. 漏，渗；泄漏出去, leaking, leaks</td></tr>
+<tr><td>civil</td><td>/'sɪvl/ adj.</td><td>公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的</td></tr>
+<tr><td>protests</td><td>/'proʊtest/ n.</td><td>抗议；反对vt. & vi. 声明；抗议，protesting，protests</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>delhi</td><td>/ˈdɛli/ n.</td><td>德里（印度城市名）</td></tr>
+<tr><td>leak</td><td>/liːk/ n.</td><td>漏洞，裂缝；泄漏vt. 使渗漏，泄露vi. 漏，渗；泄漏出去, leaking, leaks</td></tr>
+<tr><td>ukraine</td><td>— n.</td><td>乌克兰（原苏联一加盟共和国，现已独立）</td></tr>
+<tr><td>pounded</td><td>/paʊnd/ n.</td><td>英镑；兽栏；重击，重击声；拘留所vt. 捣烂；敲打；监禁，拘留vi. 连续重击，猛击Pound庞德(姓氏)</td></tr>
+<tr><td>port</td><td>/pɔːrt/ n.</td><td>港口，口岸；左舷；舱门；（计算机的）端口vi. 转向左舷vt. 左转舵；持（枪）PORTabbr. Photo Opitical Recorder Tracke</td></tr>
+<tr><td>grain</td><td>/ɡreɪn/ n.</td><td>谷物；谷粒颗粒；细粒（尤用于否定句） 少量；微量；一点儿（木、织物或石头等的）纹理（表面的）质地；触感格令（重量单位，等于0.00143磅或0.0648克，用于</td></tr>
+<tr><td>terminals</td><td>/'tɜːrmɪnl/ n.</td><td>终端机；终点；末端；极限adj. 末端的；终点的；晚期的Terminal终端，终端设备(仿真程序)，端子；终结符(T,TERM)</td></tr>
+<tr><td>drones</td><td>/droʊn/ n.</td><td>无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫；嗡嗡响(人)絮絮叨叨地说，喋喋不休地说</td></tr>
+<tr><td>senate</td><td>/ˈsenət/ </td><td>n.（诸如美国、澳大利亚、法国的）参议院（the Senate） （某些国家的）大学理事会，大学评议会（古罗马的）元老院</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>impose</td><td>/ɪm'poʊz/ vi.</td><td>欺骗；利用；施加影响vt. 强加；以…欺骗；征税, imposing, imposes</td></tr>
+<tr><td>tariffs</td><td>/'tærɪf/ n.</td><td>关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表, tariffing, tariffs</td></tr>
+<tr><td>legislation</td><td>/ˌledʒɪs'leɪʃn/ n.</td><td>法律；法规立法，法律的制定[通过]</td></tr>
+<tr><td>representatives</td><td>/ˌreprɪ'zentətɪv/ n.</td><td>代表代理人adj. 有代表性的, 典型的</td></tr>
+<tr><td>supreme</td><td>/su'priːm/ adj.</td><td>最高的；至上的最重要的，supremest 缩 写: supr</td></tr>
+<tr><td>anti</td><td>/'ænti/ adj.</td><td>反对的n. 反对者，反对论者</td></tr>
+<tr><td>parliament</td><td>/'pɑːrləmənt/ n.</td><td>议会, 国会</td></tr>
+<tr><td>hosting</td><td>/hoʊst/ n.</td><td>主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集, hosting, hosts</td></tr>
+<tr><td>authorities</td><td>/ə'θɔːrəti/ n.</td><td>威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗</td></tr>
+<tr><td>protesting</td><td>/'proʊtest/ n.</td><td>抗议；反对vt. & vi. 声明；抗议，protesting，protests</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>regime</td><td>/reɪ'ʒiːm/ n.</td><td>政权，政体；社会制度；管理体制</td></tr>
+<tr><td>parliament</td><td>/'pɑːrləmənt/ n.</td><td>议会, 国会</td></tr>
+<tr><td>supreme</td><td>/su'priːm/ adj.</td><td>最高的；至上的最重要的，supremest 缩 写: supr</td></tr>
+<tr><td>overseeing</td><td>/ˌoʊvər'siː/ vt.</td><td>监督；俯瞰；审查；偷看到，无意中看到, oversees</td></tr>
+<tr><td>secretary</td><td>/'sekrəteri/ n.</td><td>秘书书记部长, 大臣</td></tr>
+<tr><td>attorney</td><td>/ə'tɜːrni/ n.</td><td>代理人, 律师</td></tr>
+<tr><td>senate</td><td>/ˈsenət/ </td><td>n.（诸如美国、澳大利亚、法国的）参议院（the Senate） （某些国家的）大学理事会，大学评议会（古罗马的）元老院</td></tr>
+<tr><td>republicans</td><td>/rɪ'pʌblɪkən/ adj.</td><td>共和国的, 共和政体的n. 拥护共和政体者, 共和主义者</td></tr>
+<tr><td>nomination</td><td>/ˌnɑːmɪ'neɪʃn/ n.</td><td>提名,任命</td></tr>
+<tr><td>assurances</td><td>/ə'ʃʊrəns/ n.</td><td>保证, 担保, 确信把握, 信心(人寿)保险</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>compensate</td><td>/'kɑːmpenseɪt/ vt.</td><td>& vi. 补偿, 报酬, compensating, compensates</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>allies</td><td>— n.</td><td>（第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者</td></tr>
+<tr><td>democratic</td><td>/ˌdemə'krætɪk/ adj.</td><td>民主的, 有民主精神或作风的</td></tr>
+<tr><td>breathed</td><td>/breθ/ n.</td><td>气息；呼吸(一次)呼吸，一口气；微风</td></tr>
+<tr><td>moderate</td><td>/'mɑːdərət/ adj.</td><td>中等的，适度的，不很大的温和的；有节制的中庸的，稳健的，不走极端的vt. & vi. (使)减轻[缓和]；节制，moderating，moderates</td></tr>
+<tr><td>winger</td><td>/wɪŋ/ n.</td><td>翅膀；翼；飞翔；派别vt. 使飞；飞过；空运；增加…速度；装以翼vi. 飞行, winging, wings</td></tr>
+<tr><td>polling</td><td>/'poʊlɪŋ/ n.</td><td>投票Polling轮流检测,联接到另一主机查看电子信件或新闻</td></tr>
+<tr><td>republican</td><td>/rɪ'pʌblɪkən/ adj.</td><td>共和国的, 共和政体的n. 拥护共和政体者, 共和主义者</td></tr>
+<tr><td>eclipse</td><td>/ɪ'klɪps/ vt.</td><td>形成蚀；使黯然失色n. 日蚀，月蚀；黯然失色, eclipsing, eclipses</td></tr>
+<tr><td>rental</td><td>/'rentl/ n.</td><td>租赁；租金收入，租金adj. 租赁的；收取租金的</td></tr>
+<tr><td>flocked</td><td>/flɑːk/ n.</td><td>群；棉束（等于floc）vt. 用棉束填满vi. 聚集；成群而行Flock(瑞士)弗洛克(很短的粘胶短纤维), flocking, flocks</td></tr>
+<tr><td>partial</td><td>/'pɑːrʃl/ adj.</td><td>局部的；不公平的；[口]偏爱的</td></tr>
+<tr><td>nvidia</td><td>— </td><td>恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商</td></tr>
+<tr><td>leading</td><td>/ˈliːdɪŋ/ adj.</td><td>主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）</td></tr>
+<tr><td>infrastructure</td><td>/'ɪnfrəstrʌktʃər/ n.</td><td>基础设施; 基础结构</td></tr>
+<tr><td>alphabet</td><td>/'ælfəbet/ n.</td><td>字母表，字母系统；入门，初步</td></tr>
+<tr><td>amazon</td><td>/ˈæməˌzɑn/ n.</td><td>高大强悍的女人；（古希腊神话中的）亚马孙族女战士Amazonn. 亚马逊河(南美洲大河)</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>raise</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>debut</td><td>/deɪ'bjuː/ n.</td><td>〈法〉演员首次演出</td></tr>
+<tr><td>relatively</td><td>/'relətɪvli/ adv.</td><td>相对地，比较而言；相当相对来说；相比较而言</td></tr>
+<tr><td>outperforming</td><td>/ˌaʊtpər'fɔːrm/ vt.</td><td>做得比…更好；胜过，outperforming，outperforms</td></tr>
+<tr><td>nasdaq</td><td>— </td><td>纳斯达克指数〈美〉全国证券交易商自动报价系统协会</td></tr>
+<tr><td>parameters</td><td>/pə'ræmɪtər/ n.</td><td>(限定性的)因素, 特性, 界限〈物〉〈数〉参量, 参数</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>tailored</td><td>/'teɪlər/ vt.</td><td>剪裁；使合适n. 裁缝vi. 做裁缝, tailoring, tailors</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>trial</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>mexico</td><td>/'meksɪkoʊ/ n.</td><td>墨西哥</td></tr>
+<tr><td>ordered</td><td>/'ɔːrdərd/ adj.</td><td>安排好的；整齐的；[数]有序的v. 命令；点餐（order的过去式和过去分词）</td></tr>
+<tr><td>towards</td><td>/tɔːrdz/ prep.</td><td>向，朝为了；有助于；用于对于，关于接近；将近；大约</td></tr>
+<tr><td>mental</td><td>/'mentl/ adj.</td><td>精神的, 头脑的, 心理的, 智力的精神病的</td></tr>
+<tr><td>chairman</td><td>/'tʃermən/ n.</td><td>主席，会长；董事长, chairmanning, chairmans</td></tr>
+<tr><td>amid</td><td>/ə'mɪd/ prep.</td><td>在其中，在其间</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>annual</td><td>/'ænjuəl/ adj.</td><td>年度的；每年的n. 年刊，年鉴；一年生植物</td></tr>
+<tr><td>inflation</td><td>/ɪn'fleɪʃn/ n.</td><td>(充气而引起的)膨胀通货膨胀</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>shed</td><td>/ʃed/ n.</td><td>棚, 库vt. 流出, 流下蜕皮, 树叶脱落, shedding, sheds</td></tr>
+<tr><td>revised</td><td>— </td><td>改进的</td></tr>
+<tr><td>quarter</td><td>/'kwɔːrtər/ n.</td><td>四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一, quartering, quarters</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  
+  <a href="day2.html" class="nav-btn">Day 2 →</a>
+</div>
+
+<div class="progress">📖 Day 1 of 40</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-08-15</div>
+
+</body>
+</html>
