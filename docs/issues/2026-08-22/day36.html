@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Science & technology</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-08-22</div>
+
+<h1 class="article-title">Science & technology</h1>
+<div class="article-section"></div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>and the muscles and hard surfaces <span class="annot" data-tooltip="involved /ɪn'vɑːlvd/ adj. 卷入的；有关的；复杂的v. 涉及；使参与；包含（involve的过去式和过去分词）">involved</span>, to the stomach centralises an animal’s centre of gravity in a way that would make it easier for it to <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> from the ground. Curiously, it is clear from the fossil record that the very earliest birds of all did not have beaks. But the fact that so many of their theropod relatives did, and that birds themselves evolved them at least twice, suggests the <span class="annot" data-tooltip="transition /træn'zɪʃn/ n. 过渡; 转变; 变迁">transition</span> was easy. It may thus be that part of the secret to taking successfully to the skies was, quite <span class="annot" data-tooltip="literally /'lɪtərəli/ adv. 逐字地；照字面地确实地，真正地">literally</span>, having the stomach for it. ■ This article was downloaded by zlibrary from https://www.economist.com/science-and-technology/2026/08/19/rock-solid-evidence- for-the-origins-of-birds</p>
+<p>Science & technology | Particle physics Physicists nab the elusive glueball Make it stick Aug 20th 2026 A NEW subatomic particle has made the <span class="annot" data-tooltip="leap /liːp/ vi. 跳，跳跃n. 跳跃；飞跃vt. 跳跃，跳过；使跃过时 态: leaped, leapt leaping, leaps">leap</span> from theory to <span class="annot" data-tooltip="reality /ri'æləti/ n. 现实；真实；实际">reality</span>. So say the scientists of the Beijing Spectrometer III (BESIII), a Chinese physics experiment. <span class="annot" data-tooltip="speaking /'spikɪŋ/ adj. 演讲的；富于表情的，雄辩的n. 说话；演讲v. 讲（speak的ing形式）">Speaking</span> on their behalf at the International <span class="annot" data-tooltip="conference /'kɑːnfərəns/ n. 会议讨论, 商谈形容词: conferential">Conference</span> on High <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">Energy</span> Physics (ICHEP) on August 5th, Jin Shan, of Nanjing University, announced that the team have discovered a glueball—a hitherto hypothetical particle that is unlike any which physicists have seen before. The nuclei of atoms are held together by a phenomenon called the strong nuclear force. What better name, then, for the particle responsible for carrying this force than the “gluon”? Gluons interact with quarks, another type of fundamental particle, wrangling them into pairs and triplets to create protons, neutrons and other such “composite” particles. But gluons also</p>
+<p>interact with other gluons, raising the possibility of gluons gluing themselves together into a different kind of composite particle: the glueball. Physicists’ theories predict glueballs. Finding one is another matter, since those theories also suggest glueballs will be difficult to distinguish from the torrents of more mundane quark-based particles produced in machines like the Beijing Electron-Positron Collider II, to which BESIII is attached. Almost half a century of searching has left researchers empty-handed. No more, say the operators of BESIII. In 2011 a new particle, called X(2370), showed up in their detectors. It looked a lot like a glueball, but other interpretations were possible. So the team got to work on ruling them out. They have spent the intervening years analysing over 10bn <span class="annot" data-tooltip="processes /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">processes</span> in which X(2370) could play a role. The result—published online in July and <span class="annot" data-tooltip="presented /'preznt/ vt. 呈现；介绍；提出；赠送vi. 举枪瞄准adj. 出席的；现在的n. 现在；礼物；瞄准时 态: presented, pr">presented</span> at ICHEP by Dr Jin—is a <span class="annot" data-tooltip="complete /kəm'pliːt/ adj. 完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善比较级: complete">complete</span> <span class="annot" data-tooltip="picture /'pɪktʃər/ n. 图画，肖像；照片(生动的)描述，写照影片；电影；画面美景，景色情况，事态，局面vt. 绘画；描绘想象时 态: pictu">picture</span> of the new particle’s <span class="annot" data-tooltip="properties 道具">properties</span>. The team is now convinced it is a glueball. “No other interpretation can explain all these properties <span class="annot" data-tooltip="simultaneously /ˌsaɪml'teɪniəsli/ adv. 同时地">simultaneously</span>,” says Dr Jin. <span class="annot" data-tooltip="detecting /dɪ'tekt/ vt. 发现；发觉，查明时 态: detected，detecting，detects">Detecting</span> the glueball—if it has, indeed, been found—is not just a matter of physicists adding a new specimen to their by now <span class="annot" data-tooltip="extensive /ɪk'stensɪv/ adj. 广阔的，广泛的；大量的，大规模的副 词: extensively">extensive</span> collection. Its discovery will provide valuable data to test the theory behind the strong force. That theory, good as it is, contains many mysteries. One is how the strong force generates mass—for gluons have no mass, but glueballs do. On the answering of such questions, the glueball’s discovery could tip the scales. ■ This article was downloaded by zlibrary from https://www.economist.com/science-and-technology/2026/08/19/physicists-nab-the- elusive-glueball</p>
+<p>Science & technology | Well Informed Why standing at your desk may be little better than sitting Apologies to those who have <span class="annot" data-tooltip="invested /ɪn'vest/ vt. 投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买时 态: invested, investing, invests">invested</span> in a modish workstation Aug 20th 2026 <span class="annot" data-tooltip="prolonged /prə'lɔːŋ/ vt. 拖延；延长时 态: prolonged, prolonging, prolongs">PROLONGED</span> SITTING rightly has a bad rap. A review in 2012 concluded that the most sedentary were more than twice as likely as the least to have or develop <span class="annot" data-tooltip="diabetes /ˌdaɪə'biːtiːz/ n. 糖尿病">diabetes</span>, and also faced a much higher risk of <span class="annot" data-tooltip="premature /ˌpriːmə'tʃʊr/ adj. 过早的, 提前的, 未到期的早产的副 词: prematurely">premature</span> death. Another, in 2015, found that sitting for long <span class="annot" data-tooltip="stretches /stretʃ/ vt. 伸展,张开vi. 伸展adj. 可伸缩的n. 伸展，延伸时 态: stretched, stretching, stre">stretches</span> was associated with “deleterious health outcomes regardless of physical activity”. Three years after that an analysis of news articles in the British <span class="annot" data-tooltip="journal /'dʒɜːrnl/ n. 日报，杂志；日记；[经]分类账">Journal</span> of Sports Medicine found hundreds of pieces which referred to claims likening sitting to smoking. That last claim is overblown. In 2018 the American Journal of Public Health reckoned sitting’s true risk to be a tenth of that of smoking. But this is still</p>
+<p>bad. <span class="annot" data-tooltip="hence /hens/ adv. 因此；今后">Hence</span> the appeal of standing desks and, more recently, “active seats”: chairs and <span class="annot" data-tooltip="stools /stuːl/ n. 凳子时 态: stooled, stooling, stools">stools</span> that <span class="annot" data-tooltip="tilt /tɪlt/ vi. 倾斜；翘起；以言词或文字抨击vt. 使倾斜；使翘起n. 倾斜时 态: tilted, tilting, tilts">tilt</span>, <span class="annot" data-tooltip="wobble /'wɑːbl/ vi. 摇晃；摇摆；游移不定n. 摆动；不稳定；摇晃vt. 使摇摆；使颤动；摇动时 态: wobbled, wobbling, ">wobble</span> or rock to force continual postural adjustments. Is <span class="annot" data-tooltip="either /'iːðər/ pron. (两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的">either</span> <span class="annot" data-tooltip="actually /'æktʃuəl/ adj. 真实的，实际的；现行的，目前的副 词: actually">actually</span> healthier? An analysis in 2018 found standing at a desk burned just nine more calories per hour than sitting. Nor are the cardiovascular gains impressive. A review in 2020 pooled nine <span class="annot" data-tooltip="trials /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">trials</span> involving 877 people. Participants stood about 1.3 hours more a day and were followed for roughly four months. Body fat and blood-sugar control improved slightly, but blood pressure, insulin, cholesterol and triglycerides did not. The study did not, however, look at blood flow and the <span class="annot" data-tooltip="activation n. 活化,激活,[化]活化作用">activation</span> of postural muscles, both factors which might contribute to the benefits of standing over sitting. That said, standing can have <span class="annot" data-tooltip="downsides /'daʊnsaɪd/ adj. 下降趋势的">downsides</span>. Work published in the International <span class="annot" data-tooltip="journal /'dʒɜːrnl/ n. 日报，杂志；日记；[经]分类账">Journal</span> of Epidemiology in 2024 followed 83,013 adults in Britain for an average of <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> seven years. Those who stood for more than two hours a day had a higher risk of varicose <span class="annot" data-tooltip="veins /veɪn/ n. 血管；岩脉；纹理；[动]翅脉；[植]叶脉；性情vt. 使成脉络；像脉络般分布于时 态: veined, veining,">veins</span> and venous ulcers, perhaps because of pooling of blood in the legs. What matters <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> more is movement. A study of nearly 482,000 Taiwanese adults in 2024 found that just 15–30 minutes of extra daily <span class="annot" data-tooltip="exercise /'eksərsaɪz/ n. 练习；运动；运用；操练；典礼；礼拜vt. 练习；锻炼；使用；使忙碌；使惊恐vi. 运动；练习时 态: exercised">exercise</span> could erase most of the <span class="annot" data-tooltip="excess /ɪk'ses/ n. 无节制；过度，过量；超过，超额adj. 额外的，过量的；附加的时 态: excessed, excessing, exc">excess</span> <span class="annot" data-tooltip="mortality /mɔːr'tæləti/ n. 必死性大量死亡死亡率">mortality</span> risk associated with sitting at work. Desk- <span class="annot" data-tooltip="bound /baʊnd/ vi. 跳；弹回vt. 给…划界，限制n. 跳，跳跃，跃进界限，范围adj. 被捆绑的，被束缚的一定的，必定的去，准备去时 态:">bound</span> workers may therefore <span class="annot" data-tooltip="wonder /'wʌndər/ vt. & vi. 对…感到疑惑想知道；问自己n. 惊奇，惊叹，惊异，惊诧奇人，奇才奇观，奇景，奇迹，奇事时 态: wonder">wonder</span> if active seating can make a difference. Some findings are encouraging. <span class="annot" data-tooltip="consider /kən'sɪdər/ vt. & vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及时 态: considered, considering, ">Consider</span> a <span class="annot" data-tooltip="trial /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">trial</span> at Georgia Southern University. In this 20 adults performed reading and typing tasks on an ordinary chair, an exercise ball and a seat <span class="annot" data-tooltip="mounted /maʊnt/ vt. & vi. 登上；骑上vi. 增加；上升vt. 上演；配有…发动攻击；攻击n. 山峰坐骑时 态: mounted，mou">mounted</span> on top of an inflatable <span class="annot" data-tooltip="bladder /'blædər/ n. 〈解〉膀胱囊, 袋">bladder</span>. <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">Energy</span> <span class="annot" data-tooltip="expenditure /ɪk'spendɪtʃər/ n. 花费, 使用(尤指金钱的)支出额">expenditure</span> on the ball was similar to normal sitting. But on the bladder, participants’ heart rates and calorie burn rose by 6-13% and 19-40% <span class="annot" data-tooltip="respectively /rɪ'spektɪv/ adj. 各自的; 各个的">respectively</span>. Writing in <span class="annot" data-tooltip="ergonomics /ˌɜːrɡə'nɑːmɪk/ adj. 工效学的；人体工程学的">Ergonomics</span> in 2019, the researchers attributed this to muscle <span class="annot" data-tooltip="contractions /kən'trækʃn/ n. 订约(分娩时)子宫收缩收缩,缩短缩减缩略词">contractions</span> required to maintain balance. A longer trial found another benefit. For six months 133 office workers in Bangkok sat on either a <span class="annot" data-tooltip="foam /foʊm/ n. 泡沫；水沫；灭火泡沫vi. 起泡沫；吐白沫；起着泡沫流动vt. 使起泡沫；使成泡沫状物时 态: foamed, foam">foam</span> seat pad or a slightly unstable inflatable one designed to <span class="annot" data-tooltip="encourage /ɪn'kɜːrɪdʒ/ vt. 鼓励, 激励促进, 助长, 激发时 态: encouraged, encouraging, encourages">encourage</span> frequent postural changes. Those using the latter were 81% and 84% less likely to develop neck and lower-back pain, respectively. Writing in the Scandinavian Journal of Work, Environment & Health in</p>
+<p>2024, the researchers described the pad as a “light-<span class="annot" data-tooltip="exercise /'eksərsaɪz/ n. 练习；运动；运用；操练；典礼；礼拜vt. 练习；锻炼；使用；使忙碌；使惊恐vi. 运动；练习时 态: exercised">exercise</span> device”. They reckoned it reduced fatiguing muscle <span class="annot" data-tooltip="contractions /kən'trækʃn/ n. 订约(分娩时)子宫收缩收缩,缩短缩减缩略词">contractions</span> and improved blood flow to compressed <span class="annot" data-tooltip="tissues /'tɪʃuː/ n. 组织薄纸, 棉纸一套, 一系列形容词: tissular">tissues</span>. There are <span class="annot" data-tooltip="caveats n. 警告；说明（caveat的复数）">caveats</span>. Many studies of dynamic sitting have been small or brief. Results have varied with seat design, and some participants have reported discomfort in the derrière. That said, there does seem to be a lesson here: the real distinction is not between sitting and standing, but between remaining still and moving.■ After a free, evidence-based guide to health and wellness? Sign up to our weekly Well Informed newsletter. This article was downloaded by zlibrary from https://www.economist.com/science-and-technology/2026/08/14/why-standing-at-your- desk-may-be-little-better-than-sitting</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Culture</div>
+<p>What AI has in common with dogs <span class="annot" data-tooltip="punctuation /ˌpʌŋktʃu'eɪʃn/ n. 标点符号；标点符号用法">Punctuation</span> matters more than you think Money, sex and bigotry: what one painting <span class="annot" data-tooltip="reveals /rɪ'viːl/ vt. 显示；露出泄露；透露时 态: revealed，revealing，reveals">reveals</span> about France World-class wine is being made in a corner of Sweden. Yes, Sweden Japan’s music cafés are <span class="annot" data-tooltip="striking /'straɪkɪŋ/ adj. 显著的，突出的引人注目的；容貌出众的副 词: strikingly">striking</span> a chord abroad Two <span class="annot" data-tooltip="vital /'vaɪtl/ adj. 极重要的，必不可少的维持生命所必需的；生命的有生气的，充满生机的副 词: vitally">vital</span> figures of the American revolution forgotten by history</p>
+<div class="article-separator"></div>
+<div class="article-header">Culture · Culture | Man’s best frenemy</div>
+<p>What AI has in common with dogs Two new books <span class="annot" data-tooltip="ponder /'pɑːndər/ vt. 仔细考虑；衡量vi. 沉思；考虑时 态: pondered, pondering, ponders">ponder</span> whether the technology will be tame or savage Aug 20th 2026 When <span class="annot" data-tooltip="mulling /mʌl/ vt. 研磨；思索或思考某事物；使醉n. 混乱；软薄布vi. 深思熟虑时 态: mulled, mulling, mulls">mulling</span> how AI will transform <span class="annot" data-tooltip="society /sə'saɪəti/ n. 社会；社交界；交往；社团">society</span>, <span class="annot" data-tooltip="consider /kən'sɪdər/ vt. & vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及时 态: considered, considering, ">consider</span> an earlier technology that gave humans a helpful <span class="annot" data-tooltip="companion /kəm'pænjən/ n. 同伴, 伙伴成双成对的物品之一时 态: companioned, companioning, companions">companion</span> with <span class="annot" data-tooltip="superior /suː'pɪriər/ adj. 上级的；高傲的；优秀的，出众的n. 上级，长官；长者；优胜者，高手名 词: superiority">superior</span> <span class="annot" data-tooltip="capabilities /ˌkeɪpə'bɪləti/ n. 能做某事的素质;能力尚未发挥的天资或素质">capabilities</span>: the dog. By domesticating wolves, humans were able, indirectly, to smell game <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> away and hear enemies approaching at night. They became better hunters than Neanderthals and better <span class="annot" data-tooltip="warriors /'wɔːriər/ n. 战士，勇士；鼓吹战争的人Warrior猎户星座">warriors</span>: hard to ambush, hard to elude. Dogs are one reason why <span class="annot" data-tooltip="homo /'hoʊmoʊ/ n. 〈拉〉人(学名)Homo人属HOMOabbr. Highest Occupied Molecular Orbital 最">Homo</span> sapiens outcompeted their prehistoric cousins and conquered the world, some anthropologists believe. Back when dog technology was first being developed, it was far from obvious that it was safe for people—who were <span class="annot" data-tooltip="literally /'lɪtərəli/ adv. 逐字地；照字面地确实地，真正地">literally</span> inviting wolves into their caves. They had to train them not to eat babies. Thousands of years later, dogs still sometimes <span class="annot" data-tooltip="escape /ɪ'skeɪp/ vt. 逃避，避免；被忘掉vi. 逃脱；避开；溜走n. 逃跑；逃亡时 态: escaped, escaping, escapes">escape</span> and go rogue. But <span class="annot" data-tooltip="overall /ˌoʊvər'ɔːl/ adj. 总体的；全面的；综合的全面考虑的adv. 大体上，总的来说一切包括在内，全部的n. 长罩衣工装裤；工作裤">overall</span>, people are</p>
+<p>happy with how things have worked out. (It did not end so well for the Neanderthals.) The optimistic case for AI is that it will be like dogs: complementing rather than replacing human labour, and remaining <span class="annot" data-tooltip="obedient /ə'biːdiənt/ adj. 顺从的; 服从的副 词: obediently">obedient</span> to its masters. But what if it isn’t? AI <span class="annot" data-tooltip="evolves /ɪ'vɑːlv/ vt. & vi. 演变；进化时 态: evolved，evolving，evolves">evolves</span> much faster. Soon it could be creating new, improved <span class="annot" data-tooltip="versions /'vɜːrʒn/ n. 变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本">versions</span> of itself at a pace dog-breeders can only dream of. So <span class="annot" data-tooltip="whereas /ˌwer'æz/ conj. 但是, 而">whereas</span> people can be confident that dogs will not enslave them—by 2030, pooches will still not know how to use a tin-opener—they cannot be so sure about AI. Two new books, one by a Nobel-prizewinning economist and one by a Pulitzer-garlanded historian, <span class="annot" data-tooltip="grapple /'ɡræpl/ vi. 抓住；格斗；抓斗机vt. 抓住；与…格斗n. 抓住；格斗时 态: grappled, grappling, grappl">grapple</span> with the question of how AI will shape the future. <span class="annot" data-tooltip="neither /'niːðər/ conj. 既不；也不adv. 两个都不；既不……也不adj. 两者都不的det./pron. 两者都不">Neither</span> uses the dog <span class="annot" data-tooltip="analogy /ə'nælədʒi/ n. 类似, 相似类推, 类推法">analogy</span>, but both are easier to understand with <span class="annot" data-tooltip="reference /'refrəns/ n. 提及，涉及参考，查阅引文；参考书目证明书；推荐信；证明人；推荐人时 态: referenced，referencing，">reference</span> to it. Jill Lepore, a Harvard historian, focuses on the men who train the dogs. In her telling, AI tycoons are horrible, irresponsible people whose creations may break their leashes and savage humans. In “The <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">Rise</span> and <span class="annot" data-tooltip="fall /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">Fall</span> of the Artificial State”, she argues that tech bosses are trying to build “a future in which humans are ruled, and many replaced, by machines owned by corporations”. This, she says, implies “both the desertion of liberal <span class="annot" data-tooltip="democracy /dɪ'mɑːkrəsi/ n. 民主, 民主制民主国家">democracy</span> and the destruction of the natural world”. She bases her case partly on the moguls’ <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> words. Sam Altman, the boss of OpenAI, has said it would be “<span class="annot" data-tooltip="awesome /'ɔːsəm/ adj. 令人敬畏的；令人惊叹的；令人惊惧的【美，非正式】很好的；了不起的（或极好玩的等）">awesome</span>” to replace human presidents with an AI that could “go around and talk to every person on Earth, understand their <span class="annot" data-tooltip="exact /ɪɡ'zækt/ adj. 精确的；准确的，精密的vt. 强求；要求；急需vi. 勒索钱财时 态: exacted, exacting, exact">exact</span> <span class="annot" data-tooltip="preferences /'prefrəns/ n. 较喜欢的东西, 偏爱优待, 优惠, 优先权">preferences</span>” and “optimise” for all of them. Elon Musk has said humans may end up like “pet labradors” for superintelligent robots. Mr Altman has suggested that most of Earth’s surface may soon be <span class="annot" data-tooltip="covered /'kʌvər/ vt. 包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替时 态: covered, covering, c">covered</span> with data centres. Mr Musk wants to solve this problem by putting data centres in space—and <span class="annot" data-tooltip="blasting /blæst/ n. 爆炸；冲击波；一阵vi. 猛攻vt. 使枯萎；损害；爆炸时 态: blasted, blasting, blasts">blasting</span> millions of people to live on Mars. The tech titans all seem to have <span class="annot" data-tooltip="escape /ɪ'skeɪp/ vt. 逃避，避免；被忘掉vi. 逃脱；避开；溜走n. 逃跑；逃亡时 态: escaped, escaping, escapes">escape</span> plans, notes Ms Lepore: “Elon Musk to Mars, Mark Zuckerberg to the metaverse...Jeff Bezos to space, Sam Altman’s brain uploaded to the cloud.” This makes them <span class="annot" data-tooltip="reckless /'rekləs/ adj. 轻率的; 鲁莽的; 不顾危险的副 词: recklessly">reckless</span> about the risk of creating dystopia here on Earth, she fears.</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>involved</td><td>/ɪn'vɑːlvd/ adj.</td><td>卷入的；有关的；复杂的v. 涉及；使参与；包含（involve的过去式和过去分词）</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>transition</td><td>/træn'zɪʃn/ n.</td><td>过渡; 转变; 变迁</td></tr>
+<tr><td>literally</td><td>/'lɪtərəli/ adv.</td><td>逐字地；照字面地确实地，真正地</td></tr>
+<tr><td>leap</td><td>/liːp/ vi.</td><td>跳，跳跃n. 跳跃；飞跃vt. 跳跃，跳过；使跃过, leapt leaping, leaps</td></tr>
+<tr><td>reality</td><td>/ri'æləti/ n.</td><td>现实；真实；实际</td></tr>
+<tr><td>speaking</td><td>/'spikɪŋ/ adj.</td><td>演讲的；富于表情的，雄辩的n. 说话；演讲v. 讲（speak的ing形式）</td></tr>
+<tr><td>conference</td><td>/'kɑːnfərəns/ n.</td><td>会议讨论, 商谈</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>processes</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>presented</td><td>/'preznt/ vt.</td><td>呈现；介绍；提出；赠送vi. 举枪瞄准adj. 出席的；现在的n. 现在；礼物；瞄准, presenting, presents</td></tr>
+<tr><td>complete</td><td>/kəm'pliːt/ adj.</td><td>完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善, completest 缩 写: comp, cpl</td></tr>
+<tr><td>picture</td><td>/'pɪktʃər/ n.</td><td>图画，肖像；照片(生动的)描述，写照影片；电影；画面美景，景色情况，事态，局面vt. 绘画；描绘想象，picturing，pictures</td></tr>
+<tr><td>properties</td><td>— </td><td>道具</td></tr>
+<tr><td>simultaneously</td><td>/ˌsaɪml'teɪniəsli/ adv.</td><td>同时地</td></tr>
+<tr><td>detecting</td><td>/dɪ'tekt/ vt.</td><td>发现；发觉，查明，detecting，detects</td></tr>
+<tr><td>extensive</td><td>/ɪk'stensɪv/ adj.</td><td>广阔的，广泛的；大量的，大规模的</td></tr>
+<tr><td>invested</td><td>/ɪn'vest/ vt.</td><td>投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买, investing, invests</td></tr>
+<tr><td>prolonged</td><td>/prə'lɔːŋ/ vt.</td><td>拖延；延长, prolonging, prolongs</td></tr>
+<tr><td>diabetes</td><td>/ˌdaɪə'biːtiːz/ n.</td><td>糖尿病</td></tr>
+<tr><td>premature</td><td>/ˌpriːmə'tʃʊr/ adj.</td><td>过早的, 提前的, 未到期的早产的</td></tr>
+<tr><td>stretches</td><td>/stretʃ/ vt.</td><td>伸展,张开vi. 伸展adj. 可伸缩的n. 伸展，延伸, stretching, stretches</td></tr>
+<tr><td>journal</td><td>/'dʒɜːrnl/ n.</td><td>日报，杂志；日记；[经]分类账</td></tr>
+<tr><td>hence</td><td>/hens/ adv.</td><td>因此；今后</td></tr>
+<tr><td>stools</td><td>/stuːl/ n.</td><td>凳子, stooling, stools</td></tr>
+<tr><td>tilt</td><td>/tɪlt/ vi.</td><td>倾斜；翘起；以言词或文字抨击vt. 使倾斜；使翘起n. 倾斜, tilting, tilts</td></tr>
+<tr><td>wobble</td><td>/'wɑːbl/ vi.</td><td>摇晃；摇摆；游移不定n. 摆动；不稳定；摇晃vt. 使摇摆；使颤动；摇动, wobbling, wobbles</td></tr>
+<tr><td>either</td><td>/'iːðər/ pron.</td><td>(两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的</td></tr>
+<tr><td>actually</td><td>/'æktʃuəl/ adj.</td><td>真实的，实际的；现行的，目前的</td></tr>
+<tr><td>trials</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>activation</td><td>— n.</td><td>活化,激活,[化]活化作用</td></tr>
+<tr><td>downsides</td><td>/'daʊnsaɪd/ adj.</td><td>下降趋势的</td></tr>
+<tr><td>journal</td><td>/'dʒɜːrnl/ n.</td><td>日报，杂志；日记；[经]分类账</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>veins</td><td>/veɪn/ n.</td><td>血管；岩脉；纹理；[动]翅脉；[植]叶脉；性情vt. 使成脉络；像脉络般分布于, veining, veins</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>exercise</td><td>/'eksərsaɪz/ n.</td><td>练习；运动；运用；操练；典礼；礼拜vt. 练习；锻炼；使用；使忙碌；使惊恐vi. 运动；练习, exercising, exercises</td></tr>
+<tr><td>excess</td><td>/ɪk'ses/ n.</td><td>无节制；过度，过量；超过，超额adj. 额外的，过量的；附加的, excessing, excesses</td></tr>
+<tr><td>mortality</td><td>/mɔːr'tæləti/ n.</td><td>必死性大量死亡死亡率</td></tr>
+<tr><td>bound</td><td>/baʊnd/ vi.</td><td>跳；弹回vt. 给…划界，限制n. 跳，跳跃，跃进界限，范围adj. 被捆绑的，被束缚的一定的，必定的去，准备去，bounding，bounds</td></tr>
+<tr><td>wonder</td><td>/'wʌndər/ vt.</td><td>& vi. 对…感到疑惑想知道；问自己n. 惊奇，惊叹，惊异，惊诧奇人，奇才奇观，奇景，奇迹，奇事，wondering，wonders</td></tr>
+<tr><td>consider</td><td>/kən'sɪdər/ vt.</td><td>& vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及, considering, considers</td></tr>
+<tr><td>trial</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>mounted</td><td>/maʊnt/ vt.</td><td>& vi. 登上；骑上vi. 增加；上升vt. 上演；配有…发动攻击；攻击n. 山峰坐骑，mounting，mounts</td></tr>
+<tr><td>bladder</td><td>/'blædər/ n.</td><td>〈解〉膀胱囊, 袋</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>expenditure</td><td>/ɪk'spendɪtʃər/ n.</td><td>花费, 使用(尤指金钱的)支出额</td></tr>
+<tr><td>respectively</td><td>/rɪ'spektɪv/ adj.</td><td>各自的; 各个的</td></tr>
+<tr><td>ergonomics</td><td>/ˌɜːrɡə'nɑːmɪk/ adj.</td><td>工效学的；人体工程学的</td></tr>
+<tr><td>contractions</td><td>/kən'trækʃn/ n.</td><td>订约(分娩时)子宫收缩收缩,缩短缩减缩略词</td></tr>
+<tr><td>foam</td><td>/foʊm/ n.</td><td>泡沫；水沫；灭火泡沫vi. 起泡沫；吐白沫；起着泡沫流动vt. 使起泡沫；使成泡沫状物, foaming, foams</td></tr>
+<tr><td>encourage</td><td>/ɪn'kɜːrɪdʒ/ vt.</td><td>鼓励, 激励促进, 助长, 激发, encouraging, encourages</td></tr>
+<tr><td>exercise</td><td>/'eksərsaɪz/ n.</td><td>练习；运动；运用；操练；典礼；礼拜vt. 练习；锻炼；使用；使忙碌；使惊恐vi. 运动；练习, exercising, exercises</td></tr>
+<tr><td>contractions</td><td>/kən'trækʃn/ n.</td><td>订约(分娩时)子宫收缩收缩,缩短缩减缩略词</td></tr>
+<tr><td>tissues</td><td>/'tɪʃuː/ n.</td><td>组织薄纸, 棉纸一套, 一系列</td></tr>
+<tr><td>caveats</td><td>— n.</td><td>警告；说明（caveat的复数）</td></tr>
+<tr><td>punctuation</td><td>/ˌpʌŋktʃu'eɪʃn/ n.</td><td>标点符号；标点符号用法</td></tr>
+<tr><td>reveals</td><td>/rɪ'viːl/ vt.</td><td>显示；露出泄露；透露，revealing，reveals</td></tr>
+<tr><td>striking</td><td>/'straɪkɪŋ/ adj.</td><td>显著的，突出的引人注目的；容貌出众的</td></tr>
+<tr><td>vital</td><td>/'vaɪtl/ adj.</td><td>极重要的，必不可少的维持生命所必需的；生命的有生气的，充满生机的</td></tr>
+<tr><td>ponder</td><td>/'pɑːndər/ vt.</td><td>仔细考虑；衡量vi. 沉思；考虑, pondering, ponders</td></tr>
+<tr><td>mulling</td><td>/mʌl/ vt.</td><td>研磨；思索或思考某事物；使醉n. 混乱；软薄布vi. 深思熟虑, mulling, mulls</td></tr>
+<tr><td>society</td><td>/sə'saɪəti/ n.</td><td>社会；社交界；交往；社团</td></tr>
+<tr><td>consider</td><td>/kən'sɪdər/ vt.</td><td>& vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及, considering, considers</td></tr>
+<tr><td>companion</td><td>/kəm'pænjən/ n.</td><td>同伴, 伙伴成双成对的物品之一, companioning, companions</td></tr>
+<tr><td>superior</td><td>/suː'pɪriər/ adj.</td><td>上级的；高傲的；优秀的，出众的n. 上级，长官；长者；优胜者，高手</td></tr>
+<tr><td>capabilities</td><td>/ˌkeɪpə'bɪləti/ n.</td><td>能做某事的素质;能力尚未发挥的天资或素质</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>warriors</td><td>/'wɔːriər/ n.</td><td>战士，勇士；鼓吹战争的人Warrior猎户星座</td></tr>
+<tr><td>homo</td><td>/'hoʊmoʊ/ n.</td><td>〈拉〉人(学名)Homo人属HOMOabbr. Highest Occupied Molecular Orbital 最高被占用分子轨道</td></tr>
+<tr><td>literally</td><td>/'lɪtərəli/ adv.</td><td>逐字地；照字面地确实地，真正地</td></tr>
+<tr><td>escape</td><td>/ɪ'skeɪp/ vt.</td><td>逃避，避免；被忘掉vi. 逃脱；避开；溜走n. 逃跑；逃亡, escaping, escapes</td></tr>
+<tr><td>overall</td><td>/ˌoʊvər'ɔːl/ adj.</td><td>总体的；全面的；综合的全面考虑的adv. 大体上，总的来说一切包括在内，全部的n. 长罩衣工装裤；工作裤</td></tr>
+<tr><td>obedient</td><td>/ə'biːdiənt/ adj.</td><td>顺从的; 服从的</td></tr>
+<tr><td>evolves</td><td>/ɪ'vɑːlv/ vt.</td><td>& vi. 演变；进化，evolving，evolves</td></tr>
+<tr><td>versions</td><td>/'vɜːrʒn/ n.</td><td>变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本</td></tr>
+<tr><td>whereas</td><td>/ˌwer'æz/ conj.</td><td>但是, 而</td></tr>
+<tr><td>grapple</td><td>/'ɡræpl/ vi.</td><td>抓住；格斗；抓斗机vt. 抓住；与…格斗n. 抓住；格斗, grappling, grapples</td></tr>
+<tr><td>neither</td><td>/'niːðər/ conj.</td><td>既不；也不adv. 两个都不；既不……也不adj. 两者都不的det./pron. 两者都不</td></tr>
+<tr><td>analogy</td><td>/ə'nælədʒi/ n.</td><td>类似, 相似类推, 类推法</td></tr>
+<tr><td>reference</td><td>/'refrəns/ n.</td><td>提及，涉及参考，查阅引文；参考书目证明书；推荐信；证明人；推荐人，referencing，references</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>fall</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>democracy</td><td>/dɪ'mɑːkrəsi/ n.</td><td>民主, 民主制民主国家</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>awesome</td><td>/'ɔːsəm/ adj.</td><td>令人敬畏的；令人惊叹的；令人惊惧的【美，非正式】很好的；了不起的（或极好玩的等）</td></tr>
+<tr><td>exact</td><td>/ɪɡ'zækt/ adj.</td><td>精确的；准确的，精密的vt. 强求；要求；急需vi. 勒索钱财, exacting, exacts</td></tr>
+<tr><td>preferences</td><td>/'prefrəns/ n.</td><td>较喜欢的东西, 偏爱优待, 优惠, 优先权</td></tr>
+<tr><td>covered</td><td>/'kʌvər/ vt.</td><td>包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替, covering, covers</td></tr>
+<tr><td>blasting</td><td>/blæst/ n.</td><td>爆炸；冲击波；一阵vi. 猛攻vt. 使枯萎；损害；爆炸, blasting, blasts</td></tr>
+<tr><td>escape</td><td>/ɪ'skeɪp/ vt.</td><td>逃避，避免；被忘掉vi. 逃脱；避开；溜走n. 逃跑；逃亡, escaping, escapes</td></tr>
+<tr><td>reckless</td><td>/'rekləs/ adj.</td><td>轻率的; 鲁莽的; 不顾危险的</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day35.html" class="nav-btn">← Day 35</a>
+  <a href="day37.html" class="nav-btn">Day 37 →</a>
+</div>
+
+<div class="progress">📖 Day 36 of 40</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-08-22</div>
+
+</body>
+</html>

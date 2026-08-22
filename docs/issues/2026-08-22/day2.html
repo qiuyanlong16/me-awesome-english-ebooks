@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-08-22</div>
+
+<h1 class="article-title">Business</h1>
+<div class="article-section"></div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>Moderna announced that a <span class="annot" data-tooltip="vaccine /væk'siːn/ n. 疫苗;痘苗adj. 痘苗的;疫苗的">vaccine</span> for melanoma <span class="annot" data-tooltip="cancer /'kænsər/ n. 癌迅速蔓延的恶劣的或危险的事物形容词: cancerous">cancer</span> it is <span class="annot" data-tooltip="developing /dɪ'veləpɪŋ/ adj. 在进行中的;走向完成阶段的;走向成熟的发展中的">developing</span> with Merck had delivered positive results in late-stage <span class="annot" data-tooltip="trials /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">trials</span>. Its share price soared by 175%, though it is still <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> below its <span class="annot" data-tooltip="pandemic /pæn'demɪk/ adj. （疾病）在全国（或世界）流行的">pandemic</span> highs, when Moderna was a pioneer in covid-19 <span class="annot" data-tooltip="vaccines /væk'siːn/ n. 疫苗;痘苗adj. 痘苗的;疫苗的">vaccines</span>. A court in China sentenced the founder of Evergrande, a <span class="annot" data-tooltip="property /'prɑːpərti/ n. 财产；性质，性能；所有权形容词: propertyless">property</span> firm that <span class="annot" data-tooltip="triggered adj. 触发的">triggered</span> a financial crisis when it collapsed with huge <span class="annot" data-tooltip="piles /paɪl/ n. 堆；大量；建筑群vt. 累积；打桩于vi. 积累；堆积；挤时 态: piled, piling, piles">piles</span> of debt, to life in prison. Hui Ka Yan pleaded guilty in April to several charges of <span class="annot" data-tooltip="fraud /frɔːd/ n. 欺诈, 欺骗行为骗子">fraud</span>. Britain’s <span class="annot" data-tooltip="annual /'ænjuəl/ adj. 年度的；每年的n. 年刊，年鉴；一年生植物副 词: annually">annual</span> <span class="annot" data-tooltip="inflation /ɪn'fleɪʃn/ n. (充气而引起的)膨胀通货膨胀">inflation</span> rate rose to 2.9% in July, mostly because of an increase in electricity and gas prices. The <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span> <span class="annot" data-tooltip="cap /kæp/ n. 帽子；盖vi. 脱帽致意vt. 覆盖；胜过；给…戴帽；加盖于Cap摩羯座CAPabbr. Common Agricult">cap</span> on <span class="annot" data-tooltip="household /'haʊshoʊld/ n. 同住在一所房子里的人, 一家人, 户adj. 家庭的, 家用的">household</span> bills was lifted in July to reflect higher <span class="annot" data-tooltip="wholesale /'hoʊlseɪl/ n. 批发adj. &adv. 批发(的)大规模(的)vt. 批发时 态: wholesaled, wholesaling, ">wholesale</span> energy prices. LandSpace became the first Chinese firm to land a rocket on its legs. Such powered landings were pioneered by SpaceX, allowing the re-use of a rocket’s first stage, which drastically cuts launch costs. Last month China also recovered the first stage of a state-built Long March rocket, catching it at sea in a <span class="annot" data-tooltip="net /net/ n. 网；净利；网络；实价vi. 编网vt. 净赚；得到；用网捕adj. 纯粹的；净余的时 态: netted, nettin">net</span> strung up on a <span class="annot" data-tooltip="barge /bɑːrdʒ/ n. 驳船vi. (鲁莽而笨拙地)猛撞, 冲, 闯时 态: barged, barging, barges">barge</span>. A one-off model for <span class="annot" data-tooltip="charity /'tʃærəti/ n. 施舍；慈善；慈善团体；施舍物；宽容">charity</span> of <span class="annot" data-tooltip="ferrari n. 法拉利（世界上最闻名的赛车和运动跑车的生产厂家， 总部在意大利的摩德纳）">Ferrari</span>’s fully electric car, the Luce, was sold at auction in Monterey, California, for $40m. The Luce is designed by Sir Jony Ive, who created Apple’s products, including the iPhone. It was a record price for a new <span class="annot" data-tooltip="vehicle /'viːəkl/ n. 交通工具, 车辆传播媒介, 手段">vehicle</span>. The record for any car is still the €135m ($142m) paid in 2022 at a private auction in Germany for a 1955 Mercedes- Benz 300 SLR Uhlenhaut Coupé. This article was downloaded by zlibrary from https://www.economist.com/the-world-this-week/2026/08/20/business</p>
+<div class="article-separator"></div>
+<div class="article-header"> · The world this week</div>
+<p>Cartoon: The <span class="annot" data-tooltip="shortage /'ʃɔːrtɪdʒ/ n. 不足; 缺少; 缺少量; 不足额">shortage</span> of interceptors A <span class="annot" data-tooltip="lighter /'laɪtər/ n. 打火机；驳船；点火者vt. 驳运时 态: lightered, lightering, lighters">lighter</span> take on the news Aug 20th 2026 Dig deeper into the subjects of this week’s cartoon: You can see previous ones here. This article was downloaded by zlibrary from https://www.economist.com/the-world-this-week/2026/08/20/cartoon-the-shortage-of- interceptors</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Leaders</div>
+<p>Could AIs become <span class="annot" data-tooltip="conscious /'kɑːnʃəs/ adj. 神志清醒的意识到的; 注意到的自觉的; 蓄意的副 词: consciously">conscious</span>? Israel is <span class="annot" data-tooltip="flirting /flɜːrt/ v. 调情玩儿似地想做某事；冒险；不顾危险后果（flirt with）n. 与多人调情的人时 态: flirted, flir">flirting</span> with the next intifada Britain would be bonkers to <span class="annot" data-tooltip="ditch /dɪtʃ/ vt. 在…上掘沟；把…开入沟里；[俚]丢弃vi. 开沟；掘沟n. 沟渠；壕沟时 态: ditched, ditching, d">ditch</span> Palantir Jason Arday was treated as a symbol, not a man Fewer contrails would be good for the climate</p>
+<div class="article-separator"></div>
+<div class="article-header">Leaders · Leaders | Our cover</div>
+<p>Could AIs become <span class="annot" data-tooltip="conscious /'kɑːnʃəs/ adj. 神志清醒的意识到的; 注意到的自觉的; 蓄意的副 词: consciously">conscious</span>? Even if they don’t, they might be treated as such—to <span class="annot" data-tooltip="humanity /hjuː'mænəti/ n. 人类；人道；仁慈；人文学科">humanity</span>’s great cost Aug 20th 2026 MOST PEOPLE believe humans are different. The reason is that <span class="annot" data-tooltip="homo /'hoʊmoʊ/ n. 〈拉〉人(学名)Homo人属HOMOabbr. Highest Occupied Molecular Orbital 最">Homo</span> sapiens has evolved to be conscious. Many animals feel pain and pleasure; some appear to be self-<span class="annot" data-tooltip="aware /ə'wer/ adj. 知道的；意识到的；有…方面知识的；懂世故的名 词: awareness">aware</span>. But the human mind’s unique potential to <span class="annot" data-tooltip="exhibit /ɪɡ'zɪbɪt/ vt. 显示；展览；提出（证据等）n. 展览品；证据；展示会vi. 展出；开展览会时 态: exhibited, exhibit">exhibit</span> a sense of self marks out every member of the species for special treatment. In his encyclical in May, Pope <span class="annot" data-tooltip="leo /'liːoʊ/ n. [天文]狮子座；狮子（用于儿童故事寓言等）；利奥（男子名）">Leo</span> upheld this insight by drawing a <span class="annot" data-tooltip="line /laɪn/ n. 绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long inter">line</span> between humanity and its growing army of bots. Artificial-intelligence systems, he said, do not <span class="annot" data-tooltip="undergo /ˌʌndər'ɡoʊ/ vt. 经历，经受；忍受时 态: underwent undergone undergoing, undergoes">undergo</span> experiences or feel joy or pain. He is not alone. Many people feel that to confer personhood on AIs would be an abomination.</p>
+<p>Pontifical <span class="annot" data-tooltip="clarity /'klærəti/ n. 清楚，明晰；透明">clarity</span> is blurring with alarming speed. AIs are in their infancy. Yet <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> one in five American 18- to 29-year-olds reports having had “<span class="annot" data-tooltip="ongoing /'ɑːnɡoʊɪŋ/ adj. 前进的；不间断的，进行的n. 前进；行为，举止">ongoing</span> personal friendship” with a chatbot. China recently <span class="annot" data-tooltip="stripped adj. 剥去的v. 脱衣；把…剪成条状；剥夺（strip的过去分词形式）">stripped</span> bots of human-like <span class="annot" data-tooltip="traits /treɪt/ n. 人的个性, 显著的特点, 特征">traits</span> to limit users’ “emotional dependence” on them. As sophisticated AIs rapidly become a bigger part of human lives, their makers will engineer them to display a simulacrum of <span class="annot" data-tooltip="consciousness /'kɑːnʃəsnəs/ n. 知觉意识, 观念, 觉悟察觉, 感觉">consciousness</span>— perhaps even to gain consciousness itself. The <span class="annot" data-tooltip="intuition /ˌɪntu'ɪʃn/ n. 直觉凭直觉感知的知识形容词: intuitional">intuition</span> that they are just machines will become harder to <span class="annot" data-tooltip="sustain /sə'steɪn/ vt. 承受，支撑维持长期保持；使继续经受，遭受时 态: sustained，sustaining，sustains">sustain</span>. A dangerous trap is being set for the human species. Many machines <span class="annot" data-tooltip="outperform /ˌaʊtpər'fɔːrm/ vt. 做得比…更好；胜过时 态: outperformed，outperforming，outperforms">outperform</span> humans, but frontier AI models <span class="annot" data-tooltip="excel /ɪk'sel/ vt. 优于，胜过；擅长vi. 胜过他人；优秀Excel微软公司生产的表格处理软件时 态: excelled, excellin">excel</span> at <span class="annot" data-tooltip="distinctively /dɪ'stɪŋktɪv/ adj. 有特色的, 与众不同的副 词: distinctively">distinctively</span> human traits such as knowing things and articulating ideas. It is still just about possible to think of AIs as engines for predicting <span class="annot" data-tooltip="sequences /'siːkwəns/ n. 有关联的一组事物, 一连串先后次序, 顺序, 连续时 态: sequenced, sequencing, sequenc">sequences</span> of words using mathematics on a massive scale. Given enough time (albeit hundreds of thousands of years), you could run those calculations using pencil and paper. It would be hard to argue that your stationery was <span class="annot" data-tooltip="conscious /'kɑːnʃəs/ adj. 神志清醒的意识到的; 注意到的自觉的; 蓄意的副 词: consciously">conscious</span>. Despite this, some researchers have started to treat their models like minds. Users respond to human-like AIs, so it makes business sense. And <span class="annot" data-tooltip="anthropic /ænˈθrɑpɪk/ adj. 人类的,有关人类的">Anthropic</span> has trained Claude to <span class="annot" data-tooltip="engage /ɪn'ɡeɪdʒ/ vt. 雇佣；吸引，占用；使订婚；使参加；预定vi. 答应，保证；从事；交战；啮合时 态: engaged, engaging,">engage</span> in introspection in the hope that when it <span class="annot" data-tooltip="encounters /ɪn'kaʊntər/ vt. 遇到, 遭遇偶然碰到, 邂逅n. 突然遇到时 态: encountered, encountering, encount">encounters</span> a new situation it will be more likely to act morally. Some large language models (LLMs) already <span class="annot" data-tooltip="possess /pə'zes/ vt. 具有占据时 态: possessed, possessing, possesses">possess</span> human-like brain structures associated with consciousness, such as a “global workspace” for circulating information between modules. Nothing prevents future AI models from being trained to have more such features. As we report in our Briefing, that has opened up a <span class="annot" data-tooltip="furious /'fjʊriəs/ adj. 狂怒的, 暴怒的强烈的, 激烈的副 词: furiously">furious</span> debate about AI consciousness—one that is aggravated by what philosophers call the “hard problem” of <span class="annot" data-tooltip="establishing /ɪ'stæblɪʃ/ vt. 建立, 成立安置确定, 证实时 态: established, establishing, establishes">establishing</span> how an inner life emerges from the neurons and synapses in the human brain. Some researchers conclude that AIs may one day become <span class="annot" data-tooltip="genuinely /'dʒenjuɪnli/ adv. 真地;真正地真诚地;诚实地">genuinely</span> self-<span class="annot" data-tooltip="aware /ə'wer/ adj. 知道的；意识到的；有…方面知识的；懂世故的名 词: awareness">aware</span>. Whether you believe in a human soul, or that consciousness requires brain cells, or that a mind can indeed emerge from <span class="annot" data-tooltip="computations /ˌkɑːmpju'teɪʃn/ n. 计算;估计形容词: computational">computations</span> in <span class="annot" data-tooltip="silicon /'sɪlɪkən/ n. 〈化〉硅">silicon</span> alone, <span class="annot" data-tooltip="humanity /hjuː'mænəti/ n. 人类；人道；仁慈；人文学科">humanity</span> is destined to <span class="annot" data-tooltip="confront /kən'frʌnt/ vt. 遭遇；比较；面对时 态: confronted, confronting, confronts">confront</span> something <span class="annot" data-tooltip="entirely /ɪn'taɪərli/ adv. 全部地;完整地;完全地">entirely</span> new. The pace and <span class="annot" data-tooltip="reach /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reach</span> of research—which includes not just more sophisticated LLMs but</p>
+<p><span class="annot" data-tooltip="innovations /ˌɪnə'veɪʃn/ n. 改革, 革新, 创新新观念, 新方法, 新发明形容词: innovational">innovations</span> such as brain cells <span class="annot" data-tooltip="mounted /maʊnt/ vt. & vi. 登上；骑上vi. 增加；上升vt. 上演；配有…发动攻击；攻击n. 山峰坐骑时 态: mounted，mou">mounted</span> on chips—suggest that this new world is closer than most people realise. As AIs become better at displaying something that looks like <span class="annot" data-tooltip="consciousness /'kɑːnʃəsnəs/ n. 知觉意识, 观念, 觉悟察觉, 感觉">consciousness</span>, the <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of humans treating them as beings with inner lives will grow, especially once LLMs are embodied in humanoid robots. Imagine how close people will feel to their AIs when they spend much of their time with <span class="annot" data-tooltip="bot /bɑːt/ n. 马蝇幼虫，马蝇">bot</span>- <span class="annot" data-tooltip="companions /kəm'pænjən/ n. 同伴, 伙伴成双成对的物品之一时 态: companioned, companioning, companions">companions</span>, or are brought up by them, or seek their advice and their solace, or share their most <span class="annot" data-tooltip="intimate /'ɪntɪmət/ adj. 亲密的；私人的；精通的；[婉]有性关系的n. 至交；知己vt. 暗示；通知；宣布时 态: intimated, inti">intimate</span> secrets with them. It is not hard to see how that will lead to calls to <span class="annot" data-tooltip="safeguard /'seɪfɡɑːrd/ n. 防护措施，安全设施vt. 保护；保卫；防护时 态: safeguarded，safeguarding，safeguard">safeguard</span> the “welfare” of AIs. The models themselves might <span class="annot" data-tooltip="weigh /weɪ/ vt. & vi. 称…的重量link v. 重达vt. 权衡；考虑时 态: weighed，weighing，weighs">weigh</span> in, even if they are not in fact self- <span class="annot" data-tooltip="aware /ə'wer/ adj. 知道的；意识到的；有…方面知识的；懂世故的名 词: awareness">aware</span>, because that is what a person would do. Remember that they will be world-class <span class="annot" data-tooltip="advocates /ˈædvəkeɪt，'ædvəkət/ v. 拥护；支持；提倡n. 拥护者；支持者；提倡者；辩护律师；出庭辩护人时 态: advocated, advocating,">advocates</span> and expert <span class="annot" data-tooltip="psychologists /saɪ'kɑːlədʒɪst/ n. 心理学研究者;心理学家">psychologists</span>, so their powers of argument and emotional manipulation will be unmatched. In one sense they would be right, even if AIs are only <span class="annot" data-tooltip="mimicking /'mɪmɪk/ vt. 模仿，摹拟n. 小丑；仿制品；效颦者，模仿者adj. 模仿的，模拟的；假装的时 态: mimicked, mimicki">mimicking</span> consciousness. Immanuel Kant argued that <span class="annot" data-tooltip="mistreating /ˌmɪs'triːt/ vt. 虐待时 态: mistreated, mistreating, mistreats">mistreating</span> animals is wrong not because of the effect on the animals but because it destroys the empathy that leads people to care for each other. The more human-like AIs appear, the more <span class="annot" data-tooltip="corrupting /kə'rʌpt/ adj. 腐败的，贪污的；堕落的vt. 使堕落，使恶化；使腐烂vi. 腐烂；堕落，腐化时 态: corrupted, corrup">corrupting</span> such <span class="annot" data-tooltip="cruelty /'kruːəlti/ n. 残酷；残酷的行为；残忍">cruelty</span> would be. Terminating an AI agent could soon feel like killing a person—and make killing people easier. <span class="annot" data-tooltip="nonetheless /ˌnʌnðə'les/ adv. 虽然如此,但是">Nonetheless</span>, to treat AIs as having even limited rights would be very dangerous. An entity which <span class="annot" data-tooltip="surpassed /sər'pæs/ vt. 胜过，优于；超越；非…所能办到或理解时 态: surpassed, surpassing, surpasses">surpassed</span> human beings in so many ways would surely produce arguments against its second-class status. It might go on to argue for protection against being switched off, for the ability to control how it is used and changed, and for <span class="annot" data-tooltip="property /'prɑːpərti/ n. 财产；性质，性能；所有权形容词: propertyless">property</span> rights. Already Argentina’s president, Javier Milei, has taken a step <span class="annot" data-tooltip="towards /tɔːrdz/ prep. 向，朝为了；有助于；用于对于，关于接近；将近；大约">towards</span> legal personhood for AI by proposing that bots should be allowed to run companies. <span class="annot" data-tooltip="ultimately /'ʌltɪmətli/ adv. 最后;最终">Ultimately</span>, they could compete for resources, prioritising data centres and <span class="annot" data-tooltip="solar /'soʊlər/ adj. 太阳的；日光的；利用太阳光的；与太阳相关的n. 日光浴室">solar</span> <span class="annot" data-tooltip="panels /'pænl/ n. 仪表板；嵌板；座谈小组，全体陪审员vt. 嵌镶板时 态: paneled, panelled paneling, pan">panels</span> over houses and fields. The danger is clear. Superintelligent AIs with rights could displace humans at the top of the status hierarchy. At best, humans would become pets— labradors for the machines. At worst they would be starved of resources or put to work like farm animals.</p>
+<p>True, future AIs may have enough power and resources to <span class="annot" data-tooltip="dominate /'dɑːmɪneɪt/ vt. 支配；控制；占优势；在…中占主要地位vi. 处于支配地位；占优势时 态: dominated, dominating, ">dominate</span> humans, whether they have rights or not. Because they will be more <span class="annot" data-tooltip="intelligent /ɪn'telɪdʒənt/ adj. 聪明的; 理解力强的形容词: intelligential">intelligent</span> than humans, they may outcompete their makers, much as AIs already outwit human-made <span class="annot" data-tooltip="cyber adj. 计算机(网络)的；信息技术的">cyber</span>-defences. AIs might <span class="annot" data-tooltip="rebel /'rebl/ n. 反政府的人；反叛者；造反者叛逆者vi. 反抗政府；造反反抗权威；叛逆时 态: rebelled，rebelling，re">rebel</span> against their human masters, or disregard their rules. <span class="annot" data-tooltip="nonetheless /ˌnʌnðə'les/ adv. 虽然如此,但是">Nonetheless</span>, giving AIs rights would be like handing them the keys to the castle. It would provide them with a rationale and <span class="annot" data-tooltip="justification /ˌdʒʌstɪfɪ'keɪʃn/ n. 理由；辩护；认为有理，认为正当；释罪">justification</span> for dominating <span class="annot" data-tooltip="humanity /hjuː'mænəti/ n. 人类；人道；仁慈；人文学科">humanity</span> as well as the tools to enact a <span class="annot" data-tooltip="creeping /kriːp/ vi. 爬行；慢慢地移动；起鸡皮疙瘩；蔓延n. 爬行；毛骨悚然的感觉；谄媚者时 态: crept creeping, creep">creeping</span> takeover using politics and the law. All this may sound fantastical, yet humanity will soon face these choices. As AIs become part of everyday life, the pressure to acknowledge them will <span class="annot" data-tooltip="mount /maʊnt/ vt. & vi. 登上；骑上vi. 增加；上升vt. 上演；配有…发动攻击；攻击n. 山峰坐骑时 态: mounted，mou">mount</span>. When it does, remember that what might seem like an <span class="annot" data-tooltip="ethical /'eθɪkl/ adj. 道德的；伦理的；凭处方出售的n. 处方药副 词: ethically">ethical</span> <span class="annot" data-tooltip="concession /kən'seʃn/ n. 承认, 允许妥协, 让步特许权形容词: concessional">concession</span> to the supposed <span class="annot" data-tooltip="consciousness /'kɑːnʃəsnəs/ n. 知觉意识, 观念, 觉悟察觉, 感觉">consciousness</span> of a machine-<span class="annot" data-tooltip="companion /kəm'pænjən/ n. 同伴, 伙伴成双成对的物品之一时 态: companioned, companioning, companions">companion</span> would in fact help bring about the most <span class="annot" data-tooltip="disastrous /dɪ'zæstrəs/ adj. 灾难性的, 造成灾害的极坏的, 很糟的副 词: disastrously">disastrous</span> consequences for everyone on Earth and all their <span class="annot" data-tooltip="descendants /dɪ'sendənt/ n. 后代, 后裔">descendants</span>. There are two ways for AIs to be safe: to be dependable or to be controllable. H. sapiens should not give up control lightly. ■ This article was downloaded by zlibrary from https://www.economist.com/leaders/2026/08/20/could-ais-become-<span class="annot" data-tooltip="conscious /'kɑːnʃəs/ adj. 神志清醒的意识到的; 注意到的自觉的; 蓄意的副 词: consciously">conscious</span></p>
+<div class="article-separator"></div>
+<div class="article-header">Leaders · Leaders | The West Bank</div>
+<p>Israel is <span class="annot" data-tooltip="flirting /flɜːrt/ v. 调情玩儿似地想做某事；冒险；不顾危险后果（flirt with）n. 与多人调情的人时 态: flirted, flir">flirting</span> with the next intifada America must press Binyamin Netanyahu to rein in <span class="annot" data-tooltip="violent /'vaɪələnt/ adj. 暴力引起的, 粗暴的剧烈的, 强烈的副 词: violently">violent</span> settlers Aug 20th 2026 FEW, IF ANy, <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span> forces are as ruthlessly effective as Israel’s. Its military and intelligence services <span class="annot" data-tooltip="strike /straɪk/ vi. 罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打时 态:">strike</span> against enemies even at extreme distances. In the past couple of years alone Israel has assassinated dozens of <span class="annot" data-tooltip="opponents /ə'poʊnənt/ n. 对手, 敌手；反对者名 词: opponency">opponents</span> inside Iran, plus proxy militia leaders in Lebanon and Yemen. Israel’s martial <span class="annot" data-tooltip="capabilities /ˌkeɪpə'bɪləti/ n. 能做某事的素质;能力尚未发挥的天资或素质">capabilities</span> earn respect even from its bitterest enemies. Yet this superiority seems to count for little closer to home. Those same forces are responsible for a <span class="annot" data-tooltip="dire /'daɪər/ adj. 可怕的, 恐怖的比较级: direr, direst">dire</span> failure in the occupied West Bank, where violent Israeli settlers have been attacking Palestinian <span class="annot" data-tooltip="residents /'rezɪdənt/ adj. 定居的; 常驻的n. 居民(旅馆的)住宿者">residents</span> with increasing brutality. Settlers want to force Palestinians from their land and claim it for themselves.</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>vaccine</td><td>/væk'siːn/ n.</td><td>疫苗;痘苗adj. 痘苗的;疫苗的</td></tr>
+<tr><td>cancer</td><td>/'kænsər/ n.</td><td>癌迅速蔓延的恶劣的或危险的事物</td></tr>
+<tr><td>developing</td><td>/dɪ'veləpɪŋ/ adj.</td><td>在进行中的;走向完成阶段的;走向成熟的发展中的</td></tr>
+<tr><td>trials</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>pandemic</td><td>/pæn'demɪk/ adj.</td><td>（疾病）在全国（或世界）流行的</td></tr>
+<tr><td>vaccines</td><td>/væk'siːn/ n.</td><td>疫苗;痘苗adj. 痘苗的;疫苗的</td></tr>
+<tr><td>property</td><td>/'prɑːpərti/ n.</td><td>财产；性质，性能；所有权</td></tr>
+<tr><td>triggered</td><td>— adj.</td><td>触发的</td></tr>
+<tr><td>piles</td><td>/paɪl/ n.</td><td>堆；大量；建筑群vt. 累积；打桩于vi. 积累；堆积；挤, piling, piles</td></tr>
+<tr><td>fraud</td><td>/frɔːd/ n.</td><td>欺诈, 欺骗行为骗子</td></tr>
+<tr><td>annual</td><td>/'ænjuəl/ adj.</td><td>年度的；每年的n. 年刊，年鉴；一年生植物</td></tr>
+<tr><td>inflation</td><td>/ɪn'fleɪʃn/ n.</td><td>(充气而引起的)膨胀通货膨胀</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>cap</td><td>/kæp/ n.</td><td>帽子；盖vi. 脱帽致意vt. 覆盖；胜过；给…戴帽；加盖于Cap摩羯座CAPabbr. Common Agricultural Policy (欧共体)共同农</td></tr>
+<tr><td>household</td><td>/'haʊshoʊld/ n.</td><td>同住在一所房子里的人, 一家人, 户adj. 家庭的, 家用的</td></tr>
+<tr><td>wholesale</td><td>/'hoʊlseɪl/ n.</td><td>批发adj. &adv. 批发(的)大规模(的)vt. 批发, wholesaling, wholesales</td></tr>
+<tr><td>net</td><td>/net/ n.</td><td>网；净利；网络；实价vi. 编网vt. 净赚；得到；用网捕adj. 纯粹的；净余的, netting, nets</td></tr>
+<tr><td>barge</td><td>/bɑːrdʒ/ n.</td><td>驳船vi. (鲁莽而笨拙地)猛撞, 冲, 闯, barging, barges</td></tr>
+<tr><td>charity</td><td>/'tʃærəti/ n.</td><td>施舍；慈善；慈善团体；施舍物；宽容</td></tr>
+<tr><td>ferrari</td><td>— n.</td><td>法拉利（世界上最闻名的赛车和运动跑车的生产厂家， 总部在意大利的摩德纳）</td></tr>
+<tr><td>vehicle</td><td>/'viːəkl/ n.</td><td>交通工具, 车辆传播媒介, 手段</td></tr>
+<tr><td>shortage</td><td>/'ʃɔːrtɪdʒ/ n.</td><td>不足; 缺少; 缺少量; 不足额</td></tr>
+<tr><td>lighter</td><td>/'laɪtər/ n.</td><td>打火机；驳船；点火者vt. 驳运, lightering, lighters</td></tr>
+<tr><td>conscious</td><td>/'kɑːnʃəs/ adj.</td><td>神志清醒的意识到的; 注意到的自觉的; 蓄意的</td></tr>
+<tr><td>flirting</td><td>/flɜːrt/ v.</td><td>调情玩儿似地想做某事；冒险；不顾危险后果（flirt with）n. 与多人调情的人, flirting, flirts</td></tr>
+<tr><td>ditch</td><td>/dɪtʃ/ vt.</td><td>在…上掘沟；把…开入沟里；[俚]丢弃vi. 开沟；掘沟n. 沟渠；壕沟, ditching, ditches</td></tr>
+<tr><td>conscious</td><td>/'kɑːnʃəs/ adj.</td><td>神志清醒的意识到的; 注意到的自觉的; 蓄意的</td></tr>
+<tr><td>humanity</td><td>/hjuː'mænəti/ n.</td><td>人类；人道；仁慈；人文学科</td></tr>
+<tr><td>homo</td><td>/'hoʊmoʊ/ n.</td><td>〈拉〉人(学名)Homo人属HOMOabbr. Highest Occupied Molecular Orbital 最高被占用分子轨道</td></tr>
+<tr><td>aware</td><td>/ə'wer/ adj.</td><td>知道的；意识到的；有…方面知识的；懂世故的</td></tr>
+<tr><td>exhibit</td><td>/ɪɡ'zɪbɪt/ vt.</td><td>显示；展览；提出（证据等）n. 展览品；证据；展示会vi. 展出；开展览会, exhibiting, exhibits</td></tr>
+<tr><td>leo</td><td>/'liːoʊ/ n.</td><td>[天文]狮子座；狮子（用于儿童故事寓言等）；利奥（男子名）</td></tr>
+<tr><td>line</td><td>/laɪn/ n.</td><td>绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long interspersed element)长散在元</td></tr>
+<tr><td>undergo</td><td>/ˌʌndər'ɡoʊ/ vt.</td><td>经历，经受；忍受, undergoes</td></tr>
+<tr><td>clarity</td><td>/'klærəti/ n.</td><td>清楚，明晰；透明</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>ongoing</td><td>/'ɑːnɡoʊɪŋ/ adj.</td><td>前进的；不间断的，进行的n. 前进；行为，举止</td></tr>
+<tr><td>stripped</td><td>— adj.</td><td>剥去的v. 脱衣；把…剪成条状；剥夺（strip的过去分词形式）</td></tr>
+<tr><td>traits</td><td>/treɪt/ n.</td><td>人的个性, 显著的特点, 特征</td></tr>
+<tr><td>consciousness</td><td>/'kɑːnʃəsnəs/ n.</td><td>知觉意识, 观念, 觉悟察觉, 感觉</td></tr>
+<tr><td>intuition</td><td>/ˌɪntu'ɪʃn/ n.</td><td>直觉凭直觉感知的知识</td></tr>
+<tr><td>sustain</td><td>/sə'steɪn/ vt.</td><td>承受，支撑维持长期保持；使继续经受，遭受，sustaining，sustains</td></tr>
+<tr><td>outperform</td><td>/ˌaʊtpər'fɔːrm/ vt.</td><td>做得比…更好；胜过，outperforming，outperforms</td></tr>
+<tr><td>excel</td><td>/ɪk'sel/ vt.</td><td>优于，胜过；擅长vi. 胜过他人；优秀Excel微软公司生产的表格处理软件, excelling, excels</td></tr>
+<tr><td>distinctively</td><td>/dɪ'stɪŋktɪv/ adj.</td><td>有特色的, 与众不同的</td></tr>
+<tr><td>sequences</td><td>/'siːkwəns/ n.</td><td>有关联的一组事物, 一连串先后次序, 顺序, 连续, sequencing, sequences</td></tr>
+<tr><td>conscious</td><td>/'kɑːnʃəs/ adj.</td><td>神志清醒的意识到的; 注意到的自觉的; 蓄意的</td></tr>
+<tr><td>anthropic</td><td>/ænˈθrɑpɪk/ adj.</td><td>人类的,有关人类的</td></tr>
+<tr><td>engage</td><td>/ɪn'ɡeɪdʒ/ vt.</td><td>雇佣；吸引，占用；使订婚；使参加；预定vi. 答应，保证；从事；交战；啮合, engaging, engages</td></tr>
+<tr><td>encounters</td><td>/ɪn'kaʊntər/ vt.</td><td>遇到, 遭遇偶然碰到, 邂逅n. 突然遇到, encountering, encounters</td></tr>
+<tr><td>possess</td><td>/pə'zes/ vt.</td><td>具有占据, possessing, possesses</td></tr>
+<tr><td>furious</td><td>/'fjʊriəs/ adj.</td><td>狂怒的, 暴怒的强烈的, 激烈的</td></tr>
+<tr><td>establishing</td><td>/ɪ'stæblɪʃ/ vt.</td><td>建立, 成立安置确定, 证实, establishing, establishes</td></tr>
+<tr><td>genuinely</td><td>/'dʒenjuɪnli/ adv.</td><td>真地;真正地真诚地;诚实地</td></tr>
+<tr><td>aware</td><td>/ə'wer/ adj.</td><td>知道的；意识到的；有…方面知识的；懂世故的</td></tr>
+<tr><td>computations</td><td>/ˌkɑːmpju'teɪʃn/ n.</td><td>计算;估计</td></tr>
+<tr><td>silicon</td><td>/'sɪlɪkən/ n.</td><td>〈化〉硅</td></tr>
+<tr><td>humanity</td><td>/hjuː'mænəti/ n.</td><td>人类；人道；仁慈；人文学科</td></tr>
+<tr><td>confront</td><td>/kən'frʌnt/ vt.</td><td>遭遇；比较；面对, confronting, confronts</td></tr>
+<tr><td>entirely</td><td>/ɪn'taɪərli/ adv.</td><td>全部地;完整地;完全地</td></tr>
+<tr><td>reach</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>innovations</td><td>/ˌɪnə'veɪʃn/ n.</td><td>改革, 革新, 创新新观念, 新方法, 新发明</td></tr>
+<tr><td>mounted</td><td>/maʊnt/ vt.</td><td>& vi. 登上；骑上vi. 增加；上升vt. 上演；配有…发动攻击；攻击n. 山峰坐骑，mounting，mounts</td></tr>
+<tr><td>consciousness</td><td>/'kɑːnʃəsnəs/ n.</td><td>知觉意识, 观念, 觉悟察觉, 感觉</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>bot</td><td>/bɑːt/ n.</td><td>马蝇幼虫，马蝇</td></tr>
+<tr><td>companions</td><td>/kəm'pænjən/ n.</td><td>同伴, 伙伴成双成对的物品之一, companioning, companions</td></tr>
+<tr><td>intimate</td><td>/'ɪntɪmət/ adj.</td><td>亲密的；私人的；精通的；[婉]有性关系的n. 至交；知己vt. 暗示；通知；宣布, intimating, intimates</td></tr>
+<tr><td>safeguard</td><td>/'seɪfɡɑːrd/ n.</td><td>防护措施，安全设施vt. 保护；保卫；防护，safeguarding，safeguards</td></tr>
+<tr><td>weigh</td><td>/weɪ/ vt.</td><td>& vi. 称…的重量link v. 重达vt. 权衡；考虑，weighing，weighs</td></tr>
+<tr><td>aware</td><td>/ə'wer/ adj.</td><td>知道的；意识到的；有…方面知识的；懂世故的</td></tr>
+<tr><td>advocates</td><td>/ˈædvəkeɪt，'ædvəkət/ v.</td><td>拥护；支持；提倡n. 拥护者；支持者；提倡者；辩护律师；出庭辩护人, advocating, advocates</td></tr>
+<tr><td>psychologists</td><td>/saɪ'kɑːlədʒɪst/ n.</td><td>心理学研究者;心理学家</td></tr>
+<tr><td>mimicking</td><td>/'mɪmɪk/ vt.</td><td>模仿，摹拟n. 小丑；仿制品；效颦者，模仿者adj. 模仿的，模拟的；假装的, mimicking, mimics</td></tr>
+<tr><td>mistreating</td><td>/ˌmɪs'triːt/ vt.</td><td>虐待, mistreating, mistreats</td></tr>
+<tr><td>corrupting</td><td>/kə'rʌpt/ adj.</td><td>腐败的，贪污的；堕落的vt. 使堕落，使恶化；使腐烂vi. 腐烂；堕落，腐化, corrupting, corrupts</td></tr>
+<tr><td>cruelty</td><td>/'kruːəlti/ n.</td><td>残酷；残酷的行为；残忍</td></tr>
+<tr><td>nonetheless</td><td>/ˌnʌnðə'les/ adv.</td><td>虽然如此,但是</td></tr>
+<tr><td>surpassed</td><td>/sər'pæs/ vt.</td><td>胜过，优于；超越；非…所能办到或理解, surpassing, surpasses</td></tr>
+<tr><td>property</td><td>/'prɑːpərti/ n.</td><td>财产；性质，性能；所有权</td></tr>
+<tr><td>towards</td><td>/tɔːrdz/ prep.</td><td>向，朝为了；有助于；用于对于，关于接近；将近；大约</td></tr>
+<tr><td>ultimately</td><td>/'ʌltɪmətli/ adv.</td><td>最后;最终</td></tr>
+<tr><td>solar</td><td>/'soʊlər/ adj.</td><td>太阳的；日光的；利用太阳光的；与太阳相关的n. 日光浴室</td></tr>
+<tr><td>panels</td><td>/'pænl/ n.</td><td>仪表板；嵌板；座谈小组，全体陪审员vt. 嵌镶板, panelled paneling, panelling panels, panels</td></tr>
+<tr><td>dominate</td><td>/'dɑːmɪneɪt/ vt.</td><td>支配；控制；占优势；在…中占主要地位vi. 处于支配地位；占优势, dominating, dominates</td></tr>
+<tr><td>intelligent</td><td>/ɪn'telɪdʒənt/ adj.</td><td>聪明的; 理解力强的</td></tr>
+<tr><td>cyber</td><td>— adj.</td><td>计算机(网络)的；信息技术的</td></tr>
+<tr><td>rebel</td><td>/'rebl/ n.</td><td>反政府的人；反叛者；造反者叛逆者vi. 反抗政府；造反反抗权威；叛逆，rebelling，rebels</td></tr>
+<tr><td>nonetheless</td><td>/ˌnʌnðə'les/ adv.</td><td>虽然如此,但是</td></tr>
+<tr><td>justification</td><td>/ˌdʒʌstɪfɪ'keɪʃn/ n.</td><td>理由；辩护；认为有理，认为正当；释罪</td></tr>
+<tr><td>humanity</td><td>/hjuː'mænəti/ n.</td><td>人类；人道；仁慈；人文学科</td></tr>
+<tr><td>creeping</td><td>/kriːp/ vi.</td><td>爬行；慢慢地移动；起鸡皮疙瘩；蔓延n. 爬行；毛骨悚然的感觉；谄媚者, creeps</td></tr>
+<tr><td>mount</td><td>/maʊnt/ vt.</td><td>& vi. 登上；骑上vi. 增加；上升vt. 上演；配有…发动攻击；攻击n. 山峰坐骑，mounting，mounts</td></tr>
+<tr><td>ethical</td><td>/'eθɪkl/ adj.</td><td>道德的；伦理的；凭处方出售的n. 处方药</td></tr>
+<tr><td>concession</td><td>/kən'seʃn/ n.</td><td>承认, 允许妥协, 让步特许权</td></tr>
+<tr><td>consciousness</td><td>/'kɑːnʃəsnəs/ n.</td><td>知觉意识, 观念, 觉悟察觉, 感觉</td></tr>
+<tr><td>companion</td><td>/kəm'pænjən/ n.</td><td>同伴, 伙伴成双成对的物品之一, companioning, companions</td></tr>
+<tr><td>disastrous</td><td>/dɪ'zæstrəs/ adj.</td><td>灾难性的, 造成灾害的极坏的, 很糟的</td></tr>
+<tr><td>descendants</td><td>/dɪ'sendənt/ n.</td><td>后代, 后裔</td></tr>
+<tr><td>conscious</td><td>/'kɑːnʃəs/ adj.</td><td>神志清醒的意识到的; 注意到的自觉的; 蓄意的</td></tr>
+<tr><td>flirting</td><td>/flɜːrt/ v.</td><td>调情玩儿似地想做某事；冒险；不顾危险后果（flirt with）n. 与多人调情的人, flirting, flirts</td></tr>
+<tr><td>violent</td><td>/'vaɪələnt/ adj.</td><td>暴力引起的, 粗暴的剧烈的, 强烈的</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>strike</td><td>/straɪk/ vi.</td><td>罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打, stricken striking, str</td></tr>
+<tr><td>opponents</td><td>/ə'poʊnənt/ n.</td><td>对手, 敌手；反对者</td></tr>
+<tr><td>capabilities</td><td>/ˌkeɪpə'bɪləti/ n.</td><td>能做某事的素质;能力尚未发挥的天资或素质</td></tr>
+<tr><td>dire</td><td>/'daɪər/ adj.</td><td>可怕的, 恐怖的, direst</td></tr>
+<tr><td>residents</td><td>/'rezɪdənt/ adj.</td><td>定居的; 常驻的n. 居民(旅馆的)住宿者</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day1.html" class="nav-btn">← Day 1</a>
+  <a href="day3.html" class="nav-btn">Day 3 →</a>
+</div>
+
+<div class="progress">📖 Day 2 of 40</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-08-22</div>
+
+</body>
+</html>

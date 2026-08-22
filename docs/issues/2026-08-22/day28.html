@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business | Routes and branches</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-08-22</div>
+
+<h1 class="article-title">Business | Routes and branches</h1>
+<div class="article-section">Business</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p><span class="annot" data-tooltip="intermediate /ˌɪntər'miːdiət/ adj. 中间的；中级的时 态: intermediated，intermediating，intermediates">intermediate</span> goods rose by 27%. With time, however, more of those inputs may be <span class="annot" data-tooltip="sourced /'saʊər/ adj. 有酸味的，酸的有发酵味道的，酸腐的，馊的坏脾气的；别扭的vt. & vi. (使某物)变酸，变馊；(使某人)阴郁比较级:">sourced</span> from nearer by. Meanwhile, China’s <span class="annot" data-tooltip="logistics /lə'dʒɪstɪk/ adj. 后勤学的；符号逻辑的副 词: logistically">logistics</span> firms are <span class="annot" data-tooltip="helping /'helpɪŋ/ n. （进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的">helping</span> its <span class="annot" data-tooltip="manufacturers /ˌmænju'fæktʃərər/ n. 制造商, 制造厂">manufacturers</span> to link their newly sprawling supply chains. These now operate or have <span class="annot" data-tooltip="invested /ɪn'vest/ vt. 投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买时 态: invested, investing, invests">invested</span> in at least 132 foreign <span class="annot" data-tooltip="ports /pɔːrt/ n. 港口，口岸；左舷；舱门；（计算机的）端口vi. 转向左舷vt. 左转舵；持（枪）PORTabbr. Photo Opit">ports</span>, from Greece to Sri Lanka, along with airports and rail <span class="annot" data-tooltip="lines n. 台词；线；航线（line的复数）v. 排成一行；画线于（line的三单形式）">lines</span>, including one from Budapest to Belgrade completed earlier this year. China Inc’s overseas investment <span class="annot" data-tooltip="binge /bɪndʒ/ n. 狂欢，狂闹；放纵vt. 放纵vi. 狂饮作乐；大吃大喝时 态: binged, binging, bingeing bi">binge</span> has focused heavily on a handful of <span class="annot" data-tooltip="strategic /strə'tiːdʒɪk/ adj. 战略(上)的有战略意义的; 至关重要的副 词: strategically">strategic</span> <span class="annot" data-tooltip="industries /'ɪndəstri/ n. 工业；产业；勤勉">industries</span>. In order to satisfy rising demand for electricity, countries in the global south in particular have become eager buyers of China’s clean- <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span> technology. The vast <span class="annot" data-tooltip="solar /'soʊlər/ adj. 太阳的；日光的；利用太阳光的；与太阳相关的n. 日光浴室">solar</span> farms being built in Egypt’s deserts rely largely on Chinese equipment, a growing share of which is produced locally. Chinese EVs, now a common sight in cities from Rio de Janeiro to London, are increasingly being made in regional hubs nearer to customers. The equipment required for artificial-intelligence data centres has been another focus. <span class="annot" data-tooltip="thailand n. 泰国">Thailand</span>, for example, has emerged as a <span class="annot" data-tooltip="manufacturing /ˌmænju'fæktʃərɪŋ/ n. 制造业，工业adj. 制造业的；制造的">manufacturing</span> centre for Chinese makers of high-speed optical components, such as Zhongji InnoLight, whose products are used by America’s cloud-computing giants around the world. Chinese firms hoping to <span class="annot" data-tooltip="invest /ɪn'vest/ vt. 投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买时 态: invested, investing, invests">invest</span> abroad have found they have the field to themselves, as Western <span class="annot" data-tooltip="rivals /'raɪvl/ n. 竞争对手vt. 与…竞争, 与…匹敌时 态: rivaled, rivalled rivaling, rivalling">rivals</span> concentrate their factory-building in America to <span class="annot" data-tooltip="appease /ə'piːz/ vt. 使平息；使满足时 态: appeased，appeasing，appeases">appease</span> its protectionist government. An Egyptian official adds that, when Chinese businesses decide to build, they do so quickly. Their foreign expansion is not without <span class="annot" data-tooltip="obstacles /'ɑːbstəkl/ n. 障碍(物), 妨碍">obstacles</span>. The <span class="annot" data-tooltip="volatile /'vɑːlətl/ adj. （人或其情绪）不稳定的；易变的；易怒的，喜怒无常的（情况）可能急剧波动的；不稳定的；易恶化的（物质）易挥发的，易气化的【">volatile</span> <span class="annot" data-tooltip="tariffs /'tærɪf/ n. 关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表时 态: tariffed, tariffing, tar">tariffs</span> imposed by America have resulted in some projects being cancelled or cut back. On August 13th the White House published a report <span class="annot" data-tooltip="titled /tɪt/ n. 山雀；各种小鸟；乳头；小马；少妇；轻打">titled</span> “The Great Transshipment <span class="annot" data-tooltip="scam /skæm/ n. 骗局，诡计；故事vt. 欺诈；诓骗vi. 欺诈；诓骗时 态: scammed, scamming, scams">Scam</span>” that called for <span class="annot" data-tooltip="sweeping /'swiːpɪŋ/ n. 扫除；垃圾adj. 扫荡的；彻底的；广泛的v. 打扫；扫除（sweep的现在分词形式）副 词: sweepingly">sweeping</span> <span class="annot" data-tooltip="restrictions /rɪ'strɪkʃn/ n. 约束，限制管制，限定；法律，规章">restrictions</span> on imports with even a whiff of Chinese involvement. At the same time governments in <span class="annot" data-tooltip="places /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">places</span> such as Brazil and Turkey have been imposing local-content requirements, which result in more of the <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span> being added in their countries but make manufacturing there less attractive. Currency fluctuations and high borrowing costs in emerging markets complicate matters further.</p>
+<p>China’s government has also been making life hard for the country’s globe- trotting businesses. Last month a new package of outbound-investment regulations came into effect which, among other things, restrict the <span class="annot" data-tooltip="transfer /træns'fɜːr/ n. 转移；转让；过户；传递vi. 转移；转让；转学；换车vt. 转让；调任；传递；使转移时 态: transferred, ">transfer</span> of technology and data abroad and introduce a national-<span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span> review <span class="annot" data-tooltip="process /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">process</span>. So <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> the <span class="annot" data-tooltip="overall /ˌoʊvər'ɔːl/ adj. 总体的；全面的；综合的全面考虑的adv. 大体上，总的来说一切包括在内，全部的n. 长罩衣工装裤；工作裤">overall</span> share of global <span class="annot" data-tooltip="manufacturing /ˌmænju'fæktʃərɪŋ/ n. 制造业，工业adj. 制造业的；制造的">manufacturing</span> taking <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span> in China has shown no indication of decline. Yet with ever more of its companies <span class="annot" data-tooltip="investing /ɪn'vest/ vt. 投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买时 态: invested, investing, invests">investing</span> abroad, that may soon change. Even then, however, the world will continue to rely on Chinese goods—wherever they are made. ■ This article was downloaded by zlibrary from https://www.economist.com/<span class="annot" data-tooltip="interactive /ˌɪntər'æktɪv/ adj. (指至少两个人或物)一起活动或互相合作的交互式的, 人机对话的">interactive</span>/business/2026/08/19/chinese-firms-are- wrapping-their-supply-chains-around-the-globe</p>
+<div class="article-separator"></div>
+<div class="article-header">Business · Business | US and them</div>
+<p>America Inc has a tight grip on allied governments Companies from Palantir to Lockheed account for a small share of spending, but are hard to shake Aug 20th 2026 “Imiss nothing,” says Dirk Schrödter, the digitisation minister for the German state of Schleswig-Holstein. Over a video-call using OpenTalk, a German <span class="annot" data-tooltip="alternative /ɔːl'tɜːrnətɪv/ adj. 可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）">alternative</span> to Microsoft’s Teams, he explains how in the past two years he has moved some 30,000 of the state’s <span class="annot" data-tooltip="civil /'sɪvl/ adj. 公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的副 词: civilly">civil</span> servants from the American company’s <span class="annot" data-tooltip="collaboration /kəˌlæbə'reɪʃn/ n. 合作, 协作通敌">collaboration</span> and <span class="annot" data-tooltip="productivity /ˌproʊdʌk'tɪvəti/ n. 生产率, 生产力">productivity</span> tools to open-source <span class="annot" data-tooltip="alternatives /ɔːl'tɜːrnətɪv/ adj. 可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）">alternatives</span>. He has now begun the <span class="annot" data-tooltip="process /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">process</span> of shifting staff from Windows to Linux, an open-source operating system. The move has attracted the attention of public officials elsewhere who are also <span class="annot" data-tooltip="keen /kiːn/ adj. 锋利的热衷的，热心的，渴望(做某事)激烈的，紧张的良好的；敏锐的，敏捷的比较级: keener，keenest">keen</span> to cut ties with America’s tech giants. “Every week we have questions from other states, other cities and governments inside and <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span> of Europe,” he says.</p>
+<p>The growing interest in open-source software reflects a new geopolitical <span class="annot" data-tooltip="reality /ri'æləti/ n. 现实；真实；实际">reality</span>. America has long used its commercial prowess to hurt enemies, as when imposing sanctions on Iran and Russia. But now even <span class="annot" data-tooltip="allies n. （第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者">allies</span> worry that it could cut off their access to <span class="annot" data-tooltip="critical /'krɪtɪkl/ adj. 批评的，爱挑剔的；决定性的；危险的；临界的；鉴定的；评论的副 词: critically">critical</span> technologies—or at least threaten to during, say, a trade <span class="annot" data-tooltip="negotiation /nɪˌɡoʊʃi'eɪʃn/ n. 协商，谈判完成(难事)；通过">negotiation</span>. Governments abroad are examining the extent to which their ability to operate depends on American suppliers. Fears were stoked last May when Karim Khan, then the International Criminal Court’s chief prosecutor, lost access to his Microsoft email account after President Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> brought sanctions against the court over its issuing of an arrest warrant for Binyamin Netanyahu, Israel’s prime minister. (Microsoft says it did not cut its service.) Another jolt came this June when Mr Trump forced <span class="annot" data-tooltip="anthropic /ænˈθrɑpɪk/ adj. 人类的,有关人类的">Anthropic</span>, an artificial- intelligence lab, to temporarily cut off access to its latest models in foreign countries. America’s allies also took note when it twice paused its supply of weapons to <span class="annot" data-tooltip="ukraine n. 乌克兰（原苏联一加盟共和国，现已独立）">Ukraine</span> last year. American firms win a small share of the <span class="annot" data-tooltip="overall /ˌoʊvər'ɔːl/ adj. 总体的；全面的；综合的全面考虑的adv. 大体上，总的来说一切包括在内，全部的n. 长罩衣工装裤；工作裤">overall</span> <span class="annot" data-tooltip="contracts /'kɑːntrækt/ vi. 感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约时 态: contracted, contracting, c">contracts</span> tendered by governments abroad. But their products and services often underpin critical government functions. Various efforts are thus under way to reduce reliance on American suppliers and nurture <span class="annot" data-tooltip="domestic /də'mestɪk/ adj. 国内的；家庭的；驯养的；一心只管家务的">domestic</span> <span class="annot" data-tooltip="alternatives /ɔːl'tɜːrnətɪv/ adj. 可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）">alternatives</span>. In many cases, however, doing so will be <span class="annot" data-tooltip="enormously /ɪ'nɔːrməs/ adj. 巨大的, 极大的, 庞大的副 词: enormously">enormously</span> difficult. Europe in particular has emerged as a centre for efforts to <span class="annot" data-tooltip="flush /flʌʃ/ v. 脸红，发红冲（抽水马桶）（用水）冲洗净，冲洗（用水）冲走n. 潮红，脸红一阵强烈情感，（流露出的）一阵激情冲（抽水马桶）">flush</span> America Inc out of government supply chains. France’s national government is planning to <span class="annot" data-tooltip="ditch /dɪtʃ/ vt. 在…上掘沟；把…开入沟里；[俚]丢弃vi. 开沟；掘沟n. 沟渠；壕沟时 态: ditched, ditching, d">ditch</span> Teams and wants to move some computers to Linux. Local governments, including the cities of Reus in Spain and Aarhus in <span class="annot" data-tooltip="denmark /'denmɑːrk/ n. 丹麦(北欧国家,首都哥本哈根)">Denmark</span>, have turned to European cloud providers such as Nextcloud and Hetzner, both from Germany. In June the European <span class="annot" data-tooltip="commission /kə'mɪʃn/ n. 授权, 委托委员会佣金, 回扣vt. 委任, 委托时 态: commissioned, commissioning, c">Commission</span> <span class="annot" data-tooltip="unveiled /ˌʌn'veɪl/ vt. 揭去…的面罩，除去…的遮盖物使公之于众；揭露vi. 除去面纱(或覆盖物)；揭幕揭露出来时 态: unveiled，unv">unveiled</span> a plan to boost the continent’s “technological <span class="annot" data-tooltip="sovereignty /'sɑːvrənti/ n. 最高统治权, 君权国家的主权">sovereignty</span>” that, among other things, aims to shift the <span class="annot" data-tooltip="processing /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">processing</span> of sensitive government data to such providers. Last year Spain cancelled an order for F-35 fighter jets, supplied by America’s Lockheed Martin. British politicians are urging the prime minister to implement a break clause in a <span class="annot" data-tooltip="contract /'kɑːntrækt/ vi. 感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约时 态: contracted, contracting, c">contract</span> between Palantir, an American technology firm, and the National Health Service. The Economist’s estimates suggest that, at an aggregate level, American companies account for a modest share of public spending abroad. We</p>
+<p>calculate that, of the $25trn in sales generated last year by listed American companies, perhaps $500bn (or 2%) came from foreign governments. That is <span class="annot" data-tooltip="equivalent /ɪ'kwɪvələnt/ adj. 等同的，等效的n. 对等的人（或事物），对应的人（或事物）">equivalent</span> to roughly 7% of government <span class="annot" data-tooltip="procurement /prə'kjʊrmənt/ n. 获得;采购">procurement</span> in OECD countries other than America, which account for an <span class="annot" data-tooltip="overwhelming /ˌoʊvər'welmɪŋ/ adj. 势不可挡的，压倒一切的；巨大的副 词: overwhelmingly">overwhelming</span> majority of the spending. Some countries are more dependent than others. Measured by the <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of government <span class="annot" data-tooltip="contracts /'kɑːntrækt/ vi. 感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约时 态: contracted, contracting, c">contracts</span> won by American firms last year, Australia (6% of contracts) and Britain (4%) are more reliant than France (2%) and Germany (1%), according to figures from TenderAlpha, a data provider (see chart). Yet American firms play an <span class="annot" data-tooltip="outsize /'aʊtsaɪz/ adj. 特大的n. 特大号">outsize</span> role in <span class="annot" data-tooltip="critical /'krɪtɪkl/ adj. 批评的，爱挑剔的；决定性的；危险的；临界的；鉴定的；评论的副 词: critically">critical</span> areas of government. We estimate that roughly two-fifths of the business that American companies generate from foreign governments is in information technology and defence. (Pharmaceuticals and medical equipment, purchased by public health systems around the world, make up another large chunk.) Often that is because there are few <span class="annot" data-tooltip="alternatives /ɔːl'tɜːrnətɪv/ adj. 可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）">alternatives</span>. <span class="annot" data-tooltip="alphabet /'ælfəbet/ n. 字母表，字母系统；入门，初步">Alphabet</span>, <span class="annot" data-tooltip="amazon /ˈæməˌzɑn/ n. 高大强悍的女人；（古希腊神话中的）亚马孙族女战士Amazonn. 亚马逊河(南美洲大河)">Amazon</span> and Microsoft control two-thirds of the global cloud-computing market, according to <span class="annot" data-tooltip="synergy /'sɪnərdʒi/ n. 协同作用；协同；增效">Synergy</span> Research, a firm of analysts. Forrester, another research <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span>, reckons that American providers account for between seven and nine of the ten largest <span class="annot" data-tooltip="vendors /'vendər/ n. 小贩；卖主；自动售货机">vendors</span> for most segments of enterprise software.</p>
+<p>Those <span class="annot" data-tooltip="substitutes /'sʌbstɪtuːt/ vt. & vi. 代替, 替换, 代用时 态: substituted, substituting, substitutes">substitutes</span> that do exist are frequently inferior. Sometimes the loss is <span class="annot" data-tooltip="negligible /'neɡlɪdʒəbl/ adj. 可忽略的, 无足轻重的副 词: negligibly">negligible</span>: on OpenTalk users cannot send emojis flying across the screen. But other <span class="annot" data-tooltip="shortcomings /'ʃɔːrtkʌmɪŋ/ n. 短处; 缺点">shortcomings</span> are more <span class="annot" data-tooltip="serious /'sɪriəs/ adj. 严肃的，严重的；认真的；庄重的；危急的副 词: seriously">serious</span>. LibreOffice, the open-source <span class="annot" data-tooltip="productivity /ˌproʊdʌk'tɪvəti/ n. 生产率, 生产力">productivity</span>-software package for which many governments are opting, lacks the AI features offered by Microsoft—a weakness that will only become more pronounced as the technology advances. OVHcloud, a French cloud-computing provider that is Europe’s biggest such firm, generates about one-hundredth the <span class="annot" data-tooltip="revenue /'revənuː/ n. 收入，收益；财政收入，税收">revenue</span> of <span class="annot" data-tooltip="amazon /ˈæməˌzɑn/ n. 高大强悍的女人；（古希腊神话中的）亚马孙族女战士Amazonn. 亚马逊河(南美洲大河)">Amazon</span> Web Services, making it difficult to compete on price or keep up on <span class="annot" data-tooltip="innovation /ˌɪnə'veɪʃn/ n. 改革, 革新, 创新新观念, 新方法, 新发明形容词: innovational">innovation</span>. Similarly, governments that want the most advanced air-defence system must turn to Lockheed and RTX, another American armsmaker, which together produce the <span class="annot" data-tooltip="patriot /'peɪtriət/ n. 爱国者; 爱国主义者">Patriot</span>. Switching costs can be hefty, too. Lockheed supplies F-35s to governments from <span class="annot" data-tooltip="norway /'nɔːrweɪ/ n. 挪威（北欧国家名）">Norway</span> to <span class="annot" data-tooltip="belgium n. 比利时（西欧国家，首都布鲁塞尔Brussels）">Belgium</span>. Those countries could instead <span class="annot" data-tooltip="opt /ɑːpt/ vi. 选择OPTabbr. VC开发环境自动生成的用来存放WorkSpace中各种选项的文件。时 态: opted, opti">opt</span> for a European jet, such as the Rafale or Typhoon, even if they are less advanced. But that would require a vast <span class="annot" data-tooltip="operational /ˌɑːpə'reɪʃənl/ adj. 即可使用的(用于)操作的, 经营的">operational</span> overhaul, including <span class="annot" data-tooltip="retraining /ˌriː'treɪn/ vt. 重新教育；再教育vi. 再训练；再教育时 态: retrained, retraining, retrains">retraining</span> pilots and support <span class="annot" data-tooltip="crews /kruː/ n. 全体人员，全体船员；队，组vi. 一起工作vt. 使当船员时 态: crewed, crewing, crews">crews</span> and replacing weapons <span class="annot" data-tooltip="inventories /'ɪnvəntɔːri/ n. 详细目录, 存货清单">inventories</span>—a tough sell when huge sums have already been spent on Lockheed jets. Or <span class="annot" data-tooltip="consider /kən'sɪdər/ vt. & vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及时 态: considered, considering, ">consider</span> patient-record systems in hospitals. The hefty cost of swapping to a new <span class="annot" data-tooltip="vendor /'vendər/ n. 小贩；卖主；自动售货机">vendor</span> is partly why Norway’s <span class="annot" data-tooltip="parliament /'pɑːrləmənt/ n. 议会, 国会">parliament</span> voted in June to keep using <span class="annot" data-tooltip="epic /'epɪk/ adj. 史诗的，叙事诗的n. 史诗；叙事诗；史诗般的作品EPICabbr. Earth-Pointing Instrument ">Epic</span>, an American provider of health-care databases, despite dissatisfaction with the software among doctors. The dependence of local companies on American suppliers further complicates matters. Roy Illsley of Omdia, another research firm, points out that much of the software OVHcloud runs on comes from VMware, which is owned by Broadcom, an American company. Governments that do shun America’s suppliers risk irritating its tempestuous president, which could make the superpower an even less dependable ally. Pieter Wezeman of SIPRI, a think-<span class="annot" data-tooltip="tank /tæŋk/ n. （存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内时 态: t">tank</span>, notes that in July <span class="annot" data-tooltip="denmark /'denmɑːrk/ n. 丹麦(北欧国家,首都哥本哈根)">Denmark</span> <span class="annot" data-tooltip="plumped /plʌmp/ vt. 使鼓起；使丰满；突然放下adv. 沉重地；突然地vi. 变丰满；鼓起adj. 圆胖的，丰满的；鼓起的n. 扑通声比较级:">plumped</span> for maritime-patrol <span class="annot" data-tooltip="aircraft /'erkræft/ n. 飞机，航空器">aircraft</span> made by Boeing, an American aerospace giant, over European <span class="annot" data-tooltip="alternatives /ɔːl'tɜːrnətɪv/ adj. 可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）">alternatives</span>, which he reads as a signal that the country does not want to alienate America despite clashes over Greenland.</p>
+<p>For consolation, America’s <span class="annot" data-tooltip="allies n. （第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者">allies</span> should remember that there are plenty of dependencies in the other direction. Much of America’s <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">federal</span> government runs on software provided by Germany’s SAP. And American firms selling to foreign governments often depend on global supply chains. The <span class="annot" data-tooltip="rear /rɪr/ vt. 培养；树立；栽种vi. 暴跳；高耸adv. 在后面；向后adj. 后面的；[军]后方的；背面的n. 后面；[美俚]屁股；">rear</span> fuselage of every F-35 is built by BAE Systems, a British weapons <span class="annot" data-tooltip="manufacturer /ˌmænju'fæktʃərər/ n. 制造商, 制造厂">manufacturer</span>, in Lancashire. The most advanced chips used in cloud computing are made in facilities operated by TSMC, a Taiwanese manufacturer, using <span class="annot" data-tooltip="gear /ɡɪr/ n. 用具，设备，衣服齿轮；传动装置；(排)挡vi. 换挡vt. 使兴奋起来；使准备好vt. & vi. (使)搭配；(使)适">gear</span> from ASML, a Dutch one. America’s allies might usefully focus on making themselves even more indispensable. ■ This article was downloaded by zlibrary from https://www.economist.com/business/2026/08/16/america-inc-has-a-tight-grip-on- allied-governments</p>
+<div class="article-separator"></div>
+<div class="article-header">Business · Business | Bartleby</div>
+<p>How to measure returns on AI From tokenmaxxing to something more normal Aug 20th 2026 In the beginning there was AI, and bosses everywhere lost their minds and said you must all use this technology no matter whether it is useful and no matter how much it costs. And they introduced AI <span class="annot" data-tooltip="leaderboards /ˈliːdər bɔːrd/ n. （尤指高尔夫锦标赛的）选手积分牌">leaderboards</span> and came up with stupid words like “toxenmaxxing”. And lo, usage did indeed <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span>. And then the bosses remembered some very basic concepts like “budgets” and realised that this might not be such a great idea after all. And then a different question rang through the boardrooms, and this question was about returns, and it was harder to answer. This <span class="annot" data-tooltip="potted /pɑːt/ n. 罐；壶；盆vt. 把…装罐；射击；节略vi. 随手射击时 态: potted, potting, pots">potted</span> Genesis of AI adoption is not <span class="annot" data-tooltip="entirely /ɪn'taɪərli/ adv. 全部地;完整地;完全地">entirely</span> fair. As long as organisations are trying to <span class="annot" data-tooltip="encourage /ɪn'kɜːrɪdʒ/ vt. 鼓励, 激励促进, 助长, 激发时 态: encouraged, encouraging, encourages">encourage</span> usage, it can still make sense to look at things like employees’ token <span class="annot" data-tooltip="consumption /kən'sʌmpʃn/ n. 消费，消耗；消费[耗]量肺病；结核病">consumption</span>. “I would expect software</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>intermediate</td><td>/ˌɪntər'miːdiət/ adj.</td><td>中间的；中级的，intermediating，intermediates</td></tr>
+<tr><td>sourced</td><td>/'saʊər/ adj.</td><td>有酸味的，酸的有发酵味道的，酸腐的，馊的坏脾气的；别扭的vt. & vi. (使某物)变酸，变馊；(使某人)阴郁，sourest</td></tr>
+<tr><td>logistics</td><td>/lə'dʒɪstɪk/ adj.</td><td>后勤学的；符号逻辑的</td></tr>
+<tr><td>helping</td><td>/'helpɪŋ/ n.</td><td>（进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的</td></tr>
+<tr><td>manufacturers</td><td>/ˌmænju'fæktʃərər/ n.</td><td>制造商, 制造厂</td></tr>
+<tr><td>invested</td><td>/ɪn'vest/ vt.</td><td>投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买, investing, invests</td></tr>
+<tr><td>ports</td><td>/pɔːrt/ n.</td><td>港口，口岸；左舷；舱门；（计算机的）端口vi. 转向左舷vt. 左转舵；持（枪）PORTabbr. Photo Opitical Recorder Tracke</td></tr>
+<tr><td>lines</td><td>— n.</td><td>台词；线；航线（line的复数）v. 排成一行；画线于（line的三单形式）</td></tr>
+<tr><td>binge</td><td>/bɪndʒ/ n.</td><td>狂欢，狂闹；放纵vt. 放纵vi. 狂饮作乐；大吃大喝, binging, bingeing binges</td></tr>
+<tr><td>strategic</td><td>/strə'tiːdʒɪk/ adj.</td><td>战略(上)的有战略意义的; 至关重要的</td></tr>
+<tr><td>industries</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>solar</td><td>/'soʊlər/ adj.</td><td>太阳的；日光的；利用太阳光的；与太阳相关的n. 日光浴室</td></tr>
+<tr><td>thailand</td><td>— n.</td><td>泰国</td></tr>
+<tr><td>manufacturing</td><td>/ˌmænju'fæktʃərɪŋ/ n.</td><td>制造业，工业adj. 制造业的；制造的</td></tr>
+<tr><td>invest</td><td>/ɪn'vest/ vt.</td><td>投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买, investing, invests</td></tr>
+<tr><td>rivals</td><td>/'raɪvl/ n.</td><td>竞争对手vt. 与…竞争, 与…匹敌, rivalled rivaling, rivalling rivals, rivals</td></tr>
+<tr><td>appease</td><td>/ə'piːz/ vt.</td><td>使平息；使满足，appeasing，appeases</td></tr>
+<tr><td>obstacles</td><td>/'ɑːbstəkl/ n.</td><td>障碍(物), 妨碍</td></tr>
+<tr><td>volatile</td><td>/'vɑːlətl/ adj.</td><td>（人或其情绪）不稳定的；易变的；易怒的，喜怒无常的（情况）可能急剧波动的；不稳定的；易恶化的（物质）易挥发的，易气化的【计】（计算机内存）易失的n.【罕】 挥发</td></tr>
+<tr><td>tariffs</td><td>/'tærɪf/ n.</td><td>关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表, tariffing, tariffs</td></tr>
+<tr><td>titled</td><td>/tɪt/ n.</td><td>山雀；各种小鸟；乳头；小马；少妇；轻打</td></tr>
+<tr><td>scam</td><td>/skæm/ n.</td><td>骗局，诡计；故事vt. 欺诈；诓骗vi. 欺诈；诓骗, scamming, scams</td></tr>
+<tr><td>sweeping</td><td>/'swiːpɪŋ/ n.</td><td>扫除；垃圾adj. 扫荡的；彻底的；广泛的v. 打扫；扫除（sweep的现在分词形式）</td></tr>
+<tr><td>restrictions</td><td>/rɪ'strɪkʃn/ n.</td><td>约束，限制管制，限定；法律，规章</td></tr>
+<tr><td>places</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>transfer</td><td>/træns'fɜːr/ n.</td><td>转移；转让；过户；传递vi. 转移；转让；转学；换车vt. 转让；调任；传递；使转移, transferring, transfers</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>process</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>overall</td><td>/ˌoʊvər'ɔːl/ adj.</td><td>总体的；全面的；综合的全面考虑的adv. 大体上，总的来说一切包括在内，全部的n. 长罩衣工装裤；工作裤</td></tr>
+<tr><td>manufacturing</td><td>/ˌmænju'fæktʃərɪŋ/ n.</td><td>制造业，工业adj. 制造业的；制造的</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>investing</td><td>/ɪn'vest/ vt.</td><td>投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买, investing, invests</td></tr>
+<tr><td>interactive</td><td>/ˌɪntər'æktɪv/ adj.</td><td>(指至少两个人或物)一起活动或互相合作的交互式的, 人机对话的</td></tr>
+<tr><td>alternative</td><td>/ɔːl'tɜːrnətɪv/ adj.</td><td>可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）可供选择的事物；可供选择的解决办法替代物</td></tr>
+<tr><td>civil</td><td>/'sɪvl/ adj.</td><td>公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的</td></tr>
+<tr><td>collaboration</td><td>/kəˌlæbə'reɪʃn/ n.</td><td>合作, 协作通敌</td></tr>
+<tr><td>productivity</td><td>/ˌproʊdʌk'tɪvəti/ n.</td><td>生产率, 生产力</td></tr>
+<tr><td>alternatives</td><td>/ɔːl'tɜːrnətɪv/ adj.</td><td>可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）可供选择的事物；可供选择的解决办法替代物</td></tr>
+<tr><td>process</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>keen</td><td>/kiːn/ adj.</td><td>锋利的热衷的，热心的，渴望(做某事)激烈的，紧张的良好的；敏锐的，敏捷的，keenest</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>reality</td><td>/ri'æləti/ n.</td><td>现实；真实；实际</td></tr>
+<tr><td>allies</td><td>— n.</td><td>（第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者</td></tr>
+<tr><td>critical</td><td>/'krɪtɪkl/ adj.</td><td>批评的，爱挑剔的；决定性的；危险的；临界的；鉴定的；评论的</td></tr>
+<tr><td>negotiation</td><td>/nɪˌɡoʊʃi'eɪʃn/ n.</td><td>协商，谈判完成(难事)；通过</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>anthropic</td><td>/ænˈθrɑpɪk/ adj.</td><td>人类的,有关人类的</td></tr>
+<tr><td>ukraine</td><td>— n.</td><td>乌克兰（原苏联一加盟共和国，现已独立）</td></tr>
+<tr><td>overall</td><td>/ˌoʊvər'ɔːl/ adj.</td><td>总体的；全面的；综合的全面考虑的adv. 大体上，总的来说一切包括在内，全部的n. 长罩衣工装裤；工作裤</td></tr>
+<tr><td>contracts</td><td>/'kɑːntrækt/ vi.</td><td>感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约, contracting, contracts</td></tr>
+<tr><td>domestic</td><td>/də'mestɪk/ adj.</td><td>国内的；家庭的；驯养的；一心只管家务的</td></tr>
+<tr><td>alternatives</td><td>/ɔːl'tɜːrnətɪv/ adj.</td><td>可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）可供选择的事物；可供选择的解决办法替代物</td></tr>
+<tr><td>enormously</td><td>/ɪ'nɔːrməs/ adj.</td><td>巨大的, 极大的, 庞大的</td></tr>
+<tr><td>flush</td><td>/flʌʃ/ v.</td><td>脸红，发红冲（抽水马桶）（用水）冲洗净，冲洗（用水）冲走n. 潮红，脸红一阵强烈情感，（流露出的）一阵激情冲（抽水马桶）同花的一手牌adj. 【非正式】富有，很</td></tr>
+<tr><td>ditch</td><td>/dɪtʃ/ vt.</td><td>在…上掘沟；把…开入沟里；[俚]丢弃vi. 开沟；掘沟n. 沟渠；壕沟, ditching, ditches</td></tr>
+<tr><td>denmark</td><td>/'denmɑːrk/ n.</td><td>丹麦(北欧国家,首都哥本哈根)</td></tr>
+<tr><td>commission</td><td>/kə'mɪʃn/ n.</td><td>授权, 委托委员会佣金, 回扣vt. 委任, 委托, commissioning, commissions</td></tr>
+<tr><td>unveiled</td><td>/ˌʌn'veɪl/ vt.</td><td>揭去…的面罩，除去…的遮盖物使公之于众；揭露vi. 除去面纱(或覆盖物)；揭幕揭露出来，unveiling，unveils</td></tr>
+<tr><td>sovereignty</td><td>/'sɑːvrənti/ n.</td><td>最高统治权, 君权国家的主权</td></tr>
+<tr><td>processing</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>contract</td><td>/'kɑːntrækt/ vi.</td><td>感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约, contracting, contracts</td></tr>
+<tr><td>equivalent</td><td>/ɪ'kwɪvələnt/ adj.</td><td>等同的，等效的n. 对等的人（或事物），对应的人（或事物）</td></tr>
+<tr><td>procurement</td><td>/prə'kjʊrmənt/ n.</td><td>获得;采购</td></tr>
+<tr><td>overwhelming</td><td>/ˌoʊvər'welmɪŋ/ adj.</td><td>势不可挡的，压倒一切的；巨大的</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>contracts</td><td>/'kɑːntrækt/ vi.</td><td>感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约, contracting, contracts</td></tr>
+<tr><td>outsize</td><td>/'aʊtsaɪz/ adj.</td><td>特大的n. 特大号</td></tr>
+<tr><td>critical</td><td>/'krɪtɪkl/ adj.</td><td>批评的，爱挑剔的；决定性的；危险的；临界的；鉴定的；评论的</td></tr>
+<tr><td>alternatives</td><td>/ɔːl'tɜːrnətɪv/ adj.</td><td>可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）可供选择的事物；可供选择的解决办法替代物</td></tr>
+<tr><td>alphabet</td><td>/'ælfəbet/ n.</td><td>字母表，字母系统；入门，初步</td></tr>
+<tr><td>amazon</td><td>/ˈæməˌzɑn/ n.</td><td>高大强悍的女人；（古希腊神话中的）亚马孙族女战士Amazonn. 亚马逊河(南美洲大河)</td></tr>
+<tr><td>synergy</td><td>/'sɪnərdʒi/ n.</td><td>协同作用；协同；增效</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>vendors</td><td>/'vendər/ n.</td><td>小贩；卖主；自动售货机</td></tr>
+<tr><td>substitutes</td><td>/'sʌbstɪtuːt/ vt.</td><td>& vi. 代替, 替换, 代用, substituting, substitutes</td></tr>
+<tr><td>negligible</td><td>/'neɡlɪdʒəbl/ adj.</td><td>可忽略的, 无足轻重的</td></tr>
+<tr><td>shortcomings</td><td>/'ʃɔːrtkʌmɪŋ/ n.</td><td>短处; 缺点</td></tr>
+<tr><td>serious</td><td>/'sɪriəs/ adj.</td><td>严肃的，严重的；认真的；庄重的；危急的</td></tr>
+<tr><td>productivity</td><td>/ˌproʊdʌk'tɪvəti/ n.</td><td>生产率, 生产力</td></tr>
+<tr><td>revenue</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>amazon</td><td>/ˈæməˌzɑn/ n.</td><td>高大强悍的女人；（古希腊神话中的）亚马孙族女战士Amazonn. 亚马逊河(南美洲大河)</td></tr>
+<tr><td>innovation</td><td>/ˌɪnə'veɪʃn/ n.</td><td>改革, 革新, 创新新观念, 新方法, 新发明</td></tr>
+<tr><td>patriot</td><td>/'peɪtriət/ n.</td><td>爱国者; 爱国主义者</td></tr>
+<tr><td>norway</td><td>/'nɔːrweɪ/ n.</td><td>挪威（北欧国家名）</td></tr>
+<tr><td>belgium</td><td>— n.</td><td>比利时（西欧国家，首都布鲁塞尔Brussels）</td></tr>
+<tr><td>opt</td><td>/ɑːpt/ vi.</td><td>选择OPTabbr. VC开发环境自动生成的用来存放WorkSpace中各种选项的文件。, opting, opts</td></tr>
+<tr><td>operational</td><td>/ˌɑːpə'reɪʃənl/ adj.</td><td>即可使用的(用于)操作的, 经营的</td></tr>
+<tr><td>retraining</td><td>/ˌriː'treɪn/ vt.</td><td>重新教育；再教育vi. 再训练；再教育, retraining, retrains</td></tr>
+<tr><td>crews</td><td>/kruː/ n.</td><td>全体人员，全体船员；队，组vi. 一起工作vt. 使当船员, crewing, crews</td></tr>
+<tr><td>inventories</td><td>/'ɪnvəntɔːri/ n.</td><td>详细目录, 存货清单</td></tr>
+<tr><td>consider</td><td>/kən'sɪdər/ vt.</td><td>& vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及, considering, considers</td></tr>
+<tr><td>vendor</td><td>/'vendər/ n.</td><td>小贩；卖主；自动售货机</td></tr>
+<tr><td>parliament</td><td>/'pɑːrləmənt/ n.</td><td>议会, 国会</td></tr>
+<tr><td>epic</td><td>/'epɪk/ adj.</td><td>史诗的，叙事诗的n. 史诗；叙事诗；史诗般的作品EPICabbr. Earth-Pointing Instrument Carrier 指向地球的仪器运载卫星</td></tr>
+<tr><td>tank</td><td>/tæŋk/ n.</td><td>（存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内, tanking, tanks</td></tr>
+<tr><td>denmark</td><td>/'denmɑːrk/ n.</td><td>丹麦(北欧国家,首都哥本哈根)</td></tr>
+<tr><td>plumped</td><td>/plʌmp/ vt.</td><td>使鼓起；使丰满；突然放下adv. 沉重地；突然地vi. 变丰满；鼓起adj. 圆胖的，丰满的；鼓起的n. 扑通声, plumpest</td></tr>
+<tr><td>aircraft</td><td>/'erkræft/ n.</td><td>飞机，航空器</td></tr>
+<tr><td>alternatives</td><td>/ɔːl'tɜːrnətɪv/ adj.</td><td>可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）可供选择的事物；可供选择的解决办法替代物</td></tr>
+<tr><td>allies</td><td>— n.</td><td>（第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>rear</td><td>/rɪr/ vt.</td><td>培养；树立；栽种vi. 暴跳；高耸adv. 在后面；向后adj. 后面的；[军]后方的；背面的n. 后面；[美俚]屁股；后方部队, rearing, rears</td></tr>
+<tr><td>manufacturer</td><td>/ˌmænju'fæktʃərər/ n.</td><td>制造商, 制造厂</td></tr>
+<tr><td>gear</td><td>/ɡɪr/ n.</td><td>用具，设备，衣服齿轮；传动装置；(排)挡vi. 换挡vt. 使兴奋起来；使准备好vt. & vi. (使)搭配；(使)适合，gearing，gears</td></tr>
+<tr><td>leaderboards</td><td>/ˈliːdər bɔːrd/ n.</td><td>（尤指高尔夫锦标赛的）选手积分牌</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>potted</td><td>/pɑːt/ n.</td><td>罐；壶；盆vt. 把…装罐；射击；节略vi. 随手射击, potting, pots</td></tr>
+<tr><td>entirely</td><td>/ɪn'taɪərli/ adv.</td><td>全部地;完整地;完全地</td></tr>
+<tr><td>encourage</td><td>/ɪn'kɜːrɪdʒ/ vt.</td><td>鼓励, 激励促进, 助长, 激发, encouraging, encourages</td></tr>
+<tr><td>consumption</td><td>/kən'sʌmpʃn/ n.</td><td>消费，消耗；消费[耗]量肺病；结核病</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day27.html" class="nav-btn">← Day 27</a>
+  <a href="day29.html" class="nav-btn">Day 29 →</a>
+</div>
+
+<div class="progress">📖 Day 28 of 40</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-08-22</div>
+
+</body>
+</html>

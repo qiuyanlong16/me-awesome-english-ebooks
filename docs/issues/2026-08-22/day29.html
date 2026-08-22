@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business | Bartleby</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-08-22</div>
+
+<h1 class="article-title">Business | Bartleby</h1>
+<div class="article-section">Business</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>engineers to spend more money than a finance analyst,” says the boss of one software firm. “But anyone within finance, it shouldn’t be zero.” But usage (also known as input) measures don’t tell you whether any <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span> is being created. And even when AI is producing benefits, points out Mika Ruokonen of LUT University in <span class="annot" data-tooltip="finland n. 芬兰（欧洲）名 词: Finlander">Finland</span>, lots of them accrue <span class="annot" data-tooltip="quietly /'kwaɪətli/ adv. 安静地；秘密地；平稳地">quietly</span> to individuals in the form of <span class="annot" data-tooltip="scattered /'skætər/ vi. 分散，散开；散射vt. 使散开，使分散；使散射；使散播，使撒播n. 分散；散播，撒播时 态: scattered, sc">scattered</span> time savings. If an extra hour or two of an employee’s time has been freed up to shop on Vinted, someone has benefited (mainly Vinted) but it isn’t your company (unless you work at Vinted). Shifting the focus to returns on AI investment means concentrating more on outcomes-based measures, such as team <span class="annot" data-tooltip="productivity /ˌproʊdʌk'tɪvəti/ n. 生产率, 生产力">productivity</span> or customer satisfaction. But these require careful <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span>. Scientists, for example, are using AI to produce more papers (yay!) of dubious merit (boo!). A recent study by Tulsi Suchak of the University of Surrey and her co-authors found that papers derived from a health and nutrition data set ticked along at an average of four a year between 2014 and 2021; in the first nine months of 2024, there were 190. So outcomes-based measures have to be designed to capture both positive and <span class="annot" data-tooltip="negative /'neɡətɪv/ adj. 拒绝的；怀疑的；不同意的消极的，非建设性的无预期结果的〈数〉负的；〈电〉阴的，负的n. 否定词语，否定的观点；拒绝；否认">negative</span> effects of AI. At Google, for example, engineers have long been measured on three <span class="annot" data-tooltip="dimensions /daɪˈmenʃn，dɪˈmenʃn/ n. (数学和科学中的) 维（度）；尺寸规模；程度；范围方面；侧面v.【工】给…定尺寸；标出…的尺寸时 态: dimensio">dimensions</span>. Speed is one: how long does a code review take, say. <span class="annot" data-tooltip="ease /iːz/ vt. 减轻，缓和；使安心n. 安逸，悠闲；轻松，舒适vi. 减轻，缓和；放松；灵活地移动EASEabbr. Electroni">Ease</span> is another: how much <span class="annot" data-tooltip="friction /'frɪkʃn/ n. 摩擦，摩擦力形容词: frictional">friction</span> is there in the system for things like <span class="annot" data-tooltip="onboarding /'ɑːnbɔːrd/ adj. 随车携带的副 词: onboard">onboarding</span> new developers. The last, <span class="annot" data-tooltip="critically /'krɪtɪkl/ adj. 批评的，爱挑剔的；决定性的；危险的；临界的；鉴定的；评论的副 词: critically">critically</span>, is quality: “I don’t want to just go fast and make it easy to <span class="annot" data-tooltip="ship /ʃɪp/ vt. 运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Di">ship</span> <span class="annot" data-tooltip="terrible /'terəbl/ adj. 可怕的；很糟的；令人讨厌的adv. [口]很，非常副 词: terribly">terrible</span> software,” says Richard Seroter of Google Cloud. Complicating matters further is the fact that it often takes a while for the benefits of AI to show up. People have to spend time learning how to use the technology. Increased output can create <span class="annot" data-tooltip="bottlenecks /'bɑːtlnek/ n. 瓶颈瓶颈路段(常引起交通堵塞)(尤指工商业发展的)瓶颈；阻碍；障碍时 态: bottlenecked，bottlenec">bottlenecks</span> elsewhere. A paper published last year by Kristina McElheran of the University of Toronto and her co-authors looked at AI adoption among American <span class="annot" data-tooltip="manufacturing /ˌmænju'fæktʃərɪŋ/ n. 制造业，工业adj. 制造业的；制造的">manufacturing</span> firms, and confirmed the existence of a “J-<span class="annot" data-tooltip="curve /kɜːrv/ n. 曲线；弯曲；曲线球；曲线图表vt. 使弯曲；弯vi. 成曲形adj. 弯曲的；曲线形的时 态: curved, curv">curve</span>” in which productivity dips before it leads to an improvement. This effect is especially pronounced at <span class="annot" data-tooltip="established /ɪ'stæblɪʃt/ adj. 已建立的；已设立的；已制定的确定的，证实的">established</span> firms and seems to be partly explained by changes to management <span class="annot" data-tooltip="practices /'præktɪs/ n. 练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规时 态: practiced，practicing，">practices</span> that had previously helped firms to keep tabs on</p>
+<p>performance. Any kind of calculation about projected returns has to take this initial period of <span class="annot" data-tooltip="disruption n. 中断,分裂,瓦解,破坏">disruption</span> into account. Bosses also have to take a view on something much more fundamental: what kind of return are they interested in? One way to show financial returns on AI is to seize on time savings as an excuse to cut <span class="annot" data-tooltip="headcount /'hedkaʊnt/ n. 点人头数 总人数,职员总数">headcount</span>. For some jobs and in some circumstances, that might make sense. But chainsaws and employee morale go together about as well as salt and slugs. And people who are no longer there cannot be redeployed in more <span class="annot" data-tooltip="productive /prə'dʌktɪv/ adj. 多产的，富饶的富有成效的；有益的副 词: productively">productive</span> ways. A better option is to calculate the amount of money that AI saves on expanding headcount. (Working out how much extra <span class="annot" data-tooltip="revenue /'revənuː/ n. 收入，收益；财政收入，税收">revenue</span> can be attributed to the technology is even more of an art; at the very least, you need good baseline data and a culture of A/B testing to <span class="annot" data-tooltip="isolate /'aɪsəleɪt/ vt. 使孤立；使绝缘；使隔离n. 隔离种群vi. 孤立；隔离adj. 隔离的；孤立的时 态: isolated, isolat">isolate</span> its effects.) On top of everything, there is wild <span class="annot" data-tooltip="uncertainty /ʌn'sɜːrtnti/ n. 无把握;不确定;变化不定无把握、不确定的事物">uncertainty</span> about where AI is <span class="annot" data-tooltip="heading /'hedɪŋ/ n. 标题；信头；（足球）头球v. 用头顶（head的ing形式）">heading</span>. That is an argument for a third set of measures, to go <span class="annot" data-tooltip="alongside /əˌlɔːŋ'saɪd/ adv. 靠着边，沿着边prep. (表示位置)在…旁边；沿着…的边；与…并排靠拢着(表示比较)与…放在一起比较(表示伴随)与…一">alongside</span> ones on inputs and outcomes. These measures, which Mr Seroter calls “organisation- based”, are more <span class="annot" data-tooltip="geared /ɡɪr/ n. 用具，设备，衣服齿轮；传动装置；(排)挡vi. 换挡vt. 使兴奋起来；使准备好vt. & vi. (使)搭配；(使)适">geared</span> <span class="annot" data-tooltip="towards /tɔːrdz/ prep. 向，朝为了；有助于；用于对于，关于接近；将近；大约">towards</span> capturing how well change is being managed. They could include data on levels of employee satisfaction with the way AI has been implemented, or progress towards building in-house <span class="annot" data-tooltip="expertise /ˌekspɜːr'tiːz/ n. 专门知识或技能">expertise</span> in areas that AI will not <span class="annot" data-tooltip="automate /'ɔːtəmeɪt/ vt. 使自动化，使自动操作vi. 自动化，自动操作时 态: automated, automating, automates">automate</span>. A one-eyed focus on usage ignores the importance of returns. A rigid focus on returns ignores the need to keep learning. ■ Step inside the world of work with our Bartleby newsletter. Each week our white-collar oracle muses on the agonies of office life. This article was downloaded by zlibrary from https://www.economist.com/business/2026/08/20/how-to-measure-returns-on-ai</p>
+<div class="article-separator"></div>
+<div class="article-header">Business · Business | Social reckoning</div>
+<p>Meta’s blockbuster <span class="annot" data-tooltip="trial /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">trial</span> draws <span class="annot" data-tooltip="parallels /'pærəlel/ n. 平行线；对比vt. 使…与…平行adj. 平行的；类似的，相同的时 态: paralleledalso parallel">parallels</span> to big tobacco But investors aren’t panicking yet Aug 20th 2026 IN EARLY October a <span class="annot" data-tooltip="sequel /'siːkwəl/ n. 续集；结局；继续；后果">sequel</span> to “The Social Network”, a film about Mark Zuckerberg’s founding of Facebook, is scheduled for <span class="annot" data-tooltip="release /rɪ'liːs/ vt. 释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]时 态: released，rel">release</span>. Called “The Social Reckoning”, it will dramatise the role of whistleblowers who alleged that the tech giant hid the fact that its products were harmful. Some of the characters <span class="annot" data-tooltip="involved /ɪn'vɑːlvd/ adj. 卷入的；有关的；复杂的v. 涉及；使参与；包含（involve的过去式和过去分词）">involved</span> will take part in a no less <span class="annot" data-tooltip="vivid /'vɪvɪd/ adj. 鲜明的；鲜艳的；生动的比较级: vivider, vividest">vivid</span> drama involving Facebook, Instagram and their parent company, Meta, in a <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">federal</span> courtroom in Oakland, California. Oral arguments started on August 18th. Reckoning or not, the trial may be a blockbuster. California, Colorado, Kentucky and New Jersey are <span class="annot" data-tooltip="leading /ˈliːdɪŋ/ adj. 主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）">leading</span> a <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span> of 29 states that are suing Meta over allegations that its platforms developed</p>
+<p>features harmful to children, and that it violated their privacy. In opening arguments, Megan O’Neill, a <span class="annot" data-tooltip="deputy /'depjuti/ n. 代理人，代表adj. 副的；代理的">deputy</span> <span class="annot" data-tooltip="attorney /ə'tɜːrni/ n. 代理人, 律师名 词: attorneyship">attorney</span>-general for California, said that Meta’s business model was to “hook the users, hold them for as long as they can, harvest their data and then hide the truth from the public.” Rob Bonta, California’s attorney-general, has described the case as Meta’s “tobacco moment”, likening the firm’s alleged <span class="annot" data-tooltip="deceptions /dɪ'sepʃn/ n. 欺骗骗术, 诡计">deceptions</span> to those that led to huge payouts by tobacco firms in the 1990s. Paul Schmidt, a lawyer for Meta, told jurors that the company took its responsibility to young users <span class="annot" data-tooltip="seriously /'sɪriəs/ adj. 严肃的，严重的；认真的；庄重的；危急的副 词: seriously">seriously</span>, adding that there was no clear link between youngsters’ social-media use and ill health. Meta is expected to fight efforts by the plaintiffs to turn the <span class="annot" data-tooltip="trial /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">trial</span> into a referendum on the impact of social media on children, focusing instead on the <span class="annot" data-tooltip="narrow /'næroʊ/ adj. 狭窄的，有限的；度量小的；精密的；勉强的n. 狭窄部分，隘路；海峡vt. 使变狭窄vi. 变窄比较级: narrower">narrow</span> legal <span class="annot" data-tooltip="issues /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issues</span> in <span class="annot" data-tooltip="dispute /dɪ'spjuːt/ vt. 辩论；阻止；抗拒；怀疑vi. 争论n. 辩论；争吵时 态: disputed, disputing, disputes">dispute</span>. Its lawyers have asked why it is being singled out, when youngsters’ use of YouTube, owned by Google, and TikTok, created by China’s ByteDance, is even higher than it is of Instagram. A lot is at stake. In a similar case brought by the government of New <span class="annot" data-tooltip="mexico /'meksɪkoʊ/ n. 墨西哥">Mexico</span>, a judge this month <span class="annot" data-tooltip="ordered /'ɔːrdərd/ adj. 安排好的；整齐的；[数]有序的v. 命令；点餐（order的过去式和过去分词）">ordered</span> Meta to pay almost $950m in penalties. The four states acting as plaintiffs in Oakland appear to be seeking more than 200 times as much if Meta loses the case, putting their estimate at $193bn—roughly <span class="annot" data-tooltip="equivalent /ɪ'kwɪvələnt/ adj. 等同的，等效的n. 对等的人（或事物），对应的人（或事物）">equivalent</span> to the firm’s <span class="annot" data-tooltip="revenue /'revənuː/ n. 收入，收益；财政收入，税收">revenue</span> in 2025. If that were a <span class="annot" data-tooltip="benchmark /'bentʃmɑːrk/ 基准时 态: benchmarked, benchmarking, benchmarks">benchmark</span> for other states, it would <span class="annot" data-tooltip="devastate /'devəsteɪt/ vt. 毁坏；使荒芜在感情上(精神上、财务上等)压垮时 态: devastated，devastating，devastates">devastate</span> Meta. Whether it comes to that is another matter, though. In emotive language, Ms O’Neill alleged that Meta particularly targeted young children. She frequently used the word “<span class="annot" data-tooltip="hooked /hʊkt/ adj. 钩状的；吸毒成瘾的；入迷的v. 用钩固定；捉住（hook的过去分词）">hooked</span>”. But unlike a trial in Los Angeles in March, in which Meta and Google, were obliged to pay <span class="annot" data-tooltip="damages /'dæmɪdʒ/ v. 损害；伤害；毁坏；破坏n. 损坏，破坏，损失，损害，伤害（法院判定的）损害赔偿金时 态: damaged, damagi">damages</span> to a 20- year-old harmed by spending much of her life on social media, the Oakland case is not focused on addiction. Instead it is what one of the <span class="annot" data-tooltip="attorneys /ə'tɜːrni/ n. 代理人, 律师名 词: attorneyship">attorneys</span>-general calls “the largest consumer- protection <span class="annot" data-tooltip="lawsuit /'lɔːsuːt/ n. 诉讼（尤指非刑事案件）；诉讼案件">lawsuit</span> in American history”. Vincent Joralemon, of the University of California’s Berkeley Centre for Law & Technology, says the big question is whether or not Meta deceived the public about the impact of its products. That is similar to the tobacco cases. It also means whistleblower testimony is likely to be more <span class="annot" data-tooltip="relevant /'reləvənt/ adj. 有关的, 切题的副 词: relevantly">relevant</span> than <span class="annot" data-tooltip="thorny /'θɔːrni/ adj. 痛苦的；多刺的；令人苦恼的比较级: thornier, thorniest">thorny</span> psychological debates about addiction, reckons Mr Joralemon.</p>
+<p>Meta’s investors <span class="annot" data-tooltip="tend /tend/ vt. 照料，照顾，伺候vi. 往，朝向易于；倾向时 态: tended，tending，tends">tend</span> to think that the <span class="annot" data-tooltip="burden /'bɜːrdn/ n. 负担；责任；船的载货量vt. 烦扰；使负担；装货于时 态: burdened, burdening, burdens">burden</span> of proof on the <span class="annot" data-tooltip="deception /dɪ'sepʃn/ n. 欺骗骗术, 诡计">deception</span> charges is “quite high”, says Gil Luria of D.A. Davidson, an investment bank. Litigation risk has <span class="annot" data-tooltip="weighed /weɪ/ vt. & vi. 称…的重量link v. 重达vt. 权衡；考虑时 态: weighed，weighing，weighs">weighed</span> on Meta’s valuation, contributing to an earnings <span class="annot" data-tooltip="ratio /'reɪʃioʊ/ n. 比, 比率">ratio</span> that is lower than those of its big-tech peers. But rather than fearing a giant payout, <span class="annot" data-tooltip="shareholders /'ʃerhoʊldər/ n. 股东名 词: shareholding">shareholders</span> worry more about remedial changes that the prosecutors may seek if Meta loses in court, according to Mr Luria. Those include changes to features Meta, Google and TikTok use to keep user <span class="annot" data-tooltip="engagement /ɪn'ɡeɪdʒmənt/ n. 订婚，婚约；约会，约定（尤指正式的或与工作有关的）；交战；诺言；进场（游戏术语）；参与度（指用户点赞、转发、评论、下载文">engagement</span> high, such as “<span class="annot" data-tooltip="infinite /'ɪnfɪnət/ adj. 无限的，无穷的；无数的；极大的n. 无限；无限的东西（如空间，时间）；无穷大副 词: infinitely">infinite</span> scroll”, which <span class="annot" data-tooltip="continuously /kən'tɪnjuəs/ adj. 连续的, 没有中断的副 词: continuously">continuously</span> loads new posts. “If we didn’t have infinite scroll, we wouldn’t have as many ads,” Mr Luria says. Even if Meta loses, it has scope for appeal. It could, for instance, do so on the grounds that it is protected by Section 230 of the Communications Act, which <span class="annot" data-tooltip="safeguards /'seɪfɡɑːrd/ n. 防护措施，安全设施vt. 保护；保卫；防护时 态: safeguarded，safeguarding，safeguard">safeguards</span> internet platforms from legal liability for content posted by third parties. It sought to use that argument to halt the Oakland <span class="annot" data-tooltip="trial /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">trial</span> before it started, but the judge ruled that the appeal was <span class="annot" data-tooltip="premature /ˌpriːmə'tʃʊr/ adj. 过早的, 提前的, 未到期的早产的副 词: prematurely">premature</span>. Public concern in America about the impact of social media on children is high, and being dragged through the courts may not help Meta’s image with parents. In order to head off similar worries about AI, on August 18th OpenAI launched ChatGPT for Teens, which strengthens guardrails for under 18-year-olds. For all the attention the Meta trial will receive, court <span class="annot" data-tooltip="verdicts /'vɜːrdɪkt/ n. (陪审团的)裁决, 裁定(经过试验、检验或体验发表的)决定, 意见">verdicts</span> can have less of an impact than the headlines suggest. The tobacco <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> agreed in a settlement of 1998 to shell out more than $200bn over 25 years. But such outcomes have a “disappointing history” in America, says Matthew Lawrence of the Emory University School of Law. “We can <span class="annot" data-tooltip="mitigate /'mɪtɪɡeɪt/ vt. 使缓和，使减轻vi. 减轻，缓和下来时 态: mitigated, mitigating, mitigates">mitigate</span> the harms of <span class="annot" data-tooltip="industries /'ɪndəstri/ n. 工业；产业；勤勉">industries</span> <span class="annot" data-tooltip="exploiting /ɪk'splɔɪt/ vt. 开发，开拓；剥削；开采n. 勋绩；功绩时 态: exploited, exploiting, exploits">exploiting</span> addiction, but we have not yet had great success in finding ways to <span class="annot" data-tooltip="eliminate /ɪ'lɪmɪneɪt/ vt. 消除, 排除忽略淘汰〈口〉干掉时 态: eliminated, eliminating, eliminates">eliminate</span> the harms.” ■ This article was downloaded by zlibrary from https://www.economist.com/business/2026/08/18/metas-blockbuster-trial-draws- <span class="annot" data-tooltip="parallels /'pærəlel/ n. 平行线；对比vt. 使…与…平行adj. 平行的；类似的，相同的时 态: paralleledalso parallel">parallels</span>-to-big-tobacco</p>
+<div class="article-separator"></div>
+<div class="article-header">Business · Business | Good bot, bad bot</div>
+<p>Can Reddit survive in the AI era? It wants more cash for its data—and more of people’s time Aug 20th 2026 Earlier this summer “Backrooms”, a horror flick, became one of the most successful independent films ever made, <span class="annot" data-tooltip="grossing /ɡroʊs/ adj. 总共的；粗野的；恶劣的；显而易见的vt. 总共收入n. 总额，总数比较级: grosser, grossest">grossing</span> $393m from a $10m budget. Its source material was <span class="annot" data-tooltip="unusual /ʌn'juːʒuəl/ adj. 与众不同的；不寻常的；不平常的副 词: unusually">unusual</span>: a collection of images of unnervingly empty rooms that spread on Reddit, an internet <span class="annot" data-tooltip="forum /'fɔːrəm/ n. 论坛，讨论会；法庭；公开讨论的广场">forum</span>. Hollywood producers have since taken to trawling the site for inspiration. Reddit has had a difficult time of late. Its share price has dropped by about a third this year. Strong <span class="annot" data-tooltip="quarterly /'kwɔːrtərli/ n. 季刊adj. 一年四次的, 每季的adv. 一年四次地, 每季地">quarterly</span> earnings last month failed to cheer <span class="annot" data-tooltip="shareholders /'ʃerhoʊldər/ n. 股东名 词: shareholding">shareholders</span>, who <span class="annot" data-tooltip="fret /fret/ vt. 焦急；使磨损；使烦恼vi. 磨损；烦恼；焦急n. 烦躁；焦急；磨损时 态: fretted, fretting, fre">fret</span> that the company will suffer as users turn to artificial- intelligence chatbots for information, rather than search engines such as Google that direct them to other sites. For now Reddit is attempting to <span class="annot" data-tooltip="cajole /kə'dʒoʊl/ vt. (用甜言蜜语、虚假诺言等)劝诱,哄骗时 态: cajoled, cajoling, cajoles">cajole</span> chatbot-makers into paying more for its data, both through deals and</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>finland</td><td>— n.</td><td>芬兰（欧洲）</td></tr>
+<tr><td>quietly</td><td>/'kwaɪətli/ adv.</td><td>安静地；秘密地；平稳地</td></tr>
+<tr><td>scattered</td><td>/'skætər/ vi.</td><td>分散，散开；散射vt. 使散开，使分散；使散射；使散播，使撒播n. 分散；散播，撒播, scattering, scatters</td></tr>
+<tr><td>productivity</td><td>/ˌproʊdʌk'tɪvəti/ n.</td><td>生产率, 生产力</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>negative</td><td>/'neɡətɪv/ adj.</td><td>拒绝的；怀疑的；不同意的消极的，非建设性的无预期结果的〈数〉负的；〈电〉阴的，负的n. 否定词语，否定的观点；拒绝；否认，negativing，negative</td></tr>
+<tr><td>dimensions</td><td>/daɪˈmenʃn，dɪˈmenʃn/ n.</td><td>(数学和科学中的) 维（度）；尺寸规模；程度；范围方面；侧面v.【工】给…定尺寸；标出…的尺寸, dimensioning, dimensions</td></tr>
+<tr><td>ease</td><td>/iːz/ vt.</td><td>减轻，缓和；使安心n. 安逸，悠闲；轻松，舒适vi. 减轻，缓和；放松；灵活地移动EASEabbr. Electronic Airborne Systems E</td></tr>
+<tr><td>friction</td><td>/'frɪkʃn/ n.</td><td>摩擦，摩擦力</td></tr>
+<tr><td>onboarding</td><td>/'ɑːnbɔːrd/ adj.</td><td>随车携带的</td></tr>
+<tr><td>critically</td><td>/'krɪtɪkl/ adj.</td><td>批评的，爱挑剔的；决定性的；危险的；临界的；鉴定的；评论的</td></tr>
+<tr><td>ship</td><td>/ʃɪp/ vt.</td><td>运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Division of the Nation</td></tr>
+<tr><td>terrible</td><td>/'terəbl/ adj.</td><td>可怕的；很糟的；令人讨厌的adv. [口]很，非常</td></tr>
+<tr><td>bottlenecks</td><td>/'bɑːtlnek/ n.</td><td>瓶颈瓶颈路段(常引起交通堵塞)(尤指工商业发展的)瓶颈；阻碍；障碍，bottlenecking，bottlenecks</td></tr>
+<tr><td>manufacturing</td><td>/ˌmænju'fæktʃərɪŋ/ n.</td><td>制造业，工业adj. 制造业的；制造的</td></tr>
+<tr><td>curve</td><td>/kɜːrv/ n.</td><td>曲线；弯曲；曲线球；曲线图表vt. 使弯曲；弯vi. 成曲形adj. 弯曲的；曲线形的, curving, curves</td></tr>
+<tr><td>established</td><td>/ɪ'stæblɪʃt/ adj.</td><td>已建立的；已设立的；已制定的确定的，证实的</td></tr>
+<tr><td>practices</td><td>/'præktɪs/ n.</td><td>练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规，practicing，practices</td></tr>
+<tr><td>disruption</td><td>— n.</td><td>中断,分裂,瓦解,破坏</td></tr>
+<tr><td>headcount</td><td>/'hedkaʊnt/ n.</td><td>点人头数 总人数,职员总数</td></tr>
+<tr><td>productive</td><td>/prə'dʌktɪv/ adj.</td><td>多产的，富饶的富有成效的；有益的</td></tr>
+<tr><td>revenue</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>isolate</td><td>/'aɪsəleɪt/ vt.</td><td>使孤立；使绝缘；使隔离n. 隔离种群vi. 孤立；隔离adj. 隔离的；孤立的, isolating, isolates</td></tr>
+<tr><td>uncertainty</td><td>/ʌn'sɜːrtnti/ n.</td><td>无把握;不确定;变化不定无把握、不确定的事物</td></tr>
+<tr><td>heading</td><td>/'hedɪŋ/ n.</td><td>标题；信头；（足球）头球v. 用头顶（head的ing形式）</td></tr>
+<tr><td>alongside</td><td>/əˌlɔːŋ'saɪd/ adv.</td><td>靠着边，沿着边prep. (表示位置)在…旁边；沿着…的边；与…并排靠拢着(表示比较)与…放在一起比较(表示伴随)与…一起，与…一道</td></tr>
+<tr><td>geared</td><td>/ɡɪr/ n.</td><td>用具，设备，衣服齿轮；传动装置；(排)挡vi. 换挡vt. 使兴奋起来；使准备好vt. & vi. (使)搭配；(使)适合，gearing，gears</td></tr>
+<tr><td>towards</td><td>/tɔːrdz/ prep.</td><td>向，朝为了；有助于；用于对于，关于接近；将近；大约</td></tr>
+<tr><td>expertise</td><td>/ˌekspɜːr'tiːz/ n.</td><td>专门知识或技能</td></tr>
+<tr><td>automate</td><td>/'ɔːtəmeɪt/ vt.</td><td>使自动化，使自动操作vi. 自动化，自动操作, automating, automates</td></tr>
+<tr><td>trial</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>parallels</td><td>/'pærəlel/ n.</td><td>平行线；对比vt. 使…与…平行adj. 平行的；类似的，相同的</td></tr>
+<tr><td>sequel</td><td>/'siːkwəl/ n.</td><td>续集；结局；继续；后果</td></tr>
+<tr><td>release</td><td>/rɪ'liːs/ vt.</td><td>释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]，releasing，releases</td></tr>
+<tr><td>involved</td><td>/ɪn'vɑːlvd/ adj.</td><td>卷入的；有关的；复杂的v. 涉及；使参与；包含（involve的过去式和过去分词）</td></tr>
+<tr><td>vivid</td><td>/'vɪvɪd/ adj.</td><td>鲜明的；鲜艳的；生动的, vividest</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>leading</td><td>/ˈliːdɪŋ/ adj.</td><td>主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>deputy</td><td>/'depjuti/ n.</td><td>代理人，代表adj. 副的；代理的</td></tr>
+<tr><td>attorney</td><td>/ə'tɜːrni/ n.</td><td>代理人, 律师</td></tr>
+<tr><td>deceptions</td><td>/dɪ'sepʃn/ n.</td><td>欺骗骗术, 诡计</td></tr>
+<tr><td>seriously</td><td>/'sɪriəs/ adj.</td><td>严肃的，严重的；认真的；庄重的；危急的</td></tr>
+<tr><td>trial</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>narrow</td><td>/'næroʊ/ adj.</td><td>狭窄的，有限的；度量小的；精密的；勉强的n. 狭窄部分，隘路；海峡vt. 使变狭窄vi. 变窄, narrowest</td></tr>
+<tr><td>issues</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>dispute</td><td>/dɪ'spjuːt/ vt.</td><td>辩论；阻止；抗拒；怀疑vi. 争论n. 辩论；争吵, disputing, disputes</td></tr>
+<tr><td>mexico</td><td>/'meksɪkoʊ/ n.</td><td>墨西哥</td></tr>
+<tr><td>ordered</td><td>/'ɔːrdərd/ adj.</td><td>安排好的；整齐的；[数]有序的v. 命令；点餐（order的过去式和过去分词）</td></tr>
+<tr><td>equivalent</td><td>/ɪ'kwɪvələnt/ adj.</td><td>等同的，等效的n. 对等的人（或事物），对应的人（或事物）</td></tr>
+<tr><td>revenue</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>benchmark</td><td>/'bentʃmɑːrk/ </td><td>基准, benchmarking, benchmarks</td></tr>
+<tr><td>devastate</td><td>/'devəsteɪt/ vt.</td><td>毁坏；使荒芜在感情上(精神上、财务上等)压垮，devastating，devastates</td></tr>
+<tr><td>hooked</td><td>/hʊkt/ adj.</td><td>钩状的；吸毒成瘾的；入迷的v. 用钩固定；捉住（hook的过去分词）</td></tr>
+<tr><td>damages</td><td>/'dæmɪdʒ/ v.</td><td>损害；伤害；毁坏；破坏n. 损坏，破坏，损失，损害，伤害（法院判定的）损害赔偿金, damaging, damages</td></tr>
+<tr><td>attorneys</td><td>/ə'tɜːrni/ n.</td><td>代理人, 律师</td></tr>
+<tr><td>lawsuit</td><td>/'lɔːsuːt/ n.</td><td>诉讼（尤指非刑事案件）；诉讼案件</td></tr>
+<tr><td>relevant</td><td>/'reləvənt/ adj.</td><td>有关的, 切题的</td></tr>
+<tr><td>thorny</td><td>/'θɔːrni/ adj.</td><td>痛苦的；多刺的；令人苦恼的, thorniest</td></tr>
+<tr><td>tend</td><td>/tend/ vt.</td><td>照料，照顾，伺候vi. 往，朝向易于；倾向，tending，tends</td></tr>
+<tr><td>burden</td><td>/'bɜːrdn/ n.</td><td>负担；责任；船的载货量vt. 烦扰；使负担；装货于, burdening, burdens</td></tr>
+<tr><td>deception</td><td>/dɪ'sepʃn/ n.</td><td>欺骗骗术, 诡计</td></tr>
+<tr><td>weighed</td><td>/weɪ/ vt.</td><td>& vi. 称…的重量link v. 重达vt. 权衡；考虑，weighing，weighs</td></tr>
+<tr><td>ratio</td><td>/'reɪʃioʊ/ n.</td><td>比, 比率</td></tr>
+<tr><td>shareholders</td><td>/'ʃerhoʊldər/ n.</td><td>股东</td></tr>
+<tr><td>engagement</td><td>/ɪn'ɡeɪdʒmənt/ n.</td><td>订婚，婚约；约会，约定（尤指正式的或与工作有关的）；交战；诺言；进场（游戏术语）；参与度（指用户点赞、转发、评论、下载文档、观看视频、咨询等交互行为）</td></tr>
+<tr><td>infinite</td><td>/'ɪnfɪnət/ adj.</td><td>无限的，无穷的；无数的；极大的n. 无限；无限的东西（如空间，时间）；无穷大</td></tr>
+<tr><td>continuously</td><td>/kən'tɪnjuəs/ adj.</td><td>连续的, 没有中断的</td></tr>
+<tr><td>safeguards</td><td>/'seɪfɡɑːrd/ n.</td><td>防护措施，安全设施vt. 保护；保卫；防护，safeguarding，safeguards</td></tr>
+<tr><td>trial</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>premature</td><td>/ˌpriːmə'tʃʊr/ adj.</td><td>过早的, 提前的, 未到期的早产的</td></tr>
+<tr><td>verdicts</td><td>/'vɜːrdɪkt/ n.</td><td>(陪审团的)裁决, 裁定(经过试验、检验或体验发表的)决定, 意见</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>mitigate</td><td>/'mɪtɪɡeɪt/ vt.</td><td>使缓和，使减轻vi. 减轻，缓和下来, mitigating, mitigates</td></tr>
+<tr><td>industries</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>exploiting</td><td>/ɪk'splɔɪt/ vt.</td><td>开发，开拓；剥削；开采n. 勋绩；功绩, exploiting, exploits</td></tr>
+<tr><td>eliminate</td><td>/ɪ'lɪmɪneɪt/ vt.</td><td>消除, 排除忽略淘汰〈口〉干掉, eliminating, eliminates</td></tr>
+<tr><td>parallels</td><td>/'pærəlel/ n.</td><td>平行线；对比vt. 使…与…平行adj. 平行的；类似的，相同的</td></tr>
+<tr><td>grossing</td><td>/ɡroʊs/ adj.</td><td>总共的；粗野的；恶劣的；显而易见的vt. 总共收入n. 总额，总数, grossest</td></tr>
+<tr><td>unusual</td><td>/ʌn'juːʒuəl/ adj.</td><td>与众不同的；不寻常的；不平常的</td></tr>
+<tr><td>forum</td><td>/'fɔːrəm/ n.</td><td>论坛，讨论会；法庭；公开讨论的广场</td></tr>
+<tr><td>quarterly</td><td>/'kwɔːrtərli/ n.</td><td>季刊adj. 一年四次的, 每季的adv. 一年四次地, 每季地</td></tr>
+<tr><td>shareholders</td><td>/'ʃerhoʊldər/ n.</td><td>股东</td></tr>
+<tr><td>fret</td><td>/fret/ vt.</td><td>焦急；使磨损；使烦恼vi. 磨损；烦恼；焦急n. 烦躁；焦急；磨损, fretting, frets</td></tr>
+<tr><td>cajole</td><td>/kə'dʒoʊl/ vt.</td><td>(用甜言蜜语、虚假诺言等)劝诱,哄骗, cajoling, cajoles</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day28.html" class="nav-btn">← Day 28</a>
+  <a href="day30.html" class="nav-btn">Day 30 →</a>
+</div>
+
+<div class="progress">📖 Day 29 of 40</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-08-22</div>
+
+</body>
+</html>

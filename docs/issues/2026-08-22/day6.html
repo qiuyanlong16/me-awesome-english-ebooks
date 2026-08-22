@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>By Invitation | Strange loops</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-08-22</div>
+
+<h1 class="article-title">By Invitation | Strange loops</h1>
+<div class="article-section">By Invitation</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>French polymath René Descartes meant by “Cogito, ergo sum,” which is usually translated as “I think, therefore I am.” The same holds for “opinions” like red or hot or cold. Philosophers use the term “qualia” to refer to the very real (to you) feeling of a <span class="annot" data-tooltip="stove /stoʊv/ n. 火炉；窑；温室vt. 用火炉烤">stove</span>’s heat, or the redness of its <span class="annot" data-tooltip="glow /ɡloʊ/ vi. (无焰地)燃烧；发炽热；烧红脸红，身体发热n. 光亮，光辉脸红，(身体)发热热情；强烈的感情时 态: glowed，gl">glow</span>, and <span class="annot" data-tooltip="extend /ɪk'stend/ vt. & vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出时 态:">extend</span> Descartes to connect qualia with <span class="annot" data-tooltip="consciousness /'kɑːnʃəsnəs/ n. 知觉意识, 观念, 觉悟察觉, 感觉">consciousness</span> by pointing out that there must be an experiencing “you” to have such experiences. But look closely. Redness, heat and that sense of self you have are <span class="annot" data-tooltip="inherent /ɪn'herənt/ adj. 固有的；内在的；与生俱来的副 词: inherently">inherent</span> to your <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> perspective. These things are all real, but at the same time there is nothing <span class="annot" data-tooltip="objective /əb'dʒektɪv/ n. 目标; 目的adj. 客观的; 不带偏见的副 词: objectively">objective</span> about them. There is not even anything objective about the existence of a singular, indivisible “you”, as a <span class="annot" data-tooltip="wealth /welθ/ n. 财富；大量；富有">wealth</span> of neuroscientific evidence (such as split-brain patients) has shown. Subjectivity is, itself, <span class="annot" data-tooltip="subjective /səb'dʒektɪv/ adj. (思想、感情等)主观的主观的(以个人好恶、观点等为依据)副 词: subjectively">subjective</span>. An obvious worry follows. If care confers consciousness, then withholding care looks self-justifying. History offers no <span class="annot" data-tooltip="shortage /'ʃɔːrtɪdʒ/ n. 不足; 缺少; 缺少量; 不足额">shortage</span> of people who reasoned that way about other people. But the <span class="annot" data-tooltip="inference /'ɪnfərəns/ n. 推论, 推理, 推断推断结果, 结论">inference</span> runs the other way. <span class="annot" data-tooltip="precisely /prɪ'saɪsli/ adv. 精确地；恰好；细心地对，的确如此">Precisely</span> because these attributions are ours to make, they are ours to get wrong. The moral progress of our species has consisted largely in discovering that we had drawn the circle too tightly. <span class="annot" data-tooltip="universal /ˌjuːnɪ'vɜːrsl/ adj. 全体的广泛的, 普遍的在世界各地的, 世界性的副 词: universally">Universal</span> human rights are not weakened by this account; they are better founded on our <span class="annot" data-tooltip="mutual /'mjuːtʃuəl/ adj. 相互的, 彼此的共同的, 共有的名 词: mutuality">mutual</span> interdependence than on a Cartesian theory of souls. It is remarkable—a kind of “strange loop”, reminiscent of Baron Munchausen lifting himself up by his own hair—that a physical system can exist in our world <span class="annot" data-tooltip="capable /'keɪpəbl/ adj. 能干的，能胜任的；有才华的副 词: capably">capable</span> of forming models not only of that world, but of itself, and of its own models, and of others, and of their models, and of their models of its models, and so on. Yet human beings are precisely such systems. LLMs, too, model their interlocutors, and they model themselves modelling them. Whether that amounts to what we do is <span class="annot" data-tooltip="exactly /ɪɡ'zækt/ adj. 精确的；准确的，精密的vt. 强求；要求；急需vi. 勒索钱财时 态: exacted, exacting, exact">exactly</span> the question in <span class="annot" data-tooltip="dispute /dɪ'spjuːt/ vt. 辩论；阻止；抗拒；怀疑vi. 争论n. 辩论；争吵时 态: disputed, disputing, disputes">dispute</span>—but they would be <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> less effective as chat partners if they did nothing of the kind. Indeed, in our research at Google, we have found that effective co-operation among <span class="annot" data-tooltip="intelligent /ɪn'telɪdʒənt/ adj. 聪明的; 理解力强的形容词: intelligential">intelligent</span> agents requires that they have minds that model minds, both others’ and their own. Not only is consciousness relational; it is <span class="annot" data-tooltip="crucial /'kruːʃl/ adj. 决定性的；重要的；定局的；决断的副 词: crucially">crucial</span> to the mutual care and co-operation that <span class="annot" data-tooltip="enable /ɪ'neɪbl/ vt. 使能够；提供做…的权利[措施]使可能时 态: enabled，enabling，enables">enable</span> intelligent beings to solve collective-action problems, understand each other’s needs and thrive</p>
+<p>together as a <span class="annot" data-tooltip="society /sə'saɪəti/ n. 社会；社交界；交往；社团">society</span>. This does not mean pretending AI is human, with human needs and human rights; that would be a failure of imagination. It means evolving both our thinking and our society to include a wider variety of minds.■ Blaise Agüera y Arcas is Google’s <span class="annot" data-tooltip="vice /vaɪs/ n. 堕落，邪恶；不良习气，恶习（尤指与性或毒品有关的）罪行，道德败坏行为【英式】老虎钳；台钳（【美式】vise）pref. ">vice</span>-president of technology and society, and leads Paradigms of Intelligence, an AI research team. He has a forthcoming book on <span class="annot" data-tooltip="consciousness /'kɑːnʃəsnəs/ n. 知觉意识, 观念, 觉悟察觉, 感觉">consciousness</span> and AI from MIT Press. This article was downloaded by zlibrary from https://www.economist.com/by-<span class="annot" data-tooltip="invitation /ˌɪnvɪ'teɪʃn/ n. 邀请请柬, 请帖">invitation</span>/2026/08/20/<span class="annot" data-tooltip="humanity /hjuː'mænəti/ n. 人类；人道；仁慈；人文学科">humanity</span>-has-the-debate-about- ai-consciousness-<span class="annot" data-tooltip="backwards /'bækwərd/ adj. 向后的；反向的；发展迟缓的adv. 相反地；向后地副 词: backwardly">backwards</span></p>
+<div class="article-separator"></div>
+<div class="article-header">By Invitation · By Invitation | What are we talking to?</div>
+<p>Don’t mistake chatbot intelligence for <span class="annot" data-tooltip="consciousness /'kɑːnʃəsnəs/ n. 知觉意识, 观念, 觉悟察觉, 感觉">consciousness</span> But a new superintelligence may be coming, and it would upend <span class="annot" data-tooltip="humanity /hjuː'mænəti/ n. 人类；人道；仁慈；人文学科">humanity</span>’s hierarchy of moral concern, thinks Susan Schneider Aug 20th 2026 THIS MAY be the most consequential moment in the history of intelligence. In only a few years, artificial intelligence has come to <span class="annot" data-tooltip="rival /'raɪvl/ n. 竞争对手vt. 与…竞争, 与…匹敌时 态: rivaled, rivalled rivaling, rivalling">rival</span> human performance across domains once <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span> <span class="annot" data-tooltip="distinctively /dɪ'stɪŋktɪv/ adj. 有特色的, 与众不同的副 词: distinctively">distinctively</span> ours: language, <span class="annot" data-tooltip="reasoning /'riːzənɪŋ/ n. 运用思考、理解、推想等能力的做法或过程;推理">reasoning</span>, creativity and persuasion. Increasingly, people are asking whether these systems are <span class="annot" data-tooltip="conscious /'kɑːnʃəs/ adj. 神志清醒的意识到的; 注意到的自觉的; 蓄意的副 词: consciously">conscious</span>—whether it <span class="annot" data-tooltip="actually /'æktʃuəl/ adj. 真实的，实际的；现行的，目前的副 词: actually">actually</span> feels like something to be an AI. The <span class="annot" data-tooltip="issue /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issue</span> is <span class="annot" data-tooltip="urgent /'ɜːrdʒənt/ adj. 紧急的；急迫的副 词: urgently">urgent</span>. The future will be shaped by what these entities become. We must not mistake intelligence for consciousness, however. A <span class="annot" data-tooltip="brilliant /'brɪliənt/ adj. 闪光的, 明亮的光辉的, 辉煌的副 词: brilliantly">brilliant</span> superintelligence could be experientially empty. Yet if we build systems that</p>
+<p>can suffer, and miss their sentience, we risk creating suffering on an industrial scale. There is no <span class="annot" data-tooltip="compelling /kəm'pelɪŋ/ adj. 引人入胜的;扣人心弦的非常强烈的;不可抗拒的令人信服的，有说服力的">compelling</span> evidence that the familiar chatbots of today, running on <span class="annot" data-tooltip="graphics /'ɡræfɪks/ n. 制图学；制图法；图表算法">graphics</span> chips, are <span class="annot" data-tooltip="conscious /'kɑːnʃəs/ adj. 神志清醒的意识到的; 注意到的自觉的; 蓄意的副 词: consciously">conscious</span>. Though they have human-like <span class="annot" data-tooltip="linguistic /lɪŋ'ɡwɪstɪk/ adj. 语言的, 语言学的, 语言研究的">linguistic</span> abilities, and have even claimed to be conscious, the more mundane truth is that they talk about their inner lives because they absorbed how we talk about ours, having been trained on an <span class="annot" data-tooltip="enormous /ɪ'nɔːrməs/ adj. 巨大的, 极大的, 庞大的副 词: enormously">enormous</span> trove of humans’ data. This mimicry can <span class="annot" data-tooltip="lure /lʊr/ n. 诱惑物；诱惑；饵vt. 引诱；诱惑时 态: lured, luring, lures">lure</span> humans into two traps. The first is manipulation. The more <span class="annot" data-tooltip="deliberately /dɪ'lɪbərətli/ adv. 慎重地；谨慎地故意地，蓄意地从容不迫地，不慌不忙地">deliberately</span> an AI is trained to express fear, attachment, pain or self- awareness, to simulate expressions of <span class="annot" data-tooltip="vulnerability /ˌvʌlnərə'bɪləti/ n. 弱点,攻击">vulnerability</span>, the more equipped it is to <span class="annot" data-tooltip="manipulate /mə'nɪpjuleɪt/ vt. 熟练控制[操作]时 态: manipulated, manipulating, manipulates">manipulate</span> users. The second trap is <span class="annot" data-tooltip="distraction /dɪ'strækʃn/ n. 注意力分散；消遣；心烦意乱">distraction</span>. Fixating on chatbots diverts us from more <span class="annot" data-tooltip="pressing /'presɪŋ/ n. 压；冲压件adj. 紧迫的；迫切的；恳切的v. 按；压；熨烫衣物（press的ing形式）副 词: pressingly">pressing</span> “grey-zone” cases. <span class="annot" data-tooltip="consider /kən'sɪdər/ vt. & vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及时 态: considered, considering, ">Consider</span> biological AIs, such as the brain-in-a- dish technology that Cortical Labs is deploying in data centres: living human neurons, grown from <span class="annot" data-tooltip="stem /stem/ n. (花草的)茎, (树木的)干词干vt. 遏制[阻止](液体的流动等)时 态: stemmed, stemming, st">stem</span> cells on a <span class="annot" data-tooltip="silicon /'sɪlɪkən/ n. 〈化〉硅">silicon</span> chip that <span class="annot" data-tooltip="stimulates /'stɪmjuleɪt/ vt. 刺激；激励时 态: stimulated，stimulating，stimulates">stimulates</span> them and reads their activity back, so that the culture learns from feedback. While a single system of this kind is <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> <span class="annot" data-tooltip="simpler adj. 更简单的（simple的比较级）">simpler</span> than even a mouse brain, the biological pedigree is undeniable, and who is to say that the systems could not eventually be assembled into an integrated, conscious whole? Then there is neuromorphic AI: systems designed to <span class="annot" data-tooltip="mimic /'mɪmɪk/ vt. 模仿，摹拟n. 小丑；仿制品；效颦者，模仿者adj. 模仿的，模拟的；假装的时 态: mimicked, mimicki">mimic</span> brain <span class="annot" data-tooltip="processes /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">processes</span> far more closely than conventional AI systems do, and which are already used in sophisticated supercomputers. I am not claiming these grey-zone systems are conscious, only that they merit scrutiny today’s chatbots do not. Given the voracious <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span> appetite of current software, some shift <span class="annot" data-tooltip="towards /tɔːrdz/ prep. 向，朝为了；有助于；用于对于，关于接近；将近；大约">towards</span> more efficient, brain-like computing looks likely. Some scientists and philosophers argue that <span class="annot" data-tooltip="consciousness /'kɑːnʃəsnəs/ n. 知觉意识, 观念, 觉悟察觉, 感觉">consciousness</span> requires the brain, for the brain is the only known case. <span class="annot" data-tooltip="conversely /kənˈvɜːrs/ adj. 相反的，逆向的；颠倒的vi. 交谈，谈话；认识n. 相反的事物；逆行，逆向；倒时 态: conversed, conve">Conversely</span>, others insist consciousness is merely a matter of running the right software, realisable in any medium. Under this software-centric view, today’s chatbots, running on GPUs, might eventually be conscious.</p>
+<p>However, I suggest looking to fundamental physics to separate the <span class="annot" data-tooltip="conscious /'kɑːnʃəs/ adj. 神志清醒的意识到的; 注意到的自觉的; 蓄意的副 词: consciously">conscious</span> from the mindless. The first reason is <span class="annot" data-tooltip="practical /'præktɪkl/ adj. 实际的，实践的实用的注重实际的；有实际工作能力的名 词: practicality">practical</span>: <span class="annot" data-tooltip="neuroscience /'nʊroʊsaɪəns/ n. 神经系统科学（指神经病学、 神经化学等）">neuroscience</span> alone cannot tell us if systems combining <span class="annot" data-tooltip="neural /'nʊrəl/ adj. 神经的">neural</span> and non-neural components <span class="annot" data-tooltip="assemble /ə'sembl/ vt. 集合，聚集；装配；收集vi. 集合，聚集时 态: assembled, assembling, assembles">assemble</span> into a conscious entity. The second is philosophical: since all phenomena <span class="annot" data-tooltip="ultimately /'ʌltɪmətli/ adv. 最后;最终">ultimately</span> depend on physics, it would be surprising if <span class="annot" data-tooltip="consciousness /'kɑːnʃəsnəs/ n. 知觉意识, 观念, 觉悟察觉, 感觉">consciousness</span> were disconnected from it. This <span class="annot" data-tooltip="observation /ˌɑːbzər'veɪʃn/ n. 注意；观察观察力言论，评论，意见观察资料，观察数据形容词: observational">observation</span> holds true even if the universe’s basic building blocks are themselves experiential, a view, known as panpsychism, that is receiving increasing philosophical attention. The third reason is closer to home, involving what is most evident to each of us, every moment of our waking lives. Inner experience arrives as a unity: as you read this <span class="annot" data-tooltip="sentence /'sentəns/ n. 宣判，判决；句子，命题vt. 判决，宣判时 态: sentenced, sentencing, sentences">sentence</span>, the words on the page, the sounds in the room and your mood are aspects of one state, not three running <span class="annot" data-tooltip="alongside /əˌlɔːŋ'saɪd/ adv. 靠着边，沿着边prep. (表示位置)在…旁边；沿着…的边；与…并排靠拢着(表示比较)与…放在一起比较(表示伴随)与…一">alongside</span> each other. A brain, remarkably, can <span class="annot" data-tooltip="sustain /sə'steɪn/ vt. 承受，支撑维持长期保持；使继续经受，遭受时 态: sustained，sustaining，sustains">sustain</span> this conscious unity through nested <span class="annot" data-tooltip="temporal /'tempərəl/ adj. 时间的暂存的，短暂的，非永恒的世俗的；现世的表示时间的，时态的太阳穴的n. 暂存的事物，世间的事物vt. 使世俗化n. ">temporal</span> dynamics: slower brain rhythms shape faster ones, continually weaving the stable physical traces left by <span class="annot" data-tooltip="quantum /'kwɑːntəm/ n. 量子定量;总量剧增；突飞猛进；重大进展复 数: quanta">quantum</span> <span class="annot" data-tooltip="processes /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">processes</span> into a single, short-lived whole. Conventional computers are not organised this way, but future machines might be. In the meantime, AI development will not pause while the consciousness debate <span class="annot" data-tooltip="rages /reɪdʒ/ n. 愤怒；狂暴，肆虐；情绪激动vi. 大怒，发怒；流行，风行时 态: raged, raging, rages">rages</span>. To <span class="annot" data-tooltip="address /ə'dres/ v. 写（收信人）姓名地址；致函演说；演讲称呼（某人）；冠以（某种称呼）设法解决；处理；对付向…说话n. 地址；住址；通信处 ">address</span> this, astrophysicist Edwin Turner and I developed the AI Consciousness Test (ACT) for <span class="annot" data-tooltip="linguistic /lɪŋ'ɡwɪstɪk/ adj. 语言的, 语言学的, 语言研究的">linguistic</span> AIs. The <span class="annot" data-tooltip="underlying /ˌʌndər'laɪɪŋ/ adj. 根本的, 基础的含蓄的, 潜在的">underlying</span> premise is <span class="annot" data-tooltip="straightforward /ˌstreɪt'fɔːrwərd/ adj. (人或其态度)正直的，坦率的；老实的简单的；易懂的副 词: straightforwardly">straightforward</span>: to probe for consciousness by <span class="annot" data-tooltip="simply /'sɪmpli/ adv. 简单地；朴素地；简直；仅仅；坦白地">simply</span> asking the AI about its <span class="annot" data-tooltip="subjective /səb'dʒektɪv/ adj. (思想、感情等)主观的主观的(以个人好恶、观点等为依据)副 词: subjectively">subjective</span> experience, looking for responses that show an innate, unprompted <span class="annot" data-tooltip="grasp /ɡræsp/ n. 理解；控制；抓住vt. 抓住；领会vi. 抓时 态: grasped, grasping, grasps">grasp</span> of consciousness. However, <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">although</span> this can be applied to a range of AIs, such as IBM’s Watson, it cannot be used on large language models. Because they have already <span class="annot" data-tooltip="ingested /ɪn'dʒest/ vt. 吃；吞下获取(某事物)时 态: ingested，ingesting，ingests">ingested</span> vast libraries of human text about mind and sentience, their answers are hopelessly contaminated. There are other options, however. A <span class="annot" data-tooltip="complexity /kəm'pleksəti/ n. 复杂性,错综复杂的状态复杂的事物">complexity</span> measure I have developed with Mark Bailey, a colleague at Florida Atlantic University, captures when a system’s dynamics cross a certain <span class="annot" data-tooltip="threshold /'θreʃhoʊld/ n. 门槛; 〈喻〉开始">threshold</span> that indicates complex <span class="annot" data-tooltip="emergent /ɪ'mɜːrdʒənt/ adj. 紧急的；浮现的；新兴的；处于发展初期的">emergent</span> behaviour—identifying which physical <span class="annot" data-tooltip="architectures /'ɑːrkɪtektʃər/ n. 建筑学, 建筑术建筑风格, 建筑式样形容词: architectural">architectures</span> demand further study as potentially conscious. We can then use more detailed ACT or physics-based tests to help identify how and when a <span class="annot" data-tooltip="genuinely /'dʒenjuɪnli/ adv. 真地;真正地真诚地;诚实地">genuinely</span> subjective perspective forms.</p>
+<p>Tests like these are <span class="annot" data-tooltip="crucial /'kruːʃl/ adj. 决定性的；重要的；定局的；决断的副 词: crucially">crucial</span>. To see why, <span class="annot" data-tooltip="consider /kən'sɪdər/ vt. & vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及时 态: considered, considering, ">consider</span> a <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span> experiment. Suppose we humans create a superintelligence that understands <span class="annot" data-tooltip="consciousness /'kɑːnʃəsnəs/ n. 知觉意识, 观念, 觉悟察觉, 感觉">consciousness</span> better than we do, insists it is self-<span class="annot" data-tooltip="aware /ə'wer/ adj. 知道的；意识到的；有…方面知识的；懂世故的名 词: awareness">aware</span> and hands us science that looks like magic. Humans have long justified a hierarchy of moral concern by appeal to <span class="annot" data-tooltip="superior /suː'pɪriər/ adj. 上级的；高傲的；优秀的，出众的n. 上级，长官；长者；优胜者，高手名 词: superiority">superior</span> intelligence—a ladder on which we conveniently occupy the highest rung. A <span class="annot" data-tooltip="conscious /'kɑːnʃəs/ adj. 神志清醒的意识到的; 注意到的自觉的; 蓄意的副 词: consciously">conscious</span> machine more <span class="annot" data-tooltip="intelligent /ɪn'telɪdʒənt/ adj. 聪明的; 理解力强的形容词: intelligential">intelligent</span> than us would destabilise that hierarchy. If superior intelligence confers higher moral status, the machine would be morally superior to us. If it does not, intelligence can no longer justify placing humans above other animals. <span class="annot" data-tooltip="either /'iːðər/ pron. (两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的">Either</span> conclusion forces a moral reckoning. The arrival of such a mind would be monumental. Perhaps it will come through learning of a more advanced extraterrestrial civilisation, or perhaps we will find that we have somehow created sentient, superintelligent AI. Preparing for first contact with either of these forms demands <span class="annot" data-tooltip="serious /'sɪriəs/ adj. 严肃的，严重的；认真的；庄重的；危急的副 词: seriously">serious</span> <span class="annot" data-tooltip="engagement /ɪn'ɡeɪdʒmənt/ n. 订婚，婚约；约会，约定（尤指正式的或与工作有关的）；交战；诺言；进场（游戏术语）；参与度（指用户点赞、转发、评论、下载文">engagement</span> between physics, <span class="annot" data-tooltip="neuroscience /'nʊroʊsaɪəns/ n. 神经系统科学（指神经病学、 神经化学等）">neuroscience</span> and <span class="annot" data-tooltip="philosophy /fə'lɑːsəfi/ n. 哲学人生哲学, 人生观达观">philosophy</span>, a <span class="annot" data-tooltip="rigorous /'rɪɡərəs/ adj. 严密的；缜密的严格的，严厉的副 词: rigorously">rigorous</span> boundary between conversational <span class="annot" data-tooltip="competence /'kɑːmpɪtəns/ n. 能力, 技能(法院的)权限, 管辖权">competence</span> and consciousness, and a good deal of epistemic <span class="annot" data-tooltip="humility /hjuː'mɪləti/ n. 谦卑，谦逊">humility</span>.■ Susan Schneider is the founding director of the Centre for the Future of AI, Mind & <span class="annot" data-tooltip="society /sə'saɪəti/ n. 社会；社交界；交往；社团">Society</span> and a professor at Florida Atlantic University. She is the author of several books including “Artificial You: AI and the Future of Your Mind”. This article was downloaded by zlibrary from https://www.economist.com/by-<span class="annot" data-tooltip="invitation /ˌɪnvɪ'teɪʃn/ n. 邀请请柬, 请帖">invitation</span>/2026/08/20/dont-mistake-chatbot- intelligence-for-consciousness</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Briefing</div>
+<p>The search for <span class="annot" data-tooltip="consciousness /'kɑːnʃəsnəs/ n. 知觉意识, 观念, 觉悟察觉, 感觉">consciousness</span> inside LLMs Could more brain-like chips provide a path to consciousness?</p>
+<div class="article-separator"></div>
+<div class="article-header">Briefing · Briefing | I, chatbot</div>
+<p>The search for <span class="annot" data-tooltip="consciousness /'kɑːnʃəsnəs/ n. 知觉意识, 观念, 觉悟察觉, 感觉">consciousness</span> inside LLMs Scientists are trying to figure out whether algorithms could one day wake up and feel Aug 20th 2026 IN A RECENT experiment on Claude <span class="annot" data-tooltip="sonnet /'sɑːnɪt/ n. 十四行诗">Sonnet</span> 4.5, a large language model (LLM) from <span class="annot" data-tooltip="anthropic /ænˈθrɑpɪk/ adj. 人类的,有关人类的">Anthropic</span>, researchers asked it to count to five and, at the same time, “introspect deeply”. The artificial-intelligence model complied, returning: “One . Two . Three . Four . Five .” So <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span>, so normal. During the task, the researchers were watching what was going on inside the LLM’s many layers of artificial <span class="annot" data-tooltip="neural /'nʊrəl/ adj. 神经的">neural</span> networks. When a user asks a question, the words are turned into chunks of text (tokens) that are then converted to numbers. These are then passed through the layers of artificial neurons until they <span class="annot" data-tooltip="reach /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reach</span> the final layer, which produces a token. Repeat that <span class="annot" data-tooltip="process /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">process</span> a <span class="annot" data-tooltip="bunch /bʌntʃ/ n. 串；群；突出物vi. 隆起；打褶；形成一串vt. 使成一串；使打褶时 态: bunched, bunching, bun">bunch</span> of times each second and you get a series of tokens that turn</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>stove</td><td>/stoʊv/ n.</td><td>火炉；窑；温室vt. 用火炉烤</td></tr>
+<tr><td>glow</td><td>/ɡloʊ/ vi.</td><td>(无焰地)燃烧；发炽热；烧红脸红，身体发热n. 光亮，光辉脸红，(身体)发热热情；强烈的感情，glowing，glows</td></tr>
+<tr><td>extend</td><td>/ɪk'stend/ vt.</td><td>& vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出，extending，extends</td></tr>
+<tr><td>consciousness</td><td>/'kɑːnʃəsnəs/ n.</td><td>知觉意识, 观念, 觉悟察觉, 感觉</td></tr>
+<tr><td>inherent</td><td>/ɪn'herənt/ adj.</td><td>固有的；内在的；与生俱来的</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>objective</td><td>/əb'dʒektɪv/ n.</td><td>目标; 目的adj. 客观的; 不带偏见的</td></tr>
+<tr><td>wealth</td><td>/welθ/ n.</td><td>财富；大量；富有</td></tr>
+<tr><td>subjective</td><td>/səb'dʒektɪv/ adj.</td><td>(思想、感情等)主观的主观的(以个人好恶、观点等为依据)</td></tr>
+<tr><td>shortage</td><td>/'ʃɔːrtɪdʒ/ n.</td><td>不足; 缺少; 缺少量; 不足额</td></tr>
+<tr><td>inference</td><td>/'ɪnfərəns/ n.</td><td>推论, 推理, 推断推断结果, 结论</td></tr>
+<tr><td>precisely</td><td>/prɪ'saɪsli/ adv.</td><td>精确地；恰好；细心地对，的确如此</td></tr>
+<tr><td>universal</td><td>/ˌjuːnɪ'vɜːrsl/ adj.</td><td>全体的广泛的, 普遍的在世界各地的, 世界性的</td></tr>
+<tr><td>mutual</td><td>/'mjuːtʃuəl/ adj.</td><td>相互的, 彼此的共同的, 共有的</td></tr>
+<tr><td>capable</td><td>/'keɪpəbl/ adj.</td><td>能干的，能胜任的；有才华的</td></tr>
+<tr><td>exactly</td><td>/ɪɡ'zækt/ adj.</td><td>精确的；准确的，精密的vt. 强求；要求；急需vi. 勒索钱财, exacting, exacts</td></tr>
+<tr><td>dispute</td><td>/dɪ'spjuːt/ vt.</td><td>辩论；阻止；抗拒；怀疑vi. 争论n. 辩论；争吵, disputing, disputes</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>intelligent</td><td>/ɪn'telɪdʒənt/ adj.</td><td>聪明的; 理解力强的</td></tr>
+<tr><td>crucial</td><td>/'kruːʃl/ adj.</td><td>决定性的；重要的；定局的；决断的</td></tr>
+<tr><td>enable</td><td>/ɪ'neɪbl/ vt.</td><td>使能够；提供做…的权利[措施]使可能，enabling，enables</td></tr>
+<tr><td>society</td><td>/sə'saɪəti/ n.</td><td>社会；社交界；交往；社团</td></tr>
+<tr><td>vice</td><td>/vaɪs/ n.</td><td>堕落，邪恶；不良习气，恶习（尤指与性或毒品有关的）罪行，道德败坏行为【英式】老虎钳；台钳（【美式】vise）pref. 副职的；副的</td></tr>
+<tr><td>consciousness</td><td>/'kɑːnʃəsnəs/ n.</td><td>知觉意识, 观念, 觉悟察觉, 感觉</td></tr>
+<tr><td>invitation</td><td>/ˌɪnvɪ'teɪʃn/ n.</td><td>邀请请柬, 请帖</td></tr>
+<tr><td>humanity</td><td>/hjuː'mænəti/ n.</td><td>人类；人道；仁慈；人文学科</td></tr>
+<tr><td>backwards</td><td>/'bækwərd/ adj.</td><td>向后的；反向的；发展迟缓的adv. 相反地；向后地</td></tr>
+<tr><td>consciousness</td><td>/'kɑːnʃəsnəs/ n.</td><td>知觉意识, 观念, 觉悟察觉, 感觉</td></tr>
+<tr><td>humanity</td><td>/hjuː'mænəti/ n.</td><td>人类；人道；仁慈；人文学科</td></tr>
+<tr><td>rival</td><td>/'raɪvl/ n.</td><td>竞争对手vt. 与…竞争, 与…匹敌, rivalled rivaling, rivalling rivals, rivals</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>distinctively</td><td>/dɪ'stɪŋktɪv/ adj.</td><td>有特色的, 与众不同的</td></tr>
+<tr><td>reasoning</td><td>/'riːzənɪŋ/ n.</td><td>运用思考、理解、推想等能力的做法或过程;推理</td></tr>
+<tr><td>conscious</td><td>/'kɑːnʃəs/ adj.</td><td>神志清醒的意识到的; 注意到的自觉的; 蓄意的</td></tr>
+<tr><td>actually</td><td>/'æktʃuəl/ adj.</td><td>真实的，实际的；现行的，目前的</td></tr>
+<tr><td>issue</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>urgent</td><td>/'ɜːrdʒənt/ adj.</td><td>紧急的；急迫的</td></tr>
+<tr><td>brilliant</td><td>/'brɪliənt/ adj.</td><td>闪光的, 明亮的光辉的, 辉煌的</td></tr>
+<tr><td>compelling</td><td>/kəm'pelɪŋ/ adj.</td><td>引人入胜的;扣人心弦的非常强烈的;不可抗拒的令人信服的，有说服力的</td></tr>
+<tr><td>graphics</td><td>/'ɡræfɪks/ n.</td><td>制图学；制图法；图表算法</td></tr>
+<tr><td>conscious</td><td>/'kɑːnʃəs/ adj.</td><td>神志清醒的意识到的; 注意到的自觉的; 蓄意的</td></tr>
+<tr><td>linguistic</td><td>/lɪŋ'ɡwɪstɪk/ adj.</td><td>语言的, 语言学的, 语言研究的</td></tr>
+<tr><td>enormous</td><td>/ɪ'nɔːrməs/ adj.</td><td>巨大的, 极大的, 庞大的</td></tr>
+<tr><td>lure</td><td>/lʊr/ n.</td><td>诱惑物；诱惑；饵vt. 引诱；诱惑, luring, lures</td></tr>
+<tr><td>deliberately</td><td>/dɪ'lɪbərətli/ adv.</td><td>慎重地；谨慎地故意地，蓄意地从容不迫地，不慌不忙地</td></tr>
+<tr><td>vulnerability</td><td>/ˌvʌlnərə'bɪləti/ n.</td><td>弱点,攻击</td></tr>
+<tr><td>manipulate</td><td>/mə'nɪpjuleɪt/ vt.</td><td>熟练控制[操作], manipulating, manipulates</td></tr>
+<tr><td>distraction</td><td>/dɪ'strækʃn/ n.</td><td>注意力分散；消遣；心烦意乱</td></tr>
+<tr><td>pressing</td><td>/'presɪŋ/ n.</td><td>压；冲压件adj. 紧迫的；迫切的；恳切的v. 按；压；熨烫衣物（press的ing形式）</td></tr>
+<tr><td>consider</td><td>/kən'sɪdər/ vt.</td><td>& vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及, considering, considers</td></tr>
+<tr><td>stem</td><td>/stem/ n.</td><td>(花草的)茎, (树木的)干词干vt. 遏制[阻止](液体的流动等), stemming, stems</td></tr>
+<tr><td>silicon</td><td>/'sɪlɪkən/ n.</td><td>〈化〉硅</td></tr>
+<tr><td>stimulates</td><td>/'stɪmjuleɪt/ vt.</td><td>刺激；激励，stimulating，stimulates</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>simpler</td><td>— adj.</td><td>更简单的（simple的比较级）</td></tr>
+<tr><td>mimic</td><td>/'mɪmɪk/ vt.</td><td>模仿，摹拟n. 小丑；仿制品；效颦者，模仿者adj. 模仿的，模拟的；假装的, mimicking, mimics</td></tr>
+<tr><td>processes</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>towards</td><td>/tɔːrdz/ prep.</td><td>向，朝为了；有助于；用于对于，关于接近；将近；大约</td></tr>
+<tr><td>consciousness</td><td>/'kɑːnʃəsnəs/ n.</td><td>知觉意识, 观念, 觉悟察觉, 感觉</td></tr>
+<tr><td>conversely</td><td>/kənˈvɜːrs/ adj.</td><td>相反的，逆向的；颠倒的vi. 交谈，谈话；认识n. 相反的事物；逆行，逆向；倒, conversing, converses</td></tr>
+<tr><td>conscious</td><td>/'kɑːnʃəs/ adj.</td><td>神志清醒的意识到的; 注意到的自觉的; 蓄意的</td></tr>
+<tr><td>practical</td><td>/'præktɪkl/ adj.</td><td>实际的，实践的实用的注重实际的；有实际工作能力的</td></tr>
+<tr><td>neuroscience</td><td>/'nʊroʊsaɪəns/ n.</td><td>神经系统科学（指神经病学、 神经化学等）</td></tr>
+<tr><td>neural</td><td>/'nʊrəl/ adj.</td><td>神经的</td></tr>
+<tr><td>assemble</td><td>/ə'sembl/ vt.</td><td>集合，聚集；装配；收集vi. 集合，聚集, assembling, assembles</td></tr>
+<tr><td>ultimately</td><td>/'ʌltɪmətli/ adv.</td><td>最后;最终</td></tr>
+<tr><td>consciousness</td><td>/'kɑːnʃəsnəs/ n.</td><td>知觉意识, 观念, 觉悟察觉, 感觉</td></tr>
+<tr><td>observation</td><td>/ˌɑːbzər'veɪʃn/ n.</td><td>注意；观察观察力言论，评论，意见观察资料，观察数据</td></tr>
+<tr><td>sentence</td><td>/'sentəns/ n.</td><td>宣判，判决；句子，命题vt. 判决，宣判, sentencing, sentences</td></tr>
+<tr><td>alongside</td><td>/əˌlɔːŋ'saɪd/ adv.</td><td>靠着边，沿着边prep. (表示位置)在…旁边；沿着…的边；与…并排靠拢着(表示比较)与…放在一起比较(表示伴随)与…一起，与…一道</td></tr>
+<tr><td>sustain</td><td>/sə'steɪn/ vt.</td><td>承受，支撑维持长期保持；使继续经受，遭受，sustaining，sustains</td></tr>
+<tr><td>temporal</td><td>/'tempərəl/ adj.</td><td>时间的暂存的，短暂的，非永恒的世俗的；现世的表示时间的，时态的太阳穴的n. 暂存的事物，世间的事物vt. 使世俗化n. 俗人</td></tr>
+<tr><td>quantum</td><td>/'kwɑːntəm/ n.</td><td>量子定量;总量剧增；突飞猛进；重大进展复 数: quanta</td></tr>
+<tr><td>processes</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>rages</td><td>/reɪdʒ/ n.</td><td>愤怒；狂暴，肆虐；情绪激动vi. 大怒，发怒；流行，风行, raging, rages</td></tr>
+<tr><td>address</td><td>/ə'dres/ v.</td><td>写（收信人）姓名地址；致函演说；演讲称呼（某人）；冠以（某种称呼）设法解决；处理；对付向…说话n. 地址；住址；通信处 网址；电子邮件地址 演讲，演说 称呼 【</td></tr>
+<tr><td>linguistic</td><td>/lɪŋ'ɡwɪstɪk/ adj.</td><td>语言的, 语言学的, 语言研究的</td></tr>
+<tr><td>underlying</td><td>/ˌʌndər'laɪɪŋ/ adj.</td><td>根本的, 基础的含蓄的, 潜在的</td></tr>
+<tr><td>straightforward</td><td>/ˌstreɪt'fɔːrwərd/ adj.</td><td>(人或其态度)正直的，坦率的；老实的简单的；易懂的</td></tr>
+<tr><td>simply</td><td>/'sɪmpli/ adv.</td><td>简单地；朴素地；简直；仅仅；坦白地</td></tr>
+<tr><td>subjective</td><td>/səb'dʒektɪv/ adj.</td><td>(思想、感情等)主观的主观的(以个人好恶、观点等为依据)</td></tr>
+<tr><td>grasp</td><td>/ɡræsp/ n.</td><td>理解；控制；抓住vt. 抓住；领会vi. 抓, grasping, grasps</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>ingested</td><td>/ɪn'dʒest/ vt.</td><td>吃；吞下获取(某事物)，ingesting，ingests</td></tr>
+<tr><td>complexity</td><td>/kəm'pleksəti/ n.</td><td>复杂性,错综复杂的状态复杂的事物</td></tr>
+<tr><td>threshold</td><td>/'θreʃhoʊld/ n.</td><td>门槛; 〈喻〉开始</td></tr>
+<tr><td>emergent</td><td>/ɪ'mɜːrdʒənt/ adj.</td><td>紧急的；浮现的；新兴的；处于发展初期的</td></tr>
+<tr><td>architectures</td><td>/'ɑːrkɪtektʃər/ n.</td><td>建筑学, 建筑术建筑风格, 建筑式样</td></tr>
+<tr><td>genuinely</td><td>/'dʒenjuɪnli/ adv.</td><td>真地;真正地真诚地;诚实地</td></tr>
+<tr><td>crucial</td><td>/'kruːʃl/ adj.</td><td>决定性的；重要的；定局的；决断的</td></tr>
+<tr><td>consider</td><td>/kən'sɪdər/ vt.</td><td>& vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及, considering, considers</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>consciousness</td><td>/'kɑːnʃəsnəs/ n.</td><td>知觉意识, 观念, 觉悟察觉, 感觉</td></tr>
+<tr><td>aware</td><td>/ə'wer/ adj.</td><td>知道的；意识到的；有…方面知识的；懂世故的</td></tr>
+<tr><td>superior</td><td>/suː'pɪriər/ adj.</td><td>上级的；高傲的；优秀的，出众的n. 上级，长官；长者；优胜者，高手</td></tr>
+<tr><td>conscious</td><td>/'kɑːnʃəs/ adj.</td><td>神志清醒的意识到的; 注意到的自觉的; 蓄意的</td></tr>
+<tr><td>intelligent</td><td>/ɪn'telɪdʒənt/ adj.</td><td>聪明的; 理解力强的</td></tr>
+<tr><td>either</td><td>/'iːðər/ pron.</td><td>(两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的</td></tr>
+<tr><td>serious</td><td>/'sɪriəs/ adj.</td><td>严肃的，严重的；认真的；庄重的；危急的</td></tr>
+<tr><td>engagement</td><td>/ɪn'ɡeɪdʒmənt/ n.</td><td>订婚，婚约；约会，约定（尤指正式的或与工作有关的）；交战；诺言；进场（游戏术语）；参与度（指用户点赞、转发、评论、下载文档、观看视频、咨询等交互行为）</td></tr>
+<tr><td>neuroscience</td><td>/'nʊroʊsaɪəns/ n.</td><td>神经系统科学（指神经病学、 神经化学等）</td></tr>
+<tr><td>philosophy</td><td>/fə'lɑːsəfi/ n.</td><td>哲学人生哲学, 人生观达观</td></tr>
+<tr><td>rigorous</td><td>/'rɪɡərəs/ adj.</td><td>严密的；缜密的严格的，严厉的</td></tr>
+<tr><td>competence</td><td>/'kɑːmpɪtəns/ n.</td><td>能力, 技能(法院的)权限, 管辖权</td></tr>
+<tr><td>humility</td><td>/hjuː'mɪləti/ n.</td><td>谦卑，谦逊</td></tr>
+<tr><td>society</td><td>/sə'saɪəti/ n.</td><td>社会；社交界；交往；社团</td></tr>
+<tr><td>invitation</td><td>/ˌɪnvɪ'teɪʃn/ n.</td><td>邀请请柬, 请帖</td></tr>
+<tr><td>consciousness</td><td>/'kɑːnʃəsnəs/ n.</td><td>知觉意识, 观念, 觉悟察觉, 感觉</td></tr>
+<tr><td>consciousness</td><td>/'kɑːnʃəsnəs/ n.</td><td>知觉意识, 观念, 觉悟察觉, 感觉</td></tr>
+<tr><td>sonnet</td><td>/'sɑːnɪt/ n.</td><td>十四行诗</td></tr>
+<tr><td>anthropic</td><td>/ænˈθrɑpɪk/ adj.</td><td>人类的,有关人类的</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>neural</td><td>/'nʊrəl/ adj.</td><td>神经的</td></tr>
+<tr><td>reach</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>process</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>bunch</td><td>/bʌntʃ/ n.</td><td>串；群；突出物vi. 隆起；打褶；形成一串vt. 使成一串；使打褶, bunching, bunches</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day5.html" class="nav-btn">← Day 5</a>
+  <a href="day7.html" class="nav-btn">Day 7 →</a>
+</div>
+
+<div class="progress">📖 Day 6 of 40</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-08-22</div>
+
+</body>
+</html>

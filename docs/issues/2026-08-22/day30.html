@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business | Good bot, bad bot</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-08-22</div>
+
+<h1 class="article-title">Business | Good bot, bad bot</h1>
+<div class="article-section">Business</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p><span class="annot" data-tooltip="lawsuits /'lɔːsuːt/ n. 诉讼（尤指非刑事案件）；诉讼案件">lawsuits</span>. But eventually it hopes <span class="annot" data-tooltip="bot /bɑːt/ n. 马蝇幼虫，马蝇">bot</span>-<span class="annot" data-tooltip="weary /'wɪri/ adj. 疲倦的；厌烦的；令人厌烦的vi. 厌烦；疲倦vt. 使疲倦；使厌烦比较级: wearier, weariest">weary</span> users will return to one of the internet’s last refuges of human-generated content. Reddit’s business model lies somewhere between Instagram (which profits off user-generated content) and Wikipedia (which relies on an army of volunteer <span class="annot" data-tooltip="moderators /'mɑːdəreɪtər/ n. (讨论、会议等的)主持人(新教的)宗教领袖成绩核对人(原子堆中的)减速剂，慢化剂；阻滞剂，缓和剂">moderators</span>). That balance has sometimes been <span class="annot" data-tooltip="tricky /'trɪki/ adj. 机警的；狡猾的比较级: trickier, trickiest">tricky</span> to manage. In 2023 the volunteers who <span class="annot" data-tooltip="moderate /'mɑːdərət/ adj. 中等的，适度的，不很大的温和的；有节制的中庸的，稳健的，不走极端的vt. & vi. (使)减轻[缓和]；节制时 态: ">moderate</span> its “subreddits” went on a multi-day <span class="annot" data-tooltip="strike /straɪk/ vi. 罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打时 态:">strike</span> after the company said it would charge for access to its application programming interface, on which independent developers who build Reddit- based apps rely. The platform, which <span class="annot" data-tooltip="stuck /stʌk/ v. 刺（stick的过去式）adj. 不能动的；被卡住的">stuck</span> with the policy, may have had larger <span class="annot" data-tooltip="clients /'klaɪənt/ n. 委托人顾客, 常客">clients</span> in mind. Soon afterwards it struck deals with Google and OpenAI, maker of ChatGPT, which reportedly agreed to pay $60m and $70m a year, <span class="annot" data-tooltip="respectively /rɪ'spektɪv/ adj. 各自的; 各个的">respectively</span>, to train their models on Reddit’s data. They may have got themselves a bargain. Reddit has become the most-cited source by many of the <span class="annot" data-tooltip="leading /ˈliːdɪŋ/ adj. 主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）">leading</span> American chatbots, according to an analysis the company <span class="annot" data-tooltip="commissioned /kə'mɪʃn/ n. 授权, 委托委员会佣金, 回扣vt. 委任, 委托时 态: commissioned, commissioning, c">commissioned</span> from <span class="annot" data-tooltip="profound /prə'faʊnd/ adj. 深度的；深切的；深远的知识渊博的，见解深刻的，深奥的比较级: profounder，profoundest">Profound</span>, a research firm. One particularly valuable use of its data is for generating product recommendations. About 40% of conversations on the site relate to commercial activity including shopping, says Jen Wong, Reddit’s operations chief. On subreddits such as r/BuyItForLife, users debate the quality of products—and try to weed out <span class="annot" data-tooltip="sponsored /'spɑːnsər/ vt. 赞助, 发起n. 赞助者；主办者；保证人">sponsored</span> or bot-generated content—making the results a rare source of high-quality reviews. AI models rely heavily on such content to generate their <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> recommendations, which chatbot-makers hope to turn into a source of ad <span class="annot" data-tooltip="revenue /'revənuː/ n. 收入，收益；财政收入，税收">revenue</span>. Google’s relationship with Reddit in particular has become less of a two- way exchange. For years Google’s ranked search results have been an important source of <span class="annot" data-tooltip="traffic /'træfɪk/ n. 交通；贸易；运输；通信量vt. 用…作交换；在…通行vi. 交易，买卖时 态: trafficked, traffick">traffic</span> for the chat site. But as the tech giant shifts users’ focus to its AI <span class="annot" data-tooltip="overviews /'oʊvərvjuː/ n. 概观；综述">overviews</span>, referrals have dropped precipitously. Reddit’s stock took its largest-ever single-day plunge last month after it said that “choppy” search referrals had hurt <span class="annot" data-tooltip="engagement /ɪn'ɡeɪdʒmənt/ n. 订婚，婚约；约会，约定（尤指正式的或与工作有关的）；交战；诺言；进场（游戏术语）；参与度（指用户点赞、转发、评论、下载文">engagement</span>. Last <span class="annot" data-tooltip="quarter /'kwɔːrtər/ n. 四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一时 ">quarter</span> the amount of time users spent on Reddit’s app each day was down by 8% from a year earlier, compared with gains of 6% and 4% for Instagram and TikTok, respectively, according to <span class="annot" data-tooltip="sensor /'sensər/ n. 传感器">Sensor</span> Tower, a data provider. One option for Reddit is to bargain for a better deal with AI providers. It has been negotiating new agreements with Google and others. If that does not</p>
+<p>work, <span class="annot" data-tooltip="lawsuits /'lɔːsuːt/ n. 诉讼（尤指非刑事案件）；诉讼案件">lawsuits</span> may. Reddit has already sued <span class="annot" data-tooltip="anthropic /ænˈθrɑpɪk/ adj. 人类的,有关人类的">Anthropic</span>, another model- maker, and <span class="annot" data-tooltip="perplexity /pər'pleksəti/ n. 困惑；混乱复杂，困难">Perplexity</span>, an AI search engine. Both suits <span class="annot" data-tooltip="allege /ə'ledʒ/ vt. 宣称，断言；提出…作为理由时 态: alleged, alleging, alleges">allege</span> that the companies scraped Reddit’s data <span class="annot" data-tooltip="illegally /ɪ'liːɡəli/ adv. 不法地">illegally</span>. (Anthropic and Perplexity have said they did not break the law.) Victory in court—or lucrative settlements— would give the chat site greater <span class="annot" data-tooltip="leverage /'levərɪdʒ/ n. （能够操控形势的）影响力，手段，优势 杠杆力；杠杆作用v. 举债经营；为…融资有效利用某物（资源、优势、工具等）时 态:">leverage</span> in <span class="annot" data-tooltip="negotiations /nɪˌɡoʊʃi'eɪʃn/ n. 协商，谈判完成(难事)；通过">negotiations</span> over licensing its data. <span class="annot" data-tooltip="ultimately /'ʌltɪmətli/ adv. 最后;最终">Ultimately</span>, though, Reddit hopes to lessen its reliance on other tech firms. <span class="annot" data-tooltip="traffic /'træfɪk/ n. 交通；贸易；运输；通信量vt. 用…作交换；在…通行vi. 交易，买卖时 态: trafficked, traffick">Traffic</span> from search is “not where our business lives”, said Steve Huffman, its boss, in last month’s earnings call. Instead the company hopes to <span class="annot" data-tooltip="encourage /ɪn'kɜːrɪdʒ/ vt. 鼓励, 激励促进, 助长, 激发时 态: encouraged, encouraging, encourages">encourage</span> more users to visit its site directly, and spend more time browsing once there. That would further boost its ad <span class="annot" data-tooltip="revenue /'revənuː/ n. 收入，收益；财政收入，税收">revenue</span>, which grew by 64% in the second <span class="annot" data-tooltip="quarter /'kwɔːrtər/ n. 四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一时 ">quarter</span>, year on year. Ms Wong is optimistic that the (mostly) human content on Reddit will appeal to users as they grow tired of <span class="annot" data-tooltip="interacting 相互作用">interacting</span> with chatbots. Aspiring film-makers need not fear being starved of material just yet. ■ This article was downloaded by zlibrary from https://www.economist.com/business/2026/08/20/can-reddit-survive-in-the-ai-era</p>
+<div class="article-separator"></div>
+<div class="article-header">Business · Business | On shifting oil sands</div>
+<p>Canada’s oil <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> is booming. Can it last? Looser regulations will help with pipelines—but may not boost production Aug 20th 2026 “Please God, give me one more oil boom—and I promise not to <span class="annot" data-tooltip="piss /pɪs/ vi. 小便vt. 撒尿弄脏n. 小便int. 呸！时 态: pissed, pissing, pisses">piss</span> it all away next time” reads a popular <span class="annot" data-tooltip="bumper /bʌmp/ n. 肿块，隆起物；撞击vi. 碰撞，撞击；颠簸而行vt. 碰，撞；颠簸adv. 突然地，猛烈地时 态: bumped, bu">bumper</span> <span class="annot" data-tooltip="sticker /'stɪkər/ n. 尖刀；难题；张贴物；坚持不懈的人vt. 给…贴上标签价adj. 汽车价目标签的；汽车标签价的">sticker</span> in Canada’s oil <span class="annot" data-tooltip="patch /pætʃ/ n. 眼罩；斑点；碎片；小块土地vt. 修补；掩饰；解决vi. 打补丁时 态: patched, patching, patc">patch</span>. Recent results from the country’s oil producers show that plea has been answered. Oil prices have jumped as the passage of tankers through the <span class="annot" data-tooltip="strait /streɪt/ n. 海峡；（尤指经济拮据引起的）困境，境况窘迫adj. 狭窄的；苦恼的副 词: straitly">Strait</span> of Hormuz has been choked off. Last month Cenovus <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">Energy</span> reported that operating profits in its most recent <span class="annot" data-tooltip="quarter /'kwɔːrtər/ n. 四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一时 ">quarter</span> had <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> <span class="annot" data-tooltip="tripled /trɪp/ vi. 绊倒；犯错误；远足；轻快地走n. 旅行；绊倒；差错vt. 绊倒；使犯错TRIPabbr. transformation-">tripled</span> compared with a year before. Canadian Natural Resources posted its best-ever <span class="annot" data-tooltip="quarterly /'kwɔːrtərli/ n. 季刊adj. 一年四次的, 每季的adv. 一年四次地, 每季地">quarterly</span> adjusted operating profit. Moreover, the easing of political <span class="annot" data-tooltip="headwinds /'hedwɪnd/ n. 顶头风;逆风">headwinds</span> in Canada may improve the chances of the boom lasting. Canada has the world’s fourth-largest proven reserves, with 97% found in the oil sands in a remote corner of the land-locked province of Alberta. Here</p>
+<p>the bitumen, mixed with sand and clay, is almost solid, and is mined rather than tapped from the ground. It is costly and dirty to <span class="annot" data-tooltip="extract /'ekstrækt/ v. 提取；提炼索取，设法得到（对方不愿提供的信息、钱财等）选取；摘录；选录（用力）取出，拔出【正式】获得，得到（某种感觉或品">extract</span> and <span class="annot" data-tooltip="process /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">process</span>. Despite the drawbacks, high prices combined with a weakening of the Canadian dollar mean that “it hasn’t been this good to be an oil-sands producer in a very long time,” says Andrew Leach of the University of Alberta. Getting more oil to market is also set to become easier. Justin Trudeau, Canada’s former prime minister, was tepid in his support for new pipelines, fearing the consequences for the climate. In 2018 regional political opposition led Kinder Morgan, an American firm, to <span class="annot" data-tooltip="suspend /sə'spend/ vt. 延缓，推迟；使暂停；使悬浮vi. 悬浮；[体]禁赛时 态: suspended, suspending, suspend">suspend</span> work on a conduit from Alberta to the west coast in British Columbia. That forced the national government to step in and <span class="annot" data-tooltip="complete /kəm'pliːt/ adj. 完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善比较级: complete">complete</span> it. Oil eventually started flowing in 2024. Lately the political mood has shifted. A trade war with America, the destination for 90% of Canadian oil, has shifted the <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">federal</span> government’s focus to reducing dependence on its southern neighbour. That includes support for building new <span class="annot" data-tooltip="infrastructure /'ɪnfrəstrʌktʃər/ n. 基础设施; 基础结构">infrastructure</span> to transport oil (and gas) to <span class="annot" data-tooltip="ports /pɔːrt/ n. 港口，口岸；左舷；舱门；（计算机的）端口vi. 转向左舷vt. 左转舵；持（枪）PORTabbr. Photo Opit">ports</span> on Canada’s west coast, from where it can be <span class="annot" data-tooltip="shipped /ʃɪp/ vt. 运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Di">shipped</span> to Asia. Mark Carney, Canada’s current prime minister, is <span class="annot" data-tooltip="intent /ɪn'tent/ n. 意图；目的；含义adj. 专心的；急切的；坚决的副 词: intently">intent</span> on <span class="annot" data-tooltip="slashing /slæʃ/ v. （用利器）砍，劈割破；在…上留下深长的切口大量削减n. （用刀等）砍，劈（长而窄的）伤口，切口，砍痕斜杠；斜线号时 态:">slashing</span> the red tape that holds up projects, including <span class="annot" data-tooltip="streamlining n. 流线">streamlining</span> environmental permitting and consultations with indigenous communities. The speedier process will apply to a new pipeline under development to British Columbia, announced last month. Lisa Baiton of the Canadian Association of Petroleum Producers, an <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span>, has spoken of a “generational opportunity” to rally political and public support behind new oil projects. The promise of a federal government more friendly to pipes may not be enough, however. Enbridge, an <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span>-infrastructure firm, has paused construction of a pipeline to the east, citing a lack of <span class="annot" data-tooltip="commitments /kə'mɪtmənt/ n. 承诺；保证；信奉；献身；委任；花费金钱、时间、人力等">commitments</span> by producers to provide enough oil to make it worthwhile. The unique challenges of the oil sands provide an <span class="annot" data-tooltip="explanation /ˌeksplə'neɪʃn/ n. 解释, 说明能说明某事缘由的言语、事实、情况等">explanation</span>. Investment in new sites has been <span class="annot" data-tooltip="virtually /'vɜːrtʃuəl/ adj. 实质上的, 事实上的, 实际上的, 虚拟的名 词: virtuality">virtually</span> non-existent since the oil price <span class="annot" data-tooltip="crashed /kræʃ/ n. 碰撞；崩溃；坠落vt. 破碎；撞碎；坠落vi. 碰撞；坠毁；闯；突然倒台adj. 速成的时 态: crashed, cr">crashed</span> in 2014 as demand weakened while America’s shale oil gushed and opec opened the taps. “It cannot be overstated how much that changed the industry,” says Kent Fellows of the University of Calgary. Moreover, projects in the oil</p>
+<p>sands take <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> longer to develop than conventional wells. They require <span class="annot" data-tooltip="enormous /ɪ'nɔːrməs/ adj. 巨大的, 极大的, 庞大的副 词: enormously">enormous</span> amounts of capital that could be tied up for five to ten years before profits flow. <span class="annot" data-tooltip="uncertainty /ʌn'sɜːrtnti/ n. 无把握;不确定;变化不定无把握、不确定的事物">Uncertainty</span> over the future price of oil—and the danger that a change of government might lead to the reinstatement of tighter regulations—make for risky bets. Nevertheless, at the Calgary Stampede, an <span class="annot" data-tooltip="annual /'ænjuəl/ adj. 年度的；每年的n. 年刊，年鉴；一年生植物副 词: annually">annual</span> rodeo festival held in July that serves as the <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span>’s unofficial barometer, parties <span class="annot" data-tooltip="hosted /hoʊst/ n. 主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集时 态: hosted, hosting, host">hosted</span> by oil companies were back to their riotous best after quietening down in recent years. Their <span class="annot" data-tooltip="sponsorship /'spɑːnsərʃɪp/ n. 赞助；发起；保证人的地位；教父母身份">sponsorship</span> of <span class="annot" data-tooltip="rowdy /'raʊdi/ adj. 吵闹的；粗暴的n. 粗暴的人；好吵闹的人名 词: rowdyism">rowdy</span> chuckwagon <span class="annot" data-tooltip="races /reɪs/ n. 种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACE">races</span> broke records. That is as good a sign as any that another boom is in full swing. ■ This article was downloaded by zlibrary from https://www.economist.com/business/2026/08/20/canadas-oil-industry-is-booming-can- it-last</p>
+<div class="article-separator"></div>
+<div class="article-header">Business · Business | Schumpeter</div>
+<p>The war on data centres is a bit fake Developers are exaggerating their plans, just as politicians are overstating their opposition Aug 20th 2026 In February, shortly after making his feature-film <span class="annot" data-tooltip="debut /deɪ'bjuː/ n. 〈法〉演员首次演出时 态: debuted debuting debuts">debut</span> as a pen magnate in “Marty <span class="annot" data-tooltip="supreme /su'priːm/ adj. 最高的；至上的最重要的比较级: supremer，supremest 缩 写: supr">Supreme</span>”, Kevin O’Leary announced that he would build one of the world’s biggest data-centre projects in Utah. The market shrugged. What did Mr O’Leary, who is best known for <span class="annot" data-tooltip="presenting /'preznt/ vt. 呈现；介绍；提出；赠送vi. 举枪瞄准adj. 出席的；现在的n. 现在；礼物；瞄准时 态: presented, pr">presenting</span> “Shark <span class="annot" data-tooltip="tank /tæŋk/ n. （存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内时 态: t">Tank</span>”, know about data centres? How would it be paid for? Or powered? One analyst dismissed the project as an example of “vapourware <span class="annot" data-tooltip="gigawatts /ˈdʒɪɡəˌwɑt/ n. 千兆瓦；十亿瓦特">gigawatts</span>”. But a joke in the marketplace became dynamite in the town square. In June J. Stuart Adams, president of the Utah <span class="annot" data-tooltip="senate /ˈsenət/ n.（诸如美国、澳大利亚、法国的）参议院（the Senate） （某些国家的）大学理事会，大学评议会（古罗马的）元老院">Senate</span>, who had initially supported Mr O’Leary’s venture, demanded that its size be reduced by three-<span class="annot" data-tooltip="quarters n. 住处,岗位">quarters</span>. Mr O’Leary accused his critics of working for China (he later withdrew</p>
+<p>that), but eventually agreed to scale back his dreams. Even then Mr Adams, a long-serving <span class="annot" data-tooltip="republican /rɪ'pʌblɪkən/ adj. 共和国的, 共和政体的n. 拥护共和政体者, 共和主义者名 词: republicanism">Republican</span> lawmaker, along with a pair of county commissioners, lost primary elections because of the scandal. Data centres are a <span class="annot" data-tooltip="nightmare /'naɪtmer/ n. 噩梦〈口〉可怕的事情, 无法摆脱的恐惧形容词: nightmarish">nightmare</span> of political economy. Voters see them as ugly, dirty, noisy and power-hungry bastions of <span class="annot" data-tooltip="arrogant /'ærəɡənt/ adj. 自大的，傲慢的副 词: arrogantly">arrogant</span> <span class="annot" data-tooltip="silicon /'sɪlɪkən/ n. 〈化〉硅">Silicon</span> <span class="annot" data-tooltip="valley /'væli/ n. 流域；山谷；溪谷">Valley</span> companies. And—thanks to ChatGPT—it has never been easier to pen a letter to the planning department saying so. Yet the public has an awful lot riding on these windowless <span class="annot" data-tooltip="sheds /ʃed/ n. 棚, 库vt. 流出, 流下蜕皮, 树叶脱落时 态: shed, shedding, sheds">sheds</span>, for the stock market is a one-way bet on them being built. Data centres are particularly disorientating for Democrats, since unions <span class="annot" data-tooltip="tend /tend/ vt. 照料，照顾，伺候vi. 往，朝向易于；倾向时 态: tended，tending，tends">tend</span> to support the projects. If artificial intelligence is a class war, it pits a coalition of billionaires and electricians against the office droids both <span class="annot" data-tooltip="despise /dɪ'spaɪz/ vt. 轻视，鄙视时 态: despised, despising, despises">despise</span>. Wildcatters like Mr O’Leary are a soft target for politicians who want to be seen as tough on data centres but still want them to be built. On August 18th Josh Shapiro, the governor of Pennsylvania, derided the developers “scaring our communities” and signed an executive order he said would <span class="annot" data-tooltip="squash /skwɑːʃ/ vt. 将(某人[某物])压扁，压烂，挤碎将(某人[某物])向某方挤粗暴地使(某人)住嘴挤进平定(叛乱等)；镇压；制服n. 拥挤">squash</span> “speculative <span class="annot" data-tooltip="proposals /prə'poʊzl/ n. 提议，建议；求婚">proposals</span>” that had little chance of being built in the first <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span>. Of the more than 100 projects announced in the state, less than a fifth had applied for the permits needed to develop them, he said. <span class="annot" data-tooltip="imaginary /ɪ'mædʒɪneri/ adj. 想像中的, 假想的, 虚构的名 词: imaginariness">Imaginary</span> scalps are easy to claim. Silicon Valley giants are the biggest backers of data centres. But beside them is a long <span class="annot" data-tooltip="line /laɪn/ n. 绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long inter">line</span> of <span class="annot" data-tooltip="property /'prɑːpərti/ n. 财产；性质，性能；所有权形容词: propertyless">property</span> developers, private-capital firms, “neo-cloud” operators and crypto-miners, followed by international chancers, national rogues and local spivs. Most of their plans were destined to remain press <span class="annot" data-tooltip="releases /rɪ'liːs/ vt. 释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]时 态: released，rel">releases</span>. Analysts at Bernstein, a broker, attempted to <span class="annot" data-tooltip="quantify /'kwɑːntɪfaɪ/ vt. 量化；为…定量；确定数量vi. 量化；定量时 态: quantified, quantifying, quantifie">quantify</span> the <span class="annot" data-tooltip="credibility /ˌkredə'bɪləti/ n. 可靠性,可信性">credibility</span> of each watt of announced capacity. Plans by Google and <span class="annot" data-tooltip="amazon /ˈæməˌzɑn/ n. 高大强悍的女人；（古希腊神话中的）亚马孙族女战士Amazonn. 亚马逊河(南美洲大河)">Amazon</span> are taken at their word. Those by CoreWeave and Nebius, two large neo-clouds, are discounted by around half. Mr O’Leary is ignored. According to their model, another fantasist is Vermaland, a land bank that announced a gargantuan 3GW facility in Arizona last year. In May the project was reportedly cut by four-fifths after facing local opposition—a shadow-boxing knockout. Little information is available about a 1GW project in south Florida that was supposedly shelved in February, except that the land had been bought for $15m in 2024 by an <span class="annot" data-tooltip="obscure /əb'skjʊr/ adj. 无名的；鲜为人知的；默默无闻的费解的，晦涩的；模糊的，朦胧的；不清楚的v. 遮掩；遮蔽；使不分明隐藏，掩盖；使难理解，使">obscure</span> investment firm.</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>lawsuits</td><td>/'lɔːsuːt/ n.</td><td>诉讼（尤指非刑事案件）；诉讼案件</td></tr>
+<tr><td>bot</td><td>/bɑːt/ n.</td><td>马蝇幼虫，马蝇</td></tr>
+<tr><td>weary</td><td>/'wɪri/ adj.</td><td>疲倦的；厌烦的；令人厌烦的vi. 厌烦；疲倦vt. 使疲倦；使厌烦, weariest</td></tr>
+<tr><td>moderators</td><td>/'mɑːdəreɪtər/ n.</td><td>(讨论、会议等的)主持人(新教的)宗教领袖成绩核对人(原子堆中的)减速剂，慢化剂；阻滞剂，缓和剂</td></tr>
+<tr><td>tricky</td><td>/'trɪki/ adj.</td><td>机警的；狡猾的, trickiest</td></tr>
+<tr><td>moderate</td><td>/'mɑːdərət/ adj.</td><td>中等的，适度的，不很大的温和的；有节制的中庸的，稳健的，不走极端的vt. & vi. (使)减轻[缓和]；节制，moderating，moderates</td></tr>
+<tr><td>strike</td><td>/straɪk/ vi.</td><td>罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打, stricken striking, str</td></tr>
+<tr><td>stuck</td><td>/stʌk/ v.</td><td>刺（stick的过去式）adj. 不能动的；被卡住的</td></tr>
+<tr><td>clients</td><td>/'klaɪənt/ n.</td><td>委托人顾客, 常客</td></tr>
+<tr><td>respectively</td><td>/rɪ'spektɪv/ adj.</td><td>各自的; 各个的</td></tr>
+<tr><td>leading</td><td>/ˈliːdɪŋ/ adj.</td><td>主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）</td></tr>
+<tr><td>commissioned</td><td>/kə'mɪʃn/ n.</td><td>授权, 委托委员会佣金, 回扣vt. 委任, 委托, commissioning, commissions</td></tr>
+<tr><td>profound</td><td>/prə'faʊnd/ adj.</td><td>深度的；深切的；深远的知识渊博的，见解深刻的，深奥的，profoundest</td></tr>
+<tr><td>sponsored</td><td>/'spɑːnsər/ vt.</td><td>赞助, 发起n. 赞助者；主办者；保证人</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>revenue</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>traffic</td><td>/'træfɪk/ n.</td><td>交通；贸易；运输；通信量vt. 用…作交换；在…通行vi. 交易，买卖, trafficking, traffics</td></tr>
+<tr><td>overviews</td><td>/'oʊvərvjuː/ n.</td><td>概观；综述</td></tr>
+<tr><td>engagement</td><td>/ɪn'ɡeɪdʒmənt/ n.</td><td>订婚，婚约；约会，约定（尤指正式的或与工作有关的）；交战；诺言；进场（游戏术语）；参与度（指用户点赞、转发、评论、下载文档、观看视频、咨询等交互行为）</td></tr>
+<tr><td>quarter</td><td>/'kwɔːrtər/ n.</td><td>四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一, quartering, quarters</td></tr>
+<tr><td>sensor</td><td>/'sensər/ n.</td><td>传感器</td></tr>
+<tr><td>lawsuits</td><td>/'lɔːsuːt/ n.</td><td>诉讼（尤指非刑事案件）；诉讼案件</td></tr>
+<tr><td>anthropic</td><td>/ænˈθrɑpɪk/ adj.</td><td>人类的,有关人类的</td></tr>
+<tr><td>perplexity</td><td>/pər'pleksəti/ n.</td><td>困惑；混乱复杂，困难</td></tr>
+<tr><td>allege</td><td>/ə'ledʒ/ vt.</td><td>宣称，断言；提出…作为理由, alleging, alleges</td></tr>
+<tr><td>illegally</td><td>/ɪ'liːɡəli/ adv.</td><td>不法地</td></tr>
+<tr><td>leverage</td><td>/'levərɪdʒ/ n.</td><td>（能够操控形势的）影响力，手段，优势 杠杆力；杠杆作用v. 举债经营；为…融资有效利用某物（资源、优势、工具等）, leveraging, leverages</td></tr>
+<tr><td>negotiations</td><td>/nɪˌɡoʊʃi'eɪʃn/ n.</td><td>协商，谈判完成(难事)；通过</td></tr>
+<tr><td>ultimately</td><td>/'ʌltɪmətli/ adv.</td><td>最后;最终</td></tr>
+<tr><td>traffic</td><td>/'træfɪk/ n.</td><td>交通；贸易；运输；通信量vt. 用…作交换；在…通行vi. 交易，买卖, trafficking, traffics</td></tr>
+<tr><td>encourage</td><td>/ɪn'kɜːrɪdʒ/ vt.</td><td>鼓励, 激励促进, 助长, 激发, encouraging, encourages</td></tr>
+<tr><td>revenue</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>quarter</td><td>/'kwɔːrtər/ n.</td><td>四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一, quartering, quarters</td></tr>
+<tr><td>interacting</td><td>— </td><td>相互作用</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>piss</td><td>/pɪs/ vi.</td><td>小便vt. 撒尿弄脏n. 小便int. 呸！, pissing, pisses</td></tr>
+<tr><td>bumper</td><td>/bʌmp/ n.</td><td>肿块，隆起物；撞击vi. 碰撞，撞击；颠簸而行vt. 碰，撞；颠簸adv. 突然地，猛烈地, bumping, bumps</td></tr>
+<tr><td>sticker</td><td>/'stɪkər/ n.</td><td>尖刀；难题；张贴物；坚持不懈的人vt. 给…贴上标签价adj. 汽车价目标签的；汽车标签价的</td></tr>
+<tr><td>patch</td><td>/pætʃ/ n.</td><td>眼罩；斑点；碎片；小块土地vt. 修补；掩饰；解决vi. 打补丁, patching, patches</td></tr>
+<tr><td>strait</td><td>/streɪt/ n.</td><td>海峡；（尤指经济拮据引起的）困境，境况窘迫adj. 狭窄的；苦恼的</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>quarter</td><td>/'kwɔːrtər/ n.</td><td>四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一, quartering, quarters</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>tripled</td><td>/trɪp/ vi.</td><td>绊倒；犯错误；远足；轻快地走n. 旅行；绊倒；差错vt. 绊倒；使犯错TRIPabbr. transformation-induced plasticity 高</td></tr>
+<tr><td>quarterly</td><td>/'kwɔːrtərli/ n.</td><td>季刊adj. 一年四次的, 每季的adv. 一年四次地, 每季地</td></tr>
+<tr><td>headwinds</td><td>/'hedwɪnd/ n.</td><td>顶头风;逆风</td></tr>
+<tr><td>extract</td><td>/'ekstrækt/ v.</td><td>提取；提炼索取，设法得到（对方不愿提供的信息、钱财等）选取；摘录；选录（用力）取出，拔出【正式】获得，得到（某种感觉或品质）n. 摘录；选录；选曲；节录（尤指食</td></tr>
+<tr><td>process</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>suspend</td><td>/sə'spend/ vt.</td><td>延缓，推迟；使暂停；使悬浮vi. 悬浮；[体]禁赛, suspending, suspends</td></tr>
+<tr><td>complete</td><td>/kəm'pliːt/ adj.</td><td>完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善, completest 缩 写: comp, cpl</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>infrastructure</td><td>/'ɪnfrəstrʌktʃər/ n.</td><td>基础设施; 基础结构</td></tr>
+<tr><td>ports</td><td>/pɔːrt/ n.</td><td>港口，口岸；左舷；舱门；（计算机的）端口vi. 转向左舷vt. 左转舵；持（枪）PORTabbr. Photo Opitical Recorder Tracke</td></tr>
+<tr><td>shipped</td><td>/ʃɪp/ vt.</td><td>运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Division of the Nation</td></tr>
+<tr><td>intent</td><td>/ɪn'tent/ n.</td><td>意图；目的；含义adj. 专心的；急切的；坚决的</td></tr>
+<tr><td>slashing</td><td>/slæʃ/ v.</td><td>（用利器）砍，劈割破；在…上留下深长的切口大量削减n. （用刀等）砍，劈（长而窄的）伤口，切口，砍痕斜杠；斜线号，slashing，slashes</td></tr>
+<tr><td>streamlining</td><td>— n.</td><td>流线</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>commitments</td><td>/kə'mɪtmənt/ n.</td><td>承诺；保证；信奉；献身；委任；花费金钱、时间、人力等</td></tr>
+<tr><td>explanation</td><td>/ˌeksplə'neɪʃn/ n.</td><td>解释, 说明能说明某事缘由的言语、事实、情况等</td></tr>
+<tr><td>virtually</td><td>/'vɜːrtʃuəl/ adj.</td><td>实质上的, 事实上的, 实际上的, 虚拟的</td></tr>
+<tr><td>crashed</td><td>/kræʃ/ n.</td><td>碰撞；崩溃；坠落vt. 破碎；撞碎；坠落vi. 碰撞；坠毁；闯；突然倒台adj. 速成的, crashing, crashes</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>enormous</td><td>/ɪ'nɔːrməs/ adj.</td><td>巨大的, 极大的, 庞大的</td></tr>
+<tr><td>uncertainty</td><td>/ʌn'sɜːrtnti/ n.</td><td>无把握;不确定;变化不定无把握、不确定的事物</td></tr>
+<tr><td>annual</td><td>/'ænjuəl/ adj.</td><td>年度的；每年的n. 年刊，年鉴；一年生植物</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>hosted</td><td>/hoʊst/ n.</td><td>主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集, hosting, hosts</td></tr>
+<tr><td>sponsorship</td><td>/'spɑːnsərʃɪp/ n.</td><td>赞助；发起；保证人的地位；教父母身份</td></tr>
+<tr><td>rowdy</td><td>/'raʊdi/ adj.</td><td>吵闹的；粗暴的n. 粗暴的人；好吵闹的人</td></tr>
+<tr><td>races</td><td>/reɪs/ n.</td><td>种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACEabbr. Radiation Adap</td></tr>
+<tr><td>debut</td><td>/deɪ'bjuː/ n.</td><td>〈法〉演员首次演出</td></tr>
+<tr><td>supreme</td><td>/su'priːm/ adj.</td><td>最高的；至上的最重要的，supremest 缩 写: supr</td></tr>
+<tr><td>presenting</td><td>/'preznt/ vt.</td><td>呈现；介绍；提出；赠送vi. 举枪瞄准adj. 出席的；现在的n. 现在；礼物；瞄准, presenting, presents</td></tr>
+<tr><td>tank</td><td>/tæŋk/ n.</td><td>（存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内, tanking, tanks</td></tr>
+<tr><td>gigawatts</td><td>/ˈdʒɪɡəˌwɑt/ n.</td><td>千兆瓦；十亿瓦特</td></tr>
+<tr><td>senate</td><td>/ˈsenət/ </td><td>n.（诸如美国、澳大利亚、法国的）参议院（the Senate） （某些国家的）大学理事会，大学评议会（古罗马的）元老院</td></tr>
+<tr><td>quarters</td><td>— n.</td><td>住处,岗位</td></tr>
+<tr><td>republican</td><td>/rɪ'pʌblɪkən/ adj.</td><td>共和国的, 共和政体的n. 拥护共和政体者, 共和主义者</td></tr>
+<tr><td>nightmare</td><td>/'naɪtmer/ n.</td><td>噩梦〈口〉可怕的事情, 无法摆脱的恐惧</td></tr>
+<tr><td>arrogant</td><td>/'ærəɡənt/ adj.</td><td>自大的，傲慢的</td></tr>
+<tr><td>silicon</td><td>/'sɪlɪkən/ n.</td><td>〈化〉硅</td></tr>
+<tr><td>valley</td><td>/'væli/ n.</td><td>流域；山谷；溪谷</td></tr>
+<tr><td>sheds</td><td>/ʃed/ n.</td><td>棚, 库vt. 流出, 流下蜕皮, 树叶脱落, shedding, sheds</td></tr>
+<tr><td>tend</td><td>/tend/ vt.</td><td>照料，照顾，伺候vi. 往，朝向易于；倾向，tending，tends</td></tr>
+<tr><td>despise</td><td>/dɪ'spaɪz/ vt.</td><td>轻视，鄙视, despising, despises</td></tr>
+<tr><td>squash</td><td>/skwɑːʃ/ vt.</td><td>将(某人[某物])压扁，压烂，挤碎将(某人[某物])向某方挤粗暴地使(某人)住嘴挤进平定(叛乱等)；镇压；制服n. 拥挤的人群果汁汽水(软式)墙网球，壁球，sq</td></tr>
+<tr><td>proposals</td><td>/prə'poʊzl/ n.</td><td>提议，建议；求婚</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>imaginary</td><td>/ɪ'mædʒɪneri/ adj.</td><td>想像中的, 假想的, 虚构的</td></tr>
+<tr><td>line</td><td>/laɪn/ n.</td><td>绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long interspersed element)长散在元</td></tr>
+<tr><td>property</td><td>/'prɑːpərti/ n.</td><td>财产；性质，性能；所有权</td></tr>
+<tr><td>releases</td><td>/rɪ'liːs/ vt.</td><td>释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]，releasing，releases</td></tr>
+<tr><td>quantify</td><td>/'kwɑːntɪfaɪ/ vt.</td><td>量化；为…定量；确定数量vi. 量化；定量, quantifying, quantifies</td></tr>
+<tr><td>credibility</td><td>/ˌkredə'bɪləti/ n.</td><td>可靠性,可信性</td></tr>
+<tr><td>amazon</td><td>/ˈæməˌzɑn/ n.</td><td>高大强悍的女人；（古希腊神话中的）亚马孙族女战士Amazonn. 亚马逊河(南美洲大河)</td></tr>
+<tr><td>obscure</td><td>/əb'skjʊr/ adj.</td><td>无名的；鲜为人知的；默默无闻的费解的，晦涩的；模糊的，朦胧的；不清楚的v. 遮掩；遮蔽；使不分明隐藏，掩盖；使难理解，使晦涩, obscurest</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day29.html" class="nav-btn">← Day 29</a>
+  <a href="day31.html" class="nav-btn">Day 31 →</a>
+</div>
+
+<div class="progress">📖 Day 30 of 40</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-08-22</div>
+
+</body>
+</html>
