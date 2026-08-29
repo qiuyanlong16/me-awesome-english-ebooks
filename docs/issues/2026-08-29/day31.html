@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance & economics</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-08-29</div>
+
+<h1 class="article-title">Finance & economics</h1>
+<div class="article-section"></div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>they must pay income tax on money <span class="annot" data-tooltip="earned /ɪr/ n. 耳朵；听觉；倾听；穗vi. （美俚）听见；抽穗EARabbr. East African Railways 东非铁路公司">earned</span> from offshore insurance products bought in Hong Kong, according to Caixin, a Chinese magazine. The report rattled shares in insurers such as Prudential and AIA, which make a lot of their money in the semi-<span class="annot" data-tooltip="autonomous /ɔː'tɑːnəməs/ adj. 自治的副 词: autonomously">autonomous</span> city. This was only the latest instalment in a lengthy <span class="annot" data-tooltip="saga /'sɑːɡə/ n. 冒险故事；传说；英雄事迹">saga</span>. Last year China began sending tax notices to mainlanders who may have made money trading stocks in Hong Kong or America. In July the <span class="annot" data-tooltip="authorities /ə'θɔːrəti/ n. 威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗">authorities</span> also issued new rules bringing offshore trusts more <span class="annot" data-tooltip="firmly /'fɜːrmli/ adv. 坚固地;稳固地坚定地;坚决地">firmly</span> into the tax <span class="annot" data-tooltip="net /net/ n. 网；净利；网络；实价vi. 编网vt. 净赚；得到；用网捕adj. 纯粹的；净余的时 态: netted, nettin">net</span>. These moves <span class="annot" data-tooltip="exploit /ɪk'splɔɪt/ vt. 开发，开拓；剥削；开采n. 勋绩；功绩时 态: exploited, exploiting, exploits">exploit</span> a successful multilateral <span class="annot" data-tooltip="initiative /ɪ'nɪʃətɪv/ n. 主动性, 首创精神主动的行动, 倡议主动权">initiative</span> (they still exist), called the Common Reporting Standard, which allows tax authorities in different jurisdictions to share information with each other. China’s government has long viewed offshore <span class="annot" data-tooltip="assets /'æset/ n. 资产；有用的东西；有利条件；优点">assets</span> as a tax <span class="annot" data-tooltip="dodge /dɑːdʒ/ vt. & vi. 闪躲vt. 回避n. 闪躲, 躲避伎俩, 妙计时 态: dodged, dodging, dodges">dodge</span>—or, worse, a <span class="annot" data-tooltip="hedge /hedʒ/ vt. 用树篱笆围住；避免作正面答复vi. 用树篱围住；避免作正面答复n. 树篱；障碍时 态: hedged, hedging,">hedge</span> against <span class="annot" data-tooltip="communist /'kɑːmjənɪst/ n. 共产主义者adj. 共产主义的, 信仰共产主义的">Communist</span> Party misrule. That makes them a <span class="annot" data-tooltip="tempting /tempt/ vt. 引诱或怂恿(某人)干不正当的事使想要时 态: tempted, tempting, tempts">tempting</span> tax target. But the state’s recent efforts to <span class="annot" data-tooltip="raise /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raise</span> <span class="annot" data-tooltip="revenue /'revənuː/ n. 收入，收益；财政收入，税收">revenue</span> have gone further, <span class="annot" data-tooltip="extending /ɪk'stend/ vt. & vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出时 态:">extending</span> deep into the <span class="annot" data-tooltip="domestic /də'mestɪk/ adj. 国内的；家庭的；驯养的；一心只管家务的">domestic</span> economy. According to Bank of America, at least 80 listed firms received demands for back taxes in the first half of this year, almost as many as in the whole of 2025. In June, for example, local authorities told Heilongjiang Agriculture to pay 1.4bn yuan ($208m). The company had wrongly claimed a tax break on land leased to family farms <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span> the firm. The business, better known as Beidahuang (which translates as “Great Northern <span class="annot" data-tooltip="wilderness /'wɪldərnəs/ n. 荒野;沙漠(政治家)在野；不再当政(或掌权)">Wilderness</span>”), is no offshore capitalist-roader. Its assets include vast tracts of black soil in China’s northernmost province. It is also controlled by the state. Indeed, one of its <span class="annot" data-tooltip="owners /'oʊnər/ n. 所有者；物主">owners</span> is the Ministry of Finance. As well as policing the misuse of tax breaks, China has begun to remove some of them. From next year exports of high-<span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span> batteries will no longer <span class="annot" data-tooltip="qualify /'kwɑːlɪfaɪ/ vt. & vi. (使)具有资格, (使)合格vt. 限定, 修饰时 态: qualified, qualifying, qu">qualify</span> for rebates on <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span>-added tax. <span class="annot" data-tooltip="solar /'soʊlər/ adj. 太阳的；日光的；利用太阳光的；与太阳相关的n. 日光浴室">Solar</span> cells, industrial glass, ceramics and certain chemicals also lost eligibility in April. The aim seems to be twofold: to raise some money and to force some consolidation in <span class="annot" data-tooltip="industries /'ɪndəstri/ n. 工业；产业；勤勉">industries</span> suffering from overcapacity. China has also started to broaden its <span class="annot" data-tooltip="peculiar /pɪ'kjuːliər/ adj. 奇怪的, 异常的特有的, 独具的〈非正〉不舒服, 有病的副 词: peculiarly">peculiar</span> <span class="annot" data-tooltip="consumption /kən'sʌmpʃn/ n. 消费，消耗；消费[耗]量肺病；结核病">consumption</span> tax. The levy applies to only 15 kinds of goods, including <span class="annot" data-tooltip="petrol /'petrəl/ n. 汽油">petrol</span>, tobacco and alcohol. It is a little “outdated”, says Winnie Wu of Bank of America. “If you smoke, you</p>
+<p>pay tax, but you don’t need to pay tax when you buy a private jet.” In July China announced new taxes on lithium-ion batteries and <span class="annot" data-tooltip="solar /'soʊlər/ adj. 太阳的；日光的；利用太阳光的；与太阳相关的n. 日光浴室">solar</span> cells. It is also <span class="annot" data-tooltip="considering /kən'sɪdərɪŋ/ prep. 考虑到, 就…而论adv. 从各方面考虑, 从通盘考虑">considering</span> a tax on sugary drinks, such as the milk tea <span class="annot" data-tooltip="beloved /bɪ'lʌvɪd/ adj. 心爱的；挚爱的n. 心爱的人；亲爱的教友名 词: beloved">beloved</span> of younger Chinese. No sign yet of a tax on jets. Many of these tax <span class="annot" data-tooltip="tweaks /twiːk/ n. 拧；扭；焦急vt. 扭；用力拉；开足马力时 态: tweaked, tweaking, tweaks">tweaks</span> make sense, from a microeconomic perspective. “Sin” taxes can <span class="annot" data-tooltip="encourage /ɪn'kɜːrɪdʒ/ vt. 鼓励, 激励促进, 助长, 激发时 态: encouraged, encouraging, encourages">encourage</span> healthier behaviour. Broader tax bases are better. The fuller taxation of offshore earnings will lift the income tax’s paltry contribution to state coffers (see chart). And pruning export rebates could <span class="annot" data-tooltip="ease /iːz/ vt. 减轻，缓和；使安心n. 安逸，悠闲；轻松，舒适vi. 减轻，缓和；放松；灵活地移动EASEabbr. Electroni">ease</span> trade <span class="annot" data-tooltip="tensions /'tenʃn/ n. 张力，拉力；紧张，不安；电压vt. 使紧张；使拉紧时 态: tensioned, tensioning, tension">tensions</span> and force a shake-out in oversupplied <span class="annot" data-tooltip="industries /'ɪndəstri/ n. 工业；产业；勤勉">industries</span>. But the <span class="annot" data-tooltip="timing /'taɪmɪŋ/ n. 定时；时间选择；调速v. 为…安排时间；测定…的时间（time的ing形式）">timing</span> of this <span class="annot" data-tooltip="belt /belt/ n. 腰带, 带子区域, 地带vt.（用带子）系住；（作为惩罚用皮带等）抽打；击打vi.（尤指驾车）疾驰；飞奔时 态: bel">belt</span>-tightening is unfortunate. Many economists have been calling for bold <span class="annot" data-tooltip="fiscal /'fɪskl/ adj. 国库的；会计的，财政的副 词: fiscally">fiscal</span> stimulus to help the economy recover from the <span class="annot" data-tooltip="property /'prɑːpərti/ n. 财产；性质，性能；所有权形容词: propertyless">property</span> <span class="annot" data-tooltip="slump /slʌmp/ vi. 大幅度下降, 暴跌沉重或突然地落下[倒下]n. 萧条期〈美〉(个人、球队等的)低潮状态时 态: slumped, slu">slump</span>. One idea is a big increase in rural <span class="annot" data-tooltip="pensions /ˈpenʃn/ n. 津贴；退休金，抚恤金；膳宿费vt. 发给养老金或抚恤金时 态: pensioned, pensioning, pensi">pensions</span>. Instead the government seems spooked by the erosion of its <span class="annot" data-tooltip="revenues /'revənuː/ n. 收入，收益；财政收入，税收">revenues</span> over the past few years. The best that can be hoped for is that the increased taxes will <span class="annot" data-tooltip="fall /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">fall</span> primarily on people who would otherwise have saved the money. China’s government is <span class="annot" data-tooltip="cautious /'kɔːʃəs/ adj. 小心的, 谨慎的副 词: cautiously">cautious</span> about taking on additional fiscal obligations that will only grow as the population ages. To balance the economy, it will instead rely on a modernised tax system and the old-fashioned stoicism of the rural poor. Eat bitterness, tax sweetness. ■</p>
+<p>This article was downloaded by zlibrary from https://www.economist.com/finance-and-economics/2026/08/27/china-should-be- loosening-budgetary-policy-its-doing-the-opposite</p>
+<p>Finance & economics | Growth on ICE The economic costs of Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s immigration <span class="annot" data-tooltip="crackdown /'krækdaʊn/ n. 压迫,镇压,打击">crackdown</span> A smaller <span class="annot" data-tooltip="workforce /'wɜːrkfɔːrs/ n. 全体员工(国家或行业等)劳动力,劳动大军,劳动人口">workforce</span> and slower growth Aug 27th 2026 On May 28th Art Lussi received an alarming message. His hotel, the Grandview Lake Placid, in a mountain resort in upstate New York, was halfway through a 150-room renovation ahead of the summer rush. But that morning Immigration and Customs <span class="annot" data-tooltip="enforcement /ɪn'fɔːrsmənt/ n. 强制,实施,执行">Enforcement</span> (ICE) agents had <span class="annot" data-tooltip="detained /dɪ'teɪn/ vt. 拘留；留住；耽搁时 态: detained, detaining, detains">detained</span> a Venezuelan <span class="annot" data-tooltip="maintenance /'meɪntənəns/ n. 维持; 维护; 保养; 维修赡养费">maintenance</span> worker (with legal status), plus 20 contractors. Mr Lussi estimates that the resulting delay, of <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> a month, cost half a million dollars in lost business. In a town already short of workers, finding replacements was nearly impossible. “We could still use 20 more people right now,” he says.</p>
+<p>Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> promised a draconian <span class="annot" data-tooltip="crackdown /'krækdaʊn/ n. 压迫,镇压,打击">crackdown</span> on immigration and has largely kept his word. Since his return to office, America’s southern border has in effect been closed to irregular migrants, access to <span class="annot" data-tooltip="asylum /ə'saɪləm/ n. 庇护；收容所，救济院">asylum</span> has been sharply <span class="annot" data-tooltip="curtailed /kɜːr'teɪl/ vt. 截断, 缩短时 态: curtailed, curtailing, curtails">curtailed</span>, humanitarian-parole <span class="annot" data-tooltip="routes /ruːt，raʊt/ n. 路, 路途, 路线, 路程时 态: routed, routing, routes">routes</span> mostly shut and temporary protection largely <span class="annot" data-tooltip="withdrawn /wɪð'drɔːn/ adj. 沉默寡言的；怕羞的；内向的v.（使）撤离；撤销；取款；收回（前言）；退出（withdraw 的过去分词）">withdrawn</span>. High-skilled <span class="annot" data-tooltip="migration /maɪ'ɡreɪʃn/ n. 迁移, 移居">migration</span> is under pressure from tighter rules and proposed <span class="annot" data-tooltip="restrictions /rɪ'strɪkʃn/ n. 约束，限制管制，限定；法律，规章">restrictions</span> on student visas and employment- based green cards. ICE has increased arrests on America’s streets, picking up many without criminal convictions. All told, the administration claims to have <span class="annot" data-tooltip="deported /dɪ'pɔːrt/ vt. 举止；放逐；驱逐出境时 态: deported, deporting, deports">deported</span> 1m people and says another 2.2m have left voluntarily. These numbers may well be <span class="annot" data-tooltip="exaggerated /ɪɡ'zædʒəreɪtɪd/ adj. 夸大的,言过其实的,夸张的">exaggerated</span>. But by early 2026 deportations from within the country were running at roughly five times the rate before Mr Trump’s return, according to the Deportation Data Project at the University of California, Berkeley, and the University of California, Los Angeles. In a nation of <span class="annot" data-tooltip="immigrants /'ɪmɪɡrənt/ n. 移民">immigrants</span>, this has brought about a historic reversal. In 2022- 24, in a post-<span class="annot" data-tooltip="pandemic /pæn'demɪk/ adj. （疾病）在全国（或世界）流行的">pandemic</span> <span class="annot" data-tooltip="surge /sɜːrdʒ/ n. (情感的) 突发，涌现，突然出现（数量的）急剧上升，激增；大量；一大批奔涌向前；突然的向上运动（电流）浪涌v. 涌；汹涌">surge</span>, <span class="annot" data-tooltip="net /net/ n. 网；净利；网络；实价vi. 编网vt. 净赚；得到；用网捕adj. 纯粹的；净余的时 态: netted, nettin">net</span> immigration exceeded 2m a year; in 2025 it was roughly zero, or even <span class="annot" data-tooltip="negative /'neɡətɪv/ adj. 拒绝的；怀疑的；不同意的消极的，非建设性的无预期结果的〈数〉负的；〈电〉阴的，负的n. 否定词语，否定的观点；拒绝；否认">negative</span>, estimates the Brookings Institution, a think-<span class="annot" data-tooltip="tank /tæŋk/ n. （存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内时 态: t">tank</span>. The drain is probably accelerating. The consequences are already <span class="annot" data-tooltip="apparent /ə'pærənt/ adj. 显然的；表面上的副 词: apparently">apparent</span>, in <span class="annot" data-tooltip="shortages /'ʃɔːrtɪdʒ/ n. 不足; 缺少; 缺少量; 不足额">shortages</span> of labour at businesses like Mr Lussi’s, a <span class="annot" data-tooltip="shrinking /ʃrɪŋk/ vt. & vi. 收缩；退缩时 态: shrank ，shrunk shrunk，shrunken shrinking，shr">shrinking</span> <span class="annot" data-tooltip="workforce /'wɜːrkfɔːrs/ n. 全体员工(国家或行业等)劳动力,劳动大军,劳动人口">workforce</span> and slower growth. The long-term impact on America’s economic dynamism will be <span class="annot" data-tooltip="severe /sɪ'vɪr/ adj. 严厉的；苛刻的；剧烈的；严峻的比较级: severer, severest">severe</span>. The <span class="annot" data-tooltip="demographic /ˌdemə'ɡræfɪk/ adj. 人口统计学的">demographic</span> maths look ugly. The Congressional Budget Office, a non- partisan scorekeeper, thinks America will have 2.3m fewer 18- to 64-year- olds in 2026 than it expected at the start of 2025. Economists at the <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">Federal</span> Reserve reckon that the total population could grow by less than 0.2% this year—the slowest pace since 1951, when the Korean war pulled young men out of the civilian count. The hit to the workforce is larger, since immigrants are likelier to work than native-born Americans. Since January the labour force has shrunk by more than 1m. This is putting the labour market under strain. In 2022-24 employers added more than 230,000 jobs a month on average; in the past year and a half, that has slowed to 30,000. Yet the <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> unemployed, just below 7m, has <span class="annot" data-tooltip="barely /'berli/ adv. 仅仅，勉强；几乎不；公开地；贫乏地">barely</span> <span class="annot" data-tooltip="budged /bʌd/ n. 芽，萌芽；蓓蕾vi. 发芽，萌芽vt. 使发芽时 态: budded, budding, buds">budged</span>. With migration collapsing and the population greying, job gains are structurally limited.</p>
+<p>Wendy Edelberg of Brookings and her co-authors estimate that the “break- even” rate of job gains needed to keep unemployment steady fell to 20,000- 50,000 a month in the second half of 2025. The Dallas Fed puts it at roughly zero by the year’s end (see chart 1). Ms Edelberg expects “a break-even rate of zero for this year, too”. “I think this is our <span class="annot" data-tooltip="version /'vɜːrʒn/ n. 变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本">version</span> of a healthy labour market given what is happening with population growth,” she says. That could make life <span class="annot" data-tooltip="awkward /'ɔːkwərd/ adj. 笨拙的；尴尬的；棘手的；不合适的副 词: awkwardly">awkward</span> for Kevin Warsh, the Fed’s <span class="annot" data-tooltip="chairman /'tʃermən/ n. 主席，会长；董事长时 态: chairmanned, chairmanning, chairmans">chairman</span>. <span class="annot" data-tooltip="net /net/ n. 网；净利；网络；实价vi. 编网vt. 净赚；得到；用网捕adj. 纯粹的；净余的时 态: netted, nettin">Net</span> job losses will bring pressure to cut rates, even when they are <span class="annot" data-tooltip="consistent /kən'sɪstənt/ adj. 一贯的, 始终如一的一致的, 符合的副 词: consistently">consistent</span> with full employment. The risk also runs the other way. Even modest gains could now tighten the labour market and add to inflationary pressure. A lack of labour will also <span class="annot" data-tooltip="weigh /weɪ/ vt. & vi. 称…的重量link v. 重达vt. 权衡；考虑时 态: weighed，weighing，weighs">weigh</span> on how fast the economy grows. In the past, an expanding <span class="annot" data-tooltip="workforce /'wɜːrkfɔːrs/ n. 全体员工(国家或行业等)劳动力,劳动大军,劳动人口">workforce</span> has contributed about 1.4 percentage points a year to potential GDP growth—the economy’s <span class="annot" data-tooltip="sustainable adj. (对自然资源和能源的利用)不破坏生态平衡的, 合理利用的；可持续的">sustainable</span> speed—according to Seth Murray and Ivan Vidangos, two Fed economists. In 2026 that could <span class="annot" data-tooltip="fall /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">fall</span> to almost zero, requiring rising <span class="annot" data-tooltip="productivity /ˌproʊdʌk'tɪvəti/ n. 生产率, 生产力">productivity</span> to do <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> all the work. That is a lot to ask in the near term of the artificial-intelligence boom. Earlier comparable technologies have often taken <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span> to have their full effect. In the first half of 2026 labour-productivity growth was a lacklustre 1.1% (at an annualised rate). Over time, labour scarcity may itself <span class="annot" data-tooltip="encourage /ɪn'kɜːrɪdʒ/ vt. 鼓励, 激励促进, 助长, 激发时 态: encouraged, encouraging, encourages">encourage</span></p>
+<p>firms to <span class="annot" data-tooltip="adopt /ə'dɑːpt/ vt. 收养采用, 采纳, 采取正式接受, 通过时 态: adopted, adopting, adopts">adopt</span> AI more quickly. In the short run, however, the demands of the data-centre build-out could <span class="annot" data-tooltip="worsen /'wɜːrsn/ vt. & vi. (使)变得更坏,(使)恶化时 态: worsened, worsening, worsens">worsen</span> <span class="annot" data-tooltip="shortages /'ʃɔːrtɪdʒ/ n. 不足; 缺少; 缺少量; 不足额">shortages</span> elsewhere and slow the AI boom. The most visible impact of Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s <span class="annot" data-tooltip="crackdown /'krækdaʊn/ n. 压迫,镇压,打击">crackdown</span> <span class="annot" data-tooltip="stems /stem/ n. (花草的)茎, (树木的)干词干vt. 遏制[阻止](液体的流动等)时 态: stemmed, stemming, st">stems</span> from his deportation <span class="annot" data-tooltip="campaign /kæm'peɪn/ n. 运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）时">campaign</span>. Between January 2025 and June 2026, ICE made roughly 500,000 arrests in the <span class="annot" data-tooltip="interior /ɪn'tɪriər/ n. 内部内地adj. 内部的内地的, 国内的名 词: interiority">interior</span> that resulted in detention. This has had a <span class="annot" data-tooltip="chilling /tʃɪl/ vt. & vi. (使)变冷, (使)变凉n. 寒冷, 寒气寒颤, 发冷">chilling</span> effect. In a survey of <span class="annot" data-tooltip="immigrants /'ɪmɪɡrənt/ n. 移民">immigrants</span> last year by KFF, a think- <span class="annot" data-tooltip="tank /tæŋk/ n. （存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内时 态: t">tank</span>, and the New York Times, two in five respondents who were likely to be undocumented said they had avoided going to work. Johnny Vasquez of the Rio Grande <span class="annot" data-tooltip="valley /'væli/ n. 流域；山谷；溪谷">Valley</span> Builders Association, in <span class="annot" data-tooltip="texas /'teksəs/ n. 德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室">Texas</span>, recalls that after <span class="annot" data-tooltip="enforcement /ɪn'fɔːrsmənt/ n. 强制,实施,执行">enforcement</span> intensified in June 2025, building sites were “ghost towns”. To <span class="annot" data-tooltip="quantify /'kwɑːntɪfaɪ/ vt. 量化；为…定量；确定数量vi. 量化；定量时 态: quantified, quantifying, quantifie">quantify</span> the effect, The Economist has used data from the Current Population Survey to build a proxy for workers likely to be undocumented: non-citizens aged 18 to 64, born abroad, with no more than a high-school education. We calculate that employment among this <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span> has fallen by about 900,000 since Mr Trump took office again (see chart 2). Small sample sizes make the estimate <span class="annot" data-tooltip="volatile /'vɑːlətl/ adj. （人或其情绪）不稳定的；易变的；易怒的，喜怒无常的（情况）可能急剧波动的；不稳定的；易恶化的（物质）易挥发的，易气化的【">volatile</span>, but the scale of the decline is hard to miss. Construction has been hardest hit. The <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> <span class="annot" data-tooltip="employs /ɪm'plɔɪ/ vt. 使用，采用；雇用；使忙于，使从事于n. 雇用；使用时 态: employed, employing, employs">employs</span> about 11m people. Roughly 30% are foreign-born; in trades such as drywalling, framing and</p>
+<p>roofing, most are <span class="annot" data-tooltip="immigrants /'ɪmɪɡrənt/ n. 移民">immigrants</span>. “Our local <span class="annot" data-tooltip="workforce /'wɜːrkfɔːrs/ n. 全体员工(国家或行业等)劳动力,劳动大军,劳动人口">workforce</span> has been depleted in some trades by 70-75%,” says Scott Brannock, president of the Northeast Florida Builders Association. <span class="annot" data-tooltip="immigrant /'ɪmɪɡrənt/ n. 移民">Immigrant</span> employment is also <span class="annot" data-tooltip="falling /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">falling</span> sharply in <span class="annot" data-tooltip="restaurants /'restrɑːnt/ n. 饭店, 餐馆">restaurants</span> and hotels, food <span class="annot" data-tooltip="processing /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">processing</span>, <span class="annot" data-tooltip="grocery /'ɡroʊsəri/ n. 杂货业杂货店">grocery</span> stores and care services. Some employers have responded by raising pay. <span class="annot" data-tooltip="annual /'ænjuəl/ adj. 年度的；每年的n. 年刊，年鉴；一年生植物副 词: annually">Annual</span> <span class="annot" data-tooltip="wage /weɪdʒ/ vi. 进行；发动；从事n. 工资；报偿；代价vt. 开展；进行时 态: waged, waging, wages">wage</span> growth for non-supervisory construction workers is running at 5.2%, about 1.4 percentage points faster than in January 2025. Yet even hefty <span class="annot" data-tooltip="rises /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rises</span> have failed to <span class="annot" data-tooltip="lure /lʊr/ n. 诱惑物；诱惑；饵vt. 引诱；诱惑时 态: lured, luring, lures">lure</span> enough American-born workers into physically demanding trades. Their employment has often fallen <span class="annot" data-tooltip="alongside /əˌlɔːŋ'saɪd/ adv. 靠着边，沿着边prep. (表示位置)在…旁边；沿着…的边；与…并排靠拢着(表示比较)与…放在一起比较(表示伴随)与…一">alongside</span> that of immigrants, rather than replacing it (see chart3). This is because the two are complementary: if a framing <span class="annot" data-tooltip="crew /kruː/ n. 全体人员，全体船员；队，组vi. 一起工作vt. 使当船员时 态: crewed, crewing, crews">crew</span> disappears, there is less work for electricians and <span class="annot" data-tooltip="supervisors /'suːpərvaɪzər/ n. 监督者, 管理者形容词: supervisory">supervisors</span>. Longer-lasting <span class="annot" data-tooltip="damage /'dæmɪdʒ/ v. 损害；伤害；毁坏；破坏n. 损坏，破坏，损失，损害，伤害（法院判定的）损害赔偿金时 态: damaged, damagi">damage</span> may come from a slowdown in high-skilled immigration. The administration has tightened rules on student visas—down by a third last year—H-1B visas for skilled workers and green cards. At the technological frontier, America relies heavily on foreigners: American- trained workers born abroad make up 35% of those with PhDs in science, technology, engineering and maths. Michael Clemens of the Peterson Institute for International Economics, another think-<span class="annot" data-tooltip="tank /tæŋk/ n. （存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内时 态: t">tank</span>, and his co-authors estimate that such a <span class="annot" data-tooltip="sustained /sə'steɪnd/ adj. 持久的;持续的">sustained</span> <span class="annot" data-tooltip="squeeze /skwiːz/ vt. & vi. 挤, 榨, 捏vt. 榨取, 挤出n. 挤, 榨, 捏亲切的拥抱或握手拥挤, 积压缺乏钱或时间等所引致的困难">squeeze</span> on student visas would <span class="annot" data-tooltip="shrink /ʃrɪŋk/ vt. & vi. 收缩；退缩时 态: shrank ，shrunk shrunk，shrunken shrinking，shr">shrink</span> that</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>earned</td><td>/ɪr/ n.</td><td>耳朵；听觉；倾听；穗vi. （美俚）听见；抽穗EARabbr. East African Railways 东非铁路公司, earing, ears</td></tr>
+<tr><td>autonomous</td><td>/ɔː'tɑːnəməs/ adj.</td><td>自治的</td></tr>
+<tr><td>saga</td><td>/'sɑːɡə/ n.</td><td>冒险故事；传说；英雄事迹</td></tr>
+<tr><td>authorities</td><td>/ə'θɔːrəti/ n.</td><td>威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗</td></tr>
+<tr><td>firmly</td><td>/'fɜːrmli/ adv.</td><td>坚固地;稳固地坚定地;坚决地</td></tr>
+<tr><td>net</td><td>/net/ n.</td><td>网；净利；网络；实价vi. 编网vt. 净赚；得到；用网捕adj. 纯粹的；净余的, netting, nets</td></tr>
+<tr><td>exploit</td><td>/ɪk'splɔɪt/ vt.</td><td>开发，开拓；剥削；开采n. 勋绩；功绩, exploiting, exploits</td></tr>
+<tr><td>initiative</td><td>/ɪ'nɪʃətɪv/ n.</td><td>主动性, 首创精神主动的行动, 倡议主动权</td></tr>
+<tr><td>assets</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>dodge</td><td>/dɑːdʒ/ vt.</td><td>& vi. 闪躲vt. 回避n. 闪躲, 躲避伎俩, 妙计, dodging, dodges</td></tr>
+<tr><td>hedge</td><td>/hedʒ/ vt.</td><td>用树篱笆围住；避免作正面答复vi. 用树篱围住；避免作正面答复n. 树篱；障碍, hedging, hedges</td></tr>
+<tr><td>communist</td><td>/'kɑːmjənɪst/ n.</td><td>共产主义者adj. 共产主义的, 信仰共产主义的</td></tr>
+<tr><td>tempting</td><td>/tempt/ vt.</td><td>引诱或怂恿(某人)干不正当的事使想要, tempting, tempts</td></tr>
+<tr><td>raise</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>revenue</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>extending</td><td>/ɪk'stend/ vt.</td><td>& vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出，extending，extends</td></tr>
+<tr><td>domestic</td><td>/də'mestɪk/ adj.</td><td>国内的；家庭的；驯养的；一心只管家务的</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>wilderness</td><td>/'wɪldərnəs/ n.</td><td>荒野;沙漠(政治家)在野；不再当政(或掌权)</td></tr>
+<tr><td>owners</td><td>/'oʊnər/ n.</td><td>所有者；物主</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>qualify</td><td>/'kwɑːlɪfaɪ/ vt.</td><td>& vi. (使)具有资格, (使)合格vt. 限定, 修饰, qualifying, qualifies</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>solar</td><td>/'soʊlər/ adj.</td><td>太阳的；日光的；利用太阳光的；与太阳相关的n. 日光浴室</td></tr>
+<tr><td>industries</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>peculiar</td><td>/pɪ'kjuːliər/ adj.</td><td>奇怪的, 异常的特有的, 独具的〈非正〉不舒服, 有病的</td></tr>
+<tr><td>consumption</td><td>/kən'sʌmpʃn/ n.</td><td>消费，消耗；消费[耗]量肺病；结核病</td></tr>
+<tr><td>petrol</td><td>/'petrəl/ n.</td><td>汽油</td></tr>
+<tr><td>solar</td><td>/'soʊlər/ adj.</td><td>太阳的；日光的；利用太阳光的；与太阳相关的n. 日光浴室</td></tr>
+<tr><td>considering</td><td>/kən'sɪdərɪŋ/ prep.</td><td>考虑到, 就…而论adv. 从各方面考虑, 从通盘考虑</td></tr>
+<tr><td>beloved</td><td>/bɪ'lʌvɪd/ adj.</td><td>心爱的；挚爱的n. 心爱的人；亲爱的教友</td></tr>
+<tr><td>tweaks</td><td>/twiːk/ n.</td><td>拧；扭；焦急vt. 扭；用力拉；开足马力, tweaking, tweaks</td></tr>
+<tr><td>encourage</td><td>/ɪn'kɜːrɪdʒ/ vt.</td><td>鼓励, 激励促进, 助长, 激发, encouraging, encourages</td></tr>
+<tr><td>ease</td><td>/iːz/ vt.</td><td>减轻，缓和；使安心n. 安逸，悠闲；轻松，舒适vi. 减轻，缓和；放松；灵活地移动EASEabbr. Electronic Airborne Systems E</td></tr>
+<tr><td>tensions</td><td>/'tenʃn/ n.</td><td>张力，拉力；紧张，不安；电压vt. 使紧张；使拉紧, tensioning, tensions</td></tr>
+<tr><td>industries</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>timing</td><td>/'taɪmɪŋ/ n.</td><td>定时；时间选择；调速v. 为…安排时间；测定…的时间（time的ing形式）</td></tr>
+<tr><td>belt</td><td>/belt/ n.</td><td>腰带, 带子区域, 地带vt.（用带子）系住；（作为惩罚用皮带等）抽打；击打vi.（尤指驾车）疾驰；飞奔, belting, belts</td></tr>
+<tr><td>fiscal</td><td>/'fɪskl/ adj.</td><td>国库的；会计的，财政的</td></tr>
+<tr><td>property</td><td>/'prɑːpərti/ n.</td><td>财产；性质，性能；所有权</td></tr>
+<tr><td>slump</td><td>/slʌmp/ vi.</td><td>大幅度下降, 暴跌沉重或突然地落下[倒下]n. 萧条期〈美〉(个人、球队等的)低潮状态, slumping, slumps</td></tr>
+<tr><td>pensions</td><td>/ˈpenʃn/ n.</td><td>津贴；退休金，抚恤金；膳宿费vt. 发给养老金或抚恤金, pensioning, pensions</td></tr>
+<tr><td>revenues</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>fall</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>cautious</td><td>/'kɔːʃəs/ adj.</td><td>小心的, 谨慎的</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>crackdown</td><td>/'krækdaʊn/ n.</td><td>压迫,镇压,打击</td></tr>
+<tr><td>workforce</td><td>/'wɜːrkfɔːrs/ n.</td><td>全体员工(国家或行业等)劳动力,劳动大军,劳动人口</td></tr>
+<tr><td>enforcement</td><td>/ɪn'fɔːrsmənt/ n.</td><td>强制,实施,执行</td></tr>
+<tr><td>detained</td><td>/dɪ'teɪn/ vt.</td><td>拘留；留住；耽搁, detaining, detains</td></tr>
+<tr><td>maintenance</td><td>/'meɪntənəns/ n.</td><td>维持; 维护; 保养; 维修赡养费</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>crackdown</td><td>/'krækdaʊn/ n.</td><td>压迫,镇压,打击</td></tr>
+<tr><td>asylum</td><td>/ə'saɪləm/ n.</td><td>庇护；收容所，救济院</td></tr>
+<tr><td>curtailed</td><td>/kɜːr'teɪl/ vt.</td><td>截断, 缩短, curtailing, curtails</td></tr>
+<tr><td>routes</td><td>/ruːt，raʊt/ n.</td><td>路, 路途, 路线, 路程, routing, routes</td></tr>
+<tr><td>withdrawn</td><td>/wɪð'drɔːn/ adj.</td><td>沉默寡言的；怕羞的；内向的v.（使）撤离；撤销；取款；收回（前言）；退出（withdraw 的过去分词）</td></tr>
+<tr><td>migration</td><td>/maɪ'ɡreɪʃn/ n.</td><td>迁移, 移居</td></tr>
+<tr><td>restrictions</td><td>/rɪ'strɪkʃn/ n.</td><td>约束，限制管制，限定；法律，规章</td></tr>
+<tr><td>deported</td><td>/dɪ'pɔːrt/ vt.</td><td>举止；放逐；驱逐出境, deporting, deports</td></tr>
+<tr><td>exaggerated</td><td>/ɪɡ'zædʒəreɪtɪd/ adj.</td><td>夸大的,言过其实的,夸张的</td></tr>
+<tr><td>immigrants</td><td>/'ɪmɪɡrənt/ n.</td><td>移民</td></tr>
+<tr><td>pandemic</td><td>/pæn'demɪk/ adj.</td><td>（疾病）在全国（或世界）流行的</td></tr>
+<tr><td>surge</td><td>/sɜːrdʒ/ n.</td><td>(情感的) 突发，涌现，突然出现（数量的）急剧上升，激增；大量；一大批奔涌向前；突然的向上运动（电流）浪涌v. 涌；汹涌；涌动(感情、感觉) 突袭，涌动，突发(</td></tr>
+<tr><td>net</td><td>/net/ n.</td><td>网；净利；网络；实价vi. 编网vt. 净赚；得到；用网捕adj. 纯粹的；净余的, netting, nets</td></tr>
+<tr><td>negative</td><td>/'neɡətɪv/ adj.</td><td>拒绝的；怀疑的；不同意的消极的，非建设性的无预期结果的〈数〉负的；〈电〉阴的，负的n. 否定词语，否定的观点；拒绝；否认，negativing，negative</td></tr>
+<tr><td>tank</td><td>/tæŋk/ n.</td><td>（存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内, tanking, tanks</td></tr>
+<tr><td>apparent</td><td>/ə'pærənt/ adj.</td><td>显然的；表面上的</td></tr>
+<tr><td>shortages</td><td>/'ʃɔːrtɪdʒ/ n.</td><td>不足; 缺少; 缺少量; 不足额</td></tr>
+<tr><td>shrinking</td><td>/ʃrɪŋk/ vt.</td><td>& vi. 收缩；退缩，shrunk shrunk，shrunken shrinking，shrinks</td></tr>
+<tr><td>workforce</td><td>/'wɜːrkfɔːrs/ n.</td><td>全体员工(国家或行业等)劳动力,劳动大军,劳动人口</td></tr>
+<tr><td>severe</td><td>/sɪ'vɪr/ adj.</td><td>严厉的；苛刻的；剧烈的；严峻的, severest</td></tr>
+<tr><td>demographic</td><td>/ˌdemə'ɡræfɪk/ adj.</td><td>人口统计学的</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>barely</td><td>/'berli/ adv.</td><td>仅仅，勉强；几乎不；公开地；贫乏地</td></tr>
+<tr><td>budged</td><td>/bʌd/ n.</td><td>芽，萌芽；蓓蕾vi. 发芽，萌芽vt. 使发芽, budding, buds</td></tr>
+<tr><td>version</td><td>/'vɜːrʒn/ n.</td><td>变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本</td></tr>
+<tr><td>awkward</td><td>/'ɔːkwərd/ adj.</td><td>笨拙的；尴尬的；棘手的；不合适的</td></tr>
+<tr><td>chairman</td><td>/'tʃermən/ n.</td><td>主席，会长；董事长, chairmanning, chairmans</td></tr>
+<tr><td>net</td><td>/net/ n.</td><td>网；净利；网络；实价vi. 编网vt. 净赚；得到；用网捕adj. 纯粹的；净余的, netting, nets</td></tr>
+<tr><td>consistent</td><td>/kən'sɪstənt/ adj.</td><td>一贯的, 始终如一的一致的, 符合的</td></tr>
+<tr><td>weigh</td><td>/weɪ/ vt.</td><td>& vi. 称…的重量link v. 重达vt. 权衡；考虑，weighing，weighs</td></tr>
+<tr><td>workforce</td><td>/'wɜːrkfɔːrs/ n.</td><td>全体员工(国家或行业等)劳动力,劳动大军,劳动人口</td></tr>
+<tr><td>sustainable</td><td>— adj.</td><td>(对自然资源和能源的利用)不破坏生态平衡的, 合理利用的；可持续的</td></tr>
+<tr><td>fall</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>productivity</td><td>/ˌproʊdʌk'tɪvəti/ n.</td><td>生产率, 生产力</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>encourage</td><td>/ɪn'kɜːrɪdʒ/ vt.</td><td>鼓励, 激励促进, 助长, 激发, encouraging, encourages</td></tr>
+<tr><td>adopt</td><td>/ə'dɑːpt/ vt.</td><td>收养采用, 采纳, 采取正式接受, 通过, adopting, adopts</td></tr>
+<tr><td>worsen</td><td>/'wɜːrsn/ vt.</td><td>& vi. (使)变得更坏,(使)恶化, worsening, worsens</td></tr>
+<tr><td>shortages</td><td>/'ʃɔːrtɪdʒ/ n.</td><td>不足; 缺少; 缺少量; 不足额</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>crackdown</td><td>/'krækdaʊn/ n.</td><td>压迫,镇压,打击</td></tr>
+<tr><td>stems</td><td>/stem/ n.</td><td>(花草的)茎, (树木的)干词干vt. 遏制[阻止](液体的流动等), stemming, stems</td></tr>
+<tr><td>campaign</td><td>/kæm'peɪn/ n.</td><td>运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）, campaigning, campai</td></tr>
+<tr><td>interior</td><td>/ɪn'tɪriər/ n.</td><td>内部内地adj. 内部的内地的, 国内的</td></tr>
+<tr><td>chilling</td><td>/tʃɪl/ vt.</td><td>& vi. (使)变冷, (使)变凉n. 寒冷, 寒气寒颤, 发冷</td></tr>
+<tr><td>immigrants</td><td>/'ɪmɪɡrənt/ n.</td><td>移民</td></tr>
+<tr><td>tank</td><td>/tæŋk/ n.</td><td>（存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内, tanking, tanks</td></tr>
+<tr><td>valley</td><td>/'væli/ n.</td><td>流域；山谷；溪谷</td></tr>
+<tr><td>texas</td><td>/'teksəs/ n.</td><td>德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室)</td></tr>
+<tr><td>enforcement</td><td>/ɪn'fɔːrsmənt/ n.</td><td>强制,实施,执行</td></tr>
+<tr><td>quantify</td><td>/'kwɑːntɪfaɪ/ vt.</td><td>量化；为…定量；确定数量vi. 量化；定量, quantifying, quantifies</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>volatile</td><td>/'vɑːlətl/ adj.</td><td>（人或其情绪）不稳定的；易变的；易怒的，喜怒无常的（情况）可能急剧波动的；不稳定的；易恶化的（物质）易挥发的，易气化的【计】（计算机内存）易失的n.【罕】 挥发</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>employs</td><td>/ɪm'plɔɪ/ vt.</td><td>使用，采用；雇用；使忙于，使从事于n. 雇用；使用, employing, employs</td></tr>
+<tr><td>immigrants</td><td>/'ɪmɪɡrənt/ n.</td><td>移民</td></tr>
+<tr><td>workforce</td><td>/'wɜːrkfɔːrs/ n.</td><td>全体员工(国家或行业等)劳动力,劳动大军,劳动人口</td></tr>
+<tr><td>immigrant</td><td>/'ɪmɪɡrənt/ n.</td><td>移民</td></tr>
+<tr><td>falling</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>restaurants</td><td>/'restrɑːnt/ n.</td><td>饭店, 餐馆</td></tr>
+<tr><td>processing</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>grocery</td><td>/'ɡroʊsəri/ n.</td><td>杂货业杂货店</td></tr>
+<tr><td>annual</td><td>/'ænjuəl/ adj.</td><td>年度的；每年的n. 年刊，年鉴；一年生植物</td></tr>
+<tr><td>wage</td><td>/weɪdʒ/ vi.</td><td>进行；发动；从事n. 工资；报偿；代价vt. 开展；进行, waging, wages</td></tr>
+<tr><td>rises</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>lure</td><td>/lʊr/ n.</td><td>诱惑物；诱惑；饵vt. 引诱；诱惑, luring, lures</td></tr>
+<tr><td>alongside</td><td>/əˌlɔːŋ'saɪd/ adv.</td><td>靠着边，沿着边prep. (表示位置)在…旁边；沿着…的边；与…并排靠拢着(表示比较)与…放在一起比较(表示伴随)与…一起，与…一道</td></tr>
+<tr><td>crew</td><td>/kruː/ n.</td><td>全体人员，全体船员；队，组vi. 一起工作vt. 使当船员, crewing, crews</td></tr>
+<tr><td>supervisors</td><td>/'suːpərvaɪzər/ n.</td><td>监督者, 管理者</td></tr>
+<tr><td>damage</td><td>/'dæmɪdʒ/ v.</td><td>损害；伤害；毁坏；破坏n. 损坏，破坏，损失，损害，伤害（法院判定的）损害赔偿金, damaging, damages</td></tr>
+<tr><td>tank</td><td>/tæŋk/ n.</td><td>（存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内, tanking, tanks</td></tr>
+<tr><td>sustained</td><td>/sə'steɪnd/ adj.</td><td>持久的;持续的</td></tr>
+<tr><td>squeeze</td><td>/skwiːz/ vt.</td><td>& vi. 挤, 榨, 捏vt. 榨取, 挤出n. 挤, 榨, 捏亲切的拥抱或握手拥挤, 积压缺乏钱或时间等所引致的困难或困苦, 拮据, 短缺, squeezi</td></tr>
+<tr><td>shrink</td><td>/ʃrɪŋk/ vt.</td><td>& vi. 收缩；退缩，shrunk shrunk，shrunken shrinking，shrinks</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day30.html" class="nav-btn">← Day 30</a>
+  <a href="day32.html" class="nav-btn">Day 32 →</a>
+</div>
+
+<div class="progress">📖 Day 31 of 39</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-08-29</div>
+
+</body>
+</html>

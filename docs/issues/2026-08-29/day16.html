@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Americas | Dead wait</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-08-29</div>
+
+<h1 class="article-title">The Americas | Dead wait</h1>
+<div class="article-section">The Americas</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>them when they are finished. “Until we have the right technology, we prefer keeping them underground instead of excavating more,” says Camila Castillo, also of Chinchorro Marka. A new museum that is under construction south of Arica should help. In 2021 UNESCO added the Chinchorro remains and their <span class="annot" data-tooltip="landscape /'lændskeɪp/ n. 风景, 景色风景画, 风景照时 态: landscaped, landscaping, landscapes">landscape</span> to its list of world <span class="annot" data-tooltip="heritage /'herɪtɪdʒ/ n. 遗产, 继承物传统">heritage</span> sites. That <span class="annot" data-tooltip="presented /'preznt/ vt. 呈现；介绍；提出；赠送vi. 举枪瞄准adj. 出席的；现在的n. 现在；礼物；瞄准时 态: presented, pr">presented</span> a possible solution: <span class="annot" data-tooltip="developing /dɪ'veləpɪŋ/ adj. 在进行中的;走向完成阶段的;走向成熟的发展中的">developing</span> the sites into a tourist attraction, and <span class="annot" data-tooltip="hosting /hoʊst/ n. 主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集时 态: hosted, hosting, host">hosting</span> many of the mummies there. But not everyone is happy with that. A small fishing community has <span class="annot" data-tooltip="illegally /ɪ'liːɡəli/ adv. 不法地">illegally</span> built makeshift homes in the Camerones <span class="annot" data-tooltip="valley /'væli/ n. 流域；山谷；溪谷">valley</span> within the site. UNESCO would like them to <span class="annot" data-tooltip="relocate /ˌriː'loʊkeɪt/ vt. 重新安置；迁移vi. 迁移新址；重新安置n. [计算机]浮动时 态: relocated, relocating, re">relocate</span>, but they are not so <span class="annot" data-tooltip="keen /kiːn/ adj. 锋利的热衷的，热心的，渴望(做某事)激烈的，紧张的良好的；敏锐的，敏捷的比较级: keener，keenest">keen</span>. Meanwhile their numbers are growing, and their presence is increasingly damaging the remains. The local mayor, Christian Zavala, has upped the <span class="annot" data-tooltip="tension /'tenʃn/ n. 张力，拉力；紧张，不安；电压vt. 使紧张；使拉紧时 态: tensioned, tensioning, tension">tension</span> by saying the mummies get more attention than his constituents. But some older <span class="annot" data-tooltip="residents /'rezɪdənt/ adj. 定居的; 常驻的n. 居民(旅馆的)住宿者">residents</span> like José Concha, who has lived in the area for more than 30 years, understand the economic opportunities they offer. “I’m becoming too old to go fishing,” he says. “I would love to become a tour guide to teach tourists about the mummies.” Ms Castillo says Chinchorro Marka hopes to <span class="annot" data-tooltip="raise /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raise</span> money to set up a centre where the mummies can be studied and <span class="annot" data-tooltip="exhibited /ɪɡ'zɪbɪt/ vt. 显示；展览；提出（证据等）n. 展览品；证据；展示会vi. 展出；开展览会时 态: exhibited, exhibit">exhibited</span> in <span class="annot" data-tooltip="collaboration /kəˌlæbə'reɪʃn/ n. 合作, 协作通敌">collaboration</span> with residents of Camarones. But if that is to work, the archaeologists will need to show that they care as much about Caleta Camarones’s future as they do about its past. ■ This article was downloaded by zlibrary from https://www.economist.com/the-americas/2026/08/27/the-problem-with-the-worlds- oldest-mummies</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Middle East &amp; Africa</div>
+<p>Iran will be able to shrug off America’s financial threats How the Houthis have become the most fearsome of Iran’s <span class="annot" data-tooltip="allies n. （第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者">allies</span> The quiet tycoons powering Africa’s <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> Why smugglers are stealing Kenya’s ants</p>
+<p>Middle East & Africa | Losing pressure Iran will be able to shrug off America’s financial threats In the face of fresh sanctions, the <span class="annot" data-tooltip="regime /reɪ'ʒiːm/ n. 政权，政体；社会制度；管理体制">regime</span> is <span class="annot" data-tooltip="defiant /dɪ'faɪənt/ adj. 挑衅的；目中无人的，蔑视的；挑战的副 词: defiantly">defiant</span> Aug 27th 2026 WHEN DONALD <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">TRUMP</span> began Operation <span class="annot" data-tooltip="epic /'epɪk/ adj. 史诗的，叙事诗的n. 史诗；叙事诗；史诗般的作品EPICabbr. Earth-Pointing Instrument ">Epic</span> <span class="annot" data-tooltip="fury /'fjʊri/ n. 狂怒；暴怒；激怒者Furyn. 〈希神〉复仇女神">Fury</span> <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> six months ago he hoped that America’s military might would <span class="annot" data-tooltip="crush /krʌʃ/ vt. & vi. 压碎, 压坏vt. 弄皱镇压, 消灭, 击溃vi. 挤进, 挤入n. 拥挤的人群时 态: crushed, ">crush</span> Iran’s regime. When its bombs failed, he bet on sweeteners. In June America offered Iran sanctions relief and billions of dollars in investment in the hope the country’s leaders would open the <span class="annot" data-tooltip="strait /streɪt/ n. 海峡；（尤指经济拮据引起的）困境，境况窘迫adj. 狭窄的；苦恼的副 词: straitly">Strait</span> of Hormuz and renounce any nuclear ambitions. That approach failed, too. So Mr Trump has vowed to break the regime by <span class="annot" data-tooltip="smashing /smæʃ/ n. 破碎(声)猛击；猛撞大成功；极为成功的新书[新戏，电影等]vt. & vi. 打碎；捣烂vt. 重击；打败时 态: sm">smashing</span> Iran economically. He said the effort would be an “economic D-Day”. But when Scott Bessent, the <span class="annot" data-tooltip="treasury /'treʒəri/ n. 财政部；国库，金库；宝库">treasury</span> <span class="annot" data-tooltip="secretary /'sekrəteri/ n. 秘书书记部长, 大臣形容词: secretarial">secretary</span>, <span class="annot" data-tooltip="revealed /rɪ'viːl/ vt. 显示；露出泄露；透露时 态: revealed，revealing，reveals">revealed</span> the details on August 24th, his threats rang <span class="annot" data-tooltip="hollow /'hɑːloʊ/ adj. 空的；凹的；虚伪的；中空的，空腹的n. 洞；山谷；窟窿vt. 使成为空洞vi. 形成空洞adv. 无用地；彻底地比较级:">hollow</span>.</p>
+<p>Iran has been under American sanctions since the Islamic revolution in 1979. In his first term Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> exerted what he called “maximum pressure” on the <span class="annot" data-tooltip="regime /reɪ'ʒiːm/ n. 政权，政体；社会制度；管理体制">regime</span> in an effort to force <span class="annot" data-tooltip="concessions /kən'seʃn/ n. 承认, 允许妥协, 让步特许权形容词: concessional">concessions</span> on its nuclear programme. The new <span class="annot" data-tooltip="campaign /kæm'peɪn/ n. 运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）时">campaign</span>, dubbed Operation Economic <span class="annot" data-tooltip="outcast /'aʊtkæst/ n. 被抛弃者;被排斥者形容词: outcast">Outcast</span>, is <span class="annot" data-tooltip="presumably /prɪ'zuːməbli/ adv. 据推测, 大概, 可能">presumably</span> maximum plus. As well as enforcing its <span class="annot" data-tooltip="blockade /blɑː'keɪd/ vt. 封锁n. 阻塞时 态: blockaded, blockading, blockades">blockade</span> of Iranian oil exports, America will increase pressure on Iran’s trading partners and on institutions that help the regime move money. But the threats were more bark than <span class="annot" data-tooltip="bite /baɪt/ vt. & vi. 咬, 叮n. 咬咬伤, 叮伤">bite</span>. Countries will not have to <span class="annot" data-tooltip="comply /kəm'plaɪ/ vi. 答应；遵守；顺从，遵从时 态: complied, complying, complies">comply</span> with America’s demands <span class="annot" data-tooltip="immediately /ɪ'miːdiət/ adj. 立即的，即刻的；紧迫的目前的，当前的直接的最接近的名 词: immediateness">immediately</span>. The <span class="annot" data-tooltip="treasury /'treʒəri/ n. 财政部；国库，金库；宝库">treasury</span> <span class="annot" data-tooltip="secretary /'sekrəteri/ n. 秘书书记部长, 大臣形容词: secretarial">secretary</span> conceded it was “a warning shot”. Iran is in <span class="annot" data-tooltip="dire /'daɪər/ adj. 可怕的, 恐怖的比较级: direr, direst">dire</span> economic <span class="annot" data-tooltip="straits /streɪt/ n. 海峡；（尤指经济拮据引起的）困境，境况窘迫adj. 狭窄的；苦恼的副 词: straitly">straits</span>. The rial has lost around a third of its <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span> against the dollar since January. It hit an all-time low ahead of Mr Bessent’s announcement, though it later rebounded a little. The war has destroyed great chunks of Iranian <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span>. <span class="annot" data-tooltip="damage /'dæmɪdʒ/ v. 损害；伤害；毁坏；破坏n. 损坏，破坏，损失，损害，伤害（法院判定的）损害赔偿金时 态: damaged, damagi">Damage</span> to refineries has left fuel in short supply, <span class="annot" data-tooltip="leading /ˈliːdɪŋ/ adj. 主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）">leading</span> to long <span class="annot" data-tooltip="queues /kjuː/ n. 队列；长队；辫子vi. 排队；排队等候vt. 将…梳成辫子；使…排队时 态: queued, queuing, queu">queues</span> at <span class="annot" data-tooltip="petrol /'petrəl/ n. 汽油">petrol</span> stations. <span class="annot" data-tooltip="inflation /ɪn'fleɪʃn/ n. (充气而引起的)膨胀通货膨胀">Inflation</span> is running at 88% year on year. The regime is printing money to pay for food vouchers. Meanwhile, America’s blockade of Hormuz has caused Iran’s oil exports— the regime’s <span class="annot" data-tooltip="main /meɪn/ adj. 主要的; 最重要的n. 总管道; 干线">main</span> source of income—to <span class="annot" data-tooltip="collapse /kə'læps/ vi. 倒塌；瓦解；暴跌vt. 使倒塌，使崩溃；使萎陷n. 倒塌；失败；衰竭时 态: collapsed, collapsing">collapse</span>. On August 20th the head of Iran’s <span class="annot" data-tooltip="central /'sentrəl/ adj. 中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的副 词: centrally">central</span> bank said they had “fallen to zero”. According to Kpler, a trade-intelligence firm, Iran still has some 80m <span class="annot" data-tooltip="barrels /'bærəl/ vt. 把……装入桶内n. 桶；枪管，炮管vi. 快速移动时 态: barreled, barrelled barreling,">barrels</span> of oil on board <span class="annot" data-tooltip="ships /ʃɪp/ vt. 运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Di">ships</span></p>
+<p><span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span> the <span class="annot" data-tooltip="strait /streɪt/ n. 海峡；（尤指经济拮据引起的）困境，境况窘迫adj. 狭窄的；苦恼的副 词: straitly">strait</span>. But that would only provide a <span class="annot" data-tooltip="fraction /'frækʃn/ n. 小部分；部分；稍微；[数]分数">fraction</span> of its usual income from such exports. Mr Bessent did not name the countries that he wants to reduce trade with Iran. But several stand out. Before America’s <span class="annot" data-tooltip="blockade /blɑː'keɪd/ vt. 封锁n. 阻塞时 态: blockaded, blockading, blockades">blockade</span>, China had been buying Iranian oil at $7-12 below the market price for a <span class="annot" data-tooltip="barrel /'bærəl/ vt. 把……装入桶内n. 桶；枪管，炮管vi. 快速移动时 态: barreled, barrelled barreling,">barrel</span>, sidestepping the existing American embargo. Last year it scooped up about 90% of Iranian <span class="annot" data-tooltip="crude /kruːd/ adj. 粗糙的；粗鲁的；天然的，未加工的；粗略的n. 天然的物质；原油比较级: cruder, crudest">crude</span> exports, which, America reckons, provided the <span class="annot" data-tooltip="regime /reɪ'ʒiːm/ n. 政权，政体；社会制度；管理体制">regime</span> with <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> half its budget. The United Arab Emirates (UAE) sells more to Iran than any other country. It provided some 30% of Iran’s total imports in 2024. It also <span class="annot" data-tooltip="hosts /hoʊst/ n. 主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集时 态: hosted, hosting, host">hosts</span> shadow banks that the regime uses to evade sanctions. In April the American <span class="annot" data-tooltip="treasury /'treʒəri/ n. 财政部；国库，金库；宝库">Treasury</span> reportedly wrote to the UAE’s leaders to ask them to close such <span class="annot" data-tooltip="outfits /'aʊtfɪt/ n. （为特定场合或活动而穿的）全套服装，装束全套装备；成套工具组织；公司；团队；军事单位v. 装备，配备；为…提供设备（或服">outfits</span>. America is not the only country trying to inflict economic pain on Iran. Over the past few months the UAE had softened its stance <span class="annot" data-tooltip="towards /tɔːrdz/ prep. 向，朝为了；有助于；用于对于，关于接近；将近；大约">towards</span> Iran, resuming trade and allowing Iranian <span class="annot" data-tooltip="residents /'rezɪdənt/ adj. 定居的; 常驻的n. 居民(旅馆的)住宿者">residents</span> to return. But on August 18th it said it would stop all trade and financial <span class="annot" data-tooltip="transactions /træn'zækʃn/ n. 处理，办理，执行(一笔)交易；(一项)事务形容词: transactional">transactions</span> with Iran after the regime launched <span class="annot" data-tooltip="strikes /straɪk/ vi. 罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打时 态:">strikes</span> against its <span class="annot" data-tooltip="ships /ʃɪp/ vt. 运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Di">ships</span>. Mr Bessent called the Emirates “a very good partner”. But its financial system is <span class="annot" data-tooltip="opaque /oʊ'peɪk/ adj. 不透明的难理解的, 晦涩的副 词: opaquely">opaque</span>. Iran’s transactions are often disguised using shell companies, so money may keep flowing despite the UAE’s ban. Others will openly resist American pressure. China has warned that the new sanctions risk damaging global growth and financial stability, and vowed to protect its “<span class="annot" data-tooltip="legitimate /lɪ'dʒɪtɪmət/ adj. 合情合理的；合法的时 态: legitimated，legitimating，legitimates">legitimate</span> rights and interests”. America has previously targeted Chinese firms <span class="annot" data-tooltip="involved /ɪn'vɑːlvd/ adj. 卷入的；有关的；复杂的v. 涉及；使参与；包含（involve的过去式和过去分词）">involved</span> in Iran’s oil trade; in April it imposed sanctions on Hengli, a refiner that American officials accused of buying billions of dollars’ <span class="annot" data-tooltip="worth /wɜːrθ/ adj. 值…的n. 价值；财产时 态: worthed, worthing, worths">worth</span> of Iranian crude. But it may be <span class="annot" data-tooltip="reluctant /rɪ'lʌktənt/ adj. 不情愿的, 勉强的副 词: reluctantly">reluctant</span> to go further for fear of retaliation or of <span class="annot" data-tooltip="undermining 底部冲刷;底切;潜挖">undermining</span> Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s <span class="annot" data-tooltip="diplomatic /ˌdɪplə'mætɪk/ adj. 外交上的, 外交人员的有手腕的, 策略的, 善于交涉的, 圆滑的副 词: diplomatically">diplomatic</span> outreach to China. “If you start to target Chinese companies, it’s no longer an Iran <span class="annot" data-tooltip="issue /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issue</span>,” argues Esfandyar Batmanghelidj of Bourse and Bazaar, a think-<span class="annot" data-tooltip="tank /tæŋk/ n. （存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内时 态: t">tank</span> in London. “It’s a matter for your China policy.” And even if America imposed <span class="annot" data-tooltip="secondary /'sekənderi/ adj. 次要的, 次等的中级的, 第二的副 词: secondarily">secondary</span> sanctions on big Chinese banks, Iran might still transact with China using its <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> payment systems.</p>
+<p>Iran’s leaders have greeted the threats with <span class="annot" data-tooltip="derision /dɪ'rɪʒn/ n. 嘲笑；嘲笑的对象">derision</span>. Mohammad Bagher Ghalibaf, the speaker of <span class="annot" data-tooltip="parliament /'pɑːrləmənt/ n. 议会, 国会">parliament</span>, <span class="annot" data-tooltip="mocked /mɑːk/ vt. & vi. 愚弄；嘲弄vt. 使受挫折adj. 仿制的；模拟的时 态: mocked，mocking，mocks">mocked</span> American talk of “D-Day” on social media: “This ain’t Normandy.” Mohsen Rezaei, Iran’s hardline national <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span> adviser, dismissed Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s threat of economic <span class="annot" data-tooltip="warfare /'wɔːrfer/ n. 战争, 战争状态">warfare</span> as “<span class="annot" data-tooltip="propaganda /ˌprɑːpə'ɡændə/ n. 宣传, 宣传运动名 词: propagandism">propaganda</span>”. He asked, not without some cause: “What does he want to do that he has not done before?” The <span class="annot" data-tooltip="regime /reɪ'ʒiːm/ n. 政权，政体；社会制度；管理体制">regime</span> would be in trouble if further economic hardship <span class="annot" data-tooltip="prompted /prɑːmpt/ adj. 敏捷的，迅速的；立刻的vt. 促进；激起；提示；（给演员）提白n. 提示；付款期限；DOS命令：改变DOS系统提示符的风">prompted</span> <span class="annot" data-tooltip="demonstrations /ˌdemən'streɪʃn/ n. 表明;证明;示范游行示威">demonstrations</span> of the kind that erupted in January. But for now, that seems unlikely. Iran has been executing protesters in public. Iran’s leaders view America’s pivot to economic coercion as proof that their foe has no desire to continue its failed military <span class="annot" data-tooltip="campaign /kæm'peɪn/ n. 运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）时">campaign</span>. That could embolden Iran to launch new attacks, in an attempt to get <span class="annot" data-tooltip="concessions /kən'seʃn/ n. 承认, 允许妥协, 让步特许权形容词: concessional">concessions</span> from Mr Trump. Mr Rezaei has said that any country that works with America will be treated as an “enemy” and could be targeted. Iran has considerable <span class="annot" data-tooltip="leverage /'levərɪdʒ/ n. （能够操控形势的）影响力，手段，优势 杠杆力；杠杆作用v. 举债经营；为…融资有效利用某物（资源、优势、工具等）时 态:">leverage</span> over its neighbours such as <span class="annot" data-tooltip="iraq n. 伊拉克（西南亚国家）">Iraq</span>, which buys its gas and <span class="annot" data-tooltip="hosts /hoʊst/ n. 主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集时 态: hosted, hosting, host">hosts</span> several of its armed proxies. And there is always Hormuz. Hours before Mr Bessent’s announcement, Iran threatened to fine or seize <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> 50 <span class="annot" data-tooltip="ships /ʃɪp/ vt. 运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Di">ships</span> in the <span class="annot" data-tooltip="strait /streɪt/ n. 海峡；（尤指经济拮据引起的）困境，境况窘迫adj. 狭窄的；苦恼的副 词: straitly">strait</span>, which it accused of breaking its rules for crossing. The regime’s leaders know well that their economy is struggling. Mr Ghalibaf has conceded that Iran will “not survive” without economic growth. Masoud Pezeshkian, the president, has urged America to return to the Memorandum of Understanding (MoU) that it offered in June. This set out a framework for ending the fighting and promised to reintegrate Iran with the global economy. The Iranians do not want to end up in a situation like that of North Korea, says Mr Batmanghelidj, “where they continue to face <span class="annot" data-tooltip="significant /sɪɡ'nɪfɪkənt/ adj. 重要的, 重大的, 可观的有意义的, 有用意的意味深长的副 词: significantly">significant</span> costs because the sanctions remain”. On August 24th Pakistan’s army chief, Asim Munir, who has been mediating between Mr Trump and Iran, visited <span class="annot" data-tooltip="tehran 德黑兰">Tehran</span>, reportedly to discuss reviving talks between the two sides. But even if America does renew the MoU, doing so will not solve the disagreements over Hormuz that caused it to <span class="annot" data-tooltip="fall /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">fall</span> apart. Iran still has the power to punish its adversaries—and it is unlikely to <span class="annot" data-tooltip="refrain /rɪ'freɪn/ vi. 制止；避免；节制，克制n. 叠句，副歌；重复时 态: refrained, refraining, refrains">refrain</span> from doing so. America’s talk of choking Iran’s economy looks like an attempt to avoid another round of fighting. It may yet backfire. ■ This article was downloaded by zlibrary from https://www.economist.com/middle-east-and-africa/2026/08/24/iran-will-be-able-to- shrug-off-americas-financial-threats</p>
+<p>Middle East & Africa | Arabia’s south-western front How the Houthis have become the most fearsome of Iran’s <span class="annot" data-tooltip="allies n. （第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者">allies</span> Yemen and the Red Sea are both threatened Aug 27th 2026 FOR FOUR years an uncomfortable truce in Yemen’s long <span class="annot" data-tooltip="civil /'sɪvl/ adj. 公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的副 词: civilly">civil</span> war has prevailed. But now open conflict is breaking out again. The Houthis, Iran- backed <span class="annot" data-tooltip="rebels /'rebl/ n. 反政府的人；反叛者；造反者叛逆者vi. 反抗政府；造反反抗权威；叛逆时 态: rebelled，rebelling，re">rebels</span>, have accused Yemen’s internationally recognised government and Saudi Arabia, its most important ally, of planning a big <span class="annot" data-tooltip="offensive /ə'fensɪv/ adj. 讨厌的；令人不快的攻击的n. 进攻，攻势副 词: offensively">offensive</span>. On July 30th their leader, Abdul-Malik al-Houthi, said his forces would “respond to their full-scale <span class="annot" data-tooltip="escalation /ˌeskə'leɪʃn/ n. 扩大,增加">escalation</span> with one of our <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span>”. Throughout August they have launched <span class="annot" data-tooltip="drone /droʊn/ n. 无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫">drone</span> and missile attacks against government positions, killing dozens of soldiers and civilians. Yemen’s regular army has struck back hard.</p>
+<p>The Houthis think they have much to gain from restarting the war. Since mid-July their militia has been firing at Saudi-linked <span class="annot" data-tooltip="ships /ʃɪp/ vt. 运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Di">ships</span> in the Red Sea, as well as <span class="annot" data-tooltip="ports /pɔːrt/ n. 港口，口岸；左舷；舱门；（计算机的）端口vi. 转向左舷vt. 左转舵；持（枪）PORTabbr. Photo Opit">ports</span>, airports and refineries. Hardly any Saudi tankers have sailed through the Bab al-Mandab <span class="annot" data-tooltip="strait /streɪt/ n. 海峡；（尤指经济拮据引起的）困境，境况窘迫adj. 狭窄的；苦恼的副 词: straitly">Strait</span>, at the sea’s southern tip, this month, according to Kpler, a data provider. The Houthis’ attacks have two aims. First, to <span class="annot" data-tooltip="blackmail /'blækmeɪl/ n. 敲诈, 勒索动 词: blackmail">blackmail</span> the kingdom into paying Yemeni <span class="annot" data-tooltip="civil /'sɪvl/ adj. 公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的副 词: civilly">civil</span> servants and lifting <span class="annot" data-tooltip="restrictions /rɪ'strɪkʃn/ n. 约束，限制管制，限定；法律，规章">restrictions</span> on <span class="annot" data-tooltip="flights /flaɪt/ n. 飞翔, 飞行航班, 航机楼梯的一段逃跑, 溃退时 态: flighted, flighting, flights">flights</span> and <span class="annot" data-tooltip="shipping /ʃɪp/ vt. 运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Di">shipping</span>. Second, to seize the <span class="annot" data-tooltip="initiative /ɪ'nɪʃətɪv/ n. 主动性, 首创精神主动的行动, 倡议主动权">initiative</span>. If the Saudis and their <span class="annot" data-tooltip="allies n. （第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者">allies</span> were planning an <span class="annot" data-tooltip="offensive /ə'fensɪv/ adj. 讨厌的；令人不快的攻击的n. 进攻，攻势副 词: offensively">offensive</span>, the Houthis have beaten them to it. They may also have bigger goals. The Houthis have controlled Yemen’s north-west, including the capital, Sana’a, and much of the west coast, since 2014. Some 70% of Yemenis live under their rule. But the <span class="annot" data-tooltip="rebels /'rebl/ n. 反政府的人；反叛者；造反者叛逆者vi. 反抗政府；造反反抗权威；叛逆时 态: rebelled，rebelling，re">rebels</span> have long wanted more. On August 15th Houthi missiles hit the <span class="annot" data-tooltip="port /pɔːrt/ n. 港口，口岸；左舷；舱门；（计算机的）端口vi. 转向左舷vt. 左转舵；持（枪）PORTabbr. Photo Opit">port</span> of Mokha, near Bab al-Mandab, forcing it to close. The attacks seem designed to weaken the National <span class="annot" data-tooltip="resistance /rɪ'zɪstəns/ n. 抵抗, 反抗, 抵抗能力阻力电阻, 热阻形容词: resistant">Resistance</span> Forces, an <span class="annot" data-tooltip="elite /eɪ'liːt/ n. （社会）上层集团；掌权人物；出类拔萃的人，精英adj.（社会）上层集团的；掌权人物的；精英的">elite</span> <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span> of government-backed fighters that use Mokha as a base. Forcing them from the city would give the Houthis more control of shipping through the strait. The Houthis also want control of Yemen’s oilfields. In early 2022 they <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> captured oil wells in Marib, east of Sana’a, but were repelled by a government-<span class="annot" data-tooltip="aligned /ə'laɪn/ vt. 使结盟；使成一行；匹配vi. 排列；排成一行时 态: alignedalso alined aligningalinin">aligned</span> militia trained by the United Arab Emirates (UAE).</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>landscape</td><td>/'lændskeɪp/ n.</td><td>风景, 景色风景画, 风景照, landscaping, landscapes</td></tr>
+<tr><td>heritage</td><td>/'herɪtɪdʒ/ n.</td><td>遗产, 继承物传统</td></tr>
+<tr><td>presented</td><td>/'preznt/ vt.</td><td>呈现；介绍；提出；赠送vi. 举枪瞄准adj. 出席的；现在的n. 现在；礼物；瞄准, presenting, presents</td></tr>
+<tr><td>developing</td><td>/dɪ'veləpɪŋ/ adj.</td><td>在进行中的;走向完成阶段的;走向成熟的发展中的</td></tr>
+<tr><td>hosting</td><td>/hoʊst/ n.</td><td>主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集, hosting, hosts</td></tr>
+<tr><td>illegally</td><td>/ɪ'liːɡəli/ adv.</td><td>不法地</td></tr>
+<tr><td>valley</td><td>/'væli/ n.</td><td>流域；山谷；溪谷</td></tr>
+<tr><td>relocate</td><td>/ˌriː'loʊkeɪt/ vt.</td><td>重新安置；迁移vi. 迁移新址；重新安置n. [计算机]浮动, relocating, relocates</td></tr>
+<tr><td>keen</td><td>/kiːn/ adj.</td><td>锋利的热衷的，热心的，渴望(做某事)激烈的，紧张的良好的；敏锐的，敏捷的，keenest</td></tr>
+<tr><td>tension</td><td>/'tenʃn/ n.</td><td>张力，拉力；紧张，不安；电压vt. 使紧张；使拉紧, tensioning, tensions</td></tr>
+<tr><td>residents</td><td>/'rezɪdənt/ adj.</td><td>定居的; 常驻的n. 居民(旅馆的)住宿者</td></tr>
+<tr><td>raise</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>exhibited</td><td>/ɪɡ'zɪbɪt/ vt.</td><td>显示；展览；提出（证据等）n. 展览品；证据；展示会vi. 展出；开展览会, exhibiting, exhibits</td></tr>
+<tr><td>collaboration</td><td>/kəˌlæbə'reɪʃn/ n.</td><td>合作, 协作通敌</td></tr>
+<tr><td>allies</td><td>— n.</td><td>（第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>regime</td><td>/reɪ'ʒiːm/ n.</td><td>政权，政体；社会制度；管理体制</td></tr>
+<tr><td>defiant</td><td>/dɪ'faɪənt/ adj.</td><td>挑衅的；目中无人的，蔑视的；挑战的</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>epic</td><td>/'epɪk/ adj.</td><td>史诗的，叙事诗的n. 史诗；叙事诗；史诗般的作品EPICabbr. Earth-Pointing Instrument Carrier 指向地球的仪器运载卫星</td></tr>
+<tr><td>fury</td><td>/'fjʊri/ n.</td><td>狂怒；暴怒；激怒者Furyn. 〈希神〉复仇女神</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>crush</td><td>/krʌʃ/ vt.</td><td>& vi. 压碎, 压坏vt. 弄皱镇压, 消灭, 击溃vi. 挤进, 挤入n. 拥挤的人群, crushing, crushes</td></tr>
+<tr><td>strait</td><td>/streɪt/ n.</td><td>海峡；（尤指经济拮据引起的）困境，境况窘迫adj. 狭窄的；苦恼的</td></tr>
+<tr><td>smashing</td><td>/smæʃ/ n.</td><td>破碎(声)猛击；猛撞大成功；极为成功的新书[新戏，电影等]vt. & vi. 打碎；捣烂vt. 重击；打败，smashing，smashes</td></tr>
+<tr><td>treasury</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>secretary</td><td>/'sekrəteri/ n.</td><td>秘书书记部长, 大臣</td></tr>
+<tr><td>revealed</td><td>/rɪ'viːl/ vt.</td><td>显示；露出泄露；透露，revealing，reveals</td></tr>
+<tr><td>hollow</td><td>/'hɑːloʊ/ adj.</td><td>空的；凹的；虚伪的；中空的，空腹的n. 洞；山谷；窟窿vt. 使成为空洞vi. 形成空洞adv. 无用地；彻底地, hollowest</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>regime</td><td>/reɪ'ʒiːm/ n.</td><td>政权，政体；社会制度；管理体制</td></tr>
+<tr><td>concessions</td><td>/kən'seʃn/ n.</td><td>承认, 允许妥协, 让步特许权</td></tr>
+<tr><td>campaign</td><td>/kæm'peɪn/ n.</td><td>运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）, campaigning, campai</td></tr>
+<tr><td>outcast</td><td>/'aʊtkæst/ n.</td><td>被抛弃者;被排斥者</td></tr>
+<tr><td>presumably</td><td>/prɪ'zuːməbli/ adv.</td><td>据推测, 大概, 可能</td></tr>
+<tr><td>blockade</td><td>/blɑː'keɪd/ vt.</td><td>封锁n. 阻塞, blockading, blockades</td></tr>
+<tr><td>bite</td><td>/baɪt/ vt.</td><td>& vi. 咬, 叮n. 咬咬伤, 叮伤</td></tr>
+<tr><td>comply</td><td>/kəm'plaɪ/ vi.</td><td>答应；遵守；顺从，遵从, complying, complies</td></tr>
+<tr><td>immediately</td><td>/ɪ'miːdiət/ adj.</td><td>立即的，即刻的；紧迫的目前的，当前的直接的最接近的</td></tr>
+<tr><td>treasury</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>secretary</td><td>/'sekrəteri/ n.</td><td>秘书书记部长, 大臣</td></tr>
+<tr><td>dire</td><td>/'daɪər/ adj.</td><td>可怕的, 恐怖的, direst</td></tr>
+<tr><td>straits</td><td>/streɪt/ n.</td><td>海峡；（尤指经济拮据引起的）困境，境况窘迫adj. 狭窄的；苦恼的</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>damage</td><td>/'dæmɪdʒ/ v.</td><td>损害；伤害；毁坏；破坏n. 损坏，破坏，损失，损害，伤害（法院判定的）损害赔偿金, damaging, damages</td></tr>
+<tr><td>leading</td><td>/ˈliːdɪŋ/ adj.</td><td>主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）</td></tr>
+<tr><td>queues</td><td>/kjuː/ n.</td><td>队列；长队；辫子vi. 排队；排队等候vt. 将…梳成辫子；使…排队, queuing, queues</td></tr>
+<tr><td>petrol</td><td>/'petrəl/ n.</td><td>汽油</td></tr>
+<tr><td>inflation</td><td>/ɪn'fleɪʃn/ n.</td><td>(充气而引起的)膨胀通货膨胀</td></tr>
+<tr><td>main</td><td>/meɪn/ adj.</td><td>主要的; 最重要的n. 总管道; 干线</td></tr>
+<tr><td>collapse</td><td>/kə'læps/ vi.</td><td>倒塌；瓦解；暴跌vt. 使倒塌，使崩溃；使萎陷n. 倒塌；失败；衰竭, collapsing, collapses</td></tr>
+<tr><td>central</td><td>/'sentrəl/ adj.</td><td>中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的</td></tr>
+<tr><td>barrels</td><td>/'bærəl/ vt.</td><td>把……装入桶内n. 桶；枪管，炮管vi. 快速移动, barrelled barreling, barrelling barrels, barrels</td></tr>
+<tr><td>ships</td><td>/ʃɪp/ vt.</td><td>运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Division of the Nation</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>strait</td><td>/streɪt/ n.</td><td>海峡；（尤指经济拮据引起的）困境，境况窘迫adj. 狭窄的；苦恼的</td></tr>
+<tr><td>fraction</td><td>/'frækʃn/ n.</td><td>小部分；部分；稍微；[数]分数</td></tr>
+<tr><td>blockade</td><td>/blɑː'keɪd/ vt.</td><td>封锁n. 阻塞, blockading, blockades</td></tr>
+<tr><td>barrel</td><td>/'bærəl/ vt.</td><td>把……装入桶内n. 桶；枪管，炮管vi. 快速移动, barrelled barreling, barrelling barrels, barrels</td></tr>
+<tr><td>crude</td><td>/kruːd/ adj.</td><td>粗糙的；粗鲁的；天然的，未加工的；粗略的n. 天然的物质；原油, crudest</td></tr>
+<tr><td>regime</td><td>/reɪ'ʒiːm/ n.</td><td>政权，政体；社会制度；管理体制</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>hosts</td><td>/hoʊst/ n.</td><td>主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集, hosting, hosts</td></tr>
+<tr><td>treasury</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>outfits</td><td>/'aʊtfɪt/ n.</td><td>（为特定场合或活动而穿的）全套服装，装束全套装备；成套工具组织；公司；团队；军事单位v. 装备，配备；为…提供设备（或服装），outfitting，outfit</td></tr>
+<tr><td>towards</td><td>/tɔːrdz/ prep.</td><td>向，朝为了；有助于；用于对于，关于接近；将近；大约</td></tr>
+<tr><td>residents</td><td>/'rezɪdənt/ adj.</td><td>定居的; 常驻的n. 居民(旅馆的)住宿者</td></tr>
+<tr><td>transactions</td><td>/træn'zækʃn/ n.</td><td>处理，办理，执行(一笔)交易；(一项)事务</td></tr>
+<tr><td>strikes</td><td>/straɪk/ vi.</td><td>罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打, stricken striking, str</td></tr>
+<tr><td>ships</td><td>/ʃɪp/ vt.</td><td>运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Division of the Nation</td></tr>
+<tr><td>opaque</td><td>/oʊ'peɪk/ adj.</td><td>不透明的难理解的, 晦涩的</td></tr>
+<tr><td>legitimate</td><td>/lɪ'dʒɪtɪmət/ adj.</td><td>合情合理的；合法的，legitimating，legitimates</td></tr>
+<tr><td>involved</td><td>/ɪn'vɑːlvd/ adj.</td><td>卷入的；有关的；复杂的v. 涉及；使参与；包含（involve的过去式和过去分词）</td></tr>
+<tr><td>worth</td><td>/wɜːrθ/ adj.</td><td>值…的n. 价值；财产, worthing, worths</td></tr>
+<tr><td>reluctant</td><td>/rɪ'lʌktənt/ adj.</td><td>不情愿的, 勉强的</td></tr>
+<tr><td>undermining</td><td>— </td><td>底部冲刷;底切;潜挖</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>diplomatic</td><td>/ˌdɪplə'mætɪk/ adj.</td><td>外交上的, 外交人员的有手腕的, 策略的, 善于交涉的, 圆滑的</td></tr>
+<tr><td>issue</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>tank</td><td>/tæŋk/ n.</td><td>（存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内, tanking, tanks</td></tr>
+<tr><td>secondary</td><td>/'sekənderi/ adj.</td><td>次要的, 次等的中级的, 第二的</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>derision</td><td>/dɪ'rɪʒn/ n.</td><td>嘲笑；嘲笑的对象</td></tr>
+<tr><td>parliament</td><td>/'pɑːrləmənt/ n.</td><td>议会, 国会</td></tr>
+<tr><td>mocked</td><td>/mɑːk/ vt.</td><td>& vi. 愚弄；嘲弄vt. 使受挫折adj. 仿制的；模拟的，mocking，mocks</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>warfare</td><td>/'wɔːrfer/ n.</td><td>战争, 战争状态</td></tr>
+<tr><td>propaganda</td><td>/ˌprɑːpə'ɡændə/ n.</td><td>宣传, 宣传运动</td></tr>
+<tr><td>regime</td><td>/reɪ'ʒiːm/ n.</td><td>政权，政体；社会制度；管理体制</td></tr>
+<tr><td>prompted</td><td>/prɑːmpt/ adj.</td><td>敏捷的，迅速的；立刻的vt. 促进；激起；提示；（给演员）提白n. 提示；付款期限；DOS命令：改变DOS系统提示符的风格adv. 准时地, promptest</td></tr>
+<tr><td>demonstrations</td><td>/ˌdemən'streɪʃn/ n.</td><td>表明;证明;示范游行示威</td></tr>
+<tr><td>campaign</td><td>/kæm'peɪn/ n.</td><td>运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）, campaigning, campai</td></tr>
+<tr><td>concessions</td><td>/kən'seʃn/ n.</td><td>承认, 允许妥协, 让步特许权</td></tr>
+<tr><td>leverage</td><td>/'levərɪdʒ/ n.</td><td>（能够操控形势的）影响力，手段，优势 杠杆力；杠杆作用v. 举债经营；为…融资有效利用某物（资源、优势、工具等）, leveraging, leverages</td></tr>
+<tr><td>iraq</td><td>— n.</td><td>伊拉克（西南亚国家）</td></tr>
+<tr><td>hosts</td><td>/hoʊst/ n.</td><td>主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集, hosting, hosts</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>ships</td><td>/ʃɪp/ vt.</td><td>运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Division of the Nation</td></tr>
+<tr><td>strait</td><td>/streɪt/ n.</td><td>海峡；（尤指经济拮据引起的）困境，境况窘迫adj. 狭窄的；苦恼的</td></tr>
+<tr><td>significant</td><td>/sɪɡ'nɪfɪkənt/ adj.</td><td>重要的, 重大的, 可观的有意义的, 有用意的意味深长的</td></tr>
+<tr><td>tehran</td><td>— </td><td>德黑兰</td></tr>
+<tr><td>fall</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>refrain</td><td>/rɪ'freɪn/ vi.</td><td>制止；避免；节制，克制n. 叠句，副歌；重复, refraining, refrains</td></tr>
+<tr><td>allies</td><td>— n.</td><td>（第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者</td></tr>
+<tr><td>civil</td><td>/'sɪvl/ adj.</td><td>公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的</td></tr>
+<tr><td>rebels</td><td>/'rebl/ n.</td><td>反政府的人；反叛者；造反者叛逆者vi. 反抗政府；造反反抗权威；叛逆，rebelling，rebels</td></tr>
+<tr><td>offensive</td><td>/ə'fensɪv/ adj.</td><td>讨厌的；令人不快的攻击的n. 进攻，攻势</td></tr>
+<tr><td>escalation</td><td>/ˌeskə'leɪʃn/ n.</td><td>扩大,增加</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>drone</td><td>/droʊn/ n.</td><td>无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫；嗡嗡响(人)絮絮叨叨地说，喋喋不休地说</td></tr>
+<tr><td>ships</td><td>/ʃɪp/ vt.</td><td>运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Division of the Nation</td></tr>
+<tr><td>ports</td><td>/pɔːrt/ n.</td><td>港口，口岸；左舷；舱门；（计算机的）端口vi. 转向左舷vt. 左转舵；持（枪）PORTabbr. Photo Opitical Recorder Tracke</td></tr>
+<tr><td>strait</td><td>/streɪt/ n.</td><td>海峡；（尤指经济拮据引起的）困境，境况窘迫adj. 狭窄的；苦恼的</td></tr>
+<tr><td>blackmail</td><td>/'blækmeɪl/ n.</td><td>敲诈, 勒索动 词: blackmail</td></tr>
+<tr><td>civil</td><td>/'sɪvl/ adj.</td><td>公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的</td></tr>
+<tr><td>restrictions</td><td>/rɪ'strɪkʃn/ n.</td><td>约束，限制管制，限定；法律，规章</td></tr>
+<tr><td>flights</td><td>/flaɪt/ n.</td><td>飞翔, 飞行航班, 航机楼梯的一段逃跑, 溃退, flighting, flights</td></tr>
+<tr><td>shipping</td><td>/ʃɪp/ vt.</td><td>运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Division of the Nation</td></tr>
+<tr><td>initiative</td><td>/ɪ'nɪʃətɪv/ n.</td><td>主动性, 首创精神主动的行动, 倡议主动权</td></tr>
+<tr><td>allies</td><td>— n.</td><td>（第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者</td></tr>
+<tr><td>offensive</td><td>/ə'fensɪv/ adj.</td><td>讨厌的；令人不快的攻击的n. 进攻，攻势</td></tr>
+<tr><td>rebels</td><td>/'rebl/ n.</td><td>反政府的人；反叛者；造反者叛逆者vi. 反抗政府；造反反抗权威；叛逆，rebelling，rebels</td></tr>
+<tr><td>port</td><td>/pɔːrt/ n.</td><td>港口，口岸；左舷；舱门；（计算机的）端口vi. 转向左舷vt. 左转舵；持（枪）PORTabbr. Photo Opitical Recorder Tracke</td></tr>
+<tr><td>resistance</td><td>/rɪ'zɪstəns/ n.</td><td>抵抗, 反抗, 抵抗能力阻力电阻, 热阻</td></tr>
+<tr><td>elite</td><td>/eɪ'liːt/ n.</td><td>（社会）上层集团；掌权人物；出类拔萃的人，精英adj.（社会）上层集团的；掌权人物的；精英的</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>aligned</td><td>/ə'laɪn/ vt.</td><td>使结盟；使成一行；匹配vi. 排列；排成一行</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day15.html" class="nav-btn">← Day 15</a>
+  <a href="day17.html" class="nav-btn">Day 17 →</a>
+</div>
+
+<div class="progress">📖 Day 16 of 39</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-08-29</div>
+
+</body>
+</html>

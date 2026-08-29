@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Science & technology</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-08-29</div>
+
+<h1 class="article-title">Science & technology</h1>
+<div class="article-section"></div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>One of its oldest approaches, though, vaccination, has never really worked. Billions have been spent, yet the field is <span class="annot" data-tooltip="notorious /noʊ'tɔːriəs/ adj. 臭名昭著的, 声名狼藉的副 词: notoriously">notorious</span> for its broken promises. The idea of a <span class="annot" data-tooltip="cancer /'kænsər/ n. 癌迅速蔓延的恶劣的或危险的事物形容词: cancerous">cancer</span> <span class="annot" data-tooltip="vaccine /væk'siːn/ n. 疫苗;痘苗adj. 痘苗的;疫苗的">vaccine</span> is to alert the immune system to mutated proteins, known as neoantigens, found in <span class="annot" data-tooltip="tumours /'tuːmər/ n. 肿瘤；瘤；肿块">tumours</span>. If the system clocks these as foreign it will <span class="annot" data-tooltip="eliminate /ɪ'lɪmɪneɪt/ vt. 消除, 排除忽略淘汰〈口〉干掉时 态: eliminated, eliminating, eliminates">eliminate</span> cells that have them. The idea could not be made to work, though. Focusing on a single protein was not enough, for a <span class="annot" data-tooltip="tumour /'tuːmər/ n. 肿瘤；瘤；肿块">tumour</span> could stop making it. And some early <span class="annot" data-tooltip="vaccines /væk'siːn/ n. 疫苗;痘苗adj. 痘苗的;疫苗的">vaccines</span> were, in any case, aimed at the wrong proteins. But an important reason for failure was that tumours often <span class="annot" data-tooltip="suppress /sə'pres/ v. 镇压；制止；压制；（武力）平定禁止（发表）；查禁；封锁抑制；控制；忍住压制；阻止；抑制（身体的功能或反应）时 态: su">suppress</span> an immune response. The arrival of drugs called checkpoint inhibitors, which stop this <span class="annot" data-tooltip="suppression /sə'preʃn/ n. 压制;镇压;禁止抑制;阻止;忍住;隐瞒压抑;被压抑的思想(或冲动等)">suppression</span>, revived interest in cancer vaccines. Would such vaccines work, researchers <span class="annot" data-tooltip="wondered /'wʌndər/ vt. & vi. 对…感到疑惑想知道；问自己n. 惊奇，惊叹，惊异，惊诧奇人，奇才奇观，奇景，奇迹，奇事时 态: wonder">wondered</span>, if given <span class="annot" data-tooltip="alongside /əˌlɔːŋ'saɪd/ adv. 靠着边，沿着边prep. (表示位置)在…旁边；沿着…的边；与…并排靠拢着(表示比较)与…放在一起比较(表示伴随)与…一">alongside</span> checkpoint drugs? One idea was to create a personalised vaccine based on neoantigens unique to the tumour of interest. This was once <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span> hard because vaccines take so long to make, but mRNA technology permits the creation of new vaccines in weeks. The result is intismeran, developed by two American firms, Moderna and Merck. <span class="annot" data-tooltip="trials /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">Trials</span> of this alongside a checkpoint inhibitor, have been under way in melanoma for several years. The <span class="annot" data-tooltip="interim /'ɪntərɪm/ adj. 临时的，暂时的；中间的；间歇的n. 过渡时期，中间时期；暂定">interim</span> results show the vaccine is indeed working, and by implication that the neoantigen idea works, too. What is known from the <span class="annot" data-tooltip="partial /'pɑːrʃl/ adj. 局部的；不公平的；[口]偏爱的名 词: partialness">partial</span> results released so <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> is that in patients who had had their melanomas surgically removed the vaccine slowed recurrence of the disease. First the <span class="annot" data-tooltip="caveats n. 警告；说明（caveat的复数）">caveats</span>: delaying re-<span class="annot" data-tooltip="occurrence /ə'kɜːrəns/ n. 发生，出现事件；发生的事形容词: occurrent">occurrence</span> might <span class="annot" data-tooltip="extend /ɪk'stend/ vt. & vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出时 态:">extend</span> <span class="annot" data-tooltip="overall /ˌoʊvər'ɔːl/ adj. 总体的；全面的；综合的全面考虑的adv. 大体上，总的来说一切包括在内，全部的n. 长罩衣工装裤；工作裤">overall</span> survival, but it also might not. And, because <span class="annot" data-tooltip="neither /'niːðər/ conj. 既不；也不adv. 两个都不；既不……也不adj. 两者都不的det./pron. 两者都不">neither</span> the scale of the response nor the cost of the treatment are known, it may turn out that the vaccine produces a marginal benefit at great <span class="annot" data-tooltip="expense /ɪk'spens/ n. 开支；消费；损失，代价vt. 向…收取费用vi. 被花掉时 态: expensed, expensing, expens">expense</span>. In <span class="annot" data-tooltip="addition /ə'dɪʃn/ n. 添加；增加物；加法形容词: additional">addition</span>, melanomas are among the most immune-system-provoking <span class="annot" data-tooltip="cancers /'kænsər/ n. 癌迅速蔓延的恶劣的或危险的事物形容词: cancerous">cancers</span> known—so what works in this case might not do well in others. Clinicians are <span class="annot" data-tooltip="nonetheless /ˌnʌnðə'les/ adv. 虽然如此,但是">nonetheless</span> excited. Elad Sharon, a medical <span class="annot" data-tooltip="oncologist /ɑːn'kɑːlədʒɪst/ 肿瘤学家">oncologist</span> at the Dana-Farber Cancer Institute in Boston, says it is “promising for the field of melanoma and cancer as a whole”. More encouraging still, it points to a better way of preventing cancer’s recurrence. Current treatments sometimes leave microscopic <span class="annot" data-tooltip="clusters /'klʌstər/ n. (果实、花等的)串, 簇(人、物等的)群, 组vt. & vi. (使)集中时 态: clustered, cluste">clusters</span> of cells behind that later return as tumours. A</p>
+<p><span class="annot" data-tooltip="vaccine /væk'siːn/ n. 疫苗;痘苗adj. 痘苗的;疫苗的">vaccine</span>-boosted immune system could hunt these down. Vaccination may also reduce the need for harmful treatments like radiation and chemotherapy. Moderna and Merck are rushing through <span class="annot" data-tooltip="trials /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">trials</span> on other <span class="annot" data-tooltip="tumours /'tuːmər/ n. 肿瘤；瘤；肿块">tumours</span> including lung, <span class="annot" data-tooltip="bladder /'blædər/ n. 〈解〉膀胱囊, 袋">bladder</span> and <span class="annot" data-tooltip="kidney /'kɪdni/ n. 肾, 肾脏(可食用的动物的)腰子">kidney</span> <span class="annot" data-tooltip="cancers /'kænsər/ n. 癌迅速蔓延的恶劣的或危险的事物形容词: cancerous">cancers</span>. In coming years the results of these, and full results of the melanoma <span class="annot" data-tooltip="trial /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">trial</span>, will allow assessment of the scale of the breakthrough—if breakthrough it indeed turns out to be. ■ After a free, evidence-based guide to health and wellness? Sign up to our weekly Well Informed newsletter. This article was downloaded by zlibrary from https://www.economist.com/science-and-technology/2026/08/21/it-now-seems-possible- to-vaccinate-against-<span class="annot" data-tooltip="cancer /'kænsər/ n. 癌迅速蔓延的恶劣的或危险的事物形容词: cancerous">cancer</span></p>
+<div class="article-separator"></div>
+<div class="article-header"> · Culture</div>
+<p>What the world’s most famous bookshop <span class="annot" data-tooltip="reveals /rɪ'viːl/ vt. 显示；露出泄露；透露时 态: revealed，revealing，reveals">reveals</span> about culture The resonance of Wile E. Coyote, from loony to loved What the dead can teach you about life Why Dolly Parton mattered to America The Philippines is going wild for its home-grown star, Alex Eala America’s cannabis-drinks market is booming—and imperilled</p>
+<div class="article-separator"></div>
+<div class="article-header">Culture · Culture | Shelf control</div>
+<p>What the world’s most famous bookshop <span class="annot" data-tooltip="reveals /rɪ'viːl/ vt. 显示；露出泄露；透露时 态: revealed，revealing，reveals">reveals</span> about culture Shakespeare and Company in Paris is turning 75. Is its success replicable? Aug 27th 2026 THE SUMMER afternoon was hot, but no one in the <span class="annot" data-tooltip="queue /kjuː/ n. 队列；长队；辫子vi. 排队；排队等候vt. 将…梳成辫子；使…排队时 态: queued, queuing, queu">queue</span> seemed bothered. Dozens were patiently waiting to <span class="annot" data-tooltip="enter /'entər/ vt. & vi. 进入, 进去参加, 加入登记, 登录时 态: entered, entering, enters">enter</span> Shakespeare and Company, a storied bookshop <span class="annot" data-tooltip="perched /pɜːrtʃ/ n. 栖息处，栖枝，栖木高处，较高的位置鲈鱼vi. (鸟)飞落，暂栖，停留vt. & vi. (在较高处或物体边缘)坐着；把…">perched</span> on the left bank of the Seine opposite Notre Dame <span class="annot" data-tooltip="cathedral /kə'θiːdrəl/ n. 总教堂, 大教堂">cathedral</span>. “That’s where Shakespeare wrote for a while,” a passerby informed her friends. No one corrected her—discretion being the better part of valour and all. “The <span class="annot" data-tooltip="myth /mɪθ/ n. 神话；虚构的人，虚构的事">myth</span>-telling is fascinating,” says Sylvia Whitman, who runs the English-language bookshop with her partner. “It adds to the house of stories</p>
+<p>that a bookshop can be.” She has heard it all: that Shakespeare, who never left England, resided here, or that Sylvia Plath, another poet, founded it. In fact, Shakespeare and Company was launched by Ms Whitman’s father, George, 75 years ago this month (first under the name Le Mistral). It is probably the most famous bookshop in the world, enjoying a halo from its proximity to some of literature’s patron saints. Around 2,000-3,000 people visit each day—<span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> 1m a year—spurred by the shop’s hundreds of thousands of social-media followers. It claims more impressive screen <span class="annot" data-tooltip="credits /'kredɪt/ n. 赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)时 态:">credits</span> than many actors, having appeared in Woody Allen’s “Midnight in Paris”, Richard Linklater’s “Before Sunset” and a French film, “Jane Austen <span class="annot" data-tooltip="wrecked /rek/ n. 失事；残骸；破坏；[口]失去健康的人vt. 破坏；使失事；拆毁vi. 失事；营救失事船只时 态: wrecked, wr">Wrecked</span> My Life”. A hit TV series, “Emily in Paris”, asked to feature it, but Ms Whitman declined. The bookshop already contends with so many selfie- snappers. How does a books-and-mortar shop withstand three-<span class="annot" data-tooltip="quarters n. 住处,岗位">quarters</span> of a century and still get people to <span class="annot" data-tooltip="queue /kjuː/ n. 队列；长队；辫子vi. 排队；排队等候vt. 将…梳成辫子；使…排队时 态: queued, queuing, queu">queue</span> to <span class="annot" data-tooltip="enter /'entər/ vt. & vi. 进入, 进去参加, 加入登记, 登录时 态: entered, entering, enters">enter</span>? One answer is a clever approach to social media. Photos and videos are <span class="annot" data-tooltip="prohibited /prə'hɪbɪt/ vt. 阻止，禁止时 态: prohibited, prohibiting, prohibits">prohibited</span> inside. This enhances the shop’s mystique among those who while away hours on Instagram and TikTok. “You can’t see what it looks like online, so that’s kind of cool,” says Hannah, a literature student from England who had come to take in “the older, nostalgic <span class="annot" data-tooltip="vibe /vaɪb/ Ⅰn. ①(感情上的)感应，共鸣②(一地的)气氛，环境Ⅱvi. (感情上)产生共鸣">vibe</span>” for herself. This <span class="annot" data-tooltip="strategy /'strætədʒi/ n. 战略学, 兵法战略, 策略策略, 计谋">strategy</span> differs from that of other pilgrimage sites for bibliophiles, such as El Ateneo Grand Splendid, housed in a grand former theatre in Buenos Aires, and Livraria Lello in Porto, which looks like a cross between a <span class="annot" data-tooltip="cathedral /kə'θiːdrəl/ n. 总教堂, 大教堂">cathedral</span> and a robber baron’s mansion. (The latter claims to be the “most beautiful bookshop” in the world, and you have to buy a ticket to go in.) But it fits with a broader <span class="annot" data-tooltip="trend /trend/ n. 趋势, 倾向流行时 态: trended, trending, trends">trend</span> of people’s curiosity being piqued by some <span class="annot" data-tooltip="restaurants /'restrɑːnt/ n. 饭店, 餐馆">restaurants</span>, stores and <span class="annot" data-tooltip="concerts /'kɑːnsərt/ n. 音乐会；和谐；一致vt. 使协调；协同安排vi. 协力；协调adj. 音乐会用的；在音乐会上演出的时 态: concer">concerts</span> starting to ban smartphones. No-photo policies offer a feeling of <span class="annot" data-tooltip="authenticity /ˌɔːθen'tɪsəti/ n. 可靠性；确实性；真实性">authenticity</span> and unique experience. Ms Whitman also understands that buyers are not only seeking an entertaining tale, but a story about how and where they bought that book. Customers are offered a <span class="annot" data-tooltip="stamp /stæmp/ n. 邮票；印记；跺脚；标志vt. 铭记；标出；盖章于…；贴邮票于…；用脚踩踏vi. 捣碎；跺脚；毁掉时 态: stamped">stamp</span> of the Shakespeare and Company logo on the inside <span class="annot" data-tooltip="cover /'kʌvər/ vt. 包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替时 态: covered, covering, c">cover</span> to certify their copy’s origin. The shop stocks loads of luxurious hardbacks, which have the look of yesteryear. (Top sellers include classics such as Victor Hugo’s “The <span class="annot" data-tooltip="hunchback /'hʌntʃbæk/ n. 驼背;驼背者形容词: hunchbacked">Hunchback</span> of Notre Dame” and Antoine de</p>
+<p>Saint-Exupéry’s “The Little Prince”.) <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">Far</span> from killing print, e-books have made some consumers <span class="annot" data-tooltip="keener /kiːn/ adj. 锋利的热衷的，热心的，渴望(做某事)激烈的，紧张的良好的；敏锐的，敏捷的比较级: keener，keenest">keener</span> to splurge on special editions. But probably the biggest <span class="annot" data-tooltip="explanation /ˌeksplə'neɪʃn/ n. 解释, 说明能说明某事缘由的言语、事实、情况等">explanation</span> for the shop’s success is how it has embraced the <span class="annot" data-tooltip="myths /mɪθ/ n. 神话；虚构的人，虚构的事">myths</span> surrounding it. Shakespeare and Company is like a Russian doll, containing several <span class="annot" data-tooltip="brands /brænd/ n. 商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责时 态: branded, branding, brands">brands</span> inside. First, its name <span class="annot" data-tooltip="evokes /ɪ'voʊk/ vt. 产生, 引起, 唤起时 态: evoked, evoking, evokes">evokes</span> the most famous writer in the English language. Second, there is the shop that preceded it, which had the same name. That one was founded by Sylvia Beach, an American, in 1919. She was <span class="annot" data-tooltip="courageous /kə'reɪdʒəs/ adj. 勇敢的;无畏的adv. 勇敢地;无畏地n. 勇敢;无畏副 词: courageously">courageous</span> enough to publish James Joyce’s “Ulysses” when everyone <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span> it was obscene, and likeable enough to count superstars, including Ernest Hemingway and T.S. Eliot, as friends. Beach’s bookstore closed during the second world war, and legend has it that she later gave Whitman permission to <span class="annot" data-tooltip="adopt /ə'dɑːpt/ vt. 收养采用, 采纳, 采取正式接受, 通过时 态: adopted, adopting, adopts">adopt</span> her shop’s name. Though Whitman was not always a <span class="annot" data-tooltip="reliable /rɪ'laɪəbl/ adj. 可靠的, 可信赖的副 词: reliably">reliable</span> <span class="annot" data-tooltip="narrator /'næreɪtər/ n. 叙述者；解说员">narrator</span>. He was, said Lawrence Ferlinghetti, a poet and friend, “the most eccentric person I’ve ever met in my life”. (That is saying quite a lot, <span class="annot" data-tooltip="considering /kən'sɪdərɪŋ/ prep. 考虑到, 就…而论adv. 从各方面考虑, 从通盘考虑">considering</span> Ferlinghetti marched to the beat of the Beatniks.) Whitman claimed he was the grandson of Walt Whitman—his father was a university professor named Walter, unrelated to the famous poet. He also named his daughter Sylvia, which linked his life and shop to Beach’s. This still <span class="annot" data-tooltip="spawns /spɔːn/ n. 菌丝；卵；产物vt. 产卵；酿成，造成；大量生产vi. 产卵；大量生产时 态: spawned, spawning, s">spawns</span> confusion. When Mr Allen wrote a note to the team at Shakespeare and Company after filming there, he <span class="annot" data-tooltip="addressed /ə'dres/ v. 写（收信人）姓名地址；致函演说；演讲称呼（某人）；冠以（某种称呼）设法解决；处理；对付向…说话n. 地址；住址；通信处 ">addressed</span> it to Sylvia Beach, who had died in 1962. Whitman described his store as a “socialist utopia masquerading as a bookstore”. More than 30,000 people have stayed there and in the flats above—many of them writers—in exchange for working, reading and writing a one-page autobiography. The shop is decidedly more commercial these days, with a coffee shop next door. Higher-<span class="annot" data-tooltip="margin /'mɑːrdʒɪn/ n. 页边缘；利润，余裕；页边的空白">margin</span> <span class="annot" data-tooltip="merchandise /'mɜːrtʃəndaɪs/ n. 商品, 货物vt. 买卖, 经营时 态: merchandisedalso merchandized merchandi">merchandise</span>, including tote bags and notebooks, accounts for around 30% of total sales, says Ms Whitman. It also <span class="annot" data-tooltip="hosts /hoʊst/ n. 主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集时 态: hosted, hosting, host">hosts</span> writers’ talks and an <span class="annot" data-tooltip="annual /'ænjuəl/ adj. 年度的；每年的n. 年刊，年鉴；一年生植物副 词: annually">annual</span> celebration of “Ulysses”, which are partly supported by the shop’s foundation. How replicable is its <span class="annot" data-tooltip="formula /'fɔːrmjələ/ n. 公式，准则；配方；婴儿食品形容词: formulaic">formula</span>? Many other bookstores peddle merchandise and <span class="annot" data-tooltip="host /hoʊst/ n. 主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集时 态: hosted, hosting, host">host</span> author events. Having signed copies by authors can <span class="annot" data-tooltip="triple /'trɪpl/ adj. 三倍的；三方的n. 三倍数；三个一组vi. 增至三倍vt. 使成三倍时 态: tripled, tripling, tr">triple</span> book sales, notes Andrew Pettegree, who has written a forthcoming history of bookshops.</p>
+<p>Yet Shakespeare and Company’s is an impossible playbook to copy. Its history and location in <span class="annot" data-tooltip="central /'sentrəl/ adj. 中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的副 词: centrally">central</span> Paris are unbeatable. “Very few booksellers <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> their real <span class="annot" data-tooltip="estate /ɪ'steɪt/ n.（位于乡村的）大片私有土地，庄园，种植园【英式】（按规划建造的）住宅区，工业区【法律】（个人死后留下的全部）财产，遗">estate</span>” as Shakespeare and Company does, notes James <span class="annot" data-tooltip="daunt /dɔːnt/ vt. 使气馁，使畏缩；威吓时 态: daunted, daunting, daunts">Daunt</span>, the boss of Barnes & Noble, a chain. He points out that a bookshop that also happened to be called Shakespeare & Co (no relation) closed last year in New York, citing rising rents among other challenges. Yet “good” bookshops are thriving, says Mr Daunt. In America there has been a proliferation of independent ones, with about 400 launching physical stores last year, 62% more than a year earlier. They have become community gathering spaces. More <span class="annot" data-tooltip="owners /'oʊnər/ n. 所有者；物主">owners</span> understand, as Whitman did, that it is “not only about selling books. It’s about being a cultural market”, says Ewelina Oksiuta, director of the European and International Booksellers Federation, a trade <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span>. “People in the age of smartphones and digitalisation are looking for presence and human touch.” In its own way, Shakespeare and Company also contends with the boon and challenge of tourism. “We’ve always been trying to get a balance between being a popular visit site for people passing through the city and yet trying to keep our connections more local,” says Ms Whitman. Some expats feel the shop <span class="annot" data-tooltip="caters /'keɪtər/ vt. 满足需要；投合，迎合；提供饮食及服务时 态: catered, catering, caters">caters</span> more to passersby than Parisians. An access card, a flash of which lets you skip the <span class="annot" data-tooltip="line /laɪn/ n. 绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long inter">line</span>, is doled out to only the most loyal and <span class="annot" data-tooltip="prominent /'prɑːmɪnənt/ adj. 突起的，凸出的显著的；突出的杰出的，著名的，卓越的副 词: prominently">prominent</span> patrons, who are sure to be able to tell their Sylvias apart and distinguish between the shop’s chapters. ■ This article was downloaded by zlibrary from https://www.economist.com/<span class="annot" data-tooltip="interactive /ˌɪntər'æktɪv/ adj. (指至少两个人或物)一起活动或互相合作的交互式的, 人机对话的">interactive</span>/culture/2026/08/27/what-the-world-most- famous-bookshop-<span class="annot" data-tooltip="reveals /rɪ'viːl/ vt. 显示；露出泄露；透露时 态: revealed，revealing，reveals">reveals</span>-about-culture</p>
+<div class="article-separator"></div>
+<div class="article-header">Culture · Culture | A howl lot of laughs</div>
+<p>The resonance of Wile E. Coyote, from loony to loved In “Coyote v Acme” the underdog has a new foe: <span class="annot" data-tooltip="corporate /'kɔːrpərət/ adj. 社团的, 法人的副 词: corporately">corporate</span> America Aug 27th 2026 Wile E. Coyote, a cartoon character from Looney <span class="annot" data-tooltip="tunes /tuːn/ n. 曲调, 曲子vt. & vi. 调音vt. 调整时 态: tuned, tuning, tunes">Tunes</span>, is not as wily as he sounds. Since his <span class="annot" data-tooltip="debut /deɪ'bjuː/ n. 〈法〉演员首次演出时 态: debuted debuting debuts">debut</span> in cinemas in 1949, he has tried but failed to catch the Road Runner. The calamitous canine is based on Mark Twain’s <span class="annot" data-tooltip="description /dɪ'skrɪpʃn/ n. 描述, 形容种类, 类型">description</span> of the coyotes he observed in the American West: “always poor, out of luck and friendless” and “always hungry”. Across about 50 cartoons, he uses skateboards, slingshots and even snow machines in his attempts to catch the bird in the desert. He buys strange gadgets, such as dehydrated boulders, from Acme, a comically bad corporation, which malfunction or explode. “Beep, beep!” the Road Runner always gloats before <span class="annot" data-tooltip="buzzing /bʌz/ v. 发嗡嗡声；发蜂鸣声用蜂鸣器（给…）发信号繁忙；充满活力（飞机）低空飞过（尤指作为警告或威胁）（用特殊的机器）将头发剪得非">buzzing</span> off.</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>notorious</td><td>/noʊ'tɔːriəs/ adj.</td><td>臭名昭著的, 声名狼藉的</td></tr>
+<tr><td>cancer</td><td>/'kænsər/ n.</td><td>癌迅速蔓延的恶劣的或危险的事物</td></tr>
+<tr><td>vaccine</td><td>/væk'siːn/ n.</td><td>疫苗;痘苗adj. 痘苗的;疫苗的</td></tr>
+<tr><td>tumours</td><td>/'tuːmər/ n.</td><td>肿瘤；瘤；肿块</td></tr>
+<tr><td>eliminate</td><td>/ɪ'lɪmɪneɪt/ vt.</td><td>消除, 排除忽略淘汰〈口〉干掉, eliminating, eliminates</td></tr>
+<tr><td>tumour</td><td>/'tuːmər/ n.</td><td>肿瘤；瘤；肿块</td></tr>
+<tr><td>vaccines</td><td>/væk'siːn/ n.</td><td>疫苗;痘苗adj. 痘苗的;疫苗的</td></tr>
+<tr><td>suppress</td><td>/sə'pres/ v.</td><td>镇压；制止；压制；（武力）平定禁止（发表）；查禁；封锁抑制；控制；忍住压制；阻止；抑制（身体的功能或反应），suppressing，suppresses</td></tr>
+<tr><td>suppression</td><td>/sə'preʃn/ n.</td><td>压制;镇压;禁止抑制;阻止;忍住;隐瞒压抑;被压抑的思想(或冲动等)</td></tr>
+<tr><td>wondered</td><td>/'wʌndər/ vt.</td><td>& vi. 对…感到疑惑想知道；问自己n. 惊奇，惊叹，惊异，惊诧奇人，奇才奇观，奇景，奇迹，奇事，wondering，wonders</td></tr>
+<tr><td>alongside</td><td>/əˌlɔːŋ'saɪd/ adv.</td><td>靠着边，沿着边prep. (表示位置)在…旁边；沿着…的边；与…并排靠拢着(表示比较)与…放在一起比较(表示伴随)与…一起，与…一道</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>trials</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>interim</td><td>/'ɪntərɪm/ adj.</td><td>临时的，暂时的；中间的；间歇的n. 过渡时期，中间时期；暂定</td></tr>
+<tr><td>partial</td><td>/'pɑːrʃl/ adj.</td><td>局部的；不公平的；[口]偏爱的</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>caveats</td><td>— n.</td><td>警告；说明（caveat的复数）</td></tr>
+<tr><td>occurrence</td><td>/ə'kɜːrəns/ n.</td><td>发生，出现事件；发生的事</td></tr>
+<tr><td>extend</td><td>/ɪk'stend/ vt.</td><td>& vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出，extending，extends</td></tr>
+<tr><td>overall</td><td>/ˌoʊvər'ɔːl/ adj.</td><td>总体的；全面的；综合的全面考虑的adv. 大体上，总的来说一切包括在内，全部的n. 长罩衣工装裤；工作裤</td></tr>
+<tr><td>neither</td><td>/'niːðər/ conj.</td><td>既不；也不adv. 两个都不；既不……也不adj. 两者都不的det./pron. 两者都不</td></tr>
+<tr><td>expense</td><td>/ɪk'spens/ n.</td><td>开支；消费；损失，代价vt. 向…收取费用vi. 被花掉, expensing, expenses</td></tr>
+<tr><td>addition</td><td>/ə'dɪʃn/ n.</td><td>添加；增加物；加法</td></tr>
+<tr><td>cancers</td><td>/'kænsər/ n.</td><td>癌迅速蔓延的恶劣的或危险的事物</td></tr>
+<tr><td>nonetheless</td><td>/ˌnʌnðə'les/ adv.</td><td>虽然如此,但是</td></tr>
+<tr><td>oncologist</td><td>/ɑːn'kɑːlədʒɪst/ </td><td>肿瘤学家</td></tr>
+<tr><td>clusters</td><td>/'klʌstər/ n.</td><td>(果实、花等的)串, 簇(人、物等的)群, 组vt. & vi. (使)集中, clustering, clusters</td></tr>
+<tr><td>vaccine</td><td>/væk'siːn/ n.</td><td>疫苗;痘苗adj. 痘苗的;疫苗的</td></tr>
+<tr><td>trials</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>tumours</td><td>/'tuːmər/ n.</td><td>肿瘤；瘤；肿块</td></tr>
+<tr><td>bladder</td><td>/'blædər/ n.</td><td>〈解〉膀胱囊, 袋</td></tr>
+<tr><td>kidney</td><td>/'kɪdni/ n.</td><td>肾, 肾脏(可食用的动物的)腰子</td></tr>
+<tr><td>cancers</td><td>/'kænsər/ n.</td><td>癌迅速蔓延的恶劣的或危险的事物</td></tr>
+<tr><td>trial</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>cancer</td><td>/'kænsər/ n.</td><td>癌迅速蔓延的恶劣的或危险的事物</td></tr>
+<tr><td>reveals</td><td>/rɪ'viːl/ vt.</td><td>显示；露出泄露；透露，revealing，reveals</td></tr>
+<tr><td>reveals</td><td>/rɪ'viːl/ vt.</td><td>显示；露出泄露；透露，revealing，reveals</td></tr>
+<tr><td>queue</td><td>/kjuː/ n.</td><td>队列；长队；辫子vi. 排队；排队等候vt. 将…梳成辫子；使…排队, queuing, queues</td></tr>
+<tr><td>enter</td><td>/'entər/ vt.</td><td>& vi. 进入, 进去参加, 加入登记, 登录, entering, enters</td></tr>
+<tr><td>perched</td><td>/pɜːrtʃ/ n.</td><td>栖息处，栖枝，栖木高处，较高的位置鲈鱼vi. (鸟)飞落，暂栖，停留vt. & vi. (在较高处或物体边缘)坐着；把…置于较高或危险处，perching，pe</td></tr>
+<tr><td>cathedral</td><td>/kə'θiːdrəl/ n.</td><td>总教堂, 大教堂</td></tr>
+<tr><td>myth</td><td>/mɪθ/ n.</td><td>神话；虚构的人，虚构的事</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>credits</td><td>/'kredɪt/ n.</td><td>赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)，crediting，credits</td></tr>
+<tr><td>wrecked</td><td>/rek/ n.</td><td>失事；残骸；破坏；[口]失去健康的人vt. 破坏；使失事；拆毁vi. 失事；营救失事船只, wrecking, wrecks</td></tr>
+<tr><td>quarters</td><td>— n.</td><td>住处,岗位</td></tr>
+<tr><td>queue</td><td>/kjuː/ n.</td><td>队列；长队；辫子vi. 排队；排队等候vt. 将…梳成辫子；使…排队, queuing, queues</td></tr>
+<tr><td>enter</td><td>/'entər/ vt.</td><td>& vi. 进入, 进去参加, 加入登记, 登录, entering, enters</td></tr>
+<tr><td>prohibited</td><td>/prə'hɪbɪt/ vt.</td><td>阻止，禁止, prohibiting, prohibits</td></tr>
+<tr><td>vibe</td><td>/vaɪb/ </td><td>Ⅰn. ①(感情上的)感应，共鸣②(一地的)气氛，环境Ⅱvi. (感情上)产生共鸣</td></tr>
+<tr><td>strategy</td><td>/'strætədʒi/ n.</td><td>战略学, 兵法战略, 策略策略, 计谋</td></tr>
+<tr><td>cathedral</td><td>/kə'θiːdrəl/ n.</td><td>总教堂, 大教堂</td></tr>
+<tr><td>trend</td><td>/trend/ n.</td><td>趋势, 倾向流行, trending, trends</td></tr>
+<tr><td>restaurants</td><td>/'restrɑːnt/ n.</td><td>饭店, 餐馆</td></tr>
+<tr><td>concerts</td><td>/'kɑːnsərt/ n.</td><td>音乐会；和谐；一致vt. 使协调；协同安排vi. 协力；协调adj. 音乐会用的；在音乐会上演出的, concerting, concerts</td></tr>
+<tr><td>authenticity</td><td>/ˌɔːθen'tɪsəti/ n.</td><td>可靠性；确实性；真实性</td></tr>
+<tr><td>stamp</td><td>/stæmp/ n.</td><td>邮票；印记；跺脚；标志vt. 铭记；标出；盖章于…；贴邮票于…；用脚踩踏vi. 捣碎；跺脚；毁掉, stamping, stamps</td></tr>
+<tr><td>cover</td><td>/'kʌvər/ vt.</td><td>包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替, covering, covers</td></tr>
+<tr><td>hunchback</td><td>/'hʌntʃbæk/ n.</td><td>驼背;驼背者</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>keener</td><td>/kiːn/ adj.</td><td>锋利的热衷的，热心的，渴望(做某事)激烈的，紧张的良好的；敏锐的，敏捷的，keenest</td></tr>
+<tr><td>explanation</td><td>/ˌeksplə'neɪʃn/ n.</td><td>解释, 说明能说明某事缘由的言语、事实、情况等</td></tr>
+<tr><td>myths</td><td>/mɪθ/ n.</td><td>神话；虚构的人，虚构的事</td></tr>
+<tr><td>brands</td><td>/brænd/ n.</td><td>商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责, branding, brands</td></tr>
+<tr><td>evokes</td><td>/ɪ'voʊk/ vt.</td><td>产生, 引起, 唤起, evoking, evokes</td></tr>
+<tr><td>courageous</td><td>/kə'reɪdʒəs/ adj.</td><td>勇敢的;无畏的adv. 勇敢地;无畏地n. 勇敢;无畏</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>adopt</td><td>/ə'dɑːpt/ vt.</td><td>收养采用, 采纳, 采取正式接受, 通过, adopting, adopts</td></tr>
+<tr><td>reliable</td><td>/rɪ'laɪəbl/ adj.</td><td>可靠的, 可信赖的</td></tr>
+<tr><td>narrator</td><td>/'næreɪtər/ n.</td><td>叙述者；解说员</td></tr>
+<tr><td>considering</td><td>/kən'sɪdərɪŋ/ prep.</td><td>考虑到, 就…而论adv. 从各方面考虑, 从通盘考虑</td></tr>
+<tr><td>spawns</td><td>/spɔːn/ n.</td><td>菌丝；卵；产物vt. 产卵；酿成，造成；大量生产vi. 产卵；大量生产, spawning, spawns</td></tr>
+<tr><td>addressed</td><td>/ə'dres/ v.</td><td>写（收信人）姓名地址；致函演说；演讲称呼（某人）；冠以（某种称呼）设法解决；处理；对付向…说话n. 地址；住址；通信处 网址；电子邮件地址 演讲，演说 称呼 【</td></tr>
+<tr><td>margin</td><td>/'mɑːrdʒɪn/ n.</td><td>页边缘；利润，余裕；页边的空白</td></tr>
+<tr><td>merchandise</td><td>/'mɜːrtʃəndaɪs/ n.</td><td>商品, 货物vt. 买卖, 经营</td></tr>
+<tr><td>hosts</td><td>/hoʊst/ n.</td><td>主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集, hosting, hosts</td></tr>
+<tr><td>annual</td><td>/'ænjuəl/ adj.</td><td>年度的；每年的n. 年刊，年鉴；一年生植物</td></tr>
+<tr><td>formula</td><td>/'fɔːrmjələ/ n.</td><td>公式，准则；配方；婴儿食品</td></tr>
+<tr><td>host</td><td>/hoʊst/ n.</td><td>主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集, hosting, hosts</td></tr>
+<tr><td>triple</td><td>/'trɪpl/ adj.</td><td>三倍的；三方的n. 三倍数；三个一组vi. 增至三倍vt. 使成三倍, tripling, triples</td></tr>
+<tr><td>central</td><td>/'sentrəl/ adj.</td><td>中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>estate</td><td>/ɪ'steɪt/ </td><td>n.（位于乡村的）大片私有土地，庄园，种植园【英式】（按规划建造的）住宅区，工业区【法律】（个人死后留下的全部）财产，遗产【英式】旅游汽车；客货两用轿车（est</td></tr>
+<tr><td>daunt</td><td>/dɔːnt/ vt.</td><td>使气馁，使畏缩；威吓, daunting, daunts</td></tr>
+<tr><td>owners</td><td>/'oʊnər/ n.</td><td>所有者；物主</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>caters</td><td>/'keɪtər/ vt.</td><td>满足需要；投合，迎合；提供饮食及服务, catering, caters</td></tr>
+<tr><td>line</td><td>/laɪn/ n.</td><td>绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long interspersed element)长散在元</td></tr>
+<tr><td>prominent</td><td>/'prɑːmɪnənt/ adj.</td><td>突起的，凸出的显著的；突出的杰出的，著名的，卓越的</td></tr>
+<tr><td>interactive</td><td>/ˌɪntər'æktɪv/ adj.</td><td>(指至少两个人或物)一起活动或互相合作的交互式的, 人机对话的</td></tr>
+<tr><td>reveals</td><td>/rɪ'viːl/ vt.</td><td>显示；露出泄露；透露，revealing，reveals</td></tr>
+<tr><td>corporate</td><td>/'kɔːrpərət/ adj.</td><td>社团的, 法人的</td></tr>
+<tr><td>tunes</td><td>/tuːn/ n.</td><td>曲调, 曲子vt. & vi. 调音vt. 调整, tuning, tunes</td></tr>
+<tr><td>debut</td><td>/deɪ'bjuː/ n.</td><td>〈法〉演员首次演出</td></tr>
+<tr><td>description</td><td>/dɪ'skrɪpʃn/ n.</td><td>描述, 形容种类, 类型</td></tr>
+<tr><td>buzzing</td><td>/bʌz/ v.</td><td>发嗡嗡声；发蜂鸣声用蜂鸣器（给…）发信号繁忙；充满活力（飞机）低空飞过（尤指作为警告或威胁）（用特殊的机器）将头发剪得非常短n. 嗡嗡声；蜂鸣声（愉快、兴奋或成</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day34.html" class="nav-btn">← Day 34</a>
+  <a href="day36.html" class="nav-btn">Day 36 →</a>
+</div>
+
+<div class="progress">📖 Day 35 of 39</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-08-29</div>
+
+</body>
+</html>

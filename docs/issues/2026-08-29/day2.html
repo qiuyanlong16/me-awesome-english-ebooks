@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-08-29</div>
+
+<h1 class="article-title">Business</h1>
+<div class="article-section"></div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>The <span class="annot" data-tooltip="yields /jiːld/ vt. 出产；屈服；放弃vi. 屈服，投降n. 收益；产量时 态: yielded, yielding, yields">yields</span> on American long-dated government bonds stabilised after a choppy week. The yields on 30-year bonds recently <span class="annot" data-tooltip="reached /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reached</span> their highest levels since 2007, before a surprise <span class="annot" data-tooltip="intervention /ˌɪntər'venʃn/ n. 介入, 干涉, 干预">intervention</span> from the <span class="annot" data-tooltip="treasury /'treʒəri/ n. 财政部；国库，金库；宝库">Treasury</span>, through which it doubled its bond repurchases. That had the <span class="annot" data-tooltip="immediate /ɪ'miːdiət/ adj. 立即的，即刻的；紧迫的目前的，当前的直接的最接近的名 词: immediateness">immediate</span> effect of pushing yields lower, though they climbed soon after as investors questioned the wisdom of the plan. Speculation increased that Scott Bessent, the treasury <span class="annot" data-tooltip="secretary /'sekrəteri/ n. 秘书书记部长, 大臣形容词: secretarial">secretary</span>, would increase the size of the bond buy-backs by tapping the Treasury’s General Account, held at the <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">Federal</span> Reserve. <span class="annot" data-tooltip="mexico /'meksɪkoʊ/ n. 墨西哥">Mexico</span>’s economy grew by 1.4% in the second <span class="annot" data-tooltip="quarter /'kwɔːrtər/ n. 四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一时 ">quarter</span> compared with the first quarter, when it <span class="annot" data-tooltip="contracted /'kɑːntrækt/ vi. 感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约时 态: contracted, contracting, c">contracted</span> by 0.3%. Despite surging <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span> prices and trade turbulence, it was the country’s strongest GDP expansion since early 2022. Following years of delays, Shein launched its initial public offering; it is expected to start selling shares in Hong Kong on September 1st. The Chinese purveyor of <span class="annot" data-tooltip="ultra /'ʌltrə/ adj. 极端的；过分的n. 极端主义者；过激论者；急进论者">ultra</span>-cheap clothing had <span class="annot" data-tooltip="considered /kən'sɪdər/ vt. & vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及时 态: considered, considering, ">considered</span> listing in London or New York, but ran into regulatory hurdles. American politicians also wanted <span class="annot" data-tooltip="assurances /ə'ʃʊrəns/ n. 保证, 担保, 确信把握, 信心(人寿)保险">assurances</span> that the company does not use forced labour, an <span class="annot" data-tooltip="accusation /ˌækju'zeɪʃn/ n. 指责；指控；控告(被告发、控告的)罪名，罪状">accusation</span> that it denies. The IPO could <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span> Shein at $27bn, <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> below the $100bn it was <span class="annot" data-tooltip="worth /wɜːrθ/ adj. 值…的n. 价值；财产时 态: worthed, worthing, worths">worth</span> in private-market valuations in 2022. After rising by 460% on the first day of trading, Unitree’s share price plunged by 30% over <span class="annot" data-tooltip="subsequent /'sʌbsɪkwənt/ adj. 随后的, 继…之后的副 词: subsequently">subsequent</span> days. The IPO of the Chinese maker of humanoid robots had been vastly oversubscribed, but questions are being asked about the <span class="annot" data-tooltip="ease /iːz/ vt. 减轻，缓和；使安心n. 安逸，悠闲；轻松，舒适vi. 减轻，缓和；放松；灵活地移动EASEabbr. Electroni">ease</span> with which institutional investors could “pump and <span class="annot" data-tooltip="dump /dʌmp/ vt. 倾倒；倾卸vi. 倒垃圾n. 垃圾场dUMP脱氧尿苷酸时 态: dumped, dumping, dumps">dump</span>” (buy up the shares in a frothy market then sell them quickly to make a profit). <span class="annot" data-tooltip="nvidia 恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商">Nvidia</span> reported another set of blockbuster earnings. <span class="annot" data-tooltip="revenue /'revənuː/ n. 收入，收益；财政收入，税收">Revenue</span> in its latest quarter came in at $96.2bn, up by 106% year on year, and it made a <span class="annot" data-tooltip="net /net/ n. 网；净利；网络；实价vi. 编网vt. 净赚；得到；用网捕adj. 纯粹的；净余的时 态: netted, nettin">net</span> profit of $59.7bn, an increase of 126%. The company forecast a 70% <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> in sales next year. Bolstered by record profits, Samsung announced a programme to return 90- 110trn won ($65-$79bn) to <span class="annot" data-tooltip="shareholders /'ʃerhoʊldər/ n. 股东名 词: shareholding">shareholders</span>, the most ever for the company. Earlier, SK Hynix, another South Korean chipmaker benefiting from the</p>
+<p>huge global demand for memory chips, said it would return 40trn won to stockholders. In what it described as the largest-ever expansion of its international schedule, United Airlines said it would start flying non-stop from America to ten new destinations, including Marseille, Okinawa and Valencia, and add more <span class="annot" data-tooltip="flights /flaɪt/ n. 飞翔, 飞行航班, 航机楼梯的一段逃跑, 溃退时 态: flighted, flighting, flights">flights</span> to Milan, Osaka and Paris. The airline already offers more international <span class="annot" data-tooltip="routes /ruːt，raʊt/ n. 路, 路途, 路线, 路程时 态: routed, routing, routes">routes</span> than its <span class="annot" data-tooltip="domestic /də'mestɪk/ adj. 国内的；家庭的；驯养的；一心只管家务的">domestic</span> <span class="annot" data-tooltip="rivals /'raɪvl/ n. 竞争对手vt. 与…竞争, 与…匹敌时 态: rivaled, rivalled rivaling, rivalling">rivals</span>. Waymo, the robotaxi business owned by <span class="annot" data-tooltip="alphabet /'ælfəbet/ n. 字母表，字母系统；入门，初步">Alphabet</span>, chose Munich as the first city in the EU to launch its service. It will start offering paid-passenger fully <span class="annot" data-tooltip="autonomous /ɔː'tɑːnəməs/ adj. 自治的副 词: autonomously">autonomous</span> rides <span class="annot" data-tooltip="towards /tɔːrdz/ prep. 向，朝为了；有助于；用于对于，关于接近；将近；大约">towards</span> the end of 2027. Waymo operates in 11 American cities, providing 500,000 paid rides a week, and is expanding into 19 others. It is also testing <span class="annot" data-tooltip="vehicles /'viːəkl/ n. 交通工具, 车辆传播媒介, 手段">vehicles</span> in London and Tokyo. The Australian music <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> banned songs that have been wholly or <span class="annot" data-tooltip="substantially /səb'stænʃəli/ adv. 本质上，实质上；大体上相当多地，大大地">substantially</span> created by AI from the music charts, after it emerged that a hit <span class="annot" data-tooltip="cover /'kʌvər/ vt. 包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替时 态: covered, covering, c">cover</span> of Madonna’s “Like a Prayer” was generated by AI. The Australian Recording Industry Association said its aim is to “promote the human nature of artistry”. One recent study reckoned that 40% of new music worldwide contains at least some AI. But the kids think it’s all right. Bill Gates published a lengthy <span class="annot" data-tooltip="essay /'eseɪ/ n. 散文, 随笔">essay</span> in which he warned that governments were not doing enough to prepare for the <span class="annot" data-tooltip="disruption n. 中断,分裂,瓦解,破坏">disruption</span> from AI. Mr Gates called for jobs in some <span class="annot" data-tooltip="industries /'ɪndəstri/ n. 工业；产业；勤勉">industries</span>, such as health care, to be “human <span class="annot" data-tooltip="reserved /rɪ'zɜːrvd/ adj. 保留的，预订的；缄默的，冷淡的；包租的v. 保留（reserve的过去分词）副 词: reservedly">reserved</span>”. He used the term to <span class="annot" data-tooltip="invoke /ɪn'voʊk/ vt. 调用；祈求；恳求；引起时 态: invoked, invoking, invokes">invoke</span> nature reserves, which are walled off from development. This article was downloaded by zlibrary from https://www.economist.com/the-world-this-week/2026/08/27/business</p>
+<div class="article-separator"></div>
+<div class="article-header"> · The world this week</div>
+<p>Cartoon: America and Canada stand on the <span class="annot" data-tooltip="brink /brɪŋk/ n. (悬崖峭壁的)边沿(危险的)边沿">brink</span> of a trade war A <span class="annot" data-tooltip="lighter /'laɪtər/ n. 打火机；驳船；点火者vt. 驳运时 态: lightered, lightering, lighters">lighter</span> take on the news Aug 27th 2026 Dig deeper into the subjects of this week’s cartoon: Mark Carney must beware an all-out trade war The costs of defying Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> are <span class="annot" data-tooltip="mounting /maʊnt/ vt. & vi. 登上；骑上vi. 增加；上升vt. 上演；配有…发动攻击；攻击n. 山峰坐骑时 态: mounted，mou">mounting</span> for Canada America’s new sanctions are unlikely to topple Iran’s <span class="annot" data-tooltip="regime /reɪ'ʒiːm/ n. 政权，政体；社会制度；管理体制">regime</span> You can see previous ones here. This article was downloaded by zlibrary from https://www.economist.com/the-world-this-week/2026/08/27/cartoon-america-and- canada-stand-on-the-brink-of-a-trade-war</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Leaders</div>
+<p>The Unwelcoming States of America Mark Carney must beware an all-out trade war America will regret Scott Bessent’s bond-market misadventures America’s new sanctions are unlikely to topple Iran’s <span class="annot" data-tooltip="regime /reɪ'ʒiːm/ n. 政权，政体；社会制度；管理体制">regime</span> When obeying an American law means breaking a Chinese one</p>
+<div class="article-separator"></div>
+<div class="article-header">Leaders · Leaders | Our cover</div>
+<p>The Unwelcoming States of America By trying to change its <span class="annot" data-tooltip="demographic /ˌdemə'ɡræfɪk/ adj. 人口统计学的">demographic</span> trajectory, Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> will make his country weaker Aug 27th 2026 First, give Donald Trump some <span class="annot" data-tooltip="credit /'kredɪt/ n. 赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)时 态:">credit</span>. He promised to restore order to the border, and he did. Granted, the slowdown in irregular border-crossings began under Joe Biden, who belatedly closed the <span class="annot" data-tooltip="loophole /'luːphoʊl/ n. 枪眼；换气孔；漏洞；射弹孔">loophole</span> whereby <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> anyone could walk across, claim <span class="annot" data-tooltip="asylum /ə'saɪləm/ n. 庇护；收容所，救济院">asylum</span> and join the labour market. Mr Trump clamped down even harder. The southern frontier, which was visibly <span class="annot" data-tooltip="chaotic /keɪ'ɑːtɪk/ adj. 混乱的，无秩序的；混沌的">chaotic</span> in the early Biden years, is now <span class="annot" data-tooltip="calm /kɑːm/ adj. 静的，平静的；沉着的vt. 使平静；使镇定vi. 平静下来；镇定下来n. 风平浪静比较级: calmer, calmes">calm</span>. That success could have been the foundation on which to build a rational immigration policy. Voters like to feel in control of who comes in, which is why Mr Trump’s border wall has reassured many. Once they think the</p>
+<p>government has a grip, there is political space to discuss the rules of entry and exit. Two questions must be <span class="annot" data-tooltip="addressed /ə'dres/ v. 写（收信人）姓名地址；致函演说；演讲称呼（某人）；冠以（某种称呼）设法解决；处理；对付向…说话n. 地址；住址；通信处 ">addressed</span>. What should the government do about the people who are already on American soil <span class="annot" data-tooltip="illegally /ɪ'liːɡəli/ adv. 不法地">illegally</span>? And whom should America welcome in the future? Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> has offered a <span class="annot" data-tooltip="brutal /'bruːtl/ adj. 残忍的；野蛮的，不讲理的副 词: brutally">brutal</span> answer to the first question, and a self-harming one to the second. He has promised the “largest deportation operation in the history of our country”. One of his enforcers said he wanted to <span class="annot" data-tooltip="deport /dɪ'pɔːrt/ vt. 举止；放逐；驱逐出境时 态: deported, deporting, deports">deport</span> 100m people, roughly seven times the <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of illicit migrants in America. The White House <span class="annot" data-tooltip="boasted /boʊst/ n. 自吹自擂, 自夸的话vt. & vi. 自夸vt. 有(引以为荣的事物)时 态: boasted, boasting, ">boasted</span> it was rounding up “the worst of the worst”, though most of those <span class="annot" data-tooltip="detained /dɪ'teɪn/ vt. 拘留；留住；耽搁时 态: detained, detaining, detains">detained</span> have never been <span class="annot" data-tooltip="convicted /kən'vɪkt/ vt. 宣判有罪n. 囚犯时 态: convicted, convicting, convicts">convicted</span> of a crime. The mass deployment of shoddily trained, theatrically <span class="annot" data-tooltip="aggressive /ə'ɡresɪv/ adj. 好争斗的, 挑衅的, 侵略性的副 词: aggressively">aggressive</span> immigration agents to Minneapolis caused a political backlash, after they were filmed killing two American protesters. Since then, there have been fewer headline-grabbing clashes, as a showboating homeland-<span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span> chief has been replaced by a more competent one. But the deportation machine has not slowed; it has merely grown <span class="annot" data-tooltip="quieter n. 消音装置；消声器adj. 更安静的（quiet的比较级）">quieter</span>. Rather than rappelling down buildings and seizing people in Walmart car parks, agents are co-operating with friendly cops and <span class="annot" data-tooltip="detaining /dɪ'teɪn/ vt. 拘留；留住；耽搁时 态: detained, detaining, detains">detaining</span> people with expired visas at airports. And Mr Trump has created a new class of deportables by <span class="annot" data-tooltip="stripping n. 抽锭,脱模,拆模">stripping</span> temporary <span class="annot" data-tooltip="asylum /ə'saɪləm/ n. 庇护；收容所，救济院">asylum</span>-like status from hundreds of thousands of Haitians, <span class="annot" data-tooltip="afghans n. 阿富汗语；阿富汗人adj. 阿富汗人的；阿富汗的afghann. 一种宽松的羊皮外衣">Afghans</span> and others. <span class="annot" data-tooltip="overall /ˌoʊvər'ɔːl/ adj. 总体的；全面的；综合的全面考虑的adv. 大体上，总的来说一切包括在内，全部的n. 长罩衣工装裤；工作裤">Overall</span>, the deportation <span class="annot" data-tooltip="campaign /kæm'peɪn/ n. 运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）时">campaign</span> is unpopular. Most Americans favour kicking out criminals, but not <span class="annot" data-tooltip="tearing /tɪr，ter/ v. 撕掉，扯下；撕破；拔掉；拉伤；（非正式）狂奔；饱经……摧残；流眼泪n. 眼泪；（撕破的）洞或裂缝， 撕扯时 态: tor">tearing</span> apart the families of hard-working people who have been in the country for <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span>. Yet some in MAGA-world hanker for a less diverse America. <span class="annot" data-tooltip="senior /'siːniər/ adj. 年长的资深的; 地位高的〈美〉最高年级的n. 较年长者高年级学生〈美〉毕业班学生Senior西尼尔(姓氏)">Senior</span> Trump aides such as Stephen Miller stop only a few inches short of overt <span class="annot" data-tooltip="racism /'reɪsɪzəm/ n. 种族主义，种族歧视；人种偏见形容词: racist">racism</span>, talking of “<span class="annot" data-tooltip="heritage /'herɪtɪdʒ/ n. 遗产, 继承物传统">heritage</span> Americans”, who are somehow more American than newer arrivals, and “remigration”, a <span class="annot" data-tooltip="buzzword /'bʌzwɜːrd/ n. (报刊等的)时髦术语,流行行话">buzzword</span> on the nativist right for sending people from alien cultures home. Such attitudes seem to inform policies on whom to let in, too. The only sizeable <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span> of refugees admitted under Mr Trump has been white South Africans, whose claims of persecution are <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span>-<span class="annot" data-tooltip="fetched /fetʃ/ vt. 接来；到达；取来；吸引vi. 取物；卖得；拿n. 取得；诡计时 态: fetched, fetching, fetche">fetched</span>. The administration</p>
+<p>blocked all new <span class="annot" data-tooltip="immigrant /'ɪmɪɡrənt/ n. 移民">immigrant</span> visas for citizens of 75 non-rich countries. Thus, if an American marries a Nigerian, they cannot live together in America, a <span class="annot" data-tooltip="curb /kɜːrb/ n. 侧石, 边石限制, 克制, 抑制vt. 限制, 克制, 抑制时 态: curbed, curbing, curbs">curb</span> on American liberty with echoes of a darker past. A court last week ruled the policy illegal; the administration is now stalling and perhaps looking for a <span class="annot" data-tooltip="workaround /'wɜːrkəraʊnd/ n. 工作区">workaround</span>. Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> is altering America’s <span class="annot" data-tooltip="demographic /ˌdemə'ɡræfɪk/ adj. 人口统计学的">demographic</span> trajectory. <span class="annot" data-tooltip="net /net/ n. 网；净利；网络；实价vi. 编网vt. 净赚；得到；用网捕adj. 纯粹的；净余的时 态: netted, nettin">Net</span> <span class="annot" data-tooltip="migration /maɪ'ɡreɪʃn/ n. 迁移, 移居">migration</span> in 2025 was zero. The short-term economic effects are ugly. The labour force has shrunk by 1m since January. Leave aside the $17,000-a-head cost of <span class="annot" data-tooltip="processing /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">processing</span>, shackling and <span class="annot" data-tooltip="deporting /dɪ'pɔːrt/ vt. 举止；放逐；驱逐出境时 态: deported, deporting, deports">deporting</span> people; American builders and bars are floundering for lack of labour. The long-term effects could be even more damaging. Though Mr Trump has often said he favours legal migration, especially the skilled variety, his actions suggest otherwise. He is steadily <span class="annot" data-tooltip="obstructing /əb'strʌkt/ vt. 阻塞；堵塞阻碍，阻止，妨碍时 态: obstructed，obstructing，obstructs">obstructing</span> the pipeline through which brainy foreigners come to study and work. By one estimate, 29% fewer student visas were issued in 2025 than in the previous year, and new rules are making studying in America even less attractive. Foreigners must <span class="annot" data-tooltip="complete /kəm'pliːt/ adj. 完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善比较级: complete">complete</span> their courses in less time than the average student takes, and then find a job within 30 days or go home. Meanwhile, American firms that want H1-B visas for highly skilled foreign staff will have to stump up more than $100,000 per worker to apply, and may still be rejected. Rather than boosting <span class="annot" data-tooltip="wages /weɪdʒ/ vi. 进行；发动；从事n. 工资；报偿；代价vt. 开展；进行时 态: waged, waging, wages">wages</span> for native-born IT professionals, this will make it harder for their employers to expand. Some within MAGA feel that shutting out foreigners will protect American culture. On the <span class="annot" data-tooltip="contrary /ˈkɑːntreri/ adj. 相反的, 相违的n. 相反, 反面, 对立面副 词: contrarily">contrary</span>, the <span class="annot" data-tooltip="essence /'esns/ n. 本质，实质；精华；香精">essence</span> of that culture is dynamism and creativity, which has always been fed by a steady influx of industrious newcomers with fresh perspectives. <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">Nearly</span> half of <span class="annot" data-tooltip="fortune /'fɔːrtʃən/ n. 运气；财富；命运vt. 给予财富vi. 偶然发生时 态: fortuned, fortuning, fortunes">Fortune</span> 500 firms were founded by <span class="annot" data-tooltip="immigrants /'ɪmɪɡrənt/ n. 移民">immigrants</span> or their children. Many of America’s most <span class="annot" data-tooltip="brilliant /'brɪliənt/ adj. 闪光的, 明亮的光辉的, 辉煌的副 词: brilliantly">brilliant</span> entrepreneurs, including Elon Musk, <span class="annot" data-tooltip="entered /'entər/ vt. & vi. 进入, 进去参加, 加入登记, 登录时 态: entered, entering, enters">entered</span> via the college-to-<span class="annot" data-tooltip="silicon /'sɪlɪkən/ n. 〈化〉硅">Silicon</span> <span class="annot" data-tooltip="valley /'væli/ n. 流域；山谷；溪谷">Valley</span> pipeline that is now <span class="annot" data-tooltip="narrowing /'næroʊ/ adj. 狭窄的，有限的；度量小的；精密的；勉强的n. 狭窄部分，隘路；海峡vt. 使变狭窄vi. 变窄比较级: narrower">narrowing</span>. A <span class="annot" data-tooltip="fortress /'fɔːrtrəs/ n. 要塞；堡垒vt. 筑要塞；以要塞防守">fortress</span> America would be unAmerican. There is little point in urging Mr Trump to <span class="annot" data-tooltip="recalibrate 重新刻度;再校准">recalibrate</span> his immigration policies. The best hope may be that the courts can limit the <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of ways in which he <span class="annot" data-tooltip="pursues /pər'suː/ vt. 从事；追赶；继续；纠缠vi. 追赶；继续进行时 态: pursued, pursuing, pursues">pursues</span> them <span class="annot" data-tooltip="illegally /ɪ'liːɡəli/ adv. 不法地">illegally</span>. (He still claims the constitution doesn’t mean what it says about birthright citizenship, for example.) However,</p>
+<p>Democrats should not assume, as they <span class="annot" data-tooltip="scramble /'skræmbl/ vi. 快速爬行，匍匐前进；攀登争夺，争抢(军事飞机)紧急起飞vt. (用黄油)炒蛋扰频或倒频使(电话通话等)只可由有特殊接收器">scramble</span> to regain a slice of <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">federal</span> power, that the president was wrong about everything. He is right that the <span class="annot" data-tooltip="asylum /ə'saɪləm/ n. 庇护；收容所，救济院">asylum</span> system was being abused. A future <span class="annot" data-tooltip="democratic /ˌdemə'krætɪk/ adj. 民主的, 有民主精神或作风的副 词: democratically">Democratic</span> president would be wise to insist that asylum-<span class="annot" data-tooltip="seekers /'siːkər/ n. 探求者；[法]搜查人">seekers</span> apply from the first safe country they <span class="annot" data-tooltip="reach /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reach</span>, rather than giving <span class="annot" data-tooltip="preference /'prefrəns/ n. 较喜欢的东西, 偏爱优待, 优惠, 优先权">preference</span> to those with the wherewithal to make it to <span class="annot" data-tooltip="mexico /'meksɪkoʊ/ n. 墨西哥">Mexico</span> and then step into <span class="annot" data-tooltip="texas /'teksəs/ n. 德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室">Texas</span>. This (<span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> more than wall-building) is the way to avoid future mayhem on the border. And only by persuading voters that their frontiers remain <span class="annot" data-tooltip="secure /sɪ'kjʊr/ adj. 安心的；有把握的可靠的；牢靠的；稳固的；安全的；稳妥的严密把守的；牢固的；坚固的v. （尤指经过努力）获得，取得，实现拴">secure</span>—rather than grandstanding about abolishing ICE—can a future administration hope to pass the kind of enlightened immigration <span class="annot" data-tooltip="reform /rɪ'fɔːrm/ n. 改革，改良，改造vt. & vi. 改革；改造；改善时 态: reformed，reforming，reforms">reform</span> that America needs. Such a reform should make the country more open to the world’s most talented people, and less cavalier about breaking up families. That might truly make America great again. ■ This article was downloaded by zlibrary from https://www.economist.com/leaders/2026/08/27/the-unwelcoming-states-of-america</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>yields</td><td>/jiːld/ vt.</td><td>出产；屈服；放弃vi. 屈服，投降n. 收益；产量, yielding, yields</td></tr>
+<tr><td>reached</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>intervention</td><td>/ˌɪntər'venʃn/ n.</td><td>介入, 干涉, 干预</td></tr>
+<tr><td>treasury</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>immediate</td><td>/ɪ'miːdiət/ adj.</td><td>立即的，即刻的；紧迫的目前的，当前的直接的最接近的</td></tr>
+<tr><td>secretary</td><td>/'sekrəteri/ n.</td><td>秘书书记部长, 大臣</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>mexico</td><td>/'meksɪkoʊ/ n.</td><td>墨西哥</td></tr>
+<tr><td>quarter</td><td>/'kwɔːrtər/ n.</td><td>四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一, quartering, quarters</td></tr>
+<tr><td>contracted</td><td>/'kɑːntrækt/ vi.</td><td>感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约, contracting, contracts</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>ultra</td><td>/'ʌltrə/ adj.</td><td>极端的；过分的n. 极端主义者；过激论者；急进论者</td></tr>
+<tr><td>considered</td><td>/kən'sɪdər/ vt.</td><td>& vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及, considering, considers</td></tr>
+<tr><td>assurances</td><td>/ə'ʃʊrəns/ n.</td><td>保证, 担保, 确信把握, 信心(人寿)保险</td></tr>
+<tr><td>accusation</td><td>/ˌækju'zeɪʃn/ n.</td><td>指责；指控；控告(被告发、控告的)罪名，罪状</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>worth</td><td>/wɜːrθ/ adj.</td><td>值…的n. 价值；财产, worthing, worths</td></tr>
+<tr><td>subsequent</td><td>/'sʌbsɪkwənt/ adj.</td><td>随后的, 继…之后的</td></tr>
+<tr><td>ease</td><td>/iːz/ vt.</td><td>减轻，缓和；使安心n. 安逸，悠闲；轻松，舒适vi. 减轻，缓和；放松；灵活地移动EASEabbr. Electronic Airborne Systems E</td></tr>
+<tr><td>dump</td><td>/dʌmp/ vt.</td><td>倾倒；倾卸vi. 倒垃圾n. 垃圾场dUMP脱氧尿苷酸, dumping, dumps</td></tr>
+<tr><td>nvidia</td><td>— </td><td>恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商</td></tr>
+<tr><td>revenue</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>net</td><td>/net/ n.</td><td>网；净利；网络；实价vi. 编网vt. 净赚；得到；用网捕adj. 纯粹的；净余的, netting, nets</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>shareholders</td><td>/'ʃerhoʊldər/ n.</td><td>股东</td></tr>
+<tr><td>flights</td><td>/flaɪt/ n.</td><td>飞翔, 飞行航班, 航机楼梯的一段逃跑, 溃退, flighting, flights</td></tr>
+<tr><td>routes</td><td>/ruːt，raʊt/ n.</td><td>路, 路途, 路线, 路程, routing, routes</td></tr>
+<tr><td>domestic</td><td>/də'mestɪk/ adj.</td><td>国内的；家庭的；驯养的；一心只管家务的</td></tr>
+<tr><td>rivals</td><td>/'raɪvl/ n.</td><td>竞争对手vt. 与…竞争, 与…匹敌, rivalled rivaling, rivalling rivals, rivals</td></tr>
+<tr><td>alphabet</td><td>/'ælfəbet/ n.</td><td>字母表，字母系统；入门，初步</td></tr>
+<tr><td>autonomous</td><td>/ɔː'tɑːnəməs/ adj.</td><td>自治的</td></tr>
+<tr><td>towards</td><td>/tɔːrdz/ prep.</td><td>向，朝为了；有助于；用于对于，关于接近；将近；大约</td></tr>
+<tr><td>vehicles</td><td>/'viːəkl/ n.</td><td>交通工具, 车辆传播媒介, 手段</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>substantially</td><td>/səb'stænʃəli/ adv.</td><td>本质上，实质上；大体上相当多地，大大地</td></tr>
+<tr><td>cover</td><td>/'kʌvər/ vt.</td><td>包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替, covering, covers</td></tr>
+<tr><td>essay</td><td>/'eseɪ/ n.</td><td>散文, 随笔</td></tr>
+<tr><td>disruption</td><td>— n.</td><td>中断,分裂,瓦解,破坏</td></tr>
+<tr><td>industries</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>reserved</td><td>/rɪ'zɜːrvd/ adj.</td><td>保留的，预订的；缄默的，冷淡的；包租的v. 保留（reserve的过去分词）</td></tr>
+<tr><td>invoke</td><td>/ɪn'voʊk/ vt.</td><td>调用；祈求；恳求；引起, invoking, invokes</td></tr>
+<tr><td>brink</td><td>/brɪŋk/ n.</td><td>(悬崖峭壁的)边沿(危险的)边沿</td></tr>
+<tr><td>lighter</td><td>/'laɪtər/ n.</td><td>打火机；驳船；点火者vt. 驳运, lightering, lighters</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>mounting</td><td>/maʊnt/ vt.</td><td>& vi. 登上；骑上vi. 增加；上升vt. 上演；配有…发动攻击；攻击n. 山峰坐骑，mounting，mounts</td></tr>
+<tr><td>regime</td><td>/reɪ'ʒiːm/ n.</td><td>政权，政体；社会制度；管理体制</td></tr>
+<tr><td>regime</td><td>/reɪ'ʒiːm/ n.</td><td>政权，政体；社会制度；管理体制</td></tr>
+<tr><td>demographic</td><td>/ˌdemə'ɡræfɪk/ adj.</td><td>人口统计学的</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>credit</td><td>/'kredɪt/ n.</td><td>赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)，crediting，credits</td></tr>
+<tr><td>loophole</td><td>/'luːphoʊl/ n.</td><td>枪眼；换气孔；漏洞；射弹孔</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>asylum</td><td>/ə'saɪləm/ n.</td><td>庇护；收容所，救济院</td></tr>
+<tr><td>chaotic</td><td>/keɪ'ɑːtɪk/ adj.</td><td>混乱的，无秩序的；混沌的</td></tr>
+<tr><td>calm</td><td>/kɑːm/ adj.</td><td>静的，平静的；沉着的vt. 使平静；使镇定vi. 平静下来；镇定下来n. 风平浪静, calmest</td></tr>
+<tr><td>addressed</td><td>/ə'dres/ v.</td><td>写（收信人）姓名地址；致函演说；演讲称呼（某人）；冠以（某种称呼）设法解决；处理；对付向…说话n. 地址；住址；通信处 网址；电子邮件地址 演讲，演说 称呼 【</td></tr>
+<tr><td>illegally</td><td>/ɪ'liːɡəli/ adv.</td><td>不法地</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>brutal</td><td>/'bruːtl/ adj.</td><td>残忍的；野蛮的，不讲理的</td></tr>
+<tr><td>deport</td><td>/dɪ'pɔːrt/ vt.</td><td>举止；放逐；驱逐出境, deporting, deports</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>boasted</td><td>/boʊst/ n.</td><td>自吹自擂, 自夸的话vt. & vi. 自夸vt. 有(引以为荣的事物), boasting, boasts</td></tr>
+<tr><td>detained</td><td>/dɪ'teɪn/ vt.</td><td>拘留；留住；耽搁, detaining, detains</td></tr>
+<tr><td>convicted</td><td>/kən'vɪkt/ vt.</td><td>宣判有罪n. 囚犯, convicting, convicts</td></tr>
+<tr><td>aggressive</td><td>/ə'ɡresɪv/ adj.</td><td>好争斗的, 挑衅的, 侵略性的</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>quieter</td><td>— n.</td><td>消音装置；消声器adj. 更安静的（quiet的比较级）</td></tr>
+<tr><td>detaining</td><td>/dɪ'teɪn/ vt.</td><td>拘留；留住；耽搁, detaining, detains</td></tr>
+<tr><td>stripping</td><td>— n.</td><td>抽锭,脱模,拆模</td></tr>
+<tr><td>asylum</td><td>/ə'saɪləm/ n.</td><td>庇护；收容所，救济院</td></tr>
+<tr><td>afghans</td><td>— n.</td><td>阿富汗语；阿富汗人adj. 阿富汗人的；阿富汗的afghann. 一种宽松的羊皮外衣</td></tr>
+<tr><td>overall</td><td>/ˌoʊvər'ɔːl/ adj.</td><td>总体的；全面的；综合的全面考虑的adv. 大体上，总的来说一切包括在内，全部的n. 长罩衣工装裤；工作裤</td></tr>
+<tr><td>campaign</td><td>/kæm'peɪn/ n.</td><td>运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）, campaigning, campai</td></tr>
+<tr><td>tearing</td><td>/tɪr，ter/ v.</td><td>撕掉，扯下；撕破；拔掉；拉伤；（非正式）狂奔；饱经……摧残；流眼泪n. 眼泪；（撕破的）洞或裂缝， 撕扯，torn，tearing，tears</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>senior</td><td>/'siːniər/ adj.</td><td>年长的资深的; 地位高的〈美〉最高年级的n. 较年长者高年级学生〈美〉毕业班学生Senior西尼尔(姓氏)</td></tr>
+<tr><td>racism</td><td>/'reɪsɪzəm/ n.</td><td>种族主义，种族歧视；人种偏见</td></tr>
+<tr><td>heritage</td><td>/'herɪtɪdʒ/ n.</td><td>遗产, 继承物传统</td></tr>
+<tr><td>buzzword</td><td>/'bʌzwɜːrd/ n.</td><td>(报刊等的)时髦术语,流行行话</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>fetched</td><td>/fetʃ/ vt.</td><td>接来；到达；取来；吸引vi. 取物；卖得；拿n. 取得；诡计, fetching, fetches</td></tr>
+<tr><td>immigrant</td><td>/'ɪmɪɡrənt/ n.</td><td>移民</td></tr>
+<tr><td>curb</td><td>/kɜːrb/ n.</td><td>侧石, 边石限制, 克制, 抑制vt. 限制, 克制, 抑制, curbing, curbs</td></tr>
+<tr><td>workaround</td><td>/'wɜːrkəraʊnd/ n.</td><td>工作区</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>demographic</td><td>/ˌdemə'ɡræfɪk/ adj.</td><td>人口统计学的</td></tr>
+<tr><td>net</td><td>/net/ n.</td><td>网；净利；网络；实价vi. 编网vt. 净赚；得到；用网捕adj. 纯粹的；净余的, netting, nets</td></tr>
+<tr><td>migration</td><td>/maɪ'ɡreɪʃn/ n.</td><td>迁移, 移居</td></tr>
+<tr><td>processing</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>deporting</td><td>/dɪ'pɔːrt/ vt.</td><td>举止；放逐；驱逐出境, deporting, deports</td></tr>
+<tr><td>obstructing</td><td>/əb'strʌkt/ vt.</td><td>阻塞；堵塞阻碍，阻止，妨碍，obstructing，obstructs</td></tr>
+<tr><td>complete</td><td>/kəm'pliːt/ adj.</td><td>完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善, completest 缩 写: comp, cpl</td></tr>
+<tr><td>wages</td><td>/weɪdʒ/ vi.</td><td>进行；发动；从事n. 工资；报偿；代价vt. 开展；进行, waging, wages</td></tr>
+<tr><td>contrary</td><td>/ˈkɑːntreri/ adj.</td><td>相反的, 相违的n. 相反, 反面, 对立面</td></tr>
+<tr><td>essence</td><td>/'esns/ n.</td><td>本质，实质；精华；香精</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>fortune</td><td>/'fɔːrtʃən/ n.</td><td>运气；财富；命运vt. 给予财富vi. 偶然发生, fortuning, fortunes</td></tr>
+<tr><td>immigrants</td><td>/'ɪmɪɡrənt/ n.</td><td>移民</td></tr>
+<tr><td>brilliant</td><td>/'brɪliənt/ adj.</td><td>闪光的, 明亮的光辉的, 辉煌的</td></tr>
+<tr><td>entered</td><td>/'entər/ vt.</td><td>& vi. 进入, 进去参加, 加入登记, 登录, entering, enters</td></tr>
+<tr><td>silicon</td><td>/'sɪlɪkən/ n.</td><td>〈化〉硅</td></tr>
+<tr><td>valley</td><td>/'væli/ n.</td><td>流域；山谷；溪谷</td></tr>
+<tr><td>narrowing</td><td>/'næroʊ/ adj.</td><td>狭窄的，有限的；度量小的；精密的；勉强的n. 狭窄部分，隘路；海峡vt. 使变狭窄vi. 变窄, narrowest</td></tr>
+<tr><td>fortress</td><td>/'fɔːrtrəs/ n.</td><td>要塞；堡垒vt. 筑要塞；以要塞防守</td></tr>
+<tr><td>recalibrate</td><td>— </td><td>重新刻度;再校准</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>pursues</td><td>/pər'suː/ vt.</td><td>从事；追赶；继续；纠缠vi. 追赶；继续进行, pursuing, pursues</td></tr>
+<tr><td>illegally</td><td>/ɪ'liːɡəli/ adv.</td><td>不法地</td></tr>
+<tr><td>scramble</td><td>/'skræmbl/ vi.</td><td>快速爬行，匍匐前进；攀登争夺，争抢(军事飞机)紧急起飞vt. (用黄油)炒蛋扰频或倒频使(电话通话等)只可由有特殊接收器的人收听混杂；把…搅乱n. 爬行，攀登争</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>asylum</td><td>/ə'saɪləm/ n.</td><td>庇护；收容所，救济院</td></tr>
+<tr><td>democratic</td><td>/ˌdemə'krætɪk/ adj.</td><td>民主的, 有民主精神或作风的</td></tr>
+<tr><td>seekers</td><td>/'siːkər/ n.</td><td>探求者；[法]搜查人</td></tr>
+<tr><td>reach</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>preference</td><td>/'prefrəns/ n.</td><td>较喜欢的东西, 偏爱优待, 优惠, 优先权</td></tr>
+<tr><td>mexico</td><td>/'meksɪkoʊ/ n.</td><td>墨西哥</td></tr>
+<tr><td>texas</td><td>/'teksəs/ n.</td><td>德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室)</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>secure</td><td>/sɪ'kjʊr/ adj.</td><td>安心的；有把握的可靠的；牢靠的；稳固的；安全的；稳妥的严密把守的；牢固的；坚固的v. （尤指经过努力）获得，取得，实现拴牢；扣紧；关严保护；保卫；使安全抵押；为</td></tr>
+<tr><td>reform</td><td>/rɪ'fɔːrm/ n.</td><td>改革，改良，改造vt. & vi. 改革；改造；改善，reforming，reforms</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day1.html" class="nav-btn">← Day 1</a>
+  <a href="day3.html" class="nav-btn">Day 3 →</a>
+</div>
+
+<div class="progress">📖 Day 2 of 39</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-08-29</div>
+
+</body>
+</html>

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>United States | Making American stuff again</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-08-29</div>
+
+<h1 class="article-title">United States | Making American stuff again</h1>
+<div class="article-section">United States</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> believes he has, with some <span class="annot" data-tooltip="justification /ˌdʒʌstɪfɪ'keɪʃn/ n. 理由；辩护；认为有理，认为正当；释罪">justification</span>. The Institute for Supply Management’s survey of <span class="annot" data-tooltip="manufacturing /ˌmænju'fæktʃərɪŋ/ n. 制造业，工业adj. 制造业的；制造的">manufacturing</span> purchasing managers has indicated expanding factory activity every month this year (see chart). The <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">Federal</span> Reserve’s industrial-production index shows that real manufacturing output grew at a 4.5% annualised rate in the first half of 2026—its fastest pace since 2011, excluding the rebound after covid-19. This month Ford said it would shift production of some models from China to America beginning in 2030, a decision its boss linked to <span class="annot" data-tooltip="tariffs /'tærɪf/ n. 关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表时 态: tariffed, tariffing, tar">tariffs</span>. If any <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> <span class="annot" data-tooltip="embodies /ɪm'bɑːdi/ vt. 表现，象征，具体表现包括；包含时 态: embodied，embodying，embodies">embodies</span> American manufacturing, it is carmaking. Mr Trump has made it a focus of his <span class="annot" data-tooltip="tariff /'tærɪf/ n. 关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表时 态: tariffed, tariffing, tar">tariff</span> policy, imposing a 25% levy on imported cars and many imported parts. Trade talks between America and Canada recently broke down in part over the industry. Mr Trump then threatened to <span class="annot" data-tooltip="raise /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raise</span> tariffs on all cars, trucks and parts from Canada to 50% from January 1st. The president can point to some results. From December 2025 to July 2026 <span class="annot" data-tooltip="vehicle /'viːəkl/ n. 交通工具, 车辆传播媒介, 手段">vehicle</span> production jumped by about 9%, accounting for around a <span class="annot" data-tooltip="quarter /'kwɔːrtər/ n. 四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一时 ">quarter</span> of the <span class="annot" data-tooltip="overall /ˌoʊvər'ɔːl/ adj. 总体的；全面的；综合的全面考虑的adv. 大体上，总的来说一切包括在内，全部的n. 长罩衣工装裤；工作裤">overall</span> <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> in manufacturing. Ford is not the only carmaker changing its plans. General Motors (GM) will also shift some production from China to America, avoiding tariffs of more than 50% on Chinese-built <span class="annot" data-tooltip="vehicles /'viːəkl/ n. 交通工具, 车辆传播媒介, 手段">vehicles</span>. GM has cut back Canadian operations, too. Stellantis (whose largest <span class="annot" data-tooltip="shareholder /'ʃerhoʊldər/ n. 股东名 词: shareholding">shareholder</span></p>
+<p>part-owns The Economist’s parent company) has moved future production from Canada to America. Honda is moving production of its Civic from <span class="annot" data-tooltip="mexico /'meksɪkoʊ/ n. 墨西哥">Mexico</span> to Indiana. These plans, however, do little to explain the rebound in output that has already occurred. That owes more to a recovery from supply <span class="annot" data-tooltip="disruptions n. 中断,分裂,瓦解,破坏">disruptions</span> late last year, strong demand for pickups and SUVs, and the launch of new models. For now, <span class="annot" data-tooltip="tariffs /'tærɪf/ n. 关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表时 态: tariffed, tariffing, tar">tariffs</span> are doing more to <span class="annot" data-tooltip="raise /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raise</span> costs than boost output. GM estimates that tariffs will set it back by $2.5bn–$3.5bn this year, largely because it still imports <span class="annot" data-tooltip="vehicles /'viːəkl/ n. 交通工具, 车辆传播媒介, 手段">vehicles</span> and parts. In other <span class="annot" data-tooltip="industries /'ɪndəstri/ n. 工业；产业；勤勉">industries</span> the upswing was under way before Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s return to office. <span class="annot" data-tooltip="aircraft /'erkræft/ n. 飞机，航空器">Aircraft</span> production grew by <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> 9% in the first half of the year, but the <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span>’s recovery began in 2022. Electrical-equipment makers are still benefiting from an investment cycle accelerated by policies enacted under Joe Biden. <span class="annot" data-tooltip="subsidies /'sʌbsədi/ n. 津贴；补助金；补贴">Subsidies</span> for renewables helped spur spending on transformer factories and other <span class="annot" data-tooltip="grid /ɡrɪd/ n. 格子,格栏地图上的坐标方格输电网">grid</span> equipment, says Donald Leavens of the National Electrical <span class="annot" data-tooltip="manufacturers /ˌmænju'fæktʃərər/ n. 制造商, 制造厂">Manufacturers</span> Association. “A lot of that is still playing out today.” Some of the strongest <span class="annot" data-tooltip="manufacturing /ˌmænju'fæktʃərɪŋ/ n. 制造业，工业adj. 制造业的；制造的">manufacturing</span> sectors are also among those least protected by tariffs. Take the AI boom, which has lifted demand for equipment and materials through the construction of data centres and <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span> <span class="annot" data-tooltip="infrastructure /'ɪnfrəstrʌktʃər/ n. 基础设施; 基础结构">infrastructure</span>. From December 2025 to July 2026 output of <span class="annot" data-tooltip="semiconductors /'semikəndʌktər/ n. 〈物〉半导体形容词: semiconducting">semiconductors</span> and electronic components rose by more than 12%, data-centre <span class="annot" data-tooltip="cooling /ˈkulɪŋ/ n. 冷却adj. 凉的；凉爽的冷却的">cooling</span> equipment by almost 4% and cement by nearly 9%. The Economist estimates that in the first half of 2026 the data-centre and power buildout accounted for nearly a third of the increase in manufacturing output. While some AI hardware, such as chips, is increasingly a target of <span class="annot" data-tooltip="tariff /'tærɪf/ n. 关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表时 态: tariffed, tariffing, tar">tariff</span> policy, many AI-related imports have been carved out of broader tariffs. The <span class="annot" data-tooltip="pattern /'pætərn/ n. 型，样式花样，图案方式，形式榜样，典范vt. 模仿； 仿制以图案装饰时 态: patterned，patterning，">pattern</span> <span class="annot" data-tooltip="extends /ɪk'stend/ vt. & vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出时 态:">extends</span> beyond AI. Scott Lincicome of the Cato Institute, a libertarian think-<span class="annot" data-tooltip="tank /tæŋk/ n. （存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内时 态: t">tank</span>, calculates that aerospace, computers and electronics face effective tariff rates of less than 5%, among the lowest in manufacturing. Meanwhile, manufacturing mainstays facing higher tariffs— from food to textiles—have <span class="annot" data-tooltip="barely /'berli/ adv. 仅仅，勉强；几乎不；公开地；贫乏地">barely</span> grown this year.</p>
+<p>For voters the real test of Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s policies is jobs. On that score, the <span class="annot" data-tooltip="renaissance /'renəsɑːns/ n. 文艺复兴, 文艺复兴时期">renaissance</span> is harder to find. In the first seven months of the year <span class="annot" data-tooltip="manufacturing /ˌmænju'fæktʃərɪŋ/ n. 制造业，工业adj. 制造业的；制造的">manufacturing</span> payrolls edged up by about 31,000—a tiny gain compared with the 315,000 factory jobs lost between 2023 and 2025. Aerospace and <span class="annot" data-tooltip="industries /'ɪndəstri/ n. 工业；产业；勤勉">industries</span> tied to AI-related construction accounted for all of the <span class="annot" data-tooltip="net /net/ n. 网；净利；网络；实价vi. 编网vt. 净赚；得到；用网捕adj. 纯粹的；净余的时 态: netted, nettin">net</span> job growth. Across more traditional manufacturing, meanwhile, employment fell. Even in some of the industries driving the production rebound, job gains have been modest. Employment in the car <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> is up by less than 1%. Chipmakers have <span class="annot" data-tooltip="shed /ʃed/ n. 棚, 库vt. 流出, 流下蜕皮, 树叶脱落时 态: shed, shedding, sheds">shed</span> workers even as output has surged. Where manufacturing jobs are appearing, they look different from the traditional factory work Mr Trump <span class="annot" data-tooltip="evokes /ɪ'voʊk/ vt. 产生, 引起, 唤起时 态: evoked, evoking, evokes">evokes</span>. <span class="annot" data-tooltip="aircraft /'erkræft/ n. 飞机，航空器">Aircraft</span> plants, for example, need engineers and technicians. <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">Nearly</span> six in ten workers have a <span class="annot" data-tooltip="bachelor /'bætʃələr/ n. 单身男子，单身汉学士；学士学位">bachelor</span>’s degree or higher; only one in five works on the factory floor. The <span class="annot" data-tooltip="infrastructure /'ɪnfrəstrʌktʃər/ n. 基础设施; 基础结构">infrastructure</span> boom is similarly brainy. The <span class="annot" data-tooltip="revival /rɪ'vaɪvl/ n. 复活；复兴；恢复精神；苏醒；再生效">revival</span>, in other words, is <span class="annot" data-tooltip="conspicuously /kən'spɪkjuəs/ adj. 显眼的, 明显的副 词: conspicuously">conspicuously</span> short of factory hands. Even if more carmaking returns later this <span class="annot" data-tooltip="decade /'dekeɪd/ n. 十年，十年期；十">decade</span>, the armies of <span class="annot" data-tooltip="assembly /ə'sembli/ n. 装配；集会，集合">assembly</span> workers will not. Robots now do much of the work. Meanwhile, the industries expanding fastest are struggling to find enough skilled workers. Mr Trump’s presidency may see investment in automated factories and create demand for high-end talent. That would constitute a manufacturing revival, but perhaps not the kind his supporters hoped for. ■ Stay on top of American politics with The US in brief, our daily newsletter with fast analysis of the most important political news, and Checks and Balance, a weekly note that examines the state of American <span class="annot" data-tooltip="democracy /dɪ'mɑːkrəsi/ n. 民主, 民主制民主国家">democracy</span> and the <span class="annot" data-tooltip="issues /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issues</span> that matter to voters. This article was downloaded by zlibrary from https://www.economist.com/united-states/2026/08/25/does-donald-trump-deserve- <span class="annot" data-tooltip="credit /'kredɪt/ n. 赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)时 态:">credit</span>-for-a-manufacturing-revival</p>
+<div class="article-separator"></div>
+<div class="article-header">United States · United States | Pro-tariff crustaceans</div>
+<p>Shrimpers are the latest <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span> seeking protection from Washington But Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> is waking up to the risks of pricey food Aug 27th 2026 “WE SHOULD BE excited, but we’re not because we got a boatload of <span class="annot" data-tooltip="shrimp /ʃrɪmp/ n. 虾；小虾；矮小的人vi. 捕虾adj. 有虾的；虾制的名 词: shrimper">shrimp</span> and it’s <span class="annot" data-tooltip="worth /wɜːrθ/ adj. 值…的n. 价值；财产时 态: worthed, worthing, worths">worth</span> no money,” says Waylon Buras, watching his men unload a 40,000-<span class="annot" data-tooltip="pound /paʊnd/ n. 英镑；兽栏；重击，重击声；拘留所vt. 捣烂；敲打；监禁，拘留vi. 连续重击，猛击Pound庞德(姓氏)名 词: po">pound</span> haul onto the docks of the Louisiana bayou. The fisherman had just returned home after 13 days at sea, the longest <span class="annot" data-tooltip="trip /trɪp/ vi. 绊倒；犯错误；远足；轻快地走n. 旅行；绊倒；差错vt. 绊倒；使犯错TRIPabbr. transformation-">trip</span> of his career. Lifting a fistful of iridescent shrimp to the sun, he notes with frustration how perfect they are: “They look like glass.” In May a pound sold for $2.00, but today he will get just $1.80. Cheap shrimp from abroad keep driving down prices, while high fuel costs wipe away any remaining profit. He wants the government to do more. “They can <span class="annot" data-tooltip="either /'iːðər/ pron. (两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的">either</span> subsidise us at the end of the year or they need to put a</p>
+<p>hold on the imports so we can catch our <span class="annot" data-tooltip="breath /breθ/ n. 气息；呼吸(一次)呼吸，一口气；微风">breath</span>,” he says. “We’re almost drowning.” Gulf-coast shrimpers from Alabama to <span class="annot" data-tooltip="texas /'teksəs/ n. 德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室">Texas</span> are the latest <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span> hoping to benefit from Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s <span class="annot" data-tooltip="tariffs /'tærɪf/ n. 关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表时 态: tariffed, tariffing, tar">tariffs</span>. Last year taxes on imported food more than quadrupled. Mr Trump has not stopped imports of <span class="annot" data-tooltip="shrimp /ʃrɪmp/ n. 虾；小虾；矮小的人vi. 捕虾adj. 有虾的；虾制的名 词: shrimper">shrimp</span>, but in July his trade <span class="annot" data-tooltip="representative /ˌreprɪ'zentətɪv/ n. 代表代理人adj. 有代表性的, 典型的名 词: representativeness">representative</span> announced duties of at least 10% on a broad swathe of goods, including shrimp from countries such as <span class="annot" data-tooltip="vietnam /ˌviːet'nɑːm/ n. 越南（南亚国家）">Vietnam</span> and <span class="annot" data-tooltip="indonesia /ˌɪndə'niːʒə/ n. 印度尼西亚(东南亚岛国)">Indonesia</span>. The problem for shrimpers, as for some other American <span class="annot" data-tooltip="industries /'ɪndəstri/ n. 工业；产业；勤勉">industries</span>, is that tariffs may not be enough to save them, and may in the meantime <span class="annot" data-tooltip="raise /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raise</span> costs for everyone else. American shrimpers didn’t always struggle to compete. When seafood <span class="annot" data-tooltip="casseroles /'kæsəroʊl/ n. 焙盘;砂锅焙盘菜;砂锅菜">casseroles</span> and Jell-O salads became popular in the mid-20th century, housewives bought home-grown shrimp. Then aid programmes scrambled the economics. In the 1970s, the World Bank and USAID spent billions teaching malnourished communities in Latin America and South-East Asia how to fish at scale. Today <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> 95% of the shrimp Americans eat is imported; in four <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span> the share harvested in the Gulf fell from 29% to 4.5%. A National Oceanic and Atmospheric Administration (NOAA) report published in March found</p>
+<p>that a <span class="annot" data-tooltip="pandemic /pæn'demɪk/ adj. （疾病）在全国（或世界）流行的">pandemic</span>-era glut turned a simmering problem into a crisis. Between 2021 and 2023 prices of Gulf <span class="annot" data-tooltip="shrimp /ʃrɪmp/ n. 虾；小虾；矮小的人vi. 捕虾adj. 有虾的；虾制的名 词: shrimper">shrimp</span> halved, making <span class="annot" data-tooltip="shrimping /ʃrɪmp/ n. 虾；小虾；矮小的人vi. 捕虾adj. 有虾的；虾制的名 词: shrimper">shrimping</span> unprofitable. <span class="annot" data-tooltip="crews /kruː/ n. 全体人员，全体船员；队，组vi. 一起工作vt. 使当船员时 态: crewed, crewing, crews">Crews</span> stopped going out to sea and the <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> lost 1,200 jobs. <span class="annot" data-tooltip="revenue /'revənuː/ n. 收入，收益；财政收入，税收">Revenue</span> more than halved in just two years, to $221m. Hurricanes and oil <span class="annot" data-tooltip="spills /spɪl/ vt. 使溢出，使流出；使摔下vi. 溢出，流出；摔下；涌流n. 溢出，溅出；溢出量；摔下；小塞子时 态: spilled, s">spills</span> add more risk. “Every shock <span class="annot" data-tooltip="shrinks /ʃrɪŋk/ vt. & vi. 收缩；退缩时 态: shrank ，shrunk shrunk，shrunken shrinking，shr">shrinks</span> the fleet,” says Christopher Liese, an economist at NOAA who wrote the recent report. The shrimp <span class="annot" data-tooltip="lobby /'lɑːbi/ n. 前厅, 厅堂议会休息室游说议员的团体vt. & vi. 向…进行游说[疏通]名 词: lobbyism">lobby</span> was relieved to be included in the administration’s <span class="annot" data-tooltip="tariff /'tærɪf/ n. 关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表时 态: tariffed, tariffing, tar">tariff</span> announcement in July. Jessica Domangue, a <span class="annot" data-tooltip="representative /ˌreprɪ'zentətɪv/ n. 代表代理人adj. 有代表性的, 典型的名 词: representativeness">representative</span> in the Louisiana House, reckons big-shots in Washington are finally “waking up” to the <span class="annot" data-tooltip="plight /plaɪt/ n. 困境；境况；誓约vt. 保证；约定时 态: plighted, plighting, plights">plight</span> of her constituents. However it is unclear how long the <span class="annot" data-tooltip="tariffs /'tærɪf/ n. 关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表时 态: tariffed, tariffing, tar">tariffs</span> will last. Twenty-five states have sued to block Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s new levies, which the White House has sought to <span class="annot" data-tooltip="impose /ɪm'poʊz/ vi. 欺骗；利用；施加影响vt. 强加；以…欺骗；征税时 态: imposed, imposing, imposes">impose</span> under Section 301 of the 1974 Trade Act. If they are held to be legal, Mr Trump may himself move to lower them. The president seems to be realising that tariffs do indeed <span class="annot" data-tooltip="raise /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raise</span> prices and that American consumers don’t like that; voters now rank affordability as their top concern. Florida <span class="annot" data-tooltip="lobbyists /'lɑːbiɪst/ n. 说客；活动议案通过者">lobbyists</span> persuaded the White House to <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span> a heavy duty on Mexican tomatoes, which supply 70% of the <span class="annot" data-tooltip="domestic /də'mestɪk/ adj. 国内的；家庭的；驯养的；一心只管家务的">domestic</span> market. In the nine months to April, tomato prices surged by 50%. Such effects were <span class="annot" data-tooltip="predictable /prɪ'dɪktəbl/ adj. 可预言〔预报〕的不出所料的，可以想见的；平庸的；墨守成规的；毫无想像力的n. 可预测性">predictable</span>. In the 1930s sugar magnates secured the dream protection package: tariffs, production <span class="annot" data-tooltip="caps abbr. Cassette Programming System 盒式磁带程序设计系统">caps</span> and price supports from the government. Americans now pay a fifth more than the global average for sugar. The American Enterprise Institute, a think-<span class="annot" data-tooltip="tank /tæŋk/ n. （存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内时 态: t">tank</span>, estimates that the policies cost each <span class="annot" data-tooltip="household /'haʊshoʊld/ n. 同住在一所房子里的人, 一家人, 户adj. 家庭的, 家用的">household</span> $40 a year and keep just 4,000 farms afloat.</p>
+<p>For some food products, Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> is now reversing course. After raising fees on coffee, cocoa, beef, bananas and avocados last summer, the administration lowered them a few months later (see chart). Facing a broad backlash over <span class="annot" data-tooltip="grocery /'ɡroʊsəri/ n. 杂货业杂货店">grocery</span> prices, on August 21st the president said he would let 300,000 tonnes of ground beef be imported, <span class="annot" data-tooltip="tariff /'tærɪf/ n. 关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表时 态: tariffed, tariffing, tar">tariff</span>-free, for 90 days. Hamburger-lovers cheered; cattle ranchers are <span class="annot" data-tooltip="furious /'fjʊriəs/ adj. 狂怒的, 暴怒的强烈的, 激烈的副 词: furiously">furious</span>. Pete Ricketts, a <span class="annot" data-tooltip="republican /rɪ'pʌblɪkən/ adj. 共和国的, 共和政体的n. 拥护共和政体者, 共和主义者名 词: republicanism">Republican</span> senator from Nebraska being challenged by a left-<span class="annot" data-tooltip="leaning /liːn/ vi. 倾斜；倚靠；倾向；依赖adj. 瘦的；贫乏的，歉收的vt. 使倾斜n. 倾斜；倾斜度；瘦肉时 态: leaned, le">leaning</span> Independent, Dan Osborn, was among the president’s usual <span class="annot" data-tooltip="allies n. （第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者">allies</span> to break rank. “Flooding the market with lower-quality beef”, Mr Ricketts wrote on X, “<span class="annot" data-tooltip="compromises /'kɑːmprəmaɪz/ n. 妥协, 折中方法vi. 折中解决vt. 连累, 危害, 损害时 态: compromised, compromising">compromises</span> Nebraska farmers and ranchers.” Even if <span class="annot" data-tooltip="tariffs /'tærɪf/ n. 关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表时 态: tariffed, tariffing, tar">tariffs</span> do remain, they are unlikely to solve the economics of <span class="annot" data-tooltip="shrimping /ʃrɪmp/ n. 虾；小虾；矮小的人vi. 捕虾adj. 有虾的；虾制的名 词: shrimper">shrimping</span>. “Tariffs may buy time but won’t make the <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> competitive or make the <span class="annot" data-tooltip="underlying /ˌʌndər'laɪɪŋ/ adj. 根本的, 基础的含蓄的, 潜在的">underlying</span> <span class="annot" data-tooltip="issues /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issues</span> go away,” says David Ortega, a food economist at Michigan State University. The average <span class="annot" data-tooltip="vessel /'vesl/ n. 容器，器皿；船，舰；脉管，血管">vessel</span> in the fleet that fishes <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">federal</span> waters in the Gulf is 34 years old. <span class="annot" data-tooltip="chronic /'krɑːnɪk/ adj. 慢性的；长期的；习惯性的副 词: chronically">Chronic</span> problems have made reinvesting in <span class="annot" data-tooltip="infrastructure /'ɪnfrəstrʌktʃər/ n. 基础设施; 基础结构">infrastructure</span> a bad bet. Some legislators are now pushing for more changes. Bills in Congress would bar federal funds from supporting overseas aquaculture and require the government to buy only American <span class="annot" data-tooltip="shrimp /ʃrɪmp/ n. 虾；小虾；矮小的人vi. 捕虾adj. 有虾的；虾制的名 词: shrimper">shrimp</span> for school lunches, military <span class="annot" data-tooltip="cafeterias /ˌkæfə'tɪriə/ n. (常设在商店、工厂、学校中的)自助餐厅或食堂">cafeterias</span> and food programmes.</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>justification</td><td>/ˌdʒʌstɪfɪ'keɪʃn/ n.</td><td>理由；辩护；认为有理，认为正当；释罪</td></tr>
+<tr><td>manufacturing</td><td>/ˌmænju'fæktʃərɪŋ/ n.</td><td>制造业，工业adj. 制造业的；制造的</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>tariffs</td><td>/'tærɪf/ n.</td><td>关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表, tariffing, tariffs</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>embodies</td><td>/ɪm'bɑːdi/ vt.</td><td>表现，象征，具体表现包括；包含，embodying，embodies</td></tr>
+<tr><td>tariff</td><td>/'tærɪf/ n.</td><td>关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表, tariffing, tariffs</td></tr>
+<tr><td>raise</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>vehicle</td><td>/'viːəkl/ n.</td><td>交通工具, 车辆传播媒介, 手段</td></tr>
+<tr><td>quarter</td><td>/'kwɔːrtər/ n.</td><td>四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一, quartering, quarters</td></tr>
+<tr><td>overall</td><td>/ˌoʊvər'ɔːl/ adj.</td><td>总体的；全面的；综合的全面考虑的adv. 大体上，总的来说一切包括在内，全部的n. 长罩衣工装裤；工作裤</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>vehicles</td><td>/'viːəkl/ n.</td><td>交通工具, 车辆传播媒介, 手段</td></tr>
+<tr><td>shareholder</td><td>/'ʃerhoʊldər/ n.</td><td>股东</td></tr>
+<tr><td>mexico</td><td>/'meksɪkoʊ/ n.</td><td>墨西哥</td></tr>
+<tr><td>disruptions</td><td>— n.</td><td>中断,分裂,瓦解,破坏</td></tr>
+<tr><td>tariffs</td><td>/'tærɪf/ n.</td><td>关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表, tariffing, tariffs</td></tr>
+<tr><td>raise</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>vehicles</td><td>/'viːəkl/ n.</td><td>交通工具, 车辆传播媒介, 手段</td></tr>
+<tr><td>industries</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>aircraft</td><td>/'erkræft/ n.</td><td>飞机，航空器</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>subsidies</td><td>/'sʌbsədi/ n.</td><td>津贴；补助金；补贴</td></tr>
+<tr><td>grid</td><td>/ɡrɪd/ n.</td><td>格子,格栏地图上的坐标方格输电网</td></tr>
+<tr><td>manufacturers</td><td>/ˌmænju'fæktʃərər/ n.</td><td>制造商, 制造厂</td></tr>
+<tr><td>manufacturing</td><td>/ˌmænju'fæktʃərɪŋ/ n.</td><td>制造业，工业adj. 制造业的；制造的</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>infrastructure</td><td>/'ɪnfrəstrʌktʃər/ n.</td><td>基础设施; 基础结构</td></tr>
+<tr><td>semiconductors</td><td>/'semikəndʌktər/ n.</td><td>〈物〉半导体</td></tr>
+<tr><td>cooling</td><td>/ˈkulɪŋ/ n.</td><td>冷却adj. 凉的；凉爽的冷却的</td></tr>
+<tr><td>tariff</td><td>/'tærɪf/ n.</td><td>关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表, tariffing, tariffs</td></tr>
+<tr><td>pattern</td><td>/'pætərn/ n.</td><td>型，样式花样，图案方式，形式榜样，典范vt. 模仿； 仿制以图案装饰，patterning，patterns</td></tr>
+<tr><td>extends</td><td>/ɪk'stend/ vt.</td><td>& vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出，extending，extends</td></tr>
+<tr><td>tank</td><td>/tæŋk/ n.</td><td>（存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内, tanking, tanks</td></tr>
+<tr><td>barely</td><td>/'berli/ adv.</td><td>仅仅，勉强；几乎不；公开地；贫乏地</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>renaissance</td><td>/'renəsɑːns/ n.</td><td>文艺复兴, 文艺复兴时期</td></tr>
+<tr><td>manufacturing</td><td>/ˌmænju'fæktʃərɪŋ/ n.</td><td>制造业，工业adj. 制造业的；制造的</td></tr>
+<tr><td>industries</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>net</td><td>/net/ n.</td><td>网；净利；网络；实价vi. 编网vt. 净赚；得到；用网捕adj. 纯粹的；净余的, netting, nets</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>shed</td><td>/ʃed/ n.</td><td>棚, 库vt. 流出, 流下蜕皮, 树叶脱落, shedding, sheds</td></tr>
+<tr><td>evokes</td><td>/ɪ'voʊk/ vt.</td><td>产生, 引起, 唤起, evoking, evokes</td></tr>
+<tr><td>aircraft</td><td>/'erkræft/ n.</td><td>飞机，航空器</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>bachelor</td><td>/'bætʃələr/ n.</td><td>单身男子，单身汉学士；学士学位</td></tr>
+<tr><td>infrastructure</td><td>/'ɪnfrəstrʌktʃər/ n.</td><td>基础设施; 基础结构</td></tr>
+<tr><td>revival</td><td>/rɪ'vaɪvl/ n.</td><td>复活；复兴；恢复精神；苏醒；再生效</td></tr>
+<tr><td>conspicuously</td><td>/kən'spɪkjuəs/ adj.</td><td>显眼的, 明显的</td></tr>
+<tr><td>decade</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>assembly</td><td>/ə'sembli/ n.</td><td>装配；集会，集合</td></tr>
+<tr><td>democracy</td><td>/dɪ'mɑːkrəsi/ n.</td><td>民主, 民主制民主国家</td></tr>
+<tr><td>issues</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>credit</td><td>/'kredɪt/ n.</td><td>赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)，crediting，credits</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>shrimp</td><td>/ʃrɪmp/ n.</td><td>虾；小虾；矮小的人vi. 捕虾adj. 有虾的；虾制的</td></tr>
+<tr><td>worth</td><td>/wɜːrθ/ adj.</td><td>值…的n. 价值；财产, worthing, worths</td></tr>
+<tr><td>pound</td><td>/paʊnd/ n.</td><td>英镑；兽栏；重击，重击声；拘留所vt. 捣烂；敲打；监禁，拘留vi. 连续重击，猛击Pound庞德(姓氏)</td></tr>
+<tr><td>trip</td><td>/trɪp/ vi.</td><td>绊倒；犯错误；远足；轻快地走n. 旅行；绊倒；差错vt. 绊倒；使犯错TRIPabbr. transformation-induced plasticity 高</td></tr>
+<tr><td>either</td><td>/'iːðər/ pron.</td><td>(两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的</td></tr>
+<tr><td>breath</td><td>/breθ/ n.</td><td>气息；呼吸(一次)呼吸，一口气；微风</td></tr>
+<tr><td>texas</td><td>/'teksəs/ n.</td><td>德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室)</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>tariffs</td><td>/'tærɪf/ n.</td><td>关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表, tariffing, tariffs</td></tr>
+<tr><td>shrimp</td><td>/ʃrɪmp/ n.</td><td>虾；小虾；矮小的人vi. 捕虾adj. 有虾的；虾制的</td></tr>
+<tr><td>representative</td><td>/ˌreprɪ'zentətɪv/ n.</td><td>代表代理人adj. 有代表性的, 典型的</td></tr>
+<tr><td>vietnam</td><td>/ˌviːet'nɑːm/ n.</td><td>越南（南亚国家）</td></tr>
+<tr><td>indonesia</td><td>/ˌɪndə'niːʒə/ n.</td><td>印度尼西亚(东南亚岛国)</td></tr>
+<tr><td>industries</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>raise</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>casseroles</td><td>/'kæsəroʊl/ n.</td><td>焙盘;砂锅焙盘菜;砂锅菜</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>pandemic</td><td>/pæn'demɪk/ adj.</td><td>（疾病）在全国（或世界）流行的</td></tr>
+<tr><td>shrimp</td><td>/ʃrɪmp/ n.</td><td>虾；小虾；矮小的人vi. 捕虾adj. 有虾的；虾制的</td></tr>
+<tr><td>shrimping</td><td>/ʃrɪmp/ n.</td><td>虾；小虾；矮小的人vi. 捕虾adj. 有虾的；虾制的</td></tr>
+<tr><td>crews</td><td>/kruː/ n.</td><td>全体人员，全体船员；队，组vi. 一起工作vt. 使当船员, crewing, crews</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>revenue</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>spills</td><td>/spɪl/ vt.</td><td>使溢出，使流出；使摔下vi. 溢出，流出；摔下；涌流n. 溢出，溅出；溢出量；摔下；小塞子, spilt spilling, spills</td></tr>
+<tr><td>shrinks</td><td>/ʃrɪŋk/ vt.</td><td>& vi. 收缩；退缩，shrunk shrunk，shrunken shrinking，shrinks</td></tr>
+<tr><td>lobby</td><td>/'lɑːbi/ n.</td><td>前厅, 厅堂议会休息室游说议员的团体vt. & vi. 向…进行游说[疏通]</td></tr>
+<tr><td>tariff</td><td>/'tærɪf/ n.</td><td>关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表, tariffing, tariffs</td></tr>
+<tr><td>representative</td><td>/ˌreprɪ'zentətɪv/ n.</td><td>代表代理人adj. 有代表性的, 典型的</td></tr>
+<tr><td>plight</td><td>/plaɪt/ n.</td><td>困境；境况；誓约vt. 保证；约定, plighting, plights</td></tr>
+<tr><td>tariffs</td><td>/'tærɪf/ n.</td><td>关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表, tariffing, tariffs</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>impose</td><td>/ɪm'poʊz/ vi.</td><td>欺骗；利用；施加影响vt. 强加；以…欺骗；征税, imposing, imposes</td></tr>
+<tr><td>raise</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>lobbyists</td><td>/'lɑːbiɪst/ n.</td><td>说客；活动议案通过者</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>domestic</td><td>/də'mestɪk/ adj.</td><td>国内的；家庭的；驯养的；一心只管家务的</td></tr>
+<tr><td>predictable</td><td>/prɪ'dɪktəbl/ adj.</td><td>可预言〔预报〕的不出所料的，可以想见的；平庸的；墨守成规的；毫无想像力的n. 可预测性</td></tr>
+<tr><td>caps</td><td>— abbr.</td><td>Cassette Programming System 盒式磁带程序设计系统</td></tr>
+<tr><td>tank</td><td>/tæŋk/ n.</td><td>（存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内, tanking, tanks</td></tr>
+<tr><td>household</td><td>/'haʊshoʊld/ n.</td><td>同住在一所房子里的人, 一家人, 户adj. 家庭的, 家用的</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>grocery</td><td>/'ɡroʊsəri/ n.</td><td>杂货业杂货店</td></tr>
+<tr><td>tariff</td><td>/'tærɪf/ n.</td><td>关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表, tariffing, tariffs</td></tr>
+<tr><td>furious</td><td>/'fjʊriəs/ adj.</td><td>狂怒的, 暴怒的强烈的, 激烈的</td></tr>
+<tr><td>republican</td><td>/rɪ'pʌblɪkən/ adj.</td><td>共和国的, 共和政体的n. 拥护共和政体者, 共和主义者</td></tr>
+<tr><td>leaning</td><td>/liːn/ vi.</td><td>倾斜；倚靠；倾向；依赖adj. 瘦的；贫乏的，歉收的vt. 使倾斜n. 倾斜；倾斜度；瘦肉, leaning, leans</td></tr>
+<tr><td>allies</td><td>— n.</td><td>（第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者</td></tr>
+<tr><td>compromises</td><td>/'kɑːmprəmaɪz/ n.</td><td>妥协, 折中方法vi. 折中解决vt. 连累, 危害, 损害, compromising, compromises</td></tr>
+<tr><td>tariffs</td><td>/'tærɪf/ n.</td><td>关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表, tariffing, tariffs</td></tr>
+<tr><td>shrimping</td><td>/ʃrɪmp/ n.</td><td>虾；小虾；矮小的人vi. 捕虾adj. 有虾的；虾制的</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>underlying</td><td>/ˌʌndər'laɪɪŋ/ adj.</td><td>根本的, 基础的含蓄的, 潜在的</td></tr>
+<tr><td>issues</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>vessel</td><td>/'vesl/ n.</td><td>容器，器皿；船，舰；脉管，血管</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>chronic</td><td>/'krɑːnɪk/ adj.</td><td>慢性的；长期的；习惯性的</td></tr>
+<tr><td>infrastructure</td><td>/'ɪnfrəstrʌktʃər/ n.</td><td>基础设施; 基础结构</td></tr>
+<tr><td>shrimp</td><td>/ʃrɪmp/ n.</td><td>虾；小虾；矮小的人vi. 捕虾adj. 有虾的；虾制的</td></tr>
+<tr><td>cafeterias</td><td>/ˌkæfə'tɪriə/ n.</td><td>(常设在商店、工厂、学校中的)自助餐厅或食堂</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day12.html" class="nav-btn">← Day 12</a>
+  <a href="day14.html" class="nav-btn">Day 14 →</a>
+</div>
+
+<div class="progress">📖 Day 13 of 39</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-08-29</div>
+
+</body>
+</html>

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Culture | World in a dish</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-08-29</div>
+
+<h1 class="article-title">Culture | World in a dish</h1>
+<div class="article-section">Culture</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>Many THC drinks have few or no calories; some include ostensibly healthy extras such as plant <span class="annot" data-tooltip="extracts /'ekstrækt/ v. 提取；提炼索取，设法得到（对方不愿提供的信息、钱财等）选取；摘录；选录（用力）取出，拔出【正式】获得，得到（某种感觉或品">extracts</span>. Makers <span class="annot" data-tooltip="boast /boʊst/ n. 自吹自擂, 自夸的话vt. & vi. 自夸vt. 有(引以为荣的事物)时 态: boasted, boasting, ">boast</span> that they do not cause hangovers. Some <span class="annot" data-tooltip="restaurants /'restrɑːnt/ n. 饭店, 餐馆">restaurants</span> have even started to offer them, noticing a <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> in “<span class="annot" data-tooltip="cocktail /'kɑːkteɪl/ n. 鸡尾酒餐前开胃菜混合物">cocktail</span> culture”. thc drinks come in a variety of strengths, so pay careful attention to the dosage: <span class="annot" data-tooltip="consuming /kən'suːmɪŋ/ adj. 消费的；强烈的">consuming</span> 25mg rather than 2.5mg can lead to several deeply unpleasant hours. According to the Hemp <span class="annot" data-tooltip="beverage /'bevərɪdʒ/ n. 饮料">Beverage</span> Alliance, a trade <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span>, in 2025 the <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of distribution points more than doubled (from 133,500 to 306,000), as did the sales by volume (from about 700,000 case <span class="annot" data-tooltip="equivalents /ɪ'kwɪvələnt/ adj. 等同的，等效的n. 对等的人（或事物），对应的人（或事物）">equivalents</span> to 1.6m), from a year earlier. The Brightfield Group, a cannabis consultancy, predicts that <span class="annot" data-tooltip="revenue /'revənuː/ n. 收入，收益；财政收入，税收">revenue</span> from THC drinks could exceed $4.4bn by the end of the <span class="annot" data-tooltip="decade /'dekeɪd/ n. 十年，十年期；十">decade</span>, up from less than $200m in 2020. Total Wine, America’s biggest wine <span class="annot" data-tooltip="retailer /'riːteɪlər/ n. 传播的人；零售商">retailer</span>, sells them in 22 states (there are 24 where cannabis is illegal). Their rise is owed partly to the morass of <span class="annot" data-tooltip="legislation /ˌledʒɪs'leɪʃn/ n. 法律；法规立法，法律的制定[通过]">legislation</span> governing American agriculture, known as the farm bill. Its most recent <span class="annot" data-tooltip="version /'vɜːrʒn/ n. 变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本">version</span> lets farmers grow hemp with a THC content of no more than 0.3% by dry weight; anything stronger is <span class="annot" data-tooltip="classified /'klæsɪfaɪd/ adj. (信息)归入密级的,保密的">classified</span> as <span class="annot" data-tooltip="marijuana /ˌmærə'wɑːnə/ n. 大麻；大麻毒品">marijuana</span> and remains illegal under <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">federal</span> law. But <span class="annot" data-tooltip="manufacturers /ˌmænju'fæktʃərər/ n. 制造商, 制造厂">manufacturers</span> can <span class="annot" data-tooltip="extract /'ekstrækt/ v. 提取；提炼索取，设法得到（对方不愿提供的信息、钱财等）选取；摘录；选录（用力）取出，拔出【正式】获得，得到（某种感觉或品">extract</span> THC from large quantities of legal hemp and use it to make drinks containing intoxicating doses. <span class="annot" data-tooltip="anti /'ænti/ adj. 反对的n. 反对者，反对论者">Anti</span>-cannabis lawmakers have noticed: last year Congress passed legislation that would limit THC to 0.4mg per container, in effect killing the hemp- drinks sector. But the <span class="annot" data-tooltip="senate /ˈsenət/ n.（诸如美国、澳大利亚、法国的）参议院（the Senate） （某些国家的）大学理事会，大学评议会（古罗马的）元老院">Senate</span> recently voted to briefly postpone the <span class="annot" data-tooltip="crackdown /'krækdaʊn/ n. 压迫,镇压,打击">crackdown</span>, and on August 10th a bipartisan bill was introduced that would <span class="annot" data-tooltip="exempt /ɪɡ'zempt/ vt. 免除；豁免adj. 被免除的；被豁免的n. 免税者；被免除义务者时 态: exempted, exempting, ex">exempt</span> THC drinks from the <span class="annot" data-tooltip="restrictions /rɪ'strɪkʃn/ n. 约束，限制管制，限定；法律，规章">restrictions</span> and regulate them like alcohol. Its <span class="annot" data-tooltip="sponsors /'spɑːnsər/ vt. 赞助, 发起n. 赞助者；主办者；保证人">sponsors</span> do not want to kill a golden, if slightly stoned, goose. This would open the federal government to charges of hypocrisy for approving one form of hemp while outlawing another. But it would also boost businesses and protect a steady stream of tax revenue. The <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> is already high. Whether it becomes mighty—or goes up in smoke—will depend on lawmakers. ■ This article was downloaded by zlibrary from https://www.economist.com/culture/2026/08/27/americas-cannabis-drinks-market-is- booming-and-imperilled</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Economic &amp; financial indicators</div>
+<p>Economic data, commodities and markets</p>
+<p>Economic & financial <span class="annot" data-tooltip="indicators /'ɪndɪkeɪtər/ n. (仪器上显示温度、压力、耗油量等的)指针，指示器，记录器(车辆上的)转弯指示灯指示物；指示者">indicators</span> | Indicators Economic data, commodities and markets Aug 27th 2026</p>
+<p>This article was downloaded by zlibrary from https://www.economist.com/economic-and-financial-<span class="annot" data-tooltip="indicators /'ɪndɪkeɪtər/ n. (仪器上显示温度、压力、耗油量等的)指针，指示器，记录器(车辆上的)转弯指示灯指示物；指示者">indicators</span>/2026/08/27/economic- data-commodities-and-markets</p>
+<div class="article-separator"></div>
+<div class="article-header">Obituary · Obituary | A life locked up</div>
+<p>Frank Smith never managed to prove he was innocent The longest-serving <span class="annot" data-tooltip="prisoner /'prɪznər/ n. 囚徒俘虏被夺去自由的人[动物]等">prisoner</span> in American history died on June 27th, aged</p>
+<p>Aug 27th 2026 You could say it was not a bad <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span>, 60 West. A nursing home for <span class="annot" data-tooltip="prisoners /'prɪznər/ n. 囚徒俘虏被夺去自由的人[动物]等">prisoners</span> in Rocky Hill, Connecticut. Single-<span class="annot" data-tooltip="storey /'stɔːri/ n. 楼层；叠架的一层">storey</span>, red-brick, with <span class="annot" data-tooltip="lawns /lɔːn/ n. 草坪；草地">lawns</span> in front and the Stars and <span class="annot" data-tooltip="stripes /straɪp/ n. 条纹，斑纹；种类vt. 加条纹于…时 态: striped, striping, stripes">Stripes</span> flying. A care home or a prison, what was the difference? Since he was an old guy, close to 100, hardly any. Corridors to <span class="annot" data-tooltip="shuffle /'ʃʌfl/ vi. 拖着脚走；把脚动来动去；坐立不安；洗牌；把……变换位置；调动；搪塞">shuffle</span> round with his stick. A big window to stare out of, and a patio <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span> where he could sit and watch birds. When he was in Osborn prison <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span> before he used to <span class="annot" data-tooltip="stuff /stʌf/ n. 材料；东西；填充物；素材资料vt. 填塞；塞满；让吃饱vi. 吃得过多时 态: stuffed, stuffing, s">stuff</span> his baggy clothes with bread for them. Now he didn’t trouble.</p>
+<p>In fact Frank Smith didn’t sit on his patio at all. His head was elsewhere. It was almost <span class="annot" data-tooltip="constantly /'kɑːnstəntli/ adv. 不断地;时常地">constantly</span> in the courtroom and offices, mostly in his native Connecticut, where his case had been decided. At his <span class="annot" data-tooltip="trial /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">trial</span> in 1950, at 25, he had been <span class="annot" data-tooltip="convicted /kən'vɪkt/ vt. 宣判有罪n. 囚犯时 态: convicted, convicting, convicts">convicted</span> of first-degree murder. Four years later, in the pardons office, his <span class="annot" data-tooltip="sentence /'sentəns/ n. 宣判，判决；句子，命题vt. 判决，宣判时 态: sentenced, sentencing, sentences">sentence</span> had been commuted. First-degree carried the death penalty, the electric chair. Second-degree meant imprisonment for life. In his case, as it turned out, that meant more than 70 years. People said this made him the longest-serving <span class="annot" data-tooltip="prisoner /'prɪznər/ n. 囚徒俘虏被夺去自由的人[动物]等">prisoner</span> in American history. What very few <span class="annot" data-tooltip="considered /kən'sɪdər/ vt. & vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及时 态: considered, considering, ">considered</span> was whether even that lesser penalty should have been imposed on him. The case concerned the killing of Grover Hart, night watchman at the Indian Harbor <span class="annot" data-tooltip="yacht /jɑːt/ n. 快艇, 帆船, 游艇时 态: yachted, yachting, yachts">Yacht</span> Club in <span class="annot" data-tooltip="greenwich /'ɡrenɪtʃ/ n. 格林威治(位于英国伦敦东南部,为本初子午线所经之地,原设有英国皇家格林威治天文台),格林威治镇(位于美国康涅狄格州)">Greenwich</span>. Obviously a swank sort of <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span>. In the very early morning of July 23rd 1949 two young men robbed it. The haul wasn’t much, mostly ties, tie-<span class="annot" data-tooltip="clips /klɪp/ vt. 修剪；夹牢；痛打vi. 修剪n. 夹子；修剪；回形针CLIPabbr. Cellular Logic Image Pro">clips</span> and the manager’s hat. But Hart disturbed them at it, so both of them shot him. He had just enough life left in him to tell police that one of the men was small and wore a bandanna round his face. The cops already knew him for that. And, true, he was very small. Now, after 70 years, he was almost a wisp. Incriminating evidence was then piled higher. He had form, from petty larceny to car theft, starting from the age of ten. Plus four years in state prison, just ended, for <span class="annot" data-tooltip="assault /ə'sɔːlt/ n. 攻击；袭击vt. 袭击；攻击vi. 袭击；动武时 态: assaulted, assaulting, assaults">assault</span>. The yacht-club swag was found in a stolen grey Cadillac he had recently been driving round. Also in the Cadillac was one of the murder weapons, a Colt <span class="annot" data-tooltip="automatic /ˌɔːtə'mætɪk/ adj. 自动的不假思索的, 无意识的必然发生的n. 能自动运转的机器或器械副 词: automatically">automatic</span> pistol, and a shirt with the name “Smith” on it. He had run away, and was found hiding in the woods in possession of a bottle of hair <span class="annot" data-tooltip="dye /daɪ/ n. 染料；染色vt. 染；把…染上颜色vi. 被染色时 态: dyed, dyeing, dyes">dye</span>. He also gave a false name and <span class="annot" data-tooltip="alibi /'æləbaɪ/ n. 托辞；犯罪现场；辩解vi. 辩解；找借口vt. 为…辩解">alibi</span> to the police. No surprise that they assumed he was the killer. George Lowden, a <span class="annot" data-tooltip="companion /kəm'pænjən/ n. 同伴, 伙伴成双成对的物品之一时 态: companioned, companioning, companions">companion</span> in crime, had certainly been at the yacht club too, but said it was Smith who fired the fatal shot. He himself just fired in the air. In return for co-operating, Lowden got second-degree and escaped the chair. He, “Smitty” to the Death Row guards, did not. Eight times his execution was scheduled, and the tray containing his final meal was set down in front of him. The last time this happened, in 1954 with only two hours to go, his head had already been shaved to take the electrodes. (He swore his crown was <span class="annot" data-tooltip="bald /bɔːld/ adj. 秃顶的；单调的；光秃的；无装饰的vi. 变秃比较级: balder, baldest">bald</span> from that time onwards.) But the switch was never pulled. Instead, they reduced his sentence. By that time Lowden had changed his testimony,</p>
+<p>and the officer who had first interrogated him told the Board of Pardons he was “positive” Smith hadn’t done it. Indeed, he doubted he was even at the <span class="annot" data-tooltip="scene /siːn/ n. 情景；景象；场面；事件">scene</span>. In 1953 a sometime prison acquaintance had emerged from an Alabama jail to say that he himself, along with Lowden, had killed Hart, and that Smith had earlier pulled out of the plan. That story was dismissed, but too many doubts now hung around the case. The upshot was that Frank Smith was no longer undeniably guilty. But no second <span class="annot" data-tooltip="trial /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">trial</span> had declared him innocent, as he insisted he was. This was what he spent the rest of his long life doing. He could think, and talk, of nothing else. A <span class="annot" data-tooltip="property /'prɑːpərti/ n. 财产；性质，性能；所有权形容词: propertyless">property</span> agent called Aaron Cohen, an <span class="annot" data-tooltip="anti /'ænti/ adj. 反对的n. 反对者，反对论者">anti</span>-death- penalty <span class="annot" data-tooltip="campaigner /kæm'peɪn/ n. 运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）时">campaigner</span>, had encouraged him to send letters and telegrams to stop his last execution. But that couldn’t be the end. He stole law books from the prison library and studied them to launch his appeals. He also wrote 259 longhand pages petitioning for habeas <span class="annot" data-tooltip="corpus /'kɔːrpəs/ n. 文集；本金；语料库复 数: corpora">corpus</span>, which contained a list of 221 instances when his rights had been violated. The US Court of Appeals for the Second <span class="annot" data-tooltip="circuit /'sɜːrkɪt/ n. 电路，回路；环道；一圈；巡回vi. 环行vt. 绕回…环行时 态: circuited, circuiting, cir">Circuit</span> threw it out. Most of the defence witnesses who had emerged were called not credible or worse. As the world grew dimmer to him, his legal battles stood out clearer than ever. He remembered every detail. And he never forgot the <span class="annot" data-tooltip="terror /'terər/ n. 恐怖; 恐怖活动引起恐怖的人[事]讨厌的人">terror</span> of the chair. After an execution the body was so hot that guards couldn’t touch it. It was <span class="annot" data-tooltip="cooked adj. 煮熟的v. 煮（cook的过去式、过去分词形式）">cooked</span>, from the brain down. Few people shared these <span class="annot" data-tooltip="thoughts /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thoughts</span> with him. He kept to himself. His family —parents, two brothers, three sisters—who had come to his trial and for his last scheduled execution, gradually stopped visiting. For whatever reason. At one point he had no visitors for five years. If any came, he was <span class="annot" data-tooltip="gruff /ɡrʌf/ adj. 粗暴的；脾气坏的；粗哑的vt. 粗鲁地说；生硬地说vi. 粗鲁地说；生硬地说话比较级: gruffer, gruffes">gruff</span> and rude. The exception was Annalisa Quinn of the Boston Globe, who wrote a profile of him in 2023 when everyone else had long forgotten him. He enjoyed her visits. She was pretty, even though she asked about too many things, like childhood and regrets, that he <span class="annot" data-tooltip="simply /'sɪmpli/ adv. 简单地；朴素地；简直；仅仅；坦白地">simply</span> didn’t think about. Didn’t want to think about. Freedom was another thing. He did <span class="annot" data-tooltip="escape /ɪ'skeɪp/ vt. 逃避，避免；被忘掉vi. 逃脱；避开；溜走n. 逃跑；逃亡时 态: escaped, escaping, escapes">escape</span> occasionally. In 1967, when he was in minimum-<span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span> and being a pretty good car mechanic, he stole a truck and got as <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> as Winthrop, Massachusetts. Twelve days on the open road. In 1975 he was granted parole, but within ten months he had been arrested for petty larceny and possession of a weapon. So he was back</p>
+<p>inside. His original <span class="annot" data-tooltip="sentence /'sentəns/ n. 宣判，判决；句子，命题vt. 判决，宣判时 态: sentenced, sentencing, sentences">sentence</span> included the possibility of parole and an assessment every few years, but after that unlucky spell he did not ask for it again. He told Ms Quinn it was baloney that he didn’t want it, but then seemed less sure. He had been allowed home for Christmas in 1974, but was back before the day was out. Prison was safe and <span class="annot" data-tooltip="routine /ruː'tiːn/ n. 例行公事；日常工作；程序adj. 日常的；例行的副 词: routinely">routine</span>. Freedom was difficult, and perhaps he had lost the habit of it. Perhaps he no longer envied the birds who, once filled with his dining-room bread, flew away again. ■ This article was downloaded by zlibrary from https://www.economist.com/obituary/2026/08/27/frank-smith-never-managed-to-prove- he-was-innocent</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Leaders</div>
+<p>The Unwelcoming States of America Mark Carney must beware an all-out trade war America will regret Scott Bessent’s bond-market misadventures America’s new sanctions are unlikely to topple Iran’s <span class="annot" data-tooltip="regime /reɪ'ʒiːm/ n. 政权，政体；社会制度；管理体制">regime</span> When obeying an American law means breaking a Chinese one</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Asia</div>
+<p>Australia builds a Pacific alliance system to keep China out Can AI make dysfunctional governments more effective? A hundred days of BJP shock and awe in West <span class="annot" data-tooltip="bengal /bɛnˈɡɔl/ n. 孟加拉（位于亚洲）形容词: Bengalese">Bengal</span> <span class="annot" data-tooltip="nepal n. 尼泊尔（亚洲国家）">Nepal</span> flash floods Indian cities should embrace <span class="annot" data-tooltip="skyscrapers /'skaɪskreɪpər/ n. 摩天大楼">skyscrapers</span></p>
+<div class="article-separator"></div>
+<div class="article-header"> · China</div>
+<p>The long arm of the Chinese state China’s latest cash cow is a clunky cartoon bull Chinese women are <span class="annot" data-tooltip="falling /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">falling</span> behind in the office</p>
+<div class="article-separator"></div>
+<div class="article-header"> · United States</div>
+<p>Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> is at last building his border wall From battleships to catapults, Trump keeps <span class="annot" data-tooltip="messing /mes/ vt. 弄脏；弄乱n. 杂乱，脏乱；脏东西不整洁[乱七八糟]的人[事]粪便时 态: messed，messing，messes">messing</span> with the navy Does Donald Trump deserve <span class="annot" data-tooltip="credit /'kredɪt/ n. 赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)时 态:">credit</span> for a <span class="annot" data-tooltip="manufacturing /ˌmænju'fæktʃərɪŋ/ n. 制造业，工业adj. 制造业的；制造的">manufacturing</span> <span class="annot" data-tooltip="revival /rɪ'vaɪvl/ n. 复活；复兴；恢复精神；苏醒；再生效">revival</span>? Shrimpers are the latest <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span> seeking protection from Washington The state that could shape the winning <span class="annot" data-tooltip="democratic /ˌdemə'krætɪk/ adj. 民主的, 有民主精神或作风的副 词: democratically">Democratic</span> message</p>
+<div class="article-separator"></div>
+<div class="article-header"> · The Americas</div>
+<p>The costs of defying Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> are <span class="annot" data-tooltip="mounting /maʊnt/ vt. & vi. 登上；骑上vi. 增加；上升vt. 上演；配有…发动攻击；攻击n. 山峰坐骑时 态: mounted，mou">mounting</span> for Canada</p>
+<p>Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s military expansion in Panama makes little sense The problem with the world’s oldest mummies</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Middle East &amp; Africa</div>
+<p>Iran will be able to shrug off America’s financial threats How the Houthis have become the most fearsome of Iran’s <span class="annot" data-tooltip="allies n. （第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者">allies</span> The quiet tycoons powering Africa’s <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> Why smugglers are stealing Kenya’s ants</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Europe</div>
+<p>Giorgia Meloni is Italy’s steadiest postwar prime minister The renewed threat to global <span class="annot" data-tooltip="grain /ɡreɪn/ n. 谷物；谷粒颗粒；细粒（尤用于否定句） 少量；微量；一点儿（木、织物或石头等的）纹理（表面的）质地；触感格令（重量单位，等">grain</span> supplies Europe’s new renewable-<span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span> champion is a surprise European countries are battling over rules on <span class="annot" data-tooltip="booze /buːz/ n. 酒；酒宴vi. 豪饮；痛饮时 态: boozed, boozing, boozes">booze</span> Can music festivals save the <span class="annot" data-tooltip="melting /melt/ vi. 熔化，溶解；渐混vt. 使软化；使融化；使熔化；使感动n. 熔化；熔化物时 态: melted, melting, me">melting</span> Alps? Gallivanting EU politicians <span class="annot" data-tooltip="reveal /rɪ'viːl/ vt. 显示；露出泄露；透露时 态: revealed，revealing，reveals">reveal</span> where power really lies</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Britain</div>
+<p>British politicians want a <span class="annot" data-tooltip="manufacturing /ˌmænju'fæktʃərɪŋ/ n. 制造业，工业adj. 制造业的；制造的">manufacturing</span> jobs boom Steelyard blues Harry and Meghan are ghastly and back in Britain. Good <span class="annot" data-tooltip="rubbish /'rʌbɪʃ/ n. 垃圾，废物；废话adj. 毫无价值的">Rubbish</span> football, fun food: a lower-<span class="annot" data-tooltip="league /liːɡ/ n. 联盟；社团；范畴vt. 使…结盟；与…联合vi. 结盟；团结时 态: leagued, leaguing, league">league</span> <span class="annot" data-tooltip="recipe /'resəpi/ n. 烹饪法; 食谱方法; 秘诀; 诀窍">recipe</span> for success Trees are spreading in one of Europe’s least forested countries Britain needs better billionaires</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>extracts</td><td>/'ekstrækt/ v.</td><td>提取；提炼索取，设法得到（对方不愿提供的信息、钱财等）选取；摘录；选录（用力）取出，拔出【正式】获得，得到（某种感觉或品质）n. 摘录；选录；选曲；节录（尤指食</td></tr>
+<tr><td>boast</td><td>/boʊst/ n.</td><td>自吹自擂, 自夸的话vt. & vi. 自夸vt. 有(引以为荣的事物), boasting, boasts</td></tr>
+<tr><td>restaurants</td><td>/'restrɑːnt/ n.</td><td>饭店, 餐馆</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>cocktail</td><td>/'kɑːkteɪl/ n.</td><td>鸡尾酒餐前开胃菜混合物</td></tr>
+<tr><td>consuming</td><td>/kən'suːmɪŋ/ adj.</td><td>消费的；强烈的</td></tr>
+<tr><td>beverage</td><td>/'bevərɪdʒ/ n.</td><td>饮料</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>equivalents</td><td>/ɪ'kwɪvələnt/ adj.</td><td>等同的，等效的n. 对等的人（或事物），对应的人（或事物）</td></tr>
+<tr><td>revenue</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>decade</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>retailer</td><td>/'riːteɪlər/ n.</td><td>传播的人；零售商</td></tr>
+<tr><td>legislation</td><td>/ˌledʒɪs'leɪʃn/ n.</td><td>法律；法规立法，法律的制定[通过]</td></tr>
+<tr><td>version</td><td>/'vɜːrʒn/ n.</td><td>变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本</td></tr>
+<tr><td>classified</td><td>/'klæsɪfaɪd/ adj.</td><td>(信息)归入密级的,保密的</td></tr>
+<tr><td>marijuana</td><td>/ˌmærə'wɑːnə/ n.</td><td>大麻；大麻毒品</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>manufacturers</td><td>/ˌmænju'fæktʃərər/ n.</td><td>制造商, 制造厂</td></tr>
+<tr><td>extract</td><td>/'ekstrækt/ v.</td><td>提取；提炼索取，设法得到（对方不愿提供的信息、钱财等）选取；摘录；选录（用力）取出，拔出【正式】获得，得到（某种感觉或品质）n. 摘录；选录；选曲；节录（尤指食</td></tr>
+<tr><td>anti</td><td>/'ænti/ adj.</td><td>反对的n. 反对者，反对论者</td></tr>
+<tr><td>senate</td><td>/ˈsenət/ </td><td>n.（诸如美国、澳大利亚、法国的）参议院（the Senate） （某些国家的）大学理事会，大学评议会（古罗马的）元老院</td></tr>
+<tr><td>crackdown</td><td>/'krækdaʊn/ n.</td><td>压迫,镇压,打击</td></tr>
+<tr><td>exempt</td><td>/ɪɡ'zempt/ vt.</td><td>免除；豁免adj. 被免除的；被豁免的n. 免税者；被免除义务者, exempting, exempts</td></tr>
+<tr><td>restrictions</td><td>/rɪ'strɪkʃn/ n.</td><td>约束，限制管制，限定；法律，规章</td></tr>
+<tr><td>sponsors</td><td>/'spɑːnsər/ vt.</td><td>赞助, 发起n. 赞助者；主办者；保证人</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>indicators</td><td>/'ɪndɪkeɪtər/ n.</td><td>(仪器上显示温度、压力、耗油量等的)指针，指示器，记录器(车辆上的)转弯指示灯指示物；指示者</td></tr>
+<tr><td>indicators</td><td>/'ɪndɪkeɪtər/ n.</td><td>(仪器上显示温度、压力、耗油量等的)指针，指示器，记录器(车辆上的)转弯指示灯指示物；指示者</td></tr>
+<tr><td>prisoner</td><td>/'prɪznər/ n.</td><td>囚徒俘虏被夺去自由的人[动物]等</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>prisoners</td><td>/'prɪznər/ n.</td><td>囚徒俘虏被夺去自由的人[动物]等</td></tr>
+<tr><td>storey</td><td>/'stɔːri/ n.</td><td>楼层；叠架的一层</td></tr>
+<tr><td>lawns</td><td>/lɔːn/ n.</td><td>草坪；草地</td></tr>
+<tr><td>stripes</td><td>/straɪp/ n.</td><td>条纹，斑纹；种类vt. 加条纹于…, striping, stripes</td></tr>
+<tr><td>shuffle</td><td>/'ʃʌfl/ vi.</td><td>拖着脚走；把脚动来动去；坐立不安；洗牌；把……变换位置；调动；搪塞</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>stuff</td><td>/stʌf/ n.</td><td>材料；东西；填充物；素材资料vt. 填塞；塞满；让吃饱vi. 吃得过多, stuffing, stuffs</td></tr>
+<tr><td>constantly</td><td>/'kɑːnstəntli/ adv.</td><td>不断地;时常地</td></tr>
+<tr><td>trial</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>convicted</td><td>/kən'vɪkt/ vt.</td><td>宣判有罪n. 囚犯, convicting, convicts</td></tr>
+<tr><td>sentence</td><td>/'sentəns/ n.</td><td>宣判，判决；句子，命题vt. 判决，宣判, sentencing, sentences</td></tr>
+<tr><td>prisoner</td><td>/'prɪznər/ n.</td><td>囚徒俘虏被夺去自由的人[动物]等</td></tr>
+<tr><td>considered</td><td>/kən'sɪdər/ vt.</td><td>& vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及, considering, considers</td></tr>
+<tr><td>yacht</td><td>/jɑːt/ n.</td><td>快艇, 帆船, 游艇, yachting, yachts</td></tr>
+<tr><td>greenwich</td><td>/'ɡrenɪtʃ/ n.</td><td>格林威治(位于英国伦敦东南部,为本初子午线所经之地,原设有英国皇家格林威治天文台),格林威治镇(位于美国康涅狄格州)</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>clips</td><td>/klɪp/ vt.</td><td>修剪；夹牢；痛打vi. 修剪n. 夹子；修剪；回形针CLIPabbr. Cellular Logic Image Processor 单元逻辑映象处理器Comp</td></tr>
+<tr><td>assault</td><td>/ə'sɔːlt/ n.</td><td>攻击；袭击vt. 袭击；攻击vi. 袭击；动武, assaulting, assaults</td></tr>
+<tr><td>automatic</td><td>/ˌɔːtə'mætɪk/ adj.</td><td>自动的不假思索的, 无意识的必然发生的n. 能自动运转的机器或器械</td></tr>
+<tr><td>dye</td><td>/daɪ/ n.</td><td>染料；染色vt. 染；把…染上颜色vi. 被染色, dyeing, dyes</td></tr>
+<tr><td>alibi</td><td>/'æləbaɪ/ n.</td><td>托辞；犯罪现场；辩解vi. 辩解；找借口vt. 为…辩解</td></tr>
+<tr><td>companion</td><td>/kəm'pænjən/ n.</td><td>同伴, 伙伴成双成对的物品之一, companioning, companions</td></tr>
+<tr><td>bald</td><td>/bɔːld/ adj.</td><td>秃顶的；单调的；光秃的；无装饰的vi. 变秃, baldest</td></tr>
+<tr><td>scene</td><td>/siːn/ n.</td><td>情景；景象；场面；事件</td></tr>
+<tr><td>trial</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>property</td><td>/'prɑːpərti/ n.</td><td>财产；性质，性能；所有权</td></tr>
+<tr><td>anti</td><td>/'ænti/ adj.</td><td>反对的n. 反对者，反对论者</td></tr>
+<tr><td>campaigner</td><td>/kæm'peɪn/ n.</td><td>运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）, campaigning, campai</td></tr>
+<tr><td>corpus</td><td>/'kɔːrpəs/ n.</td><td>文集；本金；语料库复 数: corpora</td></tr>
+<tr><td>circuit</td><td>/'sɜːrkɪt/ n.</td><td>电路，回路；环道；一圈；巡回vi. 环行vt. 绕回…环行, circuiting, circuits</td></tr>
+<tr><td>terror</td><td>/'terər/ n.</td><td>恐怖; 恐怖活动引起恐怖的人[事]讨厌的人</td></tr>
+<tr><td>cooked</td><td>— adj.</td><td>煮熟的v. 煮（cook的过去式、过去分词形式）</td></tr>
+<tr><td>thoughts</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>gruff</td><td>/ɡrʌf/ adj.</td><td>粗暴的；脾气坏的；粗哑的vt. 粗鲁地说；生硬地说vi. 粗鲁地说；生硬地说话, gruffest</td></tr>
+<tr><td>simply</td><td>/'sɪmpli/ adv.</td><td>简单地；朴素地；简直；仅仅；坦白地</td></tr>
+<tr><td>escape</td><td>/ɪ'skeɪp/ vt.</td><td>逃避，避免；被忘掉vi. 逃脱；避开；溜走n. 逃跑；逃亡, escaping, escapes</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>sentence</td><td>/'sentəns/ n.</td><td>宣判，判决；句子，命题vt. 判决，宣判, sentencing, sentences</td></tr>
+<tr><td>routine</td><td>/ruː'tiːn/ n.</td><td>例行公事；日常工作；程序adj. 日常的；例行的</td></tr>
+<tr><td>regime</td><td>/reɪ'ʒiːm/ n.</td><td>政权，政体；社会制度；管理体制</td></tr>
+<tr><td>bengal</td><td>/bɛnˈɡɔl/ n.</td><td>孟加拉（位于亚洲）</td></tr>
+<tr><td>nepal</td><td>— n.</td><td>尼泊尔（亚洲国家）</td></tr>
+<tr><td>skyscrapers</td><td>/'skaɪskreɪpər/ n.</td><td>摩天大楼</td></tr>
+<tr><td>falling</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>messing</td><td>/mes/ vt.</td><td>弄脏；弄乱n. 杂乱，脏乱；脏东西不整洁[乱七八糟]的人[事]粪便，messing，messes</td></tr>
+<tr><td>credit</td><td>/'kredɪt/ n.</td><td>赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)，crediting，credits</td></tr>
+<tr><td>manufacturing</td><td>/ˌmænju'fæktʃərɪŋ/ n.</td><td>制造业，工业adj. 制造业的；制造的</td></tr>
+<tr><td>revival</td><td>/rɪ'vaɪvl/ n.</td><td>复活；复兴；恢复精神；苏醒；再生效</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>democratic</td><td>/ˌdemə'krætɪk/ adj.</td><td>民主的, 有民主精神或作风的</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>mounting</td><td>/maʊnt/ vt.</td><td>& vi. 登上；骑上vi. 增加；上升vt. 上演；配有…发动攻击；攻击n. 山峰坐骑，mounting，mounts</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>allies</td><td>— n.</td><td>（第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>grain</td><td>/ɡreɪn/ n.</td><td>谷物；谷粒颗粒；细粒（尤用于否定句） 少量；微量；一点儿（木、织物或石头等的）纹理（表面的）质地；触感格令（重量单位，等于0.00143磅或0.0648克，用于</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>booze</td><td>/buːz/ n.</td><td>酒；酒宴vi. 豪饮；痛饮, boozing, boozes</td></tr>
+<tr><td>melting</td><td>/melt/ vi.</td><td>熔化，溶解；渐混vt. 使软化；使融化；使熔化；使感动n. 熔化；熔化物, melting, melts</td></tr>
+<tr><td>reveal</td><td>/rɪ'viːl/ vt.</td><td>显示；露出泄露；透露，revealing，reveals</td></tr>
+<tr><td>manufacturing</td><td>/ˌmænju'fæktʃərɪŋ/ n.</td><td>制造业，工业adj. 制造业的；制造的</td></tr>
+<tr><td>rubbish</td><td>/'rʌbɪʃ/ n.</td><td>垃圾，废物；废话adj. 毫无价值的</td></tr>
+<tr><td>league</td><td>/liːɡ/ n.</td><td>联盟；社团；范畴vt. 使…结盟；与…联合vi. 结盟；团结, leaguing, leagues</td></tr>
+<tr><td>recipe</td><td>/'resəpi/ n.</td><td>烹饪法; 食谱方法; 秘诀; 诀窍</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day37.html" class="nav-btn">← Day 37</a>
+  <a href="day39.html" class="nav-btn">Day 39 →</a>
+</div>
+
+<div class="progress">📖 Day 38 of 39</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-08-29</div>
+
+</body>
+</html>

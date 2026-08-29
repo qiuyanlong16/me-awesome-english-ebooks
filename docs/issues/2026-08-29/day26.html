@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>International | The Telegram</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-08-29</div>
+
+<h1 class="article-title">International | The Telegram</h1>
+<div class="article-section">International</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>post-1945 ruling <span class="annot" data-tooltip="elites /eɪ'liːt/ n. （社会）上层集团；掌权人物；出类拔萃的人，精英adj.（社会）上层集团的；掌权人物的；精英的">elites</span>, who were too incompetent or craven to use the country’s unrivalled <span class="annot" data-tooltip="wealth /welθ/ n. 财富；大量；富有">wealth</span> and power to advance their national interests. Worse, they embroiled America in forever wars in a <span class="annot" data-tooltip="naive /naɪ'iːv/ adj. 幼稚的; 无经验的; 单纯的天真的; 轻信的副 词: naively">naive</span> belief that they could make the world a kindlier <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span>. He maintained that tone of grievance throughout his first term. The second <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> presidency has seen grievance combined with talk of quasi-imperialist conquest. Upon returning to office in 2025, Mr Trump declared earlier presidents “stupid” for giving up American control of Greenland after the second world war, or for handing the Panama Canal to Panama, and pledged to take both back. This was not <span class="annot" data-tooltip="mere /mɪr/ adj. 仅仅, 只不过纯粹的Superlative merest">mere</span> posturing. The tone was set in January after American troops snatched <span class="annot" data-tooltip="venezuela /ˌvenə'zweɪlə/ n. 委内瑞拉形容词: Venezuelan">Venezuela</span>’s leader from his home, allowing Mr Trump to hand-pick a more pliant ruler for that oil-rich country. “American dominance in the western hemisphere will never be questioned again,” he <span class="annot" data-tooltip="crowed /kroʊ/ vi. 报晓；啼叫n. 乌鸦；鸡鸣；撬棍时 态: crowed, crowing, crows">crowed</span>. Now, in his sixth year as president, a third goal has joined grievance and dominance as a guiding principle of Mr Trump’s statecraft. That goal is vengeance. A desire for revenge helps explain Mr Trump’s fateful decision to join Israel in attacking Iran six months ago. “<span class="annot" data-tooltip="regime /reɪ'ʒiːm/ n. 政权，政体；社会制度；管理体制">Regime</span> Change”, a <span class="annot" data-tooltip="startlingly /'stɑːrtlɪŋli/ adv. 令人吃惊地，惊人地">startlingly</span> well-briefed book about the second Trump presidency by two White House correspondents, Maggie Haberman and Jonathan Swan, describes meetings in which Mr Trump savoured the chance to kill Iran’s top leaders and destroy their armed forces, whether or not this led to a better Iran. The Iranian regime had humiliated successive American presidents and tried to assassinate Mr Trump. Now he was being offered a chance to make them pay. A public aim of the war might have been the toppling of Iran’s despotic government. But the book describes Mr Trump, in a closed-door meeting with his close aides, dismissing Iranian regime change as “their problem”. Whether he meant the Iranian people’s problem or Israel’s, nobody quite knew. Punishment, though, was indisputably his <span class="annot" data-tooltip="intent /ɪn'tent/ n. 意图；目的；含义adj. 专心的；急切的；坚决的副 词: intently">intent</span>. Now, as the <span class="annot" data-tooltip="strait /streɪt/ n. 海峡；（尤指经济拮据引起的）困境，境况窘迫adj. 狭窄的；苦恼的副 词: straitly">Strait</span> of Hormuz remains closed, much of Mr Trump’s wrath is aimed at <span class="annot" data-tooltip="allies n. （第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者">allies</span> and partners in Europe, Asia and the Arab world, whom he blames for failing to help him open that waterway. If victory remains elusive, expect Mr Trump to stay in revenge mode. The list of plausible targets is long. Members of the NATO alliance, <span class="annot" data-tooltip="notably /'noʊtəbli/ adv. 显著地；尤其">notably</span> Canada and</p>
+<p><span class="annot" data-tooltip="denmark /'denmɑːrk/ n. 丹麦(北欧国家,首都哥本哈根)">Denmark</span>, <span class="annot" data-tooltip="ukraine n. 乌克兰（原苏联一加盟共和国，现已独立）">Ukraine</span>, South Korea and Cuba have all angered Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> over the years. Big beasts such as Mr Xi have less to fear. Mr Trump, who sees himself as an alpha male to his core, was never likely to limp <span class="annot" data-tooltip="quietly /'kwaɪətli/ adv. 安静地；秘密地；平稳地">quietly</span> from office. Now that his dominance is threatened, the world will find him more disruptive than ever. ■ This article was downloaded by zlibrary from https://www.economist.com/international/2026/08/25/as-his-presidency-flounders- trump-is-more-dangerous-than-ever</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Business</div>
+<p>China is training up thousands of humanoid robots How Shein came <span class="annot" data-tooltip="crashing /kræʃ/ n. 碰撞；崩溃；坠落vt. 破碎；撞碎；坠落vi. 碰撞；坠毁；闯；突然倒台adj. 速成的时 态: crashed, cr">crashing</span> down The quality you should most wish for your children Americans should rekindle their love for big business Meta settles its blockbuster <span class="annot" data-tooltip="trial /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">trial</span> for up to $17bn One thing America still <span class="annot" data-tooltip="excels /ɪk'sel/ vt. 优于，胜过；擅长vi. 胜过他人；优秀Excel微软公司生产的表格处理软件时 态: excelled, excellin">excels</span> at making? Pretzels An obituary for the Drexel generation</p>
+<div class="article-separator"></div>
+<div class="article-header">Business · Business | Going through the motions</div>
+<p>China is training up thousands of humanoid robots But its approach will come with <span class="annot" data-tooltip="enormous /ɪ'nɔːrməs/ adj. 巨大的, 极大的, 庞大的副 词: enormously">enormous</span> costs Aug 27th 2026 China’s humanoid robots are <span class="annot" data-tooltip="sprinting /sprɪnt/ vi. 冲刺，全速跑n. 短跑；冲刺vt. 全速奔跑SPRINTabbr. Solid Propellant Rocket In">sprinting</span> ahead of their <span class="annot" data-tooltip="rivals /'raɪvl/ n. 竞争对手vt. 与…竞争, 与…匹敌时 态: rivaled, rivalled rivaling, rivalling">rivals</span>—<span class="annot" data-tooltip="literally /'lɪtərəli/ adv. 逐字地；照字面地确实地，真正地">literally</span>. On August 17th one of their <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span>, called Superman, clocked up a running speed of 12.66 metres per second, beating the previous record set by Usain <span class="annot" data-tooltip="bolt /boʊlt/ n. 闪电；螺栓；门闩；弩箭vt. 囫囵吞下；上门闩vi. 逃跑；冲出adv. 直立地；突然地时 态: bolted, bol">Bolt</span>, before <span class="annot" data-tooltip="crashing /kræʃ/ n. 碰撞；崩溃；坠落vt. 破碎；撞碎；坠落vi. 碰撞；坠毁；闯；突然倒台adj. 速成的时 态: crashed, cr">crashing</span> into a wall. The <span class="annot" data-tooltip="triumph /'traɪʌmf/ n. 胜利，成功巨大的成就[成功]vi. 获胜，得胜；克服时 态: triumphed，triumphing，triumphs">triumph</span> only added to the <span class="annot" data-tooltip="buzz /bʌz/ v. 发嗡嗡声；发蜂鸣声用蜂鸣器（给…）发信号繁忙；充满活力（飞机）低空飞过（尤指作为警告或威胁）（用特殊的机器）将头发剪得非">buzz</span> over Unitree, Superman’s maker, which <span class="annot" data-tooltip="debuted /deɪ'bjuː/ n. 〈法〉演员首次演出时 态: debuted debuting debuts">debuted</span> its shares in Shanghai two days later. Their price leapt by 460%. Yet as the ignominious end of Superman’s running feat demonstrates, the technology still has a long way to go. Chinese companies are expected to sell 50,000 humanoids this year, more than <span class="annot" data-tooltip="triple /'trɪpl/ adj. 三倍的；三方的n. 三倍数；三个一组vi. 增至三倍vt. 使成三倍时 态: tripled, tripling, tr">triple</span> last year’s figure. They</p>
+<p>have largely mastered the hardware behind the machines. The software, however, is another matter. In order to create the foundation models that will allow robots to <span class="annot" data-tooltip="seamlessly /'siːmləs/ adj. 无缝合线的；无缝的；无伤痕的副 词: seamlessly">seamlessly</span> carry out a <span class="annot" data-tooltip="multitude /'mʌltɪtuːd/ n. 大量, 许多大众, 民众, 群众">multitude</span> of useful tasks, <span class="annot" data-tooltip="enormous /ɪ'nɔːrməs/ adj. 巨大的, 极大的, 庞大的副 词: enormously">enormous</span> amounts of data must now be collected. The models powering the current generation of humanoids <span class="annot" data-tooltip="possess /pə'zes/ vt. 具有占据时 态: possessed, possessing, possesses">possess</span> a few billion “<span class="annot" data-tooltip="parameters /pə'ræmɪtər/ n. (限定性的)因素, 特性, 界限〈物〉〈数〉参量, 参数形容词: parametric">parameters</span>”; to replicate the functioning of the human body, they will need hundreds of billions. That would put them at a similar size to the large language models powering chatbots. The difference is that chatbots can be trained on the reams of digital text available on the internet. Gathering the data necessary to teach a robot to identify a glass, pick it up and fill it with coffee is much harder. The <span class="annot" data-tooltip="bot /bɑːt/ n. 马蝇幼虫，马蝇">bot</span> must understand everything from its <span class="annot" data-tooltip="spatial /'speɪʃl/ adj. 空间的；存在于空间的；受空间条件限制的名 词: spatiality">spatial</span> position to the brittleness of the glass and the viscosity of its contents. That information must be mined from experiences in the real world, or detailed recreations of them. Humanoids are currently fed a hotchpotch of data, often from low-quality simulations. Data collected from the real world are <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> more useful—and now highly sought after. The most valuable form is “real machine” data, which are generated by the actions of a robot, <span class="annot" data-tooltip="either /'iːðər/ pron. (两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的">either</span> when it is controlled remotely or when it is carrying out tasks by itself. Another important source comes from recording humans as they <span class="annot" data-tooltip="complete /kəm'pliːt/ adj. 完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善比较级: complete">complete</span> tasks. Known as “egocentric” data, this information is gathered by equipping a person with a <span class="annot" data-tooltip="headset /'hedset/ n. 戴在头上的耳机或听筒">headset</span>, <span class="annot" data-tooltip="haptic /'hæptɪk/ adj. 触觉的">haptic</span>-<span class="annot" data-tooltip="sensor /'sensər/ n. 传感器">sensor</span> gloves and other kit that records their movements. China is quickly becoming the frontrunner in the quest for real machine data, thanks to training centres such as the Hubei Humanoid <span class="annot" data-tooltip="innovation /ˌɪnə'veɪʃn/ n. 改革, 革新, 创新新观念, 新方法, 新发明形容词: innovational">Innovation</span> Centre. At the sprawling facility in the <span class="annot" data-tooltip="central /'sentrəl/ adj. 中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的副 词: centrally">central</span> Chinese city of Wuhan, up to 100 robots spend hours each day observing and <span class="annot" data-tooltip="mimicking /'mɪmɪk/ vt. 模仿，摹拟n. 小丑；仿制品；效颦者，模仿者adj. 模仿的，模拟的；假装的时 态: mimicked, mimicki">mimicking</span> humans. At one of the dozens of work stations, a young man behind a <span class="annot" data-tooltip="counter /'kaʊntər/ n. 柜台, 柜台式长桌计数器vt. & vi. 对抗, 反驳adv. 反方向地, 对立地时 态: countered, co">counter</span> is moving his hand, gloved in digital <span class="annot" data-tooltip="sensors /'sensər/ n. 传感器">sensors</span>, in a <span class="annot" data-tooltip="circular /'sɜːrkjələr/ adj. 圆形的，环形的；循环的n. 通知，通告名 词: circularity">circular</span> <span class="annot" data-tooltip="motion /'moʊʃn/ n. 动作；请求；手势；移动；意向vi. 运动；打手势vt. 运动；向…打手势时 态: motioned, motioning">motion</span> as if he were pouring hot water over coffee. Next to him stands a robot that is mimicking his motion but spouting real water from a <span class="annot" data-tooltip="kettle /'ketl/ n. (烧水用的)壶">kettle</span> over a <span class="annot" data-tooltip="funnel /'fʌnl/ n. 漏斗；烟囱vt. 通过漏斗或烟囱等；使成漏斗形vi. 通过漏斗等；成漏斗形时 态: funneled, funnelle">funnel</span> of coffee. The manner in which the bot’s wrist and fingers move are creepily human. A few steps from the makeshift café is what looks like a pharmacy, where another human-robot <span class="annot" data-tooltip="duo /'duːoʊ/ n. 成对的表演者">duo</span> are stocking <span class="annot" data-tooltip="shelves /ʃelv/ vt. 搁置，将某事放到一旁不予考虑vi. 倾斜时 态: shelved, shelving, shelves">shelves</span>. Next is a convenience store, then a</p>
+<p>factory <span class="annot" data-tooltip="line /laɪn/ n. 绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long inter">line</span>, followed by various other <span class="annot" data-tooltip="scenes /siːn/ n. 情景；景象；场面；事件">scenes</span> from working life. (Until now foreign journalists have not been allowed to visit these centres.) The centre in Wuhan is one of 53 facilities in China built especially for gleaning the secrets of human movement, according to data from Interact Analysis, a <span class="annot" data-tooltip="consulting /kən'sʌlt/ vt. 商量；查阅；向…请教vi. 请教；商议；当顾问时 态: consulted, consulting, consults">consulting</span> firm. Most were created in the past two years. Another 34 are under construction or planned. One being constructed in Shanghai will have space for 1,000 humanoids. A small city in coastal Zhejiang province already has six training centres. Training centres require a large amount of space and many people to run them, as well as a legion of <span class="annot" data-tooltip="cutting /'kʌtɪŋ/ n. 切断；剪辑；开凿adj. 严寒的；锋利的；尖酸刻薄的v. 切开；采伐；削减（cut的ing形式）">cutting</span>-<span class="annot" data-tooltip="edge /edʒ/ n. 边缘；刀刃；优势；锋利vt. 使锐利；将…开刃；给…加上边vi. 缓缓移动；侧着移动EDGEabbr. Electron">edge</span> humanoids, which can run to 100,000 yuan ($15,000) apiece. And for every eight hours of coffee-pouring, for example, the droid at the café station produces just three hours of useful data. The rest is spoiled, mostly by errors that engineers do not want the bots to learn. This form of training thus costs 500-700 yuan per hour, reckons Corey Chan of HSBC, a bank. According to one estimate, 100m training hours will be required to develop a robot that can perform a wide variety of daily tasks. Fortunately for Chinese businesses like Unitree, the government has been picking up much of the tab for the centres. Around four-fifths are state- backed. Many are <span class="annot" data-tooltip="collaborations /kəˌlæbə'reɪʃn/ n. 合作, 协作通敌">collaborations</span> between private enterprises and local governments, which buy humanoids and sell the data produced back to the companies. Estimates <span class="annot" data-tooltip="vary /'veri/ vi. 变化；违反；[生]变异vt. 改变；使多样化；[音]变奏时 态: varied varying, varies">vary</span> but in the first half of 2026 up to 70% of the humanoids made in China may have gone to these training centres, adding up to around 13,000 machines. By building one, local officials can shore up demand for robots that are being manufactured in their area. At the same time Chinese robot-makers are finding ways of collecting egocentric data from the country’s large <span class="annot" data-tooltip="manufacturing /ˌmænju'fæktʃərɪŋ/ n. 制造业，工业adj. 制造业的；制造的">manufacturing</span> <span class="annot" data-tooltip="workforce /'wɜːrkfɔːrs/ n. 全体员工(国家或行业等)劳动力,劳动大军,劳动人口">workforce</span>—as well as its many unemployed youngsters. A cottage <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> has emerged of <span class="annot" data-tooltip="vendors /'vendər/ n. 小贩；卖主；自动售货机">vendors</span> making wearable <span class="annot" data-tooltip="gear /ɡɪr/ n. 用具，设备，衣服齿轮；传动装置；(排)挡vi. 换挡vt. 使兴奋起来；使准备好vt. & vi. (使)搭配；(使)适">gear</span> for that purpose. Some hope young people will wear the kit while at home as a part-time job. JD.com, an e-<span class="annot" data-tooltip="commerce /'kɑːmɜːrs/ n. 商业, 贸易">commerce</span> firm, said earlier this year that it has launched a project to pay 100,000 of its staff and 500,000 others to track their <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> movements. At a facility that has reportedly received state funding in Jiangsu, another coastal province, the firm pays people to carry out tasks in fake <span class="annot" data-tooltip="grocery /'ɡroʊsəri/ n. 杂货业杂货店">grocery</span> stores and other</p>
+<p>environments. Over the next two years it intends to gather 10m hours of data capturing real-world human <span class="annot" data-tooltip="scenarios /sə'nærioʊ/ n. 情节；剧本；方案">scenarios</span>. Egocentric data generated by humans are <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> less useful than real machine data, owing to the differences in how human <span class="annot" data-tooltip="limbs /lɪm/ n. 肢，臂；枝干；分支vt. 切断…的手足；从…上截下树枝时 态: limbed, limbing, limbs">limbs</span> and robotic ones move in <span class="annot" data-tooltip="practice /'præktɪs/ n. 练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规时 态: practiced，practicing，">practice</span>. And even the bits that are useful must be labelled, requiring a human to tag each movement <span class="annot" data-tooltip="manually /'mænjuəl/ adj. 用手的, 手工的n. 手册, 指南副 词: manually">manually</span> so that a <span class="annot" data-tooltip="bot /bɑːt/ n. 马蝇幼虫，马蝇">bot</span> knows to which <span class="annot" data-tooltip="limb /lɪm/ n. 肢，臂；枝干；分支vt. 切断…的手足；从…上截下树枝时 态: limbed, limbing, limbs">limb</span> or action it applies. Still, China gained an early <span class="annot" data-tooltip="edge /edʒ/ n. 边缘；刀刃；优势；锋利vt. 使锐利；将…开刃；给…加上边vi. 缓缓移动；侧着移动EDGEabbr. Electron">edge</span> in image-<span class="annot" data-tooltip="recognition /ˌrekəɡ'nɪʃn/ n. 认识；认出；承认〈正〉酬谢，酬劳形容词: recognitory">recognition</span> technology by <span class="annot" data-tooltip="employing /ɪm'plɔɪ/ vt. 使用，采用；雇用；使忙于，使从事于n. 雇用；使用时 态: employed, employing, employs">employing</span> large <span class="annot" data-tooltip="groups /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">groups</span> of people to tag <span class="annot" data-tooltip="pictures /'pɪktʃər/ n. 图画，肖像；照片(生动的)描述，写照影片；电影；画面美景，景色情况，事态，局面vt. 绘画；描绘想象时 态: pictu">pictures</span>. It could do the same again, says an engineer who works for a robotics company. China’s humanoid <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> is unlike most other <span class="annot" data-tooltip="manufacturing /ˌmænju'fæktʃərɪŋ/ n. 制造业，工业adj. 制造业的；制造的">manufacturing</span> businesses that have thrived in the country. Over the next few years it is set to produce and sell hundreds of thousands of costly but mostly useless machines in the hope that it can make cheap and useful ones in future. Since its initial pop, Unitree’s share price has <span class="annot" data-tooltip="slumped /slʌmp/ vi. 大幅度下降, 暴跌沉重或突然地落下[倒下]n. 萧条期〈美〉(个人、球队等的)低潮状态时 态: slumped, slu">slumped</span> by 30%. American competitors have been relying on less expensive training methods. Tesla, America’s biggest producer of humanoids, is said to be training robots in its <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> <span class="annot" data-tooltip="warehouses /'werhaʊs/ n. 仓库, 货栈时 态: warehoused, warehousing, warehousesalso">warehouses</span>, which saves it the cost of constructing standalone training facilities. Various companies have been using videos of human movement to train their humanoids. And since these days America has few factory workers who can be handed <span class="annot" data-tooltip="gear /ɡɪr/ n. 用具，设备，衣服齿轮；传动装置；(排)挡vi. 换挡vt. 使兴奋起来；使准备好vt. & vi. (使)搭配；(使)适">gear</span> for egocentric collection, a <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of firms are reportedly paying workers in poor countries where <span class="annot" data-tooltip="wages /weɪdʒ/ vi. 进行；发动；从事n. 工资；报偿；代价vt. 开展；进行时 态: waged, waging, wages">wages</span> are lower than in China to don <span class="annot" data-tooltip="headsets /'hedset/ n. 戴在头上的耳机或听筒">headsets</span> and <span class="annot" data-tooltip="haptic /'hæptɪk/ adj. 触觉的">haptic</span> gloves as they work.</p>
+<p>As with computer <span class="annot" data-tooltip="vision /'vɪʒn/ n. 视力；眼力；幻象；美景；想象力vt. 显现；梦见；想象时 态: visioned, visioning, visions">vision</span>, China nevertheless seems almost certain to maintain the lead in robot data collection. But at what cost? Given the current state of the technology, and the time that will be required to improve it, a commercial market for humanoids is unlikely to emerge this <span class="annot" data-tooltip="decade /'dekeɪd/ n. 十年，十年期；十">decade</span>. Morgan Stanley, a bank, reckons that China could be selling <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> 450,000 robots a year by 2030 (see chart). Many will remain dim-witted—and continue charging into walls. ■ This article was downloaded by zlibrary from https://www.economist.com/business/2026/08/23/china-is-training-up-thousands-of- humanoid-robots</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>elites</td><td>/eɪ'liːt/ n.</td><td>（社会）上层集团；掌权人物；出类拔萃的人，精英adj.（社会）上层集团的；掌权人物的；精英的</td></tr>
+<tr><td>wealth</td><td>/welθ/ n.</td><td>财富；大量；富有</td></tr>
+<tr><td>naive</td><td>/naɪ'iːv/ adj.</td><td>幼稚的; 无经验的; 单纯的天真的; 轻信的</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>mere</td><td>/mɪr/ adj.</td><td>仅仅, 只不过纯粹的Superlative merest</td></tr>
+<tr><td>venezuela</td><td>/ˌvenə'zweɪlə/ n.</td><td>委内瑞拉</td></tr>
+<tr><td>crowed</td><td>/kroʊ/ vi.</td><td>报晓；啼叫n. 乌鸦；鸡鸣；撬棍, crowing, crows</td></tr>
+<tr><td>regime</td><td>/reɪ'ʒiːm/ n.</td><td>政权，政体；社会制度；管理体制</td></tr>
+<tr><td>startlingly</td><td>/'stɑːrtlɪŋli/ adv.</td><td>令人吃惊地，惊人地</td></tr>
+<tr><td>intent</td><td>/ɪn'tent/ n.</td><td>意图；目的；含义adj. 专心的；急切的；坚决的</td></tr>
+<tr><td>strait</td><td>/streɪt/ n.</td><td>海峡；（尤指经济拮据引起的）困境，境况窘迫adj. 狭窄的；苦恼的</td></tr>
+<tr><td>allies</td><td>— n.</td><td>（第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者</td></tr>
+<tr><td>notably</td><td>/'noʊtəbli/ adv.</td><td>显著地；尤其</td></tr>
+<tr><td>denmark</td><td>/'denmɑːrk/ n.</td><td>丹麦(北欧国家,首都哥本哈根)</td></tr>
+<tr><td>ukraine</td><td>— n.</td><td>乌克兰（原苏联一加盟共和国，现已独立）</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>quietly</td><td>/'kwaɪətli/ adv.</td><td>安静地；秘密地；平稳地</td></tr>
+<tr><td>crashing</td><td>/kræʃ/ n.</td><td>碰撞；崩溃；坠落vt. 破碎；撞碎；坠落vi. 碰撞；坠毁；闯；突然倒台adj. 速成的, crashing, crashes</td></tr>
+<tr><td>trial</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>excels</td><td>/ɪk'sel/ vt.</td><td>优于，胜过；擅长vi. 胜过他人；优秀Excel微软公司生产的表格处理软件, excelling, excels</td></tr>
+<tr><td>enormous</td><td>/ɪ'nɔːrməs/ adj.</td><td>巨大的, 极大的, 庞大的</td></tr>
+<tr><td>sprinting</td><td>/sprɪnt/ vi.</td><td>冲刺，全速跑n. 短跑；冲刺vt. 全速奔跑SPRINTabbr. Solid Propellant Rocket Intercept Missile 固体(燃</td></tr>
+<tr><td>rivals</td><td>/'raɪvl/ n.</td><td>竞争对手vt. 与…竞争, 与…匹敌, rivalled rivaling, rivalling rivals, rivals</td></tr>
+<tr><td>literally</td><td>/'lɪtərəli/ adv.</td><td>逐字地；照字面地确实地，真正地</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>bolt</td><td>/boʊlt/ n.</td><td>闪电；螺栓；门闩；弩箭vt. 囫囵吞下；上门闩vi. 逃跑；冲出adv. 直立地；突然地, bolting, bolts</td></tr>
+<tr><td>crashing</td><td>/kræʃ/ n.</td><td>碰撞；崩溃；坠落vt. 破碎；撞碎；坠落vi. 碰撞；坠毁；闯；突然倒台adj. 速成的, crashing, crashes</td></tr>
+<tr><td>triumph</td><td>/'traɪʌmf/ n.</td><td>胜利，成功巨大的成就[成功]vi. 获胜，得胜；克服，triumphing，triumphs</td></tr>
+<tr><td>buzz</td><td>/bʌz/ v.</td><td>发嗡嗡声；发蜂鸣声用蜂鸣器（给…）发信号繁忙；充满活力（飞机）低空飞过（尤指作为警告或威胁）（用特殊的机器）将头发剪得非常短n. 嗡嗡声；蜂鸣声（愉快、兴奋或成</td></tr>
+<tr><td>debuted</td><td>/deɪ'bjuː/ n.</td><td>〈法〉演员首次演出</td></tr>
+<tr><td>triple</td><td>/'trɪpl/ adj.</td><td>三倍的；三方的n. 三倍数；三个一组vi. 增至三倍vt. 使成三倍, tripling, triples</td></tr>
+<tr><td>seamlessly</td><td>/'siːmləs/ adj.</td><td>无缝合线的；无缝的；无伤痕的</td></tr>
+<tr><td>multitude</td><td>/'mʌltɪtuːd/ n.</td><td>大量, 许多大众, 民众, 群众</td></tr>
+<tr><td>enormous</td><td>/ɪ'nɔːrməs/ adj.</td><td>巨大的, 极大的, 庞大的</td></tr>
+<tr><td>possess</td><td>/pə'zes/ vt.</td><td>具有占据, possessing, possesses</td></tr>
+<tr><td>parameters</td><td>/pə'ræmɪtər/ n.</td><td>(限定性的)因素, 特性, 界限〈物〉〈数〉参量, 参数</td></tr>
+<tr><td>bot</td><td>/bɑːt/ n.</td><td>马蝇幼虫，马蝇</td></tr>
+<tr><td>spatial</td><td>/'speɪʃl/ adj.</td><td>空间的；存在于空间的；受空间条件限制的</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>either</td><td>/'iːðər/ pron.</td><td>(两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的</td></tr>
+<tr><td>complete</td><td>/kəm'pliːt/ adj.</td><td>完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善, completest 缩 写: comp, cpl</td></tr>
+<tr><td>headset</td><td>/'hedset/ n.</td><td>戴在头上的耳机或听筒</td></tr>
+<tr><td>haptic</td><td>/'hæptɪk/ adj.</td><td>触觉的</td></tr>
+<tr><td>sensor</td><td>/'sensər/ n.</td><td>传感器</td></tr>
+<tr><td>innovation</td><td>/ˌɪnə'veɪʃn/ n.</td><td>改革, 革新, 创新新观念, 新方法, 新发明</td></tr>
+<tr><td>central</td><td>/'sentrəl/ adj.</td><td>中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的</td></tr>
+<tr><td>mimicking</td><td>/'mɪmɪk/ vt.</td><td>模仿，摹拟n. 小丑；仿制品；效颦者，模仿者adj. 模仿的，模拟的；假装的, mimicking, mimics</td></tr>
+<tr><td>counter</td><td>/'kaʊntər/ n.</td><td>柜台, 柜台式长桌计数器vt. & vi. 对抗, 反驳adv. 反方向地, 对立地, countering, counters</td></tr>
+<tr><td>sensors</td><td>/'sensər/ n.</td><td>传感器</td></tr>
+<tr><td>circular</td><td>/'sɜːrkjələr/ adj.</td><td>圆形的，环形的；循环的n. 通知，通告</td></tr>
+<tr><td>motion</td><td>/'moʊʃn/ n.</td><td>动作；请求；手势；移动；意向vi. 运动；打手势vt. 运动；向…打手势, motioning, motions</td></tr>
+<tr><td>kettle</td><td>/'ketl/ n.</td><td>(烧水用的)壶</td></tr>
+<tr><td>funnel</td><td>/'fʌnl/ n.</td><td>漏斗；烟囱vt. 通过漏斗或烟囱等；使成漏斗形vi. 通过漏斗等；成漏斗形, funnelled funneling, funnelling funnels, </td></tr>
+<tr><td>duo</td><td>/'duːoʊ/ n.</td><td>成对的表演者</td></tr>
+<tr><td>shelves</td><td>/ʃelv/ vt.</td><td>搁置，将某事放到一旁不予考虑vi. 倾斜, shelving, shelves</td></tr>
+<tr><td>line</td><td>/laɪn/ n.</td><td>绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long interspersed element)长散在元</td></tr>
+<tr><td>scenes</td><td>/siːn/ n.</td><td>情景；景象；场面；事件</td></tr>
+<tr><td>consulting</td><td>/kən'sʌlt/ vt.</td><td>商量；查阅；向…请教vi. 请教；商议；当顾问, consulting, consults</td></tr>
+<tr><td>cutting</td><td>/'kʌtɪŋ/ n.</td><td>切断；剪辑；开凿adj. 严寒的；锋利的；尖酸刻薄的v. 切开；采伐；削减（cut的ing形式）</td></tr>
+<tr><td>edge</td><td>/edʒ/ n.</td><td>边缘；刀刃；优势；锋利vt. 使锐利；将…开刃；给…加上边vi. 缓缓移动；侧着移动EDGEabbr. Electronic Data Gathering Eq</td></tr>
+<tr><td>collaborations</td><td>/kəˌlæbə'reɪʃn/ n.</td><td>合作, 协作通敌</td></tr>
+<tr><td>vary</td><td>/'veri/ vi.</td><td>变化；违反；[生]变异vt. 改变；使多样化；[音]变奏, varies</td></tr>
+<tr><td>manufacturing</td><td>/ˌmænju'fæktʃərɪŋ/ n.</td><td>制造业，工业adj. 制造业的；制造的</td></tr>
+<tr><td>workforce</td><td>/'wɜːrkfɔːrs/ n.</td><td>全体员工(国家或行业等)劳动力,劳动大军,劳动人口</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>vendors</td><td>/'vendər/ n.</td><td>小贩；卖主；自动售货机</td></tr>
+<tr><td>gear</td><td>/ɡɪr/ n.</td><td>用具，设备，衣服齿轮；传动装置；(排)挡vi. 换挡vt. 使兴奋起来；使准备好vt. & vi. (使)搭配；(使)适合，gearing，gears</td></tr>
+<tr><td>commerce</td><td>/'kɑːmɜːrs/ n.</td><td>商业, 贸易</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>grocery</td><td>/'ɡroʊsəri/ n.</td><td>杂货业杂货店</td></tr>
+<tr><td>scenarios</td><td>/sə'nærioʊ/ n.</td><td>情节；剧本；方案</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>limbs</td><td>/lɪm/ n.</td><td>肢，臂；枝干；分支vt. 切断…的手足；从…上截下树枝, limbing, limbs</td></tr>
+<tr><td>practice</td><td>/'præktɪs/ n.</td><td>练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规，practicing，practices</td></tr>
+<tr><td>manually</td><td>/'mænjuəl/ adj.</td><td>用手的, 手工的n. 手册, 指南</td></tr>
+<tr><td>bot</td><td>/bɑːt/ n.</td><td>马蝇幼虫，马蝇</td></tr>
+<tr><td>limb</td><td>/lɪm/ n.</td><td>肢，臂；枝干；分支vt. 切断…的手足；从…上截下树枝, limbing, limbs</td></tr>
+<tr><td>edge</td><td>/edʒ/ n.</td><td>边缘；刀刃；优势；锋利vt. 使锐利；将…开刃；给…加上边vi. 缓缓移动；侧着移动EDGEabbr. Electronic Data Gathering Eq</td></tr>
+<tr><td>recognition</td><td>/ˌrekəɡ'nɪʃn/ n.</td><td>认识；认出；承认〈正〉酬谢，酬劳</td></tr>
+<tr><td>employing</td><td>/ɪm'plɔɪ/ vt.</td><td>使用，采用；雇用；使忙于，使从事于n. 雇用；使用, employing, employs</td></tr>
+<tr><td>groups</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>pictures</td><td>/'pɪktʃər/ n.</td><td>图画，肖像；照片(生动的)描述，写照影片；电影；画面美景，景色情况，事态，局面vt. 绘画；描绘想象，picturing，pictures</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>manufacturing</td><td>/ˌmænju'fæktʃərɪŋ/ n.</td><td>制造业，工业adj. 制造业的；制造的</td></tr>
+<tr><td>slumped</td><td>/slʌmp/ vi.</td><td>大幅度下降, 暴跌沉重或突然地落下[倒下]n. 萧条期〈美〉(个人、球队等的)低潮状态, slumping, slumps</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>warehouses</td><td>/'werhaʊs/ n.</td><td>仓库, 货栈, warehousing, warehousesalso</td></tr>
+<tr><td>gear</td><td>/ɡɪr/ n.</td><td>用具，设备，衣服齿轮；传动装置；(排)挡vi. 换挡vt. 使兴奋起来；使准备好vt. & vi. (使)搭配；(使)适合，gearing，gears</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>wages</td><td>/weɪdʒ/ vi.</td><td>进行；发动；从事n. 工资；报偿；代价vt. 开展；进行, waging, wages</td></tr>
+<tr><td>headsets</td><td>/'hedset/ n.</td><td>戴在头上的耳机或听筒</td></tr>
+<tr><td>haptic</td><td>/'hæptɪk/ adj.</td><td>触觉的</td></tr>
+<tr><td>vision</td><td>/'vɪʒn/ n.</td><td>视力；眼力；幻象；美景；想象力vt. 显现；梦见；想象, visioning, visions</td></tr>
+<tr><td>decade</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day25.html" class="nav-btn">← Day 25</a>
+  <a href="day27.html" class="nav-btn">Day 27 →</a>
+</div>
+
+<div class="progress">📖 Day 26 of 39</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-08-29</div>
+
+</body>
+</html>
