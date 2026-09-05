@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Europe | Pick me</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-09-05</div>
+
+<h1 class="article-title">Europe | Pick me</h1>
+<div class="article-section">Europe</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>Ursula von der Leyen, the president of the European <span class="annot" data-tooltip="commission /kə'mɪʃn/ n. 授权, 委托委员会佣金, 回扣vt. 委任, 委托时 态: commissioned, commissioning, c">Commission</span>, called that schedule “within <span class="annot" data-tooltip="reach /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reach</span>”. But Iceland’s vote on August 29th against restarting its accession <span class="annot" data-tooltip="negotiations /nɪˌɡoʊʃi'eɪʃn/ n. 协商，谈判完成(难事)；通过">negotiations</span> has dampened the mood. Some hoped a bid by a rich northern country would boost <span class="annot" data-tooltip="momentum /moʊ'mentəm/ n. 动力；动量；冲力；势头复 数: momenta">momentum</span>. Now the aspirants will <span class="annot" data-tooltip="simply /'sɪmpli/ adv. 简单地；朴素地；简直；仅仅；坦白地">simply</span> have to <span class="annot" data-tooltip="persuade /pər'sweɪd/ vt. & vi. 说服, 劝告时 态: persuaded, persuading, persuades">persuade</span> Europeans that bringing in poorer south-eastern countries is in their interests. Of the western Balkan countries, Montenegro is at the head of the pack. Albania is next, while Kosovo and Bosnia & Herzegovina are making little progress. North Macedonia is blocked by its hostile neighbour Bulgaria. Serbia, the biggest of the six, got a red light from eight members in July, mainly over its autocratic <span class="annot" data-tooltip="governance /'ɡʌvərnəns/ n. 统治;管理;治理;统治方式;管理方法">governance</span>. On August 27th Montenegro’s prime minister, Milojko Spajic, said that two neighbouring countries (clearly meaning Serbia and Albania) were trying to slow the country’s accession, <span class="annot" data-tooltip="presumably /prɪ'zuːməbli/ adv. 据推测, 大概, 可能">presumably</span> out of jealousy. After Yugoslavia broke up, Montenegro was dominated for <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span> by one party, which led it to independence and NATO <span class="annot" data-tooltip="membership /'membərʃɪp/ n. 全体会员会员身份, 会员资格">membership</span>. In 2020 that was replaced by a coalition including <span class="annot" data-tooltip="pro /proʊ/ n. 从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞">pro</span>-Serb <span class="annot" data-tooltip="groups /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">groups</span>. Europhiles feared Serbia would run the country’s foreign policy. That has not happened; relations between the countries are poor. The <span class="annot" data-tooltip="prospect /'prɑːspekt/ n. 景象，景色前景；前途可能成为主顾的人；有希望的候选人vi. 勘探；勘察时 态: prospected，prospecti">prospect</span> of EU accession has led parties to co-operate on <span class="annot" data-tooltip="reforms /rɪ'fɔːrm/ n. 改革，改良，改造vt. & vi. 改革；改造；改善时 态: reformed，reforming，reforms">reforms</span>.</p>
+<p>Sceptics say the changes are cosmetic, and note that EU leaders have stopped talking about Montenegro’s powerful drug-<span class="annot" data-tooltip="smuggling /'smʌɡlɪŋ/ n. 走私;偷运">smuggling</span> <span class="annot" data-tooltip="clans /klæn/ n. 宗族；部落；集团">clans</span>. Expansion-minded Europeans worry that if a tiny country cannot get in, <span class="annot" data-tooltip="ukraine n. 乌克兰（原苏联一加盟共和国，现已独立）">Ukraine</span> and others have no hope. The biggest risk is France. President Emmanuel Macron supports accession. But French law requires a referendum or three-fifths of both houses of <span class="annot" data-tooltip="parliament /'pɑːrləmənt/ n. 议会, 国会">parliament</span> to approve the accession of a new member. According to Eurobarometer, just 35% of the French support expanding the union. And Mr Macron will leave office next year. He may be succeeded by Marine Le Pen of the populist-right National Rally, who <span class="annot" data-tooltip="firmly /'fɜːrmli/ adv. 坚固地;稳固地坚定地;坚决地">firmly</span> opposes enlargement. When Mr Macron visited Montenegro in June he signed a series of political and business agreements, including one aimed at building a favourable image of Montenegro in France. But Jovana Marovic, a former minister of European <span class="annot" data-tooltip="affairs /ə'fer/ n. 事情；事务；私事；（尤指关系不长久的）风流韵事">affairs</span> in Montenegro, is not optimistic. A majority in favour of ratifying accession for any future members, she says, “<span class="annot" data-tooltip="simply /'sɪmpli/ adv. 简单地；朴素地；简直；仅仅；坦白地">simply</span> does not exist” in France’s parliament. “This is an extremely unpopular thing to say,” Ms Marovic continues. “The atmosphere in Montenegro is almost euphoric, as if EU accession were already a done deal.” She thinks there is time for her country to build support for accession among EU members. For the moment, many are as <span class="annot" data-tooltip="wary /'weri/ adj. 机警的；谨慎的；惟恐的；考虑周到的比较级: warier, wariest">wary</span> of letting in new countries as the Icelanders were about joining. ■ This article was downloaded by zlibrary from https://www.economist.com/europe/2026/09/03/tiny-montenegro-still-hopes-it-will-be- the-eus-next-member</p>
+<div class="article-separator"></div>
+<div class="article-header">Europe · Europe | Charlemagne</div>
+<p>America has a whopping debt. But Europe has the whopping debt problem The French-size problem at the heart of the EU Sep 3rd 2026 To be European is to experience fine <span class="annot" data-tooltip="cuisines /kwɪ'ziːn/ n. 烹饪艺术菜肴">cuisines</span>, walkable cities and constant <span class="annot" data-tooltip="nagging /næɡ/ n. 老马；竞赛马；唠叨vt. 使烦恼；不断地唠叨vi. 不断地唠叨时 态: nagged, nagging, nags">nagging</span> about the many ways in which your economy is <span class="annot" data-tooltip="falling /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">falling</span> behind America’s. In recent years weighty reports bemoaning Europe’s <span class="annot" data-tooltip="lagging /'lægɪŋ/ n. 绝缘层材料adj. 落后的">lagging</span> <span class="annot" data-tooltip="productivity /ˌproʊdʌk'tɪvəti/ n. 生产率, 生产力">productivity</span> have become a literary <span class="annot" data-tooltip="genre /'ʒɑːnrə/ （文学、绘画、音乐、电影等艺术作品的）体裁，类型">genre</span> in their <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> right. So news in recent weeks that America’s government debt had passed $40trn, raising questions about how long bond-market types will keep funding its <span class="annot" data-tooltip="persistent /pər'sɪstənt/ adj. 持续的; 不断的副 词: persistently">persistent</span> budget shortfalls, have been greeted in some European <span class="annot" data-tooltip="quarters n. 住处,岗位">quarters</span> with a degree of Schadenfreude (or whatever the Greek <span class="annot" data-tooltip="equivalent /ɪ'kwɪvələnt/ adj. 等同的，等效的n. 对等的人（或事物），对应的人（或事物）">equivalent</span> is). This is a continent that knows a thing or two about <span class="annot" data-tooltip="spiralling /'spaɪrəl/ n. 螺旋；旋涡；螺旋形之物adj. 盘旋的；螺旋形的vt. 使成螺旋形；使作螺旋形上升vi. 盘旋；成螺旋形；螺旋形上升（过">spiralling</span> debt crises, after all. How refreshing it might be if the tables were turned, and Europeans could be</p>
+<p>the ones making recommendations about how politicians in Washington should be running their economic <span class="annot" data-tooltip="affairs /ə'fer/ n. 事情；事务；私事；（尤指关系不长久的）风流韵事">affairs</span>. Indeed, Europe looks at first glance to be in markedly better <span class="annot" data-tooltip="fiscal /'fɪskl/ adj. 国库的；会计的，财政的副 词: fiscally">fiscal</span> shape than its transatlantic <span class="annot" data-tooltip="rival /'raɪvl/ n. 竞争对手vt. 与…竞争, 与…匹敌时 态: rivaled, rivalled rivaling, rivalling">rival</span>—a rare case in which economic data <span class="annot" data-tooltip="seemingly /'siːmɪŋli/ adv. 看来似乎, 表面上看">seemingly</span> favour the old continent. The total debt <span class="annot" data-tooltip="pile /paɪl/ n. 堆；大量；建筑群vt. 累积；打桩于vi. 积累；堆积；挤时 态: piled, piling, piles">pile</span> of governments in the European Union amounts to a <span class="annot" data-tooltip="mere /mɪr/ adj. 仅仅, 只不过纯粹的Superlative merest">mere</span> €15.7trn ($18.2trn), in an economy not much smaller than America’s (Europeans are poorer but there are more of them). Two <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span> ago both <span class="annot" data-tooltip="places /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">places</span> had debt-to-GDP <span class="annot" data-tooltip="ratios /'reɪʃioʊ/ n. 比, 比率">ratios</span> of around 65%. Now America’s has swollen to over 120%, and the IMF thinks it will be north of 140% by 2031. Europe’s is at “just” 83%, and its future is <span class="annot" data-tooltip="essentially /ɪ'senʃəli/ adv. 本质上;根本上必需的">essentially</span> flat— still in <span class="annot" data-tooltip="vaguely /veɪɡ/ adj. 不明确的；含糊的；模糊的；暧昧的比较级: vaguer, vaguest">vaguely</span> prudent <span class="annot" data-tooltip="territory /'terətɔːri/ n. 领土, 版图管区, 营业地区地盘, 领域, 范围">territory</span>. But Europeans <span class="annot" data-tooltip="tempted /tempt/ vt. 引诱或怂恿(某人)干不正当的事使想要时 态: tempted, tempting, tempts">tempted</span> to subject those stateside to <span class="annot" data-tooltip="sermons /'sɜːrmən/ n. 布道, 讲道, 说教讲道文章一大通教训形容词: sermonic">sermons</span> about economic management (does America need a Draghi report of its <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span>?) should hold their fire. For though America has the bigger debt, Europe has the bigger debt problem. America’s advantages include the world’s reserve currency and a growing economy. Europe’s disadvantage can be summed up in one word: France. Comparing European and American debt is trickier than the headline numbers suggest. America owes too much, no doubt, but Europe owes it in all the wrong places. When it comes to handling interest payments on trillions in <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">federal</span> bonds, America is stronger than the sum of its parts: the entire union stands behind every dollar owed. In Europe, by <span class="annot" data-tooltip="contrast /'kɑːntræst/ n. 对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照时 态: contrasted, cont">contrast</span>, most borrowing is <span class="annot" data-tooltip="contracted /'kɑːntrækt/ vi. 感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约时 态: contracted, contracting, c">contracted</span> by 27 member states, each of which must repay its own debt lest the union as a whole totter. That makes the EU (or at least the euro zone at its heart) only as strong as its weakest link—as Greece once showed when it threatened default. Lots of countries in the EU have manageable debt <span class="annot" data-tooltip="piles /paɪl/ n. 堆；大量；建筑群vt. 累积；打桩于vi. 积累；堆积；挤时 态: piled, piling, piles">piles</span>, <span class="annot" data-tooltip="notably /'noʊtəbli/ adv. 显著地；尤其">notably</span> Germany and its northern neighbours. Others, like Greece and Spain, have high debt but enough growth to <span class="annot" data-tooltip="appease /ə'piːz/ vt. 使平息；使满足时 态: appeased，appeasing，appeases">appease</span> the bond vigilantes. France stands out for having <span class="annot" data-tooltip="neither /'niːðər/ conj. 既不；也不adv. 两个都不；既不……也不adj. 两者都不的det./pron. 两者都不">neither</span> fiscal space (its debts amount to 118% of GDP) nor growth (an underwhelming 0% in the most recent <span class="annot" data-tooltip="quarter /'kwɔːrtər/ n. 四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一时 ">quarter</span>). As a result, interest rates on French ten-year bonds have now <span class="annot" data-tooltip="reached /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reached</span> 4.2%, their highest in 18 years—higher even than Italy, the continent’s traditional problem child. In part this is a global dynamic: governments everywhere are paying more interest, as investors <span class="annot" data-tooltip="fret /fret/ vt. 焦急；使磨损；使烦恼vi. 磨损；烦恼；焦急n. 烦躁；焦急；磨损时 态: fretted, fretting, fre">fret</span> over <span class="annot" data-tooltip="inflation /ɪn'fleɪʃn/ n. (充气而引起的)膨胀通货膨胀">inflation</span> and geopolitics. But the spread between French and German bonds, the extra interest France has to</p>
+<p>offer lenders to entice them to hold its riskier debt, is now close to one percentage point. The fragmentation of rates among EU countries is still nowhere near the levels seen during the euro-zone crisis of the 2010s. That is largely thanks to the European <span class="annot" data-tooltip="central /'sentrəl/ adj. 中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的副 词: centrally">Central</span> Bank, which has since signalled it might step in if some euro-zone government’s borrowing costs were to <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> too high. But the central bank’s largesse is meant to be conditional on that struggling government agreeing to make a <span class="annot" data-tooltip="serious /'sɪriəs/ adj. 严肃的，严重的；认真的；庄重的；危急的副 词: seriously">serious</span> effort at enacting <span class="annot" data-tooltip="reforms /rɪ'fɔːrm/ n. 改革，改良，改造vt. & vi. 改革；改造；改善时 态: reformed，reforming，reforms">reforms</span> and remedying its <span class="annot" data-tooltip="fiscal /'fɪskl/ adj. 国库的；会计的，财政的副 词: fiscally">fiscal</span> <span class="annot" data-tooltip="mess /mes/ vt. 弄脏；弄乱n. 杂乱，脏乱；脏东西不整洁[乱七八糟]的人[事]粪便时 态: messed，messing，messes">mess</span>. Politics <span class="annot" data-tooltip="tends /tend/ vt. 照料，照顾，伺候vi. 往，朝向易于；倾向时 态: tended，tending，tends">tends</span> to <span class="annot" data-tooltip="interfere /ˌɪntər'fɪr/ vi. 干预；调停妨碍时 态: interfered，interfering，interferes">interfere</span> with such sound policymaking, and Europe has a surfeit of politics coming its way. In 2027 national elections are <span class="annot" data-tooltip="due /duː/ adj. 到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）">due</span> to be held in France, Greece, Italy and Spain, four debt-laden countries. Fiscal discipline will no doubt slip as voters are showered with goodies. France again stands out. The front-runner in the <span class="annot" data-tooltip="polls /poʊl/ n. 民意测验；投票；投票数；投票所vt. 剪短；对…进行民意测验；获得选票；投票vi. 投票adj. 剪过毛的；修过枝的；无">polls</span> is Marine Le Pen, a populist who once <span class="annot" data-tooltip="campaigned /kæm'peɪn/ n. 运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）时">campaigned</span> to leave the euro. More recently, the head of her party suggested the ECB could be cajoled into <span class="annot" data-tooltip="helping /'helpɪŋ/ n. （进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的">helping</span> in some way. Her <span class="annot" data-tooltip="opponent /ə'poʊnənt/ n. 对手, 敌手；反对者名 词: opponency">opponent</span> on the populist left, Jean-Luc Mélenchon, has announced he wants to “set fire” to a <span class="annot" data-tooltip="portion /'pɔːrʃn/ n. 部分；一份；命运">portion</span> of France’s government bonds. Even among level-headed centrists, nobody is suggesting a return to deficits of 3%, which EU treaties mandate, any time soon. Any suggestion that France is the next Greece is hyperbolic nonsense—at least for now. But French profligacy is reshaping Europe <span class="annot" data-tooltip="nonetheless /ˌnʌnðə'les/ adv. 虽然如此,但是">nonetheless</span>. America can run large deficits in part because its vast stock of <span class="annot" data-tooltip="treasury /'treʒəri/ n. 财政部；国库，金库；宝库">treasury</span> bills are denominated in the world’s reserve currency, and are thus a useful haven for nervy investors in choppy times. Europe would love to capture some of this “exorbitant privilege”. One way it tried to do so was by getting the EU to <span class="annot" data-tooltip="issue /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issue</span> its <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">federal</span> bonds, <span class="annot" data-tooltip="jointly /dʒɔɪnt/ n. 关节；接合处，接合点；接缝；（牛，羊等的腿）大块肉adj. 联合的，合办的；共同的；连接的vt. 连接，贴合；接合；使有">jointly</span> backed by all 27 countries. The bloc started doing so on a large scale in 2021, to finance its <span class="annot" data-tooltip="pandemic /pæn'demɪk/ adj. （疾病）在全国（或世界）流行的">pandemic</span> recovery plan. Many hoped to issue more such debt in future to finance defence spending, in keeping with calls by Emmanuel Macron, France’s president, for more European “<span class="annot" data-tooltip="strategic /strə'tiːdʒɪk/ adj. 战略(上)的有战略意义的; 至关重要的副 词: strategically">strategic</span> <span class="annot" data-tooltip="autonomy /ɔː'tɑːnəmi/ n. 自治，自治权名 词: autonomist">autonomy</span>”. But continued French budgetary <span class="annot" data-tooltip="drift /drɪft/ n. 漂流，漂移；漂流物；趋势vi. 漂流，漂移；漂泊vt. 使…漂流；使…受风吹积DRIFTabbr. Diversity ">drift</span> has probably put paid to further <span class="annot" data-tooltip="joint /dʒɔɪnt/ n. 关节；接合处，接合点；接缝；（牛，羊等的腿）大块肉adj. 联合的，合办的；共同的；连接的vt. 连接，贴合；接合；使有">joint</span> borrowing. The bigger the spread between French and German bond <span class="annot" data-tooltip="yields /jiːld/ vt. 出产；屈服；放弃vi. 屈服，投降n. 收益；产量时 态: yielded, yielding, yields">yields</span>, the bigger the <span class="annot" data-tooltip="implicit /ɪm'plɪsɪt/ adj. 暗示的；盲从的；含蓄的副 词: implicitly">implicit</span> <span class="annot" data-tooltip="subsidy /'sʌbsədi/ n. 津贴；补助金；补贴">subsidy</span> flowing from Berlin to Paris (and more generally from the <span class="annot" data-tooltip="fiscally /'fɪskl/ adj. 国库的；会计的，财政的副 词: fiscally">fiscally</span> <span class="annot" data-tooltip="flush /flʌʃ/ v. 脸红，发红冲（抽水马桶）（用水）冲洗净，冲洗（用水）冲走n. 潮红，脸红一阵强烈情感，（流露出的）一阵激情冲（抽水马桶）">flush</span> to the skint across the EU) whenever joint bonds are issued. Germany, never <span class="annot" data-tooltip="keen /kiːn/ adj. 锋利的热衷的，热心的，渴望(做某事)激烈的，紧张的良好的；敏锐的，敏捷的比较级: keener，keenest">keen</span> on <span class="annot" data-tooltip="extending /ɪk'stend/ vt. & vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出时 态:">extending</span> the idea in the first</p>
+<p><span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span>, now has a sizeable argument against it: who would volunteer to run a <span class="annot" data-tooltip="joint /dʒɔɪnt/ n. 关节；接合处，接合点；接缝；（牛，羊等的腿）大块肉adj. 联合的，合办的；共同的；连接的vt. 连接，贴合；接合；使有">joint</span> tab with a spendthrift whose creditworthiness is doubted by markets? French <span class="annot" data-tooltip="fiscal /'fɪskl/ adj. 国库的；会计的，财政的副 词: fiscally">fiscal</span> incontinence has long had a cost for the French. Now other Europeans are paying for it, too. ■ This article was downloaded by zlibrary from https://www.economist.com/europe/2026/09/03/america-has-a-whopping-debt-but-europe- has-the-whopping-debt-problem</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Britain</div>
+<p>The changing geography of <span class="annot" data-tooltip="violent /'vaɪələnt/ adj. 暴力引起的, 粗暴的剧烈的, 强烈的副 词: violently">violent</span> crime in Britain London’s approach to knife crime is working Has London passed peak phone snatching? Can Andy Burnham <span class="annot" data-tooltip="extend /ɪk'stend/ vt. & vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出时 态:">extend</span> his winning <span class="annot" data-tooltip="streak /striːk/ n. 条纹，线条；倾向vi. 飞跑，疾驶；加上条纹vt. 飞跑，疾驰；加条纹于时 态: streaked, streaking">streak</span> in London? Why the world’s best female footballer joined a tiny London team The British government turns to influencers to get its message out France is love-<span class="annot" data-tooltip="bombing abbr. 物料清单（Bill of Materiel）">bombing</span> Britain</p>
+<p><span class="annot" data-tooltip="violent /'vaɪələnt/ adj. 暴力引起的, 粗暴的剧烈的, 强烈的副 词: violently">Violent</span> crime is <span class="annot" data-tooltip="falling /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">falling</span> fastest in cities like London. It’s the counties you should worry about Sep 3rd 2026 On January 28th 2022, 18-year-old Joe Dix was found lying in the street. He had been stabbed seven times by members of a <span class="annot" data-tooltip="rival /'raɪvl/ n. 竞争对手vt. 与…竞争, 与…匹敌时 态: rivaled, rivalled rivaling, rivalling">rival</span> drugs gang—one of them wielding a 24-inch (61cm) sword. Dix died an hour later. “His insides were coming out,” his partner would later tell the court. Where do you think this happened? London, <span class="annot" data-tooltip="notorious /noʊ'tɔːriəs/ adj. 臭名昭著的, 声名狼藉的副 词: notoriously">notorious</span> for knife crime, is an obvious choice. Birmingham, Manchester and Liverpool, each with its <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> history of gang violence, are others. In fact Dix was murdered in Norwich, a small, quaint city the Sunday Times recently <span class="annot" data-tooltip="crowned /kroʊ/ vi. 报晓；啼叫n. 乌鸦；鸡鸣；撬棍时 态: crowed, crowing, crows">crowned</span> the best <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span> to live in Britain.</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>commission</td><td>/kə'mɪʃn/ n.</td><td>授权, 委托委员会佣金, 回扣vt. 委任, 委托, commissioning, commissions</td></tr>
+<tr><td>reach</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>negotiations</td><td>/nɪˌɡoʊʃi'eɪʃn/ n.</td><td>协商，谈判完成(难事)；通过</td></tr>
+<tr><td>momentum</td><td>/moʊ'mentəm/ n.</td><td>动力；动量；冲力；势头复 数: momenta</td></tr>
+<tr><td>simply</td><td>/'sɪmpli/ adv.</td><td>简单地；朴素地；简直；仅仅；坦白地</td></tr>
+<tr><td>persuade</td><td>/pər'sweɪd/ vt.</td><td>& vi. 说服, 劝告, persuading, persuades</td></tr>
+<tr><td>governance</td><td>/'ɡʌvərnəns/ n.</td><td>统治;管理;治理;统治方式;管理方法</td></tr>
+<tr><td>presumably</td><td>/prɪ'zuːməbli/ adv.</td><td>据推测, 大概, 可能</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>membership</td><td>/'membərʃɪp/ n.</td><td>全体会员会员身份, 会员资格</td></tr>
+<tr><td>pro</td><td>/proʊ/ n.</td><td>从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞成；支持Pro脯氨酸PROabbr. P</td></tr>
+<tr><td>groups</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>prospect</td><td>/'prɑːspekt/ n.</td><td>景象，景色前景；前途可能成为主顾的人；有希望的候选人vi. 勘探；勘察，prospecting，prospects</td></tr>
+<tr><td>reforms</td><td>/rɪ'fɔːrm/ n.</td><td>改革，改良，改造vt. & vi. 改革；改造；改善，reforming，reforms</td></tr>
+<tr><td>smuggling</td><td>/'smʌɡlɪŋ/ n.</td><td>走私;偷运</td></tr>
+<tr><td>clans</td><td>/klæn/ n.</td><td>宗族；部落；集团</td></tr>
+<tr><td>ukraine</td><td>— n.</td><td>乌克兰（原苏联一加盟共和国，现已独立）</td></tr>
+<tr><td>parliament</td><td>/'pɑːrləmənt/ n.</td><td>议会, 国会</td></tr>
+<tr><td>firmly</td><td>/'fɜːrmli/ adv.</td><td>坚固地;稳固地坚定地;坚决地</td></tr>
+<tr><td>affairs</td><td>/ə'fer/ n.</td><td>事情；事务；私事；（尤指关系不长久的）风流韵事</td></tr>
+<tr><td>simply</td><td>/'sɪmpli/ adv.</td><td>简单地；朴素地；简直；仅仅；坦白地</td></tr>
+<tr><td>wary</td><td>/'weri/ adj.</td><td>机警的；谨慎的；惟恐的；考虑周到的, wariest</td></tr>
+<tr><td>cuisines</td><td>/kwɪ'ziːn/ n.</td><td>烹饪艺术菜肴</td></tr>
+<tr><td>nagging</td><td>/næɡ/ n.</td><td>老马；竞赛马；唠叨vt. 使烦恼；不断地唠叨vi. 不断地唠叨, nagging, nags</td></tr>
+<tr><td>falling</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>lagging</td><td>/'lægɪŋ/ n.</td><td>绝缘层材料adj. 落后的</td></tr>
+<tr><td>productivity</td><td>/ˌproʊdʌk'tɪvəti/ n.</td><td>生产率, 生产力</td></tr>
+<tr><td>genre</td><td>/'ʒɑːnrə/ </td><td>（文学、绘画、音乐、电影等艺术作品的）体裁，类型</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>persistent</td><td>/pər'sɪstənt/ adj.</td><td>持续的; 不断的</td></tr>
+<tr><td>quarters</td><td>— n.</td><td>住处,岗位</td></tr>
+<tr><td>equivalent</td><td>/ɪ'kwɪvələnt/ adj.</td><td>等同的，等效的n. 对等的人（或事物），对应的人（或事物）</td></tr>
+<tr><td>spiralling</td><td>/'spaɪrəl/ n.</td><td>螺旋；旋涡；螺旋形之物adj. 盘旋的；螺旋形的vt. 使成螺旋形；使作螺旋形上升vi. 盘旋；成螺旋形；螺旋形上升（过去式spiraled/spiralled</td></tr>
+<tr><td>affairs</td><td>/ə'fer/ n.</td><td>事情；事务；私事；（尤指关系不长久的）风流韵事</td></tr>
+<tr><td>fiscal</td><td>/'fɪskl/ adj.</td><td>国库的；会计的，财政的</td></tr>
+<tr><td>rival</td><td>/'raɪvl/ n.</td><td>竞争对手vt. 与…竞争, 与…匹敌, rivalled rivaling, rivalling rivals, rivals</td></tr>
+<tr><td>seemingly</td><td>/'siːmɪŋli/ adv.</td><td>看来似乎, 表面上看</td></tr>
+<tr><td>pile</td><td>/paɪl/ n.</td><td>堆；大量；建筑群vt. 累积；打桩于vi. 积累；堆积；挤, piling, piles</td></tr>
+<tr><td>mere</td><td>/mɪr/ adj.</td><td>仅仅, 只不过纯粹的Superlative merest</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>places</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>ratios</td><td>/'reɪʃioʊ/ n.</td><td>比, 比率</td></tr>
+<tr><td>essentially</td><td>/ɪ'senʃəli/ adv.</td><td>本质上;根本上必需的</td></tr>
+<tr><td>vaguely</td><td>/veɪɡ/ adj.</td><td>不明确的；含糊的；模糊的；暧昧的, vaguest</td></tr>
+<tr><td>territory</td><td>/'terətɔːri/ n.</td><td>领土, 版图管区, 营业地区地盘, 领域, 范围</td></tr>
+<tr><td>tempted</td><td>/tempt/ vt.</td><td>引诱或怂恿(某人)干不正当的事使想要, tempting, tempts</td></tr>
+<tr><td>sermons</td><td>/'sɜːrmən/ n.</td><td>布道, 讲道, 说教讲道文章一大通教训</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>contrast</td><td>/'kɑːntræst/ n.</td><td>对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照, contrasting, contrasts</td></tr>
+<tr><td>contracted</td><td>/'kɑːntrækt/ vi.</td><td>感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约, contracting, contracts</td></tr>
+<tr><td>piles</td><td>/paɪl/ n.</td><td>堆；大量；建筑群vt. 累积；打桩于vi. 积累；堆积；挤, piling, piles</td></tr>
+<tr><td>notably</td><td>/'noʊtəbli/ adv.</td><td>显著地；尤其</td></tr>
+<tr><td>appease</td><td>/ə'piːz/ vt.</td><td>使平息；使满足，appeasing，appeases</td></tr>
+<tr><td>neither</td><td>/'niːðər/ conj.</td><td>既不；也不adv. 两个都不；既不……也不adj. 两者都不的det./pron. 两者都不</td></tr>
+<tr><td>quarter</td><td>/'kwɔːrtər/ n.</td><td>四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一, quartering, quarters</td></tr>
+<tr><td>reached</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>fret</td><td>/fret/ vt.</td><td>焦急；使磨损；使烦恼vi. 磨损；烦恼；焦急n. 烦躁；焦急；磨损, fretting, frets</td></tr>
+<tr><td>inflation</td><td>/ɪn'fleɪʃn/ n.</td><td>(充气而引起的)膨胀通货膨胀</td></tr>
+<tr><td>central</td><td>/'sentrəl/ adj.</td><td>中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>serious</td><td>/'sɪriəs/ adj.</td><td>严肃的，严重的；认真的；庄重的；危急的</td></tr>
+<tr><td>reforms</td><td>/rɪ'fɔːrm/ n.</td><td>改革，改良，改造vt. & vi. 改革；改造；改善，reforming，reforms</td></tr>
+<tr><td>fiscal</td><td>/'fɪskl/ adj.</td><td>国库的；会计的，财政的</td></tr>
+<tr><td>mess</td><td>/mes/ vt.</td><td>弄脏；弄乱n. 杂乱，脏乱；脏东西不整洁[乱七八糟]的人[事]粪便，messing，messes</td></tr>
+<tr><td>tends</td><td>/tend/ vt.</td><td>照料，照顾，伺候vi. 往，朝向易于；倾向，tending，tends</td></tr>
+<tr><td>interfere</td><td>/ˌɪntər'fɪr/ vi.</td><td>干预；调停妨碍，interfering，interferes</td></tr>
+<tr><td>due</td><td>/duː/ adj.</td><td>到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）</td></tr>
+<tr><td>polls</td><td>/poʊl/ n.</td><td>民意测验；投票；投票数；投票所vt. 剪短；对…进行民意测验；获得选票；投票vi. 投票adj. 剪过毛的；修过枝的；无角的, polling, polls</td></tr>
+<tr><td>campaigned</td><td>/kæm'peɪn/ n.</td><td>运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）, campaigning, campai</td></tr>
+<tr><td>helping</td><td>/'helpɪŋ/ n.</td><td>（进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的</td></tr>
+<tr><td>opponent</td><td>/ə'poʊnənt/ n.</td><td>对手, 敌手；反对者</td></tr>
+<tr><td>portion</td><td>/'pɔːrʃn/ n.</td><td>部分；一份；命运</td></tr>
+<tr><td>nonetheless</td><td>/ˌnʌnðə'les/ adv.</td><td>虽然如此,但是</td></tr>
+<tr><td>treasury</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>issue</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>jointly</td><td>/dʒɔɪnt/ n.</td><td>关节；接合处，接合点；接缝；（牛，羊等的腿）大块肉adj. 联合的，合办的；共同的；连接的vt. 连接，贴合；接合；使有接头vi. 贴合；生节, jointin</td></tr>
+<tr><td>pandemic</td><td>/pæn'demɪk/ adj.</td><td>（疾病）在全国（或世界）流行的</td></tr>
+<tr><td>strategic</td><td>/strə'tiːdʒɪk/ adj.</td><td>战略(上)的有战略意义的; 至关重要的</td></tr>
+<tr><td>autonomy</td><td>/ɔː'tɑːnəmi/ n.</td><td>自治，自治权</td></tr>
+<tr><td>drift</td><td>/drɪft/ n.</td><td>漂流，漂移；漂流物；趋势vi. 漂流，漂移；漂泊vt. 使…漂流；使…受风吹积DRIFTabbr. Diversity Receiving Instrument</td></tr>
+<tr><td>joint</td><td>/dʒɔɪnt/ n.</td><td>关节；接合处，接合点；接缝；（牛，羊等的腿）大块肉adj. 联合的，合办的；共同的；连接的vt. 连接，贴合；接合；使有接头vi. 贴合；生节, jointin</td></tr>
+<tr><td>yields</td><td>/jiːld/ vt.</td><td>出产；屈服；放弃vi. 屈服，投降n. 收益；产量, yielding, yields</td></tr>
+<tr><td>implicit</td><td>/ɪm'plɪsɪt/ adj.</td><td>暗示的；盲从的；含蓄的</td></tr>
+<tr><td>subsidy</td><td>/'sʌbsədi/ n.</td><td>津贴；补助金；补贴</td></tr>
+<tr><td>fiscally</td><td>/'fɪskl/ adj.</td><td>国库的；会计的，财政的</td></tr>
+<tr><td>flush</td><td>/flʌʃ/ v.</td><td>脸红，发红冲（抽水马桶）（用水）冲洗净，冲洗（用水）冲走n. 潮红，脸红一阵强烈情感，（流露出的）一阵激情冲（抽水马桶）同花的一手牌adj. 【非正式】富有，很</td></tr>
+<tr><td>keen</td><td>/kiːn/ adj.</td><td>锋利的热衷的，热心的，渴望(做某事)激烈的，紧张的良好的；敏锐的，敏捷的，keenest</td></tr>
+<tr><td>extending</td><td>/ɪk'stend/ vt.</td><td>& vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出，extending，extends</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>joint</td><td>/dʒɔɪnt/ n.</td><td>关节；接合处，接合点；接缝；（牛，羊等的腿）大块肉adj. 联合的，合办的；共同的；连接的vt. 连接，贴合；接合；使有接头vi. 贴合；生节, jointin</td></tr>
+<tr><td>fiscal</td><td>/'fɪskl/ adj.</td><td>国库的；会计的，财政的</td></tr>
+<tr><td>violent</td><td>/'vaɪələnt/ adj.</td><td>暴力引起的, 粗暴的剧烈的, 强烈的</td></tr>
+<tr><td>extend</td><td>/ɪk'stend/ vt.</td><td>& vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出，extending，extends</td></tr>
+<tr><td>streak</td><td>/striːk/ n.</td><td>条纹，线条；倾向vi. 飞跑，疾驶；加上条纹vt. 飞跑，疾驰；加条纹于, streaking, streaks</td></tr>
+<tr><td>bombing</td><td>— abbr.</td><td>物料清单（Bill of Materiel）</td></tr>
+<tr><td>violent</td><td>/'vaɪələnt/ adj.</td><td>暴力引起的, 粗暴的剧烈的, 强烈的</td></tr>
+<tr><td>falling</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>rival</td><td>/'raɪvl/ n.</td><td>竞争对手vt. 与…竞争, 与…匹敌, rivalled rivaling, rivalling rivals, rivals</td></tr>
+<tr><td>notorious</td><td>/noʊ'tɔːriəs/ adj.</td><td>臭名昭著的, 声名狼藉的</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>crowned</td><td>/kroʊ/ vi.</td><td>报晓；啼叫n. 乌鸦；鸡鸣；撬棍, crowing, crows</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day22.html" class="nav-btn">← Day 22</a>
+  <a href="day24.html" class="nav-btn">Day 24 →</a>
+</div>
+
+<div class="progress">📖 Day 23 of 43</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-09-05</div>
+
+</body>
+</html>

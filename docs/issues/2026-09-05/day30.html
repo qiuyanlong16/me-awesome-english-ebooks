@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>International | The Telegram</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-09-05</div>
+
+<h1 class="article-title">International | The Telegram</h1>
+<div class="article-section">International</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>Two years after the boys arrived in America, their parents flew out to join them and the family settled in Oregon, where Huang studied electrical engineering before <span class="annot" data-tooltip="heading /'hedɪŋ/ n. 标题；信头；（足球）头球v. 用头顶（head的ing形式）">heading</span> south to <span class="annot" data-tooltip="silicon /'sɪlɪkən/ n. 〈化〉硅">Silicon</span> <span class="annot" data-tooltip="valley /'væli/ n. 流域；山谷；溪谷">Valley</span>. He founded <span class="annot" data-tooltip="nvidia 恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商">Nvidia</span> in 1993 with two fellow engineers. The chips that would make Nvidia famous, <span class="annot" data-tooltip="graphics /'ɡræfɪks/ n. 制图学；制图法；图表算法">graphics</span> <span class="annot" data-tooltip="processing /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">processing</span> units (GPUs), were then a product used mainly for video games, and the market was <span class="annot" data-tooltip="crowded /kroʊ/ vi. 报晓；啼叫n. 乌鸦；鸡鸣；撬棍时 态: crowed, crowing, crows">crowded</span>. Nvidia became <span class="annot" data-tooltip="dominant /'dɑːmɪnənt/ adj. 支配的，统治的；占优势的；显性的n. 显性">dominant</span> by designing better chips and, <span class="annot" data-tooltip="crucially /'kruːʃl/ adj. 决定性的；重要的；定局的；决断的副 词: crucially">crucially</span>, getting them to market first. By the mid-2010s, Huang had become convinced that AI would transform computing and that GPUs, whose ability to perform many calculations <span class="annot" data-tooltip="simultaneously /ˌsaɪml'teɪniəsli/ adv. 同时地">simultaneously</span> made them well suited to AI models, would become its <span class="annot" data-tooltip="essential /ɪ'senʃl/ adj. 基本的；必要的；本质的；精华的">essential</span> building blocks. For years that was an unorthodox position to take. AI was always <span class="annot" data-tooltip="touted /taʊt/ vt. 招徕；兜售；刺探赛马情报vi. 兜售；招徕顾客；拉选票n. 侦查者；兜售者Tout陶特(姓氏)时 态: touted, ">touted</span> as the next big thing, but its moment never quite seemed to arrive. In November 2022, OpenAI, a modelmaker, released ChatGPT. Demand for Nvidia’s chips, on which ChatGPT was trained, exploded. Nvidia’s market <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span> climbed from $340bn to $5trn in just three years. The company’s success rests on more than clever chip design: it’s also dependent on the ability to manage relationships with supply-chain partners, and the political environment which <span class="annot" data-tooltip="affects /ə'fekt/ vt. 影响；假装；感动；感染vi. 倾向；喜欢n. 情感；引起感情的因素时 态: affected, affecting, a">affects</span> them all. Heroes of software companies are often <span class="annot" data-tooltip="portrayed /pɔːr'treɪ/ vt. 画像；描述扮演时 态: portrayed，portraying，portrays">portrayed</span> as <span class="annot" data-tooltip="lone /loʊn/ adj. 独自的；寂寞的；单身的；人迹稀少的">lone</span> geniuses, but hardware-making is an <span class="annot" data-tooltip="inherently /ɪn'herəntli/ adv. 天性地,固有地">inherently</span> collaborative project. Nvidia’s latest product, Vera Rubin NVL72, is a <span class="annot" data-tooltip="complete /kəm'pliːt/ adj. 完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善比较级: complete">complete</span> AI supercomputer for training and running large AI models. It contains 1.3m components, more than 1,000 chips and the software needed to <span class="annot" data-tooltip="harness /'hɑːrnɪs/ n. 马具, 挽具vt. 给(马等)装上挽具治理, 利用时 态: harnessed, harnessing, harness">harness</span> them. Building one requires hundreds of suppliers, <span class="annot" data-tooltip="manufacturers /ˌmænju'fæktʃərər/ n. 制造商, 制造厂">manufacturers</span> and software companies to work together. The AI boom has led to a <span class="annot" data-tooltip="scramble /'skræmbl/ vi. 快速爬行，匍匐前进；攀登争夺，争抢(军事飞机)紧急起飞vt. (用黄油)炒蛋扰频或倒频使(电话通话等)只可由有特殊接收器">scramble</span> for those components, and a big part of Huang’s job is ensuring that suppliers prioritise Nvidia’s orders. Money helps. Nvidia has used its <span class="annot" data-tooltip="enormous /ɪ'nɔːrməs/ adj. 巨大的, 极大的, 庞大的副 词: enormously">enormous</span> balance-sheet to sign multi-year deals with manufacturers. Huang also needs his suppliers to make more. Analysts believe Huang has pushed back several times against TSMC’s caution about <span class="annot" data-tooltip="investing /ɪn'vest/ vt. 投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买时 态: invested, investing, invests">investing</span> in new capacity.</p>
+<p>So <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span>, Huang has kept the <span class="annot" data-tooltip="intricate /'ɪntrɪkət/ adj. 错综复杂的副 词: intricately">intricate</span> supply chain <span class="annot" data-tooltip="humming /'hʌmɪŋ/ 嗡嗡叫">humming</span>. But other challenges are <span class="annot" data-tooltip="mounting /maʊnt/ vt. & vi. 登上；骑上vi. 增加；上升vt. 上演；配有…发动攻击；攻击n. 山峰坐骑时 态: mounted，mou">mounting</span>, not least the threat of competition from <span class="annot" data-tooltip="nvidia 恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商">Nvidia</span>’s biggest customers. <span class="annot" data-tooltip="alphabet /'ælfəbet/ n. 字母表，字母系统；入门，初步">Alphabet</span>, <span class="annot" data-tooltip="amazon /ˈæməˌzɑn/ n. 高大强悍的女人；（古希腊神话中的）亚马孙族女战士Amazonn. 亚马逊河(南美洲大河)">Amazon</span>, Meta and Microsoft are each seeking to reduce their dependence on Nvidia by <span class="annot" data-tooltip="developing /dɪ'veləpɪŋ/ adj. 在进行中的;走向完成阶段的;走向成熟的发展中的">developing</span> their <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> AI chips. Nvidia’s stock price meanwhile has become a proxy for investor <span class="annot" data-tooltip="sentiment /'sentɪmənt/ n. (对怜悯、怀旧等的)柔情态度或意见观点; 意见">sentiment</span> about how long the AI boom can last, and has dipped several times this year. Huang’s answer is to bind Nvidia even more tightly to the future of AI. Rather than selling only chips, he also wants to provide the <span class="annot" data-tooltip="infrastructure /'ɪnfrəstrʌktʃər/ n. 基础设施; 基础结构">infrastructure</span>, software and AI models on which the <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> runs. This <span class="annot" data-tooltip="strategy /'strætədʒi/ n. 战略学, 兵法战略, 策略策略, 计谋">strategy</span> will require even more supply-chain diplomacy, and I wasn’t surprised to see Huang schmoozing <span class="annot" data-tooltip="manufacturing /ˌmænju'fæktʃərɪŋ/ n. 制造业，工业adj. 制造业的；制造的">manufacturing</span> partners in the exhibition hall during his time at the <span class="annot" data-tooltip="conference /'kɑːnfərəns/ n. 会议讨论, 商谈形容词: conferential">conference</span>. His staff explained that he made a point of visiting suppliers’ booths because his presence draws crowds and gives them <span class="annot" data-tooltip="publicity /pʌb'lɪsəti/ n. 公众的注意, 众所周知宣传, 宣扬">publicity</span>. Shouts of “Jensen! Jensen!” echoed through the hall as he made his way from stand to stand to chat to engineers and executives, high-fiving people along the way. Only late in the afternoon did he seem to tire, sitting cross-legged on the floor of a booth to share a beer with a Taiwanese executive. Hundreds of fans <span class="annot" data-tooltip="crowded /kroʊ/ vi. 报晓；啼叫n. 乌鸦；鸡鸣；撬棍时 态: crowed, crowing, crows">crowded</span> round to capture the moment on their phones.</p>
+<p>After his keynote speech I sat down with Huang in a private room in the <span class="annot" data-tooltip="conference /'kɑːnfərəns/ n. 会议讨论, 商谈形容词: conferential">conference</span> hall. By then he had <span class="annot" data-tooltip="shed /ʃed/ n. 棚, 库vt. 流出, 流下蜕皮, 树叶脱落时 态: shed, shedding, sheds">shed</span> his leather jacket for a navy <span class="annot" data-tooltip="cotton /'kɑːtn/ n. 棉花；棉线；棉布vi. 和谐；一致；理解；亲近adj. 棉的；棉制的Cotton科顿（姓氏）时 态: cottoned,">cotton</span> one. <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">Outside</span>, his staff and <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span> were <span class="annot" data-tooltip="bustling /bʌst/ vi. 爆裂；破产；降低级别vt. 使爆裂；使破产；逮捕n. 半身像；胸部；萧条；破产adj. 破产了的；毁坏了的时 态: bu">bustling</span> about, but Huang seemed <span class="annot" data-tooltip="calm /kɑːm/ adj. 静的，平静的；沉着的vt. 使平静；使镇定vi. 平静下来；镇定下来n. 风平浪静比较级: calmer, calmes">calm</span> and relaxed. When I explained that I wanted to understand him rather than <span class="annot" data-tooltip="nvidia 恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商">Nvidia</span>, he looked <span class="annot" data-tooltip="faintly adv. 微弱地；模糊地；虚弱地">faintly</span> <span class="annot" data-tooltip="embarrassed /ɪm'bærəst/ adj. 局促不安的；为难的；尴尬的窘迫的；陷入困境的；拮据的">embarrassed</span>. He was uncomfortable talking about himself, he said, and apologised in advance if he did a poor job of answering my questions. On stage he’s an exuberant performer, but in private conversation he almost <span class="annot" data-tooltip="whispers /'wɪspər/ n. 私语；谣传；飒飒的声音vi. 耳语；密谈；飒飒地响vt. 低声说出时 态: whispered, whispering,">whispers</span>, <span class="annot" data-tooltip="speaking /'spikɪŋ/ adj. 演讲的；富于表情的，雄辩的n. 说话；演讲v. 讲（speak的ing形式）">speaking</span> in slow, measured <span class="annot" data-tooltip="sentences /'sentəns/ n. 宣判，判决；句子，命题vt. 判决，宣判时 态: sentenced, sentencing, sentences">sentences</span>. I asked how his life had changed since the launch of ChatGPT. <span class="annot" data-tooltip="silicon /'sɪlɪkən/ n. 〈化〉硅">Silicon</span> <span class="annot" data-tooltip="valley /'væli/ n. 流域；山谷；溪谷">Valley</span> lore is full of founders who become <span class="annot" data-tooltip="celebrities /sə'lebrəti/ n. (尤指娱乐界的)名人, 名流名声, 名誉">celebrities</span> overnight. Huang’s <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> has been about three <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span> in the making, which may have made the <span class="annot" data-tooltip="transition /træn'zɪʃn/ n. 过渡; 转变; 变迁">transition</span> to superstardom even stranger when it finally came. Nothing, he insisted, had really changed. He dressed the same way and, as he put it, still “puts his <span class="annot" data-tooltip="pants /pænt/ vi. 渴望；喘息；气喘吁吁地说出某事vt. 气喘n. 气喘；喘息；喷气声时 态: panted, panting, pants">pants</span> on one leg at a time”. Huang hasn’t just had to get used to being famous; he has also found himself at the centre of a geopolitical <span class="annot" data-tooltip="contest /'kɑːntest/ vt. 争辩；提出质疑vi. 竞争；争辩n. 竞赛；争论；争夺时 态: contested, contesting, conte">contest</span> between America and China. Since October 2022 the American government has been trying to stop its adversary from <span class="annot" data-tooltip="obtaining /əb'teɪn/ vi. 获得；流行vt. 获得时 态: obtained, obtaining, obtains">obtaining</span> advanced computer chips. Nvidia’s suppliers in Taiwan, meanwhile, live under the growing threat of military action by China. Huang suddenly found he needed to build rapport with world leaders, not least Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>, whom he has lobbied to relax <span class="annot" data-tooltip="restrictions /rɪ'strɪkʃn/ n. 约束，限制管制，限定；法律，规章">restrictions</span> on chip exports. Hanging out with politicians doesn’t come naturally to him, he said. He has <span class="annot" data-tooltip="nonetheless /ˌnʌnðə'les/ adv. 虽然如此,但是">nonetheless</span> <span class="annot" data-tooltip="proved /proʊ/ n. 从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞">proved</span> adept at translating his goals into language that appeals to them. He recasts data centres as “AI factories”—a term that appeals to Trump’s <span class="annot" data-tooltip="enthusiasm /ɪn'θuːziæzəm/ n. 热情, 热心巨大兴趣, 热衷的事物">enthusiasm</span> for <span class="annot" data-tooltip="manufacturing /ˌmænju'fæktʃərɪŋ/ n. 制造业，工业adj. 制造业的；制造的">manufacturing</span>. To foreign governments <span class="annot" data-tooltip="wary /'weri/ adj. 机警的；谨慎的；惟恐的；考虑周到的比较级: warier, wariest">wary</span> of relying on American companies, he has offered “<span class="annot" data-tooltip="sovereign /'sɑːvrɪn/ n. 君主，国王，女王旧时价值为一镑的英国金币adj. 控制国家的；统治的独立自主的">sovereign</span> AI”—national <span class="annot" data-tooltip="infrastructure /'ɪnfrəstrʌktʃər/ n. 基础设施; 基础结构">infrastructure</span> built around local <span class="annot" data-tooltip="values /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">values</span>, and largely powered by Nvidia. In May he demonstrated his knack for diplomacy when he joined Trump on a <span class="annot" data-tooltip="trip /trɪp/ vi. 绊倒；犯错误；远足；轻快地走n. 旅行；绊倒；差错vt. 绊倒；使犯错TRIPabbr. transformation-">trip</span> to China for a summit with President Xi Jinping. Huang appears to have been a last-minute <span class="annot" data-tooltip="addition /ə'dɪʃn/ n. 添加；增加物；加法形容词: additional">addition</span> to the entourage—many were surprised when Trump announced on Truth Social that “the Great Jensen Huang” was on board Air Force One. In Beijing Huang met Chinese officials and</p>
+<p>accepted a seat on the advisory board of Tsinghua University, one of China’s most prestigious institutions. China hawks are suspicious. Steve Bannon, a former White House chief strategist, called Huang an “agent of influence” for the Chinese <span class="annot" data-tooltip="communist /'kɑːmjənɪst/ n. 共产主义者adj. 共产主义的, 信仰共产主义的">Communist</span> Party and demanded his arrest. Elizabeth Warren, a <span class="annot" data-tooltip="democratic /ˌdemə'krætɪk/ adj. 民主的, 有民主精神或作风的副 词: democratically">Democratic</span> senator from Massachusetts, has said that Huang’s <span class="annot" data-tooltip="lobbying /'lɑːbi/ n. 前厅, 厅堂议会休息室游说议员的团体vt. & vi. 向…进行游说[疏通]名 词: lobbyism">lobbying</span> for the sale of advanced AI chips to China could “turbocharge China’s military and undercut American technological leadership”. Yet, oddly, for a supposed China-appeaser, Huang has acted as a public booster for Taiwan. He says Taiwan made <span class="annot" data-tooltip="nvidia 恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商">Nvidia</span> possible and calls it his “business home”. Nvidia is building one of its largest offices <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span> America in Taipei and plans to <span class="annot" data-tooltip="invest /ɪn'vest/ vt. 投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买时 态: invested, investing, invests">invest</span> around $150bn every year. The balancing act doesn’t always go <span class="annot" data-tooltip="smoothly /'smuːðli/ adv. 平稳地，平滑地；流畅地，流利地">smoothly</span>—in 2024 Huang angered China by describing Taiwan as “one of the most important countries in the world” (he was forced to clarify that he had been praising the island’s electronics <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> rather than recognising Taiwan as a state). Being an AI hardware titan in today’s world, he told me wryly at Computex, is “the biggest communications job ever”.</p>
+<p>Huang doesn’t rely on charm alone to get suppliers to do what he wants. According to Rick Tsai, a former boss of TSMC, who has worked with Huang for <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span>, he is also “hard driving” and “relentless”. Tsai calls Huang’s approach to the supplier relationship “rough justice”: an understanding that sometimes one side is right, sometimes they are wrong, but over the long term, the wins and losses roughly balance out. This same <span class="annot" data-tooltip="brand /brænd/ n. 商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责时 态: branded, branding, brands">brand</span> of rough justice appears to govern life inside <span class="annot" data-tooltip="nvidia 恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商">Nvidia</span>. Employees say Huang has little patience for excuses and is known to challenge people when something is not working. Around 60 people report directly to him, an <span class="annot" data-tooltip="unusually /ʌn'juːʒuəl/ adj. 与众不同的；不寻常的；不平常的副 词: unusually">unusually</span> high <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> for a chief executive. He gives feedback <span class="annot" data-tooltip="immediately /ɪ'miːdiət/ adj. 立即的，即刻的；紧迫的目前的，当前的直接的最接近的名 词: immediateness">immediately</span> and publicly, <span class="annot" data-tooltip="reasoning /'riːzənɪŋ/ n. 运用思考、理解、推想等能力的做法或过程;推理">reasoning</span> that the entire room can learn from the bruising. I occasionally saw traces of the unfiltered style. At a press <span class="annot" data-tooltip="conference /'kɑːnfərəns/ n. 会议讨论, 商谈形容词: conferential">conference</span>, Huang rebuked a staffer who moved too quickly to snatch a microphone from an analyst. When a BBC reporter asked about the geopolitical risks facing Taiwan, Huang initially offered a well-rehearsed answer. When the reporter continued to press him he joked that someone should help the BBC come up with a new question. The audience laughed, but Huang’s annoyance was evident. Rev Lebaredian, an engineer who has worked at Nvidia for more than two decades and is now a <span class="annot" data-tooltip="vice /vaɪs/ n. 堕落，邪恶；不良习气，恶习（尤指与性或毒品有关的）罪行，道德败坏行为【英式】老虎钳；台钳（【美式】vise）pref. ">vice</span>-president there, said that Huang’s executive team meetings would look “<span class="annot" data-tooltip="miserable /'mɪzrəbl/ adj. 悲惨的，不幸的，可怜的令人痛苦的；令人不快的低劣的；贫乏的卑鄙的，可耻的，可恶的名 词: miserable">miserable</span>” to an outsider. All the talk is about problems and things that are failing; good news is rarely discussed. Yet according to Lebaredian, Huang has created a culture where employees know that <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">although</span> their mistakes will be called out, they will not be punished for making them. Nvidia’s <span class="annot" data-tooltip="senior /'siːniər/ adj. 年长的资深的; 地位高的〈美〉最高年级的n. 较年长者高年级学生〈美〉毕业班学生Senior西尼尔(姓氏)">senior</span> leadership team has remained stable over the past two decades, a <span class="annot" data-tooltip="rarity /'rerəti/ n. 罕见；珍贵；稀薄；珍品（需用复数）">rarity</span> in the <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span>. They have also been well rewarded. Huang likes to <span class="annot" data-tooltip="boast /boʊst/ n. 自吹自擂, 自夸的话vt. & vi. 自夸vt. 有(引以为荣的事物)时 态: boasted, boasting, ">boast</span> that he has created more billionaire executives than “any CEO in the world”. Rank-and-file employees have not done badly, <span class="annot" data-tooltip="either /'iːðər/ pron. (两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的">either</span>. When I asked Huang what drove him, he didn’t speak about colonising other planets, defeating death or remaking <span class="annot" data-tooltip="humanity /hjuː'mænəti/ n. 人类；人道；仁慈；人文学科">humanity</span>. Elon Musk was a friend, he noted wryly, but they had different goals. His, he said, were <span class="annot" data-tooltip="simpler adj. 更简单的（simple的比较级）">simpler</span>: he</p>
+<p>wanted his employees and partners to do well. “Maybe,” he said with a smile, “I’m just not sufficiently ambitious.” ■ Shailesh Chitnis is a global business writer at The Economist. Photographs by Leong Chong Lao This article was downloaded by zlibrary from https://www.economist.com/<span class="annot" data-tooltip="interactive /ˌɪntər'æktɪv/ adj. (指至少两个人或物)一起活动或互相合作的交互式的, 人机对话的">interactive</span>/1843/2026/09/03/how-jensen-huang-became-ais- taylor-<span class="annot" data-tooltip="swift /swɪft/ adj. 迅速的, 速度快的敏捷的, 反应快的SWIFTabbr. Society for Worldwide Interbank">swift</span></p>
+<div class="article-separator"></div>
+<div class="article-header"> · Business</div>
+<p>Will anybody use AI as much as coders do? Neoclouds like CoreWeave are getting much bigger—and riskier From protein to matcha, food fads spread faster than ever Chinese businesses of all <span class="annot" data-tooltip="stripes /straɪp/ n. 条纹，斑纹；种类vt. 加条纹于…时 态: striped, striping, stripes">stripes</span> are turning to Huawei The IRS is going after America Inc’s overseas profits LIV Golf’s failure shows how not to <span class="annot" data-tooltip="invest /ɪn'vest/ vt. 投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买时 态: invested, investing, invests">invest</span> in sport The <span class="annot" data-tooltip="glory /'ɡlɔːri/ n. 光荣，荣誉；赞颂vi. 自豪，骄傲；狂喜">glory</span> of the <span class="annot" data-tooltip="corporate /'kɔːrpərət/ adj. 社团的, 法人的副 词: corporately">corporate</span> training video Why get an MBA when you can watch a sports documentary?</p>
+<div class="article-separator"></div>
+<div class="article-header">Business · Business | Model customers</div>
+<p>Will anybody use AI as much as coders do? The answer will have big implications for the investment boom Sep 3rd 2026 How software engineers at <span class="annot" data-tooltip="silicon /'sɪlɪkən/ n. 〈化〉硅">Silicon</span> <span class="annot" data-tooltip="valley /'væli/ n. 流域；山谷；溪谷">Valley</span> <span class="annot" data-tooltip="startups /ˈstɑrtˈʌp/ n. 启动；开办">startups</span> spend their days has changed <span class="annot" data-tooltip="dramatically /drə'mætɪkli/ adv. 戏剧性地;引人注目地">dramatically</span> over the past few years. The output is still the same: reams of code. But instead of sitting and typing, they <span class="annot" data-tooltip="whisper /'wɪspər/ n. 私语；谣传；飒飒的声音vi. 耳语；密谈；飒飒地响vt. 低声说出时 态: whispered, whispering,">whisper</span> into microphones. Their <span class="annot" data-tooltip="instructions /ɪnˈstrʌkʃənz/ n. 操作指南；用法说明（instruction 的复数）">instructions</span> are then transcribed using artificial intelligence and fed to AI agents—bots that can interact with software and, in this case, write it. Other white-collar workers are not yet “in this world”, admits Colin Jarvis of OpenAI, maker of ChatGPT. The future of his <span class="annot" data-tooltip="employer /ɪm'plɔɪ/ vt. 使用，采用；雇用；使忙于，使从事于n. 雇用；使用时 态: employed, employing, employs">employer</span>—and the AI boom at large—<span class="annot" data-tooltip="hinges /hɪndʒ/ n. 铰链vt. & vi. 用铰链连接(某物), 给(某物)装上铰链时 态: hinged, hinging, hinges">hinges</span> on that changing. To justify their <span class="annot" data-tooltip="colossal /kə'lɑːsl/ adj. 巨大的；异常的，非常的">colossal</span> outlays on data centres, America’s cloud giants, and AI labs such as <span class="annot" data-tooltip="anthropic /ænˈθrɑpɪk/ adj. 人类的,有关人类的">Anthropic</span> and OpenAI, need adoption of the technology to continue spreading rapidly. A back-of-</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>heading</td><td>/'hedɪŋ/ n.</td><td>标题；信头；（足球）头球v. 用头顶（head的ing形式）</td></tr>
+<tr><td>silicon</td><td>/'sɪlɪkən/ n.</td><td>〈化〉硅</td></tr>
+<tr><td>valley</td><td>/'væli/ n.</td><td>流域；山谷；溪谷</td></tr>
+<tr><td>nvidia</td><td>— </td><td>恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商</td></tr>
+<tr><td>graphics</td><td>/'ɡræfɪks/ n.</td><td>制图学；制图法；图表算法</td></tr>
+<tr><td>processing</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>crowded</td><td>/kroʊ/ vi.</td><td>报晓；啼叫n. 乌鸦；鸡鸣；撬棍, crowing, crows</td></tr>
+<tr><td>dominant</td><td>/'dɑːmɪnənt/ adj.</td><td>支配的，统治的；占优势的；显性的n. 显性</td></tr>
+<tr><td>crucially</td><td>/'kruːʃl/ adj.</td><td>决定性的；重要的；定局的；决断的</td></tr>
+<tr><td>simultaneously</td><td>/ˌsaɪml'teɪniəsli/ adv.</td><td>同时地</td></tr>
+<tr><td>essential</td><td>/ɪ'senʃl/ adj.</td><td>基本的；必要的；本质的；精华的</td></tr>
+<tr><td>touted</td><td>/taʊt/ vt.</td><td>招徕；兜售；刺探赛马情报vi. 兜售；招徕顾客；拉选票n. 侦查者；兜售者Tout陶特(姓氏), touting, touts</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>affects</td><td>/ə'fekt/ vt.</td><td>影响；假装；感动；感染vi. 倾向；喜欢n. 情感；引起感情的因素, affecting, affects</td></tr>
+<tr><td>portrayed</td><td>/pɔːr'treɪ/ vt.</td><td>画像；描述扮演，portraying，portrays</td></tr>
+<tr><td>lone</td><td>/loʊn/ adj.</td><td>独自的；寂寞的；单身的；人迹稀少的</td></tr>
+<tr><td>inherently</td><td>/ɪn'herəntli/ adv.</td><td>天性地,固有地</td></tr>
+<tr><td>complete</td><td>/kəm'pliːt/ adj.</td><td>完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善, completest 缩 写: comp, cpl</td></tr>
+<tr><td>harness</td><td>/'hɑːrnɪs/ n.</td><td>马具, 挽具vt. 给(马等)装上挽具治理, 利用, harnessing, harnesses</td></tr>
+<tr><td>manufacturers</td><td>/ˌmænju'fæktʃərər/ n.</td><td>制造商, 制造厂</td></tr>
+<tr><td>scramble</td><td>/'skræmbl/ vi.</td><td>快速爬行，匍匐前进；攀登争夺，争抢(军事飞机)紧急起飞vt. (用黄油)炒蛋扰频或倒频使(电话通话等)只可由有特殊接收器的人收听混杂；把…搅乱n. 爬行，攀登争</td></tr>
+<tr><td>enormous</td><td>/ɪ'nɔːrməs/ adj.</td><td>巨大的, 极大的, 庞大的</td></tr>
+<tr><td>investing</td><td>/ɪn'vest/ vt.</td><td>投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买, investing, invests</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>intricate</td><td>/'ɪntrɪkət/ adj.</td><td>错综复杂的</td></tr>
+<tr><td>humming</td><td>/'hʌmɪŋ/ </td><td>嗡嗡叫</td></tr>
+<tr><td>mounting</td><td>/maʊnt/ vt.</td><td>& vi. 登上；骑上vi. 增加；上升vt. 上演；配有…发动攻击；攻击n. 山峰坐骑，mounting，mounts</td></tr>
+<tr><td>nvidia</td><td>— </td><td>恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商</td></tr>
+<tr><td>alphabet</td><td>/'ælfəbet/ n.</td><td>字母表，字母系统；入门，初步</td></tr>
+<tr><td>amazon</td><td>/ˈæməˌzɑn/ n.</td><td>高大强悍的女人；（古希腊神话中的）亚马孙族女战士Amazonn. 亚马逊河(南美洲大河)</td></tr>
+<tr><td>developing</td><td>/dɪ'veləpɪŋ/ adj.</td><td>在进行中的;走向完成阶段的;走向成熟的发展中的</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>sentiment</td><td>/'sentɪmənt/ n.</td><td>(对怜悯、怀旧等的)柔情态度或意见观点; 意见</td></tr>
+<tr><td>infrastructure</td><td>/'ɪnfrəstrʌktʃər/ n.</td><td>基础设施; 基础结构</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>strategy</td><td>/'strætədʒi/ n.</td><td>战略学, 兵法战略, 策略策略, 计谋</td></tr>
+<tr><td>manufacturing</td><td>/ˌmænju'fæktʃərɪŋ/ n.</td><td>制造业，工业adj. 制造业的；制造的</td></tr>
+<tr><td>conference</td><td>/'kɑːnfərəns/ n.</td><td>会议讨论, 商谈</td></tr>
+<tr><td>publicity</td><td>/pʌb'lɪsəti/ n.</td><td>公众的注意, 众所周知宣传, 宣扬</td></tr>
+<tr><td>crowded</td><td>/kroʊ/ vi.</td><td>报晓；啼叫n. 乌鸦；鸡鸣；撬棍, crowing, crows</td></tr>
+<tr><td>conference</td><td>/'kɑːnfərəns/ n.</td><td>会议讨论, 商谈</td></tr>
+<tr><td>shed</td><td>/ʃed/ n.</td><td>棚, 库vt. 流出, 流下蜕皮, 树叶脱落, shedding, sheds</td></tr>
+<tr><td>cotton</td><td>/'kɑːtn/ n.</td><td>棉花；棉线；棉布vi. 和谐；一致；理解；亲近adj. 棉的；棉制的Cotton科顿（姓氏）, cottoning, cottons</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>bustling</td><td>/bʌst/ vi.</td><td>爆裂；破产；降低级别vt. 使爆裂；使破产；逮捕n. 半身像；胸部；萧条；破产adj. 破产了的；毁坏了的, busting, busts</td></tr>
+<tr><td>calm</td><td>/kɑːm/ adj.</td><td>静的，平静的；沉着的vt. 使平静；使镇定vi. 平静下来；镇定下来n. 风平浪静, calmest</td></tr>
+<tr><td>nvidia</td><td>— </td><td>恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商</td></tr>
+<tr><td>faintly</td><td>— adv.</td><td>微弱地；模糊地；虚弱地</td></tr>
+<tr><td>embarrassed</td><td>/ɪm'bærəst/ adj.</td><td>局促不安的；为难的；尴尬的窘迫的；陷入困境的；拮据的</td></tr>
+<tr><td>whispers</td><td>/'wɪspər/ n.</td><td>私语；谣传；飒飒的声音vi. 耳语；密谈；飒飒地响vt. 低声说出, whispering, whispers</td></tr>
+<tr><td>speaking</td><td>/'spikɪŋ/ adj.</td><td>演讲的；富于表情的，雄辩的n. 说话；演讲v. 讲（speak的ing形式）</td></tr>
+<tr><td>sentences</td><td>/'sentəns/ n.</td><td>宣判，判决；句子，命题vt. 判决，宣判, sentencing, sentences</td></tr>
+<tr><td>silicon</td><td>/'sɪlɪkən/ n.</td><td>〈化〉硅</td></tr>
+<tr><td>valley</td><td>/'væli/ n.</td><td>流域；山谷；溪谷</td></tr>
+<tr><td>celebrities</td><td>/sə'lebrəti/ n.</td><td>(尤指娱乐界的)名人, 名流名声, 名誉</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>transition</td><td>/træn'zɪʃn/ n.</td><td>过渡; 转变; 变迁</td></tr>
+<tr><td>pants</td><td>/pænt/ vi.</td><td>渴望；喘息；气喘吁吁地说出某事vt. 气喘n. 气喘；喘息；喷气声, panting, pants</td></tr>
+<tr><td>contest</td><td>/'kɑːntest/ vt.</td><td>争辩；提出质疑vi. 竞争；争辩n. 竞赛；争论；争夺, contesting, contests</td></tr>
+<tr><td>obtaining</td><td>/əb'teɪn/ vi.</td><td>获得；流行vt. 获得, obtaining, obtains</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>restrictions</td><td>/rɪ'strɪkʃn/ n.</td><td>约束，限制管制，限定；法律，规章</td></tr>
+<tr><td>nonetheless</td><td>/ˌnʌnðə'les/ adv.</td><td>虽然如此,但是</td></tr>
+<tr><td>proved</td><td>/proʊ/ n.</td><td>从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞成；支持Pro脯氨酸PROabbr. P</td></tr>
+<tr><td>enthusiasm</td><td>/ɪn'θuːziæzəm/ n.</td><td>热情, 热心巨大兴趣, 热衷的事物</td></tr>
+<tr><td>manufacturing</td><td>/ˌmænju'fæktʃərɪŋ/ n.</td><td>制造业，工业adj. 制造业的；制造的</td></tr>
+<tr><td>wary</td><td>/'weri/ adj.</td><td>机警的；谨慎的；惟恐的；考虑周到的, wariest</td></tr>
+<tr><td>sovereign</td><td>/'sɑːvrɪn/ n.</td><td>君主，国王，女王旧时价值为一镑的英国金币adj. 控制国家的；统治的独立自主的</td></tr>
+<tr><td>infrastructure</td><td>/'ɪnfrəstrʌktʃər/ n.</td><td>基础设施; 基础结构</td></tr>
+<tr><td>values</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>trip</td><td>/trɪp/ vi.</td><td>绊倒；犯错误；远足；轻快地走n. 旅行；绊倒；差错vt. 绊倒；使犯错TRIPabbr. transformation-induced plasticity 高</td></tr>
+<tr><td>addition</td><td>/ə'dɪʃn/ n.</td><td>添加；增加物；加法</td></tr>
+<tr><td>communist</td><td>/'kɑːmjənɪst/ n.</td><td>共产主义者adj. 共产主义的, 信仰共产主义的</td></tr>
+<tr><td>democratic</td><td>/ˌdemə'krætɪk/ adj.</td><td>民主的, 有民主精神或作风的</td></tr>
+<tr><td>lobbying</td><td>/'lɑːbi/ n.</td><td>前厅, 厅堂议会休息室游说议员的团体vt. & vi. 向…进行游说[疏通]</td></tr>
+<tr><td>nvidia</td><td>— </td><td>恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>invest</td><td>/ɪn'vest/ vt.</td><td>投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买, investing, invests</td></tr>
+<tr><td>smoothly</td><td>/'smuːðli/ adv.</td><td>平稳地，平滑地；流畅地，流利地</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>brand</td><td>/brænd/ n.</td><td>商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责, branding, brands</td></tr>
+<tr><td>nvidia</td><td>— </td><td>恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商</td></tr>
+<tr><td>unusually</td><td>/ʌn'juːʒuəl/ adj.</td><td>与众不同的；不寻常的；不平常的</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>immediately</td><td>/ɪ'miːdiət/ adj.</td><td>立即的，即刻的；紧迫的目前的，当前的直接的最接近的</td></tr>
+<tr><td>reasoning</td><td>/'riːzənɪŋ/ n.</td><td>运用思考、理解、推想等能力的做法或过程;推理</td></tr>
+<tr><td>conference</td><td>/'kɑːnfərəns/ n.</td><td>会议讨论, 商谈</td></tr>
+<tr><td>vice</td><td>/vaɪs/ n.</td><td>堕落，邪恶；不良习气，恶习（尤指与性或毒品有关的）罪行，道德败坏行为【英式】老虎钳；台钳（【美式】vise）pref. 副职的；副的</td></tr>
+<tr><td>miserable</td><td>/'mɪzrəbl/ adj.</td><td>悲惨的，不幸的，可怜的令人痛苦的；令人不快的低劣的；贫乏的卑鄙的，可耻的，可恶的</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>senior</td><td>/'siːniər/ adj.</td><td>年长的资深的; 地位高的〈美〉最高年级的n. 较年长者高年级学生〈美〉毕业班学生Senior西尼尔(姓氏)</td></tr>
+<tr><td>rarity</td><td>/'rerəti/ n.</td><td>罕见；珍贵；稀薄；珍品（需用复数）</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>boast</td><td>/boʊst/ n.</td><td>自吹自擂, 自夸的话vt. & vi. 自夸vt. 有(引以为荣的事物), boasting, boasts</td></tr>
+<tr><td>either</td><td>/'iːðər/ pron.</td><td>(两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的</td></tr>
+<tr><td>humanity</td><td>/hjuː'mænəti/ n.</td><td>人类；人道；仁慈；人文学科</td></tr>
+<tr><td>simpler</td><td>— adj.</td><td>更简单的（simple的比较级）</td></tr>
+<tr><td>interactive</td><td>/ˌɪntər'æktɪv/ adj.</td><td>(指至少两个人或物)一起活动或互相合作的交互式的, 人机对话的</td></tr>
+<tr><td>swift</td><td>/swɪft/ adj.</td><td>迅速的, 速度快的敏捷的, 反应快的SWIFTabbr. Society for Worldwide Interbank Financial Telecommu</td></tr>
+<tr><td>stripes</td><td>/straɪp/ n.</td><td>条纹，斑纹；种类vt. 加条纹于…, striping, stripes</td></tr>
+<tr><td>invest</td><td>/ɪn'vest/ vt.</td><td>投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买, investing, invests</td></tr>
+<tr><td>glory</td><td>/'ɡlɔːri/ n.</td><td>光荣，荣誉；赞颂vi. 自豪，骄傲；狂喜</td></tr>
+<tr><td>corporate</td><td>/'kɔːrpərət/ adj.</td><td>社团的, 法人的</td></tr>
+<tr><td>silicon</td><td>/'sɪlɪkən/ n.</td><td>〈化〉硅</td></tr>
+<tr><td>valley</td><td>/'væli/ n.</td><td>流域；山谷；溪谷</td></tr>
+<tr><td>startups</td><td>/ˈstɑrtˈʌp/ n.</td><td>启动；开办</td></tr>
+<tr><td>dramatically</td><td>/drə'mætɪkli/ adv.</td><td>戏剧性地;引人注目地</td></tr>
+<tr><td>whisper</td><td>/'wɪspər/ n.</td><td>私语；谣传；飒飒的声音vi. 耳语；密谈；飒飒地响vt. 低声说出, whispering, whispers</td></tr>
+<tr><td>instructions</td><td>/ɪnˈstrʌkʃənz/ n.</td><td>操作指南；用法说明（instruction 的复数）</td></tr>
+<tr><td>employer</td><td>/ɪm'plɔɪ/ vt.</td><td>使用，采用；雇用；使忙于，使从事于n. 雇用；使用, employing, employs</td></tr>
+<tr><td>hinges</td><td>/hɪndʒ/ n.</td><td>铰链vt. & vi. 用铰链连接(某物), 给(某物)装上铰链, hinging, hinges</td></tr>
+<tr><td>colossal</td><td>/kə'lɑːsl/ adj.</td><td>巨大的；异常的，非常的</td></tr>
+<tr><td>anthropic</td><td>/ænˈθrɑpɪk/ adj.</td><td>人类的,有关人类的</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day29.html" class="nav-btn">← Day 29</a>
+  <a href="day31.html" class="nav-btn">Day 31 →</a>
+</div>
+
+<div class="progress">📖 Day 30 of 43</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-09-05</div>
+
+</body>
+</html>

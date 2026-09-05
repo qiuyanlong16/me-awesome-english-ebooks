@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Britain | Under the influence</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-09-05</div>
+
+<h1 class="article-title">Britain | Under the influence</h1>
+<div class="article-section">Britain</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>installed in Downing Street as he brought government communications into the <span class="annot" data-tooltip="telecoms /ˈtɛlɪˌkɑm/ n. 电信，远距通信；电讯">telecoms</span> era. Margaret Thatcher did interviews with publications like <span class="annot" data-tooltip="smash /smæʃ/ n. 破碎(声)猛击；猛撞大成功；极为成功的新书[新戏，电影等]vt. & vi. 打碎；捣烂vt. 重击；打败时 态: sm">Smash</span> Hits, an irreverent pop magazine. Sir Tony Blair brought “<span class="annot" data-tooltip="spin /spɪn/ vi. 旋转；纺纱；吐丝；晕眩vt. 使旋转；纺纱；编造；结网n. 旋转；疾驰时 态: spun spinning, spins">spin</span> doctors” into the heart of government to deal with the barrage of <span class="annot" data-tooltip="coverage /'kʌvərɪdʒ/ n. 新闻报道, 报道量覆盖范围">coverage</span> demanded by 24-hour news. No <span class="annot" data-tooltip="wonder /'wʌndər/ vt. & vi. 对…感到疑惑想知道；问自己n. 惊奇，惊叹，惊异，惊诧奇人，奇才奇观，奇景，奇迹，奇事时 态: wonder">wonder</span>, then, that Mr Burnham has put such effort into a slick digital offering. He has posted more than one TikTok video a day on average since becoming prime minister. His online <span class="annot" data-tooltip="clips /klɪp/ vt. 修剪；夹牢；痛打vi. 修剪n. 夹子；修剪；回形针CLIPabbr. Cellular Logic Image Pro">clips</span> include ranking classic <span class="annot" data-tooltip="pub /pʌb/ n. 酒馆；客栈">pub</span> <span class="annot" data-tooltip="snacks /snæk/ n. 小吃；点心；快餐vi. 吃快餐；吃点心时 态: snacked，snacking，snacks">snacks</span> and “ask me anything” Q&A sessions. Bad news, too, is delivered on social media. Mr Burnham used a Facebook post to admit problems with a scheme to increase prison capacity by releasing some criminals early. Many commenters praised the prime minister’s willingness to be open with the public. Then there are the influencers. Mr Burnham has talked vintage football shirts with Ellis Platten, a YouTuber. He has posed with Bemi Orojuogun (pictured), who goes by “Bus Aunty” on TikTok, where her clips of buses attract millions of views. And he has built an electrical <span class="annot" data-tooltip="circuit /'sɜːrkɪt/ n. 电路，回路；环道；一圈；巡回vi. 环行vt. 绕回…环行时 态: circuited, circuiting, cir">circuit</span> with Big Manny, a science graduate who posts <span class="annot" data-tooltip="informative /ɪn'fɔːrmətɪv/ adj. 提供信息的adv. 提供信息地名 词: informativeness">informative</span> videos on Instagram. Rishi Sunak was the first prime minister to invite influencers to <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">Number</span> 10 as a way of <span class="annot" data-tooltip="reaching /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reaching</span> younger voters who have increasingly switched off from old media (under-35s watch less than an hour a day of broadcast television, according to Ofcom, a regulator, compared with five hours for those aged 65 or older). Sir Keir Starmer went further, holding influencer- only press <span class="annot" data-tooltip="conferences /'kɑːnfərəns/ n. 会议讨论, 商谈形容词: conferential">conferences</span> and taking “content <span class="annot" data-tooltip="creators /kri'eɪtər/ n. 创造者,创作者">creators</span>” with him on official <span class="annot" data-tooltip="trips /trɪp/ vi. 绊倒；犯错误；远足；轻快地走n. 旅行；绊倒；差错vt. 绊倒；使犯错TRIPabbr. transformation-">trips</span> abroad. The <span class="annot" data-tooltip="practice /'præktɪs/ n. 练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规时 态: practiced，practicing，">practice</span> of treating influencers on a par with old-school media has been formalised within Whitehall. An <span class="annot" data-tooltip="internal /ɪn'tɜːrnl/ adj. 国内的；内部的；内在的名 词: internality">internal</span> government document seen by The Economist warns <span class="annot" data-tooltip="civil /'sɪvl/ adj. 公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的副 词: civilly">civil</span> servants that “people often resist being told what to do” by the government, but adds: “If the advice or suggestion comes from a <span class="annot" data-tooltip="relatable /rɪˈleɪtəb(ə)l/ adj. 有关系的，可关联的；能引起共鸣的；使人觉得自己能理解某人">relatable</span> influencer, it can feel less like a directive and more like a shared discovery or recommendation.” Influencers can be paid “several thousand <span class="annot" data-tooltip="pounds /paʊnd/ n. 英镑；兽栏；重击，重击声；拘留所vt. 捣烂；敲打；监禁，拘留vi. 连续重击，猛击Pound庞德(姓氏)名 词: po">pounds</span>” per post for taking part in government ad <span class="annot" data-tooltip="campaigns /kæm'peɪn/ n. 运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）时">campaigns</span>, the document also <span class="annot" data-tooltip="reveals /rɪ'viːl/ vt. 显示；露出泄露；透露时 态: revealed，revealing，reveals">reveals</span>. “The government has a duty to <span class="annot" data-tooltip="engage /ɪn'ɡeɪdʒ/ vt. 雇佣；吸引，占用；使订婚；使参加；预定vi. 答应，保证；从事；交战；啮合时 态: engaged, engaging,">engage</span> with the public where they are,” a spokesman says.</p>
+<p>Politics and social-media culture can be a good fit, according to Georgia Harrison, a former contestant on “Love Island”, a <span class="annot" data-tooltip="reality /ri'æləti/ n. 现实；真实；实际">reality</span>-TV show, who now <span class="annot" data-tooltip="campaigns /kæm'peɪn/ n. 运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）时">campaigns</span> for online safety and has been to Downing Street several times. “It’s about causing the drama,” she says. Abigail <span class="annot" data-tooltip="foster /'fɑːstər/ v. 促进；助长；培养；鼓励收养，代养，抚育（他人子女，通常指有限的一段时间）adj. （与某些代养有关的名词连用）（在有限的">Foster</span>, a personal-finance influencer, argues that online personalities can <span class="annot" data-tooltip="reach /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reach</span> areas that newspapers cannot: “We are where the next generation are, we look and sound like them.” But jumping on social-media <span class="annot" data-tooltip="trends /trend/ n. 趋势, 倾向流行时 态: trended, trending, trends">trends</span> is no guarantee of popularity. Mr Sunak was unceremoniously <span class="annot" data-tooltip="dumped /dʌmp/ vt. 倾倒；倾卸vi. 倒垃圾n. 垃圾场dUMP脱氧尿苷酸时 态: dumped, dumping, dumps">dumped</span> by the electorate in 2024, and Sir Keir’s whizzy videos did not shift his <span class="annot" data-tooltip="stiff /stɪf/ adj. 严厉的；呆板的；坚硬的；拘谨的；艰难的adv. 彻底地；僵硬地n. [俚]死尸；令人讨厌者；流通票据；劳动者vt. 亏待">stiff</span> image. “Keir is probably more Substack than TikTok,” admits James Lyons, who was his director of communications in <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">Number</span> 10 and is now <span class="annot" data-tooltip="senior /'siːniər/ adj. 年长的资深的; 地位高的〈美〉最高年级的n. 较年长者高年级学生〈美〉毕业班学生Senior西尼尔(姓氏)">senior</span> partner at Penta <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">Group</span>, a consultancy. Ms Foster says she was asked to <span class="annot" data-tooltip="collaborate /kə'læbəreɪt/ vi. 合作勾结叛国n. 协作者，合作者；勾结者时 态: collaborated，collaborating，collabor">collaborate</span> with Whitehall departments so often she started turning them down—and warns that the <span class="annot" data-tooltip="novelty /'nɑːvlti/ n. 新颖; 新奇性新奇的人[事物]新颖小巧而价廉的物品">novelty</span> of influencers filming inside Downing Street has worn off for their audiences. Britain’s newspapers remain influential, often determining what is <span class="annot" data-tooltip="covered /'kʌvər/ vt. 包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替时 态: covered, covering, c">covered</span> on the mighty state broadcaster, the BBC, and discussed online. Still, a political <span class="annot" data-tooltip="strategy /'strætədʒi/ n. 战略学, 兵法战略, 策略策略, 计谋">strategy</span> which does not take social media <span class="annot" data-tooltip="seriously /'sɪriəs/ adj. 严肃的，严重的；认真的；庄重的；危急的副 词: seriously">seriously</span> is <span class="annot" data-tooltip="doomed /duːm/ vt. 注定；判定n. 厄运，劫数时 态: doomed，dooming，dooms">doomed</span> to fail. The internet allows “hyper-personalisation”, says Alexander Dragonetti, a former diplomat who appeared on “The <span class="annot" data-tooltip="traitors /'treɪtər/ n. 卖国贼;叛徒背叛者;背信弃义的人">Traitors</span>”, a BBC game show, and now makes videos explaining foreign policy; politicians must explore a range of <span class="annot" data-tooltip="niche /niːʃ，nɪtʃ/ n. （尤指本人合意的）适合的工作（或职位）;称心的工作合宜的小环境（尤指用来放置塑像的）壁龛adj. （产品）针对特定小群体">niche</span> audiences in order to ensure they are <span class="annot" data-tooltip="reaching /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reaching</span> most voters. British politicians are still <span class="annot" data-tooltip="lagging /'lægɪŋ/ n. 绝缘层材料adj. 落后的">lagging</span> behind their <span class="annot" data-tooltip="counterparts /'kaʊntərpɑːrt/ n. 与对方地位相当的人, 与另一方作用相当的物">counterparts</span> in America, where it has become normal for <span class="annot" data-tooltip="candidates /'kændɪdət，ˈkændɪdeɪt/ n. 申请求职者, 候选人报考者名 词: candidacy">candidates</span> to sit down for multi-hour <span class="annot" data-tooltip="podcast /'pɑːdkæst/ n. 播客">podcast</span> interviews. But so <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span>, Mr Burnham is getting plaudits that his predecessor never did for his relaxed, mildly blokey online persona—even though most of his communications team also worked for Sir Keir. <span class="annot" data-tooltip="ultimately /'ʌltɪmətli/ adv. 最后;最终">Ultimately</span>, the message and the messenger matter more than the medium. It is not coincidental that the two prime ministers in living memory who have best mastered the press, Thatcher and Sir Tony, were the two who had the best idea of what they wanted to achieve and how to go about it. Leaders who <span class="annot" data-tooltip="obsess /əb'ses/ v. 使痴迷，使迷恋；使心神不宁，不停地困扰； 唠叨；挂牵，念念不忘时 态: obsessed, obsessing, obs">obsess</span> over the minutiae of media <span class="annot" data-tooltip="coverage /'kʌvərɪdʒ/ n. 新闻报道, 报道量覆盖范围">coverage</span> are too easily <span class="annot" data-tooltip="distracted /dɪ'strækt/ vt. 转移；分心时 态: distracted, distracting, distracts">distracted</span>. Influencers are quick to stress they cannot offer a magic bullet to struggling</p>
+<p>governments. As Ms Harrison says, “Policy has to come first and then communication, not the other way around.” ■ This article was downloaded by zlibrary from https://www.economist.com/britain/2026/09/03/the-british-government-turns-to- influencers-to-get-its-message-out</p>
+<div class="article-separator"></div>
+<div class="article-header">Britain · Britain | Bayeux tapestry diplomacy</div>
+<p>France is love-<span class="annot" data-tooltip="bombing abbr. 物料清单（Bill of Materiel）">bombing</span> Britain And Britain seems <span class="annot" data-tooltip="keen /kiːn/ adj. 锋利的热衷的，热心的，渴望(做某事)激烈的，紧张的良好的；敏锐的，敏捷的比较级: keener，keenest">keen</span> to return the <span class="annot" data-tooltip="compliment /'kɑːmplɪmənt/ n. 赞美(话)，恭维(话)向…送礼以表示敬意vt. 表扬；恭维时 态: complimented，complimenting">compliment</span>, for a change Sep 3rd 2026 There are few more disconcerting experiences for the British than being love-<span class="annot" data-tooltip="bombed abbr. 物料清单（Bill of Materiel）">bombed</span> by the French. Britain’s neighbours across the English Channel are usually regarded as <span class="annot" data-tooltip="pesky /'peski/ adj. 烦人的；让人讨厌的比较级: peskier，peskiest">pesky</span> <span class="annot" data-tooltip="rivals /'raɪvl/ n. 竞争对手vt. 与…竞争, 与…匹敌时 态: rivaled, rivalled rivaling, rivalling">rivals</span>, exasperating partners and irritatingly well-<span class="annot" data-tooltip="tailored /'teɪlər/ vt. 剪裁；使合适n. 裁缝vi. 做裁缝时 态: tailored, tailoring, tailors">tailored</span> to <span class="annot" data-tooltip="boot /buːt/ vt. 使穿靴；引导；踢；解雇n. 靴子；汽车行李箱；踢时 态: booted, booting, boots">boot</span>. Yet this week France went out of its way to charm Britain. On September 2nd President Emmanuel Macron and King Charles met at a high-profile event at the British Museum to inaugurate the Bayeux <span class="annot" data-tooltip="tapestry /'tæpəstri/ n. 挂毯；织锦；绣帷vt. 用挂毯装饰">tapestry</span> exhibition, set to be this <span class="annot" data-tooltip="season /'siːzn/ n. 时期；季节；赛季vt. 给…调味；使适应vi. 变得成熟；变干燥时 态: seasoned, seasoning, se">season</span>’s London blockbuster. It is the first time the 11th-century work <span class="annot" data-tooltip="depicting /dɪ'pɪkt/ vt. 描绘；描画描述时 态: depicted，depicting，depicts">depicting</span> the Norman conquest of England in 1066 has left France. The loan “took probably more years” to <span class="annot" data-tooltip="negotiate /nɪ'ɡoʊʃieɪt/ vt. 谈判，商议；转让；越过">negotiate</span> than Brexit, Mr Macron joked last year; he has made it a personal centrepiece of <span class="annot" data-tooltip="bilateral /ˌbaɪ'lætərəl/ adj. 双边的, 双方的名 词: bilateralism">bilateral</span></p>
+<p>diplomacy. “When we come together around one table,” he said of Anglo- French ties after announcing the exhibition in 2025, “then everything is possible.” Why is France being so nice to Britain? Historical <span class="annot" data-tooltip="rivals /'raɪvl/ n. 竞争对手vt. 与…竞争, 与…匹敌时 态: rivaled, rivalled rivaling, rivalling">rivals</span>, the two countries have sparred in recent years: over Brexit, submarine sales, small boats and more. When asked whether Mr Macron was a friend or foe, Liz Truss, <span class="annot" data-tooltip="fleetingly /'fliːtɪŋ/ adj. 飞逝的；转瞬间的v. 迅速移动（fleet的ing形式）副 词: fleetingly">fleetingly</span> Britain’s prime minister, once said, “The <span class="annot" data-tooltip="jury /'dʒʊri/ n. 陪审团；评判委员会adj. 应急的">jury</span>’s out.” Now Britain seems <span class="annot" data-tooltip="keen /kiːn/ adj. 锋利的热衷的，热心的，渴望(做某事)激烈的，紧张的良好的；敏锐的，敏捷的比较级: keener，keenest">keen</span> to return the <span class="annot" data-tooltip="compliment /'kɑːmplɪmənt/ n. 赞美(话)，恭维(话)向…送礼以表示敬意vt. 表扬；恭维时 态: complimented，complimenting">compliment</span>. Under Sir Keir Starmer, Mr Macron got a state visit, a banquet at Windsor Castle and a partner with whom to build a “coalition of the willing” for <span class="annot" data-tooltip="ukraine n. 乌克兰（原苏联一加盟共和国，现已独立）">Ukraine</span>. Mr Macron was <span class="annot" data-tooltip="due /duː/ adj. 到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）">due</span> on September 3rd to be the first foreign leader to visit Andy Burnham, Sir Keir’s successor, in Downing Street. The pair were expected to discuss Ukraine, <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span> and Britain’s ties to the EU. One clue to the new entente may in fact lie not in the British Museum but in a superb new French two-part biopic of Charles de Gaulle, “La Bataille de Gaulle”. Directed by Antonin Baudry, an ex-diplomat, it is—<span class="annot" data-tooltip="unusually /ʌn'juːʒuəl/ adj. 与众不同的；不寻常的；不平常的副 词: unusually">unusually</span> for a French production—based on a British <span class="annot" data-tooltip="biography /baɪ'ɑːɡrəfi/ n. 传记">biography</span>, “A Certain Idea of France: The Life of Charles de Gaulle”. Written by Julian Jackson, a historian at Queen Mary University of London, the 928-pager is the product of years of painstaking archival research.</p>
+<p>The big-screen diptych, <span class="annot" data-tooltip="starring n. 扮演主角，领衔主演；纯锑表面呈星状花纹">starring</span> Simon Abkarian in the title role and Sir Simon Russell Beale as a wonderfully crabby Winston Churchill, is naturellement a <span class="annot" data-tooltip="stirring /stɜːr/ vt. & vi. 搅拌(使)移动；(使)激动n. 搅动；搅和；搅拌激动；纷乱；骚乱STIRabbr. Surveillance">stirring</span> tale of courage and moral <span class="annot" data-tooltip="clarity /'klærəti/ n. 清楚，明晰；透明">clarity</span>. This is the <span class="annot" data-tooltip="myth /mɪθ/ n. 神话；虚构的人，虚构的事">myth</span> that to this day surrounds the résistant and founder of modern France. But, perhaps thanks to the foreign biographer’s eye, it is also an even-handed examination of both the <span class="annot" data-tooltip="visionary /'vɪʒəneri/ adj. 有眼光的，有远见的空想的，幻想的，不切实际的n. 有幻觉的人好幻想的人；空想家有远见卓识者">visionary</span> greatness and human fragility of le général. Of particular interest for British viewers, the first part, “L’âge de fer”, dwells on De Gaulle’s years in exile in Hampstead, in north London, after the <span class="annot" data-tooltip="fall /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">fall</span> of France to Nazi Germany in 1940. It does not gloss over the high-minded general’s stormy relationship with Churchill. “Betting on De Gaulle seems something of a <span class="annot" data-tooltip="leap /liːp/ vi. 跳，跳跃n. 跳跃；飞跃vt. 跳跃，跳过；使跃过时 态: leaped, leapt leaping, leaps">leap</span> of faith, don’t you think?” Anthony Eden, the <span class="annot" data-tooltip="secretary /'sekrəteri/ n. 秘书书记部长, 大臣形容词: secretarial">secretary</span> of state for war, asks the prime minister. “This is not my first war,” Churchill retorts, adding clinically: “If he fails, we’ll get rid of him.” The general and the prime minister trade plenty of insults. But they also share moments of <span class="annot" data-tooltip="mutual /'mjuːtʃuəl/ adj. 相互的, 彼此的共同的, 共有的名 词: mutuality">mutual</span> understanding, admiration—and a flicker of <span class="annot" data-tooltip="affection /ə'fekʃn/ n. 感情；喜爱，关爱；爱慕之情；影响形容词: affectional">affection</span>. London, after all, provided De Gaulle with refuge, offices (4 Carlton Gardens), a microphone (the BBC), backing (most of the time) and legitimacy (which the Americans resisted). The French have not forgotten. In 2020 Mr Macron awarded London, “totally exceptionally”, the Croix de la Légion d’honneur, France’s highest honour, as a mark of “<span class="annot" data-tooltip="eternal /ɪ'tɜːrnl/ adj. 永恒的；不朽的副 词: eternally">eternal</span> gratitude”. London, he said, was “the last bastion of hope when all seemed lost”. What Mr Macron seems to be saying is that despite Brexit, despite Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>, or perhaps because of both, France and Britain need to stick together now, as they did then. The De Gaulle biopic, which has drawn over 5m cinema-goers in France, not only <span class="annot" data-tooltip="evokes /ɪ'voʊk/ vt. 产生, 引起, 唤起时 态: evoked, evoking, evokes">evokes</span> nostalgia for an age of <span class="annot" data-tooltip="unimaginable /ˌʌnɪ'mædʒɪnəbl/ adj. 不能想象的；难以想象的；想不到的">unimaginable</span> bravery. It also speaks to modern worries about national <span class="annot" data-tooltip="sovereignty /'sɑːvrənti/ n. 最高统治权, 君权国家的主权">sovereignty</span>, dependence and <span class="annot" data-tooltip="democratic /ˌdemə'krætɪk/ adj. 民主的, 有民主精神或作风的副 词: democratically">democratic</span> <span class="annot" data-tooltip="values /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">values</span>. <span class="annot" data-tooltip="stubbornly /'stʌbərn/ adj. 顽固的；固执的难以移动、去除、医治等比较级: stubborner，stubbornest">Stubbornly</span> independent-minded, De Gaulle was infuriated by <span class="annot" data-tooltip="roosevelt 罗斯福( ①姓氏 ②Franklin Delano, 1882-1945, 于1933-1945任美国第32任总统 ③T">Roosevelt</span>’s post-war plans for American military government of France, kept secret from him. The film includes the moment Churchill told the general <span class="annot" data-tooltip="gruffly adv. 粗暴地；粗声地；生硬地">gruffly</span> that Britain would always choose America over Europe. Yet the doctrine of <span class="annot" data-tooltip="autonomy /ɔː'tɑːnəmi/ n. 自治，自治权名 词: autonomist">autonomy</span> embodied by De Gaulle finds new resonance now that Mr</p>
+<p><span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s America is threatening to leave Europe to fend for itself. Despite the populist-right <span class="annot" data-tooltip="reform /rɪ'fɔːrm/ n. 改革，改良，改造vt. & vi. 改革；改造；改善时 态: reformed，reforming，reforms">Reform</span> UK party <span class="annot" data-tooltip="breathing /breθ/ n. 气息；呼吸(一次)呼吸，一口气；微风">breathing</span> down his neck, Mr Burnham has said that Britain needs to “be bolder” in getting closer to the EU. Mr Trump has already helped push Britain and France closer together. Last year the two countries reinforced co-operation over nuclear deterrence. The pair co-lead the “coalition of the willing”. The film carries another message too: that the dark forces of nationalism can be beaten. The populist right is on the <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> in both countries. Marine Le Pen is the current favourite to win next year’s French presidential election. On September 4th Jordan Bardella, her lieutenant, is <span class="annot" data-tooltip="due /duː/ adj. 到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）">due</span> to be a guest of Nigel Farage, Reform’s leader, at the party’s <span class="annot" data-tooltip="conference /'kɑːnfərəns/ n. 会议讨论, 商谈形容词: conferential">conference</span> in Birmingham. Mr Macron likes to urge the French not to cede to the “<span class="annot" data-tooltip="spirit /'spɪrɪt/ n. 精神；心灵；志气；烈酒；情绪vt. 鼓励；鼓舞；诱拐时 态: spirited, spiriting, spirits">spirit</span> of defeat”, a nod to a book about the <span class="annot" data-tooltip="fall /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">fall</span> of France in 1940 by Marc Bloch, a résistant gunned down by the Gestapo. The historical <span class="annot" data-tooltip="parallel /'pærəlel/ n. 平行线；对比vt. 使…与…平行adj. 平行的；类似的，相同的时 态: paralleledalso parallel">parallel</span> may be <span class="annot" data-tooltip="imperfect /ɪm'pɜːrfɪkt/ adj. 有缺点的,有瑕疵的不完整的，未完成的未完成时的，未完成过去时的n. (动词)未完成时，未完成过去时adv. 有缺点地,有">imperfect</span>. But this battle is yet another that Britain and France are in together. ■ This article was downloaded by zlibrary from https://www.economist.com/britain/2026/09/01/france-is-love-<span class="annot" data-tooltip="bombing abbr. 物料清单（Bill of Materiel）">bombing</span>-britain</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>telecoms</td><td>/ˈtɛlɪˌkɑm/ n.</td><td>电信，远距通信；电讯</td></tr>
+<tr><td>smash</td><td>/smæʃ/ n.</td><td>破碎(声)猛击；猛撞大成功；极为成功的新书[新戏，电影等]vt. & vi. 打碎；捣烂vt. 重击；打败，smashing，smashes</td></tr>
+<tr><td>spin</td><td>/spɪn/ vi.</td><td>旋转；纺纱；吐丝；晕眩vt. 使旋转；纺纱；编造；结网n. 旋转；疾驰, spins</td></tr>
+<tr><td>coverage</td><td>/'kʌvərɪdʒ/ n.</td><td>新闻报道, 报道量覆盖范围</td></tr>
+<tr><td>wonder</td><td>/'wʌndər/ vt.</td><td>& vi. 对…感到疑惑想知道；问自己n. 惊奇，惊叹，惊异，惊诧奇人，奇才奇观，奇景，奇迹，奇事，wondering，wonders</td></tr>
+<tr><td>clips</td><td>/klɪp/ vt.</td><td>修剪；夹牢；痛打vi. 修剪n. 夹子；修剪；回形针CLIPabbr. Cellular Logic Image Processor 单元逻辑映象处理器Comp</td></tr>
+<tr><td>pub</td><td>/pʌb/ n.</td><td>酒馆；客栈</td></tr>
+<tr><td>snacks</td><td>/snæk/ n.</td><td>小吃；点心；快餐vi. 吃快餐；吃点心，snacking，snacks</td></tr>
+<tr><td>circuit</td><td>/'sɜːrkɪt/ n.</td><td>电路，回路；环道；一圈；巡回vi. 环行vt. 绕回…环行, circuiting, circuits</td></tr>
+<tr><td>informative</td><td>/ɪn'fɔːrmətɪv/ adj.</td><td>提供信息的adv. 提供信息地</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>reaching</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>conferences</td><td>/'kɑːnfərəns/ n.</td><td>会议讨论, 商谈</td></tr>
+<tr><td>creators</td><td>/kri'eɪtər/ n.</td><td>创造者,创作者</td></tr>
+<tr><td>trips</td><td>/trɪp/ vi.</td><td>绊倒；犯错误；远足；轻快地走n. 旅行；绊倒；差错vt. 绊倒；使犯错TRIPabbr. transformation-induced plasticity 高</td></tr>
+<tr><td>practice</td><td>/'præktɪs/ n.</td><td>练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规，practicing，practices</td></tr>
+<tr><td>internal</td><td>/ɪn'tɜːrnl/ adj.</td><td>国内的；内部的；内在的</td></tr>
+<tr><td>civil</td><td>/'sɪvl/ adj.</td><td>公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的</td></tr>
+<tr><td>relatable</td><td>/rɪˈleɪtəb(ə)l/ adj.</td><td>有关系的，可关联的；能引起共鸣的；使人觉得自己能理解某人</td></tr>
+<tr><td>pounds</td><td>/paʊnd/ n.</td><td>英镑；兽栏；重击，重击声；拘留所vt. 捣烂；敲打；监禁，拘留vi. 连续重击，猛击Pound庞德(姓氏)</td></tr>
+<tr><td>campaigns</td><td>/kæm'peɪn/ n.</td><td>运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）, campaigning, campai</td></tr>
+<tr><td>reveals</td><td>/rɪ'viːl/ vt.</td><td>显示；露出泄露；透露，revealing，reveals</td></tr>
+<tr><td>engage</td><td>/ɪn'ɡeɪdʒ/ vt.</td><td>雇佣；吸引，占用；使订婚；使参加；预定vi. 答应，保证；从事；交战；啮合, engaging, engages</td></tr>
+<tr><td>reality</td><td>/ri'æləti/ n.</td><td>现实；真实；实际</td></tr>
+<tr><td>campaigns</td><td>/kæm'peɪn/ n.</td><td>运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）, campaigning, campai</td></tr>
+<tr><td>foster</td><td>/'fɑːstər/ v.</td><td>促进；助长；培养；鼓励收养，代养，抚育（他人子女，通常指有限的一段时间）adj. （与某些代养有关的名词连用）（在有限的一段时间内）（所）收养的，（所）代养的F</td></tr>
+<tr><td>reach</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>trends</td><td>/trend/ n.</td><td>趋势, 倾向流行, trending, trends</td></tr>
+<tr><td>dumped</td><td>/dʌmp/ vt.</td><td>倾倒；倾卸vi. 倒垃圾n. 垃圾场dUMP脱氧尿苷酸, dumping, dumps</td></tr>
+<tr><td>stiff</td><td>/stɪf/ adj.</td><td>严厉的；呆板的；坚硬的；拘谨的；艰难的adv. 彻底地；僵硬地n. [俚]死尸；令人讨厌者；流通票据；劳动者vt. 亏待侍者等vi. 在商业上惨败, stiff</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>senior</td><td>/'siːniər/ adj.</td><td>年长的资深的; 地位高的〈美〉最高年级的n. 较年长者高年级学生〈美〉毕业班学生Senior西尼尔(姓氏)</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>collaborate</td><td>/kə'læbəreɪt/ vi.</td><td>合作勾结叛国n. 协作者，合作者；勾结者，collaborating，collaborates</td></tr>
+<tr><td>novelty</td><td>/'nɑːvlti/ n.</td><td>新颖; 新奇性新奇的人[事物]新颖小巧而价廉的物品</td></tr>
+<tr><td>covered</td><td>/'kʌvər/ vt.</td><td>包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替, covering, covers</td></tr>
+<tr><td>strategy</td><td>/'strætədʒi/ n.</td><td>战略学, 兵法战略, 策略策略, 计谋</td></tr>
+<tr><td>seriously</td><td>/'sɪriəs/ adj.</td><td>严肃的，严重的；认真的；庄重的；危急的</td></tr>
+<tr><td>doomed</td><td>/duːm/ vt.</td><td>注定；判定n. 厄运，劫数，dooming，dooms</td></tr>
+<tr><td>traitors</td><td>/'treɪtər/ n.</td><td>卖国贼;叛徒背叛者;背信弃义的人</td></tr>
+<tr><td>niche</td><td>/niːʃ，nɪtʃ/ n.</td><td>（尤指本人合意的）适合的工作（或职位）;称心的工作合宜的小环境（尤指用来放置塑像的）壁龛adj. （产品）针对特定小群体的v. 把……放在壁龛中, nichin</td></tr>
+<tr><td>reaching</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>lagging</td><td>/'lægɪŋ/ n.</td><td>绝缘层材料adj. 落后的</td></tr>
+<tr><td>counterparts</td><td>/'kaʊntərpɑːrt/ n.</td><td>与对方地位相当的人, 与另一方作用相当的物</td></tr>
+<tr><td>candidates</td><td>/'kændɪdət，ˈkændɪdeɪt/ n.</td><td>申请求职者, 候选人报考者</td></tr>
+<tr><td>podcast</td><td>/'pɑːdkæst/ n.</td><td>播客</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>ultimately</td><td>/'ʌltɪmətli/ adv.</td><td>最后;最终</td></tr>
+<tr><td>obsess</td><td>/əb'ses/ v.</td><td>使痴迷，使迷恋；使心神不宁，不停地困扰； 唠叨；挂牵，念念不忘, obsessing, obsesses</td></tr>
+<tr><td>coverage</td><td>/'kʌvərɪdʒ/ n.</td><td>新闻报道, 报道量覆盖范围</td></tr>
+<tr><td>distracted</td><td>/dɪ'strækt/ vt.</td><td>转移；分心, distracting, distracts</td></tr>
+<tr><td>bombing</td><td>— abbr.</td><td>物料清单（Bill of Materiel）</td></tr>
+<tr><td>keen</td><td>/kiːn/ adj.</td><td>锋利的热衷的，热心的，渴望(做某事)激烈的，紧张的良好的；敏锐的，敏捷的，keenest</td></tr>
+<tr><td>compliment</td><td>/'kɑːmplɪmənt/ n.</td><td>赞美(话)，恭维(话)向…送礼以表示敬意vt. 表扬；恭维，complimenting，compliments</td></tr>
+<tr><td>bombed</td><td>— abbr.</td><td>物料清单（Bill of Materiel）</td></tr>
+<tr><td>pesky</td><td>/'peski/ adj.</td><td>烦人的；让人讨厌的，peskiest</td></tr>
+<tr><td>rivals</td><td>/'raɪvl/ n.</td><td>竞争对手vt. 与…竞争, 与…匹敌, rivalled rivaling, rivalling rivals, rivals</td></tr>
+<tr><td>tailored</td><td>/'teɪlər/ vt.</td><td>剪裁；使合适n. 裁缝vi. 做裁缝, tailoring, tailors</td></tr>
+<tr><td>boot</td><td>/buːt/ vt.</td><td>使穿靴；引导；踢；解雇n. 靴子；汽车行李箱；踢, booting, boots</td></tr>
+<tr><td>tapestry</td><td>/'tæpəstri/ n.</td><td>挂毯；织锦；绣帷vt. 用挂毯装饰</td></tr>
+<tr><td>season</td><td>/'siːzn/ n.</td><td>时期；季节；赛季vt. 给…调味；使适应vi. 变得成熟；变干燥, seasoning, seasons</td></tr>
+<tr><td>depicting</td><td>/dɪ'pɪkt/ vt.</td><td>描绘；描画描述，depicting，depicts</td></tr>
+<tr><td>negotiate</td><td>/nɪ'ɡoʊʃieɪt/ vt.</td><td>谈判，商议；转让；越过</td></tr>
+<tr><td>bilateral</td><td>/ˌbaɪ'lætərəl/ adj.</td><td>双边的, 双方的</td></tr>
+<tr><td>rivals</td><td>/'raɪvl/ n.</td><td>竞争对手vt. 与…竞争, 与…匹敌, rivalled rivaling, rivalling rivals, rivals</td></tr>
+<tr><td>fleetingly</td><td>/'fliːtɪŋ/ adj.</td><td>飞逝的；转瞬间的v. 迅速移动（fleet的ing形式）</td></tr>
+<tr><td>jury</td><td>/'dʒʊri/ n.</td><td>陪审团；评判委员会adj. 应急的</td></tr>
+<tr><td>keen</td><td>/kiːn/ adj.</td><td>锋利的热衷的，热心的，渴望(做某事)激烈的，紧张的良好的；敏锐的，敏捷的，keenest</td></tr>
+<tr><td>compliment</td><td>/'kɑːmplɪmənt/ n.</td><td>赞美(话)，恭维(话)向…送礼以表示敬意vt. 表扬；恭维，complimenting，compliments</td></tr>
+<tr><td>ukraine</td><td>— n.</td><td>乌克兰（原苏联一加盟共和国，现已独立）</td></tr>
+<tr><td>due</td><td>/duː/ adj.</td><td>到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>unusually</td><td>/ʌn'juːʒuəl/ adj.</td><td>与众不同的；不寻常的；不平常的</td></tr>
+<tr><td>biography</td><td>/baɪ'ɑːɡrəfi/ n.</td><td>传记</td></tr>
+<tr><td>starring</td><td>— n.</td><td>扮演主角，领衔主演；纯锑表面呈星状花纹</td></tr>
+<tr><td>stirring</td><td>/stɜːr/ vt.</td><td>& vi. 搅拌(使)移动；(使)激动n. 搅动；搅和；搅拌激动；纷乱；骚乱STIRabbr. Surveillance and Target Indicati</td></tr>
+<tr><td>clarity</td><td>/'klærəti/ n.</td><td>清楚，明晰；透明</td></tr>
+<tr><td>myth</td><td>/mɪθ/ n.</td><td>神话；虚构的人，虚构的事</td></tr>
+<tr><td>visionary</td><td>/'vɪʒəneri/ adj.</td><td>有眼光的，有远见的空想的，幻想的，不切实际的n. 有幻觉的人好幻想的人；空想家有远见卓识者</td></tr>
+<tr><td>fall</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>leap</td><td>/liːp/ vi.</td><td>跳，跳跃n. 跳跃；飞跃vt. 跳跃，跳过；使跃过, leapt leaping, leaps</td></tr>
+<tr><td>secretary</td><td>/'sekrəteri/ n.</td><td>秘书书记部长, 大臣</td></tr>
+<tr><td>mutual</td><td>/'mjuːtʃuəl/ adj.</td><td>相互的, 彼此的共同的, 共有的</td></tr>
+<tr><td>affection</td><td>/ə'fekʃn/ n.</td><td>感情；喜爱，关爱；爱慕之情；影响</td></tr>
+<tr><td>eternal</td><td>/ɪ'tɜːrnl/ adj.</td><td>永恒的；不朽的</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>evokes</td><td>/ɪ'voʊk/ vt.</td><td>产生, 引起, 唤起, evoking, evokes</td></tr>
+<tr><td>unimaginable</td><td>/ˌʌnɪ'mædʒɪnəbl/ adj.</td><td>不能想象的；难以想象的；想不到的</td></tr>
+<tr><td>sovereignty</td><td>/'sɑːvrənti/ n.</td><td>最高统治权, 君权国家的主权</td></tr>
+<tr><td>democratic</td><td>/ˌdemə'krætɪk/ adj.</td><td>民主的, 有民主精神或作风的</td></tr>
+<tr><td>values</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>stubbornly</td><td>/'stʌbərn/ adj.</td><td>顽固的；固执的难以移动、去除、医治等，stubbornest</td></tr>
+<tr><td>roosevelt</td><td>— </td><td>罗斯福( ①姓氏 ②Franklin Delano, 1882-1945, 于1933-1945任美国第32任总统 ③Theodore, 1858-1919, </td></tr>
+<tr><td>gruffly</td><td>— adv.</td><td>粗暴地；粗声地；生硬地</td></tr>
+<tr><td>autonomy</td><td>/ɔː'tɑːnəmi/ n.</td><td>自治，自治权</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>reform</td><td>/rɪ'fɔːrm/ n.</td><td>改革，改良，改造vt. & vi. 改革；改造；改善，reforming，reforms</td></tr>
+<tr><td>breathing</td><td>/breθ/ n.</td><td>气息；呼吸(一次)呼吸，一口气；微风</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>due</td><td>/duː/ adj.</td><td>到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）</td></tr>
+<tr><td>conference</td><td>/'kɑːnfərəns/ n.</td><td>会议讨论, 商谈</td></tr>
+<tr><td>spirit</td><td>/'spɪrɪt/ n.</td><td>精神；心灵；志气；烈酒；情绪vt. 鼓励；鼓舞；诱拐, spiriting, spirits</td></tr>
+<tr><td>fall</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>parallel</td><td>/'pærəlel/ n.</td><td>平行线；对比vt. 使…与…平行adj. 平行的；类似的，相同的</td></tr>
+<tr><td>imperfect</td><td>/ɪm'pɜːrfɪkt/ adj.</td><td>有缺点的,有瑕疵的不完整的，未完成的未完成时的，未完成过去时的n. (动词)未完成时，未完成过去时adv. 有缺点地,有瑕疵地</td></tr>
+<tr><td>bombing</td><td>— abbr.</td><td>物料清单（Bill of Materiel）</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day25.html" class="nav-btn">← Day 25</a>
+  <a href="day27.html" class="nav-btn">Day 27 →</a>
+</div>
+
+<div class="progress">📖 Day 26 of 43</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-09-05</div>
+
+</body>
+</html>

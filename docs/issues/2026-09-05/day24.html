@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Britain</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-09-05</div>
+
+<h1 class="article-title">Britain</h1>
+<div class="article-section"></div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>More than 70% of Britons believe knife attacks are rising across the country. They are not. Hospitalisations for “<span class="annot" data-tooltip="assault /ə'sɔːlt/ n. 攻击；袭击vt. 袭击；攻击vi. 袭击；动武时 态: assaulted, assaulting, assaults">assault</span> by sharp object”, one of the most <span class="annot" data-tooltip="reliable /rɪ'laɪəbl/ adj. 可靠的, 可信赖的副 词: reliably">reliable</span> <span class="annot" data-tooltip="indicators /'ɪndɪkeɪtər/ n. (仪器上显示温度、压力、耗油量等的)指针，指示器，记录器(车辆上的)转弯指示灯指示物；指示者">indicators</span> of <span class="annot" data-tooltip="violent /'vaɪələnt/ adj. 暴力引起的, 粗暴的剧烈的, 强烈的副 词: violently">violent</span> crime, have fallen by a third in England since 2019. Last year homicides fell to a 50-year low. Social media’s doomsterism goes some way to explaining this disconnect, as do <span class="annot" data-tooltip="spikes /spaɪk/ n. 尖头，尖刺，（尤指金属的）尖状物（某些运动鞋上的）防滑鞋钉，钉鞋（spikes）（通常在指下跌前）非常高的数量，价格或程">spikes</span> in shoplifting and phone snatching. A less appreciated reason is that the geography of violent crime is changing. The <span class="annot" data-tooltip="urban /'ɜːrbən/ adj. 城市的；住在都市的">urban</span> centres historically associated with violence have achieved impressive <span class="annot" data-tooltip="reductions /rɪ'dʌkʃn/ n. 减少，缩小；减少的量，降价">reductions</span> over the past <span class="annot" data-tooltip="decade /'dekeɪd/ n. 十年，十年期；十">decade</span>. Rates have fallen much more slowly in the counties. In some they have increased. <span class="annot" data-tooltip="consider /kən'sɪdər/ vt. & vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及时 态: considered, considering, ">Consider</span> Birmingham, London and Manchester. In the year to March 2018, the start of Britain’s knife-crime epidemic, these three cities accounted for 47% of the country’s knife-related homicides and attempted murders. In the year ending March 2026 this was down to 36%. In each city, homicides have fallen by more than 30% from their peak. Progress has been much slower in <span class="annot" data-tooltip="places /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">places</span> like Suffolk (down by 18%), Hampshire (14%), Nottinghamshire (13%) and Cambridgeshire (up 23%). Hospitalisations for “assault by sharp object” show a similar <span class="annot" data-tooltip="pattern /'pætərn/ n. 型，样式花样，图案方式，形式榜样，典范vt. 模仿； 仿制以图案装饰时 态: patterned，patterning，">pattern</span>. Most police forces have data only up to the year ending March 2025. Look at a</p>
+<p>two-year rolling average and London’s is down by 28% from the peak years of 2018 and 2019. Much more modest <span class="annot" data-tooltip="falls /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">falls</span> have taken <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span> in Staffordshire (down by 14%), Durham (7%), Devon and Cornwall (5%) and Hertfordshire (5%). In Sussex there has not been any drop at all (see chart). Hospitalisation rates are growing fastest, albeit from a low base, in Cambridgeshire and Bedfordshire—leafy, suburban communities that last year suffered increases of 60% and 50%, <span class="annot" data-tooltip="respectively /rɪ'spektɪv/ adj. 各自的; 各个的">respectively</span>. Middlesbrough, a poor town but not one that has a long history of <span class="annot" data-tooltip="severe /sɪ'vɪr/ adj. 严厉的；苛刻的；剧烈的；严峻的比较级: severer, severest">severe</span> street violence, is recording more sharp-object hospitalisations than it did during Britain’s peak years. Following the deaths of two police officers and seven other people, and growing public <span class="annot" data-tooltip="disorder /dɪs'ɔːrdər/ n. 混乱；骚乱vt. 扰乱；使失调时 态: disordered, disordering, disorders">disorder</span>, it has become the site of an organised-crime investigation. Even within London, police-recorded violence is growing fastest in boroughs such as Hillingdon (up by 9% last year) and Kingston upon Thames (up by 13%), which are <span class="annot" data-tooltip="relatively /'relətɪvli/ adv. 相对地，比较而言；相当相对来说；相比较而言">relatively</span> affluent areas on the outskirts. <span class="annot" data-tooltip="overall /ˌoʊvər'ɔːl/ adj. 总体的；全面的；综合的全面考虑的adv. 大体上，总的来说一切包括在内，全部的n. 长罩衣工装裤；工作裤">Overall</span> the upsurge of the 2010s is <span class="annot" data-tooltip="proving /proʊ/ n. 从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞">proving</span> most <span class="annot" data-tooltip="resilient /rɪ'zɪliənt/ adj. (指物体或材料)能复原的;有弹性的;有弹力的(指人的性格)能迅速恢复或重新振作的;达观的;适应性强的">resilient</span> <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span> the <span class="annot" data-tooltip="urban /'ɜːrbən/ adj. 城市的；住在都市的">urban</span> centres usually associated with <span class="annot" data-tooltip="violent /'vaɪələnt/ adj. 暴力引起的, 粗暴的剧烈的, 强烈的副 词: violently">violent</span> crime. This is largely the result of changes in the structure of Britain’s drugs market. Violent crime in Britain is closely linked to drug <span class="annot" data-tooltip="trafficking /'træfɪk/ n. 交通；贸易；运输；通信量vt. 用…作交换；在…通行vi. 交易，买卖时 态: trafficked, traffick">trafficking</span>. This is as true in the counties as it is in cities. A study published in 2021 looking at six years’ <span class="annot" data-tooltip="worth /wɜːrθ/ adj. 值…的n. 价值；财产时 态: worthed, worthing, worths">worth</span> of air-ambulance call-outs in Kent, for example, found that instances of “<span class="annot" data-tooltip="penetrating /ˈpenətreɪtɪŋ/ adj. 刺骨的；穿透的">penetrating</span> <span class="annot" data-tooltip="trauma /'trɔːmə/ n. 外伤；创伤（由心理创伤造成精神上的异常）形容词: traumatic">trauma</span>” <span class="annot" data-tooltip="tend /tend/ vt. 照料，照顾，伺候vi. 往，朝向易于；倾向时 态: tended，tending，tends">tend</span> to occur along drug-trafficking <span class="annot" data-tooltip="routes /ruːt，raʊt/ n. 路, 路途, 路线, 路程时 态: routed, routing, routes">routes</span>. These “county <span class="annot" data-tooltip="lines n. 台词；线；航线（line的复数）v. 排成一行；画线于（line的三单形式）">lines</span>” emerged in the late 2010s as the advent of the dark web (used more for <span class="annot" data-tooltip="wholesale /'hoʊlseɪl/ n. 批发adj. &adv. 批发(的)大规模(的)vt. 批发时 态: wholesaled, wholesaling, ">wholesale</span> drug <span class="annot" data-tooltip="purchases /'pɜːrtʃəs/ n. 购买；紧握；起重装置vt. 购买；赢得vi. 购买东西时 态: purchased, purchasing, purch">purchases</span> than <span class="annot" data-tooltip="retail /ˈriːteɪl/ vt. 零售；转述vi. 零售n. 零售adv. 以零售方式adj. 零售的时 态: retailed, retailing, ">retail</span>), together with cuts in police numbers, led to a proliferation of drug gangs in urban centres. Competition between them was the <span class="annot" data-tooltip="main /meɪn/ adj. 主要的; 最重要的n. 总管道; 干线">main</span> cause of Britain’s knife-crime <span class="annot" data-tooltip="surge /sɜːrdʒ/ n. (情感的) 突发，涌现，突然出现（数量的）急剧上升，激增；大量；一大批奔涌向前；突然的向上运动（电流）浪涌v. 涌；汹涌">surge</span> in the late 2010s. It also brought more violence to the counties, as gangs looked for less <span class="annot" data-tooltip="crowded /kroʊ/ vi. 报晓；啼叫n. 乌鸦；鸡鸣；撬棍时 态: crowed, crowing, crows">crowded</span> markets outside the cities. They built a business model using <span class="annot" data-tooltip="vulnerable /'vʌlnərəbl/ adj. 易受伤的, 脆弱的, 敏感的">vulnerable</span> children as mules—ferrying deliveries from urban gangs to rural addicts. Knives are a way to protect yourself, and your product, from <span class="annot" data-tooltip="rivals /'raɪvl/ n. 竞争对手vt. 与…竞争, 与…匹敌时 态: rivaled, rivalled rivaling, rivalling">rivals</span> who would take it. Thankfully most areas are recording less violence than they did during this first <span class="annot" data-tooltip="wave /weɪv/ vi. 波动；起伏；摇动；呈波形；挥手示意vt. 向…挥手示意；使成波浪形；卷（烫）发n. 波浪；波动；高潮；卷曲；挥手示意时 ">wave</span> of expansion. But rural violence is proving <span class="annot" data-tooltip="sticky /'stɪki/ adj. 粘性的；粘的潮湿的；湿热的难对付的，棘手的比较级: stickier，stickiest">sticky</span> because such areas remain the most <span class="annot" data-tooltip="profitable /'prɑːfɪtəbl/ adj. 有利可图的; 有益的副 词: profitably">profitable</span> <span class="annot" data-tooltip="route /ruːt，raʊt/ n. 路, 路途, 路线, 路程时 态: routed, routing, routes">route</span> to growth for drug-dealing <span class="annot" data-tooltip="groups /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">groups</span>. In</p>
+<p>2020 a Home Office review found that the levelling-off of <span class="annot" data-tooltip="urban /'ɜːrbən/ adj. 城市的；住在都市的">urban</span> drug use was driving gangs <span class="annot" data-tooltip="towards /tɔːrdz/ prep. 向，朝为了；有助于；用于对于，关于接近；将近；大约">towards</span> new markets around towns and universities. According to <span class="annot" data-tooltip="annual /'ænjuəl/ adj. 年度的；每年的n. 年刊，年鉴；一年生植物副 词: annually">annual</span> threat assessments, the <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of county <span class="annot" data-tooltip="lines n. 台词；线；航线（line的复数）v. 排成一行；画线于（line的三单形式）">lines</span> known to the <span class="annot" data-tooltip="authorities /ə'θɔːrəti/ n. 威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗">authorities</span> has increased from 720 in 2017 to more than 6,500 today. The dealers have also expanded their product lines. While the original county-lines gangs dealt mainly in <span class="annot" data-tooltip="crack /kræk/ vt. & vi. (使…)开裂, 破裂(使)身体上或精神上垮掉打开, 砸开(使)发出爆裂声n. 裂缝, 缝隙噼啪声, 爆裂声意">crack</span> and heroin, they now also <span class="annot" data-tooltip="traffic /'træfɪk/ n. 交通；贸易；运输；通信量vt. 用…作交换；在…通行vi. 交易，买卖时 态: trafficked, traffick">traffic</span> in cannabis, <span class="annot" data-tooltip="powdered /'paʊdər/ n. 粉末；粉；火药；尘土vt. 使成粉末；搽粉于；撒粉vi. 搽粉；变成粉末时 态: powdered, powdering">powdered</span> cocaine, ketamine and prescription drugs. Increased competition in rural areas has created a market based on customer service. Above all that means speedy deliveries. In many British towns it is now possible to have drugs delivered within an hour—think <span class="annot" data-tooltip="amazon /ˈæməˌzɑn/ n. 高大强悍的女人；（古希腊神话中的）亚马孙族女战士Amazonn. 亚马逊河(南美洲大河)">Amazon</span> Prime for amphetamines. That is a difficult service for a business based in London to provide for customers in Margate. Supply lines have had to adapt. “The classic county-lines model of sending your boys down on the train has gone,” explains Simon Harding, a criminologist. “It’s much easier to set up a local <span class="annot" data-tooltip="hub /hʌb/ n. 中心；毂；木片">hub</span> and deal from there.” The result is that drug gangs are increasingly indigenous to rural areas, dealing from local <span class="annot" data-tooltip="properties 道具">properties</span> and <span class="annot" data-tooltip="recruiting /rɪ'kruːt/ n. 新兵(机构中的)新成员vt. 招聘；吸引(新成员)吸收某人为新成员vt. & vi. 招募，征募(新兵)恢复健康，恢复体">recruiting</span> local children. The number of “<span class="annot" data-tooltip="internal /ɪn'tɜːrnl/ adj. 国内的；内部的；内在的名 词: internality">internal</span> lines” (those operating within rather than between counties) known to the police trebled between 2022 and 2025. The share of lines originating in “task-force areas” (<span class="annot" data-tooltip="covering /'kʌvər/ vt. 包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替时 态: covered, covering, c">covering</span> the traditional <span class="annot" data-tooltip="hotspots n. 热区；热点">hotspots</span>) fell from 70% to 50%. It is a shift the government appears unprepared for. The Knife Crime Action Plan, released at the start of April, says a lot of the right things. But it also <span class="annot" data-tooltip="adopts /ə'dɑːpt/ vt. 收养采用, 采纳, 采取正式接受, 通过时 态: adopted, adopting, adopts">adopts</span> an outdated definition of the county-lines model—promising to <span class="annot" data-tooltip="empower /ɪm'paʊər/ vt. 授权, 准许时 态: empowered, empowering, empowers">empower</span> the British Transport Police to <span class="annot" data-tooltip="disrupt /dɪs'rʌpt/ vt. 使混乱, 扰乱时 态: disrupted, disrupting, disrupts">disrupt</span> the train networks used to move drugs from cities to towns, and to boost funding to County Lines Taskforces. This targets a business model that is already changing. When so much violence is perpetrated by <span class="annot" data-tooltip="vulnerable /'vʌlnərəbl/ adj. 易受伤的, 脆弱的, 敏感的">vulnerable</span> young people <span class="annot" data-tooltip="recruited /rɪ'kruːt/ n. 新兵(机构中的)新成员vt. 招聘；吸引(新成员)吸收某人为新成员vt. & vi. 招募，征募(新兵)恢复健康，恢复体">recruited</span> by predatory organised criminals, prevention is a public-health problem as much as a policing one. In the traditional hotbeds of knife violence, local experience with gangs has produced a certain amount of understanding of criminal <span class="annot" data-tooltip="practices /'præktɪs/ n. 练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规时 态: practiced，practicing，">practices</span>, from clued-up family members to streetwise youth workers. Rural areas lack that kind of <span class="annot" data-tooltip="exposure /ɪk'spoʊʒər/ n. 暴露, 显露揭发, 揭露(软片等)曝光">exposure</span>. Many are used to seeing knife crime as an urban, even a racial, problem best solved by tougher</p>
+<p>policing. “That is a very difficult <span class="annot" data-tooltip="mindset /'maɪndset/ n. 心态；倾向；习惯；精神状态">mindset</span> to get out of,” admits Niven Rennie, a former police officer who served as director of the Scottish Violence <span class="annot" data-tooltip="reduction /rɪ'dʌkʃn/ n. 减少，缩小；减少的量，降价">Reduction</span> Unit. “But once you understand it, you don’t go back.” ■ This article was downloaded by zlibrary from https://www.economist.com/britain/2026/09/03/the-changing-geography-of-<span class="annot" data-tooltip="violent /'vaɪələnt/ adj. 暴力引起的, 粗暴的剧烈的, 强烈的副 词: violently">violent</span>- crime-in-britain</p>
+<div class="article-separator"></div>
+<div class="article-header">Britain · Britain | Sharper thinking</div>
+<p>London’s approach to knife crime is working Sadiq Khan has <span class="annot" data-tooltip="mainstreamed /'meɪnstriːm/ n. (思想或行为的)主流时 态: mainstreamed, mainstreaming, mainstreams">mainstreamed</span> a public-health approach that was previously fringe Sep 3rd 2026 London is known for many things. Among the least <span class="annot" data-tooltip="flattering /'flætər/ v. 向…谄媚，奉承，讨好；自认为，自以为是；使显得更漂亮时 态: flattered，flattering，flatters">flattering</span> is its reputation as a hotbed for knife crime. Last year <span class="annot" data-tooltip="mexico /'meksɪkoʊ/ n. 墨西哥">Mexico</span>, a country at war with drug cartels, updated its travel guidance to warn about knife <span class="annot" data-tooltip="assaults /ə'sɔːlt/ n. 攻击；袭击vt. 袭击；攻击vi. 袭击；动武时 态: assaulted, assaulting, assaults">assaults</span> in Britain’s capital. According to Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>, Londoners live in fear of being “stabbed in the ass”. This was never really true. For six of the past eight years, New Yorkers have been more likely to be stabbed to death than Londoners (and they have been at least ten times as likely to be killed by other means). That doesn’t mean the reputation was a <span class="annot" data-tooltip="complete /kəm'pliːt/ adj. 完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善比较级: complete">complete</span> fabrication. Knife crime rose <span class="annot" data-tooltip="dramatically /drə'mætɪkli/ adv. 戏剧性地;引人注目地">dramatically</span> in Britain from 2017, especially among teenagers. In the year to March 2018</p>
+<p>more than 280 people were stabbed to death in England and Wales, up from the previous five-year average of just over 200 a year. London, the core of the crisis, accounted for 108 of those homicides (compared with 62 deadly stabbings in New York that year). Since then rates of violence have declined precipitously. Hospitalisations for “<span class="annot" data-tooltip="assault /ə'sɔːlt/ n. 攻击；袭击vt. 袭击；攻击vi. 袭击；动武时 态: assaulted, assaulting, assaults">assault</span> by sharp object” have fallen by a third in London since their peak. Knife-related homicides have shrunk by a half. Last year teenage homicides in the capital fell to their <span class="annot" data-tooltip="joint /dʒɔɪnt/ n. 关节；接合处，接合点；接缝；（牛，羊等的腿）大块肉adj. 联合的，合办的；共同的；连接的vt. 连接，贴合；接合；使有">joint</span> lowest level (similar to 2012) in almost 30 years. In 2025 you were twice as likely to be stabbed to death in New York as in London. Thank Sadiq Khan. Right-wingers like to blame London’s Labour mayor for the capital’s imagined lawlessness. In fact Lord Khan introduced England to a knife-crime <span class="annot" data-tooltip="strategy /'strætədʒi/ n. 战略学, 兵法战略, 策略策略, 计谋">strategy</span> that appears to be working. It has since spread beyond London. As English politicians scrambled for answers during the 2017-19 “epidemic”, Lord Khan looked to Scotland. In the previous <span class="annot" data-tooltip="decade /'dekeɪd/ n. 十年，十年期；十">decade</span> Glasgow, once labelled Europe’s murder capital, had achieved impressive <span class="annot" data-tooltip="reductions /rɪ'dʌkʃn/ n. 减少，缩小；减少的量，降价">reductions</span> in <span class="annot" data-tooltip="violent /'vaɪələnt/ adj. 暴力引起的, 粗暴的剧烈的, 强烈的副 词: violently">violent</span> crime. One reason was the roll-out of the Scottish Violence <span class="annot" data-tooltip="reduction /rɪ'dʌkʃn/ n. 减少，缩小；减少的量，降价">Reduction</span> Unit (VRU), which aims to prevent violent crime by bringing the police, schools, hospitals and sports clubs together to identify at-risk children and direct them away from crime. Between 2008 and 2018 Scotland’s VRUs were <span class="annot" data-tooltip="credited /'kredɪt/ n. 赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)时 态:">credited</span> with bringing about a 38% <span class="annot" data-tooltip="fall /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">fall</span> in homicides and a 43% drop in attempted murders and <span class="annot" data-tooltip="serious /'sɪriəs/ adj. 严肃的，严重的；认真的；庄重的；危急的副 词: seriously">serious</span> <span class="annot" data-tooltip="assaults /ə'sɔːlt/ n. 攻击；袭击vt. 袭击；攻击vi. 袭击；动武时 态: assaulted, assaulting, assaults">assaults</span>—many of them knife-related. Lord Khan announced England’s first VRU in London in 2018. Today there are 20 such units across England and Wales, <span class="annot" data-tooltip="covering /'kʌvər/ vt. 包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替时 态: covered, covering, c">covering</span> areas that account for 80% of all knife crime. A recent Home Office review found that England’s VRUs caused a 12% fall, since 2019, in hospital <span class="annot" data-tooltip="admissions /əd'mɪʃn/ n. 准许进入入场费, 入场券承认, 供认形容词: admissive">admissions</span> for violent assault among the under-25s. That is modest compared with Glasgow, but the Home Office looked only at the national average. Violent crime has fallen most in cities like London— <span class="annot" data-tooltip="dense /dens/ adj. 浓厚的；稠密的；愚钝的比较级: denser, densest">dense</span> <span class="annot" data-tooltip="urban /'ɜːrbən/ adj. 城市的；住在都市的">urban</span> areas where the model is easiest to implement.</p>
+<p>There are <span class="annot" data-tooltip="caveats n. 警告；说明（caveat的复数）">caveats</span>. Alcohol use, a big factor in <span class="annot" data-tooltip="violent /'vaɪələnt/ adj. 暴力引起的, 粗暴的剧烈的, 强烈的副 词: violently">violent</span> crime, has dropped across the country, too. Scotland’s success, which occurred around the same time as changes to licensing laws, cannot be put down just to its VRU. Nor can London’s (between mid-2020 and mid-2024 London lost 29% of its nightclubs). It also takes time to work out what produces the best results in a given area. Scotland did well by placing youth workers in accident-and- emergency departments to <span class="annot" data-tooltip="reach /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reach</span> children with violence-related injuries. VRUs in England and Wales, still in an earlier stage, are spending a lot on <span class="annot" data-tooltip="interventions /ˌɪntər'venʃn/ n. 介入, 干涉, 干预">interventions</span>, such as school visits, that show little evidence of working. The overarching logic, however, is sound. A 2023 study by the Youth Endowment Fund, a <span class="annot" data-tooltip="charity /'tʃærəti/ n. 施舍；慈善；慈善团体；施舍物；宽容">charity</span>, found that having two or more <span class="annot" data-tooltip="adverse /əd'vɜːrs/ adj. 不利的；相反的；敌对的（名词adverseness，副词adversely）副 词: adversely">adverse</span> childhood experiences increases the risk of gang involvement by 61%. In Britain today violent crime is largely driven by organised-crime <span class="annot" data-tooltip="groups /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">groups</span> relying on <span class="annot" data-tooltip="vulnerable /'vʌlnərəbl/ adj. 易受伤的, 脆弱的, 敏感的">vulnerable</span> young people to <span class="annot" data-tooltip="traffic /'træfɪk/ n. 交通；贸易；运输；通信量vt. 用…作交换；在…通行vi. 交易，买卖时 态: trafficked, traffick">traffic</span> drugs. That is different from early-2000s Glasgow, where territorial street gangs were much more interested in recreational violence and <span class="annot" data-tooltip="turf /tɜːrf/ n. 泥炭；草皮；跑马场vt. 覆草皮于形容词: turfy">turf</span> wars than in drug <span class="annot" data-tooltip="trafficking /'træfɪk/ n. 交通；贸易；运输；通信量vt. 用…作交换；在…通行vi. 交易，买卖时 态: trafficked, traffick">trafficking</span>. But in <span class="annot" data-tooltip="either /'iːðər/ pron. (两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的">either</span> case VRUs can help restrict the labour market available to exploitative gangs. Scotland’s success, according to Iain Brennan, a criminologist, was not just to <span class="annot" data-tooltip="adopt /ə'dɑːpt/ vt. 收养采用, 采纳, 采取正式接受, 通过时 态: adopted, adopting, adopts">adopt</span> the model but to change the hearts and minds of all <span class="annot" data-tooltip="involved /ɪn'vɑːlvd/ adj. 卷入的；有关的；复杂的v. 涉及；使参与；包含（involve的过去式和过去分词）">involved</span>. “It’s the <span class="annot" data-tooltip="philosophy /fə'lɑːsəfi/ n. 哲学人生哲学, 人生观达观">philosophy</span> of violence <span class="annot" data-tooltip="reduction /rɪ'dʌkʃn/ n. 减少，缩小；减少的量，降价">reduction</span>, of changing the <span class="annot" data-tooltip="mindset /'maɪndset/ n. 心态；倾向；习惯；精神状态">mindset</span> that is the most important.” Lord Khan is often ridiculed for what can appear a fluffy approach, <span class="annot" data-tooltip="emphasising /'emfəsɪs/ n. 强调, 重点">emphasising</span> the importance of youth clubs and keeping <span class="annot" data-tooltip="troublesome /'trʌblsəm/ adj. 引起麻烦的, 令人讨厌的, 令人烦恼的副 词: troublesomely">troublesome</span> children at school. But his soft approach is having hard effects. ■ This article was downloaded by zlibrary from https://www.economist.com/britain/2026/09/03/londons-approach-to-knife-crime-is- working</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>assault</td><td>/ə'sɔːlt/ n.</td><td>攻击；袭击vt. 袭击；攻击vi. 袭击；动武, assaulting, assaults</td></tr>
+<tr><td>reliable</td><td>/rɪ'laɪəbl/ adj.</td><td>可靠的, 可信赖的</td></tr>
+<tr><td>indicators</td><td>/'ɪndɪkeɪtər/ n.</td><td>(仪器上显示温度、压力、耗油量等的)指针，指示器，记录器(车辆上的)转弯指示灯指示物；指示者</td></tr>
+<tr><td>violent</td><td>/'vaɪələnt/ adj.</td><td>暴力引起的, 粗暴的剧烈的, 强烈的</td></tr>
+<tr><td>spikes</td><td>/spaɪk/ n.</td><td>尖头，尖刺，（尤指金属的）尖状物（某些运动鞋上的）防滑鞋钉，钉鞋（spikes）（通常在指下跌前）非常高的数量，价格或程度v. 拒绝刊登，弃置（文章）不用将烈酒</td></tr>
+<tr><td>urban</td><td>/'ɜːrbən/ adj.</td><td>城市的；住在都市的</td></tr>
+<tr><td>reductions</td><td>/rɪ'dʌkʃn/ n.</td><td>减少，缩小；减少的量，降价</td></tr>
+<tr><td>decade</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>consider</td><td>/kən'sɪdər/ vt.</td><td>& vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及, considering, considers</td></tr>
+<tr><td>places</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>pattern</td><td>/'pætərn/ n.</td><td>型，样式花样，图案方式，形式榜样，典范vt. 模仿； 仿制以图案装饰，patterning，patterns</td></tr>
+<tr><td>falls</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>respectively</td><td>/rɪ'spektɪv/ adj.</td><td>各自的; 各个的</td></tr>
+<tr><td>severe</td><td>/sɪ'vɪr/ adj.</td><td>严厉的；苛刻的；剧烈的；严峻的, severest</td></tr>
+<tr><td>disorder</td><td>/dɪs'ɔːrdər/ n.</td><td>混乱；骚乱vt. 扰乱；使失调, disordering, disorders</td></tr>
+<tr><td>relatively</td><td>/'relətɪvli/ adv.</td><td>相对地，比较而言；相当相对来说；相比较而言</td></tr>
+<tr><td>overall</td><td>/ˌoʊvər'ɔːl/ adj.</td><td>总体的；全面的；综合的全面考虑的adv. 大体上，总的来说一切包括在内，全部的n. 长罩衣工装裤；工作裤</td></tr>
+<tr><td>proving</td><td>/proʊ/ n.</td><td>从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞成；支持Pro脯氨酸PROabbr. P</td></tr>
+<tr><td>resilient</td><td>/rɪ'zɪliənt/ adj.</td><td>(指物体或材料)能复原的;有弹性的;有弹力的(指人的性格)能迅速恢复或重新振作的;达观的;适应性强的</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>urban</td><td>/'ɜːrbən/ adj.</td><td>城市的；住在都市的</td></tr>
+<tr><td>violent</td><td>/'vaɪələnt/ adj.</td><td>暴力引起的, 粗暴的剧烈的, 强烈的</td></tr>
+<tr><td>trafficking</td><td>/'træfɪk/ n.</td><td>交通；贸易；运输；通信量vt. 用…作交换；在…通行vi. 交易，买卖, trafficking, traffics</td></tr>
+<tr><td>worth</td><td>/wɜːrθ/ adj.</td><td>值…的n. 价值；财产, worthing, worths</td></tr>
+<tr><td>penetrating</td><td>/ˈpenətreɪtɪŋ/ adj.</td><td>刺骨的；穿透的</td></tr>
+<tr><td>trauma</td><td>/'trɔːmə/ n.</td><td>外伤；创伤（由心理创伤造成精神上的异常）</td></tr>
+<tr><td>tend</td><td>/tend/ vt.</td><td>照料，照顾，伺候vi. 往，朝向易于；倾向，tending，tends</td></tr>
+<tr><td>routes</td><td>/ruːt，raʊt/ n.</td><td>路, 路途, 路线, 路程, routing, routes</td></tr>
+<tr><td>lines</td><td>— n.</td><td>台词；线；航线（line的复数）v. 排成一行；画线于（line的三单形式）</td></tr>
+<tr><td>wholesale</td><td>/'hoʊlseɪl/ n.</td><td>批发adj. &adv. 批发(的)大规模(的)vt. 批发, wholesaling, wholesales</td></tr>
+<tr><td>purchases</td><td>/'pɜːrtʃəs/ n.</td><td>购买；紧握；起重装置vt. 购买；赢得vi. 购买东西, purchasing, purchases</td></tr>
+<tr><td>retail</td><td>/ˈriːteɪl/ vt.</td><td>零售；转述vi. 零售n. 零售adv. 以零售方式adj. 零售的, retailing, retails</td></tr>
+<tr><td>main</td><td>/meɪn/ adj.</td><td>主要的; 最重要的n. 总管道; 干线</td></tr>
+<tr><td>surge</td><td>/sɜːrdʒ/ n.</td><td>(情感的) 突发，涌现，突然出现（数量的）急剧上升，激增；大量；一大批奔涌向前；突然的向上运动（电流）浪涌v. 涌；汹涌；涌动(感情、感觉) 突袭，涌动，突发(</td></tr>
+<tr><td>crowded</td><td>/kroʊ/ vi.</td><td>报晓；啼叫n. 乌鸦；鸡鸣；撬棍, crowing, crows</td></tr>
+<tr><td>vulnerable</td><td>/'vʌlnərəbl/ adj.</td><td>易受伤的, 脆弱的, 敏感的</td></tr>
+<tr><td>rivals</td><td>/'raɪvl/ n.</td><td>竞争对手vt. 与…竞争, 与…匹敌, rivalled rivaling, rivalling rivals, rivals</td></tr>
+<tr><td>wave</td><td>/weɪv/ vi.</td><td>波动；起伏；摇动；呈波形；挥手示意vt. 向…挥手示意；使成波浪形；卷（烫）发n. 波浪；波动；高潮；卷曲；挥手示意, waving, waves</td></tr>
+<tr><td>sticky</td><td>/'stɪki/ adj.</td><td>粘性的；粘的潮湿的；湿热的难对付的，棘手的，stickiest</td></tr>
+<tr><td>profitable</td><td>/'prɑːfɪtəbl/ adj.</td><td>有利可图的; 有益的</td></tr>
+<tr><td>route</td><td>/ruːt，raʊt/ n.</td><td>路, 路途, 路线, 路程, routing, routes</td></tr>
+<tr><td>groups</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>urban</td><td>/'ɜːrbən/ adj.</td><td>城市的；住在都市的</td></tr>
+<tr><td>towards</td><td>/tɔːrdz/ prep.</td><td>向，朝为了；有助于；用于对于，关于接近；将近；大约</td></tr>
+<tr><td>annual</td><td>/'ænjuəl/ adj.</td><td>年度的；每年的n. 年刊，年鉴；一年生植物</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>lines</td><td>— n.</td><td>台词；线；航线（line的复数）v. 排成一行；画线于（line的三单形式）</td></tr>
+<tr><td>authorities</td><td>/ə'θɔːrəti/ n.</td><td>威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗</td></tr>
+<tr><td>crack</td><td>/kræk/ vt.</td><td>& vi. (使…)开裂, 破裂(使)身体上或精神上垮掉打开, 砸开(使)发出爆裂声n. 裂缝, 缝隙噼啪声, 爆裂声意外的一下重击试图, 尝试俏皮话强效可卡因</td></tr>
+<tr><td>traffic</td><td>/'træfɪk/ n.</td><td>交通；贸易；运输；通信量vt. 用…作交换；在…通行vi. 交易，买卖, trafficking, traffics</td></tr>
+<tr><td>powdered</td><td>/'paʊdər/ n.</td><td>粉末；粉；火药；尘土vt. 使成粉末；搽粉于；撒粉vi. 搽粉；变成粉末, powdering, powders</td></tr>
+<tr><td>amazon</td><td>/ˈæməˌzɑn/ n.</td><td>高大强悍的女人；（古希腊神话中的）亚马孙族女战士Amazonn. 亚马逊河(南美洲大河)</td></tr>
+<tr><td>hub</td><td>/hʌb/ n.</td><td>中心；毂；木片</td></tr>
+<tr><td>properties</td><td>— </td><td>道具</td></tr>
+<tr><td>recruiting</td><td>/rɪ'kruːt/ n.</td><td>新兵(机构中的)新成员vt. 招聘；吸引(新成员)吸收某人为新成员vt. & vi. 招募，征募(新兵)恢复健康，恢复体力，recruiting，recruit</td></tr>
+<tr><td>internal</td><td>/ɪn'tɜːrnl/ adj.</td><td>国内的；内部的；内在的</td></tr>
+<tr><td>covering</td><td>/'kʌvər/ vt.</td><td>包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替, covering, covers</td></tr>
+<tr><td>hotspots</td><td>— n.</td><td>热区；热点</td></tr>
+<tr><td>adopts</td><td>/ə'dɑːpt/ vt.</td><td>收养采用, 采纳, 采取正式接受, 通过, adopting, adopts</td></tr>
+<tr><td>empower</td><td>/ɪm'paʊər/ vt.</td><td>授权, 准许, empowering, empowers</td></tr>
+<tr><td>disrupt</td><td>/dɪs'rʌpt/ vt.</td><td>使混乱, 扰乱, disrupting, disrupts</td></tr>
+<tr><td>vulnerable</td><td>/'vʌlnərəbl/ adj.</td><td>易受伤的, 脆弱的, 敏感的</td></tr>
+<tr><td>recruited</td><td>/rɪ'kruːt/ n.</td><td>新兵(机构中的)新成员vt. 招聘；吸引(新成员)吸收某人为新成员vt. & vi. 招募，征募(新兵)恢复健康，恢复体力，recruiting，recruit</td></tr>
+<tr><td>practices</td><td>/'præktɪs/ n.</td><td>练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规，practicing，practices</td></tr>
+<tr><td>exposure</td><td>/ɪk'spoʊʒər/ n.</td><td>暴露, 显露揭发, 揭露(软片等)曝光</td></tr>
+<tr><td>mindset</td><td>/'maɪndset/ n.</td><td>心态；倾向；习惯；精神状态</td></tr>
+<tr><td>reduction</td><td>/rɪ'dʌkʃn/ n.</td><td>减少，缩小；减少的量，降价</td></tr>
+<tr><td>violent</td><td>/'vaɪələnt/ adj.</td><td>暴力引起的, 粗暴的剧烈的, 强烈的</td></tr>
+<tr><td>mainstreamed</td><td>/'meɪnstriːm/ n.</td><td>(思想或行为的)主流, mainstreaming, mainstreams</td></tr>
+<tr><td>flattering</td><td>/'flætər/ v.</td><td>向…谄媚，奉承，讨好；自认为，自以为是；使显得更漂亮，flattering，flatters</td></tr>
+<tr><td>mexico</td><td>/'meksɪkoʊ/ n.</td><td>墨西哥</td></tr>
+<tr><td>assaults</td><td>/ə'sɔːlt/ n.</td><td>攻击；袭击vt. 袭击；攻击vi. 袭击；动武, assaulting, assaults</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>complete</td><td>/kəm'pliːt/ adj.</td><td>完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善, completest 缩 写: comp, cpl</td></tr>
+<tr><td>dramatically</td><td>/drə'mætɪkli/ adv.</td><td>戏剧性地;引人注目地</td></tr>
+<tr><td>assault</td><td>/ə'sɔːlt/ n.</td><td>攻击；袭击vt. 袭击；攻击vi. 袭击；动武, assaulting, assaults</td></tr>
+<tr><td>joint</td><td>/dʒɔɪnt/ n.</td><td>关节；接合处，接合点；接缝；（牛，羊等的腿）大块肉adj. 联合的，合办的；共同的；连接的vt. 连接，贴合；接合；使有接头vi. 贴合；生节, jointin</td></tr>
+<tr><td>strategy</td><td>/'strætədʒi/ n.</td><td>战略学, 兵法战略, 策略策略, 计谋</td></tr>
+<tr><td>decade</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>reductions</td><td>/rɪ'dʌkʃn/ n.</td><td>减少，缩小；减少的量，降价</td></tr>
+<tr><td>violent</td><td>/'vaɪələnt/ adj.</td><td>暴力引起的, 粗暴的剧烈的, 强烈的</td></tr>
+<tr><td>reduction</td><td>/rɪ'dʌkʃn/ n.</td><td>减少，缩小；减少的量，降价</td></tr>
+<tr><td>credited</td><td>/'kredɪt/ n.</td><td>赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)，crediting，credits</td></tr>
+<tr><td>fall</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>serious</td><td>/'sɪriəs/ adj.</td><td>严肃的，严重的；认真的；庄重的；危急的</td></tr>
+<tr><td>assaults</td><td>/ə'sɔːlt/ n.</td><td>攻击；袭击vt. 袭击；攻击vi. 袭击；动武, assaulting, assaults</td></tr>
+<tr><td>covering</td><td>/'kʌvər/ vt.</td><td>包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替, covering, covers</td></tr>
+<tr><td>admissions</td><td>/əd'mɪʃn/ n.</td><td>准许进入入场费, 入场券承认, 供认</td></tr>
+<tr><td>dense</td><td>/dens/ adj.</td><td>浓厚的；稠密的；愚钝的, densest</td></tr>
+<tr><td>urban</td><td>/'ɜːrbən/ adj.</td><td>城市的；住在都市的</td></tr>
+<tr><td>caveats</td><td>— n.</td><td>警告；说明（caveat的复数）</td></tr>
+<tr><td>violent</td><td>/'vaɪələnt/ adj.</td><td>暴力引起的, 粗暴的剧烈的, 强烈的</td></tr>
+<tr><td>reach</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>interventions</td><td>/ˌɪntər'venʃn/ n.</td><td>介入, 干涉, 干预</td></tr>
+<tr><td>charity</td><td>/'tʃærəti/ n.</td><td>施舍；慈善；慈善团体；施舍物；宽容</td></tr>
+<tr><td>adverse</td><td>/əd'vɜːrs/ adj.</td><td>不利的；相反的；敌对的（名词adverseness，副词adversely）</td></tr>
+<tr><td>groups</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>vulnerable</td><td>/'vʌlnərəbl/ adj.</td><td>易受伤的, 脆弱的, 敏感的</td></tr>
+<tr><td>traffic</td><td>/'træfɪk/ n.</td><td>交通；贸易；运输；通信量vt. 用…作交换；在…通行vi. 交易，买卖, trafficking, traffics</td></tr>
+<tr><td>turf</td><td>/tɜːrf/ n.</td><td>泥炭；草皮；跑马场vt. 覆草皮于</td></tr>
+<tr><td>trafficking</td><td>/'træfɪk/ n.</td><td>交通；贸易；运输；通信量vt. 用…作交换；在…通行vi. 交易，买卖, trafficking, traffics</td></tr>
+<tr><td>either</td><td>/'iːðər/ pron.</td><td>(两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的</td></tr>
+<tr><td>adopt</td><td>/ə'dɑːpt/ vt.</td><td>收养采用, 采纳, 采取正式接受, 通过, adopting, adopts</td></tr>
+<tr><td>involved</td><td>/ɪn'vɑːlvd/ adj.</td><td>卷入的；有关的；复杂的v. 涉及；使参与；包含（involve的过去式和过去分词）</td></tr>
+<tr><td>philosophy</td><td>/fə'lɑːsəfi/ n.</td><td>哲学人生哲学, 人生观达观</td></tr>
+<tr><td>reduction</td><td>/rɪ'dʌkʃn/ n.</td><td>减少，缩小；减少的量，降价</td></tr>
+<tr><td>mindset</td><td>/'maɪndset/ n.</td><td>心态；倾向；习惯；精神状态</td></tr>
+<tr><td>emphasising</td><td>/'emfəsɪs/ n.</td><td>强调, 重点</td></tr>
+<tr><td>troublesome</td><td>/'trʌblsəm/ adj.</td><td>引起麻烦的, 令人讨厌的, 令人烦恼的</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day23.html" class="nav-btn">← Day 23</a>
+  <a href="day25.html" class="nav-btn">Day 25 →</a>
+</div>
+
+<div class="progress">📖 Day 24 of 43</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-09-05</div>
+
+</body>
+</html>

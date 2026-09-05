@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Science & technology</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-09-05</div>
+
+<h1 class="article-title">Science & technology</h1>
+<div class="article-section"></div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>Exoskeletons, as strength-<span class="annot" data-tooltip="amplifying /'æmplɪfaɪ/ vt. 放大, 扩大增强vt. & vi. 详述时 态: amplified, amplifying, amplifies">amplifying</span> rigs of this sort are known, are a <span class="annot" data-tooltip="staple /'steɪpl/ n. 主要产品；钉书钉；主题；主食vt. 用钉书钉钉住；把……分级adj.主要的，大宗生产的；常用的；纺织纤维的时 态: st">staple</span> of science-fiction films, from “Aliens” to “<span class="annot" data-tooltip="avatar /'ævətɑːr/ n. 电影《阿凡达》">Avatar</span>”. In <span class="annot" data-tooltip="reality /ri'æləti/ n. 现实；真实；实际">reality</span> full-body <span class="annot" data-tooltip="versions /'vɜːrʒn/ n. 变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本">versions</span> like those on screen have disappointed. A <span class="annot" data-tooltip="decade /'dekeɪd/ n. 十年，十年期；十">decade</span> ago the American army was <span class="annot" data-tooltip="developing /dɪ'veləpɪŋ/ adj. 在进行中的;走向完成阶段的;走向成熟的发展中的">developing</span> two of them, together with a third for just the legs and hips. All have been abandoned. But modest exoskeletons are <span class="annot" data-tooltip="proving /proʊ/ n. 从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞">proving</span> surprisingly useful—and not just to the injured and disabled. At €9,995 ($11,423), for example, Ironhand is hardly cheap. Yet since Skelex, a Dutch firm, began selling the device in 2024, it has been put to work by about 200 companies around the world. Advances in batteries, actuators and software have played a role. But, paradoxically, the biggest <span class="annot" data-tooltip="leap /liːp/ vi. 跳，跳跃n. 跳跃；飞跃vt. 跳跃，跳过；使跃过时 态: leaped, leapt leaping, leaps">leap</span> forward, says Karl Zelik, an exoskeleton expert at Vanderbilt University in Nashville, was restraint. The <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> stopped chasing “Hollywood, do-it-all” designs. Instead, today’s <span class="annot" data-tooltip="lighter /'laɪtər/ n. 打火机；驳船；点火者vt. 驳运时 态: lightered, lightering, lighters">lighter</span>, more comfortable exoskeletons focus on assisting a single part of the body to perform tasks ranging from fixing roofs to gathering <span class="annot" data-tooltip="crops /krɑːp/ n. 农作物；庄稼；产量；平头vt. 种植；收割；修剪；剪短vi. 收获时 态: cropped, cropping, cro">crops</span> (see <span class="annot" data-tooltip="picture /'pɪktʃər/ n. 图画，肖像；照片(生动的)描述，写照影片；电影；画面美景，景色情况，事态，局面vt. 绘画；描绘想象时 态: pictu">picture</span>). The most familiar use is to permit movement by people with <span class="annot" data-tooltip="disabilities /ˌdɪsə'bɪləti/ n. 无能力, 无力残疾, 伤残">disabilities</span>. Lifeward, an Israeli firm, sells ReWalk, a leg exoskeleton that allows some people with spinal-cord injuries to stand up, walk and even climb stairs— <span class="annot" data-tooltip="typically /'tɪpɪkli/ adv. 代表性地;作为特色地;典型地">typically</span> with help from crutches. After selecting a suitable mode, a user <span class="annot" data-tooltip="leans /liːn/ vi. 倾斜；倚靠；倾向；依赖adj. 瘦的；贫乏的，歉收的vt. 使倾斜n. 倾斜；倾斜度；瘦肉时 态: leaned, le">leans</span> forward. <span class="annot" data-tooltip="sensors /'sensər/ n. 传感器">Sensors</span> <span class="annot" data-tooltip="detect /dɪ'tekt/ vt. 发现；发觉，查明时 态: detected，detecting，detects">detect</span> the <span class="annot" data-tooltip="tilt /tɪlt/ vi. 倾斜；翘起；以言词或文字抨击vt. 使倾斜；使翘起n. 倾斜时 态: tilted, tilting, tilts">tilt</span> and software activates motors at the hips and knees that <span class="annot" data-tooltip="drive /draɪv/ vt. 驱赶驱使, 促使敲, 击vt. & vi. 驾驶n. 乘车旅行私人车道传动, 驱动干劲, 积极性, 能动性紧迫, 逼迫,">drive</span> the wearer’s legs through the chosen <span class="annot" data-tooltip="motion /'moʊʃn/ n. 动作；请求；手势；移动；意向vi. 运动；打手势vt. 运动；向…打手势时 态: motioned, motioning">motion</span>. More sophisticated <span class="annot" data-tooltip="activation n. 活化,激活,[化]活化作用">activation</span> has been developed by Myomo, a firm in Burlington, Massachusetts. Its exoskeleton, MyoPro, moves a paralysed arm and hand with help from electrodes attached to the skin. These read muscle signals that injury or disease has <span class="annot" data-tooltip="rendered /'rendər/ v. 给予；提供；回报使成为；使变得；使处于某状态；致使，造成递交；呈献；提交表达；表演；演示（用不同的语言）表达；翻译；把…">rendered</span> too <span class="annot" data-tooltip="faint /feɪnt/ vi. 晕倒，昏倒adj. 微弱的，模糊的，暗淡的(体力)无力的，虚弱的；易失去知觉的，昏眩的(动作等)无力的，似无太大效果的n">faint</span> to trigger sufficient <span class="annot" data-tooltip="contractions /kən'trækʃn/ n. 订约(分娩时)子宫收缩收缩,缩短缩减缩略词">contractions</span>. A microprocessor analyses the data to infer intended gestures, then <span class="annot" data-tooltip="instructs /ɪn'strʌkt/ vt. 命令；教授；指导；通知时 态: instructed, instructing, instructs">instructs</span> motors that move the user’s elbow and hand. The system allows people to do things like opening packaging, holding utensils and carrying a <span class="annot" data-tooltip="laundry /'lɔːndri/ n. 洗衣店，洗衣房洗好的衣服；待洗的衣服">laundry</span> basket. Some 4,000 have been <span class="annot" data-tooltip="shipped /ʃɪp/ vt. 运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Di">shipped</span>. Other exoskeletons aim not to restore lost function, but to prevent injury. Japet.W+, made by Japet Medical, in Lille, France, wraps around the waist and lower torso. When the wearer bends, lifts or carries objects, four actuators that <span class="annot" data-tooltip="resemble /rɪ'zembl/ vt. 像…, 类似于时 态: resembled, resembling, resembles">resemble</span> shock absorbers <span class="annot" data-tooltip="extend /ɪk'stend/ vt. & vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出时 态:">extend</span> or retract, reducing pressure on the lower spine. Four years ago Julien Guilbert, the founder of Toitech, a</p>
+<p>roofing company in Lille, bought one for a worker whose back pain had been keeping him home for two or three weeks a year. This worker has not missed a day since because of back pain. Mr Guilbert says all of his roofing teams will have one of these robotic <span class="annot" data-tooltip="belts /belt/ n. 腰带, 带子区域, 地带vt.（用带子）系住；（作为惩罚用皮带等）抽打；击打vi.（尤指驾车）疾驰；飞奔时 态: bel">belts</span> by the end of this year. Use of exoskeletons for strenuous labour is growing. Exia, an exoskeleton for heavy lifting made by German Bionic, based near Munich, is used by about 300 employers. Many are worn by factory, <span class="annot" data-tooltip="warehouse /'werhaʊs/ n. 仓库, 货栈时 态: warehoused, warehousing, warehousesalso">warehouse</span> and freight- transport workers, but Norma Steller, the firm’s chief product officer, says the most enthusiastic users of the “external spine” are nurses who must lift their patients. <span class="annot" data-tooltip="resistance /rɪ'zɪstəns/ n. 抵抗, 反抗, 抵抗能力阻力电阻, 热阻形容词: resistant">Resistance</span> to the technology remains. Some union bosses fear it will lead to higher production targets, says Dr Zelik, who is also chief scientist at HeroWear, a maker of unpowered “exosuits” in Nashville. (As a wearer bends, elastic bands <span class="annot" data-tooltip="stretch /stretʃ/ vt. 伸展,张开vi. 伸展adj. 可伸缩的n. 伸展，延伸时 态: stretched, stretching, stre">stretch</span>, storing <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span> that is released as the body straightens or lifts.) Egos matter, too. Roughly a third of potential male users dismiss the kit, at least initially, as being for wimps, says David Duwe of Ottobock, a German supplier of exoskeletons to companies including Airbus, DHL, IKEA, Siemens and Toyota. Such attitudes are, however, changing. Uptake is rising fastest among younger workers who are increasingly <span class="annot" data-tooltip="reluctant /rɪ'lʌktənt/ adj. 不情愿的, 勉强的副 词: reluctantly">reluctant</span>, Mr Duwe says, “to use their body as a simple resource” for a company. Much will ride on workplace testing. In February, for instance, a Michelin centre in Almería, Spain, that cuts tyres open for analysis began one such pilot deployment with six Ironhands. Manuel Góngora Morales, the centre’s manager, wants to see if the devices reduce repetitive-strain injuries. He says early results suggest they do. There are risks. Exoskeleton-makers say their technology is not a licence to take on heavier tasks, but some users surely will anyway. Even normal use reroutes <span class="annot" data-tooltip="mechanical /mə'kænɪkl/ adj. 机械的，力学的机械似的；呆板的副 词: mechanically">mechanical</span> forces, so researchers will need to determine whether a given model overloads unassisted <span class="annot" data-tooltip="joints /dʒɔɪnt/ n. 关节；接合处，接合点；接缝；（牛，羊等的腿）大块肉adj. 联合的，合办的；共同的；连接的vt. 连接，贴合；接合；使有">joints</span>. Such concerns may grow as exoskeletons <span class="annot" data-tooltip="edge /edʒ/ n. 边缘；刀刃；优势；锋利vt. 使锐利；将…开刃；给…加上边vi. 缓缓移动；侧着移动EDGEabbr. Electron">edge</span> into the consumer market. Athletes and outdoorsy types are among the <span class="annot" data-tooltip="main /meɪn/ adj. 主要的; 最重要的n. 总管道; 干线">main</span> targets here. Skip, a firm in San Francisco, will soon start <span class="annot" data-tooltip="shipping /ʃɪp/ vt. 运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Di">shipping</span> MO/GO, a knee exoskeleton</p>
+<p>aimed at hikers. The units, which strap to the thigh and calf, and <span class="annot" data-tooltip="weigh /weɪ/ vt. & vi. 称…的重量link v. 重达vt. 权衡；考虑时 态: weighed，weighing，weighs">weigh</span> less than 1kg, are designed to be cool, aspirational “powered clothing”, not something that looks like a medical device, says Kathryn Zealand, Skip’s boss. Six months of production capacity has, she says, already been <span class="annot" data-tooltip="ordered /'ɔːrdərd/ adj. 安排好的；整齐的；[数]有序的v. 命令；点餐（order的过去式和过去分词）">ordered</span> by customers. Meanwhile, in January, Dephy, based in Boxborough, Massachusetts, launched Sidekick, a “powered footwear” system that assists the ankles. And Nike is working with Dephy to create motorised footwear to help athletes move faster and farther with less <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span>. Might consumer “movewear”, as Skip styles it, really take off? Perhaps not just yet. A <span class="annot" data-tooltip="prominent /'prɑːmɪnənt/ adj. 突起的，凸出的显著的；突出的杰出的，著名的，卓越的副 词: prominently">prominent</span> reviewer of the buzziest option out there—powered hips launched early last year by Hypershell, a Chinese firm—reported “a puppet effect”, whereby the exoskeleton was moving the user rather than the other way round. Most users will not want to feel <span class="annot" data-tooltip="tugged /tʌɡ/ vt. & vi. 用力拉；使劲拉；猛扯n. 猛拉；猛拖；猛扯时 态: tugged，tugging，tugs">tugged</span> into robotic movements in this way. Yet unlike earlier combat supersuits, today’s less ambitious machines look as if they are here to stay. ■ This article was downloaded by zlibrary from https://www.economist.com/science-and-technology/2026/09/02/<span class="annot" data-tooltip="humble /'hʌmbl/ adj. 谦逊的, 谦虚的低下的, 卑微的简陋的, 低劣的vt. 使谦恭, 使卑下比较级: humbler, humblest">humble</span>-exoskeletons- work-better-than-combat-supersuits</p>
+<p>Science & technology | The hunt for WIMPs A suspicious signal in a dark-matter detector has physicists excited It may be nothing. But it may be something big Sep 3rd 2026 ON JUNE 16TH 2023 a strange blip showed up in the detectors of the LUX- ZEPLIN (LZ) experiment, an underground dark-matter detector (pictured) in South Dakota. That should <span class="annot" data-tooltip="raise /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raise</span> <span class="annot" data-tooltip="eyebrows /'aɪbraʊ/ n. 眉毛v. 为…描眉；用皱眉蹙额迫使">eyebrows</span>. Physicists have been trying and failing to <span class="annot" data-tooltip="detect /dɪ'tekt/ vt. 发现；发觉，查明时 态: detected，detecting，detects">detect</span> dark matter for almost a century. <span class="annot" data-tooltip="speaking /'spikɪŋ/ adj. 演讲的；富于表情的，雄辩的n. 说话；演讲v. 讲（speak的ing形式）">Speaking</span> on the experiment’s behalf at the TeV Particle Astrophysics <span class="annot" data-tooltip="conference /'kɑːnfərəns/ n. 会议讨论, 商谈形容词: conferential">conference</span> on September 1st, Sam Eriksen of the University of Bristol announced that the team has reason to believe the blip could be a “weakly <span class="annot" data-tooltip="interacting 相互作用">interacting</span> massive particle” (WIMP), a long-suspected <span class="annot" data-tooltip="candidate /'kændɪdət，ˈkændɪdeɪt/ n. 申请求职者, 候选人报考者名 词: candidacy">candidate</span> for the universe’s elusive dark matter.</p>
+<p>Physicists are pretty sure dark matter exists. Their best measurements suggest it makes up around 85% of the universe’s total mass and is responsible for a <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of important jobs, such as making sure <span class="annot" data-tooltip="galaxies /'ɡæləksi/ n. 星系银河系, 银河一群(杰出或著名的人物)">galaxies</span> do not break apart. But nothing is known of what the <span class="annot" data-tooltip="stuff /stʌf/ n. 材料；东西；填充物；素材资料vt. 填塞；塞满；让吃饱vi. 吃得过多时 态: stuffed, stuffing, s">stuff</span> is <span class="annot" data-tooltip="actually /'æktʃuəl/ adj. 真实的，实际的；现行的，目前的副 词: actually">actually</span> made from. It does not <span class="annot" data-tooltip="emit /i'mɪt/ vt. 发出，放射；发行；发表EMITabbr. Electromagnetic Induction Tweeter 电磁感应高">emit</span>, absorb or reflect light or other electromagnetic radiation, and is “seen” only by its gravitational pull. Over the years, physicists have come up with a motley <span class="annot" data-tooltip="crew /kruː/ n. 全体人员，全体船员；队，组vi. 一起工作vt. 使当船员时 态: crewed, crewing, crews">crew</span> of suspects that could be behind the phenomena. WIMPs are one of the most promising. These hypothetical heavy, <span class="annot" data-tooltip="sluggish /'slʌɡɪʃ/ adj. 萧条的；迟钝的；懒惰的；行动迟缓的n. 市况呆滞；市势疲弱名 词: sluggishness">sluggish</span> particles interact with other matter only through gravity and an esoteric phenomenon called the weak nuclear force. The theory suggests such particles could have been knocking about soon after the Big Bang. But as the universe expanded and cooled, their abundance was frozen at just the right <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span> to give the density of dark matter seen today. The LZ experiment has been hunting WIMPs since 2021 using a vat of seven tonnes of liquid xenon. As particles pass through this vat they collide with the xenon atoms, releasing flashes of light. Most matter will recoil from xenon’s electrons, but WIMPs should bounce off its nucleus. Such a “nuclear recoil” <span class="annot" data-tooltip="emits /i'mɪt/ vt. 发出，放射；发行；发表EMITabbr. Electromagnetic Induction Tweeter 电磁感应高">emits</span> its <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> <span class="annot" data-tooltip="signature /'sɪɡnətʃər/ n. 签名, 签字">signature</span> flashes. Dr Eriksen says the flashes the team saw in 2023 have all the hallmarks of a WIMP at least 200 times heavier than a proton. The case is not closed. The suspected WIMP was <span class="annot" data-tooltip="spotted /spɑːt/ n. 斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Po">spotted</span> only once and with a level of certainty that does not meet the bar to be called an <span class="annot" data-tooltip="actual /'æktʃuəl/ adj. 真实的，实际的；现行的，目前的副 词: actually">actual</span> discovery in physics circles. But it is the first time any WIMP-detection experiment has seen anything of this <span class="annot" data-tooltip="magnitude /'mæɡnɪtuːd/ n. 巨大; 重要性〈天〉星等">magnitude</span>, Dr Eriksen says. And for something as elusive as dark matter, that is certainly enough to warrant attention. ■ This article was downloaded by zlibrary from https://www.economist.com/science-and-technology/2026/09/02/a-suspicious-signal-in- a-dark-matter-detector-has-physicists-excited</p>
+<p>Science & technology | The Nancy Roman telescope NASA’s latest mission to map the <span class="annot" data-tooltip="cosmos /'kɑːzmoʊs/ n. 宇宙；和谐；秩序；[植]大波斯菊">cosmos</span> takes off It will study dark matter, dark <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span> and <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span>-distant planets Sep 3rd 2026 On August 30th at 11.26 <span class="annot" data-tooltip="universal /ˌjuːnɪ'vɜːrsl/ adj. 全体的广泛的, 普遍的在世界各地的, 世界性的副 词: universally">Universal</span> Time, the Nancy Grace Roman Space Telescope—NASA’s newest eye in the sky—took off from the Kennedy Space Centre, in Florida, aboard a SpaceX Falcon Heavy rocket. The telescope, named after NASA’s first chief astronomer, is now <span class="annot" data-tooltip="heading /'hedɪŋ/ n. 标题；信头；（足球）头球v. 用头顶（head的ing形式）">heading</span> for a parking <span class="annot" data-tooltip="spot /spɑːt/ n. 斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Po">spot</span> in orbit around 1.6m kilometres from Earth. From there, it will provide astronomers with an unprecedented view of the universe. Two particular gadgets will assist in this. One is the Wide Field Instrument (WFI), a 300-megapixel camera that will <span class="annot" data-tooltip="snap /snæp/ vt. 猛咬；突然折断，拉断；啪地关上vi. 咬；厉声说；咯嗒一声关上n. 猛咬；劈啪声；突然折断adj. 突然的SNAPabb">snap</span> <span class="annot" data-tooltip="pictures /'pɪktʃər/ n. 图画，肖像；照片(生动的)描述，写照影片；电影；画面美景，景色情况，事态，局面vt. 绘画；描绘想象时 态: pictu">pictures</span> in both visible light and <span class="annot" data-tooltip="infrared /ˌɪnfrə'red/ adj. 〈物〉红外线的">infrared</span>. It will thus be able to see distant <span class="annot" data-tooltip="galaxies /'ɡæləksi/ n. 星系银河系, 银河一群(杰出或著名的人物)">galaxies</span> whose light has been <span class="annot" data-tooltip="stretched /stretʃ/ vt. 伸展,张开vi. 伸展adj. 可伸缩的n. 伸展，延伸时 态: stretched, stretching, stre">stretched</span> to infrared wavelengths by the expanding universe. And, as its</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>amplifying</td><td>/'æmplɪfaɪ/ vt.</td><td>放大, 扩大增强vt. & vi. 详述, amplifying, amplifies</td></tr>
+<tr><td>staple</td><td>/'steɪpl/ n.</td><td>主要产品；钉书钉；主题；主食vt. 用钉书钉钉住；把……分级adj.主要的，大宗生产的；常用的；纺织纤维的, stapling, staples</td></tr>
+<tr><td>avatar</td><td>/'ævətɑːr/ n.</td><td>电影《阿凡达》</td></tr>
+<tr><td>reality</td><td>/ri'æləti/ n.</td><td>现实；真实；实际</td></tr>
+<tr><td>versions</td><td>/'vɜːrʒn/ n.</td><td>变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本</td></tr>
+<tr><td>decade</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>developing</td><td>/dɪ'veləpɪŋ/ adj.</td><td>在进行中的;走向完成阶段的;走向成熟的发展中的</td></tr>
+<tr><td>proving</td><td>/proʊ/ n.</td><td>从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞成；支持Pro脯氨酸PROabbr. P</td></tr>
+<tr><td>leap</td><td>/liːp/ vi.</td><td>跳，跳跃n. 跳跃；飞跃vt. 跳跃，跳过；使跃过, leapt leaping, leaps</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>lighter</td><td>/'laɪtər/ n.</td><td>打火机；驳船；点火者vt. 驳运, lightering, lighters</td></tr>
+<tr><td>crops</td><td>/krɑːp/ n.</td><td>农作物；庄稼；产量；平头vt. 种植；收割；修剪；剪短vi. 收获, cropping, crops</td></tr>
+<tr><td>picture</td><td>/'pɪktʃər/ n.</td><td>图画，肖像；照片(生动的)描述，写照影片；电影；画面美景，景色情况，事态，局面vt. 绘画；描绘想象，picturing，pictures</td></tr>
+<tr><td>disabilities</td><td>/ˌdɪsə'bɪləti/ n.</td><td>无能力, 无力残疾, 伤残</td></tr>
+<tr><td>typically</td><td>/'tɪpɪkli/ adv.</td><td>代表性地;作为特色地;典型地</td></tr>
+<tr><td>leans</td><td>/liːn/ vi.</td><td>倾斜；倚靠；倾向；依赖adj. 瘦的；贫乏的，歉收的vt. 使倾斜n. 倾斜；倾斜度；瘦肉, leaning, leans</td></tr>
+<tr><td>sensors</td><td>/'sensər/ n.</td><td>传感器</td></tr>
+<tr><td>detect</td><td>/dɪ'tekt/ vt.</td><td>发现；发觉，查明，detecting，detects</td></tr>
+<tr><td>tilt</td><td>/tɪlt/ vi.</td><td>倾斜；翘起；以言词或文字抨击vt. 使倾斜；使翘起n. 倾斜, tilting, tilts</td></tr>
+<tr><td>drive</td><td>/draɪv/ vt.</td><td>驱赶驱使, 促使敲, 击vt. & vi. 驾驶n. 乘车旅行私人车道传动, 驱动干劲, 积极性, 能动性紧迫, 逼迫, 压力, drives</td></tr>
+<tr><td>motion</td><td>/'moʊʃn/ n.</td><td>动作；请求；手势；移动；意向vi. 运动；打手势vt. 运动；向…打手势, motioning, motions</td></tr>
+<tr><td>activation</td><td>— n.</td><td>活化,激活,[化]活化作用</td></tr>
+<tr><td>rendered</td><td>/'rendər/ v.</td><td>给予；提供；回报使成为；使变得；使处于某状态；致使，造成递交；呈献；提交表达；表演；演示（用不同的语言）表达；翻译；把…译成粉刷；给（墙壁）抹灰将（脂肪）熬成油</td></tr>
+<tr><td>faint</td><td>/feɪnt/ vi.</td><td>晕倒，昏倒adj. 微弱的，模糊的，暗淡的(体力)无力的，虚弱的；易失去知觉的，昏眩的(动作等)无力的，似无太大效果的n. 昏倒，faintest</td></tr>
+<tr><td>contractions</td><td>/kən'trækʃn/ n.</td><td>订约(分娩时)子宫收缩收缩,缩短缩减缩略词</td></tr>
+<tr><td>instructs</td><td>/ɪn'strʌkt/ vt.</td><td>命令；教授；指导；通知, instructing, instructs</td></tr>
+<tr><td>laundry</td><td>/'lɔːndri/ n.</td><td>洗衣店，洗衣房洗好的衣服；待洗的衣服</td></tr>
+<tr><td>shipped</td><td>/ʃɪp/ vt.</td><td>运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Division of the Nation</td></tr>
+<tr><td>resemble</td><td>/rɪ'zembl/ vt.</td><td>像…, 类似于, resembling, resembles</td></tr>
+<tr><td>extend</td><td>/ɪk'stend/ vt.</td><td>& vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出，extending，extends</td></tr>
+<tr><td>belts</td><td>/belt/ n.</td><td>腰带, 带子区域, 地带vt.（用带子）系住；（作为惩罚用皮带等）抽打；击打vi.（尤指驾车）疾驰；飞奔, belting, belts</td></tr>
+<tr><td>warehouse</td><td>/'werhaʊs/ n.</td><td>仓库, 货栈, warehousing, warehousesalso</td></tr>
+<tr><td>resistance</td><td>/rɪ'zɪstəns/ n.</td><td>抵抗, 反抗, 抵抗能力阻力电阻, 热阻</td></tr>
+<tr><td>stretch</td><td>/stretʃ/ vt.</td><td>伸展,张开vi. 伸展adj. 可伸缩的n. 伸展，延伸, stretching, stretches</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>reluctant</td><td>/rɪ'lʌktənt/ adj.</td><td>不情愿的, 勉强的</td></tr>
+<tr><td>mechanical</td><td>/mə'kænɪkl/ adj.</td><td>机械的，力学的机械似的；呆板的</td></tr>
+<tr><td>joints</td><td>/dʒɔɪnt/ n.</td><td>关节；接合处，接合点；接缝；（牛，羊等的腿）大块肉adj. 联合的，合办的；共同的；连接的vt. 连接，贴合；接合；使有接头vi. 贴合；生节, jointin</td></tr>
+<tr><td>edge</td><td>/edʒ/ n.</td><td>边缘；刀刃；优势；锋利vt. 使锐利；将…开刃；给…加上边vi. 缓缓移动；侧着移动EDGEabbr. Electronic Data Gathering Eq</td></tr>
+<tr><td>main</td><td>/meɪn/ adj.</td><td>主要的; 最重要的n. 总管道; 干线</td></tr>
+<tr><td>shipping</td><td>/ʃɪp/ vt.</td><td>运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Division of the Nation</td></tr>
+<tr><td>weigh</td><td>/weɪ/ vt.</td><td>& vi. 称…的重量link v. 重达vt. 权衡；考虑，weighing，weighs</td></tr>
+<tr><td>ordered</td><td>/'ɔːrdərd/ adj.</td><td>安排好的；整齐的；[数]有序的v. 命令；点餐（order的过去式和过去分词）</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>prominent</td><td>/'prɑːmɪnənt/ adj.</td><td>突起的，凸出的显著的；突出的杰出的，著名的，卓越的</td></tr>
+<tr><td>tugged</td><td>/tʌɡ/ vt.</td><td>& vi. 用力拉；使劲拉；猛扯n. 猛拉；猛拖；猛扯，tugging，tugs</td></tr>
+<tr><td>humble</td><td>/'hʌmbl/ adj.</td><td>谦逊的, 谦虚的低下的, 卑微的简陋的, 低劣的vt. 使谦恭, 使卑下, humblest</td></tr>
+<tr><td>raise</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>eyebrows</td><td>/'aɪbraʊ/ n.</td><td>眉毛v. 为…描眉；用皱眉蹙额迫使</td></tr>
+<tr><td>detect</td><td>/dɪ'tekt/ vt.</td><td>发现；发觉，查明，detecting，detects</td></tr>
+<tr><td>speaking</td><td>/'spikɪŋ/ adj.</td><td>演讲的；富于表情的，雄辩的n. 说话；演讲v. 讲（speak的ing形式）</td></tr>
+<tr><td>conference</td><td>/'kɑːnfərəns/ n.</td><td>会议讨论, 商谈</td></tr>
+<tr><td>interacting</td><td>— </td><td>相互作用</td></tr>
+<tr><td>candidate</td><td>/'kændɪdət，ˈkændɪdeɪt/ n.</td><td>申请求职者, 候选人报考者</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>galaxies</td><td>/'ɡæləksi/ n.</td><td>星系银河系, 银河一群(杰出或著名的人物)</td></tr>
+<tr><td>stuff</td><td>/stʌf/ n.</td><td>材料；东西；填充物；素材资料vt. 填塞；塞满；让吃饱vi. 吃得过多, stuffing, stuffs</td></tr>
+<tr><td>actually</td><td>/'æktʃuəl/ adj.</td><td>真实的，实际的；现行的，目前的</td></tr>
+<tr><td>emit</td><td>/i'mɪt/ vt.</td><td>发出，放射；发行；发表EMITabbr. Electromagnetic Induction Tweeter 电磁感应高频扬声器, emitting, emit</td></tr>
+<tr><td>crew</td><td>/kruː/ n.</td><td>全体人员，全体船员；队，组vi. 一起工作vt. 使当船员, crewing, crews</td></tr>
+<tr><td>sluggish</td><td>/'slʌɡɪʃ/ adj.</td><td>萧条的；迟钝的；懒惰的；行动迟缓的n. 市况呆滞；市势疲弱</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>emits</td><td>/i'mɪt/ vt.</td><td>发出，放射；发行；发表EMITabbr. Electromagnetic Induction Tweeter 电磁感应高频扬声器, emitting, emit</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>signature</td><td>/'sɪɡnətʃər/ n.</td><td>签名, 签字</td></tr>
+<tr><td>spotted</td><td>/spɑːt/ n.</td><td>斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Positioning and Tracki</td></tr>
+<tr><td>actual</td><td>/'æktʃuəl/ adj.</td><td>真实的，实际的；现行的，目前的</td></tr>
+<tr><td>magnitude</td><td>/'mæɡnɪtuːd/ n.</td><td>巨大; 重要性〈天〉星等</td></tr>
+<tr><td>cosmos</td><td>/'kɑːzmoʊs/ n.</td><td>宇宙；和谐；秩序；[植]大波斯菊</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>universal</td><td>/ˌjuːnɪ'vɜːrsl/ adj.</td><td>全体的广泛的, 普遍的在世界各地的, 世界性的</td></tr>
+<tr><td>heading</td><td>/'hedɪŋ/ n.</td><td>标题；信头；（足球）头球v. 用头顶（head的ing形式）</td></tr>
+<tr><td>spot</td><td>/spɑːt/ n.</td><td>斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Positioning and Tracki</td></tr>
+<tr><td>snap</td><td>/snæp/ vt.</td><td>猛咬；突然折断，拉断；啪地关上vi. 咬；厉声说；咯嗒一声关上n. 猛咬；劈啪声；突然折断adj. 突然的SNAPabbr. Satellite Navigat</td></tr>
+<tr><td>pictures</td><td>/'pɪktʃər/ n.</td><td>图画，肖像；照片(生动的)描述，写照影片；电影；画面美景，景色情况，事态，局面vt. 绘画；描绘想象，picturing，pictures</td></tr>
+<tr><td>infrared</td><td>/ˌɪnfrə'red/ adj.</td><td>〈物〉红外线的</td></tr>
+<tr><td>galaxies</td><td>/'ɡæləksi/ n.</td><td>星系银河系, 银河一群(杰出或著名的人物)</td></tr>
+<tr><td>stretched</td><td>/stretʃ/ vt.</td><td>伸展,张开vi. 伸展adj. 可伸缩的n. 伸展，延伸, stretching, stretches</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day37.html" class="nav-btn">← Day 37</a>
+  <a href="day39.html" class="nav-btn">Day 39 →</a>
+</div>
+
+<div class="progress">📖 Day 38 of 43</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-09-05</div>
+
+</body>
+</html>

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leaders | Opening the glass front door</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-09-05</div>
+
+<h1 class="article-title">Leaders | Opening the glass front door</h1>
+<div class="article-section">Leaders</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>cultures have evolved so that such rules are unthinkable; indeed, few young Britons or Germans are <span class="annot" data-tooltip="aware /ə'wer/ adj. 知道的；意识到的；有…方面知识的；懂世故的名 词: awareness">aware</span> they ever existed. Norms can shift with a shove from above, as in Saudi Arabia, or by a <span class="annot" data-tooltip="process /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">process</span> of social contagion. Few people resolve moral questions by <span class="annot" data-tooltip="reasoning /'riːzənɪŋ/ n. 运用思考、理解、推想等能力的做法或过程;推理">reasoning</span> from first principles. Mostly, they reckon something is fine if they see lots of people they know and respect doing it. So pioneers play an <span class="annot" data-tooltip="essential /ɪ'senʃl/ adj. 基本的；必要的；本质的；精华的">essential</span> role: the first woman in a <span class="annot" data-tooltip="conservative /kən'sɜːrvətɪv/ n. 保守的人adj. 保守的, 守旧的(式样等)不时新的, 传统的副 词: conservatively">conservative</span> Pakistani village to brave the gossip and find work in a nearby town paves the way for others to follow. Schools, NGOs and policymakers can <span class="annot" data-tooltip="nudge /nʌdʒ/ n. 用肘轻推；推动；没完没了抱怨的人vt. 用肘轻推；推进；向…不停地唠叨vi. 轻推；推进；唠叨时 态: nudged, ">nudge</span> the process along. One experiment in India found that if you show men that women they know are working in a local factory and that it is clean and not dangerous, they are more likely to <span class="annot" data-tooltip="consent /kən'sent/ n. 准许，同意，赞成vi. 同意；赞成时 态: consented，consenting，consents">consent</span> to their <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> wives working. Anything that makes work safer—such as India’s women-only buses for late-night commuters— can erode the <span class="annot" data-tooltip="misconception /ˌmɪskən'sepʃn/ n. 误解,错误想法,错误印象">misconception</span> that women must be kept at home for their own protection. Digital technology can help, too. Via small screens in their hands, women in the most repressive countries can see—and therefore imagine—a different way of life. This need not mean copying the most liberal <span class="annot" data-tooltip="societies /sə'saɪəti/ n. 社会；社交界；交往；社团">societies</span>. More often, it means learning from the somewhat less sexist country next door, as when an Iraqi housewife sees women doing high-status jobs in Turkish soap operas, and starts to question her lot. The last key is money. It is useful <span class="annot" data-tooltip="stuff /stʌf/ n. 材料；东西；填充物；素材资料vt. 填塞；塞满；让吃饱vi. 吃得过多时 态: stuffed, stuffing, s">stuff</span>, as even reactionary men agree. One economist talks of the “honour/income trade-off”: at some point, the extra cash a working wife could bring in starts to look so <span class="annot" data-tooltip="tempting /tempt/ vt. 引诱或怂恿(某人)干不正当的事使想要时 态: tempted, tempting, tempts">tempting</span> that her husband asks whether it would really be such a <span class="annot" data-tooltip="terrible /'terəbl/ adj. 可怕的；很糟的；令人讨厌的adv. [口]很，非常副 词: terribly">terrible</span> <span class="annot" data-tooltip="blow /bloʊ/ n. 吹；殴打；打击vi. 风吹；喘气vt. 风吹时 态: blew blown blowing, blows">blow</span> to his honour to allow it. Thus, the love of money, though much derided in scripture, can be a force for social change. ■ This article was downloaded by zlibrary from https://www.economist.com/leaders/2026/09/03/in-many-countries-the-biggest-barrier- to-prosperity-is-in-the-home</p>
+<div class="article-separator"></div>
+<div class="article-header">Leaders · Leaders | Follow the thread</div>
+<p>What the Bayeux <span class="annot" data-tooltip="tapestry /'tæpəstri/ n. 挂毯；织锦；绣帷vt. 用挂毯装饰">tapestry</span> teaches about surviving against the <span class="annot" data-tooltip="odds /ɑːdz/ n. 不平等；几率；胜算；差别">odds</span> A 950-year-old piece of linen <span class="annot" data-tooltip="yields /jiːld/ vt. 出产；屈服；放弃vi. 屈服，投降n. 收益；产量时 态: yielded, yielding, yields">yields</span> lessons for modern viewers Sep 3rd 2026 Days before the <span class="annot" data-tooltip="liberation /ˌlɪbə'reɪʃn/ n. 解放名 词: liberationist">liberation</span> of Paris in 1944, Heinrich Himmler, Hitler’s SS chief, sent an <span class="annot" data-tooltip="urgent /'ɜːrdʒənt/ adj. 紧急的；急迫的副 词: urgently">urgent</span> coded message. “Do not forget to bring the Bayeux tapestry to a <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span> of safety,” he urged the city’s Nazi commander, who surely had other things to worry about. The Nazis were <span class="annot" data-tooltip="obsessed /əb'ses/ v. 使痴迷，使迷恋；使心神不宁，不停地困扰； 唠叨；挂牵，念念不忘时 态: obsessed, obsessing, obs">obsessed</span> with this artwork <span class="annot" data-tooltip="depicting /dɪ'pɪkt/ vt. 描绘；描画描述时 态: depicted，depicting，depicts">depicting</span> the Norman conquest of England, seeing it as an icon of Aryan <span class="annot" data-tooltip="glory /'ɡlɔːri/ n. 光荣，荣誉；赞颂vi. 自豪，骄傲；狂喜">glory</span>. Himmler planned to display it in Wewelsburg Castle, an SS <span class="annot" data-tooltip="hangout /ˈhæŋˌaʊt/ n. (流氓)住所,巢穴">hangout</span> he hoped would become the “centre of the new world”. Instead, British codebreakers <span class="annot" data-tooltip="intercepted /ˌɪntər'sept/ vt. 拦截, 截住, 截击时 态: intercepted, intercepting, intercepts">intercepted</span> the order and shared it with the French <span class="annot" data-tooltip="resistance /rɪ'zɪstəns/ n. 抵抗, 反抗, 抵抗能力阻力电阻, 热阻形容词: resistant">resistance</span>, who hid the tapestry in the Louvre’s basement.</p>
+<p>Trajan had his <span class="annot" data-tooltip="column /'kɑːləm/ n. 圆柱，柱形物；纵队，列；专栏形容词: columned">column</span>. Napoleon had his arch. William of Normandy’s <span class="annot" data-tooltip="tapestry /'tæpəstri/ n. 挂毯；织锦；绣帷vt. 用挂毯装饰">tapestry</span> is less imposing yet somehow more memorable. Its <span class="annot" data-tooltip="strip /strɪp/ vt. 剥去；剥夺；脱去衣服n. 带；条状；脱衣舞vi. 脱去衣服时 态: stripped, stripping, strip">strip</span>-cartoon style is jaunty, memeable and has been used to satirise everything from Brexit <span class="annot" data-tooltip="negotiations /nɪˌɡoʊʃi'eɪʃn/ n. 协商，谈判完成(难事)；通过">negotiations</span> to Andy Burnham’s “Northern conquest” (the man he replaced as Britain’s prime minister, Sir Keir Starmer, was pictured on the <span class="annot" data-tooltip="cover /'kʌvər/ vt. 包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替时 态: covered, covering, c">cover</span> of the New Statesman with an arrow in his eye, like the hapless King Harold). Now the tapestry is back in England for the first time since it was stitched, probably by defeated Anglo-Saxons in Canterbury, <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> 1,000 years ago. It will be on view at the British Museum from September 10th. It offers three lessons for modern viewers. First, to survive against the <span class="annot" data-tooltip="odds /ɑːdz/ n. 不平等；几率；胜算；差别">odds</span>, it is sometimes best not to attract too much attention. For several centuries the tapestry is believed to have been rolled up, stored in a chest and brought out just once a year, to be displayed in the nave of Bayeux <span class="annot" data-tooltip="cathedral /kə'θiːdrəl/ n. 总教堂, 大教堂">cathedral</span>. For about two-thirds of its existence, it was not famous at all. Only in the early 1700s did a broader audience start noticing it. Its low profile helped ensure its safety. So did <span class="annot" data-tooltip="humble /'hʌmbl/ adj. 谦逊的, 谦虚的低下的, 卑微的简陋的, 低劣的vt. 使谦恭, 使卑下比较级: humbler, humblest">humble</span> materials: linen and woollen <span class="annot" data-tooltip="thread /θred/ n. 线；细线线索，思路vt. 将(针、线等)穿过…将(影片)装入放映机时 态: threaded，threading，thr">thread</span>. Many <span class="annot" data-tooltip="tapestries /'tæpəstri/ n. 挂毯；织锦；绣帷vt. 用挂毯装饰">tapestries</span> from the Middle Ages <span class="annot" data-tooltip="boasted /boʊst/ n. 自吹自擂, 自夸的话vt. & vi. 自夸vt. 有(引以为荣的事物)时 态: boasted, boasting, ">boasted</span> gold and silver <span class="annot" data-tooltip="threads /θred/ n. 线；细线线索，思路vt. 将(针、线等)穿过…将(影片)装入放映机时 态: threaded，threading，thr">threads</span> or were adorned with <span class="annot" data-tooltip="pearls /pɜːrl/ n. 珍珠；杰出者；珍珠色；珍品adj. 镶珍珠的；珍珠状的vi. 采珍珠；成珍珠状vt. 使成珠状；用珍珠装饰；使呈珍珠色P">pearls</span> and gemstones to catch the <span class="annot" data-tooltip="flickering /ˈflɪkərɪŋ/ adj. 闪烁的,摇曳的,忽隐忽现的,一闪一闪的">flickering</span> candlelight. If you haven’t seen or heard of many of them, that is because they no longer survive. Their costly decoration made them <span class="annot" data-tooltip="vulnerable /'vʌlnərəbl/ adj. 易受伤的, 脆弱的, 敏感的">vulnerable</span> to being <span class="annot" data-tooltip="pinched /pɪntʃ/ vt. 捏；勒索；使苦恼；掐掉某物，修剪n. 匮乏；少量；夹痛vi. 夹痛；节省时 态: pinched, pinching, ">pinched</span> or sold for parts. Even today, bling can bring trouble. Some of France’s crown jewels were stolen from the Louvre last year; last week a royal diamond necklace was nicked from a museum in Vienna. No thieving hands have touched the Bayeux tapestry. (Admittedly, it is hard to steal something as long as a Boeing 747.) The second lesson is that it helps to have <span class="annot" data-tooltip="capable /'keɪpəbl/ adj. 能干的，能胜任的；有才华的副 词: capably">capable</span> people looking out for you. When French revolutionaries eyed the tapestry to cover wagons carrying <span class="annot" data-tooltip="ammunition /ˌæmjə'nɪʃn/ n. 弹药, 军火">ammunition</span>, it took the pleas of a French lawyer, and the <span class="annot" data-tooltip="bribe /braɪb/ vt. & vi. 贿赂n. 贿赂时 态: bribed, bribing, bribes">bribe</span> of <span class="annot" data-tooltip="alternative /ɔːl'tɜːrnətɪv/ adj. 可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）">alternative</span> materials, to stop them. During the Franco-Prussian war, caretakers helped <span class="annot" data-tooltip="preserve /prɪ'zɜːrv/ vt. 保存；保护；维持；禁猎；腌n. 禁猎地；保护区；加工成的食品n. (某人或群体的）专门活动时 态: preserved,">preserve</span> the tapestry by keeping it locked up and hidden in a zinc cylinder. The French <span class="annot" data-tooltip="resistance /rɪ'zɪstəns/ n. 抵抗, 反抗, 抵抗能力阻力电阻, 热阻形容词: resistant">resistance</span> members who saved the tapestry from the Nazis were not fighting on Normandy beaches, but they were fighting over Norman <span class="annot" data-tooltip="heritage /'herɪtɪdʒ/ n. 遗产, 继承物传统">heritage</span>.</p>
+<p>The third lesson comes from the story the <span class="annot" data-tooltip="tapestry /'tæpəstri/ n. 挂毯；织锦；绣帷vt. 用挂毯装饰">tapestry</span> tells: it is about grace in victory. The tapestry is war <span class="annot" data-tooltip="propaganda /ˌprɑːpə'ɡændə/ n. 宣传, 宣传运动名 词: propagandism">propaganda</span>, probably <span class="annot" data-tooltip="commissioned /kə'mɪʃn/ n. 授权, 委托委员会佣金, 回扣vt. 委任, 委托时 态: commissioned, commissioning, c">commissioned</span> by Bishop Odo to glorify his half-brother’s feats at the Battle of Hastings in 1066. Yet its <span class="annot" data-tooltip="version /'vɜːrʒn/ n. 变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本">version</span> of events is surprisingly sensitive to the defeated English— perhaps because there were rebellions in England in the <span class="annot" data-tooltip="aftermath /'æftərmæθ/ n. 后果">aftermath</span> of the battle, and it did no good to pick at the <span class="annot" data-tooltip="wounds /wund/ n. 创伤，伤口vt. 使受伤vi. 受伤，伤害时 态: wounded, wounding, wounds">wounds</span> of the <span class="annot" data-tooltip="wounded /wund/ n. 创伤，伤口vt. 使受伤vi. 受伤，伤害时 态: wounded, wounding, wounds">wounded</span>. The tapestry does not play down the horrors of war. Nor does it gloat, grave dance or call the English “losers”. Leaders who chase attention, slather their <span class="annot" data-tooltip="monuments /'mɑːnjumənt/ n. 纪念碑；历史遗迹；不朽的作品vt. 为…树碑">monuments</span> in bling, treat foreigners with <span class="annot" data-tooltip="contempt /kən'tempt/ n. 轻视，蔑视；耻辱">contempt</span> and <span class="annot" data-tooltip="constantly /'kɑːnstəntli/ adv. 不断地;时常地">constantly</span> <span class="annot" data-tooltip="boast /boʊst/ n. 自吹自擂, 自夸的话vt. & vi. 自夸vt. 有(引以为荣的事物)时 态: boasted, boasting, ">boast</span> of victories they never won, should pay heed. A thousand years on, William is remembered as “the Conqueror”. What label will stick to today’s mighty rulers when they are gone? ■ This article was downloaded by zlibrary from https://www.economist.com/leaders/2026/09/03/what-the-bayeux-tapestry-teaches- about-surviving-against-the-<span class="annot" data-tooltip="odds /ɑːdz/ n. 不平等；几率；胜算；差别">odds</span></p>
+<div class="article-separator"></div>
+<div class="article-header">Leaders · Leaders | Human unintelligence</div>
+<p>The moral panic over data centres is foolish A backlash fuelled by misinformation and misunderstanding Sep 3rd 2026 THE SUPPLY of capital is not the only <span class="annot" data-tooltip="constraint /kən'streɪnt/ n. 强制；限制，约束强制，强迫">constraint</span> on the investment of America’s AI companies. They must also worry about politics. In growing numbers and with growing <span class="annot" data-tooltip="fury /'fjʊri/ n. 狂怒；暴怒；激怒者Furyn. 〈希神〉复仇女神">fury</span>, American voters oppose the building of data centres, which provide the computing power to train and run AI models. The opposition <span class="annot" data-tooltip="spans /spæn/ n. 跨度，跨径两个界限间的距离一段时间vt. 建造跨越(某物的)桥或拱；横跨跨越，穿越，贯穿SPANabbr. Statis">spans</span> the nationalist right and the environmentalist left. Such is the backlash that the <span class="annot" data-tooltip="infrastructure /'ɪnfrəstrʌktʃər/ n. 基础设施; 基础结构">infrastructure</span> has become one of the defining <span class="annot" data-tooltip="issues /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issues</span> of this year’s midterm elections. Politicians are racing to outdo one another with <span class="annot" data-tooltip="restrictions /rɪ'strɪkʃn/ n. 约束，限制管制，限定；法律，规章">restrictions</span>, moratoriums and bans on building. Voters and politicians alike are making a big mistake. One popular <span class="annot" data-tooltip="myth /mɪθ/ n. 神话；虚构的人，虚构的事">myth</span> is that data centres guzzle more water than Agastya—an argument helped along by the <span class="annot" data-tooltip="grossly /'ɡroʊsli/ adv. 十足地；严重地非常；极其下流地大略">grossly</span> inaccurate calculations of a bestselling</p>
+<p>book. In <span class="annot" data-tooltip="reality /ri'æləti/ n. 现实；真实；实际">reality</span>, a mid-sized data centre uses roughly as much water as two golf courses and considerably less if it recycles its water, as many now do. And there is no reason to single out AI: just about everything in modern life, from streaming Netflix to running a dishwasher, <span class="annot" data-tooltip="consumes /kən'suːm/ vt. 消耗, 消费, 耗尽大吃, 大喝烧毁, 毁灭时 态: consumed, consuming, consumes">consumes</span> water at levels that can be <span class="annot" data-tooltip="portrayed /pɔːr'treɪ/ vt. 画像；描述扮演时 态: portrayed，portraying，portrays">portrayed</span> as wasteful by hair-shirt environmentalists. Google has calculated that the median <span class="annot" data-tooltip="gemini /ˈdʒɛməˌnaɪ/ n. 双生子；双胎Geminin. 双子宫,双子(星)座">Gemini</span> text <span class="annot" data-tooltip="prompt /prɑːmpt/ adj. 敏捷的，迅速的；立刻的vt. 促进；激起；提示；（给演员）提白n. 提示；付款期限；DOS命令：改变DOS系统提示符的风">prompt</span> consumes about five drops, meaning even tens of thousands of AI queries would <span class="annot" data-tooltip="consume /kən'suːm/ vt. 消耗, 消费, 耗尽大吃, 大喝烧毁, 毁灭时 态: consumed, consuming, consumes">consume</span> less water than a minute in the shower. Concerns over electricity use are more numerate: data centres really do need a <span class="annot" data-tooltip="striking /'straɪkɪŋ/ adj. 显著的，突出的引人注目的；容貌出众的副 词: strikingly">striking</span> amount of power. However, there is little evidence so <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> that they have raised <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span> prices. In fact, by increasing demand they are spreading the fixed costs of <span class="annot" data-tooltip="infrastructure /'ɪnfrəstrʌktʃər/ n. 基础设施; 基础结构">infrastructure</span> among more kilowatt-hours sold. In recent weeks a <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of large <span class="annot" data-tooltip="utilities /juː'tɪləti/ n. 效用；实用；功用；公共设施adj. 有多种用途的；通用的；实用的">utilities</span> have linked data centres to <span class="annot" data-tooltip="reductions /rɪ'dʌkʃn/ n. 减少，缩小；减少的量，降价">reductions</span> in bills. Many data centres are also <span class="annot" data-tooltip="helping /'helpɪŋ/ n. （进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的">helping</span> finance new sources of generation. Eventually the use of AI could push up electricity bills. But the answer to competing demands on resources—whether water, electricity or something else—is to price them according to their scarcity, thereby encouraging more <span class="annot" data-tooltip="provision /prə'vɪʒn/ n. 提供，供给，给养，供应品（为将来做的）准备饮食供应，（尤指旅途中的）粮食（provisions）（法律文件的）规定，条款">provision</span> and higher living standards over time. It is not to ration inputs according to the <span class="annot" data-tooltip="arbitrary /'ɑːrbɪtreri/ adj. 随意的, 主观的专横的, 独断专行的副 词: arbitrarily">arbitrary</span> judgment of <span class="annot" data-tooltip="scolds /skoʊld/ vi. 责骂；叱责vt. 责骂；骂n. 责骂；爱责骂的人时 态: scolded, scolding, scolds">scolds</span>. Where pricing is difficult to calculate—to account for noise pollution, say—planning judgements are necessary, and except for needing to be near the <span class="annot" data-tooltip="grid /ɡrɪd/ n. 格子,格栏地图上的坐标方格输电网">grid</span> there is no good reason to put data centres next to homes. In any case, even the noise worry is overstated: many <span class="annot" data-tooltip="viral /'vaɪrəl/ adj. 滤过性毒菌引起的；滤过性毒菌的">viral</span> videos of supposed AI data centre noise are really Bitcoin mines, not state-of-the-art hyperscaler facilities. Set against the illusory costs of data centres are the <span class="annot" data-tooltip="tangible /'tændʒəbl/ adj. 有形的；可触摸的；切实的n. 有形资产副 词: tangibly">tangible</span> benefits. At a national level, data centres power a technology for which there is rapidly growing demand and on whose success future economic growth and national defence may depend. More prosaically, data centres pay huge tax bills, helping fund schools, libraries and police stations. In Loudoun County, Virginia, a tax on computer equipment inside its more than 250 centres is expected to supply 40% of the county’s total tax <span class="annot" data-tooltip="revenue /'revənuː/ n. 收入，收益；财政收入，税收">revenue</span> next year. The windfall has allowed the county to cut <span class="annot" data-tooltip="residents /'rezɪdənt/ adj. 定居的; 常驻的n. 居民(旅馆的)住宿者">residents</span>’ <span class="annot" data-tooltip="property /'prɑːpərti/ n. 财产；性质，性能；所有权形容词: propertyless">property</span> taxes by about 30%.</p>
+<p>There is a respectable argument for slowing down AI research, but it rests on the danger to all <span class="annot" data-tooltip="humanity /hjuː'mænəti/ n. 人类；人道；仁慈；人文学科">humanity</span> of the technology being abused or going rogue, not the local harms of data centres. America unilaterally making it harder to build AI <span class="annot" data-tooltip="infrastructure /'ɪnfrəstrʌktʃər/ n. 基础设施; 基础结构">infrastructure</span> will <span class="annot" data-tooltip="simply /'sɪmpli/ adv. 简单地；朴素地；简直；仅仅；坦白地">simply</span> hand the advantage to China, whose <span class="annot" data-tooltip="authoritarian /əˌθɔːrə'teriən/ adj. 权力主义的,专制的n. 权力主义者,专制者,独裁者名 词: authoritarian">authoritarian</span> leaders can put data centres wherever they choose. For years, America’s populists complained that its physical economy had been <span class="annot" data-tooltip="hollowed /'hɑːloʊ/ adj. 空的；凹的；虚伪的；中空的，空腹的n. 洞；山谷；窟窿vt. 使成为空洞vi. 形成空洞adv. 无用地；彻底地比较级:">hollowed</span> out, giving China an economic <span class="annot" data-tooltip="edge /edʒ/ n. 边缘；刀刃；优势；锋利vt. 使锐利；将…开刃；给…加上边vi. 缓缓移动；侧着移动EDGEabbr. Electron">edge</span> and leaving Uncle Sam without the <span class="annot" data-tooltip="industries /'ɪndəstri/ n. 工业；产业；勤勉">industries</span> it would need in wartime. By opposing data centres, they risk causing those <span class="annot" data-tooltip="exact /ɪɡ'zækt/ adj. 精确的；准确的，精密的vt. 强求；要求；急需vi. 勒索钱财时 态: exacted, exacting, exact">exact</span> harms. ■ This article was downloaded by zlibrary from https://www.economist.com/leaders/2026/09/03/the-moral-panic-over-data-centres-is- foolish</p>
+<div class="article-separator"></div>
+<div class="article-header">Letters · Letters | A selection of correspondence</div>
+<p>The opposition of scientific research on animals Also this week, humanitarian aid, polygenic embryo selection, Dolly Parton, relaxing holidays, Lake Ontario Sep 3rd 2026 Letters are welcome via email to letters@economist.comFind out more about how we <span class="annot" data-tooltip="process /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">process</span> your letter <span class="annot" data-tooltip="regarding /rɪ'ɡɑːrdɪŋ/ prep. (表示论及)关于; 至于; 就…而论">Regarding</span> your leader on bipartisan opposition to the use of animals in experiments, animal protection has always been supported by both parties (“Bipartisan and wrong”, August 8th). <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">Decades</span> ago PETA worked with Bob <span class="annot" data-tooltip="dole /doʊl/ n. 救济物失业救济金时 态: doled, doling, doles">Dole</span> and Bob Smith, <span class="annot" data-tooltip="republican /rɪ'pʌblɪkən/ adj. 共和国的, 共和政体的n. 拥护共和政体者, 共和主义者名 词: republicanism">Republican</span> senators, as well as Alan Cranston, a <span class="annot" data-tooltip="democratic /ˌdemə'krætɪk/ adj. 民主的, 有民主精神或作风的副 词: democratically">Democratic</span> senator, and Joe Biden when he was a senator. And so it has been through the years. What is different now is that we have 15 years of scientific data showing the failure of animal use to lead to treatments for humans. Abhorrent</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>aware</td><td>/ə'wer/ adj.</td><td>知道的；意识到的；有…方面知识的；懂世故的</td></tr>
+<tr><td>process</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>reasoning</td><td>/'riːzənɪŋ/ n.</td><td>运用思考、理解、推想等能力的做法或过程;推理</td></tr>
+<tr><td>essential</td><td>/ɪ'senʃl/ adj.</td><td>基本的；必要的；本质的；精华的</td></tr>
+<tr><td>conservative</td><td>/kən'sɜːrvətɪv/ n.</td><td>保守的人adj. 保守的, 守旧的(式样等)不时新的, 传统的</td></tr>
+<tr><td>nudge</td><td>/nʌdʒ/ n.</td><td>用肘轻推；推动；没完没了抱怨的人vt. 用肘轻推；推进；向…不停地唠叨vi. 轻推；推进；唠叨, nudging, nudges</td></tr>
+<tr><td>consent</td><td>/kən'sent/ n.</td><td>准许，同意，赞成vi. 同意；赞成，consenting，consents</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>misconception</td><td>/ˌmɪskən'sepʃn/ n.</td><td>误解,错误想法,错误印象</td></tr>
+<tr><td>societies</td><td>/sə'saɪəti/ n.</td><td>社会；社交界；交往；社团</td></tr>
+<tr><td>stuff</td><td>/stʌf/ n.</td><td>材料；东西；填充物；素材资料vt. 填塞；塞满；让吃饱vi. 吃得过多, stuffing, stuffs</td></tr>
+<tr><td>tempting</td><td>/tempt/ vt.</td><td>引诱或怂恿(某人)干不正当的事使想要, tempting, tempts</td></tr>
+<tr><td>terrible</td><td>/'terəbl/ adj.</td><td>可怕的；很糟的；令人讨厌的adv. [口]很，非常</td></tr>
+<tr><td>blow</td><td>/bloʊ/ n.</td><td>吹；殴打；打击vi. 风吹；喘气vt. 风吹, blows</td></tr>
+<tr><td>tapestry</td><td>/'tæpəstri/ n.</td><td>挂毯；织锦；绣帷vt. 用挂毯装饰</td></tr>
+<tr><td>odds</td><td>/ɑːdz/ n.</td><td>不平等；几率；胜算；差别</td></tr>
+<tr><td>yields</td><td>/jiːld/ vt.</td><td>出产；屈服；放弃vi. 屈服，投降n. 收益；产量, yielding, yields</td></tr>
+<tr><td>liberation</td><td>/ˌlɪbə'reɪʃn/ n.</td><td>解放</td></tr>
+<tr><td>urgent</td><td>/'ɜːrdʒənt/ adj.</td><td>紧急的；急迫的</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>obsessed</td><td>/əb'ses/ v.</td><td>使痴迷，使迷恋；使心神不宁，不停地困扰； 唠叨；挂牵，念念不忘, obsessing, obsesses</td></tr>
+<tr><td>depicting</td><td>/dɪ'pɪkt/ vt.</td><td>描绘；描画描述，depicting，depicts</td></tr>
+<tr><td>glory</td><td>/'ɡlɔːri/ n.</td><td>光荣，荣誉；赞颂vi. 自豪，骄傲；狂喜</td></tr>
+<tr><td>hangout</td><td>/ˈhæŋˌaʊt/ n.</td><td>(流氓)住所,巢穴</td></tr>
+<tr><td>intercepted</td><td>/ˌɪntər'sept/ vt.</td><td>拦截, 截住, 截击, intercepting, intercepts</td></tr>
+<tr><td>resistance</td><td>/rɪ'zɪstəns/ n.</td><td>抵抗, 反抗, 抵抗能力阻力电阻, 热阻</td></tr>
+<tr><td>column</td><td>/'kɑːləm/ n.</td><td>圆柱，柱形物；纵队，列；专栏</td></tr>
+<tr><td>tapestry</td><td>/'tæpəstri/ n.</td><td>挂毯；织锦；绣帷vt. 用挂毯装饰</td></tr>
+<tr><td>strip</td><td>/strɪp/ vt.</td><td>剥去；剥夺；脱去衣服n. 带；条状；脱衣舞vi. 脱去衣服, stripping, strips</td></tr>
+<tr><td>negotiations</td><td>/nɪˌɡoʊʃi'eɪʃn/ n.</td><td>协商，谈判完成(难事)；通过</td></tr>
+<tr><td>cover</td><td>/'kʌvər/ vt.</td><td>包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替, covering, covers</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>odds</td><td>/ɑːdz/ n.</td><td>不平等；几率；胜算；差别</td></tr>
+<tr><td>cathedral</td><td>/kə'θiːdrəl/ n.</td><td>总教堂, 大教堂</td></tr>
+<tr><td>humble</td><td>/'hʌmbl/ adj.</td><td>谦逊的, 谦虚的低下的, 卑微的简陋的, 低劣的vt. 使谦恭, 使卑下, humblest</td></tr>
+<tr><td>thread</td><td>/θred/ n.</td><td>线；细线线索，思路vt. 将(针、线等)穿过…将(影片)装入放映机，threading，threads</td></tr>
+<tr><td>tapestries</td><td>/'tæpəstri/ n.</td><td>挂毯；织锦；绣帷vt. 用挂毯装饰</td></tr>
+<tr><td>boasted</td><td>/boʊst/ n.</td><td>自吹自擂, 自夸的话vt. & vi. 自夸vt. 有(引以为荣的事物), boasting, boasts</td></tr>
+<tr><td>threads</td><td>/θred/ n.</td><td>线；细线线索，思路vt. 将(针、线等)穿过…将(影片)装入放映机，threading，threads</td></tr>
+<tr><td>pearls</td><td>/pɜːrl/ n.</td><td>珍珠；杰出者；珍珠色；珍品adj. 镶珍珠的；珍珠状的vi. 采珍珠；成珍珠状vt. 使成珠状；用珍珠装饰；使呈珍珠色Pearln. 珀尔（女子名）, pear</td></tr>
+<tr><td>flickering</td><td>/ˈflɪkərɪŋ/ adj.</td><td>闪烁的,摇曳的,忽隐忽现的,一闪一闪的</td></tr>
+<tr><td>vulnerable</td><td>/'vʌlnərəbl/ adj.</td><td>易受伤的, 脆弱的, 敏感的</td></tr>
+<tr><td>pinched</td><td>/pɪntʃ/ vt.</td><td>捏；勒索；使苦恼；掐掉某物，修剪n. 匮乏；少量；夹痛vi. 夹痛；节省, pinching, pinches</td></tr>
+<tr><td>capable</td><td>/'keɪpəbl/ adj.</td><td>能干的，能胜任的；有才华的</td></tr>
+<tr><td>ammunition</td><td>/ˌæmjə'nɪʃn/ n.</td><td>弹药, 军火</td></tr>
+<tr><td>bribe</td><td>/braɪb/ vt.</td><td>& vi. 贿赂n. 贿赂, bribing, bribes</td></tr>
+<tr><td>alternative</td><td>/ɔːl'tɜːrnətɪv/ adj.</td><td>可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）可供选择的事物；可供选择的解决办法替代物</td></tr>
+<tr><td>preserve</td><td>/prɪ'zɜːrv/ vt.</td><td>保存；保护；维持；禁猎；腌n. 禁猎地；保护区；加工成的食品n. (某人或群体的）专门活动, preserving, preserves</td></tr>
+<tr><td>resistance</td><td>/rɪ'zɪstəns/ n.</td><td>抵抗, 反抗, 抵抗能力阻力电阻, 热阻</td></tr>
+<tr><td>heritage</td><td>/'herɪtɪdʒ/ n.</td><td>遗产, 继承物传统</td></tr>
+<tr><td>tapestry</td><td>/'tæpəstri/ n.</td><td>挂毯；织锦；绣帷vt. 用挂毯装饰</td></tr>
+<tr><td>propaganda</td><td>/ˌprɑːpə'ɡændə/ n.</td><td>宣传, 宣传运动</td></tr>
+<tr><td>commissioned</td><td>/kə'mɪʃn/ n.</td><td>授权, 委托委员会佣金, 回扣vt. 委任, 委托, commissioning, commissions</td></tr>
+<tr><td>version</td><td>/'vɜːrʒn/ n.</td><td>变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本</td></tr>
+<tr><td>aftermath</td><td>/'æftərmæθ/ n.</td><td>后果</td></tr>
+<tr><td>wounds</td><td>/wund/ n.</td><td>创伤，伤口vt. 使受伤vi. 受伤，伤害, wounding, wounds</td></tr>
+<tr><td>wounded</td><td>/wund/ n.</td><td>创伤，伤口vt. 使受伤vi. 受伤，伤害, wounding, wounds</td></tr>
+<tr><td>monuments</td><td>/'mɑːnjumənt/ n.</td><td>纪念碑；历史遗迹；不朽的作品vt. 为…树碑</td></tr>
+<tr><td>contempt</td><td>/kən'tempt/ n.</td><td>轻视，蔑视；耻辱</td></tr>
+<tr><td>constantly</td><td>/'kɑːnstəntli/ adv.</td><td>不断地;时常地</td></tr>
+<tr><td>boast</td><td>/boʊst/ n.</td><td>自吹自擂, 自夸的话vt. & vi. 自夸vt. 有(引以为荣的事物), boasting, boasts</td></tr>
+<tr><td>odds</td><td>/ɑːdz/ n.</td><td>不平等；几率；胜算；差别</td></tr>
+<tr><td>constraint</td><td>/kən'streɪnt/ n.</td><td>强制；限制，约束强制，强迫</td></tr>
+<tr><td>fury</td><td>/'fjʊri/ n.</td><td>狂怒；暴怒；激怒者Furyn. 〈希神〉复仇女神</td></tr>
+<tr><td>spans</td><td>/spæn/ n.</td><td>跨度，跨径两个界限间的距离一段时间vt. 建造跨越(某物的)桥或拱；横跨跨越，穿越，贯穿SPANabbr. Statistical Processing and</td></tr>
+<tr><td>infrastructure</td><td>/'ɪnfrəstrʌktʃər/ n.</td><td>基础设施; 基础结构</td></tr>
+<tr><td>issues</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>restrictions</td><td>/rɪ'strɪkʃn/ n.</td><td>约束，限制管制，限定；法律，规章</td></tr>
+<tr><td>myth</td><td>/mɪθ/ n.</td><td>神话；虚构的人，虚构的事</td></tr>
+<tr><td>grossly</td><td>/'ɡroʊsli/ adv.</td><td>十足地；严重地非常；极其下流地大略</td></tr>
+<tr><td>reality</td><td>/ri'æləti/ n.</td><td>现实；真实；实际</td></tr>
+<tr><td>consumes</td><td>/kən'suːm/ vt.</td><td>消耗, 消费, 耗尽大吃, 大喝烧毁, 毁灭, consuming, consumes</td></tr>
+<tr><td>portrayed</td><td>/pɔːr'treɪ/ vt.</td><td>画像；描述扮演，portraying，portrays</td></tr>
+<tr><td>gemini</td><td>/ˈdʒɛməˌnaɪ/ n.</td><td>双生子；双胎Geminin. 双子宫,双子(星)座</td></tr>
+<tr><td>prompt</td><td>/prɑːmpt/ adj.</td><td>敏捷的，迅速的；立刻的vt. 促进；激起；提示；（给演员）提白n. 提示；付款期限；DOS命令：改变DOS系统提示符的风格adv. 准时地, promptest</td></tr>
+<tr><td>consume</td><td>/kən'suːm/ vt.</td><td>消耗, 消费, 耗尽大吃, 大喝烧毁, 毁灭, consuming, consumes</td></tr>
+<tr><td>striking</td><td>/'straɪkɪŋ/ adj.</td><td>显著的，突出的引人注目的；容貌出众的</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>infrastructure</td><td>/'ɪnfrəstrʌktʃər/ n.</td><td>基础设施; 基础结构</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>utilities</td><td>/juː'tɪləti/ n.</td><td>效用；实用；功用；公共设施adj. 有多种用途的；通用的；实用的</td></tr>
+<tr><td>reductions</td><td>/rɪ'dʌkʃn/ n.</td><td>减少，缩小；减少的量，降价</td></tr>
+<tr><td>helping</td><td>/'helpɪŋ/ n.</td><td>（进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的</td></tr>
+<tr><td>provision</td><td>/prə'vɪʒn/ n.</td><td>提供，供给，给养，供应品（为将来做的）准备饮食供应，（尤指旅途中的）粮食（provisions）（法律文件的）规定，条款v. 【正式】为…提供所需物品（尤指食物</td></tr>
+<tr><td>arbitrary</td><td>/'ɑːrbɪtreri/ adj.</td><td>随意的, 主观的专横的, 独断专行的</td></tr>
+<tr><td>scolds</td><td>/skoʊld/ vi.</td><td>责骂；叱责vt. 责骂；骂n. 责骂；爱责骂的人, scolding, scolds</td></tr>
+<tr><td>grid</td><td>/ɡrɪd/ n.</td><td>格子,格栏地图上的坐标方格输电网</td></tr>
+<tr><td>viral</td><td>/'vaɪrəl/ adj.</td><td>滤过性毒菌引起的；滤过性毒菌的</td></tr>
+<tr><td>tangible</td><td>/'tændʒəbl/ adj.</td><td>有形的；可触摸的；切实的n. 有形资产</td></tr>
+<tr><td>revenue</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>residents</td><td>/'rezɪdənt/ adj.</td><td>定居的; 常驻的n. 居民(旅馆的)住宿者</td></tr>
+<tr><td>property</td><td>/'prɑːpərti/ n.</td><td>财产；性质，性能；所有权</td></tr>
+<tr><td>humanity</td><td>/hjuː'mænəti/ n.</td><td>人类；人道；仁慈；人文学科</td></tr>
+<tr><td>infrastructure</td><td>/'ɪnfrəstrʌktʃər/ n.</td><td>基础设施; 基础结构</td></tr>
+<tr><td>simply</td><td>/'sɪmpli/ adv.</td><td>简单地；朴素地；简直；仅仅；坦白地</td></tr>
+<tr><td>authoritarian</td><td>/əˌθɔːrə'teriən/ adj.</td><td>权力主义的,专制的n. 权力主义者,专制者,独裁者</td></tr>
+<tr><td>hollowed</td><td>/'hɑːloʊ/ adj.</td><td>空的；凹的；虚伪的；中空的，空腹的n. 洞；山谷；窟窿vt. 使成为空洞vi. 形成空洞adv. 无用地；彻底地, hollowest</td></tr>
+<tr><td>edge</td><td>/edʒ/ n.</td><td>边缘；刀刃；优势；锋利vt. 使锐利；将…开刃；给…加上边vi. 缓缓移动；侧着移动EDGEabbr. Electronic Data Gathering Eq</td></tr>
+<tr><td>industries</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>exact</td><td>/ɪɡ'zækt/ adj.</td><td>精确的；准确的，精密的vt. 强求；要求；急需vi. 勒索钱财, exacting, exacts</td></tr>
+<tr><td>process</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>regarding</td><td>/rɪ'ɡɑːrdɪŋ/ prep.</td><td>(表示论及)关于; 至于; 就…而论</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>dole</td><td>/doʊl/ n.</td><td>救济物失业救济金, doling, doles</td></tr>
+<tr><td>republican</td><td>/rɪ'pʌblɪkən/ adj.</td><td>共和国的, 共和政体的n. 拥护共和政体者, 共和主义者</td></tr>
+<tr><td>democratic</td><td>/ˌdemə'krætɪk/ adj.</td><td>民主的, 有民主精神或作风的</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day3.html" class="nav-btn">← Day 3</a>
+  <a href="day5.html" class="nav-btn">Day 5 →</a>
+</div>
+
+<div class="progress">📖 Day 4 of 43</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-09-05</div>
+
+</body>
+</html>

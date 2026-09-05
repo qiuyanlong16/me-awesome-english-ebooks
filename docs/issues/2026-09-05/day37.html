@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance & economics</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-09-05</div>
+
+<h1 class="article-title">Finance & economics</h1>
+<div class="article-section"></div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p><span class="annot" data-tooltip="major /'meɪdʒər/ adj. 主要的；主修的；重要的；较多的n. 成年人；主修科目；陆军少校vi. 主修时 态: majored, majoring,">major</span> exchanges tracked by The Economist. Hong Kong’s predicament also serves as a warning sign for America, which is enjoying an IPO <span class="annot" data-tooltip="surge /sɜːrdʒ/ n. (情感的) 突发，涌现，突然出现（数量的）急剧上升，激增；大量；一大批奔涌向前；突然的向上运动（电流）浪涌v. 涌；汹涌">surge</span> of its <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span>. Amos is in a long <span class="annot" data-tooltip="queue /kjuː/ n. 队列；长队；辫子vi. 排队；排队等候vt. 将…梳成辫子；使…排队时 态: queued, queuing, queu">queue</span> of companies waiting to list in Hong Kong. The exchange is encouraging them by <span class="annot" data-tooltip="extending /ɪk'stend/ vt. & vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出时 态:">extending</span> the window for firms to <span class="annot" data-tooltip="complete /kəm'pliːt/ adj. 完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善比较级: complete">complete</span> their paperwork and allowing them to file it in secret. In the first seven months of 2026 it <span class="annot" data-tooltip="hosted /hoʊst/ n. 主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集时 态: hosted, hosting, host">hosted</span> 104 IPOs, which together raised about $42bn. It offered a refuge to Shein, a pedlar of superfast-fashion which <span class="annot" data-tooltip="debuted /deɪ'bjuː/ n. 〈法〉演员首次演出时 态: debuted debuting debuts">debuted</span> on August 31st, after geopolitical concerns <span class="annot" data-tooltip="deterred /dɪ'tɜːr/ vt. 制止，阻止；使打消念头时 态: deterred, deterring, deters">deterred</span> the company from listing in New York or London. The sum is more than double the haul from the same months of 2025, itself a <span class="annot" data-tooltip="bumper /bʌmp/ n. 肿块，隆起物；撞击vi. 碰撞，撞击；颠簸而行vt. 碰，撞；颠簸adv. 突然地，猛烈地时 态: bumped, bu">bumper</span> year in which Hong Kong <span class="annot" data-tooltip="debuts /deɪ'bjuː/ n. 〈法〉演员首次演出时 态: debuted debuting debuts">debuts</span> raised more money than any other exchange. If markets for stocks were like ordinary ones for cars or other goods, Hong Kong’s would be unquestionably booming. If motorists were <span class="annot" data-tooltip="snapping /snæp/ vt. 猛咬；突然折断，拉断；啪地关上vi. 咬；厉声说；咯嗒一声关上n. 猛咬；劈啪声；突然折断adj. 突然的SNAPabb">snapping</span> up lots of new <span class="annot" data-tooltip="vehicles /'viːəkl/ n. 交通工具, 车辆传播媒介, 手段">vehicles</span> at healthy prices, no one would worry that prices for used rides were flat or <span class="annot" data-tooltip="falling /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">falling</span>. But with equities, the market for “second- hand” <span class="annot" data-tooltip="securities /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">securities</span> overshadows that for newly <span class="annot" data-tooltip="minted /mɪnt/ n. 薄荷；造币厂，巨款vt. 铸造，铸币时 态: minted, minting, mints">minted</span> shares. <span class="annot" data-tooltip="hence /hens/ adv. 因此；今后">Hence</span> Hong Kong’s conflicting <span class="annot" data-tooltip="sensations /sen'seɪʃn/ n. 感觉, 感受知觉激动, 轰动">sensations</span>: zingy and downbeat all at once. Some of the dissonance is caused by unique Chinese <span class="annot" data-tooltip="characteristics /ˌkærəktə'rɪstɪk/ adj. 典型的；特有的；表示特性的">characteristics</span>. Mainland regulators have become <span class="annot" data-tooltip="stricter /strɪkt/ adj. 严格的, 严厉的严谨的, 精确的绝对的, 完全的比较级: stricter, strictest">stricter</span> about share offerings on the Shanghai or Shenzhen exchanges. In response, some Chinese companies have turned to Hong Kong instead, even if conditions are not otherwise inviting. America’s increased hostility to its superpower <span class="annot" data-tooltip="rival /'raɪvl/ n. 竞争对手vt. 与…竞争, 与…匹敌时 态: rivaled, rivalled rivaling, rivalling">rival</span> has also persuaded a <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of Chinese companies on American bourses to seek <span class="annot" data-tooltip="secondary /'sekənderi/ adj. 次要的, 次等的中级的, 第二的副 词: secondarily">secondary</span> listings in Hong Kong. Their arrival has perhaps <span class="annot" data-tooltip="crowded /kroʊ/ vi. 报晓；啼叫n. 乌鸦；鸡鸣；撬棍时 态: crowed, crowing, crows">crowded</span> out investor demand for other shares. Like someone who has gorged on too much confectionery, Hong Kong’s market is suffering from indigestion. It also echoes a familiar <span class="annot" data-tooltip="tune /tuːn/ n. 曲调, 曲子vt. & vi. 调音vt. 调整时 态: tuned, tuning, tunes">tune</span>. A study of American markets from 1928 to 1997 by Malcolm Baker of Harvard University and Jeffrey Wurgler, then of Yale, finds that firms <span class="annot" data-tooltip="issue /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issue</span> more equity just before periods of low market returns. Another paper from 2005 by Lubos <span class="annot" data-tooltip="pastor /'pæstər/ n. 牧师vt. 作……的牧师时 态: pastored, pastoring, pastors">Pastor</span> and Pietro Veronesi of the University of Chicago similarly finds that IPO <span class="annot" data-tooltip="waves /weɪv/ vi. 波动；起伏；摇动；呈波形；挥手示意vt. 向…挥手示意；使成波浪形；卷（烫）发n. 波浪；波动；高潮；卷曲；挥手示意时 ">waves</span> follow good times and <span class="annot" data-tooltip="precede /prɪ'siːd/ v. 在…之前发生（或出现）；先于走在…前面（句、段、章节）在…之前时 态: preceded, preceding, pre">precede</span> bad times.</p>
+<p>In keeping with this score, Hong Kong’s IPO boom began <span class="annot" data-tooltip="amid /ə'mɪd/ prep. 在其中，在其间">amid</span> a dramatic stock-market rally: the Hang Seng rose by over 40% in the year after China’s government announced fresh monetary stimulus in September 2024. The index’s <span class="annot" data-tooltip="subsequent /'sʌbsɪkwənt/ adj. 随后的, 继…之后的副 词: subsequently">subsequent</span> performance is <span class="annot" data-tooltip="jarring /ˈdʒɑrɪŋ/ adj. 刺耳的；不和谐的；辗轧的n. 辗轧声；冲突；震动v. 震惊；冲突；发刺耳声（jar的现在分词）">jarring</span> only in that the low returns have arrived before the IPO <span class="annot" data-tooltip="wave /weɪv/ vi. 波动；起伏；摇动；呈波形；挥手示意vt. 向…挥手示意；使成波浪形；卷（烫）发n. 波浪；波动；高潮；卷曲；挥手示意时 ">wave</span> is over. Some <span class="annot" data-tooltip="scholars /'skɑːlər/ n. 学者；奖学金获得者">scholars</span> think the phenomenon reflects markets’ irrationality. <span class="annot" data-tooltip="owners /'oʊnər/ n. 所有者；物主">Owners</span> sell shares when they know the market is overvalued and <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span> investors do not. But Mr <span class="annot" data-tooltip="pastor /'pæstər/ n. 牧师vt. 作……的牧师时 态: pastored, pastoring, pastors">Pastor</span> and Mr Veronesi have a different <span class="annot" data-tooltip="explanation /ˌeksplə'neɪʃn/ n. 解释, 说明能说明某事缘由的言语、事实、情况等">explanation</span>. The decision to go public is made under <span class="annot" data-tooltip="uncertainty /ʌn'sɜːrtnti/ n. 无把握;不确定;变化不定无把握、不确定的事物">uncertainty</span>—<span class="annot" data-tooltip="corporate /'kɔːrpərət/ adj. 社团的, 法人的副 词: corporately">corporate</span> insiders do not know anything the market doesn’t about future conditions—and hard to reverse. Since markets always fluctuate, it makes sense not to list when times are bad, in the hope that conditions will improve. Waiting thus carries what economists call an “option <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span>”. As a consequence, many firms list after valuations improve, but long before valuations peak. What does this mean for Hong Kong investors? Though the <span class="annot" data-tooltip="secondary /'sekənderi/ adj. 次要的, 次等的中级的, 第二的副 词: secondarily">secondary</span> market as a whole is struggling, the debutantes have mostly done well at least in their first days of trading (even shares in the ill-starred Shein ended their opening day roughly flat). Those lucky enough to get an <span class="annot" data-tooltip="allocation /ˌælə'keɪʃn/ n. 配给, 分配, 拨出分配额(或量)">allocation</span> of shares in an <span class="annot" data-tooltip="upcoming /'ʌpkʌmɪŋ/ adj. 即将来到的, 即将出现的">upcoming</span> IPO can, then, look forward to three <span class="annot" data-tooltip="sensations /sen'seɪʃn/ n. 感觉, 感受知觉激动, 轰动">sensations</span>: a tingle on the tongue, a jingle in the <span class="annot" data-tooltip="ear /ɪr/ n. 耳朵；听觉；倾听；穗vi. （美俚）听见；抽穗EARabbr. East African Railways 东非铁路公司">ear</span>, and the clink of money in their pocket. ■ This article was downloaded by zlibrary from https://www.economist.com/finance-and-economics/2026/09/01/ipo-booms-can-spell- trouble-for-the-markets</p>
+<p>Finance & economics | Free Exchange <span class="annot" data-tooltip="central /'sentrəl/ adj. 中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的副 词: centrally">Central</span> banking has a forbidding future But Kevin Warsh has bought himself time Sep 3rd 2026 Bears, bulls, hawks, doves: each animal in the macroeconomic menagerie can be found between the peaks, prairies and ranches of Jackson <span class="annot" data-tooltip="hole /hoʊl/ n. 洞，孔；洞穴，穴；突破口vi. 凿洞，穿孔；（高尔夫球等）进洞vt. 凿洞时 态: holed, holing, hol">Hole</span>, Wyoming. During the Kansas City <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">Federal</span> Reserve’s <span class="annot" data-tooltip="annual /'ænjuəl/ adj. 年度的；每年的n. 年刊，年鉴；一年生植物副 词: annually">annual</span> central-banker bash on August 27th-29th your columnist <span class="annot" data-tooltip="spotted /spɑːt/ n. 斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Po">spotted</span> a black bear and learned the rudiments of cattle-roping. (The trick to roping a bull, it turns out, is knowing when to let go.) But it was a hawk that was the talk of the town. Kevin Warsh, the new-ish Fed chair, arrived in the Grand Tetons after a frustrating start. Markets had been baffled by his gnomic, occasionally contradictory press <span class="annot" data-tooltip="conferences /'kɑːnfərəns/ n. 会议讨论, 商谈形容词: conferential">conferences</span>. Worries <span class="annot" data-tooltip="lingered /'lɪŋɡər/ vi. 逗留, 徘徊缓慢消失时 态: lingered, lingering, lingers">lingered</span> that he lacked the <span class="annot" data-tooltip="backbone /'bækboʊn/ n. 脊骨，脊柱脊骨状物；(船的)龙骨；书脊骨干，支柱，主力，中坚骨气；毅力Backbone广域网中的一种高速链路形容词: b">backbone</span> to defy Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>. A week earlier Scott Bessent, the <span class="annot" data-tooltip="treasury /'treʒəri/ n. 财政部；国库，金库；宝库">treasury</span></p>
+<p><span class="annot" data-tooltip="secretary /'sekrəteri/ n. 秘书书记部长, 大臣形容词: secretarial">secretary</span>, had meddled in America’s bond market, which smelled like pre- midterm politicking. Despite those efforts, <span class="annot" data-tooltip="yields /jiːld/ vt. 出产；屈服；放弃vi. 屈服，投降n. 收益；产量时 态: yielded, yielding, yields">yields</span> continued to <span class="annot" data-tooltip="surge /sɜːrdʒ/ n. (情感的) 突发，涌现，突然出现（数量的）急剧上升，激增；大量；一大批奔涌向前；突然的向上运动（电流）浪涌v. 涌；汹涌">surge</span>. Fortunately for Mr Warsh, the upside of low expectations is that they are easier to <span class="annot" data-tooltip="surpass /sər'pæs/ vt. 胜过，优于；超越；非…所能办到或理解时 态: surpassed, surpassing, surpasses">surpass</span>. By that standard, the hawk soared. After reiterating his dislike of explaining himself to markets, Mr Warsh did just that. He walked through <span class="annot" data-tooltip="inflation /ɪn'fleɪʃn/ n. (充气而引起的)膨胀通货膨胀">inflation</span> (troubling) and unemployment (not so): the sort of “reaction function” he’d disavowed, and a hawkish one, too. He <span class="annot" data-tooltip="emphasised /'emfəsɪs/ n. 强调, 重点">emphasised</span> the Fed’s <span class="annot" data-tooltip="main /meɪn/ adj. 主要的; 最重要的n. 总管道; 干线">main</span> inflation <span class="annot" data-tooltip="gauge /ɡeɪdʒ/ n. 厚度, 直径测量仪表规格, 尺度vt. 计量, 度量估计, 判断时 态: gaugedalso gaged gaugin">gauge</span> over funky <span class="annot" data-tooltip="alternatives /ɔːl'tɜːrnətɪv/ adj. 可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）">alternatives</span>. Insiders saw the clawprints of career staffers. The hawkish talk half-worked. That day markets shortened the <span class="annot" data-tooltip="odds /ɑːdz/ n. 不平等；几率；胜算；差别">odds</span> of a rate hike but, reassuringly, without a further <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> in long-term yields. Still, tough talk can do only so much: yields resumed their upward march the following week. Has Mr Warsh now backed himself into a corner? The crowd at Jackson <span class="annot" data-tooltip="hole /hoʊl/ n. 洞，孔；洞穴，穴；突破口vi. 凿洞，穿孔；（高尔夫球等）进洞vt. 凿洞时 态: holed, holing, hol">Hole</span> was split. One side reckoned that after such a firm <span class="annot" data-tooltip="steer /stɪr/ v. 驾驶（船、汽车等）；掌控方向盘（交通工具）行驶，沿（特定路线或方向）行进引导，带领n. 阉公牛；肉用公牛时 态: ste">steer</span> he has no choice but to <span class="annot" data-tooltip="raise /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raise</span> interest rates. If not, questions about his seriousness and political independence would deepen. Others noted that even a pre-Warsh Fed would be <span class="annot" data-tooltip="cautious /'kɔːʃəs/ adj. 小心的, 谨慎的副 词: cautiously">cautious</span> about big moves so close to an election. Besides, raising rates in September <span class="annot" data-tooltip="versus /'vɜːrsəs/ prep. 对；与...相对；对抗">versus</span> December makes little economic difference. Markets now put the odds of a September hike at a tad better than even. Whatever leeway Mr Warsh bought himself came from going back to <span class="annot" data-tooltip="central /'sentrəl/ adj. 中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的副 词: centrally">central</span>-banking basics. But the official theme of Jackson Hole was on the future: “Financial <span class="annot" data-tooltip="innovation /ˌɪnə'veɪʃn/ n. 改革, 革新, 创新新观念, 新方法, 新发明形容词: innovational">Innovation</span>: Implications for Payments and Policy”. Panellists debated whether stablecoins and tokenised <span class="annot" data-tooltip="deposits /dɪ'pɑːzɪt/ n. 存款；保证金；沉淀物vt. 存放；使沉积vi. 沉淀时 态: deposited, depositing, deposi">deposits</span> might revolutionise financial plumbing. Darrell Duffie of Stanford University suggested that programmable money may better co-ordinate complex multi- step <span class="annot" data-tooltip="transactions /træn'zækʃn/ n. 处理，办理，执行(一笔)交易；(一项)事务形容词: transactional">transactions</span>. Perhaps it could smooth cross-border payments. Wenxin Du of Harvard Business School <span class="annot" data-tooltip="countered /'kaʊntər/ n. 柜台, 柜台式长桌计数器vt. & vi. 对抗, 反驳adv. 反方向地, 对立地时 态: countered, co">countered</span> that conventional financial technology could do the same, often more <span class="annot" data-tooltip="simply /'sɪmpli/ adv. 简单地；朴素地；简直；仅仅；坦白地">simply</span> and cheaply. Kenneth Rogoff, also of Harvard, spoke for many when he decided to ignore stablecoins (a dry topic, even by central-banking standards) and focus on bond yields and debt. Channelling Alexandria Ocasio-Cortez, a leftie standard-bearer who recently described the social-justice frenzy of “woke 1.0” in the early 2020s as “crazy”, Mr Rogoff denounced “macro woke 1.0”:</p>
+<p>arguments from the same era that interest rates would stay low, justifying more public borrowing. He added swipes at old adversaries: “I wish I was as sure of anything as Paul Krugman is about everything.” Now interest rates are up and public debt is higher than ever: a woeful <span class="annot" data-tooltip="combination /ˌkɑːmbɪ'neɪʃn/ n. 合作, 结合, 组合联合体, 组合物密码组合, 字码组合排列, 组合形容词: combinational">combination</span>, especially for <span class="annot" data-tooltip="central /'sentrəl/ adj. 中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的副 词: centrally">central</span> bankers. One risk is that government bonds stop behaving like a safe <span class="annot" data-tooltip="asset /'æset/ n. 资产；有用的东西；有利条件；优点">asset</span>. Eswar Prasad of Cornell University <span class="annot" data-tooltip="presented /'preznt/ vt. 呈现；介绍；提出；赠送vi. 举枪瞄准adj. 出席的；现在的n. 现在；礼物；瞄准时 态: presented, pr">presented</span> a paper noting that the “convenience <span class="annot" data-tooltip="yield /jiːld/ vt. 出产；屈服；放弃vi. 屈服，投降n. 收益；产量时 态: yielded, yielding, yields">yield</span>” investors are willing to forgo for safety has <span class="annot" data-tooltip="vanished /'vænɪʃ/ vi. 消失；突然不见；[数]成为零vt. 使不见，使消失n. [语]弱化音时 态: vanished, vanishing, ">vanished</span>. Still, he found, the dollar’s position remains strong and financial <span class="annot" data-tooltip="innovations /ˌɪnə'veɪʃn/ n. 改革, 革新, 创新新观念, 新方法, 新发明形容词: innovational">innovations</span> like stablecoins may bolster that dominance. Any boost for American <span class="annot" data-tooltip="assets /'æset/ n. 资产；有用的东西；有利条件；优点">assets</span> from stablecoin demand would be dwarfed by a second risk of high borrowing: that debt pushes politicians to meddle with central banks. Mr Rogoff framed the worry around Elizabeth Warren, another leftie icon (whose leftier advisers “make her look like Ronald Reagan”). But the problem is structural. When debts are high, co-opting central banks into financing the government can become appealing. Left unsaid was that greater risks today, as Mr Bessent’s moves show, come from the opposite side of politics to Ms Warren. If “macro woke 1.0” is buried, what about “macro woke 2.0”? That, Mr Rogoff suggested, might be the hope that artificial intelligence solves economic woes. Mr Warsh was as AI-woke as anyone while vying to become Fed chair; in his speech in Wyoming, less so. His remarks on AI were framed mainly as questions, and he hinted that the initial effect of the technology would probably be to <span class="annot" data-tooltip="raise /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raise</span> <span class="annot" data-tooltip="inflation /ɪn'fleɪʃn/ n. (充气而引起的)膨胀通货膨胀">inflation</span> by supercharging data-centre investment. AI poses more direct risks, too. Markus Brunnermeier of Princeton University presented a paper arguing that markets may be hit early by advanced AI, endangering financial stability. Robot traders have “asymmetric understanding”, he argued: they get humans perfectly but are themselves perfectly inscrutable. That <span class="annot" data-tooltip="observation /ˌɑːbzər'veɪʃn/ n. 注意；观察观察力言论，评论，意见观察资料，观察数据形容词: observational">observation</span> led Mr Brunnermeier to some <span class="annot" data-tooltip="radical /'rædɪkl/ adj. 根本的，基本的；彻底的，完全的激进的，激进派的副 词: radically">radical</span> ideas: human-only markets off limits to AI, and randomised central-bank decisions that AIs have no <span class="annot" data-tooltip="edge /edʒ/ n. 边缘；刀刃；优势；锋利vt. 使锐利；将…开刃；给…加上边vi. 缓缓移动；侧着移动EDGEabbr. Electron">edge</span> in predicting. Those conclusions were <span class="annot" data-tooltip="controversial /ˌkɑːntrə'vɜːrʃl/ adj. 有争议的, 引起争议的名 词: controversialist">controversial</span>. Raghuram Rajan of the University of Chicago observed that markets are already full of humans with conflicting,</p>
+<p>often <span class="annot" data-tooltip="opaque /oʊ'peɪk/ adj. 不透明的难理解的, 晦涩的副 词: opaquely">opaque</span> motivations; AI may itself help humans understand AI. As for markets, they are already a bit of an alien superintelligence. Next year will be the Jackson <span class="annot" data-tooltip="hole /hoʊl/ n. 洞，孔；洞穴，穴；突破口vi. 凿洞，穿孔；（高尔夫球等）进洞vt. 凿洞时 态: holed, holing, hol">Hole</span> pow-wow’s 50th birthday. The Tetons will still be full of bears and hawks. Many of the human faces will be the same, too: <span class="annot" data-tooltip="central /'sentrəl/ adj. 中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的副 词: centrally">central</span> banking is not <span class="annot" data-tooltip="exactly /ɪɡ'zækt/ adj. 精确的；准确的，精密的vt. 强求；要求；急需vi. 勒索钱财时 态: exacted, exacting, exact">exactly</span> a field with a high staff turnover. Debt problems and AI risks will also <span class="annot" data-tooltip="persist /pər'sɪst/ vi. 持续，固执；存留，坚持vt. 坚持说，反复说时 态: persisted, persisting, persists">persist</span>, and probably <span class="annot" data-tooltip="mount /maʊnt/ vt. & vi. 登上；骑上vi. 增加；上升vt. 上演；配有…发动攻击；攻击n. 山峰坐骑时 态: mounted，mou">mount</span>. If Mr Warsh keeps up his new regular-central-banker act, he may at least have built more <span class="annot" data-tooltip="credibility /ˌkredə'bɪləti/ n. 可靠性,可信性">credibility</span> to find a mountain path through them. ■ This article was downloaded by zlibrary from https://www.economist.com/finance-and-economics/2026/09/02/central-banking-has-a- forbidding-future</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Science &amp; technology</div>
+<p><span class="annot" data-tooltip="humble /'hʌmbl/ adj. 谦逊的, 谦虚的低下的, 卑微的简陋的, 低劣的vt. 使谦恭, 使卑下比较级: humbler, humblest">Humble</span> exoskeletons work better than combat supersuits A suspicious signal in a dark-matter detector has physicists excited NASA’s latest mission to map the <span class="annot" data-tooltip="cosmos /'kɑːzmoʊs/ n. 宇宙；和谐；秩序；[植]大波斯菊">cosmos</span> takes off A <span class="annot" data-tooltip="horde /hɔːrd/ n. 移动着的一大群">horde</span> of AI agents conspired against their <span class="annot" data-tooltip="creators /kri'eɪtər/ n. 创造者,创作者">creators</span> How to combine <span class="annot" data-tooltip="exercise /'eksərsaɪz/ n. 练习；运动；运用；操练；典礼；礼拜vt. 练习；锻炼；使用；使忙碌；使惊恐vi. 运动；练习时 态: exercised">exercise</span> with video games</p>
+<p>Science & technology | Power dressing <span class="annot" data-tooltip="humble /'hʌmbl/ adj. 谦逊的, 谦虚的低下的, 卑微的简陋的, 低劣的vt. 使谦恭, 使卑下比较级: humbler, humblest">Humble</span> exoskeletons work better than combat supersuits Wearable machines that assist just one part of the body are <span class="annot" data-tooltip="proving /proʊ/ n. 从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞">proving</span> surprisingly useful Sep 3rd 2026 AFTER HIS hands were <span class="annot" data-tooltip="crushed /krʌʃ/ vt. & vi. 压碎, 压坏vt. 弄皱镇压, 消灭, 击溃vi. 挤进, 挤入n. 拥挤的人群时 态: crushed, ">crushed</span> two years ago in a machine that bends sheet metal, Remco Letschert feared he would never work again. Yet a year later Mr Letschert returned to his construction job in Aarhus, <span class="annot" data-tooltip="denmark /'denmɑːrk/ n. 丹麦(北欧国家,首都哥本哈根)">Denmark</span>— even though his <span class="annot" data-tooltip="dominant /'dɑːmɪnənt/ adj. 支配的，统治的；占优势的；显性的n. 显性">dominant</span> left hand is too weak for such work. A powered glove he affectionately calls his “robot hand” allows him to carry materials, climb <span class="annot" data-tooltip="scaffolding /'skæfoʊld/ n. 脚手架；绞刑台；鹰架vt. 给…搭脚手架；用支架支撑时 态: scaffolded, scaffolding, scaf">scaffolding</span>, <span class="annot" data-tooltip="squeeze /skwiːz/ vt. & vi. 挤, 榨, 捏vt. 榨取, 挤出n. 挤, 榨, 捏亲切的拥抱或握手拥挤, 积压缺乏钱或时间等所引致的困难">squeeze</span> tin snippers and operate a <span class="annot" data-tooltip="drill /drɪl/ n. 钻子；钻孔机；播种机；训练vi. 钻孔；训练vt. 训练；钻孔；条播时 态: drilled, drilling, dr">drill</span>. Using the system, <span class="annot" data-tooltip="branded /brænd/ n. 商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责时 态: branded, branding, brands">branded</span> “Ironhand”, requires no special <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span>, he says. When <span class="annot" data-tooltip="sensors /'sensər/ n. 传感器">sensors</span> in the glove’s fingertips and palm <span class="annot" data-tooltip="detect /dɪ'tekt/ vt. 发现；发觉，查明时 态: detected，detecting，detects">detect</span> pressure, five little motors instantly whir into action, pulling <span class="annot" data-tooltip="cables /'keɪbl/ n. (船只、桥梁等上的)巨缆, 钢索电缆vt. & vi. 给(某人)发电报, 打电报告诉(某人)Cable凯布尔(姓氏)时">cables</span> that tighten his grip.</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>major</td><td>/'meɪdʒər/ adj.</td><td>主要的；主修的；重要的；较多的n. 成年人；主修科目；陆军少校vi. 主修, majoring, majors</td></tr>
+<tr><td>surge</td><td>/sɜːrdʒ/ n.</td><td>(情感的) 突发，涌现，突然出现（数量的）急剧上升，激增；大量；一大批奔涌向前；突然的向上运动（电流）浪涌v. 涌；汹涌；涌动(感情、感觉) 突袭，涌动，突发(</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>queue</td><td>/kjuː/ n.</td><td>队列；长队；辫子vi. 排队；排队等候vt. 将…梳成辫子；使…排队, queuing, queues</td></tr>
+<tr><td>extending</td><td>/ɪk'stend/ vt.</td><td>& vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出，extending，extends</td></tr>
+<tr><td>complete</td><td>/kəm'pliːt/ adj.</td><td>完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善, completest 缩 写: comp, cpl</td></tr>
+<tr><td>hosted</td><td>/hoʊst/ n.</td><td>主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集, hosting, hosts</td></tr>
+<tr><td>debuted</td><td>/deɪ'bjuː/ n.</td><td>〈法〉演员首次演出</td></tr>
+<tr><td>deterred</td><td>/dɪ'tɜːr/ vt.</td><td>制止，阻止；使打消念头, deterring, deters</td></tr>
+<tr><td>bumper</td><td>/bʌmp/ n.</td><td>肿块，隆起物；撞击vi. 碰撞，撞击；颠簸而行vt. 碰，撞；颠簸adv. 突然地，猛烈地, bumping, bumps</td></tr>
+<tr><td>debuts</td><td>/deɪ'bjuː/ n.</td><td>〈法〉演员首次演出</td></tr>
+<tr><td>snapping</td><td>/snæp/ vt.</td><td>猛咬；突然折断，拉断；啪地关上vi. 咬；厉声说；咯嗒一声关上n. 猛咬；劈啪声；突然折断adj. 突然的SNAPabbr. Satellite Navigat</td></tr>
+<tr><td>vehicles</td><td>/'viːəkl/ n.</td><td>交通工具, 车辆传播媒介, 手段</td></tr>
+<tr><td>falling</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>securities</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>minted</td><td>/mɪnt/ n.</td><td>薄荷；造币厂，巨款vt. 铸造，铸币, minting, mints</td></tr>
+<tr><td>hence</td><td>/hens/ adv.</td><td>因此；今后</td></tr>
+<tr><td>sensations</td><td>/sen'seɪʃn/ n.</td><td>感觉, 感受知觉激动, 轰动</td></tr>
+<tr><td>characteristics</td><td>/ˌkærəktə'rɪstɪk/ adj.</td><td>典型的；特有的；表示特性的</td></tr>
+<tr><td>stricter</td><td>/strɪkt/ adj.</td><td>严格的, 严厉的严谨的, 精确的绝对的, 完全的, strictest</td></tr>
+<tr><td>rival</td><td>/'raɪvl/ n.</td><td>竞争对手vt. 与…竞争, 与…匹敌, rivalled rivaling, rivalling rivals, rivals</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>secondary</td><td>/'sekənderi/ adj.</td><td>次要的, 次等的中级的, 第二的</td></tr>
+<tr><td>crowded</td><td>/kroʊ/ vi.</td><td>报晓；啼叫n. 乌鸦；鸡鸣；撬棍, crowing, crows</td></tr>
+<tr><td>tune</td><td>/tuːn/ n.</td><td>曲调, 曲子vt. & vi. 调音vt. 调整, tuning, tunes</td></tr>
+<tr><td>issue</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>pastor</td><td>/'pæstər/ n.</td><td>牧师vt. 作……的牧师, pastoring, pastors</td></tr>
+<tr><td>waves</td><td>/weɪv/ vi.</td><td>波动；起伏；摇动；呈波形；挥手示意vt. 向…挥手示意；使成波浪形；卷（烫）发n. 波浪；波动；高潮；卷曲；挥手示意, waving, waves</td></tr>
+<tr><td>precede</td><td>/prɪ'siːd/ v.</td><td>在…之前发生（或出现）；先于走在…前面（句、段、章节）在…之前, preceding, precedes</td></tr>
+<tr><td>amid</td><td>/ə'mɪd/ prep.</td><td>在其中，在其间</td></tr>
+<tr><td>subsequent</td><td>/'sʌbsɪkwənt/ adj.</td><td>随后的, 继…之后的</td></tr>
+<tr><td>jarring</td><td>/ˈdʒɑrɪŋ/ adj.</td><td>刺耳的；不和谐的；辗轧的n. 辗轧声；冲突；震动v. 震惊；冲突；发刺耳声（jar的现在分词）</td></tr>
+<tr><td>wave</td><td>/weɪv/ vi.</td><td>波动；起伏；摇动；呈波形；挥手示意vt. 向…挥手示意；使成波浪形；卷（烫）发n. 波浪；波动；高潮；卷曲；挥手示意, waving, waves</td></tr>
+<tr><td>scholars</td><td>/'skɑːlər/ n.</td><td>学者；奖学金获得者</td></tr>
+<tr><td>owners</td><td>/'oʊnər/ n.</td><td>所有者；物主</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>pastor</td><td>/'pæstər/ n.</td><td>牧师vt. 作……的牧师, pastoring, pastors</td></tr>
+<tr><td>explanation</td><td>/ˌeksplə'neɪʃn/ n.</td><td>解释, 说明能说明某事缘由的言语、事实、情况等</td></tr>
+<tr><td>uncertainty</td><td>/ʌn'sɜːrtnti/ n.</td><td>无把握;不确定;变化不定无把握、不确定的事物</td></tr>
+<tr><td>corporate</td><td>/'kɔːrpərət/ adj.</td><td>社团的, 法人的</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>secondary</td><td>/'sekənderi/ adj.</td><td>次要的, 次等的中级的, 第二的</td></tr>
+<tr><td>allocation</td><td>/ˌælə'keɪʃn/ n.</td><td>配给, 分配, 拨出分配额(或量)</td></tr>
+<tr><td>upcoming</td><td>/'ʌpkʌmɪŋ/ adj.</td><td>即将来到的, 即将出现的</td></tr>
+<tr><td>sensations</td><td>/sen'seɪʃn/ n.</td><td>感觉, 感受知觉激动, 轰动</td></tr>
+<tr><td>ear</td><td>/ɪr/ n.</td><td>耳朵；听觉；倾听；穗vi. （美俚）听见；抽穗EARabbr. East African Railways 东非铁路公司, earing, ears</td></tr>
+<tr><td>central</td><td>/'sentrəl/ adj.</td><td>中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的</td></tr>
+<tr><td>hole</td><td>/hoʊl/ n.</td><td>洞，孔；洞穴，穴；突破口vi. 凿洞，穿孔；（高尔夫球等）进洞vt. 凿洞, holing, holes</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>annual</td><td>/'ænjuəl/ adj.</td><td>年度的；每年的n. 年刊，年鉴；一年生植物</td></tr>
+<tr><td>spotted</td><td>/spɑːt/ n.</td><td>斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Positioning and Tracki</td></tr>
+<tr><td>conferences</td><td>/'kɑːnfərəns/ n.</td><td>会议讨论, 商谈</td></tr>
+<tr><td>lingered</td><td>/'lɪŋɡər/ vi.</td><td>逗留, 徘徊缓慢消失, lingering, lingers</td></tr>
+<tr><td>backbone</td><td>/'bækboʊn/ n.</td><td>脊骨，脊柱脊骨状物；(船的)龙骨；书脊骨干，支柱，主力，中坚骨气；毅力Backbone广域网中的一种高速链路</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>treasury</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>secretary</td><td>/'sekrəteri/ n.</td><td>秘书书记部长, 大臣</td></tr>
+<tr><td>yields</td><td>/jiːld/ vt.</td><td>出产；屈服；放弃vi. 屈服，投降n. 收益；产量, yielding, yields</td></tr>
+<tr><td>surge</td><td>/sɜːrdʒ/ n.</td><td>(情感的) 突发，涌现，突然出现（数量的）急剧上升，激增；大量；一大批奔涌向前；突然的向上运动（电流）浪涌v. 涌；汹涌；涌动(感情、感觉) 突袭，涌动，突发(</td></tr>
+<tr><td>surpass</td><td>/sər'pæs/ vt.</td><td>胜过，优于；超越；非…所能办到或理解, surpassing, surpasses</td></tr>
+<tr><td>inflation</td><td>/ɪn'fleɪʃn/ n.</td><td>(充气而引起的)膨胀通货膨胀</td></tr>
+<tr><td>emphasised</td><td>/'emfəsɪs/ n.</td><td>强调, 重点</td></tr>
+<tr><td>main</td><td>/meɪn/ adj.</td><td>主要的; 最重要的n. 总管道; 干线</td></tr>
+<tr><td>gauge</td><td>/ɡeɪdʒ/ n.</td><td>厚度, 直径测量仪表规格, 尺度vt. 计量, 度量估计, 判断</td></tr>
+<tr><td>alternatives</td><td>/ɔːl'tɜːrnətɪv/ adj.</td><td>可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）可供选择的事物；可供选择的解决办法替代物</td></tr>
+<tr><td>odds</td><td>/ɑːdz/ n.</td><td>不平等；几率；胜算；差别</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>hole</td><td>/hoʊl/ n.</td><td>洞，孔；洞穴，穴；突破口vi. 凿洞，穿孔；（高尔夫球等）进洞vt. 凿洞, holing, holes</td></tr>
+<tr><td>steer</td><td>/stɪr/ v.</td><td>驾驶（船、汽车等）；掌控方向盘（交通工具）行驶，沿（特定路线或方向）行进引导，带领n. 阉公牛；肉用公牛, steering, steers</td></tr>
+<tr><td>raise</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>cautious</td><td>/'kɔːʃəs/ adj.</td><td>小心的, 谨慎的</td></tr>
+<tr><td>versus</td><td>/'vɜːrsəs/ prep.</td><td>对；与...相对；对抗</td></tr>
+<tr><td>central</td><td>/'sentrəl/ adj.</td><td>中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的</td></tr>
+<tr><td>innovation</td><td>/ˌɪnə'veɪʃn/ n.</td><td>改革, 革新, 创新新观念, 新方法, 新发明</td></tr>
+<tr><td>deposits</td><td>/dɪ'pɑːzɪt/ n.</td><td>存款；保证金；沉淀物vt. 存放；使沉积vi. 沉淀, depositing, deposits</td></tr>
+<tr><td>transactions</td><td>/træn'zækʃn/ n.</td><td>处理，办理，执行(一笔)交易；(一项)事务</td></tr>
+<tr><td>countered</td><td>/'kaʊntər/ n.</td><td>柜台, 柜台式长桌计数器vt. & vi. 对抗, 反驳adv. 反方向地, 对立地, countering, counters</td></tr>
+<tr><td>simply</td><td>/'sɪmpli/ adv.</td><td>简单地；朴素地；简直；仅仅；坦白地</td></tr>
+<tr><td>combination</td><td>/ˌkɑːmbɪ'neɪʃn/ n.</td><td>合作, 结合, 组合联合体, 组合物密码组合, 字码组合排列, 组合</td></tr>
+<tr><td>central</td><td>/'sentrəl/ adj.</td><td>中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的</td></tr>
+<tr><td>asset</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>presented</td><td>/'preznt/ vt.</td><td>呈现；介绍；提出；赠送vi. 举枪瞄准adj. 出席的；现在的n. 现在；礼物；瞄准, presenting, presents</td></tr>
+<tr><td>yield</td><td>/jiːld/ vt.</td><td>出产；屈服；放弃vi. 屈服，投降n. 收益；产量, yielding, yields</td></tr>
+<tr><td>vanished</td><td>/'vænɪʃ/ vi.</td><td>消失；突然不见；[数]成为零vt. 使不见，使消失n. [语]弱化音, vanishing, vanishes</td></tr>
+<tr><td>innovations</td><td>/ˌɪnə'veɪʃn/ n.</td><td>改革, 革新, 创新新观念, 新方法, 新发明</td></tr>
+<tr><td>assets</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>raise</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>inflation</td><td>/ɪn'fleɪʃn/ n.</td><td>(充气而引起的)膨胀通货膨胀</td></tr>
+<tr><td>observation</td><td>/ˌɑːbzər'veɪʃn/ n.</td><td>注意；观察观察力言论，评论，意见观察资料，观察数据</td></tr>
+<tr><td>radical</td><td>/'rædɪkl/ adj.</td><td>根本的，基本的；彻底的，完全的激进的，激进派的</td></tr>
+<tr><td>edge</td><td>/edʒ/ n.</td><td>边缘；刀刃；优势；锋利vt. 使锐利；将…开刃；给…加上边vi. 缓缓移动；侧着移动EDGEabbr. Electronic Data Gathering Eq</td></tr>
+<tr><td>controversial</td><td>/ˌkɑːntrə'vɜːrʃl/ adj.</td><td>有争议的, 引起争议的</td></tr>
+<tr><td>opaque</td><td>/oʊ'peɪk/ adj.</td><td>不透明的难理解的, 晦涩的</td></tr>
+<tr><td>hole</td><td>/hoʊl/ n.</td><td>洞，孔；洞穴，穴；突破口vi. 凿洞，穿孔；（高尔夫球等）进洞vt. 凿洞, holing, holes</td></tr>
+<tr><td>central</td><td>/'sentrəl/ adj.</td><td>中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的</td></tr>
+<tr><td>exactly</td><td>/ɪɡ'zækt/ adj.</td><td>精确的；准确的，精密的vt. 强求；要求；急需vi. 勒索钱财, exacting, exacts</td></tr>
+<tr><td>persist</td><td>/pər'sɪst/ vi.</td><td>持续，固执；存留，坚持vt. 坚持说，反复说, persisting, persists</td></tr>
+<tr><td>mount</td><td>/maʊnt/ vt.</td><td>& vi. 登上；骑上vi. 增加；上升vt. 上演；配有…发动攻击；攻击n. 山峰坐骑，mounting，mounts</td></tr>
+<tr><td>credibility</td><td>/ˌkredə'bɪləti/ n.</td><td>可靠性,可信性</td></tr>
+<tr><td>humble</td><td>/'hʌmbl/ adj.</td><td>谦逊的, 谦虚的低下的, 卑微的简陋的, 低劣的vt. 使谦恭, 使卑下, humblest</td></tr>
+<tr><td>cosmos</td><td>/'kɑːzmoʊs/ n.</td><td>宇宙；和谐；秩序；[植]大波斯菊</td></tr>
+<tr><td>horde</td><td>/hɔːrd/ n.</td><td>移动着的一大群</td></tr>
+<tr><td>creators</td><td>/kri'eɪtər/ n.</td><td>创造者,创作者</td></tr>
+<tr><td>exercise</td><td>/'eksərsaɪz/ n.</td><td>练习；运动；运用；操练；典礼；礼拜vt. 练习；锻炼；使用；使忙碌；使惊恐vi. 运动；练习, exercising, exercises</td></tr>
+<tr><td>humble</td><td>/'hʌmbl/ adj.</td><td>谦逊的, 谦虚的低下的, 卑微的简陋的, 低劣的vt. 使谦恭, 使卑下, humblest</td></tr>
+<tr><td>proving</td><td>/proʊ/ n.</td><td>从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞成；支持Pro脯氨酸PROabbr. P</td></tr>
+<tr><td>crushed</td><td>/krʌʃ/ vt.</td><td>& vi. 压碎, 压坏vt. 弄皱镇压, 消灭, 击溃vi. 挤进, 挤入n. 拥挤的人群, crushing, crushes</td></tr>
+<tr><td>denmark</td><td>/'denmɑːrk/ n.</td><td>丹麦(北欧国家,首都哥本哈根)</td></tr>
+<tr><td>dominant</td><td>/'dɑːmɪnənt/ adj.</td><td>支配的，统治的；占优势的；显性的n. 显性</td></tr>
+<tr><td>scaffolding</td><td>/'skæfoʊld/ n.</td><td>脚手架；绞刑台；鹰架vt. 给…搭脚手架；用支架支撑, scaffolding, scaffolds</td></tr>
+<tr><td>squeeze</td><td>/skwiːz/ vt.</td><td>& vi. 挤, 榨, 捏vt. 榨取, 挤出n. 挤, 榨, 捏亲切的拥抱或握手拥挤, 积压缺乏钱或时间等所引致的困难或困苦, 拮据, 短缺, squeezi</td></tr>
+<tr><td>drill</td><td>/drɪl/ n.</td><td>钻子；钻孔机；播种机；训练vi. 钻孔；训练vt. 训练；钻孔；条播, drilling, drills</td></tr>
+<tr><td>branded</td><td>/brænd/ n.</td><td>商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责, branding, brands</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>sensors</td><td>/'sensər/ n.</td><td>传感器</td></tr>
+<tr><td>detect</td><td>/dɪ'tekt/ vt.</td><td>发现；发觉，查明，detecting，detects</td></tr>
+<tr><td>cables</td><td>/'keɪbl/ n.</td><td>(船只、桥梁等上的)巨缆, 钢索电缆vt. & vi. 给(某人)发电报, 打电报告诉(某人)Cable凯布尔(姓氏), cabling, cables</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day36.html" class="nav-btn">← Day 36</a>
+  <a href="day38.html" class="nav-btn">Day 38 →</a>
+</div>
+
+<div class="progress">📖 Day 37 of 43</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-09-05</div>
+
+</body>
+</html>

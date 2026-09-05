@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Science & technology</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-09-05</div>
+
+<h1 class="article-title">Science & technology</h1>
+<div class="article-section"></div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>more fun than conventional <span class="annot" data-tooltip="exercise /'eksərsaɪz/ n. 练习；运动；运用；操练；典礼；礼拜vt. 练习；锻炼；使用；使忙碌；使惊恐vi. 运动；练习时 态: exercised">exercise</span>. But does this make them more likely to keep doing it? The evidence is unclear. Beyond this research, VR-exercise studies are often small and do not use comparisons or controls that allow their effects to be assessed. All that said, you don’t need a <span class="annot" data-tooltip="trial /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">trial</span> to show that VR exercise is better than none. ■ This article was downloaded by zlibrary from https://www.economist.com/science-and-technology/2026/08/28/how-to-combine- exercise-with-video-games</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Culture</div>
+<p>The many mysteries and lessons of the Bayeux <span class="annot" data-tooltip="tapestry /'tæpəstri/ n. 挂毯；织锦；绣帷vt. 用挂毯装饰">tapestry</span> Museums and galleries are turning to individual patrons With “Agrippa” Robert Harris is back to <span class="annot" data-tooltip="roaming /'roʊmɪŋ/ 漫游">roaming</span> in ancient Rome What do a spoiled Venezuelan and poor Texan have in common? Hyrox, the fitness craze that runs and runs</p>
+<div class="article-separator"></div>
+<div class="article-header">Culture · Culture | Billion-dollar baby</div>
+<p>The many mysteries and lessons of the Bayeux <span class="annot" data-tooltip="tapestry /'tæpəstri/ n. 挂毯；织锦；绣帷vt. 用挂毯装饰">tapestry</span> A new show at the British Museum will focus the world’s attention on a <span class="annot" data-tooltip="medieval /ˌmedi'iːvl/ adj. 中古的, 中世纪的">medieval</span> marvel Sep 3rd 2026 FROM LED ZEPPELIN to David Bowie, London has welcomed plenty of famous acts for what was billed as a once-in-a-<span class="annot" data-tooltip="lifetime /'laɪftaɪm/ n. 一生；寿命；终生；使用期adj. 一生的；终身的">lifetime</span> performance. Now a colourful, ancient piece of linen roughly the length of a Boeing 747 has raised the bar. It is back in England for the first time in around 950 years. Its run at the British Museum, which opens on September 10th, is being <span class="annot" data-tooltip="heralded /'herəld/ n. 使者, 预报者vi. 预示时 态: heralded, heralding, heralds">heralded</span> as a once-in-a-millennium show. And with good reason. The Bayeux tapestry enjoys something akin to rock- star status. This summer it has been the hottest ticket in Britain. When <span class="annot" data-tooltip="spots /spɑːt/ n. 斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Po">spots</span> went on sale in July, they sold out almost as fast as you can say “William the</p>
+<p>Conqueror”. (More tickets, for January to July 2027, have yet to be released.) Around 1m people are expected to see the <span class="annot" data-tooltip="tapestry /'tæpəstri/ n. 挂毯；织锦；绣帷vt. 用挂毯装饰">tapestry</span> in London while it is on loan from the French state, making it one of the best-attended museum exhibitions in British history. Most would say that, as the only surviving <span class="annot" data-tooltip="medieval /ˌmedi'iːvl/ adj. 中古的, 中世纪的">medieval</span> artwork of its size, the Bayeux tapestry is priceless. But as part of a government indemnity scheme, Britain’s <span class="annot" data-tooltip="treasury /'treʒəri/ n. 财政部；国库，金库；宝库">Treasury</span> has put a figure on it, insuring the tapestry for £800m ($1.1bn). That is on a par with the highest <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span> for a travelling artwork ever made public: the $100m assigned to the “Mona Lisa” when it travelled to America in 1962-63, <span class="annot" data-tooltip="worth /wɜːrθ/ adj. 值…的n. 价值；财产时 态: worthed, worthing, worths">worth</span> $1.1bn today. Like da Vinci’s painting, the Bayeux tapestry is a masterpiece whose power depends, at least in part, on its mystery. But there is not one <span class="annot" data-tooltip="main /meɪn/ adj. 主要的; 最重要的n. 总管道; 干线">main</span> question, as there is with the smiling (or would you say unsmiling?) “Mona Lisa”. Instead, the tapestry <span class="annot" data-tooltip="raises /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raises</span> dozens of questions that the centuries have complicated. Some of the <span class="annot" data-tooltip="central /'sentrəl/ adj. 中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的副 词: centrally">central</span> ones—who stitched it, why and its intended destination—are disputed still. “If you ask ten different historians working on the period, you might get ten different answers,” says Benjamin Pohl, a professor at the University of Bristol, who published a paper suggesting that it may have been designed as mealtime reading for <span class="annot" data-tooltip="monks /mʌŋk/ n. 僧侣，修道士；和尚">monks</span>.</p>
+<p>A few facts are undisputed. The <span class="annot" data-tooltip="tapestry /'tæpəstri/ n. 挂毯；织锦；绣帷vt. 用挂毯装饰">tapestry</span> <span class="annot" data-tooltip="depicts /dɪ'pɪkt/ vt. 描绘；描画描述时 态: depicted，depicting，depicts">depicts</span> William the Bastard-turned- Conqueror’s <span class="annot" data-tooltip="triumph /'traɪʌmf/ n. 胜利，成功巨大的成就[成功]vi. 获胜，得胜；克服时 态: triumphed，triumphing，triumphs">triumph</span> in the Norman conquest of 1066. (Some call this the last time England was successfully invaded; others point to the largely bloodless arrival of another William, of Orange, in 1688.) You can recognise the Normans by their gauche hairstyle—with long locks and the back of their heads shaved—while the English sport moustaches. (Only one of those looks has aged well.) The tapestry, probably <span class="annot" data-tooltip="commissioned /kə'mɪʃn/ n. 授权, 委托委员会佣金, 回扣vt. 委任, 委托时 态: commissioned, commissioning, c">commissioned</span> by Bishop Odo of Bayeux to celebrate the victory of William, his half-brother, is a piece of war <span class="annot" data-tooltip="propaganda /ˌprɑːpə'ɡændə/ n. 宣传, 宣传运动名 词: propagandism">propaganda</span> that looks like an ancient <span class="annot" data-tooltip="comic /'kɑːmɪk/ adj. 滑稽的, 好笑的喜剧的n. 连环漫画杂志喜剧演员">comic</span> <span class="annot" data-tooltip="strip /strɪp/ vt. 剥去；剥夺；脱去衣服n. 带；条状；脱衣舞vi. 脱去衣服时 态: stripped, stripping, strip">strip</span>. Many <span class="annot" data-tooltip="scholars /'skɑːlər/ n. 学者；奖学金获得者">scholars</span> think it was made in Canterbury in the 1070s-80s before travelling to Bayeux, to hang in Odo’s <span class="annot" data-tooltip="cathedral /kə'θiːdrəl/ n. 总教堂, 大教堂">cathedral</span>. It offers an <span class="annot" data-tooltip="intricate /'ɪntrɪkət/ adj. 错综复杂的副 词: intricately">intricate</span>, sometimes wandering account of a broken promise and ascent to power that changed England’s royal <span class="annot" data-tooltip="line /laɪn/ n. 绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long inter">line</span>, class structure and the English language itself. It begins with Edward the Confessor, England’s childless king, telling Harold Godwinson, a nobleman, to travel to Normandy. When he is there, he befriends William and appears to give an <span class="annot" data-tooltip="oath /oʊθ/ n. 誓言，誓约；诅咒，咒骂">oath</span> that William should <span class="annot" data-tooltip="inherit /ɪn'herɪt/ vt. 继承；遗传而得vi. 成为继承人时 态: inherited, inheriting, inherits">inherit</span> the crown. But when Edward dies, Harold breaks that promise and claims the throne. Even the <span class="annot" data-tooltip="cosmos /'kɑːzmoʊs/ n. 宇宙；和谐；秩序；[植]大波斯菊">cosmos</span> seems to object: Halley’s comet <span class="annot" data-tooltip="blazes /bleɪz/ n. 火焰, 烈火光辉, 闪耀迸发, 爆发vi. 猛烈地燃烧发光, 照耀时 态: blazed, blazing, blaze">blazes</span> across the sky in a portent of <span class="annot" data-tooltip="doom /duːm/ vt. 注定；判定n. 厄运，劫数时 态: doomed，dooming，dooms">doom</span>. The resulting battle is nasty, brutish and not very short by <span class="annot" data-tooltip="medieval /ˌmedi'iːvl/ adj. 中古的, 中世纪的">medieval</span> standards (lasting about nine hours), with <span class="annot" data-tooltip="stripped adj. 剥去的v. 脱衣；把…剪成条状；剥夺（strip的过去分词形式）">stripped</span> <span class="annot" data-tooltip="corpses /kɔːrps/ n. 尸体">corpses</span>, felled horses, flying arrows and pointed suffering. Harold is killed. English troops flee. And next…</p>
+<p>The “next” is yet another mystery. How the <span class="annot" data-tooltip="tapestry /'tæpəstri/ n. 挂毯；织锦；绣帷vt. 用挂毯装饰">tapestry</span> was meant to end is unknown: the last bit is missing. “It could have gone on for a few centimetres or a few metres,” says Professor Pohl. Many assume it concluded with William’s coronation on Christmas Day. But no one can be sure. A competition has invited children to imagine and stitch a conclusion. Those lucky enough to get up close to the tapestry have about 70 metres of details to take in. The linen teems with 737 animals and 627 people (only three of whom, in the <span class="annot" data-tooltip="main /meɪn/ adj. 主要的; 最重要的n. 总管道; 干线">main</span> embroidery, are women). There are the Latin phrases, the Aesop’s fables in the <span class="annot" data-tooltip="margins /'mɑːrdʒɪn/ n. 页边缘；利润，余裕；页边的空白">margins</span>, the bizarrely <span class="annot" data-tooltip="prominent /'prɑːmɪnənt/ adj. 突起的，凸出的显著的；突出的杰出的，著名的，卓越的副 词: prominently">prominent</span> genitalia. The significance of the tapestry is not just in the details, however, but in what its story and survival <span class="annot" data-tooltip="reveal /rɪ'viːl/ vt. 显示；露出泄露；透露时 态: revealed，revealing，reveals">reveal</span> about history, objects and memory. Take the unknowns, for instance. “Things where you have to fill in the blanks are more alluring,” insists Nick Cullinan, director of the British Museum. “The fact that there’s something missing invites you in…to <span class="annot" data-tooltip="engage /ɪn'ɡeɪdʒ/ vt. 雇佣；吸引，占用；使订婚；使参加；预定vi. 答应，保证；从事；交战；啮合时 态: engaged, engaging,">engage</span> with it and think about why it was made, what’s missing, and what that means.” Think of everyone who <span class="annot" data-tooltip="flocks /flɑːk/ n. 群；棉束（等于floc）vt. 用棉束填满vi. 聚集；成群而行Flock(瑞士)弗洛克(很短的粘胶短纤维)时 态: f">flocks</span> to the armless “Venus de Milo” in the Louvre. Was she once carrying an apple, or modestly trying to <span class="annot" data-tooltip="reach /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reach</span> so the drapery would not slip below her hips? The absent <span class="annot" data-tooltip="limbs /lɪm/ n. 肢，臂；枝干；分支vt. 切断…的手足；从…上截下树枝时 态: limbed, limbing, limbs">limbs</span> keep people guessing.</p>
+<p>There is also the question of why it is even called a <span class="annot" data-tooltip="tapestry /'tæpəstri/ n. 挂毯；织锦；绣帷vt. 用挂毯装饰">tapestry</span> at all when it is really an embroidery (the former requiring a loom, the latter done by hand). But that is a mystery only for the uninitiated: a French <span class="annot" data-tooltip="scholar /'skɑːlər/ n. 学者；奖学金获得者">scholar</span> in the 18th century called it a tapisserie (tapestry), and it <span class="annot" data-tooltip="stuck /stʌk/ v. 刺（stick的过去式）adj. 不能动的；被卡住的">stuck</span>. “It was a bloke not knowing the difference between his weaving and his embroidery,” says Leonie Hicks, a professor at Canterbury Christ Church University. Study the tapestry long enough and it will make you <span class="annot" data-tooltip="consider /kən'sɪdər/ vt. & vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及时 态: considered, considering, ">consider</span> deeper questions, too, such as who determines people’s understanding of the past. (This is an idea pored over by plenty of historians and the wisest of sources, “Hamilton”: one song in the musical is called “Who Lives, Who Dies, Who Tells Your Story?”) Maybe a <span class="annot" data-tooltip="decade /'dekeɪd/ n. 十年，十年期；十">decade</span>, and <span class="annot" data-tooltip="possibly /'pɑːsəbli/ adv. 可能地；大概；也许">possibly</span> more, elapsed between the end of the Battle of Hastings and when the tapestry was made: how much rumour and hearsay are woven into it as a result? And then there were those in the 19th century, armed with needles and <span class="annot" data-tooltip="thread /θred/ n. 线；细线线索，思路vt. 将(针、线等)穿过…将(影片)装入放映机时 态: threaded，threading，thr">thread</span>, who set about “fixing” it. Everyone who has heard of the year 1066 knows that Harold was eighty-sixed by an arrow to the eye. But was he? The earliest studies of the tapestry do not show that an arrow was <span class="annot" data-tooltip="involved /ɪn'vɑːlvd/ adj. 卷入的；有关的；复杂的v. 涉及；使参与；包含（involve的过去式和过去分词）">involved</span>. What you see on the tapestry is the work of a restorer, who may have taken creative liberties. Michael Lewis, a lead curator of the British Museum’s exhibition and co-author of “The Story of the Bayeux Tapestry”, thinks the arrow was an “accidental <span class="annot" data-tooltip="addition /ə'dɪʃn/ n. 添加；增加物；加法形容词: additional">addition</span>” by restorers in the 19th century, who were basing their work on a drawing from the 1720s that had included the arrow.</p>
+<p>Further embellishments may exist elsewhere, especially <span class="annot" data-tooltip="towards /tɔːrdz/ prep. 向，朝为了；有助于；用于对于，关于接近；将近；大约">towards</span> the end. “The arrow to the eye is probably the most famous and important one,” but there are others reconstructed in “an <span class="annot" data-tooltip="imaginative /ɪ'mædʒɪnətɪv/ adj. 富于想像力的; 运用想像力的副 词: imaginatively">imaginative</span> way”, says Dr Lewis, including a man wrapped up in <span class="annot" data-tooltip="vines /vaɪn/ n. [植]葡萄树；[植]藤本植物；[植]攀缘植物；[植]藤vi. 长成藤蔓；爬藤时 态: vined, vining, vi">vines</span>. A lesson of the Bayeux <span class="annot" data-tooltip="tapestry /'tæpəstri/ n. 挂毯；织锦；绣帷vt. 用挂毯装饰">tapestry</span>, then, is that history is written not just by the victors, but by the restorers. For when these fixers set about their work in the 19th century, much had been lost to them already. The historical record is funny like that: how <span class="annot" data-tooltip="grains /ɡreɪn/ n. 谷物；谷粒颗粒；细粒（尤用于否定句） 少量；微量；一点儿（木、织物或石头等的）纹理（表面的）质地；触感格令（重量单位，等">grains</span> of humour and information are worn down by <span class="annot" data-tooltip="tides /taɪd/ n. 潮汐；趋势，潮流vt. 随潮漂流时 态: tided, tiding, tides">tides</span> of time. The result is that some <span class="annot" data-tooltip="scenes /siːn/ n. 情景；景象；场面；事件">scenes</span> are now impossible to decode. The most <span class="annot" data-tooltip="perplexing /pər'pleks/ vt. 使困惑，使为难；使复杂化时 态: perplexed, perplexing, perplexes">perplexing</span> one features the only named woman, Aelfgyva, in a doorway, <span class="annot" data-tooltip="speaking /'spikɪŋ/ adj. 演讲的；富于表情的，雄辩的n. 说话；演讲v. 讲（speak的ing形式）">speaking</span> to a cleric who is <span class="annot" data-tooltip="either /'iːðər/ pron. (两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的">either</span> <span class="annot" data-tooltip="caressing /kə'res/ n. 爱抚；抚摸vt. 爱抚或抚摸…时 态: caressed，caressing，caresses">caressing</span> or <span class="annot" data-tooltip="striking /'straɪkɪŋ/ adj. 显著的，突出的引人注目的；容貌出众的副 词: strikingly">striking</span> her. Nearby a naked man <span class="annot" data-tooltip="squats /skwɑːt/ vi. 蹲坐；蹲擅自占住(空屋)adj. 矮胖的；矮而宽的n. 蹲坐，蹲姿被擅自占用的建筑物时 态: squatted，squa">squats</span>, mirroring the <span class="annot" data-tooltip="priest /priːst/ n. 牧师；神父；教士vt. 使成为神职人员；任命…为祭司时 态: priested, priesting, priests">priest</span>’s gesture. It may have been a <span class="annot" data-tooltip="sexual /'sekʃuəl/ adj. 性交的, 性行为的, 性吸引的, 两性的, 肉体吸引的性别的, 性的, 男性或女性的生殖的, 有性生殖的副 词: sex">sexual</span> scandal so familiar that it required no <span class="annot" data-tooltip="explanation /ˌeksplə'neɪʃn/ n. 解释, 说明能说明某事缘由的言语、事实、情况等">explanation</span>. It makes you <span class="annot" data-tooltip="wonder /'wʌndər/ vt. & vi. 对…感到疑惑想知道；问自己n. 惊奇，惊叹，惊异，惊诧奇人，奇才奇观，奇景，奇迹，奇事时 态: wonder">wonder</span> which modern inside jokes and <span class="annot" data-tooltip="references /'refrəns/ n. 提及，涉及参考，查阅引文；参考书目证明书；推荐信；证明人；推荐人时 态: referenced，referencing，">references</span> will still be understood 900 years from now. Will anyone remember Monica Lewinsky? One of the most <span class="annot" data-tooltip="notable /'noʊtəbl/ adj. 值得注意的，显著的；著名的n. 名人，显要人物副 词: notably">notable</span> things about the tapestry, beyond the <span class="annot" data-tooltip="sheer /ʃɪr/ adj. 完全的；十足的陡峭的；垂直的极薄的，轻的，透明的adv. 垂直地，陡峭地vi. 避开，突然转向时 态: sheered，">sheer</span> unlikelihood of its survival—including almost being used as wagon <span class="annot" data-tooltip="covers /'kʌvər/ vt. 包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替时 态: covered, covering, c">covers</span> during the French revolution—is that so many leaders have <span class="annot" data-tooltip="esteemed /ɪ'stiːm/ vt. 认为；尊敬；考虑；估价n. 尊重；尊敬时 态: esteemed, esteeming, esteems">esteemed</span> it for different reasons. Napoleon displayed it in Paris at the Musée Napoléon</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>exercise</td><td>/'eksərsaɪz/ n.</td><td>练习；运动；运用；操练；典礼；礼拜vt. 练习；锻炼；使用；使忙碌；使惊恐vi. 运动；练习, exercising, exercises</td></tr>
+<tr><td>trial</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>tapestry</td><td>/'tæpəstri/ n.</td><td>挂毯；织锦；绣帷vt. 用挂毯装饰</td></tr>
+<tr><td>roaming</td><td>/'roʊmɪŋ/ </td><td>漫游</td></tr>
+<tr><td>tapestry</td><td>/'tæpəstri/ n.</td><td>挂毯；织锦；绣帷vt. 用挂毯装饰</td></tr>
+<tr><td>medieval</td><td>/ˌmedi'iːvl/ adj.</td><td>中古的, 中世纪的</td></tr>
+<tr><td>lifetime</td><td>/'laɪftaɪm/ n.</td><td>一生；寿命；终生；使用期adj. 一生的；终身的</td></tr>
+<tr><td>heralded</td><td>/'herəld/ n.</td><td>使者, 预报者vi. 预示, heralding, heralds</td></tr>
+<tr><td>spots</td><td>/spɑːt/ n.</td><td>斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Positioning and Tracki</td></tr>
+<tr><td>tapestry</td><td>/'tæpəstri/ n.</td><td>挂毯；织锦；绣帷vt. 用挂毯装饰</td></tr>
+<tr><td>medieval</td><td>/ˌmedi'iːvl/ adj.</td><td>中古的, 中世纪的</td></tr>
+<tr><td>treasury</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>worth</td><td>/wɜːrθ/ adj.</td><td>值…的n. 价值；财产, worthing, worths</td></tr>
+<tr><td>main</td><td>/meɪn/ adj.</td><td>主要的; 最重要的n. 总管道; 干线</td></tr>
+<tr><td>raises</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>central</td><td>/'sentrəl/ adj.</td><td>中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的</td></tr>
+<tr><td>monks</td><td>/mʌŋk/ n.</td><td>僧侣，修道士；和尚</td></tr>
+<tr><td>tapestry</td><td>/'tæpəstri/ n.</td><td>挂毯；织锦；绣帷vt. 用挂毯装饰</td></tr>
+<tr><td>depicts</td><td>/dɪ'pɪkt/ vt.</td><td>描绘；描画描述，depicting，depicts</td></tr>
+<tr><td>triumph</td><td>/'traɪʌmf/ n.</td><td>胜利，成功巨大的成就[成功]vi. 获胜，得胜；克服，triumphing，triumphs</td></tr>
+<tr><td>commissioned</td><td>/kə'mɪʃn/ n.</td><td>授权, 委托委员会佣金, 回扣vt. 委任, 委托, commissioning, commissions</td></tr>
+<tr><td>propaganda</td><td>/ˌprɑːpə'ɡændə/ n.</td><td>宣传, 宣传运动</td></tr>
+<tr><td>comic</td><td>/'kɑːmɪk/ adj.</td><td>滑稽的, 好笑的喜剧的n. 连环漫画杂志喜剧演员</td></tr>
+<tr><td>strip</td><td>/strɪp/ vt.</td><td>剥去；剥夺；脱去衣服n. 带；条状；脱衣舞vi. 脱去衣服, stripping, strips</td></tr>
+<tr><td>scholars</td><td>/'skɑːlər/ n.</td><td>学者；奖学金获得者</td></tr>
+<tr><td>cathedral</td><td>/kə'θiːdrəl/ n.</td><td>总教堂, 大教堂</td></tr>
+<tr><td>intricate</td><td>/'ɪntrɪkət/ adj.</td><td>错综复杂的</td></tr>
+<tr><td>line</td><td>/laɪn/ n.</td><td>绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long interspersed element)长散在元</td></tr>
+<tr><td>oath</td><td>/oʊθ/ n.</td><td>誓言，誓约；诅咒，咒骂</td></tr>
+<tr><td>inherit</td><td>/ɪn'herɪt/ vt.</td><td>继承；遗传而得vi. 成为继承人, inheriting, inherits</td></tr>
+<tr><td>cosmos</td><td>/'kɑːzmoʊs/ n.</td><td>宇宙；和谐；秩序；[植]大波斯菊</td></tr>
+<tr><td>blazes</td><td>/bleɪz/ n.</td><td>火焰, 烈火光辉, 闪耀迸发, 爆发vi. 猛烈地燃烧发光, 照耀, blazing, blazes</td></tr>
+<tr><td>doom</td><td>/duːm/ vt.</td><td>注定；判定n. 厄运，劫数，dooming，dooms</td></tr>
+<tr><td>medieval</td><td>/ˌmedi'iːvl/ adj.</td><td>中古的, 中世纪的</td></tr>
+<tr><td>stripped</td><td>— adj.</td><td>剥去的v. 脱衣；把…剪成条状；剥夺（strip的过去分词形式）</td></tr>
+<tr><td>corpses</td><td>/kɔːrps/ n.</td><td>尸体</td></tr>
+<tr><td>tapestry</td><td>/'tæpəstri/ n.</td><td>挂毯；织锦；绣帷vt. 用挂毯装饰</td></tr>
+<tr><td>main</td><td>/meɪn/ adj.</td><td>主要的; 最重要的n. 总管道; 干线</td></tr>
+<tr><td>margins</td><td>/'mɑːrdʒɪn/ n.</td><td>页边缘；利润，余裕；页边的空白</td></tr>
+<tr><td>prominent</td><td>/'prɑːmɪnənt/ adj.</td><td>突起的，凸出的显著的；突出的杰出的，著名的，卓越的</td></tr>
+<tr><td>reveal</td><td>/rɪ'viːl/ vt.</td><td>显示；露出泄露；透露，revealing，reveals</td></tr>
+<tr><td>engage</td><td>/ɪn'ɡeɪdʒ/ vt.</td><td>雇佣；吸引，占用；使订婚；使参加；预定vi. 答应，保证；从事；交战；啮合, engaging, engages</td></tr>
+<tr><td>flocks</td><td>/flɑːk/ n.</td><td>群；棉束（等于floc）vt. 用棉束填满vi. 聚集；成群而行Flock(瑞士)弗洛克(很短的粘胶短纤维), flocking, flocks</td></tr>
+<tr><td>reach</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>limbs</td><td>/lɪm/ n.</td><td>肢，臂；枝干；分支vt. 切断…的手足；从…上截下树枝, limbing, limbs</td></tr>
+<tr><td>tapestry</td><td>/'tæpəstri/ n.</td><td>挂毯；织锦；绣帷vt. 用挂毯装饰</td></tr>
+<tr><td>scholar</td><td>/'skɑːlər/ n.</td><td>学者；奖学金获得者</td></tr>
+<tr><td>stuck</td><td>/stʌk/ v.</td><td>刺（stick的过去式）adj. 不能动的；被卡住的</td></tr>
+<tr><td>consider</td><td>/kən'sɪdər/ vt.</td><td>& vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及, considering, considers</td></tr>
+<tr><td>decade</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>possibly</td><td>/'pɑːsəbli/ adv.</td><td>可能地；大概；也许</td></tr>
+<tr><td>thread</td><td>/θred/ n.</td><td>线；细线线索，思路vt. 将(针、线等)穿过…将(影片)装入放映机，threading，threads</td></tr>
+<tr><td>involved</td><td>/ɪn'vɑːlvd/ adj.</td><td>卷入的；有关的；复杂的v. 涉及；使参与；包含（involve的过去式和过去分词）</td></tr>
+<tr><td>addition</td><td>/ə'dɪʃn/ n.</td><td>添加；增加物；加法</td></tr>
+<tr><td>towards</td><td>/tɔːrdz/ prep.</td><td>向，朝为了；有助于；用于对于，关于接近；将近；大约</td></tr>
+<tr><td>imaginative</td><td>/ɪ'mædʒɪnətɪv/ adj.</td><td>富于想像力的; 运用想像力的</td></tr>
+<tr><td>vines</td><td>/vaɪn/ n.</td><td>[植]葡萄树；[植]藤本植物；[植]攀缘植物；[植]藤vi. 长成藤蔓；爬藤, vining, vines</td></tr>
+<tr><td>tapestry</td><td>/'tæpəstri/ n.</td><td>挂毯；织锦；绣帷vt. 用挂毯装饰</td></tr>
+<tr><td>grains</td><td>/ɡreɪn/ n.</td><td>谷物；谷粒颗粒；细粒（尤用于否定句） 少量；微量；一点儿（木、织物或石头等的）纹理（表面的）质地；触感格令（重量单位，等于0.00143磅或0.0648克，用于</td></tr>
+<tr><td>tides</td><td>/taɪd/ n.</td><td>潮汐；趋势，潮流vt. 随潮漂流, tiding, tides</td></tr>
+<tr><td>scenes</td><td>/siːn/ n.</td><td>情景；景象；场面；事件</td></tr>
+<tr><td>perplexing</td><td>/pər'pleks/ vt.</td><td>使困惑，使为难；使复杂化, perplexing, perplexes</td></tr>
+<tr><td>speaking</td><td>/'spikɪŋ/ adj.</td><td>演讲的；富于表情的，雄辩的n. 说话；演讲v. 讲（speak的ing形式）</td></tr>
+<tr><td>either</td><td>/'iːðər/ pron.</td><td>(两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的</td></tr>
+<tr><td>caressing</td><td>/kə'res/ n.</td><td>爱抚；抚摸vt. 爱抚或抚摸…，caressing，caresses</td></tr>
+<tr><td>striking</td><td>/'straɪkɪŋ/ adj.</td><td>显著的，突出的引人注目的；容貌出众的</td></tr>
+<tr><td>squats</td><td>/skwɑːt/ vi.</td><td>蹲坐；蹲擅自占住(空屋)adj. 矮胖的；矮而宽的n. 蹲坐，蹲姿被擅自占用的建筑物，squatting，squats</td></tr>
+<tr><td>priest</td><td>/priːst/ n.</td><td>牧师；神父；教士vt. 使成为神职人员；任命…为祭司, priesting, priests</td></tr>
+<tr><td>sexual</td><td>/'sekʃuəl/ adj.</td><td>性交的, 性行为的, 性吸引的, 两性的, 肉体吸引的性别的, 性的, 男性或女性的生殖的, 有性生殖的</td></tr>
+<tr><td>explanation</td><td>/ˌeksplə'neɪʃn/ n.</td><td>解释, 说明能说明某事缘由的言语、事实、情况等</td></tr>
+<tr><td>wonder</td><td>/'wʌndər/ vt.</td><td>& vi. 对…感到疑惑想知道；问自己n. 惊奇，惊叹，惊异，惊诧奇人，奇才奇观，奇景，奇迹，奇事，wondering，wonders</td></tr>
+<tr><td>references</td><td>/'refrəns/ n.</td><td>提及，涉及参考，查阅引文；参考书目证明书；推荐信；证明人；推荐人，referencing，references</td></tr>
+<tr><td>notable</td><td>/'noʊtəbl/ adj.</td><td>值得注意的，显著的；著名的n. 名人，显要人物</td></tr>
+<tr><td>sheer</td><td>/ʃɪr/ adj.</td><td>完全的；十足的陡峭的；垂直的极薄的，轻的，透明的adv. 垂直地，陡峭地vi. 避开，突然转向，sheering，sheers</td></tr>
+<tr><td>covers</td><td>/'kʌvər/ vt.</td><td>包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替, covering, covers</td></tr>
+<tr><td>esteemed</td><td>/ɪ'stiːm/ vt.</td><td>认为；尊敬；考虑；估价n. 尊重；尊敬, esteeming, esteems</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day39.html" class="nav-btn">← Day 39</a>
+  <a href="day41.html" class="nav-btn">Day 41 →</a>
+</div>
+
+<div class="progress">📖 Day 40 of 43</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-09-05</div>
+
+</body>
+</html>

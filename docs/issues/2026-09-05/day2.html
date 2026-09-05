@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-09-05</div>
+
+<h1 class="article-title">Business</h1>
+<div class="article-section"></div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>The <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">Federal</span> Trade <span class="annot" data-tooltip="commission /kə'mɪʃn/ n. 授权, 委托委员会佣金, 回扣vt. 委任, 委托时 态: commissioned, commissioning, c">Commission</span> and 22 states filed a <span class="annot" data-tooltip="lawsuit /'lɔːsuːt/ n. 诉讼（尤指非刑事案件）；诉讼案件">lawsuit</span> against <span class="annot" data-tooltip="amazon /ˈæməˌzɑn/ n. 高大强悍的女人；（古希腊神话中的）亚马孙族女战士Amazonn. 亚马逊河(南美洲大河)">Amazon</span>, alleging that it “<span class="annot" data-tooltip="secretly /'siːkrətli/ adv. 秘密地;背地里">secretly</span>” manipulated auctions for advertisement placements on its website and mobile app, “<span class="annot" data-tooltip="illegally /ɪ'liːɡəli/ adv. 不法地">illegally</span>” <span class="annot" data-tooltip="extracting /'ekstrækt/ v. 提取；提炼索取，设法得到（对方不愿提供的信息、钱财等）选取；摘录；选录（用力）取出，拔出【正式】获得，得到（某种感觉或品">extracting</span> $20bn from 1.2m ad customers. Amazon is purported to have said that the complaint is “misguided”. The latest deal struck by an AI firm to expand its data capacity saw <span class="annot" data-tooltip="anthropic /ænˈθrɑpɪk/ adj. 人类的,有关人类的">Anthropic</span> reportedly pay $35bn to Lambda, a cloud-computing service backed by <span class="annot" data-tooltip="nvidia 恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商">Nvidia</span>. As part of the agreement Nvidia will hold the <span class="annot" data-tooltip="lease /liːs/ n. 租约；租期；租赁物；租赁权vt. 出租；租得vi. 出租时 态: leased, leasing, leases">lease</span> on a new data centre in <span class="annot" data-tooltip="texas /'teksəs/ n. 德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室">Texas</span>, according to reports, the latest instance of the chip company <span class="annot" data-tooltip="helping /'helpɪŋ/ n. （进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的">helping</span> fund AI <span class="annot" data-tooltip="infrastructure /'ɪnfrəstrʌktʃər/ n. 基础设施; 基础结构">infrastructure</span>. SLB expanded its business in data centres by agreeing to buy Kelvion, a firm specialising in <span class="annot" data-tooltip="cooling /ˈkulɪŋ/ n. 冷却adj. 凉的；凉爽的冷却的">cooling</span> and heat-<span class="annot" data-tooltip="transfer /træns'fɜːr/ n. 转移；转让；过户；传递vi. 转移；转让；转学；换车vt. 转让；调任；传递；使转移时 态: transferred, ">transfer</span> applications, in a $4.1bn deal. Better known as the world’s biggest oilfield-services company, SLB also builds prefabricated infrastructure for data centres such as electrical rooms and server halls, which it then <span class="annot" data-tooltip="assembles /ə'sembl/ vt. 集合，聚集；装配；收集vi. 集合，聚集时 态: assembled, assembling, assembles">assembles</span> on site. Kelvion provides technology that cools the equipment. <span class="annot" data-tooltip="revenue /'revənuː/ n. 收入，收益；财政收入，税收">Revenue</span> from SLB’s data-centre business in America grew by 121% last year. The world’s first electric toothbrush with a built-in camera went on sale. Made by Dyson, the CameraJet <span class="annot" data-tooltip="enables /ɪ'neɪbl/ vt. 使能够；提供做…的权利[措施]使可能时 态: enabled，enabling，enables">enables</span> users to inspect their mouths for cavities and ulcers, but also uses an AI algorithm (of course) to <span class="annot" data-tooltip="blast /blæst/ n. 爆炸；冲击波；一阵vi. 猛攻vt. 使枯萎；损害；爆炸时 态: blasted, blasting, blasts">blast</span> <span class="annot" data-tooltip="mouthwash /'maʊθwɔːʃ/ n. 漱口剂,洗口药">mouthwash</span> into the tiny gaps between teeth. Its “<span class="annot" data-tooltip="anti /'ænti/ adj. 反对的n. 反对者，反对论者">anti</span>-gravity <span class="annot" data-tooltip="tank /tæŋk/ n. （存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内时 态: t">tank</span>” works better than other flossers, Dyson claims. <span class="annot" data-tooltip="retailing /ˈriːteɪl/ vt. 零售；转述vi. 零售n. 零售adv. 以零售方式adj. 零售的时 态: retailed, retailing, ">Retailing</span> at $499, some people may prefer to use more traditional toothbrushes to keep their ivories pearly white. This article was downloaded by zlibrary from https://www.economist.com/the-world-this-week/2026/09/03/business</p>
+<div class="article-separator"></div>
+<div class="article-header"> · The world this week</div>
+<p>Cartoon: Putin cornered A <span class="annot" data-tooltip="lighter /'laɪtər/ n. 打火机；驳船；点火者vt. 驳运时 态: lightered, lightering, lighters">lighter</span> take on the news Sep 3rd 2026 Dig deeper into the subjects of this week’s cartoon: Cornered, Vladimir Putin plans to escalate his war <span class="annot" data-tooltip="ukraine n. 乌克兰（原苏联一加盟共和国，现已独立）">Ukraine</span> is bracing for Russia’s hardest winter blitz yet By <span class="annot" data-tooltip="invitation /ˌɪnvɪ'teɪʃn/ n. 邀请请柬, 请帖">Invitation</span>: Europe cannot protect Russia from itself, writes Radek Sikorski You can see previous ones here. This article was downloaded by zlibrary from https://www.economist.com/the-world-this-week/2026/09/03/cartoon-putin-cornered</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Leaders</div>
+<p><span class="annot" data-tooltip="nvidia 恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商">Nvidia</span> is driving the AI boom. Good Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s <span class="annot" data-tooltip="venezuela /ˌvenə'zweɪlə/ n. 委内瑞拉形容词: Venezuelan">Venezuela</span> deal is bold but dodgy Yoweri Museveni’s decline is putting Uganda on a terrifying path In many countries, the biggest barrier to prosperity is in the home What the Bayeux <span class="annot" data-tooltip="tapestry /'tæpəstri/ n. 挂毯；织锦；绣帷vt. 用挂毯装饰">tapestry</span> teaches about surviving against the <span class="annot" data-tooltip="odds /ɑːdz/ n. 不平等；几率；胜算；差别">odds</span> The moral panic over data centres is foolish</p>
+<div class="article-separator"></div>
+<div class="article-header">Leaders · Leaders | Our cover</div>
+<p><span class="annot" data-tooltip="nvidia 恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商">Nvidia</span> is driving the AI boom. Good The chipmaker’s <span class="annot" data-tooltip="enormous /ɪ'nɔːrməs/ adj. 巨大的, 极大的, 庞大的副 词: enormously">enormous</span> bets are how <span class="annot" data-tooltip="capitalism /'kæpɪtəlɪzəm/ n. 资本主义(制度)资本(或财富)的拥有资本(私人占有和生产盈利)的支配地位">capitalism</span> is supposed to work Sep 3rd 2026 NVIDIA was named in 1993 after the Latin word for <span class="annot" data-tooltip="envy /'envi/ n. 羡慕；嫉妒，妒忌vt. 羡慕；嫉妒，妒忌vi. 感到妒忌；显示出妒忌名 词: envier">envy</span>. Sure enough, the American colossus inspires plenty of it. Insatiable global demand for its <span class="annot" data-tooltip="graphics /'ɡræfɪks/ n. 制图学；制图法；图表算法">graphics</span>-<span class="annot" data-tooltip="processing /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">processing</span> units (GPUs), the chips that power artificial intelligence, has made Nvidia the world’s most valuable company, <span class="annot" data-tooltip="worth /wɜːrθ/ adj. 值…的n. 价值；财产时 态: worthed, worthing, worths">worth</span> $5.4trn. Next year it may also become the most <span class="annot" data-tooltip="profitable /'prɑːfɪtəbl/ adj. 有利可图的; 有益的副 词: profitably">profitable</span>, generating $370bn in <span class="annot" data-tooltip="net /net/ n. 网；净利；网络；实价vi. 编网vt. 净赚；得到；用网捕adj. 纯粹的；净余的时 态: netted, nettin">net</span> income. By 2029 its sales could hit $1trn. Jensen Huang, Nvidia’s boss, is truly the magician at the heart of the AI boom. His firm’s share price is 14 times what it was on ChatGPT’s <span class="annot" data-tooltip="release /rɪ'liːs/ vt. 释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]时 态: released，rel">release</span> in late 2022. The ten biggest public companies championing AI make up 40% of the <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span> of the S&P 500 index. Nvidia alone accounts for 8% and unlike, say, Apple or Tesla, which make smartphones and cars, it is almost <span class="annot" data-tooltip="solely /'soʊlli/ adv. 唯一地;仅仅;独一无二地">solely</span> a</p>
+<p>bet on AI. The company has produced about 15 cents of every dollar the American stock market has returned since 2023—returns that have kept consumers spending despite rising interest rates, <span class="annot" data-tooltip="tariffs /'tærɪf/ n. 关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表时 态: tariffed, tariffing, tar">tariffs</span> and a war with Iran. Yet many also see Mr Huang as a magician in a more worrying sense, fearing that he is an illusionist inflating a dangerous <span class="annot" data-tooltip="bubble /'bʌbl/ n. 气泡，泡沫，泡状物；透明圆形罩，圆形顶vi. 沸腾，冒泡；发出气泡声vt. 使冒泡；滔滔不绝地说时 态: bubbled">bubble</span>. Through $1trn- <span class="annot" data-tooltip="worth /wɜːrθ/ adj. 值…的n. 价值；财产时 态: worthed, worthing, worths">worth</span> of deals, <span class="annot" data-tooltip="nvidia 恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商">Nvidia</span> provides data-centre landlords and AI labs with cash or guarantees so that they can buy its GPUs. Some call it the “bank of AI”. At the very least, Nvidia’s critics say, its financial engineering <span class="annot" data-tooltip="smacks /smæk/ vt. 拍，打，掴n. 掌掴(声)；拍击(声)adv. 直接地，准确地，恰好地猛烈地，急剧地时 态: smacked，smack">smacks</span> of the “<span class="annot" data-tooltip="vendor /'vendər/ n. 小贩；卖主；自动售货机">vendor</span> financing” which pumped up the <span class="annot" data-tooltip="revenues /'revənuː/ n. 收入，收益；财政收入，税收">revenues</span> of <span class="annot" data-tooltip="networking /'netwɜːrkɪŋ/ n. 联网">networking</span>-<span class="annot" data-tooltip="gear /ɡɪr/ n. 用具，设备，衣服齿轮；传动装置；(排)挡vi. 换挡vt. 使兴奋起来；使准备好vt. & vi. (使)搭配；(使)适">gear</span> makers like Cisco in the dotcom mania of 2000-01, whose <span class="annot" data-tooltip="collapse /kə'læps/ vi. 倒塌；瓦解；暴跌vt. 使倒塌，使崩溃；使萎陷n. 倒塌；失败；衰竭时 态: collapsed, collapsing">collapse</span> brought about a recession. Look more closely, however, and the worries are mostly unjustified. If Nvidia’s bets on ai come good, they could accelerate the technology’s adoption, boosting <span class="annot" data-tooltip="productivity /ˌproʊdʌk'tɪvəti/ n. 生产率, 生产力">productivity</span> and living standards. If they <span class="annot" data-tooltip="misfire /ˌmɪs'faɪər/ vi. 不发火；失败n. 不发火；失败时 态: misfired, misfiring, misfires">misfire</span>, the cost will <span class="annot" data-tooltip="fall /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">fall</span> chiefly on Nvidia’s <span class="annot" data-tooltip="shareholders /'ʃerhoʊldər/ n. 股东名 词: shareholding">shareholders</span>. That is how <span class="annot" data-tooltip="capitalism /'kæpɪtəlɪzəm/ n. 资本主义(制度)资本(或财富)的拥有资本(私人占有和生产盈利)的支配地位">capitalism</span> is supposed to work. True, the dotcom and AI booms share unnerving similarities: an <span class="annot" data-tooltip="exciting /ɪk'saɪtɪŋ/ adj. 使人激动的；令人兴奋的v. 激动；唤起；刺激（excite的ing形式）">exciting</span> new technology, an <span class="annot" data-tooltip="epic /'epɪk/ adj. 史诗的，叙事诗的n. 史诗；叙事诗；史诗般的作品EPICabbr. Earth-Pointing Instrument ">epic</span> bull run, hubristic tech bosses. Nvidia’s <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> from seller of chips to video-gamers and cryptocurrency miners to linchpin of the economy has been so rapid that many people have yet to learn how to say its name (“en-vidia”, not “nuh-vidia”). This mirrors the ascent of Cisco, which in 2000 briefly also became the world’s most valuable firm. Just as Cisco’s sales of routers and switches presupposed exponential growth in web <span class="annot" data-tooltip="traffic /'træfɪk/ n. 交通；贸易；运输；通信量vt. 用…作交换；在…通行vi. 交易，买卖时 态: trafficked, traffick">traffic</span>, Nvidia’s GPU revenues assume endless demand for AI tokens. Cisco was right about eventual demand but wrong about the <span class="annot" data-tooltip="timing /'taɪmɪŋ/ n. 定时；时间选择；调速v. 为…安排时间；测定…的时间（time的ing形式）">timing</span>—<span class="annot" data-tooltip="hence /hens/ adv. 因此；今后">hence</span> the dotcom <span class="annot" data-tooltip="crash /kræʃ/ n. 碰撞；崩溃；坠落vt. 破碎；撞碎；坠落vi. 碰撞；坠毁；闯；突然倒台adj. 速成的时 态: crashed, cr">crash</span>. Today it is the pace of AI adoption that is hard to forecast. Set aside Claude-addled software engineers and usage remains fledgling. If it does not soon soar, Nvidia’s customers may call in the guarantees just as the chipmaker’s <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> sales nosedive. Since no one is sure how quickly GPUs lose their <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span>, any used chips Nvidia repossesses may be worthless. Nvidia’s financial wizardry is partly defensive. Its latest GPUs no longer have the market to themselves. Roughly half Nvidia’s <span class="annot" data-tooltip="revenue /'revənuː/ n. 收入，收益；财政收入，税收">revenue</span> comes courtesy of America’s cloud-computing “hyperscalers”, chiefly <span class="annot" data-tooltip="amazon /ˈæməˌzɑn/ n. 高大强悍的女人；（古希腊神话中的）亚马孙族女战士Amazonn. 亚马逊河(南美洲大河)">Amazon</span>,</p>
+<p>Google, Meta and Microsoft, which are designing their <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> <span class="annot" data-tooltip="silicon /'sɪlɪkən/ n. 〈化〉硅">silicon</span>. Non- <span class="annot" data-tooltip="nvidia 恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商">Nvidia</span> AI chips account for 38% of the market, up from 26% in 2023. To stay ahead, Nvidia used to spend over a fifth of sales on research and development. Now it spends less than a tenth. Last, the scale of Nvidia’s financial <span class="annot" data-tooltip="commitments /kə'mɪtmənt/ n. 承诺；保证；信奉；献身；委任；花费金钱、时间、人力等">commitments</span> can look terrifying. Morgan Stanley puts its <span class="annot" data-tooltip="overall /ˌoʊvər'ɔːl/ adj. 总体的；全面的；综合的全面考虑的adv. 大体上，总的来说一切包括在内，全部的n. 长罩衣工装裤；工作裤">overall</span> <span class="annot" data-tooltip="credit /'kredɪt/ n. 赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)时 态:">credit</span> <span class="annot" data-tooltip="exposure /ɪk'spoʊʒər/ n. 暴露, 显露揭发, 揭露(软片等)曝光">exposure</span>—ie, its modest borrowing plus support for customers—at $200bn by the start of 2029. In time Nvidia’s shadow debt could <span class="annot" data-tooltip="reach /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reach</span> $300bn or more. It is a gargantuan sum: today only America’s six largest banks carry more debt. Yet the differences from the dotcom boom are more important than the similarities. Nvidia’s balance-sheet is extraordinarily <span class="annot" data-tooltip="robust /roʊ'bʌst/ adj. 强健的；健康的；粗野的；粗鲁的副 词: robustly">robust</span>. The company has $99bn of cash and is churning out more. In each of the past three years <span class="annot" data-tooltip="annual /'ænjuəl/ adj. 年度的；每年的n. 年刊，年鉴；一年生植物副 词: annually">annual</span> sales have roughly doubled. <span class="annot" data-tooltip="gross /ɡroʊs/ adj. 总共的；粗野的；恶劣的；显而易见的vt. 总共收入n. 总额，总数比较级: grosser, grossest">Gross</span> <span class="annot" data-tooltip="margins /'mɑːrdʒɪn/ n. 页边缘；利润，余裕；页边的空白">margins</span> have fattened from less than 60% to 75%. Mr Huang’s <span class="annot" data-tooltip="cult /kʌlt/ n. 狂热；异教团体；宗教信仰；膜拜仪式；时髦的人（或事物）；信徒">cult</span>-CEO status now <span class="annot" data-tooltip="rivals /'raɪvl/ n. 竞争对手vt. 与…竞争, 与…匹敌时 态: rivaled, rivalled rivaling, rivalling">rivals</span> that of Elon Musk. But <span class="annot" data-tooltip="whereas /ˌwer'æz/ conj. 但是, 而">whereas</span> Mr Musk's firms generate little cash (at Tesla) or burn lots of it (at SpaceX), Nvidia will <span class="annot" data-tooltip="yield /jiːld/ vt. 出产；屈服；放弃vi. 屈服，投降n. 收益；产量时 态: yielded, yielding, yields">yield</span> about $200bn this year. This means that, whereas Cisco used debt, Nvidia can use cash to backstop its deals with buyers of its GPUs. Even if its commitments came <span class="annot" data-tooltip="due /duː/ adj. 到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）">due</span> and its cashflows levelled off starting next year, by 2028 it would still be less leveraged than all but 39 non-financial firms in the S&P 500 are today. Profits would need to drop by 60% from that <span class="annot" data-tooltip="plateau /plæ'toʊ/ n. 高原平稳时期, 稳定状态, 停滞时期">plateau</span> for Nvidia to <span class="annot" data-tooltip="forsake /fər'seɪk/ vt. 放弃；断念时 态: forsook forsaken forsaking, forsakes">forsake</span> its investment-grade credit rating. And demand for AI is not illusory, as it was for Pets.com and other revenueless dotcom darlings. The sales of <span class="annot" data-tooltip="anthropic /ænˈθrɑpɪk/ adj. 人类的,有关人类的">Anthropic</span>, the <span class="annot" data-tooltip="leading /ˈliːdɪŋ/ adj. 主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）">leading</span> AI lab, shot up from $5bn in the first <span class="annot" data-tooltip="quarter /'kwɔːrtər/ n. 四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一时 ">quarter</span> to $11.5bn in the second. OpenAI, its <span class="annot" data-tooltip="main /meɪn/ adj. 主要的; 最重要的n. 总管道; 干线">main</span> <span class="annot" data-tooltip="rival /'raɪvl/ n. 竞争对手vt. 与…竞争, 与…匹敌时 态: rivaled, rivalled rivaling, rivalling">rival</span>, is probably not <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> behind. The hyperscalers are also booking AI income. All told, AI may be <span class="annot" data-tooltip="earning /ɪr/ n. 耳朵；听觉；倾听；穗vi. （美俚）听见；抽穗EARabbr. East African Railways 东非铁路公司">earning</span> American tech around $150bn a year, from nothing a few years ago. That is still far from the $2.5trn needed to <span class="annot" data-tooltip="cover /'kʌvər/ vt. 包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替时 态: covered, covering, c">cover</span> AI capital spending, but growth is fast. Mr Huang thinks that the biggest <span class="annot" data-tooltip="obstacle /'ɑːbstəkl/ n. 障碍(物), 妨碍">obstacle</span> to the AI revolution is not lack of demand for AI but <span class="annot" data-tooltip="inadequate /ɪn'ædɪkwət/ adj. 不充足的，不适当的不足胜任的，信心不足的adv. 不充足地，不适当地；不足胜任地副 词: inadequately">inadequate</span> <span class="annot" data-tooltip="infrastructure /'ɪnfrəstrʌktʃər/ n. 基础设施; 基础结构">infrastructure</span>. The markets will not provide capital on the scale that is necessary, so Nvidia is offering financing itself. Nvidia has an advantage in understanding the balance of risks and rewards.</p>
+<p><span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">Although</span> this bet is big enough to <span class="annot" data-tooltip="affect /ə'fekt/ vt. 影响；假装；感动；感染vi. 倾向；喜欢n. 情感；引起感情的因素时 态: affected, affecting, a">affect</span> the economy, it is an entrepreneurial one. Every company that reinvests cash rather than returning it to <span class="annot" data-tooltip="shareholders /'ʃerhoʊldər/ n. 股东名 词: shareholding">shareholders</span> also <span class="annot" data-tooltip="gambles /'ɡæmbl/ vt. & vi. 赌博；冒风险n. 赌博，打赌；投机，冒险时 态: gambled，gambling，gambles">gambles</span> that it can beat the market. Companies exist to make such concentrated bets. If investors want to diversify, they can do so themselves. And Mr Huang is hardly alone. The hyperscalers, the world’s most successful companies before <span class="annot" data-tooltip="nvidia 恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商">Nvidia</span> came along, are making the same bet. So are some big names on Wall Street. Last month Goldman Sachs, BlackRock, Blackstone and others joined Nvidia in a $500bn data-centre <span class="annot" data-tooltip="initiative /ɪ'nɪʃətɪv/ n. 主动性, 首创精神主动的行动, 倡议主动权">initiative</span>. And so are Mr Huang’s shareholders, who haven’t yet rushed for the exit. If they are all wrong, it is their money on the <span class="annot" data-tooltip="line /laɪn/ n. 绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long inter">line</span>. And if they are right, the AI era may arrive a bit <span class="annot" data-tooltip="sooner /ˈsunɚ/ n. （美）抢先占有土地者（在政府开放西部前）">sooner</span>. ■ This article was downloaded by zlibrary from https://www.economist.com/leaders/2026/09/03/nvidia-is-driving-the-ai-boom-good</p>
+<div class="article-separator"></div>
+<div class="article-header">Leaders · Leaders | “The biggest oil deal in world history”</div>
+<p>Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s <span class="annot" data-tooltip="venezuela /ˌvenə'zweɪlə/ n. 委内瑞拉形容词: Venezuelan">Venezuela</span> deal is bold but dodgy Worse, it creates incentives to block <span class="annot" data-tooltip="democracy /dɪ'mɑːkrəsi/ n. 民主, 民主制民主国家">democracy</span> Sep 3rd 2026 Oil made Venezuela rich. For <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span> it helped fund a stable democracy with the highest living standards in Latin America. The country was pumping 3.4m <span class="annot" data-tooltip="barrels /'bærəl/ vt. 把……装入桶内n. 桶；枪管，炮管vi. 快速移动时 态: barreled, barrelled barreling,">barrels</span> a day when Hugo Chávez, a left-<span class="annot" data-tooltip="wing /wɪŋ/ n. 翅膀；翼；飞翔；派别vt. 使飞；飞过；空运；增加…速度；装以翼vi. 飞行时 态: winged, winging, ">wing</span> populist, was elected in 1998 on a promise to redirect petrodollars to the poor. Instead, under his <span class="annot" data-tooltip="corrupt /kə'rʌpt/ adj. 腐败的，贪污的；堕落的vt. 使堕落，使恶化；使腐烂vi. 腐烂；堕落，腐化时 态: corrupted, corrup">corrupt</span>, incompetent <span class="annot" data-tooltip="regime /reɪ'ʒiːm/ n. 政权，政体；社会制度；管理体制">regime</span>, the flows of oil and cash largely dried up. Under his chosen successor, Nicolás Maduro, the state went on a money-printing spree, <span class="annot" data-tooltip="sparked /spɑːrk/ n. 火花，火星；电火花；一丝，略微；导火线，诱因v. 引发，触发；产生火花（电火花）；点燃；增加趣味（或活力、风味等）时 态">sparked</span> hyperinflation and drove a <span class="annot" data-tooltip="quarter /'kwɔːrtər/ n. 四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一时 ">quarter</span> of Venezuelans to emigrate. Eight months ago, when Donald Trump had Mr Maduro snatched by special forces and <span class="annot" data-tooltip="dumped /dʌmp/ vt. 倾倒；倾卸vi. 倒垃圾n. 垃圾场dUMP脱氧尿苷酸时 态: dumped, dumping, dumps">dumped</span> in a <span class="annot" data-tooltip="brooklyn /'brʊklɪn/ n. 布鲁克林（美国纽约西南部的一区）">Brooklyn</span> jail, Venezuelans cheered. Now Mr Trump has made a deal with the ex-despot’s <span class="annot" data-tooltip="deputy /'depjuti/ n. 代理人，代表adj. 副的；代理的">deputy</span>, Delcy Rodríguez, that both</p>
+<p>sides say will revive <span class="annot" data-tooltip="venezuela /ˌvenə'zweɪlə/ n. 委内瑞拉形容词: Venezuelan">Venezuela</span>’s oil <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span>. Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> called it the “BIGGEST OIL DEAL IN WORLD HISTORY”. He <span class="annot" data-tooltip="crowed /kroʊ/ vi. 报晓；啼叫n. 乌鸦；鸡鸣；撬棍时 态: crowed, crowing, crows">crowed</span> that it would give America “<span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span> dominance” (after his war of choice in Iran <span class="annot" data-tooltip="interrupted /ˌɪntə'rʌpt/ vt. & vi. 打断时 态: interrupted, interrupting, interrupts">interrupted</span> global supplies). The deal is certainly bold. It is also ugly. The <span class="annot" data-tooltip="regime /reɪ'ʒiːm/ n. 政权，政体；社会制度；管理体制">regime</span> has given North American Blue Energy Partners (NABEP), a private oil firm that was already the second-largest operating in Venezuela, the <span class="annot" data-tooltip="concessions /kən'seʃn/ n. 承认, 允许妥协, 让步特许权形容词: concessional">concessions</span> to 17 oilfields containing some 65bn <span class="annot" data-tooltip="barrels /'bærəl/ vt. 把……装入桶内n. 桶；枪管，炮管vi. 快速移动时 态: barreled, barrelled barreling,">barrels</span>. America, via the Pentagon, has been given, in exchange for its backing, a 35% stake in nabep and rights to its output. For the next century this guarantees America the right of first refusal to buy from oilfields which hold a fifth of Venezuelan oil reserves, with some of those <span class="annot" data-tooltip="purchases /'pɜːrtʃəs/ n. 购买；紧握；起重装置vt. 购买；赢得vi. 购买东西时 态: purchased, purchasing, purch">purchases</span> at a discount (see Americas section). The idea is that nabep will pump more oil and Uncle Sam’s involvement will give other investors confidence to sink long-term capital into a country they previously shunned. Ms Rodríguez, now Venezuela’s Trump-approved <span class="annot" data-tooltip="interim /'ɪntərɪm/ adj. 临时的，暂时的；中间的；间歇的n. 过渡时期，中间时期；暂定">interim</span> president, says the project could eventually <span class="annot" data-tooltip="yield /jiːld/ vt. 出产；屈服；放弃vi. 屈服，投降n. 收益；产量时 态: yielded, yielding, yields">yield</span> more than 1.5m barrels per day. If she is right, it would push Venezuela’s output to 2.5m, three-<span class="annot" data-tooltip="quarters n. 住处,岗位">quarters</span> of pre-Chávez levels.</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>commission</td><td>/kə'mɪʃn/ n.</td><td>授权, 委托委员会佣金, 回扣vt. 委任, 委托, commissioning, commissions</td></tr>
+<tr><td>lawsuit</td><td>/'lɔːsuːt/ n.</td><td>诉讼（尤指非刑事案件）；诉讼案件</td></tr>
+<tr><td>amazon</td><td>/ˈæməˌzɑn/ n.</td><td>高大强悍的女人；（古希腊神话中的）亚马孙族女战士Amazonn. 亚马逊河(南美洲大河)</td></tr>
+<tr><td>secretly</td><td>/'siːkrətli/ adv.</td><td>秘密地;背地里</td></tr>
+<tr><td>illegally</td><td>/ɪ'liːɡəli/ adv.</td><td>不法地</td></tr>
+<tr><td>extracting</td><td>/'ekstrækt/ v.</td><td>提取；提炼索取，设法得到（对方不愿提供的信息、钱财等）选取；摘录；选录（用力）取出，拔出【正式】获得，得到（某种感觉或品质）n. 摘录；选录；选曲；节录（尤指食</td></tr>
+<tr><td>anthropic</td><td>/ænˈθrɑpɪk/ adj.</td><td>人类的,有关人类的</td></tr>
+<tr><td>nvidia</td><td>— </td><td>恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商</td></tr>
+<tr><td>lease</td><td>/liːs/ n.</td><td>租约；租期；租赁物；租赁权vt. 出租；租得vi. 出租, leasing, leases</td></tr>
+<tr><td>texas</td><td>/'teksəs/ n.</td><td>德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室)</td></tr>
+<tr><td>helping</td><td>/'helpɪŋ/ n.</td><td>（进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的</td></tr>
+<tr><td>infrastructure</td><td>/'ɪnfrəstrʌktʃər/ n.</td><td>基础设施; 基础结构</td></tr>
+<tr><td>cooling</td><td>/ˈkulɪŋ/ n.</td><td>冷却adj. 凉的；凉爽的冷却的</td></tr>
+<tr><td>transfer</td><td>/træns'fɜːr/ n.</td><td>转移；转让；过户；传递vi. 转移；转让；转学；换车vt. 转让；调任；传递；使转移, transferring, transfers</td></tr>
+<tr><td>assembles</td><td>/ə'sembl/ vt.</td><td>集合，聚集；装配；收集vi. 集合，聚集, assembling, assembles</td></tr>
+<tr><td>revenue</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>enables</td><td>/ɪ'neɪbl/ vt.</td><td>使能够；提供做…的权利[措施]使可能，enabling，enables</td></tr>
+<tr><td>blast</td><td>/blæst/ n.</td><td>爆炸；冲击波；一阵vi. 猛攻vt. 使枯萎；损害；爆炸, blasting, blasts</td></tr>
+<tr><td>mouthwash</td><td>/'maʊθwɔːʃ/ n.</td><td>漱口剂,洗口药</td></tr>
+<tr><td>anti</td><td>/'ænti/ adj.</td><td>反对的n. 反对者，反对论者</td></tr>
+<tr><td>tank</td><td>/tæŋk/ n.</td><td>（存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内, tanking, tanks</td></tr>
+<tr><td>retailing</td><td>/ˈriːteɪl/ vt.</td><td>零售；转述vi. 零售n. 零售adv. 以零售方式adj. 零售的, retailing, retails</td></tr>
+<tr><td>lighter</td><td>/'laɪtər/ n.</td><td>打火机；驳船；点火者vt. 驳运, lightering, lighters</td></tr>
+<tr><td>ukraine</td><td>— n.</td><td>乌克兰（原苏联一加盟共和国，现已独立）</td></tr>
+<tr><td>invitation</td><td>/ˌɪnvɪ'teɪʃn/ n.</td><td>邀请请柬, 请帖</td></tr>
+<tr><td>nvidia</td><td>— </td><td>恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>venezuela</td><td>/ˌvenə'zweɪlə/ n.</td><td>委内瑞拉</td></tr>
+<tr><td>tapestry</td><td>/'tæpəstri/ n.</td><td>挂毯；织锦；绣帷vt. 用挂毯装饰</td></tr>
+<tr><td>odds</td><td>/ɑːdz/ n.</td><td>不平等；几率；胜算；差别</td></tr>
+<tr><td>nvidia</td><td>— </td><td>恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商</td></tr>
+<tr><td>enormous</td><td>/ɪ'nɔːrməs/ adj.</td><td>巨大的, 极大的, 庞大的</td></tr>
+<tr><td>capitalism</td><td>/'kæpɪtəlɪzəm/ n.</td><td>资本主义(制度)资本(或财富)的拥有资本(私人占有和生产盈利)的支配地位</td></tr>
+<tr><td>envy</td><td>/'envi/ n.</td><td>羡慕；嫉妒，妒忌vt. 羡慕；嫉妒，妒忌vi. 感到妒忌；显示出妒忌</td></tr>
+<tr><td>graphics</td><td>/'ɡræfɪks/ n.</td><td>制图学；制图法；图表算法</td></tr>
+<tr><td>processing</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>worth</td><td>/wɜːrθ/ adj.</td><td>值…的n. 价值；财产, worthing, worths</td></tr>
+<tr><td>profitable</td><td>/'prɑːfɪtəbl/ adj.</td><td>有利可图的; 有益的</td></tr>
+<tr><td>net</td><td>/net/ n.</td><td>网；净利；网络；实价vi. 编网vt. 净赚；得到；用网捕adj. 纯粹的；净余的, netting, nets</td></tr>
+<tr><td>release</td><td>/rɪ'liːs/ vt.</td><td>释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]，releasing，releases</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>solely</td><td>/'soʊlli/ adv.</td><td>唯一地;仅仅;独一无二地</td></tr>
+<tr><td>tariffs</td><td>/'tærɪf/ n.</td><td>关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表, tariffing, tariffs</td></tr>
+<tr><td>bubble</td><td>/'bʌbl/ n.</td><td>气泡，泡沫，泡状物；透明圆形罩，圆形顶vi. 沸腾，冒泡；发出气泡声vt. 使冒泡；滔滔不绝地说, bubbling, bubbles</td></tr>
+<tr><td>worth</td><td>/wɜːrθ/ adj.</td><td>值…的n. 价值；财产, worthing, worths</td></tr>
+<tr><td>nvidia</td><td>— </td><td>恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商</td></tr>
+<tr><td>smacks</td><td>/smæk/ vt.</td><td>拍，打，掴n. 掌掴(声)；拍击(声)adv. 直接地，准确地，恰好地猛烈地，急剧地，smacking，smacks</td></tr>
+<tr><td>vendor</td><td>/'vendər/ n.</td><td>小贩；卖主；自动售货机</td></tr>
+<tr><td>revenues</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>networking</td><td>/'netwɜːrkɪŋ/ n.</td><td>联网</td></tr>
+<tr><td>gear</td><td>/ɡɪr/ n.</td><td>用具，设备，衣服齿轮；传动装置；(排)挡vi. 换挡vt. 使兴奋起来；使准备好vt. & vi. (使)搭配；(使)适合，gearing，gears</td></tr>
+<tr><td>collapse</td><td>/kə'læps/ vi.</td><td>倒塌；瓦解；暴跌vt. 使倒塌，使崩溃；使萎陷n. 倒塌；失败；衰竭, collapsing, collapses</td></tr>
+<tr><td>productivity</td><td>/ˌproʊdʌk'tɪvəti/ n.</td><td>生产率, 生产力</td></tr>
+<tr><td>misfire</td><td>/ˌmɪs'faɪər/ vi.</td><td>不发火；失败n. 不发火；失败, misfiring, misfires</td></tr>
+<tr><td>fall</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>shareholders</td><td>/'ʃerhoʊldər/ n.</td><td>股东</td></tr>
+<tr><td>capitalism</td><td>/'kæpɪtəlɪzəm/ n.</td><td>资本主义(制度)资本(或财富)的拥有资本(私人占有和生产盈利)的支配地位</td></tr>
+<tr><td>exciting</td><td>/ɪk'saɪtɪŋ/ adj.</td><td>使人激动的；令人兴奋的v. 激动；唤起；刺激（excite的ing形式）</td></tr>
+<tr><td>epic</td><td>/'epɪk/ adj.</td><td>史诗的，叙事诗的n. 史诗；叙事诗；史诗般的作品EPICabbr. Earth-Pointing Instrument Carrier 指向地球的仪器运载卫星</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>traffic</td><td>/'træfɪk/ n.</td><td>交通；贸易；运输；通信量vt. 用…作交换；在…通行vi. 交易，买卖, trafficking, traffics</td></tr>
+<tr><td>timing</td><td>/'taɪmɪŋ/ n.</td><td>定时；时间选择；调速v. 为…安排时间；测定…的时间（time的ing形式）</td></tr>
+<tr><td>hence</td><td>/hens/ adv.</td><td>因此；今后</td></tr>
+<tr><td>crash</td><td>/kræʃ/ n.</td><td>碰撞；崩溃；坠落vt. 破碎；撞碎；坠落vi. 碰撞；坠毁；闯；突然倒台adj. 速成的, crashing, crashes</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>revenue</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>amazon</td><td>/ˈæməˌzɑn/ n.</td><td>高大强悍的女人；（古希腊神话中的）亚马孙族女战士Amazonn. 亚马逊河(南美洲大河)</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>silicon</td><td>/'sɪlɪkən/ n.</td><td>〈化〉硅</td></tr>
+<tr><td>nvidia</td><td>— </td><td>恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商</td></tr>
+<tr><td>commitments</td><td>/kə'mɪtmənt/ n.</td><td>承诺；保证；信奉；献身；委任；花费金钱、时间、人力等</td></tr>
+<tr><td>overall</td><td>/ˌoʊvər'ɔːl/ adj.</td><td>总体的；全面的；综合的全面考虑的adv. 大体上，总的来说一切包括在内，全部的n. 长罩衣工装裤；工作裤</td></tr>
+<tr><td>credit</td><td>/'kredɪt/ n.</td><td>赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)，crediting，credits</td></tr>
+<tr><td>exposure</td><td>/ɪk'spoʊʒər/ n.</td><td>暴露, 显露揭发, 揭露(软片等)曝光</td></tr>
+<tr><td>reach</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>robust</td><td>/roʊ'bʌst/ adj.</td><td>强健的；健康的；粗野的；粗鲁的</td></tr>
+<tr><td>annual</td><td>/'ænjuəl/ adj.</td><td>年度的；每年的n. 年刊，年鉴；一年生植物</td></tr>
+<tr><td>gross</td><td>/ɡroʊs/ adj.</td><td>总共的；粗野的；恶劣的；显而易见的vt. 总共收入n. 总额，总数, grossest</td></tr>
+<tr><td>margins</td><td>/'mɑːrdʒɪn/ n.</td><td>页边缘；利润，余裕；页边的空白</td></tr>
+<tr><td>cult</td><td>/kʌlt/ n.</td><td>狂热；异教团体；宗教信仰；膜拜仪式；时髦的人（或事物）；信徒</td></tr>
+<tr><td>rivals</td><td>/'raɪvl/ n.</td><td>竞争对手vt. 与…竞争, 与…匹敌, rivalled rivaling, rivalling rivals, rivals</td></tr>
+<tr><td>whereas</td><td>/ˌwer'æz/ conj.</td><td>但是, 而</td></tr>
+<tr><td>yield</td><td>/jiːld/ vt.</td><td>出产；屈服；放弃vi. 屈服，投降n. 收益；产量, yielding, yields</td></tr>
+<tr><td>due</td><td>/duː/ adj.</td><td>到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）</td></tr>
+<tr><td>plateau</td><td>/plæ'toʊ/ n.</td><td>高原平稳时期, 稳定状态, 停滞时期</td></tr>
+<tr><td>forsake</td><td>/fər'seɪk/ vt.</td><td>放弃；断念, forsakes</td></tr>
+<tr><td>anthropic</td><td>/ænˈθrɑpɪk/ adj.</td><td>人类的,有关人类的</td></tr>
+<tr><td>leading</td><td>/ˈliːdɪŋ/ adj.</td><td>主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）</td></tr>
+<tr><td>quarter</td><td>/'kwɔːrtər/ n.</td><td>四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一, quartering, quarters</td></tr>
+<tr><td>main</td><td>/meɪn/ adj.</td><td>主要的; 最重要的n. 总管道; 干线</td></tr>
+<tr><td>rival</td><td>/'raɪvl/ n.</td><td>竞争对手vt. 与…竞争, 与…匹敌, rivalled rivaling, rivalling rivals, rivals</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>earning</td><td>/ɪr/ n.</td><td>耳朵；听觉；倾听；穗vi. （美俚）听见；抽穗EARabbr. East African Railways 东非铁路公司, earing, ears</td></tr>
+<tr><td>cover</td><td>/'kʌvər/ vt.</td><td>包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替, covering, covers</td></tr>
+<tr><td>obstacle</td><td>/'ɑːbstəkl/ n.</td><td>障碍(物), 妨碍</td></tr>
+<tr><td>inadequate</td><td>/ɪn'ædɪkwət/ adj.</td><td>不充足的，不适当的不足胜任的，信心不足的adv. 不充足地，不适当地；不足胜任地</td></tr>
+<tr><td>infrastructure</td><td>/'ɪnfrəstrʌktʃər/ n.</td><td>基础设施; 基础结构</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>affect</td><td>/ə'fekt/ vt.</td><td>影响；假装；感动；感染vi. 倾向；喜欢n. 情感；引起感情的因素, affecting, affects</td></tr>
+<tr><td>shareholders</td><td>/'ʃerhoʊldər/ n.</td><td>股东</td></tr>
+<tr><td>gambles</td><td>/'ɡæmbl/ vt.</td><td>& vi. 赌博；冒风险n. 赌博，打赌；投机，冒险，gambling，gambles</td></tr>
+<tr><td>nvidia</td><td>— </td><td>恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商</td></tr>
+<tr><td>initiative</td><td>/ɪ'nɪʃətɪv/ n.</td><td>主动性, 首创精神主动的行动, 倡议主动权</td></tr>
+<tr><td>line</td><td>/laɪn/ n.</td><td>绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long interspersed element)长散在元</td></tr>
+<tr><td>sooner</td><td>/ˈsunɚ/ n.</td><td>（美）抢先占有土地者（在政府开放西部前）</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>venezuela</td><td>/ˌvenə'zweɪlə/ n.</td><td>委内瑞拉</td></tr>
+<tr><td>democracy</td><td>/dɪ'mɑːkrəsi/ n.</td><td>民主, 民主制民主国家</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>barrels</td><td>/'bærəl/ vt.</td><td>把……装入桶内n. 桶；枪管，炮管vi. 快速移动, barrelled barreling, barrelling barrels, barrels</td></tr>
+<tr><td>wing</td><td>/wɪŋ/ n.</td><td>翅膀；翼；飞翔；派别vt. 使飞；飞过；空运；增加…速度；装以翼vi. 飞行, winging, wings</td></tr>
+<tr><td>corrupt</td><td>/kə'rʌpt/ adj.</td><td>腐败的，贪污的；堕落的vt. 使堕落，使恶化；使腐烂vi. 腐烂；堕落，腐化, corrupting, corrupts</td></tr>
+<tr><td>regime</td><td>/reɪ'ʒiːm/ n.</td><td>政权，政体；社会制度；管理体制</td></tr>
+<tr><td>sparked</td><td>/spɑːrk/ n.</td><td>火花，火星；电火花；一丝，略微；导火线，诱因v. 引发，触发；产生火花（电火花）；点燃；增加趣味（或活力、风味等）, sparking, sparks</td></tr>
+<tr><td>quarter</td><td>/'kwɔːrtər/ n.</td><td>四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一, quartering, quarters</td></tr>
+<tr><td>dumped</td><td>/dʌmp/ vt.</td><td>倾倒；倾卸vi. 倒垃圾n. 垃圾场dUMP脱氧尿苷酸, dumping, dumps</td></tr>
+<tr><td>brooklyn</td><td>/'brʊklɪn/ n.</td><td>布鲁克林（美国纽约西南部的一区）</td></tr>
+<tr><td>deputy</td><td>/'depjuti/ n.</td><td>代理人，代表adj. 副的；代理的</td></tr>
+<tr><td>venezuela</td><td>/ˌvenə'zweɪlə/ n.</td><td>委内瑞拉</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>crowed</td><td>/kroʊ/ vi.</td><td>报晓；啼叫n. 乌鸦；鸡鸣；撬棍, crowing, crows</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>interrupted</td><td>/ˌɪntə'rʌpt/ vt.</td><td>& vi. 打断, interrupting, interrupts</td></tr>
+<tr><td>regime</td><td>/reɪ'ʒiːm/ n.</td><td>政权，政体；社会制度；管理体制</td></tr>
+<tr><td>concessions</td><td>/kən'seʃn/ n.</td><td>承认, 允许妥协, 让步特许权</td></tr>
+<tr><td>barrels</td><td>/'bærəl/ vt.</td><td>把……装入桶内n. 桶；枪管，炮管vi. 快速移动, barrelled barreling, barrelling barrels, barrels</td></tr>
+<tr><td>purchases</td><td>/'pɜːrtʃəs/ n.</td><td>购买；紧握；起重装置vt. 购买；赢得vi. 购买东西, purchasing, purchases</td></tr>
+<tr><td>interim</td><td>/'ɪntərɪm/ adj.</td><td>临时的，暂时的；中间的；间歇的n. 过渡时期，中间时期；暂定</td></tr>
+<tr><td>yield</td><td>/jiːld/ vt.</td><td>出产；屈服；放弃vi. 屈服，投降n. 收益；产量, yielding, yields</td></tr>
+<tr><td>quarters</td><td>— n.</td><td>住处,岗位</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day1.html" class="nav-btn">← Day 1</a>
+  <a href="day3.html" class="nav-btn">Day 3 →</a>
+</div>
+
+<div class="progress">📖 Day 2 of 43</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-09-05</div>
+
+</body>
+</html>
