@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Science & technology</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-09-19</div>
+
+<h1 class="article-title">Science & technology</h1>
+<div class="article-section"></div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>OpenAI, one of the <span class="annot" data-tooltip="leading /ˈliːdɪŋ/ adj. 主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）">leading</span> firms in this area. A <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span> from OpenAI said they had solved the Navier-Stokes problem, one of seven “Millennium Problems” chosen in 2000 by the Clay Mathematics Institute as the hardest and most important in the field. OpenAI thus seems to have gazumped Tristan Buckmaster (pictured) and Levent Alpöge, two mathematicians who had been labouring on that task, <span class="annot" data-tooltip="alongside /əˌlɔːŋ'saɪd/ adv. 靠着边，沿着边prep. (表示位置)在…旁边；沿着…的边；与…并排靠拢着(表示比较)与…放在一起比较(表示伴随)与…一">alongside</span> some AI, and were <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span> close to a solution. The firm released a 166-page paper describing its work, which <span class="annot" data-tooltip="employed /ɪm'plɔɪ/ vt. 使用，采用；雇用；使忙于，使从事于n. 雇用；使用时 态: employed, employing, employs">employed</span> models not yet publicly available. Despite its length, however, this paper contained little of the explanatory detail which mathematicians <span class="annot" data-tooltip="typically /'tɪpɪkli/ adv. 代表性地;作为特色地;典型地">typically</span> provide when sharing a new discovery. At first sight, this spat sounds like a highfalutin <span class="annot" data-tooltip="version /'vɜːrʒn/ n. 变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本">version</span> of the <span class="annot" data-tooltip="pearl /pɜːrl/ n. 珍珠；杰出者；珍珠色；珍品adj. 镶珍珠的；珍珠状的vi. 采珍珠；成珍珠状vt. 使成珠状；用珍珠装饰；使呈珍珠色P">pearl</span>- clutching that accompanied the spread of electronic calculators (loss of <span class="annot" data-tooltip="mental /'mentl/ adj. 精神的, 头脑的, 心理的, 智力的精神病的副 词: mentally">mental</span>-<span class="annot" data-tooltip="arithmetic /ə'rɪθmətɪk/ n. 算术计算形容词: arithmetic">arithmetic</span> skills), or even of ball-point pens (that a lack of <span class="annot" data-tooltip="sensory /'sensəri/ adj. 感觉的；知觉的；传递感觉的">sensory</span> impact on the brain might have <span class="annot" data-tooltip="adverse /əd'vɜːrs/ adj. 不利的；相反的；敌对的（名词adverseness，副词adversely）副 词: adversely">adverse</span> consequences for writing style). Those concerns, real enough at the time, now sound as laughable as Socrates’s—for the written word has <span class="annot" data-tooltip="augmented /ɔːɡ'ment/ vt. 增加, 提高, 扩大n. 增加, 提高, 扩大时 态: augmented, augmenting, augments">augmented</span> memory, not replaced it. But there is a difference. The letter writers do not seem to be trying to stop the use of AI in their discipline. Indeed one of them, Terence Tao, argued of it, in a video posted by OpenAI on X, a social-media platform, in May, that “It allows me to experiment; I will try crazier things.” He then listed AI’s helpful <span class="annot" data-tooltip="capabilities /ˌkeɪpə'bɪləti/ n. 能做某事的素质;能力尚未发挥的天资或素质">capabilities</span> and his hopes of how it would be especially useful if the work was shared, as is mathematical culture and tradition. Their concern, rather, is that definitive answers to problems are but one aspect of maths. What is often more valuable is that the <span class="annot" data-tooltip="process /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">process</span> of arriving at important proofs leads to the asking of yet more questions and the creation of new areas of study. This, they <span class="annot" data-tooltip="fret /fret/ vt. 焦急；使磨损；使烦恼vi. 磨损；烦恼；焦急n. 烦躁；焦急；磨损时 态: fretted, fretting, fre">fret</span>, risks being lost if AI does the <span class="annot" data-tooltip="grunt /ɡrʌnt/ vi. (猪等)作呼噜声(指人)发出类似的哼声vt. 咕哝着说n. (猪等的)呼噜声, (不满等的)嘟哝声, 哼哼声时 态: g">grunt</span> work—and doubly so if that grunt work is done by organisations that then fail to <span class="annot" data-tooltip="release /rɪ'liːs/ vt. 释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]时 态: released，rel">release</span> sufficient details to the <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span> world for human beings to read and understand. As Hugo Duminil-Copin, another of the signatories, puts it: airdropping someone on the summit of <span class="annot" data-tooltip="mount /maʊnt/ vt. & vi. 登上；骑上vi. 增加；上升vt. 上演；配有…发动攻击；攻击n. 山峰坐骑时 态: mounted，mou">Mount</span> <span class="annot" data-tooltip="everest n. 珠穆朗玛峰(世界最高峰)">Everest</span> is rather different from climbing it.</p>
+<p>If this sounds a self-serving argument by professionals fearful for their jobs, it no doubt is. But that does not make it <span class="annot" data-tooltip="entirely /ɪn'taɪərli/ adv. 全部地;完整地;完全地">entirely</span> meritless. Mathematicians may start to work less openly, in order to avoid the fate of Dr Buckmaster and Dr Alpöge. Another, more <span class="annot" data-tooltip="subtle /'sʌtl/ adj. 微妙的；难以捉摸的；细微的狡猾的，狡诈的敏感的，敏锐的，有辨别力的比较级: subtler，subtlest">subtle</span>, danger is that <span class="annot" data-tooltip="leaning /liːn/ vi. 倾斜；倚靠；倾向；依赖adj. 瘦的；贫乏的，歉收的vt. 使倾斜n. 倾斜；倾斜度；瘦肉时 态: leaned, le">leaning</span> on the crutch of AI will erode habits of mind and make human mathematicians less <span class="annot" data-tooltip="capable /'keɪpəbl/ adj. 能干的，能胜任的；有才华的副 词: capably">capable</span> practitioners of their field. Here, there is a historical <span class="annot" data-tooltip="analogy /ə'nælədʒi/ n. 类似, 相似类推, 类推法">analogy</span>: a phenomenon called <span class="annot" data-tooltip="cognitive /'kɑːɡnətɪv/ adj. 认知的, 认识能力的">cognitive</span> <span class="annot" data-tooltip="offloading /ˌɔːf'loʊd/ v. 卸下,卸货时 态: offloaded, offloading, offloads">offloading</span>, in which, by reducing the load on human memory, information technology causes the mind’s skills to atrophy in the sorts of ways that bothered Socrates. Work published as long ago as 2011, by Betsy <span class="annot" data-tooltip="sparrow /'spæroʊ/ n. 麻雀；矮小的人">Sparrow</span> of Columbia University and her colleagues, confirmed the common-sense idea that people turn to Google-searching answers when faced with tough questions, instead of attempting to recall what they know. A more recent study, by Michael Gerlich of the SBS Swiss Business School, similarly found “a <span class="annot" data-tooltip="negative /'neɡətɪv/ adj. 拒绝的；怀疑的；不同意的消极的，非建设性的无预期结果的〈数〉负的；〈电〉阴的，负的n. 否定词语，否定的观点；拒绝；否认">negative</span> <span class="annot" data-tooltip="correlation /ˌkɔːrə'leɪʃn/ n. 相互的关系">correlation</span> between the frequent use of AI tools and <span class="annot" data-tooltip="critical /'krɪtɪkl/ adj. 批评的，爱挑剔的；决定性的；危险的；临界的；鉴定的；评论的副 词: critically">critical</span>-thinking abilities”. The row therefore <span class="annot" data-tooltip="encapsulates /ɪn'kæpsjuleɪt/ vt. 装入胶囊总结；扼要概括；囊括adj. 有(胶)囊包着的时 态: encapsulated，encapsulating，e">encapsulates</span> wider fears about the spread of AI. OpenAI’s executives have said in the past that their <span class="annot" data-tooltip="version /'vɜːrʒn/ n. 变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本">version</span> of the future is one in which AIs work with mathematicians on “figuring out what problems are <span class="annot" data-tooltip="actually /'æktʃuəl/ adj. 真实的，实际的；现行的，目前的副 词: actually">actually</span> important to <span class="annot" data-tooltip="tackle /'tækl/ vt. 解决；应付vt. & vi. 捉住；扭倒n. 拦截；擒抱器具，器械，用具滑车，滑轮组时 态: tackled，tackl">tackle</span>”. That points to a world where cognitive mathematical effort may indeed be <span class="annot" data-tooltip="offloaded /ˌɔːf'loʊd/ v. 卸下,卸货时 态: offloaded, offloading, offloads">offloaded</span> onto software agents. It is the details of how this happens which will determine whether that is a good thing or a bad one and so whether, in this case, Socrates may have been right after all. ■ This article was downloaded by zlibrary from https://www.economist.com/science-and-technology/2026/09/11/top-mathematicians-are- outraged-by-openais-methods</p>
+<p>Science & technology | Xenocortication Researchers have created a mouse with a partly human brain It will help the development of drugs for neurological illnesses Sep 17th 2026 Xenotransplantation is the <span class="annot" data-tooltip="insertion /ɪn'sɜːrʃn/ n. 插入(物)">insertion</span> of an organ from one species into another. When the organ is an animal’s and the recipient human (as with the <span class="annot" data-tooltip="transplant /træns'plænt/ vt. 移植, 移种(人)移居, 迁移移植(器官、皮肤、头发等)n. (器官、皮肤、头发等的)移植移植的器官, 移植物时 态: ">transplant</span> of pig <span class="annot" data-tooltip="kidneys /'kɪdni/ n. 肾, 肾脏(可食用的动物的)腰子">kidneys</span> into people whose <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> are failing), the idea is to <span class="annot" data-tooltip="prolong /prə'lɔːŋ/ vt. 拖延；延长时 态: prolonged, prolonging, prolongs">prolong</span> life. But what about the other way round—<span class="annot" data-tooltip="transplants /træns'plænt/ vt. 移植, 移种(人)移居, 迁移移植(器官、皮肤、头发等)n. (器官、皮肤、头发等的)移植移植的器官, 移植物时 态: ">transplants</span> from human to animal? With one <span class="annot" data-tooltip="crucial /'kruːʃl/ adj. 决定性的；重要的；定局的；决断的副 词: crucially">crucial</span> distinction, that is what Sergiu Pasca of Stanford University and his colleagues have been up to. The distinction is that they have been <span class="annot" data-tooltip="transplanting /træns'plænt/ vt. 移植, 移种(人)移居, 迁移移植(器官、皮肤、头发等)n. (器官、皮肤、头发等的)移植移植的器官, 移植物时 态: ">transplanting</span>, into mice, not <span class="annot" data-tooltip="actual /'æktʃuəl/ adj. 真实的，实际的；现行的，目前的副 词: actually">actual</span> human organs (which would be both unethical and physically impossible) but “organoids” grown from <span class="annot" data-tooltip="stem /stem/ n. (花草的)茎, (树木的)干词干vt. 遏制[阻止](液体的流动等)时 态: stemmed, stemming, st">stem</span> cells that <span class="annot" data-tooltip="derive /dɪ'raɪv/ vt. & vi. 得到源于时 态: derived, deriving, derives">derive</span>, in turn, from human skin. The organoids in question are made of brain cells.</p>
+<p>Xenocortication, as Dr Pasca calls this <span class="annot" data-tooltip="process /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">process</span>, and which he and his colleagues describe in a paper just published digitally by Nature, results in rodents that have brains which are, <span class="annot" data-tooltip="literally /'lɪtərəli/ adv. 逐字地；照字面地确实地，真正地">literally</span>, part human. The trick is to make room for the human neurons by engineering a mouse’s genes to stop most of the cells of its cerebral cortex and hippocampus <span class="annot" data-tooltip="developing /dɪ'veləpɪŋ/ adj. 在进行中的;走向完成阶段的;走向成熟的发展中的">developing</span>. A human brain organoid composed of <span class="annot" data-tooltip="appropriate /ə'proʊpriət/ adj. 适当的，恰当的vt. 挪用；占用；盗用拨出(款项)时 态: appropriated，appropriating，app">appropriate</span> cells is then <span class="annot" data-tooltip="transplanted /træns'plænt/ vt. 移植, 移种(人)移居, 迁移移植(器官、皮肤、头发等)n. (器官、皮肤、头发等的)移植移植的器官, 移植物时 态: ">transplanted</span>, in the first few days after the animal’s birth, into the void thus created. It makes itself at home and connects up with the <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span> world as if it were mouse <span class="annot" data-tooltip="tissue /'tɪʃuː/ n. 组织薄纸, 棉纸一套, 一系列形容词: tissular">tissue</span>. The purpose of this is to study early development of human brains, which is both <span class="annot" data-tooltip="practically /'præktɪkl/ adj. 实际的，实践的实用的注重实际的；有实际工作能力的名 词: practicality">practically</span> and <span class="annot" data-tooltip="ethically /'eθɪkl/ adj. 道德的；伦理的；凭处方出售的n. 处方药副 词: ethically">ethically</span> impossible if the tissue in question is still in a human, but which is <span class="annot" data-tooltip="crucial /'kruːʃl/ adj. 决定性的；重要的；定局的；决断的副 词: crucially">crucial</span> to understanding the roots of many neurological illnesses. Developmentally, neurons march to the beat of an <span class="annot" data-tooltip="internal /ɪn'tɜːrnl/ adj. 国内的；内部的；内在的名 词: internality">internal</span> drum, so for the first few months of a mouse’s life they still behave like fetal cells, even as the animal itself matures. Armed with their new tool, Dr Pasca and his colleagues plan to look into several conditions, starting with hypoxia-induced cerebral palsy (usually caused by a difficult birth), to which human neurons are particularly <span class="annot" data-tooltip="susceptible /sə'septəbl/ adj. 易受影响的; 易动感情的过敏的; 易受…感染的能经受的副 词: susceptibly">susceptible</span>. Xenocortical mice deprived of oxygen suffer <span class="annot" data-tooltip="damage /'dæmɪdʒ/ v. 损害；伤害；毁坏；破坏n. 损坏，破坏，损失，损害，伤害（法院判定的）损害赔偿金时 态: damaged, damagi">damage</span> to their human neurons but not their murine ones. Comparing their behaviour with that of both unengineered controls and those lacking a cortex and hippocampus, but without compensating human cells, confirms the varied effect. Other conditions the researchers have in their sights include fronto-<span class="annot" data-tooltip="temporal /'tempərəl/ adj. 时间的暂存的，短暂的，非永恒的世俗的；现世的表示时间的，时态的太阳穴的n. 暂存的事物，世间的事物vt. 使世俗化n. ">temporal</span> <span class="annot" data-tooltip="dementia /dɪ'menʃə/ n. 〈医〉痴呆">dementia</span>, epilepsy and autism. Their hope in these cases is that modified animals might act as test beds for drugs. Testing neurological pharmaceuticals in unmodified animals has a <span class="annot" data-tooltip="notorious /noʊ'tɔːriəs/ adj. 臭名昭著的, 声名狼藉的副 词: notoriously">notorious</span> record of highlighting molecules that then turn out to be duds. The idea of wiring up human <span class="annot" data-tooltip="neural /'nʊrəl/ adj. 神经的">neural</span> tissue to help run another animal is, of course, something to be approached with caution. The team has <span class="annot" data-tooltip="consulted /kən'sʌlt/ vt. 商量；查阅；向…请教vi. 请教；商议；当顾问时 态: consulted, consulting, consults">consulted</span> a range of experts, including neuroscientists, legal <span class="annot" data-tooltip="scholars /'skɑːlər/ n. 学者；奖学金获得者">scholars</span> and patient <span class="annot" data-tooltip="advocates /ˈædvəkeɪt，'ædvəkət/ v. 拥护；支持；提倡n. 拥护者；支持者；提倡者；辩护律师；出庭辩护人时 态: advocated, advocating,">advocates</span>, over and above the normal <span class="annot" data-tooltip="ethical /'eθɪkl/ adj. 道德的；伦理的；凭处方出售的n. 处方药副 词: ethically">ethical</span> <span class="annot" data-tooltip="oversight /'oʊvərsaɪt/ n. 疏忽, 失察">oversight</span> that would be applied to work like this. Any risk of some uniquely human quality emerging in these animals, however, is greatly mitigated by the mismatch between the developmental pace of human beings and mice, the small</p>
+<p><span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of human neurons that will fit into a mouse cranium, and the evolutionary distance between mice and humans, which last had a common ancestor about 70m years ago. Were someone to try something similar in, say, a monkey, that calculation would change. Such an experiment would certainly not pass <span class="annot" data-tooltip="ethical /'eθɪkl/ adj. 道德的；伦理的；凭处方出售的n. 处方药副 词: ethically">ethical</span> scrutiny. Whether it might nevertheless happen somewhere, sometime, is rather a different question. ■ This article was downloaded by zlibrary from https://www.economist.com/science-and-technology/2026/09/16/researchers-have- created-a-mouse-with-a-partly-human-brain</p>
+<p>Science & technology | Actions and words A new device helps <span class="annot" data-tooltip="severely /sɪ'vɪr/ adj. 严厉的；苛刻的；剧烈的；严峻的比较级: severer, severest">severely</span> paralysed patients communicate Eventually they might be able to control robots or exoskeletons Sep 17th 2026 Brain-computer interfaces have come a long way quickly. The first successful decoding of vowel sounds from a <span class="annot" data-tooltip="neural /'nʊrəl/ adj. 神经的">neural</span> implant was reported in 2009. In 2021 a team from Edward Chang’s lab at the University of California, San Francisco decoded the words and <span class="annot" data-tooltip="sentences /'sentəns/ n. 宣判，判决；句子，命题vt. 判决，宣判时 态: sentenced, sentencing, sentences">sentences</span> of a patient who could not speak. A new paper by Dr Chang’s <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span>, published in Nature <span class="annot" data-tooltip="neuroscience /'nʊroʊsaɪəns/ n. 神经系统科学（指神经病学、 神经化学等）">Neuroscience</span>, describes the passing of another milestone. He and his colleagues have enabled two severely paralysed people to communicate with them, by means of an <span class="annot" data-tooltip="avatar /'ævətɑːr/ n. 电影《阿凡达》">avatar</span>, using both words and gestures. That is an auspicious result for the several million individuals around the world paralysed by <span class="annot" data-tooltip="strokes /stroʊk/ n. 一击一画，一笔(游泳或划船的)划，划法；游法钟的敲声中风轻抚vt. 轻抚，抚摸时 态: stroked，stroking">strokes</span>, traumatic injuries and degenerative illnesses such as motor-neuron disease.</p>
+<p>The <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span> did this by implanting, through a small incision in the skull of each patient, an array of <span class="annot" data-tooltip="sensors /'sensər/ n. 传感器">sensors</span> that <span class="annot" data-tooltip="covered /'kʌvər/ vt. 包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替时 态: covered, covering, c">covered</span> a large part of the motor cortex —the brain region responsible for controlling bodily <span class="annot" data-tooltip="motion /'moʊʃn/ n. 动作；请求；手势；移动；意向vi. 运动；打手势vt. 运动；向…打手势时 态: motioned, motioning">motion</span>. This <span class="annot" data-tooltip="procedure /prə'siːdʒər/ n. 程序, 步骤手续">procedure</span> took over two hours, in part because the <span class="annot" data-tooltip="process /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">process</span> for connecting the <span class="annot" data-tooltip="sensor /'sensər/ n. 传感器">sensor</span> array to a data-carrying <span class="annot" data-tooltip="cable /'keɪbl/ n. (船只、桥梁等上的)巨缆, 钢索电缆vt. & vi. 给(某人)发电报, 打电报告诉(某人)Cable凯布尔(姓氏)时">cable</span> is fiddly. But the team are working on a short- cut, using a wireless device, that would reduce this to 40 minutes. The implants themselves allowed Dr Chang and his team to collect signals as the patients attempted to say particular words and make particular gestures. They then used those data to train two machine-learning models for each patient—one to decode the words and the other the gestures—allowing them to reconstruct both actions <span class="annot" data-tooltip="concurrently /kən'kɜːrənt/ adj. 同时存在(发生、完成)的adv. 同时地名 词: concurrent">concurrently</span> with approximately two-thirds accuracy. It is the first occasion that such <span class="annot" data-tooltip="simultaneous /ˌsaɪml'teɪniəs/ adj. 同时发生的; 同时存在的副 词: simultaneously">simultaneous</span> decoding has been achieved, allowing patients to communicate more expressively. There is further to go. These two initial individuals were restricted to a vocabulary of about ten words and phrases, such as “hello” and “nice to meet you”, and a similar <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of gestures, such as a clap or a shrug. But Dr Chang and his collaborators are working on raising this to more than 100 actions. They also hope that the sensor array’s wide <span class="annot" data-tooltip="reach /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reach</span> across the cortex means it may be possible to <span class="annot" data-tooltip="monitor /'mɑːnɪtər/ n. 显示屏；监视器；（计算机）显示器监控器；监测器班长；级长；班代表（尤指派往国外的）监督员，核查员巨蜥v. 监视；检查；跟">monitor</span> not only intentions to communicate but also actions intended for the whole body. That might permit paralysed individuals to operate devices such as robots and exoskeletons, which really would be life-changing. ■ This article was downloaded by zlibrary from https://www.economist.com/science-and-technology/2026/09/14/a-new-device-helps- <span class="annot" data-tooltip="severely /sɪ'vɪr/ adj. 严厉的；苛刻的；剧烈的；严峻的比较级: severer, severest">severely</span>-paralysed-patients-communicate</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>leading</td><td>/ˈliːdɪŋ/ adj.</td><td>主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>alongside</td><td>/əˌlɔːŋ'saɪd/ adv.</td><td>靠着边，沿着边prep. (表示位置)在…旁边；沿着…的边；与…并排靠拢着(表示比较)与…放在一起比较(表示伴随)与…一起，与…一道</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>employed</td><td>/ɪm'plɔɪ/ vt.</td><td>使用，采用；雇用；使忙于，使从事于n. 雇用；使用, employing, employs</td></tr>
+<tr><td>typically</td><td>/'tɪpɪkli/ adv.</td><td>代表性地;作为特色地;典型地</td></tr>
+<tr><td>version</td><td>/'vɜːrʒn/ n.</td><td>变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本</td></tr>
+<tr><td>pearl</td><td>/pɜːrl/ n.</td><td>珍珠；杰出者；珍珠色；珍品adj. 镶珍珠的；珍珠状的vi. 采珍珠；成珍珠状vt. 使成珠状；用珍珠装饰；使呈珍珠色Pearln. 珀尔（女子名）, pear</td></tr>
+<tr><td>mental</td><td>/'mentl/ adj.</td><td>精神的, 头脑的, 心理的, 智力的精神病的</td></tr>
+<tr><td>arithmetic</td><td>/ə'rɪθmətɪk/ n.</td><td>算术计算</td></tr>
+<tr><td>sensory</td><td>/'sensəri/ adj.</td><td>感觉的；知觉的；传递感觉的</td></tr>
+<tr><td>adverse</td><td>/əd'vɜːrs/ adj.</td><td>不利的；相反的；敌对的（名词adverseness，副词adversely）</td></tr>
+<tr><td>augmented</td><td>/ɔːɡ'ment/ vt.</td><td>增加, 提高, 扩大n. 增加, 提高, 扩大, augmenting, augments</td></tr>
+<tr><td>capabilities</td><td>/ˌkeɪpə'bɪləti/ n.</td><td>能做某事的素质;能力尚未发挥的天资或素质</td></tr>
+<tr><td>process</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>fret</td><td>/fret/ vt.</td><td>焦急；使磨损；使烦恼vi. 磨损；烦恼；焦急n. 烦躁；焦急；磨损, fretting, frets</td></tr>
+<tr><td>grunt</td><td>/ɡrʌnt/ vi.</td><td>(猪等)作呼噜声(指人)发出类似的哼声vt. 咕哝着说n. (猪等的)呼噜声, (不满等的)嘟哝声, 哼哼声, grunting, grunts</td></tr>
+<tr><td>release</td><td>/rɪ'liːs/ vt.</td><td>释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]，releasing，releases</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>mount</td><td>/maʊnt/ vt.</td><td>& vi. 登上；骑上vi. 增加；上升vt. 上演；配有…发动攻击；攻击n. 山峰坐骑，mounting，mounts</td></tr>
+<tr><td>everest</td><td>— n.</td><td>珠穆朗玛峰(世界最高峰)</td></tr>
+<tr><td>entirely</td><td>/ɪn'taɪərli/ adv.</td><td>全部地;完整地;完全地</td></tr>
+<tr><td>subtle</td><td>/'sʌtl/ adj.</td><td>微妙的；难以捉摸的；细微的狡猾的，狡诈的敏感的，敏锐的，有辨别力的，subtlest</td></tr>
+<tr><td>leaning</td><td>/liːn/ vi.</td><td>倾斜；倚靠；倾向；依赖adj. 瘦的；贫乏的，歉收的vt. 使倾斜n. 倾斜；倾斜度；瘦肉, leaning, leans</td></tr>
+<tr><td>capable</td><td>/'keɪpəbl/ adj.</td><td>能干的，能胜任的；有才华的</td></tr>
+<tr><td>analogy</td><td>/ə'nælədʒi/ n.</td><td>类似, 相似类推, 类推法</td></tr>
+<tr><td>cognitive</td><td>/'kɑːɡnətɪv/ adj.</td><td>认知的, 认识能力的</td></tr>
+<tr><td>offloading</td><td>/ˌɔːf'loʊd/ v.</td><td>卸下,卸货, offloading, offloads</td></tr>
+<tr><td>sparrow</td><td>/'spæroʊ/ n.</td><td>麻雀；矮小的人</td></tr>
+<tr><td>negative</td><td>/'neɡətɪv/ adj.</td><td>拒绝的；怀疑的；不同意的消极的，非建设性的无预期结果的〈数〉负的；〈电〉阴的，负的n. 否定词语，否定的观点；拒绝；否认，negativing，negative</td></tr>
+<tr><td>correlation</td><td>/ˌkɔːrə'leɪʃn/ n.</td><td>相互的关系</td></tr>
+<tr><td>critical</td><td>/'krɪtɪkl/ adj.</td><td>批评的，爱挑剔的；决定性的；危险的；临界的；鉴定的；评论的</td></tr>
+<tr><td>encapsulates</td><td>/ɪn'kæpsjuleɪt/ vt.</td><td>装入胶囊总结；扼要概括；囊括adj. 有(胶)囊包着的，encapsulating，encapsulates</td></tr>
+<tr><td>version</td><td>/'vɜːrʒn/ n.</td><td>变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本</td></tr>
+<tr><td>actually</td><td>/'æktʃuəl/ adj.</td><td>真实的，实际的；现行的，目前的</td></tr>
+<tr><td>tackle</td><td>/'tækl/ vt.</td><td>解决；应付vt. & vi. 捉住；扭倒n. 拦截；擒抱器具，器械，用具滑车，滑轮组，tackling，tackles</td></tr>
+<tr><td>offloaded</td><td>/ˌɔːf'loʊd/ v.</td><td>卸下,卸货, offloading, offloads</td></tr>
+<tr><td>insertion</td><td>/ɪn'sɜːrʃn/ n.</td><td>插入(物)</td></tr>
+<tr><td>transplant</td><td>/træns'plænt/ vt.</td><td>移植, 移种(人)移居, 迁移移植(器官、皮肤、头发等)n. (器官、皮肤、头发等的)移植移植的器官, 移植物, transplanting, transpla</td></tr>
+<tr><td>kidneys</td><td>/'kɪdni/ n.</td><td>肾, 肾脏(可食用的动物的)腰子</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>prolong</td><td>/prə'lɔːŋ/ vt.</td><td>拖延；延长, prolonging, prolongs</td></tr>
+<tr><td>transplants</td><td>/træns'plænt/ vt.</td><td>移植, 移种(人)移居, 迁移移植(器官、皮肤、头发等)n. (器官、皮肤、头发等的)移植移植的器官, 移植物, transplanting, transpla</td></tr>
+<tr><td>crucial</td><td>/'kruːʃl/ adj.</td><td>决定性的；重要的；定局的；决断的</td></tr>
+<tr><td>transplanting</td><td>/træns'plænt/ vt.</td><td>移植, 移种(人)移居, 迁移移植(器官、皮肤、头发等)n. (器官、皮肤、头发等的)移植移植的器官, 移植物, transplanting, transpla</td></tr>
+<tr><td>actual</td><td>/'æktʃuəl/ adj.</td><td>真实的，实际的；现行的，目前的</td></tr>
+<tr><td>stem</td><td>/stem/ n.</td><td>(花草的)茎, (树木的)干词干vt. 遏制[阻止](液体的流动等), stemming, stems</td></tr>
+<tr><td>derive</td><td>/dɪ'raɪv/ vt.</td><td>& vi. 得到源于, deriving, derives</td></tr>
+<tr><td>process</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>literally</td><td>/'lɪtərəli/ adv.</td><td>逐字地；照字面地确实地，真正地</td></tr>
+<tr><td>developing</td><td>/dɪ'veləpɪŋ/ adj.</td><td>在进行中的;走向完成阶段的;走向成熟的发展中的</td></tr>
+<tr><td>appropriate</td><td>/ə'proʊpriət/ adj.</td><td>适当的，恰当的vt. 挪用；占用；盗用拨出(款项)，appropriating，appropriates</td></tr>
+<tr><td>transplanted</td><td>/træns'plænt/ vt.</td><td>移植, 移种(人)移居, 迁移移植(器官、皮肤、头发等)n. (器官、皮肤、头发等的)移植移植的器官, 移植物, transplanting, transpla</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>tissue</td><td>/'tɪʃuː/ n.</td><td>组织薄纸, 棉纸一套, 一系列</td></tr>
+<tr><td>practically</td><td>/'præktɪkl/ adj.</td><td>实际的，实践的实用的注重实际的；有实际工作能力的</td></tr>
+<tr><td>ethically</td><td>/'eθɪkl/ adj.</td><td>道德的；伦理的；凭处方出售的n. 处方药</td></tr>
+<tr><td>crucial</td><td>/'kruːʃl/ adj.</td><td>决定性的；重要的；定局的；决断的</td></tr>
+<tr><td>internal</td><td>/ɪn'tɜːrnl/ adj.</td><td>国内的；内部的；内在的</td></tr>
+<tr><td>susceptible</td><td>/sə'septəbl/ adj.</td><td>易受影响的; 易动感情的过敏的; 易受…感染的能经受的</td></tr>
+<tr><td>damage</td><td>/'dæmɪdʒ/ v.</td><td>损害；伤害；毁坏；破坏n. 损坏，破坏，损失，损害，伤害（法院判定的）损害赔偿金, damaging, damages</td></tr>
+<tr><td>temporal</td><td>/'tempərəl/ adj.</td><td>时间的暂存的，短暂的，非永恒的世俗的；现世的表示时间的，时态的太阳穴的n. 暂存的事物，世间的事物vt. 使世俗化n. 俗人</td></tr>
+<tr><td>dementia</td><td>/dɪ'menʃə/ n.</td><td>〈医〉痴呆</td></tr>
+<tr><td>notorious</td><td>/noʊ'tɔːriəs/ adj.</td><td>臭名昭著的, 声名狼藉的</td></tr>
+<tr><td>neural</td><td>/'nʊrəl/ adj.</td><td>神经的</td></tr>
+<tr><td>consulted</td><td>/kən'sʌlt/ vt.</td><td>商量；查阅；向…请教vi. 请教；商议；当顾问, consulting, consults</td></tr>
+<tr><td>scholars</td><td>/'skɑːlər/ n.</td><td>学者；奖学金获得者</td></tr>
+<tr><td>advocates</td><td>/ˈædvəkeɪt，'ædvəkət/ v.</td><td>拥护；支持；提倡n. 拥护者；支持者；提倡者；辩护律师；出庭辩护人, advocating, advocates</td></tr>
+<tr><td>ethical</td><td>/'eθɪkl/ adj.</td><td>道德的；伦理的；凭处方出售的n. 处方药</td></tr>
+<tr><td>oversight</td><td>/'oʊvərsaɪt/ n.</td><td>疏忽, 失察</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>ethical</td><td>/'eθɪkl/ adj.</td><td>道德的；伦理的；凭处方出售的n. 处方药</td></tr>
+<tr><td>severely</td><td>/sɪ'vɪr/ adj.</td><td>严厉的；苛刻的；剧烈的；严峻的, severest</td></tr>
+<tr><td>neural</td><td>/'nʊrəl/ adj.</td><td>神经的</td></tr>
+<tr><td>sentences</td><td>/'sentəns/ n.</td><td>宣判，判决；句子，命题vt. 判决，宣判, sentencing, sentences</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>neuroscience</td><td>/'nʊroʊsaɪəns/ n.</td><td>神经系统科学（指神经病学、 神经化学等）</td></tr>
+<tr><td>avatar</td><td>/'ævətɑːr/ n.</td><td>电影《阿凡达》</td></tr>
+<tr><td>strokes</td><td>/stroʊk/ n.</td><td>一击一画，一笔(游泳或划船的)划，划法；游法钟的敲声中风轻抚vt. 轻抚，抚摸，stroking，strokes</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>sensors</td><td>/'sensər/ n.</td><td>传感器</td></tr>
+<tr><td>covered</td><td>/'kʌvər/ vt.</td><td>包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替, covering, covers</td></tr>
+<tr><td>motion</td><td>/'moʊʃn/ n.</td><td>动作；请求；手势；移动；意向vi. 运动；打手势vt. 运动；向…打手势, motioning, motions</td></tr>
+<tr><td>procedure</td><td>/prə'siːdʒər/ n.</td><td>程序, 步骤手续</td></tr>
+<tr><td>process</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>sensor</td><td>/'sensər/ n.</td><td>传感器</td></tr>
+<tr><td>cable</td><td>/'keɪbl/ n.</td><td>(船只、桥梁等上的)巨缆, 钢索电缆vt. & vi. 给(某人)发电报, 打电报告诉(某人)Cable凯布尔(姓氏), cabling, cables</td></tr>
+<tr><td>concurrently</td><td>/kən'kɜːrənt/ adj.</td><td>同时存在(发生、完成)的adv. 同时地</td></tr>
+<tr><td>simultaneous</td><td>/ˌsaɪml'teɪniəs/ adj.</td><td>同时发生的; 同时存在的</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>reach</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>monitor</td><td>/'mɑːnɪtər/ n.</td><td>显示屏；监视器；（计算机）显示器监控器；监测器班长；级长；班代表（尤指派往国外的）监督员，核查员巨蜥v. 监视；检查；跟踪调查监听（电话、外国无线电广播等）, </td></tr>
+<tr><td>severely</td><td>/sɪ'vɪr/ adj.</td><td>严厉的；苛刻的；剧烈的；严峻的, severest</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day35.html" class="nav-btn">← Day 35</a>
+  <a href="day37.html" class="nav-btn">Day 37 →</a>
+</div>
+
+<div class="progress">📖 Day 36 of 41</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-09-19</div>
+
+</body>
+</html>

@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business | Spoils of war</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-09-19</div>
+
+<h1 class="article-title">Business | Spoils of war</h1>
+<div class="article-section">Business</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>of higher prices for longer, and dealmaking has accelerated. Seven deals over $1bn have been announced in the past two months. <span class="annot" data-tooltip="transactions /træn'zækʃn/ n. 处理，办理，执行(一笔)交易；(一项)事务形容词: transactional">Transactions</span> may well multiply next year. The <span class="annot" data-tooltip="majors /'meɪdʒər/ adj. 主要的；主修的；重要的；较多的n. 成年人；主修科目；陆军少校vi. 主修时 态: majored, majoring,">majors</span> have now digested the big <span class="annot" data-tooltip="acquisitions /ˌækwɪ'zɪʃn/ n. 获得物，获得；收购">acquisitions</span> they made in the early 2020s, notes Dan Pickering of Pickering <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">Energy</span> Partners, an investment firm. Stronger balance-sheets will make it easier to <span class="annot" data-tooltip="splash /splæʃ/ n. 溅泼声溅上的斑点(光、色等的)斑点溅泼的量vt. 使(液体)溅起vi. (指液体)溅落时 态: splashed, sp">splash</span> out. Private-equity firms, commodity traders and outsiders seeking resources beyond the Gulf—the Japanese among them— are seeking <span class="annot" data-tooltip="assets /'æset/ n. 资产；有用的东西；有利条件；优点">assets</span>, too. And America will have less than two years left of a deal-friendly, <span class="annot" data-tooltip="drill /drɪl/ n. 钻子；钻孔机；播种机；训练vi. 钻孔；训练vt. 训练；钻孔；条播时 态: drilled, drilling, dr">drill</span>-happy administration. <span class="annot" data-tooltip="shareholders /'ʃerhoʊldər/ n. 股东名 词: shareholding">Shareholders</span>, for their part, do not seem to be banking on a golden age of expansion just yet. Hassan Eltorie of S&P Global, an information provider, notes that most listed oil companies trade at the same price-to-cashflow <span class="annot" data-tooltip="multiples /'mʌltɪpl/ adj. 多样的；许多的；多重的n. 并联；倍数">multiples</span> as before the war, suggesting their outperformance reflects higher oil prices, not any lasting change in their <span class="annot" data-tooltip="prospects /'prɑːspekt/ n. 景象，景色前景；前途可能成为主顾的人；有希望的候选人vi. 勘探；勘察时 态: prospected，prospecti">prospects</span>. The trajectory of oil demand remains uncertain. Exploration could disappoint. And there are few obvious big <span class="annot" data-tooltip="acquisition /ˌækwɪ'zɪʃn/ n. 获得物，获得；收购">acquisition</span> targets to go after. Nevertheless, the quagmire in the Gulf gives the <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> just the opportunity it needs to set a new course. ■ This article was downloaded by zlibrary from https://www.economist.com/business/2026/09/13/how-an-oil-supply-crisis-could-bring- about-an-investment-boom</p>
+<div class="article-separator"></div>
+<div class="article-header">Business · Business | Spoonfuls of sugar</div>
+<p><span class="annot" data-tooltip="nannying /'næni/ n. (儿童的)保姆，奶妈奶奶；姥姥保姆式国家(指过分干涉国民生活并对其实行家长式管治的国家)Nannyn. Ann 的昵称 ">Nannying</span> for the <span class="annot" data-tooltip="ultra /'ʌltrə/ adj. 极端的；过分的n. 极端主义者；过激论者；急进论者">ultra</span>-rich is increasingly demanding—and lucrative Life for rota-<span class="annot" data-tooltip="nannies /'næni/ n. (儿童的)保姆，奶妈奶奶；姥姥保姆式国家(指过分干涉国民生活并对其实行家长式管治的国家)Nannyn. Ann 的昵称 ">nannies</span> can be glamorous and gruelling Sep 17th 2026 SHE WORKS at least 12 hours a day, seven days a week—but then has a week off. She might earn $200,000 a year, which at an hourly rate is on a par with a private-equity associate. High pay for long hours on a rota is common on oil platforms, in mines and on container <span class="annot" data-tooltip="ships /ʃɪp/ vt. 运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Di">ships</span>. It is increasingly so in another <span class="annot" data-tooltip="exacting /ɪɡ'zækt/ adj. 精确的；准确的，精密的vt. 强求；要求；急需vi. 勒索钱财时 态: exacted, exacting, exact">exacting</span> field: caring for the children of the super-rich. A <span class="annot" data-tooltip="decade /'dekeɪd/ n. 十年，十年期；十">decade</span> or so ago, such highly paid gigs were rare. “We used to get a lot of: ‘Oh, I’m not paying that’,” says Anita <span class="annot" data-tooltip="rogers /'rɑdʒɚ/ int. 好；知道了n. 罗杰（男子名）rogerint. (无线电通讯答语)已收到ROGERabbr. Remotely Ope">Rogers</span>, the founder of British American <span class="annot" data-tooltip="household /'haʊshoʊld/ n. 同住在一所房子里的人, 一家人, 户adj. 家庭的, 家用的">Household</span> Staffing (BAHS), an agency that finds nannies (as well as <span class="annot" data-tooltip="governesses /'ɡʌvərnəs/ n. 女家庭教师">governesses</span>, butlers and chefs) for wealthy <span class="annot" data-tooltip="households /'haʊshoʊld/ n. 同住在一所房子里的人, 一家人, 户adj. 家庭的, 家用的">households</span>. “Now it is quite the opposite,” she says. <span class="annot" data-tooltip="clients /'klaɪənt/ n. 委托人顾客, 常客">Clients</span> demand nannies who have not only trained at the best academies but also speak several languages, have degrees from <span class="annot" data-tooltip="elite /eɪ'liːt/ n. （社会）上层集团；掌权人物；出类拔萃的人，精英adj.（社会）上层集团的；掌权人物的；精英的">elite</span></p>
+<p>universities and are willing to travel <span class="annot" data-tooltip="constantly /'kɑːnstəntli/ adv. 不断地;时常地">constantly</span> and put in very long days. And they are willing to pay. This has led to a boom in the top-of-the-market <span class="annot" data-tooltip="nannying /'næni/ n. (儿童的)保姆，奶妈奶奶；姥姥保姆式国家(指过分干涉国民生活并对其实行家长式管治的国家)Nannyn. Ann 的昵称 ">nannying</span>, which is something of a cottage <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span>. <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">Although</span> some institutions are of long standing—the Norland University of Early Childhood, a posh British training school, has been around for more than a century—many of the agencies to which upper-<span class="annot" data-tooltip="crust /krʌst/ n. 面包皮；外壳；坚硬外皮vi. 结硬皮；结成外壳vt. 盖以硬皮；在…上结硬皮时 态: crusted, crusting">crust</span> parents are turning are much younger. Ms <span class="annot" data-tooltip="rogers /'rɑdʒɚ/ int. 好；知道了n. 罗杰（男子名）rogerint. (无线电通讯答语)已收到ROGERabbr. Remotely Ope">Rogers</span> set up BAHS in 2012; among her competitors are Adventure <span class="annot" data-tooltip="nannies /'næni/ n. (儿童的)保姆，奶妈奶奶；姥姥保姆式国家(指过分干涉国民生活并对其实行家长式管治的国家)Nannyn. Ann 的昵称 ">Nannies</span> (<span class="annot" data-tooltip="established /ɪ'stæblɪʃt/ adj. 已建立的；已设立的；已制定的确定的，证实的">established</span> in 2007) and Morgan & Mallet (2015). Ms Rogers says she now has 7,000 <span class="annot" data-tooltip="clients /'klaɪənt/ n. 委托人顾客, 常客">clients</span>. The basics of nannying for the children of the very rich are the same as for those of the merely affluent: bottle-feeding, preparing meals, <span class="annot" data-tooltip="trips /trɪp/ vi. 绊倒；犯错误；远足；轻快地走n. 旅行；绊倒；差错vt. 绊倒；使犯错TRIPabbr. transformation-">trips</span> to the playground. But the surroundings and expectations can make the job almost unrecognisable. Often a <span class="annot" data-tooltip="nanny /'næni/ n. (儿童的)保姆，奶妈奶奶；姥姥保姆式国家(指过分干涉国民生活并对其实行家长式管治的国家)Nannyn. Ann 的昵称 ">nanny</span> is just one of a dozen staff, rather than the <span class="annot" data-tooltip="sole /soʊl/ n. 鞋底；脚底；基础；鳎目鱼adj. 唯一的；单独的；仅有的vt. 上鞋底；触底时 态: soled, soling, so">sole</span> employee. Travelling with the family is different too. “They want nannies that have experience on <span class="annot" data-tooltip="yachts /jɑːt/ n. 快艇, 帆船, 游艇时 态: yachted, yachting, yachts">yachts</span> and jets,” Ms Rogers says. “It’s just a given.” Not everyone is cut out to thrive in an environment that can be “like ‘Succession’”, she adds. “This extreme <span class="annot" data-tooltip="wealth /welθ/ n. 财富；大量；富有">wealth</span> can be a lot for somebody that’s never been exposed to it.” The demands can be extreme (or extremely petty). One nanny recalls that an <span class="annot" data-tooltip="ultra /'ʌltrə/ adj. 极端的；过分的n. 极端主义者；过激论者；急进论者">ultra</span>-rich family she once worked for required her to iron their son’s underwear every day. Another parent was <span class="annot" data-tooltip="furious /'fjʊriəs/ adj. 狂怒的, 暴怒的强烈的, 激烈的副 词: furiously">furious</span> that she did not <span class="annot" data-tooltip="immediately /ɪ'miːdiət/ adj. 立即的，即刻的；紧迫的目前的，当前的直接的最接近的名 词: immediateness">immediately</span> <span class="annot" data-tooltip="fetch /fetʃ/ vt. 接来；到达；取来；吸引vi. 取物；卖得；拿n. 取得；诡计时 态: fetched, fetching, fetche">fetch</span> a ladder to replace a light <span class="annot" data-tooltip="bulb /bʌlb/ n. 电灯泡；球状物；[植]鳞茎vi. 生球茎；膨胀成球状">bulb</span> in the playroom <span class="annot" data-tooltip="ceiling /'siːlɪŋ/ n. 天花板，顶棚最高限度，上限高度，上升限度；云幕高度形容词: ceilinged">ceiling</span>, which was 17 feet high, while caring for their small children. The structure of the job has also changed, with the <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> of the rota-nanny. Before the covid-19 <span class="annot" data-tooltip="pandemic /pæn'demɪk/ adj. （疾病）在全国（或世界）流行的">pandemic</span> Ms Rogers’s richer clients—who could afford as many hours of child care as they could <span class="annot" data-tooltip="possibly /'pɑːsəbli/ adv. 可能地；大概；也许">possibly</span> want—would often <span class="annot" data-tooltip="cobble /'kɑːbl/ vt. 粗劣地制作,草率地拼凑修(鞋)匆匆制作； 胡乱拼凑； 粗制滥造时 态: cobbled, cobbling, cobbl">cobble</span> arrangements together, hiring one nanny for Monday to Friday and another for the weekend, and then hire a babysitter for a night out. If parents had to work late, they would hope their weekday nanny could <span class="annot" data-tooltip="cover /'kʌvər/ vt. 包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替时 态: covered, covering, c">cover</span> the extra hours at the last minute. Now two nannies, one on and the other off, can cover every daytime hour, every day of the year, if at a price of hundreds of thousands of dollars.</p>
+<p>This is plainly more convenient for those who can afford it. With separate <span class="annot" data-tooltip="nannies /'næni/ n. (儿童的)保姆，奶妈奶奶；姥姥保姆式国家(指过分干涉国民生活并对其实行家长式管治的国家)Nannyn. Ann 的昵称 ">nannies</span> for weekdays and weekends, if they wanted one to travel with them, she might need to make arrangements for her <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> family, and be paid for longer hours and perhaps a travel fee too. <span class="annot" data-tooltip="alternatively /ɔːl'tɜːrnətɪvli/ adv. 做为选择,二者择一地">Alternatively</span>, they might hire a different <span class="annot" data-tooltip="nanny /'næni/ n. (儿童的)保姆，奶妈奶奶；姥姥保姆式国家(指过分干涉国民生活并对其实行家长式管治的国家)Nannyn. Ann 的昵称 ">nanny</span> for the <span class="annot" data-tooltip="trip /trɪp/ vi. 绊倒；犯错误；远足；轻快地走n. 旅行；绊倒；差错vt. 绊倒；使犯错TRIPabbr. transformation-">trip</span>, whom their children would not know. With nannies on a full-time rota, there is much less <span class="annot" data-tooltip="disruption n. 中断,分裂,瓦解,破坏">disruption</span>. It can suit many nannies too, says Ms <span class="annot" data-tooltip="rogers /'rɑdʒɚ/ int. 好；知道了n. 罗杰（男子名）rogerint. (无线电通讯答语)已收到ROGERabbr. Remotely Ope">Rogers</span>. They get a full seven days off to do their own thing. When <span class="annot" data-tooltip="clients /'klaɪənt/ n. 委托人顾客, 常客">clients</span> request weekday nannies, she now has fewer of them to offer. But the new system can come at a cost. “Before I really dove into child care, if you would have asked me my entire life from the start of four years old, what do you want to be when you grow up? I would have said a stay-at-home mom,” says Lauren Lomascolo, who has nannied for wealthy clients for a <span class="annot" data-tooltip="decade /'dekeɪd/ n. 十年，十年期；十">decade</span>. Now she worries about ever finding help to <span class="annot" data-tooltip="cover /'kʌvər/ vt. 包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替时 态: covered, covering, c">cover</span> the demands of her job. “If I stay in this for ever, I can’t have kids. If I get out of this, where is my income?” To some, <span class="annot" data-tooltip="nannying /'næni/ n. (儿童的)保姆，奶妈奶奶；姥姥保姆式国家(指过分干涉国民生活并对其实行家长式管治的国家)Nannyn. Ann 的昵称 ">nannying</span> for the super-rich is enjoyably glamorous. Several successful <span class="annot" data-tooltip="reality /ri'æləti/ n. 现实；真实；实际">reality</span>-television shows have followed wealthy families, from the Kardashians to “Real Housewives”, around the world. In June Hulu aired “Million Dollar Nannies”, a reality-TV show set in Ibiza, in which six women and two men sought jobs with rich <span class="annot" data-tooltip="households /'haʊshoʊld/ n. 同住在一所房子里的人, 一家人, 户adj. 家庭的, 家用的">households</span>. One of them had worked as a nanny for Kourtney Kardashian. The show featured more <span class="annot" data-tooltip="tantrums /'tæntrəm/ n. 发脾气；发怒">tantrums</span> by adults than by toddlers. But it offered a <span class="annot" data-tooltip="twist /twɪst/ vt. 捻；拧；扭伤；编织；使苦恼n. 扭曲；扭伤；拧vi. 扭动；弯曲时 态: twisted, twisting, twis">twist</span> on the usual escapism: the <span class="annot" data-tooltip="fantasy /'fæntəsi/ n. 幻想；幻觉；[心]白日梦adj. 虚幻的vt. 想像；空想vi. 耽于幻想；奏幻想曲（等于phantasy）">fantasy</span> was not being one of the rich, but being <span class="annot" data-tooltip="employed /ɪm'plɔɪ/ vt. 使用，采用；雇用；使忙于，使从事于n. 雇用；使用时 态: employed, employing, employs">employed</span> by them. ■ This article was downloaded by zlibrary from https://www.economist.com/business/2026/09/16/nannying-for-the-<span class="annot" data-tooltip="ultra /'ʌltrə/ adj. 极端的；过分的n. 极端主义者；过激论者；急进论者">ultra</span>-rich-is- increasingly-demanding-and-lucrative</p>
+<div class="article-separator"></div>
+<div class="article-header">Business · Business | Looking pail</div>
+<p><span class="annot" data-tooltip="alternatives /ɔːl'tɜːrnətɪv/ adj. 可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）">Alternatives</span> to milk are losing moomentum Consumers are switching back to normal <span class="annot" data-tooltip="dairy /'deri/ n. 乳品店；制酪场；牛奶及乳品业；乳牛；奶制品adj. 牛奶的；牛奶制的；乳品的；产乳的">dairy</span> Sep 17th 2026 Popcorn-<span class="annot" data-tooltip="flavoured /'fleɪvər/ n. 香味；滋味vt. 给……调味；给……增添风趣">flavoured</span> oat milk in your coffee? Or cinnamon roll? Or <span class="annot" data-tooltip="neither /'niːðər/ conj. 既不；也不adv. 两个都不；既不……也不adj. 两者都不的det./pron. 两者都不">neither</span>. In the past year the volume of plant-based alternatives to milk sold in America has fallen by 5.4%, according to Circana, a market-research firm. <span class="annot" data-tooltip="almond /'ɑːmənd/ n. 杏树；杏仁杏仁状的东西杏仁色，淡黄褐色adj. 杏仁制的杏仁味的杏仁状(或色)的">Almond</span> milk, the bestselling variety, dropped by 7.9%. In Britain volumes fell by 2.5% in the year to June; in France, Italy, the Netherlands and Spain growth slowed. Sales of dairy milk, though, are ticking up, after a long decline. Consumers are returning to it, seeing it as better for their wallets and their health. <span class="annot" data-tooltip="alternative /ɔːl'tɜːrnətɪv/ adj. 可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）">Alternative</span> milks went <span class="annot" data-tooltip="mainstream /'meɪnstriːm/ n. (思想或行为的)主流时 态: mainstreamed, mainstreaming, mainstreams">mainstream</span> in the 2010s, partly because people perceived them to be friendlier than dairy to the climate. Oatly, a Swedish producer, claims that in Britain its oat milk has only one-third of the climate</p>
+<p>impact of cows’ milk. But after milk prices dropped in 2023, many shoppers feeling the post-<span class="annot" data-tooltip="pandemic /pæn'demɪk/ adj. （疾病）在全国（或世界）流行的">pandemic</span> <span class="annot" data-tooltip="pinch /pɪntʃ/ vt. 捏；勒索；使苦恼；掐掉某物，修剪n. 匮乏；少量；夹痛vi. 夹痛；节省时 态: pinched, pinching, ">pinch</span> returned to <span class="annot" data-tooltip="dairy /'deri/ n. 乳品店；制酪场；牛奶及乳品业；乳牛；奶制品adj. 牛奶的；牛奶制的；乳品的；产乳的">dairy</span>. As more people worried about <span class="annot" data-tooltip="ultra /'ʌltrə/ adj. 极端的；过分的n. 极端主义者；过激论者；急进论者">ultra</span>-<span class="annot" data-tooltip="processed /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">processed</span> foods and read packaging closely, they <span class="annot" data-tooltip="spotted /spɑːt/ n. 斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Po">spotted</span> gums, oils, sugars and flavourings among alt-milks’ <span class="annot" data-tooltip="ingredients /ɪn'ɡriːdiənt/ n. (混合物的)组成部分; 配料">ingredients</span>. Though whole milk contains more saturated fat, <span class="annot" data-tooltip="alternatives /ɔːl'tɜːrnətɪv/ adj. 可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）">alternatives</span> often have more sugar. Cows’ milk has three to four times as much protein as oat milk. At Arla, Europe’s largest dairy co-operative, <span class="annot" data-tooltip="revenue /'revənuː/ n. 收入，收益；财政收入，税收">revenue</span> from high- protein products like quark and skyr has risen by 25% a year since 2024. Alt-milk makers are also pushing hard on health. Zoe Gardner, head of marketing in Britain for Alpro, Danone’s plant-based milk <span class="annot" data-tooltip="brand /brænd/ n. 商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责时 态: branded, branding, brands">brand</span>, says its growth <span class="annot" data-tooltip="strategy /'strætədʒi/ n. 战略学, 兵法战略, 策略策略, 计谋">strategy</span> is to fortify its milks with calcium, protein, iodine and vitamins. The French firm’s new “Silk Protein” soya milks and yoghurts in North America <span class="annot" data-tooltip="boast /boʊst/ n. 自吹自擂, 自夸的话vt. & vi. 自夸vt. 有(引以为荣的事物)时 态: boasted, boasting, ">boast</span> “50% less sugar than regular dairy milk”. Among smaller suppliers, MALK labels its <span class="annot" data-tooltip="cartons /'kɑːrtn/ n. 纸板箱；靶心白点vt. 用盒包装vi. 制作纸箱时 态: cartoned, cartoning, cartons">cartons</span> as “gum free”. John Crawford of Circana compares “converts” to alt-milks to drinkers of Diet Coke. Many are “<span class="annot" data-tooltip="completely /kəm'pliːt/ adj. 完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善比较级: complete">completely</span> loyal”, he says, treating the drink as a product with its <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> <span class="annot" data-tooltip="flavour /'fleɪvər/ n. 香味；滋味vt. 给……调味；给……增添风趣">flavour</span>, rather than an <span class="annot" data-tooltip="alternative /ɔːl'tɜːrnətɪv/ adj. 可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）">alternative</span>. That may help explain why drinks <span class="annot" data-tooltip="mimicking /'mɪmɪk/ vt. 模仿，摹拟n. 小丑；仿制品；效颦者，模仿者adj. 模仿的，模拟的；假装的时 态: mimicked, mimicki">mimicking</span> cows’ milk have flopped. Both Arla and Danone have dropped failing <span class="annot" data-tooltip="brands /brænd/ n. 商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责时 态: branded, branding, brands">brands</span>. Producers of plant-based milks believe <span class="annot" data-tooltip="novelty /'nɑːvlti/ n. 新颖; 新奇性新奇的人[事物]新颖小巧而价廉的物品">novelty</span> is the way forward. Bryan Carroll, Oatly’s general manager in Britain and Ireland, says a <span class="annot" data-tooltip="mere /mɪr/ adj. 仅仅, 只不过纯粹的Superlative merest">mere</span> “alternative to dairy” is not enough. He says new <span class="annot" data-tooltip="flavours /'fleɪvər/ n. 香味；滋味vt. 给……调味；给……增添风趣">flavours</span> are <span class="annot" data-tooltip="proving /proʊ/ n. 从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞">proving</span> popular, especially with young people. They include popcorn and matcha, a <span class="annot" data-tooltip="trendy /'trendi/ adj. 时髦的,赶时髦的,追随时髦的n. 时髦人物,赶时髦的人比较级: trendier, trendiest">trendy</span> green-tea <span class="annot" data-tooltip="powder /'paʊdər/ n. 粉末；粉；火药；尘土vt. 使成粉末；搽粉于；撒粉vi. 搽粉；变成粉末时 态: powdered, powdering">powder</span>, which has become Oatly’s best-selling <span class="annot" data-tooltip="flavoured /'fleɪvər/ n. 香味；滋味vt. 给……调味；给……增添风趣">flavoured</span> product since its launch in 2025. At Alpro, Ms Gardner says that the success of its cinnamon-roll drink has spurred a new seasonal-flavour strategy. Milks made from pistachios, pecans and barley are also sprouting on supermarket <span class="annot" data-tooltip="shelves /ʃelv/ vt. 搁置，将某事放到一旁不予考虑vi. 倾斜时 态: shelved, shelving, shelves">shelves</span>. Tastewise, which analyses social-media chatter, finds interest in these has risen markedly in the past year. That in oat, <span class="annot" data-tooltip="almond /'ɑːmənd/ n. 杏树；杏仁杏仁状的东西杏仁色，淡黄褐色adj. 杏仁制的杏仁味的杏仁状(或色)的">almond</span> and cashew has waned. Maybe the new alt-milks will win share from the old, rather than from dairy. ■ This article was downloaded by zlibrary from https://www.economist.com/business/2026/09/17/alternatives-to-milk-are-losing- moomentum</p>
+<div class="article-separator"></div>
+<div class="article-header">Business · Business | Bartleby</div>
+<p>Sleep like a <span class="annot" data-tooltip="pro /proʊ/ n. 从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞">pro</span> One firm’s attempt to create a more rested <span class="annot" data-tooltip="workforce /'wɜːrkfɔːrs/ n. 全体员工(国家或行业等)劳动力,劳动大军,劳动人口">workforce</span> Sep 17th 2026 Dear colleagues, I am <span class="annot" data-tooltip="pleased /pliːzd/ adj. 高兴的；喜欢的；乐意做某事v. 满意；愿意（please的过去分词形式）">pleased</span> to say that the results of our “Sleep Into The Future” <span class="annot" data-tooltip="trial /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">trial</span> are now in. For <span class="annot" data-tooltip="background /'bækɡraʊnd/ n. (画等的)背景, 底色背景情况个人背景资料动 词: background">background</span>, you all know how evangelical Stew is about his <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> sleep <span class="annot" data-tooltip="routine /ruː'tiːn/ n. 例行公事；日常工作；程序adj. 日常的；例行的副 词: routinely">routine</span> and the importance of feeling rested. The evidence from other <span class="annot" data-tooltip="industries /'ɪndəstri/ n. 工业；产业；勤勉">industries</span> is clear about the <span class="annot" data-tooltip="negative /'neɡətɪv/ adj. 拒绝的；怀疑的；不同意的消极的，非建设性的无预期结果的〈数〉负的；〈电〉阴的，负的n. 否定词语，否定的观点；拒绝；否认">negative</span> effects of sleep deprivation. For these reasons, we decided to roll out a series of pilot <span class="annot" data-tooltip="trials /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">trials</span> to our team in Canada and to the legal function worldwide, designed to ensure that all our colleagues feel energised and ready to do their best work. I have laid out the <span class="annot" data-tooltip="main /meɪn/ adj. 主要的; 最重要的n. 总管道; 干线">main</span> findings below, along with a recommendation on next steps. We ran a <span class="annot" data-tooltip="specific /spə'sɪfɪk/ adj. 特殊的，特定的；明确的；详细的；具有特效的n. 特效药；细节；特性副 词: specifically">specific</span> <span class="annot" data-tooltip="initiative /ɪ'nɪʃətɪv/ n. 主动性, 首创精神主动的行动, 倡议主动权">initiative</span> called “Waking Hours”, in which volunteers experimented with pre-industrial sleep <span class="annot" data-tooltip="patterns /'pætərn/ n. 型，样式花样，图案方式，形式榜样，典范vt. 模仿； 仿制以图案装饰时 态: patterned，patterning，">patterns</span>. There is some evidence to suggest that humans used to <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> in the middle of the night after a first sleep,</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>transactions</td><td>/træn'zækʃn/ n.</td><td>处理，办理，执行(一笔)交易；(一项)事务</td></tr>
+<tr><td>majors</td><td>/'meɪdʒər/ adj.</td><td>主要的；主修的；重要的；较多的n. 成年人；主修科目；陆军少校vi. 主修, majoring, majors</td></tr>
+<tr><td>acquisitions</td><td>/ˌækwɪ'zɪʃn/ n.</td><td>获得物，获得；收购</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>splash</td><td>/splæʃ/ n.</td><td>溅泼声溅上的斑点(光、色等的)斑点溅泼的量vt. 使(液体)溅起vi. (指液体)溅落, splashing, splashes</td></tr>
+<tr><td>assets</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>drill</td><td>/drɪl/ n.</td><td>钻子；钻孔机；播种机；训练vi. 钻孔；训练vt. 训练；钻孔；条播, drilling, drills</td></tr>
+<tr><td>shareholders</td><td>/'ʃerhoʊldər/ n.</td><td>股东</td></tr>
+<tr><td>multiples</td><td>/'mʌltɪpl/ adj.</td><td>多样的；许多的；多重的n. 并联；倍数</td></tr>
+<tr><td>prospects</td><td>/'prɑːspekt/ n.</td><td>景象，景色前景；前途可能成为主顾的人；有希望的候选人vi. 勘探；勘察，prospecting，prospects</td></tr>
+<tr><td>acquisition</td><td>/ˌækwɪ'zɪʃn/ n.</td><td>获得物，获得；收购</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>nannying</td><td>/'næni/ n.</td><td>(儿童的)保姆，奶妈奶奶；姥姥保姆式国家(指过分干涉国民生活并对其实行家长式管治的国家)Nannyn. Ann 的昵称 〈英〉保姆</td></tr>
+<tr><td>ultra</td><td>/'ʌltrə/ adj.</td><td>极端的；过分的n. 极端主义者；过激论者；急进论者</td></tr>
+<tr><td>nannies</td><td>/'næni/ n.</td><td>(儿童的)保姆，奶妈奶奶；姥姥保姆式国家(指过分干涉国民生活并对其实行家长式管治的国家)Nannyn. Ann 的昵称 〈英〉保姆</td></tr>
+<tr><td>ships</td><td>/ʃɪp/ vt.</td><td>运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Division of the Nation</td></tr>
+<tr><td>exacting</td><td>/ɪɡ'zækt/ adj.</td><td>精确的；准确的，精密的vt. 强求；要求；急需vi. 勒索钱财, exacting, exacts</td></tr>
+<tr><td>decade</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>rogers</td><td>/'rɑdʒɚ/ int.</td><td>好；知道了n. 罗杰（男子名）rogerint. (无线电通讯答语)已收到ROGERabbr. Remotely Operated Geophysical Ex</td></tr>
+<tr><td>household</td><td>/'haʊshoʊld/ n.</td><td>同住在一所房子里的人, 一家人, 户adj. 家庭的, 家用的</td></tr>
+<tr><td>governesses</td><td>/'ɡʌvərnəs/ n.</td><td>女家庭教师</td></tr>
+<tr><td>households</td><td>/'haʊshoʊld/ n.</td><td>同住在一所房子里的人, 一家人, 户adj. 家庭的, 家用的</td></tr>
+<tr><td>clients</td><td>/'klaɪənt/ n.</td><td>委托人顾客, 常客</td></tr>
+<tr><td>elite</td><td>/eɪ'liːt/ n.</td><td>（社会）上层集团；掌权人物；出类拔萃的人，精英adj.（社会）上层集团的；掌权人物的；精英的</td></tr>
+<tr><td>constantly</td><td>/'kɑːnstəntli/ adv.</td><td>不断地;时常地</td></tr>
+<tr><td>nannying</td><td>/'næni/ n.</td><td>(儿童的)保姆，奶妈奶奶；姥姥保姆式国家(指过分干涉国民生活并对其实行家长式管治的国家)Nannyn. Ann 的昵称 〈英〉保姆</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>crust</td><td>/krʌst/ n.</td><td>面包皮；外壳；坚硬外皮vi. 结硬皮；结成外壳vt. 盖以硬皮；在…上结硬皮, crusting, crusts</td></tr>
+<tr><td>rogers</td><td>/'rɑdʒɚ/ int.</td><td>好；知道了n. 罗杰（男子名）rogerint. (无线电通讯答语)已收到ROGERabbr. Remotely Operated Geophysical Ex</td></tr>
+<tr><td>nannies</td><td>/'næni/ n.</td><td>(儿童的)保姆，奶妈奶奶；姥姥保姆式国家(指过分干涉国民生活并对其实行家长式管治的国家)Nannyn. Ann 的昵称 〈英〉保姆</td></tr>
+<tr><td>established</td><td>/ɪ'stæblɪʃt/ adj.</td><td>已建立的；已设立的；已制定的确定的，证实的</td></tr>
+<tr><td>clients</td><td>/'klaɪənt/ n.</td><td>委托人顾客, 常客</td></tr>
+<tr><td>trips</td><td>/trɪp/ vi.</td><td>绊倒；犯错误；远足；轻快地走n. 旅行；绊倒；差错vt. 绊倒；使犯错TRIPabbr. transformation-induced plasticity 高</td></tr>
+<tr><td>nanny</td><td>/'næni/ n.</td><td>(儿童的)保姆，奶妈奶奶；姥姥保姆式国家(指过分干涉国民生活并对其实行家长式管治的国家)Nannyn. Ann 的昵称 〈英〉保姆</td></tr>
+<tr><td>sole</td><td>/soʊl/ n.</td><td>鞋底；脚底；基础；鳎目鱼adj. 唯一的；单独的；仅有的vt. 上鞋底；触底, soling, soles</td></tr>
+<tr><td>yachts</td><td>/jɑːt/ n.</td><td>快艇, 帆船, 游艇, yachting, yachts</td></tr>
+<tr><td>wealth</td><td>/welθ/ n.</td><td>财富；大量；富有</td></tr>
+<tr><td>ultra</td><td>/'ʌltrə/ adj.</td><td>极端的；过分的n. 极端主义者；过激论者；急进论者</td></tr>
+<tr><td>furious</td><td>/'fjʊriəs/ adj.</td><td>狂怒的, 暴怒的强烈的, 激烈的</td></tr>
+<tr><td>immediately</td><td>/ɪ'miːdiət/ adj.</td><td>立即的，即刻的；紧迫的目前的，当前的直接的最接近的</td></tr>
+<tr><td>fetch</td><td>/fetʃ/ vt.</td><td>接来；到达；取来；吸引vi. 取物；卖得；拿n. 取得；诡计, fetching, fetches</td></tr>
+<tr><td>bulb</td><td>/bʌlb/ n.</td><td>电灯泡；球状物；[植]鳞茎vi. 生球茎；膨胀成球状</td></tr>
+<tr><td>ceiling</td><td>/'siːlɪŋ/ n.</td><td>天花板，顶棚最高限度，上限高度，上升限度；云幕高度</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>pandemic</td><td>/pæn'demɪk/ adj.</td><td>（疾病）在全国（或世界）流行的</td></tr>
+<tr><td>possibly</td><td>/'pɑːsəbli/ adv.</td><td>可能地；大概；也许</td></tr>
+<tr><td>cobble</td><td>/'kɑːbl/ vt.</td><td>粗劣地制作,草率地拼凑修(鞋)匆匆制作； 胡乱拼凑； 粗制滥造, cobbling, cobbles</td></tr>
+<tr><td>cover</td><td>/'kʌvər/ vt.</td><td>包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替, covering, covers</td></tr>
+<tr><td>nannies</td><td>/'næni/ n.</td><td>(儿童的)保姆，奶妈奶奶；姥姥保姆式国家(指过分干涉国民生活并对其实行家长式管治的国家)Nannyn. Ann 的昵称 〈英〉保姆</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>alternatively</td><td>/ɔːl'tɜːrnətɪvli/ adv.</td><td>做为选择,二者择一地</td></tr>
+<tr><td>nanny</td><td>/'næni/ n.</td><td>(儿童的)保姆，奶妈奶奶；姥姥保姆式国家(指过分干涉国民生活并对其实行家长式管治的国家)Nannyn. Ann 的昵称 〈英〉保姆</td></tr>
+<tr><td>trip</td><td>/trɪp/ vi.</td><td>绊倒；犯错误；远足；轻快地走n. 旅行；绊倒；差错vt. 绊倒；使犯错TRIPabbr. transformation-induced plasticity 高</td></tr>
+<tr><td>disruption</td><td>— n.</td><td>中断,分裂,瓦解,破坏</td></tr>
+<tr><td>rogers</td><td>/'rɑdʒɚ/ int.</td><td>好；知道了n. 罗杰（男子名）rogerint. (无线电通讯答语)已收到ROGERabbr. Remotely Operated Geophysical Ex</td></tr>
+<tr><td>clients</td><td>/'klaɪənt/ n.</td><td>委托人顾客, 常客</td></tr>
+<tr><td>decade</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>cover</td><td>/'kʌvər/ vt.</td><td>包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替, covering, covers</td></tr>
+<tr><td>nannying</td><td>/'næni/ n.</td><td>(儿童的)保姆，奶妈奶奶；姥姥保姆式国家(指过分干涉国民生活并对其实行家长式管治的国家)Nannyn. Ann 的昵称 〈英〉保姆</td></tr>
+<tr><td>reality</td><td>/ri'æləti/ n.</td><td>现实；真实；实际</td></tr>
+<tr><td>households</td><td>/'haʊshoʊld/ n.</td><td>同住在一所房子里的人, 一家人, 户adj. 家庭的, 家用的</td></tr>
+<tr><td>tantrums</td><td>/'tæntrəm/ n.</td><td>发脾气；发怒</td></tr>
+<tr><td>twist</td><td>/twɪst/ vt.</td><td>捻；拧；扭伤；编织；使苦恼n. 扭曲；扭伤；拧vi. 扭动；弯曲, twisting, twists</td></tr>
+<tr><td>fantasy</td><td>/'fæntəsi/ n.</td><td>幻想；幻觉；[心]白日梦adj. 虚幻的vt. 想像；空想vi. 耽于幻想；奏幻想曲（等于phantasy）</td></tr>
+<tr><td>employed</td><td>/ɪm'plɔɪ/ vt.</td><td>使用，采用；雇用；使忙于，使从事于n. 雇用；使用, employing, employs</td></tr>
+<tr><td>ultra</td><td>/'ʌltrə/ adj.</td><td>极端的；过分的n. 极端主义者；过激论者；急进论者</td></tr>
+<tr><td>alternatives</td><td>/ɔːl'tɜːrnətɪv/ adj.</td><td>可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）可供选择的事物；可供选择的解决办法替代物</td></tr>
+<tr><td>dairy</td><td>/'deri/ n.</td><td>乳品店；制酪场；牛奶及乳品业；乳牛；奶制品adj. 牛奶的；牛奶制的；乳品的；产乳的</td></tr>
+<tr><td>flavoured</td><td>/'fleɪvər/ n.</td><td>香味；滋味vt. 给……调味；给……增添风趣</td></tr>
+<tr><td>neither</td><td>/'niːðər/ conj.</td><td>既不；也不adv. 两个都不；既不……也不adj. 两者都不的det./pron. 两者都不</td></tr>
+<tr><td>almond</td><td>/'ɑːmənd/ n.</td><td>杏树；杏仁杏仁状的东西杏仁色，淡黄褐色adj. 杏仁制的杏仁味的杏仁状(或色)的</td></tr>
+<tr><td>alternative</td><td>/ɔːl'tɜːrnətɪv/ adj.</td><td>可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）可供选择的事物；可供选择的解决办法替代物</td></tr>
+<tr><td>mainstream</td><td>/'meɪnstriːm/ n.</td><td>(思想或行为的)主流, mainstreaming, mainstreams</td></tr>
+<tr><td>pandemic</td><td>/pæn'demɪk/ adj.</td><td>（疾病）在全国（或世界）流行的</td></tr>
+<tr><td>pinch</td><td>/pɪntʃ/ vt.</td><td>捏；勒索；使苦恼；掐掉某物，修剪n. 匮乏；少量；夹痛vi. 夹痛；节省, pinching, pinches</td></tr>
+<tr><td>dairy</td><td>/'deri/ n.</td><td>乳品店；制酪场；牛奶及乳品业；乳牛；奶制品adj. 牛奶的；牛奶制的；乳品的；产乳的</td></tr>
+<tr><td>ultra</td><td>/'ʌltrə/ adj.</td><td>极端的；过分的n. 极端主义者；过激论者；急进论者</td></tr>
+<tr><td>processed</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>spotted</td><td>/spɑːt/ n.</td><td>斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Positioning and Tracki</td></tr>
+<tr><td>ingredients</td><td>/ɪn'ɡriːdiənt/ n.</td><td>(混合物的)组成部分; 配料</td></tr>
+<tr><td>alternatives</td><td>/ɔːl'tɜːrnətɪv/ adj.</td><td>可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）可供选择的事物；可供选择的解决办法替代物</td></tr>
+<tr><td>revenue</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>brand</td><td>/brænd/ n.</td><td>商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责, branding, brands</td></tr>
+<tr><td>strategy</td><td>/'strætədʒi/ n.</td><td>战略学, 兵法战略, 策略策略, 计谋</td></tr>
+<tr><td>boast</td><td>/boʊst/ n.</td><td>自吹自擂, 自夸的话vt. & vi. 自夸vt. 有(引以为荣的事物), boasting, boasts</td></tr>
+<tr><td>cartons</td><td>/'kɑːrtn/ n.</td><td>纸板箱；靶心白点vt. 用盒包装vi. 制作纸箱, cartoning, cartons</td></tr>
+<tr><td>completely</td><td>/kəm'pliːt/ adj.</td><td>完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善, completest 缩 写: comp, cpl</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>flavour</td><td>/'fleɪvər/ n.</td><td>香味；滋味vt. 给……调味；给……增添风趣</td></tr>
+<tr><td>alternative</td><td>/ɔːl'tɜːrnətɪv/ adj.</td><td>可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）可供选择的事物；可供选择的解决办法替代物</td></tr>
+<tr><td>mimicking</td><td>/'mɪmɪk/ vt.</td><td>模仿，摹拟n. 小丑；仿制品；效颦者，模仿者adj. 模仿的，模拟的；假装的, mimicking, mimics</td></tr>
+<tr><td>brands</td><td>/brænd/ n.</td><td>商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责, branding, brands</td></tr>
+<tr><td>novelty</td><td>/'nɑːvlti/ n.</td><td>新颖; 新奇性新奇的人[事物]新颖小巧而价廉的物品</td></tr>
+<tr><td>mere</td><td>/mɪr/ adj.</td><td>仅仅, 只不过纯粹的Superlative merest</td></tr>
+<tr><td>flavours</td><td>/'fleɪvər/ n.</td><td>香味；滋味vt. 给……调味；给……增添风趣</td></tr>
+<tr><td>proving</td><td>/proʊ/ n.</td><td>从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞成；支持Pro脯氨酸PROabbr. P</td></tr>
+<tr><td>trendy</td><td>/'trendi/ adj.</td><td>时髦的,赶时髦的,追随时髦的n. 时髦人物,赶时髦的人, trendiest</td></tr>
+<tr><td>powder</td><td>/'paʊdər/ n.</td><td>粉末；粉；火药；尘土vt. 使成粉末；搽粉于；撒粉vi. 搽粉；变成粉末, powdering, powders</td></tr>
+<tr><td>flavoured</td><td>/'fleɪvər/ n.</td><td>香味；滋味vt. 给……调味；给……增添风趣</td></tr>
+<tr><td>shelves</td><td>/ʃelv/ vt.</td><td>搁置，将某事放到一旁不予考虑vi. 倾斜, shelving, shelves</td></tr>
+<tr><td>almond</td><td>/'ɑːmənd/ n.</td><td>杏树；杏仁杏仁状的东西杏仁色，淡黄褐色adj. 杏仁制的杏仁味的杏仁状(或色)的</td></tr>
+<tr><td>pro</td><td>/proʊ/ n.</td><td>从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞成；支持Pro脯氨酸PROabbr. P</td></tr>
+<tr><td>workforce</td><td>/'wɜːrkfɔːrs/ n.</td><td>全体员工(国家或行业等)劳动力,劳动大军,劳动人口</td></tr>
+<tr><td>pleased</td><td>/pliːzd/ adj.</td><td>高兴的；喜欢的；乐意做某事v. 满意；愿意（please的过去分词形式）</td></tr>
+<tr><td>trial</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>background</td><td>/'bækɡraʊnd/ n.</td><td>(画等的)背景, 底色背景情况个人背景资料动 词: background</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>routine</td><td>/ruː'tiːn/ n.</td><td>例行公事；日常工作；程序adj. 日常的；例行的</td></tr>
+<tr><td>industries</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>negative</td><td>/'neɡətɪv/ adj.</td><td>拒绝的；怀疑的；不同意的消极的，非建设性的无预期结果的〈数〉负的；〈电〉阴的，负的n. 否定词语，否定的观点；拒绝；否认，negativing，negative</td></tr>
+<tr><td>trials</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>main</td><td>/meɪn/ adj.</td><td>主要的; 最重要的n. 总管道; 干线</td></tr>
+<tr><td>specific</td><td>/spə'sɪfɪk/ adj.</td><td>特殊的，特定的；明确的；详细的；具有特效的n. 特效药；细节；特性</td></tr>
+<tr><td>initiative</td><td>/ɪ'nɪʃətɪv/ n.</td><td>主动性, 首创精神主动的行动, 倡议主动权</td></tr>
+<tr><td>patterns</td><td>/'pætərn/ n.</td><td>型，样式花样，图案方式，形式榜样，典范vt. 模仿； 仿制以图案装饰，patterning，patterns</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day28.html" class="nav-btn">← Day 28</a>
+  <a href="day30.html" class="nav-btn">Day 30 →</a>
+</div>
+
+<div class="progress">📖 Day 29 of 41</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-09-19</div>
+
+</body>
+</html>

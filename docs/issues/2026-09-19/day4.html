@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leaders | Political giving</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-09-19</div>
+
+<h1 class="article-title">Leaders | Political giving</h1>
+<div class="article-section">Leaders</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>£100,000 per person per year. Any new rules could be made retroactive, forcing <span class="annot" data-tooltip="reform /rɪ'fɔːrm/ n. 改革，改良，改造vt. & vi. 改革；改造；改善时 态: reformed，reforming，reforms">Reform</span> to return most of the dosh. The worriers make three intertwined arguments. They claim that Reform <span class="annot" data-tooltip="habitually /hə'bɪtʃuəl/ adj. 习惯的, 惯常的副 词: habitually">habitually</span> bends and even breaks the rules; that the cash gives the party an unfair advantage; and that big money harms politics. Only one of these claims holds water. The whiff of impropriety around Reform is real. In early September the party <span class="annot" data-tooltip="suspended /sə'spend/ vt. 延缓，推迟；使暂停；使悬浮vi. 悬浮；[体]禁赛时 态: suspended, suspending, suspend">suspended</span> two <span class="annot" data-tooltip="senior /'siːniər/ adj. 年长的资深的; 地位高的〈美〉最高年级的n. 较年长者高年级学生〈美〉毕业班学生Senior西尼尔(姓氏)">senior</span> figures after they were filmed <span class="annot" data-tooltip="apparently /ə'pærəntli/ adv. 显然地表面上,似乎">apparently</span> encouraging a would-be donor to break the rules on giving. Mr Farage was filmed slurping down oysters while others discussed the rule-breaking. (He insists he was not listening <span class="annot" data-tooltip="properly /'prɑːpər/ adj. 适合的; 适当的; 适用的; 恰当的遵守规则的; 正确的严格意义的; 本身的合乎体统的; 正派的固有的; 特有的副 词:">properly</span>, which is hardly much of a defence.) <span class="annot" data-tooltip="parliament /'pɑːrləmənt/ n. 议会, 国会">Parliament</span> and the police are investigating other donations. Rules must be followed, including those on donations from abroad. But people who care about the health of British politics should not try to restrict the flow of legal money into it. Britain suffers not from an <span class="annot" data-tooltip="excess /ɪk'ses/ n. 无节制；过度，过量；超过，超额adj. 额外的，过量的；附加的时 态: excessed, excessing, exc">excess</span> of political donations, but from a <span class="annot" data-tooltip="severe /sɪ'vɪr/ adj. 严厉的；苛刻的；剧烈的；严峻的比较级: severer, severest">severe</span> lack of them. One reason not to block money is that, after a certain point, cash cannot <span class="annot" data-tooltip="simply /'sɪmpli/ adv. 简单地；朴素地；简直；仅仅；坦白地">simply</span> buy victory in elections. And even if it could, <span class="annot" data-tooltip="restrictions /rɪ'strɪkʃn/ n. 约束，限制管制，限定；法律，规章">restrictions</span> on <span class="annot" data-tooltip="campaign /kæm'peɪn/ n. 运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）时">campaign</span> spending in Britain are a leveller. In the case of Reform, the windfall could grow poisonous as factions already at war within the party struggle for a share of the spoils. The other reason is that British politics needs money. Last year the <span class="annot" data-tooltip="donkey /'dɑːŋki/ n. 驴子；傻瓜；顽固的人">Donkey</span> Sanctuary, a <span class="annot" data-tooltip="charity /'tʃærəti/ n. 施舍；慈善；慈善团体；施舍物；宽容">charity</span> in Devon that cares for down-on-their-luck equines, received more than every <span class="annot" data-tooltip="major /'meɪdʒər/ adj. 主要的；主修的；重要的；较多的n. 成年人；主修科目；陆军少校vi. 主修时 态: majored, majoring,">major</span> political party combined. So did the Royal Opera House. Or compare Britain with America. Reform’s £72m windfall is <span class="annot" data-tooltip="worth /wɜːrθ/ adj. 值…的n. 价值；财产时 态: worthed, worthing, worths">worth</span> less than the money spent on this year’s <span class="annot" data-tooltip="republican /rɪ'pʌblɪkən/ adj. 共和国的, 共和政体的n. 拥护共和政体者, 共和主义者名 词: republicanism">Republican</span> <span class="annot" data-tooltip="senate /ˈsenət/ n.（诸如美国、澳大利亚、法国的）参议院（the Senate） （某些国家的）大学理事会，大学评议会（古罗马的）元老院">Senate</span> primary election in <span class="annot" data-tooltip="texas /'teksəs/ n. 德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室">Texas</span>. Impoverished British parties are <span class="annot" data-tooltip="barely /'berli/ adv. 仅仅，勉强；几乎不；公开地；贫乏地">barely</span> able to prepare for power. The victor of a general election wins control of more than £1.3trn in public spending; those vying for this prize do so on a shoestring. Most shadow ministers rely on teams of two or three staffers to put together a programme for government. Reform <span class="annot" data-tooltip="boasts /boʊst/ n. 自吹自擂, 自夸的话vt. & vi. 自夸vt. 有(引以为荣的事物)时 态: boasted, boasting, ">boasts</span> that it will use its new infusion of cash to double</p>
+<p>the <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of policy researchers it has—to a grand total of 20. If so, it would be a start. <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">Although</span> British voters prefer the asses in Devon to the asses in Westminster, their <span class="annot" data-tooltip="blanket /'blæŋkɪt/ n. 毛毯，毯子adj. 适用于任何情况的；总括的，综合的v. 以厚层覆盖时 态: blanketed, blanketing">blanket</span> cynicism about politics is unwarranted. Britons seem to assume that any donation must be <span class="annot" data-tooltip="corrupt /kə'rʌpt/ adj. 腐败的，贪污的；堕落的vt. 使堕落，使恶化；使腐烂vi. 腐烂；堕落，腐化时 态: corrupted, corrup">corrupt</span>, because why else would the donor hand over their cash? But if giving to political parties is stigmatised as spivvy, only spivs will give. Politics would benefit from a wider pool of public-<span class="annot" data-tooltip="spirited /'spɪrɪt/ n. 精神；心灵；志气；烈酒；情绪vt. 鼓励；鼓舞；诱拐时 态: spirited, spiriting, spirits">spirited</span> donors to fund the lawyers and wonks who prepare parties for office. Restricting donations would make this problem worse. And doing so retroactively would discredit the rule of law. When <span class="annot" data-tooltip="parliament /'pɑːrləmənt/ n. 议会, 国会">Parliament</span> has previously made past actions unlawful, it was to <span class="annot" data-tooltip="pursue /pər'suː/ vt. 从事；追赶；继续；纠缠vi. 追赶；继续进行时 态: pursued, pursuing, pursues">pursue</span> <span class="annot" data-tooltip="elderly /'eldərli/ adj. 上了年纪的, 中年以上的">elderly</span> Nazis and Yugoslav war criminals. Turning the election rulebook into a tool for the establishment to keep insurgents out really would be a gift to Mr Farage. If you are an <span class="annot" data-tooltip="opponent /ə'poʊnənt/ n. 对手, 敌手；反对者名 词: opponency">opponent</span> of <span class="annot" data-tooltip="reform /rɪ'fɔːrm/ n. 改革，改良，改造vt. & vi. 改革；改造；改善时 态: reformed，reforming，reforms">Reform</span>, you should shun the <span class="annot" data-tooltip="donkeys /'dɑːŋki/ n. 驴子；傻瓜；顽固的人">donkeys</span> this year and pick the party you want to win. Instead of <span class="annot" data-tooltip="reaching /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reaching</span> for the statute book, with one hand hold your <span class="annot" data-tooltip="nose /noʊz/ n. 鼻子似鼻子的东西嗅觉vt. 嗅vi. 窥探, 探听, 四处查看vt. & vi. 小心翼翼地前进时 态: nosed, ">nose</span> and with the other <span class="annot" data-tooltip="reach /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reach</span> for your chequebook. ■ This article was downloaded by zlibrary from https://www.economist.com/leaders/2026/09/16/there-is-too-little-money-in-british- politics-not-too-much</p>
+<div class="article-separator"></div>
+<div class="article-header">Letters · Letters | A selection of correspondence</div>
+<p>How do you improve your <span class="annot" data-tooltip="gut /ɡʌt/ n. 内脏；肠子；胆量；海峡；剧情vt. 取出内脏；摧毁内部装置adj. 本质的，根本的；简单的GUT大统一理论时 态: gu">gut</span> microbiome? Also this week, Swedish wine, <span class="annot" data-tooltip="norway /'nɔːrweɪ/ n. 挪威（北欧国家名）">Norway</span>’s new king, Britain’s hot summers, Charles de Gaulle and the Bayeux <span class="annot" data-tooltip="tapestry /'tæpəstri/ n. 挂毯；织锦；绣帷vt. 用挂毯装饰">tapestry</span> Sep 17th 2026 Letters are welcome via email to letters@economist.comFind out more about how we <span class="annot" data-tooltip="process /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">process</span> your letter Your Well Informed <span class="annot" data-tooltip="column /'kɑːləm/ n. 圆柱，柱形物；纵队，列；专栏形容词: columned">column</span> on the gut microbiome (August 15th) was right about the thing that matters most. There is no single ideal microbiome, and a varied, plant-heavy, partly fermented diet remains the most <span class="annot" data-tooltip="reliable /rɪ'laɪəbl/ adj. 可靠的, 可信赖的副 词: reliably">reliable</span> way to improve your gut microbiome. However, you also claim that the idea that particular microbes matter to health has “scant published scientific basis”. A large-scale analysis of over 34,000 individuals across Britain and America was published in Nature earlier this year, <span class="annot" data-tooltip="pinpointing /'pɪnpɔɪnt/ vt. 查明；精确地找到；准确描述adj. 精确的；详尽的n. 针尖；精确位置；极小之物时 态: pinpointed, pin">pinpointing</span> <span class="annot" data-tooltip="specific /spə'sɪfɪk/ adj. 特殊的，特定的；明确的；详细的；具有特效的n. 特效药；细节；特性副 词: specifically">specific</span> microbial species that <span class="annot" data-tooltip="consistently /kən'sɪstənt/ adj. 一贯的, 始终如一的一致的, 符合的副 词: consistently">consistently</span> <span class="annot" data-tooltip="correlate /'kɔːrəleɪt/ vt. & vi. 有相关性时 态: correlated, correlating, correlates">correlate</span> with positive and <span class="annot" data-tooltip="negative /'neɡətɪv/ adj. 拒绝的；怀疑的；不同意的消极的，非建设性的无预期结果的〈数〉负的；〈电〉阴的，负的n. 否定词语，否定的观点；拒绝；否认">negative</span> health <span class="annot" data-tooltip="indicators /'ɪndɪkeɪtər/ n. (仪器上显示温度、压力、耗油量等的)指针，指示器，记录器(车辆上的)转弯指示灯指示物；指示者">indicators</span> internationally.</p>
+<p><span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">Although</span> my co-authors and I clearly stated that these findings reflect association rather than <span class="annot" data-tooltip="causation /kɔː'zeɪʃn/ n. 原因,(某种结果的)出现,发生因果关系">causation</span>—highlighting the necessity for further interventional <span class="annot" data-tooltip="trials /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">trials</span>—the evidence is <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> from scant, and the raw dataset remains publicly available. Indeed, the <span class="annot" data-tooltip="vital /'vaɪtl/ adj. 极重要的，必不可少的维持生命所必需的；生命的有生气的，充满生机的副 词: vitally">vital</span> role of <span class="annot" data-tooltip="gut /ɡʌt/ n. 内脏；肠子；胆量；海峡；剧情vt. 取出内脏；摧毁内部装置adj. 本质的，根本的；简单的GUT大统一理论时 态: gu">gut</span> health has recently been formally acknowledged in the US Department of Agriculture’s 2026 guidelines. Continued pioneering research in this field is undoubtedly <span class="annot" data-tooltip="essential /ɪ'senʃl/ adj. 基本的；必要的；本质的；精华的">essential</span>. Moreover, the National Institute of Standards and Technology study you cited identifies seven companies and never names them. It also found that reproducibility varied <span class="annot" data-tooltip="enormously /ɪ'nɔːrməs/ adj. 巨大的, 极大的, 庞大的副 词: enormously">enormously</span> between firms. Readers meeting it directly after a paragraph about ZOE, a firm I helped found, may infer something the paper does not say. This field deserves scepticism; a great deal of what is sold in it is indefensible. It also deserves to be judged on what has <span class="annot" data-tooltip="actually /'æktʃuəl/ adj. 真实的，实际的；现行的，目前的副 词: actually">actually</span> been published. Professor Tim SpectorCo-founderZOELondon Your article on growing wine in Sweden mentioned that once a winery wins approval, its “distribution is in effect handled by the government” (“Vin- dinavia”, August 22nd). This is good news, you think, as a <span class="annot" data-tooltip="mechanism /'mekənɪzəm/ n. 机械装置构造, 机制办法, 技巧, 途径">mechanism</span> for quality control. Systembolaget is a state monopoly on the sale of wine and <span class="annot" data-tooltip="spirits /'spɪrɪt/ n. 精神；心灵；志气；烈酒；情绪vt. 鼓励；鼓舞；诱拐时 态: spirited, spiriting, spirits">spirits</span> to the public in Sweden. A monopoly <span class="annot" data-tooltip="retailer /'riːteɪlər/ n. 传播的人；零售商">retailer</span> decides which producers <span class="annot" data-tooltip="reach /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reach</span> the public. That is the antithesis of a liberal market, and no amount of good wine at the other end of it changes what it is. Growers must satisfy one buyer (the state) or reach no consumer at all. The state sets the <span class="annot" data-tooltip="terms /tɜːrmz/ n. 条款；地位，关系；措辞；术语；价钱（term的复数形式）v. 把…称为（term的三单形式）">terms</span>, and the terms reward what a <span class="annot" data-tooltip="bureaucracy /bjʊ'rɑːkrəsi/ n. 政府机构官僚主义, 官僚作风">bureaucracy</span> can measure. That means volume and consistency. A young <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> needs the freedom to fail at both. After years of <span class="annot" data-tooltip="lobbying /'lɑːbi/ n. 前厅, 厅堂议会休息室游说议员的团体vt. & vi. 向…进行游说[疏通]名 词: lobbyism">lobbying</span>, Swedish winemakers may now sell a bottle at their <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> gate, on conditions <span class="annot" data-tooltip="strict /strɪkt/ adj. 严格的, 严厉的严谨的, 精确的绝对的, 完全的比较级: stricter, strictest">strict</span> enough to leave the <span class="annot" data-tooltip="retail /ˈriːteɪl/ vt. 零售；转述vi. 零售n. 零售adv. 以零售方式adj. 零售的时 态: retailed, retailing, ">retail</span> monopoly <span class="annot" data-tooltip="intact /ɪn'tækt/ adj. 完整的；原封不动的；未受损伤的名 词: intactness">intact</span>. The <span class="annot" data-tooltip="justification /ˌdʒʌstɪfɪ'keɪʃn/ n. 理由；辩护；认为有理，认为正当；释罪">justification</span> for that monopoly has shifted as well. Systembolaget was built to protect public health by trying to limit how much people drank. It is now <span class="annot" data-tooltip="credited /'kredɪt/ n. 赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)时 态:">credited</span> with building an industry, by a state that spent <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span> urging people to drink more wine. No industry should have to thank the state for</p>
+<p>permission to <span class="annot" data-tooltip="reach /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reach</span> consumers. GRAHAM BUTLERFull professor of lawLinnaeus UniversityVäxjö, Sweden <span class="annot" data-tooltip="regarding /rɪ'ɡɑːrdɪŋ/ prep. (表示论及)关于; 至于; 就…而论">Regarding</span> <span class="annot" data-tooltip="norway /'nɔːrweɪ/ n. 挪威（北欧国家名）">Norway</span>’s monarchy (“Long to <span class="annot" data-tooltip="reign /reɪn/ vi. 统治；盛行；支配；君临n. 统治；支配；统治时期时 态: reigned, reigning, reigns">reign</span> over Oslo”, September 5th), in 1905 Norwegians were asked whether Prince Carl, the future Haakon VII, should be invited to become our king. The endorsement of monarchy was <span class="annot" data-tooltip="implicit /ɪm'plɪsɪt/ adj. 暗示的；盲从的；含蓄的副 词: implicitly">implicit</span>. The <span class="annot" data-tooltip="invitation /ˌɪnvɪ'teɪʃn/ n. 邀请请柬, 请帖">invitation</span> was personal. A fine distinction, perhaps, but his great-grandson, Haakon VIII, might have found considerable promise in the precedent. Given his personal popularity, the new king would have had little to fear from asking Norwegians to confirm him as their <span class="annot" data-tooltip="sovereign /'sɑːvrɪn/ n. 君主，国王，女王旧时价值为一镑的英国金币adj. 控制国家的；统治的独立自主的">sovereign</span>. Such an endorsement would have given him a mandate of his <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span>, helped turn the page on his family’s scandals and offered even <span class="annot" data-tooltip="republicans /rɪ'pʌblɪkən/ adj. 共和国的, 共和政体的n. 拥护共和政体者, 共和主义者名 词: republicanism">republicans</span> a reason to accept his reign. And the question of the monarchy’s future might have been laid to rest for a generation. It might also have sown the seeds of a new constitutional <span class="annot" data-tooltip="practice /'præktɪs/ n. 练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规时 态: practiced，practicing，">practice</span>: hereditary succession subject to popular <span class="annot" data-tooltip="consent /kən'sent/ n. 准许，同意，赞成vi. 同意；赞成时 态: consented，consenting，consents">consent</span>. The family would provide the <span class="annot" data-tooltip="candidate /'kændɪdət，ˈkændɪdeɪt/ n. 申请求职者, 候选人报考者名 词: candidacy">candidate</span>; the electorate would <span class="annot" data-tooltip="issue /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issue</span> the invitation. Norway could <span class="annot" data-tooltip="retain /rɪ'teɪn/ vt. 保持；雇；记住时 态: retained, retaining, retains 缩 写: ret">retain</span> the continuity and stability of monarchy while giving each sovereign a <span class="annot" data-tooltip="democratic /ˌdemə'krætɪk/ adj. 民主的, 有民主精神或作风的副 词: democratically">democratic</span> warrant to serve. <span class="annot" data-tooltip="affection /ə'fekʃn/ n. 感情；喜爱，关爱；爱慕之情；影响形容词: affectional">Affection</span> for Haakon’s late father, King Harald, may smooth his accession. It cannot confer consent in perpetuity. Alas, it may now <span class="annot" data-tooltip="fall /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">fall</span> to his daughter to seek that consent, provided there is still a throne to <span class="annot" data-tooltip="inherit /ɪn'herɪt/ vt. 继承；遗传而得vi. 成为继承人时 态: inherited, inheriting, inherits">inherit</span> by then. Torbjorn Graff HugoOslo</p>
+<p>Tim Palmer’s By <span class="annot" data-tooltip="invitation /ˌɪnvɪ'teɪʃn/ n. 邀请请柬, 请帖">Invitation</span> <span class="annot" data-tooltip="column /'kɑːləm/ n. 圆柱，柱形物；纵队，列；专栏形容词: columned">column</span> (September 5th) asked what Britain should do before next summer to <span class="annot" data-tooltip="tackle /'tækl/ vt. 解决；应付vt. & vi. 捉住；扭倒n. 拦截；擒抱器具，器械，用具滑车，滑轮组时 态: tackled，tackl">tackle</span> extremely hot weather. A <span class="annot" data-tooltip="memoir /'memwɑːr/ n. 自传；实录；回忆录；研究报告名 词: memoirist">memoir</span> by Evelyn Cox on “The Great <span class="annot" data-tooltip="drought /draʊt/ n. 干旱；缺乏形容词: droughty">Drought</span> of 1976”, which I found by chance in a second-hand shop, is illuminating. The Met Office judged that drought and the record wet winter implied no lasting change. The Climatic Research Unit at East Anglia at the time was telling planners to expect drier summers. But Britain gambled on getting through the summer without drastic steps, and was rescued by the winter rain. Ms Cox, <span class="annot" data-tooltip="carting /kɑːrt/ n. 运货马车；手推车vt. 用马车载运时 态: carted，carting，carts">carting</span> water by lorry after her farm pond dried out, wrote that the lesson of 1976 is that water is not an easy <span class="annot" data-tooltip="substance /'sʌbstəns/ n. 物质主旨, 要旨实质, 本体Substancen. 物质，物">substance</span> to move. The quantities are so large that a national <span class="annot" data-tooltip="grid /ɡrɪd/ n. 格子,格栏地图上的坐标方格输电网">grid</span> would be astronomically expensive, and other methods—<span class="annot" data-tooltip="tanker /tæŋk/ n. （存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内时 态: t">tanker</span> <span class="annot" data-tooltip="ships /ʃɪp/ vt. 运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Di">ships</span>, containers towed behind <span class="annot" data-tooltip="barges /bɑːrdʒ/ n. 驳船vi. (鲁莽而笨拙地)猛撞, 冲, 闯时 态: barged, barging, barges">barges</span>, reversing rivers—raised as many problems as they solved. Her <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> conclusion was <span class="annot" data-tooltip="simpler adj. 更简单的（simple的比较级）">simpler</span>. Act early, and <span class="annot" data-tooltip="impose /ɪm'poʊz/ vi. 欺骗；利用；施加影响vt. 强加；以…欺骗；征税时 态: imposed, imposing, imposes">impose</span> savings before the reservoirs get too low, “because a <span class="annot" data-tooltip="gamble /'ɡæmbl/ vt. & vi. 赌博；冒风险n. 赌博，打赌；投机，冒险时 态: gambled，gambling，gambles">gamble</span> may not pay off a second time”. BARBARA CLANCYDublin Your article on relations between Britain and France mentioned the new film about Charles de Gaulle, “La Bataille de Gaulle” (“From Paris with love”, September 5th). The film <span class="annot" data-tooltip="depicts /dɪ'pɪkt/ vt. 描绘；描画描述时 态: depicted，depicting，depicts">depicts</span> a <span class="annot" data-tooltip="crucial /'kruːʃl/ adj. 决定性的；重要的；定局的；决断的副 词: crucially">crucial</span> event: the Battle of Bir Hakeim in 1942. The <span class="annot" data-tooltip="encounter /ɪn'kaʊntər/ vt. 遇到, 遭遇偶然碰到, 邂逅n. 突然遇到时 态: encountered, encountering, encount">encounter</span> in north Africa <span class="annot" data-tooltip="proved /proʊ/ n. 从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞">proved</span> to Winston Churchill the</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>reform</td><td>/rɪ'fɔːrm/ n.</td><td>改革，改良，改造vt. & vi. 改革；改造；改善，reforming，reforms</td></tr>
+<tr><td>habitually</td><td>/hə'bɪtʃuəl/ adj.</td><td>习惯的, 惯常的</td></tr>
+<tr><td>suspended</td><td>/sə'spend/ vt.</td><td>延缓，推迟；使暂停；使悬浮vi. 悬浮；[体]禁赛, suspending, suspends</td></tr>
+<tr><td>senior</td><td>/'siːniər/ adj.</td><td>年长的资深的; 地位高的〈美〉最高年级的n. 较年长者高年级学生〈美〉毕业班学生Senior西尼尔(姓氏)</td></tr>
+<tr><td>apparently</td><td>/ə'pærəntli/ adv.</td><td>显然地表面上,似乎</td></tr>
+<tr><td>properly</td><td>/'prɑːpər/ adj.</td><td>适合的; 适当的; 适用的; 恰当的遵守规则的; 正确的严格意义的; 本身的合乎体统的; 正派的固有的; 特有的</td></tr>
+<tr><td>parliament</td><td>/'pɑːrləmənt/ n.</td><td>议会, 国会</td></tr>
+<tr><td>excess</td><td>/ɪk'ses/ n.</td><td>无节制；过度，过量；超过，超额adj. 额外的，过量的；附加的, excessing, excesses</td></tr>
+<tr><td>severe</td><td>/sɪ'vɪr/ adj.</td><td>严厉的；苛刻的；剧烈的；严峻的, severest</td></tr>
+<tr><td>simply</td><td>/'sɪmpli/ adv.</td><td>简单地；朴素地；简直；仅仅；坦白地</td></tr>
+<tr><td>restrictions</td><td>/rɪ'strɪkʃn/ n.</td><td>约束，限制管制，限定；法律，规章</td></tr>
+<tr><td>campaign</td><td>/kæm'peɪn/ n.</td><td>运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）, campaigning, campai</td></tr>
+<tr><td>donkey</td><td>/'dɑːŋki/ n.</td><td>驴子；傻瓜；顽固的人</td></tr>
+<tr><td>charity</td><td>/'tʃærəti/ n.</td><td>施舍；慈善；慈善团体；施舍物；宽容</td></tr>
+<tr><td>major</td><td>/'meɪdʒər/ adj.</td><td>主要的；主修的；重要的；较多的n. 成年人；主修科目；陆军少校vi. 主修, majoring, majors</td></tr>
+<tr><td>worth</td><td>/wɜːrθ/ adj.</td><td>值…的n. 价值；财产, worthing, worths</td></tr>
+<tr><td>republican</td><td>/rɪ'pʌblɪkən/ adj.</td><td>共和国的, 共和政体的n. 拥护共和政体者, 共和主义者</td></tr>
+<tr><td>senate</td><td>/ˈsenət/ </td><td>n.（诸如美国、澳大利亚、法国的）参议院（the Senate） （某些国家的）大学理事会，大学评议会（古罗马的）元老院</td></tr>
+<tr><td>texas</td><td>/'teksəs/ n.</td><td>德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室)</td></tr>
+<tr><td>barely</td><td>/'berli/ adv.</td><td>仅仅，勉强；几乎不；公开地；贫乏地</td></tr>
+<tr><td>boasts</td><td>/boʊst/ n.</td><td>自吹自擂, 自夸的话vt. & vi. 自夸vt. 有(引以为荣的事物), boasting, boasts</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>blanket</td><td>/'blæŋkɪt/ n.</td><td>毛毯，毯子adj. 适用于任何情况的；总括的，综合的v. 以厚层覆盖, blanketing, blankets</td></tr>
+<tr><td>corrupt</td><td>/kə'rʌpt/ adj.</td><td>腐败的，贪污的；堕落的vt. 使堕落，使恶化；使腐烂vi. 腐烂；堕落，腐化, corrupting, corrupts</td></tr>
+<tr><td>spirited</td><td>/'spɪrɪt/ n.</td><td>精神；心灵；志气；烈酒；情绪vt. 鼓励；鼓舞；诱拐, spiriting, spirits</td></tr>
+<tr><td>parliament</td><td>/'pɑːrləmənt/ n.</td><td>议会, 国会</td></tr>
+<tr><td>pursue</td><td>/pər'suː/ vt.</td><td>从事；追赶；继续；纠缠vi. 追赶；继续进行, pursuing, pursues</td></tr>
+<tr><td>elderly</td><td>/'eldərli/ adj.</td><td>上了年纪的, 中年以上的</td></tr>
+<tr><td>opponent</td><td>/ə'poʊnənt/ n.</td><td>对手, 敌手；反对者</td></tr>
+<tr><td>reform</td><td>/rɪ'fɔːrm/ n.</td><td>改革，改良，改造vt. & vi. 改革；改造；改善，reforming，reforms</td></tr>
+<tr><td>donkeys</td><td>/'dɑːŋki/ n.</td><td>驴子；傻瓜；顽固的人</td></tr>
+<tr><td>reaching</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>nose</td><td>/noʊz/ n.</td><td>鼻子似鼻子的东西嗅觉vt. 嗅vi. 窥探, 探听, 四处查看vt. & vi. 小心翼翼地前进, nosing, noses</td></tr>
+<tr><td>reach</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>gut</td><td>/ɡʌt/ n.</td><td>内脏；肠子；胆量；海峡；剧情vt. 取出内脏；摧毁内部装置adj. 本质的，根本的；简单的GUT大统一理论, gutting, guts</td></tr>
+<tr><td>norway</td><td>/'nɔːrweɪ/ n.</td><td>挪威（北欧国家名）</td></tr>
+<tr><td>tapestry</td><td>/'tæpəstri/ n.</td><td>挂毯；织锦；绣帷vt. 用挂毯装饰</td></tr>
+<tr><td>process</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>column</td><td>/'kɑːləm/ n.</td><td>圆柱，柱形物；纵队，列；专栏</td></tr>
+<tr><td>reliable</td><td>/rɪ'laɪəbl/ adj.</td><td>可靠的, 可信赖的</td></tr>
+<tr><td>pinpointing</td><td>/'pɪnpɔɪnt/ vt.</td><td>查明；精确地找到；准确描述adj. 精确的；详尽的n. 针尖；精确位置；极小之物, pinpointing, pinpoints</td></tr>
+<tr><td>specific</td><td>/spə'sɪfɪk/ adj.</td><td>特殊的，特定的；明确的；详细的；具有特效的n. 特效药；细节；特性</td></tr>
+<tr><td>consistently</td><td>/kən'sɪstənt/ adj.</td><td>一贯的, 始终如一的一致的, 符合的</td></tr>
+<tr><td>correlate</td><td>/'kɔːrəleɪt/ vt.</td><td>& vi. 有相关性, correlating, correlates</td></tr>
+<tr><td>negative</td><td>/'neɡətɪv/ adj.</td><td>拒绝的；怀疑的；不同意的消极的，非建设性的无预期结果的〈数〉负的；〈电〉阴的，负的n. 否定词语，否定的观点；拒绝；否认，negativing，negative</td></tr>
+<tr><td>indicators</td><td>/'ɪndɪkeɪtər/ n.</td><td>(仪器上显示温度、压力、耗油量等的)指针，指示器，记录器(车辆上的)转弯指示灯指示物；指示者</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>causation</td><td>/kɔː'zeɪʃn/ n.</td><td>原因,(某种结果的)出现,发生因果关系</td></tr>
+<tr><td>trials</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>vital</td><td>/'vaɪtl/ adj.</td><td>极重要的，必不可少的维持生命所必需的；生命的有生气的，充满生机的</td></tr>
+<tr><td>gut</td><td>/ɡʌt/ n.</td><td>内脏；肠子；胆量；海峡；剧情vt. 取出内脏；摧毁内部装置adj. 本质的，根本的；简单的GUT大统一理论, gutting, guts</td></tr>
+<tr><td>essential</td><td>/ɪ'senʃl/ adj.</td><td>基本的；必要的；本质的；精华的</td></tr>
+<tr><td>enormously</td><td>/ɪ'nɔːrməs/ adj.</td><td>巨大的, 极大的, 庞大的</td></tr>
+<tr><td>actually</td><td>/'æktʃuəl/ adj.</td><td>真实的，实际的；现行的，目前的</td></tr>
+<tr><td>mechanism</td><td>/'mekənɪzəm/ n.</td><td>机械装置构造, 机制办法, 技巧, 途径</td></tr>
+<tr><td>spirits</td><td>/'spɪrɪt/ n.</td><td>精神；心灵；志气；烈酒；情绪vt. 鼓励；鼓舞；诱拐, spiriting, spirits</td></tr>
+<tr><td>retailer</td><td>/'riːteɪlər/ n.</td><td>传播的人；零售商</td></tr>
+<tr><td>reach</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>terms</td><td>/tɜːrmz/ n.</td><td>条款；地位，关系；措辞；术语；价钱（term的复数形式）v. 把…称为（term的三单形式）</td></tr>
+<tr><td>bureaucracy</td><td>/bjʊ'rɑːkrəsi/ n.</td><td>政府机构官僚主义, 官僚作风</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>lobbying</td><td>/'lɑːbi/ n.</td><td>前厅, 厅堂议会休息室游说议员的团体vt. & vi. 向…进行游说[疏通]</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>strict</td><td>/strɪkt/ adj.</td><td>严格的, 严厉的严谨的, 精确的绝对的, 完全的, strictest</td></tr>
+<tr><td>retail</td><td>/ˈriːteɪl/ vt.</td><td>零售；转述vi. 零售n. 零售adv. 以零售方式adj. 零售的, retailing, retails</td></tr>
+<tr><td>intact</td><td>/ɪn'tækt/ adj.</td><td>完整的；原封不动的；未受损伤的</td></tr>
+<tr><td>justification</td><td>/ˌdʒʌstɪfɪ'keɪʃn/ n.</td><td>理由；辩护；认为有理，认为正当；释罪</td></tr>
+<tr><td>credited</td><td>/'kredɪt/ n.</td><td>赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)，crediting，credits</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>reach</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>regarding</td><td>/rɪ'ɡɑːrdɪŋ/ prep.</td><td>(表示论及)关于; 至于; 就…而论</td></tr>
+<tr><td>norway</td><td>/'nɔːrweɪ/ n.</td><td>挪威（北欧国家名）</td></tr>
+<tr><td>reign</td><td>/reɪn/ vi.</td><td>统治；盛行；支配；君临n. 统治；支配；统治时期, reigning, reigns</td></tr>
+<tr><td>implicit</td><td>/ɪm'plɪsɪt/ adj.</td><td>暗示的；盲从的；含蓄的</td></tr>
+<tr><td>invitation</td><td>/ˌɪnvɪ'teɪʃn/ n.</td><td>邀请请柬, 请帖</td></tr>
+<tr><td>sovereign</td><td>/'sɑːvrɪn/ n.</td><td>君主，国王，女王旧时价值为一镑的英国金币adj. 控制国家的；统治的独立自主的</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>republicans</td><td>/rɪ'pʌblɪkən/ adj.</td><td>共和国的, 共和政体的n. 拥护共和政体者, 共和主义者</td></tr>
+<tr><td>practice</td><td>/'præktɪs/ n.</td><td>练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规，practicing，practices</td></tr>
+<tr><td>consent</td><td>/kən'sent/ n.</td><td>准许，同意，赞成vi. 同意；赞成，consenting，consents</td></tr>
+<tr><td>candidate</td><td>/'kændɪdət，ˈkændɪdeɪt/ n.</td><td>申请求职者, 候选人报考者</td></tr>
+<tr><td>issue</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>retain</td><td>/rɪ'teɪn/ vt.</td><td>保持；雇；记住, retaining, retains 缩 写: ret</td></tr>
+<tr><td>democratic</td><td>/ˌdemə'krætɪk/ adj.</td><td>民主的, 有民主精神或作风的</td></tr>
+<tr><td>affection</td><td>/ə'fekʃn/ n.</td><td>感情；喜爱，关爱；爱慕之情；影响</td></tr>
+<tr><td>fall</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>inherit</td><td>/ɪn'herɪt/ vt.</td><td>继承；遗传而得vi. 成为继承人, inheriting, inherits</td></tr>
+<tr><td>invitation</td><td>/ˌɪnvɪ'teɪʃn/ n.</td><td>邀请请柬, 请帖</td></tr>
+<tr><td>column</td><td>/'kɑːləm/ n.</td><td>圆柱，柱形物；纵队，列；专栏</td></tr>
+<tr><td>tackle</td><td>/'tækl/ vt.</td><td>解决；应付vt. & vi. 捉住；扭倒n. 拦截；擒抱器具，器械，用具滑车，滑轮组，tackling，tackles</td></tr>
+<tr><td>memoir</td><td>/'memwɑːr/ n.</td><td>自传；实录；回忆录；研究报告</td></tr>
+<tr><td>drought</td><td>/draʊt/ n.</td><td>干旱；缺乏</td></tr>
+<tr><td>carting</td><td>/kɑːrt/ n.</td><td>运货马车；手推车vt. 用马车载运，carting，carts</td></tr>
+<tr><td>substance</td><td>/'sʌbstəns/ n.</td><td>物质主旨, 要旨实质, 本体Substancen. 物质，物</td></tr>
+<tr><td>grid</td><td>/ɡrɪd/ n.</td><td>格子,格栏地图上的坐标方格输电网</td></tr>
+<tr><td>tanker</td><td>/tæŋk/ n.</td><td>（存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内, tanking, tanks</td></tr>
+<tr><td>ships</td><td>/ʃɪp/ vt.</td><td>运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Division of the Nation</td></tr>
+<tr><td>barges</td><td>/bɑːrdʒ/ n.</td><td>驳船vi. (鲁莽而笨拙地)猛撞, 冲, 闯, barging, barges</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>simpler</td><td>— adj.</td><td>更简单的（simple的比较级）</td></tr>
+<tr><td>impose</td><td>/ɪm'poʊz/ vi.</td><td>欺骗；利用；施加影响vt. 强加；以…欺骗；征税, imposing, imposes</td></tr>
+<tr><td>gamble</td><td>/'ɡæmbl/ vt.</td><td>& vi. 赌博；冒风险n. 赌博，打赌；投机，冒险，gambling，gambles</td></tr>
+<tr><td>depicts</td><td>/dɪ'pɪkt/ vt.</td><td>描绘；描画描述，depicting，depicts</td></tr>
+<tr><td>crucial</td><td>/'kruːʃl/ adj.</td><td>决定性的；重要的；定局的；决断的</td></tr>
+<tr><td>encounter</td><td>/ɪn'kaʊntər/ vt.</td><td>遇到, 遭遇偶然碰到, 邂逅n. 突然遇到, encountering, encounters</td></tr>
+<tr><td>proved</td><td>/proʊ/ n.</td><td>从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞成；支持Pro脯氨酸PROabbr. P</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day3.html" class="nav-btn">← Day 3</a>
+  <a href="day5.html" class="nav-btn">Day 5 →</a>
+</div>
+
+<div class="progress">📖 Day 4 of 41</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-09-19</div>
+
+</body>
+</html>

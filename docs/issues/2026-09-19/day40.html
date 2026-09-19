@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>culture</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-09-19</div>
+
+<h1 class="article-title">culture</h1>
+<div class="article-section"></div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>Yet fewer studies have directly compared cursive (joined) and print (unjoined) handwriting styles. Some <span class="annot" data-tooltip="scholars /'skɑːlər/ n. 学者；奖学金获得者">scholars</span> are <span class="annot" data-tooltip="sceptical /'skeptɪkl/ adj. 不肯相信的; 常怀疑的">sceptical</span> that cursive is much better than any other sort of handwriting: it seems unlikely that “writing letters in a particular script should make you <span class="annot" data-tooltip="cognitively /'kɑːɡnətɪv/ adj. 认知的, 认识能力的">cognitively</span> more <span class="annot" data-tooltip="capable /'keɪpəbl/ adj. 能干的，能胜任的；有才华的副 词: capably">capable</span>”, says Steve Graham, a professor at Arizona State University. Perhaps the best case for writing in cursive is speed: some studies have found that writing in unbroken loops makes for faster writing, though others suggest that the speediest method is to mix joined and unjoined letters. Cursive’s comeback is also about culture. People <span class="annot" data-tooltip="fret /fret/ vt. 焦急；使磨损；使烦恼vi. 磨损；烦恼；焦急n. 烦躁；焦急；磨损时 态: fretted, fretting, fre">fret</span> that youngsters will not be able to decipher their ancestors’ writing or historical documents written in cursive. In America people point to the penmanship of the constitution and Declaration of Independence. Being able to read this style makes for “informed and engaged” citizens, the argument goes—though typed <span class="annot" data-tooltip="versions /'vɜːrʒn/ n. 变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本">versions</span> are available. Through handwriting you can trace history. Most scripts taught in schools evolved from cursive styles in Italy, Germany, France and Britain. With colonialism, <span class="annot" data-tooltip="sloping /slɑːp/ vi. 溢出；泼出在泥浆(或雪泥)中走vt. 使(某物)溢出或泼出(液体)晃荡；(常指)溢出，溅出(在水、泥等里)趟来趟去，走动">sloping</span> English round hand spread to America and India; France’s decorative écriture ronde went to parts of South America and Asia. The Nazis even meddled with note-taking: in 1941 Adolf Hitler banned <span class="annot" data-tooltip="gothic adj. 哥特式的；野蛮的n. 哥特式">gothic</span>-looking German cursive and instead <span class="annot" data-tooltip="ordered /'ɔːrdərd/ adj. 安排好的；整齐的；[数]有序的v. 命令；点餐（order的过去式和过去分词）">ordered</span> schoolchildren to write in a <span class="annot" data-tooltip="simpler adj. 更简单的（simple的比较级）">simpler</span> Latin script. The reason for the ban, scholars reckon, was to make communication uniform and more <span class="annot" data-tooltip="legible /'ledʒəbl/ adj. 易读的；清晰的；易辨认的副 词: legibly">legible</span> for people in occupied Europe. Today’s educators have more modern concerns. Some people calling for cursive suggest <span class="annot" data-tooltip="emphasising /'emfəsɪs/ n. 强调, 重点">emphasising</span> handwriting could make it harder for students to use AI to do their homework. Teachers are <span class="annot" data-tooltip="keen /kiːn/ adj. 锋利的热衷的，热心的，渴望(做某事)激烈的，紧张的良好的；敏锐的，敏捷的比较级: keener，keenest">keen</span> to ensure chatbots do not replace writing for children, says Professor Graham, because “writing involves thinking.” It helps youngsters (and adults) organise information and come up with ideas. Yet cursive <span class="annot" data-tooltip="consumes /kən'suːm/ vt. 消耗, 消费, 耗尽大吃, 大喝烧毁, 毁灭时 态: consumed, consuming, consumes">consumes</span> valuable lesson time. Some young teachers were not taught cursive <span class="annot" data-tooltip="properly /'prɑːpər/ adj. 适合的; 适当的; 适用的; 恰当的遵守规则的; 正确的严格意义的; 本身的合乎体统的; 正派的固有的; 特有的副 词:">properly</span> themselves, notes Kathleen Wright of the Handwriting Collaborative in America, which means they need training and support. This time could instead be spent on other skills or teaching simpler styles of handwriting.</p>
+<p>When students leave the classroom, their handwriting often changes anyway. Some continue with flowing, looping letters; others resort to <span class="annot" data-tooltip="squat /skwɑːt/ vi. 蹲坐；蹲擅自占住(空屋)adj. 矮胖的；矮而宽的n. 蹲坐，蹲姿被擅自占用的建筑物时 态: squatted，squa">squat</span>, boxy scripts. After a few years working and typing, many find they can <span class="annot" data-tooltip="barely /'berli/ adv. 仅仅，勉强；几乎不；公开地；贫乏地">barely</span> hold a pen any more. They <span class="annot" data-tooltip="wonder /'wʌndər/ vt. & vi. 对…感到疑惑想知道；问自己n. 惊奇，惊叹，惊异，惊诧奇人，奇才奇观，奇景，奇迹，奇事时 态: wonder">wonder</span> whether school taught them—and will teach their children—the write <span class="annot" data-tooltip="stuff /stʌf/ n. 材料；东西；填充物；素材资料vt. 填塞；塞满；让吃饱vi. 吃得过多时 态: stuffed, stuffing, s">stuff</span>. ■ This article was downloaded by zlibrary from https://www.economist.com/culture/2026/09/17/is-it-still-worthwhile-to-teach- cursive-in-school</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Economic &amp; financial indicators</div>
+<p>Economic data, commodities and markets</p>
+<p>Economic & financial <span class="annot" data-tooltip="indicators /'ɪndɪkeɪtər/ n. (仪器上显示温度、压力、耗油量等的)指针，指示器，记录器(车辆上的)转弯指示灯指示物；指示者">indicators</span> | Indicators Economic data, commodities and markets Sep 17th 2026</p>
+<p>This article was downloaded by zlibrary from https://www.economist.com/economic-and-financial-<span class="annot" data-tooltip="indicators /'ɪndɪkeɪtər/ n. (仪器上显示温度、压力、耗油量等的)指针，指示器，记录器(车辆上的)转弯指示灯指示物；指示者">indicators</span>/2026/09/17/economic- data-commodities-and-markets</p>
+<div class="article-separator"></div>
+<div class="article-header">Obituary · Obituary | Not just a pretty face</div>
+<p>Gloria Steinem changed the world for American women The journalist and <span class="annot" data-tooltip="campaigner /kæm'peɪn/ n. 运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）时">campaigner</span> for <span class="annot" data-tooltip="liberation /ˌlɪbə'reɪʃn/ n. 解放名 词: liberationist">liberation</span> died on September 2nd, aged</p>
+<p>Sep 17th 2026 Her blue <span class="annot" data-tooltip="satin /'sætn/ n. 缎,缎子adj. 像缎子一样光滑的SATINabbr. Satellite Inspector System 卫星检查系">satin</span> <span class="annot" data-tooltip="costume /'kɑːstuːm/ n. 服装, 服装式样女外套, 女装时 态: costumed, costuming, costumes">costume</span> was a pain. It was so tight that the zip snagged her skin when she was fastened up, and cut so high on the leg that her hip-bones showed. Her dresser had pushed a whole plastic dry-cleaning bag down her front, explaining as she did so that “Everybody <span class="annot" data-tooltip="stuffs /stʌf/ n. 材料；东西；填充物；素材资料vt. 填塞；塞满；让吃饱vi. 吃得过多时 态: stuffed, stuffing, s">stuffs</span>.” <span class="annot" data-tooltip="stuffed /stʌf/ n. 材料；东西；填充物；素材资料vt. 填塞；塞满；让吃饱vi. 吃得过多时 态: stuffed, stuffing, s">Stuffed</span> in their tips, she meant, while Gloria Steinem, holding a drinks tray aloft on the palm of her left hand, would bend her knees into the Bunny Dip and say, pertly, “Sir, you are not allowed to touch the Bunnies.” Working undercover at the Playboy Club on East 59th Street made a great story for Show magazine in the summer of 1963. It also made her feet so swollen and <span class="annot" data-tooltip="sore /sɔːr/ adj. 剧烈的，极度的；疼痛的，痛心的；恼火的，发怒的；厉害的，迫切的n. 溃疡，痛处；恨事，伤心事比较级: sorer, so">sore</span>, on three-inch <span class="annot" data-tooltip="heels /hilz/ n. 脚踝；残余料；高跟鞋（heel的复数）v. 紧跟；给（鞋等）装跟（heel的三单形式）">heels</span>, that she could hardly walk. The ad she</p>
+<p>had replied to promised earnings of $200-300 a week; for an eight-hour day, she <span class="annot" data-tooltip="earned /ɪr/ n. 耳朵；听觉；倾听；穗vi. （美俚）听见；抽穗EARabbr. East African Railways 东非铁路公司">earned</span> <span class="annot" data-tooltip="precisely /prɪ'saɪsli/ adv. 精确地；恰好；细心地对，的确如此">precisely</span> $12. She also risked demerits for a <span class="annot" data-tooltip="host /hoʊst/ n. 主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集时 态: hosted, hosting, host">host</span> of things including lateness, runs in stockings and crooked Bunny ears. In <span class="annot" data-tooltip="retrospect /'retrəspekt/ n. 回顾，追溯v. 回顾，追溯；回想，追忆时 态: retrospected, retrospecting, retrosp">retrospect</span>, it wasn’t her smartest idea. She had hoped to write a searing exposé of women’s <span class="annot" data-tooltip="exploitation /ˌeksplɔɪ'teɪʃn/ n. 开发;开采；开拓利用剥削广告推销">exploitation</span>, but many critics <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span> it frivolous. She was surely just a pretty face, and even her editor and <span class="annot" data-tooltip="mentor /'mentɔːr/ n. (无经验之人的)有经验可信赖的顾问时 态: mentored, mentoring, mentors">mentor</span> at New York magazine, Clay Felker, had partly hired her for her “great legs”. So it was back to fashion, table lamps and 101 ways with hamburger. Yet she hated that beat. She burned to write the sharp political stories that were then the province of men, but from the viewpoint of a woman. Within a <span class="annot" data-tooltip="decade /'dekeɪd/ n. 十年，十年期；十">decade</span>, in 1971, she had co-founded a magazine that did <span class="annot" data-tooltip="exactly /ɪɡ'zækt/ adj. 精确的；准确的，精密的vt. 强求；要求；急需vi. 勒索钱财时 态: exacted, exacting, exact">exactly</span> that. Ms magazine set out to explode all dainty <span class="annot" data-tooltip="hearth /hɑːrθ/ n. 炉床；炉边；灶台；壁炉地面">hearth</span>-and-home thinking. Women wrote it and ran it. The <span class="annot" data-tooltip="trial /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">trial</span> edition carried on its <span class="annot" data-tooltip="cover /'kʌvər/ vt. 包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替时 态: covered, covering, c">cover</span> a weeping and <span class="annot" data-tooltip="pregnant /'preɡnənt/ adj. 怀孕的, 怀胎的含蓄的, 意味深长的孕育着…的, 预示着…前景的">pregnant</span> Goddess Kali with her eight blue arms displaying the ridiculous <span class="annot" data-tooltip="complexity /kəm'pleksəti/ n. 复杂性,错综复杂的状态复杂的事物">complexity</span> of women’s tasks: a clock, a telephone, a mirror, a skillet, a <span class="annot" data-tooltip="steering /stɪr/ v. 驾驶（船、汽车等）；掌控方向盘（交通工具）行驶，沿（特定路线或方向）行进引导，带领n. 阉公牛；肉用公牛时 态: ste">steering</span> wheel, a typewriter, a <span class="annot" data-tooltip="rake /reɪk/ n. 耙子vt. & vi. 以耙子耙平(泥土等)用耙子把…耙在一起；把…耙出来(翻阅旧记录、文件等以)搜寻事实等向(船只等)">rake</span> and an iron. The cover of the first full <span class="annot" data-tooltip="issue /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issue</span> showed <span class="annot" data-tooltip="wonder /'wʌndər/ vt. & vi. 对…感到疑惑想知道；问自己n. 惊奇，惊叹，惊异，惊诧奇人，奇才奇观，奇景，奇迹，奇事时 态: wonder">Wonder</span> Woman, who had recently been <span class="annot" data-tooltip="stripped adj. 剥去的v. 脱衣；把…剪成条状；剥夺（strip的过去分词形式）">stripped</span> of her powers by DC <span class="annot" data-tooltip="comics /'kɑːmɪk/ adj. 滑稽的, 好笑的喜剧的n. 连环漫画杂志喜剧演员">Comics</span>, striding forth again with her magic lasso dazzling to <span class="annot" data-tooltip="tear /tɪr，ter/ v. 撕掉，扯下；撕破；拔掉；拉伤；（非正式）狂奔；饱经……摧残；流眼泪n. 眼泪；（撕破的）洞或裂缝， 撕扯时 态: tor">tear</span> baddies out of the sky and fight injustice. The contents included “Money for Housework”, “Body Hair: The Last Frontier” and a roll-call of famous women admitting “We Have Had Abortions”. There was a special reason for that piece. She had had an abortion herself, in 1957 in London, where the <span class="annot" data-tooltip="procedure /prə'siːdʒər/ n. 程序, 步骤手续">procedure</span> was just as illegal as it was in America. She had never told a soul about it; it was her choice, her life. But one day in 1969 she went to cover a meeting of women in <span class="annot" data-tooltip="greenwich /'ɡrenɪtʃ/ n. 格林威治(位于英国伦敦东南部,为本初子午线所经之地,原设有英国皇家格林威治天文台),格林威治镇(位于美国康涅狄格州)">Greenwich</span> Village, and found them discussing their <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> abortions. She saw the comforting power of sisters talking together, comparing their adversity, disclosing matters they could not mention to men. The mission of Ms was to become a <span class="annot" data-tooltip="forum /'fɔːrəm/ n. 论坛，讨论会；法庭；公开讨论的广场">forum</span> like that, but on a national scale. (It worked; the 300,000 initial run sold out in eight days, while the Letters pages <span class="annot" data-tooltip="overflowed /ˌoʊvər'floʊ/ vt. & vi. 溢出；淹没充满n. 溢出溢出物容纳不下的人[物]时 态: overflowed，overflowing，ov">overflowed</span>.) Her own mission was not just to write fulminating <span class="annot" data-tooltip="essays /'eseɪ/ n. 散文, 随笔">essays</span> and books, but to lecture and to organise “talking circles” in bookstores and malls and on campuses all across the land.</p>
+<p>That same year, along with Betty Friedan and two <span class="annot" data-tooltip="democratic /ˌdemə'krætɪk/ adj. 民主的, 有民主精神或作风的副 词: democratically">Democratic</span> congresswomen, Bella Abzug and Shirley Chisholm, she founded the National Women’s Political Caucus. Its <span class="annot" data-tooltip="main /meɪn/ adj. 主要的; 最重要的n. 总管道; 干线">main</span> purpose was to get more women into political office, but what then? Obviously, to her mind, equal pay for equal work; easily accessible, or free, day care; <span class="annot" data-tooltip="stricter /strɪkt/ adj. 严格的, 严厉的严谨的, 精确的绝对的, 完全的比较级: stricter, strictest">stricter</span> controls on <span class="annot" data-tooltip="pornography /pɔːr'nɑːɡrəfi/ n. 色情描绘, 色情表演色情作品名 词: pornographer">pornography</span>, and abortion choice. All to be guaranteed by the Equal Rights Amendment, which would enshrine in the constitution full legal equality with men. It would not end the patriarchy overnight, and might not even make them any more use in the kitchen, but that would come in time. She was no man-hater. She had had enough happy relationships to know that men could do nurturing, too. Her father had also taught her that. Though her parents had divorced in the end, when she was ten, he had cared for Gloria whenever her <span class="annot" data-tooltip="mentally /'mentl/ adj. 精神的, 头脑的, 心理的, 智力的精神病的副 词: mentally">mentally</span> unstable mother could not. (For seven years after he left it was her <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> job to feed her, as she lay in bed, with bologna sandwiches and dime pies; until <span class="annot" data-tooltip="senior /'siːniər/ adj. 年长的资深的; 地位高的〈美〉最高年级的n. 较年长者高年级学生〈美〉毕业班学生Senior西尼尔(姓氏)">senior</span> year in high school, education was haphazard.) They had been an itinerant family, following wherever her father’s antiques-trading took him. The result was that, for her, settling was always temporary and the open road was home. Travelling the highways was now her work, a reminder of how she had “walked the villages” with friends in India in the late 1950s, telling the poor about Gandhi. In America too, she did not go alone. For one thing, at the start, she was terrified of public <span class="annot" data-tooltip="speaking /'spikɪŋ/ adj. 演讲的；富于表情的，雄辩的n. 说话；演讲v. 讲（speak的ing形式）">speaking</span>. She was also very low on self-<span class="annot" data-tooltip="esteem /ɪ'stiːm/ vt. 认为；尊敬；考虑；估价n. 尊重；尊敬时 态: esteemed, esteeming, esteems">esteem</span>. Her long hair and aviator glasses, which looked so glamorous, were <span class="annot" data-tooltip="principally /'prɪnsəpl/ adj. 最重要的；主要的n. 负责人，校长资本，本金被代理人，委托人副 词: principally">principally</span> designed to hide her face. She <span class="annot" data-tooltip="wondered /'wʌndər/ vt. & vi. 对…感到疑惑想知道；问自己n. 惊奇，惊叹，惊异，惊诧奇人，奇才奇观，奇景，奇迹，奇事时 态: wonder">wondered</span> if she might <span class="annot" data-tooltip="simply /'sɪmpli/ adv. 简单地；朴素地；简直；仅仅；坦白地">simply</span> <span class="annot" data-tooltip="crack /kræk/ vt. & vi. (使…)开裂, 破裂(使)身体上或精神上垮掉打开, 砸开(使)发出爆裂声n. 裂缝, 缝隙噼啪声, 爆裂声意">crack</span> one day, like her mother. The media latched on to her as the photogenic leader of the women’s movement, but she didn’t want that label. (It led, among other things, to her <span class="annot" data-tooltip="falling /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">falling</span>-out with Friedan and the splitting of the <span class="annot" data-tooltip="campaign /kæm'peɪn/ n. 运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）时">campaign</span>.) More <span class="annot" data-tooltip="practically /'præktɪkl/ adj. 实际的，实践的实用的注重实际的；有实际工作能力的名 词: practicality">practically</span>, she liked to travel with a <span class="annot" data-tooltip="companion /kəm'pænjən/ n. 同伴, 伙伴成双成对的物品之一时 态: companioned, companioning, companions">companion</span> who did not have her middle-class preciseness of speech and her magna cum laude from Smith; someone who could argue from the perspective of a poor or black working- class woman, showing that the <span class="annot" data-tooltip="liberation /ˌlɪbə'reɪʃn/ n. 解放名 词: liberationist">liberation</span> struggle was for everywoman, everywhere. That struggle went on all through the last <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span> of the 20th century and into the 21st. The ERA, though many states endorsed it, never became law.</p>
+<p>Roe v Wade legalised abortion nationwide in 1973, only to be reversed in 2022. A woman <span class="annot" data-tooltip="candidate /'kændɪdət，ˈkændɪdeɪt/ n. 申请求职者, 候选人报考者名 词: candidacy">candidate</span> for president was crazily rejected for a chauvinist despot. But women became free agents in many other ways. When she eventually married, in 2000, it wasn’t she who had changed. The culture had. Thanks largely to the movement, women had learned to reject their role as man-servicers and take charge of their <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> lives. But rather than feeling proud of herself, she was proud of them. The Playboy Club in New York City, with its so-tight Bunny suits and so- tweakable fluffy white tails, closed down in 1986. ■ This article was downloaded by zlibrary from https://www.economist.com/obituary/2026/09/17/gloria-steinem-changed-the-world-for- american-women</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Leaders</div>
+<p>Can the AI arms <span class="annot" data-tooltip="race /reɪs/ n. 种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACE">race</span> be stopped? The selfish case for <span class="annot" data-tooltip="helping /'helpɪŋ/ n. （进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的">helping</span> <span class="annot" data-tooltip="ukraine n. 乌克兰（原苏联一加盟共和国，现已独立）">Ukraine</span> has never been stronger Markets are waking up to the rich world’s <span class="annot" data-tooltip="reckless /'rekləs/ adj. 轻率的; 鲁莽的; 不顾危险的副 词: recklessly">reckless</span> borrowing How South Africa can avoid becoming a <span class="annot" data-tooltip="mobster /'mɑːbstər/ n. [美俚]匪徒；暴徒">mobster</span> state There is too little money in British politics, not too much</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Asia</div>
+<p>China would face a “hellscape” in a war over Taiwan An electoral result that helps Japan’s defence buildup To keep out “infiltrators”, India is trapping its <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> citizens Why Indians are unhappy about 7.8% economic growth</p>
+<div class="article-separator"></div>
+<div class="article-header"> · China</div>
+<p>Real co-operation on AI is likely to elude China and America China and America are likely to keep the trade peace Unemployment is becoming a way of life for China’s young China’s new exit rules stoke fears of ever-tighter border controls China’s <span class="annot" data-tooltip="tutoring /'tuːtər/ n. 导师家庭教师, 私人教师时 态: tutored, tutoring, tutors">tutoring</span> <span class="annot" data-tooltip="crackdown /'krækdaʊn/ n. 压迫,镇压,打击">crackdown</span> has created a black market</p>
+<div class="article-separator"></div>
+<div class="article-header"> · United States</div>
+<p>The debate over AI has taken over Washington Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s attacks on postal voting are failing How House <span class="annot" data-tooltip="republicans /rɪ'pʌblɪkən/ adj. 共和国的, 共和政体的n. 拥护共和政体者, 共和主义者名 词: republicanism">Republicans</span> might fend off defeat <span class="annot" data-tooltip="pro /proʊ/ n. 从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞">Pro</span>-family <span class="annot" data-tooltip="proposals /prə'poʊzl/ n. 提议，建议；求婚">proposals</span> offer a glimpse at a post-Trump <span class="annot" data-tooltip="agenda /ə'dʒendə/ n. （政治）议题；议事日程；目的">agenda</span> Developers are learning to love Zohran Mamdani</p>
+<p>What Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> understands about character in public life</p>
+<div class="article-separator"></div>
+<div class="article-header"> · The Americas</div>
+<p>Brazil’s gangsters: less murder, more money Jamaica’s churches have become climate activists Women lead <span class="annot" data-tooltip="brutal /'bruːtl/ adj. 残忍的；野蛮的，不讲理的副 词: brutally">brutal</span> lives in <span class="annot" data-tooltip="colombia n. 哥伦比亚（拉丁美洲国家）形容词: Colombian">Colombia</span>’s illegal gold-<span class="annot" data-tooltip="mining /'maɪnɪŋ/ n. 矿业；采矿">mining</span> regions</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Middle East &amp; Africa</div>
+<p>South Africa is at risk of becoming a mafia state The maverick cop <span class="annot" data-tooltip="disrupting /dɪs'rʌpt/ vt. 使混乱, 扰乱时 态: disrupted, disrupting, disrupts">disrupting</span> South African policing Iran’s <span class="annot" data-tooltip="allies n. （第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者">allies</span> now menace a second maritime <span class="annot" data-tooltip="choke /tʃoʊk/ vt. & vi. 填塞(使)窒息时 态: choked, choking, chokes">choke</span> point A Turkish visit to Syria has Israel worried In Morocco, scandal is weakening the king’s shaky rule</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>scholars</td><td>/'skɑːlər/ n.</td><td>学者；奖学金获得者</td></tr>
+<tr><td>sceptical</td><td>/'skeptɪkl/ adj.</td><td>不肯相信的; 常怀疑的</td></tr>
+<tr><td>cognitively</td><td>/'kɑːɡnətɪv/ adj.</td><td>认知的, 认识能力的</td></tr>
+<tr><td>capable</td><td>/'keɪpəbl/ adj.</td><td>能干的，能胜任的；有才华的</td></tr>
+<tr><td>fret</td><td>/fret/ vt.</td><td>焦急；使磨损；使烦恼vi. 磨损；烦恼；焦急n. 烦躁；焦急；磨损, fretting, frets</td></tr>
+<tr><td>versions</td><td>/'vɜːrʒn/ n.</td><td>变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本</td></tr>
+<tr><td>sloping</td><td>/slɑːp/ vi.</td><td>溢出；泼出在泥浆(或雪泥)中走vt. 使(某物)溢出或泼出(液体)晃荡；(常指)溢出，溅出(在水、泥等里)趟来趟去，走动休息；放松；偷懒(囚犯)倒便桶(液体)晃</td></tr>
+<tr><td>gothic</td><td>— adj.</td><td>哥特式的；野蛮的n. 哥特式</td></tr>
+<tr><td>ordered</td><td>/'ɔːrdərd/ adj.</td><td>安排好的；整齐的；[数]有序的v. 命令；点餐（order的过去式和过去分词）</td></tr>
+<tr><td>simpler</td><td>— adj.</td><td>更简单的（simple的比较级）</td></tr>
+<tr><td>legible</td><td>/'ledʒəbl/ adj.</td><td>易读的；清晰的；易辨认的</td></tr>
+<tr><td>emphasising</td><td>/'emfəsɪs/ n.</td><td>强调, 重点</td></tr>
+<tr><td>keen</td><td>/kiːn/ adj.</td><td>锋利的热衷的，热心的，渴望(做某事)激烈的，紧张的良好的；敏锐的，敏捷的，keenest</td></tr>
+<tr><td>consumes</td><td>/kən'suːm/ vt.</td><td>消耗, 消费, 耗尽大吃, 大喝烧毁, 毁灭, consuming, consumes</td></tr>
+<tr><td>properly</td><td>/'prɑːpər/ adj.</td><td>适合的; 适当的; 适用的; 恰当的遵守规则的; 正确的严格意义的; 本身的合乎体统的; 正派的固有的; 特有的</td></tr>
+<tr><td>squat</td><td>/skwɑːt/ vi.</td><td>蹲坐；蹲擅自占住(空屋)adj. 矮胖的；矮而宽的n. 蹲坐，蹲姿被擅自占用的建筑物，squatting，squats</td></tr>
+<tr><td>barely</td><td>/'berli/ adv.</td><td>仅仅，勉强；几乎不；公开地；贫乏地</td></tr>
+<tr><td>wonder</td><td>/'wʌndər/ vt.</td><td>& vi. 对…感到疑惑想知道；问自己n. 惊奇，惊叹，惊异，惊诧奇人，奇才奇观，奇景，奇迹，奇事，wondering，wonders</td></tr>
+<tr><td>stuff</td><td>/stʌf/ n.</td><td>材料；东西；填充物；素材资料vt. 填塞；塞满；让吃饱vi. 吃得过多, stuffing, stuffs</td></tr>
+<tr><td>indicators</td><td>/'ɪndɪkeɪtər/ n.</td><td>(仪器上显示温度、压力、耗油量等的)指针，指示器，记录器(车辆上的)转弯指示灯指示物；指示者</td></tr>
+<tr><td>indicators</td><td>/'ɪndɪkeɪtər/ n.</td><td>(仪器上显示温度、压力、耗油量等的)指针，指示器，记录器(车辆上的)转弯指示灯指示物；指示者</td></tr>
+<tr><td>campaigner</td><td>/kæm'peɪn/ n.</td><td>运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）, campaigning, campai</td></tr>
+<tr><td>liberation</td><td>/ˌlɪbə'reɪʃn/ n.</td><td>解放</td></tr>
+<tr><td>satin</td><td>/'sætn/ n.</td><td>缎,缎子adj. 像缎子一样光滑的SATINabbr. Satellite Inspector System 卫星检查系统</td></tr>
+<tr><td>costume</td><td>/'kɑːstuːm/ n.</td><td>服装, 服装式样女外套, 女装, costuming, costumes</td></tr>
+<tr><td>stuffs</td><td>/stʌf/ n.</td><td>材料；东西；填充物；素材资料vt. 填塞；塞满；让吃饱vi. 吃得过多, stuffing, stuffs</td></tr>
+<tr><td>stuffed</td><td>/stʌf/ n.</td><td>材料；东西；填充物；素材资料vt. 填塞；塞满；让吃饱vi. 吃得过多, stuffing, stuffs</td></tr>
+<tr><td>sore</td><td>/sɔːr/ adj.</td><td>剧烈的，极度的；疼痛的，痛心的；恼火的，发怒的；厉害的，迫切的n. 溃疡，痛处；恨事，伤心事, sorest</td></tr>
+<tr><td>heels</td><td>/hilz/ n.</td><td>脚踝；残余料；高跟鞋（heel的复数）v. 紧跟；给（鞋等）装跟（heel的三单形式）</td></tr>
+<tr><td>earned</td><td>/ɪr/ n.</td><td>耳朵；听觉；倾听；穗vi. （美俚）听见；抽穗EARabbr. East African Railways 东非铁路公司, earing, ears</td></tr>
+<tr><td>precisely</td><td>/prɪ'saɪsli/ adv.</td><td>精确地；恰好；细心地对，的确如此</td></tr>
+<tr><td>host</td><td>/hoʊst/ n.</td><td>主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集, hosting, hosts</td></tr>
+<tr><td>retrospect</td><td>/'retrəspekt/ n.</td><td>回顾，追溯v. 回顾，追溯；回想，追忆, retrospecting, retrospects</td></tr>
+<tr><td>exploitation</td><td>/ˌeksplɔɪ'teɪʃn/ n.</td><td>开发;开采；开拓利用剥削广告推销</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>mentor</td><td>/'mentɔːr/ n.</td><td>(无经验之人的)有经验可信赖的顾问, mentoring, mentors</td></tr>
+<tr><td>decade</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>exactly</td><td>/ɪɡ'zækt/ adj.</td><td>精确的；准确的，精密的vt. 强求；要求；急需vi. 勒索钱财, exacting, exacts</td></tr>
+<tr><td>hearth</td><td>/hɑːrθ/ n.</td><td>炉床；炉边；灶台；壁炉地面</td></tr>
+<tr><td>trial</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>cover</td><td>/'kʌvər/ vt.</td><td>包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替, covering, covers</td></tr>
+<tr><td>pregnant</td><td>/'preɡnənt/ adj.</td><td>怀孕的, 怀胎的含蓄的, 意味深长的孕育着…的, 预示着…前景的</td></tr>
+<tr><td>complexity</td><td>/kəm'pleksəti/ n.</td><td>复杂性,错综复杂的状态复杂的事物</td></tr>
+<tr><td>steering</td><td>/stɪr/ v.</td><td>驾驶（船、汽车等）；掌控方向盘（交通工具）行驶，沿（特定路线或方向）行进引导，带领n. 阉公牛；肉用公牛, steering, steers</td></tr>
+<tr><td>rake</td><td>/reɪk/ n.</td><td>耙子vt. & vi. 以耙子耙平(泥土等)用耙子把…耙在一起；把…耙出来(翻阅旧记录、文件等以)搜寻事实等向(船只等)开枪扫射，raking，rakes</td></tr>
+<tr><td>issue</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>wonder</td><td>/'wʌndər/ vt.</td><td>& vi. 对…感到疑惑想知道；问自己n. 惊奇，惊叹，惊异，惊诧奇人，奇才奇观，奇景，奇迹，奇事，wondering，wonders</td></tr>
+<tr><td>stripped</td><td>— adj.</td><td>剥去的v. 脱衣；把…剪成条状；剥夺（strip的过去分词形式）</td></tr>
+<tr><td>comics</td><td>/'kɑːmɪk/ adj.</td><td>滑稽的, 好笑的喜剧的n. 连环漫画杂志喜剧演员</td></tr>
+<tr><td>tear</td><td>/tɪr，ter/ v.</td><td>撕掉，扯下；撕破；拔掉；拉伤；（非正式）狂奔；饱经……摧残；流眼泪n. 眼泪；（撕破的）洞或裂缝， 撕扯，torn，tearing，tears</td></tr>
+<tr><td>procedure</td><td>/prə'siːdʒər/ n.</td><td>程序, 步骤手续</td></tr>
+<tr><td>greenwich</td><td>/'ɡrenɪtʃ/ n.</td><td>格林威治(位于英国伦敦东南部,为本初子午线所经之地,原设有英国皇家格林威治天文台),格林威治镇(位于美国康涅狄格州)</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>forum</td><td>/'fɔːrəm/ n.</td><td>论坛，讨论会；法庭；公开讨论的广场</td></tr>
+<tr><td>overflowed</td><td>/ˌoʊvər'floʊ/ vt.</td><td>& vi. 溢出；淹没充满n. 溢出溢出物容纳不下的人[物]，overflowing，overflows</td></tr>
+<tr><td>essays</td><td>/'eseɪ/ n.</td><td>散文, 随笔</td></tr>
+<tr><td>democratic</td><td>/ˌdemə'krætɪk/ adj.</td><td>民主的, 有民主精神或作风的</td></tr>
+<tr><td>main</td><td>/meɪn/ adj.</td><td>主要的; 最重要的n. 总管道; 干线</td></tr>
+<tr><td>stricter</td><td>/strɪkt/ adj.</td><td>严格的, 严厉的严谨的, 精确的绝对的, 完全的, strictest</td></tr>
+<tr><td>pornography</td><td>/pɔːr'nɑːɡrəfi/ n.</td><td>色情描绘, 色情表演色情作品</td></tr>
+<tr><td>mentally</td><td>/'mentl/ adj.</td><td>精神的, 头脑的, 心理的, 智力的精神病的</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>senior</td><td>/'siːniər/ adj.</td><td>年长的资深的; 地位高的〈美〉最高年级的n. 较年长者高年级学生〈美〉毕业班学生Senior西尼尔(姓氏)</td></tr>
+<tr><td>speaking</td><td>/'spikɪŋ/ adj.</td><td>演讲的；富于表情的，雄辩的n. 说话；演讲v. 讲（speak的ing形式）</td></tr>
+<tr><td>esteem</td><td>/ɪ'stiːm/ vt.</td><td>认为；尊敬；考虑；估价n. 尊重；尊敬, esteeming, esteems</td></tr>
+<tr><td>principally</td><td>/'prɪnsəpl/ adj.</td><td>最重要的；主要的n. 负责人，校长资本，本金被代理人，委托人</td></tr>
+<tr><td>wondered</td><td>/'wʌndər/ vt.</td><td>& vi. 对…感到疑惑想知道；问自己n. 惊奇，惊叹，惊异，惊诧奇人，奇才奇观，奇景，奇迹，奇事，wondering，wonders</td></tr>
+<tr><td>simply</td><td>/'sɪmpli/ adv.</td><td>简单地；朴素地；简直；仅仅；坦白地</td></tr>
+<tr><td>crack</td><td>/kræk/ vt.</td><td>& vi. (使…)开裂, 破裂(使)身体上或精神上垮掉打开, 砸开(使)发出爆裂声n. 裂缝, 缝隙噼啪声, 爆裂声意外的一下重击试图, 尝试俏皮话强效可卡因</td></tr>
+<tr><td>falling</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>campaign</td><td>/kæm'peɪn/ n.</td><td>运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）, campaigning, campai</td></tr>
+<tr><td>practically</td><td>/'præktɪkl/ adj.</td><td>实际的，实践的实用的注重实际的；有实际工作能力的</td></tr>
+<tr><td>companion</td><td>/kəm'pænjən/ n.</td><td>同伴, 伙伴成双成对的物品之一, companioning, companions</td></tr>
+<tr><td>liberation</td><td>/ˌlɪbə'reɪʃn/ n.</td><td>解放</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>candidate</td><td>/'kændɪdət，ˈkændɪdeɪt/ n.</td><td>申请求职者, 候选人报考者</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>race</td><td>/reɪs/ n.</td><td>种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACEabbr. Radiation Adap</td></tr>
+<tr><td>helping</td><td>/'helpɪŋ/ n.</td><td>（进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的</td></tr>
+<tr><td>ukraine</td><td>— n.</td><td>乌克兰（原苏联一加盟共和国，现已独立）</td></tr>
+<tr><td>reckless</td><td>/'rekləs/ adj.</td><td>轻率的; 鲁莽的; 不顾危险的</td></tr>
+<tr><td>mobster</td><td>/'mɑːbstər/ n.</td><td>[美俚]匪徒；暴徒</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>tutoring</td><td>/'tuːtər/ n.</td><td>导师家庭教师, 私人教师, tutoring, tutors</td></tr>
+<tr><td>crackdown</td><td>/'krækdaʊn/ n.</td><td>压迫,镇压,打击</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>republicans</td><td>/rɪ'pʌblɪkən/ adj.</td><td>共和国的, 共和政体的n. 拥护共和政体者, 共和主义者</td></tr>
+<tr><td>pro</td><td>/proʊ/ n.</td><td>从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞成；支持Pro脯氨酸PROabbr. P</td></tr>
+<tr><td>proposals</td><td>/prə'poʊzl/ n.</td><td>提议，建议；求婚</td></tr>
+<tr><td>agenda</td><td>/ə'dʒendə/ n.</td><td>（政治）议题；议事日程；目的</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>brutal</td><td>/'bruːtl/ adj.</td><td>残忍的；野蛮的，不讲理的</td></tr>
+<tr><td>colombia</td><td>— n.</td><td>哥伦比亚（拉丁美洲国家）</td></tr>
+<tr><td>mining</td><td>/'maɪnɪŋ/ n.</td><td>矿业；采矿</td></tr>
+<tr><td>disrupting</td><td>/dɪs'rʌpt/ vt.</td><td>使混乱, 扰乱, disrupting, disrupts</td></tr>
+<tr><td>allies</td><td>— n.</td><td>（第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者</td></tr>
+<tr><td>choke</td><td>/tʃoʊk/ vt.</td><td>& vi. 填塞(使)窒息, choking, chokes</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day39.html" class="nav-btn">← Day 39</a>
+  <a href="day41.html" class="nav-btn">Day 41 →</a>
+</div>
+
+<div class="progress">📖 Day 40 of 41</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-09-19</div>
+
+</body>
+</html>
