@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Europe | Merzdämmerung</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-09-26</div>
+
+<h1 class="article-title">Europe | Merzdämmerung</h1>
+<div class="article-section">Europe</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>Friedrich Merz, the zombie chancellor He cannot recover, but no one wants to finish him off—yet Sep 24th 2026 FRIEDRICH MERZ is breaking a string of unfortunate records. He is the least-liked German chancellor in <span class="annot" data-tooltip="polling /'poʊlɪŋ/ n. 投票Polling轮流检测,联接到另一主机查看电子信件或新闻">polling</span> history. His Christian Democrats and their Bavarian sister party (cdu/csu), too, are skirting all-time polling lows. And on September 20th, in an election in the state of Mecklenburg- Vorpommern, the cdu was <span class="annot" data-tooltip="ejected /ɪ'dʒekt/ v. 喷出；喷射；排出【正式】驱逐；逐出；赶出（飞行员从即将坠毁的飞机中）弹射出来（按键后磁带、磁盘）弹出；使弹出时 态: e">ejected</span> from a state <span class="annot" data-tooltip="parliament /'pɑːrləmənt/ n. 议会, 国会">parliament</span> for the first time ever, drawing below 5% of the vote. For many in the chancellor’s party, this last debacle, following a cdu wipeout at the hands of the populist-right <span class="annot" data-tooltip="alternative /ɔːl'tɜːrnətɪv/ adj. 可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）">Alternative</span> for Germany (afd) in the eastern state of Saxony-Anhalt earlier this month, has <span class="annot" data-tooltip="marked /mɑːr/ vt. 毁坏；损坏；玷污MARabbr. Master of Arts in Religion 宗教硕士Mar三月(March)">marked</span> the point of no return. cdu campaigners in Berlin, which also voted on September 20th, report that locals only wanted to talk about their <span class="annot" data-tooltip="loathing /loʊθ/ adj. 勉强的；不情愿的（等于loth）">loathing</span> for Mr Merz —who was not on the <span class="annot" data-tooltip="ballot /'bælət/ n. 投票表决, 选举选票vt. & vi. (使)投票表决时 态: balloted, balloting, ballots">ballot</span>. The stench of death surrounds his</p>
+<p>chancellorship. Yet <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">although</span> everybody can see the trapdoor <span class="annot" data-tooltip="beneath /bɪ'niːθ/ prep. 在…之下adv. 在下方">beneath</span> Mr Merz’s feet, no one is ready to spring the <span class="annot" data-tooltip="lever /'levər/ n. 〈物〉杠杆操作杆vt. (用杠杆)撬动时 态: levered, levering, levers">lever</span>. In part that is because, if he goes, the <span class="annot" data-tooltip="scenarios /sə'nærioʊ/ n. 情节；剧本；方案">scenarios</span> look still worse. The governing parties do not want to precipitate fresh elections that would probably be won by the afd. For the cdu/csu to <span class="annot" data-tooltip="boot /buːt/ vt. 使穿靴；引导；踢；解雇n. 靴子；汽车行李箱；踢时 态: booted, booting, boots">boot</span> out the Social Democrats (spd), the <span class="annot" data-tooltip="junior /'dʒuːniər/ adj. 年少的, 较年幼的资历较浅的, 地位较低的n. 年少者地位较低者, 晚辈(美国中学或大学的)三年级学生">junior</span> coalition partner, and rule as a minority government—a <span class="annot" data-tooltip="scenario /sə'nærioʊ/ n. 情节；剧本；方案">scenario</span> reportedly <span class="annot" data-tooltip="considered /kən'sɪdər/ vt. & vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及时 态: considered, considering, ">considered</span> in Mr Merz’s office—would leave them hostage to the afd in <span class="annot" data-tooltip="parliament /'pɑːrləmənt/ n. 议会, 国会">parliament</span>. And switching the man at the top might look more <span class="annot" data-tooltip="tempting /tempt/ vt. 引诱或怂恿(某人)干不正当的事使想要时 态: tempted, tempting, tempts">tempting</span> if the likeliest <span class="annot" data-tooltip="alternative /ɔːl'tɜːrnətɪv/ adj. 可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）">alternative</span>, Hendrik Wüst, the cdu premier of North-Rhine Westphalia, Germany’s biggest state, were not facing a re-election bid next April. In any case, the institutional barriers to such a Kanzlertausch make it risky. “If you pop your head out at this stage, someone will chop it off,” says Wigan Salazar, a cdu member and head of msl, a political consultancy. This leaves Mr Merz oddly liberated to <span class="annot" data-tooltip="pursue /pər'suː/ vt. 从事；追赶；继续；纠缠vi. 追赶；继续进行时 态: pursued, pursuing, pursues">pursue</span> what has become the <span class="annot" data-tooltip="signature /'sɪɡnətʃər/ n. 签名, 签字">signature</span> <span class="annot" data-tooltip="issue /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issue</span> of his chancellorship: seeing through a set of economic and other <span class="annot" data-tooltip="reforms /rɪ'fɔːrm/ n. 改革，改良，改造vt. & vi. 改革；改造；改善时 态: reformed，reforming，reforms">reforms</span> agreed by his government in July. In a surprise <span class="annot" data-tooltip="address /ə'dres/ v. 写（收信人）姓名地址；致函演说；演讲称呼（某人）；冠以（某种称呼）设法解决；处理；对付向…说话n. 地址；住址；通信处 ">address</span> after <span class="annot" data-tooltip="polls /poʊl/ n. 民意测验；投票；投票数；投票所vt. 剪短；对…进行民意测验；获得选票；投票vi. 投票adj. 剪过毛的；修过枝的；无">polls</span> closed on September 20th he vowed to pursue them with “<span class="annot" data-tooltip="backbone /'bækboʊn/ n. 脊骨，脊柱脊骨状物；(船的)龙骨；书脊骨干，支柱，主力，中坚骨气；毅力Backbone广域网中的一种高速链路形容词: b">backbone</span>, steadfastness and patience”. He added that they could be the antidote to the “<span class="annot" data-tooltip="authoritarian /əˌθɔːrə'teriən/ adj. 权力主义的,专制的n. 权力主义者,专制者,独裁者名 词: authoritarian">authoritarian</span> poison” he said was seeping into German politics (the afd</p>
+<p>came first in Mecklenburg-Vorpommern and the hard-left Die Linke won in Berlin). <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">Although</span> the chancellor is <span class="annot" data-tooltip="prone /proʊn/ adj. 易于…的; 很可能…的俯卧的名 词: proneness">prone</span> to <span class="annot" data-tooltip="exaggerate /ɪɡ'zædʒəreɪt/ vt. & vi. (使)扩大, (使)增加夸大, 夸张时 态: exaggerated, exaggerating, exag">exaggerate</span> the scale of his modest <span class="annot" data-tooltip="proposals /prə'poʊzl/ n. 提议，建议；求婚">proposals</span>, his dwindling band of supporters appreciate his <span class="annot" data-tooltip="commitment /kə'mɪtmənt/ n. 承诺；保证；信奉；献身；委任；花费金钱、时间、人力等">commitment</span> to them. Yet navigating the <span class="annot" data-tooltip="reforms /rɪ'fɔːrm/ n. 改革，改良，改造vt. & vi. 改革；改造；改善时 态: reformed，reforming，reforms">reforms</span> through the Bundestag will require a deftness of touch that has hitherto eluded the chancellor. The coalition enjoys a majority of just 12, and there have already been <span class="annot" data-tooltip="skirmishes /'skɜːrmɪʃ/ n. 小规模战斗；小冲突时 态: skirmished, skirmishing, skirmishes">skirmishes</span> over parts of the <span class="annot" data-tooltip="pension /ˈpenʃn/ n. 津贴；退休金，抚恤金；膳宿费vt. 发给养老金或抚恤金时 态: pensioned, pensioning, pensi">pension</span> <span class="annot" data-tooltip="reform /rɪ'fɔːrm/ n. 改革，改良，改造vt. & vi. 改革；改造；改善时 态: reformed，reforming，reforms">reform</span>, the most ambitious element of the <span class="annot" data-tooltip="overall /ˌoʊvər'ɔːl/ adj. 总体的；全面的；综合的全面考虑的adv. 大体上，总的来说一切包括在内，全部的n. 长罩衣工装裤；工作裤">overall</span> package. In July the government agreed to abolish a popular, and therefore expensive, rule introduced in 2014 that allows some workers to retire early on a full pension. Bärbel Bas, the labour minister and spd co-leader, called the pension package a Gesamtkunstwerk, or “total work of art”, implying backing for every element. But Manuela Schwesig, the spd premier in Mecklenburg-Vorpommern, placed opposition to the <span class="annot" data-tooltip="proposal /prə'poʊzl/ n. 提议，建议；求婚">proposal</span> at the heart of her <span class="annot" data-tooltip="campaign /kæm'peɪn/ n. 运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）时">campaign</span>, in which she ran the afd a close second. Ms Schwesig is now a formidable force within her party, and a paper <span class="annot" data-tooltip="adopted /ə'dɑːpt/ vt. 收养采用, 采纳, 采取正式接受, 通过时 态: adopted, adopting, adopts">adopted</span> this week by spd mps called the elections “a mandate to shape the reforms fairly”. Sensing danger, cdu mps have vowed to protect the agreement. <span class="annot" data-tooltip="neither /'niːðər/ conj. 既不；也不adv. 两个都不；既不……也不adj. 两者都不的det./pron. 两者都不">Neither</span> party’s leadership has a firm hand on its parliamentary ranks. Ensuring that the pension rule will be abolished, as promised, will be a <span class="annot" data-tooltip="major /'meɪdʒər/ adj. 主要的；主修的；重要的；较多的n. 成年人；主修科目；陆军少校vi. 主修时 态: majored, majoring,">major</span> challenge. So will votes on <span class="annot" data-tooltip="elderly /'eldərli/ adj. 上了年纪的, 中年以上的">elderly</span>-care reform and the budget for 2027. Each offers opportunities for restive mps to cause trouble. Ask around the cdu, and you can <span class="annot" data-tooltip="detect /dɪ'tekt/ vt. 发现；发觉，查明时 态: detected，detecting，detects">detect</span> an <span class="annot" data-tooltip="anxiety /æŋ'zaɪəti/ n. 焦虑；挂念；渴望；令人焦虑的事">anxiety</span> that runs deeper than Mr Merz’s woes. As populists grow on the left and, especially, the right, does the party that has long regarded itself as a <span class="annot" data-tooltip="unifying /'juːnɪfaɪ/ vt. 统一；使相同，使一致时 态: unified unifying, unifies">unifying</span> force as well as a governing power have any answer to the fraying of German politics? “We need something to fight for, rather than just fighting against everything,” says one anxious party figure. Everyone agrees there can be no return to business as usual. And yet no <span class="annot" data-tooltip="alternatives /ɔːl'tɜːrnətɪv/ adj. 可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）">alternatives</span> seem to be on offer, beyond hoping that the passage of time brings redemption. There are no more elections until April. In the meantime the economy shows signs of recovery, and Mr Merz will have</p>
+<p>plenty of opportunities to strut his <span class="annot" data-tooltip="stuff /stʌf/ n. 材料；东西；填充物；素材资料vt. 填塞；塞满；让吃饱vi. 吃得过多时 态: stuffed, stuffing, s">stuff</span> on the international stage. These may give him a few more stays of execution. Then what?■ This article was downloaded by zlibrary from https://www.economist.com/europe/2026/09/24/friedrich-merz-the-zombie-chancellor</p>
+<div class="article-separator"></div>
+<div class="article-header">Europe · Europe | An uncontained mess</div>
+<p>The EU’s new packaging rules are a bureaucratic bungle Get ready for a ban on mini-<span class="annot" data-tooltip="sachets /sæ'ʃeɪ/ n. 小袋；香囊">sachets</span> of <span class="annot" data-tooltip="ketchup /'ketʃəp/ n. 番茄酱">ketchup</span>, and much more Sep 24th 2026 The European Union prides itself on being a regulatory superpower, setting standards that are <span class="annot" data-tooltip="adopted /ə'dɑːpt/ vt. 收养采用, 采纳, 采取正式接受, 通过时 态: adopted, adopting, adopts">adopted</span> around the world. In some cases it works, as with the bloc’s tight limits on pollutants. In others it flops, as with a complicated supply-chain law whose <span class="annot" data-tooltip="implementation /ˌɪmplɪmen'teɪʃn/ n. 贯彻，执行">implementation</span> has been delayed until next year. The EU’s latest big new rule is the Packaging and Packaging Waste Regulation (PPWR), which came into force in August. Among other things, it will eventually ban single-use shampoo bottles used by hotels, and mini- sachets of ketchup or other condiments. However valuable its aspirations might be, much of it is, unfortunately, a bureaucratic <span class="annot" data-tooltip="mess /mes/ vt. 弄脏；弄乱n. 杂乱，脏乱；脏东西不整洁[乱七八糟]的人[事]粪便时 态: messed，messing，messes">mess</span>.</p>
+<p>The goals of the roughly 300-page-long PPWR are worthy. It aims to reduce the rapid growth of packaging <span class="annot" data-tooltip="rubbish /'rʌbɪʃ/ n. 垃圾，废物；废话adj. 毫无价值的">rubbish</span>, increase recycling, harmonise national laws and make food wrappers safer for consumers by restricting <span class="annot" data-tooltip="substances /'sʌbstəns/ n. 物质主旨, 要旨实质, 本体Substancen. 物质，物">substances</span> such as pFAS, widely used chemicals that break down slowly and are linked to <span class="annot" data-tooltip="cancer /'kænsər/ n. 癌迅速蔓延的恶劣的或危险的事物形容词: cancerous">cancer</span>. <span class="annot" data-tooltip="annually /'ænjuəl/ adj. 年度的；每年的n. 年刊，年鉴；一年生植物副 词: annually">Annually</span>, each person in the EU generates 178kg of packaging waste, of which 68% is recycled. Plastic accounts for 35kg of that, and only 42% of it is recycled (see chart 1). Without the law, packaging waste is forecast to grow by 19% by 2030 (see chart 2), driven by the relentless increase of online shopping. Many of the law’s new rules will be introduced gradually. Makers of packaging have until 2028 to introduce standardised labels showing the materials in their products and how to <span class="annot" data-tooltip="dispose /dɪ'spoʊz/ vt. 处理；处置；安排vi. 处理；安排；（能够）决定n. 处置；性情时 态: disposed, disposing, di">dispose</span> of them. Single-use plastic packaging for fresh produce, and for those mini shampoo bottles or <span class="annot" data-tooltip="ketchup /'ketʃəp/ n. 番茄酱">ketchup</span> packets, won’t be gone until 2030. But other policies have become law <span class="annot" data-tooltip="immediately /ɪ'miːdiət/ adj. 立即的，即刻的；紧迫的目前的，当前的直接的最接近的名 词: immediateness">immediately</span>, and a few are creating <span class="annot" data-tooltip="chaos /'keɪɑːs/ n. 混沌，混乱形容词: chaotic">chaos</span>. Some aspects of the <span class="annot" data-tooltip="extended /ɪk'stend/ vt. & vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出时 态:">Extended</span> Producer Responsibility (EPR) scheme, which makes <span class="annot" data-tooltip="manufacturers /ˌmænju'fæktʃərər/ n. 制造商, 制造厂">manufacturers</span> and importers responsible for the entire life-cycle of their products, caused an outcry among small businesses that export across the EU. The rules require them to register with individual national registries in each of the EU’s 27 member states, hire 27 authorised</p>
+<p><span class="annot" data-tooltip="representatives /ˌreprɪ'zentətɪv/ n. 代表代理人adj. 有代表性的, 典型的名 词: representativeness">representatives</span> and file complex reports in different languages. That is a <span class="annot" data-tooltip="crushing /krʌʃ/ vt. & vi. 压碎, 压坏vt. 弄皱镇压, 消灭, 击溃vi. 挤进, 挤入n. 拥挤的人群时 态: crushed, ">crushing</span> <span class="annot" data-tooltip="burden /'bɜːrdn/ n. 负担；责任；船的载货量vt. 烦扰；使负担；装货于时 态: burdened, burdening, burdens">burden</span> for companies already struggling with high <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span> and labour costs. The EU was <span class="annot" data-tooltip="aware /ə'wer/ adj. 知道的；意识到的；有…方面知识的；懂世故的名 词: awareness">aware</span> of these concerns, but a <span class="annot" data-tooltip="proposal /prə'poʊzl/ n. 提议，建议；求婚">proposal</span> by the European <span class="annot" data-tooltip="commission /kə'mɪʃn/ n. 授权, 委托委员会佣金, 回扣vt. 委任, 委托时 态: commissioned, commissioning, c">Commission</span> to <span class="annot" data-tooltip="suspend /sə'spend/ vt. 延缓，推迟；使暂停；使悬浮vi. 悬浮；[体]禁赛时 态: suspended, suspending, suspend">suspend</span>, until 2035, the requirement to hire local representatives was blocked in June in the EU council. Countries including Austria and Spain feared that removing local accountability would weaken regulatory control and make it easier for online sellers to <span class="annot" data-tooltip="ship /ʃɪp/ vt. 运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Di">ship</span> across borders without reporting packaging data or paying recycling fees. As a result, the PPWR became law with its <span class="annot" data-tooltip="flaws /flɔː/ n.瑕疵，缺点；一阵狂风；短暂的风暴；裂缝，裂纹">flaws</span> uncorrected. “It’s <span class="annot" data-tooltip="completely /kəm'pliːt/ adj. 完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善比较级: complete">completely</span> absurd,” says Marco Reitberger, who runs Itrade, a business-to- business electronics <span class="annot" data-tooltip="retailer /'riːteɪlər/ n. 传播的人；零售商">retailer</span> with 35 employees in Passau, Germany. Before packaging his wares, his employees must <span class="annot" data-tooltip="complete /kəm'pliːt/ adj. 完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善比较级: complete">complete</span> a <span class="annot" data-tooltip="conformity /kən'fɔːrməti/ n. 依照，遵从；符合，一致">conformity</span> assessment, prepare technical documentation and fill in an EU declaration of <span class="annot" data-tooltip="compliance /kəm'plaɪəns/ n. 服从,听从,顺从">compliance</span>. “Since August 12th we are obligated to throw away all the <span class="annot" data-tooltip="cardboard /'kɑːrdbɔːrd/ n. 硬纸板">cardboard</span> boxes that we get because we don’t know their origin, rather than reuse them as we have always done,” says Mr Reitberger. The rules, he says, are so confusing and expensive that no one is following them.</p>
+<p>Many smaller European <span class="annot" data-tooltip="retailers /'riːteɪlər/ n. 传播的人；零售商">retailers</span> have given up and paused sending their wares to other EU countries. Picadera, a small online shop for equestrian and leather goods, ceased deliveries to all EU countries <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span> Germany and Austria. Le Pop Lingerie, a seller of underwear in <span class="annot" data-tooltip="cologne 科隆（德意志联邦共和国城市）">Cologne</span>, says it will stop <span class="annot" data-tooltip="shipping /ʃɪp/ vt. 运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Di">shipping</span> other than to Britain, Germany, <span class="annot" data-tooltip="norway /'nɔːrweɪ/ n. 挪威（北欧国家名）">Norway</span> and Switzerland because of the pPWR. Pitlock, a maker of cycling <span class="annot" data-tooltip="gear /ɡɪr/ n. 用具，设备，衣服齿轮；传动装置；(排)挡vi. 换挡vt. 使兴奋起来；使准备好vt. & vi. (使)搭配；(使)适">gear</span> in Berlin, is pausing deliveries to other EU countries. “At its core the PPWR runs <span class="annot" data-tooltip="counter /'kaʊntər/ n. 柜台, 柜台式长桌计数器vt. & vi. 对抗, 反驳adv. 反方向地, 对立地时 态: countered, co">counter</span> to the logic of the single market,” says Andrea Wechsler, a German member of the European <span class="annot" data-tooltip="parliament /'pɑːrləmənt/ n. 议会, 国会">Parliament</span>. What can be done? Ms Wechsler <span class="annot" data-tooltip="proposes /prə'poʊz/ vt. & vi. 提议；建议；计划；求婚时 态: proposed，proposing，proposes">proposes</span> a <span class="annot" data-tooltip="threshold /'θreʃhoʊld/ n. 门槛; 〈喻〉开始">threshold</span> that <span class="annot" data-tooltip="exempts /ɪɡ'zempt/ vt. 免除；豁免adj. 被免除的；被豁免的n. 免税者；被免除义务者时 态: exempted, exempting, ex">exempts</span> very small businesses in the EU from the obligations of the EPR scheme. She would <span class="annot" data-tooltip="suspend /sə'spend/ vt. 延缓，推迟；使暂停；使悬浮vi. 悬浮；[体]禁赛时 态: suspended, suspending, suspend">suspend</span> the requirement to appoint a local <span class="annot" data-tooltip="representative /ˌreprɪ'zentətɪv/ n. 代表代理人adj. 有代表性的, 典型的名 词: representativeness">representative</span> in each country, as the <span class="annot" data-tooltip="commission /kə'mɪʃn/ n. 授权, 委托委员会佣金, 回扣vt. 委任, 委托时 态: commissioned, commissioning, c">Commission</span> proposed. And instead of 27 national registries there should be a single EU-wide one. The parliament is set to debate small-business <span class="annot" data-tooltip="exemptions /ɪɡ'zempʃn/ n. (义务等的)免除;免(税)(收入中的)免税额">exemptions</span> from the PPWR in October. The Commission suggested that, for now, national <span class="annot" data-tooltip="authorities /ə'θɔːrəti/ n. 威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗">authorities</span> <span class="annot" data-tooltip="reprimand /'reprɪmænd/ n. 训斥, 惩戒vt. 申斥, 惩戒, 谴责时 态: reprimanded, reprimanding, repriman">reprimand</span> rather than punish companies that <span class="annot" data-tooltip="violate /'vaɪəleɪt/ vt. 违反, 违背亵渎侵犯, 妨碍时 态: violated, violating, violates">violate</span> the regulation. And on September 7th Germany’s environment ministry proposed paring unworkable PPWR rules as part of an <span class="annot" data-tooltip="upcoming /'ʌpkʌmɪŋ/ adj. 即将来到的, 即将出现的">upcoming</span> EU “omnibus” bill to <span class="annot" data-tooltip="lighten /'laɪtn/ vt. 使(某物)更明亮vi. 变得更光明别那么严肃；别抱怨；别担忧使生动活泼时 态: lightened, lightenin">lighten</span> environmental regulation. The Germans want to lift some requirements for small businesses that produce less than ten tonnes of packaging waste a year. In his <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span> of reporting on retailers, Mark Steier, an e-<span class="annot" data-tooltip="commerce /'kɑːmɜːrs/ n. 商业, 贸易">commerce</span> blogger, has never seen them so outraged. “The PPWR is a total failure of the eU, national trade policies and national trade <span class="annot" data-tooltip="lobbies /'lɑːbi/ n. 前厅, 厅堂议会休息室游说议员的团体vt. & vi. 向…进行游说[疏通]名 词: lobbyism">lobbies</span>,” he says. The problems with the new rules should have been evident <span class="annot" data-tooltip="beforehand /bɪ'fɔːrhænd/ adv. 预先, 事先">beforehand</span>. Yet it seems no one noticed they were broken until they took them out of the box. ■ This article was downloaded by zlibrary from https://www.economist.com/europe/2026/09/24/the-eus-new-packaging-rules-are-a- bureaucratic-bungle</p>
+<div class="article-separator"></div>
+<div class="article-header">Europe · Europe | Too hot for the dons</div>
+<p>The Mafia may be keeping fentanyl out of Italy The country’s low overdose rate suggests an unlikely benefactor Sep 24th 2026 IN “The Godfather”, Don Vito Corleone refuses to <span class="annot" data-tooltip="engage /ɪn'ɡeɪdʒ/ vt. 雇佣；吸引，占用；使订婚；使参加；预定vi. 答应，保证；从事；交战；啮合时 态: engaged, engaging,">engage</span> in the heroin trade because he <span class="annot" data-tooltip="considers /kən'sɪdər/ vt. & vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及时 态: considered, considering, ">considers</span> it “a dirty business”. <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">Outside</span> of Hollywood scripts, such scruples are rare among mafiosi. Yet police in Italy are coming to the conclusion that a real-life <span class="annot" data-tooltip="version /'vɜːrʒn/ n. 变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本">version</span> of this <span class="annot" data-tooltip="plot /plɑːt/ n. 故事情节(秘密)计划，密谋小块地皮vt. 把…分成小块；划分绘制；标出vt. & vi. 密谋时 态: plotted，">plot</span> point may have played out there over the past <span class="annot" data-tooltip="decade /'dekeɪd/ n. 十年，十年期；十">decade</span>. The country’s mafias seem to have collaborated to keep fentanyl out of their <span class="annot" data-tooltip="territory /'terətɔːri/ n. 领土, 版图管区, 营业地区地盘, 领域, 范围">territory</span>. The theory could help explain Italy’s strangely low rate of fentanyl overdoses. In 2024 the synthetic opiate, which is about 100 times stronger than morphine, was <span class="annot" data-tooltip="detected /dɪ'tekt/ vt. 发现；发觉，查明时 态: detected，detecting，detects">detected</span> in just two fatal intoxications in Italy. Germany had 95; America had almost 48,000. That cannot be explained by Italy’s <span class="annot" data-tooltip="overall /ˌoʊvər'ɔːl/ adj. 总体的；全面的；综合的全面考虑的adv. 大体上，总的来说一切包括在内，全部的n. 长罩衣工装裤；工作裤">overall</span> drug <span class="annot" data-tooltip="consumption /kən'sʌmpʃn/ n. 消费，消耗；消费[耗]量肺病；结核病">consumption</span> levels. Some 2.1% of young <span class="annot" data-tooltip="italian /ɪ'tæliən/ adj. 意大利的；意大利文化的；意大利语的n. 意大利人；意大利语">Italian</span> adults use cocaine in a given year, according to European figures, compared with 2.2%</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>polling</td><td>/'poʊlɪŋ/ n.</td><td>投票Polling轮流检测,联接到另一主机查看电子信件或新闻</td></tr>
+<tr><td>ejected</td><td>/ɪ'dʒekt/ v.</td><td>喷出；喷射；排出【正式】驱逐；逐出；赶出（飞行员从即将坠毁的飞机中）弹射出来（按键后磁带、磁盘）弹出；使弹出, ejecting, ejects</td></tr>
+<tr><td>parliament</td><td>/'pɑːrləmənt/ n.</td><td>议会, 国会</td></tr>
+<tr><td>alternative</td><td>/ɔːl'tɜːrnətɪv/ adj.</td><td>可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）可供选择的事物；可供选择的解决办法替代物</td></tr>
+<tr><td>marked</td><td>/mɑːr/ vt.</td><td>毁坏；损坏；玷污MARabbr. Master of Arts in Religion 宗教硕士Mar三月(March)，marring，mars</td></tr>
+<tr><td>loathing</td><td>/loʊθ/ adj.</td><td>勉强的；不情愿的（等于loth）</td></tr>
+<tr><td>ballot</td><td>/'bælət/ n.</td><td>投票表决, 选举选票vt. & vi. (使)投票表决, balloting, ballots</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>beneath</td><td>/bɪ'niːθ/ prep.</td><td>在…之下adv. 在下方</td></tr>
+<tr><td>lever</td><td>/'levər/ n.</td><td>〈物〉杠杆操作杆vt. (用杠杆)撬动, levering, levers</td></tr>
+<tr><td>scenarios</td><td>/sə'nærioʊ/ n.</td><td>情节；剧本；方案</td></tr>
+<tr><td>boot</td><td>/buːt/ vt.</td><td>使穿靴；引导；踢；解雇n. 靴子；汽车行李箱；踢, booting, boots</td></tr>
+<tr><td>junior</td><td>/'dʒuːniər/ adj.</td><td>年少的, 较年幼的资历较浅的, 地位较低的n. 年少者地位较低者, 晚辈(美国中学或大学的)三年级学生</td></tr>
+<tr><td>scenario</td><td>/sə'nærioʊ/ n.</td><td>情节；剧本；方案</td></tr>
+<tr><td>considered</td><td>/kən'sɪdər/ vt.</td><td>& vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及, considering, considers</td></tr>
+<tr><td>parliament</td><td>/'pɑːrləmənt/ n.</td><td>议会, 国会</td></tr>
+<tr><td>tempting</td><td>/tempt/ vt.</td><td>引诱或怂恿(某人)干不正当的事使想要, tempting, tempts</td></tr>
+<tr><td>alternative</td><td>/ɔːl'tɜːrnətɪv/ adj.</td><td>可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）可供选择的事物；可供选择的解决办法替代物</td></tr>
+<tr><td>pursue</td><td>/pər'suː/ vt.</td><td>从事；追赶；继续；纠缠vi. 追赶；继续进行, pursuing, pursues</td></tr>
+<tr><td>signature</td><td>/'sɪɡnətʃər/ n.</td><td>签名, 签字</td></tr>
+<tr><td>issue</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>reforms</td><td>/rɪ'fɔːrm/ n.</td><td>改革，改良，改造vt. & vi. 改革；改造；改善，reforming，reforms</td></tr>
+<tr><td>address</td><td>/ə'dres/ v.</td><td>写（收信人）姓名地址；致函演说；演讲称呼（某人）；冠以（某种称呼）设法解决；处理；对付向…说话n. 地址；住址；通信处 网址；电子邮件地址 演讲，演说 称呼 【</td></tr>
+<tr><td>polls</td><td>/poʊl/ n.</td><td>民意测验；投票；投票数；投票所vt. 剪短；对…进行民意测验；获得选票；投票vi. 投票adj. 剪过毛的；修过枝的；无角的, polling, polls</td></tr>
+<tr><td>backbone</td><td>/'bækboʊn/ n.</td><td>脊骨，脊柱脊骨状物；(船的)龙骨；书脊骨干，支柱，主力，中坚骨气；毅力Backbone广域网中的一种高速链路</td></tr>
+<tr><td>authoritarian</td><td>/əˌθɔːrə'teriən/ adj.</td><td>权力主义的,专制的n. 权力主义者,专制者,独裁者</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>prone</td><td>/proʊn/ adj.</td><td>易于…的; 很可能…的俯卧的</td></tr>
+<tr><td>exaggerate</td><td>/ɪɡ'zædʒəreɪt/ vt.</td><td>& vi. (使)扩大, (使)增加夸大, 夸张, exaggerating, exaggerates</td></tr>
+<tr><td>proposals</td><td>/prə'poʊzl/ n.</td><td>提议，建议；求婚</td></tr>
+<tr><td>commitment</td><td>/kə'mɪtmənt/ n.</td><td>承诺；保证；信奉；献身；委任；花费金钱、时间、人力等</td></tr>
+<tr><td>reforms</td><td>/rɪ'fɔːrm/ n.</td><td>改革，改良，改造vt. & vi. 改革；改造；改善，reforming，reforms</td></tr>
+<tr><td>skirmishes</td><td>/'skɜːrmɪʃ/ n.</td><td>小规模战斗；小冲突, skirmishing, skirmishes</td></tr>
+<tr><td>pension</td><td>/ˈpenʃn/ n.</td><td>津贴；退休金，抚恤金；膳宿费vt. 发给养老金或抚恤金, pensioning, pensions</td></tr>
+<tr><td>reform</td><td>/rɪ'fɔːrm/ n.</td><td>改革，改良，改造vt. & vi. 改革；改造；改善，reforming，reforms</td></tr>
+<tr><td>overall</td><td>/ˌoʊvər'ɔːl/ adj.</td><td>总体的；全面的；综合的全面考虑的adv. 大体上，总的来说一切包括在内，全部的n. 长罩衣工装裤；工作裤</td></tr>
+<tr><td>proposal</td><td>/prə'poʊzl/ n.</td><td>提议，建议；求婚</td></tr>
+<tr><td>campaign</td><td>/kæm'peɪn/ n.</td><td>运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）, campaigning, campai</td></tr>
+<tr><td>adopted</td><td>/ə'dɑːpt/ vt.</td><td>收养采用, 采纳, 采取正式接受, 通过, adopting, adopts</td></tr>
+<tr><td>neither</td><td>/'niːðər/ conj.</td><td>既不；也不adv. 两个都不；既不……也不adj. 两者都不的det./pron. 两者都不</td></tr>
+<tr><td>major</td><td>/'meɪdʒər/ adj.</td><td>主要的；主修的；重要的；较多的n. 成年人；主修科目；陆军少校vi. 主修, majoring, majors</td></tr>
+<tr><td>elderly</td><td>/'eldərli/ adj.</td><td>上了年纪的, 中年以上的</td></tr>
+<tr><td>detect</td><td>/dɪ'tekt/ vt.</td><td>发现；发觉，查明，detecting，detects</td></tr>
+<tr><td>anxiety</td><td>/æŋ'zaɪəti/ n.</td><td>焦虑；挂念；渴望；令人焦虑的事</td></tr>
+<tr><td>unifying</td><td>/'juːnɪfaɪ/ vt.</td><td>统一；使相同，使一致, unifies</td></tr>
+<tr><td>alternatives</td><td>/ɔːl'tɜːrnətɪv/ adj.</td><td>可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）可供选择的事物；可供选择的解决办法替代物</td></tr>
+<tr><td>stuff</td><td>/stʌf/ n.</td><td>材料；东西；填充物；素材资料vt. 填塞；塞满；让吃饱vi. 吃得过多, stuffing, stuffs</td></tr>
+<tr><td>sachets</td><td>/sæ'ʃeɪ/ n.</td><td>小袋；香囊</td></tr>
+<tr><td>ketchup</td><td>/'ketʃəp/ n.</td><td>番茄酱</td></tr>
+<tr><td>adopted</td><td>/ə'dɑːpt/ vt.</td><td>收养采用, 采纳, 采取正式接受, 通过, adopting, adopts</td></tr>
+<tr><td>implementation</td><td>/ˌɪmplɪmen'teɪʃn/ n.</td><td>贯彻，执行</td></tr>
+<tr><td>mess</td><td>/mes/ vt.</td><td>弄脏；弄乱n. 杂乱，脏乱；脏东西不整洁[乱七八糟]的人[事]粪便，messing，messes</td></tr>
+<tr><td>rubbish</td><td>/'rʌbɪʃ/ n.</td><td>垃圾，废物；废话adj. 毫无价值的</td></tr>
+<tr><td>substances</td><td>/'sʌbstəns/ n.</td><td>物质主旨, 要旨实质, 本体Substancen. 物质，物</td></tr>
+<tr><td>cancer</td><td>/'kænsər/ n.</td><td>癌迅速蔓延的恶劣的或危险的事物</td></tr>
+<tr><td>annually</td><td>/'ænjuəl/ adj.</td><td>年度的；每年的n. 年刊，年鉴；一年生植物</td></tr>
+<tr><td>dispose</td><td>/dɪ'spoʊz/ vt.</td><td>处理；处置；安排vi. 处理；安排；（能够）决定n. 处置；性情, disposing, disposes</td></tr>
+<tr><td>ketchup</td><td>/'ketʃəp/ n.</td><td>番茄酱</td></tr>
+<tr><td>immediately</td><td>/ɪ'miːdiət/ adj.</td><td>立即的，即刻的；紧迫的目前的，当前的直接的最接近的</td></tr>
+<tr><td>chaos</td><td>/'keɪɑːs/ n.</td><td>混沌，混乱</td></tr>
+<tr><td>extended</td><td>/ɪk'stend/ vt.</td><td>& vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出，extending，extends</td></tr>
+<tr><td>manufacturers</td><td>/ˌmænju'fæktʃərər/ n.</td><td>制造商, 制造厂</td></tr>
+<tr><td>representatives</td><td>/ˌreprɪ'zentətɪv/ n.</td><td>代表代理人adj. 有代表性的, 典型的</td></tr>
+<tr><td>crushing</td><td>/krʌʃ/ vt.</td><td>& vi. 压碎, 压坏vt. 弄皱镇压, 消灭, 击溃vi. 挤进, 挤入n. 拥挤的人群, crushing, crushes</td></tr>
+<tr><td>burden</td><td>/'bɜːrdn/ n.</td><td>负担；责任；船的载货量vt. 烦扰；使负担；装货于, burdening, burdens</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>aware</td><td>/ə'wer/ adj.</td><td>知道的；意识到的；有…方面知识的；懂世故的</td></tr>
+<tr><td>proposal</td><td>/prə'poʊzl/ n.</td><td>提议，建议；求婚</td></tr>
+<tr><td>commission</td><td>/kə'mɪʃn/ n.</td><td>授权, 委托委员会佣金, 回扣vt. 委任, 委托, commissioning, commissions</td></tr>
+<tr><td>suspend</td><td>/sə'spend/ vt.</td><td>延缓，推迟；使暂停；使悬浮vi. 悬浮；[体]禁赛, suspending, suspends</td></tr>
+<tr><td>ship</td><td>/ʃɪp/ vt.</td><td>运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Division of the Nation</td></tr>
+<tr><td>flaws</td><td>/flɔː/ </td><td>n.瑕疵，缺点；一阵狂风；短暂的风暴；裂缝，裂纹</td></tr>
+<tr><td>completely</td><td>/kəm'pliːt/ adj.</td><td>完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善, completest 缩 写: comp, cpl</td></tr>
+<tr><td>retailer</td><td>/'riːteɪlər/ n.</td><td>传播的人；零售商</td></tr>
+<tr><td>complete</td><td>/kəm'pliːt/ adj.</td><td>完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善, completest 缩 写: comp, cpl</td></tr>
+<tr><td>conformity</td><td>/kən'fɔːrməti/ n.</td><td>依照，遵从；符合，一致</td></tr>
+<tr><td>compliance</td><td>/kəm'plaɪəns/ n.</td><td>服从,听从,顺从</td></tr>
+<tr><td>cardboard</td><td>/'kɑːrdbɔːrd/ n.</td><td>硬纸板</td></tr>
+<tr><td>retailers</td><td>/'riːteɪlər/ n.</td><td>传播的人；零售商</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>cologne</td><td>— </td><td>科隆（德意志联邦共和国城市）</td></tr>
+<tr><td>shipping</td><td>/ʃɪp/ vt.</td><td>运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Division of the Nation</td></tr>
+<tr><td>norway</td><td>/'nɔːrweɪ/ n.</td><td>挪威（北欧国家名）</td></tr>
+<tr><td>gear</td><td>/ɡɪr/ n.</td><td>用具，设备，衣服齿轮；传动装置；(排)挡vi. 换挡vt. 使兴奋起来；使准备好vt. & vi. (使)搭配；(使)适合，gearing，gears</td></tr>
+<tr><td>counter</td><td>/'kaʊntər/ n.</td><td>柜台, 柜台式长桌计数器vt. & vi. 对抗, 反驳adv. 反方向地, 对立地, countering, counters</td></tr>
+<tr><td>parliament</td><td>/'pɑːrləmənt/ n.</td><td>议会, 国会</td></tr>
+<tr><td>proposes</td><td>/prə'poʊz/ vt.</td><td>& vi. 提议；建议；计划；求婚，proposing，proposes</td></tr>
+<tr><td>threshold</td><td>/'θreʃhoʊld/ n.</td><td>门槛; 〈喻〉开始</td></tr>
+<tr><td>exempts</td><td>/ɪɡ'zempt/ vt.</td><td>免除；豁免adj. 被免除的；被豁免的n. 免税者；被免除义务者, exempting, exempts</td></tr>
+<tr><td>suspend</td><td>/sə'spend/ vt.</td><td>延缓，推迟；使暂停；使悬浮vi. 悬浮；[体]禁赛, suspending, suspends</td></tr>
+<tr><td>representative</td><td>/ˌreprɪ'zentətɪv/ n.</td><td>代表代理人adj. 有代表性的, 典型的</td></tr>
+<tr><td>commission</td><td>/kə'mɪʃn/ n.</td><td>授权, 委托委员会佣金, 回扣vt. 委任, 委托, commissioning, commissions</td></tr>
+<tr><td>exemptions</td><td>/ɪɡ'zempʃn/ n.</td><td>(义务等的)免除;免(税)(收入中的)免税额</td></tr>
+<tr><td>authorities</td><td>/ə'θɔːrəti/ n.</td><td>威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗</td></tr>
+<tr><td>reprimand</td><td>/'reprɪmænd/ n.</td><td>训斥, 惩戒vt. 申斥, 惩戒, 谴责, reprimanding, reprimands</td></tr>
+<tr><td>violate</td><td>/'vaɪəleɪt/ vt.</td><td>违反, 违背亵渎侵犯, 妨碍, violating, violates</td></tr>
+<tr><td>upcoming</td><td>/'ʌpkʌmɪŋ/ adj.</td><td>即将来到的, 即将出现的</td></tr>
+<tr><td>lighten</td><td>/'laɪtn/ vt.</td><td>使(某物)更明亮vi. 变得更光明别那么严肃；别抱怨；别担忧使生动活泼, lightening, lightens</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>commerce</td><td>/'kɑːmɜːrs/ n.</td><td>商业, 贸易</td></tr>
+<tr><td>lobbies</td><td>/'lɑːbi/ n.</td><td>前厅, 厅堂议会休息室游说议员的团体vt. & vi. 向…进行游说[疏通]</td></tr>
+<tr><td>beforehand</td><td>/bɪ'fɔːrhænd/ adv.</td><td>预先, 事先</td></tr>
+<tr><td>engage</td><td>/ɪn'ɡeɪdʒ/ vt.</td><td>雇佣；吸引，占用；使订婚；使参加；预定vi. 答应，保证；从事；交战；啮合, engaging, engages</td></tr>
+<tr><td>considers</td><td>/kən'sɪdər/ vt.</td><td>& vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及, considering, considers</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>version</td><td>/'vɜːrʒn/ n.</td><td>变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本</td></tr>
+<tr><td>plot</td><td>/plɑːt/ n.</td><td>故事情节(秘密)计划，密谋小块地皮vt. 把…分成小块；划分绘制；标出vt. & vi. 密谋，plotting，plots</td></tr>
+<tr><td>decade</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>territory</td><td>/'terətɔːri/ n.</td><td>领土, 版图管区, 营业地区地盘, 领域, 范围</td></tr>
+<tr><td>detected</td><td>/dɪ'tekt/ vt.</td><td>发现；发觉，查明，detecting，detects</td></tr>
+<tr><td>overall</td><td>/ˌoʊvər'ɔːl/ adj.</td><td>总体的；全面的；综合的全面考虑的adv. 大体上，总的来说一切包括在内，全部的n. 长罩衣工装裤；工作裤</td></tr>
+<tr><td>consumption</td><td>/kən'sʌmpʃn/ n.</td><td>消费，消耗；消费[耗]量肺病；结核病</td></tr>
+<tr><td>italian</td><td>/ɪ'tæliən/ adj.</td><td>意大利的；意大利文化的；意大利语的n. 意大利人；意大利语</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day20.html" class="nav-btn">← Day 20</a>
+  <a href="day22.html" class="nav-btn">Day 22 →</a>
+</div>
+
+<div class="progress">📖 Day 21 of 42</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-09-26</div>
+
+</body>
+</html>

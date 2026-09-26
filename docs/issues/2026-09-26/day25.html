@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Britain | Anywhere but here</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-09-26</div>
+
+<h1 class="article-title">Britain | Anywhere but here</h1>
+<div class="article-section">Britain</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p><span class="annot" data-tooltip="asylum /ə'saɪləm/ n. 庇护；收容所，救济院">Asylum</span>-<span class="annot" data-tooltip="seekers /'siːkər/ n. 探求者；[法]搜查人">seekers</span> are surprisingly even-handed. Some camps attract <span class="annot" data-tooltip="charities /'tʃærəti/ n. 施舍；慈善；慈善团体；施舍物；宽容">charities</span>, which organise <span class="annot" data-tooltip="distracting /dɪ'strækt/ vt. 转移；分心时 态: distracted, distracting, distracts">distracting</span> activities. The Somali man who was moved to Napier barracks helped with <span class="annot" data-tooltip="translation /trænz'leɪʃn/ n. 翻译译本, 译文形容词: translational">translation</span> and got <span class="annot" data-tooltip="involved /ɪn'vɑːlvd/ adj. 卷入的；有关的；复杂的v. 涉及；使参与；包含（involve的过去式和过去分词）">involved</span> with a local nature reserve. His medical and other basic needs were taken care of. By <span class="annot" data-tooltip="contrast /'kɑːntræst/ n. 对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照时 态: contrasted, cont">contrast</span>, he had to scrounge furniture when he was later placed in a shared house. But he is young and outgoing. Others in the camp gave up hope, he says. Hotels began to house many more asylum-seekers from 2020 as a huge <span class="annot" data-tooltip="backlog /'bæklɔːɡ/ n. 积压未办之事，积压的工作；没交付的订货备用；备用物；储备金 (壁炉中垫底的)大木柴vt. (使)积压储存(为日后装运而)">backlog</span> built up (see chart 1). Everyone hates them. They <span class="annot" data-tooltip="tend /tend/ vt. 照料，照顾，伺候vi. 往，朝向易于；倾向时 态: tended，tending，tends">tend</span> to have the worst aspects of camps, such as <span class="annot" data-tooltip="minimal /'mɪnɪml/ adj. 〈正式〉最小的; 极少的名 词: minimality">minimal</span> privacy and regimented meals, but few of the services. Sharing a bedroom with one stranger, as is normal in a hotel, can be as bad as sharing with many. An <span class="annot" data-tooltip="afghan n. 阿富汗语；阿富汗人adj. 阿富汗人的；阿富汗的afghann. 一种宽松的羊皮外衣">Afghan</span> woman now living in Birmingham who spent several months in a hotel describes being put in a room with a woman who insisted on making phone calls in the middle of the night. Later she shared with a drug user. And hotels are costly. Last year the National <span class="annot" data-tooltip="audit /'ɔːdɪt/ v. 查（账）；审计；稽核【美式】旁听（大学课程）n. 审计；稽核（质量或标准的）审查，检查时 态: audited, aud">Audit</span> Office, a watchdog, noted that hotels housed one-third of asylum-seekers but accounted for three-<span class="annot" data-tooltip="quarters n. 住处,岗位">quarters</span> of spending on accommodation. Unlike barracks, hotels are easy targets for the <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> right.</p>
+<p>With hotels unpopular and expensive, and a large network of camps little more than a Home Office <span class="annot" data-tooltip="fantasy /'fæntəsi/ n. 幻想；幻觉；[心]白日梦adj. 虚幻的vt. 想像；空想vi. 耽于幻想；奏幻想曲（等于phantasy）">fantasy</span>, ever more of the <span class="annot" data-tooltip="burden /'bɜːrdn/ n. 负担；责任；船的载货量vt. 烦扰；使负担；装货于时 态: burdened, burdening, burdens">burden</span> of accommodating <span class="annot" data-tooltip="asylum /ə'saɪləm/ n. 庇护；收容所，救济院">asylum</span>-<span class="annot" data-tooltip="seekers /'siːkər/ n. 探求者；[法]搜查人">seekers</span> is <span class="annot" data-tooltip="falling /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">falling</span> on residential streets. Almost 70,000 people, and rising, now live in “dispersal accommodation”, which usually means shared houses. The locations of the houses are changing rapidly. A <span class="annot" data-tooltip="decade /'dekeɪd/ n. 十年，十年期；十">decade</span> ago asylum-seekers were usually placed in the poorer parts of ethnically diverse cities such as Birmingham, Glasgow, Liverpool and Middlesbrough. But some of the cities complained (in 2015 Liverpool’s mayor spoke of “asylum apartheid”) and the policy was changed. Today asylum-seekers are spread across the country (see map). In 2014 just one in four local <span class="annot" data-tooltip="authorities /ə'θɔːrəti/ n. 威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗">authorities</span> had any asylum-seekers in dispersal housing; today nine in ten do. In two years, South Kesteven in rural Lincolnshire has gone from three to 279.</p>
+<p>Some rural <span class="annot" data-tooltip="asylum /ə'saɪləm/ n. 庇护；收容所，救济院">asylum</span>-<span class="annot" data-tooltip="seekers /'siːkər/ n. 探求者；[法]搜查人">seekers</span> seem forgotten. One Yemeni migrant was placed in a Lincolnshire village, which he describes as “the end of the world”. The village shop was too expensive for him (asylum-seekers normally receive £49 a week to live on, or £10 if they are in a hotel and fed) and he could afford the bus to town only once a week. He struggled to talk to his English neighbours, who seemed uninterested, or his housemate, from <span class="annot" data-tooltip="vietnam /ˌviːet'nɑːm/ n. 越南（南亚国家）">Vietnam</span>. “It makes you crazy,” he says. It took years for Britain’s cities to develop the <span class="annot" data-tooltip="clusters /'klʌstər/ n. (果实、花等的)串, 簇(人、物等的)群, 组vt. & vi. (使)集中时 态: clustered, cluste">clusters</span> of lawyers, counsellors and other services that asylum-seekers rely on. Derby in the East Midlands became a “dispersal area” in 2002. Andrew Jackson of Community Action Derby, which co-ordinates <span class="annot" data-tooltip="charities /'tʃærəti/ n. 施舍；慈善；慈善团体；施舍物；宽容">charities</span> in the city, says that a thick network of asylum organisations had emerged by about 2015. Rural areas may never acquire them. For now, asylum-seekers placed in small towns and villages seek help in <span class="annot" data-tooltip="places /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">places</span> like Derby, when they can afford to visit them. Some small towns have turned hostile. The district of Nuneaton and Bedworth, near Birmingham, housed six asylum-seekers three years ago and had 314 at the last count in June. Last September councillors <span class="annot" data-tooltip="narrowly /'næroʊ/ adj. 狭窄的，有限的；度量小的；精密的；勉强的n. 狭窄部分，隘路；海峡vt. 使变狭窄vi. 变窄比较级: narrower">narrowly</span> defeated a <span class="annot" data-tooltip="resolution /ˌrezə'luːʃn/ n. 正式决定，决议决心，决定坚决；坚定；坚毅解决，解答分辨力，分辨率[度]">resolution</span> that objected to the presence of any at all. Louise Calvey of Asylum Matters, a <span class="annot" data-tooltip="charity /'tʃærəti/ n. 施舍；慈善；慈善团体；施舍物；宽容">charity</span>, says that asylum-seekers are <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> more</p>
+<p>likely to experience hostility in <span class="annot" data-tooltip="places /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">places</span> where they are new and <span class="annot" data-tooltip="noticeable /'noʊtɪsəbl/ adj. 显而易见的, 明显的, 显著的副 词: noticeably">noticeable</span> because there are few other ethnic-minority people around. Other problems emerge when people try to settle in small towns and villages after being granted refugee status—as they sometimes do, partly because it can be easier to find public housing <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span> a city. English-language <span class="annot" data-tooltip="tuition /tu'ɪʃn/ n. 学费课程讲授">tuition</span> in such places may be non-existent. And there is a reason small towns <span class="annot" data-tooltip="tend /tend/ vt. 照料，照顾，伺候vi. 往，朝向易于；倾向时 态: tended，tending，tends">tend</span> to have few ethnic minorities and migrants: they have few jobs. Refugees often struggle economically. Even after several years in Britain they are less likely to be in work than natives or other <span class="annot" data-tooltip="immigrants /'ɪmɪɡrənt/ n. 移民">immigrants</span>, and earn much less. Dispersing them away from cities is likely to make the problem worse. In their 2022 book “Streets of Gold”, the economists Ran Abramitzky and Leah Boustan showed that American immigrants succeed largely because they tend to land in places where jobs are plentiful. People who seek <span class="annot" data-tooltip="asylum /ə'saɪləm/ n. 庇护；收容所，救济院">asylum</span> in Britain are <span class="annot" data-tooltip="overwhelmingly /ˌoʊvər'welmɪŋ/ adj. 势不可挡的，压倒一切的；巨大的副 词: overwhelmingly">overwhelmingly</span> happy to be there, and <span class="annot" data-tooltip="keen /kiːn/ adj. 锋利的热衷的，热心的，渴望(做某事)激烈的，紧张的良好的；敏锐的，敏捷的比较级: keener，keenest">keen</span> to get on with their lives. For all her housing problems, the <span class="annot" data-tooltip="afghan n. 阿富汗语；阿富汗人adj. 阿富汗人的；阿富汗的afghann. 一种宽松的羊皮外衣">Afghan</span> woman in Birmingham says it has been much better than living under the Taliban. But Britons ought to have higher standards. The policies their government is pursuing are immiserating their future fellow-citizens.■ This article was downloaded by zlibrary from https://www.economist.com/britain/2026/09/24/by-housing-asylum-<span class="annot" data-tooltip="seekers /'siːkər/ n. 探求者；[法]搜查人">seekers</span>-so-badly- britain-is-harming-itself</p>
+<div class="article-separator"></div>
+<div class="article-header">Britain · Britain | Healey’s hype</div>
+<p>Britain’s chancellor claims that the economy has turned a corner But is he right? Sep 24th 2026 John Healey is determined to be a sunny man. Britain’s new chancellor has learned from the mistakes of Rachel Reeves, his predecessor. In her first speech on the job she complained of <span class="annot" data-tooltip="inheriting /ɪn'herɪt/ vt. 继承；遗传而得vi. 成为继承人时 态: inherited, inheriting, inherits">inheriting</span> “the worst set of circumstances since the second world war”. That left voters dejected. Mr Healey is more hopeful. In a recent speech he insisted that Britain is “turning a corner”. Its growth was “the fastest in the G7 in the first half of this year”. Even <span class="annot" data-tooltip="productivity /ˌproʊdʌk'tɪvəti/ n. 生产率, 生产力">productivity</span> is “finally ticking up” after stagnating since 2008. Is he right? The latest results do seem promising. But it is too soon to be confident of a lasting shift. The Office for National Statistics (ONS) reported that the economy grew by 1% in the first half of 2026. This beat the rest of the G7 <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span> of big rich</p>
+<p>countries (America was second with 0.9%). Some of Britain’s vitality can be attributed to technological progress: computing-related services grew by 8.9% in the seven months to the end of July, and output of computing and electrical equipment rose by 10.6%. Business investment grew strongly, too. But the results are probably <span class="annot" data-tooltip="flattered /'flætər/ v. 向…谄媚，奉承，讨好；自认为，自以为是；使显得更漂亮时 态: flattered，flattering，flatters">flattered</span> by seasonal <span class="annot" data-tooltip="quirks /kwɜːrk/ n. 怪癖；急转；借口副 词: quirkily">quirks</span>. The ONS smooths out fluctuations that <span class="annot" data-tooltip="recur /rɪ'kɜːr/ vi. 重现；复发；再来；采用；循环；递归时 态: recurred, recurring, recurs">recur</span> each year—think Christmas shopping splurges— so that its statistics track <span class="annot" data-tooltip="underlying /ˌʌndər'laɪɪŋ/ adj. 根本的, 基础的含蓄的, 潜在的">underlying</span> GDP. Since the <span class="annot" data-tooltip="pandemic /pæn'demɪk/ adj. （疾病）在全国（或世界）流行的">pandemic</span>, though, Britain’s seasonal <span class="annot" data-tooltip="patterns /'pætərn/ n. 型，样式花样，图案方式，形式榜样，典范vt. 模仿； 仿制以图案装饰时 态: patterned，patterning，">patterns</span> have shifted: more activity now <span class="annot" data-tooltip="falls /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">falls</span> in the early months, especially business investment. The ONS’s <span class="annot" data-tooltip="methodology /ˌmeθə'dɑːlədʒi/ n. 一套方法方法学,方法论adj. 方法学的n. 方法论者,方法学者形容词: methodological">methodology</span> has not yet fully caught up, which makes growth in the first half look better than it was. Forecasts for full-year growth suggest a less spectacular (albeit solid) performance. The Economist Intelligence Unit, our sister company, reckons that British GDP will expand by 1.2% in 2026, less than the 2.1% projection for America but still higher than Germany (1%) or France (0.6%). That implies a markedly weaker second half. This is partly the seasonal shenanigans happening in reverse, but it also reflects the impact of the Iran war. With oil regularly above $100 a <span class="annot" data-tooltip="barrel /'bærəl/ vt. 把……装入桶内n. 桶；枪管，炮管vi. 快速移动时 态: barreled, barrelled barreling,">barrel</span>, more expensive <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span> will <span class="annot" data-tooltip="weigh /weɪ/ vt. & vi. 称…的重量link v. 重达vt. 权衡；考虑时 态: weighed，weighing，weighs">weigh</span> heavily on the economy. In the long run Britain’s prosperity turns on how <span class="annot" data-tooltip="productive /prə'dʌktɪv/ adj. 多产的，富饶的富有成效的；有益的副 词: productively">productive</span> it is. The ONS recently admitted that output per hour had grown more quickly after 2008 than previously <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span>. But it still slowed considerably, causing <span class="annot" data-tooltip="wages /weɪdʒ/ vi. 进行；发动；从事n. 工资；报偿；代价vt. 开展；进行时 态: waged, waging, wages">wages</span> to stagnate. The chancellor can be forgiven a jig at the thought that output per hour is rising again. Is it? The ONS’s headline statistics <span class="annot" data-tooltip="actually /'æktʃuəl/ adj. 真实的，实际的；现行的，目前的副 词: actually">actually</span> suggest that output per hour fell by an average of 0.2% a year between mid-2024 and mid-2026. But these results rely on <span class="annot" data-tooltip="workforce /'wɜːrkfɔːrs/ n. 全体员工(国家或行业等)劳动力,劳动大军,劳动人口">workforce</span> estimates from the unreliable Labour Force Survey, which has been plagued by low responses. Look at tax records, which even the ONS now recommends, and the signs are real. Using tax data, the <span class="annot" data-tooltip="resolution /ˌrezə'luːʃn/ n. 正式决定，决议决心，决定坚决；坚定；坚毅解决，解答分辨力，分辨率[度]">Resolution</span> Foundation, a think-<span class="annot" data-tooltip="tank /tæŋk/ n. （存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内时 态: t">tank</span>, estimates that <span class="annot" data-tooltip="productivity /ˌproʊdʌk'tɪvəti/ n. 生产率, 生产力">productivity</span> grew by 1.1% a year between mid-2024 and mid-2026. This was a big improvement on the two <span class="annot" data-tooltip="prior /'praɪər/ adj. 在先的，在前的；优先的adv. 在前，居先">prior</span> years, when output per hour fell by 0.7% a year.</p>
+<p>Advances in information technology account for <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> half of this recent growth. Those <span class="annot" data-tooltip="tempted /tempt/ vt. 引诱或怂恿(某人)干不正当的事使想要时 态: tempted, tempting, tempts">tempted</span> to attribute it all to AI should be <span class="annot" data-tooltip="cautious /'kɔːʃəs/ adj. 小心的, 谨慎的副 词: cautiously">cautious</span>. Computer- related jobs have long been the motor of British <span class="annot" data-tooltip="productivity /ˌproʊdʌk'tɪvəti/ n. 生产率, 生产力">productivity</span> growth; the <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span>’s contribution today is little higher than it was in the late 2010s. Some of the biggest changes in the past two years have come in sectors such as <span class="annot" data-tooltip="retail /ˈriːteɪl/ vt. 零售；转述vi. 零售n. 零售adv. 以零售方式adj. 零售的时 态: retailed, retailing, ">retail</span> and <span class="annot" data-tooltip="hospitality /ˌhɑːspɪ'tæləti/ n. 殷勤, 好客(提供给客人的)食宿招待">hospitality</span> (see chart). Labour politicians <span class="annot" data-tooltip="boasting /boʊst/ n. 自吹自擂, 自夸的话vt. & vi. 自夸vt. 有(引以为荣的事物)时 态: boasted, boasting, ">boasting</span> about the improvement have kept quiet about its cause. Michael Saunders of Oxford Economics says output per worker has mostly risen because there are fewer workers, not higher output. The <span class="annot" data-tooltip="wholesale /'hoʊlseɪl/ n. 批发adj. &adv. 批发(的)大规模(的)vt. 批发时 态: wholesaled, wholesaling, ">wholesale</span> and retail sector has <span class="annot" data-tooltip="shed /ʃed/ n. 棚, 库vt. 流出, 流下蜕皮, 树叶脱落时 态: shed, shedding, sheds">shed</span> over 120,000 jobs in the past two years alone. Minimum-<span class="annot" data-tooltip="wage /weɪdʒ/ vi. 进行；发动；从事n. 工资；报偿；代价vt. 开展；进行时 态: waged, waging, wages">wage</span> hikes and bigger employment taxes have driven up labour costs. Employers have substituted machines and tech for staff. This is good for the productivity statistics, but not for Labour’s promises to protect jobs. Mr Healey’s <span class="annot" data-tooltip="ultimate /'ʌltɪmət/ adj. 最后的，最终的；终极的；极端的；最好（或坏、伟大、重要等）的；根本的；基本的；基础性的n. 最好（或先进、伟大等）的事物">ultimate</span> test is not whether GDP or productivity are growing but whether living standards are. Independent forecasts compiled by the <span class="annot" data-tooltip="treasury /'treʒəri/ n. 财政部；国库，金库；宝库">Treasury</span> suggest that, on average, real <span class="annot" data-tooltip="household /'haʊshoʊld/ n. 同住在一所房子里的人, 一家人, 户adj. 家庭的, 家用的">household</span> <span class="annot" data-tooltip="disposable /dɪ'spoʊzəbl/ adj. 一次使用后即丢掉的, 一次性的(纳税后的钱)可自由支配的">disposable</span> income will not grow at all this year. In his budget on October 28th the chancellor will need to set out not only his plans for growth but also how that growth will put more into people’s pockets. Labour’s re-election depends on it. ■</p>
+<p>This article was downloaded by zlibrary from https://www.economist.com/britain/2026/09/24/britains-chancellor-claims-that-the- economy-has-turned-a-corner</p>
+<div class="article-separator"></div>
+<div class="article-header">Britain · Britain | Bagehot</div>
+<p>The Liberal Democrats are Britain’s pointless party They are getting better at politics but have lost their purpose Sep 24th 2026 “For years from afar I have respected the Lib Dems for their Socratic <span class="annot" data-tooltip="dedication /ˌdedɪ'keɪʃn/ n. 奉献,献身献身精神(书等作品上的)题词,献词">dedication</span> to doubt.” That declaration by Emily, a new member of the Liberal Democrats <span class="annot" data-tooltip="addressing /ə'dres/ v. 写（收信人）姓名地址；致函演说；演讲称呼（某人）；冠以（某种称呼）设法解决；处理；对付向…说话n. 地址；住址；通信处 ">addressing</span> the party’s <span class="annot" data-tooltip="annual /'ænjuəl/ adj. 年度的；每年的n. 年刊，年鉴；一年生植物副 词: annually">annual</span> <span class="annot" data-tooltip="conference /'kɑːnfərəns/ n. 会议讨论, 商谈形容词: conferential">conference</span> in Brighton this week, sums up the appeal of the <span class="annot" data-tooltip="outfit /'aʊtfɪt/ n. （为特定场合或活动而穿的）全套服装，装束全套装备；成套工具组织；公司；团队；军事单位v. 装备，配备；为…提供设备（或服">outfit</span>—and its problems. The party wins seats. Its “dedication to doubt” is attractive in an age of misplaced certainty. But that is not an <span class="annot" data-tooltip="agenda /ə'dʒendə/ n. （政治）议题；议事日程；目的">agenda</span> for power. Two years ago the Lib Dems regained their position as the third-largest <span class="annot" data-tooltip="grouping /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">grouping</span> in <span class="annot" data-tooltip="parliament /'pɑːrləmənt/ n. 议会, 国会">Parliament</span>. The 72 seats that they captured, under the leadership of Sir Ed Davey, was their best result ever. It was a welcome relief for a party which in 2015 had teetered on the <span class="annot" data-tooltip="edge /edʒ/ n. 边缘；刀刃；优势；锋利vt. 使锐利；将…开刃；给…加上边vi. 缓缓移动；侧着移动EDGEabbr. Electron">edge</span> of <span class="annot" data-tooltip="extinction /ɪk'stɪŋkʃn/ n. 熄灭，消灭，灭绝；废除">extinction</span>. They were left <span class="annot" data-tooltip="triumphant /traɪ'ʌmfənt/ adj. 胜利的, 成功的(因胜利而)喜气洋洋的, 欢欣鼓舞的副 词: triumphantly">triumphant</span>—yet <span class="annot" data-tooltip="irrelevant /ɪ'reləvənt/ adj. 不相干的,不相关的副 词: irrelevantly">irrelevant</span>. Labour’s large majority in the House of</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>asylum</td><td>/ə'saɪləm/ n.</td><td>庇护；收容所，救济院</td></tr>
+<tr><td>seekers</td><td>/'siːkər/ n.</td><td>探求者；[法]搜查人</td></tr>
+<tr><td>charities</td><td>/'tʃærəti/ n.</td><td>施舍；慈善；慈善团体；施舍物；宽容</td></tr>
+<tr><td>distracting</td><td>/dɪ'strækt/ vt.</td><td>转移；分心, distracting, distracts</td></tr>
+<tr><td>translation</td><td>/trænz'leɪʃn/ n.</td><td>翻译译本, 译文</td></tr>
+<tr><td>involved</td><td>/ɪn'vɑːlvd/ adj.</td><td>卷入的；有关的；复杂的v. 涉及；使参与；包含（involve的过去式和过去分词）</td></tr>
+<tr><td>contrast</td><td>/'kɑːntræst/ n.</td><td>对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照, contrasting, contrasts</td></tr>
+<tr><td>backlog</td><td>/'bæklɔːɡ/ n.</td><td>积压未办之事，积压的工作；没交付的订货备用；备用物；储备金 (壁炉中垫底的)大木柴vt. (使)积压储存(为日后装运而)登账确认(订货)，backlogging</td></tr>
+<tr><td>tend</td><td>/tend/ vt.</td><td>照料，照顾，伺候vi. 往，朝向易于；倾向，tending，tends</td></tr>
+<tr><td>minimal</td><td>/'mɪnɪml/ adj.</td><td>〈正式〉最小的; 极少的</td></tr>
+<tr><td>afghan</td><td>— n.</td><td>阿富汗语；阿富汗人adj. 阿富汗人的；阿富汗的afghann. 一种宽松的羊皮外衣</td></tr>
+<tr><td>audit</td><td>/'ɔːdɪt/ v.</td><td>查（账）；审计；稽核【美式】旁听（大学课程）n. 审计；稽核（质量或标准的）审查，检查, auditing, audits</td></tr>
+<tr><td>quarters</td><td>— n.</td><td>住处,岗位</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>fantasy</td><td>/'fæntəsi/ n.</td><td>幻想；幻觉；[心]白日梦adj. 虚幻的vt. 想像；空想vi. 耽于幻想；奏幻想曲（等于phantasy）</td></tr>
+<tr><td>burden</td><td>/'bɜːrdn/ n.</td><td>负担；责任；船的载货量vt. 烦扰；使负担；装货于, burdening, burdens</td></tr>
+<tr><td>asylum</td><td>/ə'saɪləm/ n.</td><td>庇护；收容所，救济院</td></tr>
+<tr><td>seekers</td><td>/'siːkər/ n.</td><td>探求者；[法]搜查人</td></tr>
+<tr><td>falling</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>decade</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>authorities</td><td>/ə'θɔːrəti/ n.</td><td>威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗</td></tr>
+<tr><td>asylum</td><td>/ə'saɪləm/ n.</td><td>庇护；收容所，救济院</td></tr>
+<tr><td>seekers</td><td>/'siːkər/ n.</td><td>探求者；[法]搜查人</td></tr>
+<tr><td>vietnam</td><td>/ˌviːet'nɑːm/ n.</td><td>越南（南亚国家）</td></tr>
+<tr><td>clusters</td><td>/'klʌstər/ n.</td><td>(果实、花等的)串, 簇(人、物等的)群, 组vt. & vi. (使)集中, clustering, clusters</td></tr>
+<tr><td>charities</td><td>/'tʃærəti/ n.</td><td>施舍；慈善；慈善团体；施舍物；宽容</td></tr>
+<tr><td>places</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>narrowly</td><td>/'næroʊ/ adj.</td><td>狭窄的，有限的；度量小的；精密的；勉强的n. 狭窄部分，隘路；海峡vt. 使变狭窄vi. 变窄, narrowest</td></tr>
+<tr><td>resolution</td><td>/ˌrezə'luːʃn/ n.</td><td>正式决定，决议决心，决定坚决；坚定；坚毅解决，解答分辨力，分辨率[度]</td></tr>
+<tr><td>charity</td><td>/'tʃærəti/ n.</td><td>施舍；慈善；慈善团体；施舍物；宽容</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>places</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>noticeable</td><td>/'noʊtɪsəbl/ adj.</td><td>显而易见的, 明显的, 显著的</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>tuition</td><td>/tu'ɪʃn/ n.</td><td>学费课程讲授</td></tr>
+<tr><td>tend</td><td>/tend/ vt.</td><td>照料，照顾，伺候vi. 往，朝向易于；倾向，tending，tends</td></tr>
+<tr><td>immigrants</td><td>/'ɪmɪɡrənt/ n.</td><td>移民</td></tr>
+<tr><td>asylum</td><td>/ə'saɪləm/ n.</td><td>庇护；收容所，救济院</td></tr>
+<tr><td>overwhelmingly</td><td>/ˌoʊvər'welmɪŋ/ adj.</td><td>势不可挡的，压倒一切的；巨大的</td></tr>
+<tr><td>keen</td><td>/kiːn/ adj.</td><td>锋利的热衷的，热心的，渴望(做某事)激烈的，紧张的良好的；敏锐的，敏捷的，keenest</td></tr>
+<tr><td>afghan</td><td>— n.</td><td>阿富汗语；阿富汗人adj. 阿富汗人的；阿富汗的afghann. 一种宽松的羊皮外衣</td></tr>
+<tr><td>seekers</td><td>/'siːkər/ n.</td><td>探求者；[法]搜查人</td></tr>
+<tr><td>inheriting</td><td>/ɪn'herɪt/ vt.</td><td>继承；遗传而得vi. 成为继承人, inheriting, inherits</td></tr>
+<tr><td>productivity</td><td>/ˌproʊdʌk'tɪvəti/ n.</td><td>生产率, 生产力</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>flattered</td><td>/'flætər/ v.</td><td>向…谄媚，奉承，讨好；自认为，自以为是；使显得更漂亮，flattering，flatters</td></tr>
+<tr><td>quirks</td><td>/kwɜːrk/ n.</td><td>怪癖；急转；借口</td></tr>
+<tr><td>recur</td><td>/rɪ'kɜːr/ vi.</td><td>重现；复发；再来；采用；循环；递归, recurring, recurs</td></tr>
+<tr><td>underlying</td><td>/ˌʌndər'laɪɪŋ/ adj.</td><td>根本的, 基础的含蓄的, 潜在的</td></tr>
+<tr><td>pandemic</td><td>/pæn'demɪk/ adj.</td><td>（疾病）在全国（或世界）流行的</td></tr>
+<tr><td>patterns</td><td>/'pætərn/ n.</td><td>型，样式花样，图案方式，形式榜样，典范vt. 模仿； 仿制以图案装饰，patterning，patterns</td></tr>
+<tr><td>falls</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>methodology</td><td>/ˌmeθə'dɑːlədʒi/ n.</td><td>一套方法方法学,方法论adj. 方法学的n. 方法论者,方法学者</td></tr>
+<tr><td>barrel</td><td>/'bærəl/ vt.</td><td>把……装入桶内n. 桶；枪管，炮管vi. 快速移动, barrelled barreling, barrelling barrels, barrels</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>weigh</td><td>/weɪ/ vt.</td><td>& vi. 称…的重量link v. 重达vt. 权衡；考虑，weighing，weighs</td></tr>
+<tr><td>productive</td><td>/prə'dʌktɪv/ adj.</td><td>多产的，富饶的富有成效的；有益的</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>wages</td><td>/weɪdʒ/ vi.</td><td>进行；发动；从事n. 工资；报偿；代价vt. 开展；进行, waging, wages</td></tr>
+<tr><td>actually</td><td>/'æktʃuəl/ adj.</td><td>真实的，实际的；现行的，目前的</td></tr>
+<tr><td>workforce</td><td>/'wɜːrkfɔːrs/ n.</td><td>全体员工(国家或行业等)劳动力,劳动大军,劳动人口</td></tr>
+<tr><td>resolution</td><td>/ˌrezə'luːʃn/ n.</td><td>正式决定，决议决心，决定坚决；坚定；坚毅解决，解答分辨力，分辨率[度]</td></tr>
+<tr><td>tank</td><td>/tæŋk/ n.</td><td>（存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内, tanking, tanks</td></tr>
+<tr><td>productivity</td><td>/ˌproʊdʌk'tɪvəti/ n.</td><td>生产率, 生产力</td></tr>
+<tr><td>prior</td><td>/'praɪər/ adj.</td><td>在先的，在前的；优先的adv. 在前，居先</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>tempted</td><td>/tempt/ vt.</td><td>引诱或怂恿(某人)干不正当的事使想要, tempting, tempts</td></tr>
+<tr><td>cautious</td><td>/'kɔːʃəs/ adj.</td><td>小心的, 谨慎的</td></tr>
+<tr><td>productivity</td><td>/ˌproʊdʌk'tɪvəti/ n.</td><td>生产率, 生产力</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>retail</td><td>/ˈriːteɪl/ vt.</td><td>零售；转述vi. 零售n. 零售adv. 以零售方式adj. 零售的, retailing, retails</td></tr>
+<tr><td>hospitality</td><td>/ˌhɑːspɪ'tæləti/ n.</td><td>殷勤, 好客(提供给客人的)食宿招待</td></tr>
+<tr><td>boasting</td><td>/boʊst/ n.</td><td>自吹自擂, 自夸的话vt. & vi. 自夸vt. 有(引以为荣的事物), boasting, boasts</td></tr>
+<tr><td>wholesale</td><td>/'hoʊlseɪl/ n.</td><td>批发adj. &adv. 批发(的)大规模(的)vt. 批发, wholesaling, wholesales</td></tr>
+<tr><td>shed</td><td>/ʃed/ n.</td><td>棚, 库vt. 流出, 流下蜕皮, 树叶脱落, shedding, sheds</td></tr>
+<tr><td>wage</td><td>/weɪdʒ/ vi.</td><td>进行；发动；从事n. 工资；报偿；代价vt. 开展；进行, waging, wages</td></tr>
+<tr><td>ultimate</td><td>/'ʌltɪmət/ adj.</td><td>最后的，最终的；终极的；极端的；最好（或坏、伟大、重要等）的；根本的；基本的；基础性的n. 最好（或先进、伟大等）的事物；精华；极致；极限；最高典范</td></tr>
+<tr><td>treasury</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>household</td><td>/'haʊshoʊld/ n.</td><td>同住在一所房子里的人, 一家人, 户adj. 家庭的, 家用的</td></tr>
+<tr><td>disposable</td><td>/dɪ'spoʊzəbl/ adj.</td><td>一次使用后即丢掉的, 一次性的(纳税后的钱)可自由支配的</td></tr>
+<tr><td>dedication</td><td>/ˌdedɪ'keɪʃn/ n.</td><td>奉献,献身献身精神(书等作品上的)题词,献词</td></tr>
+<tr><td>addressing</td><td>/ə'dres/ v.</td><td>写（收信人）姓名地址；致函演说；演讲称呼（某人）；冠以（某种称呼）设法解决；处理；对付向…说话n. 地址；住址；通信处 网址；电子邮件地址 演讲，演说 称呼 【</td></tr>
+<tr><td>annual</td><td>/'ænjuəl/ adj.</td><td>年度的；每年的n. 年刊，年鉴；一年生植物</td></tr>
+<tr><td>conference</td><td>/'kɑːnfərəns/ n.</td><td>会议讨论, 商谈</td></tr>
+<tr><td>outfit</td><td>/'aʊtfɪt/ n.</td><td>（为特定场合或活动而穿的）全套服装，装束全套装备；成套工具组织；公司；团队；军事单位v. 装备，配备；为…提供设备（或服装），outfitting，outfit</td></tr>
+<tr><td>agenda</td><td>/ə'dʒendə/ n.</td><td>（政治）议题；议事日程；目的</td></tr>
+<tr><td>grouping</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>parliament</td><td>/'pɑːrləmənt/ n.</td><td>议会, 国会</td></tr>
+<tr><td>edge</td><td>/edʒ/ n.</td><td>边缘；刀刃；优势；锋利vt. 使锐利；将…开刃；给…加上边vi. 缓缓移动；侧着移动EDGEabbr. Electronic Data Gathering Eq</td></tr>
+<tr><td>extinction</td><td>/ɪk'stɪŋkʃn/ n.</td><td>熄灭，消灭，灭绝；废除</td></tr>
+<tr><td>triumphant</td><td>/traɪ'ʌmfənt/ adj.</td><td>胜利的, 成功的(因胜利而)喜气洋洋的, 欢欣鼓舞的</td></tr>
+<tr><td>irrelevant</td><td>/ɪ'reləvənt/ adj.</td><td>不相干的,不相关的</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day24.html" class="nav-btn">← Day 24</a>
+  <a href="day26.html" class="nav-btn">Day 26 →</a>
+</div>
+
+<div class="progress">📖 Day 25 of 42</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-09-26</div>
+
+</body>
+</html>

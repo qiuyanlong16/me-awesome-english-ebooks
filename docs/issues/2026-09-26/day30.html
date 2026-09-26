@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business | Wayward Sons</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-09-26</div>
+
+<h1 class="article-title">Business | Wayward Sons</h1>
+<div class="article-section">Business</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>government. Indian-made chips should roll off a Tata Electronics fab <span class="annot" data-tooltip="line /laɪn/ n. 绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long inter">line</span> early next year. Tata produces 46% of Apple’s Indian-made iPhones. It is responsible for turning around Air India, the privatised struggling flag- carrier, which commands about a <span class="annot" data-tooltip="quarter /'kwɔːrtər/ n. 四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一时 ">quarter</span> of <span class="annot" data-tooltip="domestic /də'mestɪk/ adj. 国内的；家庭的；驯养的；一心只管家务的">domestic</span> <span class="annot" data-tooltip="routes /ruːt，raʊt/ n. 路, 路途, 路线, 路程时 态: routed, routing, routes">routes</span>. Most of those champions are identified with a powerful <span class="annot" data-tooltip="owner /'oʊnər/ n. 所有者；物主">owner</span>-manager, or <span class="annot" data-tooltip="promoter /prə'moʊtər/ n. (房地产、证券和体育赛事的)承办人, 出资人, 赞助人">promoter</span>, such as Gautam Adani of Adani <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">Group</span> or Mukesh Ambani of Reliance <span class="annot" data-tooltip="industries /'ɪndəstri/ n. 工业；产业；勤勉">Industries</span>. At Tata that figure was once Ratan Tata, Noel’s half- brother and for many years the chair of both the Trusts and the holding company. Ratan twice passed over Noel to run Tata Sons. He first chose Cyrus Mistry, whom he ousted in 2016 (and who died in 2022). He then picked Mr Chandrasekaran, who climbed the ranks of Tata Consultancy Services, an IT outsourcer. Almost as soon as Noel became chair of Tata Trusts after Ratan’s death in 2024, he clashed with Mr Chandrasekaran. The fight is <span class="annot" data-tooltip="heading /'hedɪŋ/ n. 标题；信头；（足球）头球v. 用头顶（head的ing形式）">heading</span> to court. Both Tata Trusts and Tata Sons have <span class="annot" data-tooltip="recruited /rɪ'kruːt/ n. 新兵(机构中的)新成员vt. 招聘；吸引(新成员)吸收某人为新成员vt. & vi. 招募，征募(新兵)恢复健康，恢复体">recruited</span> lawyers who are veterans of the battles that followed Mistry’s ousting. Noel Tata has declared the boardroom vote a “legal nullity”. Tata’s articles of association say that an agreement needs a majority of directors nominated by Tata Trusts: there are two, including Mr Tata. “Majority amongst two is two and not one,” the Trusts said. Tata Sons argues that a majority of the board, including the Trusts’ other <span class="annot" data-tooltip="representative /ˌreprɪ'zentətɪv/ n. 代表代理人adj. 有代表性的, 典型的名 词: representativeness">representative</span> and the vote of the director chairing the meeting, was sufficient. Others want a say. One is Shapoor Mistry, brother of the late Cyrus and brother-in-law of Mr Tata. Mr Mistry is the promoter at SP Group, an <span class="annot" data-tooltip="infrastructure /'ɪnfrəstrʌktʃər/ n. 基础设施; 基础结构">infrastructure</span> firm, and Tata Sons’ largest minority <span class="annot" data-tooltip="shareholder /'ʃerhoʊldər/ n. 股东名 词: shareholding">shareholder</span>, owning 18%. He is <span class="annot" data-tooltip="keen /kiːn/ adj. 锋利的热衷的，热心的，渴望(做某事)激烈的，紧张的良好的；敏锐的，敏捷的比较级: keener，keenest">keen</span> to sell his stake, in order to repay SP’s considerable debts. The Mistrys and the Tatas, both from the Parsi religious minority, have <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> a century of business <span class="annot" data-tooltip="entanglement /ɪn'tæŋɡlmənt/ n. 瓜葛;牵连;纠缠;缠住">entanglement</span>. But perhaps the most powerful voice is the RBI’s. In 2021 the <span class="annot" data-tooltip="central /'sentrəl/ adj. 中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的副 词: centrally">central</span> bank required India’s biggest non-banking financial corporations to go public, after the <span class="annot" data-tooltip="collapse /kə'læps/ vi. 倒塌；瓦解；暴跌vt. 使倒塌，使崩溃；使萎陷n. 倒塌；失败；衰竭时 态: collapsed, collapsing">collapse</span> of an infrastructure lending company. Tata Sons has resisted, paying down all its debt and listing Tata Capital, its investment arm. On September 11th the RBI rejected Tata Sons’ latest attempt to fight the <span class="annot" data-tooltip="classification /ˌklæsɪfɪ'keɪʃn/ n. 分类, 分级类别, 种类, 门类形容词: classificatory">classification</span>, leaving the firm with little choice.</p>
+<p>The RBI has since tightened the <span class="annot" data-tooltip="net /net/ n. 网；净利；网络；实价vi. 编网vt. 净赚；得到；用网捕adj. 纯粹的；净余的时 态: netted, nettin">net</span> further. On September 22nd Business Standard, a newspaper, reported that the RBI was <span class="annot" data-tooltip="considering /kən'sɪdərɪŋ/ prep. 考虑到, 就…而论adv. 从各方面考虑, 从通盘考虑">considering</span> insisting on an accelerated listing to “remove any ambiguity” about its latest ruling. A listing would weaken Mr Tata’s power over the company, <span class="annot" data-tooltip="possibly /'pɑːsəbli/ adv. 可能地；大概；也许">possibly</span> removing the Trusts’ veto. He should not worry unduly: Messrs Adani and Ambani <span class="annot" data-tooltip="retain /rɪ'teɪn/ vt. 保持；雇；记住时 态: retained, retaining, retains 缩 写: ret">retain</span> great power over their listed companies. But unlike Mr Tata, they have not alienated everyone else on their boards. A listing might not <span class="annot" data-tooltip="secure /sɪ'kjʊr/ adj. 安心的；有把握的可靠的；牢靠的；稳固的；安全的；稳妥的严密把守的；牢固的；坚固的v. （尤指经过努力）获得，取得，实现拴">secure</span> Mr Chandrasekaran’s third term, though. The court case will proceed under today’s articles of association: judges will decide what makes a majority. Some believe the government would be sad to see him go. Some believe it should be. “I think the world of Chandra,” said Jamie Dimon, the boss of JPMorgan Chase, America’s biggest bank, in <span class="annot" data-tooltip="mumbai n. 孟买（印度城市）">Mumbai</span> recently. “If I were the government, I would be concerned that this kind of conflict could <span class="annot" data-tooltip="deter /dɪ'tɜːr/ vt. 制止，阻止；使打消念头时 态: deterred, deterring, deters">deter</span> foreign investment.” ■ This article was downloaded by zlibrary from https://www.economist.com/business/2026/09/24/tata-goes-to-war-with-itself</p>
+<div class="article-separator"></div>
+<div class="article-header">Business · Business | Red-hot autumn</div>
+<p>German unions are fighting to defend the 35-hour week But that won’t stop the car <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span>’s decline Sep 24th 2026 The mood at Gate One of the Mercedes-Benz factory at Marienfelde, on the southern <span class="annot" data-tooltip="edge /edʒ/ n. 边缘；刀刃；优势；锋利vt. 使锐利；将…开刃；给…加上边vi. 缓缓移动；侧着移动EDGEabbr. Electron">edge</span> of Berlin, was combative. Several hundred people—workers in black factory uniforms and trade unionists in red T-shirts—blew whistles and waved placards demanding “Ola out!” (Ola Källenius is chief executive of Mercedes) and “The 35-hour workweek must stay”. Yasmin Fahimi, who chairs Germany’s trade-union confederation, told them 35 hours was “a red <span class="annot" data-tooltip="line /laɪn/ n. 绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long inter">line</span>”. Constantin Borchelt, head of the Berlin branch of IG Metall, the metalworkers’ union, produced a red vest, emblazoned with the <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> 35 and a smiling sun, worn by workers during the bitter but successful seven- week <span class="annot" data-tooltip="strike /straɪk/ vi. 罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打时 态:">strike</span> in 1984 that cut the week from 40 hours to 35.</p>
+<p>IG Metall, the world’s biggest industrial trade union, with 2.2m members, had called for a “day of action” on September 21st for car-<span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> workers. Some 175,000 gathered at 280 events, at <span class="annot" data-tooltip="places /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">places</span> including Wolfsburg (home to Volkswagen), Stuttgart (Mercedes and Porsche) and Ingolstadt (Audi). As well as aiming to defend the 35-hour week, the union wants a 5% pay <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> and <span class="annot" data-tooltip="commitments /kə'mɪtmənt/ n. 承诺；保证；信奉；献身；委任；花费金钱、时间、人力等">commitments</span> that jobs and factories will be safe. Südwestmetall, an influential regional employers’ association, declared itself “aghast” at these demands. Talks about <span class="annot" data-tooltip="wages /weɪdʒ/ vi. 进行；发动；从事n. 工资；报偿；代价vt. 开展；进行时 态: waged, waging, wages">wages</span> are <span class="annot" data-tooltip="due /duː/ adj. 到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）">due</span> to begin on October 7th. <span class="annot" data-tooltip="strikes /straɪk/ vi. 罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打时 态:">Strikes</span> could start as soon as November 1st. “This autumn will be uncomfortable,” predicts Marcus Berret of Roland Berger, a <span class="annot" data-tooltip="consulting /kən'sʌlt/ vt. 商量；查阅；向…请教vi. 请教；商议；当顾问时 态: consulted, consulting, consults">consulting</span> firm. On the employers’ side, Mercedes is taking the lead on dismantling the 35- hour week, which is subject to separate talks. “If one carmaker nixes the 35 hours, the others will follow,” says Ferdinand Dudenhöffer, director of the Centre for <span class="annot" data-tooltip="automotive /ˌɔːtə'moʊtɪv/ adj. 汽车的，机动车辆的">Automotive</span> Research, a think-<span class="annot" data-tooltip="tank /tæŋk/ n. （存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内时 态: t">tank</span>. Mercedes is threatening to close two German factories unless workers agree to painful measures. It wants to <span class="annot" data-tooltip="extend /ɪk'stend/ vt. & vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出时 态:">extend</span> the week to 40 hours without extra pay and to reconsider <span class="annot" data-tooltip="perks /pɜːrk/ vi. 昂首；振作vt. 打扮；竖起；使振作n. 小费；额外收入时 态: perked, perking, perks">perks</span> such as <span class="annot" data-tooltip="bonus /'boʊnəs/ n. 奖金；红利；额外津贴BONUSabbr. Boling Nuclear Superheat Reactor 沸腾式过热核">bonus</span> pay for Christmas and holidays, in a “<span class="annot" data-tooltip="productivity /ˌproʊdʌk'tɪvəti/ n. 生产率, 生产力">productivity</span> <span class="annot" data-tooltip="offensive /ə'fensɪv/ adj. 讨厌的；令人不快的攻击的n. 进攻，攻势副 词: offensively">offensive</span>”. “It <span class="annot" data-tooltip="simply /'sɪmpli/ adv. 简单地；朴素地；简直；仅仅；坦白地">simply</span> does not make business sense to produce cars in Germany any more,” says Oliver Fenzl, a company spokesman. Labour costs have long been higher in Germany than elsewhere in Europe (let alone China), but in the past they were <span class="annot" data-tooltip="offset /'ɔːfset/ vt. 抵消, 补偿时 态: offset, offsetting, offsets">offset</span> by cheap <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span>, freer trade and China’s voracious demand for German cars, especially <span class="annot" data-tooltip="premium /'priːmiəm/ n. 奖金，津贴；加价；附加费；保险费；额外费用adj. （品质）高级的；优质的，顶级的">premium</span> models with fat <span class="annot" data-tooltip="margins /'mɑːrdʒɪn/ n. 页边缘；利润，余裕；页边的空白">margins</span>. But today energy prices are sky-high, trade is less open and the Chinese are making their <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> cars (including premium ones) in abundance. Mercedes’s sales in China have dropped by 27% and profits by 50% in the past three years; <span class="annot" data-tooltip="domestic /də'mestɪk/ adj. 国内的；家庭的；驯养的；一心只管家务的">domestic</span> carmakers’ market share has doubled to 70% in the past five. Failure to match Chinese competition largely explains why earlier this month Volkswagen said it would cut 50,000 jobs and close four factories in Germany in the next few years. Meanwhile the <span class="annot" data-tooltip="wage /weɪdʒ/ vi. 进行；发动；从事n. 工资；报偿；代价vt. 开展；进行时 态: waged, waging, wages">wage</span> gap with the rest of Europe has widened. Hourly pay at Mercedes’s factory in Kecskemet in Hungary is around €15.60 ($17.80); Germans are on €49.50. This year the firm doubled Kecskemet’s capacity to 400,000 cars a year. It is now bigger than any of its German plants.</p>
+<p>Union leaders call management’s cost-<span class="annot" data-tooltip="cutting /'kʌtɪŋ/ n. 切断；剪辑；开凿adj. 严寒的；锋利的；尖酸刻薄的v. 切开；采伐；削减（cut的ing形式）">cutting</span> <span class="annot" data-tooltip="proposals /prə'poʊzl/ n. 提议，建议；求婚">proposals</span> a “horror catalogue”. <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">Far</span> from accepting a 35-hour week, they suggest cutting it to 30, which they say could <span class="annot" data-tooltip="preserve /prɪ'zɜːrv/ vt. 保存；保护；维持；禁猎；腌n. 禁猎地；保护区；加工成的食品n. (某人或群体的）专门活动时 态: preserved,">preserve</span> jobs and capacity (if at a lower weekly <span class="annot" data-tooltip="wage /weɪdʒ/ vi. 进行；发动；从事n. 工资；报偿；代价vt. 开展；进行时 态: waged, waging, wages">wage</span>). The two sides will probably muddle through for now—<span class="annot" data-tooltip="compromise /'kɑːmprəmaɪz/ n. 妥协, 折中方法vi. 折中解决vt. 连累, 危害, 损害时 态: compromised, compromising">compromise</span> is the norm—but they are unlikely to stop the shrinkage of what was once the crown jewel of German <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span>. In 2018 carmakers <span class="annot" data-tooltip="employed /ɪm'plɔɪ/ vt. 使用，采用；雇用；使忙于，使从事于n. 雇用；使用时 态: employed, employing, employs">employed</span> around 830,000, says Mr Dudenhöffer. Now the figure is 700,000 and he forecasts it will be 500,000 by around 2030. A few years ago this would have been dismissed as a horror <span class="annot" data-tooltip="scenario /sə'nærioʊ/ n. 情节；剧本；方案">scenario</span>. Now a selection from the horror catalogue may be the best option. ■ This article was downloaded by zlibrary from https://www.economist.com/business/2026/09/24/german-unions-are-fighting-to-defend- the-35-hour-week</p>
+<div class="article-separator"></div>
+<div class="article-header">Business · Business | Bartleby</div>
+<p>The greatest advance in <span class="annot" data-tooltip="consulting /kən'sʌlt/ vt. 商量；查阅；向…请教vi. 请教；商议；当顾问时 态: consulted, consulting, consults">consulting</span> since the quadrant An <span class="annot" data-tooltip="exclusive /ɪk'skluːsɪv/ adj. 高级的，奢华的专用的；独家的n. 独家新闻，独家报道副 词: exclusively">exclusive</span> <span class="annot" data-tooltip="extract /'ekstrækt/ v. 提取；提炼索取，设法得到（对方不愿提供的信息、钱财等）选取；摘录；选录（用力）取出，拔出【正式】获得，得到（某种感觉或品">extract</span> from a new book Sep 24th 2026 “Iremember it as though it were yesterday.” Wendy Clanger smiles as she recalls the events of April 1st 2017. Clanger, whose petite <span class="annot" data-tooltip="frame /freɪm/ n. 框架；结构；画面vt. 设计；陷害；建造；使…适合vi. 有成功希望adj. 有木架的；有构架的时 态: framed,">frame</span> hides an iron will, had been a consultant for <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span>, and <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span> she had seen everything. “Radar charts, quadrant matrices, waterfalls: I’d used them all. I thought the <span class="annot" data-tooltip="geometry /dʒi'ɑːmətri/ n. 〈数〉几何(学)名 词: geometrician">geometry</span> of consulting was <span class="annot" data-tooltip="complete /kəm'pliːt/ adj. 完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善比较级: complete">complete</span>. But I hadn’t banked on Harbour.” Harbour Brandish was 23, bespectacled, just out of college. When he was assigned to Clanger’s team, she assumed he was just another bright trainee, one of hundreds she had seen come and go. His first <span class="annot" data-tooltip="engagement /ɪn'ɡeɪdʒmənt/ n. 订婚，婚约；约会，约定（尤指正式的或与工作有关的）；交战；诺言；进场（游戏术语）；参与度（指用户点赞、转发、评论、下载文">engagement</span> was for a fast-moving consumer-goods firm called MidPoint, and he was in the room when Clanger <span class="annot" data-tooltip="presented /'preznt/ vt. 呈现；介绍；提出；赠送vi. 举枪瞄准adj. 出席的；现在的n. 现在；礼物；瞄准时 态: presented, pr">presented</span> some competitor analysis.</p>
+<p>Vic von Ursen, a bear of a man whose <span class="annot" data-tooltip="gruff /ɡrʌf/ adj. 粗暴的；脾气坏的；粗哑的vt. 粗鲁地说；生硬地说vi. 粗鲁地说；生硬地说话比较级: gruffer, gruffes">gruff</span> manner <span class="annot" data-tooltip="disguises /dɪs'ɡaɪz/ vt. 假装；掩饰；隐瞒n. 伪装；假装；用作伪装的东西时 态: disguised, disguising, disguise">disguises</span> a heart of gold, takes up the story. “We all knew that the <span class="annot" data-tooltip="client /'klaɪənt/ n. 委托人顾客, 常客">client</span> <span class="annot" data-tooltip="lagged /læɡ/ n. 迟延；防护套；囚犯；桶板；落后vt. 押往监狱；落后于；加上外套vi. 滞后；缓缓而行；蹒跚adj. 最后的时 态: l">lagged</span> Flummox, its <span class="annot" data-tooltip="main /meɪn/ adj. 主要的; 最重要的n. 总管道; 干线">main</span> <span class="annot" data-tooltip="rival /'raɪvl/ n. 竞争对手vt. 与…竞争, 与…匹敌时 态: rivaled, rivalled rivaling, rivalling">rival</span>. But when Wendy laid it out, the gap was so much bigger than we had realised.” In slide after slide, Clanger used a classic quadrant to map the performance of MidPoint and its peers in different product categories. “It was standard <span class="annot" data-tooltip="stuff /stʌf/ n. 材料；东西；填充物；素材资料vt. 填塞；塞满；让吃饱vi. 吃得过多时 态: stuffed, stuffing, s">stuff</span>,” says von Ursen, who had spent 20 years in the <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> by then. “You want to be in the top right-hand box. You always want to be in the top right-hand box.” But something bothered him. Flummox was doing so much better than anyone else that it was always in the very top corner of the quadrant. Even then, “we were having to break the scale on some axes to fit it into the chart. It was as if the quadrant wasn’t able to <span class="annot" data-tooltip="cope /koʊp/ vi. 处理；对付；竞争">cope</span>.” Von Ursen said as much to the team. Everyone agreed but the quadrant was all they knew. They had been trained on it since the start of their careers. None of them could think <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span> the four boxes. No one except Harbour Brandish. “It just seemed obvious to me. I couldn’t work out why no one else was saying it.” So he <span class="annot" data-tooltip="stuck /stʌk/ v. 刺（stick的过去式）adj. 不能动的；被卡住的">stuck</span> up his hand. “I saw Harbour wanted to speak,” says Clanger. “I didn’t know that the next three words would change the industry.” “Add another box.” “I <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span> I must have misheard him,” says Clanger. “So I asked him to repeat it.” “Add another box.” The room went quiet and then people started to laugh. Vic von Ursen was among them. “It was the stupidest thing I had ever heard. I regret that laugh more than anything I have ever done.” Clanger didn’t laugh. A sixth sense told her that Brandish was onto something. So she asked him what he meant.</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>line</td><td>/laɪn/ n.</td><td>绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long interspersed element)长散在元</td></tr>
+<tr><td>quarter</td><td>/'kwɔːrtər/ n.</td><td>四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一, quartering, quarters</td></tr>
+<tr><td>domestic</td><td>/də'mestɪk/ adj.</td><td>国内的；家庭的；驯养的；一心只管家务的</td></tr>
+<tr><td>routes</td><td>/ruːt，raʊt/ n.</td><td>路, 路途, 路线, 路程, routing, routes</td></tr>
+<tr><td>owner</td><td>/'oʊnər/ n.</td><td>所有者；物主</td></tr>
+<tr><td>promoter</td><td>/prə'moʊtər/ n.</td><td>(房地产、证券和体育赛事的)承办人, 出资人, 赞助人</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>industries</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>heading</td><td>/'hedɪŋ/ n.</td><td>标题；信头；（足球）头球v. 用头顶（head的ing形式）</td></tr>
+<tr><td>recruited</td><td>/rɪ'kruːt/ n.</td><td>新兵(机构中的)新成员vt. 招聘；吸引(新成员)吸收某人为新成员vt. & vi. 招募，征募(新兵)恢复健康，恢复体力，recruiting，recruit</td></tr>
+<tr><td>representative</td><td>/ˌreprɪ'zentətɪv/ n.</td><td>代表代理人adj. 有代表性的, 典型的</td></tr>
+<tr><td>infrastructure</td><td>/'ɪnfrəstrʌktʃər/ n.</td><td>基础设施; 基础结构</td></tr>
+<tr><td>shareholder</td><td>/'ʃerhoʊldər/ n.</td><td>股东</td></tr>
+<tr><td>keen</td><td>/kiːn/ adj.</td><td>锋利的热衷的，热心的，渴望(做某事)激烈的，紧张的良好的；敏锐的，敏捷的，keenest</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>entanglement</td><td>/ɪn'tæŋɡlmənt/ n.</td><td>瓜葛;牵连;纠缠;缠住</td></tr>
+<tr><td>central</td><td>/'sentrəl/ adj.</td><td>中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的</td></tr>
+<tr><td>collapse</td><td>/kə'læps/ vi.</td><td>倒塌；瓦解；暴跌vt. 使倒塌，使崩溃；使萎陷n. 倒塌；失败；衰竭, collapsing, collapses</td></tr>
+<tr><td>classification</td><td>/ˌklæsɪfɪ'keɪʃn/ n.</td><td>分类, 分级类别, 种类, 门类</td></tr>
+<tr><td>net</td><td>/net/ n.</td><td>网；净利；网络；实价vi. 编网vt. 净赚；得到；用网捕adj. 纯粹的；净余的, netting, nets</td></tr>
+<tr><td>considering</td><td>/kən'sɪdərɪŋ/ prep.</td><td>考虑到, 就…而论adv. 从各方面考虑, 从通盘考虑</td></tr>
+<tr><td>possibly</td><td>/'pɑːsəbli/ adv.</td><td>可能地；大概；也许</td></tr>
+<tr><td>retain</td><td>/rɪ'teɪn/ vt.</td><td>保持；雇；记住, retaining, retains 缩 写: ret</td></tr>
+<tr><td>secure</td><td>/sɪ'kjʊr/ adj.</td><td>安心的；有把握的可靠的；牢靠的；稳固的；安全的；稳妥的严密把守的；牢固的；坚固的v. （尤指经过努力）获得，取得，实现拴牢；扣紧；关严保护；保卫；使安全抵押；为</td></tr>
+<tr><td>mumbai</td><td>— n.</td><td>孟买（印度城市）</td></tr>
+<tr><td>deter</td><td>/dɪ'tɜːr/ vt.</td><td>制止，阻止；使打消念头, deterring, deters</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>edge</td><td>/edʒ/ n.</td><td>边缘；刀刃；优势；锋利vt. 使锐利；将…开刃；给…加上边vi. 缓缓移动；侧着移动EDGEabbr. Electronic Data Gathering Eq</td></tr>
+<tr><td>line</td><td>/laɪn/ n.</td><td>绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long interspersed element)长散在元</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>strike</td><td>/straɪk/ vi.</td><td>罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打, stricken striking, str</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>places</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>commitments</td><td>/kə'mɪtmənt/ n.</td><td>承诺；保证；信奉；献身；委任；花费金钱、时间、人力等</td></tr>
+<tr><td>wages</td><td>/weɪdʒ/ vi.</td><td>进行；发动；从事n. 工资；报偿；代价vt. 开展；进行, waging, wages</td></tr>
+<tr><td>due</td><td>/duː/ adj.</td><td>到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）</td></tr>
+<tr><td>strikes</td><td>/straɪk/ vi.</td><td>罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打, stricken striking, str</td></tr>
+<tr><td>consulting</td><td>/kən'sʌlt/ vt.</td><td>商量；查阅；向…请教vi. 请教；商议；当顾问, consulting, consults</td></tr>
+<tr><td>automotive</td><td>/ˌɔːtə'moʊtɪv/ adj.</td><td>汽车的，机动车辆的</td></tr>
+<tr><td>tank</td><td>/tæŋk/ n.</td><td>（存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内, tanking, tanks</td></tr>
+<tr><td>extend</td><td>/ɪk'stend/ vt.</td><td>& vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出，extending，extends</td></tr>
+<tr><td>perks</td><td>/pɜːrk/ vi.</td><td>昂首；振作vt. 打扮；竖起；使振作n. 小费；额外收入, perking, perks</td></tr>
+<tr><td>bonus</td><td>/'boʊnəs/ n.</td><td>奖金；红利；额外津贴BONUSabbr. Boling Nuclear Superheat Reactor 沸腾式过热核反应堆</td></tr>
+<tr><td>productivity</td><td>/ˌproʊdʌk'tɪvəti/ n.</td><td>生产率, 生产力</td></tr>
+<tr><td>offensive</td><td>/ə'fensɪv/ adj.</td><td>讨厌的；令人不快的攻击的n. 进攻，攻势</td></tr>
+<tr><td>simply</td><td>/'sɪmpli/ adv.</td><td>简单地；朴素地；简直；仅仅；坦白地</td></tr>
+<tr><td>offset</td><td>/'ɔːfset/ vt.</td><td>抵消, 补偿, offsetting, offsets</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>premium</td><td>/'priːmiəm/ n.</td><td>奖金，津贴；加价；附加费；保险费；额外费用adj. （品质）高级的；优质的，顶级的</td></tr>
+<tr><td>margins</td><td>/'mɑːrdʒɪn/ n.</td><td>页边缘；利润，余裕；页边的空白</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>domestic</td><td>/də'mestɪk/ adj.</td><td>国内的；家庭的；驯养的；一心只管家务的</td></tr>
+<tr><td>wage</td><td>/weɪdʒ/ vi.</td><td>进行；发动；从事n. 工资；报偿；代价vt. 开展；进行, waging, wages</td></tr>
+<tr><td>cutting</td><td>/'kʌtɪŋ/ n.</td><td>切断；剪辑；开凿adj. 严寒的；锋利的；尖酸刻薄的v. 切开；采伐；削减（cut的ing形式）</td></tr>
+<tr><td>proposals</td><td>/prə'poʊzl/ n.</td><td>提议，建议；求婚</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>preserve</td><td>/prɪ'zɜːrv/ vt.</td><td>保存；保护；维持；禁猎；腌n. 禁猎地；保护区；加工成的食品n. (某人或群体的）专门活动, preserving, preserves</td></tr>
+<tr><td>wage</td><td>/weɪdʒ/ vi.</td><td>进行；发动；从事n. 工资；报偿；代价vt. 开展；进行, waging, wages</td></tr>
+<tr><td>compromise</td><td>/'kɑːmprəmaɪz/ n.</td><td>妥协, 折中方法vi. 折中解决vt. 连累, 危害, 损害, compromising, compromises</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>employed</td><td>/ɪm'plɔɪ/ vt.</td><td>使用，采用；雇用；使忙于，使从事于n. 雇用；使用, employing, employs</td></tr>
+<tr><td>scenario</td><td>/sə'nærioʊ/ n.</td><td>情节；剧本；方案</td></tr>
+<tr><td>consulting</td><td>/kən'sʌlt/ vt.</td><td>商量；查阅；向…请教vi. 请教；商议；当顾问, consulting, consults</td></tr>
+<tr><td>exclusive</td><td>/ɪk'skluːsɪv/ adj.</td><td>高级的，奢华的专用的；独家的n. 独家新闻，独家报道</td></tr>
+<tr><td>extract</td><td>/'ekstrækt/ v.</td><td>提取；提炼索取，设法得到（对方不愿提供的信息、钱财等）选取；摘录；选录（用力）取出，拔出【正式】获得，得到（某种感觉或品质）n. 摘录；选录；选曲；节录（尤指食</td></tr>
+<tr><td>frame</td><td>/freɪm/ n.</td><td>框架；结构；画面vt. 设计；陷害；建造；使…适合vi. 有成功希望adj. 有木架的；有构架的, framing, frames</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>geometry</td><td>/dʒi'ɑːmətri/ n.</td><td>〈数〉几何(学)</td></tr>
+<tr><td>complete</td><td>/kəm'pliːt/ adj.</td><td>完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善, completest 缩 写: comp, cpl</td></tr>
+<tr><td>engagement</td><td>/ɪn'ɡeɪdʒmənt/ n.</td><td>订婚，婚约；约会，约定（尤指正式的或与工作有关的）；交战；诺言；进场（游戏术语）；参与度（指用户点赞、转发、评论、下载文档、观看视频、咨询等交互行为）</td></tr>
+<tr><td>presented</td><td>/'preznt/ vt.</td><td>呈现；介绍；提出；赠送vi. 举枪瞄准adj. 出席的；现在的n. 现在；礼物；瞄准, presenting, presents</td></tr>
+<tr><td>gruff</td><td>/ɡrʌf/ adj.</td><td>粗暴的；脾气坏的；粗哑的vt. 粗鲁地说；生硬地说vi. 粗鲁地说；生硬地说话, gruffest</td></tr>
+<tr><td>disguises</td><td>/dɪs'ɡaɪz/ vt.</td><td>假装；掩饰；隐瞒n. 伪装；假装；用作伪装的东西, disguising, disguises</td></tr>
+<tr><td>client</td><td>/'klaɪənt/ n.</td><td>委托人顾客, 常客</td></tr>
+<tr><td>lagged</td><td>/læɡ/ n.</td><td>迟延；防护套；囚犯；桶板；落后vt. 押往监狱；落后于；加上外套vi. 滞后；缓缓而行；蹒跚adj. 最后的, lagging, lags</td></tr>
+<tr><td>main</td><td>/meɪn/ adj.</td><td>主要的; 最重要的n. 总管道; 干线</td></tr>
+<tr><td>rival</td><td>/'raɪvl/ n.</td><td>竞争对手vt. 与…竞争, 与…匹敌, rivalled rivaling, rivalling rivals, rivals</td></tr>
+<tr><td>stuff</td><td>/stʌf/ n.</td><td>材料；东西；填充物；素材资料vt. 填塞；塞满；让吃饱vi. 吃得过多, stuffing, stuffs</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>cope</td><td>/koʊp/ vi.</td><td>处理；对付；竞争</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>stuck</td><td>/stʌk/ v.</td><td>刺（stick的过去式）adj. 不能动的；被卡住的</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day29.html" class="nav-btn">← Day 29</a>
+  <a href="day31.html" class="nav-btn">Day 31 →</a>
+</div>
+
+<div class="progress">📖 Day 30 of 42</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-09-26</div>
+
+</body>
+</html>

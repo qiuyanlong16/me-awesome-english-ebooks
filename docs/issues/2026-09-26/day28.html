@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>International | The Telegram</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-09-26</div>
+
+<h1 class="article-title">International | The Telegram</h1>
+<div class="article-section">International</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>develops a “large military presence” in Greenland, he adds. It remains unclear what he means by that, for <span class="annot" data-tooltip="denmark /'denmɑːrk/ n. 丹麦(北欧国家,首都哥本哈根)">Denmark</span>, a country of 6m people, is not about to foot the whole bill for America’s Arctic garrison. At least a deal was done. That stands in <span class="annot" data-tooltip="contrast /'kɑːntræst/ n. 对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照时 态: contrasted, cont">contrast</span> with interminable talks over <span class="annot" data-tooltip="ukraine n. 乌克兰（原苏联一加盟共和国，现已独立）">Ukraine</span>, Iran and <span class="annot" data-tooltip="gaza n. 加沙（地中海岸港市）">Gaza</span> that Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> has <span class="annot" data-tooltip="entrusted /ɪn'trʌst/ vt. 委托，信托时 态: entrusted, entrusting, entrusts">entrusted</span> to his fellow <span class="annot" data-tooltip="property /'prɑːpərti/ n. 财产；性质，性能；所有权形容词: propertyless">property</span> developers, Steve Witkoff and Jared Kushner. Those <span class="annot" data-tooltip="envoys /'envɔɪ/ n. 使者；全权公使">envoys</span> are guided by the principle that foreign-policy <span class="annot" data-tooltip="disputes /dɪ'spjuːt/ vt. 辩论；阻止；抗拒；怀疑vi. 争论n. 辩论；争吵时 态: disputed, disputing, disputes">disputes</span> are, at root, wrangles about land and resources, which can be resolved by offering <span class="annot" data-tooltip="profitable /'prɑːfɪtəbl/ adj. 有利可图的; 有益的副 词: profitably">profitable</span> opportunities to each side. Earlier on, some in Trump-world talked loudly about <span class="annot" data-tooltip="minerals /'mɪnərəl/ n. 矿物; 矿石; 矿物质">minerals</span> and oil buried <span class="annot" data-tooltip="beneath /bɪ'niːθ/ prep. 在…之下adv. 在下方">beneath</span> Greenland’s permafrost, ignoring warnings about the <span class="annot" data-tooltip="expense /ɪk'spens/ n. 开支；消费；损失，代价vt. 向…收取费用vi. 被花掉时 态: expensed, expensing, expens">expense</span> of Arctic operations. But the final deal was the result of months of <span class="annot" data-tooltip="discreet /dɪ'skriːt/ adj. 小心的；谨慎的副 词: discreetly">discreet</span> diplomacy, supervised on the American side by Marco Rubio, the American <span class="annot" data-tooltip="secretary /'sekrəteri/ n. 秘书书记部长, 大臣形容词: secretarial">secretary</span> of state and national <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span> adviser, and by his <span class="annot" data-tooltip="deputy /'depjuti/ n. 代理人，代表adj. 副的；代理的">deputy</span> Mike Needham. Mr Trump did not offer a running <span class="annot" data-tooltip="commentary /'kɑːmənteri/ n. 实况报道，解说词评论；评注">commentary</span> on the talks, and there were no <span class="annot" data-tooltip="boasts /boʊst/ n. 自吹自擂, 自夸的话vt. & vi. 自夸vt. 有(引以为荣的事物)时 态: boasted, boasting, ">boasts</span> about billion-dollar profits to be made. As if pleading for Mr Trump to take a win for quiet professionalism and move on, Mr Rubio says that “this deal <span class="annot" data-tooltip="permanently /'pɜːrmənəntli/ adv. 永久地;长期不变地">permanently</span> and <span class="annot" data-tooltip="completely /kəm'pliːt/ adj. 完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善比较级: complete">completely</span> <span class="annot" data-tooltip="addresses /ə'dres/ v. 写（收信人）姓名地址；致函演说；演讲称呼（某人）；冠以（某种称呼）设法解决；处理；对付向…说话n. 地址；住址；通信处 ">addresses</span> our national security concerns in Greenland.” Not long ago the Danes were among the most <span class="annot" data-tooltip="pro /proʊ/ n. 从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞">pro</span>-American of Europeans. Yet in a <span class="annot" data-tooltip="poll /poʊl/ n. 民意测验；投票；投票数；投票所vt. 剪短；对…进行民意测验；获得选票；投票vi. 投票adj. 剪过毛的；修过枝的；无">poll</span> conducted in May, just 7% called America an ally. Their government this year signalled interest in joining other European members of NATO in accepting an offer to be protected by France’s nuclear deterrent. Not long ago, Atlanticist Denmark would never have signed up to that sort of Gallic scheme. But the Greenland scare leaves European governments determined to be less dependent on a <span class="annot" data-tooltip="fickle /'fɪkl/ adj. 易变的；浮躁的；变幻无常的名 词: fickleness">fickle</span> America. Asked whether Mr Trump is a good salesman for European weapons, as NATO members think twice about buying American, a Nordic prime minister replies: “Absolutely.” Nor will Mr Trump’s departure <span class="annot" data-tooltip="heal /hiːl/ vt. 治愈，痊愈；和解vi. 痊愈时 态: healed, healing, heals">heal</span> all <span class="annot" data-tooltip="wounds /wund/ n. 创伤，伤口vt. 使受伤vi. 受伤，伤害时 态: wounded, wounding, wounds">wounds</span>. <span class="annot" data-tooltip="eagerly /'iːɡərli/ adv. 渴望地；急切地；热心地">Eagerly</span> defending his boss, <span class="annot" data-tooltip="vice /vaɪs/ n. 堕落，邪恶；不良习气，恶习（尤指与性或毒品有关的）罪行，道德败坏行为【英式】老虎钳；台钳（【美式】vise）pref. ">Vice</span>-President J.D. Vance called Denmark a bad ally, appalling Danes who remember the heavy losses their troops suffered, fighting <span class="annot" data-tooltip="alongside /əˌlɔːŋ'saɪd/ adv. 靠着边，沿着边prep. (表示位置)在…旁边；沿着…的边；与…并排靠拢着(表示比较)与…放在一起比较(表示伴随)与…一">alongside</span> America in <span class="annot" data-tooltip="afghanistan /æf'ɡænɪstæn/ n. 阿富汗">Afghanistan</span> and <span class="annot" data-tooltip="iraq n. 伊拉克（西南亚国家）">Iraq</span>. Denmark learned a painful lesson: the next generation of American leaders includes many veterans like Mr Vance, who think the war on <span class="annot" data-tooltip="terror /'terər/ n. 恐怖; 恐怖活动引起恐怖的人[事]讨厌的人">terror</span> was a catastrophe and feel no nostalgia for its shared struggles. America’s desire for Arctic bases (and Europe’s need for</p>
+<p>American help to <span class="annot" data-tooltip="deter /dɪ'tɜːr/ vt. 制止，阻止；使打消念头时 态: deterred, deterring, deters">deter</span> Russia) resolved this particular presidential <span class="annot" data-tooltip="tantrum /'tæntrəm/ n. 发脾气；发怒">tantrum</span>. But gibes asking why America should defend foreign soil cannot be unsaid. The transatlantic bond is growing colder and <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> more transactional. Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> wanted Greenland to be part of his <span class="annot" data-tooltip="legacy /'leɡəsi/ n. 遗产, 遗赠物遗留之物">legacy</span> and so it will be. Just not as he imagined. ■ This article was downloaded by zlibrary from https://www.economist.com/international/2026/09/19/donald-trump-drops-demands-to- <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span>-greenland-but-the-harm-has-been-done</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Business</div>
+<p>Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> says China is opening up. American bosses disagree Business in the Gulf is making a slow recovery <span class="annot" data-tooltip="tanker /tæŋk/ n. （存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内时 态: t">Tanker</span> rates are on the crest of a <span class="annot" data-tooltip="wave /weɪv/ vi. 波动；起伏；摇动；呈波形；挥手示意vt. 向…挥手示意；使成波浪形；卷（烫）发n. 波浪；波动；高潮；卷曲；挥手示意时 ">wave</span> Tata goes to war with itself German unions are fighting to defend the 35-hour week The greatest advance in <span class="annot" data-tooltip="consulting /kən'sʌlt/ vt. 商量；查阅；向…请教vi. 请教；商议；当顾问时 态: consulted, consulting, consults">consulting</span> since the quadrant How tech firms hope to beat the backlash against “<span class="annot" data-tooltip="pervert /pər'vɜːrt/ vt. 使堕落, 把…引入邪路, 使变坏滥用做伪证；妨碍司法公正时 态: perverted, perverting, perv">pervert</span> glasses” Agent of whom?</p>
+<div class="article-separator"></div>
+<div class="article-header">Business · Business | Still thwarted</div>
+<p>Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> says China is opening up. American bosses disagree Chipmakers’ record sales <span class="annot" data-tooltip="disguise /dɪs'ɡaɪz/ vt. 假装；掩饰；隐瞒n. 伪装；假装；用作伪装的东西时 态: disguised, disguising, disguise">disguise</span> a <span class="annot" data-tooltip="gloomy /'ɡluːmi/ adj. 黑暗的；沮丧的；阴郁的比较级: gloomier, gloomiest">gloomy</span> <span class="annot" data-tooltip="picture /'pɪktʃər/ n. 图画，肖像；照片(生动的)描述，写照影片；电影；画面美景，景色情况，事态，局面vt. 绘画；描绘想象时 态: pictu">picture</span> Sep 24th 2026 American companies should be celebrating. China is on the <span class="annot" data-tooltip="verge /vɜːrdʒ/ n. 边缘；绿地；极限；山墙突瓦；权杖（作为职位标志）">verge</span> of a grand opening of its markets to them, claims Donald Trump. The president’s meetings in Beijing in May with China’s ruler, Xi Jinping, <span class="annot" data-tooltip="yielded /jiːld/ vt. 出产；屈服；放弃vi. 屈服，投降n. 收益；产量时 态: yielded, yielding, yields">yielded</span> such a promise: it is just waiting to be “papered”. Mr Trump surely hoped for that when meeting Mr Xi again in Washington on September 24th, after The Economist went to press. Maybe more. At pre-summit talks officials formalised a “board of trade”, proposed by the leaders in May, to identify possible <span class="annot" data-tooltip="tariff /'tærɪf/ n. 关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表时 态: tariffed, tariffing, tar">tariff</span> cuts. Soon after Mr Xi landed, America’s <span class="annot" data-tooltip="treasury /'treʒəri/ n. 财政部；国库，金库；宝库">treasury</span> <span class="annot" data-tooltip="secretary /'sekrəteri/ n. 秘书书记部长, 大臣形容词: secretarial">secretary</span>, Scott Bessent, said the two countries would <span class="annot" data-tooltip="extend /ɪk'stend/ vt. & vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出时 态:">extend</span> their “trade truce”, <span class="annot" data-tooltip="due /duː/ adj. 到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）">due</span> to <span class="annot" data-tooltip="expire /ɪk'spaɪər/ vi. 期满, (期限)终止断气, 死亡时 态: expired, expiring, expires">expire</span> in November, until January.</p>
+<p>It is not all rhetoric. Citigroup, one of America’s biggest banks, may soon open a fully owned brokerage in China (it helped that Dame Jane Fraser, Citi’s chief executive, was among the bosses accompanying Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> to Beijing). A survey published on September 10th by the American <span class="annot" data-tooltip="chamber /'tʃeɪmbər/ n. （身体或器官内的）室，膛；房间；会所adj. 室内的；私人的，秘密的vt. 把…关在室内；装填（弹药等）时 态: cha">Chamber</span> of <span class="annot" data-tooltip="commerce /'kɑːmɜːrs/ n. 商业, 贸易">Commerce</span> in Shanghai finds American firms at their most optimistic about their <span class="annot" data-tooltip="prospects /'prɑːspekt/ n. 景象，景色前景；前途可能成为主顾的人；有希望的候选人vi. 勘探；勘察时 态: prospected，prospecti">prospects</span> in China since 2021; <span class="annot" data-tooltip="profitability /ˌprɑːfɪtə'bɪləti/ n. 获利(状况)，盈利(情况)">profitability</span> is also edging up. A handful of big chipmakers, including <span class="annot" data-tooltip="nvidia 恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商">Nvidia</span> and Qualcomm, pushed American companies’ <span class="annot" data-tooltip="revenues /'revənuː/ n. 收入，收益；财政收入，税收">revenues</span> in China to a record high last year. This year Ralph Lauren, an upmarket fashion <span class="annot" data-tooltip="brand /brænd/ n. 商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责时 态: branded, branding, brands">brand</span>, and Sam’s Club, a members-only <span class="annot" data-tooltip="retailer /'riːteɪlər/ n. 传播的人；零售商">retailer</span> owned by Walmart, have been among those making a <span class="annot" data-tooltip="fortune /'fɔːrtʃən/ n. 运气；财富；命运vt. 给予财富vi. 偶然发生时 态: fortuned, fortuning, fortunes">fortune</span>. For American bosses, the <span class="annot" data-tooltip="pleasantries /'plezntri/ n. 客气话;客套;礼仪">pleasantries</span> between Messrs Trump and Xi have eased fears of another all-out trade war. Since May, China has pressed ahead with its promised <span class="annot" data-tooltip="purchases /'pɜːrtʃəs/ n. 购买；紧握；起重装置vt. 购买；赢得vi. 购买东西时 态: purchased, purchasing, purch">purchases</span> of soyabeans from America. And higher revenues are great if you can get them. Yet most executives at American firms in Beijing and Shanghai are hardly upbeat. The improved confidence reported by the Shanghai chamber followed four years of record lows. One reason for the <span class="annot" data-tooltip="foul /faʊl/ adj. 邪恶的；污秽的；犯规的；淤塞的vt. 弄脏；犯规；淤塞；缠住，妨害vi. 犯规；缠结；腐烂n. 犯规；缠绕adv. 违反">foul</span> business <span class="annot" data-tooltip="sentiment /'sentɪmənt/ n. (对怜悯、怀旧等的)柔情态度或意见观点; 意见">sentiment</span> is that, for all the leaders’ smiles, the political mood remains dark. Both sides have continued to <span class="annot" data-tooltip="issue /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issue</span> threats. Mr Trump recently proposed a 7.5% <span class="annot" data-tooltip="tariff /'tærɪf/ n. 关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表时 态: tariffed, tariffing, tar">tariff</span> on Chinese goods, on top of the 20%-plus they already bear. (Chinese exports worldwide surged by 25% year on year in August.) American officials are said to be devising new <span class="annot" data-tooltip="restrictions /rɪ'strɪkʃn/ n. 约束，限制管制，限定；法律，规章">restrictions</span> on purchases of Chinese tech <span class="annot" data-tooltip="gear /ɡɪr/ n. 用具，设备，衣服齿轮；传动装置；(排)挡vi. 换挡vt. 使兴奋起来；使准备好vt. & vi. (使)搭配；(使)适">gear</span>. Meanwhile, some Chinese suppliers of rare earths have mysteriously stopped supplying American customers, despite having official permission to do so. Chinese officials have also rebuffed American efforts to <span class="annot" data-tooltip="isolate /'aɪsəleɪt/ vt. 使孤立；使绝缘；使隔离n. 隔离种群vi. 孤立；隔离adj. 隔离的；孤立的时 态: isolated, isolat">isolate</span> Iran during the Gulf war. When it comes to solving these problems, “negativity prevails,” says an American <span class="annot" data-tooltip="corporate /'kɔːrpərət/ adj. 社团的, 法人的副 词: corporately">corporate</span> insider in Beijing. “But maybe that’s what ‘<span class="annot" data-tooltip="constructive /kən'strʌktɪv/ adj. 建设的,建设性的副 词: constructively">constructive</span> <span class="annot" data-tooltip="strategic /strə'tiːdʒɪk/ adj. 战略(上)的有战略意义的; 至关重要的副 词: strategically">strategic</span> stability’ looks and feels like.” Officials from both countries have used the phrase to describe the relationship since May’s meeting. A second problem is that access to Chinese markets, even if it comes, might not amount to much. Google, Meta, Netflix and others have spent years trying to <span class="annot" data-tooltip="crack /kræk/ vt. & vi. (使…)开裂, 破裂(使)身体上或精神上垮掉打开, 砸开(使)发出爆裂声n. 裂缝, 缝隙噼啪声, 爆裂声意">crack</span> China’s internet economy. In Chinese eyes, <span class="annot" data-tooltip="industries /'ɪndəstri/ n. 工业；产业；勤勉">industries</span> such as online search, social media and video streaming are already open to those</p>
+<p>willing to abide by Chinese laws—which <span class="annot" data-tooltip="entail /ɪn'teɪl/ vt. 使…成为必要, 需要限定继承时 态: entailed, entailing, entails">entail</span> <span class="annot" data-tooltip="employing /ɪm'plɔɪ/ vt. 使用，采用；雇用；使忙于，使从事于n. 雇用；使用时 态: employed, employing, employs">employing</span> <span class="annot" data-tooltip="censors /'sensər/ vt. 审查，检查n. 检查员；潜意识压抑力；信件检查员时 态: censored, censoring, censors">censors</span> and deleting or freezing accounts without <span class="annot" data-tooltip="explanation /ˌeksplə'neɪʃn/ n. 解释, 说明能说明某事缘由的言语、事实、情况等">explanation</span>. With China tightening its controls on free expression, there seems to be little hope of much change. In other potential markets Americans are late to the game. Before China joined the World Trade Organisation (WTO) in 2001 the <span class="annot" data-tooltip="central /'sentrəl/ adj. 中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的副 词: centrally">central</span> government could have removed huge <span class="annot" data-tooltip="obstacles /'ɑːbstəkl/ n. 障碍(物), 妨碍">obstacles</span> for American businesses, says Randall Schriver, <span class="annot" data-tooltip="chairman /'tʃermən/ n. 主席，会长；董事长时 态: chairmanned, chairmanning, chairmans">chairman</span> of the US-China Economic and <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">Security</span> Review <span class="annot" data-tooltip="commission /kə'mɪʃn/ n. 授权, 委托委员会佣金, 回扣vt. 委任, 委托时 态: commissioned, commissioning, c">Commission</span>, a bipartisan body set up by Congress. Since then American <span class="annot" data-tooltip="leverage /'levərɪdʒ/ n. （能够操控形势的）影响力，手段，优势 杠杆力；杠杆作用v. 举债经营；为…融资有效利用某物（资源、优势、工具等）时 态:">leverage</span> has <span class="annot" data-tooltip="diminished /dɪ'mɪnɪʃ/ vt. 使减少；使变小vi. 变小；减少，缩小时 态: diminished, diminishing, diminishes">diminished</span>. In financial services, for example, China was supposed to allow foreign firms to expand as part of its WTO obligations. But local <span class="annot" data-tooltip="authorities /ə'θɔːrəti/ n. 威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗">authorities</span> stalled on granting licences to firms such as Visa and MasterCard, the West’s <span class="annot" data-tooltip="leading /ˈliːdɪŋ/ adj. 主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）">leading</span> payment <span class="annot" data-tooltip="processors /'prɑːsesər/ n. 加工、处理事物的人〔设备、产业〕(计算机的)中央处理器数据处理机">processors</span>. Instead Chinese payments are dominated by <span class="annot" data-tooltip="domestic /də'mestɪk/ adj. 国内的；家庭的；驯养的；一心只管家务的">domestic</span> tech champions like Ant <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">Group</span> and Tencent. Today, says Mr Schriver, no American president can do much about such local competition. Another problem Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> can do little about is <span class="annot" data-tooltip="persistently /pər'sɪstənt/ adj. 持续的; 不断的副 词: persistently">persistently</span> thin returns on new investments. A few companies’ record <span class="annot" data-tooltip="revenues /'revənuː/ n. 收入，收益；财政收入，税收">revenues</span> do not tell the full story: most American firms’ sales in China have stagnated since 2023 (see chart). For some, the slide began <span class="annot" data-tooltip="sooner /ˈsunɚ/ n. （美）抢先占有土地者（在政府开放西部前）">sooner</span>. Apple’s sales in China last year were the biggest of any American company, but were roughly $10bn smaller</p>
+<p>than in 2022. In the past four years PepsiCo, a maker of drinks and <span class="annot" data-tooltip="snacks /snæk/ n. 小吃；点心；快餐vi. 吃快餐；吃点心时 态: snacked，snacking，snacks">snacks</span>, has watched its sales level off and then <span class="annot" data-tooltip="fall /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">fall</span>. Some firms are pulling back. Because returns are low, they have decided to stop <span class="annot" data-tooltip="investing /ɪn'vest/ vt. 投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买时 态: invested, investing, invests">investing</span> in China and are <span class="annot" data-tooltip="shrinking /ʃrɪŋk/ vt. & vi. 收缩；退缩时 态: shrank ，shrunk shrunk，shrunken shrinking，shr">shrinking</span> their operations. That reflects not just fierce local competition but also the sluggishness of the economy. With money tighter, consumers are increasingly stingy. Markets once <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span> to be the future of China’s consumer economy, like high-end medical services, now look much less promising, even as they open to foreign companies. American health-care <span class="annot" data-tooltip="groups /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">groups</span> now question why they would deploy scarce resources such as doctors in China when returns are higher elsewhere, says Joe Ngai, the local head of McKinsey, a <span class="annot" data-tooltip="consulting /kən'sʌlt/ vt. 商量；查阅；向…请教vi. 请教；商议；当顾问时 态: consulted, consulting, consults">consulting</span> firm. The <span class="annot" data-tooltip="semiconductor /'semikəndʌktər/ n. 〈物〉半导体形容词: semiconducting">semiconductor</span> <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> is the brightest <span class="annot" data-tooltip="spot /spɑːt/ n. 斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Po">spot</span>. Among American firms that report full-year sales in China, chipmakers contributed more than a third of last year’s total. Their <span class="annot" data-tooltip="revenue /'revənuː/ n. 收入，收益；财政收入，税收">revenue</span> grew by 9% in 2025, making them the bedrock of American business in China. But this is also the market most at risk. The rapid <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> of advanced hardware sales reflects the emergence of China’s artificial-intelligence industry—and Chinese firms’ well-founded fears that supplies will be cut off: both Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> and Joe Biden banned sales of high-performance chips and other <span class="annot" data-tooltip="gear /ɡɪr/ n. 用具，设备，衣服齿轮；传动装置；(排)挡vi. 换挡vt. 使兴奋起来；使准备好vt. & vi. (使)搭配；(使)适">gear</span>. Allowing access to such chips looks hard to square with Mr Trump’s insistence on winning the AI <span class="annot" data-tooltip="race /reɪs/ n. 种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACE">race</span> with China. If American <span class="annot" data-tooltip="resistance /rɪ'zɪstəns/ n. 抵抗, 反抗, 抵抗能力阻力电阻, 热阻形容词: resistant">resistance</span> to selling the tech were the only <span class="annot" data-tooltip="obstacle /'ɑːbstəkl/ n. 障碍(物), 妨碍">obstacle</span>, it might be <span class="annot" data-tooltip="overcome /ˌoʊvər'kʌm/ vt. & vi. 战胜；克服vt. 被(烟、感情等)熏[压]倒，使受不了时 态: overcame overcome，over">overcome</span> in discussions between Mr Xi and Mr Trump, who is eager to announce big deals intended to lower his country’s trade deficit with China. But given Mr Xi’s desire to keep the most advanced American parts out of China’s AI systems, his industrial policy now revolves around the concept of self-sufficiency in chips. That goal remains <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> away, but one <span class="annot" data-tooltip="route /ruːt，raʊt/ n. 路, 路途, 路线, 路程时 态: routed, routing, routes">route</span> to it has been to block Chinese companies from buying <span class="annot" data-tooltip="nvidia 恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商">Nvidia</span>’s chips and other American components, while pushing spending on home-made ones. This project is moving quickly. In 2020 just 6% of the equipment used in wafer fabrication was domestically suppliable; by the end of this year that share may be close to 30%. The talks in Washington may buy American companies some time, but for Mr Xi self-sufficiency is, in the end, not <span class="annot" data-tooltip="negotiable /nɪ'ɡoʊʃiəbl/ adj. 可谈判的;可协商的;可商量的(票据)可兑现的名 词: negotiability">negotiable</span>.</p>
+<p>It is possible that Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s <span class="annot" data-tooltip="version /'vɜːrʒn/ n. 变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本">version</span> of an open China is <span class="annot" data-tooltip="simply /'sɪmpli/ adv. 简单地；朴素地；简直；仅仅；坦白地">simply</span> one that buys more corn and soyabeans from America, notes Ker Gibbs of the University of San Francisco, a former executive in China. The president may be happy to announce more headline deals on big-ticket items, such as Boeing jets—anything to help him claim he has pushed down the <span class="annot" data-tooltip="bilateral /ˌbaɪ'lætərəl/ adj. 双边的, 双方的名 词: bilateralism">bilateral</span> deficit. If that also <span class="annot" data-tooltip="eases /iːz/ vt. 减轻，缓和；使安心n. 安逸，悠闲；轻松，舒适vi. 减轻，缓和；放松；灵活地移动EASEabbr. Electroni">eases</span> <span class="annot" data-tooltip="tariffs /'tærɪf/ n. 关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表时 态: tariffed, tariffing, tar">tariffs</span> and sanctions, America’s bosses will take any relief they can get. But expectations for better days and bigger sales remain low. ■ This article was downloaded by zlibrary from https://www.economist.com/business/2026/09/21/donald-trump-says-china-is-opening- up-american-bosses-disagree</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>denmark</td><td>/'denmɑːrk/ n.</td><td>丹麦(北欧国家,首都哥本哈根)</td></tr>
+<tr><td>contrast</td><td>/'kɑːntræst/ n.</td><td>对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照, contrasting, contrasts</td></tr>
+<tr><td>ukraine</td><td>— n.</td><td>乌克兰（原苏联一加盟共和国，现已独立）</td></tr>
+<tr><td>gaza</td><td>— n.</td><td>加沙（地中海岸港市）</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>entrusted</td><td>/ɪn'trʌst/ vt.</td><td>委托，信托, entrusting, entrusts</td></tr>
+<tr><td>property</td><td>/'prɑːpərti/ n.</td><td>财产；性质，性能；所有权</td></tr>
+<tr><td>envoys</td><td>/'envɔɪ/ n.</td><td>使者；全权公使</td></tr>
+<tr><td>disputes</td><td>/dɪ'spjuːt/ vt.</td><td>辩论；阻止；抗拒；怀疑vi. 争论n. 辩论；争吵, disputing, disputes</td></tr>
+<tr><td>profitable</td><td>/'prɑːfɪtəbl/ adj.</td><td>有利可图的; 有益的</td></tr>
+<tr><td>minerals</td><td>/'mɪnərəl/ n.</td><td>矿物; 矿石; 矿物质</td></tr>
+<tr><td>beneath</td><td>/bɪ'niːθ/ prep.</td><td>在…之下adv. 在下方</td></tr>
+<tr><td>expense</td><td>/ɪk'spens/ n.</td><td>开支；消费；损失，代价vt. 向…收取费用vi. 被花掉, expensing, expenses</td></tr>
+<tr><td>discreet</td><td>/dɪ'skriːt/ adj.</td><td>小心的；谨慎的</td></tr>
+<tr><td>secretary</td><td>/'sekrəteri/ n.</td><td>秘书书记部长, 大臣</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>deputy</td><td>/'depjuti/ n.</td><td>代理人，代表adj. 副的；代理的</td></tr>
+<tr><td>commentary</td><td>/'kɑːmənteri/ n.</td><td>实况报道，解说词评论；评注</td></tr>
+<tr><td>boasts</td><td>/boʊst/ n.</td><td>自吹自擂, 自夸的话vt. & vi. 自夸vt. 有(引以为荣的事物), boasting, boasts</td></tr>
+<tr><td>permanently</td><td>/'pɜːrmənəntli/ adv.</td><td>永久地;长期不变地</td></tr>
+<tr><td>completely</td><td>/kəm'pliːt/ adj.</td><td>完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善, completest 缩 写: comp, cpl</td></tr>
+<tr><td>addresses</td><td>/ə'dres/ v.</td><td>写（收信人）姓名地址；致函演说；演讲称呼（某人）；冠以（某种称呼）设法解决；处理；对付向…说话n. 地址；住址；通信处 网址；电子邮件地址 演讲，演说 称呼 【</td></tr>
+<tr><td>pro</td><td>/proʊ/ n.</td><td>从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞成；支持Pro脯氨酸PROabbr. P</td></tr>
+<tr><td>poll</td><td>/poʊl/ n.</td><td>民意测验；投票；投票数；投票所vt. 剪短；对…进行民意测验；获得选票；投票vi. 投票adj. 剪过毛的；修过枝的；无角的, polling, polls</td></tr>
+<tr><td>fickle</td><td>/'fɪkl/ adj.</td><td>易变的；浮躁的；变幻无常的</td></tr>
+<tr><td>heal</td><td>/hiːl/ vt.</td><td>治愈，痊愈；和解vi. 痊愈, healing, heals</td></tr>
+<tr><td>wounds</td><td>/wund/ n.</td><td>创伤，伤口vt. 使受伤vi. 受伤，伤害, wounding, wounds</td></tr>
+<tr><td>eagerly</td><td>/'iːɡərli/ adv.</td><td>渴望地；急切地；热心地</td></tr>
+<tr><td>vice</td><td>/vaɪs/ n.</td><td>堕落，邪恶；不良习气，恶习（尤指与性或毒品有关的）罪行，道德败坏行为【英式】老虎钳；台钳（【美式】vise）pref. 副职的；副的</td></tr>
+<tr><td>alongside</td><td>/əˌlɔːŋ'saɪd/ adv.</td><td>靠着边，沿着边prep. (表示位置)在…旁边；沿着…的边；与…并排靠拢着(表示比较)与…放在一起比较(表示伴随)与…一起，与…一道</td></tr>
+<tr><td>afghanistan</td><td>/æf'ɡænɪstæn/ n.</td><td>阿富汗</td></tr>
+<tr><td>iraq</td><td>— n.</td><td>伊拉克（西南亚国家）</td></tr>
+<tr><td>terror</td><td>/'terər/ n.</td><td>恐怖; 恐怖活动引起恐怖的人[事]讨厌的人</td></tr>
+<tr><td>deter</td><td>/dɪ'tɜːr/ vt.</td><td>制止，阻止；使打消念头, deterring, deters</td></tr>
+<tr><td>tantrum</td><td>/'tæntrəm/ n.</td><td>发脾气；发怒</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>legacy</td><td>/'leɡəsi/ n.</td><td>遗产, 遗赠物遗留之物</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>tanker</td><td>/tæŋk/ n.</td><td>（存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内, tanking, tanks</td></tr>
+<tr><td>wave</td><td>/weɪv/ vi.</td><td>波动；起伏；摇动；呈波形；挥手示意vt. 向…挥手示意；使成波浪形；卷（烫）发n. 波浪；波动；高潮；卷曲；挥手示意, waving, waves</td></tr>
+<tr><td>consulting</td><td>/kən'sʌlt/ vt.</td><td>商量；查阅；向…请教vi. 请教；商议；当顾问, consulting, consults</td></tr>
+<tr><td>pervert</td><td>/pər'vɜːrt/ vt.</td><td>使堕落, 把…引入邪路, 使变坏滥用做伪证；妨碍司法公正, perverting, perverts</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>disguise</td><td>/dɪs'ɡaɪz/ vt.</td><td>假装；掩饰；隐瞒n. 伪装；假装；用作伪装的东西, disguising, disguises</td></tr>
+<tr><td>gloomy</td><td>/'ɡluːmi/ adj.</td><td>黑暗的；沮丧的；阴郁的, gloomiest</td></tr>
+<tr><td>picture</td><td>/'pɪktʃər/ n.</td><td>图画，肖像；照片(生动的)描述，写照影片；电影；画面美景，景色情况，事态，局面vt. 绘画；描绘想象，picturing，pictures</td></tr>
+<tr><td>verge</td><td>/vɜːrdʒ/ n.</td><td>边缘；绿地；极限；山墙突瓦；权杖（作为职位标志）</td></tr>
+<tr><td>yielded</td><td>/jiːld/ vt.</td><td>出产；屈服；放弃vi. 屈服，投降n. 收益；产量, yielding, yields</td></tr>
+<tr><td>tariff</td><td>/'tærɪf/ n.</td><td>关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表, tariffing, tariffs</td></tr>
+<tr><td>treasury</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>secretary</td><td>/'sekrəteri/ n.</td><td>秘书书记部长, 大臣</td></tr>
+<tr><td>extend</td><td>/ɪk'stend/ vt.</td><td>& vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出，extending，extends</td></tr>
+<tr><td>due</td><td>/duː/ adj.</td><td>到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）</td></tr>
+<tr><td>expire</td><td>/ɪk'spaɪər/ vi.</td><td>期满, (期限)终止断气, 死亡, expiring, expires</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>chamber</td><td>/'tʃeɪmbər/ n.</td><td>（身体或器官内的）室，膛；房间；会所adj. 室内的；私人的，秘密的vt. 把…关在室内；装填（弹药等）, chambering, chambers</td></tr>
+<tr><td>commerce</td><td>/'kɑːmɜːrs/ n.</td><td>商业, 贸易</td></tr>
+<tr><td>prospects</td><td>/'prɑːspekt/ n.</td><td>景象，景色前景；前途可能成为主顾的人；有希望的候选人vi. 勘探；勘察，prospecting，prospects</td></tr>
+<tr><td>profitability</td><td>/ˌprɑːfɪtə'bɪləti/ n.</td><td>获利(状况)，盈利(情况)</td></tr>
+<tr><td>nvidia</td><td>— </td><td>恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商</td></tr>
+<tr><td>revenues</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>brand</td><td>/brænd/ n.</td><td>商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责, branding, brands</td></tr>
+<tr><td>retailer</td><td>/'riːteɪlər/ n.</td><td>传播的人；零售商</td></tr>
+<tr><td>fortune</td><td>/'fɔːrtʃən/ n.</td><td>运气；财富；命运vt. 给予财富vi. 偶然发生, fortuning, fortunes</td></tr>
+<tr><td>pleasantries</td><td>/'plezntri/ n.</td><td>客气话;客套;礼仪</td></tr>
+<tr><td>purchases</td><td>/'pɜːrtʃəs/ n.</td><td>购买；紧握；起重装置vt. 购买；赢得vi. 购买东西, purchasing, purchases</td></tr>
+<tr><td>foul</td><td>/faʊl/ adj.</td><td>邪恶的；污秽的；犯规的；淤塞的vt. 弄脏；犯规；淤塞；缠住，妨害vi. 犯规；缠结；腐烂n. 犯规；缠绕adv. 违反规则地，不正当地, foulest</td></tr>
+<tr><td>sentiment</td><td>/'sentɪmənt/ n.</td><td>(对怜悯、怀旧等的)柔情态度或意见观点; 意见</td></tr>
+<tr><td>issue</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>tariff</td><td>/'tærɪf/ n.</td><td>关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表, tariffing, tariffs</td></tr>
+<tr><td>restrictions</td><td>/rɪ'strɪkʃn/ n.</td><td>约束，限制管制，限定；法律，规章</td></tr>
+<tr><td>gear</td><td>/ɡɪr/ n.</td><td>用具，设备，衣服齿轮；传动装置；(排)挡vi. 换挡vt. 使兴奋起来；使准备好vt. & vi. (使)搭配；(使)适合，gearing，gears</td></tr>
+<tr><td>isolate</td><td>/'aɪsəleɪt/ vt.</td><td>使孤立；使绝缘；使隔离n. 隔离种群vi. 孤立；隔离adj. 隔离的；孤立的, isolating, isolates</td></tr>
+<tr><td>corporate</td><td>/'kɔːrpərət/ adj.</td><td>社团的, 法人的</td></tr>
+<tr><td>constructive</td><td>/kən'strʌktɪv/ adj.</td><td>建设的,建设性的</td></tr>
+<tr><td>strategic</td><td>/strə'tiːdʒɪk/ adj.</td><td>战略(上)的有战略意义的; 至关重要的</td></tr>
+<tr><td>crack</td><td>/kræk/ vt.</td><td>& vi. (使…)开裂, 破裂(使)身体上或精神上垮掉打开, 砸开(使)发出爆裂声n. 裂缝, 缝隙噼啪声, 爆裂声意外的一下重击试图, 尝试俏皮话强效可卡因</td></tr>
+<tr><td>industries</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>entail</td><td>/ɪn'teɪl/ vt.</td><td>使…成为必要, 需要限定继承, entailing, entails</td></tr>
+<tr><td>employing</td><td>/ɪm'plɔɪ/ vt.</td><td>使用，采用；雇用；使忙于，使从事于n. 雇用；使用, employing, employs</td></tr>
+<tr><td>censors</td><td>/'sensər/ vt.</td><td>审查，检查n. 检查员；潜意识压抑力；信件检查员, censoring, censors</td></tr>
+<tr><td>explanation</td><td>/ˌeksplə'neɪʃn/ n.</td><td>解释, 说明能说明某事缘由的言语、事实、情况等</td></tr>
+<tr><td>central</td><td>/'sentrəl/ adj.</td><td>中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的</td></tr>
+<tr><td>obstacles</td><td>/'ɑːbstəkl/ n.</td><td>障碍(物), 妨碍</td></tr>
+<tr><td>chairman</td><td>/'tʃermən/ n.</td><td>主席，会长；董事长, chairmanning, chairmans</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>commission</td><td>/kə'mɪʃn/ n.</td><td>授权, 委托委员会佣金, 回扣vt. 委任, 委托, commissioning, commissions</td></tr>
+<tr><td>leverage</td><td>/'levərɪdʒ/ n.</td><td>（能够操控形势的）影响力，手段，优势 杠杆力；杠杆作用v. 举债经营；为…融资有效利用某物（资源、优势、工具等）, leveraging, leverages</td></tr>
+<tr><td>diminished</td><td>/dɪ'mɪnɪʃ/ vt.</td><td>使减少；使变小vi. 变小；减少，缩小, diminishing, diminishes</td></tr>
+<tr><td>authorities</td><td>/ə'θɔːrəti/ n.</td><td>威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗</td></tr>
+<tr><td>leading</td><td>/ˈliːdɪŋ/ adj.</td><td>主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）</td></tr>
+<tr><td>processors</td><td>/'prɑːsesər/ n.</td><td>加工、处理事物的人〔设备、产业〕(计算机的)中央处理器数据处理机</td></tr>
+<tr><td>domestic</td><td>/də'mestɪk/ adj.</td><td>国内的；家庭的；驯养的；一心只管家务的</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>persistently</td><td>/pər'sɪstənt/ adj.</td><td>持续的; 不断的</td></tr>
+<tr><td>revenues</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>sooner</td><td>/ˈsunɚ/ n.</td><td>（美）抢先占有土地者（在政府开放西部前）</td></tr>
+<tr><td>snacks</td><td>/snæk/ n.</td><td>小吃；点心；快餐vi. 吃快餐；吃点心，snacking，snacks</td></tr>
+<tr><td>fall</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>investing</td><td>/ɪn'vest/ vt.</td><td>投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买, investing, invests</td></tr>
+<tr><td>shrinking</td><td>/ʃrɪŋk/ vt.</td><td>& vi. 收缩；退缩，shrunk shrunk，shrunken shrinking，shrinks</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>groups</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>consulting</td><td>/kən'sʌlt/ vt.</td><td>商量；查阅；向…请教vi. 请教；商议；当顾问, consulting, consults</td></tr>
+<tr><td>semiconductor</td><td>/'semikəndʌktər/ n.</td><td>〈物〉半导体</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>spot</td><td>/spɑːt/ n.</td><td>斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Positioning and Tracki</td></tr>
+<tr><td>revenue</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>gear</td><td>/ɡɪr/ n.</td><td>用具，设备，衣服齿轮；传动装置；(排)挡vi. 换挡vt. 使兴奋起来；使准备好vt. & vi. (使)搭配；(使)适合，gearing，gears</td></tr>
+<tr><td>race</td><td>/reɪs/ n.</td><td>种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACEabbr. Radiation Adap</td></tr>
+<tr><td>resistance</td><td>/rɪ'zɪstəns/ n.</td><td>抵抗, 反抗, 抵抗能力阻力电阻, 热阻</td></tr>
+<tr><td>obstacle</td><td>/'ɑːbstəkl/ n.</td><td>障碍(物), 妨碍</td></tr>
+<tr><td>overcome</td><td>/ˌoʊvər'kʌm/ vt.</td><td>& vi. 战胜；克服vt. 被(烟、感情等)熏[压]倒，使受不了，overcoming，overcomes</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>route</td><td>/ruːt，raʊt/ n.</td><td>路, 路途, 路线, 路程, routing, routes</td></tr>
+<tr><td>nvidia</td><td>— </td><td>恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商</td></tr>
+<tr><td>negotiable</td><td>/nɪ'ɡoʊʃiəbl/ adj.</td><td>可谈判的;可协商的;可商量的(票据)可兑现的</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>version</td><td>/'vɜːrʒn/ n.</td><td>变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本</td></tr>
+<tr><td>simply</td><td>/'sɪmpli/ adv.</td><td>简单地；朴素地；简直；仅仅；坦白地</td></tr>
+<tr><td>bilateral</td><td>/ˌbaɪ'lætərəl/ adj.</td><td>双边的, 双方的</td></tr>
+<tr><td>eases</td><td>/iːz/ vt.</td><td>减轻，缓和；使安心n. 安逸，悠闲；轻松，舒适vi. 减轻，缓和；放松；灵活地移动EASEabbr. Electronic Airborne Systems E</td></tr>
+<tr><td>tariffs</td><td>/'tærɪf/ n.</td><td>关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表, tariffing, tariffs</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day27.html" class="nav-btn">← Day 27</a>
+  <a href="day29.html" class="nav-btn">Day 29 →</a>
+</div>
+
+<div class="progress">📖 Day 28 of 42</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-09-26</div>
+
+</body>
+</html>

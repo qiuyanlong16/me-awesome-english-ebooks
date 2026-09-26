@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Briefing | Disappointment guaranteed</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-09-26</div>
+
+<h1 class="article-title">Briefing | Disappointment guaranteed</h1>
+<div class="article-section">Briefing</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>investigations <span class="annot" data-tooltip="actually /'æktʃuəl/ adj. 真实的，实际的；现行的，目前的副 词: actually">actually</span> happen,” notes Celso Rocha de Barros, an <span class="annot" data-tooltip="academic /ˌækə'demɪk/ adj. 学院的；学术的；理论的n. 大学生，大学教师；学者副 词: academically">academic</span>. Journalists in India and Turkey may look on with <span class="annot" data-tooltip="envy /'envi/ n. 羡慕；嫉妒，妒忌vt. 羡慕；嫉妒，妒忌vi. 感到妒忌；显示出妒忌名 词: envier">envy</span>. Brazil has vanquished hunger, hyperinflation, military rule and a coup attempt in just a few <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span>. Despite dysfunction, it muddles through. The next presidential term, however, is likely to be a shambles. <span class="annot" data-tooltip="neither /'niːðər/ conj. 既不；也不adv. 两个都不；既不……也不adj. 两者都不的det./pron. 两者都不">Neither</span> <span class="annot" data-tooltip="leading /ˈliːdɪŋ/ adj. 主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）">leading</span> <span class="annot" data-tooltip="candidate /'kændɪdət，ˈkændɪdeɪt/ n. 申请求职者, 候选人报考者名 词: candidacy">candidate</span> seems willing to fix the government’s finances. Neither will have the backing he needs in Congress to institute meaningful <span class="annot" data-tooltip="reforms /rɪ'fɔːrm/ n. 改革，改良，改造vt. & vi. 改革；改造；改善时 态: reformed，reforming，reforms">reforms</span>. Neither Congress itself nor the courts can fix Brazil’s institutional rot, since they are both implicated in it. Things will get worse before they get better. ■ This article was downloaded by zlibrary from https://www.economist.com/briefing/2026/09/24/brazils-next-president-will-<span class="annot" data-tooltip="either /'iːðər/ pron. (两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的">either</span>- be-a-vengeful-nepo-baby-or-a-doddering-leftie</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Asia</div>
+<p>India’s education system is failing in new ways Australia’s giant data-centre boom Sri Lanka still has to reckon with its <span class="annot" data-tooltip="easter /'iːstər/ n. 〈宗〉复活节">Easter</span> bombings What a <span class="annot" data-tooltip="partial /'pɑːrʃl/ adj. 局部的；不公平的；[口]偏爱的名 词: partialness">partial</span> pardon for Najib Razak says about <span class="annot" data-tooltip="malaysia n. 马来西亚形容词: Malaysian">Malaysia</span> Why relative poverty is <span class="annot" data-tooltip="stubbornly /'stʌbərn/ adj. 顽固的；固执的难以移动、去除、医治等比较级: stubborner，stubbornest">stubbornly</span> high for Japanese children</p>
+<div class="article-separator"></div>
+<div class="article-header">Asia · Asia | Misery machine</div>
+<p>India’s education system is failing in new ways A <span class="annot" data-tooltip="breakneck /'breɪknek/ adj. 要使颈骨折断似的,非常危险的">breakneck</span> expansion has bred new dysfunction—and spurred young people to <span class="annot" data-tooltip="rebel /'rebl/ n. 反政府的人；反叛者；造反者叛逆者vi. 反抗政府；造反反抗权威；叛逆时 态: rebelled，rebelling，re">rebel</span> Sep 24th 2026 INDIA IS talking about education. After a hot summer dominated by youth <span class="annot" data-tooltip="protests /'proʊtest/ n. 抗议；反对vt. & vi. 声明；抗议时 态: protested，protesting，protests">protests</span> that toppled the country’s education minister, attention has stayed on the schools, colleges and universities in which almost 300m Indians are enrolled. The fatal <span class="annot" data-tooltip="collapse /kə'læps/ vi. 倒塌；瓦解；暴跌vt. 使倒塌，使崩溃；使萎陷n. 倒塌；失败；衰竭时 态: collapsed, collapsing">collapse</span> of a student hostel in <span class="annot" data-tooltip="delhi /ˈdɛli/ n. 德里（印度城市名）">Delhi</span> on September 6th quickly became another symbol of neglect. Meanwhile the Cockroach Janta Party (CJP), which led the protests, has encouraged its supporters to report on schools across the country, turning the <span class="annot" data-tooltip="gaze /ɡeɪz/ vi. 凝视, 注视n. 凝视, 端详时 态: gazed, gazing, gazes">gaze</span> of millions on social media onto the shoddy conditions in which Indian children are supposed to learn. The <span class="annot" data-tooltip="spark /spɑːrk/ n. 火花，火星；电火花；一丝，略微；导火线，诱因v. 引发，触发；产生火花（电火花）；点燃；增加趣味（或活力、风味等）时 态">spark</span> of street action was an exam <span class="annot" data-tooltip="leak /liːk/ n. 漏洞，裂缝；泄漏vt. 使渗漏，泄露vi. 漏，渗；泄漏出去时 态: leaked, leaking, leaks">leak</span>. But the fuel was <span class="annot" data-tooltip="rage /reɪdʒ/ n. 愤怒；狂暴，肆虐；情绪激动vi. 大怒，发怒；流行，风行时 态: raged, raging, rages">rage</span> at a system that has become what Yamini Aiyar of Brown University calls a “misery machine”. In what are probably the world’s most selective exams,</p>
+<p>tens of millions of poorly taught students compete for a tiny <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of golden tickets into <span class="annot" data-tooltip="elite /eɪ'liːt/ n. （社会）上层集团；掌权人物；出类拔萃的人，精英adj.（社会）上层集团的；掌权人物的；精英的">elite</span> universities and government jobs. Their families fork out for private coaching, schools and colleges. But for most it ends in disappointment. Only 7% of graduates find a formal job within a year, according to Azim Premji University in Bangalore. Most are unemployed for years, thanks to a yawning gap between the numbers of graduates and jobs (see chart). Poor education is not the <span class="annot" data-tooltip="main /meɪn/ adj. 主要的; 最重要的n. 总管道; 干线">main</span> reason that India is failing to create enough jobs—weak <span class="annot" data-tooltip="governance /'ɡʌvərnəns/ n. 统治;管理;治理;统治方式;管理方法">governance</span> and bad rules that hamper the private sector are more obvious maladies. But it does not help. Even as the country churns out graduates, many firms struggle with hiring. India is “producing people with degrees, not skills,” says Karthik Muralidharan of the University of California, San Diego. For three <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span> Indian education has expanded at <span class="annot" data-tooltip="breakneck /'breɪknek/ adj. 要使颈骨折断似的,非常危险的">breakneck</span> speed. That has <span class="annot" data-tooltip="spawned /spɔːn/ n. 菌丝；卵；产物vt. 产卵；酿成，造成；大量生产vi. 产卵；大量生产时 态: spawned, spawning, s">spawned</span> new problems. To see what is going wrong, follow the <span class="annot" data-tooltip="journey /'dʒɜːrni/ n. 旅行; 行程vi. 旅行">journey</span> of a child. On her first day at school, she might feel thankful. In 1990 almost a <span class="annot" data-tooltip="quarter /'kwɔːrtər/ n. 四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一时 ">quarter</span> of Indian children did not attend primary school. Now just 2% miss out. But as enrolment rose, quality fell. By 2022 a survey of rural schools found three in five children in year five could not read a year-two text. There has since been a modest improvement, with some states pushing teachers to focus on basic literacy</p>
+<p>and numeracy. But most schools still fail to do this, meaning students lack the building blocks they need to learn. As a result, many sit <span class="annot" data-tooltip="quietly /'kwaɪətli/ adv. 安静地；秘密地；平稳地">quietly</span> absorbing little or nothing. That continues at <span class="annot" data-tooltip="secondary /'sekənderi/ adj. 次要的, 次等的中级的, 第二的副 词: secondarily">secondary</span> school. The CJP’s focus on <span class="annot" data-tooltip="shabby /'ʃæbi/ adj. 破旧的；卑鄙的；吝啬的；低劣的比较级: shabbier, shabbiest">shabby</span> classrooms makes sense as a <span class="annot" data-tooltip="campaign /kæm'peɪn/ n. 运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）时">campaign</span> (who can defend <span class="annot" data-tooltip="ceilings /'siːlɪŋ/ n. 天花板，顶棚最高限度，上限高度，上升限度；云幕高度形容词: ceilinged">ceilings</span> with <span class="annot" data-tooltip="holes /hoʊl/ n. 洞，孔；洞穴，穴；突破口vi. 凿洞，穿孔；（高尔夫球等）进洞vt. 凿洞时 态: holed, holing, hol">holes</span>?). But India’s real problem is its teachers. State governments are hopeless at holding them to account, partly because teacher unions act as large voting blocs. In 2024 rural secondary-school teachers were absent for one in every eight days. India has taken part in international PISA assessments only once, in 2009. Its schools did miserably, coming in the bottom three out of 74 countries and regions in reading, maths and science. No surprise then that parents are looking elsewhere. Almost 100m Indian children attend fee-paying schools. That is 39% of kids, up from 32% in 2015. A handful are excellent, but most are budget private schools for families who <span class="annot" data-tooltip="scrape /skreɪp/ v. 用工具刮；刮掉；擦伤；挖坑；刮出刺耳声；朝后拢头发；不入调地演奏小提琴；在面包上薄涂一层（黄油）；勉强维持；险胜；将就；">scrape</span> by. It is good that parents are demanding better, and in theory a growing private sector leaves the state with more resources per child. But this mass exit means politicians feel even less pressure to <span class="annot" data-tooltip="raise /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raise</span> standards. The private sector is also poorly regulated. New problems are thus piled on top of old ones. The same dynamic is under way when a student <span class="annot" data-tooltip="reaches /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reaches</span> the booming tertiary sector. Around 30% of Indian children study past school, up from 20% a <span class="annot" data-tooltip="decade /'dekeɪd/ n. 十年，十年期；十">decade</span> ago. Much of the <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> is students from lower castes. It has been accommodated largely by the growth of “affiliated colleges”—small, privately run institutions that operate under the umbrella of a university. At COMM-IT Career Academy, an affiliated college in south <span class="annot" data-tooltip="delhi /ˈdɛli/ n. 德里（印度城市名）">Delhi</span>, a clutch of youthful students say they are paying 40,000 rupees ($420) a year. Most come from poor families, for whom this is a big and risky investment. They lacked the grades for public universities, where fees are much lower. “There is a lot of pressure,” says one. “Too much!” another exclaims. The teachers are nice, they say, though the facilities are basic. The college advertises itself as one of the “Best collages [sic] in Delhi”; its website features a <span class="annot" data-tooltip="carousel /ˌkærə'sel/ n. 旋转木马">carousel</span> of “distinguished alumni” in <span class="annot" data-tooltip="corporate /'kɔːrpərət/ adj. 社团的, 法人的副 词: corporately">corporate</span> jobs.</p>
+<p>More than 10,000 such colleges have sprouted in the past <span class="annot" data-tooltip="decade /'dekeɪd/ n. 十年，十年期；十">decade</span>. Experts have concerns. One problem is that cash-strapped universities now depend on the <span class="annot" data-tooltip="affiliates /ə'fɪlieɪt/ v. （使）附属，隶属；加入，加盟，并入；接纳；紧密联系">affiliates</span> for <span class="annot" data-tooltip="revenue /'revənuː/ n. 收入，收益；财政收入，税收">revenue</span>, and so have little incentive to insist on high standards. And poor <span class="annot" data-tooltip="schooling /'skuːlɪŋ/ n. 学校教育；训练；学费v. 教育，培养；使学会（school的现在分词形式）；训练">schooling</span> means many students are already years behind when they start college. No <span class="annot" data-tooltip="wonder /'wʌndər/ vt. & vi. 对…感到疑惑想知道；问自己n. 惊奇，惊叹，惊异，惊诧奇人，奇才奇观，奇景，奇迹，奇事时 态: wonder">wonder</span> some businesses believe that degrees are worthless. Survey the whole system, and three things stand out. The first is that India has only <span class="annot" data-tooltip="partially /'pɑːrʃl/ adj. 局部的；不公平的；[口]偏爱的名 词: partialness">partially</span> escaped its history. The country’s early leaders neglected mass education, believing industrial modernisation could be achieved with a small <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of <span class="annot" data-tooltip="elite /eɪ'liːt/ n. （社会）上层集团；掌权人物；出类拔萃的人，精英adj.（社会）上层集团的；掌权人物的；精英的">elite</span> schools and universities. Today India has a mass education system, but it remains highly elitist: a small number of high- quality institutions—largely occupied by the privileged—followed by a long tail of poor ones. “We never designed a system focused on the median child,” says Amit Basole of Azim Premji University. The second is that education has too often become a racket. Private schools take in perhaps $30bn a year, and coaches more than $8bn. Both prey on aspiration. Poor families <span class="annot" data-tooltip="invest /ɪn'vest/ vt. 投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买时 态: invested, investing, invests">invest</span> in low-grade degrees that offer little <span class="annot" data-tooltip="prospect /'prɑːspekt/ n. 景象，景色前景；前途可能成为主顾的人；有希望的候选人vi. 勘探；勘察时 态: prospected，prospecti">prospect</span> of a good job. In a country like India, a growing private market needs strong regulation. Instead, many politicians see it as a way to make money, says Santosh Mehrotra of Jawaharlal Nehru University. “Who has set up these affiliated colleges? It’s the politicians.” Third is misallocation. India’s education system provides a poor return on investment. It keeps growing partly because it has more than one function. For families a degree is a social-status signal. For women it is a way of improving marriage <span class="annot" data-tooltip="prospects /'prɑːspekt/ n. 景象，景色前景；前途可能成为主顾的人；有希望的候选人vi. 勘探；勘察时 态: prospected，prospecti">prospects</span>. Even <span class="annot" data-tooltip="manual /'mænjuəl/ adj. 用手的, 手工的n. 手册, 指南副 词: manually">manual</span> jobs often now, needlessly, demand degrees. The CJP’s success has been to <span class="annot" data-tooltip="raise /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raise</span> education’s salience. Politicians are frightened because the <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span>’s message has wide appeal—both to the students caught up in the misery machine, and to the parents greasing its wheels. Yet the failures of Indian education are systemic. They will not be fixed as easily as a leaky classroom roof. ■ Stay on top of our India <span class="annot" data-tooltip="coverage /'kʌvərɪdʒ/ n. 新闻报道, 报道量覆盖范围">coverage</span> by signing up to <span class="annot" data-tooltip="essential /ɪ'senʃl/ adj. 基本的；必要的；本质的；精华的">Essential</span> India, our free weekly newsletter.</p>
+<p>This article was downloaded by zlibrary from https://www.economist.com/asia/2026/09/22/indias-education-system-is-failing-in- new-ways</p>
+<div class="article-separator"></div>
+<div class="article-header">Asia · Asia | G’dAI mate</div>
+<p>Australia’s giant data-centre boom Why the lucky country is <span class="annot" data-tooltip="striking /'straɪkɪŋ/ adj. 显著的，突出的引人注目的；容貌出众的副 词: strikingly">striking</span> AI paydirt Sep 24th 2026 AUstralia gets by with a fair dose of luck. Now it wants intelligence, too. It has set about building data centres, the engine rooms of the global <span class="annot" data-tooltip="drive /draɪv/ vt. 驱赶驱使, 促使敲, 击vt. & vi. 驾驶n. 乘车旅行私人车道传动, 驱动干劲, 积极性, 能动性紧迫, 逼迫,">drive</span> for artificial intelligence. Investors have plans to pour some $156bn into computing <span class="annot" data-tooltip="clusters /'klʌstər/ n. (果实、花等的)串, 簇(人、物等的)群, 组vt. & vi. (使)集中时 态: clustered, cluste">clusters</span> there—eclipsed only by the United States at $1.8trn and China at $295bn. The reasons for this are, as with Australia’s <span class="annot" data-tooltip="mineral /'mɪnərəl/ n. 矿物; 矿石; 矿物质">mineral</span> riches, mostly the result of good <span class="annot" data-tooltip="fortune /'fɔːrtʃən/ n. 运气；财富；命运vt. 给予财富vi. 偶然发生时 态: fortuned, fortuning, fortunes">fortune</span>. But its government wants to make sure that it lasts. This month <span class="annot" data-tooltip="senior /'siːniər/ adj. 年长的资深的; 地位高的〈美〉最高年级的n. 较年长者高年级学生〈美〉毕业班学生Senior西尼尔(姓氏)">senior</span> Australian officials travelled to San Francisco to woo American AI labs. Chastened by a growing public backlash over data-centre investment in America and feeling competitive pressure to expand their computing power, AI bosses are looking elsewhere. On September 16th it</p>
+<p>was reported that <span class="annot" data-tooltip="anthropic /ænˈθrɑpɪk/ adj. 人类的,有关人类的">Anthropic</span> had signed a deal to <span class="annot" data-tooltip="lease /liːs/ n. 租约；租期；租赁物；租赁权vt. 出租；租得vi. 出租时 态: leased, leasing, leases">lease</span> a 2.16 <span class="annot" data-tooltip="gigawatt /ˈdʒɪɡəˌwɑt/ n. 千兆瓦；十亿瓦特">gigawatt</span> facility in Australia’s north-east, on par with the largest in the world. Some of the reasons for the boom down under are obvious. Australia is sunny and has lots of space. It is among the lowest-cost producers of renewable <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span> anywhere, according to the country’s science agency. The huge amounts of electricity sucked up by chips training and serving AI models is less of a concern if facilities can generate their <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> <span class="annot" data-tooltip="solar /'soʊlər/ adj. 太阳的；日光的；利用太阳光的；与太阳相关的n. 日光浴室">solar</span> and wind power. And big <span class="annot" data-tooltip="sheds /ʃed/ n. 棚, 库vt. 流出, 流下蜕皮, 树叶脱落时 态: shed, shedding, sheds">sheds</span> <span class="annot" data-tooltip="emitting /i'mɪt/ vt. 发出，放射；发行；发表EMITabbr. Electromagnetic Induction Tweeter 电磁感应高">emitting</span> strange noises can be kept <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> away from the population. Other <span class="annot" data-tooltip="motives /moʊ'tiːf/ n. 主题；动机；图形；主旨；意念">motives</span> are less <span class="annot" data-tooltip="intuitive /ɪn'tuːɪtɪv/ adj. 有直觉力的;凭直觉获知的副 词: intuitively">intuitive</span>. India is Anthropic’s second-largest market by usage, and Singapore and South Korea (<span class="annot" data-tooltip="alongside /əˌlɔːŋ'saɪd/ adv. 靠着边，沿着边prep. (表示位置)在…旁边；沿着…的边；与…并排靠拢着(表示比较)与…放在一起比较(表示伴随)与…一">alongside</span> Australia) have high AI adoption rates. But American companies prefer to avoid running expensive subsea internet <span class="annot" data-tooltip="cables /'keɪbl/ n. (船只、桥梁等上的)巨缆, 钢索电缆vt. & vi. 给(某人)发电报, 打电报告诉(某人)Cable凯布尔(姓氏)时">cables</span> through the South China Sea, where they could be <span class="annot" data-tooltip="vulnerable /'vʌlnərəbl/ adj. 易受伤的, 脆弱的, 敏感的">vulnerable</span> to sabotage in a potential conflict involving China. So most new cables running from America to Asia first stop off in Australia, making it a natural home for compute serving Asia. It helps considerably that the “lucky country” is friends with America and enjoys the rule of law. AI labs worry about their model weights being nicked by adversaries. Australia is a member of the Five Eyes alliance of Anglophone spooks (see International section). Its <span class="annot" data-tooltip="cyber adj. 计算机(网络)的；信息技术的">cyber</span> agencies are used to protecting sensitive American data. And Australia enforces American export controls, limiting the risk of sought-after <span class="annot" data-tooltip="nvidia 恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商">Nvidia</span> chips being siphoned off to competitor countries, namely China. Australia’s <span class="annot" data-tooltip="pitch /pɪtʃ/ n. 球场音调，音高程度；强度；高度沥青颠簸斜度，坡度商贩摊位，艺人表演场地推销商品的话vt. 投，掷，扔为…定音调用人们易懂">pitch</span> comes with some “ground rules”, says Andrew Charlton, the minister responsible for AI. Its government is eager to head off any possible populist backlash, so it plans to introduce a set of basic standards for new data centres: they must generate more electricity than they take from the <span class="annot" data-tooltip="grid /ɡrɪd/ n. 格子,格栏地图上的坐标方格输电网">grid</span>, pay for the costs of grid connection, be kept away from homes and schools, and <span class="annot" data-tooltip="minimise vt. 把…减至最低数量〔程度〕对(某事物)作最低估计;极力贬低(某事物)的价值〔重要性〕">minimise</span> water use. Such standards are “tough but in the long- term interest of the companies themselves,” says Mr Charlton. The government is also <span class="annot" data-tooltip="keen /kiːn/ adj. 锋利的热衷的，热心的，渴望(做某事)激烈的，紧张的良好的；敏锐的，敏捷的比较级: keener，keenest">keen</span> to ensure that the income from operating data centres does not only flow to <span class="annot" data-tooltip="silicon /'sɪlɪkən/ n. 〈化〉硅">Silicon</span> <span class="annot" data-tooltip="valley /'væli/ n. 流域；山谷；溪谷">Valley</span>. Unlike iron-ore mines, data centres <span class="annot" data-tooltip="sustain /sə'steɪn/ vt. 承受，支撑维持长期保持；使继续经受，遭受时 态: sustained，sustaining，sustains">sustain</span> few jobs once construction is <span class="annot" data-tooltip="complete /kəm'pliːt/ adj. 完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善比较级: complete">complete</span> and are therefore</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>actually</td><td>/'æktʃuəl/ adj.</td><td>真实的，实际的；现行的，目前的</td></tr>
+<tr><td>academic</td><td>/ˌækə'demɪk/ adj.</td><td>学院的；学术的；理论的n. 大学生，大学教师；学者</td></tr>
+<tr><td>envy</td><td>/'envi/ n.</td><td>羡慕；嫉妒，妒忌vt. 羡慕；嫉妒，妒忌vi. 感到妒忌；显示出妒忌</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>neither</td><td>/'niːðər/ conj.</td><td>既不；也不adv. 两个都不；既不……也不adj. 两者都不的det./pron. 两者都不</td></tr>
+<tr><td>leading</td><td>/ˈliːdɪŋ/ adj.</td><td>主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）</td></tr>
+<tr><td>candidate</td><td>/'kændɪdət，ˈkændɪdeɪt/ n.</td><td>申请求职者, 候选人报考者</td></tr>
+<tr><td>reforms</td><td>/rɪ'fɔːrm/ n.</td><td>改革，改良，改造vt. & vi. 改革；改造；改善，reforming，reforms</td></tr>
+<tr><td>either</td><td>/'iːðər/ pron.</td><td>(两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的</td></tr>
+<tr><td>easter</td><td>/'iːstər/ n.</td><td>〈宗〉复活节</td></tr>
+<tr><td>partial</td><td>/'pɑːrʃl/ adj.</td><td>局部的；不公平的；[口]偏爱的</td></tr>
+<tr><td>malaysia</td><td>— n.</td><td>马来西亚</td></tr>
+<tr><td>stubbornly</td><td>/'stʌbərn/ adj.</td><td>顽固的；固执的难以移动、去除、医治等，stubbornest</td></tr>
+<tr><td>breakneck</td><td>/'breɪknek/ adj.</td><td>要使颈骨折断似的,非常危险的</td></tr>
+<tr><td>rebel</td><td>/'rebl/ n.</td><td>反政府的人；反叛者；造反者叛逆者vi. 反抗政府；造反反抗权威；叛逆，rebelling，rebels</td></tr>
+<tr><td>protests</td><td>/'proʊtest/ n.</td><td>抗议；反对vt. & vi. 声明；抗议，protesting，protests</td></tr>
+<tr><td>collapse</td><td>/kə'læps/ vi.</td><td>倒塌；瓦解；暴跌vt. 使倒塌，使崩溃；使萎陷n. 倒塌；失败；衰竭, collapsing, collapses</td></tr>
+<tr><td>delhi</td><td>/ˈdɛli/ n.</td><td>德里（印度城市名）</td></tr>
+<tr><td>gaze</td><td>/ɡeɪz/ vi.</td><td>凝视, 注视n. 凝视, 端详, gazing, gazes</td></tr>
+<tr><td>spark</td><td>/spɑːrk/ n.</td><td>火花，火星；电火花；一丝，略微；导火线，诱因v. 引发，触发；产生火花（电火花）；点燃；增加趣味（或活力、风味等）, sparking, sparks</td></tr>
+<tr><td>leak</td><td>/liːk/ n.</td><td>漏洞，裂缝；泄漏vt. 使渗漏，泄露vi. 漏，渗；泄漏出去, leaking, leaks</td></tr>
+<tr><td>rage</td><td>/reɪdʒ/ n.</td><td>愤怒；狂暴，肆虐；情绪激动vi. 大怒，发怒；流行，风行, raging, rages</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>elite</td><td>/eɪ'liːt/ n.</td><td>（社会）上层集团；掌权人物；出类拔萃的人，精英adj.（社会）上层集团的；掌权人物的；精英的</td></tr>
+<tr><td>main</td><td>/meɪn/ adj.</td><td>主要的; 最重要的n. 总管道; 干线</td></tr>
+<tr><td>governance</td><td>/'ɡʌvərnəns/ n.</td><td>统治;管理;治理;统治方式;管理方法</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>breakneck</td><td>/'breɪknek/ adj.</td><td>要使颈骨折断似的,非常危险的</td></tr>
+<tr><td>spawned</td><td>/spɔːn/ n.</td><td>菌丝；卵；产物vt. 产卵；酿成，造成；大量生产vi. 产卵；大量生产, spawning, spawns</td></tr>
+<tr><td>journey</td><td>/'dʒɜːrni/ n.</td><td>旅行; 行程vi. 旅行</td></tr>
+<tr><td>quarter</td><td>/'kwɔːrtər/ n.</td><td>四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一, quartering, quarters</td></tr>
+<tr><td>quietly</td><td>/'kwaɪətli/ adv.</td><td>安静地；秘密地；平稳地</td></tr>
+<tr><td>secondary</td><td>/'sekənderi/ adj.</td><td>次要的, 次等的中级的, 第二的</td></tr>
+<tr><td>shabby</td><td>/'ʃæbi/ adj.</td><td>破旧的；卑鄙的；吝啬的；低劣的, shabbiest</td></tr>
+<tr><td>campaign</td><td>/kæm'peɪn/ n.</td><td>运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）, campaigning, campai</td></tr>
+<tr><td>ceilings</td><td>/'siːlɪŋ/ n.</td><td>天花板，顶棚最高限度，上限高度，上升限度；云幕高度</td></tr>
+<tr><td>holes</td><td>/hoʊl/ n.</td><td>洞，孔；洞穴，穴；突破口vi. 凿洞，穿孔；（高尔夫球等）进洞vt. 凿洞, holing, holes</td></tr>
+<tr><td>scrape</td><td>/skreɪp/ v.</td><td>用工具刮；刮掉；擦伤；挖坑；刮出刺耳声；朝后拢头发；不入调地演奏小提琴；在面包上薄涂一层（黄油）；勉强维持；险胜；将就；（艰难地）凑集；节俭；用程序从网上下载（</td></tr>
+<tr><td>raise</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>reaches</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>decade</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>delhi</td><td>/ˈdɛli/ n.</td><td>德里（印度城市名）</td></tr>
+<tr><td>carousel</td><td>/ˌkærə'sel/ n.</td><td>旋转木马</td></tr>
+<tr><td>corporate</td><td>/'kɔːrpərət/ adj.</td><td>社团的, 法人的</td></tr>
+<tr><td>decade</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>affiliates</td><td>/ə'fɪlieɪt/ v.</td><td>（使）附属，隶属；加入，加盟，并入；接纳；紧密联系</td></tr>
+<tr><td>revenue</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>schooling</td><td>/'skuːlɪŋ/ n.</td><td>学校教育；训练；学费v. 教育，培养；使学会（school的现在分词形式）；训练</td></tr>
+<tr><td>wonder</td><td>/'wʌndər/ vt.</td><td>& vi. 对…感到疑惑想知道；问自己n. 惊奇，惊叹，惊异，惊诧奇人，奇才奇观，奇景，奇迹，奇事，wondering，wonders</td></tr>
+<tr><td>partially</td><td>/'pɑːrʃl/ adj.</td><td>局部的；不公平的；[口]偏爱的</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>elite</td><td>/eɪ'liːt/ n.</td><td>（社会）上层集团；掌权人物；出类拔萃的人，精英adj.（社会）上层集团的；掌权人物的；精英的</td></tr>
+<tr><td>invest</td><td>/ɪn'vest/ vt.</td><td>投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买, investing, invests</td></tr>
+<tr><td>prospect</td><td>/'prɑːspekt/ n.</td><td>景象，景色前景；前途可能成为主顾的人；有希望的候选人vi. 勘探；勘察，prospecting，prospects</td></tr>
+<tr><td>prospects</td><td>/'prɑːspekt/ n.</td><td>景象，景色前景；前途可能成为主顾的人；有希望的候选人vi. 勘探；勘察，prospecting，prospects</td></tr>
+<tr><td>manual</td><td>/'mænjuəl/ adj.</td><td>用手的, 手工的n. 手册, 指南</td></tr>
+<tr><td>raise</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>coverage</td><td>/'kʌvərɪdʒ/ n.</td><td>新闻报道, 报道量覆盖范围</td></tr>
+<tr><td>essential</td><td>/ɪ'senʃl/ adj.</td><td>基本的；必要的；本质的；精华的</td></tr>
+<tr><td>striking</td><td>/'straɪkɪŋ/ adj.</td><td>显著的，突出的引人注目的；容貌出众的</td></tr>
+<tr><td>drive</td><td>/draɪv/ vt.</td><td>驱赶驱使, 促使敲, 击vt. & vi. 驾驶n. 乘车旅行私人车道传动, 驱动干劲, 积极性, 能动性紧迫, 逼迫, 压力, drives</td></tr>
+<tr><td>clusters</td><td>/'klʌstər/ n.</td><td>(果实、花等的)串, 簇(人、物等的)群, 组vt. & vi. (使)集中, clustering, clusters</td></tr>
+<tr><td>mineral</td><td>/'mɪnərəl/ n.</td><td>矿物; 矿石; 矿物质</td></tr>
+<tr><td>fortune</td><td>/'fɔːrtʃən/ n.</td><td>运气；财富；命运vt. 给予财富vi. 偶然发生, fortuning, fortunes</td></tr>
+<tr><td>senior</td><td>/'siːniər/ adj.</td><td>年长的资深的; 地位高的〈美〉最高年级的n. 较年长者高年级学生〈美〉毕业班学生Senior西尼尔(姓氏)</td></tr>
+<tr><td>anthropic</td><td>/ænˈθrɑpɪk/ adj.</td><td>人类的,有关人类的</td></tr>
+<tr><td>lease</td><td>/liːs/ n.</td><td>租约；租期；租赁物；租赁权vt. 出租；租得vi. 出租, leasing, leases</td></tr>
+<tr><td>gigawatt</td><td>/ˈdʒɪɡəˌwɑt/ n.</td><td>千兆瓦；十亿瓦特</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>solar</td><td>/'soʊlər/ adj.</td><td>太阳的；日光的；利用太阳光的；与太阳相关的n. 日光浴室</td></tr>
+<tr><td>sheds</td><td>/ʃed/ n.</td><td>棚, 库vt. 流出, 流下蜕皮, 树叶脱落, shedding, sheds</td></tr>
+<tr><td>emitting</td><td>/i'mɪt/ vt.</td><td>发出，放射；发行；发表EMITabbr. Electromagnetic Induction Tweeter 电磁感应高频扬声器, emitting, emit</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>motives</td><td>/moʊ'tiːf/ n.</td><td>主题；动机；图形；主旨；意念</td></tr>
+<tr><td>intuitive</td><td>/ɪn'tuːɪtɪv/ adj.</td><td>有直觉力的;凭直觉获知的</td></tr>
+<tr><td>alongside</td><td>/əˌlɔːŋ'saɪd/ adv.</td><td>靠着边，沿着边prep. (表示位置)在…旁边；沿着…的边；与…并排靠拢着(表示比较)与…放在一起比较(表示伴随)与…一起，与…一道</td></tr>
+<tr><td>cables</td><td>/'keɪbl/ n.</td><td>(船只、桥梁等上的)巨缆, 钢索电缆vt. & vi. 给(某人)发电报, 打电报告诉(某人)Cable凯布尔(姓氏), cabling, cables</td></tr>
+<tr><td>vulnerable</td><td>/'vʌlnərəbl/ adj.</td><td>易受伤的, 脆弱的, 敏感的</td></tr>
+<tr><td>cyber</td><td>— adj.</td><td>计算机(网络)的；信息技术的</td></tr>
+<tr><td>nvidia</td><td>— </td><td>恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商</td></tr>
+<tr><td>pitch</td><td>/pɪtʃ/ n.</td><td>球场音调，音高程度；强度；高度沥青颠簸斜度，坡度商贩摊位，艺人表演场地推销商品的话vt. 投，掷，扔为…定音调用人们易懂的方式表述vt. & vi. 搭(帐篷)</td></tr>
+<tr><td>grid</td><td>/ɡrɪd/ n.</td><td>格子,格栏地图上的坐标方格输电网</td></tr>
+<tr><td>minimise</td><td>— vt.</td><td>把…减至最低数量〔程度〕对(某事物)作最低估计;极力贬低(某事物)的价值〔重要性〕</td></tr>
+<tr><td>keen</td><td>/kiːn/ adj.</td><td>锋利的热衷的，热心的，渴望(做某事)激烈的，紧张的良好的；敏锐的，敏捷的，keenest</td></tr>
+<tr><td>silicon</td><td>/'sɪlɪkən/ n.</td><td>〈化〉硅</td></tr>
+<tr><td>valley</td><td>/'væli/ n.</td><td>流域；山谷；溪谷</td></tr>
+<tr><td>sustain</td><td>/sə'steɪn/ vt.</td><td>承受，支撑维持长期保持；使继续经受，遭受，sustaining，sustains</td></tr>
+<tr><td>complete</td><td>/kəm'pliːt/ adj.</td><td>完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善, completest 缩 写: comp, cpl</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day7.html" class="nav-btn">← Day 7</a>
+  <a href="day9.html" class="nav-btn">Day 9 →</a>
+</div>
+
+<div class="progress">📖 Day 8 of 42</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-09-26</div>
+
+</body>
+</html>

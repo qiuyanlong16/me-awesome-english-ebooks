@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Briefing | Disappointment guaranteed</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-09-26</div>
+
+<h1 class="article-title">Briefing | Disappointment guaranteed</h1>
+<div class="article-section">Briefing</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>The root of the problem is the government’s <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> heavy borrowing, which is pushing up rates for everyone else. Its debts amount to almost 100% of GDP. The deficit is over 9% of GDP. The government pays a higher share of GDP in interest than any big countries except Egypt and Pakistan. Brazil’s history of hyperinflation and recessions makes lenders especially <span class="annot" data-tooltip="wary /'weri/ adj. 机警的；谨慎的；惟恐的；考虑周到的比较级: warier, wariest">wary</span>. Much of the debt is linked to local interest rates, meaning every time they go up, so do its servicing costs. Over three <span class="annot" data-tooltip="terms /tɜːrmz/ n. 条款；地位，关系；措辞；术语；价钱（term的复数形式）v. 把…称为（term的三单形式）">terms</span> as president, from 2003 to 2011 and since 2023, Lula has spent <span class="annot" data-tooltip="lavishly /'lævɪʃ/ adj. 浪费的；丰富的；大方的vt. 浪费；慷慨给予；滥用时 态: lavished, lavishing, lavishes">lavishly</span> on handouts and subsidised <span class="annot" data-tooltip="credit /'kredɪt/ n. 赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)时 态:">credit</span>. On September 17th, for instance, he increased payments under the government’s <span class="annot" data-tooltip="flagship /'flæɡʃɪp/ n. 旗舰；佼佼者；（作定语）一流">flagship</span> welfare programme, Bolsa Família, by 15%. Brazilians have happily spent their windfall, which has kept the economy growing and unemployment low. But <span class="annot" data-tooltip="productivity /ˌproʊdʌk'tɪvəti/ n. 生产率, 生产力">productivity</span> has stagnated and consumers appear to be slowing down. Economists expect <span class="annot" data-tooltip="annual /'ænjuəl/ adj. 年度的；每年的n. 年刊，年鉴；一年生植物副 词: annually">annual</span> growth to average around 1% in 2027 and 2028. Earlier this month Lula offered an alarming solution: “We need to put an end to all this nonsense of running a <span class="annot" data-tooltip="surplus /'sɜːrplʌs/ adj. 过剩的, 多余的n. 过剩">surplus</span> and maintaining <span class="annot" data-tooltip="fiscal /'fɪskl/ adj. 国库的；会计的，财政的副 词: fiscally">fiscal</span> discipline.” <span class="annot" data-tooltip="inevitably /ɪn'evɪtəbli/ adv. 不可避免地,必然地">Inevitably</span>, Brazil is <span class="annot" data-tooltip="falling /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">falling</span> behind. In 1980 Brazilians were markedly richer than Chileans and Colombians, not to mention Turks and Chinese, when measured by GDP per person adjusted to account for the cost of living.</p>
+<p>Today Colombians have caught up and the others are all much richer (see chart 2). The Bolsonaros, dyed-in-the-wool populists, are little better. Mr Bolsonaro broke a spending limit that had been imposed in 2016 to regain market confidence. To boost his chances of re-election, he <span class="annot" data-tooltip="tripled /trɪp/ vi. 绊倒；犯错误；远足；轻快地走n. 旅行；绊倒；差错vt. 绊倒；使犯错TRIPabbr. transformation-">tripled</span> the amount of cash handed out under Bolsa Família and almost doubled the <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of recipients. <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">Although</span> Flávio <span class="annot" data-tooltip="pledges /pledʒ/ n. 抵押；保证，誓言；抵押品，典当物vt. 保证，许诺；用……抵押；举杯祝……健康时 态: pledged, pledgin">pledges</span> <span class="annot" data-tooltip="fiscal /'fɪskl/ adj. 国库的；会计的，财政的副 词: fiscally">fiscal</span> sobriety, in July, when his approval ratings began to <span class="annot" data-tooltip="trail /treɪl/ vt. & vi. (使某物)被拖在后面vt. 跟踪，追踪vi. (在比赛等中)输，失败n. 足迹；臭迹小径一缕，一股时 态: ">trail</span> among women, he promised 70m of them free phones and internet. Both <span class="annot" data-tooltip="candidates /'kændɪdət，ˈkændɪdeɪt/ n. 申请求职者, 候选人报考者名 词: candidacy">candidates</span> will struggle to <span class="annot" data-tooltip="tackle /'tækl/ vt. 解决；应付vt. & vi. 捉住；扭倒n. 拦截；擒抱器具，器械，用具滑车，滑轮组时 态: tackled，tackl">tackle</span> the interest <span class="annot" data-tooltip="groups /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">groups</span> that are driving spending up. One is pensioners, who have managed to lock in constant increases to payouts. The minimum <span class="annot" data-tooltip="wage /weɪdʒ/ vi. 进行；发动；从事n. 工资；报偿；代价vt. 开展；进行时 态: waged, waging, wages">wage</span> in Brazil is adjusted <span class="annot" data-tooltip="annually /'ænjuəl/ adj. 年度的；每年的n. 年刊，年鉴；一年生植物副 词: annually">annually</span> based on <span class="annot" data-tooltip="inflation /ɪn'fleɪʃn/ n. (充气而引起的)膨胀通货膨胀">inflation</span> and GDP growth during the two <span class="annot" data-tooltip="prior /'praɪər/ adj. 在先的，在前的；优先的adv. 在前，居先">prior</span> years. <span class="annot" data-tooltip="pensions /ˈpenʃn/ n. 津贴；退休金，抚恤金；膳宿费vt. 发给养老金或抚恤金时 态: pensioned, pensioning, pensi">Pensions</span> are indexed to the minimum wage, as are <span class="annot" data-tooltip="disability /ˌdɪsə'bɪləti/ n. 无能力, 无力残疾, 伤残">disability</span> allowance, unemployment insurance and other benefits. This means that for every increase of one real ($0.19) in the monthly minimum wage, <span class="annot" data-tooltip="annual /'ænjuəl/ adj. 年度的；每年的n. 年刊，年鉴；一年生植物副 词: annually">annual</span> public spending <span class="annot" data-tooltip="rises /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rises</span> by 400m reais. This indexation is devouring the <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">federal</span> budget: 90% of it now goes on <span class="annot" data-tooltip="mandatory /'mændətɔːri/ adj. 命令的;强制的;义务的">mandatory</span> spending, mostly pensions. On current <span class="annot" data-tooltip="trends /trend/ n. 趋势, 倾向流行时 态: trended, trending, trends">trends</span> there will be no money left over for discretionary spending by 2029, precipitating a government <span class="annot" data-tooltip="shutdown /'ʃʌtdaʊn/ n. 关闭, 倒闭">shutdown</span>.</p>
+<p>This geronto-coddling robs the young of better schools, health care and roads. Brazil spends 10% of GDP on <span class="annot" data-tooltip="pensions /ˈpenʃn/ n. 津贴；退休金，抚恤金；膳宿费vt. 发给养老金或抚恤金时 态: pensioned, pensioning, pensi">pensions</span>, about the same as Japan, even though its population is <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> younger. Meanwhile it <span class="annot" data-tooltip="invests /ɪn'vest/ vt. 投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买时 态: invested, investing, invests">invests</span> just 18% of GDP, less than half the share of India. Pampered bureaucrats are another strain on the budget. The constitution says that no official can earn more than <span class="annot" data-tooltip="supreme /su'priːm/ adj. 最高的；至上的最重要的比较级: supremer，supremest 缩 写: supr">Supreme</span> Court judges, who receive $8,865 a month. Yet more than 67,000 <span class="annot" data-tooltip="civil /'sɪvl/ adj. 公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的副 词: civilly">civil</span> servants make far more thanks to untaxed housing, transport and other allowances. These “super-salaries”, as the local press dubs them, lift the median earnings of judges and public prosecutors to 48 times the national figure. (America’s best-paid judge earns just six times the national median <span class="annot" data-tooltip="wage /weɪdʒ/ vi. 进行；发动；从事n. 工资；报偿；代价vt. 开展；进行时 态: waged, waging, wages">wage</span>.) “Brazil has been taken hostage by public servants at the very top,” says Guilherme Coelho of Republica.org, a research <span class="annot" data-tooltip="outfit /'aʊtfɪt/ n. （为特定场合或活动而穿的）全套服装，装束全套装备；成套工具组织；公司；团队；军事单位v. 装备，配备；为…提供设备（或服">outfit</span> that looks at waste in government. Undeserved tax breaks are a third <span class="annot" data-tooltip="burden /'bɜːrdn/ n. 负担；责任；船的载货量vt. 烦扰；使负担；装货于时 态: burdened, burdening, burdens">burden</span>. <span class="annot" data-tooltip="corporate /'kɔːrpərət/ adj. 社团的, 法人的副 词: corporately">Corporate</span>-tax <span class="annot" data-tooltip="loopholes /'luːphoʊl/ n. 枪眼；换气孔；漏洞；射弹孔">loopholes</span>, some of which have been <span class="annot" data-tooltip="knitted /nɪt/ v. 编织；针织；机织织平针（使）紧密结合，严密，紧凑（使）（断骨）愈合，接合n. 编织的衣服；针织衫（knits）时 态: ">knitted</span> into the constitution, cost a whopping 7% of GDP a year, up from 2% in 2003. “Here companies don’t compete for a share of the market, but a share of the government,” says an economist. Doctors, lawyers and other professionals also enjoy sweetheart deals. In theory both <span class="annot" data-tooltip="candidates /'kændɪdət，ˈkændɪdeɪt/ n. 申请求职者, 候选人报考者名 词: candidacy">candidates</span> are determined to fight entrenched interests. Lula has scrapped some tax breaks and made it harder to create new ones. An adviser to Flávio enthusiastically bashes “<span class="annot" data-tooltip="parasites /'pærəsaɪt/ n. 寄生生物；寄生虫；寄生植物；依赖他人过活者">parasites</span>” in the state. Daniella Marques, who leads economic policy for his <span class="annot" data-tooltip="campaign /kæm'peɪn/ n. 运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）时">campaign</span>, has praised Javier Milei, Argentina’s libertarian president, as “a great example”. But when pressed, his team offers few <span class="annot" data-tooltip="specifics /spə'sɪfɪk/ adj. 特殊的，特定的；明确的；详细的；具有特效的n. 特效药；细节；特性副 词: specifically">specifics</span>. In <span class="annot" data-tooltip="practice /'præktɪs/ n. 练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规时 态: practiced，practicing，">practice</span> the winner will struggle to rein in such spending. <span class="annot" data-tooltip="pension /ˈpenʃn/ n. 津贴；退休金，抚恤金；膳宿费vt. 发给养老金或抚恤金时 态: pensioned, pensioning, pensi">Pension</span> <span class="annot" data-tooltip="reform /rɪ'fɔːrm/ n. 改革，改良，改造vt. & vi. 改革；改造；改善时 态: reformed，reforming，reforms">reform</span> is as politically difficult in Brazil as it is everywhere else. Over the past <span class="annot" data-tooltip="decade /'dekeɪd/ n. 十年，十年期；十">decade</span> a series of weak presidents has ceded control of a <span class="annot" data-tooltip="quarter /'kwɔːrtər/ n. 四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一时 ">quarter</span> of discretionary spending to members of Congress, to <span class="annot" data-tooltip="dole /doʊl/ n. 救济物失业救济金时 态: doled, doling, doles">dole</span> out in their districts with little <span class="annot" data-tooltip="oversight /'oʊvərsaɪt/ n. 疏忽, 失察">oversight</span>. Much of the money has ended up in friends’ pockets rather than in local schools or clinics. Over the past four years Lula has been unable to restore order. The next <span class="annot" data-tooltip="parliament /'pɑːrləmənt/ n. 议会, 国会">parliament</span> is likely to be dominated by right-<span class="annot" data-tooltip="wing /wɪŋ/ n. 翅膀；翼；飞翔；派别vt. 使飞；飞过；空运；增加…速度；装以翼vi. 飞行时 态: winged, winging, ">wing</span> parties, which could make it even harder for him to govern. Flávio, too, has failed to win over</p>
+<p>many of them. To advance his <span class="annot" data-tooltip="agenda /ə'dʒendə/ n. （政治）议题；议事日程；目的">agenda</span>, <span class="annot" data-tooltip="either /'iːðər/ pron. (两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的">either</span> man would have to keep buying off Congress. Congress is not the only institution with questionable <span class="annot" data-tooltip="motives /moʊ'tiːf/ n. 主题；动机；图形；主旨；意念">motives</span>. In 2023 the <span class="annot" data-tooltip="supreme /su'priːm/ adj. 最高的；至上的最重要的比较级: supremer，supremest 缩 写: supr">Supreme</span> Court allowed judges to rule in cases that involve firms or individuals with connections to their <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> relatives. Eight of Brazil’s ten current Supreme Court justices have relatives working for law firms representing cases before the court. Unscrupulous <span class="annot" data-tooltip="clients /'klaɪənt/ n. 委托人顾客, 常客">clients</span> hire them in the hope that they will receive special treatment. The ubiquity of influence-peddling has become clear through the <span class="annot" data-tooltip="collapse /kə'læps/ vi. 倒塌；瓦解；暴跌vt. 使倒塌，使崩溃；使萎陷n. 倒塌；失败；衰竭时 态: collapsed, collapsing">collapse</span> of Banco <span class="annot" data-tooltip="master /mæst/ n. 船桅，桅杆；旗杆MASTabbr. Magnetic Annular Shock Tube 磁性环形激波管(风洞研究用)">Master</span>, a <span class="annot" data-tooltip="fraud /frɔːd/ n. 欺诈, 欺骗行为骗子">fraud</span>-riddled lender. Its boss, Daniel Vorcaro, threw <span class="annot" data-tooltip="lavish /'lævɪʃ/ adj. 浪费的；丰富的；大方的vt. 浪费；慷慨给予；滥用时 态: lavished, lavishing, lavishes">lavish</span> parties for politicians and judges, flying in sex workers from Russia, <span class="annot" data-tooltip="venezuela /ˌvenə'zweɪlə/ n. 委内瑞拉形容词: Venezuelan">Venezuela</span> and elsewhere. He had a <span class="annot" data-tooltip="preference /'prefrəns/ n. 较喜欢的东西, 偏爱优待, 优惠, 优先权">preference</span> for foreign <span class="annot" data-tooltip="prostitutes /'prɑːstɪtuːt/ n. 卖淫者；妓女；男妓时 态: prostituted，prostituting，prostitutes">prostitutes</span> because they could not understand their clients’ conversations. At a Halloween party thrown at a nightclub called “Madame Satan”, 120 women attended <span class="annot" data-tooltip="alongside /əˌlɔːŋ'saɪd/ adv. 靠着边，沿着边prep. (表示位置)在…旁边；沿着…的边；与…并排靠拢着(表示比较)与…放在一起比较(表示伴随)与…一">alongside</span> only 20 men, mostly politicians. “Davi’s going crazy asking if the Swiss girls are coming” read a text message between the banker and his fixer, in an <span class="annot" data-tooltip="apparent /ə'pærənt/ adj. 显然的；表面上的副 词: apparently">apparent</span> <span class="annot" data-tooltip="reference /'refrəns/ n. 提及，涉及参考，查阅引文；参考书目证明书；推荐信；证明人；推荐人时 态: referenced，referencing，">reference</span> to Davi Alcolumbre, the head of Congress (he denies this). After Mr Vorcaro was arrested trying to flee on a private jet last November, <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">federal</span> police worked their way through his eight mobile phones. Almost half the Supreme Court had links to him, it turns out. Messages suggest that Mr Vorcaro paid for an <span class="annot" data-tooltip="escort /'eskɔːrt/ n. 陪同；护送者；护航舰；护卫队vt. 护送；陪同；为…护航时 态: escorted, escorting, escort">escort</span> for one justice, bought a $4m stake in a hotel owned by another and hired the wife and sons of two further judges on lavish but <span class="annot" data-tooltip="vague /veɪɡ/ adj. 不明确的；含糊的；模糊的；暧昧的比较级: vaguer, vaguest">vague</span> <span class="annot" data-tooltip="contracts /'kɑːntrækt/ vi. 感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约时 态: contracted, contracting, c">contracts</span>. Brazil’s institutions have thus arrived at a point of <span class="annot" data-tooltip="mutually /'mjuːtʃuəl/ adj. 相互的, 彼此的共同的, 共有的名 词: mutuality">mutually</span> assured destruction. Only the Supreme Court can investigate politicians for crimes, such as <span class="annot" data-tooltip="corruption /kə'rʌpʃn/ n. 堕落;腐化;腐败;贿赂腐烂">corruption</span>. And only politicians can <span class="annot" data-tooltip="impeach /ɪm'piːtʃ/ vt. 控告（某人）犯罪，弹劾；怀疑，提出异议时 态: impeached, impeaching, impeaches">impeach</span> Supreme Court justices, which they are promising to do. Congressmen have an incentive to target judges investigating them, while judges have an incentive to target congressmen who want to impeach them. That the Banco Master scandal involves the entire <span class="annot" data-tooltip="elite /eɪ'liːt/ n. （社会）上层集团；掌权人物；出类拔萃的人，精英adj.（社会）上层集团的；掌权人物的；精英的">elite</span> means that a backroom deal could eventually let everybody off.</p>
+<p><span class="annot" data-tooltip="neither /'niːðər/ conj. 既不；也不adv. 两个都不；既不……也不adj. 两者都不的det./pron. 两者都不">Neither</span> front-runner can <span class="annot" data-tooltip="tackle /'tækl/ vt. 解决；应付vt. & vi. 捉住；扭倒n. 拦截；擒抱器具，器械，用具滑车，滑轮组时 态: tackled，tackl">tackle</span> the rot. Flávio is part of it. He claimed never to have met Mr Vorcaro, which made the <span class="annot" data-tooltip="leak /liːk/ n. 漏洞，裂缝；泄漏vt. 使渗漏，泄露vi. 漏，渗；泄漏出去时 态: leaked, leaking, leaks">leak</span> in May of a recording of the two of them <span class="annot" data-tooltip="speaking /'spikɪŋ/ adj. 演讲的；富于表情的，雄辩的n. 说话；演讲v. 讲（speak的ing形式）">speaking</span> embarrassing, especially because he called the banker “my brother” and asked for $25m to pay for a film about his father. Almost $11m was forthcoming, most of which ended up in a bank account linked to Flávio’s <span class="annot" data-tooltip="actual /'æktʃuəl/ adj. 真实的，实际的；现行的，目前的副 词: actually">actual</span> brother, Eduardo, who lives in <span class="annot" data-tooltip="texas /'teksəs/ n. 德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室">Texas</span>. Flávio has also been investigated for <span class="annot" data-tooltip="allegedly adv. 依其申述">allegedly</span> pocketing the salaries of fake workers while serving on Rio’s local council (he denies it) and for his links to local criminals. A particularly <span class="annot" data-tooltip="infamous /'ɪnfəməs/ adj. 无耻的；声名狼藉的；邪恶的；不名誉的">infamous</span> contact was Adriano da Nóbrega, a former police captain who went on to run a death <span class="annot" data-tooltip="squad /skwɑːd/ n. (军队中的)班, 小队">squad</span>. Flávio nominated Nóbrega for a medal after he was jailed for homicide and gave jobs to his wife and mother. (He says he was unaware they were on his payroll.) Meanwhile, though Lula has not been implicated in the Banco <span class="annot" data-tooltip="master /mæst/ n. 船桅，桅杆；旗杆MASTabbr. Magnetic Annular Shock Tube 磁性环形激波管(风洞研究用)">Master</span> case, some of his <span class="annot" data-tooltip="allies n. （第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者">allies</span> have. His party continues to be tarnished by previous <span class="annot" data-tooltip="corruption /kə'rʌpʃn/ n. 堕落;腐化;腐败;贿赂腐烂">corruption</span> scandals and his son is being investigated for influence-peddling. The <span class="annot" data-tooltip="campaign /kæm'peɪn/ n. 运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）时">campaign</span> has been petty and insubstantial. Flávio’s <span class="annot" data-tooltip="main /meɪn/ adj. 主要的; 最重要的n. 总管道; 干线">main</span> <span class="annot" data-tooltip="proposal /prə'poʊzl/ n. 提议，建议；求婚">proposal</span> is to pardon his father and <span class="annot" data-tooltip="impeach /ɪm'piːtʃ/ vt. 控告（某人）犯罪，弹劾；怀疑，提出异议时 态: impeached, impeaching, impeaches">impeach</span> the judges who jailed him. This month the former head of the air force, Carlos Baptista <span class="annot" data-tooltip="junior /'dʒuːniər/ adj. 年少的, 较年幼的资历较浅的, 地位较低的n. 年少者地位较低者, 晚辈(美国中学或大学的)三年级学生">Junior</span>, published a book detailing how Mr Bolsonaro tried to <span class="annot" data-tooltip="persuade /pər'sweɪd/ vt. & vi. 说服, 劝告时 态: persuaded, persuading, persuades">persuade</span> him and the other military chiefs to stage a coup, floating ideas about how to annul the election he had</p>
+<p>just lost. Mr Bolsonaro dropped the plan only after the army chief warned him, “If you do that, I’ll have to arrest you.” Like his father, Flávio has cast doubt on Brazil’s voting machines, falsely claiming the same kind were used in a stolen election in <span class="annot" data-tooltip="venezuela /ˌvenə'zweɪlə/ n. 委内瑞拉形容词: Venezuelan">Venezuela</span>—a <span class="annot" data-tooltip="complete /kəm'pliːt/ adj. 完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善比较级: complete">complete</span> fabrication. It is unclear if he would accept a Lula victory. Flávio’s other <span class="annot" data-tooltip="proposals /prə'poʊzl/ n. 提议，建议；求婚">proposals</span> are fluff. He says he will decree that “Brazil belongs to the Lord Jesus Christ” and chemically castrate rapists. Victory would spell a close <span class="annot" data-tooltip="alignment /ə'laɪnmənt/ n. 排成直线">alignment</span> with Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>. Flávio and his family have lobbied the Trump administration to <span class="annot" data-tooltip="impose /ɪm'poʊz/ vi. 欺骗；利用；施加影响vt. 强加；以…欺骗；征税时 态: imposed, imposing, imposes">impose</span> <span class="annot" data-tooltip="tariffs /'tærɪf/ n. 关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表时 态: tariffed, tariffing, tar">tariffs</span> and sanctions on Mr Bolsonaro’s enemies. At <span class="annot" data-tooltip="campaign /kæm'peɪn/ n. 运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）时">campaign</span> rallies, supporters have paraded with American flags and inflatable effigies of Mr Trump holding Lula by the scruff. Flávio appears willing to acquiesce to America’s expansive demands over rare earths. The White House wants Brazil to notify it before the sale of any firms or <span class="annot" data-tooltip="assets /'æset/ n. 资产；有用的东西；有利条件；优点">assets</span> involving <span class="annot" data-tooltip="critical /'krɪtɪkl/ adj. 批评的，爱挑剔的；决定性的；危险的；临界的；鉴定的；评论的副 词: critically">critical</span> <span class="annot" data-tooltip="minerals /'mɪnərəl/ n. 矿物; 矿石; 矿物质">minerals</span> and to limit investment by “foreign entities of concern”, in effect giving the United States a veto over the use of Brazil’s minerals. Nevertheless Faria Lima, Brazil’s <span class="annot" data-tooltip="equivalent /ɪ'kwɪvələnt/ adj. 等同的，等效的n. 对等的人（或事物），对应的人（或事物）">equivalent</span> of Wall Street, is <span class="annot" data-tooltip="cautiously /'kɔːʃəsli/ adv. 小心地,谨慎地">cautiously</span> lining up behind Flávio in the hope that he will make good on his talk of spending cuts. Lula, for his part, talks about <span class="annot" data-tooltip="investing /ɪn'vest/ vt. 投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买时 态: invested, investing, invests">investing</span> in defence and artificial intelligence. He has a solid record of reducing deforestation. He has championed laws to spur investment in data centres and in rare earths, albeit with heavy state involvement. “We want to build a supply chain with <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span>-added, not <span class="annot" data-tooltip="simply /'sɪmpli/ adv. 简单地；朴素地；简直；仅仅；坦白地">simply</span> export raw materials in a colonial way, leaving behind only <span class="annot" data-tooltip="holes /hoʊl/ n. 洞，孔；洞穴，穴；突破口vi. 凿洞，穿孔；（高尔夫球等）进洞vt. 凿洞时 态: holed, holing, hol">holes</span> in the ground,” says Guilherme Boulos, a minister working on Lula’s campaign. Yet there is no money to pay for Lula’s ideas and he does not have a credible plan to right the government’s finances. At rallies he <span class="annot" data-tooltip="rambles /'ræmbl/ n. 漫步；漫游；随笔vt. 漫步于…vi. 漫游；漫步；漫谈；闲逛；蔓延时 态: rambled, rambling, ra">rambles</span> on for hours, mainly about his past <span class="annot" data-tooltip="glories /'ɡlɔːri/ n. 光荣，荣誉；赞颂vi. 自豪，骄傲；狂喜">glories</span> and life-story. His much younger wife has taken to posting videos of him working out to prove he is fit. In public he wears a Panama hat to hide scars from the <span class="annot" data-tooltip="removal /rɪ'muːvl/ n. 移动；免职；排除；搬迁">removal</span> of a mole and an operation after a <span class="annot" data-tooltip="fall /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">fall</span> in the <span class="annot" data-tooltip="bathtub /'bæθtʌb/ n. 浴缸">bathtub</span>. Brazil is not a lost cause. Even as politics <span class="annot" data-tooltip="descends /dɪ'send/ vi. 下降；下来；遗传；屈尊；下去vt. 下去；沿…向下时 态: descended, descending, descend">descends</span> into debauched scandal, a <span class="annot" data-tooltip="robust /roʊ'bʌst/ adj. 强健的；健康的；粗野的；粗鲁的副 词: robustly">robust</span> <span class="annot" data-tooltip="civil /'sɪvl/ adj. 公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的副 词: civilly">civil</span> <span class="annot" data-tooltip="society /sə'saɪəti/ n. 社会；社交界；交往；社团">society</span>, thriving free press and independent national police force are holding the powerful to account. “At least in Brazil <span class="annot" data-tooltip="corruption /kə'rʌpʃn/ n. 堕落;腐化;腐败;贿赂腐烂">corruption</span></p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>wary</td><td>/'weri/ adj.</td><td>机警的；谨慎的；惟恐的；考虑周到的, wariest</td></tr>
+<tr><td>terms</td><td>/tɜːrmz/ n.</td><td>条款；地位，关系；措辞；术语；价钱（term的复数形式）v. 把…称为（term的三单形式）</td></tr>
+<tr><td>lavishly</td><td>/'lævɪʃ/ adj.</td><td>浪费的；丰富的；大方的vt. 浪费；慷慨给予；滥用, lavishing, lavishes</td></tr>
+<tr><td>credit</td><td>/'kredɪt/ n.</td><td>赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)，crediting，credits</td></tr>
+<tr><td>flagship</td><td>/'flæɡʃɪp/ n.</td><td>旗舰；佼佼者；（作定语）一流</td></tr>
+<tr><td>productivity</td><td>/ˌproʊdʌk'tɪvəti/ n.</td><td>生产率, 生产力</td></tr>
+<tr><td>annual</td><td>/'ænjuəl/ adj.</td><td>年度的；每年的n. 年刊，年鉴；一年生植物</td></tr>
+<tr><td>surplus</td><td>/'sɜːrplʌs/ adj.</td><td>过剩的, 多余的n. 过剩</td></tr>
+<tr><td>fiscal</td><td>/'fɪskl/ adj.</td><td>国库的；会计的，财政的</td></tr>
+<tr><td>inevitably</td><td>/ɪn'evɪtəbli/ adv.</td><td>不可避免地,必然地</td></tr>
+<tr><td>falling</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>tripled</td><td>/trɪp/ vi.</td><td>绊倒；犯错误；远足；轻快地走n. 旅行；绊倒；差错vt. 绊倒；使犯错TRIPabbr. transformation-induced plasticity 高</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>pledges</td><td>/pledʒ/ n.</td><td>抵押；保证，誓言；抵押品，典当物vt. 保证，许诺；用……抵押；举杯祝……健康, pledging, pledges</td></tr>
+<tr><td>fiscal</td><td>/'fɪskl/ adj.</td><td>国库的；会计的，财政的</td></tr>
+<tr><td>trail</td><td>/treɪl/ vt.</td><td>& vi. (使某物)被拖在后面vt. 跟踪，追踪vi. (在比赛等中)输，失败n. 足迹；臭迹小径一缕，一股，trailing，trails</td></tr>
+<tr><td>candidates</td><td>/'kændɪdət，ˈkændɪdeɪt/ n.</td><td>申请求职者, 候选人报考者</td></tr>
+<tr><td>tackle</td><td>/'tækl/ vt.</td><td>解决；应付vt. & vi. 捉住；扭倒n. 拦截；擒抱器具，器械，用具滑车，滑轮组，tackling，tackles</td></tr>
+<tr><td>groups</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>wage</td><td>/weɪdʒ/ vi.</td><td>进行；发动；从事n. 工资；报偿；代价vt. 开展；进行, waging, wages</td></tr>
+<tr><td>annually</td><td>/'ænjuəl/ adj.</td><td>年度的；每年的n. 年刊，年鉴；一年生植物</td></tr>
+<tr><td>inflation</td><td>/ɪn'fleɪʃn/ n.</td><td>(充气而引起的)膨胀通货膨胀</td></tr>
+<tr><td>prior</td><td>/'praɪər/ adj.</td><td>在先的，在前的；优先的adv. 在前，居先</td></tr>
+<tr><td>pensions</td><td>/ˈpenʃn/ n.</td><td>津贴；退休金，抚恤金；膳宿费vt. 发给养老金或抚恤金, pensioning, pensions</td></tr>
+<tr><td>disability</td><td>/ˌdɪsə'bɪləti/ n.</td><td>无能力, 无力残疾, 伤残</td></tr>
+<tr><td>annual</td><td>/'ænjuəl/ adj.</td><td>年度的；每年的n. 年刊，年鉴；一年生植物</td></tr>
+<tr><td>rises</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>mandatory</td><td>/'mændətɔːri/ adj.</td><td>命令的;强制的;义务的</td></tr>
+<tr><td>trends</td><td>/trend/ n.</td><td>趋势, 倾向流行, trending, trends</td></tr>
+<tr><td>shutdown</td><td>/'ʃʌtdaʊn/ n.</td><td>关闭, 倒闭</td></tr>
+<tr><td>pensions</td><td>/ˈpenʃn/ n.</td><td>津贴；退休金，抚恤金；膳宿费vt. 发给养老金或抚恤金, pensioning, pensions</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>invests</td><td>/ɪn'vest/ vt.</td><td>投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买, investing, invests</td></tr>
+<tr><td>supreme</td><td>/su'priːm/ adj.</td><td>最高的；至上的最重要的，supremest 缩 写: supr</td></tr>
+<tr><td>civil</td><td>/'sɪvl/ adj.</td><td>公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的</td></tr>
+<tr><td>wage</td><td>/weɪdʒ/ vi.</td><td>进行；发动；从事n. 工资；报偿；代价vt. 开展；进行, waging, wages</td></tr>
+<tr><td>outfit</td><td>/'aʊtfɪt/ n.</td><td>（为特定场合或活动而穿的）全套服装，装束全套装备；成套工具组织；公司；团队；军事单位v. 装备，配备；为…提供设备（或服装），outfitting，outfit</td></tr>
+<tr><td>burden</td><td>/'bɜːrdn/ n.</td><td>负担；责任；船的载货量vt. 烦扰；使负担；装货于, burdening, burdens</td></tr>
+<tr><td>corporate</td><td>/'kɔːrpərət/ adj.</td><td>社团的, 法人的</td></tr>
+<tr><td>loopholes</td><td>/'luːphoʊl/ n.</td><td>枪眼；换气孔；漏洞；射弹孔</td></tr>
+<tr><td>knitted</td><td>/nɪt/ v.</td><td>编织；针织；机织织平针（使）紧密结合，严密，紧凑（使）（断骨）愈合，接合n. 编织的衣服；针织衫（knits）</td></tr>
+<tr><td>candidates</td><td>/'kændɪdət，ˈkændɪdeɪt/ n.</td><td>申请求职者, 候选人报考者</td></tr>
+<tr><td>parasites</td><td>/'pærəsaɪt/ n.</td><td>寄生生物；寄生虫；寄生植物；依赖他人过活者</td></tr>
+<tr><td>campaign</td><td>/kæm'peɪn/ n.</td><td>运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）, campaigning, campai</td></tr>
+<tr><td>specifics</td><td>/spə'sɪfɪk/ adj.</td><td>特殊的，特定的；明确的；详细的；具有特效的n. 特效药；细节；特性</td></tr>
+<tr><td>practice</td><td>/'præktɪs/ n.</td><td>练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规，practicing，practices</td></tr>
+<tr><td>pension</td><td>/ˈpenʃn/ n.</td><td>津贴；退休金，抚恤金；膳宿费vt. 发给养老金或抚恤金, pensioning, pensions</td></tr>
+<tr><td>reform</td><td>/rɪ'fɔːrm/ n.</td><td>改革，改良，改造vt. & vi. 改革；改造；改善，reforming，reforms</td></tr>
+<tr><td>decade</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>quarter</td><td>/'kwɔːrtər/ n.</td><td>四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一, quartering, quarters</td></tr>
+<tr><td>dole</td><td>/doʊl/ n.</td><td>救济物失业救济金, doling, doles</td></tr>
+<tr><td>oversight</td><td>/'oʊvərsaɪt/ n.</td><td>疏忽, 失察</td></tr>
+<tr><td>parliament</td><td>/'pɑːrləmənt/ n.</td><td>议会, 国会</td></tr>
+<tr><td>wing</td><td>/wɪŋ/ n.</td><td>翅膀；翼；飞翔；派别vt. 使飞；飞过；空运；增加…速度；装以翼vi. 飞行, winging, wings</td></tr>
+<tr><td>agenda</td><td>/ə'dʒendə/ n.</td><td>（政治）议题；议事日程；目的</td></tr>
+<tr><td>either</td><td>/'iːðər/ pron.</td><td>(两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的</td></tr>
+<tr><td>motives</td><td>/moʊ'tiːf/ n.</td><td>主题；动机；图形；主旨；意念</td></tr>
+<tr><td>supreme</td><td>/su'priːm/ adj.</td><td>最高的；至上的最重要的，supremest 缩 写: supr</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>clients</td><td>/'klaɪənt/ n.</td><td>委托人顾客, 常客</td></tr>
+<tr><td>collapse</td><td>/kə'læps/ vi.</td><td>倒塌；瓦解；暴跌vt. 使倒塌，使崩溃；使萎陷n. 倒塌；失败；衰竭, collapsing, collapses</td></tr>
+<tr><td>master</td><td>/mæst/ n.</td><td>船桅，桅杆；旗杆MASTabbr. Magnetic Annular Shock Tube 磁性环形激波管(风洞研究用)</td></tr>
+<tr><td>fraud</td><td>/frɔːd/ n.</td><td>欺诈, 欺骗行为骗子</td></tr>
+<tr><td>lavish</td><td>/'lævɪʃ/ adj.</td><td>浪费的；丰富的；大方的vt. 浪费；慷慨给予；滥用, lavishing, lavishes</td></tr>
+<tr><td>venezuela</td><td>/ˌvenə'zweɪlə/ n.</td><td>委内瑞拉</td></tr>
+<tr><td>preference</td><td>/'prefrəns/ n.</td><td>较喜欢的东西, 偏爱优待, 优惠, 优先权</td></tr>
+<tr><td>prostitutes</td><td>/'prɑːstɪtuːt/ n.</td><td>卖淫者；妓女；男妓，prostituting，prostitutes</td></tr>
+<tr><td>alongside</td><td>/əˌlɔːŋ'saɪd/ adv.</td><td>靠着边，沿着边prep. (表示位置)在…旁边；沿着…的边；与…并排靠拢着(表示比较)与…放在一起比较(表示伴随)与…一起，与…一道</td></tr>
+<tr><td>apparent</td><td>/ə'pærənt/ adj.</td><td>显然的；表面上的</td></tr>
+<tr><td>reference</td><td>/'refrəns/ n.</td><td>提及，涉及参考，查阅引文；参考书目证明书；推荐信；证明人；推荐人，referencing，references</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>escort</td><td>/'eskɔːrt/ n.</td><td>陪同；护送者；护航舰；护卫队vt. 护送；陪同；为…护航, escorting, escorts</td></tr>
+<tr><td>vague</td><td>/veɪɡ/ adj.</td><td>不明确的；含糊的；模糊的；暧昧的, vaguest</td></tr>
+<tr><td>contracts</td><td>/'kɑːntrækt/ vi.</td><td>感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约, contracting, contracts</td></tr>
+<tr><td>mutually</td><td>/'mjuːtʃuəl/ adj.</td><td>相互的, 彼此的共同的, 共有的</td></tr>
+<tr><td>corruption</td><td>/kə'rʌpʃn/ n.</td><td>堕落;腐化;腐败;贿赂腐烂</td></tr>
+<tr><td>impeach</td><td>/ɪm'piːtʃ/ vt.</td><td>控告（某人）犯罪，弹劾；怀疑，提出异议, impeaching, impeaches</td></tr>
+<tr><td>elite</td><td>/eɪ'liːt/ n.</td><td>（社会）上层集团；掌权人物；出类拔萃的人，精英adj.（社会）上层集团的；掌权人物的；精英的</td></tr>
+<tr><td>neither</td><td>/'niːðər/ conj.</td><td>既不；也不adv. 两个都不；既不……也不adj. 两者都不的det./pron. 两者都不</td></tr>
+<tr><td>tackle</td><td>/'tækl/ vt.</td><td>解决；应付vt. & vi. 捉住；扭倒n. 拦截；擒抱器具，器械，用具滑车，滑轮组，tackling，tackles</td></tr>
+<tr><td>leak</td><td>/liːk/ n.</td><td>漏洞，裂缝；泄漏vt. 使渗漏，泄露vi. 漏，渗；泄漏出去, leaking, leaks</td></tr>
+<tr><td>speaking</td><td>/'spikɪŋ/ adj.</td><td>演讲的；富于表情的，雄辩的n. 说话；演讲v. 讲（speak的ing形式）</td></tr>
+<tr><td>actual</td><td>/'æktʃuəl/ adj.</td><td>真实的，实际的；现行的，目前的</td></tr>
+<tr><td>texas</td><td>/'teksəs/ n.</td><td>德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室)</td></tr>
+<tr><td>allegedly</td><td>— adv.</td><td>依其申述</td></tr>
+<tr><td>infamous</td><td>/'ɪnfəməs/ adj.</td><td>无耻的；声名狼藉的；邪恶的；不名誉的</td></tr>
+<tr><td>squad</td><td>/skwɑːd/ n.</td><td>(军队中的)班, 小队</td></tr>
+<tr><td>master</td><td>/mæst/ n.</td><td>船桅，桅杆；旗杆MASTabbr. Magnetic Annular Shock Tube 磁性环形激波管(风洞研究用)</td></tr>
+<tr><td>allies</td><td>— n.</td><td>（第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者</td></tr>
+<tr><td>corruption</td><td>/kə'rʌpʃn/ n.</td><td>堕落;腐化;腐败;贿赂腐烂</td></tr>
+<tr><td>campaign</td><td>/kæm'peɪn/ n.</td><td>运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）, campaigning, campai</td></tr>
+<tr><td>main</td><td>/meɪn/ adj.</td><td>主要的; 最重要的n. 总管道; 干线</td></tr>
+<tr><td>proposal</td><td>/prə'poʊzl/ n.</td><td>提议，建议；求婚</td></tr>
+<tr><td>impeach</td><td>/ɪm'piːtʃ/ vt.</td><td>控告（某人）犯罪，弹劾；怀疑，提出异议, impeaching, impeaches</td></tr>
+<tr><td>junior</td><td>/'dʒuːniər/ adj.</td><td>年少的, 较年幼的资历较浅的, 地位较低的n. 年少者地位较低者, 晚辈(美国中学或大学的)三年级学生</td></tr>
+<tr><td>persuade</td><td>/pər'sweɪd/ vt.</td><td>& vi. 说服, 劝告, persuading, persuades</td></tr>
+<tr><td>venezuela</td><td>/ˌvenə'zweɪlə/ n.</td><td>委内瑞拉</td></tr>
+<tr><td>complete</td><td>/kəm'pliːt/ adj.</td><td>完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善, completest 缩 写: comp, cpl</td></tr>
+<tr><td>proposals</td><td>/prə'poʊzl/ n.</td><td>提议，建议；求婚</td></tr>
+<tr><td>alignment</td><td>/ə'laɪnmənt/ n.</td><td>排成直线</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>impose</td><td>/ɪm'poʊz/ vi.</td><td>欺骗；利用；施加影响vt. 强加；以…欺骗；征税, imposing, imposes</td></tr>
+<tr><td>tariffs</td><td>/'tærɪf/ n.</td><td>关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表, tariffing, tariffs</td></tr>
+<tr><td>campaign</td><td>/kæm'peɪn/ n.</td><td>运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）, campaigning, campai</td></tr>
+<tr><td>assets</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>critical</td><td>/'krɪtɪkl/ adj.</td><td>批评的，爱挑剔的；决定性的；危险的；临界的；鉴定的；评论的</td></tr>
+<tr><td>minerals</td><td>/'mɪnərəl/ n.</td><td>矿物; 矿石; 矿物质</td></tr>
+<tr><td>equivalent</td><td>/ɪ'kwɪvələnt/ adj.</td><td>等同的，等效的n. 对等的人（或事物），对应的人（或事物）</td></tr>
+<tr><td>cautiously</td><td>/'kɔːʃəsli/ adv.</td><td>小心地,谨慎地</td></tr>
+<tr><td>investing</td><td>/ɪn'vest/ vt.</td><td>投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买, investing, invests</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>simply</td><td>/'sɪmpli/ adv.</td><td>简单地；朴素地；简直；仅仅；坦白地</td></tr>
+<tr><td>holes</td><td>/hoʊl/ n.</td><td>洞，孔；洞穴，穴；突破口vi. 凿洞，穿孔；（高尔夫球等）进洞vt. 凿洞, holing, holes</td></tr>
+<tr><td>rambles</td><td>/'ræmbl/ n.</td><td>漫步；漫游；随笔vt. 漫步于…vi. 漫游；漫步；漫谈；闲逛；蔓延, rambling, rambles</td></tr>
+<tr><td>glories</td><td>/'ɡlɔːri/ n.</td><td>光荣，荣誉；赞颂vi. 自豪，骄傲；狂喜</td></tr>
+<tr><td>removal</td><td>/rɪ'muːvl/ n.</td><td>移动；免职；排除；搬迁</td></tr>
+<tr><td>fall</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>bathtub</td><td>/'bæθtʌb/ n.</td><td>浴缸</td></tr>
+<tr><td>descends</td><td>/dɪ'send/ vi.</td><td>下降；下来；遗传；屈尊；下去vt. 下去；沿…向下, descending, descends</td></tr>
+<tr><td>robust</td><td>/roʊ'bʌst/ adj.</td><td>强健的；健康的；粗野的；粗鲁的</td></tr>
+<tr><td>civil</td><td>/'sɪvl/ adj.</td><td>公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的</td></tr>
+<tr><td>society</td><td>/sə'saɪəti/ n.</td><td>社会；社交界；交往；社团</td></tr>
+<tr><td>corruption</td><td>/kə'rʌpʃn/ n.</td><td>堕落;腐化;腐败;贿赂腐烂</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day6.html" class="nav-btn">← Day 6</a>
+  <a href="day8.html" class="nav-btn">Day 8 →</a>
+</div>
+
+<div class="progress">📖 Day 7 of 42</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-09-26</div>
+
+</body>
+</html>

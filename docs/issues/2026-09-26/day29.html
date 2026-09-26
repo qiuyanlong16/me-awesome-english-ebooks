@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business | The new normal</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-09-26</div>
+
+<h1 class="article-title">Business | The new normal</h1>
+<div class="article-section">Business</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>Business in the Gulf is making a slow recovery Companies that can are looking for profits elsewhere Sep 24th 2026 AS THE BUILDER of the world’s tallest <span class="annot" data-tooltip="skyscraper /'skaɪskreɪpər/ n. 摩天大楼">skyscraper</span> and one of its biggest shopping malls, Emaar <span class="annot" data-tooltip="properties 道具">Properties</span> <span class="annot" data-tooltip="embodies /ɪm'bɑːdi/ vt. 表现，象征，具体表现包括；包含时 态: embodied，embodying，embodies">embodies</span> Dubai’s ambitions—and its <span class="annot" data-tooltip="resilience /rɪ'zɪliəns/ n. 弹回;弹性恢复力；适应力">resilience</span>. Almost 20 years ago the global financial crisis struck just as the 828-metre Burj Khalifa was about to open its doors. Emaar’s American unit filed for bankruptcy, the <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span>’s profits sank and debt ballooned. Five years ago, <span class="annot" data-tooltip="amid /ə'mɪd/ prep. 在其中，在其间">amid</span> the covid-19 <span class="annot" data-tooltip="pandemic /pæn'demɪk/ adj. （疾病）在全国（或世界）流行的">pandemic</span>, Emaar came to the aid of its mall unit, buying out minority <span class="annot" data-tooltip="shareholders /'ʃerhoʊldər/ n. 股东名 词: shareholding">shareholders</span>. This February the Gulf war broke out, just as Emaar was enjoying record profits. The firm—regarded as a bet not only on Dubai’s <span class="annot" data-tooltip="property /'prɑːpərti/ n. 财产；性质，性能；所有权形容词: propertyless">property</span> market but on its whole economy—was the biggest loser on the local stock market. Its share price dropped by about a <span class="annot" data-tooltip="quarter /'kwɔːrtər/ n. 四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一时 ">quarter</span> in the month after hostilities began, while the market index fell by a sixth. In a show of confidence the president</p>
+<p>of the United Arab Emirates (UAE), Muhammad bin Zayed al-Nahyan, walked through the giant Dubai Mall on March 2nd. More than six months on, Mohamed Alabbar, Emaar’s founder, is similarly unfazed. “History shows us that every two and a half years there’s a shake- up,” he says. To prove it can <span class="annot" data-tooltip="handle /'hændl/ n. 柄；把手；手感；口实vt. 买卖；处理；操作；触摸；运用vi. 易于操纵；搬运时 态: handled, handlin">handle</span> the latest, on September 16th the company announced a special <span class="annot" data-tooltip="dividend /'dɪvɪdend/ n. 股息；被除数；奖金">dividend</span> of 4.4bn dirhams ($1.2bn), equal to half of last year’s regular payout. But “we can’t change the map,” Mr Alabbar says. Emaar and other local firms are having to adjust to newly uncertain circumstances. For those who can, that means seeking opportunities <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span> the Gulf. <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">Although</span> daily life in Dubai is largely back to normal, signs of a peace deal —and of a fully fledged business recovery—are scarce. In August non-oil private businesses in the whole UAE reported stronger exports than in July. There were fewer <span class="annot" data-tooltip="disruptions n. 中断,分裂,瓦解,破坏">disruptions</span> to supplies to shops and other business. But employment fell. Sales at Spinneys, a supermarket that <span class="annot" data-tooltip="caters /'keɪtər/ vt. 满足需要；投合，迎合；提供饮食及服务时 态: catered, catering, caters">caters</span> to wealthy expatriates, edged lower in the three months to June. At Talabat, a popular food-delivery service, pre-tax profits across the Gulf fell by about 30%, year on year, in the first six months of 2026. Anecdotally, <span class="annot" data-tooltip="hospitality /ˌhɑːspɪ'tæləti/ n. 殷勤, 好客(提供给客人的)食宿招待">hospitality</span> workers remain furloughed or on reduced pay. Several hotels and <span class="annot" data-tooltip="restaurants /'restrɑːnt/ n. 饭店, 餐馆">restaurants</span> have closed, fully or partly, for renovations, disguising the true drop in occupancy rates. Some <span class="annot" data-tooltip="property /'prɑːpərti/ n. 财产；性质，性能；所有权形容词: propertyless">property</span> developers, including Majid Al Futtaim, an Emirati conglomerate, have delayed the completion of units owing to rising materials costs. Other Gulf economies are faring worse. Qatar’s exports of liquefied natural gas in August were a tenth of pre-war levels. In Bahrain and Kuwait a strong recovery is distant. No <span class="annot" data-tooltip="wonder /'wʌndər/ vt. & vi. 对…感到疑惑想知道；问自己n. 惊奇，惊叹，惊异，惊诧奇人，奇才奇观，奇景，奇迹，奇事时 态: wonder">wonder</span> Mr Alabbar is looking abroad. Before the war he had already <span class="annot" data-tooltip="invested /ɪn'vest/ vt. 投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买时 态: invested, investing, invests">invested</span> in projects in Italy, eastern Europe and India. (Through Eagle Hills, a privately held firm, he had also agreed to join Jared Kushner, Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s son-in-law, in building a Trump Tower in Belgrade, but Mr Kushner cancelled the project last year after <span class="annot" data-tooltip="protests /'proʊtest/ n. 抗议；反对vt. & vi. 声明；抗议时 态: protested，protesting，protests">protests</span> and the indictment on <span class="annot" data-tooltip="corruption /kə'rʌpʃn/ n. 堕落;腐化;腐败;贿赂腐烂">corruption</span> charges of a Serbian minister.) But Emaar’s international developments account for only 5% of <span class="annot" data-tooltip="revenue /'revənuː/ n. 收入，收益；财政收入，税收">revenue</span> so <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span>.</p>
+<p><span class="annot" data-tooltip="heading /'hedɪŋ/ n. 标题；信头；（足球）头球v. 用头顶（head的ing形式）">Heading</span> abroad does not mean avoiding risk: in May Emaar doubled down on Syria, exiting a long-standing <span class="annot" data-tooltip="joint /dʒɔɪnt/ n. 关节；接合处，接合点；接缝；（牛，羊等的腿）大块肉adj. 联合的，合办的；共同的；连接的vt. 连接，贴合；接合；使有">joint</span> venture in order to go it alone. It intends to <span class="annot" data-tooltip="invest /ɪn'vest/ vt. 投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买时 态: invested, investing, invests">invest</span> as much as $19bn in the still <span class="annot" data-tooltip="volatile /'vɑːlətl/ adj. （人或其情绪）不稳定的；易变的；易怒的，喜怒无常的（情况）可能急剧波动的；不稳定的；易恶化的（物质）易挥发的，易气化的【">volatile</span> country. Eagle Hills is planning a $12bn project in the Maldives. Mr Alabbar’s schemes for both countries will probably include social housing, of which there is a <span class="annot" data-tooltip="persistent /pər'sɪstənt/ adj. 持续的; 不断的副 词: persistently">persistent</span> <span class="annot" data-tooltip="shortage /'ʃɔːrtɪdʒ/ n. 不足; 缺少; 缺少量; 不足额">shortage</span>. In India he is looking at areas such as Navi <span class="annot" data-tooltip="mumbai n. 孟买（印度城市）">Mumbai</span>, a satellite city near Mumbai. He is also <span class="annot" data-tooltip="developing /dɪ'veləpɪŋ/ adj. 在进行中的;走向完成阶段的;走向成熟的发展中的">developing</span> homes, <span class="annot" data-tooltip="retail /ˈriːteɪl/ vt. 零售；转述vi. 零售n. 零售adv. 以零售方式adj. 零售的时 态: retailed, retailing, ">retail</span> and entertainment in Egypt. Other Emirati firms have similar ideas. Agthia <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">Group</span>, a food and <span class="annot" data-tooltip="beverage /'bevərɪdʒ/ n. 饮料">beverage</span> company, has set its sights on expansion in Egypt and Saudi Arabia. FAB, the UAE’s largest lender, plans to <span class="annot" data-tooltip="bulk /bʌlk/ n. 体积，容量；大块；大多数，大部分vt. 使扩大，使形成大量；使显得重要时 态: bulked, bulking, bul">bulk</span> up in Hong Kong in the hope of doing more business in China. Regional firms that already have foreign operations have found that the <span class="annot" data-tooltip="hedge /hedʒ/ vt. 用树篱笆围住；避免作正面答复vi. 用树篱围住；避免作正面答复n. 树篱；障碍时 态: hedged, hedging,">hedge</span> has played out well. Talabat’s sales in Egypt, where it has been expanding, have grown sharply. But not every business has that option. Smaller firms in particular lack the means to make large outlays abroad, especially in uncertain times. Dubai may have been <span class="annot" data-tooltip="due /duː/ adj. 到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）">due</span> a <span class="annot" data-tooltip="property /'prɑːpərti/ n. 财产；性质，性能；所有权形容词: propertyless">property</span> slowdown even without the war. Before it, Mr Alabbar says, he was “keeping an eye on supply” in the property market. Analysts had predicted a deluge of new homes. But he thinks that in the long term there is little reason to believe that people, mainly from emerging economies, will stop coming—and occupying the homes he builds. In the first half of the year Dubai issued more than 1m <span class="annot" data-tooltip="residence /'rezɪdəns/ n. 住处; 住宅; 公馆居住; 居留期间">residence</span> permits and renewed over 900,000. It also granted another 66,000 long-term visas: a healthy <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span>, if below the record pace of 2023. Still, it is hard to see billionaires rushing back soon to buy opulent villas, or tourists filling hotels and emptying wallets as they did before the war. Many businesses have little choice but to look abroad or sit tight. Lots of them have thick cash cushions, having learnt from past crises. Waiting and seeing may be Dubai’s new normality. ■ This article was downloaded by zlibrary from https://www.economist.com/business/2026/09/24/business-in-the-gulf-is-making-a- slow-recovery</p>
+<div class="article-separator"></div>
+<div class="article-header">Business · Business | Hormuz the tanker engine</div>
+<p><span class="annot" data-tooltip="tanker /tæŋk/ n. （存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内时 态: t">Tanker</span> rates are on the crest of a <span class="annot" data-tooltip="wave /weɪv/ vi. 波动；起伏；摇动；呈波形；挥手示意vt. 向…挥手示意；使成波浪形；卷（烫）发n. 波浪；波动；高潮；卷曲；挥手示意时 ">wave</span> The <span class="annot" data-tooltip="squeeze /skwiːz/ vt. & vi. 挤, 榨, 捏vt. 榨取, 挤出n. 挤, 榨, 捏亲切的拥抱或握手拥挤, 积压缺乏钱或时间等所引致的困难">squeeze</span> in the Gulf has sent the cost of moving <span class="annot" data-tooltip="crude /kruːd/ adj. 粗糙的；粗鲁的；天然的，未加工的；粗略的n. 天然的物质；原油比较级: cruder, crudest">crude</span> soaring Sep 24th 2026 The purpose of very large crude carriers (vlccs), which hold 2m <span class="annot" data-tooltip="barrels /'bærəl/ vt. 把……装入桶内n. 桶；枪管，炮管vi. 快速移动时 态: barreled, barrelled barreling,">barrels</span> of oil, requires little <span class="annot" data-tooltip="explanation /ˌeksplə'neɪʃn/ n. 解释, 说明能说明某事缘由的言语、事实、情况等">explanation</span>. The very large cost of chartering one at the moment requires more. The Gulf war has hit oil production, yet rates are “<span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> beyond anything in the history of tankers”, says Greg Miller of Lloyd’s List Intelligence, a trade publication. At around $650,000, the average daily <span class="annot" data-tooltip="spot /spɑːt/ n. 斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Po">spot</span> rate is over six times more than in January and <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> three times more than at the start of September. A handful of <span class="annot" data-tooltip="vessels n. 容器；船舶；血管（vessel的复数）">vessels</span> traversing the treacherous <span class="annot" data-tooltip="strait /streɪt/ n. 海峡；（尤指经济拮据引起的）困境，境况窘迫adj. 狭窄的；苦恼的副 词: straitly">Strait</span> of Hormuz are <span class="annot" data-tooltip="fetching /fetʃ/ vt. 接来；到达；取来；吸引vi. 取物；卖得；拿n. 取得；诡计时 态: fetched, fetching, fetche">fetching</span> over $1m a day. The reason is that <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">although</span> more oil is coming out of the Gulf on <span class="annot" data-tooltip="ships /ʃɪp/ vt. 运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Di">ships</span> and through pipes than a few weeks ago, its way to market is riven with inefficiencies. “Hormuz is the rate driver,” says Mr Miller. A <span class="annot" data-tooltip="shuttle /'ʃʌtl/ n. 梭子；穿梭；穿梭班机、公共汽车等；航天飞机vt. 使穿梭般来回移动；短程穿梭般运送vi. 穿梭往返时 态: shuttl">shuttle</span> service of Gulf-owned vlccs, protected by the us Navy, is bringing oil through the</p>
+<p><span class="annot" data-tooltip="strait /streɪt/ n. 海峡；（尤指经济拮据引起的）困境，境况窘迫adj. 狭窄的；苦恼的副 词: straitly">strait</span> for <span class="annot" data-tooltip="transfer /træns'fɜːr/ n. 转移；转让；过户；传递vi. 转移；转让；转学；换车vt. 转让；调任；传递；使转移时 态: transferred, ">transfer</span> to vlccs anchored off Oman owned by firms not prepared to risk that <span class="annot" data-tooltip="journey /'dʒɜːrni/ n. 旅行; 行程vi. 旅行">journey</span>. Around 15% of the global vlcc fleet is at Oman, much of it awaiting cargoes that take two to three days to swap over. To the west, the threat to <span class="annot" data-tooltip="shipping /ʃɪp/ vt. 运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Di">shipping</span> from Yemen’s Houthis at the mouth of the Red Sea means that vlccs taking oil from the Saudi <span class="annot" data-tooltip="port /pɔːrt/ n. 港口，口岸；左舷；舱门；（计算机的）端口vi. 转向左舷vt. 左转舵；持（枪）PORTabbr. Photo Opit">port</span> of Yanbu farther up the coast are <span class="annot" data-tooltip="heading /'hedɪŋ/ n. 标题；信头；（足球）头球v. 用头顶（head的ing形式）">heading</span> in the opposite direction, <span class="annot" data-tooltip="towards /tɔːrdz/ prep. 向，朝为了；有助于；用于对于，关于接近；将近；大约">towards</span> the Suez Canal. Because they are too big to go through the canal fully laden, the oil is <span class="annot" data-tooltip="offloaded /ˌɔːf'loʊd/ v. 卸下,卸货时 态: offloaded, offloading, offloads">offloaded</span>, piped across Egypt and reloaded onto vlccs in the Mediterranean for the long voyage to Asia round the <span class="annot" data-tooltip="cape /keɪp/ n. 披肩；海角，岬CAPEabbr. Communication Automatic Processing Equipmen">Cape</span> of Good Hope. The recent <span class="annot" data-tooltip="closure /'kloʊʒər/ n. 关闭；终止，结束vt. 使终止时 态: closured, closuring, closures">closure</span> of the East-West pipeline to Yanbu after a <span class="annot" data-tooltip="drone /droʊn/ n. 无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫">drone</span> attack is likely to mean shuttling more oil via Hormuz, keeping capacity tight. The added time and distance vlccs are travelling have compensated massively for the reduced volumes of <span class="annot" data-tooltip="crude /kruːd/ adj. 粗糙的；粗鲁的；天然的，未加工的；粗略的n. 天然的物质；原油比较级: cruder, crudest">crude</span>, says Stephen Gordon of Clarksons, a shipbroker. They have also sent ripples across the <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span>. If a vlcc is unavailable for, say, a <span class="annot" data-tooltip="trip /trɪp/ vi. 绊倒；犯错误；远足；轻快地走n. 旅行；绊倒；差错vt. 绊倒；使犯错TRIPabbr. transformation-">trip</span> between Brazil and China, two Suezmax tankers, which each carry around 1m <span class="annot" data-tooltip="barrels /'bærəl/ vt. 把……装入桶内n. 桶；枪管，炮管vi. 快速移动时 态: barreled, barrelled barreling,">barrels</span>, are needed. Rates for these <span class="annot" data-tooltip="ships /ʃɪp/ vt. 运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Di">ships</span> are also surging; so, in turn, are those for smaller tankers. For <span class="annot" data-tooltip="tanker /tæŋk/ n. （存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内时 态: t">tanker</span>-<span class="annot" data-tooltip="owners /'oʊnər/ n. 所有者；物主">owners</span>, this means a bonanza. Trafigura, a giant privately held commodity-trading house, said on September 21st that it would float its</p>
+<p><span class="annot" data-tooltip="tanker /tæŋk/ n. （存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内时 态: t">tanker</span> arm to <span class="annot" data-tooltip="raise /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raise</span> cash to buy new <span class="annot" data-tooltip="ships /ʃɪp/ vt. 运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Di">ships</span> to take advantage. A buying spree by national oil companies desperate to <span class="annot" data-tooltip="secure /sɪ'kjʊr/ adj. 安心的；有把握的可靠的；牢靠的；稳固的；安全的；稳妥的严密把守的；牢固的；坚固的v. （尤指经过努力）获得，取得，实现拴">secure</span> capacity has sent prices of ten- year-old vlccs above the cost of new ones that could take over two years to deliver. Past rate <span class="annot" data-tooltip="spikes /spaɪk/ n. 尖头，尖刺，（尤指金属的）尖状物（某些运动鞋上的）防滑鞋钉，钉鞋（spikes）（通常在指下跌前）非常高的数量，价格或程">spikes</span> have quickly eased. Oil refineries, which customarily <span class="annot" data-tooltip="endure /ɪn'dʊr/ vt. 忍耐；容忍vi. 忍耐；持续时 态: endured, enduring, endures">endure</span> thin <span class="annot" data-tooltip="margins /'mɑːrdʒɪn/ n. 页边缘；利润，余裕；页边的空白">margins</span>, <span class="annot" data-tooltip="simply /'sɪmpli/ adv. 简单地；朴素地；简直；仅仅；坦白地">simply</span> stopped buying <span class="annot" data-tooltip="crude /kruːd/ adj. 粗糙的；粗鲁的；天然的，未加工的；粗略的n. 天然的物质；原油比较级: cruder, crudest">crude</span> delivered at inflated prices. This time the oil-supply <span class="annot" data-tooltip="squeeze /skwiːz/ vt. & vi. 挤, 榨, 捏vt. 榨取, 挤出n. 挤, 榨, 捏亲切的拥抱或握手拥挤, 积压缺乏钱或时间等所引致的困难">squeeze</span> has pushed margins to record levels, <span class="annot" data-tooltip="offsetting /'ɔːfset/ vt. 抵消, 补偿时 态: offset, offsetting, offsets">offsetting</span> extra transport costs that might exceed $25 a <span class="annot" data-tooltip="barrel /'bærəl/ vt. 把……装入桶内n. 桶；枪管，炮管vi. 快速移动时 态: barreled, barrelled barreling,">barrel</span>. Great times for tanker- <span class="annot" data-tooltip="owners /'oʊnər/ n. 所有者；物主">owners</span>; bad times for almost everyone else.■ This article was downloaded by zlibrary from https://www.economist.com/business/2026/09/24/tanker-rates-are-on-the-crest-of-a- <span class="annot" data-tooltip="wave /weɪv/ vi. 波动；起伏；摇动；呈波形；挥手示意vt. 向…挥手示意；使成波浪形；卷（烫）发n. 波浪；波动；高潮；卷曲；挥手示意时 ">wave</span></p>
+<div class="article-separator"></div>
+<div class="article-header">Business · Business | Wayward Sons</div>
+<p>Tata goes to war with itself Trouble at one of India’s biggest conglomerates Sep 24th 2026 Who runs Tata? The Indian conglomerate’s board meeting on September 17th offers no easy answer. One claimant is Noel Tata, who chairs Tata Trusts, a <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span> of <span class="annot" data-tooltip="charities /'tʃærəti/ n. 施舍；慈善；慈善团体；施舍物；宽容">charities</span> that is Tata’s largest <span class="annot" data-tooltip="shareholder /'ʃerhoʊldər/ n. 股东名 词: shareholding">shareholder</span>. The other is Natarajan Chandrasekaran, chair of Tata Sons, the holding company that runs the businesses. The board split four to one, with Mr Tata the only dissenter, to give Mr Chandrasekaran a third five-year term, though he had said a month earlier that he would not seek one. The board also voted to stop fighting a demand from the Reserve Bank of India (RBI), the <span class="annot" data-tooltip="central /'sentrəl/ adj. 中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的副 词: centrally">central</span> bank, for Tata Sons to list. That too was against Mr Tata’s objections. The meeting matters beyond Bombay House, the group’s <span class="annot" data-tooltip="headquarters /ˈhɛdˈkwɔrtɚ/ vi. 设总部vt. 将…的总部设在把…放在总部里时 态: headquartered, headquartering, hea">headquarters</span> in south <span class="annot" data-tooltip="mumbai n. 孟买（印度城市）">Mumbai</span>. The steel-to-software giant is one of a handful of national champions central to the industrial ambitions of Narendra Modi’s</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>skyscraper</td><td>/'skaɪskreɪpər/ n.</td><td>摩天大楼</td></tr>
+<tr><td>properties</td><td>— </td><td>道具</td></tr>
+<tr><td>embodies</td><td>/ɪm'bɑːdi/ vt.</td><td>表现，象征，具体表现包括；包含，embodying，embodies</td></tr>
+<tr><td>resilience</td><td>/rɪ'zɪliəns/ n.</td><td>弹回;弹性恢复力；适应力</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>amid</td><td>/ə'mɪd/ prep.</td><td>在其中，在其间</td></tr>
+<tr><td>pandemic</td><td>/pæn'demɪk/ adj.</td><td>（疾病）在全国（或世界）流行的</td></tr>
+<tr><td>shareholders</td><td>/'ʃerhoʊldər/ n.</td><td>股东</td></tr>
+<tr><td>property</td><td>/'prɑːpərti/ n.</td><td>财产；性质，性能；所有权</td></tr>
+<tr><td>quarter</td><td>/'kwɔːrtər/ n.</td><td>四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一, quartering, quarters</td></tr>
+<tr><td>handle</td><td>/'hændl/ n.</td><td>柄；把手；手感；口实vt. 买卖；处理；操作；触摸；运用vi. 易于操纵；搬运, handling, handles</td></tr>
+<tr><td>dividend</td><td>/'dɪvɪdend/ n.</td><td>股息；被除数；奖金</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>disruptions</td><td>— n.</td><td>中断,分裂,瓦解,破坏</td></tr>
+<tr><td>caters</td><td>/'keɪtər/ vt.</td><td>满足需要；投合，迎合；提供饮食及服务, catering, caters</td></tr>
+<tr><td>hospitality</td><td>/ˌhɑːspɪ'tæləti/ n.</td><td>殷勤, 好客(提供给客人的)食宿招待</td></tr>
+<tr><td>restaurants</td><td>/'restrɑːnt/ n.</td><td>饭店, 餐馆</td></tr>
+<tr><td>property</td><td>/'prɑːpərti/ n.</td><td>财产；性质，性能；所有权</td></tr>
+<tr><td>wonder</td><td>/'wʌndər/ vt.</td><td>& vi. 对…感到疑惑想知道；问自己n. 惊奇，惊叹，惊异，惊诧奇人，奇才奇观，奇景，奇迹，奇事，wondering，wonders</td></tr>
+<tr><td>invested</td><td>/ɪn'vest/ vt.</td><td>投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买, investing, invests</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>protests</td><td>/'proʊtest/ n.</td><td>抗议；反对vt. & vi. 声明；抗议，protesting，protests</td></tr>
+<tr><td>corruption</td><td>/kə'rʌpʃn/ n.</td><td>堕落;腐化;腐败;贿赂腐烂</td></tr>
+<tr><td>revenue</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>heading</td><td>/'hedɪŋ/ n.</td><td>标题；信头；（足球）头球v. 用头顶（head的ing形式）</td></tr>
+<tr><td>joint</td><td>/dʒɔɪnt/ n.</td><td>关节；接合处，接合点；接缝；（牛，羊等的腿）大块肉adj. 联合的，合办的；共同的；连接的vt. 连接，贴合；接合；使有接头vi. 贴合；生节, jointin</td></tr>
+<tr><td>invest</td><td>/ɪn'vest/ vt.</td><td>投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买, investing, invests</td></tr>
+<tr><td>volatile</td><td>/'vɑːlətl/ adj.</td><td>（人或其情绪）不稳定的；易变的；易怒的，喜怒无常的（情况）可能急剧波动的；不稳定的；易恶化的（物质）易挥发的，易气化的【计】（计算机内存）易失的n.【罕】 挥发</td></tr>
+<tr><td>persistent</td><td>/pər'sɪstənt/ adj.</td><td>持续的; 不断的</td></tr>
+<tr><td>shortage</td><td>/'ʃɔːrtɪdʒ/ n.</td><td>不足; 缺少; 缺少量; 不足额</td></tr>
+<tr><td>mumbai</td><td>— n.</td><td>孟买（印度城市）</td></tr>
+<tr><td>developing</td><td>/dɪ'veləpɪŋ/ adj.</td><td>在进行中的;走向完成阶段的;走向成熟的发展中的</td></tr>
+<tr><td>retail</td><td>/ˈriːteɪl/ vt.</td><td>零售；转述vi. 零售n. 零售adv. 以零售方式adj. 零售的, retailing, retails</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>beverage</td><td>/'bevərɪdʒ/ n.</td><td>饮料</td></tr>
+<tr><td>bulk</td><td>/bʌlk/ n.</td><td>体积，容量；大块；大多数，大部分vt. 使扩大，使形成大量；使显得重要, bulking, bulks</td></tr>
+<tr><td>hedge</td><td>/hedʒ/ vt.</td><td>用树篱笆围住；避免作正面答复vi. 用树篱围住；避免作正面答复n. 树篱；障碍, hedging, hedges</td></tr>
+<tr><td>due</td><td>/duː/ adj.</td><td>到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）</td></tr>
+<tr><td>property</td><td>/'prɑːpərti/ n.</td><td>财产；性质，性能；所有权</td></tr>
+<tr><td>residence</td><td>/'rezɪdəns/ n.</td><td>住处; 住宅; 公馆居住; 居留期间</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>tanker</td><td>/tæŋk/ n.</td><td>（存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内, tanking, tanks</td></tr>
+<tr><td>wave</td><td>/weɪv/ vi.</td><td>波动；起伏；摇动；呈波形；挥手示意vt. 向…挥手示意；使成波浪形；卷（烫）发n. 波浪；波动；高潮；卷曲；挥手示意, waving, waves</td></tr>
+<tr><td>squeeze</td><td>/skwiːz/ vt.</td><td>& vi. 挤, 榨, 捏vt. 榨取, 挤出n. 挤, 榨, 捏亲切的拥抱或握手拥挤, 积压缺乏钱或时间等所引致的困难或困苦, 拮据, 短缺, squeezi</td></tr>
+<tr><td>crude</td><td>/kruːd/ adj.</td><td>粗糙的；粗鲁的；天然的，未加工的；粗略的n. 天然的物质；原油, crudest</td></tr>
+<tr><td>barrels</td><td>/'bærəl/ vt.</td><td>把……装入桶内n. 桶；枪管，炮管vi. 快速移动, barrelled barreling, barrelling barrels, barrels</td></tr>
+<tr><td>explanation</td><td>/ˌeksplə'neɪʃn/ n.</td><td>解释, 说明能说明某事缘由的言语、事实、情况等</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>spot</td><td>/spɑːt/ n.</td><td>斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Positioning and Tracki</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>vessels</td><td>— n.</td><td>容器；船舶；血管（vessel的复数）</td></tr>
+<tr><td>strait</td><td>/streɪt/ n.</td><td>海峡；（尤指经济拮据引起的）困境，境况窘迫adj. 狭窄的；苦恼的</td></tr>
+<tr><td>fetching</td><td>/fetʃ/ vt.</td><td>接来；到达；取来；吸引vi. 取物；卖得；拿n. 取得；诡计, fetching, fetches</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>ships</td><td>/ʃɪp/ vt.</td><td>运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Division of the Nation</td></tr>
+<tr><td>shuttle</td><td>/'ʃʌtl/ n.</td><td>梭子；穿梭；穿梭班机、公共汽车等；航天飞机vt. 使穿梭般来回移动；短程穿梭般运送vi. 穿梭往返, shuttling, shuttles</td></tr>
+<tr><td>strait</td><td>/streɪt/ n.</td><td>海峡；（尤指经济拮据引起的）困境，境况窘迫adj. 狭窄的；苦恼的</td></tr>
+<tr><td>transfer</td><td>/træns'fɜːr/ n.</td><td>转移；转让；过户；传递vi. 转移；转让；转学；换车vt. 转让；调任；传递；使转移, transferring, transfers</td></tr>
+<tr><td>journey</td><td>/'dʒɜːrni/ n.</td><td>旅行; 行程vi. 旅行</td></tr>
+<tr><td>shipping</td><td>/ʃɪp/ vt.</td><td>运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Division of the Nation</td></tr>
+<tr><td>port</td><td>/pɔːrt/ n.</td><td>港口，口岸；左舷；舱门；（计算机的）端口vi. 转向左舷vt. 左转舵；持（枪）PORTabbr. Photo Opitical Recorder Tracke</td></tr>
+<tr><td>heading</td><td>/'hedɪŋ/ n.</td><td>标题；信头；（足球）头球v. 用头顶（head的ing形式）</td></tr>
+<tr><td>towards</td><td>/tɔːrdz/ prep.</td><td>向，朝为了；有助于；用于对于，关于接近；将近；大约</td></tr>
+<tr><td>offloaded</td><td>/ˌɔːf'loʊd/ v.</td><td>卸下,卸货, offloading, offloads</td></tr>
+<tr><td>cape</td><td>/keɪp/ n.</td><td>披肩；海角，岬CAPEabbr. Communication Automatic Processing Equipment 通信自动处理设备</td></tr>
+<tr><td>closure</td><td>/'kloʊʒər/ n.</td><td>关闭；终止，结束vt. 使终止, closuring, closures</td></tr>
+<tr><td>drone</td><td>/droʊn/ n.</td><td>无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫；嗡嗡响(人)絮絮叨叨地说，喋喋不休地说</td></tr>
+<tr><td>crude</td><td>/kruːd/ adj.</td><td>粗糙的；粗鲁的；天然的，未加工的；粗略的n. 天然的物质；原油, crudest</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>trip</td><td>/trɪp/ vi.</td><td>绊倒；犯错误；远足；轻快地走n. 旅行；绊倒；差错vt. 绊倒；使犯错TRIPabbr. transformation-induced plasticity 高</td></tr>
+<tr><td>barrels</td><td>/'bærəl/ vt.</td><td>把……装入桶内n. 桶；枪管，炮管vi. 快速移动, barrelled barreling, barrelling barrels, barrels</td></tr>
+<tr><td>ships</td><td>/ʃɪp/ vt.</td><td>运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Division of the Nation</td></tr>
+<tr><td>tanker</td><td>/tæŋk/ n.</td><td>（存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内, tanking, tanks</td></tr>
+<tr><td>owners</td><td>/'oʊnər/ n.</td><td>所有者；物主</td></tr>
+<tr><td>tanker</td><td>/tæŋk/ n.</td><td>（存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内, tanking, tanks</td></tr>
+<tr><td>raise</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>ships</td><td>/ʃɪp/ vt.</td><td>运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Division of the Nation</td></tr>
+<tr><td>secure</td><td>/sɪ'kjʊr/ adj.</td><td>安心的；有把握的可靠的；牢靠的；稳固的；安全的；稳妥的严密把守的；牢固的；坚固的v. （尤指经过努力）获得，取得，实现拴牢；扣紧；关严保护；保卫；使安全抵押；为</td></tr>
+<tr><td>spikes</td><td>/spaɪk/ n.</td><td>尖头，尖刺，（尤指金属的）尖状物（某些运动鞋上的）防滑鞋钉，钉鞋（spikes）（通常在指下跌前）非常高的数量，价格或程度v. 拒绝刊登，弃置（文章）不用将烈酒</td></tr>
+<tr><td>endure</td><td>/ɪn'dʊr/ vt.</td><td>忍耐；容忍vi. 忍耐；持续, enduring, endures</td></tr>
+<tr><td>margins</td><td>/'mɑːrdʒɪn/ n.</td><td>页边缘；利润，余裕；页边的空白</td></tr>
+<tr><td>simply</td><td>/'sɪmpli/ adv.</td><td>简单地；朴素地；简直；仅仅；坦白地</td></tr>
+<tr><td>crude</td><td>/kruːd/ adj.</td><td>粗糙的；粗鲁的；天然的，未加工的；粗略的n. 天然的物质；原油, crudest</td></tr>
+<tr><td>squeeze</td><td>/skwiːz/ vt.</td><td>& vi. 挤, 榨, 捏vt. 榨取, 挤出n. 挤, 榨, 捏亲切的拥抱或握手拥挤, 积压缺乏钱或时间等所引致的困难或困苦, 拮据, 短缺, squeezi</td></tr>
+<tr><td>offsetting</td><td>/'ɔːfset/ vt.</td><td>抵消, 补偿, offsetting, offsets</td></tr>
+<tr><td>barrel</td><td>/'bærəl/ vt.</td><td>把……装入桶内n. 桶；枪管，炮管vi. 快速移动, barrelled barreling, barrelling barrels, barrels</td></tr>
+<tr><td>owners</td><td>/'oʊnər/ n.</td><td>所有者；物主</td></tr>
+<tr><td>wave</td><td>/weɪv/ vi.</td><td>波动；起伏；摇动；呈波形；挥手示意vt. 向…挥手示意；使成波浪形；卷（烫）发n. 波浪；波动；高潮；卷曲；挥手示意, waving, waves</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>charities</td><td>/'tʃærəti/ n.</td><td>施舍；慈善；慈善团体；施舍物；宽容</td></tr>
+<tr><td>shareholder</td><td>/'ʃerhoʊldər/ n.</td><td>股东</td></tr>
+<tr><td>central</td><td>/'sentrəl/ adj.</td><td>中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的</td></tr>
+<tr><td>headquarters</td><td>/ˈhɛdˈkwɔrtɚ/ vi.</td><td>设总部vt. 将…的总部设在把…放在总部里, headquartering, headquarters</td></tr>
+<tr><td>mumbai</td><td>— n.</td><td>孟买（印度城市）</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day28.html" class="nav-btn">← Day 28</a>
+  <a href="day30.html" class="nav-btn">Day 30 →</a>
+</div>
+
+<div class="progress">📖 Day 29 of 42</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-09-26</div>
+
+</body>
+</html>

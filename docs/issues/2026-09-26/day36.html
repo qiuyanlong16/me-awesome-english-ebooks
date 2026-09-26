@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Science & technology</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-09-26</div>
+
+<h1 class="article-title">Science & technology</h1>
+<div class="article-section"></div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>Many surgical <span class="annot" data-tooltip="interventions /ˌɪntər'venʃn/ n. 介入, 干涉, 干预">interventions</span> are little better than placebo Space-going mirrors could offer daylight on demand Should you fear pesticide-<span class="annot" data-tooltip="resistant /rɪ'zɪstənt/ adj. 有抵抗力的, 抵抗的">resistant</span> super-bed bugs? A new battery could make edible electronics safer <span class="annot" data-tooltip="consuming /kən'suːmɪŋ/ adj. 消费的；强烈的">Consuming</span> extra vitamin D is less good than it sounds</p>
+<p>Science & technology | Knives out Many surgical <span class="annot" data-tooltip="interventions /ˌɪntər'venʃn/ n. 介入, 干涉, 干预">interventions</span> are little better than placebo A succession of clinical <span class="annot" data-tooltip="trials /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">trials</span> is upending the field Sep 24th 2026 EACH YEAR, according to the World Health Organisation, over 300m operations are conducted worldwide. Patients in the rich world are more likely to go under the knife—about 60% of people in England are expected to <span class="annot" data-tooltip="undergo /ˌʌndər'ɡoʊ/ vt. 经历，经受；忍受时 态: underwent undergone undergoing, undergoes">undergo</span> <span class="annot" data-tooltip="surgery /'sɜːrdʒəri/ n. 外科；外科手术；手术室；诊疗室">surgery</span> at least once in their <span class="annot" data-tooltip="lifetime /'laɪftaɪm/ n. 一生；寿命；终生；使用期adj. 一生的；终身的">lifetime</span>. Some of these <span class="annot" data-tooltip="procedures 规程">procedures</span> are clearly life-saving, such as organ <span class="annot" data-tooltip="transplants /træns'plænt/ vt. 移植, 移种(人)移居, 迁移移植(器官、皮肤、头发等)n. (器官、皮肤、头发等的)移植移植的器官, 移植物时 态: ">transplants</span> and emergency Caesareans. But as the <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of other operations continues to grow, some in the field are starting to ask an <span class="annot" data-tooltip="awkward /'ɔːkwərd/ adj. 笨拙的；尴尬的；棘手的；不合适的副 词: awkwardly">awkward</span> question: how many are really necessary? Answers have long been hard to come by, in part because few randomised controlled trials (RCTs), the gold-standard type of research used to assess medications, were conducted on surgical procedures. That made it difficult to know if patients got better more often with surgery than they might have</p>
+<p>without. This is now changing. The <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of surgical RCTs funded by Britain's National Institute for Health and Care Research increased from 34 in 2011 to 188 in 2023, and national surgical-<span class="annot" data-tooltip="trials /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">trials</span> programmes are active across Europe as well as in Australia and Canada. The results are upending the field. Removing an inflamed <span class="annot" data-tooltip="appendix /ə'pendɪks/ n. 附录；阑尾；附加物复 数: appendices">appendix</span>, an operation that around 5-10% of people have had at some point in their life, has turned out to be no better for most patients than a course of antibiotics. Trials comparing different surgical techniques have also <span class="annot" data-tooltip="revealed /rɪ'viːl/ vt. 显示；露出泄露；透露时 态: revealed，revealing，reveals">revealed</span> that cheaper and less complex operations can be more effective. Most <span class="annot" data-tooltip="striking /'straɪkɪŋ/ adj. 显著的，突出的引人注目的；容貌出众的副 词: strikingly">striking</span>, the data show that some widely used surgical <span class="annot" data-tooltip="procedures 规程">procedures</span>, such as spinal <span class="annot" data-tooltip="fusions /'fjuːʒn/ n. 融合物；熔化；融合；熔接">fusions</span> and rotator-<span class="annot" data-tooltip="cuff /kʌf/ n. 袖口vt. 掌打, 拳打时 态: cuffed, cuffing, cuffs">cuff</span> repairs, have effects <span class="annot" data-tooltip="indistinguishable /ˌɪndɪ'stɪŋɡwɪʃəbl/ adj. 难区分的,不能分辨的副 词: indistinguishably">indistinguishable</span> from placebo or non-surgical care such as physiotherapy. Worse, some types of <span class="annot" data-tooltip="surgery /'sɜːrdʒəri/ n. 外科；外科手术；手术室；诊疗室">surgery</span> may do more harm than good. A <span class="annot" data-tooltip="trial /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">trial</span> in Britain found that prostate-<span class="annot" data-tooltip="cancer /'kænsər/ n. 癌迅速蔓延的恶劣的或危险的事物形容词: cancerous">cancer</span> surgery had no effect on patient <span class="annot" data-tooltip="mortality /mɔːr'tæləti/ n. 必死性大量死亡死亡率">mortality</span> 15 years on, but <span class="annot" data-tooltip="worsened /'wɜːrsn/ vt. & vi. (使)变得更坏,(使)恶化时 态: worsened, worsening, worsens">worsened</span> <span class="annot" data-tooltip="sexual /'sekʃuəl/ adj. 性交的, 性行为的, 性吸引的, 两性的, 肉体吸引的性别的, 性的, 男性或女性的生殖的, 有性生殖的副 词: sex">sexual</span> and urological problems. A Finnish trial of a common knee <span class="annot" data-tooltip="procedure /prə'siːdʒər/ n. 程序, 步骤手续">procedure</span>, meanwhile, concluded that patients who had real surgery had more problems in the <span class="annot" data-tooltip="affected /ə'fekt/ vt. 影响；假装；感动；感染vi. 倾向；喜欢n. 情感；引起感情的因素时 态: affected, affecting, a">affected</span> knee ten years on than those who had had sham surgery (anaesthesia followed by a <span class="annot" data-tooltip="superficial /ˌsuːpər'fɪʃl/ adj. 表面(上)的；表皮的肤浅的，浅薄的；缺乏深度的名 词: superficiality">superficial</span> incision). David Ring, an <span class="annot" data-tooltip="orthopaedic /ˌɔːrθə'piːdɪk/ adj. 整形外科的">orthopaedic</span> surgeon at the University of <span class="annot" data-tooltip="texas /'teksəs/ n. 德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室">Texas</span> at Austin, reckons that most operations in his field may be unnecessary. Surgery itself, it would seem, could use a <span class="annot" data-tooltip="major /'meɪdʒər/ adj. 主要的；主修的；重要的；较多的n. 成年人；主修科目；陆军少校vi. 主修时 态: majored, majoring,">major</span> <span class="annot" data-tooltip="intervention /ˌɪntər'venʃn/ n. 介入, 干涉, 干预">intervention</span>. If so many operations are unnecessary, how to explain the fact that patients often leave the operating table feeling better? In a study published in 2022 in JAMA, a <span class="annot" data-tooltip="journal /'dʒɜːrnl/ n. 日报，杂志；日记；[经]分类账">journal</span>, researchers pooled data from 100 surgical trials <span class="annot" data-tooltip="covering /'kʌvər/ vt. 包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替时 态: covered, covering, c">covering</span> 32 <span class="annot" data-tooltip="interventions /ˌɪntər'venʃn/ n. 介入, 干涉, 干预">interventions</span>. They found that two-thirds of the improvement patients felt after surgery was <span class="annot" data-tooltip="due /duː/ adj. 到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）">due</span>, on average, <span class="annot" data-tooltip="either /'iːðər/ pron. (两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的">either</span> to the body <span class="annot" data-tooltip="healing /hiːl/ vt. 治愈，痊愈；和解vi. 痊愈时 态: healed, healing, heals">healing</span> on its <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> or else to the placebo effects of feeling cared for and prepped for surgery. Only one-third of the benefit, in other words, came from the procedure itself. “Surgeons think they're effective because they are administering a <span class="annot" data-tooltip="potent /'poʊtnt/ adj. 有效的；强有力的，有权势的；有说服力的">potent</span> placebo,” says Seth Leopold, an orthopaedic surgeon at the University of Washington. In a <span class="annot" data-tooltip="landmark /'lændmɑːrk/ n. 陆标，地标；里程碑；地界标；划时代的事">landmark</span> trial on 165 patients in 2002, led by Bruce Moseley from the Baylor College of Medicine, in Houston, the surgical team even <span class="annot" data-tooltip="splashed /splæʃ/ n. 溅泼声溅上的斑点(光、色等的)斑点溅泼的量vt. 使(液体)溅起vi. (指液体)溅落时 态: splashed, sp">splashed</span> water in a dish to <span class="annot" data-tooltip="mimic /'mɪmɪk/ vt. 模仿，摹拟n. 小丑；仿制品；效颦者，模仿者adj. 模仿的，模拟的；假装的时 态: mimicked, mimicki">mimic</span> the sound of <span class="annot" data-tooltip="tissue /'tɪʃuː/ n. 组织薄纸, 棉纸一套, 一系列形容词: tissular">tissue</span> debris being <span class="annot" data-tooltip="flushed /flʌʃ/ v. 脸红，发红冲（抽水马桶）（用水）冲洗净，冲洗（用水）冲走n. 潮红，脸红一阵强烈情感，（流露出的）一阵激情冲（抽水马桶）">flushed</span> out from the knee <span class="annot" data-tooltip="joint /dʒɔɪnt/ n. 关节；接合处，接合点；接缝；（牛，羊等的腿）大块肉adj. 联合的，合办的；共同的；连接的vt. 连接，贴合；接合；使有">joint</span>. (Though patients were under general</p>
+<p>anaesthesia, the study team were mindful the placebo effect might depend on stimuli registered by the unconscious brain.) The <span class="annot" data-tooltip="trial /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">trial</span> found that the <span class="annot" data-tooltip="surgery /'sɜːrdʒəri/ n. 外科；外科手术；手术室；诊疗室">surgery</span> was no better in alleviating pain than the sham operation. Natural <span class="annot" data-tooltip="healing /hiːl/ vt. 治愈，痊愈；和解vi. 痊愈时 态: healed, healing, heals">healing</span> is also powerful, if slow-acting. In the 2022 study in JAMA the researchers compared real and sham <span class="annot" data-tooltip="surgeries /'sɜːrdʒəri/ n. 外科；外科手术；手术室；诊疗室">surgeries</span> with standard non-surgical care for a <span class="annot" data-tooltip="subset /'sʌbset/ n. 子集">subset</span> of <span class="annot" data-tooltip="procedures 规程">procedures</span> on which data were available. They found that the placebo effect could explain only a small part of the improvement in the sham-surgery <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span>. Most of the benefit came instead from natural improvement. Achieving changes in clinical <span class="annot" data-tooltip="practice /'præktɪs/ n. 练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规时 态: practiced，practicing，">practice</span> has <span class="annot" data-tooltip="proved /proʊ/ n. 从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞">proved</span> difficult. Surgeons continue to perform some operations that have been shown to be no better than placebo surgery at the same rate as before. They find it hard to believe that something which they have been doing for years and seems to help their patients is, in fact, useless, says Ian Harris, a surgeon at the University of New South Wales, in <span class="annot" data-tooltip="sydney /'sɪdni/ n. 悉尼（澳大利亚港市）">Sydney</span>. That occasionally leads to what he describes as outlandish criticisms. In 2014, for example, a group of surgeons wrote a <span class="annot" data-tooltip="commentary /'kɑːmənteri/ n. 实况报道，解说词评论；评注">commentary</span> on the use of sham surgery in <span class="annot" data-tooltip="trials /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">trials</span> in Arthroscopy, a medical <span class="annot" data-tooltip="journal /'dʒɜːrnl/ n. 日报，杂志；日记；[经]分类账">journal</span>, in which they worried that “Patients who may not be of <span class="annot" data-tooltip="entirely /ɪn'taɪərli/ adv. 全部地;完整地;完全地">entirely</span> sound mind are selected as research subjects, and research performed on such individuals would not be generalisable to <span class="annot" data-tooltip="mentally /'mentl/ adj. 精神的, 头脑的, 心理的, 智力的精神病的副 词: mentally">mentally</span> healthy patients.” “You have to remember surgeons have no <span class="annot" data-tooltip="uncertainty /ʌn'sɜːrtnti/ n. 无把握;不确定;变化不定无把握、不确定的事物">uncertainty</span>,” says Jane Blazeby, a surgeon at the University of Bristol who has conducted many such trials. “They always know what’s best,” she adds, archly. This certainty is not always justified: research has shown that, for one common type of knee surgery, surgeons’ predictions about whether a patient will improve is as good as <span class="annot" data-tooltip="flipping /flɪp/ vt. 轻击；掷vi. 用指轻弹；蹦跳adj. 无礼的；轻率的n. 筋斗；弹FLIPabbr. Floating Indeved">flipping</span> a coin. Surgeons who have been doing a <span class="annot" data-tooltip="procedure /prə'siːdʒər/ n. 程序, 步骤手续">procedure</span> for years also <span class="annot" data-tooltip="tend /tend/ vt. 照料，照顾，伺候vi. 往，朝向易于；倾向时 态: tended，tending，tends">tend</span> to overestimate its benefits, says Stefan Lohmander from Lund University, in Sweden, because the patients who return for check-ups are mostly those who got better. Moreover, many of these returning patients do not want to disappoint their doctors, says Dr Lohmander—which may, in part, be why surgeons often feel procedures are more successful than their patients do. For Dr Blazeby, convincing her colleagues to enroll their patients on randomised controlled trials required teaching them to “confidently be</p>
+<p>unconfident”, she says. Such <span class="annot" data-tooltip="trials /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">trials</span> required them to tell patients that an operation they had been doing for years might not be the right choice for them. Encouragingly, younger surgeons are more open to change. Studies in America and Australia, for example, have found that the <span class="annot" data-tooltip="probability /ˌprɑːbə'bɪləti/ n. 可能性, 可能发生的事〈数〉概率">probability</span> that a surgeon stops performing a <span class="annot" data-tooltip="procedure /prə'siːdʒər/ n. 程序, 步骤手续">procedure</span> a <span class="annot" data-tooltip="trial /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">trial</span> has shown ineffective <span class="annot" data-tooltip="decreases /dɪ'kriːs/ n. 减少，减小；减少量vi. 减少，减小vt. 减少，减小时 态: decreased, decreasing, decre">decreases</span> with time. And when trial results <span class="annot" data-tooltip="reinforce /ˌriːɪn'fɔːrs/ v. 加强；充实；使更强烈加固；使更结实为 (军队或警察队伍) 增加力量（或装备）；向（某地）增兵；增援给予…更多支持；为…提">reinforce</span> each other, scepticism becomes less tenable. The nature of a country’s health system also plays a role. Disfavoured operations decline faster in countries where surgeons are salaried, as in Britain and Scandinavia, than in countries such as America where they are paid per operation and act as small businesses. Shoulder <span class="annot" data-tooltip="surgeries /'sɜːrdʒəri/ n. 外科；外科手术；手术室；诊疗室">surgeries</span> to remove a bone spur fell from 28,000 in Britain in 2016-17 to 5,720 in 2019-20, after trials found that the procedure was no better in alleviating pain than sham <span class="annot" data-tooltip="surgery /'sɜːrdʒəri/ n. 外科；外科手术；手术室；诊疗室">surgery</span>. In America the procedure remained popular. But it is not just surgeons who need to trust the data: a growing <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of patients insist on surgery on the basis of inconclusive tests. All too often, says Dr Ring, scans <span class="annot" data-tooltip="reveal /rɪ'viːl/ vt. 显示；露出泄露；透露时 态: revealed，revealing，reveals">reveal</span> abnormalities that are little more than <span class="annot" data-tooltip="tissue /'tɪʃuː/ n. 组织薄纸, 棉纸一套, 一系列形容词: tissular">tissue</span> <span class="annot" data-tooltip="tears /tɪr，ter/ v. 撕掉，扯下；撕破；拔掉；拉伤；（非正式）狂奔；饱经……摧残；流眼泪n. 眼泪；（撕破的）洞或裂缝， 撕扯时 态: tor">tears</span>; as natural a by-product of ageing as wrinkles and grey hair. What’s more, he says, these things are unlikely to be what is causing patients’ problems. A growing number of studies, in fact, show that the abnormalities in knees, backs and shoulders that <span class="annot" data-tooltip="orthopaedic /ˌɔːrθə'piːdɪk/ adj. 整形外科的">orthopaedic</span> surgeons try to fix are very common in people who have no <span class="annot" data-tooltip="symptoms /'sɪmptəm/ n. 征兆；症状">symptoms</span> at all. But the promise of a quick fix is hard to resist. “It is becoming more and more difficult to say ‘no’ to the patient,” says Dr Lohmander. In America some surgeons fear their patients will leave them a bad review online, and insurance companies still <span class="annot" data-tooltip="cover /'kʌvər/ vt. 包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替时 态: covered, covering, c">cover</span> ineffective <span class="annot" data-tooltip="procedures 规程">procedures</span> for fear of losing customers to their competitors. Even more trials should help doctors hold their ground more <span class="annot" data-tooltip="firmly /'fɜːrmli/ adv. 坚固地;稳固地坚定地;坚决地">firmly</span>. For now, most non-<span class="annot" data-tooltip="essential /ɪ'senʃl/ adj. 基本的；必要的；本质的；精华的">essential</span> surgical techniques remain untested against <span class="annot" data-tooltip="either /'iːðər/ pron. (两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的">either</span> sham surgery or non-surgical <span class="annot" data-tooltip="interventions /ˌɪntər'venʃn/ n. 介入, 干涉, 干预">interventions</span>. A review in 2020 found that just 1% of the RCTs on common surgical procedures conducted for <span class="annot" data-tooltip="chronic /'krɑːnɪk/ adj. 慢性的；长期的；习惯性的副 词: chronically">chronic</span> musculo-skeletal pain compared doing the surgery to not performing the procedure at all. To fulfil their Hippocratic promise of doing no harm, surgeons must be prepared to ask how much good they are <span class="annot" data-tooltip="actually /'æktʃuəl/ adj. 真实的，实际的；现行的，目前的副 词: actually">actually</span> doing. ■</p>
+<p>This article was downloaded by zlibrary from https://www.economist.com/science-and-technology/2026/09/23/many-surgical- <span class="annot" data-tooltip="interventions /ˌɪntər'venʃn/ n. 介入, 干涉, 干预">interventions</span>-are-little-better-than-placebo</p>
+<p>Science & technology | A touch of sun Space-going mirrors could offer daylight on demand Applications <span class="annot" data-tooltip="stretch /stretʃ/ vt. 伸展,张开vi. 伸展adj. 可伸缩的n. 伸展，延伸时 态: stretched, stretching, stre">stretch</span> from disaster relief to street lighting Sep 24th 2026 IN THE NORMAL course of things, night follows day. But if a Californian <span class="annot" data-tooltip="startup /ˈstɑrtˈʌp/ n. 启动；开办">startup</span> called Reflect Orbital gets its way, that might become optional. The firm, which has raised over $28m in funding since it was founded in 2021, hopes to fly tens of thousands of highly reflective mirrors into space, and then use them to illuminate dark parts of Earth on demand. The idea is to provide <span class="annot" data-tooltip="solar /'soʊlər/ adj. 太阳的；日光的；利用太阳光的；与太阳相关的n. 日光浴室">solar</span> power after sunset, help with disaster relief and perhaps even replace streetlights in cities. Sunlight-as-a-service is not a new idea. It was first proposed by Hermann Oberth, a rocketry pioneer, in 1923. NASA gave the idea a more <span class="annot" data-tooltip="thorough /'θɜːroʊ/ adj. 彻底的；十分的；周密的副 词: thoroughly">thorough</span> going-over in a study published in 1977. Russia got as <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> as testing the idea in the real world: in 1993 a satellite called Znamya-2 unfurled a 20-metre-</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>interventions</td><td>/ˌɪntər'venʃn/ n.</td><td>介入, 干涉, 干预</td></tr>
+<tr><td>resistant</td><td>/rɪ'zɪstənt/ adj.</td><td>有抵抗力的, 抵抗的</td></tr>
+<tr><td>consuming</td><td>/kən'suːmɪŋ/ adj.</td><td>消费的；强烈的</td></tr>
+<tr><td>interventions</td><td>/ˌɪntər'venʃn/ n.</td><td>介入, 干涉, 干预</td></tr>
+<tr><td>trials</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>undergo</td><td>/ˌʌndər'ɡoʊ/ vt.</td><td>经历，经受；忍受, undergoes</td></tr>
+<tr><td>surgery</td><td>/'sɜːrdʒəri/ n.</td><td>外科；外科手术；手术室；诊疗室</td></tr>
+<tr><td>lifetime</td><td>/'laɪftaɪm/ n.</td><td>一生；寿命；终生；使用期adj. 一生的；终身的</td></tr>
+<tr><td>procedures</td><td>— </td><td>规程</td></tr>
+<tr><td>transplants</td><td>/træns'plænt/ vt.</td><td>移植, 移种(人)移居, 迁移移植(器官、皮肤、头发等)n. (器官、皮肤、头发等的)移植移植的器官, 移植物, transplanting, transpla</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>awkward</td><td>/'ɔːkwərd/ adj.</td><td>笨拙的；尴尬的；棘手的；不合适的</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>trials</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>appendix</td><td>/ə'pendɪks/ n.</td><td>附录；阑尾；附加物复 数: appendices</td></tr>
+<tr><td>revealed</td><td>/rɪ'viːl/ vt.</td><td>显示；露出泄露；透露，revealing，reveals</td></tr>
+<tr><td>striking</td><td>/'straɪkɪŋ/ adj.</td><td>显著的，突出的引人注目的；容貌出众的</td></tr>
+<tr><td>procedures</td><td>— </td><td>规程</td></tr>
+<tr><td>fusions</td><td>/'fjuːʒn/ n.</td><td>融合物；熔化；融合；熔接</td></tr>
+<tr><td>cuff</td><td>/kʌf/ n.</td><td>袖口vt. 掌打, 拳打, cuffing, cuffs</td></tr>
+<tr><td>indistinguishable</td><td>/ˌɪndɪ'stɪŋɡwɪʃəbl/ adj.</td><td>难区分的,不能分辨的</td></tr>
+<tr><td>surgery</td><td>/'sɜːrdʒəri/ n.</td><td>外科；外科手术；手术室；诊疗室</td></tr>
+<tr><td>trial</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>cancer</td><td>/'kænsər/ n.</td><td>癌迅速蔓延的恶劣的或危险的事物</td></tr>
+<tr><td>mortality</td><td>/mɔːr'tæləti/ n.</td><td>必死性大量死亡死亡率</td></tr>
+<tr><td>worsened</td><td>/'wɜːrsn/ vt.</td><td>& vi. (使)变得更坏,(使)恶化, worsening, worsens</td></tr>
+<tr><td>sexual</td><td>/'sekʃuəl/ adj.</td><td>性交的, 性行为的, 性吸引的, 两性的, 肉体吸引的性别的, 性的, 男性或女性的生殖的, 有性生殖的</td></tr>
+<tr><td>procedure</td><td>/prə'siːdʒər/ n.</td><td>程序, 步骤手续</td></tr>
+<tr><td>affected</td><td>/ə'fekt/ vt.</td><td>影响；假装；感动；感染vi. 倾向；喜欢n. 情感；引起感情的因素, affecting, affects</td></tr>
+<tr><td>superficial</td><td>/ˌsuːpər'fɪʃl/ adj.</td><td>表面(上)的；表皮的肤浅的，浅薄的；缺乏深度的</td></tr>
+<tr><td>orthopaedic</td><td>/ˌɔːrθə'piːdɪk/ adj.</td><td>整形外科的</td></tr>
+<tr><td>texas</td><td>/'teksəs/ n.</td><td>德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室)</td></tr>
+<tr><td>major</td><td>/'meɪdʒər/ adj.</td><td>主要的；主修的；重要的；较多的n. 成年人；主修科目；陆军少校vi. 主修, majoring, majors</td></tr>
+<tr><td>intervention</td><td>/ˌɪntər'venʃn/ n.</td><td>介入, 干涉, 干预</td></tr>
+<tr><td>journal</td><td>/'dʒɜːrnl/ n.</td><td>日报，杂志；日记；[经]分类账</td></tr>
+<tr><td>covering</td><td>/'kʌvər/ vt.</td><td>包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替, covering, covers</td></tr>
+<tr><td>interventions</td><td>/ˌɪntər'venʃn/ n.</td><td>介入, 干涉, 干预</td></tr>
+<tr><td>due</td><td>/duː/ adj.</td><td>到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）</td></tr>
+<tr><td>either</td><td>/'iːðər/ pron.</td><td>(两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的</td></tr>
+<tr><td>healing</td><td>/hiːl/ vt.</td><td>治愈，痊愈；和解vi. 痊愈, healing, heals</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>potent</td><td>/'poʊtnt/ adj.</td><td>有效的；强有力的，有权势的；有说服力的</td></tr>
+<tr><td>landmark</td><td>/'lændmɑːrk/ n.</td><td>陆标，地标；里程碑；地界标；划时代的事</td></tr>
+<tr><td>splashed</td><td>/splæʃ/ n.</td><td>溅泼声溅上的斑点(光、色等的)斑点溅泼的量vt. 使(液体)溅起vi. (指液体)溅落, splashing, splashes</td></tr>
+<tr><td>mimic</td><td>/'mɪmɪk/ vt.</td><td>模仿，摹拟n. 小丑；仿制品；效颦者，模仿者adj. 模仿的，模拟的；假装的, mimicking, mimics</td></tr>
+<tr><td>tissue</td><td>/'tɪʃuː/ n.</td><td>组织薄纸, 棉纸一套, 一系列</td></tr>
+<tr><td>flushed</td><td>/flʌʃ/ v.</td><td>脸红，发红冲（抽水马桶）（用水）冲洗净，冲洗（用水）冲走n. 潮红，脸红一阵强烈情感，（流露出的）一阵激情冲（抽水马桶）同花的一手牌adj. 【非正式】富有，很</td></tr>
+<tr><td>joint</td><td>/dʒɔɪnt/ n.</td><td>关节；接合处，接合点；接缝；（牛，羊等的腿）大块肉adj. 联合的，合办的；共同的；连接的vt. 连接，贴合；接合；使有接头vi. 贴合；生节, jointin</td></tr>
+<tr><td>trial</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>surgery</td><td>/'sɜːrdʒəri/ n.</td><td>外科；外科手术；手术室；诊疗室</td></tr>
+<tr><td>healing</td><td>/hiːl/ vt.</td><td>治愈，痊愈；和解vi. 痊愈, healing, heals</td></tr>
+<tr><td>surgeries</td><td>/'sɜːrdʒəri/ n.</td><td>外科；外科手术；手术室；诊疗室</td></tr>
+<tr><td>subset</td><td>/'sʌbset/ n.</td><td>子集</td></tr>
+<tr><td>procedures</td><td>— </td><td>规程</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>practice</td><td>/'præktɪs/ n.</td><td>练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规，practicing，practices</td></tr>
+<tr><td>proved</td><td>/proʊ/ n.</td><td>从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞成；支持Pro脯氨酸PROabbr. P</td></tr>
+<tr><td>sydney</td><td>/'sɪdni/ n.</td><td>悉尼（澳大利亚港市）</td></tr>
+<tr><td>commentary</td><td>/'kɑːmənteri/ n.</td><td>实况报道，解说词评论；评注</td></tr>
+<tr><td>trials</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>journal</td><td>/'dʒɜːrnl/ n.</td><td>日报，杂志；日记；[经]分类账</td></tr>
+<tr><td>entirely</td><td>/ɪn'taɪərli/ adv.</td><td>全部地;完整地;完全地</td></tr>
+<tr><td>mentally</td><td>/'mentl/ adj.</td><td>精神的, 头脑的, 心理的, 智力的精神病的</td></tr>
+<tr><td>uncertainty</td><td>/ʌn'sɜːrtnti/ n.</td><td>无把握;不确定;变化不定无把握、不确定的事物</td></tr>
+<tr><td>flipping</td><td>/flɪp/ vt.</td><td>轻击；掷vi. 用指轻弹；蹦跳adj. 无礼的；轻率的n. 筋斗；弹FLIPabbr. Floating Indeved Point Arithmetic 变址</td></tr>
+<tr><td>procedure</td><td>/prə'siːdʒər/ n.</td><td>程序, 步骤手续</td></tr>
+<tr><td>tend</td><td>/tend/ vt.</td><td>照料，照顾，伺候vi. 往，朝向易于；倾向，tending，tends</td></tr>
+<tr><td>trials</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>probability</td><td>/ˌprɑːbə'bɪləti/ n.</td><td>可能性, 可能发生的事〈数〉概率</td></tr>
+<tr><td>procedure</td><td>/prə'siːdʒər/ n.</td><td>程序, 步骤手续</td></tr>
+<tr><td>trial</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>decreases</td><td>/dɪ'kriːs/ n.</td><td>减少，减小；减少量vi. 减少，减小vt. 减少，减小, decreasing, decreases</td></tr>
+<tr><td>reinforce</td><td>/ˌriːɪn'fɔːrs/ v.</td><td>加强；充实；使更强烈加固；使更结实为 (军队或警察队伍) 增加力量（或装备）；向（某地）增兵；增援给予…更多支持；为…提供更多证据, reinforcing, </td></tr>
+<tr><td>surgeries</td><td>/'sɜːrdʒəri/ n.</td><td>外科；外科手术；手术室；诊疗室</td></tr>
+<tr><td>surgery</td><td>/'sɜːrdʒəri/ n.</td><td>外科；外科手术；手术室；诊疗室</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>reveal</td><td>/rɪ'viːl/ vt.</td><td>显示；露出泄露；透露，revealing，reveals</td></tr>
+<tr><td>tissue</td><td>/'tɪʃuː/ n.</td><td>组织薄纸, 棉纸一套, 一系列</td></tr>
+<tr><td>tears</td><td>/tɪr，ter/ v.</td><td>撕掉，扯下；撕破；拔掉；拉伤；（非正式）狂奔；饱经……摧残；流眼泪n. 眼泪；（撕破的）洞或裂缝， 撕扯，torn，tearing，tears</td></tr>
+<tr><td>orthopaedic</td><td>/ˌɔːrθə'piːdɪk/ adj.</td><td>整形外科的</td></tr>
+<tr><td>symptoms</td><td>/'sɪmptəm/ n.</td><td>征兆；症状</td></tr>
+<tr><td>cover</td><td>/'kʌvər/ vt.</td><td>包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替, covering, covers</td></tr>
+<tr><td>procedures</td><td>— </td><td>规程</td></tr>
+<tr><td>firmly</td><td>/'fɜːrmli/ adv.</td><td>坚固地;稳固地坚定地;坚决地</td></tr>
+<tr><td>essential</td><td>/ɪ'senʃl/ adj.</td><td>基本的；必要的；本质的；精华的</td></tr>
+<tr><td>either</td><td>/'iːðər/ pron.</td><td>(两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的</td></tr>
+<tr><td>interventions</td><td>/ˌɪntər'venʃn/ n.</td><td>介入, 干涉, 干预</td></tr>
+<tr><td>chronic</td><td>/'krɑːnɪk/ adj.</td><td>慢性的；长期的；习惯性的</td></tr>
+<tr><td>actually</td><td>/'æktʃuəl/ adj.</td><td>真实的，实际的；现行的，目前的</td></tr>
+<tr><td>interventions</td><td>/ˌɪntər'venʃn/ n.</td><td>介入, 干涉, 干预</td></tr>
+<tr><td>stretch</td><td>/stretʃ/ vt.</td><td>伸展,张开vi. 伸展adj. 可伸缩的n. 伸展，延伸, stretching, stretches</td></tr>
+<tr><td>startup</td><td>/ˈstɑrtˈʌp/ n.</td><td>启动；开办</td></tr>
+<tr><td>solar</td><td>/'soʊlər/ adj.</td><td>太阳的；日光的；利用太阳光的；与太阳相关的n. 日光浴室</td></tr>
+<tr><td>thorough</td><td>/'θɜːroʊ/ adj.</td><td>彻底的；十分的；周密的</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day35.html" class="nav-btn">← Day 35</a>
+  <a href="day37.html" class="nav-btn">Day 37 →</a>
+</div>
+
+<div class="progress">📖 Day 36 of 42</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-09-26</div>
+
+</body>
+</html>
