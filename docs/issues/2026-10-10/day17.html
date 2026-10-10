@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Americas | Easy riders</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-10-10</div>
+
+<h1 class="article-title">The Americas | Easy riders</h1>
+<div class="article-section">The Americas</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>transport go to skilled workers, since <span class="annot" data-tooltip="routes /ruːt，raʊt/ n. 路, 路途, 路线, 路程时 态: routed, routing, routes">routes</span> <span class="annot" data-tooltip="tend /tend/ vt. 照料，照顾，伺候vi. 往，朝向易于；倾向时 态: tended，tending，tends">tend</span> to run to city centres, where many of the best jobs are found. A study of Montevideo, the capital of Uruguay, for example, showed that the poorest 20% of the city’s population could access just 21% of job opportunities in 40 minutes. That <span class="annot" data-tooltip="contrasts /'kɑːntræst/ n. 对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照时 态: contrasted, cont">contrasts</span> with the richest 20%, who could access 54% of jobs, according to a paper by Diego Hernández of the <span class="annot" data-tooltip="catholic /ˈkæθlɪk/ adj. 天主教的；宽宏大量的n. 天主教徒；罗马天主教catholicadj. 普遍的;广泛的;包容一切的宽容的副 词: cat">Catholic</span> University of Uruguay and co-authors. This suggests motorcycles may have an important role to play in improving the lives of poorer people, particularly since unskilled jobs are often widely dispersed around the periphery of cities, making them harder to <span class="annot" data-tooltip="reach /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reach</span>. Still, such benefits come at a cost. After declining for much of the previous <span class="annot" data-tooltip="decade /'dekeɪd/ n. 十年，十年期；十">decade</span>, road deaths across Latin America and the Caribbean rose by about 10% between 2021 and 2024 to around 100,000 a year, reckons the Inter- American Development Bank. A <span class="annot" data-tooltip="surge /sɜːrdʒ/ n. (情感的) 突发，涌现，突然出现（数量的）急剧上升，激增；大量；一大批奔涌向前；突然的向上运动（电流）浪涌v. 涌；汹涌">surge</span> in motorcyclists’ deaths was responsible for much of the increase. These doubled over the ten years to 2023 in Chile and especially <span class="annot" data-tooltip="colombia n. 哥伦比亚（拉丁美洲国家）形容词: Colombian">Colombia</span>, where almost a third of <span class="annot" data-tooltip="households /'haʊshoʊld/ n. 同住在一所房子里的人, 一家人, 户adj. 家庭的, 家用的">households</span> <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> a motorbike and riders account for 62% of road deaths, compared with roughly a third worldwide. Such carnage is not <span class="annot" data-tooltip="inevitable /ɪn'evɪtəbl/ adj. 不可避免的, 必然发生的〈非正〉总会发生的, 照例必有的, 惯常的名 词: inevitability">inevitable</span>, says Ricardo Pérez-Núñez of the Pan American Health Organisation, who points out that motorcycle fatalities have fallen over the same period in many countries in other regions. One reason for the divergence is regulation. Few riders in Latin America are forced to wear helmets that meet <span class="annot" data-tooltip="proper /'prɑːpər/ adj. 适合的; 适当的; 适用的; 恰当的遵守规则的; 正确的严格意义的; 本身的合乎体统的; 正派的固有的; 特有的副 词:">proper</span> safety standards. Rules on licences, speeding and drunk-driving are often ignored. Delivery work makes matters worse. Riders are paid per job, encouraging them to <span class="annot" data-tooltip="drive /draɪv/ vt. 驱赶驱使, 促使敲, 击vt. & vi. 驾驶n. 乘车旅行私人车道传动, 驱动干劲, 积极性, 能动性紧迫, 逼迫,">drive</span> fast and work long hours, often with one eye on their phones. The trouble is that politicians have little appetite for tougher rules, which risk angering millions of working-class riders. In Bogotá temporary <span class="annot" data-tooltip="restrictions /rɪ'strɪkʃn/ n. 约束，限制管制，限定；法律，规章">restrictions</span> on motorcycles <span class="annot" data-tooltip="prompted /prɑːmpt/ adj. 敏捷的，迅速的；立刻的vt. 促进；激起；提示；（给演员）提白n. 提示；付款期限；DOS命令：改变DOS系统提示符的风">prompted</span> <span class="annot" data-tooltip="protests /'proʊtest/ n. 抗议；反对vt. & vi. 声明；抗议时 态: protested，protesting，protests">protests</span> and road <span class="annot" data-tooltip="blockades /blɑː'keɪd/ vt. 封锁n. 阻塞时 态: blockaded, blockading, blockades">blockades</span> last year. Moreover, moteros are organised and increasingly courted as a political constituency. ■ This article was downloaded by zlibrary from https://www.economist.com/the-americas/2026/10/08/latin-america-has-caught- motorcycle-fever</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Middle East &amp; Africa</div>
+<p>Ethiopia and Eritrea are on the <span class="annot" data-tooltip="brink /brɪŋk/ n. (悬崖峭壁的)边沿(危险的)边沿">brink</span> of another conflict White Zimbabweans return to <span class="annot" data-tooltip="farming /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">farming</span> America’s <span class="annot" data-tooltip="blockade /blɑː'keɪd/ vt. 封锁n. 阻塞时 态: blockaded, blockading, blockades">blockade</span> is breaking Iran’s economy A grubby amnesty law <span class="annot" data-tooltip="highlights 拔萃,集锦(精采会议文献选辑)">highlights</span> Lebanon’s sectarian divides In a near-catastrophe, Binyamin Netanyahu sees an opportunity</p>
+<p>Middle East & Africa | More trouble in the <span class="annot" data-tooltip="horn /hɔːrn/ n. 角, 触角角质物号, 号角喇叭, 报警器Horn合恩(南美最南端的一岛名)时 态: horned, horning, h">Horn</span> Ethiopia and Eritrea are on the <span class="annot" data-tooltip="brink /brɪŋk/ n. (悬崖峭壁的)边沿(危险的)边沿">brink</span> of another conflict As Eritrean forces advance in Tigray, all-out war with Ethiopia seems almost <span class="annot" data-tooltip="inevitable /ɪn'evɪtəbl/ adj. 不可避免的, 必然发生的〈非正〉总会发生的, 照例必有的, 惯常的名 词: inevitability">inevitable</span> Oct 8th 2026 The projectile shrieked past and exploded. Hayelom Berhane was unharmed, but others were not so lucky. Mr Hayelom (not his real name) says 21 civilians were killed by the <span class="annot" data-tooltip="blast /blæst/ n. 爆炸；冲击波；一阵vi. 猛攻vt. 使枯萎；损害；爆炸时 态: blasted, blasting, blasts">blast</span> in Maychew, a town in the south of Ethiopia’s Tigray region that was shelled by the <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">federal</span> army on September 29th. Forces loyal to Tigray’s rulers, the Tigray People’s <span class="annot" data-tooltip="liberation /ˌlɪbə'reɪʃn/ n. 解放名 词: liberationist">Liberation</span> Front (TPLF), withdrew shortly afterwards, part of a retreat in the face of advances by government troops. <span class="annot" data-tooltip="looting /luːt/ n. 掠夺品；战利品；抢劫vt. 抢劫，洗劫；强夺vi. 洗劫，掠夺；抢劫时 态: looted, looting, loot">Looting</span> and banditry have erupted in some areas since then. “There is a real fear among the public that [the army] will not be able to stabilise the situation,” says Mr Hayelom.</p>
+<p>When war broke out in Ethiopia’s northernmost region on September 23rd, the TPLF and a <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of allied <span class="annot" data-tooltip="rebel /'rebl/ n. 反政府的人；反叛者；造反者叛逆者vi. 反抗政府；造反反抗权威；叛逆时 态: rebelled，rebelling，re">rebel</span> <span class="annot" data-tooltip="groups /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">groups</span> initially went on the <span class="annot" data-tooltip="offensive /ə'fensɪv/ adj. 讨厌的；令人不快的攻击的n. 进攻，攻势副 词: offensively">offensive</span>. Vowing to topple the <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">federal</span> government of Abiy Ahmed, Ethiopia’s prime minister, they made incursions into the neighbouring regions of Amhara and Afar. Yet the <span class="annot" data-tooltip="tide /taɪd/ n. 潮汐；趋势，潮流vt. 随潮漂流时 态: tided, tiding, tides">tide</span> has since turned against them with remarkable speed. In recent days the Ethiopian army and militias allied with it have erased the <span class="annot" data-tooltip="rebels /'rebl/ n. 反政府的人；反叛者；造反者叛逆者vi. 反抗政府；造反反抗权威；叛逆时 态: rebelled，rebelling，re">rebels</span>’ gains and advanced rapidly through southern Tigray. On October 4th federal forces took control of Mekelle, the regional capital, ousting the TPLF’s leaders from what had been their seat of government for <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span>. Rather than <span class="annot" data-tooltip="heralding /'herəld/ n. 使者, 预报者vi. 预示时 态: heralded, heralding, heralds">heralding</span> a short or contained war, the government’s <span class="annot" data-tooltip="swift /swɪft/ adj. 迅速的, 速度快的敏捷的, 反应快的SWIFTabbr. Society for Worldwide Interbank">swift</span> advances may have set the stage for a <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> more dangerous <span class="annot" data-tooltip="confrontation /ˌkɑːnfrən'teɪʃn/ n. 对抗, 对抗的事物形容词: confrontational">confrontation</span>. Ethiopia claims that Eritrea, its neighbour to the north, backs the rebels, and that Eritrean soldiers took part in the recent fighting in Afar. Since then Eritrean troops have advanced into Tigray at least as far south as Adigrat and Idaga Hamus (see map). On October 7th Ethiopia demanded that they “leave Ethiopian <span class="annot" data-tooltip="territory /'terətɔːri/ n. 领土, 版图管区, 营业地区地盘, 领域, 范围">territory</span> without delay” and reportedly carried out <span class="annot" data-tooltip="drone /droʊn/ n. 无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫">drone</span> <span class="annot" data-tooltip="strikes /straɪk/ vi. 罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打时 态:">strikes</span> on Eritrean troops near Idaga Hamus. The two countries now look to be closer to a direct conflict than at any time since 1998-2000, when they fought a war which killed tens of thousands.</p>
+<p>Mr Abiy’s government sees Isaias Afwerki, Eritrea’s <span class="annot" data-tooltip="dictator /'dɪkteɪtər/ n. 独裁者；命令者">dictator</span>, as a meddler at home and across the <span class="annot" data-tooltip="horn /hɔːrn/ n. 角, 触角角质物号, 号角喇叭, 报警器Horn合恩(南美最南端的一岛名)时 态: horned, horning, h">Horn</span> of Africa. Eritrea is believed to have supplied weapons and logistical support to the TPLF for months. It also supports other Ethiopian <span class="annot" data-tooltip="rebel /'rebl/ n. 反政府的人；反叛者；造反者叛逆者vi. 反抗政府；造反反抗权威；叛逆时 态: rebelled，rebelling，re">rebel</span> militias, in particular the Fano from Amhara that have been fighting Mr Abiy’s government since 2023. Mr Isaias has built strong ties to Egypt, which is at loggerheads with Ethiopia over a giant dam the latter has built over the Nile. On October 4th Egypt’s president <span class="annot" data-tooltip="hosted /hoʊst/ n. 主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集时 态: hosted, hosting, host">hosted</span> Mr Isaias, <span class="annot" data-tooltip="alongside /əˌlɔːŋ'saɪd/ adv. 靠着边，沿着边prep. (表示位置)在…旁边；沿着…的边；与…并排靠拢着(表示比较)与…放在一起比较(表示伴随)与…一">alongside</span> the leaders of Sudan and Somalia, in the city of Alamein. They agreed to co-ordinate military and intelligence efforts if the conflict expanded to Ethiopia’s borders, Egyptian sources told Reuters. Not long ago, such a diverse coalition against Mr Abiy would have seemed unthinkable. During the previous Tigray war, which raged from 2020 to 2022 and probably killed hundreds of thousands of people, Eritrea and the Fano fought alongside Mr Abiy’s government against the TPLF. Since then the prime minister has fallen out with them. The Fano accuse him of favouring his <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> ethnic <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span>, the Oromo. Mr Isaias fears Mr Abiy covets Eritrean <span class="annot" data-tooltip="territory /'terətɔːri/ n. 领土, 版图管区, 营业地区地盘, 领域, 范围">territory</span>, given his repeated demands for access to Eritrea’s Red Sea <span class="annot" data-tooltip="ports /pɔːrt/ n. 港口，口岸；左舷；舱门；（计算机的）端口vi. 转向左舷vt. 左转舵；持（枪）PORTabbr. Photo Opit">ports</span>. (Mr Abiy insists he would <span class="annot" data-tooltip="pursue /pər'suː/ vt. 从事；追赶；继续；纠缠vi. 追赶；继续进行时 态: pursued, pursuing, pursues">pursue</span> it peacefully.) Ethiopia has also hosted Eritrean <span class="annot" data-tooltip="rebels /'rebl/ n. 反政府的人；反叛者；造反者叛逆者vi. 反抗政府；造反反抗权威；叛逆时 态: rebelled，rebelling，re">rebels</span>. On September 20th the TPLF, the Fano and five other <span class="annot" data-tooltip="groups /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">groups</span>, including the Oromo <span class="annot" data-tooltip="liberation /ˌlɪbə'reɪʃn/ n. 解放名 词: liberationist">Liberation</span> Army, said that they had formed an alliance with the aim of overthrowing the prime minister. Eritrean officials have denied having any part in the scheme. But as fighting in Tigray has intensified, these <span class="annot" data-tooltip="denials /dɪ'naɪəl/ n. 否认拒绝, 拒绝给予">denials</span> have become harder to <span class="annot" data-tooltip="sustain /sə'steɪn/ vt. 承受，支撑维持长期保持；使继续经受，遭受时 态: sustained，sustaining，sustains">sustain</span>. “The plan is [for Eritrea] to join,” a source <span class="annot" data-tooltip="involved /ɪn'vɑːlvd/ adj. 卷入的；有关的；复杂的v. 涉及；使参与；包含（involve的过去式和过去分词）">involved</span> in forming the alliance told The Economist. On October 1st Ethiopia closed its <span class="annot" data-tooltip="embassy /'embəsi/ n. 大使馆；大使馆全体人员">embassy</span> in Eritrea and <span class="annot" data-tooltip="expelled /ɪk'spel/ vt. 驱逐；开除时 态: expelled, expelling, expels">expelled</span> ten Eritrean diplomats, and an Egyptian one. Eritrea severed <span class="annot" data-tooltip="diplomatic /ˌdɪplə'mætɪk/ adj. 外交上的, 外交人员的有手腕的, 策略的, 善于交涉的, 圆滑的副 词: diplomatically">diplomatic</span> relations; Egypt’s foreign ministry insisted it had “no involvement in what is happening inside Ethiopia”. Since their departure from Mekelle, the TPLF’s leaders are <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span> to have retreated north <span class="annot" data-tooltip="towards /tɔːrdz/ prep. 向，朝为了；有助于；用于对于，关于接近；将近；大约">towards</span> the Eritrean border. When <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">federal</span> forces last drove the TPLF from Mekelle, in November 2020, the group launched an insurgency from the countryside and six months later forced the Ethiopian army out of Tigray. On October 1st the TPLF’s <span class="annot" data-tooltip="chairman /'tʃermən/ n. 主席，会长；董事长时 态: chairmanned, chairmanning, chairmans">chairman</span>, Debretsion Gebremichael, promised to make the region “an ember to the enemy” once</p>
+<p>again. A spate of <span class="annot" data-tooltip="explosions /ɪk'sploʊʒn/ n. 爆炸；爆发激增，扩大">explosions</span> at Ethiopian airports and military sites, most recently at the army <span class="annot" data-tooltip="headquarters /ˈhɛdˈkwɔrtɚ/ vi. 设总部vt. 将…的总部设在把…放在总部里时 态: headquartered, headquartering, hea">headquarters</span> in Addis Ababa, the capital, suggests the <span class="annot" data-tooltip="rebels /'rebl/ n. 反政府的人；反叛者；造反者叛逆者vi. 反抗政府；造反反抗权威；叛逆时 态: rebelled，rebelling，re">rebels</span> also intend to take the war beyond Tigray, this time using long-range <span class="annot" data-tooltip="drones /droʊn/ n. 无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫">drones</span>. The TPLF’s latest insurgency could fizzle. The party is a shadow of the force it was in Ethiopian politics before Mr Abiy took office in 2018. Even in Tigray its power has wilted. Many Tigrayans <span class="annot" data-tooltip="loathe /loʊð/ vt. 憎恨, 厌恶极不喜欢时 态: loathed, loathing, loathes">loathe</span> its leaders’ new alliance with Eritrea, whose troops carried out some of the previous war’s worst atrocities. Some of the TPLF’s most <span class="annot" data-tooltip="seasoned /'siːzn/ n. 时期；季节；赛季vt. 给…调味；使适应vi. 变得成熟；变干燥时 态: seasoned, seasoning, se">seasoned</span> officers have defected to Mr Abiy. Tadesse Werede, Tigray’s top commander during the last war and its <span class="annot" data-tooltip="interim /'ɪntərɪm/ adj. 临时的，暂时的；中间的；间歇的n. 过渡时期，中间时期；暂定">interim</span> president until Mr Debretsion ousted him in May, has been missing with three colleagues since October 3rd. They are <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span> to have been abducted by their former comrades to prevent them from <span class="annot" data-tooltip="helping /'helpɪŋ/ n. （进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的">helping</span> the <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">federal</span> army. Still, it would be <span class="annot" data-tooltip="premature /ˌpriːmə'tʃʊr/ adj. 过早的, 提前的, 未到期的早产的副 词: prematurely">premature</span> to write off the TPLF. After early defeats in southern Tigray, it says it chose to retreat rather than <span class="annot" data-tooltip="confront /kən'frʌnt/ vt. 遭遇；比较；面对时 态: confronted, confronting, confronts">confront</span> the Ethiopian army head-on. If that is true, much of its fighting force may still be <span class="annot" data-tooltip="intact /ɪn'tækt/ adj. 完整的；原封不动的；未受损伤的名 词: intactness">intact</span>. Its <span class="annot" data-tooltip="allies n. （第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者">allies</span> among the Fano remain active next door in Amhara, where battles continue. “We have withstood the <span class="annot" data-tooltip="regime /reɪ'ʒiːm/ n. 政权，政体；社会制度；管理体制">regime</span> by ourselves for more than three years,” says a Fano leader. “We used asymmetric war…this game will continue.” Then there is Eritrea. How <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> Mr Isaias is prepared to go to save the TPLF, whose leaders he has despised for <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span>, is unclear. Many analysts assume his <span class="annot" data-tooltip="main /meɪn/ adj. 主要的; 最重要的n. 总管道; 干线">main</span> aim in backing rebels in northern Ethiopia has been to maintain a buffer between his forces and Ethiopia’s. Yet by sending his troops south just as Ethiopian soldiers chase the tplf’s forces to the border, he may have given Mr Abiy an excuse to <span class="annot" data-tooltip="invade /ɪn'veɪd/ vt. 侵略；侵袭；侵扰；涌入vi. 侵略；侵袭；侵犯；侵入时 态: invaded, invading, invades">invade</span>. Mr Abiy has yet to comment on the latest fighting. After years of conflict the Ethiopian army is thought to be larger than ever. <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">Outside</span> pressure would help. On October 4th America’s State Department urged Ethiopia and Eritrea to respect each other’s territorial <span class="annot" data-tooltip="integrity /ɪn'teɡrəti/ n. 正直；诚实，诚恳完整，完全，完善">integrity</span>. While Western diplomats have broadly backed Mr Abiy’s <span class="annot" data-tooltip="crackdown /'krækdaʊn/ n. 压迫,镇压,打击">crackdown</span> on the TPLF, they have warned him not to try to seize Eritrea’s coast by force. Yet they may not put all that much</p>
+<p>pressure on the two sides, given that their attention is focused on the wars in Iran, <span class="annot" data-tooltip="ukraine n. 乌克兰（原苏联一加盟共和国，现已独立）">Ukraine</span> and Yemen. Regional politics make the situation even dicier. Eritrea and Egypt are both important <span class="annot" data-tooltip="allies n. （第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者">allies</span> of Sudan’s army, which is <span class="annot" data-tooltip="involved /ɪn'vɑːlvd/ adj. 卷入的；有关的；复杂的v. 涉及；使参与；包含（involve的过去式和过去分词）">involved</span> in its <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> <span class="annot" data-tooltip="civil /'sɪvl/ adj. 公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的副 词: civilly">civil</span> war at home. <span class="annot" data-tooltip="rebels /'rebl/ n. 反政府的人；反叛者；造反者叛逆者vi. 反抗政府；造反反抗权威；叛逆时 态: rebelled，rebelling，re">Rebels</span> in that war, who are supported by the United Arab Emirates, an Ethiopian ally, have recently begun using Ethiopian <span class="annot" data-tooltip="territory /'terətɔːri/ n. 领土, 版图管区, 营业地区地盘, 领域, 范围">territory</span> to <span class="annot" data-tooltip="mount /maʊnt/ vt. & vi. 登上；骑上vi. 增加；上升vt. 上演；配有…发动攻击；攻击n. 山峰坐骑时 态: mounted，mou">mount</span> <span class="annot" data-tooltip="offensives /ə'fensɪv/ adj. 讨厌的；令人不快的攻击的n. 进攻，攻势副 词: offensively">offensives</span> against Sudan’s army. Open-source investigators also suggest that Ethiopia has allowed imports, by air, of weapons which may well be going to fuel fighting there. The <span class="annot" data-tooltip="horn /hɔːrn/ n. 角, 触角角质物号, 号角喇叭, 报警器Horn合恩(南美最南端的一岛名)时 态: horned, horning, h">Horn</span> of Africa is already the site of one regional proxy war. It may soon suffer another. ■ Sign up to the Analysing Africa, a weekly newsletter that keeps you in the loop about the world’s youngest—and least understood—continent. This article was downloaded by zlibrary from https://www.economist.com/middle-east-and-africa/2026/10/08/ethiopia-and-eritrea- are-on-the-<span class="annot" data-tooltip="brink /brɪŋk/ n. (悬崖峭壁的)边沿(危险的)边沿">brink</span>-of-another-conflict</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>routes</td><td>/ruːt，raʊt/ n.</td><td>路, 路途, 路线, 路程, routing, routes</td></tr>
+<tr><td>tend</td><td>/tend/ vt.</td><td>照料，照顾，伺候vi. 往，朝向易于；倾向，tending，tends</td></tr>
+<tr><td>contrasts</td><td>/'kɑːntræst/ n.</td><td>对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照, contrasting, contrasts</td></tr>
+<tr><td>catholic</td><td>/ˈkæθlɪk/ adj.</td><td>天主教的；宽宏大量的n. 天主教徒；罗马天主教catholicadj. 普遍的;广泛的;包容一切的宽容的</td></tr>
+<tr><td>reach</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>decade</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>surge</td><td>/sɜːrdʒ/ n.</td><td>(情感的) 突发，涌现，突然出现（数量的）急剧上升，激增；大量；一大批奔涌向前；突然的向上运动（电流）浪涌v. 涌；汹涌；涌动(感情、感觉) 突袭，涌动，突发(</td></tr>
+<tr><td>colombia</td><td>— n.</td><td>哥伦比亚（拉丁美洲国家）</td></tr>
+<tr><td>households</td><td>/'haʊshoʊld/ n.</td><td>同住在一所房子里的人, 一家人, 户adj. 家庭的, 家用的</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>inevitable</td><td>/ɪn'evɪtəbl/ adj.</td><td>不可避免的, 必然发生的〈非正〉总会发生的, 照例必有的, 惯常的</td></tr>
+<tr><td>proper</td><td>/'prɑːpər/ adj.</td><td>适合的; 适当的; 适用的; 恰当的遵守规则的; 正确的严格意义的; 本身的合乎体统的; 正派的固有的; 特有的</td></tr>
+<tr><td>drive</td><td>/draɪv/ vt.</td><td>驱赶驱使, 促使敲, 击vt. & vi. 驾驶n. 乘车旅行私人车道传动, 驱动干劲, 积极性, 能动性紧迫, 逼迫, 压力, drives</td></tr>
+<tr><td>restrictions</td><td>/rɪ'strɪkʃn/ n.</td><td>约束，限制管制，限定；法律，规章</td></tr>
+<tr><td>prompted</td><td>/prɑːmpt/ adj.</td><td>敏捷的，迅速的；立刻的vt. 促进；激起；提示；（给演员）提白n. 提示；付款期限；DOS命令：改变DOS系统提示符的风格adv. 准时地, promptest</td></tr>
+<tr><td>protests</td><td>/'proʊtest/ n.</td><td>抗议；反对vt. & vi. 声明；抗议，protesting，protests</td></tr>
+<tr><td>blockades</td><td>/blɑː'keɪd/ vt.</td><td>封锁n. 阻塞, blockading, blockades</td></tr>
+<tr><td>brink</td><td>/brɪŋk/ n.</td><td>(悬崖峭壁的)边沿(危险的)边沿</td></tr>
+<tr><td>farming</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>blockade</td><td>/blɑː'keɪd/ vt.</td><td>封锁n. 阻塞, blockading, blockades</td></tr>
+<tr><td>highlights</td><td>— </td><td>拔萃,集锦(精采会议文献选辑)</td></tr>
+<tr><td>horn</td><td>/hɔːrn/ n.</td><td>角, 触角角质物号, 号角喇叭, 报警器Horn合恩(南美最南端的一岛名), horning, horns</td></tr>
+<tr><td>brink</td><td>/brɪŋk/ n.</td><td>(悬崖峭壁的)边沿(危险的)边沿</td></tr>
+<tr><td>inevitable</td><td>/ɪn'evɪtəbl/ adj.</td><td>不可避免的, 必然发生的〈非正〉总会发生的, 照例必有的, 惯常的</td></tr>
+<tr><td>blast</td><td>/blæst/ n.</td><td>爆炸；冲击波；一阵vi. 猛攻vt. 使枯萎；损害；爆炸, blasting, blasts</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>liberation</td><td>/ˌlɪbə'reɪʃn/ n.</td><td>解放</td></tr>
+<tr><td>looting</td><td>/luːt/ n.</td><td>掠夺品；战利品；抢劫vt. 抢劫，洗劫；强夺vi. 洗劫，掠夺；抢劫, looting, loots</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>rebel</td><td>/'rebl/ n.</td><td>反政府的人；反叛者；造反者叛逆者vi. 反抗政府；造反反抗权威；叛逆，rebelling，rebels</td></tr>
+<tr><td>groups</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>offensive</td><td>/ə'fensɪv/ adj.</td><td>讨厌的；令人不快的攻击的n. 进攻，攻势</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>tide</td><td>/taɪd/ n.</td><td>潮汐；趋势，潮流vt. 随潮漂流, tiding, tides</td></tr>
+<tr><td>rebels</td><td>/'rebl/ n.</td><td>反政府的人；反叛者；造反者叛逆者vi. 反抗政府；造反反抗权威；叛逆，rebelling，rebels</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>heralding</td><td>/'herəld/ n.</td><td>使者, 预报者vi. 预示, heralding, heralds</td></tr>
+<tr><td>swift</td><td>/swɪft/ adj.</td><td>迅速的, 速度快的敏捷的, 反应快的SWIFTabbr. Society for Worldwide Interbank Financial Telecommu</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>confrontation</td><td>/ˌkɑːnfrən'teɪʃn/ n.</td><td>对抗, 对抗的事物</td></tr>
+<tr><td>territory</td><td>/'terətɔːri/ n.</td><td>领土, 版图管区, 营业地区地盘, 领域, 范围</td></tr>
+<tr><td>drone</td><td>/droʊn/ n.</td><td>无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫；嗡嗡响(人)絮絮叨叨地说，喋喋不休地说</td></tr>
+<tr><td>strikes</td><td>/straɪk/ vi.</td><td>罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打, stricken striking, str</td></tr>
+<tr><td>dictator</td><td>/'dɪkteɪtər/ n.</td><td>独裁者；命令者</td></tr>
+<tr><td>horn</td><td>/hɔːrn/ n.</td><td>角, 触角角质物号, 号角喇叭, 报警器Horn合恩(南美最南端的一岛名), horning, horns</td></tr>
+<tr><td>rebel</td><td>/'rebl/ n.</td><td>反政府的人；反叛者；造反者叛逆者vi. 反抗政府；造反反抗权威；叛逆，rebelling，rebels</td></tr>
+<tr><td>hosted</td><td>/hoʊst/ n.</td><td>主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集, hosting, hosts</td></tr>
+<tr><td>alongside</td><td>/əˌlɔːŋ'saɪd/ adv.</td><td>靠着边，沿着边prep. (表示位置)在…旁边；沿着…的边；与…并排靠拢着(表示比较)与…放在一起比较(表示伴随)与…一起，与…一道</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>territory</td><td>/'terətɔːri/ n.</td><td>领土, 版图管区, 营业地区地盘, 领域, 范围</td></tr>
+<tr><td>ports</td><td>/pɔːrt/ n.</td><td>港口，口岸；左舷；舱门；（计算机的）端口vi. 转向左舷vt. 左转舵；持（枪）PORTabbr. Photo Opitical Recorder Tracke</td></tr>
+<tr><td>pursue</td><td>/pər'suː/ vt.</td><td>从事；追赶；继续；纠缠vi. 追赶；继续进行, pursuing, pursues</td></tr>
+<tr><td>rebels</td><td>/'rebl/ n.</td><td>反政府的人；反叛者；造反者叛逆者vi. 反抗政府；造反反抗权威；叛逆，rebelling，rebels</td></tr>
+<tr><td>groups</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>liberation</td><td>/ˌlɪbə'reɪʃn/ n.</td><td>解放</td></tr>
+<tr><td>denials</td><td>/dɪ'naɪəl/ n.</td><td>否认拒绝, 拒绝给予</td></tr>
+<tr><td>sustain</td><td>/sə'steɪn/ vt.</td><td>承受，支撑维持长期保持；使继续经受，遭受，sustaining，sustains</td></tr>
+<tr><td>involved</td><td>/ɪn'vɑːlvd/ adj.</td><td>卷入的；有关的；复杂的v. 涉及；使参与；包含（involve的过去式和过去分词）</td></tr>
+<tr><td>embassy</td><td>/'embəsi/ n.</td><td>大使馆；大使馆全体人员</td></tr>
+<tr><td>expelled</td><td>/ɪk'spel/ vt.</td><td>驱逐；开除, expelling, expels</td></tr>
+<tr><td>diplomatic</td><td>/ˌdɪplə'mætɪk/ adj.</td><td>外交上的, 外交人员的有手腕的, 策略的, 善于交涉的, 圆滑的</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>towards</td><td>/tɔːrdz/ prep.</td><td>向，朝为了；有助于；用于对于，关于接近；将近；大约</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>chairman</td><td>/'tʃermən/ n.</td><td>主席，会长；董事长, chairmanning, chairmans</td></tr>
+<tr><td>explosions</td><td>/ɪk'sploʊʒn/ n.</td><td>爆炸；爆发激增，扩大</td></tr>
+<tr><td>headquarters</td><td>/ˈhɛdˈkwɔrtɚ/ vi.</td><td>设总部vt. 将…的总部设在把…放在总部里, headquartering, headquarters</td></tr>
+<tr><td>rebels</td><td>/'rebl/ n.</td><td>反政府的人；反叛者；造反者叛逆者vi. 反抗政府；造反反抗权威；叛逆，rebelling，rebels</td></tr>
+<tr><td>drones</td><td>/droʊn/ n.</td><td>无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫；嗡嗡响(人)絮絮叨叨地说，喋喋不休地说</td></tr>
+<tr><td>loathe</td><td>/loʊð/ vt.</td><td>憎恨, 厌恶极不喜欢, loathing, loathes</td></tr>
+<tr><td>seasoned</td><td>/'siːzn/ n.</td><td>时期；季节；赛季vt. 给…调味；使适应vi. 变得成熟；变干燥, seasoning, seasons</td></tr>
+<tr><td>interim</td><td>/'ɪntərɪm/ adj.</td><td>临时的，暂时的；中间的；间歇的n. 过渡时期，中间时期；暂定</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>helping</td><td>/'helpɪŋ/ n.</td><td>（进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>premature</td><td>/ˌpriːmə'tʃʊr/ adj.</td><td>过早的, 提前的, 未到期的早产的</td></tr>
+<tr><td>confront</td><td>/kən'frʌnt/ vt.</td><td>遭遇；比较；面对, confronting, confronts</td></tr>
+<tr><td>intact</td><td>/ɪn'tækt/ adj.</td><td>完整的；原封不动的；未受损伤的</td></tr>
+<tr><td>allies</td><td>— n.</td><td>（第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者</td></tr>
+<tr><td>regime</td><td>/reɪ'ʒiːm/ n.</td><td>政权，政体；社会制度；管理体制</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>main</td><td>/meɪn/ adj.</td><td>主要的; 最重要的n. 总管道; 干线</td></tr>
+<tr><td>invade</td><td>/ɪn'veɪd/ vt.</td><td>侵略；侵袭；侵扰；涌入vi. 侵略；侵袭；侵犯；侵入, invading, invades</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>integrity</td><td>/ɪn'teɡrəti/ n.</td><td>正直；诚实，诚恳完整，完全，完善</td></tr>
+<tr><td>crackdown</td><td>/'krækdaʊn/ n.</td><td>压迫,镇压,打击</td></tr>
+<tr><td>ukraine</td><td>— n.</td><td>乌克兰（原苏联一加盟共和国，现已独立）</td></tr>
+<tr><td>allies</td><td>— n.</td><td>（第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者</td></tr>
+<tr><td>involved</td><td>/ɪn'vɑːlvd/ adj.</td><td>卷入的；有关的；复杂的v. 涉及；使参与；包含（involve的过去式和过去分词）</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>civil</td><td>/'sɪvl/ adj.</td><td>公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的</td></tr>
+<tr><td>rebels</td><td>/'rebl/ n.</td><td>反政府的人；反叛者；造反者叛逆者vi. 反抗政府；造反反抗权威；叛逆，rebelling，rebels</td></tr>
+<tr><td>territory</td><td>/'terətɔːri/ n.</td><td>领土, 版图管区, 营业地区地盘, 领域, 范围</td></tr>
+<tr><td>mount</td><td>/maʊnt/ vt.</td><td>& vi. 登上；骑上vi. 增加；上升vt. 上演；配有…发动攻击；攻击n. 山峰坐骑，mounting，mounts</td></tr>
+<tr><td>offensives</td><td>/ə'fensɪv/ adj.</td><td>讨厌的；令人不快的攻击的n. 进攻，攻势</td></tr>
+<tr><td>horn</td><td>/hɔːrn/ n.</td><td>角, 触角角质物号, 号角喇叭, 报警器Horn合恩(南美最南端的一岛名), horning, horns</td></tr>
+<tr><td>brink</td><td>/brɪŋk/ n.</td><td>(悬崖峭壁的)边沿(危险的)边沿</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day16.html" class="nav-btn">← Day 16</a>
+  <a href="day18.html" class="nav-btn">Day 18 →</a>
+</div>
+
+<div class="progress">📖 Day 17 of 40</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-10-10</div>
+
+</body>
+</html>

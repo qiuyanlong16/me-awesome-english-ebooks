@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance & economics</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-10-10</div>
+
+<h1 class="article-title">Finance & economics</h1>
+<div class="article-section"></div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>world war, calculates Goldman Sachs, a bank. The <span class="annot" data-tooltip="surge /sɜːrdʒ/ n. (情感的) 突发，涌现，突然出现（数量的）急剧上升，激增；大量；一大批奔涌向前；突然的向上运动（电流）浪涌v. 涌；汹涌">surge</span> in equity <span class="annot" data-tooltip="investing /ɪn'vest/ vt. 投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买时 态: invested, investing, invests">investing</span> is especially pronounced among young people priced out of <span class="annot" data-tooltip="property /'prɑːpərti/ n. 财产；性质，性能；所有权形容词: propertyless">property</span>. The share of 25-year-olds who had put money into investment accounts rose sixfold between 2015 and 2024, finds JPMorgan Chase, a <span class="annot" data-tooltip="trend /trend/ n. 趋势, 倾向流行时 态: trended, trending, trends">trend</span> the bank suggests may be linked to high housing costs. Fluctuating <span class="annot" data-tooltip="asset /'æset/ n. 资产；有用的东西；有利条件；优点">asset</span> <span class="annot" data-tooltip="values /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">values</span> are largely responsible. <span class="annot" data-tooltip="moody /'muːdi/ adj. 喜怒无常的；易怒的；郁郁寡欢的Moody穆迪(姓氏)比较级: moodier, moodiest">Moody</span>’s Analytics, a data firm, projects that America’s average <span class="annot" data-tooltip="annual /'ænjuəl/ adj. 年度的；每年的n. 年刊，年鉴；一年生植物副 词: annually">annual</span> home-price appreciation will <span class="annot" data-tooltip="ease /iːz/ vt. 减轻，缓和；使安心n. 安逸，悠闲；轻松，舒适vi. 减轻，缓和；放松；灵活地移动EASEabbr. Electroni">ease</span> to 2.1% between 2026 and 2035, from roughly 5% in the past <span class="annot" data-tooltip="decade /'dekeɪd/ n. 十年，十年期；十">decade</span>. Meanwhile in England, the average home is now <span class="annot" data-tooltip="worth /wɜːrθ/ adj. 值…的n. 价值；财产时 态: worthed, worthing, worths">worth</span> less in real <span class="annot" data-tooltip="terms /tɜːrmz/ n. 条款；地位，关系；措辞；术语；价钱（term的复数形式）v. 把…称为（term的三单形式）">terms</span> than it was two <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span> ago. By <span class="annot" data-tooltip="contrast /'kɑːntræst/ n. 对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照时 态: contrasted, cont">contrast</span>, stocks are booming. The <span class="annot" data-tooltip="ratio /'reɪʃioʊ/ n. 比, 比率">ratio</span> of the market <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span> of <span class="annot" data-tooltip="corporate /'kɔːrpərət/ adj. 社团的, 法人的副 词: corporately">corporate</span> equity to the <span class="annot" data-tooltip="net /net/ n. 网；净利；网络；实价vi. 编网vt. 净赚；得到；用网捕adj. 纯粹的；净余的时 态: netted, nettin">net</span> book value of <span class="annot" data-tooltip="assets /'æset/ n. 资产；有用的东西；有利条件；优点">assets</span> has <span class="annot" data-tooltip="reached /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reached</span> an all-time high—<span class="annot" data-tooltip="surpassing /sər'pæs/ vt. 胜过，优于；超越；非…所能办到或理解时 态: surpassed, surpassing, surpasses">surpassing</span> dotcom-era peaks by 50%, says Jan Mischke of MGI. Policy has also shifted. Governments are dismantling tax breaks and <span class="annot" data-tooltip="subsidies /'sʌbsədi/ n. 津贴；补助金；补贴">subsidies</span> that have helped to inflate property prices. In May Britain introduced new protections for renters, shielding them from bidding wars, excessive rent <span class="annot" data-tooltip="rises /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rises</span> and no-fault evictions. In 2023 Canada banned foreigners from buying property, a <span class="annot" data-tooltip="restriction /rɪ'strɪkʃn/ n. 约束，限制管制，限定；法律，规章">restriction</span> <span class="annot" data-tooltip="due /duː/ adj. 到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）">due</span> to <span class="annot" data-tooltip="expire /ɪk'spaɪər/ vi. 期满, (期限)终止断气, 死亡时 态: expired, expiring, expires">expire</span> in 2027. Speculative investment is in retreat as a result. British buy-to-let landlords are selling at record rates and sales of condos in Toronto have <span class="annot" data-tooltip="crashed /kræʃ/ n. 碰撞；崩溃；坠落vt. 破碎；撞碎；坠落vi. 碰撞；坠毁；闯；突然倒台adj. 速成的时 态: crashed, cr">crashed</span>. In America, the <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of homes being <span class="annot" data-tooltip="flipped /flɪp/ vt. 轻击；掷vi. 用指轻弹；蹦跳adj. 无礼的；轻率的n. 筋斗；弹FLIPabbr. Floating Indeved">flipped</span> has dropped and profit <span class="annot" data-tooltip="margins /'mɑːrdʒɪn/ n. 页边缘；利润，余裕；页边的空白">margins</span> have sunk. A pivot away from property has benefits: reining in the housing boom reduces the risk of a 2008-style financial <span class="annot" data-tooltip="crash /kræʃ/ n. 碰撞；崩溃；坠落vt. 破碎；撞碎；坠落vi. 碰撞；坠毁；闯；突然倒台adj. 速成的时 态: crashed, cr">crash</span>. (That said, stock markets can also crash, and rather more quickly when they do.) But it mirrors a shift in <span class="annot" data-tooltip="mindset /'maɪndset/ n. 心态；倾向；习惯；精神状态">mindset</span>, too. Young people are increasingly disillusioned with the idea that bricks and mortar guarantee financial <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span>, judging by responses to Ms Blank’s social-media posts. Though homeownership has “worked amazingly for older generations”, today’s young adults “can only dream” of achieving the same level of property <span class="annot" data-tooltip="wealth /welθ/ n. 财富；大量；富有">wealth</span>, she says. ■ This article was downloaded by zlibrary from https://www.economist.com/finance-and-economics/2026/10/07/why-shares-are-the-new- bricks-and-mortar</p>
+<p>Finance & economics | Sugar <span class="annot" data-tooltip="spikes /spaɪk/ n. 尖头，尖刺，（尤指金属的）尖状物（某些运动鞋上的）防滑鞋钉，钉鞋（spikes）（通常在指下跌前）非常高的数量，价格或程">spikes</span> Indian celebrations will be more expensive this year Blame soaring sugar prices Oct 8th 2026 <span class="annot" data-tooltip="mumbai n. 孟买（印度城市）">Mumbai</span>’s festive <span class="annot" data-tooltip="season /'siːzn/ n. 时期；季节；赛季vt. 给…调味；使适应vi. 变得成熟；变干燥时 态: seasoned, seasoning, se">season</span> kicks off with Ganesh Chaturthi, which this year fell in September. Hindus bring idols of the elephant-headed god into their homes. He stays for up to ten days before the often-<span class="annot" data-tooltip="colossal /kə'lɑːsl/ adj. 巨大的；异常的，非常的">colossal</span> statues are immersed in the Arabian Sea. Mumbaikars also feast on his favourite food: dumplings <span class="annot" data-tooltip="stuffed /stʌf/ n. 材料；东西；填充物；素材资料vt. 填塞；塞满；让吃饱vi. 吃得过多时 态: stuffed, stuffing, s">stuffed</span> with grated coconut and jaggery (set sugar-cane juice). Then come nine nights of dancing and fasting for Navratri, celebrating nine <span class="annot" data-tooltip="avatars /'ævətɑːr/ n. 电影《阿凡达》">avatars</span> of the goddess Durga. On the eighth day young girls representing aspects of Durga are given suji ke halwe, a mix of semolina, ghee and sugar. Next is Dussehra, <span class="annot" data-tooltip="marking /mɑːr/ vt. 毁坏；损坏；玷污MARabbr. Master of Arts in Religion 宗教硕士Mar三月(March)">marking</span> Lord <span class="annot" data-tooltip="ram /ræm/ abbr. Royal Academy of Music〈英〉皇家音乐学院">Ram</span>’s victory over the demon king Ravana —feted across northern India with tens of millions of jalebiya, deep-fried <span class="annot" data-tooltip="batter /'bætər/ n. 击球手；（用鸡蛋、牛奶、面粉等调成的）糊状物；墙面的倾斜vt. 猛击；打坏；使向上倾斜vi. 接连猛击；向上倾斜时 态:">batter</span> coils <span class="annot" data-tooltip="soaked /soʊk/ vt. 吸收，吸入；使……上下湿透；沉浸在（工作或学习中）vi. 渗透；浸泡n. 浸；湿透；大雨时 态: soaked, soa">soaked</span> in <span class="annot" data-tooltip="syrup /'sɪrəp/ n. 糖浆; 糖汁糖浆类药品">syrup</span>. The sugar rush peaks with Diwali, the festival</p>
+<p>of lights, as families and offices exchange elaborate gift boxes of mithaiyan, traditional sweets. This year such treats may <span class="annot" data-tooltip="taste /teɪst/ n. 滋味, 味道鉴赏力爱好, 嗜好vt. & vi. 尝, 品尝, 尝到vt. 吃, 喝体验, 领略时 态: tasted,">taste</span> bittersweet. India’s sugar prices have spiked. A kilo of sugar now costs 53 rupees (55 cents) in <span class="annot" data-tooltip="mumbai n. 孟买（印度城市）">Mumbai</span>, a 15% increase from 46 rupees in June. Anyone trying to beat the festive rush was stung even more: in late August prices <span class="annot" data-tooltip="reached /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reached</span> 70 rupees in several cities (see chart), a <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> of more than 50% in two months. <span class="annot" data-tooltip="inflation /ɪn'fleɪʃn/ n. (充气而引起的)膨胀通货膨胀">Inflation</span> more broadly, at 4.8%, is above the Reserve Bank of India’s target of 4%, <span class="annot" data-tooltip="prompting /prɑːmpt/ adj. 敏捷的，迅速的；立刻的vt. 促进；激起；提示；（给演员）提白n. 提示；付款期限；DOS命令：改变DOS系统提示符的风">prompting</span> the first interest-rate rise in four years on October 7th. Some suggest nature is <span class="annot" data-tooltip="ultimately /'ʌltɪmətli/ adv. 最后;最终">ultimately</span> to blame for the sugar-price <span class="annot" data-tooltip="spike /spaɪk/ n. 尖头，尖刺，（尤指金属的）尖状物（某些运动鞋上的）防滑鞋钉，钉鞋（spikes）（通常在指下跌前）非常高的数量，价格或程">spike</span>. Unseasonal rains last October left cane fields in Maharashtra, a big sugar- producing state, waterlogged. Across the “sugar-cane <span class="annot" data-tooltip="belt /belt/ n. 腰带, 带子区域, 地带vt.（用带子）系住；（作为惩罚用皮带等）抽打；击打vi.（尤指驾车）疾驰；飞奔时 态: bel">belt</span>” of northern India, farms have been struck by red rot, a fungal disease. Production forecasts for the year have been cut by more than a tenth. Others point at the government, which allowed 800,000 tonnes to be exported even after it was clear that output would <span class="annot" data-tooltip="fall /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">fall</span> short. It has since banned all exports. An unpopular policy of <span class="annot" data-tooltip="blending /blend/ vt. & vi. (使)混合, (使)混杂n. 混合物时 态: blended, blent blending, blends">blending</span> ethanol with <span class="annot" data-tooltip="petrol /'petrəl/ n. 汽油">petrol</span> is an easy target. But it cannot explain the spike: only 9% of this <span class="annot" data-tooltip="season /'siːzn/ n. 时期；季节；赛季vt. 给…调味；使适应vi. 变得成熟；变干燥时 态: seasoned, seasoning, se">season</span>’s <span class="annot" data-tooltip="crop /krɑːp/ n. 农作物；庄稼；产量；平头vt. 种植；收割；修剪；剪短vi. 收获时 态: cropped, cropping, cro">crop</span> is being turned into ethanol, compared with 12% in 2022-23.</p>
+<p>Lower production led to speculation. “It was expectations-led,” says Sanjay Kumar of <span class="annot" data-tooltip="delhi /ˈdɛli/ n. 德里（印度城市名）">Delhi</span> University. Mills reckoned that their <span class="annot" data-tooltip="inventories /'ɪnvəntɔːri/ n. 详细目录, 存货清单">inventories</span> of sugar would be <span class="annot" data-tooltip="worth /wɜːrθ/ adj. 值…的n. 价值；财产时 态: worthed, worthing, worths">worth</span> more in the future and so kept a tight hold of their stocks. The government intervened, obliging mills to sell their quotas, through which it regulates supply, every 15 days rather than monthly. It also allowed some <span class="annot" data-tooltip="tariff /'tærɪf/ n. 关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表时 态: tariffed, tariffing, tar">tariff</span>-free imports. Normally sugar imports are subject to a tariff of 100%, enough to <span class="annot" data-tooltip="deter /dɪ'tɜːr/ vt. 制止，阻止；使打消念头时 态: deterred, deterring, deters">deter</span> foreign producers. <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">Although</span> little foreign sugar has arrived, this was enough to cool the market “psychologically”, says Mr Kumar. India’s government has in the past been more worried about the risk of glut than of <span class="annot" data-tooltip="shortage /'ʃɔːrtɪdʒ/ n. 不足; 缺少; 缺少量; 不足额">shortage</span>. A fixed “fair and remunerative” price is a political sweetener for farmers: 365 rupees per 100kg for the <span class="annot" data-tooltip="season /'siːzn/ n. 时期；季节；赛季vt. 给…调味；使适应vi. 变得成熟；变干燥时 态: seasoned, seasoning, se">season</span> starting this month, a third more than in 2018. Guaranteed returns encouraged planting and left mills with huge stockpiles. The government permitted exports and then subsidised them. By 2021 India was the world’s second-largest seller of sugar, after Brazil. When the World Trade Organisation ruled against its export <span class="annot" data-tooltip="subsidies /'sʌbsədi/ n. 津贴；补助金；补贴">subsidies</span>, the government <span class="annot" data-tooltip="leaned /liːn/ vi. 倾斜；倚靠；倾向；依赖adj. 瘦的；贫乏的，歉收的vt. 使倾斜n. 倾斜；倾斜度；瘦肉时 态: leaned, le">leaned</span> harder on ethanol <span class="annot" data-tooltip="blending /blend/ vt. & vi. (使)混合, (使)混杂n. 混合物时 态: blended, blent blending, blends">blending</span> to absorb some of the <span class="annot" data-tooltip="excess /ɪk'ses/ n. 无节制；过度，过量；超过，超额adj. 额外的，过量的；附加的时 态: excessed, excessing, exc">excess</span>. <span class="annot" data-tooltip="intervention /ˌɪntər'venʃn/ n. 介入, 干涉, 干预">Intervention</span> begat further intervention. A warmer world risks upsetting this constructed market. El Niño, a <span class="annot" data-tooltip="recurring /rɪ'kɜːr/ vi. 重现；复发；再来；采用；循环；递归时 态: recurred, recurring, recurs">recurring</span> <span class="annot" data-tooltip="pattern /'pætərn/ n. 型，样式花样，图案方式，形式榜样，典范vt. 模仿； 仿制以图案装饰时 态: patterned，patterning，">pattern</span> of atmospheric warming, could contribute to a weak monsoon next year as well as poor output in Brazil and <span class="annot" data-tooltip="thailand n. 泰国">Thailand</span>. The price of sugar futures, traded in America, has risen by 24% this year. Even allowing more imports would not shield Indian consumers from these higher global prices. A government that built a system to protect sugar-cane growers now wants to shield sweet-toothed Indians from higher prices. It is a <span class="annot" data-tooltip="sticky /'stɪki/ adj. 粘性的；粘的潮湿的；湿热的难对付的，棘手的比较级: stickier，stickiest">sticky</span> situation. ■ This article was downloaded by zlibrary from https://www.economist.com/finance-and-economics/2026/10/08/indian-celebrations- will-be-more-expensive-this-year</p>
+<p>Finance & economics | Buttonwood In search of tax alpha The taxman is losing patience with Americans’ <span class="annot" data-tooltip="shrewd /ʃruːd/ adj. 机灵的, 精明的比较级: shrewder, shrewdest">shrewd</span> use of tax losses Oct 8th 2026 Few things irk the rich—and, for that matter, the not so rich—more than paying taxes. Many people would rather lose money backing a <span class="annot" data-tooltip="lame /leɪm/ adj. 瘸的站不住脚的, 差劲的, 蹩脚的比较级: lamer, lamest">lame</span> horse than hand it to the government. The pain of such payments once moved Americans to revolution. It still moves New Yorkers to head for Florida, or middle-ranking bankers to decamp to Milan. Recently this tax-<span class="annot" data-tooltip="aversion /ə'vɜːrʒn/ n. 厌恶，讨厌，反感讨厌的人或东西">aversion</span> has given <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> to America’s hottest investment <span class="annot" data-tooltip="strategy /'strætədʒi/ n. 战略学, 兵法战略, 策略策略, 计谋">strategy</span>: tax-<span class="annot" data-tooltip="aware /ə'wer/ adj. 知道的；意识到的；有…方面知识的；懂世故的名 词: awareness">aware</span> <span class="annot" data-tooltip="investing /ɪn'vest/ vt. 投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买时 态: invested, investing, invests">investing</span>, or “tax alpha”. <span class="annot" data-tooltip="whereas /ˌwer'æz/ conj. 但是, 而">Whereas</span> “alpha” usually refers to extra returns over some <span class="annot" data-tooltip="benchmark /'bentʃmɑːrk/ 基准时 态: benchmarked, benchmarking, benchmarks">benchmark</span>, tax alpha refers to clever use of America’s labyrinthine tax code. It often means creating losses to set against gains elsewhere, in order to reduce what is <span class="annot" data-tooltip="due /duː/ adj. 到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）">due</span> to the <span class="annot" data-tooltip="internal /ɪn'tɜːrnl/ adj. 国内的；内部的；内在的名 词: internality">Internal</span> <span class="annot" data-tooltip="revenue /'revənuː/ n. 收入，收益；财政收入，税收">Revenue</span> Service (IRS). It has long featured in the richest investors’ <span class="annot" data-tooltip="portfolios /pɔːrt'foʊlioʊ/ n. 公事包, 文件夹投资组合大臣或部长的职位或职责">portfolios</span>. Lately it has become more sophisticated and more widespread.</p>
+<p>Tax-<span class="annot" data-tooltip="aware /ə'wer/ adj. 知道的；意识到的；有…方面知识的；懂世故的名 词: awareness">aware</span> <span class="annot" data-tooltip="investing /ɪn'vest/ vt. 投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买时 态: invested, investing, invests">investing</span> “for babies” (not <span class="annot" data-tooltip="literally /'lɪtərəli/ adv. 逐字地；照字面地确实地，真正地">literally</span>: for that, see last week’s Buttonwood) involves choosing investment <span class="annot" data-tooltip="vehicles /'viːəkl/ n. 交通工具, 车辆传播媒介, 手段">vehicles</span> for their tax benefits, says Brent Sullivan of Tax Alpha Insider, a blog. An investor might shift from <span class="annot" data-tooltip="mutual /'mjuːtʃuəl/ adj. 相互的, 彼此的共同的, 共有的名 词: mutuality">mutual</span> funds, which generate taxable gains frequently, to exchange- traded funds (ETFs) that time payouts strategically. Done <span class="annot" data-tooltip="shrewdly adv. 精明干练地；机灵地；刁钻地">shrewdly</span>, this can bring extra benefits. Investors whose gains are concentrated in a few positions often want to diversify without incurring a hefty tax bill. Section 351 <span class="annot" data-tooltip="conversions /kən'vɜːrʒn/ n. 变换，转化(宗教、信仰等)彻底改变；皈依">conversions</span>, a mainstay of the tax-aware world, allow them to do just that. Their adviser can seed a <span class="annot" data-tooltip="bespoke /bɪˈspoʊk/ adj. （裁缝等手艺人）专门提供定做服务的；（衣服等）定做的v. 展现，显示（bespeak的过去式）">bespoke</span> ETF with their holdings, which they can then rebalance with other <span class="annot" data-tooltip="assets /'æset/ n. 资产；有用的东西；有利条件；优点">assets</span>. This is tax-free until shares in the ETF are sold. The <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span> of assets held in newly created Section 351 ETFs jumped from $800m in 2022 to $7.9bn last year. But the slickest ways of making tax alpha involve something investors usually avoid: losing money. American tax law gives investors latitude over when they realise gains and losses. If they can incur losses in a given tax year by putting money into tax-aware accounts, they can <span class="annot" data-tooltip="offset /'ɔːfset/ vt. 抵消, 补偿时 态: offset, offsetting, offsets">offset</span> gains elsewhere in their <span class="annot" data-tooltip="portfolio /pɔːrt'foʊlioʊ/ n. 公事包, 文件夹投资组合大臣或部长的职位或职责">portfolio</span>. This lets them reduce their tax bills even when their portfolio is rising in <span class="annot" data-tooltip="overall /ˌoʊvər'ɔːl/ adj. 总体的；全面的；综合的全面考虑的adv. 大体上，总的来说一切包括在内，全部的n. 长罩衣工装裤；工作裤">overall</span> value. One method is “direct indexing”. Investors hoping to track the S&P 500 might buy a <span class="annot" data-tooltip="subset /'sʌbset/ n. 子集">subset</span> of stocks <span class="annot" data-tooltip="representative /ˌreprɪ'zentətɪv/ n. 代表代理人adj. 有代表性的, 典型的名 词: representativeness">representative</span> of the index. If a stock loses value, they can sell it, book the loss and buy one with a similar <span class="annot" data-tooltip="weighting /weɪ/ vt. & vi. 称…的重量link v. 重达vt. 权衡；考虑时 态: weighed，weighing，weighs">weighting</span>. The benefits of this <span class="annot" data-tooltip="tend /tend/ vt. 照料，照顾，伺候vi. 往，朝向易于；倾向时 态: tended，tending，tends">tend</span> to <span class="annot" data-tooltip="wane /weɪn/ vi. 变小；衰落；亏缺；退潮；消逝n. 月亏；衰退；衰退期；缺损时 态: waned, waning, wanes">wane</span> over time. Eventually you run out of losing stocks to sell. A newer trick is tax-aware long-short investing (so new, indeed, that advisers have yet to coin a catchier name). Suppose an investor puts $100 into a tax-aware account. Her investment manager can use short sales and <span class="annot" data-tooltip="margin /'mɑːrdʒɪn/ n. 页边缘；利润，余裕；页边的空白">margin</span> to fund $130 in long positions and $30 in short ones. (Her <span class="annot" data-tooltip="net /net/ n. 网；净利；网络；实价vi. 编网vt. 净赚；得到；用网捕adj. 纯粹的；净余的时 态: netted, nettin">net</span> <span class="annot" data-tooltip="exposure /ɪk'spoʊʒər/ n. 暴露, 显露揭发, 揭露(软片等)曝光">exposure</span> remains $100.) Over time, the manager closes the losing positions (in a rising market, mainly <span class="annot" data-tooltip="shorts /ʃɔːrts/ n. 短裤">shorts</span>) to book the losses. He reinvests in similar <span class="annot" data-tooltip="securities /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">securities</span> to maintain the account’s balance. As with direct indexing, the account tracks a chosen <span class="annot" data-tooltip="benchmark /'bentʃmɑːrk/ 基准时 态: benchmarked, benchmarking, benchmarks">benchmark</span>, but generates bigger losses along the way. Tax is delayed, not erased: in the end the investor must realise gains, too. But the delay can be valuable.</p>
+<p><span class="annot" data-tooltip="assets /'æset/ n. 资产；有用的东西；有利条件；优点">Assets</span> in long-short accounts have grown giddyingly, from $6.7bn in 2023 to at least $187bn in the third <span class="annot" data-tooltip="quarter /'kwɔːrtər/ n. 四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一时 ">quarter</span> of 2026, Mr Sullivan estimates. Much of the <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> is explained by funds offering the <span class="annot" data-tooltip="strategy /'strætədʒi/ n. 战略学, 兵法战略, 策略策略, 计谋">strategy</span> to <span class="annot" data-tooltip="mere /mɪr/ adj. 仅仅, 只不过纯粹的Superlative merest">mere</span> millionaires as well as to billionaires. Last year Charles Schwab, a giant investment firm, began letting more advisers run long-short accounts on its platform. But they remain a select business: by the second quarter of 2026 they accounted for 1% of its <span class="annot" data-tooltip="revenue /'revənuː/ n. 收入，收益；财政收入，税收">revenue</span>. The taxman would like to stop the fun. Perhaps fearing regulators’ ire, over the past year Schwab and <span class="annot" data-tooltip="fidelity /fɪ'deləti/ n. 保真度；忠诚；尽责；精确">Fidelity</span>, another big investment firm, began turning away droves of <span class="annot" data-tooltip="clients /'klaɪənt/ n. 委托人顾客, 常客">clients</span> seeking long-short accounts. On September 28th the IRS and the <span class="annot" data-tooltip="treasury /'treʒəri/ n. 财政部；国库，金库；宝库">Treasury</span> said it would tax the most <span class="annot" data-tooltip="aggressive /ə'ɡresɪv/ adj. 好争斗的, 挑衅的, 侵略性的副 词: aggressively">aggressive</span> Section 351 <span class="annot" data-tooltip="conversions /kən'vɜːrʒn/ n. 变换，转化(宗教、信仰等)彻底改变；皈依">conversions</span>. The Treasury has also said it will look into other popular sources of tax alpha. Its <span class="annot" data-tooltip="secretary /'sekrəteri/ n. 秘书书记部长, 大臣形容词: secretarial">secretary</span>, Scott Bessent, complained of “<span class="annot" data-tooltip="abusive /ə'bjuːsɪv/ adj. 被滥用的，被误用的，被妄用的虐待的；凌辱的；糟蹋的骂人的, 攻击性的毁谤的舞弊的；腐败的骗人的；欺骗性的，欺诈性的adv">abusive</span> financial engineering” and “products designed to <span class="annot" data-tooltip="exploit /ɪk'splɔɪt/ vt. 开发，开拓；剥削；开采n. 勋绩；功绩时 态: exploited, exploiting, exploits">exploit</span> our <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">federal</span> tax code”. As Mr Bessent surely knows, such <span class="annot" data-tooltip="abuse /ə'bjuːs/ n. 滥用；辱骂；虐待；弊端；恶习，陋习vt. 滥用；辱骂；虐待时 态: abused, abusing, abuses">abuse</span> happens largely because the tax code invites it. Like many <span class="annot" data-tooltip="dodges /dɑːdʒ/ vt. & vi. 闪躲vt. 回避n. 闪躲, 躲避伎俩, 妙计时 态: dodged, dodging, dodges">dodges</span>, tax alpha is a product of the code’s convolutions—of which Mr Bessent is targeting only a small <span class="annot" data-tooltip="subset /'sʌbset/ n. 子集">subset</span>. Advisers like it because it means higher fees after years of squeezing by <span class="annot" data-tooltip="ultra /'ʌltrə/ adj. 极端的；过分的n. 极端主义者；过激论者；急进论者">ultra</span>-cheap <span class="annot" data-tooltip="passive /'pæsɪv/ adj. 被动的，消极的；被动语态的n. 被动语态副 词: passively">passive</span> funds. Investors like it because it lets them get one over the IRS. For both reasons, one way or another, it is surely here to stay.■ This article was downloaded by zlibrary from https://www.economist.com/finance-and-economics/2026/10/06/in-search-of-tax-alpha</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>surge</td><td>/sɜːrdʒ/ n.</td><td>(情感的) 突发，涌现，突然出现（数量的）急剧上升，激增；大量；一大批奔涌向前；突然的向上运动（电流）浪涌v. 涌；汹涌；涌动(感情、感觉) 突袭，涌动，突发(</td></tr>
+<tr><td>investing</td><td>/ɪn'vest/ vt.</td><td>投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买, investing, invests</td></tr>
+<tr><td>property</td><td>/'prɑːpərti/ n.</td><td>财产；性质，性能；所有权</td></tr>
+<tr><td>trend</td><td>/trend/ n.</td><td>趋势, 倾向流行, trending, trends</td></tr>
+<tr><td>asset</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>values</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>moody</td><td>/'muːdi/ adj.</td><td>喜怒无常的；易怒的；郁郁寡欢的Moody穆迪(姓氏), moodiest</td></tr>
+<tr><td>annual</td><td>/'ænjuəl/ adj.</td><td>年度的；每年的n. 年刊，年鉴；一年生植物</td></tr>
+<tr><td>ease</td><td>/iːz/ vt.</td><td>减轻，缓和；使安心n. 安逸，悠闲；轻松，舒适vi. 减轻，缓和；放松；灵活地移动EASEabbr. Electronic Airborne Systems E</td></tr>
+<tr><td>decade</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>worth</td><td>/wɜːrθ/ adj.</td><td>值…的n. 价值；财产, worthing, worths</td></tr>
+<tr><td>terms</td><td>/tɜːrmz/ n.</td><td>条款；地位，关系；措辞；术语；价钱（term的复数形式）v. 把…称为（term的三单形式）</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>contrast</td><td>/'kɑːntræst/ n.</td><td>对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照, contrasting, contrasts</td></tr>
+<tr><td>ratio</td><td>/'reɪʃioʊ/ n.</td><td>比, 比率</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>corporate</td><td>/'kɔːrpərət/ adj.</td><td>社团的, 法人的</td></tr>
+<tr><td>net</td><td>/net/ n.</td><td>网；净利；网络；实价vi. 编网vt. 净赚；得到；用网捕adj. 纯粹的；净余的, netting, nets</td></tr>
+<tr><td>assets</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>reached</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>surpassing</td><td>/sər'pæs/ vt.</td><td>胜过，优于；超越；非…所能办到或理解, surpassing, surpasses</td></tr>
+<tr><td>subsidies</td><td>/'sʌbsədi/ n.</td><td>津贴；补助金；补贴</td></tr>
+<tr><td>rises</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>restriction</td><td>/rɪ'strɪkʃn/ n.</td><td>约束，限制管制，限定；法律，规章</td></tr>
+<tr><td>due</td><td>/duː/ adj.</td><td>到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）</td></tr>
+<tr><td>expire</td><td>/ɪk'spaɪər/ vi.</td><td>期满, (期限)终止断气, 死亡, expiring, expires</td></tr>
+<tr><td>crashed</td><td>/kræʃ/ n.</td><td>碰撞；崩溃；坠落vt. 破碎；撞碎；坠落vi. 碰撞；坠毁；闯；突然倒台adj. 速成的, crashing, crashes</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>flipped</td><td>/flɪp/ vt.</td><td>轻击；掷vi. 用指轻弹；蹦跳adj. 无礼的；轻率的n. 筋斗；弹FLIPabbr. Floating Indeved Point Arithmetic 变址</td></tr>
+<tr><td>margins</td><td>/'mɑːrdʒɪn/ n.</td><td>页边缘；利润，余裕；页边的空白</td></tr>
+<tr><td>crash</td><td>/kræʃ/ n.</td><td>碰撞；崩溃；坠落vt. 破碎；撞碎；坠落vi. 碰撞；坠毁；闯；突然倒台adj. 速成的, crashing, crashes</td></tr>
+<tr><td>mindset</td><td>/'maɪndset/ n.</td><td>心态；倾向；习惯；精神状态</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>wealth</td><td>/welθ/ n.</td><td>财富；大量；富有</td></tr>
+<tr><td>spikes</td><td>/spaɪk/ n.</td><td>尖头，尖刺，（尤指金属的）尖状物（某些运动鞋上的）防滑鞋钉，钉鞋（spikes）（通常在指下跌前）非常高的数量，价格或程度v. 拒绝刊登，弃置（文章）不用将烈酒</td></tr>
+<tr><td>mumbai</td><td>— n.</td><td>孟买（印度城市）</td></tr>
+<tr><td>season</td><td>/'siːzn/ n.</td><td>时期；季节；赛季vt. 给…调味；使适应vi. 变得成熟；变干燥, seasoning, seasons</td></tr>
+<tr><td>colossal</td><td>/kə'lɑːsl/ adj.</td><td>巨大的；异常的，非常的</td></tr>
+<tr><td>stuffed</td><td>/stʌf/ n.</td><td>材料；东西；填充物；素材资料vt. 填塞；塞满；让吃饱vi. 吃得过多, stuffing, stuffs</td></tr>
+<tr><td>avatars</td><td>/'ævətɑːr/ n.</td><td>电影《阿凡达》</td></tr>
+<tr><td>marking</td><td>/mɑːr/ vt.</td><td>毁坏；损坏；玷污MARabbr. Master of Arts in Religion 宗教硕士Mar三月(March)，marring，mars</td></tr>
+<tr><td>ram</td><td>/ræm/ abbr.</td><td>Royal Academy of Music〈英〉皇家音乐学院</td></tr>
+<tr><td>batter</td><td>/'bætər/ n.</td><td>击球手；（用鸡蛋、牛奶、面粉等调成的）糊状物；墙面的倾斜vt. 猛击；打坏；使向上倾斜vi. 接连猛击；向上倾斜, battering, batters</td></tr>
+<tr><td>soaked</td><td>/soʊk/ vt.</td><td>吸收，吸入；使……上下湿透；沉浸在（工作或学习中）vi. 渗透；浸泡n. 浸；湿透；大雨, soaking, soaks</td></tr>
+<tr><td>syrup</td><td>/'sɪrəp/ n.</td><td>糖浆; 糖汁糖浆类药品</td></tr>
+<tr><td>taste</td><td>/teɪst/ n.</td><td>滋味, 味道鉴赏力爱好, 嗜好vt. & vi. 尝, 品尝, 尝到vt. 吃, 喝体验, 领略, tasting, tastes</td></tr>
+<tr><td>mumbai</td><td>— n.</td><td>孟买（印度城市）</td></tr>
+<tr><td>reached</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>inflation</td><td>/ɪn'fleɪʃn/ n.</td><td>(充气而引起的)膨胀通货膨胀</td></tr>
+<tr><td>prompting</td><td>/prɑːmpt/ adj.</td><td>敏捷的，迅速的；立刻的vt. 促进；激起；提示；（给演员）提白n. 提示；付款期限；DOS命令：改变DOS系统提示符的风格adv. 准时地, promptest</td></tr>
+<tr><td>ultimately</td><td>/'ʌltɪmətli/ adv.</td><td>最后;最终</td></tr>
+<tr><td>spike</td><td>/spaɪk/ n.</td><td>尖头，尖刺，（尤指金属的）尖状物（某些运动鞋上的）防滑鞋钉，钉鞋（spikes）（通常在指下跌前）非常高的数量，价格或程度v. 拒绝刊登，弃置（文章）不用将烈酒</td></tr>
+<tr><td>belt</td><td>/belt/ n.</td><td>腰带, 带子区域, 地带vt.（用带子）系住；（作为惩罚用皮带等）抽打；击打vi.（尤指驾车）疾驰；飞奔, belting, belts</td></tr>
+<tr><td>fall</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>blending</td><td>/blend/ vt.</td><td>& vi. (使)混合, (使)混杂n. 混合物, blent blending, blends</td></tr>
+<tr><td>petrol</td><td>/'petrəl/ n.</td><td>汽油</td></tr>
+<tr><td>season</td><td>/'siːzn/ n.</td><td>时期；季节；赛季vt. 给…调味；使适应vi. 变得成熟；变干燥, seasoning, seasons</td></tr>
+<tr><td>crop</td><td>/krɑːp/ n.</td><td>农作物；庄稼；产量；平头vt. 种植；收割；修剪；剪短vi. 收获, cropping, crops</td></tr>
+<tr><td>delhi</td><td>/ˈdɛli/ n.</td><td>德里（印度城市名）</td></tr>
+<tr><td>inventories</td><td>/'ɪnvəntɔːri/ n.</td><td>详细目录, 存货清单</td></tr>
+<tr><td>worth</td><td>/wɜːrθ/ adj.</td><td>值…的n. 价值；财产, worthing, worths</td></tr>
+<tr><td>tariff</td><td>/'tærɪf/ n.</td><td>关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表, tariffing, tariffs</td></tr>
+<tr><td>deter</td><td>/dɪ'tɜːr/ vt.</td><td>制止，阻止；使打消念头, deterring, deters</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>shortage</td><td>/'ʃɔːrtɪdʒ/ n.</td><td>不足; 缺少; 缺少量; 不足额</td></tr>
+<tr><td>season</td><td>/'siːzn/ n.</td><td>时期；季节；赛季vt. 给…调味；使适应vi. 变得成熟；变干燥, seasoning, seasons</td></tr>
+<tr><td>subsidies</td><td>/'sʌbsədi/ n.</td><td>津贴；补助金；补贴</td></tr>
+<tr><td>leaned</td><td>/liːn/ vi.</td><td>倾斜；倚靠；倾向；依赖adj. 瘦的；贫乏的，歉收的vt. 使倾斜n. 倾斜；倾斜度；瘦肉, leaning, leans</td></tr>
+<tr><td>blending</td><td>/blend/ vt.</td><td>& vi. (使)混合, (使)混杂n. 混合物, blent blending, blends</td></tr>
+<tr><td>excess</td><td>/ɪk'ses/ n.</td><td>无节制；过度，过量；超过，超额adj. 额外的，过量的；附加的, excessing, excesses</td></tr>
+<tr><td>intervention</td><td>/ˌɪntər'venʃn/ n.</td><td>介入, 干涉, 干预</td></tr>
+<tr><td>recurring</td><td>/rɪ'kɜːr/ vi.</td><td>重现；复发；再来；采用；循环；递归, recurring, recurs</td></tr>
+<tr><td>pattern</td><td>/'pætərn/ n.</td><td>型，样式花样，图案方式，形式榜样，典范vt. 模仿； 仿制以图案装饰，patterning，patterns</td></tr>
+<tr><td>thailand</td><td>— n.</td><td>泰国</td></tr>
+<tr><td>sticky</td><td>/'stɪki/ adj.</td><td>粘性的；粘的潮湿的；湿热的难对付的，棘手的，stickiest</td></tr>
+<tr><td>shrewd</td><td>/ʃruːd/ adj.</td><td>机灵的, 精明的, shrewdest</td></tr>
+<tr><td>lame</td><td>/leɪm/ adj.</td><td>瘸的站不住脚的, 差劲的, 蹩脚的, lamest</td></tr>
+<tr><td>aversion</td><td>/ə'vɜːrʒn/ n.</td><td>厌恶，讨厌，反感讨厌的人或东西</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>strategy</td><td>/'strætədʒi/ n.</td><td>战略学, 兵法战略, 策略策略, 计谋</td></tr>
+<tr><td>aware</td><td>/ə'wer/ adj.</td><td>知道的；意识到的；有…方面知识的；懂世故的</td></tr>
+<tr><td>investing</td><td>/ɪn'vest/ vt.</td><td>投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买, investing, invests</td></tr>
+<tr><td>whereas</td><td>/ˌwer'æz/ conj.</td><td>但是, 而</td></tr>
+<tr><td>benchmark</td><td>/'bentʃmɑːrk/ </td><td>基准, benchmarking, benchmarks</td></tr>
+<tr><td>due</td><td>/duː/ adj.</td><td>到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）</td></tr>
+<tr><td>internal</td><td>/ɪn'tɜːrnl/ adj.</td><td>国内的；内部的；内在的</td></tr>
+<tr><td>revenue</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>portfolios</td><td>/pɔːrt'foʊlioʊ/ n.</td><td>公事包, 文件夹投资组合大臣或部长的职位或职责</td></tr>
+<tr><td>aware</td><td>/ə'wer/ adj.</td><td>知道的；意识到的；有…方面知识的；懂世故的</td></tr>
+<tr><td>investing</td><td>/ɪn'vest/ vt.</td><td>投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买, investing, invests</td></tr>
+<tr><td>literally</td><td>/'lɪtərəli/ adv.</td><td>逐字地；照字面地确实地，真正地</td></tr>
+<tr><td>vehicles</td><td>/'viːəkl/ n.</td><td>交通工具, 车辆传播媒介, 手段</td></tr>
+<tr><td>mutual</td><td>/'mjuːtʃuəl/ adj.</td><td>相互的, 彼此的共同的, 共有的</td></tr>
+<tr><td>shrewdly</td><td>— adv.</td><td>精明干练地；机灵地；刁钻地</td></tr>
+<tr><td>conversions</td><td>/kən'vɜːrʒn/ n.</td><td>变换，转化(宗教、信仰等)彻底改变；皈依</td></tr>
+<tr><td>bespoke</td><td>/bɪˈspoʊk/ adj.</td><td>（裁缝等手艺人）专门提供定做服务的；（衣服等）定做的v. 展现，显示（bespeak的过去式）</td></tr>
+<tr><td>assets</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>offset</td><td>/'ɔːfset/ vt.</td><td>抵消, 补偿, offsetting, offsets</td></tr>
+<tr><td>portfolio</td><td>/pɔːrt'foʊlioʊ/ n.</td><td>公事包, 文件夹投资组合大臣或部长的职位或职责</td></tr>
+<tr><td>overall</td><td>/ˌoʊvər'ɔːl/ adj.</td><td>总体的；全面的；综合的全面考虑的adv. 大体上，总的来说一切包括在内，全部的n. 长罩衣工装裤；工作裤</td></tr>
+<tr><td>subset</td><td>/'sʌbset/ n.</td><td>子集</td></tr>
+<tr><td>representative</td><td>/ˌreprɪ'zentətɪv/ n.</td><td>代表代理人adj. 有代表性的, 典型的</td></tr>
+<tr><td>weighting</td><td>/weɪ/ vt.</td><td>& vi. 称…的重量link v. 重达vt. 权衡；考虑，weighing，weighs</td></tr>
+<tr><td>tend</td><td>/tend/ vt.</td><td>照料，照顾，伺候vi. 往，朝向易于；倾向，tending，tends</td></tr>
+<tr><td>wane</td><td>/weɪn/ vi.</td><td>变小；衰落；亏缺；退潮；消逝n. 月亏；衰退；衰退期；缺损, waning, wanes</td></tr>
+<tr><td>margin</td><td>/'mɑːrdʒɪn/ n.</td><td>页边缘；利润，余裕；页边的空白</td></tr>
+<tr><td>net</td><td>/net/ n.</td><td>网；净利；网络；实价vi. 编网vt. 净赚；得到；用网捕adj. 纯粹的；净余的, netting, nets</td></tr>
+<tr><td>exposure</td><td>/ɪk'spoʊʒər/ n.</td><td>暴露, 显露揭发, 揭露(软片等)曝光</td></tr>
+<tr><td>shorts</td><td>/ʃɔːrts/ n.</td><td>短裤</td></tr>
+<tr><td>securities</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>benchmark</td><td>/'bentʃmɑːrk/ </td><td>基准, benchmarking, benchmarks</td></tr>
+<tr><td>assets</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>quarter</td><td>/'kwɔːrtər/ n.</td><td>四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一, quartering, quarters</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>strategy</td><td>/'strætədʒi/ n.</td><td>战略学, 兵法战略, 策略策略, 计谋</td></tr>
+<tr><td>mere</td><td>/mɪr/ adj.</td><td>仅仅, 只不过纯粹的Superlative merest</td></tr>
+<tr><td>revenue</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>fidelity</td><td>/fɪ'deləti/ n.</td><td>保真度；忠诚；尽责；精确</td></tr>
+<tr><td>clients</td><td>/'klaɪənt/ n.</td><td>委托人顾客, 常客</td></tr>
+<tr><td>treasury</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>aggressive</td><td>/ə'ɡresɪv/ adj.</td><td>好争斗的, 挑衅的, 侵略性的</td></tr>
+<tr><td>conversions</td><td>/kən'vɜːrʒn/ n.</td><td>变换，转化(宗教、信仰等)彻底改变；皈依</td></tr>
+<tr><td>secretary</td><td>/'sekrəteri/ n.</td><td>秘书书记部长, 大臣</td></tr>
+<tr><td>abusive</td><td>/ə'bjuːsɪv/ adj.</td><td>被滥用的，被误用的，被妄用的虐待的；凌辱的；糟蹋的骂人的, 攻击性的毁谤的舞弊的；腐败的骗人的；欺骗性的，欺诈性的adv. 滥用地；虐待地；攻击性地；毁谤地；欺</td></tr>
+<tr><td>exploit</td><td>/ɪk'splɔɪt/ vt.</td><td>开发，开拓；剥削；开采n. 勋绩；功绩, exploiting, exploits</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>abuse</td><td>/ə'bjuːs/ n.</td><td>滥用；辱骂；虐待；弊端；恶习，陋习vt. 滥用；辱骂；虐待, abusing, abuses</td></tr>
+<tr><td>dodges</td><td>/dɑːdʒ/ vt.</td><td>& vi. 闪躲vt. 回避n. 闪躲, 躲避伎俩, 妙计, dodging, dodges</td></tr>
+<tr><td>subset</td><td>/'sʌbset/ n.</td><td>子集</td></tr>
+<tr><td>ultra</td><td>/'ʌltrə/ adj.</td><td>极端的；过分的n. 极端主义者；过激论者；急进论者</td></tr>
+<tr><td>passive</td><td>/'pæsɪv/ adj.</td><td>被动的，消极的；被动语态的n. 被动语态</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day32.html" class="nav-btn">← Day 32</a>
+  <a href="day34.html" class="nav-btn">Day 34 →</a>
+</div>
+
+<div class="progress">📖 Day 33 of 40</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-10-10</div>
+
+</body>
+</html>

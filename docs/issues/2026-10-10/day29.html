@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business | Mind games</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-10-10</div>
+
+<h1 class="article-title">Business | Mind games</h1>
+<div class="article-section">Business</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>tech giant; and NeuCyber, which is backed by the state. Local governments are courting investment; officials in the inland province of Anhui have set a target of approving three clinical <span class="annot" data-tooltip="trials /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">trials</span> for implanted electrodes by 2028. Less <span class="annot" data-tooltip="invasive /ɪn'veɪsɪv/ adj. 有扩散危害的; 扩散性的; 蔓延性的名 词: invasiveness">invasive</span> <span class="annot" data-tooltip="versions /'vɜːrʒn/ n. 变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本">versions</span> of BCI technology have also attracted <span class="annot" data-tooltip="significant /sɪɡ'nɪfɪkənt/ adj. 重要的, 重大的, 可观的有意义的, 有用意的意味深长的副 词: significantly">significant</span> attention in China. Semi-invasive approaches <span class="annot" data-tooltip="entail /ɪn'teɪl/ vt. 使…成为必要, 需要限定继承时 态: entailed, entailing, entails">entail</span> implanting a device on the brain’s surface, rather than <span class="annot" data-tooltip="penetrating /ˈpenətreɪtɪŋ/ adj. 刺骨的；穿透的">penetrating</span> the organ. One such product, designed to aid hand-motor functions and made by Neuracle, a Shanghai- based <span class="annot" data-tooltip="startup /ˈstɑrtˈʌp/ n. 启动；开办">startup</span>, received approval in March, making it the first commercially available semi-invasive BCI implant in the world. Within two days of the approval China’s health-care <span class="annot" data-tooltip="bureaucracy /bjʊ'rɑːkrəsi/ n. 政府机构官僚主义, 官僚作风">bureaucracy</span> assigned it a medical-insurance code, paving the way for sales. Then there are non-invasive wearable devices, such as those made by BrainCo. Around 20 companies are now selling BCI wearables, including everything from sleep aids to brain-controlled gaming gadgets. These are <span class="annot" data-tooltip="typically /'tɪpɪkli/ adv. 代表性地;作为特色地;典型地">typically</span> worn over the head, and <span class="annot" data-tooltip="either /'iːðər/ pron. (两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的">either</span> read brain <span class="annot" data-tooltip="waves /weɪv/ vi. 波动；起伏；摇动；呈波形；挥手示意vt. 向…挥手示意；使成波浪形；卷（烫）发n. 波浪；波动；高潮；卷曲；挥手示意时 ">waves</span> or pump in electrical currents. <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">Industry</span> executives talk of a large undiscovered market for wearable neuro-tech. The science is no longer the <span class="annot" data-tooltip="constraint /kən'streɪnt/ n. 强制；限制，约束强制，强迫">constraint</span> on creating the devices, says Nyx He of BrainCo. Instead, she says, the focus is shifting to <span class="annot" data-tooltip="developing /dɪ'veləpɪŋ/ adj. 在进行中的;走向完成阶段的;走向成熟的发展中的">developing</span> products that are useful in daily life. China’s neuro-tech bosses will be hoping that consumers keep an open mind. ■ This article was downloaded by zlibrary from https://www.economist.com/business/2026/10/06/china-wants-to-get-inside-your-head</p>
+<div class="article-separator"></div>
+<div class="article-header">Business · Business | Mouthfeel movement</div>
+<p>Why your <span class="annot" data-tooltip="snacks /snæk/ n. 小吃；点心；快餐vi. 吃快餐；吃点心时 态: snacked，snacking，snacks">snacks</span> are chunkier and chewier than before <span class="annot" data-tooltip="novelty /'nɑːvlti/ n. 新颖; 新奇性新奇的人[事物]新颖小巧而价廉的物品">Novelty</span> is increasingly coming from texture, not just <span class="annot" data-tooltip="taste /teɪst/ n. 滋味, 味道鉴赏力爱好, 嗜好vt. & vi. 尝, 品尝, 尝到vt. 吃, 喝体验, 领略时 态: tasted,">taste</span> Oct 8th 2026 Look at the new snacks people are <span class="annot" data-tooltip="reaching /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reaching</span> for in supermarkets and you may notice a <span class="annot" data-tooltip="trend /trend/ n. 趋势, 倾向流行时 态: trended, trending, trends">trend</span>. From Mondelez, one food giant, there is a <span class="annot" data-tooltip="dairy /'deri/ n. 乳品店；制酪场；牛奶及乳品业；乳牛；奶制品adj. 牛奶的；牛奶制的；乳品的；产乳的">Dairy</span> Milk chocolate bar <span class="annot" data-tooltip="stuffed /stʌf/ n. 材料；东西；填充物；素材资料vt. 填塞；塞满；让吃饱vi. 吃得过多时 态: stuffed, stuffing, s">stuffed</span> with crunchy Lotus Biscoff biscuits. From Mars, a <span class="annot" data-tooltip="rival /'raɪvl/ n. 竞争对手vt. 与…竞争, 与…匹敌时 态: rivaled, rivalled rivaling, rivalling">rival</span>, there are Skittles Gummy <span class="annot" data-tooltip="crystals /'krɪstl/ n. 水晶；结晶，晶体；水晶饰品adj. 水晶的；透明的，清澈的">Crystals</span>, which add tiny <span class="annot" data-tooltip="crackly /kræk/ vt. & vi. (使…)开裂, 破裂(使)身体上或精神上垮掉打开, 砸开(使)发出爆裂声n. 裂缝, 缝隙噼啪声, 爆裂声意">crackly</span> pieces to chewy sweets, and the “Extra Crunchy” <span class="annot" data-tooltip="version /'vɜːrʒn/ n. 变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本">version</span> of its popular Cheez-It crackers. Texture, it seems, is the new taste. Big food has long engineered every aspect of snacks to make them moreish, from the bright colour of the packaging to the aroma that <span class="annot" data-tooltip="escapes /ɪ'skeɪp/ vt. 逃避，避免；被忘掉vi. 逃脱；避开；溜走n. 逃跑；逃亡时 态: escaped, escaping, escapes">escapes</span> when it is ripped open. But the heavy <span class="annot" data-tooltip="emphasis /'emfəsɪs/ n. 强调, 重点">emphasis</span> on texture is new. It includes both how a product sounds when it is eaten and what is known in the <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> as “mouthfeel”. Mintel, a research firm, reckons that the share of snacks</p>
+<p>making claims about texture grew from 31% in 2023 to 41% last year. Of those that did, “crunchy” was the most popular <span class="annot" data-tooltip="description /dɪ'skrɪpʃn/ n. 描述, 形容种类, 类型">description</span>, though “chewy” and “gooey” are gaining fast. Texture can be hard to <span class="annot" data-tooltip="cook /kʊk/ v. 做饭，烹调；（食物）被烧煮；（非正式）篡改，伪造；密谋；干得起劲n.. 厨师n.(Cook) （美）库克（人名）时 态:">cook</span> up. Norberto Chaclin, head of research and development at Mondelez, points out that mixing crunchy and soft <span class="annot" data-tooltip="ingredients /ɪn'ɡriːdiənt/ n. (混合物的)组成部分; 配料">ingredients</span> is <span class="annot" data-tooltip="tricky /'trɪki/ adj. 机警的；狡猾的比较级: trickier, trickiest">tricky</span>. Water migrates from <span class="annot" data-tooltip="moist /mɔɪst/ adj. 潮湿的, 微湿的比较级: moister, moistest">moist</span> to dry, turning crisp things soggy. Take the <span class="annot" data-tooltip="dairy /'deri/ n. 乳品店；制酪场；牛奶及乳品业；乳牛；奶制品adj. 牛奶的；牛奶制的；乳品的；产乳的">Dairy</span> Milk Biscoff. It was engineered carefully with a shell of milk chocolate to keep moisture out and a layer of fat-based Biscoff spread beside the biscuit crumb to <span class="annot" data-tooltip="preserve /prɪ'zɜːrv/ vt. 保存；保护；维持；禁猎；腌n. 禁猎地；保护区；加工成的食品n. (某人或群体的）专门活动时 态: preserved,">preserve</span> its <span class="annot" data-tooltip="crunch /krʌntʃ/ n. 咬碎，咬碎声；扎扎地踏vt. 压碎；嘎扎嘎扎的咬嚼；扎扎地踏过vi. 嘎吱作响地咀嚼；嘎吱嘎吱地踏过时 态: crunc">crunch</span>. The bar went through lengthy testing to ensure its texture held over its shelf life. Such <span class="annot" data-tooltip="complexities /kəm'pleksəti/ n. 复杂性,错综复杂的状态复杂的事物">complexities</span> may explain why foodmakers are struggling to keep up with public interest. By tracking conversation on social media Mintel estimates that in the two years to April demand for “texture-indulgent” <span class="annot" data-tooltip="snacks /snæk/ n. 小吃；点心；快餐vi. 吃快餐；吃点心时 态: snacked，snacking，snacks">snacks</span> in America jumped by 28%. Supply, measured by the sales volume of textured snacks, rose by just 8%. What is driving the hunger for texture? One <span class="annot" data-tooltip="explanation /ˌeksplə'neɪʃn/ n. 解释, 说明能说明某事缘由的言语、事实、情况等">explanation</span> is the <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> of GLP-1 slimming drugs, which have shrunk patients’ appetites. That means when they <span class="annot" data-tooltip="reach /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reach</span> for a <span class="annot" data-tooltip="snack /snæk/ n. 小吃；点心；快餐vi. 吃快餐；吃点心时 态: snacked，snacking，snacks">snack</span> they first ask: “Is it <span class="annot" data-tooltip="worth /wɜːrθ/ adj. 值…的n. 价值；财产时 态: worthed, worthing, worths">worth</span> it?” notes Andrew Wardlaw of MMR, a research firm. A bigger <span class="annot" data-tooltip="sensory /'sensəri/ adj. 感觉的；知觉的；传递感觉的">sensory</span> hit, with sound and feel as well as <span class="annot" data-tooltip="flavour /'fleɪvər/ n. 香味；滋味vt. 给……调味；给……增添风趣">flavour</span>, adds to the “product theatre” and makes <span class="annot" data-tooltip="snacking /snæk/ n. 小吃；点心；快餐vi. 吃快餐；吃点心时 态: snacked，snacking，snacks">snacking</span> more appealing. Another factor is social media. Young consumers are glued to short videos in which influencers munch food with the volume turned up. <span class="annot" data-tooltip="brands /brænd/ n. 商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责时 态: branded, branding, brands">Brands</span> have taken note, producing adverts designed to induce ASMR (<span class="annot" data-tooltip="autonomous /ɔː'tɑːnəməs/ adj. 自治的副 词: autonomously">autonomous</span> sensory meridian response), the tingly, relaxed feeling some get from such content. Posts tagged “crunchtok” <span class="annot" data-tooltip="racked /ræk/ n. 行李架；拷问台；齿条vi. 随风飘；小步跑；变形vt. 折磨；榨取时 态: racked, racking, racks">racked</span> up over 1.5bn views last year. The food <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span>, for its part, sees texture as the last remaining form of differentiation. Mr Wardlaw reckons snacking has <span class="annot" data-tooltip="reached /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reached</span> “peak” <span class="annot" data-tooltip="taste /teɪst/ n. 滋味, 味道鉴赏力爱好, 嗜好vt. & vi. 尝, 品尝, 尝到vt. 吃, 喝体验, 领略时 态: tasted,">taste</span>, with few novel <span class="annot" data-tooltip="flavours /'fleɪvər/ n. 香味；滋味vt. 给……调味；给……增添风趣">flavours</span> left to explore (without venturing into the unappetising). Most consumers have tried chocolate in all manner of formats, from bars (chunky and mini) to snack bags (family and solo). For many people, snacking has become increasingly mindless, as they scroll social media or <span class="annot" data-tooltip="binge /bɪndʒ/ n. 狂欢，狂闹；放纵vt. 放纵vi. 狂饮作乐；大吃大喝时 态: binged, binging, bingeing bi">binge</span> a TV series.</p>
+<p>Rimi Obra-Ratwatte, a nutritionist at Mondelez, likens the demand for texture-rich <span class="annot" data-tooltip="snacks /snæk/ n. 小吃；点心；快餐vi. 吃快餐；吃点心时 态: snacked，snacking，snacks">snacks</span> to the desire to watch a film in 3D. “Everything has become about <span class="annot" data-tooltip="amplifying /'æmplɪfaɪ/ vt. 放大, 扩大增强vt. & vi. 详述时 态: amplified, amplifying, amplifies">amplifying</span> an experience,” she explains. Big food will be hoping that consumers don’t tire of that experience soon. Otherwise they may face a different type of <span class="annot" data-tooltip="crunch /krʌntʃ/ n. 咬碎，咬碎声；扎扎地踏vt. 压碎；嘎扎嘎扎的咬嚼；扎扎地踏过vi. 嘎吱作响地咀嚼；嘎吱嘎吱地踏过时 态: crunc">crunch</span> time. ■ This article was downloaded by zlibrary from https://www.economist.com/business/2026/10/08/why-your-snacks-are-chunkier-and- chewier-than-before</p>
+<div class="article-separator"></div>
+<div class="article-header">Business · Business | A new Napster chapter</div>
+<p>Record labels are in a <span class="annot" data-tooltip="spin /spɪn/ vi. 旋转；纺纱；吐丝；晕眩vt. 使旋转；纺纱；编造；结网n. 旋转；疾驰时 态: spun spinning, spins">spin</span> over AI music Should they fight upstart labs, or co-operate with them? Oct 8th 2026 THE MUSIC <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> is no stranger to technological upheaval. From vinyl to cassettes to CDs to streaming, the recording and selling of music has been in a state of constant revolution. The shift to streaming shook the industry hard. After the <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> of illicit file-sharing in the Napster era, which eventually gave way to legal streaming, it took more than 20 years for <span class="annot" data-tooltip="revenue /'revənuː/ n. 收入，收益；财政收入，税收">revenue</span> to return, even in nominal <span class="annot" data-tooltip="terms /tɜːrmz/ n. 条款；地位，关系；措辞；术语；价钱（term的复数形式）v. 把…称为（term的三单形式）">terms</span>, to the level of the 1990s (see chart 1). <span class="annot" data-tooltip="generative /'dʒenərətɪv/ adj. 能生产的, 有生产力的生殖的">Generative</span> artificial intelligence brings a new age of <span class="annot" data-tooltip="disruption n. 中断,分裂,瓦解,破坏">disruption</span>. It threatens to transform the whole <span class="annot" data-tooltip="process /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">process</span> of making music itself.</p>
+<p>Music made by AI is already making its presence felt, in the zeitgeist as “<span class="annot" data-tooltip="slop /slɑːp/ vi. 溢出；泼出在泥浆(或雪泥)中走vt. 使(某物)溢出或泼出(液体)晃荡；(常指)溢出，溅出(在水、泥等里)趟来趟去，走动">slop</span>” as well as in the charts. There is more dross than ever. Alexis Lanternier, boss of Paris-based Deezer, says that about 90,000 <span class="annot" data-tooltip="entirely /ɪn'taɪərli/ adv. 全部地;完整地;完全地">entirely</span> machine-generated <span class="annot" data-tooltip="tunes /tuːn/ n. 曲调, 曲子vt. & vi. 调音vt. 调整时 态: tuned, tuning, tunes">tunes</span> are uploaded to his music-streaming service a day —half the total. Spotify, the biggest streamer, says it has taken down 75m “spammy tracks” in the past year. Much of the slop is uploaded <span class="annot" data-tooltip="illegally /ɪ'liːɡəli/ adv. 不法地">illegally</span> by <span class="annot" data-tooltip="bot /bɑːt/ n. 马蝇幼虫，马蝇">bot</span> farms hoping to harvest fraudulent <span class="annot" data-tooltip="royalties /'rɔɪəlti/ n. 王权；皇室；版税；专利税">royalties</span>. But many human artists use AI <span class="annot" data-tooltip="legitimately /lɪ'dʒɪtɪmət/ adj. 合情合理的；合法的时 态: legitimated，legitimating，legitimates">legitimately</span>, to enhance their creativity. “It’s like Ozempic,” says Mr Lanternier. “Everybody is using it, but no one wants to say.” A bigger question is the legality of AI-made music. Some record labels accuse AI-music labs of piracy and have sued. Some have settled, hoping to make more money from licensing than from <span class="annot" data-tooltip="lawsuits /'lɔːsuːt/ n. 诉讼（尤指非刑事案件）；诉讼案件">lawsuits</span>. Confusingly, some do both. As Mark Mulligan of MIDiA Research, a consultancy, puts it, all are grappling with the problem of how to stay in control of the <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> when the ability to create music with AI lowers barriers to entry. Many top music executives cut their teeth (and their first record <span class="annot" data-tooltip="contracts /'kɑːntrækt/ vi. 感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约时 态: contracted, contracting, c">contracts</span>) in the Napster era. They do not want to get caught napping again. The stock market suggests investors are worried. The share prices of the two biggest listed record labels, <span class="annot" data-tooltip="universal /ˌjuːnɪ'vɜːrsl/ adj. 全体的广泛的, 普遍的在世界各地的, 世界性的副 词: universally">Universal</span> Music <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">Group</span> (UMG) and Warner Music Group (WMG), have <span class="annot" data-tooltip="lagged /læɡ/ n. 迟延；防护套；囚犯；桶板；落后vt. 押往监狱；落后于；加上外套vi. 滞后；缓缓而行；蹒跚adj. 最后的时 态: l">lagged</span> behind the <span class="annot" data-tooltip="overall /ˌoʊvər'ɔːl/ adj. 总体的；全面的；综合的全面考虑的adv. 大体上，总的来说一切包括在内，全部的n. 长罩衣工装裤；工作裤">overall</span> market over the past</p>
+<p>few years (see chart 2). (Sony Music, a third big label, is not separately listed.) The relationships to watch are between the big labels and Suno, a <span class="annot" data-tooltip="controversial /ˌkɑːntrə'vɜːrʃl/ adj. 有争议的, 引起争议的名 词: controversialist">controversial</span> four-year-old American AI-music company last valued at $5.4bn (more than a third of WMG’s $14.7bn market capitalisation). This <span class="annot" data-tooltip="presents /'preznt/ vt. 呈现；介绍；提出；赠送vi. 举枪瞄准adj. 出席的；现在的n. 现在；礼物；瞄准时 态: presented, pr">presents</span> a natural experiment: UMG and Sony Music have sued Suno, doubling down with a case filed in September; WMG, once part of the original suit, has settled. In their new case UMG, Sony Music and others accuse Suno of ripping off more than 60,000 copyrighted recordings, by artists from Avril Lavigne to Justin Timberlake, and <span class="annot" data-tooltip="ingesting /ɪn'dʒest/ vt. 吃；吞下获取(某事物)时 态: ingested，ingesting，ingests">ingesting</span> them into its models. Under American copyright law <span class="annot" data-tooltip="damages /'dæmɪdʒ/ v. 损害；伤害；毁坏；破坏n. 损坏，破坏，损失，损害，伤害（法院判定的）损害赔偿金时 态: damaged, damagi">damages</span> can <span class="annot" data-tooltip="reach /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reach</span> $150,000 per work, which may suggest the plaintiffs are pushing for a big payout (or exerting pressure to <span class="annot" data-tooltip="secure /sɪ'kjʊr/ adj. 安心的；有把握的可靠的；牢靠的；稳固的；安全的；稳妥的严密把守的；牢固的；坚固的v. （尤指经过努力）获得，取得，实现拴">secure</span> a <span class="annot" data-tooltip="juicy /'dʒuːsi/ adj. 多汁的(提供丑闻等消息而)有趣的，富于刺激性的adv. 多汁地；有趣地n. 多汁；有趣比较级: juicier，juic">juicy</span> licensing deal). Suno admits that the tens of millions of recordings used to train its models include copyrighted material. But it argues that it is “fair use” in law to learn musical styles and generate new, original music. The matter is unsettled: those in the creative <span class="annot" data-tooltip="industries /'ɪndəstri/ n. 工业；产业；勤勉">industries</span> have more than 100 <span class="annot" data-tooltip="lawsuits /'lɔːsuːt/ n. 诉讼（尤指非刑事案件）；诉讼案件">lawsuits</span> in America against AI labs, including <span class="annot" data-tooltip="anthropic /ænˈθrɑpɪk/ adj. 人类的,有关人类的">Anthropic</span> and OpenAI, many of which turn on whether fair use applies.</p>
+<p>While the Suno cases go through the courts, WMG’s settlement is also attracting attention. The label has told investors that <span class="annot" data-tooltip="revenue /'revənuː/ n. 收入，收益；财政收入，税收">revenue</span> from its AI partnerships will start flowing this financial year. They would be among the first AI deals in the entertainment <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> to bring in real money. Robert Kyncl, boss of WMG, says the decision to settle with Suno was based on expediency: it might take years for the courts to rule on fair use. “If I can get a partner to give up their fair-use argument and start paying us, why would I wait?” he says. The settlement itself may also <span class="annot" data-tooltip="herald /'herəld/ n. 使者, 预报者vi. 预示时 态: heralded, heralding, heralds">herald</span> big changes. In September, for instance, Suno introduced v6, which it says is its first family of models to be trained <span class="annot" data-tooltip="exclusively /ɪk'skluːsɪv/ adj. 高级的，奢华的专用的；独家的n. 独家新闻，独家报道副 词: exclusively">exclusively</span> on licensed music from WMG and others. Artists and songwriters who <span class="annot" data-tooltip="opt /ɑːpt/ vi. 选择OPTabbr. VC开发环境自动生成的用来存放WorkSpace中各种选项的文件。时 态: opted, opti">opt</span> in will share revenue with Suno when their work is used, based on Suno’s <span class="annot" data-tooltip="subscriptions /səb'skrɪpʃn/ n. 捐助，订阅，签名捐款；订阅费">subscriptions</span>. Mr Kyncl expects it to <span class="annot" data-tooltip="yield /jiːld/ vt. 出产；屈服；放弃vi. 屈服，投降n. 收益；产量时 态: yielded, yielding, yields">yield</span> new revenue streams for artists, as fans create and post AI music derived from remixes or mashups of their repertoires. As an example, he suggests Fleetwood Mac’s “Dreams” overlaid with Aretha Franklin’s voice. UMG has ambitions of its <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> for fan remixes. This year it announced licensing deals with Spotify and ElevenLabs, an AI audio <span class="annot" data-tooltip="startup /ˈstɑrtˈʌp/ n. 启动；开办">startup</span>, that would <span class="annot" data-tooltip="enable /ɪ'neɪbl/ vt. 使能够；提供做…的权利[措施]使可能时 态: enabled，enabling，enables">enable</span> UMG’s material to be reworked by “superfans”. Sam Duboff, Spotify’s head of marketing, says there is demand. On some platforms, he reckons, unlicensed remixes and <span class="annot" data-tooltip="covers /'kʌvər/ vt. 包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替时 态: covered, covering, c">covers</span> <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> 1bn streams a month; Spotify wants to regularise the market. Michael Nash of UMG says the company reckons 20-30% of streaming customers would pay up to twice their current <span class="annot" data-tooltip="subscription /səb'skrɪpʃn/ n. 捐助，订阅，签名捐款；订阅费">subscription</span> for access to AI-enabled superfan products. The idea that superfans will want to become co-<span class="annot" data-tooltip="creators /kri'eɪtər/ n. 创造者,创作者">creators</span> of music, rather than just listeners, is untested. Music executives point to other parts of the creative <span class="annot" data-tooltip="industries /'ɪndəstri/ n. 工业；产业；勤勉">industries</span> where fans alter material they enjoy for fun, from fan fiction to “modding” (modifying) video games. They hope that AI will spur similar audience <span class="annot" data-tooltip="engagement /ɪn'ɡeɪdʒmənt/ n. 订婚，婚约；约会，约定（尤指正式的或与工作有关的）；交战；诺言；进场（游戏术语）；参与度（指用户点赞、转发、评论、下载文">engagement</span> with music. Some also point to China, where modification on music-streaming platforms such as Tencent Music Entertainment is gaining popularity. Chinese <span class="annot" data-tooltip="trends /trend/ n. 趋势, 倾向流行时 态: trended, trending, trends">trends</span>, though, do not always travel west. A lot depends on how many <span class="annot" data-tooltip="leading /ˈliːdɪŋ/ adj. 主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）">leading</span> performers opt in. Mr Nash hopes 1,000 UMG artists will. But so <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> UMG, WMG, Spotify and Suno have named no</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>trials</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>invasive</td><td>/ɪn'veɪsɪv/ adj.</td><td>有扩散危害的; 扩散性的; 蔓延性的</td></tr>
+<tr><td>versions</td><td>/'vɜːrʒn/ n.</td><td>变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本</td></tr>
+<tr><td>significant</td><td>/sɪɡ'nɪfɪkənt/ adj.</td><td>重要的, 重大的, 可观的有意义的, 有用意的意味深长的</td></tr>
+<tr><td>entail</td><td>/ɪn'teɪl/ vt.</td><td>使…成为必要, 需要限定继承, entailing, entails</td></tr>
+<tr><td>penetrating</td><td>/ˈpenətreɪtɪŋ/ adj.</td><td>刺骨的；穿透的</td></tr>
+<tr><td>startup</td><td>/ˈstɑrtˈʌp/ n.</td><td>启动；开办</td></tr>
+<tr><td>bureaucracy</td><td>/bjʊ'rɑːkrəsi/ n.</td><td>政府机构官僚主义, 官僚作风</td></tr>
+<tr><td>typically</td><td>/'tɪpɪkli/ adv.</td><td>代表性地;作为特色地;典型地</td></tr>
+<tr><td>either</td><td>/'iːðər/ pron.</td><td>(两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的</td></tr>
+<tr><td>waves</td><td>/weɪv/ vi.</td><td>波动；起伏；摇动；呈波形；挥手示意vt. 向…挥手示意；使成波浪形；卷（烫）发n. 波浪；波动；高潮；卷曲；挥手示意, waving, waves</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>constraint</td><td>/kən'streɪnt/ n.</td><td>强制；限制，约束强制，强迫</td></tr>
+<tr><td>developing</td><td>/dɪ'veləpɪŋ/ adj.</td><td>在进行中的;走向完成阶段的;走向成熟的发展中的</td></tr>
+<tr><td>snacks</td><td>/snæk/ n.</td><td>小吃；点心；快餐vi. 吃快餐；吃点心，snacking，snacks</td></tr>
+<tr><td>novelty</td><td>/'nɑːvlti/ n.</td><td>新颖; 新奇性新奇的人[事物]新颖小巧而价廉的物品</td></tr>
+<tr><td>taste</td><td>/teɪst/ n.</td><td>滋味, 味道鉴赏力爱好, 嗜好vt. & vi. 尝, 品尝, 尝到vt. 吃, 喝体验, 领略, tasting, tastes</td></tr>
+<tr><td>reaching</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>trend</td><td>/trend/ n.</td><td>趋势, 倾向流行, trending, trends</td></tr>
+<tr><td>dairy</td><td>/'deri/ n.</td><td>乳品店；制酪场；牛奶及乳品业；乳牛；奶制品adj. 牛奶的；牛奶制的；乳品的；产乳的</td></tr>
+<tr><td>stuffed</td><td>/stʌf/ n.</td><td>材料；东西；填充物；素材资料vt. 填塞；塞满；让吃饱vi. 吃得过多, stuffing, stuffs</td></tr>
+<tr><td>rival</td><td>/'raɪvl/ n.</td><td>竞争对手vt. 与…竞争, 与…匹敌, rivalled rivaling, rivalling rivals, rivals</td></tr>
+<tr><td>crystals</td><td>/'krɪstl/ n.</td><td>水晶；结晶，晶体；水晶饰品adj. 水晶的；透明的，清澈的</td></tr>
+<tr><td>crackly</td><td>/kræk/ vt.</td><td>& vi. (使…)开裂, 破裂(使)身体上或精神上垮掉打开, 砸开(使)发出爆裂声n. 裂缝, 缝隙噼啪声, 爆裂声意外的一下重击试图, 尝试俏皮话强效可卡因</td></tr>
+<tr><td>version</td><td>/'vɜːrʒn/ n.</td><td>变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本</td></tr>
+<tr><td>escapes</td><td>/ɪ'skeɪp/ vt.</td><td>逃避，避免；被忘掉vi. 逃脱；避开；溜走n. 逃跑；逃亡, escaping, escapes</td></tr>
+<tr><td>emphasis</td><td>/'emfəsɪs/ n.</td><td>强调, 重点</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>description</td><td>/dɪ'skrɪpʃn/ n.</td><td>描述, 形容种类, 类型</td></tr>
+<tr><td>cook</td><td>/kʊk/ v.</td><td>做饭，烹调；（食物）被烧煮；（非正式）篡改，伪造；密谋；干得起劲n.. 厨师n.(Cook) （美）库克（人名）, cooking, cooks</td></tr>
+<tr><td>ingredients</td><td>/ɪn'ɡriːdiənt/ n.</td><td>(混合物的)组成部分; 配料</td></tr>
+<tr><td>tricky</td><td>/'trɪki/ adj.</td><td>机警的；狡猾的, trickiest</td></tr>
+<tr><td>moist</td><td>/mɔɪst/ adj.</td><td>潮湿的, 微湿的, moistest</td></tr>
+<tr><td>dairy</td><td>/'deri/ n.</td><td>乳品店；制酪场；牛奶及乳品业；乳牛；奶制品adj. 牛奶的；牛奶制的；乳品的；产乳的</td></tr>
+<tr><td>preserve</td><td>/prɪ'zɜːrv/ vt.</td><td>保存；保护；维持；禁猎；腌n. 禁猎地；保护区；加工成的食品n. (某人或群体的）专门活动, preserving, preserves</td></tr>
+<tr><td>crunch</td><td>/krʌntʃ/ n.</td><td>咬碎，咬碎声；扎扎地踏vt. 压碎；嘎扎嘎扎的咬嚼；扎扎地踏过vi. 嘎吱作响地咀嚼；嘎吱嘎吱地踏过, crunching, crunches</td></tr>
+<tr><td>complexities</td><td>/kəm'pleksəti/ n.</td><td>复杂性,错综复杂的状态复杂的事物</td></tr>
+<tr><td>snacks</td><td>/snæk/ n.</td><td>小吃；点心；快餐vi. 吃快餐；吃点心，snacking，snacks</td></tr>
+<tr><td>explanation</td><td>/ˌeksplə'neɪʃn/ n.</td><td>解释, 说明能说明某事缘由的言语、事实、情况等</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>reach</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>snack</td><td>/snæk/ n.</td><td>小吃；点心；快餐vi. 吃快餐；吃点心，snacking，snacks</td></tr>
+<tr><td>worth</td><td>/wɜːrθ/ adj.</td><td>值…的n. 价值；财产, worthing, worths</td></tr>
+<tr><td>sensory</td><td>/'sensəri/ adj.</td><td>感觉的；知觉的；传递感觉的</td></tr>
+<tr><td>flavour</td><td>/'fleɪvər/ n.</td><td>香味；滋味vt. 给……调味；给……增添风趣</td></tr>
+<tr><td>snacking</td><td>/snæk/ n.</td><td>小吃；点心；快餐vi. 吃快餐；吃点心，snacking，snacks</td></tr>
+<tr><td>brands</td><td>/brænd/ n.</td><td>商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责, branding, brands</td></tr>
+<tr><td>autonomous</td><td>/ɔː'tɑːnəməs/ adj.</td><td>自治的</td></tr>
+<tr><td>racked</td><td>/ræk/ n.</td><td>行李架；拷问台；齿条vi. 随风飘；小步跑；变形vt. 折磨；榨取, racking, racks</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>reached</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>taste</td><td>/teɪst/ n.</td><td>滋味, 味道鉴赏力爱好, 嗜好vt. & vi. 尝, 品尝, 尝到vt. 吃, 喝体验, 领略, tasting, tastes</td></tr>
+<tr><td>flavours</td><td>/'fleɪvər/ n.</td><td>香味；滋味vt. 给……调味；给……增添风趣</td></tr>
+<tr><td>binge</td><td>/bɪndʒ/ n.</td><td>狂欢，狂闹；放纵vt. 放纵vi. 狂饮作乐；大吃大喝, binging, bingeing binges</td></tr>
+<tr><td>snacks</td><td>/snæk/ n.</td><td>小吃；点心；快餐vi. 吃快餐；吃点心，snacking，snacks</td></tr>
+<tr><td>amplifying</td><td>/'æmplɪfaɪ/ vt.</td><td>放大, 扩大增强vt. & vi. 详述, amplifying, amplifies</td></tr>
+<tr><td>crunch</td><td>/krʌntʃ/ n.</td><td>咬碎，咬碎声；扎扎地踏vt. 压碎；嘎扎嘎扎的咬嚼；扎扎地踏过vi. 嘎吱作响地咀嚼；嘎吱嘎吱地踏过, crunching, crunches</td></tr>
+<tr><td>spin</td><td>/spɪn/ vi.</td><td>旋转；纺纱；吐丝；晕眩vt. 使旋转；纺纱；编造；结网n. 旋转；疾驰, spins</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>revenue</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>terms</td><td>/tɜːrmz/ n.</td><td>条款；地位，关系；措辞；术语；价钱（term的复数形式）v. 把…称为（term的三单形式）</td></tr>
+<tr><td>generative</td><td>/'dʒenərətɪv/ adj.</td><td>能生产的, 有生产力的生殖的</td></tr>
+<tr><td>disruption</td><td>— n.</td><td>中断,分裂,瓦解,破坏</td></tr>
+<tr><td>process</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>slop</td><td>/slɑːp/ vi.</td><td>溢出；泼出在泥浆(或雪泥)中走vt. 使(某物)溢出或泼出(液体)晃荡；(常指)溢出，溅出(在水、泥等里)趟来趟去，走动休息；放松；偷懒(囚犯)倒便桶(液体)晃</td></tr>
+<tr><td>entirely</td><td>/ɪn'taɪərli/ adv.</td><td>全部地;完整地;完全地</td></tr>
+<tr><td>tunes</td><td>/tuːn/ n.</td><td>曲调, 曲子vt. & vi. 调音vt. 调整, tuning, tunes</td></tr>
+<tr><td>illegally</td><td>/ɪ'liːɡəli/ adv.</td><td>不法地</td></tr>
+<tr><td>bot</td><td>/bɑːt/ n.</td><td>马蝇幼虫，马蝇</td></tr>
+<tr><td>royalties</td><td>/'rɔɪəlti/ n.</td><td>王权；皇室；版税；专利税</td></tr>
+<tr><td>legitimately</td><td>/lɪ'dʒɪtɪmət/ adj.</td><td>合情合理的；合法的，legitimating，legitimates</td></tr>
+<tr><td>lawsuits</td><td>/'lɔːsuːt/ n.</td><td>诉讼（尤指非刑事案件）；诉讼案件</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>contracts</td><td>/'kɑːntrækt/ vi.</td><td>感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约, contracting, contracts</td></tr>
+<tr><td>universal</td><td>/ˌjuːnɪ'vɜːrsl/ adj.</td><td>全体的广泛的, 普遍的在世界各地的, 世界性的</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>lagged</td><td>/læɡ/ n.</td><td>迟延；防护套；囚犯；桶板；落后vt. 押往监狱；落后于；加上外套vi. 滞后；缓缓而行；蹒跚adj. 最后的, lagging, lags</td></tr>
+<tr><td>overall</td><td>/ˌoʊvər'ɔːl/ adj.</td><td>总体的；全面的；综合的全面考虑的adv. 大体上，总的来说一切包括在内，全部的n. 长罩衣工装裤；工作裤</td></tr>
+<tr><td>controversial</td><td>/ˌkɑːntrə'vɜːrʃl/ adj.</td><td>有争议的, 引起争议的</td></tr>
+<tr><td>presents</td><td>/'preznt/ vt.</td><td>呈现；介绍；提出；赠送vi. 举枪瞄准adj. 出席的；现在的n. 现在；礼物；瞄准, presenting, presents</td></tr>
+<tr><td>ingesting</td><td>/ɪn'dʒest/ vt.</td><td>吃；吞下获取(某事物)，ingesting，ingests</td></tr>
+<tr><td>damages</td><td>/'dæmɪdʒ/ v.</td><td>损害；伤害；毁坏；破坏n. 损坏，破坏，损失，损害，伤害（法院判定的）损害赔偿金, damaging, damages</td></tr>
+<tr><td>reach</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>secure</td><td>/sɪ'kjʊr/ adj.</td><td>安心的；有把握的可靠的；牢靠的；稳固的；安全的；稳妥的严密把守的；牢固的；坚固的v. （尤指经过努力）获得，取得，实现拴牢；扣紧；关严保护；保卫；使安全抵押；为</td></tr>
+<tr><td>juicy</td><td>/'dʒuːsi/ adj.</td><td>多汁的(提供丑闻等消息而)有趣的，富于刺激性的adv. 多汁地；有趣地n. 多汁；有趣，juiciest</td></tr>
+<tr><td>industries</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>lawsuits</td><td>/'lɔːsuːt/ n.</td><td>诉讼（尤指非刑事案件）；诉讼案件</td></tr>
+<tr><td>anthropic</td><td>/ænˈθrɑpɪk/ adj.</td><td>人类的,有关人类的</td></tr>
+<tr><td>revenue</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>herald</td><td>/'herəld/ n.</td><td>使者, 预报者vi. 预示, heralding, heralds</td></tr>
+<tr><td>exclusively</td><td>/ɪk'skluːsɪv/ adj.</td><td>高级的，奢华的专用的；独家的n. 独家新闻，独家报道</td></tr>
+<tr><td>opt</td><td>/ɑːpt/ vi.</td><td>选择OPTabbr. VC开发环境自动生成的用来存放WorkSpace中各种选项的文件。, opting, opts</td></tr>
+<tr><td>subscriptions</td><td>/səb'skrɪpʃn/ n.</td><td>捐助，订阅，签名捐款；订阅费</td></tr>
+<tr><td>yield</td><td>/jiːld/ vt.</td><td>出产；屈服；放弃vi. 屈服，投降n. 收益；产量, yielding, yields</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>startup</td><td>/ˈstɑrtˈʌp/ n.</td><td>启动；开办</td></tr>
+<tr><td>enable</td><td>/ɪ'neɪbl/ vt.</td><td>使能够；提供做…的权利[措施]使可能，enabling，enables</td></tr>
+<tr><td>covers</td><td>/'kʌvər/ vt.</td><td>包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替, covering, covers</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>subscription</td><td>/səb'skrɪpʃn/ n.</td><td>捐助，订阅，签名捐款；订阅费</td></tr>
+<tr><td>creators</td><td>/kri'eɪtər/ n.</td><td>创造者,创作者</td></tr>
+<tr><td>industries</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>engagement</td><td>/ɪn'ɡeɪdʒmənt/ n.</td><td>订婚，婚约；约会，约定（尤指正式的或与工作有关的）；交战；诺言；进场（游戏术语）；参与度（指用户点赞、转发、评论、下载文档、观看视频、咨询等交互行为）</td></tr>
+<tr><td>trends</td><td>/trend/ n.</td><td>趋势, 倾向流行, trending, trends</td></tr>
+<tr><td>leading</td><td>/ˈliːdɪŋ/ adj.</td><td>主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day28.html" class="nav-btn">← Day 28</a>
+  <a href="day30.html" class="nav-btn">Day 30 →</a>
+</div>
+
+<div class="progress">📖 Day 29 of 40</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-10-10</div>
+
+</body>
+</html>

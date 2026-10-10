@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Science & technology</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-10-10</div>
+
+<h1 class="article-title">Science & technology</h1>
+<div class="article-section"></div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>Science & technology | <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">Number</span> <span class="annot" data-tooltip="crunch /krʌntʃ/ n. 咬碎，咬碎声；扎扎地踏vt. 压碎；嘎扎嘎扎的咬嚼；扎扎地踏过vi. 嘎吱作响地咀嚼；嘎吱嘎吱地踏过时 态: crunc">crunch</span> OpenAI claims to have solved hundreds of long- standing maths problems It is judgment day for mathematics Oct 8th 2026 TUESDAY OCTOBER 6th 2026 may go down as one of the most consequential days in the history of mathematics. That was when OpenAI, an American artificial-intelligence firm, announced that its AI agents, powered by an unreleased model, had solved at least 372 long-standing mathematical problems in a matter of weeks. The findings, detailed in over 700 AI-generated papers, represent research at an unprecedented scale and speed. Such a glut has left some queasy. The excitement of potential new mathematical truths is, for many researchers, freighted with concern for the future of their field. Unless more care is taken, they say, the mass production of mathematics will lead to more solutions but less understanding.</p>
+<p>AI‘s progress in mathematics has advanced rapidly. Just last month OpenAI claimed that the same <span class="annot" data-tooltip="internal /ɪn'tɜːrnl/ adj. 国内的；内部的；内在的名 词: internality">internal</span> model had solved the Navier-Stokes problem —one of the <span class="annot" data-tooltip="landmark /'lændmɑːrk/ n. 陆标，地标；里程碑；地界标；划时代的事">landmark</span> Millennium Prize problems—in just 88 hours. Now hundreds of other <span class="annot" data-tooltip="significant /sɪɡ'nɪfɪkənt/ adj. 重要的, 重大的, 可观的有意义的, 有用意的意味深长的副 词: significantly">significant</span> puzzles have been <span class="annot" data-tooltip="cracked /krækt/ adj. 破裂的；声音嘶哑的；[口]精神失常的v. 破裂；发沙哑声；失败；崩溃（crack的过去分词）">cracked</span>. They <span class="annot" data-tooltip="cover /'kʌvər/ vt. 包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替时 态: covered, covering, c">cover</span> the entire mathematical <span class="annot" data-tooltip="corpus /'kɔːrpəs/ n. 文集；本金；语料库复 数: corpora">corpus</span>, from algebra and <span class="annot" data-tooltip="geometry /dʒi'ɑːmətri/ n. 〈数〉几何(学)名 词: geometrician">geometry</span> to <span class="annot" data-tooltip="probability /ˌprɑːbə'bɪləti/ n. 可能性, 可能发生的事〈数〉概率">probability</span> and logic, including many which have stumped experts for <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span>. The average computing power required for the <span class="annot" data-tooltip="autonomous /ɔː'tɑːnəməs/ adj. 自治的副 词: autonomously">autonomous</span> mathematicians to arrive at a solution was <span class="annot" data-tooltip="equivalent /ɪ'kwɪvələnt/ adj. 等同的，等效的n. 对等的人（或事物），对应的人（或事物）">equivalent</span> to only about three hours of <span class="annot" data-tooltip="reasoning /'riːzənɪŋ/ n. 运用思考、理解、推想等能力的做法或过程;推理">reasoning</span> with models that the firm makes publicly available. <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">Although</span> the remaining Millennium Prize problems remain unsolved, progress <span class="annot" data-tooltip="towards /tɔːrdz/ prep. 向，朝为了；有助于；用于对于，关于接近；将近；大约">towards</span> one or two does seem to have been made. Most <span class="annot" data-tooltip="notable /'noʊtəbl/ adj. 值得注意的，显著的；著名的n. 名人，显要人物副 词: notably">notable</span> among these is the Riemann <span class="annot" data-tooltip="hypothesis /haɪ'pɑːθəsɪs/ n. 假说, 假设, 前提">hypothesis</span>, which concerns the distribution of prime numbers. Also buried in the deluge is a claimed proof of a <span class="annot" data-tooltip="thorny /'θɔːrni/ adj. 痛苦的；多刺的；令人苦恼的比较级: thornier, thorniest">thorny</span> conundrum called the 3D Kakeya maximal conjecture. Hong Wang, a mathematician at NYU’s Courant Institute, was awarded the Fields Medal— the maths equivalent of a Nobel prize—for her work on a closely related problem in July. <span class="annot" data-tooltip="precisely /prɪ'saɪsli/ adv. 精确地；恰好；细心地对，的确如此">Precisely</span> what breakthroughs have been made, and by what means, will probably take mathematicians years to work out; many of the papers run to over 100 pages. Only 127 of the solved problems are accompanied by a code guaranteeing logical consistency (a norm in the field), and the agents’ internal reasoning has been published for only ten of them. These 372 problems also represent a <span class="annot" data-tooltip="subset /'sʌbset/ n. 子集">subset</span> of 4,000 which OpenAI posed to its agents, although the company has not released data about which problems were beyond its <span class="annot" data-tooltip="capabilities /ˌkeɪpə'bɪləti/ n. 能做某事的素质;能力尚未发挥的天资或素质">capabilities</span>. Such <span class="annot" data-tooltip="transparency /træns'pærənsi/ n. 透明；透明度；透明性透明的东西；幻灯片">transparency</span> would improve assessments of the technology’s abilities and limitations. Some worry that such an approach is not conducive to long-term progress in mathematics. Not long after OpenAI’s solution to the Navier-Stokes problem last month, 28 Fields-medallists published an open letter warning that AI labs’ approach to mathematics was at <span class="annot" data-tooltip="odds /ɑːdz/ n. 不平等；几率；胜算；差别">odds</span> with the field’s goals. In using open maths problems as a <span class="annot" data-tooltip="benchmark /'bentʃmɑːrk/ 基准时 态: benchmarked, benchmarking, benchmarks">benchmark</span> to test new models’ abilities, the letter- writers said, model-makers risked <span class="annot" data-tooltip="prematurely /ˌpriːmə'tʃʊr/ adj. 过早的, 提前的, 未到期的早产的副 词: prematurely">prematurely</span> shutting down <span class="annot" data-tooltip="lines n. 台词；线；航线（line的复数）v. 排成一行；画线于（line的三单形式）">lines</span> of inquiry without generating new techniques, questions or, <span class="annot" data-tooltip="ultimately /'ʌltɪmətli/ adv. 最后;最终">ultimately</span>, understanding. More than 8,000 of their colleagues have since signed on.</p>
+<p>OpenAI claims to have taken note. In working out how to <span class="annot" data-tooltip="release /rɪ'liːs/ vt. 释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]时 态: released，rel">release</span> its new discoveries, the firm says it drew on the recommendations of an independent advisory <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span>, a team of nine <span class="annot" data-tooltip="esteemed /ɪ'stiːm/ vt. 认为；尊敬；考虑；估价n. 尊重；尊敬时 态: esteemed, esteeming, esteems">esteemed</span> mathematicians formed in the <span class="annot" data-tooltip="aftermath /'æftərmæθ/ n. 后果">aftermath</span> of the Navier-Stokes announcement. In <span class="annot" data-tooltip="addition /ə'dɪʃn/ n. 添加；增加物；加法形容词: additional">addition</span> to sharing some details of its models’ <span class="annot" data-tooltip="internal /ɪn'tɜːrnl/ adj. 国内的；内部的；内在的名 词: internality">internal</span> <span class="annot" data-tooltip="reasoning /'riːzənɪŋ/ n. 运用思考、理解、推想等能力的做法或过程;推理">reasoning</span>, OpenAI also promised to fund a series of <span class="annot" data-tooltip="conferences /'kɑːnfərəns/ n. 会议讨论, 商谈形容词: conferential">conferences</span> to aid understanding of the results. All told, the scale of OpenAI’s release means its true impact will be clear only in hindsight. “The real importance of a problem is eventually measured by the new <span class="annot" data-tooltip="avenues /'ævənuː/ n. 林荫道, 大街途径, 手段">avenues</span> it opens up and the light its proof <span class="annot" data-tooltip="sheds /ʃed/ n. 棚, 库vt. 流出, 流下蜕皮, 树叶脱落时 态: shed, shedding, sheds">sheds</span> on other problems,” says Martin Hairer of EPFL, a Swiss university, who is a member of OpenAI’s advisory group as well as being a signatory of the Fields-medallists’ letter. For now, the mathematical problems AI is <span class="annot" data-tooltip="revealing /rɪ'viːlɪŋ/ adj. 暴露部分身体的，袒胸露肩的揭露(事实等)的,暴露真相的展现或显示(某物)的,显露的">revealing</span> are more <span class="annot" data-tooltip="existential /ˌeɡzɪ'stenʃl/ adj. 有关存在的,存在主义的,存在判断的">existential</span> than numerical. ■ This article was downloaded by zlibrary from https://www.economist.com/science-and-technology/2026/10/07/openai-claims-to-have- solved-hundreds-of-long-standing-maths-problems</p>
+<p>Science & technology | Well Informed Should you be using a tongue-scraper? Another tool will do the job just as well Oct 8th 2026 People have used tongue-scrapers since at least the Roman era. Napoleon Bonaparte’s was made of silver. George Washington took his everywhere. Today “influencers” like Hailey Bieber and Gwyneth Paltrow <span class="annot" data-tooltip="scrape /skreɪp/ v. 用工具刮；刮掉；擦伤；挖坑；刮出刺耳声；朝后拢头发；不入调地演奏小提琴；在面包上薄涂一层（黄油）；勉强维持；险胜；将就；">scrape</span> their tongues as part of their “wellness” <span class="annot" data-tooltip="routines n. 日常生活；日常活动；常规，惯例（routine的复数）">routines</span>. But does tongue-scraping add anything to <span class="annot" data-tooltip="dental /'dentl/ adj. 牙齿的，牙的；牙科的n. 齿音">dental</span> hygiene that <span class="annot" data-tooltip="brushing /brʌʃ/ n. 刷子；画笔；毛笔；争吵vt. 刷；画vi. 刷；擦过；掠过时 态: brushed, brushing, brushes">brushing</span> and flossing can’t do alone? The mouth, like the <span class="annot" data-tooltip="gut /ɡʌt/ n. 内脏；肠子；胆量；海峡；剧情vt. 取出内脏；摧毁内部装置adj. 本质的，根本的；简单的GUT大统一理论时 态: gu">gut</span>, is home to lots of microbes. A healthy oral microbiome includes around 700 species of bacteria, along with fungi, protozoa and viruses. But poor oral hygiene, smoking or bad diet can upset the balance. That results in bacterial colonies, called biofilms, in which species thrive that cause tooth cavities, gum disease and <span class="annot" data-tooltip="chronic /'krɑːnɪk/ adj. 慢性的；长期的；习惯性的副 词: chronically">chronic</span> bad <span class="annot" data-tooltip="breath /breθ/ n. 气息；呼吸(一次)呼吸，一口气；微风">breath</span> (halitosis).</p>
+<p>Biofilms are the basis of <span class="annot" data-tooltip="dental /'dentl/ adj. 牙齿的，牙的；牙科的n. 齿音">dental</span> plaque, which forms because teeth, unlike the mouth’s other <span class="annot" data-tooltip="tissues /'tɪʃuː/ n. 组织薄纸, 棉纸一套, 一系列形容词: tissular">tissues</span>, are not <span class="annot" data-tooltip="constantly /'kɑːnstəntli/ adv. 不断地;时常地">constantly</span> <span class="annot" data-tooltip="shedding /ʃed/ n. 棚, 库vt. 流出, 流下蜕皮, 树叶脱落时 态: shed, shedding, sheds">shedding</span> their cells, and thus any bacteria <span class="annot" data-tooltip="clinging /klɪŋ/ vi. 坚持，墨守；紧贴；附着时 态: clung clinging, clings">clinging</span> to them. But tongues, which <span class="annot" data-tooltip="host /hoʊst/ n. 主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集时 态: hosted, hosting, host">host</span> about two-thirds of the oral microbiome, are also <span class="annot" data-tooltip="susceptible /sə'septəbl/ adj. 易受影响的; 易动感情的过敏的; 易受…感染的能经受的副 词: susceptibly">susceptible</span> to biofilms—which can turn them white or yellow. The gaps between the tiny protuberances <span class="annot" data-tooltip="covering /'kʌvər/ vt. 包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替时 态: covered, covering, c">covering</span> a tongue’s upper surface teem with bacteria and are especially <span class="annot" data-tooltip="hospitable /'hɑːspɪtəbl/ adj. (人、其行为)好客的, 殷勤的, 热情友好的副 词: hospitably">hospitable</span> to anaerobic species, the respiration of which does not require oxygen but does often generate <span class="annot" data-tooltip="foul /faʊl/ adj. 邪恶的；污秽的；犯规的；淤塞的vt. 弄脏；犯规；淤塞；缠住，妨害vi. 犯规；缠结；腐烂n. 犯规；缠绕adv. 违反">foul</span>-smelling sulphurous <span class="annot" data-tooltip="compounds /'kɑːmpaʊnd/ n. 复合物；混合物；【化】化合物（语法）复合词有围栏（或围墙）的场地（内有工厂或其他建筑群）adj. 复合的v. 使加重；使">compounds</span>. Given all this, it might be expected that evidence for the <span class="annot" data-tooltip="virtues /'vɜːrtʃuː/ n. 美德, 德行优点, 长处">virtues</span> of regular tongue-cleaning would be as abundant as that for cleaning teeth. Alas there is not much. A <span class="annot" data-tooltip="trial /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">trial</span> published in 2018, involving 36 people suffering from gum disease, for example, found that adding tongue scraping to a normal dental-cleaning <span class="annot" data-tooltip="routine /ruː'tiːn/ n. 例行公事；日常工作；程序adj. 日常的；例行的副 词: routinely">routine</span> did indeed reduce halitosis. Another, on 45 children, which was published in 2015, showed it <span class="annot" data-tooltip="significantly /sɪɡ'nɪfɪkənt/ adj. 重要的, 重大的, 可观的有意义的, 有用意的意味深长的副 词: significantly">significantly</span> lowered levels of Streptococcus mutans—a <span class="annot" data-tooltip="principal /'prɪnsəpl/ adj. 最重要的；主要的n. 负责人，校长资本，本金被代理人，委托人副 词: principally">principal</span> cause of tooth <span class="annot" data-tooltip="decay /dɪ'keɪ/ vi. 腐烂，腐朽；衰退，衰减n. 衰退，衰减；腐烂，腐朽vt. 使腐烂，使腐败；使衰退，使衰落时 态: decayed, de">decay</span>. This particular trial, however, cast doubt on the idea that you need to use a special instrument to keep your tongue clean, for it also found that <span class="annot" data-tooltip="brushing /brʌʃ/ n. 刷子；画笔；毛笔；争吵vt. 刷；画vi. 刷；擦过；掠过时 态: brushed, brushing, brushes">brushing</span> tongues with a normal toothbrush or rinsing the mouth with salt water both worked just as well as using an <span class="annot" data-tooltip="actual /'æktʃuəl/ adj. 真实的，实际的；现行的，目前的副 词: actually">actual</span> scraper. Similarly, a third trial—of 56 people with bad <span class="annot" data-tooltip="breath /breθ/ n. 气息；呼吸(一次)呼吸，一口气；微风">breath</span>, published in 2021—found that tongue-scraping and tongue-brushing removed tongue biofilms and reduced odiferous sulphur compounds to the same degree. A fourth, of another 80 bad-<span class="annot" data-tooltip="breathed /breθ/ n. 气息；呼吸(一次)呼吸，一口气；微风">breathed</span> individuals, published earlier this year, got similar results with tongue- brushing (rather than scraping) backed up by a dose of Streptococcus salivarius, a so-called oral <span class="annot" data-tooltip="probiotic /ˌproʊbaɪ'ɑːtɪk/ adj. 益生菌的；含有益生菌的n. 益生菌">probiotic</span> that crowds out hostile bacteria such as S. mutans. Good lingual hygiene may also improve someone’s sense of <span class="annot" data-tooltip="taste /teɪst/ n. 滋味, 味道鉴赏力爱好, 嗜好vt. & vi. 尝, 品尝, 尝到vt. 吃, 喝体验, 领略时 态: tasted,">taste</span>. A review of four <span class="annot" data-tooltip="trials /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">trials</span> published in 2025 found that removing tongue <span class="annot" data-tooltip="coatings /'koʊtɪŋ/ n. 涂层,覆盖层外衣布料">coatings</span> increased <span class="annot" data-tooltip="intensity /ɪn'tensəti/ n. 强烈, 剧烈(感情的)强烈程度">intensity</span> of salt <span class="annot" data-tooltip="perception /pər'sepʃn/ n. 感知(能力)；觉察(力)认识，观念，看法形容词: perceptional">perception</span>, with one study doing so for 60% of participants. Together, these results suggest tongue-scrapers might indeed do the biz, but that other approaches to lingual hygiene (including using the toothbrush with</p>
+<p>which you anyway clean your teeth) can be equally effective. Nevertheless, Zoe Brookes, a professor of <span class="annot" data-tooltip="dentistry /'dentɪstri/ n. 牙医业;牙科医术">dentistry</span> at the University of Plymouth, urges caution. The studies, she says, are too small to draw strong conclusions. And removing too many bacteria from a healthy tongue might equally <span class="annot" data-tooltip="disrupt /dɪs'rʌpt/ vt. 使混乱, 扰乱时 态: disrupted, disrupting, disrupts">disrupt</span> the oral microbiome. To maintain a healthy mouth, she observes, nothing beats toothbrushing (twice daily), flossing and <span class="annot" data-tooltip="cutting /'kʌtɪŋ/ n. 切断；剪辑；开凿adj. 严寒的；锋利的；尖酸刻薄的v. 切开；采伐；削减（cut的ing形式）">cutting</span> out the sweets.■ After a free, evidence-based guide to health and wellness? Sign up to our weekly Well Informed newsletter. This article was downloaded by zlibrary from https://www.economist.com/science-and-technology/2026/10/02/should-you-be-using-a- tongue-scraper</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Culture</div>
+<p>Superstar <span class="annot" data-tooltip="podcasts /'pɑːdkæst/ n. 播客">podcasts</span> are <span class="annot" data-tooltip="silicon /'sɪlɪkən/ n. 〈化〉硅">Silicon</span> <span class="annot" data-tooltip="valley /'væli/ n. 流域；山谷；溪谷">Valley</span>’s way of talking to itself “The Social Reckoning” is a fatally earnest <span class="annot" data-tooltip="sequel /'siːkwəl/ n. 续集；结局；继续；后果">sequel</span> to a classic Malcolm Gladwell and Harel Shapira are up in arms about guns <span class="annot" data-tooltip="fancy /'fænsi/ n. 想像力；爱好；幻想adj. 想象的；奇特的；精选的；昂贵的vt. 设想；喜爱；想象；自负vi. 想象；幻想副 词: fa">Fancy</span> a tour through the Middle East? Why your favourite <span class="annot" data-tooltip="bakery /'beɪkəri/ n. 面包房,面包店烘烤食品(面包、糕点等的总称)">bakery</span> and coffee shop now sell tote bags</p>
+<div class="article-separator"></div>
+<div class="article-header">Culture · Culture | Pods for demigods</div>
+<p>Superstar <span class="annot" data-tooltip="podcasts /'pɑːdkæst/ n. 播客">podcasts</span> are <span class="annot" data-tooltip="silicon /'sɪlɪkən/ n. 〈化〉硅">Silicon</span> <span class="annot" data-tooltip="valley /'væli/ n. 流域；山谷；溪谷">Valley</span>’s way of talking to itself But to much of the world, the sound is <span class="annot" data-tooltip="jarring /ˈdʒɑrɪŋ/ adj. 刺耳的；不和谐的；辗轧的n. 辗轧声；冲突；震动v. 震惊；冲突；发刺耳声（jar的现在分词）">jarring</span> Oct 8th 2026 EACH WEEKDAY morning Jordi Hays and John Coogan, two entrepreneurs-turned-podcasters, <span class="annot" data-tooltip="enter /'entər/ vt. & vi. 进入, 进去参加, 加入登记, 登录时 态: entered, entering, enters">enter</span> a sauna in Los Angeles with copies of the Wall Street <span class="annot" data-tooltip="journal /'dʒɜːrnl/ n. 日报，杂志；日记；[经]分类账">Journal</span>. They come out with jackets, ties and hot takes on the tech news of the day. Then they go on air as <span class="annot" data-tooltip="hosts /hoʊst/ n. 主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集时 态: hosted, hosting, host">hosts</span> of the “Technology Business Programming Network” (“TBPN”) <span class="annot" data-tooltip="podcast /'pɑːdkæst/ n. 播客">podcast</span>, riffing with guests, banging gongs and <span class="annot" data-tooltip="blowing /bloʊ/ n. 吹；殴打；打击vi. 风吹；喘气vt. 风吹时 态: blew blown blowing, blows">blowing</span> airhorns. The president of TBPN, Dylan Abruscato, calls it a “variety show” in the <span class="annot" data-tooltip="vein /veɪn/ n. 血管；岩脉；纹理；[动]翅脉；[植]叶脉；性情vt. 使成脉络；像脉络般分布于时 态: veined, veining,">vein</span> of a late-night talk show. Silicon Valley laps it up. It is not uncommon to see “TBPN”, rather than CNBC, streaming on the TV screens in tech firms’ offices. Podcasts are the latest example of a power law in Silicon Valley. Only a few become big hitters. Those that do attract the demigods of tech as guests,</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>crunch</td><td>/krʌntʃ/ n.</td><td>咬碎，咬碎声；扎扎地踏vt. 压碎；嘎扎嘎扎的咬嚼；扎扎地踏过vi. 嘎吱作响地咀嚼；嘎吱嘎吱地踏过, crunching, crunches</td></tr>
+<tr><td>internal</td><td>/ɪn'tɜːrnl/ adj.</td><td>国内的；内部的；内在的</td></tr>
+<tr><td>landmark</td><td>/'lændmɑːrk/ n.</td><td>陆标，地标；里程碑；地界标；划时代的事</td></tr>
+<tr><td>significant</td><td>/sɪɡ'nɪfɪkənt/ adj.</td><td>重要的, 重大的, 可观的有意义的, 有用意的意味深长的</td></tr>
+<tr><td>cracked</td><td>/krækt/ adj.</td><td>破裂的；声音嘶哑的；[口]精神失常的v. 破裂；发沙哑声；失败；崩溃（crack的过去分词）</td></tr>
+<tr><td>cover</td><td>/'kʌvər/ vt.</td><td>包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替, covering, covers</td></tr>
+<tr><td>corpus</td><td>/'kɔːrpəs/ n.</td><td>文集；本金；语料库复 数: corpora</td></tr>
+<tr><td>geometry</td><td>/dʒi'ɑːmətri/ n.</td><td>〈数〉几何(学)</td></tr>
+<tr><td>probability</td><td>/ˌprɑːbə'bɪləti/ n.</td><td>可能性, 可能发生的事〈数〉概率</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>autonomous</td><td>/ɔː'tɑːnəməs/ adj.</td><td>自治的</td></tr>
+<tr><td>equivalent</td><td>/ɪ'kwɪvələnt/ adj.</td><td>等同的，等效的n. 对等的人（或事物），对应的人（或事物）</td></tr>
+<tr><td>reasoning</td><td>/'riːzənɪŋ/ n.</td><td>运用思考、理解、推想等能力的做法或过程;推理</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>towards</td><td>/tɔːrdz/ prep.</td><td>向，朝为了；有助于；用于对于，关于接近；将近；大约</td></tr>
+<tr><td>notable</td><td>/'noʊtəbl/ adj.</td><td>值得注意的，显著的；著名的n. 名人，显要人物</td></tr>
+<tr><td>hypothesis</td><td>/haɪ'pɑːθəsɪs/ n.</td><td>假说, 假设, 前提</td></tr>
+<tr><td>thorny</td><td>/'θɔːrni/ adj.</td><td>痛苦的；多刺的；令人苦恼的, thorniest</td></tr>
+<tr><td>precisely</td><td>/prɪ'saɪsli/ adv.</td><td>精确地；恰好；细心地对，的确如此</td></tr>
+<tr><td>subset</td><td>/'sʌbset/ n.</td><td>子集</td></tr>
+<tr><td>capabilities</td><td>/ˌkeɪpə'bɪləti/ n.</td><td>能做某事的素质;能力尚未发挥的天资或素质</td></tr>
+<tr><td>transparency</td><td>/træns'pærənsi/ n.</td><td>透明；透明度；透明性透明的东西；幻灯片</td></tr>
+<tr><td>odds</td><td>/ɑːdz/ n.</td><td>不平等；几率；胜算；差别</td></tr>
+<tr><td>benchmark</td><td>/'bentʃmɑːrk/ </td><td>基准, benchmarking, benchmarks</td></tr>
+<tr><td>prematurely</td><td>/ˌpriːmə'tʃʊr/ adj.</td><td>过早的, 提前的, 未到期的早产的</td></tr>
+<tr><td>lines</td><td>— n.</td><td>台词；线；航线（line的复数）v. 排成一行；画线于（line的三单形式）</td></tr>
+<tr><td>ultimately</td><td>/'ʌltɪmətli/ adv.</td><td>最后;最终</td></tr>
+<tr><td>release</td><td>/rɪ'liːs/ vt.</td><td>释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]，releasing，releases</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>esteemed</td><td>/ɪ'stiːm/ vt.</td><td>认为；尊敬；考虑；估价n. 尊重；尊敬, esteeming, esteems</td></tr>
+<tr><td>aftermath</td><td>/'æftərmæθ/ n.</td><td>后果</td></tr>
+<tr><td>addition</td><td>/ə'dɪʃn/ n.</td><td>添加；增加物；加法</td></tr>
+<tr><td>internal</td><td>/ɪn'tɜːrnl/ adj.</td><td>国内的；内部的；内在的</td></tr>
+<tr><td>reasoning</td><td>/'riːzənɪŋ/ n.</td><td>运用思考、理解、推想等能力的做法或过程;推理</td></tr>
+<tr><td>conferences</td><td>/'kɑːnfərəns/ n.</td><td>会议讨论, 商谈</td></tr>
+<tr><td>avenues</td><td>/'ævənuː/ n.</td><td>林荫道, 大街途径, 手段</td></tr>
+<tr><td>sheds</td><td>/ʃed/ n.</td><td>棚, 库vt. 流出, 流下蜕皮, 树叶脱落, shedding, sheds</td></tr>
+<tr><td>revealing</td><td>/rɪ'viːlɪŋ/ adj.</td><td>暴露部分身体的，袒胸露肩的揭露(事实等)的,暴露真相的展现或显示(某物)的,显露的</td></tr>
+<tr><td>existential</td><td>/ˌeɡzɪ'stenʃl/ adj.</td><td>有关存在的,存在主义的,存在判断的</td></tr>
+<tr><td>scrape</td><td>/skreɪp/ v.</td><td>用工具刮；刮掉；擦伤；挖坑；刮出刺耳声；朝后拢头发；不入调地演奏小提琴；在面包上薄涂一层（黄油）；勉强维持；险胜；将就；（艰难地）凑集；节俭；用程序从网上下载（</td></tr>
+<tr><td>routines</td><td>— n.</td><td>日常生活；日常活动；常规，惯例（routine的复数）</td></tr>
+<tr><td>dental</td><td>/'dentl/ adj.</td><td>牙齿的，牙的；牙科的n. 齿音</td></tr>
+<tr><td>brushing</td><td>/brʌʃ/ n.</td><td>刷子；画笔；毛笔；争吵vt. 刷；画vi. 刷；擦过；掠过, brushing, brushes</td></tr>
+<tr><td>gut</td><td>/ɡʌt/ n.</td><td>内脏；肠子；胆量；海峡；剧情vt. 取出内脏；摧毁内部装置adj. 本质的，根本的；简单的GUT大统一理论, gutting, guts</td></tr>
+<tr><td>chronic</td><td>/'krɑːnɪk/ adj.</td><td>慢性的；长期的；习惯性的</td></tr>
+<tr><td>breath</td><td>/breθ/ n.</td><td>气息；呼吸(一次)呼吸，一口气；微风</td></tr>
+<tr><td>dental</td><td>/'dentl/ adj.</td><td>牙齿的，牙的；牙科的n. 齿音</td></tr>
+<tr><td>tissues</td><td>/'tɪʃuː/ n.</td><td>组织薄纸, 棉纸一套, 一系列</td></tr>
+<tr><td>constantly</td><td>/'kɑːnstəntli/ adv.</td><td>不断地;时常地</td></tr>
+<tr><td>shedding</td><td>/ʃed/ n.</td><td>棚, 库vt. 流出, 流下蜕皮, 树叶脱落, shedding, sheds</td></tr>
+<tr><td>clinging</td><td>/klɪŋ/ vi.</td><td>坚持，墨守；紧贴；附着, clings</td></tr>
+<tr><td>host</td><td>/hoʊst/ n.</td><td>主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集, hosting, hosts</td></tr>
+<tr><td>susceptible</td><td>/sə'septəbl/ adj.</td><td>易受影响的; 易动感情的过敏的; 易受…感染的能经受的</td></tr>
+<tr><td>covering</td><td>/'kʌvər/ vt.</td><td>包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替, covering, covers</td></tr>
+<tr><td>hospitable</td><td>/'hɑːspɪtəbl/ adj.</td><td>(人、其行为)好客的, 殷勤的, 热情友好的</td></tr>
+<tr><td>foul</td><td>/faʊl/ adj.</td><td>邪恶的；污秽的；犯规的；淤塞的vt. 弄脏；犯规；淤塞；缠住，妨害vi. 犯规；缠结；腐烂n. 犯规；缠绕adv. 违反规则地，不正当地, foulest</td></tr>
+<tr><td>compounds</td><td>/'kɑːmpaʊnd/ n.</td><td>复合物；混合物；【化】化合物（语法）复合词有围栏（或围墙）的场地（内有工厂或其他建筑群）adj. 复合的v. 使加重；使恶化由…构成（或形成）混合；掺和；拌和,</td></tr>
+<tr><td>virtues</td><td>/'vɜːrtʃuː/ n.</td><td>美德, 德行优点, 长处</td></tr>
+<tr><td>trial</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>routine</td><td>/ruː'tiːn/ n.</td><td>例行公事；日常工作；程序adj. 日常的；例行的</td></tr>
+<tr><td>significantly</td><td>/sɪɡ'nɪfɪkənt/ adj.</td><td>重要的, 重大的, 可观的有意义的, 有用意的意味深长的</td></tr>
+<tr><td>principal</td><td>/'prɪnsəpl/ adj.</td><td>最重要的；主要的n. 负责人，校长资本，本金被代理人，委托人</td></tr>
+<tr><td>decay</td><td>/dɪ'keɪ/ vi.</td><td>腐烂，腐朽；衰退，衰减n. 衰退，衰减；腐烂，腐朽vt. 使腐烂，使腐败；使衰退，使衰落, decaying, decays</td></tr>
+<tr><td>brushing</td><td>/brʌʃ/ n.</td><td>刷子；画笔；毛笔；争吵vt. 刷；画vi. 刷；擦过；掠过, brushing, brushes</td></tr>
+<tr><td>actual</td><td>/'æktʃuəl/ adj.</td><td>真实的，实际的；现行的，目前的</td></tr>
+<tr><td>breath</td><td>/breθ/ n.</td><td>气息；呼吸(一次)呼吸，一口气；微风</td></tr>
+<tr><td>breathed</td><td>/breθ/ n.</td><td>气息；呼吸(一次)呼吸，一口气；微风</td></tr>
+<tr><td>probiotic</td><td>/ˌproʊbaɪ'ɑːtɪk/ adj.</td><td>益生菌的；含有益生菌的n. 益生菌</td></tr>
+<tr><td>taste</td><td>/teɪst/ n.</td><td>滋味, 味道鉴赏力爱好, 嗜好vt. & vi. 尝, 品尝, 尝到vt. 吃, 喝体验, 领略, tasting, tastes</td></tr>
+<tr><td>trials</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>coatings</td><td>/'koʊtɪŋ/ n.</td><td>涂层,覆盖层外衣布料</td></tr>
+<tr><td>intensity</td><td>/ɪn'tensəti/ n.</td><td>强烈, 剧烈(感情的)强烈程度</td></tr>
+<tr><td>perception</td><td>/pər'sepʃn/ n.</td><td>感知(能力)；觉察(力)认识，观念，看法</td></tr>
+<tr><td>dentistry</td><td>/'dentɪstri/ n.</td><td>牙医业;牙科医术</td></tr>
+<tr><td>disrupt</td><td>/dɪs'rʌpt/ vt.</td><td>使混乱, 扰乱, disrupting, disrupts</td></tr>
+<tr><td>cutting</td><td>/'kʌtɪŋ/ n.</td><td>切断；剪辑；开凿adj. 严寒的；锋利的；尖酸刻薄的v. 切开；采伐；削减（cut的ing形式）</td></tr>
+<tr><td>podcasts</td><td>/'pɑːdkæst/ n.</td><td>播客</td></tr>
+<tr><td>silicon</td><td>/'sɪlɪkən/ n.</td><td>〈化〉硅</td></tr>
+<tr><td>valley</td><td>/'væli/ n.</td><td>流域；山谷；溪谷</td></tr>
+<tr><td>sequel</td><td>/'siːkwəl/ n.</td><td>续集；结局；继续；后果</td></tr>
+<tr><td>fancy</td><td>/'fænsi/ n.</td><td>想像力；爱好；幻想adj. 想象的；奇特的；精选的；昂贵的vt. 设想；喜爱；想象；自负vi. 想象；幻想</td></tr>
+<tr><td>bakery</td><td>/'beɪkəri/ n.</td><td>面包房,面包店烘烤食品(面包、糕点等的总称)</td></tr>
+<tr><td>podcasts</td><td>/'pɑːdkæst/ n.</td><td>播客</td></tr>
+<tr><td>silicon</td><td>/'sɪlɪkən/ n.</td><td>〈化〉硅</td></tr>
+<tr><td>valley</td><td>/'væli/ n.</td><td>流域；山谷；溪谷</td></tr>
+<tr><td>jarring</td><td>/ˈdʒɑrɪŋ/ adj.</td><td>刺耳的；不和谐的；辗轧的n. 辗轧声；冲突；震动v. 震惊；冲突；发刺耳声（jar的现在分词）</td></tr>
+<tr><td>enter</td><td>/'entər/ vt.</td><td>& vi. 进入, 进去参加, 加入登记, 登录, entering, enters</td></tr>
+<tr><td>journal</td><td>/'dʒɜːrnl/ n.</td><td>日报，杂志；日记；[经]分类账</td></tr>
+<tr><td>hosts</td><td>/hoʊst/ n.</td><td>主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集, hosting, hosts</td></tr>
+<tr><td>podcast</td><td>/'pɑːdkæst/ n.</td><td>播客</td></tr>
+<tr><td>blowing</td><td>/bloʊ/ n.</td><td>吹；殴打；打击vi. 风吹；喘气vt. 风吹, blows</td></tr>
+<tr><td>vein</td><td>/veɪn/ n.</td><td>血管；岩脉；纹理；[动]翅脉；[植]叶脉；性情vt. 使成脉络；像脉络般分布于, veining, veins</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day35.html" class="nav-btn">← Day 35</a>
+  <a href="day37.html" class="nav-btn">Day 37 →</a>
+</div>
+
+<div class="progress">📖 Day 36 of 40</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-10-10</div>
+
+</body>
+</html>

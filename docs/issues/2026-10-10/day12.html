@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>China | Reader, I object</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-10-10</div>
+
+<h1 class="article-title">China | Reader, I object</h1>
+<div class="article-section">China</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>the first half of 2026 marriage rates fell by 7.5%, while divorce rates climbed by 3.9%. Last year births were at a historic low: less than half the <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> a <span class="annot" data-tooltip="decade /'dekeɪd/ n. 十年，十年期；十">decade</span> earlier. In June the government launched a two-month <span class="annot" data-tooltip="campaign /kæm'peɪn/ n. 运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）时">campaign</span> to <span class="annot" data-tooltip="crack /kræk/ vt. & vi. (使…)开裂, 破裂(使)身体上或精神上垮掉打开, 砸开(使)发出爆裂声n. 裂缝, 缝隙噼啪声, 爆裂声意">crack</span> down on microdramas that promote “money <span class="annot" data-tooltip="worship /'wɜːrʃɪp/ vt. 崇拜；尊崇vi. 做礼拜时 态: worshiped，worshipped worshiping，worshipping">worship</span>” and “distorted marriage <span class="annot" data-tooltip="values /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">values</span>”. The <span class="annot" data-tooltip="wildly /'waɪldli/ adv. 野生地；野蛮地；狂暴地；鲁莽地">wildly</span> popular short videos often tell absurd or fantastical stories, including the popular <span class="annot" data-tooltip="genre /'ʒɑːnrə/ （文学、绘画、音乐、电影等艺术作品的）体裁，类型">genre</span> of badao zongcai which involve domineering CEOs who <span class="annot" data-tooltip="sweep /swiːp/ vt. 扫除；猛拉；掸去vi. 扫，打扫；席卷；扫视；袭击n. 打扫，扫除；范围；全胜时 态: swept sweeping, ">sweep</span> poor women off their feet (this type particularly appeals to those who think social <span class="annot" data-tooltip="mobility /moʊ'bɪləti/ n. 迁移率；机动性；移动性">mobility</span> is becoming much harder in China). So why promote “Jane Eyre”? Some commenters on social media call it a prototype of badao zongcai. In the book, Ms Eyre, a <span class="annot" data-tooltip="governess /'ɡʌvərnəs/ n. 女家庭教师">governess</span> from a poor <span class="annot" data-tooltip="background /'bækɡraʊnd/ n. (画等的)背景, 底色背景情况个人背景资料动 词: background">background</span>, captures the heart of her wealthy <span class="annot" data-tooltip="employer /ɪm'plɔɪ/ vt. 使用，采用；雇用；使忙于，使从事于n. 雇用；使用时 态: employed, employing, employs">employer</span>, Edward Rochester. His imperious, <span class="annot" data-tooltip="moody /'muːdi/ adj. 喜怒无常的；易怒的；郁郁寡欢的Moody穆迪(姓氏)比较级: moodier, moodiest">moody</span> air fits that of the short-videos’ <span class="annot" data-tooltip="stereotype /'steriətaɪp/ n. 老套, 模式化的见解, 有老一套固定想法的人vt. 把…模式化, 使成陈规时 态: stereotyped, stere">stereotype</span> CEO. But a recent <span class="annot" data-tooltip="column /'kɑːləm/ n. 圆柱，柱形物；纵队，列；专栏形容词: columned">column</span> in Beijing Daily, an official newspaper, makes the point clear: “Jane believes that love should be built on spiritual equality rather than social status, <span class="annot" data-tooltip="wealth /welθ/ n. 财富；大量；富有">wealth</span> or appearance. Only when two people truly love one another can they attain <span class="annot" data-tooltip="genuine /'dʒenjuɪn/ adj. 真实的，真正的；诚恳的副 词: genuinely">genuine</span> happiness.” Some parents object to students in their mid-teens having to study a book so centred on love, Beijing Daily admits. But “Jane Eyre” is deeply ingrained in China’s literary <span class="annot" data-tooltip="consciousness /'kɑːnʃəsnəs/ n. 知觉意识, 观念, 觉悟察觉, 感觉">consciousness</span>: the first <span class="annot" data-tooltip="translation /trænz'leɪʃn/ n. 翻译译本, 译文形容词: translational">translation</span> appeared in 1917. An <span class="annot" data-tooltip="adaptation /ˌædæp'teɪʃn/ n. 适应,适合改编，改写改编本，改写本">adaptation</span> of it was among the first Western films shown in China after the death of Mao in 1976. President Xi Jinping mentioned the book in 2015 during a visit to Britain. A musical <span class="annot" data-tooltip="version /'vɜːrʒn/ n. 变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本">version</span> was performed in Beijing this week. Ms Eyre seemed feisty to Victorians. But she is a <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> cry from <span class="annot" data-tooltip="feminists /'femənɪst/ n. 女权主义者，女权运动者adj. 女权主义的，主张女权的形容词: feministic">feminists</span> in China today whom Mr Xi sees as a threat to procreation. ■ Subscribers can sign up to Drum Tower, our new weekly newsletter, to understand what the world makes of China—and what China makes of the world. This article was downloaded by zlibrary from https://www.economist.com/china/2026/10/08/china-wants-teenagers-to-read-a-classic- english-novel</p>
+<div class="article-separator"></div>
+<div class="article-header">China · China | Chaguan</div>
+<p>Fifty years after the Cultural Revolution, China won’t talk about it Keeping silent about the awful <span class="annot" data-tooltip="decade /'dekeɪd/ n. 十年，十年期；十">decade</span> may not bury it Oct 8th 2026 There have been no celebrations. Yet it was a momentous anniversary. October 6th <span class="annot" data-tooltip="marked /mɑːr/ vt. 毁坏；损坏；玷污MARabbr. Master of Arts in Religion 宗教硕士Mar三月(March)">marked</span> <span class="annot" data-tooltip="exactly /ɪɡ'zækt/ adj. 精确的；准确的，精密的vt. 强求；要求；急需vi. 勒索钱财时 态: exacted, exacting, exact">exactly</span> 50 years since the official end of the Cultural Revolution. The close of that tumultuous decade, and the <span class="annot" data-tooltip="decisive /dɪ'saɪsɪv/ adj. 决定性的；果断的，坚定的副 词: decisively">decisive</span> turn from Mao’s erratic rule, paved the way for China’s half-century of remarkable growth. But the date is altogether too sensitive for the <span class="annot" data-tooltip="communist /'kɑːmjənɪst/ n. 共产主义者adj. 共产主义的, 信仰共产主义的">Communist</span> Party, given its <span class="annot" data-tooltip="profound /prə'faʊnd/ adj. 深度的；深切的；深远的知识渊博的，见解深刻的，深奥的比较级: profounder，profoundest">profound</span> <span class="annot" data-tooltip="aversion /ə'vɜːrʒn/ n. 厌恶，讨厌，反感讨厌的人或东西">aversion</span> to examining past errors. The party long ago <span class="annot" data-tooltip="rendered /'rendər/ v. 给予；提供；回报使成为；使变得；使处于某状态；致使，造成递交；呈献；提交表达；表演；演示（用不同的语言）表达；翻译；把…">rendered</span> a <span class="annot" data-tooltip="negative /'neɡətɪv/ adj. 拒绝的；怀疑的；不同意的消极的，非建设性的无预期结果的〈数〉负的；〈电〉阴的，负的n. 否定词语，否定的观点；拒绝；否认">negative</span> <span class="annot" data-tooltip="verdict /'vɜːrdɪkt/ n. (陪审团的)裁决, 裁定(经过试验、检验或体验发表的)决定, 意见">verdict</span> on the Cultural Revolution and has no interest in reopening old <span class="annot" data-tooltip="wounds /wund/ n. 创伤，伤口vt. 使受伤vi. 受伤，伤害时 态: wounded, wounding, wounds">wounds</span>. In search of a sign, even just a flicker, of public remembrance, Chaguan paid a visit last month to what once stood as China’s <span class="annot" data-tooltip="lone /loʊn/ adj. 独自的；寂寞的；单身的；人迹稀少的">lone</span> exhibition of the horrors of the Cultural Revolution, in the hills <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span> Shantou, a southern</p>
+<p><span class="annot" data-tooltip="port /pɔːrt/ n. 港口，口岸；左舷；舱门；（计算机的）端口vi. 转向左舷vt. 左转舵；持（枪）PORTabbr. Photo Opit">port</span> city. Extreme violence erupted soon after Mao’s <span class="annot" data-tooltip="campaign /kæm'peɪn/ n. 运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）时">campaign</span> got started in Beijing in 1966 and spread like a virus around the country, including to Shantou, <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> 2,000km away. A <span class="annot" data-tooltip="deputy /'depjuti/ n. 代理人，代表adj. 副的；代理的">deputy</span> mayor, himself persecuted during those crazed years, knew there were graves in the hills and transformed the area into a museum, opening it in 2005. Drawing on private donations, he installed plaques <span class="annot" data-tooltip="bearing /'berɪŋ/ n. 轴承；方位；举止；关系v. 忍受（bear的ing形式）">bearing</span> the names of thousands of <span class="annot" data-tooltip="victims /'vɪktɪm/ n. 牺牲者；受害人；牺牲品">victims</span> and displayed accounts of the <span class="annot" data-tooltip="chaos /'keɪɑːs/ n. 混沌，混乱形容词: chaotic">chaos</span> as well as photos of wild crowds denouncing supposed enemies. He also <span class="annot" data-tooltip="exhibited /ɪɡ'zɪbɪt/ vt. 显示；展览；提出（证据等）n. 展览品；证据；展示会vi. 展出；开展览会时 态: exhibited, exhibit">exhibited</span> the official <span class="annot" data-tooltip="verdict /'vɜːrdɪkt/ n. (陪审团的)裁决, 裁定(经过试验、检验或体验发表的)决定, 意见">verdict</span>: a mistaken leader and <span class="annot" data-tooltip="counter /'kaʊntər/ n. 柜台, 柜台式长桌计数器vt. & vi. 对抗, 反驳adv. 反方向地, 对立地时 态: countered, co">counter</span>-revolutionary cliques had “brought catastrophe to the party, the state and the whole people”. After a long walk up a hilly road late on a <span class="annot" data-tooltip="humid /'hjuːmɪd/ adj. 潮湿的；湿润的；多湿气的">humid</span> day, Chaguan arrived at the site of the former museum. The government had shut it for “renovations” in 2016. For a while after that, visitors could still find traces of the memorials, including plaques hastily <span class="annot" data-tooltip="covered /'kʌvər/ vt. 包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替时 态: covered, covering, c">covered</span> over. Now nothing is left. The <span class="annot" data-tooltip="circular /'sɜːrkjələr/ adj. 圆形的，环形的；循环的n. 通知，通告名 词: circularity">circular</span> pagoda-like building that had housed <span class="annot" data-tooltip="artefacts /'ɑːrtɪfækt/ n. 人工制品，加工品">artefacts</span> is empty and padlocked. Inscriptions on stones are smoothed over with <span class="annot" data-tooltip="concrete /'kɑːnkriːt/ adj. 混凝土制的确实的，具体的（而非想象或猜测的）有形的；实在的v. 用混凝土覆盖n. 混凝土时 态: concreted, ">concrete</span> or <span class="annot" data-tooltip="blotted /blɑːt/ vi. 吸墨水；弄上墨渍或污渍vt. 涂污，弄脏；用吸墨纸弄干（或除去）n. 污点，污渍；墨水渍时 态: blotted, bl">blotted</span> out with yellow paint. No graves from that era are <span class="annot" data-tooltip="marked /mɑːr/ vt. 毁坏；损坏；玷污MARabbr. Master of Arts in Religion 宗教硕士Mar三月(March)">marked</span>. Instead the site has become a tribute to the 12 “core socialist <span class="annot" data-tooltip="values /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">values</span>” that China <span class="annot" data-tooltip="adopted /ə'dɑːpt/ vt. 收养采用, 采纳, 采取正式接受, 通过时 态: adopted, adopting, adopts">adopted</span> as ideological slogans as Xi Jinping rose to power. Large decorative signs <span class="annot" data-tooltip="tout /taʊt/ vt. 招徕；兜售；刺探赛马情报vi. 兜售；招徕顾客；拉选票n. 侦查者；兜售者Tout陶特(姓氏)时 态: touted, ">tout</span> these values (among them: justice, equality, freedom), with no elaboration. Plain-clothes police used to <span class="annot" data-tooltip="monitor /'mɑːnɪtər/ n. 显示屏；监视器；（计算机）显示器监控器；监测器班长；级长；班代表（尤指派往国外的）监督员，核查员巨蜥v. 监视；检查；跟">monitor</span> and often <span class="annot" data-tooltip="harass /hə'ræs/ vt. 使烦恼；使困扰；反复袭击时 态: harassed, harassing, harasses">harass</span> visitors to the site, whether they were meddling foreign correspondents or brave relatives gathering to <span class="annot" data-tooltip="mourn /mɔːrn/ v. 哀悼；服丧；忧伤时 态: mourned, mourning, mourns">mourn</span>, as they did each summer. Now, so <span class="annot" data-tooltip="thoroughly /'θɜːroʊ/ adj. 彻底的；十分的；周密的副 词: thoroughly">thoroughly</span> has the memorial been erased that Chaguan had no problem walking around. An old man near the former museum was <span class="annot" data-tooltip="stretching /stretʃ/ vt. 伸展,张开vi. 伸展adj. 可伸缩的n. 伸展，延伸时 态: stretched, stretching, stre">stretching</span> after hiking up the hill. “People my age know <span class="annot" data-tooltip="exactly /ɪɡ'zækt/ adj. 精确的；准确的，精密的vt. 强求；要求；急需vi. 勒索钱财时 态: exacted, exacting, exact">exactly</span> what happened. We lived through it. There was violence between different factions here in Shantou,” he said. “Younger people don’t know and leaders don’t want them to know.” <span class="annot" data-tooltip="covering /'kʌvər/ vt. 包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替时 态: covered, covering, c">Covering</span> up history is nothing new in China: look at the party’s efforts to erase memories of the Tiananmen Square <span class="annot" data-tooltip="protests /'proʊtest/ n. 抗议；反对vt. & vi. 声明；抗议时 态: protested，protesting，protests">protests</span> of 1989. But the silence around the Cultural Revolution is becoming ever more <span class="annot" data-tooltip="deafening /'defn/ vt. 使聋；淹没vi. 变聋时 态: deafened, deafening, deafens">deafening</span>. In the late 1970s Deng Xiaoping let people reflect on their personal <span class="annot" data-tooltip="trauma /'trɔːmə/ n. 外伤；创伤（由心理创伤造成精神上的异常）形容词: traumatic">trauma</span>, giving <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> to “scar literature”. Soon, though, Deng tried to draw a <span class="annot" data-tooltip="line /laɪn/ n. 绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long inter">line</span> under all this with the party’s <span class="annot" data-tooltip="resolution /ˌrezə'luːʃn/ n. 正式决定，决议决心，决定坚决；坚定；坚毅解决，解答分辨力，分辨率[度]">resolution</span> on history in 1981. Even so, throughout Deng’s era and beyond, people continued to <span class="annot" data-tooltip="revisit /ˌriː'vɪzɪt/ vt. 重游；再访；重临n. 再访问时 态: revisited, revisiting, revisits">revisit</span> their <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> experiences and</p>
+<p>discuss the national <span class="annot" data-tooltip="tragedy /'trædʒədi/ n. 悲剧；灾难；惨案">tragedy</span>—in plucky <span class="annot" data-tooltip="journals /'dʒɜːrnl/ n. 日报，杂志；日记；[经]分类账">journals</span>, books, films and, as in Shantou, in memorials. These efforts <span class="annot" data-tooltip="encountered /ɪn'kaʊntər/ vt. 遇到, 遭遇偶然碰到, 邂逅n. 突然遇到时 态: encountered, encountering, encount">encountered</span> <span class="annot" data-tooltip="resistance /rɪ'zɪstəns/ n. 抵抗, 反抗, 抵抗能力阻力电阻, 热阻形容词: resistant">resistance</span>, but there were enough <span class="annot" data-tooltip="cracks /kræk/ vt. & vi. (使…)开裂, 破裂(使)身体上或精神上垮掉打开, 砸开(使)发出爆裂声n. 裂缝, 缝隙噼啪声, 爆裂声意">cracks</span> for them to squeak through. Over the past 15 years, the party has steadily <span class="annot" data-tooltip="sealed /siːl/ n. 海豹印章, 印鉴, 图章封条, 封蜡vt. 盖章于密封决定">sealed</span> most of these apertures. The journals have been closed. Some books previously published by official Chinese presses have been banned. The most provocative film-makers live under constant surveillance. In July a researcher using a pseudonym wrote a piece for China Unofficial <span class="annot" data-tooltip="archives /'ɑːrkaɪv/ v. 存档n. 档案文件动 词: archive">Archives</span>, an overseas website, arguing that control over information related to the Cultural Revolution “has <span class="annot" data-tooltip="reached /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reached</span> unprecedented levels in 2026”. At universities some historians still touch on the <span class="annot" data-tooltip="decade /'dekeɪd/ n. 十年，十年期；十">decade</span> in their lectures, but no one dares question that terse and <span class="annot" data-tooltip="superficial /ˌsuːpər'fɪʃl/ adj. 表面(上)的；表皮的肤浅的，浅薄的；缺乏深度的名 词: superficiality">superficial</span> official <span class="annot" data-tooltip="verdict /'vɜːrdɪkt/ n. (陪审团的)裁决, 裁定(经过试验、检验或体验发表的)决定, 意见">verdict</span>. The silence cuts across <span class="annot" data-tooltip="ideologies /ˌaɪdi'ɑːlədʒi/ n. 意识形态；思想意识；观念学名 词: ideologist">ideologies</span>. In 2016, the 50th anniversary of the Cultural Revolution’s start, a few voices across the political <span class="annot" data-tooltip="spectrum /'spektrəm/ n. 光谱波谱范围, 系列复 数: spectra">spectrum</span> argued about it, online and in print. Liberals wanted a fuller reckoning, to ensure the madness was never repeated; leftists called for a reappraisal <span class="annot" data-tooltip="crediting /'kredɪt/ n. 赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)时 态:">crediting</span> Mao for shaking up an ossified party. On this anniversary <span class="annot" data-tooltip="neither /'niːðər/ conj. 既不；也不adv. 两个都不；既不……也不adj. 两者都不的det./pron. 两者都不">neither</span> criticism nor admiration is acceptable. The party overwrote its 1981 <span class="annot" data-tooltip="resolution /ˌrezə'luːʃn/ n. 正式决定，决议决心，决定坚决；坚定；坚毅解决，解答分辨力，分辨率[度]">resolution</span> on history with a new one in 2021, reducing its analysis of the Cultural Revolution from a chapter to a slim paragraph. If Deng wanted to <span class="annot" data-tooltip="shelve /ʃelv/ vt. 搁置，将某事放到一旁不予考虑vi. 倾斜时 态: shelved, shelving, shelves">shelve</span> the debate, Mr Xi has tried to shove it deep in the cupboard. For Mr Xi, the quiet is a victory. He seems to have <span class="annot" data-tooltip="crushed /krʌʃ/ vt. & vi. 压碎, 压坏vt. 弄皱镇压, 消灭, 击溃vi. 挤进, 挤入n. 拥挤的人群时 态: crushed, ">crushed</span> the “historical nihilism” that he warned about early in his <span class="annot" data-tooltip="tenure /'tenjər/ n. 占有；任期vt. 授予…终身职位形容词: tenurial">tenure</span>—namely, excessive criticism of Mao’s rule that <span class="annot" data-tooltip="ultimately /'ʌltɪmətli/ adv. 最后;最终">ultimately</span> <span class="annot" data-tooltip="undermines /ˌʌndər'maɪn/ vt. 在某物下挖洞或挖通道；侵蚀…的基础暗中破坏；逐渐削弱时 态: undermined，undermining，underm">undermines</span> the party’s legitimacy today. Yet there is an <span class="annot" data-tooltip="irony /'aɪrəni/ n. 反语；反话具有讽刺意味的情况；出乎意料的情况；令人啼笑皆非的事情">irony</span>. Events that concluded 50 years ago <span class="annot" data-tooltip="tend /tend/ vt. 照料，照顾，伺候vi. 往，朝向易于；倾向时 态: tended，tending，tends">tend</span> to lose force in <span class="annot" data-tooltip="domestic /də'mestɪk/ adj. 国内的；家庭的；驯养的；一心只管家务的">domestic</span> politics when debated in full and in the open; think of the <span class="annot" data-tooltip="vietnam /ˌviːet'nɑːm/ n. 越南（南亚国家）">Vietnam</span> war’s fading <span class="annot" data-tooltip="legacy /'leɡəsi/ n. 遗产, 遗赠物遗留之物">legacy</span> in America. When countries avoid such debates, <span class="annot" data-tooltip="rage /reɪdʒ/ n. 愤怒；狂暴，肆虐；情绪激动vi. 大怒，发怒；流行，风行时 态: raged, raging, rages">rage</span> over past atrocities can burst forth again, much as Franco’s dictatorship has returned as a political flashpoint in Spain. In China the generation that served as Red Guards is dying off. Had the Cultural Revolution been examined in greater detail, it might have come to look like a curious monstrosity—<span class="annot" data-tooltip="terrible /'terəbl/ adj. 可怕的；很糟的；令人讨厌的adv. [口]很，非常副 词: terribly">terrible</span> but distant—to their grandchildren coming of age. Instead keeping it shrouded grants it a latent power. Debate about it could one day resurface, providing critics of the <span class="annot" data-tooltip="regime /reɪ'ʒiːm/ n. 政权，政体；社会制度；管理体制">regime</span> with fodder</p>
+<p>for attacks that <span class="annot" data-tooltip="reach /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reach</span> beyond Mao’s <span class="annot" data-tooltip="excesses /ɪk'ses/ n. 无节制；过度，过量；超过，超额adj. 额外的，过量的；附加的时 态: excessed, excessing, exc">excesses</span> to the whole political system. This is why the Cultural Revolution <span class="annot" data-tooltip="haunts /hɔːnt/ vt. 经常出没于缠绕, 萦绕n. 某人常去的地方时 态: haunted, haunting, haunts">haunts</span> not just its dwindling <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of living <span class="annot" data-tooltip="victims /'vɪktɪm/ n. 牺牲者；受害人；牺牲品">victims</span>, but the party itself. ■ This article was downloaded by zlibrary from https://www.economist.com/china/2026/10/05/fifty-years-after-the-cultural- revolution-china-wont-talk-about-it</p>
+<div class="article-separator"></div>
+<div class="article-header"> · United States</div>
+<p>Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s untenable <span class="annot" data-tooltip="strategy /'strætədʒi/ n. 战略学, 兵法战略, 策略策略, 计谋">strategy</span> for AI Liability law will not tame AI When gerrymandering meets a blue <span class="annot" data-tooltip="wave /weɪv/ vi. 波动；起伏；摇动；呈波形；挥手示意vt. 向…挥手示意；使成波浪形；卷（烫）发n. 波浪；波动；高潮；卷曲；挥手示意时 ">wave</span> Will Congress ever <span class="annot" data-tooltip="assert /ə'sɜːrt/ vt. 断言；主张；声称；维护，坚持时 态: asserted, asserting, asserts">assert</span> itself on Iran? How not to make campuses safer Big Tobacco’s lessons for Big Oil</p>
+<div class="article-separator"></div>
+<div class="article-header">United States · United States | Fenced in</div>
+<p>Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s untenable <span class="annot" data-tooltip="strategy /'strætədʒi/ n. 战略学, 兵法战略, 策略策略, 计谋">strategy</span> for AI The president’s desire to <span class="annot" data-tooltip="unleash /ʌn'liːʃ/ vt. 把(感情、力量等)释放出来, 发泄时 态: unleashed, unleashing, unleashes">unleash</span> the technology is running into political <span class="annot" data-tooltip="reality /ri'æləti/ n. 现实；真实；实际">reality</span> Oct 8th 2026 THE GLITZY gathering in Washington on September 29th to roll out America.gov had more in common with an iPhone launch than the announcement of a government website. The new portal, powered by large language models from Google and SpaceXAI, would transform how Americans receive <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">federal</span> services, officials declared. Marco Rubio, the <span class="annot" data-tooltip="secretary /'sekrəteri/ n. 秘书书记部长, 大臣形容词: secretarial">secretary</span> of state, strode the stage as if trying to be a besuited Steve Jobs, explaining how an artificial-intelligence (AI) chatbot would soon make it easier for Americans to get passports. The jamboree was followed by a White House lunch with tech leaders to sign a “constitution” to police themselves, then by the announcement, on October 4th, of a “Super Intelligence Force”, <span class="annot" data-tooltip="adopting /ə'dɑːpt/ vt. 收养采用, 采纳, 采取正式接受, 通过时 态: adopted, adopting, adopts">adopting</span> the term for AI that</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>decade</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>campaign</td><td>/kæm'peɪn/ n.</td><td>运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）, campaigning, campai</td></tr>
+<tr><td>crack</td><td>/kræk/ vt.</td><td>& vi. (使…)开裂, 破裂(使)身体上或精神上垮掉打开, 砸开(使)发出爆裂声n. 裂缝, 缝隙噼啪声, 爆裂声意外的一下重击试图, 尝试俏皮话强效可卡因</td></tr>
+<tr><td>worship</td><td>/'wɜːrʃɪp/ vt.</td><td>崇拜；尊崇vi. 做礼拜，worshipped worshiping，worshipping worships，worships</td></tr>
+<tr><td>values</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>wildly</td><td>/'waɪldli/ adv.</td><td>野生地；野蛮地；狂暴地；鲁莽地</td></tr>
+<tr><td>genre</td><td>/'ʒɑːnrə/ </td><td>（文学、绘画、音乐、电影等艺术作品的）体裁，类型</td></tr>
+<tr><td>sweep</td><td>/swiːp/ vt.</td><td>扫除；猛拉；掸去vi. 扫，打扫；席卷；扫视；袭击n. 打扫，扫除；范围；全胜, sweeps</td></tr>
+<tr><td>mobility</td><td>/moʊ'bɪləti/ n.</td><td>迁移率；机动性；移动性</td></tr>
+<tr><td>governess</td><td>/'ɡʌvərnəs/ n.</td><td>女家庭教师</td></tr>
+<tr><td>background</td><td>/'bækɡraʊnd/ n.</td><td>(画等的)背景, 底色背景情况个人背景资料动 词: background</td></tr>
+<tr><td>employer</td><td>/ɪm'plɔɪ/ vt.</td><td>使用，采用；雇用；使忙于，使从事于n. 雇用；使用, employing, employs</td></tr>
+<tr><td>moody</td><td>/'muːdi/ adj.</td><td>喜怒无常的；易怒的；郁郁寡欢的Moody穆迪(姓氏), moodiest</td></tr>
+<tr><td>stereotype</td><td>/'steriətaɪp/ n.</td><td>老套, 模式化的见解, 有老一套固定想法的人vt. 把…模式化, 使成陈规, stereotyping, stereotypes</td></tr>
+<tr><td>column</td><td>/'kɑːləm/ n.</td><td>圆柱，柱形物；纵队，列；专栏</td></tr>
+<tr><td>wealth</td><td>/welθ/ n.</td><td>财富；大量；富有</td></tr>
+<tr><td>genuine</td><td>/'dʒenjuɪn/ adj.</td><td>真实的，真正的；诚恳的</td></tr>
+<tr><td>consciousness</td><td>/'kɑːnʃəsnəs/ n.</td><td>知觉意识, 观念, 觉悟察觉, 感觉</td></tr>
+<tr><td>translation</td><td>/trænz'leɪʃn/ n.</td><td>翻译译本, 译文</td></tr>
+<tr><td>adaptation</td><td>/ˌædæp'teɪʃn/ n.</td><td>适应,适合改编，改写改编本，改写本</td></tr>
+<tr><td>version</td><td>/'vɜːrʒn/ n.</td><td>变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>feminists</td><td>/'femənɪst/ n.</td><td>女权主义者，女权运动者adj. 女权主义的，主张女权的</td></tr>
+<tr><td>decade</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>marked</td><td>/mɑːr/ vt.</td><td>毁坏；损坏；玷污MARabbr. Master of Arts in Religion 宗教硕士Mar三月(March)，marring，mars</td></tr>
+<tr><td>exactly</td><td>/ɪɡ'zækt/ adj.</td><td>精确的；准确的，精密的vt. 强求；要求；急需vi. 勒索钱财, exacting, exacts</td></tr>
+<tr><td>decisive</td><td>/dɪ'saɪsɪv/ adj.</td><td>决定性的；果断的，坚定的</td></tr>
+<tr><td>communist</td><td>/'kɑːmjənɪst/ n.</td><td>共产主义者adj. 共产主义的, 信仰共产主义的</td></tr>
+<tr><td>profound</td><td>/prə'faʊnd/ adj.</td><td>深度的；深切的；深远的知识渊博的，见解深刻的，深奥的，profoundest</td></tr>
+<tr><td>aversion</td><td>/ə'vɜːrʒn/ n.</td><td>厌恶，讨厌，反感讨厌的人或东西</td></tr>
+<tr><td>rendered</td><td>/'rendər/ v.</td><td>给予；提供；回报使成为；使变得；使处于某状态；致使，造成递交；呈献；提交表达；表演；演示（用不同的语言）表达；翻译；把…译成粉刷；给（墙壁）抹灰将（脂肪）熬成油</td></tr>
+<tr><td>negative</td><td>/'neɡətɪv/ adj.</td><td>拒绝的；怀疑的；不同意的消极的，非建设性的无预期结果的〈数〉负的；〈电〉阴的，负的n. 否定词语，否定的观点；拒绝；否认，negativing，negative</td></tr>
+<tr><td>verdict</td><td>/'vɜːrdɪkt/ n.</td><td>(陪审团的)裁决, 裁定(经过试验、检验或体验发表的)决定, 意见</td></tr>
+<tr><td>wounds</td><td>/wund/ n.</td><td>创伤，伤口vt. 使受伤vi. 受伤，伤害, wounding, wounds</td></tr>
+<tr><td>lone</td><td>/loʊn/ adj.</td><td>独自的；寂寞的；单身的；人迹稀少的</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>port</td><td>/pɔːrt/ n.</td><td>港口，口岸；左舷；舱门；（计算机的）端口vi. 转向左舷vt. 左转舵；持（枪）PORTabbr. Photo Opitical Recorder Tracke</td></tr>
+<tr><td>campaign</td><td>/kæm'peɪn/ n.</td><td>运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）, campaigning, campai</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>deputy</td><td>/'depjuti/ n.</td><td>代理人，代表adj. 副的；代理的</td></tr>
+<tr><td>bearing</td><td>/'berɪŋ/ n.</td><td>轴承；方位；举止；关系v. 忍受（bear的ing形式）</td></tr>
+<tr><td>victims</td><td>/'vɪktɪm/ n.</td><td>牺牲者；受害人；牺牲品</td></tr>
+<tr><td>chaos</td><td>/'keɪɑːs/ n.</td><td>混沌，混乱</td></tr>
+<tr><td>exhibited</td><td>/ɪɡ'zɪbɪt/ vt.</td><td>显示；展览；提出（证据等）n. 展览品；证据；展示会vi. 展出；开展览会, exhibiting, exhibits</td></tr>
+<tr><td>verdict</td><td>/'vɜːrdɪkt/ n.</td><td>(陪审团的)裁决, 裁定(经过试验、检验或体验发表的)决定, 意见</td></tr>
+<tr><td>counter</td><td>/'kaʊntər/ n.</td><td>柜台, 柜台式长桌计数器vt. & vi. 对抗, 反驳adv. 反方向地, 对立地, countering, counters</td></tr>
+<tr><td>humid</td><td>/'hjuːmɪd/ adj.</td><td>潮湿的；湿润的；多湿气的</td></tr>
+<tr><td>covered</td><td>/'kʌvər/ vt.</td><td>包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替, covering, covers</td></tr>
+<tr><td>circular</td><td>/'sɜːrkjələr/ adj.</td><td>圆形的，环形的；循环的n. 通知，通告</td></tr>
+<tr><td>artefacts</td><td>/'ɑːrtɪfækt/ n.</td><td>人工制品，加工品</td></tr>
+<tr><td>concrete</td><td>/'kɑːnkriːt/ adj.</td><td>混凝土制的确实的，具体的（而非想象或猜测的）有形的；实在的v. 用混凝土覆盖n. 混凝土, concreting, concretes</td></tr>
+<tr><td>blotted</td><td>/blɑːt/ vi.</td><td>吸墨水；弄上墨渍或污渍vt. 涂污，弄脏；用吸墨纸弄干（或除去）n. 污点，污渍；墨水渍, blotting, blots</td></tr>
+<tr><td>marked</td><td>/mɑːr/ vt.</td><td>毁坏；损坏；玷污MARabbr. Master of Arts in Religion 宗教硕士Mar三月(March)，marring，mars</td></tr>
+<tr><td>values</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>adopted</td><td>/ə'dɑːpt/ vt.</td><td>收养采用, 采纳, 采取正式接受, 通过, adopting, adopts</td></tr>
+<tr><td>tout</td><td>/taʊt/ vt.</td><td>招徕；兜售；刺探赛马情报vi. 兜售；招徕顾客；拉选票n. 侦查者；兜售者Tout陶特(姓氏), touting, touts</td></tr>
+<tr><td>monitor</td><td>/'mɑːnɪtər/ n.</td><td>显示屏；监视器；（计算机）显示器监控器；监测器班长；级长；班代表（尤指派往国外的）监督员，核查员巨蜥v. 监视；检查；跟踪调查监听（电话、外国无线电广播等）, </td></tr>
+<tr><td>harass</td><td>/hə'ræs/ vt.</td><td>使烦恼；使困扰；反复袭击, harassing, harasses</td></tr>
+<tr><td>mourn</td><td>/mɔːrn/ v.</td><td>哀悼；服丧；忧伤, mourning, mourns</td></tr>
+<tr><td>thoroughly</td><td>/'θɜːroʊ/ adj.</td><td>彻底的；十分的；周密的</td></tr>
+<tr><td>stretching</td><td>/stretʃ/ vt.</td><td>伸展,张开vi. 伸展adj. 可伸缩的n. 伸展，延伸, stretching, stretches</td></tr>
+<tr><td>exactly</td><td>/ɪɡ'zækt/ adj.</td><td>精确的；准确的，精密的vt. 强求；要求；急需vi. 勒索钱财, exacting, exacts</td></tr>
+<tr><td>covering</td><td>/'kʌvər/ vt.</td><td>包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替, covering, covers</td></tr>
+<tr><td>protests</td><td>/'proʊtest/ n.</td><td>抗议；反对vt. & vi. 声明；抗议，protesting，protests</td></tr>
+<tr><td>deafening</td><td>/'defn/ vt.</td><td>使聋；淹没vi. 变聋, deafening, deafens</td></tr>
+<tr><td>trauma</td><td>/'trɔːmə/ n.</td><td>外伤；创伤（由心理创伤造成精神上的异常）</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>line</td><td>/laɪn/ n.</td><td>绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long interspersed element)长散在元</td></tr>
+<tr><td>resolution</td><td>/ˌrezə'luːʃn/ n.</td><td>正式决定，决议决心，决定坚决；坚定；坚毅解决，解答分辨力，分辨率[度]</td></tr>
+<tr><td>revisit</td><td>/ˌriː'vɪzɪt/ vt.</td><td>重游；再访；重临n. 再访问, revisiting, revisits</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>tragedy</td><td>/'trædʒədi/ n.</td><td>悲剧；灾难；惨案</td></tr>
+<tr><td>journals</td><td>/'dʒɜːrnl/ n.</td><td>日报，杂志；日记；[经]分类账</td></tr>
+<tr><td>encountered</td><td>/ɪn'kaʊntər/ vt.</td><td>遇到, 遭遇偶然碰到, 邂逅n. 突然遇到, encountering, encounters</td></tr>
+<tr><td>resistance</td><td>/rɪ'zɪstəns/ n.</td><td>抵抗, 反抗, 抵抗能力阻力电阻, 热阻</td></tr>
+<tr><td>cracks</td><td>/kræk/ vt.</td><td>& vi. (使…)开裂, 破裂(使)身体上或精神上垮掉打开, 砸开(使)发出爆裂声n. 裂缝, 缝隙噼啪声, 爆裂声意外的一下重击试图, 尝试俏皮话强效可卡因</td></tr>
+<tr><td>sealed</td><td>/siːl/ n.</td><td>海豹印章, 印鉴, 图章封条, 封蜡vt. 盖章于密封决定</td></tr>
+<tr><td>archives</td><td>/'ɑːrkaɪv/ v.</td><td>存档n. 档案文件动 词: archive</td></tr>
+<tr><td>reached</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>decade</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>superficial</td><td>/ˌsuːpər'fɪʃl/ adj.</td><td>表面(上)的；表皮的肤浅的，浅薄的；缺乏深度的</td></tr>
+<tr><td>verdict</td><td>/'vɜːrdɪkt/ n.</td><td>(陪审团的)裁决, 裁定(经过试验、检验或体验发表的)决定, 意见</td></tr>
+<tr><td>ideologies</td><td>/ˌaɪdi'ɑːlədʒi/ n.</td><td>意识形态；思想意识；观念学</td></tr>
+<tr><td>spectrum</td><td>/'spektrəm/ n.</td><td>光谱波谱范围, 系列复 数: spectra</td></tr>
+<tr><td>crediting</td><td>/'kredɪt/ n.</td><td>赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)，crediting，credits</td></tr>
+<tr><td>neither</td><td>/'niːðər/ conj.</td><td>既不；也不adv. 两个都不；既不……也不adj. 两者都不的det./pron. 两者都不</td></tr>
+<tr><td>resolution</td><td>/ˌrezə'luːʃn/ n.</td><td>正式决定，决议决心，决定坚决；坚定；坚毅解决，解答分辨力，分辨率[度]</td></tr>
+<tr><td>shelve</td><td>/ʃelv/ vt.</td><td>搁置，将某事放到一旁不予考虑vi. 倾斜, shelving, shelves</td></tr>
+<tr><td>crushed</td><td>/krʌʃ/ vt.</td><td>& vi. 压碎, 压坏vt. 弄皱镇压, 消灭, 击溃vi. 挤进, 挤入n. 拥挤的人群, crushing, crushes</td></tr>
+<tr><td>tenure</td><td>/'tenjər/ n.</td><td>占有；任期vt. 授予…终身职位</td></tr>
+<tr><td>ultimately</td><td>/'ʌltɪmətli/ adv.</td><td>最后;最终</td></tr>
+<tr><td>undermines</td><td>/ˌʌndər'maɪn/ vt.</td><td>在某物下挖洞或挖通道；侵蚀…的基础暗中破坏；逐渐削弱，undermining，undermines</td></tr>
+<tr><td>irony</td><td>/'aɪrəni/ n.</td><td>反语；反话具有讽刺意味的情况；出乎意料的情况；令人啼笑皆非的事情</td></tr>
+<tr><td>tend</td><td>/tend/ vt.</td><td>照料，照顾，伺候vi. 往，朝向易于；倾向，tending，tends</td></tr>
+<tr><td>domestic</td><td>/də'mestɪk/ adj.</td><td>国内的；家庭的；驯养的；一心只管家务的</td></tr>
+<tr><td>vietnam</td><td>/ˌviːet'nɑːm/ n.</td><td>越南（南亚国家）</td></tr>
+<tr><td>legacy</td><td>/'leɡəsi/ n.</td><td>遗产, 遗赠物遗留之物</td></tr>
+<tr><td>rage</td><td>/reɪdʒ/ n.</td><td>愤怒；狂暴，肆虐；情绪激动vi. 大怒，发怒；流行，风行, raging, rages</td></tr>
+<tr><td>terrible</td><td>/'terəbl/ adj.</td><td>可怕的；很糟的；令人讨厌的adv. [口]很，非常</td></tr>
+<tr><td>regime</td><td>/reɪ'ʒiːm/ n.</td><td>政权，政体；社会制度；管理体制</td></tr>
+<tr><td>reach</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>excesses</td><td>/ɪk'ses/ n.</td><td>无节制；过度，过量；超过，超额adj. 额外的，过量的；附加的, excessing, excesses</td></tr>
+<tr><td>haunts</td><td>/hɔːnt/ vt.</td><td>经常出没于缠绕, 萦绕n. 某人常去的地方, haunting, haunts</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>victims</td><td>/'vɪktɪm/ n.</td><td>牺牲者；受害人；牺牲品</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>strategy</td><td>/'strætədʒi/ n.</td><td>战略学, 兵法战略, 策略策略, 计谋</td></tr>
+<tr><td>wave</td><td>/weɪv/ vi.</td><td>波动；起伏；摇动；呈波形；挥手示意vt. 向…挥手示意；使成波浪形；卷（烫）发n. 波浪；波动；高潮；卷曲；挥手示意, waving, waves</td></tr>
+<tr><td>assert</td><td>/ə'sɜːrt/ vt.</td><td>断言；主张；声称；维护，坚持, asserting, asserts</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>strategy</td><td>/'strætədʒi/ n.</td><td>战略学, 兵法战略, 策略策略, 计谋</td></tr>
+<tr><td>unleash</td><td>/ʌn'liːʃ/ vt.</td><td>把(感情、力量等)释放出来, 发泄, unleashing, unleashes</td></tr>
+<tr><td>reality</td><td>/ri'æləti/ n.</td><td>现实；真实；实际</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>secretary</td><td>/'sekrəteri/ n.</td><td>秘书书记部长, 大臣</td></tr>
+<tr><td>adopting</td><td>/ə'dɑːpt/ vt.</td><td>收养采用, 采纳, 采取正式接受, 通过, adopting, adopts</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day11.html" class="nav-btn">← Day 11</a>
+  <a href="day13.html" class="nav-btn">Day 13 →</a>
+</div>
+
+<div class="progress">📖 Day 12 of 40</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-10-10</div>
+
+</body>
+</html>

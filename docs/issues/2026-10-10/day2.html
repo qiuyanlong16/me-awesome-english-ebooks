@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Politics</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-10-10</div>
+
+<h1 class="article-title">Politics</h1>
+<div class="article-section"></div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>Musk said that SpaceXAI is to be rebranded as SpaceXSI; Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> has called for the technology be renamed “super intelligence”. Meanwhile, SpaceX was reportedly trying to <span class="annot" data-tooltip="raise /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raise</span> $40bn through bonds and loans to buy more chips from <span class="annot" data-tooltip="nvidia 恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商">Nvidia</span>, which in August announced that it was working with Wall Street firms, such as Apollo, to <span class="annot" data-tooltip="assemble /ə'sembl/ vt. 集合，聚集；装配；收集vi. 集合，聚集时 态: assembled, assembling, assembles">assemble</span> a $500bn financing fund for its customers. The news helped push Nvidia’s share price to another record; the company’s market <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span> is now more than $5.7trn. Nvidia’s gains in turn spurred the S&P 500 and <span class="annot" data-tooltip="nasdaq 纳斯达克指数〈美〉全国证券交易商自动报价系统协会">NASDAQ</span> Composite to new highs. The demand for Samsung’s memory chips is expected to result in a 780% <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> in operating profit for the second <span class="annot" data-tooltip="quarter /'kwɔːrtər/ n. 四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一时 ">quarter</span>, year on year, to 107.4trn won ($80bn). The chips are <span class="annot" data-tooltip="integral /'ɪntɪɡrəl/ adj. 必需的；不可或缺的作为组成部分的完整的；完备的名 词: integrity">integral</span> to AI data centres, but there is a global <span class="annot" data-tooltip="shortage /'ʃɔːrtɪdʒ/ n. 不足; 缺少; 缺少量; 不足额">shortage</span> of them. Samsung’s share price has doubled this year. Schneider Electric, a French engineering <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span>, struck a deal to acquire PTC, an American software company specialising in complex industrial product design, engineering and data management, for $22.6bn. Schneider supplies <span class="annot" data-tooltip="essential /ɪ'senʃl/ adj. 基本的；必要的；本质的；精华的">essential</span> units to data centres, such as <span class="annot" data-tooltip="cooling /ˈkulɪŋ/ n. 冷却adj. 凉的；凉爽的冷却的">cooling</span> units and server <span class="annot" data-tooltip="racks /ræk/ n. 行李架；拷问台；齿条vi. 随风飘；小步跑；变形vt. 折磨；榨取时 态: racked, racking, racks">racks</span>. It says its <span class="annot" data-tooltip="acquisition /ˌækwɪ'zɪʃn/ n. 获得物，获得；收购">acquisition</span> will bridge the physical and digital worlds for the next generation of industrial AI. The holding company for investments made by Canada’s billionaire Weston family agreed to buy <span class="annot" data-tooltip="boots /buːt/ vt. 使穿靴；引导；踢；解雇n. 靴子；汽车行李箱；踢时 态: booted, booting, boots">Boots</span>, a British high-street chemist and beauty chain that was founded in 1849, for £6.7bn ($8.9bn). It is the second change of <span class="annot" data-tooltip="ownership /'oʊnərʃɪp/ n. 物主的身份；所有(权)，所有制">ownership</span> in a year for Boots, which was previously sold to a private-equity firm in August 2025. A month after announcing that one of its frontier models had solved the Navier-Stokes equation, one of the hardest problems in mathematics, OpenAI said the same model had resolved or made <span class="annot" data-tooltip="substantial /səb'stænʃl/ adj. 坚固的；结实的大量的，可观的重大的，重要的实质的，基本的，大体上的名 词: substantiality">substantial</span> progress in more than 370 other puzzles. OpenAI shared the model’s deliberations en masse on GitHub, in an <span class="annot" data-tooltip="apparent /ə'pærənt/ adj. 显然的；表面上的副 词: apparently">apparent</span> effort to <span class="annot" data-tooltip="counter /'kaʊntər/ n. 柜台, 柜台式长桌计数器vt. & vi. 对抗, 反驳adv. 反方向地, 对立地时 态: countered, co">counter</span> criticisms from mathematicians that it is solving problems without consideration for their effect on the field. An independent advisory board based at Princeton University described OpenAI’s new <span class="annot" data-tooltip="transparency /træns'pærənsi/ n. 透明；透明度；透明性透明的东西；幻灯片">transparency</span> as “the beginning, not the completion” of incorporating AI into mathematical knowledge.</p>
+<p>This article was downloaded by zlibrary from https://www.economist.com/the-world-this-week/2026/10/08/business</p>
+<div class="article-separator"></div>
+<div class="article-header"> · The world this week</div>
+<p>Cartoon: America’s gargantuan debt A <span class="annot" data-tooltip="lighter /'laɪtər/ n. 打火机；驳船；点火者vt. 驳运时 态: lightered, lightering, lighters">lighter</span> take on the news Oct 8th 2026 Dig deeper into the subject of this week’s cartoon: <span class="annot" data-tooltip="turbulent /'tɜːrbjələnt/ adj. 骚动的; 骚乱的; 汹涌的">Turbulent</span> bond markets threaten some countries more than others Will bonds <span class="annot" data-tooltip="blow /bloʊ/ n. 吹；殴打；打击vi. 风吹；喘气vt. 风吹时 态: blew blown blowing, blows">blow</span> up? The bond market sell-off is <span class="annot" data-tooltip="helping /'helpɪŋ/ n. （进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的">helping</span> the dollar You can see previous ones here. This article was downloaded by zlibrary from https://www.economist.com/the-world-this-week/2026/10/08/cartoon-americas- gargantuan-debt</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Leaders</div>
+<p>Will bonds <span class="annot" data-tooltip="blow /bloʊ/ n. 吹；殴打；打击vi. 风吹；喘气vt. 风吹时 态: blew blown blowing, blows">blow</span> up? A selfish ploy to break up Pakistan How Europe should deal with the new China shock A no-rules approach to AI is mad politics and worse policy Britain’s Greens have voted, shamefully, to say Zionism is <span class="annot" data-tooltip="racism /'reɪsɪzəm/ n. 种族主义，种族歧视；人种偏见形容词: racist">racism</span> Brazil is a right-<span class="annot" data-tooltip="wing /wɪŋ/ n. 翅膀；翼；飞翔；派别vt. 使飞；飞过；空运；增加…速度；装以翼vi. 飞行时 态: winged, winging, ">wing</span> country now</p>
+<div class="article-separator"></div>
+<div class="article-header">Leaders · Leaders | Our cover</div>
+<p>Will bonds <span class="annot" data-tooltip="blow /bloʊ/ n. 吹；殴打；打击vi. 风吹；喘气vt. 风吹时 态: blew blown blowing, blows">blow</span> up? A government-debt crisis is looming Oct 8th 2026 Bankers used to say that countries, unlike companies, can’t go <span class="annot" data-tooltip="bust /bʌst/ vi. 爆裂；破产；降低级别vt. 使爆裂；使破产；逮捕n. 半身像；胸部；萧条；破产adj. 破产了的；毁坏了的时 态: bu">bust</span>. They repeated that comforting slogan until a <span class="annot" data-tooltip="wave /weɪv/ vi. 波动；起伏；摇动；呈波形；挥手示意vt. 向…挥手示意；使成波浪形；卷（烫）发n. 波浪；波动；高潮；卷曲；挥手示意时 ">wave</span> of Latin American countries defaulted in the 1980s. Might a similar shock soon puncture the rich world’s <span class="annot" data-tooltip="hubris /'hjuːbrɪs/ n. 骄傲自大,自恃">hubris</span>? Five years ago borrowing costs were so low that public debt looked almost costless. Today, with investors <span class="annot" data-tooltip="dumping n. 倾销；倾泻v. 倾倒（dump的ing形式）">dumping</span> their bonds, many big rich-world governments pay more to borrow than at any time since the 1990s or 2000s. Because the public debts of big advanced economies are about double, relative to GDP, what they were at the turn of the century, the result is <span class="annot" data-tooltip="immense /ɪ'mens/ adj. 极大的, 巨大的副 词: immensely">immense</span> pressure on budgets. Even before the latest bond sell-off, their governments were forecast to spend 8% of tax <span class="annot" data-tooltip="revenues /'revənuː/ n. 收入，收益；财政收入，税收">revenues</span> on <span class="annot" data-tooltip="net /net/ n. 网；净利；网络；实价vi. 编网vt. 净赚；得到；用网捕adj. 纯粹的；净余的时 态: netted, nettin">net</span> debt interest this year, as ageing</p>
+<p>populations and the threat of war are creating pressure to <span class="annot" data-tooltip="raise /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raise</span> spending. Now they must pay still more to refinance their past debts, while many continue to borrow with little restraint. At some point investors will revolt. Ironically, some of this year’s bond-market sell-off is good news, as we report. America’s economy is booming. Jobless claims are low; economic growth may be running at an <span class="annot" data-tooltip="annual /'ænjuəl/ adj. 年度的；每年的n. 年刊，年鉴；一年生植物副 词: annually">annual</span> rate greater than 3%; and <span class="annot" data-tooltip="productivity /ˌproʊdʌk'tɪvəti/ n. 生产率, 生产力">productivity</span> growth appears strong. This is encouraging investment. As artificial- intelligence firms clamour to build data centres, they compete with governments for capital in global markets. Higher interest rates are the result. That has intensified less welcome upward forces on bond <span class="annot" data-tooltip="yields /jiːld/ vt. 出产；屈服；放弃vi. 屈服，投降n. 收益；产量时 态: yielded, yielding, yields">yields</span>. The <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span> shock from the war in Iran has raised <span class="annot" data-tooltip="inflation /ɪn'fleɪʃn/ n. (充气而引起的)膨胀通货膨胀">inflation</span>, and there are <span class="annot" data-tooltip="creeping /kriːp/ vi. 爬行；慢慢地移动；起鸡皮疙瘩；蔓延n. 爬行；毛骨悚然的感觉；谄媚者时 态: crept creeping, creep">creeping</span> doubts about the <span class="annot" data-tooltip="credibility /ˌkredə'bɪləti/ n. 可靠性,可信性">credibility</span> of economic institutions in the age of populism. President Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> has recently mused that inflation can reduce debts “very rapidly” and renewed his attacks on the <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">Federal</span> Reserve for failing to cut interest rates. Jean-Luc Mélenchon, a populist-left <span class="annot" data-tooltip="candidate /'kændɪdət，ˈkændɪdeɪt/ n. 申请求职者, 候选人报考者名 词: candidacy">candidate</span> for the French presidency, has accused the governor of the Bank of France, absurdly, of treason. Bond investors, gazing <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> into the future, <span class="annot" data-tooltip="perceive /pər'siːv/ vt. 察觉，感觉；理解；认知vi. 感到，感知；认识到时 态: perceived, perceiving, perceive">perceive</span> the growing danger that governments will use inflation to pick their pockets. The <span class="annot" data-tooltip="immediate /ɪ'miːdiət/ adj. 立即的，即刻的；紧迫的目前的，当前的直接的最接近的名 词: immediateness">immediate</span> impact of the bond-market sell-off <span class="annot" data-tooltip="varies /'veri/ vi. 变化；违反；[生]变异vt. 改变；使多样化；[音]变奏时 态: varied varying, varies">varies</span> greatly across countries. America is learning that its AI-fuelled expansion will not much help it <span class="annot" data-tooltip="cope /koʊp/ vi. 处理；对付；竞争">cope</span> with its debts, because interest costs <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> in tandem with growth. The federal government’s annual budget deficit of about 6% of GDP is unsustainable. Fortunately, Uncle Sam still has the <span class="annot" data-tooltip="immense /ɪ'mens/ adj. 极大的, 巨大的副 词: immensely">immense</span> advantage of issuing the world’s reserve currency. As bond yields have risen in recent weeks the dollar has soared in <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span>. A <span class="annot" data-tooltip="fiscal /'fɪskl/ adj. 国库的；会计的，财政的副 词: fiscally">fiscal</span> reckoning must eventually come—but not yet. Japan, another perennial source of worry, is so far coping, too. Its ten-year bond <span class="annot" data-tooltip="yield /jiːld/ vt. 出产；屈服；放弃vi. 屈服，投降n. 收益；产量时 态: yielded, yielding, yields">yield</span> has <span class="annot" data-tooltip="breached /briːtʃ/ n. 破坏, 违反破裂, 不和缺口, 裂口vt. 攻破破坏, 违反时 态: breached, breaching, brea">breached</span> 3% for the first time since 1996 and it is planning an ill-advised spending spree. But inflation has risen <span class="annot" data-tooltip="alongside /əˌlɔːŋ'saɪd/ adv. 靠着边，沿着边prep. (表示位置)在…旁边；沿着…的边；与…并排靠拢着(表示比较)与…放在一起比较(表示伴随)与…一">alongside</span> interest rates. With inflation-adjusted rates still low, and the government’s deficit small, debts are <span class="annot" data-tooltip="shrinking /ʃrɪŋk/ vt. & vi. 收缩；退缩时 态: shrank ，shrunk shrunk，shrunken shrinking，shr">shrinking</span> as a share of the economy. That may change. And if the Japanese begin to sell their <span class="annot" data-tooltip="enormous /ɪ'nɔːrməs/ adj. 巨大的, 极大的, 庞大的副 词: enormously">enormous</span> stock of overseas <span class="annot" data-tooltip="assets /'æset/ n. 资产；有用的东西；有利条件；优点">assets</span>, financial</p>
+<p>tremors will <span class="annot" data-tooltip="rattle /'rætl/ vt. 使发出咯咯声；喋喋不休；使慌乱，使惊慌vi. 喋喋不休地讲话；发出卡嗒卡嗒声n. 喋喋不休的人；咯吱声，格格声时 态: ">rattle</span> the rest of the world. But the Japanese government does not yet face the <span class="annot" data-tooltip="prospect /'prɑːspekt/ n. 景象，景色前景；前途可能成为主顾的人；有希望的候选人vi. 勘探；勘察时 态: prospected，prospecti">prospect</span> of a run on its bonds. Europe is where the danger of a debt crisis looms largest. The AI boom is raising its cost of capital but, in <span class="annot" data-tooltip="contrast /'kɑːntræst/ n. 对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照时 态: contrasted, cont">contrast</span> with America, it is enjoying <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> less of a boost to economic growth. Its <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span>-importing economy is suffering from high fuel prices, and will suffer more if the winter is cold, owing to a probable global <span class="annot" data-tooltip="shortage /'ʃɔːrtɪdʒ/ n. 不足; 缺少; 缺少量; 不足额">shortage</span> of liquefied natural gas. Though some prudent governments—including those in Germany, Scandinavia and Switzerland— have their budgets in order, Britain, France and Italy are wobbling. Britain already suffered a bond-market revolt in 2022. Chastened, it corrected course, but its debt-to-GDP <span class="annot" data-tooltip="ratio /'reɪʃioʊ/ n. 比, 比率">ratio</span> is still rising and its politicians specialise in postponing spending cuts, as with a recently promised <span class="annot" data-tooltip="pension /ˈpenʃn/ n. 津贴；退休金，抚恤金；膳宿费vt. 发给养老金或抚恤金时 态: pensioned, pensioning, pensi">pension</span> <span class="annot" data-tooltip="reform /rɪ'fɔːrm/ n. 改革，改良，改造vt. & vi. 改革；改造；改善时 态: reformed，reforming，reforms">reform</span>. Italy’s <span class="annot" data-tooltip="net /net/ n. 网；净利；网络；实价vi. 编网vt. 净赚；得到；用网捕adj. 纯粹的；净余的时 态: netted, nettin">net</span> debts are fairly stable, but, at 129% of GDP, too high. It is <span class="annot" data-tooltip="fragile /'frædʒl/ adj. 易碎的，脆的虚弱的，脆弱的；经不起折腾的名 词: fragility">fragile</span> and could break in a panic. France is under the greatest pressure. Its budget deficit is forecast to be 5.4% of GDP this year. Given today’s economic growth, The Economist calculates, were France to refinance all its borrowing at current <span class="annot" data-tooltip="yields /jiːld/ vt. 出产；屈服；放弃vi. 屈服，投降n. 收益；产量时 态: yielded, yielding, yields">yields</span> on five-year bonds, stabilising its debts would require a <span class="annot" data-tooltip="belt /belt/ n. 腰带, 带子区域, 地带vt.（用带子）系住；（作为惩罚用皮带等）抽打；击打vi.（尤指驾车）疾驰；飞奔时 态: bel">belt</span>-tightening of more than 4% of GDP. Yet it is gripped by student <span class="annot" data-tooltip="protests /'proʊtest/ n. 抗议；反对vt. & vi. 声明；抗议时 态: protested，protesting，protests">protests</span> and its <span class="annot" data-tooltip="parliament /'pɑːrləmənt/ n. 议会, 国会">parliament</span> is struggling to pass a budget with cuts <span class="annot" data-tooltip="worth /wɜːrθ/ adj. 值…的n. 价值；财产时 态: worthed, worthing, worths">worth</span> just a tenth of that.</p>
+<p>Investors recently forced France to pay 1.5 points more than Germany to borrow for a <span class="annot" data-tooltip="decade /'dekeɪd/ n. 十年，十年期；十">decade</span>—the highest spread since the euro-zone debt crisis. Ahead of a presidential election in 2027, Marine Le Pen of the populist-right National Rally party is <span class="annot" data-tooltip="leading /ˈliːdɪŋ/ adj. 主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）">leading</span> the <span class="annot" data-tooltip="polls /poʊl/ n. 民意测验；投票；投票数；投票所vt. 剪短；对…进行民意测验；获得选票；投票vi. 投票adj. 剪过毛的；修过枝的；无">polls</span>. On October 6th she pledged to trim budgets by 3% of GDP by 2032 and to cut debt to gdp in half. Bond <span class="annot" data-tooltip="yields /jiːld/ vt. 出产；屈服；放弃vi. 屈服，投降n. 收益；产量时 态: yielded, yielding, yields">yields</span> fell slightly, but Ms Le Pen lacks <span class="annot" data-tooltip="credibility /ˌkredə'bɪləti/ n. 可靠性,可信性">credibility</span>. She still vows to lower the retirement age even as <span class="annot" data-tooltip="lifespans /'laɪfspæn/ n. 预期生命期限；寿命；预期使用期限">lifespans</span> lengthen, thus failing to <span class="annot" data-tooltip="confront /kən'frʌnt/ vt. 遭遇；比较；面对时 态: confronted, confronting, confronts">confront</span> the biggest single item in France’s public spending. A run on French bonds could happen. If it does, the government might respond not with <span class="annot" data-tooltip="belt /belt/ n. 腰带, 带子区域, 地带vt.（用带子）系住；（作为惩罚用皮带等）抽打；击打vi.（尤指驾车）疾驰；飞奔时 态: bel">belt</span>-tightening, but by demanding a bail-out from the European <span class="annot" data-tooltip="central /'sentrəl/ adj. 中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的副 词: centrally">Central</span> Bank (ECB). Countries are supposed to get their budgets in order before the ECB buys their debt, but in <span class="annot" data-tooltip="practice /'præktɪs/ n. 练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规时 态: practiced，practicing，">practice</span> the guardrail against bail-outs is weaker than a decade ago. In a game of chicken with the ecb, a populist president would probably win; for without France, the European Union could not survive. It would be a mistake for central banks to bail out governments which refuse point-blank to balance the books. Their job is to unblock financial plumbing, not to underwrite <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span> of <span class="annot" data-tooltip="reckless /'rekləs/ adj. 轻率的; 鲁莽的; 不顾危险的副 词: recklessly">reckless</span> borrowing. If central banks become cash machines for finance ministries, not guarantors of stable prices, long- term bonds will sell off even more. Voters will <span class="annot" data-tooltip="exact /ɪɡ'zækt/ adj. 精确的；准确的，精密的vt. 强求；要求；急需vi. 勒索钱财时 态: exacted, exacting, exact">exact</span> revenge. The best path</p>
+<p>forward in France and elsewhere is for politicians to explain to their electorates that public debt must be under control, and that together they must do whatever it takes. ■ This article was downloaded by zlibrary from https://www.economist.com/leaders/2026/10/08/will-bonds-<span class="annot" data-tooltip="blow /bloʊ/ n. 吹；殴打；打击vi. 风吹；喘气vt. 风吹时 态: blew blown blowing, blows">blow</span>-up</p>
+<div class="article-separator"></div>
+<div class="article-header">Leaders · Leaders | The marshal’s plan</div>
+<p>A selfish ploy to break up Pakistan Its military chief wants lots of small provinces, to <span class="annot" data-tooltip="fragment /'fræɡmənt/ n. 碎片；片断或不完整部分vt. 使成碎片vi. 破碎或裂开时 态: fragmented, fragmenting, fr">fragment</span> the opposition Oct 8th 2026 IT WAS Philip of Macedon who reputedly coined the phrase “divide and rule”, more than 2,000 years ago. Strongmen ever since have <span class="annot" data-tooltip="employed /ɪm'plɔɪ/ vt. 使用，采用；雇用；使忙于，使从事于n. 雇用；使用时 态: employed, employing, employs">employed</span> the tactic to cement their power. The military man who really rules Pakistan— despite the existence of a president and a prime minister who are both nominally his <span class="annot" data-tooltip="superiors /suː'pɪriər/ adj. 上级的；高傲的；优秀的，出众的n. 上级，长官；长者；优胜者，高手名 词: superiority">superiors</span>—seems to have taken the lesson <span class="annot" data-tooltip="literally /'lɪtərəli/ adv. 逐字地；照字面地确实地，真正地">literally</span>. Field <span class="annot" data-tooltip="marshal /'mɑːrʃl/ n. 元帅；司仪vt. 整理；引领；编列vi. 排列">Marshal</span> Asim Munir, the <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>-<span class="annot" data-tooltip="flattering /'flætər/ v. 向…谄媚，奉承，讨好；自认为，自以为是；使显得更漂亮时 态: flattered，flattering，flatters">flattering</span> head of Pakistan’s armed forces, reportedly wants to do away with his country’s four provinces, which date to the creation of Pakistan in 1947. They may be divided into 12 new ones, or perhaps 15, or perhaps even 160 much smaller and less powerful units. These new mini-polities might be ruled by elected chiefs, or by provincial or district <span class="annot" data-tooltip="assemblies /ə'sembli/ n. 装配；集会，集合">assemblies</span>, or by nominees of “the government”: ie,</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>raise</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>nvidia</td><td>— </td><td>恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商</td></tr>
+<tr><td>assemble</td><td>/ə'sembl/ vt.</td><td>集合，聚集；装配；收集vi. 集合，聚集, assembling, assembles</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>nasdaq</td><td>— </td><td>纳斯达克指数〈美〉全国证券交易商自动报价系统协会</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>quarter</td><td>/'kwɔːrtər/ n.</td><td>四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一, quartering, quarters</td></tr>
+<tr><td>integral</td><td>/'ɪntɪɡrəl/ adj.</td><td>必需的；不可或缺的作为组成部分的完整的；完备的</td></tr>
+<tr><td>shortage</td><td>/'ʃɔːrtɪdʒ/ n.</td><td>不足; 缺少; 缺少量; 不足额</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>essential</td><td>/ɪ'senʃl/ adj.</td><td>基本的；必要的；本质的；精华的</td></tr>
+<tr><td>cooling</td><td>/ˈkulɪŋ/ n.</td><td>冷却adj. 凉的；凉爽的冷却的</td></tr>
+<tr><td>racks</td><td>/ræk/ n.</td><td>行李架；拷问台；齿条vi. 随风飘；小步跑；变形vt. 折磨；榨取, racking, racks</td></tr>
+<tr><td>acquisition</td><td>/ˌækwɪ'zɪʃn/ n.</td><td>获得物，获得；收购</td></tr>
+<tr><td>boots</td><td>/buːt/ vt.</td><td>使穿靴；引导；踢；解雇n. 靴子；汽车行李箱；踢, booting, boots</td></tr>
+<tr><td>ownership</td><td>/'oʊnərʃɪp/ n.</td><td>物主的身份；所有(权)，所有制</td></tr>
+<tr><td>substantial</td><td>/səb'stænʃl/ adj.</td><td>坚固的；结实的大量的，可观的重大的，重要的实质的，基本的，大体上的</td></tr>
+<tr><td>apparent</td><td>/ə'pærənt/ adj.</td><td>显然的；表面上的</td></tr>
+<tr><td>counter</td><td>/'kaʊntər/ n.</td><td>柜台, 柜台式长桌计数器vt. & vi. 对抗, 反驳adv. 反方向地, 对立地, countering, counters</td></tr>
+<tr><td>transparency</td><td>/træns'pærənsi/ n.</td><td>透明；透明度；透明性透明的东西；幻灯片</td></tr>
+<tr><td>lighter</td><td>/'laɪtər/ n.</td><td>打火机；驳船；点火者vt. 驳运, lightering, lighters</td></tr>
+<tr><td>turbulent</td><td>/'tɜːrbjələnt/ adj.</td><td>骚动的; 骚乱的; 汹涌的</td></tr>
+<tr><td>blow</td><td>/bloʊ/ n.</td><td>吹；殴打；打击vi. 风吹；喘气vt. 风吹, blows</td></tr>
+<tr><td>helping</td><td>/'helpɪŋ/ n.</td><td>（进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的</td></tr>
+<tr><td>blow</td><td>/bloʊ/ n.</td><td>吹；殴打；打击vi. 风吹；喘气vt. 风吹, blows</td></tr>
+<tr><td>racism</td><td>/'reɪsɪzəm/ n.</td><td>种族主义，种族歧视；人种偏见</td></tr>
+<tr><td>wing</td><td>/wɪŋ/ n.</td><td>翅膀；翼；飞翔；派别vt. 使飞；飞过；空运；增加…速度；装以翼vi. 飞行, winging, wings</td></tr>
+<tr><td>blow</td><td>/bloʊ/ n.</td><td>吹；殴打；打击vi. 风吹；喘气vt. 风吹, blows</td></tr>
+<tr><td>bust</td><td>/bʌst/ vi.</td><td>爆裂；破产；降低级别vt. 使爆裂；使破产；逮捕n. 半身像；胸部；萧条；破产adj. 破产了的；毁坏了的, busting, busts</td></tr>
+<tr><td>wave</td><td>/weɪv/ vi.</td><td>波动；起伏；摇动；呈波形；挥手示意vt. 向…挥手示意；使成波浪形；卷（烫）发n. 波浪；波动；高潮；卷曲；挥手示意, waving, waves</td></tr>
+<tr><td>hubris</td><td>/'hjuːbrɪs/ n.</td><td>骄傲自大,自恃</td></tr>
+<tr><td>dumping</td><td>— n.</td><td>倾销；倾泻v. 倾倒（dump的ing形式）</td></tr>
+<tr><td>immense</td><td>/ɪ'mens/ adj.</td><td>极大的, 巨大的</td></tr>
+<tr><td>revenues</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>net</td><td>/net/ n.</td><td>网；净利；网络；实价vi. 编网vt. 净赚；得到；用网捕adj. 纯粹的；净余的, netting, nets</td></tr>
+<tr><td>raise</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>annual</td><td>/'ænjuəl/ adj.</td><td>年度的；每年的n. 年刊，年鉴；一年生植物</td></tr>
+<tr><td>productivity</td><td>/ˌproʊdʌk'tɪvəti/ n.</td><td>生产率, 生产力</td></tr>
+<tr><td>yields</td><td>/jiːld/ vt.</td><td>出产；屈服；放弃vi. 屈服，投降n. 收益；产量, yielding, yields</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>inflation</td><td>/ɪn'fleɪʃn/ n.</td><td>(充气而引起的)膨胀通货膨胀</td></tr>
+<tr><td>creeping</td><td>/kriːp/ vi.</td><td>爬行；慢慢地移动；起鸡皮疙瘩；蔓延n. 爬行；毛骨悚然的感觉；谄媚者, creeps</td></tr>
+<tr><td>credibility</td><td>/ˌkredə'bɪləti/ n.</td><td>可靠性,可信性</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>candidate</td><td>/'kændɪdət，ˈkændɪdeɪt/ n.</td><td>申请求职者, 候选人报考者</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>perceive</td><td>/pər'siːv/ vt.</td><td>察觉，感觉；理解；认知vi. 感到，感知；认识到, perceiving, perceives</td></tr>
+<tr><td>immediate</td><td>/ɪ'miːdiət/ adj.</td><td>立即的，即刻的；紧迫的目前的，当前的直接的最接近的</td></tr>
+<tr><td>varies</td><td>/'veri/ vi.</td><td>变化；违反；[生]变异vt. 改变；使多样化；[音]变奏, varies</td></tr>
+<tr><td>cope</td><td>/koʊp/ vi.</td><td>处理；对付；竞争</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>immense</td><td>/ɪ'mens/ adj.</td><td>极大的, 巨大的</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>fiscal</td><td>/'fɪskl/ adj.</td><td>国库的；会计的，财政的</td></tr>
+<tr><td>yield</td><td>/jiːld/ vt.</td><td>出产；屈服；放弃vi. 屈服，投降n. 收益；产量, yielding, yields</td></tr>
+<tr><td>breached</td><td>/briːtʃ/ n.</td><td>破坏, 违反破裂, 不和缺口, 裂口vt. 攻破破坏, 违反, breaching, breaches</td></tr>
+<tr><td>alongside</td><td>/əˌlɔːŋ'saɪd/ adv.</td><td>靠着边，沿着边prep. (表示位置)在…旁边；沿着…的边；与…并排靠拢着(表示比较)与…放在一起比较(表示伴随)与…一起，与…一道</td></tr>
+<tr><td>shrinking</td><td>/ʃrɪŋk/ vt.</td><td>& vi. 收缩；退缩，shrunk shrunk，shrunken shrinking，shrinks</td></tr>
+<tr><td>enormous</td><td>/ɪ'nɔːrməs/ adj.</td><td>巨大的, 极大的, 庞大的</td></tr>
+<tr><td>assets</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>rattle</td><td>/'rætl/ vt.</td><td>使发出咯咯声；喋喋不休；使慌乱，使惊慌vi. 喋喋不休地讲话；发出卡嗒卡嗒声n. 喋喋不休的人；咯吱声，格格声, rattling, rattles</td></tr>
+<tr><td>prospect</td><td>/'prɑːspekt/ n.</td><td>景象，景色前景；前途可能成为主顾的人；有希望的候选人vi. 勘探；勘察，prospecting，prospects</td></tr>
+<tr><td>contrast</td><td>/'kɑːntræst/ n.</td><td>对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照, contrasting, contrasts</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>shortage</td><td>/'ʃɔːrtɪdʒ/ n.</td><td>不足; 缺少; 缺少量; 不足额</td></tr>
+<tr><td>ratio</td><td>/'reɪʃioʊ/ n.</td><td>比, 比率</td></tr>
+<tr><td>pension</td><td>/ˈpenʃn/ n.</td><td>津贴；退休金，抚恤金；膳宿费vt. 发给养老金或抚恤金, pensioning, pensions</td></tr>
+<tr><td>reform</td><td>/rɪ'fɔːrm/ n.</td><td>改革，改良，改造vt. & vi. 改革；改造；改善，reforming，reforms</td></tr>
+<tr><td>net</td><td>/net/ n.</td><td>网；净利；网络；实价vi. 编网vt. 净赚；得到；用网捕adj. 纯粹的；净余的, netting, nets</td></tr>
+<tr><td>fragile</td><td>/'frædʒl/ adj.</td><td>易碎的，脆的虚弱的，脆弱的；经不起折腾的</td></tr>
+<tr><td>yields</td><td>/jiːld/ vt.</td><td>出产；屈服；放弃vi. 屈服，投降n. 收益；产量, yielding, yields</td></tr>
+<tr><td>belt</td><td>/belt/ n.</td><td>腰带, 带子区域, 地带vt.（用带子）系住；（作为惩罚用皮带等）抽打；击打vi.（尤指驾车）疾驰；飞奔, belting, belts</td></tr>
+<tr><td>protests</td><td>/'proʊtest/ n.</td><td>抗议；反对vt. & vi. 声明；抗议，protesting，protests</td></tr>
+<tr><td>parliament</td><td>/'pɑːrləmənt/ n.</td><td>议会, 国会</td></tr>
+<tr><td>worth</td><td>/wɜːrθ/ adj.</td><td>值…的n. 价值；财产, worthing, worths</td></tr>
+<tr><td>decade</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>leading</td><td>/ˈliːdɪŋ/ adj.</td><td>主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）</td></tr>
+<tr><td>polls</td><td>/poʊl/ n.</td><td>民意测验；投票；投票数；投票所vt. 剪短；对…进行民意测验；获得选票；投票vi. 投票adj. 剪过毛的；修过枝的；无角的, polling, polls</td></tr>
+<tr><td>yields</td><td>/jiːld/ vt.</td><td>出产；屈服；放弃vi. 屈服，投降n. 收益；产量, yielding, yields</td></tr>
+<tr><td>credibility</td><td>/ˌkredə'bɪləti/ n.</td><td>可靠性,可信性</td></tr>
+<tr><td>lifespans</td><td>/'laɪfspæn/ n.</td><td>预期生命期限；寿命；预期使用期限</td></tr>
+<tr><td>confront</td><td>/kən'frʌnt/ vt.</td><td>遭遇；比较；面对, confronting, confronts</td></tr>
+<tr><td>belt</td><td>/belt/ n.</td><td>腰带, 带子区域, 地带vt.（用带子）系住；（作为惩罚用皮带等）抽打；击打vi.（尤指驾车）疾驰；飞奔, belting, belts</td></tr>
+<tr><td>central</td><td>/'sentrəl/ adj.</td><td>中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的</td></tr>
+<tr><td>practice</td><td>/'præktɪs/ n.</td><td>练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规，practicing，practices</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>reckless</td><td>/'rekləs/ adj.</td><td>轻率的; 鲁莽的; 不顾危险的</td></tr>
+<tr><td>exact</td><td>/ɪɡ'zækt/ adj.</td><td>精确的；准确的，精密的vt. 强求；要求；急需vi. 勒索钱财, exacting, exacts</td></tr>
+<tr><td>blow</td><td>/bloʊ/ n.</td><td>吹；殴打；打击vi. 风吹；喘气vt. 风吹, blows</td></tr>
+<tr><td>fragment</td><td>/'fræɡmənt/ n.</td><td>碎片；片断或不完整部分vt. 使成碎片vi. 破碎或裂开, fragmenting, fragments</td></tr>
+<tr><td>employed</td><td>/ɪm'plɔɪ/ vt.</td><td>使用，采用；雇用；使忙于，使从事于n. 雇用；使用, employing, employs</td></tr>
+<tr><td>superiors</td><td>/suː'pɪriər/ adj.</td><td>上级的；高傲的；优秀的，出众的n. 上级，长官；长者；优胜者，高手</td></tr>
+<tr><td>literally</td><td>/'lɪtərəli/ adv.</td><td>逐字地；照字面地确实地，真正地</td></tr>
+<tr><td>marshal</td><td>/'mɑːrʃl/ n.</td><td>元帅；司仪vt. 整理；引领；编列vi. 排列</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>flattering</td><td>/'flætər/ v.</td><td>向…谄媚，奉承，讨好；自认为，自以为是；使显得更漂亮，flattering，flatters</td></tr>
+<tr><td>assemblies</td><td>/ə'sembli/ n.</td><td>装配；集会，集合</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day1.html" class="nav-btn">← Day 1</a>
+  <a href="day3.html" class="nav-btn">Day 3 →</a>
+</div>
+
+<div class="progress">📖 Day 2 of 40</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-10-10</div>
+
+</body>
+</html>

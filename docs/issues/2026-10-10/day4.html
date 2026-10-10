@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leaders | Enough, now</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-10-10</div>
+
+<h1 class="article-title">Leaders | Enough, now</h1>
+<div class="article-section">Leaders</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>road accidents or medical side-effects regulators help avert. But hardly anyone thinks the <span class="annot" data-tooltip="optimal /'ɑːptɪməl/ adj. 最理想的；最佳的">optimal</span> amount of regulation in these areas is none at all. The world has, mercifully, so <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> avoided an AI Chernobyl. No lives and no real money were lost in the Hugging Face attack, the most concerning to have come to light. But the <span class="annot" data-tooltip="odds /ɑːdz/ n. 不平等；几率；胜算；差别">odds</span> of disaster are shortening. In a few months open models could be as <span class="annot" data-tooltip="capable /'keɪpəbl/ adj. 能干的，能胜任的；有才华的副 词: capably">capable</span> as <span class="annot" data-tooltip="anthropic /ænˈθrɑpɪk/ adj. 人类的,有关人类的">Anthropic</span>’s Mythos, the first to be <span class="annot" data-tooltip="seriously /'sɪriəs/ adj. 严肃的，严重的；认真的；庄重的；危急的副 词: seriously">seriously</span> adept at <span class="annot" data-tooltip="hacking /hæk/ vt. & vi. 劈, 砍vt. 狠踢, 乱踢vi. 咳嗽(发出刺耳声音)(以普通速度)骑马驾驶计程车n. 砍, 劈用靴头踢骑">hacking</span>. If politicians wait for a catastrophe before writing the rules, the ones they <span class="annot" data-tooltip="draft /dræft/ n. 汇票；草稿；选派；（尤指房间、烟囱、炉子等供暖系统中的）（小股）气流">draft</span> in haste in its <span class="annot" data-tooltip="aftermath /'æftərmæθ/ n. 后果">aftermath</span> are likely to be poor. Plenty of bad ideas are already out there, from data-centre moratoriums to Bernie Sanders’s “superintelligence ban”. And bad laws may be just the start: the <span class="annot" data-tooltip="terrorist /'terərɪst/ n. 恐怖主义者, 恐怖分子形容词: terroristic">terrorist</span> attacks of September 11th 2001 inspired a rethink of aviation safety but also two long wars. What might wise AI regulation look like? The goal cannot be to stymie technological advances altogether. That would indeed cause <span class="annot" data-tooltip="democratic /ˌdemə'krætɪk/ adj. 民主的, 有民主精神或作风的副 词: democratically">democratic</span> America to cede the frontier to <span class="annot" data-tooltip="authoritarian /əˌθɔːrə'teriən/ adj. 权力主义的,专制的n. 权力主义者,专制者,独裁者名 词: authoritarian">authoritarian</span> China, and forgo remarkable scientific and economic opportunities. Making AI labs lock up their cleverer models indefinitely, even if they could be contained, could create a dangerous gap between them and everyone else. Instead, America should mandate that advanced models be <span class="annot" data-tooltip="thoroughly /'θɜːroʊ/ adj. 彻底的；十分的；周密的副 词: thoroughly">thoroughly</span> tested and, if necessary, held back until they have <span class="annot" data-tooltip="safeguards /'seɪfɡɑːrd/ n. 防护措施，安全设施vt. 保护；保卫；防护时 态: safeguarded，safeguarding，safeguard">safeguards</span> to block dangerous use-cases, like building bioweapons. Companies must be required to report safety incidents and whistleblowers who do so in their stead granted protection. Independent evaluators should be embedded with <span class="annot" data-tooltip="major /'meɪdʒər/ adj. 主要的；主修的；重要的；较多的n. 成年人；主修科目；陆军少校vi. 主修时 态: majored, majoring,">major</span> labs, just as bank examiners are with lenders. Some of these ideas were hinted at in the voluntary <span class="annot" data-tooltip="pledges /pledʒ/ n. 抵押；保证，誓言；抵押品，典当物vt. 保证，许诺；用……抵押；举杯祝……健康时 态: pledged, pledgin">pledges</span> that Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> recently <span class="annot" data-tooltip="coaxed /koʊks/ vt. 哄, 用好话劝说巧言骗取">coaxed</span> out of the big AI firms. They should be spelled out and made <span class="annot" data-tooltip="mandatory /'mændətɔːri/ adj. 命令的;强制的;义务的">mandatory</span>. By signalling that it is <span class="annot" data-tooltip="serious /'sɪriəs/ adj. 严肃的，严重的；认真的；庄重的；危急的副 词: seriously">serious</span> about regulating AI, America would also <span class="annot" data-tooltip="foster /'fɑːstər/ v. 促进；助长；培养；鼓励收养，代养，抚育（他人子女，通常指有限的一段时间）adj. （与某些代养有关的名词连用）（在有限的">foster</span> international co-operation, particularly with China. As the models advance, so must the rules. “Let it rip” is a dead end. ■ This article was downloaded by zlibrary from https://www.economist.com/leaders/2026/10/08/a-no-rules-approach-to-ai-is-mad- politics-and-worse-policy</p>
+<div class="article-separator"></div>
+<div class="article-header">Leaders · Leaders | Hard-left hatred</div>
+<p>Britain’s Greens have voted, shamefully, to say Zionism is <span class="annot" data-tooltip="racism /'reɪsɪzəm/ n. 种族主义，种族歧视；人种偏见形容词: racist">racism</span> It is a damning moment for a political party with pretensions to power Oct 8th 2026 EARLIER THIS year Britain’s Green Party <span class="annot" data-tooltip="polled /poʊl/ n. 民意测验；投票；投票数；投票所vt. 剪短；对…进行民意测验；获得选票；投票vi. 投票adj. 剪过毛的；修过枝的；无">polled</span> at 21%, ahead of both the <span class="annot" data-tooltip="conservatives /kən'sɜːrvətɪv/ n. 保守的人adj. 保守的, 守旧的(式样等)不时新的, 传统的副 词: conservatively">Conservatives</span> and Labour. Since Andy Burnham became prime minister, the party has lost about half its support. At their recent <span class="annot" data-tooltip="conference /'kɑːnfərəns/ n. 会议讨论, 商谈形容词: conferential">conference</span> the Greens voted <span class="annot" data-tooltip="decisively /dɪ'saɪsɪv/ adj. 决定性的；果断的，坚定的副 词: decisively">decisively</span> to define Zionism as racism. The party thereby deserves to fade back into irrelevance. As well as calling Zionism <span class="annot" data-tooltip="racist /'reɪsɪst/ n. 种族歧视者">racist</span>, the new policy urges the destruction of Israel. Jews can instead live as full citizens in a Palestinian state if they choose. It endorses Palestinian violence and demands the <span class="annot" data-tooltip="release /rɪ'liːs/ vt. 释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]时 态: released，rel">release</span> of “<span class="annot" data-tooltip="prisoners /'prɪznər/ n. 囚徒俘虏被夺去自由的人[动物]等">prisoners</span> of conscience”.</p>
+<p>Many of the party’s <span class="annot" data-tooltip="jewish /'dʒuːɪʃ/ adj. 犹太人的;犹太教徒的">Jewish</span> members feel threatened. Almost all British synagogues support the idea that Jews should have a state. Freedom of <span class="annot" data-tooltip="worship /'wɜːrʃɪp/ vt. 崇拜；尊崇vi. 做礼拜时 态: worshiped，worshipped worshiping，worshipping">worship</span> is a fundamental right, but they fear that their <span class="annot" data-tooltip="devotion /dɪ'voʊʃn/ n. 奉献, 献身, 忠诚热爱, 挚爱">devotion</span> will lead to them being <span class="annot" data-tooltip="branded /brænd/ n. 商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责时 态: branded, branding, brands">branded</span> <span class="annot" data-tooltip="racist /'reɪsɪst/ n. 种族歧视者">racist</span>. Greens for Palestine argue that Jews are colonists, like whites in South Africa or the pieds-noirs in Algeria. That makes Palestinians freedom fighters, they say. No state should be set up on the basis of ethnicity. Jews should not feel persecuted, they insist. Under the party’s rules, Jewish members cannot be punished for their beliefs, including Zionism. This new policy was born partly out of anger at the <span class="annot" data-tooltip="plight /plaɪt/ n. 困境；境况；誓约vt. 保证；约定时 态: plighted, plighting, plights">plight</span> of the Palestinians. Israel’s government has treated the people of <span class="annot" data-tooltip="gaza n. 加沙（地中海岸港市）">Gaza</span> with <span class="annot" data-tooltip="merciless /'mɜːrsɪləs/ adj. 无情的,残忍的副 词: mercilessly">merciless</span> and unrelenting violence. Israeli settlers, sometimes motivated by hatred of Palestinians, are daily using force against them in the West Bank, often with the connivance of the army. However, Greens for Palestine, who prepared this policy, have got their history upside down. <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">Far</span> from being colonial, Zionism began as a <span class="annot" data-tooltip="liberation /ˌlɪbə'reɪʃn/ n. 解放名 词: liberationist">liberation</span> movement, like the <span class="annot" data-tooltip="polish /'pɑːlɪʃ/ n. 磨光，擦亮；上光剂，擦亮剂；优雅，精良vi. 擦亮，变光滑vt. 磨光，使发亮adj. 波兰的Polishadj. 波兰">Polish</span> or Czech nationalism that emerged in the 19th century under the Austro-Hungarian empire. The pioneers did not look to Europe, as white Algerians did. Instead, Zionists claimed that Jews needed a homeland where they could be safe from pogroms—a belief later tragically borne out during the second world war and among Jews who fled Arab countries after 1948. The Greens are equally wrong about today. To blame all Israelis—all Zionists, indeed—for atrocities against Palestinians and to seek to punish them as a <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span> is unjust. The Greens’ new policy only entrenches the <span class="annot" data-tooltip="divisions /dɪ'vɪʒn/ n. [数] 除法；部门；分配；分割；师（军队）；赛区形容词: divisional">divisions</span> <span class="annot" data-tooltip="tearing /tɪr，ter/ v. 撕掉，扯下；撕破；拔掉；拉伤；（非正式）狂奔；饱经……摧残；流眼泪n. 眼泪；（撕破的）洞或裂缝， 撕扯时 态: tor">tearing</span> the region apart. To say Israeli Jews could <span class="annot" data-tooltip="opt /ɑːpt/ vi. 选择OPTabbr. VC开发环境自动生成的用来存放WorkSpace中各种选项的文件。时 态: opted, opti">opt</span> to live under a Palestinian government, <span class="annot" data-tooltip="possibly /'pɑːsəbli/ adv. 可能地；大概；也许">possibly</span> run by the murderers of Hamas, is to give them no choice at all. In Britain how can Green members of <span class="annot" data-tooltip="parliament /'pɑːrləmənt/ n. 议会, 国会">Parliament</span> continue to serve their “racist” synagogue-going constituents? Will staffers look kindly on Jewish Greens accused of following a racist <span class="annot" data-tooltip="ideology /ˌaɪdi'ɑːlədʒi/ n. 意识形态；思想意识；观念学名 词: ideologist">ideology</span>? The <span class="annot" data-tooltip="pro /proʊ/ n. 从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞">pro</span>-Palestine activists behind this <span class="annot" data-tooltip="motion /'moʊʃn/ n. 动作；请求；手势；移动；意向vi. 运动；打手势vt. 运动；向…打手势时 态: motioned, motioning">motion</span> are unlikely to tolerate <span class="annot" data-tooltip="either /'iːðər/ pron. (两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的">either</span>. Instead, the policy will</p>
+<p>give succour to the thoughtless antisemitism that is already widespread on the <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> left and hard right. It is depressing that planet-loving Greens, who support things like eating lentils and planting trees, have indulged the hard left. Their leader, Zack Polanski (pictured), who is <span class="annot" data-tooltip="jewish /'dʒuːɪʃ/ adj. 犹太人的;犹太教徒的">Jewish</span>, did not take part in the vote, feebly pleading the need to <span class="annot" data-tooltip="campaign /kæm'peɪn/ n. 运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）时">campaign</span> as the <span class="annot" data-tooltip="candidate /'kændɪdət，ˈkændɪdeɪt/ n. 申请求职者, 候选人报考者名 词: candidacy">candidate</span> in a by-election that was to be held on October 8th. He should <span class="annot" data-tooltip="grasp /ɡræsp/ n. 理解；控制；抓住vt. 抓住；领会vi. 抓时 态: grasped, grasping, grasps">grasp</span> that his movement, which he remade as the more <span class="annot" data-tooltip="anti /'ænti/ adj. 反对的n. 反对者，反对论者">anti</span>-capitalist <span class="annot" data-tooltip="alternative /ɔːl'tɜːrnətɪv/ adj. 可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）">alternative</span> to Labour, has been taken over by zealots. These zealots express no real criticism of Putinists or Kim Jong Un or the Chinese <span class="annot" data-tooltip="communist /'kɑːmjənɪst/ n. 共产主义者adj. 共产主义的, 信仰共产主义的">Communist</span> Party, let alone misgivings about Middle Eastern conflicts in Sudan, Syria or Yemen. But they have an unquenchable desire to denounce Zionists. Could this, <span class="annot" data-tooltip="possibly /'pɑːsəbli/ adv. 可能地；大概；也许">possibly</span>, have something to do with hating Jews? Instead of hand-wringing, the old Greens should seize back their party, or leave it. <span class="annot" data-tooltip="worshipping /'wɜːrʃɪp/ vt. 崇拜；尊崇vi. 做礼拜时 态: worshiped，worshipped worshiping，worshipping">Worshipping</span> in a synagogue is not tainted by <span class="annot" data-tooltip="racism /'reɪsɪzəm/ n. 种族主义，种族歧视；人种偏见形容词: racist">racism</span>. From this moment, voting Green in Britain is. ■ <span class="annot" data-tooltip="correction /kə'rekʃn/ n. 改〔纠〕正修改；纠正有待改正adj. 改正的，纠正的形容词: correctional">Correction</span> (October 5th 2026): The original <span class="annot" data-tooltip="version /'vɜːrʒn/ n. 变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本">version</span> of this story wrongly suggested that all white South Africans, including Boers, looked to London. This article was downloaded by zlibrary from https://www.economist.com/leaders/2026/10/04/britains-greens-have-voted-shamefully- to-say-zionism-is-racism</p>
+<div class="article-separator"></div>
+<div class="article-header">Leaders · Leaders | The son also rises</div>
+<p>Brazil is a right-<span class="annot" data-tooltip="wing /wɪŋ/ n. 翅膀；翼；飞翔；派别vt. 使飞；飞过；空运；增加…速度；装以翼vi. 飞行时 态: winged, winging, ">wing</span> country now The Bolsonaro <span class="annot" data-tooltip="clan /klæn/ n. 宗族；部落；集团">clan</span> promises to <span class="annot" data-tooltip="align /ə'laɪn/ vt. 使结盟；使成一行；匹配vi. 排列；排成一行时 态: alignedalso alined aligningalinin">align</span> with Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>, and to attack <span class="annot" data-tooltip="democratic /ˌdemə'krætɪk/ adj. 民主的, 有民主精神或作风的副 词: democratically">democratic</span> institutions Oct 8th 2026 FOR MOST of the past <span class="annot" data-tooltip="quarter /'kwɔːrtər/ n. 四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一时 ">quarter</span> of a century Brazil was dominated by the Workers’ Party (PT). A left-wing alliance of trade-unionists, <span class="annot" data-tooltip="progressive /prə'ɡresɪv/ adj. 不断前进的, 有进展的, 逐渐上升的进步的, 先进的副 词: progressively">progressive</span> <span class="annot" data-tooltip="catholics /ˈkæθlɪk/ adj. 天主教的；宽宏大量的n. 天主教徒；罗马天主教catholicadj. 普遍的;广泛的;包容一切的宽容的副 词: cat">Catholics</span> and <span class="annot" data-tooltip="academics /ˌækə'demɪk/ adj. 学院的；学术的；理论的n. 大学生，大学教师；学者副 词: academically">academics</span> built a large welfare state and defined Latin America’s <span class="annot" data-tooltip="version /'vɜːrʒn/ n. 变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本">version</span> of social <span class="annot" data-tooltip="democracy /dɪ'mɑːkrəsi/ n. 民主, 民主制民主国家">democracy</span>. That era is over. On October 4th the PT and its ageing leader, Luiz Inácio Lula da Silva, known as Lula, were trounced in the first round of Brazil’s general election by Flávio Bolsonaro and his Liberal Party (PL). Betting markets give Flávio a strong chance of winning the run-off on October 25th. It is an astounding result for the scion of a right-wing dynasty whose patriarch, Jair, an ex-president, is under house arrest for an attempted coup. Only last year Jair was <span class="annot" data-tooltip="barred /bɑrd/ adj. 有木栅的,隔绝的,被禁止的">barred</span> from office until 2060. His son has</p>
+<p>alleged connections to the criminal underworld. Despite that, Flávio <span class="annot" data-tooltip="narrowly /'næroʊ/ adj. 狭窄的，有限的；度量小的；精密的；勉强的n. 狭窄部分，隘路；海峡vt. 使变狭窄vi. 变窄比较级: narrower">narrowly</span> fell short of winning <span class="annot" data-tooltip="outright /'aʊtraɪt/ adv. 完全地；彻底地坦率地；直率地；无保留地立即，当场adj. 完全的；彻底的">outright</span>. Even if Flávio unexpectedly fails, the election is a <span class="annot" data-tooltip="triumph /'traɪʌmf/ n. 胜利，成功巨大的成就[成功]vi. 获胜，得胜；克服时 态: triumphed，triumphing，triumphs">triumph</span> for Brazil’s MAGA-<span class="annot" data-tooltip="adjacent /ə'dʒeɪsnt/ adj. 邻近的">adjacent</span> right—the latest in a <span class="annot" data-tooltip="wave /weɪv/ vi. 波动；起伏；摇动；呈波形；挥手示意vt. 向…挥手示意；使成波浪形；卷（烫）发n. 波浪；波动；高潮；卷曲；挥手示意时 ">wave</span> of successes for right-<span class="annot" data-tooltip="wing /wɪŋ/ n. 翅膀；翼；飞翔；派别vt. 使飞；飞过；空运；增加…速度；装以翼vi. 飞行时 态: winged, winging, ">wing</span> parties in Latin America. The PL now has the most powerful congressional caucus since Brazil’s constitution was enacted in 1988. It is also the largest party in the three biggest states, São Paulo, Rio de Janeiro and Minas Gerais, which together generate more than half of Brazilian GDP. The Bolsonaro <span class="annot" data-tooltip="clan /klæn/ n. 宗族；部落；集团">clan</span> is <span class="annot" data-tooltip="ecstatic /ɪk'stætɪk/ adj. 狂喜的；入迷的n. 狂喜的人副 词: ecstatically">ecstatic</span>. Jair’s ardently evangelical wife, two of his other sons and his brother all won seats in Congress. From February, when newly elected senators take their seats, the PL and <span class="annot" data-tooltip="allies n. （第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者">allies</span> will control the <span class="annot" data-tooltip="senate /ˈsenət/ n.（诸如美国、澳大利亚、法国的）参议院（the Senate） （某些国家的）大学理事会，大学评议会（古罗马的）元老院">Senate</span> and thus can rewrite laws. Expect them to boost business and to weaken protections for the environment. Some outsiders will warn against allowing more <span class="annot" data-tooltip="damage /'dæmɪdʒ/ v. 损害；伤害；毁坏；破坏n. 损坏，破坏，损失，损害，伤害（法院判定的）损害赔偿金时 态: damaged, damagi">damage</span> to the <span class="annot" data-tooltip="amazon /ˈæməˌzɑn/ n. 高大强悍的女人；（古希腊神话中的）亚马孙族女战士Amazonn. 亚马逊河(南美洲大河)">Amazon</span> rainforest. Other outsiders, including America, will <span class="annot" data-tooltip="crave /kreɪv/ vt. 恳求；渴望vi. 渴望；恳求时 态: craved, craving, craves">crave</span> the opportunity to tap Brazil’s huge <span class="annot" data-tooltip="deposits /dɪ'pɑːzɪt/ n. 存款；保证金；沉淀物vt. 存放；使沉积vi. 沉淀时 态: deposited, depositing, deposi">deposits</span> of <span class="annot" data-tooltip="critical /'krɪtɪkl/ adj. 批评的，爱挑剔的；决定性的；危险的；临界的；鉴定的；评论的副 词: critically">critical</span> <span class="annot" data-tooltip="minerals /'mɪnərəl/ n. 矿物; 矿石; 矿物质">minerals</span>, <span class="annot" data-tooltip="vital /'vaɪtl/ adj. 极重要的，必不可少的维持生命所必需的；生命的有生气的，充满生机的副 词: vitally">vital</span> resources whose global supply is otherwise controlled largely by China. This congressional strength means the PL has a rare opportunity to fix Brazil’s ruinous public finances. Rewriting the laws which <span class="annot" data-tooltip="impose /ɪm'poʊz/ vi. 欺骗；利用；施加影响vt. 强加；以…欺骗；征税时 态: imposed, imposing, imposes">impose</span> high and growing levels of government spending would <span class="annot" data-tooltip="curb /kɜːrb/ n. 侧石, 边石限制, 克制, 抑制vt. 限制, 克制, 抑制时 态: curbed, curbing, curbs">curb</span> borrowing, bring down interest rates and <span class="annot" data-tooltip="prompt /prɑːmpt/ adj. 敏捷的，迅速的；立刻的vt. 促进；激起；提示；（给演员）提白n. 提示；付款期限；DOS命令：改变DOS系统提示符的风">prompt</span> investment—boosting growth. It gives the Bolsonaros scope to create a glittering economic future for Brazil. That would mean forgoing spending today, something for which the Bolsonaros have little appetite. The likelier outcome will be more polarised politics and pressure on Brazil’s <span class="annot" data-tooltip="vulnerable /'vʌlnərəbl/ adj. 易受伤的, 脆弱的, 敏感的">vulnerable</span> <span class="annot" data-tooltip="democratic /ˌdemə'krætɪk/ adj. 民主的, 有民主精神或作风的副 词: democratically">democratic</span> institutions. The victors will exult in MAGA-style culture clashes. Two right-wing congressmen, Nikolas Ferreira and Lucas Pavanato, drew more votes than any <span class="annot" data-tooltip="candidates /'kændɪdət，ˈkændɪdeɪt/ n. 申请求职者, 候选人报考者名 词: candidacy">candidates</span> in Brazilian history; both are young social-media influencers who hate wokery as much as they love guns and God. The Bolsonaros will seek vengeance. Flávio’s big <span class="annot" data-tooltip="campaign /kæm'peɪn/ n. 运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）时">campaign</span> promise was to free his father. Many candidates for the Senate vowed to bring down the <span class="annot" data-tooltip="supreme /su'priːm/ adj. 最高的；至上的最重要的比较级: supremer，supremest 缩 写: supr">Supreme</span> Court justices (some caught up in <span class="annot" data-tooltip="corruption /kə'rʌpʃn/ n. 堕落;腐化;腐败;贿赂腐烂">corruption</span> scandals) who</p>
+<p>prosecuted Jair. “We don’t just want <span class="annot" data-tooltip="impeachment /ɪm'piːtʃmənt/ n. 控告;检举弹劾怀疑">impeachment</span>,” said Bia Kicis, a new PL senator, “we want <span class="annot" data-tooltip="removal /rɪ'muːvl/ n. 移动；免职；排除；搬迁">removal</span>, investigation and imprisonment.” A <span class="annot" data-tooltip="senate /ˈsenət/ n.（诸如美国、澳大利亚、法国的）参议院（the Senate） （某些国家的）大学理事会，大学评议会（古罗马的）元老院">Senate</span> majority is needed in order to <span class="annot" data-tooltip="impeach /ɪm'piːtʃ/ vt. 控告（某人）犯罪，弹劾；怀疑，提出异议时 态: impeached, impeaching, impeaches">impeach</span> a <span class="annot" data-tooltip="supreme /su'priːm/ adj. 最高的；至上的最重要的比较级: supremer，supremest 缩 写: supr">Supreme</span> Court justice. A stand-off between the two powerful institutions could trigger a constitutional crisis. Justices who believe themselves to be defending <span class="annot" data-tooltip="democracy /dɪ'mɑːkrəsi/ n. 民主, 民主制民主国家">democracy</span> will deploy their <span class="annot" data-tooltip="extensive /ɪk'stensɪv/ adj. 广阔的，广泛的；大量的，大规模的副 词: extensively">extensive</span> powers in order to remain in office. An emboldened Congress will attack the court. Whoever is the president will play a <span class="annot" data-tooltip="decisive /dɪ'saɪsɪv/ adj. 决定性的；果断的，坚定的副 词: decisively">decisive</span> role, not least because in the coming years he will probably get to replace four of the Supreme Court’s 11 justices. However that fight ends, the outcome for Brazil is likely to be new grievances and deepening public cynicism. Brazilians have good reasons to reject the PT for its dead-end policies, its <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> <span class="annot" data-tooltip="corruption /kə'rʌpʃn/ n. 堕落;腐化;腐败;贿赂腐烂">corruption</span> and the lack of fresh leadership. But they also have every reason to fear where that rejection now leads. ■ This article was downloaded by zlibrary from https://www.economist.com/leaders/2026/10/06/brazil-is-a-right-<span class="annot" data-tooltip="wing /wɪŋ/ n. 翅膀；翼；飞翔；派别vt. 使飞；飞过；空运；增加…速度；装以翼vi. 飞行时 态: winged, winging, ">wing</span>-country-now</p>
+<div class="article-separator"></div>
+<div class="article-header">Letters · Letters | A selection of correspondence</div>
+<p>Is back and shoulder <span class="annot" data-tooltip="surgery /'sɜːrdʒəri/ n. 外科；外科手术；手术室；诊疗室">surgery</span> often worse than useless? Also this week, retro <span class="annot" data-tooltip="capitalism /'kæpɪtəlɪzəm/ n. 资本主义(制度)资本(或财富)的拥有资本(私人占有和生产盈利)的支配地位">capitalism</span>, mistaken identity, summer, AI-generated speeches Oct 8th 2026 Letters are welcome via email to letters@economist.comFind out more about how we <span class="annot" data-tooltip="process /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">process</span> your letter Back and shoulder surgery is often worse than useless, you say (“The cost of <span class="annot" data-tooltip="cutting /'kʌtɪŋ/ n. 切断；剪辑；开凿adj. 严寒的；锋利的；尖酸刻薄的v. 切开；采伐；削减（cut的ing形式）">cutting</span>”, September 26th). You cast surgeons as the problem: “If your only tool is a scalpel, everything looks ripe for cutting.” My experience as an <span class="annot" data-tooltip="orthopaedic /ˌɔːrθə'piːdɪk/ adj. 整形外科的">orthopaedic</span> registrar is often the reverse. During our shoulder and spine clinics, much time is spent trying to talk patients out of operations. Many arrive convinced that a <span class="annot" data-tooltip="specific /spə'sɪfɪk/ adj. 特殊的，特定的；明确的；详细的；具有特效的n. 特效药；细节；特性副 词: specifically">specific</span> <span class="annot" data-tooltip="procedure /prə'siːdʒər/ n. 程序, 步骤手续">procedure</span> is the only thing that will fix them. That belief may come from a friend, a referral letter, the internet or an</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>optimal</td><td>/'ɑːptɪməl/ adj.</td><td>最理想的；最佳的</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>odds</td><td>/ɑːdz/ n.</td><td>不平等；几率；胜算；差别</td></tr>
+<tr><td>capable</td><td>/'keɪpəbl/ adj.</td><td>能干的，能胜任的；有才华的</td></tr>
+<tr><td>anthropic</td><td>/ænˈθrɑpɪk/ adj.</td><td>人类的,有关人类的</td></tr>
+<tr><td>seriously</td><td>/'sɪriəs/ adj.</td><td>严肃的，严重的；认真的；庄重的；危急的</td></tr>
+<tr><td>hacking</td><td>/hæk/ vt.</td><td>& vi. 劈, 砍vt. 狠踢, 乱踢vi. 咳嗽(发出刺耳声音)(以普通速度)骑马驾驶计程车n. 砍, 劈用靴头踢骑用马, 供出租的马受雇于出版商的文人出租</td></tr>
+<tr><td>draft</td><td>/dræft/ n.</td><td>汇票；草稿；选派；（尤指房间、烟囱、炉子等供暖系统中的）（小股）气流</td></tr>
+<tr><td>aftermath</td><td>/'æftərmæθ/ n.</td><td>后果</td></tr>
+<tr><td>terrorist</td><td>/'terərɪst/ n.</td><td>恐怖主义者, 恐怖分子</td></tr>
+<tr><td>democratic</td><td>/ˌdemə'krætɪk/ adj.</td><td>民主的, 有民主精神或作风的</td></tr>
+<tr><td>authoritarian</td><td>/əˌθɔːrə'teriən/ adj.</td><td>权力主义的,专制的n. 权力主义者,专制者,独裁者</td></tr>
+<tr><td>thoroughly</td><td>/'θɜːroʊ/ adj.</td><td>彻底的；十分的；周密的</td></tr>
+<tr><td>safeguards</td><td>/'seɪfɡɑːrd/ n.</td><td>防护措施，安全设施vt. 保护；保卫；防护，safeguarding，safeguards</td></tr>
+<tr><td>major</td><td>/'meɪdʒər/ adj.</td><td>主要的；主修的；重要的；较多的n. 成年人；主修科目；陆军少校vi. 主修, majoring, majors</td></tr>
+<tr><td>pledges</td><td>/pledʒ/ n.</td><td>抵押；保证，誓言；抵押品，典当物vt. 保证，许诺；用……抵押；举杯祝……健康, pledging, pledges</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>coaxed</td><td>/koʊks/ vt.</td><td>哄, 用好话劝说巧言骗取</td></tr>
+<tr><td>mandatory</td><td>/'mændətɔːri/ adj.</td><td>命令的;强制的;义务的</td></tr>
+<tr><td>serious</td><td>/'sɪriəs/ adj.</td><td>严肃的，严重的；认真的；庄重的；危急的</td></tr>
+<tr><td>foster</td><td>/'fɑːstər/ v.</td><td>促进；助长；培养；鼓励收养，代养，抚育（他人子女，通常指有限的一段时间）adj. （与某些代养有关的名词连用）（在有限的一段时间内）（所）收养的，（所）代养的F</td></tr>
+<tr><td>racism</td><td>/'reɪsɪzəm/ n.</td><td>种族主义，种族歧视；人种偏见</td></tr>
+<tr><td>polled</td><td>/poʊl/ n.</td><td>民意测验；投票；投票数；投票所vt. 剪短；对…进行民意测验；获得选票；投票vi. 投票adj. 剪过毛的；修过枝的；无角的, polling, polls</td></tr>
+<tr><td>conservatives</td><td>/kən'sɜːrvətɪv/ n.</td><td>保守的人adj. 保守的, 守旧的(式样等)不时新的, 传统的</td></tr>
+<tr><td>conference</td><td>/'kɑːnfərəns/ n.</td><td>会议讨论, 商谈</td></tr>
+<tr><td>decisively</td><td>/dɪ'saɪsɪv/ adj.</td><td>决定性的；果断的，坚定的</td></tr>
+<tr><td>racist</td><td>/'reɪsɪst/ n.</td><td>种族歧视者</td></tr>
+<tr><td>release</td><td>/rɪ'liːs/ vt.</td><td>释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]，releasing，releases</td></tr>
+<tr><td>prisoners</td><td>/'prɪznər/ n.</td><td>囚徒俘虏被夺去自由的人[动物]等</td></tr>
+<tr><td>jewish</td><td>/'dʒuːɪʃ/ adj.</td><td>犹太人的;犹太教徒的</td></tr>
+<tr><td>worship</td><td>/'wɜːrʃɪp/ vt.</td><td>崇拜；尊崇vi. 做礼拜，worshipped worshiping，worshipping worships，worships</td></tr>
+<tr><td>devotion</td><td>/dɪ'voʊʃn/ n.</td><td>奉献, 献身, 忠诚热爱, 挚爱</td></tr>
+<tr><td>branded</td><td>/brænd/ n.</td><td>商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责, branding, brands</td></tr>
+<tr><td>racist</td><td>/'reɪsɪst/ n.</td><td>种族歧视者</td></tr>
+<tr><td>plight</td><td>/plaɪt/ n.</td><td>困境；境况；誓约vt. 保证；约定, plighting, plights</td></tr>
+<tr><td>gaza</td><td>— n.</td><td>加沙（地中海岸港市）</td></tr>
+<tr><td>merciless</td><td>/'mɜːrsɪləs/ adj.</td><td>无情的,残忍的</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>liberation</td><td>/ˌlɪbə'reɪʃn/ n.</td><td>解放</td></tr>
+<tr><td>polish</td><td>/'pɑːlɪʃ/ n.</td><td>磨光，擦亮；上光剂，擦亮剂；优雅，精良vi. 擦亮，变光滑vt. 磨光，使发亮adj. 波兰的Polishadj. 波兰的,与波兰有关的波兰人的,波兰语的n. </td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>divisions</td><td>/dɪ'vɪʒn/ n.</td><td>[数] 除法；部门；分配；分割；师（军队）；赛区</td></tr>
+<tr><td>tearing</td><td>/tɪr，ter/ v.</td><td>撕掉，扯下；撕破；拔掉；拉伤；（非正式）狂奔；饱经……摧残；流眼泪n. 眼泪；（撕破的）洞或裂缝， 撕扯，torn，tearing，tears</td></tr>
+<tr><td>opt</td><td>/ɑːpt/ vi.</td><td>选择OPTabbr. VC开发环境自动生成的用来存放WorkSpace中各种选项的文件。, opting, opts</td></tr>
+<tr><td>possibly</td><td>/'pɑːsəbli/ adv.</td><td>可能地；大概；也许</td></tr>
+<tr><td>parliament</td><td>/'pɑːrləmənt/ n.</td><td>议会, 国会</td></tr>
+<tr><td>ideology</td><td>/ˌaɪdi'ɑːlədʒi/ n.</td><td>意识形态；思想意识；观念学</td></tr>
+<tr><td>pro</td><td>/proʊ/ n.</td><td>从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞成；支持Pro脯氨酸PROabbr. P</td></tr>
+<tr><td>motion</td><td>/'moʊʃn/ n.</td><td>动作；请求；手势；移动；意向vi. 运动；打手势vt. 运动；向…打手势, motioning, motions</td></tr>
+<tr><td>either</td><td>/'iːðər/ pron.</td><td>(两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>jewish</td><td>/'dʒuːɪʃ/ adj.</td><td>犹太人的;犹太教徒的</td></tr>
+<tr><td>campaign</td><td>/kæm'peɪn/ n.</td><td>运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）, campaigning, campai</td></tr>
+<tr><td>candidate</td><td>/'kændɪdət，ˈkændɪdeɪt/ n.</td><td>申请求职者, 候选人报考者</td></tr>
+<tr><td>grasp</td><td>/ɡræsp/ n.</td><td>理解；控制；抓住vt. 抓住；领会vi. 抓, grasping, grasps</td></tr>
+<tr><td>anti</td><td>/'ænti/ adj.</td><td>反对的n. 反对者，反对论者</td></tr>
+<tr><td>alternative</td><td>/ɔːl'tɜːrnətɪv/ adj.</td><td>可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）可供选择的事物；可供选择的解决办法替代物</td></tr>
+<tr><td>communist</td><td>/'kɑːmjənɪst/ n.</td><td>共产主义者adj. 共产主义的, 信仰共产主义的</td></tr>
+<tr><td>possibly</td><td>/'pɑːsəbli/ adv.</td><td>可能地；大概；也许</td></tr>
+<tr><td>worshipping</td><td>/'wɜːrʃɪp/ vt.</td><td>崇拜；尊崇vi. 做礼拜，worshipped worshiping，worshipping worships，worships</td></tr>
+<tr><td>racism</td><td>/'reɪsɪzəm/ n.</td><td>种族主义，种族歧视；人种偏见</td></tr>
+<tr><td>correction</td><td>/kə'rekʃn/ n.</td><td>改〔纠〕正修改；纠正有待改正adj. 改正的，纠正的</td></tr>
+<tr><td>version</td><td>/'vɜːrʒn/ n.</td><td>变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本</td></tr>
+<tr><td>wing</td><td>/wɪŋ/ n.</td><td>翅膀；翼；飞翔；派别vt. 使飞；飞过；空运；增加…速度；装以翼vi. 飞行, winging, wings</td></tr>
+<tr><td>clan</td><td>/klæn/ n.</td><td>宗族；部落；集团</td></tr>
+<tr><td>align</td><td>/ə'laɪn/ vt.</td><td>使结盟；使成一行；匹配vi. 排列；排成一行</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>democratic</td><td>/ˌdemə'krætɪk/ adj.</td><td>民主的, 有民主精神或作风的</td></tr>
+<tr><td>quarter</td><td>/'kwɔːrtər/ n.</td><td>四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一, quartering, quarters</td></tr>
+<tr><td>progressive</td><td>/prə'ɡresɪv/ adj.</td><td>不断前进的, 有进展的, 逐渐上升的进步的, 先进的</td></tr>
+<tr><td>catholics</td><td>/ˈkæθlɪk/ adj.</td><td>天主教的；宽宏大量的n. 天主教徒；罗马天主教catholicadj. 普遍的;广泛的;包容一切的宽容的</td></tr>
+<tr><td>academics</td><td>/ˌækə'demɪk/ adj.</td><td>学院的；学术的；理论的n. 大学生，大学教师；学者</td></tr>
+<tr><td>version</td><td>/'vɜːrʒn/ n.</td><td>变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本</td></tr>
+<tr><td>democracy</td><td>/dɪ'mɑːkrəsi/ n.</td><td>民主, 民主制民主国家</td></tr>
+<tr><td>barred</td><td>/bɑrd/ adj.</td><td>有木栅的,隔绝的,被禁止的</td></tr>
+<tr><td>narrowly</td><td>/'næroʊ/ adj.</td><td>狭窄的，有限的；度量小的；精密的；勉强的n. 狭窄部分，隘路；海峡vt. 使变狭窄vi. 变窄, narrowest</td></tr>
+<tr><td>outright</td><td>/'aʊtraɪt/ adv.</td><td>完全地；彻底地坦率地；直率地；无保留地立即，当场adj. 完全的；彻底的</td></tr>
+<tr><td>triumph</td><td>/'traɪʌmf/ n.</td><td>胜利，成功巨大的成就[成功]vi. 获胜，得胜；克服，triumphing，triumphs</td></tr>
+<tr><td>adjacent</td><td>/ə'dʒeɪsnt/ adj.</td><td>邻近的</td></tr>
+<tr><td>wave</td><td>/weɪv/ vi.</td><td>波动；起伏；摇动；呈波形；挥手示意vt. 向…挥手示意；使成波浪形；卷（烫）发n. 波浪；波动；高潮；卷曲；挥手示意, waving, waves</td></tr>
+<tr><td>wing</td><td>/wɪŋ/ n.</td><td>翅膀；翼；飞翔；派别vt. 使飞；飞过；空运；增加…速度；装以翼vi. 飞行, winging, wings</td></tr>
+<tr><td>clan</td><td>/klæn/ n.</td><td>宗族；部落；集团</td></tr>
+<tr><td>ecstatic</td><td>/ɪk'stætɪk/ adj.</td><td>狂喜的；入迷的n. 狂喜的人</td></tr>
+<tr><td>allies</td><td>— n.</td><td>（第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者</td></tr>
+<tr><td>senate</td><td>/ˈsenət/ </td><td>n.（诸如美国、澳大利亚、法国的）参议院（the Senate） （某些国家的）大学理事会，大学评议会（古罗马的）元老院</td></tr>
+<tr><td>damage</td><td>/'dæmɪdʒ/ v.</td><td>损害；伤害；毁坏；破坏n. 损坏，破坏，损失，损害，伤害（法院判定的）损害赔偿金, damaging, damages</td></tr>
+<tr><td>amazon</td><td>/ˈæməˌzɑn/ n.</td><td>高大强悍的女人；（古希腊神话中的）亚马孙族女战士Amazonn. 亚马逊河(南美洲大河)</td></tr>
+<tr><td>crave</td><td>/kreɪv/ vt.</td><td>恳求；渴望vi. 渴望；恳求, craving, craves</td></tr>
+<tr><td>deposits</td><td>/dɪ'pɑːzɪt/ n.</td><td>存款；保证金；沉淀物vt. 存放；使沉积vi. 沉淀, depositing, deposits</td></tr>
+<tr><td>critical</td><td>/'krɪtɪkl/ adj.</td><td>批评的，爱挑剔的；决定性的；危险的；临界的；鉴定的；评论的</td></tr>
+<tr><td>minerals</td><td>/'mɪnərəl/ n.</td><td>矿物; 矿石; 矿物质</td></tr>
+<tr><td>vital</td><td>/'vaɪtl/ adj.</td><td>极重要的，必不可少的维持生命所必需的；生命的有生气的，充满生机的</td></tr>
+<tr><td>impose</td><td>/ɪm'poʊz/ vi.</td><td>欺骗；利用；施加影响vt. 强加；以…欺骗；征税, imposing, imposes</td></tr>
+<tr><td>curb</td><td>/kɜːrb/ n.</td><td>侧石, 边石限制, 克制, 抑制vt. 限制, 克制, 抑制, curbing, curbs</td></tr>
+<tr><td>prompt</td><td>/prɑːmpt/ adj.</td><td>敏捷的，迅速的；立刻的vt. 促进；激起；提示；（给演员）提白n. 提示；付款期限；DOS命令：改变DOS系统提示符的风格adv. 准时地, promptest</td></tr>
+<tr><td>vulnerable</td><td>/'vʌlnərəbl/ adj.</td><td>易受伤的, 脆弱的, 敏感的</td></tr>
+<tr><td>democratic</td><td>/ˌdemə'krætɪk/ adj.</td><td>民主的, 有民主精神或作风的</td></tr>
+<tr><td>candidates</td><td>/'kændɪdət，ˈkændɪdeɪt/ n.</td><td>申请求职者, 候选人报考者</td></tr>
+<tr><td>campaign</td><td>/kæm'peɪn/ n.</td><td>运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）, campaigning, campai</td></tr>
+<tr><td>supreme</td><td>/su'priːm/ adj.</td><td>最高的；至上的最重要的，supremest 缩 写: supr</td></tr>
+<tr><td>corruption</td><td>/kə'rʌpʃn/ n.</td><td>堕落;腐化;腐败;贿赂腐烂</td></tr>
+<tr><td>impeachment</td><td>/ɪm'piːtʃmənt/ n.</td><td>控告;检举弹劾怀疑</td></tr>
+<tr><td>removal</td><td>/rɪ'muːvl/ n.</td><td>移动；免职；排除；搬迁</td></tr>
+<tr><td>senate</td><td>/ˈsenət/ </td><td>n.（诸如美国、澳大利亚、法国的）参议院（the Senate） （某些国家的）大学理事会，大学评议会（古罗马的）元老院</td></tr>
+<tr><td>impeach</td><td>/ɪm'piːtʃ/ vt.</td><td>控告（某人）犯罪，弹劾；怀疑，提出异议, impeaching, impeaches</td></tr>
+<tr><td>supreme</td><td>/su'priːm/ adj.</td><td>最高的；至上的最重要的，supremest 缩 写: supr</td></tr>
+<tr><td>democracy</td><td>/dɪ'mɑːkrəsi/ n.</td><td>民主, 民主制民主国家</td></tr>
+<tr><td>extensive</td><td>/ɪk'stensɪv/ adj.</td><td>广阔的，广泛的；大量的，大规模的</td></tr>
+<tr><td>decisive</td><td>/dɪ'saɪsɪv/ adj.</td><td>决定性的；果断的，坚定的</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>corruption</td><td>/kə'rʌpʃn/ n.</td><td>堕落;腐化;腐败;贿赂腐烂</td></tr>
+<tr><td>wing</td><td>/wɪŋ/ n.</td><td>翅膀；翼；飞翔；派别vt. 使飞；飞过；空运；增加…速度；装以翼vi. 飞行, winging, wings</td></tr>
+<tr><td>surgery</td><td>/'sɜːrdʒəri/ n.</td><td>外科；外科手术；手术室；诊疗室</td></tr>
+<tr><td>capitalism</td><td>/'kæpɪtəlɪzəm/ n.</td><td>资本主义(制度)资本(或财富)的拥有资本(私人占有和生产盈利)的支配地位</td></tr>
+<tr><td>process</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>cutting</td><td>/'kʌtɪŋ/ n.</td><td>切断；剪辑；开凿adj. 严寒的；锋利的；尖酸刻薄的v. 切开；采伐；削减（cut的ing形式）</td></tr>
+<tr><td>orthopaedic</td><td>/ˌɔːrθə'piːdɪk/ adj.</td><td>整形外科的</td></tr>
+<tr><td>specific</td><td>/spə'sɪfɪk/ adj.</td><td>特殊的，特定的；明确的；详细的；具有特效的n. 特效药；细节；特性</td></tr>
+<tr><td>procedure</td><td>/prə'siːdʒər/ n.</td><td>程序, 步骤手续</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day3.html" class="nav-btn">← Day 3</a>
+  <a href="day5.html" class="nav-btn">Day 5 →</a>
+</div>
+
+<div class="progress">📖 Day 4 of 40</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-10-10</div>
+
+</body>
+</html>

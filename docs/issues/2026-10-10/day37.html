@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Culture | Pods for demigods</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-10-10</div>
+
+<h1 class="article-title">Culture | Pods for demigods</h1>
+<div class="article-section">Culture</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>making them even more influential. “TBPN” has interviewed Sam Altman of OpenAI and Mark Zuckerberg of Meta. The “All-In” <span class="annot" data-tooltip="podcast /'pɑːdkæst/ n. 播客">Podcast</span>, <span class="annot" data-tooltip="hosted /hoʊst/ n. 主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集时 态: hosted, hosting, host">hosted</span> by four plutocrats who straddle tech and MAGA politics, held a summit in Los Angeles in September attended by Elon Musk and Jensen Huang. (When Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> phoned <span class="annot" data-tooltip="nvidia 恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商">Nvidia</span>’s boss on stage during the summit, Mr Huang put the president on speakerphone.) Dwarkesh Patel, a bearded 26-year-old who acts—and looks—like a high <span class="annot" data-tooltip="priest /priːst/ n. 牧师；神父；教士vt. 使成为神职人员；任命…为祭司时 态: priested, priesting, priests">priest</span> of AI research, <span class="annot" data-tooltip="hosts /hoʊst/ n. 主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集时 态: hosted, hosting, host">hosts</span> tech bigwigs for hours on the “Dwarkesh Podcast”. So does Lex Fridman, a gravel-voiced computer scientist whose podcast runs longer than some <span class="annot" data-tooltip="marathons /'mærəθɑːn/ n. 马拉松赛跑；耐力的考验adj. 马拉松式的；有耐力的vi. 参加马拉松赛跑">marathons</span>. All share an in-crowd mystique bordering on incestuousness. In April OpenAI reportedly spent $100m-200m to buy then-18-month-old TBPN (though there was no mention of the affiliation during Mr Altman’s interview). The “All-In” hosts are self-described “besties” with many of their billionaire interviewees. In San Francisco Mr Patel has shared digs with <span class="annot" data-tooltip="anthropic /ænˈθrɑpɪk/ adj. 人类的,有关人类的">Anthropic</span>’s researchers. They are fascinated by AI, which they talk about with <span class="annot" data-tooltip="passionate /'pæʃənət/ adj. 多情的表现[充满]激情的，激昂的热切的；强烈的副 词: passionately">passionate</span> <span class="annot" data-tooltip="intensity /ɪn'tensəti/ n. 强烈, 剧烈(感情的)强烈程度">intensity</span> and <span class="annot" data-tooltip="expertise /ˌekspɜːr'tiːz/ n. 专门知识或技能">expertise</span>. They are also an echo <span class="annot" data-tooltip="chamber /'tʃeɪmbər/ n. （身体或器官内的）室，膛；房间；会所adj. 室内的；私人的，秘密的vt. 把…关在室内；装填（弹药等）时 态: cha">chamber</span>, with a tin <span class="annot" data-tooltip="ear /ɪr/ n. 耳朵；听觉；倾听；穗vi. （美俚）听见；抽穗EARabbr. East African Railways 东非铁路公司">ear</span> at times to the concerns of the rest of America. This new <span class="annot" data-tooltip="podcasting /'pɑːdkæst/ n. 播客">podcasting</span> <span class="annot" data-tooltip="elite /eɪ'liːt/ n. （社会）上层集团；掌权人物；出类拔萃的人，精英adj.（社会）上层集团的；掌权人物的；精英的">elite</span> reflects a big change in <span class="annot" data-tooltip="silicon /'sɪlɪkən/ n. 〈化〉硅">Silicon</span> <span class="annot" data-tooltip="valley /'væli/ n. 流域；山谷；溪谷">Valley</span>’s relationship with the media. During the last great investment boom, the dotcom era of the 1990s, publications like <span class="annot" data-tooltip="wired /'waɪərd/ adj. 接有电线的；以铁丝围起的；极其兴奋的v. 以金属丝装；打电报给（wire的过去分词）">Wired</span> were tech-<span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> gospels. They <span class="annot" data-tooltip="covered /'kʌvər/ vt. 包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替时 态: covered, covering, c">covered</span> the internet like Rolling Stone wrote about rock’n’roll, says John Battelle, a founding editor of Wired: “We <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span> we were <span class="annot" data-tooltip="covering /'kʌvər/ vt. 包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替时 态: covered, covering, c">covering</span> the counterculture.” But the <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> of social media and the growing power and <span class="annot" data-tooltip="wealth /welθ/ n. 财富；大量；富有">wealth</span> of big tech generated a rift between Silicon Valley and news <span class="annot" data-tooltip="outlets /'aʊtlet/ n. 出口, 出路发泄的途径经销店">outlets</span>. Mr Battelle says that parts of the tech establishment started to view traditional media as “<span class="annot" data-tooltip="anti /'ænti/ adj. 反对的n. 反对者，反对论者">anti</span>- American” for questioning the “dominance of the tech hierarchy”. For their part, old media, whose business model has been hurt by the tech giants, sometimes smell of <span class="annot" data-tooltip="sour /'saʊər/ adj. 有酸味的，酸的有发酵味道的，酸腐的，馊的坏脾气的；别扭的vt. & vi. (使某物)变酸，变馊；(使某人)阴郁比较级:">sour</span> grapes. Podcasters, who share their guests’ techno- optimism, provide a friendlier platform. The watershed came during the 2024 presidential <span class="annot" data-tooltip="race /reɪs/ n. 种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACE">race</span>. Led by Mr Trump, politicians saw the medium as a less filtered way of getting their message out than the press or broadcast TV. “All-In” played a role. Two of its billionaire co-hosts, David <span class="annot" data-tooltip="sacks /sæk/ n. 麻袋, 包一袋的量开除, 解雇洗劫, 劫掠vt. 装入袋中解雇洗劫, 劫掠时 态: sacked, sacking, s">Sacks</span> and Chamath Palihapitiya, threw a</p>
+<p>fundraiser in San Francisco for Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>. Shortly afterwards he appeared on their show. That helped <span class="annot" data-tooltip="raise /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raise</span> the profile of the <span class="annot" data-tooltip="hosts /hoʊst/ n. 主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集时 态: hosted, hosting, host">hosts</span>, as well as of tech <span class="annot" data-tooltip="podcasting /'pɑːdkæst/ n. 播客">podcasting</span> in general. (For more than a year Mr <span class="annot" data-tooltip="sacks /sæk/ n. 麻袋, 包一袋的量开除, 解雇洗劫, 劫掠vt. 装入袋中解雇洗劫, 劫掠时 态: sacked, sacking, s">Sacks</span> was Mr Trump’s AI “czar”, even dressing the part by wearing a Russian fur hat at an “All-In” event.) Since then such superstar shows have gone from strength to strength. They take different approaches. The hosts of “All-In” delight in being <span class="annot" data-tooltip="anti /'ænti/ adj. 反对的n. 反对者，反对论者">anti</span>-woke. They abhor what they call the “lamestream media” almost as much as they lampoon effective altruism (EA), a philosophical doctrine that they argue puts too much focus on the <span class="annot" data-tooltip="existential /ˌeɡzɪ'stenʃl/ adj. 有关存在的,存在主义的,存在判断的">existential</span> risks of AI. Mr Patel, in <span class="annot" data-tooltip="contrast /'kɑːntræst/ n. 对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照时 态: contrasted, cont">contrast</span>, has said EA influenced him to start the “Dwarkesh <span class="annot" data-tooltip="podcast /'pɑːdkæst/ n. 播客">Podcast</span>” on ai. “TBPN” is not all bells and whistles. Its hosts have a deep knowledge of venture capital (VC), which they <span class="annot" data-tooltip="demystify /diː'mɪstɪfaɪ/ vt. 使非神秘化时 态: demystified, demystifying, demystifies">demystify</span> with quips; they also work closely with media <span class="annot" data-tooltip="outlets /'aʊtlet/ n. 出口, 出路发泄的途径经销店">outlets</span> and give airtime to their tech scoops. <span class="annot" data-tooltip="helping /'helpɪŋ/ n. （进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的">Helping</span> them thrive is what would be called, in <span class="annot" data-tooltip="silicon /'sɪlɪkən/ n. 〈化〉硅">Silicon</span> <span class="annot" data-tooltip="valley /'væli/ n. 流域；山谷；溪谷">Valley</span> jargon, a flywheel. Just before he hit the big time in 2024, Mr Patel tweeted his bank balance. It showed savings of $0.14. Then Mr Zuckerberg came onto the show and the advertising dollars poured in. As more <span class="annot" data-tooltip="prominent /'prɑːmɪnənt/ adj. 突起的，凸出的显著的；突出的杰出的，著名的，卓越的副 词: prominently">prominent</span> executives take part, not only do advertisers notice; so do potential customers, investors and jobseekers, raising the quality of the audience. “This is luxurious media with very valuable eyeballs,” says Josh Kaplan, boss of Smooth Media, which represents podcasters. The format is particularly well-suited to Silicon Valley, where founders invent stories for a living. They are venerated like the great men of history (Silicon Valley is still mostly a great manosphere). “We’re not journalists; we are enthusiasts,” says Patrick O’Shaughnessy, whose podcast, “<span class="annot" data-tooltip="invest /ɪn'vest/ vt. 投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买时 态: invested, investing, invests">Invest</span> Like the Best”, has a strong following in VC circles. Firms such as Andreessen Horowitz have piled in too, creating <span class="annot" data-tooltip="podcasts /'pɑːdkæst/ n. 播客">podcasts</span> to <span class="annot" data-tooltip="tout /taʊt/ vt. 招徕；兜售；刺探赛马情报vi. 兜售；招徕顾客；拉选票n. 侦查者；兜售者Tout陶特(姓氏)时 态: touted, ">tout</span> their <span class="annot" data-tooltip="portfolio /pɔːrt'foʊlioʊ/ n. 公事包, 文件夹投资组合大臣或部长的职位或职责">portfolio</span> companies to investors and themselves to founders. These offerings may be popular, but do not expect them to invest in the costly investigative work that uncovers <span class="annot" data-tooltip="frauds /frɔːd/ n. 欺诈, 欺骗行为骗子">frauds</span>, such as that at Theranos, a health-tech <span class="annot" data-tooltip="startup /ˈstɑrtˈʌp/ n. 启动；开办">startup</span>, exposed by the Wall Street <span class="annot" data-tooltip="journal /'dʒɜːrnl/ n. 日报，杂志；日记；[经]分类账">Journal</span> in 2015. Instead, AI is at the centre of their discussions. Unlike many parts of America, they treat it as almost the only topic <span class="annot" data-tooltip="worth /wɜːrθ/ adj. 值…的n. 价值；财产时 态: worthed, worthing, worths">worth</span> discussing. But this</p>
+<p><span class="annot" data-tooltip="obsession /əb'seʃn/ n. 困扰, 无法摆脱的思想(或情感)形容词: obsessional">obsession</span> has further pushed <span class="annot" data-tooltip="silicon /'sɪlɪkən/ n. 〈化〉硅">Silicon</span> <span class="annot" data-tooltip="valley /'væli/ n. 流域；山谷；溪谷">Valley</span> into a “monoculture”, says David Senra, an influential <span class="annot" data-tooltip="podcaster /'pɑːdkæst/ n. 播客">podcaster</span>. Recently he has been to tech dinners where conversation veers only between AI optimism and doomerism. “It sounds like they are all reading the same tweets,” he says. Lulu Cheng Meservey, a PR consultant to tech founders, reckons nine-tenths of people in tech speak only to other people in tech. <span class="annot" data-tooltip="podcasts /'pɑːdkæst/ n. 播客">Podcasts</span> <span class="annot" data-tooltip="exacerbate /ɪɡ'zæsərbeɪt/ vt. 使恶化；使加重时 态: exacerbated，exacerbating，exacerbates">exacerbate</span> that. As for using the format to transmit <span class="annot" data-tooltip="enthusiasm /ɪn'θuːziæzəm/ n. 热情, 热心巨大兴趣, 热衷的事物">enthusiasm</span> about AI to the <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span> world, it is not working. They may be well-meaning, she says, but “when a billionaire AI salesman is telling you whether to buy AI, you are taking that from someone who is <span class="annot" data-tooltip="entirely /ɪn'taɪərli/ adv. 全部地;完整地;完全地">entirely</span> unrelatable to you.” It may get worse. Silicon Valley’s podcasters <span class="annot" data-tooltip="sprinkle /'sprɪŋkl/ n. 少量；撒，洒vt. 洒；微雨；散置vi. 洒，撒；下稀疏小雨；喷撒时 态: sprinkled, sprinkling,">sprinkle</span> their conversations with reverence for space missions, robots and other techno-wizardry. In an AIpocalypse, they would come out better off than most people. Mr Battelle calls it the “golden ticket on the rocket <span class="annot" data-tooltip="ship /ʃɪp/ vt. 运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Di">ship</span>”. If all else fails, they can <span class="annot" data-tooltip="podcast /'pɑːdkæst/ n. 播客">podcast</span> from Mars. But will people still want to listen to them? ■ This article was downloaded by zlibrary from https://www.economist.com/culture/2026/10/08/superstar-podcasts-are-silicon- <span class="annot" data-tooltip="valleys /'væli/ n. 流域；山谷；溪谷">valleys</span>-way-of-talking-to-itself</p>
+<div class="article-separator"></div>
+<div class="article-header">Culture · Culture | Film</div>
+<p>“The Social Reckoning” is a fatally earnest <span class="annot" data-tooltip="sequel /'siːkwəl/ n. 续集；结局；继续；后果">sequel</span> to a classic Facebook has become a softer target, making for a weaker satire than “The Social Network” Oct 8th 2026 “I’m not two years out of a dorm room anymore,” <span class="annot" data-tooltip="snaps /snæp/ vt. 猛咬；突然折断，拉断；啪地关上vi. 咬；厉声说；咯嗒一声关上n. 猛咬；劈啪声；突然折断adj. 突然的SNAPabb">snaps</span> Mark Zuckerberg at an adviser in “The Social Reckoning”. The last time Facebook’s boss was <span class="annot" data-tooltip="portrayed /pɔːr'treɪ/ vt. 画像；描述扮演时 态: portrayed，portraying，portrays">portrayed</span> on the big screen, a dorm is <span class="annot" data-tooltip="precisely /prɪ'saɪsli/ adv. 精确地；恰好；细心地对，的确如此">precisely</span> where he was. “The Social Network” (2010) dramatised the company’s birth at Harvard and <span class="annot" data-tooltip="established /ɪ'stæblɪʃt/ adj. 已建立的；已设立的；已制定的确定的，证实的">established</span> Mr Zuckerberg’s reputation as a <span class="annot" data-tooltip="chilly /'tʃɪli/ adj. （天气、房间或人体）寒冷的，凉飕飕的；冷淡的，不友好的比较级: chillier, chilliest">chilly</span>, ruthless weirdo. Its epilogue noted that Facebook had 500m members and that Mr Zuckerberg was the world’s youngest billionaire. Today Facebook has 3bn users and its 42-year-old boss is <span class="annot" data-tooltip="worth /wɜːrθ/ adj. 值…的n. 价值；财产时 态: worthed, worthing, worths">worth</span> a <span class="annot" data-tooltip="quarter /'kwɔːrtər/ n. 四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一时 ">quarter</span> of a trillion dollars. “The Social Reckoning”, a much-anticipated sequel to “The Social Network”, takes <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span> around 15 years later. It follows Jeff Horwitz, a</p>
+<p>journalist at the Wall Street <span class="annot" data-tooltip="journal /'dʒɜːrnl/ n. 日报，杂志；日记；[经]分类账">Journal</span> (played by Jeremy Allen White), as he <span class="annot" data-tooltip="coaxes /koʊks/ vt. 哄, 用好话劝说巧言骗取">coaxes</span> information from Frances Haugen (Mikey Madison), a disillusioned member of Facebook’s toothless “Civic <span class="annot" data-tooltip="integrity /ɪn'teɡrəti/ n. 正直；诚实，诚恳完整，完全，完善">Integrity</span> Team”. The film <span class="annot" data-tooltip="adopts /ə'dɑːpt/ vt. 收养采用, 采纳, 采取正式接受, 通过时 态: adopted, adopting, adopts">adopts</span> its predecessor’s time-<span class="annot" data-tooltip="hopping /'hɑːpɪŋ/ adj. 卖力的,忙碌的">hopping</span> structure, <span class="annot" data-tooltip="flipping /flɪp/ vt. 轻击；掷vi. 用指轻弹；蹦跳adj. 无礼的；轻率的n. 筋斗；弹FLIPabbr. Floating Indeved">flipping</span> between hunts for the material and publication, when all hell breaks loose. The movies share a writer in the form of Aaron Sorkin, who won an Oscar for his “Social Network” script (which was based on a book). But there the similarities end. Mr Sorkin stood in for the original director, David Fincher. Jesse Eisenberg declined to play Mr Zuckerberg for a second time, so the role has gone to Jeremy Strong, best known for “Succession”. The <span class="annot" data-tooltip="main /meɪn/ adj. 主要的; 最重要的n. 总管道; 干线">main</span> problem with “The Social Reckoning” is not that its director or actors have changed. It is that Facebook itself has. Back in 2010 Facebook was cool. It had been available to the general public for only four years: young people were glued to it; their grandparents had not yet taken it over. Mr Zuckerberg, then 26, was Time’s person of the year. “The Social Network” was devastating because it methodically <span class="annot" data-tooltip="gutted /'ɡʌtɪd/ adj. 非常沮丧的；非常失望的；极度伤心的v. （gut的过去分词和过去式）损毁（建筑物或房屋的）内部；取出…的内脏（以便烹饪）">gutted</span> the world’s hottest company and its founder (or rather, co-founder, as the film made clear). Today’s Facebook is a mightier company but a softer target. Social networks are reviled by legislators, litigators and parents. Facebook and its <span class="annot" data-tooltip="rivals /'raɪvl/ n. 竞争对手vt. 与…竞争, 与…匹敌时 态: rivaled, rivalled rivaling, rivalling">rivals</span> have paid out in <span class="annot" data-tooltip="multiple /'mʌltɪpl/ adj. 多样的；许多的；多重的n. 并联；倍数">multiple</span> court cases involving harm to children. Its efforts to silence criticism—gagging a former executive who wrote a book, “Careless People”, for instance—have backfired spectacularly. Almost no one in the world is less cool than Mr Zuckerberg, whose approval rating in America is -43%, just ahead of Vladimir Putin. The result is that “The Social Reckoning”, which styles itself as an exposé, often feels more like a <span class="annot" data-tooltip="sermon /'sɜːrmən/ n. 布道, 讲道, 说教讲道文章一大通教训形容词: sermonic">sermon</span> for the converted. Mr Strong, who is known for his extreme method-acting approach, has nailed Mr Zuckerberg’s <span class="annot" data-tooltip="monotone /'mɑːnətoʊn/ n. 单调；单音调adj. 单调的vt. 单调地读形容词: monotonic">monotone</span> voice and <span class="annot" data-tooltip="stiff /stɪf/ adj. 严厉的；呆板的；坚硬的；拘谨的；艰难的adv. 彻底地；僵硬地n. [俚]死尸；令人讨厌者；流通票据；劳动者vt. 亏待">stiff</span> manner. But <span class="annot" data-tooltip="whereas /ˌwer'æz/ conj. 但是, 而">whereas</span> the young Zuck of “The Social Network” was a complex character—<span class="annot" data-tooltip="arrogant /'ærəɡənt/ adj. 自大的，傲慢的副 词: arrogantly">arrogant</span> and treacherous but tragically <span class="annot" data-tooltip="insecure /ˌɪnsɪ'kjʊr/ adj. 无把握的;不能断定的不稳定的;不安全的副 词: insecurely">insecure</span>—in the “Reckoning” he is a cartoon villain. Surrounded by computer <span class="annot" data-tooltip="monitors /'mɑːnɪtər/ n. 显示屏；监视器；（计算机）显示器监控器；监测器班长；级长；班代表（尤指派往国外的）监督员，核查员巨蜥v. 监视；检查；跟">monitors</span> and a bulletproof sofa in his <span class="annot" data-tooltip="imperial /ɪm'pɪriəl/ adj. 皇帝的；帝国的；威严的；至高无上的n. 纸张尺寸；特等品副 词: imperially">imperial</span> <span class="annot" data-tooltip="headquarters /ˈhɛdˈkwɔrtɚ/ vi. 设总部vt. 将…的总部设在把…放在总部里时 态: headquartered, headquartering, hea">headquarters</span>, he barks at quivering underlings as they labour through their slide decks. “Fuckin’ Civic Integrity”, he scoffs, after the team meekly suggests dialling down harmful content at the <span class="annot" data-tooltip="expense /ɪk'spens/ n. 开支；消费；损失，代价vt. 向…收取费用vi. 被花掉时 态: expensed, expensing, expens">expense</span> of 1% of <span class="annot" data-tooltip="engagement /ɪn'ɡeɪdʒmənt/ n. 订婚，婚约；约会，约定（尤指正式的或与工作有关的）；交战；诺言；进场（游戏术语）；参与度（指用户点赞、转发、评论、下载文">engagement</span>.</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>podcast</td><td>/'pɑːdkæst/ n.</td><td>播客</td></tr>
+<tr><td>hosted</td><td>/hoʊst/ n.</td><td>主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集, hosting, hosts</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>nvidia</td><td>— </td><td>恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商</td></tr>
+<tr><td>priest</td><td>/priːst/ n.</td><td>牧师；神父；教士vt. 使成为神职人员；任命…为祭司, priesting, priests</td></tr>
+<tr><td>hosts</td><td>/hoʊst/ n.</td><td>主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集, hosting, hosts</td></tr>
+<tr><td>marathons</td><td>/'mærəθɑːn/ n.</td><td>马拉松赛跑；耐力的考验adj. 马拉松式的；有耐力的vi. 参加马拉松赛跑</td></tr>
+<tr><td>anthropic</td><td>/ænˈθrɑpɪk/ adj.</td><td>人类的,有关人类的</td></tr>
+<tr><td>passionate</td><td>/'pæʃənət/ adj.</td><td>多情的表现[充满]激情的，激昂的热切的；强烈的</td></tr>
+<tr><td>intensity</td><td>/ɪn'tensəti/ n.</td><td>强烈, 剧烈(感情的)强烈程度</td></tr>
+<tr><td>expertise</td><td>/ˌekspɜːr'tiːz/ n.</td><td>专门知识或技能</td></tr>
+<tr><td>chamber</td><td>/'tʃeɪmbər/ n.</td><td>（身体或器官内的）室，膛；房间；会所adj. 室内的；私人的，秘密的vt. 把…关在室内；装填（弹药等）, chambering, chambers</td></tr>
+<tr><td>ear</td><td>/ɪr/ n.</td><td>耳朵；听觉；倾听；穗vi. （美俚）听见；抽穗EARabbr. East African Railways 东非铁路公司, earing, ears</td></tr>
+<tr><td>podcasting</td><td>/'pɑːdkæst/ n.</td><td>播客</td></tr>
+<tr><td>elite</td><td>/eɪ'liːt/ n.</td><td>（社会）上层集团；掌权人物；出类拔萃的人，精英adj.（社会）上层集团的；掌权人物的；精英的</td></tr>
+<tr><td>silicon</td><td>/'sɪlɪkən/ n.</td><td>〈化〉硅</td></tr>
+<tr><td>valley</td><td>/'væli/ n.</td><td>流域；山谷；溪谷</td></tr>
+<tr><td>wired</td><td>/'waɪərd/ adj.</td><td>接有电线的；以铁丝围起的；极其兴奋的v. 以金属丝装；打电报给（wire的过去分词）</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>covered</td><td>/'kʌvər/ vt.</td><td>包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替, covering, covers</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>covering</td><td>/'kʌvər/ vt.</td><td>包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替, covering, covers</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>wealth</td><td>/welθ/ n.</td><td>财富；大量；富有</td></tr>
+<tr><td>outlets</td><td>/'aʊtlet/ n.</td><td>出口, 出路发泄的途径经销店</td></tr>
+<tr><td>anti</td><td>/'ænti/ adj.</td><td>反对的n. 反对者，反对论者</td></tr>
+<tr><td>sour</td><td>/'saʊər/ adj.</td><td>有酸味的，酸的有发酵味道的，酸腐的，馊的坏脾气的；别扭的vt. & vi. (使某物)变酸，变馊；(使某人)阴郁，sourest</td></tr>
+<tr><td>race</td><td>/reɪs/ n.</td><td>种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACEabbr. Radiation Adap</td></tr>
+<tr><td>sacks</td><td>/sæk/ n.</td><td>麻袋, 包一袋的量开除, 解雇洗劫, 劫掠vt. 装入袋中解雇洗劫, 劫掠, sacking, sacks</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>raise</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>hosts</td><td>/hoʊst/ n.</td><td>主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集, hosting, hosts</td></tr>
+<tr><td>podcasting</td><td>/'pɑːdkæst/ n.</td><td>播客</td></tr>
+<tr><td>sacks</td><td>/sæk/ n.</td><td>麻袋, 包一袋的量开除, 解雇洗劫, 劫掠vt. 装入袋中解雇洗劫, 劫掠, sacking, sacks</td></tr>
+<tr><td>anti</td><td>/'ænti/ adj.</td><td>反对的n. 反对者，反对论者</td></tr>
+<tr><td>existential</td><td>/ˌeɡzɪ'stenʃl/ adj.</td><td>有关存在的,存在主义的,存在判断的</td></tr>
+<tr><td>contrast</td><td>/'kɑːntræst/ n.</td><td>对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照, contrasting, contrasts</td></tr>
+<tr><td>podcast</td><td>/'pɑːdkæst/ n.</td><td>播客</td></tr>
+<tr><td>demystify</td><td>/diː'mɪstɪfaɪ/ vt.</td><td>使非神秘化, demystifying, demystifies</td></tr>
+<tr><td>outlets</td><td>/'aʊtlet/ n.</td><td>出口, 出路发泄的途径经销店</td></tr>
+<tr><td>helping</td><td>/'helpɪŋ/ n.</td><td>（进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的</td></tr>
+<tr><td>silicon</td><td>/'sɪlɪkən/ n.</td><td>〈化〉硅</td></tr>
+<tr><td>valley</td><td>/'væli/ n.</td><td>流域；山谷；溪谷</td></tr>
+<tr><td>prominent</td><td>/'prɑːmɪnənt/ adj.</td><td>突起的，凸出的显著的；突出的杰出的，著名的，卓越的</td></tr>
+<tr><td>invest</td><td>/ɪn'vest/ vt.</td><td>投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买, investing, invests</td></tr>
+<tr><td>podcasts</td><td>/'pɑːdkæst/ n.</td><td>播客</td></tr>
+<tr><td>tout</td><td>/taʊt/ vt.</td><td>招徕；兜售；刺探赛马情报vi. 兜售；招徕顾客；拉选票n. 侦查者；兜售者Tout陶特(姓氏), touting, touts</td></tr>
+<tr><td>portfolio</td><td>/pɔːrt'foʊlioʊ/ n.</td><td>公事包, 文件夹投资组合大臣或部长的职位或职责</td></tr>
+<tr><td>frauds</td><td>/frɔːd/ n.</td><td>欺诈, 欺骗行为骗子</td></tr>
+<tr><td>startup</td><td>/ˈstɑrtˈʌp/ n.</td><td>启动；开办</td></tr>
+<tr><td>journal</td><td>/'dʒɜːrnl/ n.</td><td>日报，杂志；日记；[经]分类账</td></tr>
+<tr><td>worth</td><td>/wɜːrθ/ adj.</td><td>值…的n. 价值；财产, worthing, worths</td></tr>
+<tr><td>obsession</td><td>/əb'seʃn/ n.</td><td>困扰, 无法摆脱的思想(或情感)</td></tr>
+<tr><td>silicon</td><td>/'sɪlɪkən/ n.</td><td>〈化〉硅</td></tr>
+<tr><td>valley</td><td>/'væli/ n.</td><td>流域；山谷；溪谷</td></tr>
+<tr><td>podcaster</td><td>/'pɑːdkæst/ n.</td><td>播客</td></tr>
+<tr><td>podcasts</td><td>/'pɑːdkæst/ n.</td><td>播客</td></tr>
+<tr><td>exacerbate</td><td>/ɪɡ'zæsərbeɪt/ vt.</td><td>使恶化；使加重，exacerbating，exacerbates</td></tr>
+<tr><td>enthusiasm</td><td>/ɪn'θuːziæzəm/ n.</td><td>热情, 热心巨大兴趣, 热衷的事物</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>entirely</td><td>/ɪn'taɪərli/ adv.</td><td>全部地;完整地;完全地</td></tr>
+<tr><td>sprinkle</td><td>/'sprɪŋkl/ n.</td><td>少量；撒，洒vt. 洒；微雨；散置vi. 洒，撒；下稀疏小雨；喷撒, sprinkling, sprinkles</td></tr>
+<tr><td>ship</td><td>/ʃɪp/ vt.</td><td>运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Division of the Nation</td></tr>
+<tr><td>podcast</td><td>/'pɑːdkæst/ n.</td><td>播客</td></tr>
+<tr><td>valleys</td><td>/'væli/ n.</td><td>流域；山谷；溪谷</td></tr>
+<tr><td>sequel</td><td>/'siːkwəl/ n.</td><td>续集；结局；继续；后果</td></tr>
+<tr><td>snaps</td><td>/snæp/ vt.</td><td>猛咬；突然折断，拉断；啪地关上vi. 咬；厉声说；咯嗒一声关上n. 猛咬；劈啪声；突然折断adj. 突然的SNAPabbr. Satellite Navigat</td></tr>
+<tr><td>portrayed</td><td>/pɔːr'treɪ/ vt.</td><td>画像；描述扮演，portraying，portrays</td></tr>
+<tr><td>precisely</td><td>/prɪ'saɪsli/ adv.</td><td>精确地；恰好；细心地对，的确如此</td></tr>
+<tr><td>established</td><td>/ɪ'stæblɪʃt/ adj.</td><td>已建立的；已设立的；已制定的确定的，证实的</td></tr>
+<tr><td>chilly</td><td>/'tʃɪli/ adj.</td><td>（天气、房间或人体）寒冷的，凉飕飕的；冷淡的，不友好的, chilliest</td></tr>
+<tr><td>worth</td><td>/wɜːrθ/ adj.</td><td>值…的n. 价值；财产, worthing, worths</td></tr>
+<tr><td>quarter</td><td>/'kwɔːrtər/ n.</td><td>四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一, quartering, quarters</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>journal</td><td>/'dʒɜːrnl/ n.</td><td>日报，杂志；日记；[经]分类账</td></tr>
+<tr><td>coaxes</td><td>/koʊks/ vt.</td><td>哄, 用好话劝说巧言骗取</td></tr>
+<tr><td>integrity</td><td>/ɪn'teɡrəti/ n.</td><td>正直；诚实，诚恳完整，完全，完善</td></tr>
+<tr><td>adopts</td><td>/ə'dɑːpt/ vt.</td><td>收养采用, 采纳, 采取正式接受, 通过, adopting, adopts</td></tr>
+<tr><td>hopping</td><td>/'hɑːpɪŋ/ adj.</td><td>卖力的,忙碌的</td></tr>
+<tr><td>flipping</td><td>/flɪp/ vt.</td><td>轻击；掷vi. 用指轻弹；蹦跳adj. 无礼的；轻率的n. 筋斗；弹FLIPabbr. Floating Indeved Point Arithmetic 变址</td></tr>
+<tr><td>main</td><td>/meɪn/ adj.</td><td>主要的; 最重要的n. 总管道; 干线</td></tr>
+<tr><td>gutted</td><td>/'ɡʌtɪd/ adj.</td><td>非常沮丧的；非常失望的；极度伤心的v. （gut的过去分词和过去式）损毁（建筑物或房屋的）内部；取出…的内脏（以便烹饪）</td></tr>
+<tr><td>rivals</td><td>/'raɪvl/ n.</td><td>竞争对手vt. 与…竞争, 与…匹敌, rivalled rivaling, rivalling rivals, rivals</td></tr>
+<tr><td>multiple</td><td>/'mʌltɪpl/ adj.</td><td>多样的；许多的；多重的n. 并联；倍数</td></tr>
+<tr><td>sermon</td><td>/'sɜːrmən/ n.</td><td>布道, 讲道, 说教讲道文章一大通教训</td></tr>
+<tr><td>monotone</td><td>/'mɑːnətoʊn/ n.</td><td>单调；单音调adj. 单调的vt. 单调地读</td></tr>
+<tr><td>stiff</td><td>/stɪf/ adj.</td><td>严厉的；呆板的；坚硬的；拘谨的；艰难的adv. 彻底地；僵硬地n. [俚]死尸；令人讨厌者；流通票据；劳动者vt. 亏待侍者等vi. 在商业上惨败, stiff</td></tr>
+<tr><td>whereas</td><td>/ˌwer'æz/ conj.</td><td>但是, 而</td></tr>
+<tr><td>arrogant</td><td>/'ærəɡənt/ adj.</td><td>自大的，傲慢的</td></tr>
+<tr><td>insecure</td><td>/ˌɪnsɪ'kjʊr/ adj.</td><td>无把握的;不能断定的不稳定的;不安全的</td></tr>
+<tr><td>monitors</td><td>/'mɑːnɪtər/ n.</td><td>显示屏；监视器；（计算机）显示器监控器；监测器班长；级长；班代表（尤指派往国外的）监督员，核查员巨蜥v. 监视；检查；跟踪调查监听（电话、外国无线电广播等）, </td></tr>
+<tr><td>imperial</td><td>/ɪm'pɪriəl/ adj.</td><td>皇帝的；帝国的；威严的；至高无上的n. 纸张尺寸；特等品</td></tr>
+<tr><td>headquarters</td><td>/ˈhɛdˈkwɔrtɚ/ vi.</td><td>设总部vt. 将…的总部设在把…放在总部里, headquartering, headquarters</td></tr>
+<tr><td>expense</td><td>/ɪk'spens/ n.</td><td>开支；消费；损失，代价vt. 向…收取费用vi. 被花掉, expensing, expenses</td></tr>
+<tr><td>engagement</td><td>/ɪn'ɡeɪdʒmənt/ n.</td><td>订婚，婚约；约会，约定（尤指正式的或与工作有关的）；交战；诺言；进场（游戏术语）；参与度（指用户点赞、转发、评论、下载文档、观看视频、咨询等交互行为）</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day36.html" class="nav-btn">← Day 36</a>
+  <a href="day38.html" class="nav-btn">Day 38 →</a>
+</div>
+
+<div class="progress">📖 Day 37 of 40</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-10-10</div>
+
+</body>
+</html>

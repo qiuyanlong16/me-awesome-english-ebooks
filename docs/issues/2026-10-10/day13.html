@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>United States | Fenced in</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-10-10</div>
+
+<h1 class="article-title">United States | Fenced in</h1>
+<div class="article-section">United States</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> has now decreed by executive order. Jay Clayton, the director of national intelligence, will lead the force, co-ordinating the government’s <span class="annot" data-tooltip="engagement /ɪn'ɡeɪdʒmənt/ n. 订婚，婚约；约会，约定（尤指正式的或与工作有关的）；交战；诺言；进场（游戏术语）；参与度（指用户点赞、转发、评论、下载文">engagement</span> with not just AI firms and <span class="annot" data-tooltip="infrastructure /'ɪnfrəstrʌktʃər/ n. 基础设施; 基础结构">infrastructure</span> operators but consumers and religious <span class="annot" data-tooltip="groups /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">groups</span>. All this is part of Mr Trump’s new effort to sell <span class="annot" data-tooltip="sceptical /'skeptɪkl/ adj. 不肯相信的; 常怀疑的">sceptical</span> Americans on the benefits of AI. It is a task with high stakes. The president is loth to restrain the AI boom, which on October 6th propelled American markets to a record high. Yet <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> eight in ten Americans want the development of powerful AI to be slowed or halted, including <span class="annot" data-tooltip="republicans /rɪ'pʌblɪkən/ adj. 共和国的, 共和政体的n. 拥护共和政体者, 共和主义者名 词: republicanism">Republicans</span>. More than 90% want guardrails on the technology. Mr Trump is having none of it. In recent weeks he has dismissed concerns as a hoax, lambasted proposed laws as efforts to “stifle” AI, and praised the “<span class="annot" data-tooltip="tremendous /trə'mendəs/ adj. 极大的, 巨大的绝妙的, 极棒的副 词: tremendously">tremendous</span> self-regulation” by firms. But as frontier models get better and voters get angrier, Mr Trump’s stance will come under growing pressure. Several camps have competed to shape the president’s view. Two of his most important <span class="annot" data-tooltip="deputies /'depjuti/ n. 代理人，代表adj. 副的；代理的">deputies</span>, Scott Bessent, the <span class="annot" data-tooltip="treasury /'treʒəri/ n. 财政部；国库，金库；宝库">treasury</span> <span class="annot" data-tooltip="secretary /'sekrəteri/ n. 秘书书记部长, 大臣形容词: secretarial">secretary</span>, and Susie Wiles, the White House chief of staff, have long been <span class="annot" data-tooltip="alive /ə'laɪv/ adj. 活着的, 在世的, 存在的有活力的, 活跃的, 有生气的">alive</span> to the risks of AI, with Mr Bessent particularly concerned that errant models could wreak havoc on America’s financial system. Tech bosses including Dario Amodei, the head of <span class="annot" data-tooltip="anthropic /ænˈθrɑpɪk/ adj. 人类的,有关人类的">Anthropic</span>, a <span class="annot" data-tooltip="leading /ˈliːdɪŋ/ adj. 主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）">leading</span> AI firm, and Sir Demis Hassabis, the co-founder of Google DeepMind, have pushed for greater regulation and <span class="annot" data-tooltip="legislation /ˌledʒɪs'leɪʃn/ n. 法律；法规立法，法律的制定[通过]">legislation</span>. The message from other tech leaders has been more muddled. Sam Altman, the chief executive of OpenAI, Anthropic’s <span class="annot" data-tooltip="main /meɪn/ adj. 主要的; 最重要的n. 总管道; 干线">main</span> competitor, has publicly expressed agreement with Mr Amodei’s call for a slowdown in AI development. But Greg Brockman, OpenAI’s president, has given large sums to Leading the Future, a super PAC which has sought to weaken regulation at the state level. Elon Musk, who runs SpaceXAI, wants labs to review each other’s models, but has also expressed public support for Mr Amodei’s position. However, it is those pushing <span class="annot" data-tooltip="firmly /'fɜːrmli/ adv. 坚固地;稳固地坚定地;坚决地">firmly</span> in the other direction, against regulation, who have to date held <span class="annot" data-tooltip="sway /sweɪ/ vt. 使摇动；统治；影响vi. 摇摆；影响n. 摇摆；统治；影响时 态: swayed, swaying, sways">sway</span>. That <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span> includes David <span class="annot" data-tooltip="sacks /sæk/ n. 麻袋, 包一袋的量开除, 解雇洗劫, 劫掠vt. 装入袋中解雇洗劫, 劫掠时 态: sacked, sacking, s">Sacks</span>, a venture capitalist who advises Mr Trump on AI, as well as Jensen Huang, the</p>
+<p>leather-jacketed boss of <span class="annot" data-tooltip="nvidia 恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商">Nvidia</span>, a chip firm whose products have fuelled the AI boom, and Mark Zuckerberg, the co-founder of Meta. The <span class="annot" data-tooltip="anti /'ænti/ adj. 反对的n. 反对者，反对论者">anti</span>-regulation camp offers a barrage of reasons for Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> to hold back: that <span class="annot" data-tooltip="existential /ˌeɡzɪ'stenʃl/ adj. 有关存在的,存在主义的,存在判断的">existential</span> risks are <span class="annot" data-tooltip="exaggerated /ɪɡ'zædʒəreɪtɪd/ adj. 夸大的,言过其实的,夸张的">exaggerated</span>, that existing rules are sufficient and that hasty regulation will puncture America’s AI boom, contributing to a <span class="annot" data-tooltip="crash /kræʃ/ n. 碰撞；崩溃；坠落vt. 破碎；撞碎；坠落vi. 碰撞；坠毁；闯；突然倒台adj. 速成的时 态: crashed, cr">crash</span>, and make the country a laggard to China. Even if America could design <span class="annot" data-tooltip="sensible /'sensəbl/ adj. 明智的；意识到的；通晓事理的；明显的n. 可感觉到的东西；敏感的人副 词: sensibly">sensible</span> rules, the regulatory sceptics <span class="annot" data-tooltip="assert /ə'sɜːrt/ vt. 断言；主张；声称；维护，坚持时 态: asserted, asserting, asserts">assert</span>, the government could never afford the talent needed to evaluate fast-changing models. One insider notes that <span class="annot" data-tooltip="anthropic /ænˈθrɑpɪk/ adj. 人类的,有关人类的">Anthropic</span>’s partnership with Accenture, a consultancy, to evaluate its models runs to $2bn over five years. The <span class="annot" data-tooltip="annual /'ænjuəl/ adj. 年度的；每年的n. 年刊，年鉴；一年生植物副 词: annually">annual</span> budget of CAISSI, the government’s safety body for AI, is $15m. Such arguments helped <span class="annot" data-tooltip="gut /ɡʌt/ n. 内脏；肠子；胆量；海峡；剧情vt. 取出内脏；摧毁内部装置adj. 本质的，根本的；简单的GUT大统一理论时 态: gu">gut</span> an executive order backed by Mr Bessent and Ms Wiles this summer, which would have strengthened regulation of AI. At the lunch with tech bosses on September 29th, Mr Trump was flanked by Messrs Huang and Musk—Mr Amodei was exiled near the end of the table. The <span class="annot" data-tooltip="joint /dʒɔɪnt/ n. 关节；接合处，接合点；接缝；（牛，羊等的腿）大块肉adj. 联合的，合办的；共同的；连接的vt. 连接，贴合；接合；使有">joint</span> agreement with the firms, which Mr Trump described as “morally binding”, includes the <span class="annot" data-tooltip="pledge /pledʒ/ n. 抵押；保证，誓言；抵押品，典当物vt. 保证，许诺；用……抵押；举杯祝……健康时 态: pledged, pledgin">pledge</span> to institute “<span class="annot" data-tooltip="robust /roʊ'bʌst/ adj. 强健的；健康的；粗野的；粗鲁的副 词: robustly">robust</span> <span class="annot" data-tooltip="internal /ɪn'tɜːrnl/ adj. 国内的；内部的；内在的名 词: internality">internal</span> controls” to prevent <span class="annot" data-tooltip="hacking /hæk/ vt. & vi. 劈, 砍vt. 狠踢, 乱踢vi. 咳嗽(发出刺耳声音)(以普通速度)骑马驾驶计程车n. 砍, 劈用靴头踢骑">hacking</span> and other bad behaviour and to partner with independent auditors to <span class="annot" data-tooltip="monitor /'mɑːnɪtər/ n. 显示屏；监视器；（计算机）显示器监控器；监测器班长；级长；班代表（尤指派往国外的）监督员，核查员巨蜥v. 监视；检查；跟">monitor</span> those controls. In <span class="annot" data-tooltip="practice /'præktɪs/ n. 练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规时 态: practiced，practicing，">practice</span>, it adds little to what most firms were already doing. One possibility is that Mr Trump doubles down on his opposition to regulation, <span class="annot" data-tooltip="vetoing /vet/ vt. 诊疗；审查vi. 作兽医；诊疗n. 兽医时 态: vetted, vetting, vets">vetoing</span> any new laws and using executive power to keep AI firms on a short leash. Already, Mr Trump has shown he is willing to flex presidential muscle on occasion. The <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">Federal</span> Trade <span class="annot" data-tooltip="commission /kə'mɪʃn/ n. 授权, 委托委员会佣金, 回扣vt. 委任, 委托时 态: commissioned, commissioning, c">Commission</span> has launched a probe into Anthropic, OpenAI and several other AI firms, as well as METR, a non-profit which evaluates models, over unfair or <span class="annot" data-tooltip="deceptive /dɪ'septɪv/ adj. 可能欺骗的, 导致误解的">deceptive</span> <span class="annot" data-tooltip="practices /'præktɪs/ n. 练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规时 态: practiced，practicing，">practices</span>. Anthropic and Open-AI now seek the administration’s sign-off for new users of the most advanced models each week, according to people familiar with the <span class="annot" data-tooltip="process /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">process</span>, a licensing <span class="annot" data-tooltip="regime /reɪ'ʒiːm/ n. 政权，政体；社会制度；管理体制">regime</span> in all but name. AISI, Britain’s highly regarded safety institute, recently lost early access after the administration insisted that American evaluators have first sight. The White House is <span class="annot" data-tooltip="keen /kiːn/ adj. 锋利的热衷的，热心的，渴望(做某事)激烈的，紧张的良好的；敏锐的，敏捷的比较级: keener，keenest">keen</span> to avoid writing “a big rulebook” that could be misused by the next administration, says Janet Kelly of the Alliance for a Better Future, a right-<span class="annot" data-tooltip="leaning /liːn/ vi. 倾斜；倚靠；倾向；依赖adj. 瘦的；贫乏的，歉收的vt. 使倾斜n. 倾斜；倾斜度；瘦肉时 态: leaned, le">leaning</span> advocacy <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span>. <span class="annot" data-tooltip="overseeing /ˌoʊvər'siː/ vt. 监督；俯瞰；审查；偷看到，无意中看到时 态: oversaw overseen overseeing, oversees">Overseeing</span> AI through</p>
+<p>sporadic executive action would be a more flexible and capricious instrument than congressional statute, allowing Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> to penalise some companies while sparing those in his favour, like <span class="annot" data-tooltip="nvidia 恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商">Nvidia</span>. In the past six months firms at the heart of the AI boom have driven more than half of the <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> in the S&P 500. However, this approach may be running out of time. Political opposition to AI is growing, including among the president’s supporters, who have long berated tech firms over children’s safety and censorship. In a sign of the shifting mood, Mr Brockman has backed out of giving another $25m to <span class="annot" data-tooltip="leading /ˈliːdɪŋ/ adj. 主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）">Leading</span> the Future, after sharp opposition from OpenAI’s staff. Beyond the White House, <span class="annot" data-tooltip="momentum /moʊ'mentəm/ n. 动力；动量；冲力；势头复 数: momenta">momentum</span> for <span class="annot" data-tooltip="intervention /ˌɪntər'venʃn/ n. 介入, 干涉, 干预">intervention</span> is building in the capital. “If there’s anything that we agree on in Washington right now, I think it’s that we know that we need to act,” says Ms Kelly. Already, members of both parties have introduced <span class="annot" data-tooltip="legislation /ˌledʒɪs'leɪʃn/ n. 法律；法规立法，法律的制定[通过]">legislation</span> to tighten rules. If Democrats win both the House and <span class="annot" data-tooltip="senate /ˈsenət/ n.（诸如美国、澳大利亚、法国的）参议院（the Senate） （某些国家的）大学理事会，大学评议会（古罗马的）元老院">Senate</span> in next month’s midterm elections, Congress may move more forcefully. And if Congress fails, states will step in, points out Ms Kelly, creating a patchwork of laws. Mr Trump has left his options open. Michael Kratsios, his science and technology adviser, <span class="annot" data-tooltip="speaking /'spikɪŋ/ adj. 演讲的；富于表情的，雄辩的n. 说话；演讲v. 讲（speak的ing形式）">speaking</span> at the United Nations on September 23rd, attacked the idea of global arrangements to control AI. But he acknowledged that Congress would “<span class="annot" data-tooltip="legislate /'ledʒɪsleɪt/ vt. & vi. 立法；制定法律时 态: legislated，legislating，legislates">legislate</span> and regulate”. The White House accord with tech firms allowed for this possibility. “Over time,” it noted, “it may make sense to codify these steps into laws or regulations.” The president has long been a preternaturally gifted navigator of political currents. Yet there are no <span class="annot" data-tooltip="issues /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issues</span> where the public mood has <span class="annot" data-tooltip="soured /'saʊər/ adj. 有酸味的，酸的有发酵味道的，酸腐的，馊的坏脾气的；别扭的vt. & vi. (使某物)变酸，变馊；(使某人)阴郁比较级:">soured</span> as quickly as it has on AI, a technology that has evolved with unprecedented speed. That could leave even Mr Trump adrift. ■ Stay on top of American politics with The US in brief, our daily newsletter with fast analysis of the most important political news, and Checks and Balance, a weekly note that examines the state of American <span class="annot" data-tooltip="democracy /dɪ'mɑːkrəsi/ n. 民主, 民主制民主国家">democracy</span> and the issues that matter to voters. This article was downloaded by zlibrary from https://www.economist.com/united-states/2026/10/07/donald-<span class="annot" data-tooltip="trumps /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">trumps</span>-untenable- <span class="annot" data-tooltip="strategy /'strætədʒi/ n. 战略学, 兵法战略, 策略策略, 计谋">strategy</span>-for-ai</p>
+<div class="article-separator"></div>
+<div class="article-header">United States · United States | Unsuitable</div>
+<p>Liability law will not tame AI Courts may take years to sort out legal standards for frontier firms Oct 8th 2026 The question of how to regulate artificial intelligence (AI) has acquainted strange bedfellows, but few odder than Jensen Huang, the billionaire boss of <span class="annot" data-tooltip="nvidia 恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商">Nvidia</span>, and Lina Khan, a left-<span class="annot" data-tooltip="wing /wɪŋ/ n. 翅膀；翼；飞翔；派别vt. 使飞；飞过；空运；增加…速度；装以翼vi. 飞行时 态: winged, winging, ">wing</span> trustbuster who served as Joe Biden’s chair of the <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">Federal</span> Trade <span class="annot" data-tooltip="commission /kə'mɪʃn/ n. 授权, 委托委员会佣金, 回扣vt. 委任, 委托时 态: commissioned, commissioning, c">Commission</span>. As debate over restraining large language models (LLMs) becomes more frenzied, both Mr Huang and Ms Khan maintain that rules already on the books can deal with most risks. Existing law is sufficient, Mr Huang maintained recently. “Apply it.” It may not be that simple. The question of how current laws govern AI is already the subject of copious litigation, as courts hear arguments over whether chatbots have harmed Americans or facilitated crimes. However, it may take years to decide such cases, let alone to use those cases to <span class="annot" data-tooltip="establish /ɪ'stæblɪʃ/ vt. 建立, 成立安置确定, 证实时 态: established, establishing, establishes">establish</span></p>
+<p><span class="annot" data-tooltip="reliable /rɪ'laɪəbl/ adj. 可靠的, 可信赖的副 词: reliably">reliable</span> standards. Even then, liability suits mainly deal with harm only after it has occurred. Both <span class="annot" data-tooltip="civil /'sɪvl/ adj. 公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的副 词: civilly">civil</span> and criminal law can apply to cases involving models. Civil torts such as product liability and libel come with financial penalties. Crimes such as <span class="annot" data-tooltip="hacking /hæk/ vt. & vi. 劈, 砍vt. 狠踢, 乱踢vi. 咳嗽(发出刺耳声音)(以普通速度)骑马驾驶计程车n. 砍, 劈用靴头踢骑">hacking</span> carry potential prison time. But using <span class="annot" data-tooltip="either /'iːðər/ pron. (两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的">either</span> legal <span class="annot" data-tooltip="avenue /'ævənuː/ n. 林荫道, 大街途径, 手段">avenue</span> is not <span class="annot" data-tooltip="straightforward /ˌstreɪt'fɔːrwərd/ adj. (人或其态度)正直的，坦率的；老实的简单的；易懂的副 词: straightforwardly">straightforward</span>. Start with torts. A plaintiff claiming harm by a model can demand <span class="annot" data-tooltip="damages /'dæmɪdʒ/ v. 损害；伤害；毁坏；破坏n. 损坏，破坏，损失，损害，伤害（法院判定的）损害赔偿金时 态: damaged, damagi">damages</span> from an AI firm, but courts must still determine which <span class="annot" data-tooltip="safeguards /'seɪfɡɑːrd/ n. 防护措施，安全设施vt. 保护；保卫；防护时 态: safeguarded，safeguarding，safeguard">safeguards</span> companies must have in <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span> to bat away such cases. One common standard is <span class="annot" data-tooltip="negligence /'neɡlɪdʒəns/ n. 疏忽, 玩忽不修边幅">negligence</span>, which would require plaintiffs to demonstrate that labs failed to take reasonable steps to prevent harm. <span class="annot" data-tooltip="alternatively /ɔːl'tɜːrnətɪvli/ adv. 做为选择,二者择一地">Alternatively</span>, courts may decide that firms <span class="annot" data-tooltip="developing /dɪ'veləpɪŋ/ adj. 在进行中的;走向完成阶段的;走向成熟的发展中的">developing</span> frontier models should be held to a higher bar, liable for damages even if they were not careless. Yet settling on an approach will take time, and it is unclear that fear of civil litigation will shape LLMs’ development. Tech businesses such as Uber and Airbnb grew quickly by being less focused on <span class="annot" data-tooltip="compliance /kəm'plaɪəns/ n. 服从,听从,顺从">compliance</span> than on scale, a <span class="annot" data-tooltip="strategy /'strætədʒi/ n. 战略学, 兵法战略, 策略策略, 计谋">strategy</span> that has shaped the culture of <span class="annot" data-tooltip="silicon /'sɪlɪkən/ n. 〈化〉硅">Silicon</span> <span class="annot" data-tooltip="valley /'væli/ n. 流域；山谷；溪谷">Valley</span>. “I think the AI companies <span class="annot" data-tooltip="underrate /ˌʌndə'reɪt/ vt. 对(某人或某事物)评价过低时 态: underrated, underrating, underrates">underrate</span> their liability <span class="annot" data-tooltip="exposure /ɪk'spoʊʒər/ n. 暴露, 显露揭发, 揭露(软片等)曝光">exposure</span>,” reckons Gabriel Weil of the University of Houston. That may make them less likely to take <span class="annot" data-tooltip="precautions /prɪ'kɔːʃn/ n. 预防措施">precautions</span> to avoid being sued. What, then, of criminal law? Litigation can be ruinously expensive. Hugging Face, a coding platform that was recently the target of rogue models from OpenAI, has said that it lacks the resources to bring suit. If such litigation were to proceed, it might fail. Though employers can be criminally liable for the actions of their staff, it is unclear whether the legal relationship between model-maker and agent is akin to that of boss and worker. What is more, <span class="annot" data-tooltip="proving /proʊ/ n. 从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞">proving</span> crimes often requires proving that the accused meant to do harm. “How are you going to <span class="annot" data-tooltip="handle /'hændl/ n. 柄；把手；手感；口实vt. 买卖；处理；操作；触摸；运用vi. 易于操纵；搬运时 态: handled, handlin">handle</span> things like <span class="annot" data-tooltip="intent /ɪn'tent/ n. 意图；目的；含义adj. 专心的；急切的；坚决的副 词: intently">intent</span> when you have these robotic systems that might be <span class="annot" data-tooltip="roaming /'roʊmɪŋ/ 漫游">roaming</span> way <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span> of the control and intention of their users?” asks Gregory Smith of RAND, a think-<span class="annot" data-tooltip="tank /tæŋk/ n. （存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内时 态: t">tank</span>. Some lawmakers want to clarify matters. A bill proposed on October 7th by Lori Trahan, a <span class="annot" data-tooltip="democratic /ˌdemə'krætɪk/ adj. 民主的, 有民主精神或作风的副 词: democratically">Democratic</span> congresswoman, would confirm that AI firms are liable if a model’s conduct would be unlawful if <span class="annot" data-tooltip="committed /kə'mɪt/ vt. 犯罪；犯错承诺；使自己受约束托付；交付时 态: committed，committing，commits">committed</span> by a person;</p>
+<p>courts would also assume that models are <span class="annot" data-tooltip="capable /'keɪpəbl/ adj. 能干的，能胜任的；有才华的副 词: capably">capable</span> of <span class="annot" data-tooltip="intent /ɪn'tent/ n. 意图；目的；含义adj. 专心的；急切的；坚决的副 词: intently">intent</span>. Courts can <span class="annot" data-tooltip="hash /hæʃ/ n. 剁碎的食物；混杂，拼凑；重新表述vt. 搞糟，把…弄乱；切细；推敲时 态: hashed, hashing, hashe">hash</span> out such questions, but slowly, and not before harm occurs that might form the basis for <span class="annot" data-tooltip="lawsuits /'lɔːsuːt/ n. 诉讼（尤指非刑事案件）；诉讼案件">lawsuits</span>. For products such as pharmaceuticals and cars, regulators set standards to govern what firms sell, rather than merely relying on lawsuits to punish firms later. By then, the <span class="annot" data-tooltip="damage /'dæmɪdʒ/ v. 损害；伤害；毁坏；破坏n. 损坏，破坏，损失，损害，伤害（法院判定的）损害赔偿金时 态: damaged, damagi">damage</span> is done. ■ Stay on top of American politics with The US in brief, our daily newsletter with fast analysis of the most important political news, and Checks and Balance, a weekly note that examines the state of American <span class="annot" data-tooltip="democracy /dɪ'mɑːkrəsi/ n. 民主, 民主制民主国家">democracy</span> and the <span class="annot" data-tooltip="issues /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issues</span> that matter to voters. This article was downloaded by zlibrary from https://www.economist.com/united-states/2026/10/08/liability-law-will-not-tame-ai</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>engagement</td><td>/ɪn'ɡeɪdʒmənt/ n.</td><td>订婚，婚约；约会，约定（尤指正式的或与工作有关的）；交战；诺言；进场（游戏术语）；参与度（指用户点赞、转发、评论、下载文档、观看视频、咨询等交互行为）</td></tr>
+<tr><td>infrastructure</td><td>/'ɪnfrəstrʌktʃər/ n.</td><td>基础设施; 基础结构</td></tr>
+<tr><td>groups</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>sceptical</td><td>/'skeptɪkl/ adj.</td><td>不肯相信的; 常怀疑的</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>republicans</td><td>/rɪ'pʌblɪkən/ adj.</td><td>共和国的, 共和政体的n. 拥护共和政体者, 共和主义者</td></tr>
+<tr><td>tremendous</td><td>/trə'mendəs/ adj.</td><td>极大的, 巨大的绝妙的, 极棒的</td></tr>
+<tr><td>deputies</td><td>/'depjuti/ n.</td><td>代理人，代表adj. 副的；代理的</td></tr>
+<tr><td>treasury</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>secretary</td><td>/'sekrəteri/ n.</td><td>秘书书记部长, 大臣</td></tr>
+<tr><td>alive</td><td>/ə'laɪv/ adj.</td><td>活着的, 在世的, 存在的有活力的, 活跃的, 有生气的</td></tr>
+<tr><td>anthropic</td><td>/ænˈθrɑpɪk/ adj.</td><td>人类的,有关人类的</td></tr>
+<tr><td>leading</td><td>/ˈliːdɪŋ/ adj.</td><td>主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）</td></tr>
+<tr><td>legislation</td><td>/ˌledʒɪs'leɪʃn/ n.</td><td>法律；法规立法，法律的制定[通过]</td></tr>
+<tr><td>main</td><td>/meɪn/ adj.</td><td>主要的; 最重要的n. 总管道; 干线</td></tr>
+<tr><td>firmly</td><td>/'fɜːrmli/ adv.</td><td>坚固地;稳固地坚定地;坚决地</td></tr>
+<tr><td>sway</td><td>/sweɪ/ vt.</td><td>使摇动；统治；影响vi. 摇摆；影响n. 摇摆；统治；影响, swaying, sways</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>sacks</td><td>/sæk/ n.</td><td>麻袋, 包一袋的量开除, 解雇洗劫, 劫掠vt. 装入袋中解雇洗劫, 劫掠, sacking, sacks</td></tr>
+<tr><td>nvidia</td><td>— </td><td>恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商</td></tr>
+<tr><td>anti</td><td>/'ænti/ adj.</td><td>反对的n. 反对者，反对论者</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>existential</td><td>/ˌeɡzɪ'stenʃl/ adj.</td><td>有关存在的,存在主义的,存在判断的</td></tr>
+<tr><td>exaggerated</td><td>/ɪɡ'zædʒəreɪtɪd/ adj.</td><td>夸大的,言过其实的,夸张的</td></tr>
+<tr><td>crash</td><td>/kræʃ/ n.</td><td>碰撞；崩溃；坠落vt. 破碎；撞碎；坠落vi. 碰撞；坠毁；闯；突然倒台adj. 速成的, crashing, crashes</td></tr>
+<tr><td>sensible</td><td>/'sensəbl/ adj.</td><td>明智的；意识到的；通晓事理的；明显的n. 可感觉到的东西；敏感的人</td></tr>
+<tr><td>assert</td><td>/ə'sɜːrt/ vt.</td><td>断言；主张；声称；维护，坚持, asserting, asserts</td></tr>
+<tr><td>anthropic</td><td>/ænˈθrɑpɪk/ adj.</td><td>人类的,有关人类的</td></tr>
+<tr><td>annual</td><td>/'ænjuəl/ adj.</td><td>年度的；每年的n. 年刊，年鉴；一年生植物</td></tr>
+<tr><td>gut</td><td>/ɡʌt/ n.</td><td>内脏；肠子；胆量；海峡；剧情vt. 取出内脏；摧毁内部装置adj. 本质的，根本的；简单的GUT大统一理论, gutting, guts</td></tr>
+<tr><td>joint</td><td>/dʒɔɪnt/ n.</td><td>关节；接合处，接合点；接缝；（牛，羊等的腿）大块肉adj. 联合的，合办的；共同的；连接的vt. 连接，贴合；接合；使有接头vi. 贴合；生节, jointin</td></tr>
+<tr><td>pledge</td><td>/pledʒ/ n.</td><td>抵押；保证，誓言；抵押品，典当物vt. 保证，许诺；用……抵押；举杯祝……健康, pledging, pledges</td></tr>
+<tr><td>robust</td><td>/roʊ'bʌst/ adj.</td><td>强健的；健康的；粗野的；粗鲁的</td></tr>
+<tr><td>internal</td><td>/ɪn'tɜːrnl/ adj.</td><td>国内的；内部的；内在的</td></tr>
+<tr><td>hacking</td><td>/hæk/ vt.</td><td>& vi. 劈, 砍vt. 狠踢, 乱踢vi. 咳嗽(发出刺耳声音)(以普通速度)骑马驾驶计程车n. 砍, 劈用靴头踢骑用马, 供出租的马受雇于出版商的文人出租</td></tr>
+<tr><td>monitor</td><td>/'mɑːnɪtər/ n.</td><td>显示屏；监视器；（计算机）显示器监控器；监测器班长；级长；班代表（尤指派往国外的）监督员，核查员巨蜥v. 监视；检查；跟踪调查监听（电话、外国无线电广播等）, </td></tr>
+<tr><td>practice</td><td>/'præktɪs/ n.</td><td>练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规，practicing，practices</td></tr>
+<tr><td>vetoing</td><td>/vet/ vt.</td><td>诊疗；审查vi. 作兽医；诊疗n. 兽医, vetting, vets</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>commission</td><td>/kə'mɪʃn/ n.</td><td>授权, 委托委员会佣金, 回扣vt. 委任, 委托, commissioning, commissions</td></tr>
+<tr><td>deceptive</td><td>/dɪ'septɪv/ adj.</td><td>可能欺骗的, 导致误解的</td></tr>
+<tr><td>practices</td><td>/'præktɪs/ n.</td><td>练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规，practicing，practices</td></tr>
+<tr><td>process</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>regime</td><td>/reɪ'ʒiːm/ n.</td><td>政权，政体；社会制度；管理体制</td></tr>
+<tr><td>keen</td><td>/kiːn/ adj.</td><td>锋利的热衷的，热心的，渴望(做某事)激烈的，紧张的良好的；敏锐的，敏捷的，keenest</td></tr>
+<tr><td>leaning</td><td>/liːn/ vi.</td><td>倾斜；倚靠；倾向；依赖adj. 瘦的；贫乏的，歉收的vt. 使倾斜n. 倾斜；倾斜度；瘦肉, leaning, leans</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>overseeing</td><td>/ˌoʊvər'siː/ vt.</td><td>监督；俯瞰；审查；偷看到，无意中看到, oversees</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>nvidia</td><td>— </td><td>恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>leading</td><td>/ˈliːdɪŋ/ adj.</td><td>主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）</td></tr>
+<tr><td>momentum</td><td>/moʊ'mentəm/ n.</td><td>动力；动量；冲力；势头复 数: momenta</td></tr>
+<tr><td>intervention</td><td>/ˌɪntər'venʃn/ n.</td><td>介入, 干涉, 干预</td></tr>
+<tr><td>legislation</td><td>/ˌledʒɪs'leɪʃn/ n.</td><td>法律；法规立法，法律的制定[通过]</td></tr>
+<tr><td>senate</td><td>/ˈsenət/ </td><td>n.（诸如美国、澳大利亚、法国的）参议院（the Senate） （某些国家的）大学理事会，大学评议会（古罗马的）元老院</td></tr>
+<tr><td>speaking</td><td>/'spikɪŋ/ adj.</td><td>演讲的；富于表情的，雄辩的n. 说话；演讲v. 讲（speak的ing形式）</td></tr>
+<tr><td>legislate</td><td>/'ledʒɪsleɪt/ vt.</td><td>& vi. 立法；制定法律，legislating，legislates</td></tr>
+<tr><td>issues</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>soured</td><td>/'saʊər/ adj.</td><td>有酸味的，酸的有发酵味道的，酸腐的，馊的坏脾气的；别扭的vt. & vi. (使某物)变酸，变馊；(使某人)阴郁，sourest</td></tr>
+<tr><td>democracy</td><td>/dɪ'mɑːkrəsi/ n.</td><td>民主, 民主制民主国家</td></tr>
+<tr><td>trumps</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>strategy</td><td>/'strætədʒi/ n.</td><td>战略学, 兵法战略, 策略策略, 计谋</td></tr>
+<tr><td>nvidia</td><td>— </td><td>恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商</td></tr>
+<tr><td>wing</td><td>/wɪŋ/ n.</td><td>翅膀；翼；飞翔；派别vt. 使飞；飞过；空运；增加…速度；装以翼vi. 飞行, winging, wings</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>commission</td><td>/kə'mɪʃn/ n.</td><td>授权, 委托委员会佣金, 回扣vt. 委任, 委托, commissioning, commissions</td></tr>
+<tr><td>establish</td><td>/ɪ'stæblɪʃ/ vt.</td><td>建立, 成立安置确定, 证实, establishing, establishes</td></tr>
+<tr><td>reliable</td><td>/rɪ'laɪəbl/ adj.</td><td>可靠的, 可信赖的</td></tr>
+<tr><td>civil</td><td>/'sɪvl/ adj.</td><td>公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的</td></tr>
+<tr><td>hacking</td><td>/hæk/ vt.</td><td>& vi. 劈, 砍vt. 狠踢, 乱踢vi. 咳嗽(发出刺耳声音)(以普通速度)骑马驾驶计程车n. 砍, 劈用靴头踢骑用马, 供出租的马受雇于出版商的文人出租</td></tr>
+<tr><td>either</td><td>/'iːðər/ pron.</td><td>(两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的</td></tr>
+<tr><td>avenue</td><td>/'ævənuː/ n.</td><td>林荫道, 大街途径, 手段</td></tr>
+<tr><td>straightforward</td><td>/ˌstreɪt'fɔːrwərd/ adj.</td><td>(人或其态度)正直的，坦率的；老实的简单的；易懂的</td></tr>
+<tr><td>damages</td><td>/'dæmɪdʒ/ v.</td><td>损害；伤害；毁坏；破坏n. 损坏，破坏，损失，损害，伤害（法院判定的）损害赔偿金, damaging, damages</td></tr>
+<tr><td>safeguards</td><td>/'seɪfɡɑːrd/ n.</td><td>防护措施，安全设施vt. 保护；保卫；防护，safeguarding，safeguards</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>negligence</td><td>/'neɡlɪdʒəns/ n.</td><td>疏忽, 玩忽不修边幅</td></tr>
+<tr><td>alternatively</td><td>/ɔːl'tɜːrnətɪvli/ adv.</td><td>做为选择,二者择一地</td></tr>
+<tr><td>developing</td><td>/dɪ'veləpɪŋ/ adj.</td><td>在进行中的;走向完成阶段的;走向成熟的发展中的</td></tr>
+<tr><td>compliance</td><td>/kəm'plaɪəns/ n.</td><td>服从,听从,顺从</td></tr>
+<tr><td>strategy</td><td>/'strætədʒi/ n.</td><td>战略学, 兵法战略, 策略策略, 计谋</td></tr>
+<tr><td>silicon</td><td>/'sɪlɪkən/ n.</td><td>〈化〉硅</td></tr>
+<tr><td>valley</td><td>/'væli/ n.</td><td>流域；山谷；溪谷</td></tr>
+<tr><td>underrate</td><td>/ˌʌndə'reɪt/ vt.</td><td>对(某人或某事物)评价过低, underrating, underrates</td></tr>
+<tr><td>exposure</td><td>/ɪk'spoʊʒər/ n.</td><td>暴露, 显露揭发, 揭露(软片等)曝光</td></tr>
+<tr><td>precautions</td><td>/prɪ'kɔːʃn/ n.</td><td>预防措施</td></tr>
+<tr><td>proving</td><td>/proʊ/ n.</td><td>从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞成；支持Pro脯氨酸PROabbr. P</td></tr>
+<tr><td>handle</td><td>/'hændl/ n.</td><td>柄；把手；手感；口实vt. 买卖；处理；操作；触摸；运用vi. 易于操纵；搬运, handling, handles</td></tr>
+<tr><td>intent</td><td>/ɪn'tent/ n.</td><td>意图；目的；含义adj. 专心的；急切的；坚决的</td></tr>
+<tr><td>roaming</td><td>/'roʊmɪŋ/ </td><td>漫游</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>tank</td><td>/tæŋk/ n.</td><td>（存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内, tanking, tanks</td></tr>
+<tr><td>democratic</td><td>/ˌdemə'krætɪk/ adj.</td><td>民主的, 有民主精神或作风的</td></tr>
+<tr><td>committed</td><td>/kə'mɪt/ vt.</td><td>犯罪；犯错承诺；使自己受约束托付；交付，committing，commits</td></tr>
+<tr><td>capable</td><td>/'keɪpəbl/ adj.</td><td>能干的，能胜任的；有才华的</td></tr>
+<tr><td>intent</td><td>/ɪn'tent/ n.</td><td>意图；目的；含义adj. 专心的；急切的；坚决的</td></tr>
+<tr><td>hash</td><td>/hæʃ/ n.</td><td>剁碎的食物；混杂，拼凑；重新表述vt. 搞糟，把…弄乱；切细；推敲, hashing, hashes</td></tr>
+<tr><td>lawsuits</td><td>/'lɔːsuːt/ n.</td><td>诉讼（尤指非刑事案件）；诉讼案件</td></tr>
+<tr><td>damage</td><td>/'dæmɪdʒ/ v.</td><td>损害；伤害；毁坏；破坏n. 损坏，破坏，损失，损害，伤害（法院判定的）损害赔偿金, damaging, damages</td></tr>
+<tr><td>democracy</td><td>/dɪ'mɑːkrəsi/ n.</td><td>民主, 民主制民主国家</td></tr>
+<tr><td>issues</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day12.html" class="nav-btn">← Day 12</a>
+  <a href="day14.html" class="nav-btn">Day 14 →</a>
+</div>
+
+<div class="progress">📖 Day 13 of 40</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-10-10</div>
+
+</body>
+</html>
