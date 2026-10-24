@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Culture | Kernel of an idea</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-10-24</div>
+
+<h1 class="article-title">Culture | Kernel of an idea</h1>
+<div class="article-section">Culture</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p><span class="annot" data-tooltip="grossing /ɡroʊs/ adj. 总共的；粗野的；恶劣的；显而易见的vt. 总共收入n. 总额，总数比较级: grosser, grossest">grossing</span> film so <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span>, offered fans the opportunity to dip into a tin shaped like the titular superhero’s head. “The Devil Wears Prada 2” went for a chic red handbag. These <span class="annot" data-tooltip="novelty /'nɑːvlti/ n. 新颖; 新奇性新奇的人[事物]新颖小巧而价廉的物品">novelty</span> collectibles first went <span class="annot" data-tooltip="viral /'vaɪrəl/ adj. 滤过性毒菌引起的；滤过性毒菌的">viral</span> in 2024, with the bucket created for “Dune: Part Two”. Inspired by the sandworm that lives on the fictional desert planet of Arrakis, it featured a toothy creature emerging from the dunes. Some, however, felt it resembled a sex toy, and it was lampooned on “Saturday Night Live” and a late-night talk show. (It has become something of a <span class="annot" data-tooltip="cult /kʌlt/ n. 狂热；异教团体；宗教信仰；膜拜仪式；时髦的人（或事物）；信徒">cult</span> item, having listed for $40-800 on resale sites.) Zinc <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">Group</span>, the marketing firm behind the dubious design, did not see the <span class="annot" data-tooltip="memes n. (通过模仿等传递的)文化基因">memes</span> coming. It was the enthusiastic reaction to a “Star Wars” R2-D2 collectible in 2019 that showed how turning a quintessential element of a film into memorabilia can delight fans. “It’s about the <span class="annot" data-tooltip="tangible /'tændʒəbl/ adj. 有形的；可触摸的；切实的n. 有形资产副 词: tangibly">tangible</span> experience with the movie that you’re going to see,” says Marcus Gonzalez, global creative director at Zinc. Creative keepsakes help fans feel connected with the film long after the <span class="annot" data-tooltip="credits /'kredɪt/ n. 赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)时 态:">credits</span> roll. Popcorn buckets are a “status symbol”, argues Calvin Innes, a creative strategist. Well, sort of. Often there is a limited supply, meaning that people who rush to the cinema on a film’s opening weekend are more likely to get</p>
+<p>their hands on one. Owning a limited-edition item signals to other obsessive fans that you are one of them. The <span class="annot" data-tooltip="hype /haɪp/ n. 天花乱坠的广告宣传vt. 大肆宣传夸张地宣传(某人或某事物)(用巧计或绝技)人为地刺激,助长十分兴奋的；很激动的；十分担">hype</span> is great news for cinemas, which need to <span class="annot" data-tooltip="lure /lʊr/ n. 诱惑物；诱惑；饵vt. 引诱；诱惑时 态: lured, luring, lures">lure</span> customers. <span class="annot" data-tooltip="concessions /kən'seʃn/ n. 承认, 允许妥协, 让步特许权形容词: concessional">Concessions</span>—food and drinks—allow them to <span class="annot" data-tooltip="squeeze /skwiːz/ vt. & vi. 挤, 榨, 捏vt. 榨取, 挤出n. 挤, 榨, 捏亲切的拥抱或握手拥挤, 积压缺乏钱或时间等所引致的困难">squeeze</span> more profit from every moviegoer and popcorn buckets are a way to turn fans’ <span class="annot" data-tooltip="enthusiasm /ɪn'θuːziæzəm/ n. 热情, 热心巨大兴趣, 热衷的事物">enthusiasm</span> into high-<span class="annot" data-tooltip="margin /'mɑːrdʒɪn/ n. 页边缘；利润，余裕；页边的空白">margin</span> sales. For Vue, a British cinema chain, sales of collectible <span class="annot" data-tooltip="merchandise /'mɜːrtʃəndaɪs/ n. 商品, 货物vt. 买卖, 经营时 态: merchandisedalso merchandized merchandi">merchandise</span> have increased ten-fold since 2023. Design is key. A “well-executed popcorn bucket is a really delightful kind of object” to people of all ages, avers Tim <span class="annot" data-tooltip="sparrow /'spæroʊ/ n. 麻雀；矮小的人">Sparrow</span>, director of <span class="annot" data-tooltip="retail /ˈriːteɪl/ vt. 零售；转述vi. 零售n. 零售adv. 以零售方式adj. 零售的时 态: retailed, retailing, ">retail</span> at Cineworld, another chain: it makes the film experience “so much richer”. The best popcorn buckets turn a movie <span class="annot" data-tooltip="reference /'refrəns/ n. 提及，涉及参考，查阅引文；参考书目证明书；推荐信；证明人；推荐人时 态: referenced，referencing，">reference</span> into something <span class="annot" data-tooltip="playful /'pleɪfl/ adj. 爱嬉戏的；开玩笑的；幽默的副 词: playfully">playful</span> and nostalgic. They have become such a successful marketing tool that fans are almost as excited to see the popcorn bucket for “Dune: Part Three” as they are to see the film itself in December. Now that’s something for film executives to chew on.■ This article was downloaded by zlibrary from https://www.economist.com/culture/2026/10/19/the-latest-must-have-movie- memorabilia-popcorn-buckets</p>
+<div class="article-separator"></div>
+<div class="article-header">Culture · Culture | Choosin’ country</div>
+<p>How Ella Langley two-stepped to the top of the charts Country music is riding high, thanks to a new generation of stars and fans Oct 22nd 2026 THE RECORD for the longest stint atop the Billboard Hot 100, a chart of America’s most popular songs, once belonged to Mariah Carey’s schmaltzy festive anthem, “All I Want For Christmas Is You”. No longer. “Choosin’ <span class="annot" data-tooltip="texas /'teksəs/ n. 德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室">Texas</span>”, a twangy country song by Ella Langley, now claims that distinction, having spent 24 weeks in the <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span>-one slot. (Though it was recently <span class="annot" data-tooltip="bumped /bʌmp/ n. 肿块，隆起物；撞击vi. 碰撞，撞击；颠簸而行vt. 碰，撞；颠簸adv. 突然地，猛烈地时 态: bumped, bu">bumped</span> to second <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span> by Taylor <span class="annot" data-tooltip="swift /swɪft/ adj. 迅速的, 速度快的敏捷的, 反应快的SWIFTabbr. Society for Worldwide Interbank">Swift</span>’s new single.) Ms Langley’s track about being <span class="annot" data-tooltip="dumped /dʌmp/ vt. 倾倒；倾卸vi. 倒垃圾n. 垃圾场dUMP脱氧尿苷酸时 态: dumped, dumping, dumps">dumped</span> in a honky-tonk may seem like a replay of the <span class="annot" data-tooltip="genre /'ʒɑːnrə/ （文学、绘画、音乐、电影等艺术作品的）体裁，类型">genre</span>’s <span class="annot" data-tooltip="whisky /'wɪski/ n. 威士忌酒">whisky</span>-and-heartbreak trope. In fact, her ascent shows how the country- music business is finding a new rhythm. Country music has traditionally relied on radio to <span class="annot" data-tooltip="reach /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reach</span> its fans. But it is now America’s fourth-most-streamed genre, after R&B/hip-<span class="annot" data-tooltip="hop /hɑːp/ vi. 单足蹦跳, 跳跃跳上[下]vt. 跃过, 跳过搭乘n. 蹦跳, 跳跃跳舞一次飞行的距离HOPabbr. High Oxy">hop</span>, rock and</p>
+<p>pop, according to Luminate, an analytics firm. Spotify reports that global streams passed 90bn last year and <span class="annot" data-tooltip="royalties /'rɔɪəlti/ n. 王权；皇室；版税；专利税">royalties</span> have grown more than 130% since 2020. More labels are setting up shop in Nashville and Austin. Pop stars have climbed the charts after donning cowboy <span class="annot" data-tooltip="boots /buːt/ vt. 使穿靴；引导；踢；解雇n. 靴子；汽车行李箱；踢时 态: booted, booting, boots">boots</span>. This year Ms <span class="annot" data-tooltip="swift /swɪft/ adj. 迅速的, 速度快的敏捷的, 反应快的SWIFTabbr. Society for Worldwide Interbank">Swift</span>, who started out as a country singer before turning to pop, returned to the <span class="annot" data-tooltip="genre /'ʒɑːnrə/ （文学、绘画、音乐、电影等艺术作品的）体裁，类型">genre</span> with the single “I Knew It, I Knew You”. (There are rumours that her next album will offer more <span class="annot" data-tooltip="boot /buːt/ vt. 使穿靴；引导；踢；解雇n. 靴子；汽车行李箱；踢时 态: booted, booting, boots">boot</span>-scootin’ <span class="annot" data-tooltip="tunes /tuːn/ n. 曲调, 曲子vt. & vi. 调音vt. 调整时 态: tuned, tuning, tunes">tunes</span>.) Ms Langley is currently touring her second album across America. Her monthly listeners on Spotify, the biggest streamer, have soared by 20m in a year. Her breakout success combines old-world pastoral charm with an astute use of social media. She grew up in Hope Hull, Alabama, where the population is just over 7,000. (Her first audience, she has joked, was a <span class="annot" data-tooltip="bunch /bʌntʃ/ n. 串；群；突出物vi. 隆起；打褶；形成一串vt. 使成一串；使打褶时 态: bunched, bunching, bun">bunch</span> of cows.) She hunts and claims to have learned to read by singing hymns at church. In 2019, aged 20, Ms Langley moved to Nashville to become a songwriter. She signed a record deal in 2023 after performing at the Grand Ole Opry, a hallowed <span class="annot" data-tooltip="venue /'venjuː/ n. 聚集地点;会场;(尤指)体育比赛场所犯罪地点;审判地争论中所持的立场">venue</span> in the city that made stars of Loretta Lynn and Dolly Parton. Yet Ms Langley has made her name on social-media platforms as well as Nashville’s stages. She posted a <span class="annot" data-tooltip="clip /klɪp/ vt. 修剪；夹牢；痛打vi. 修剪n. 夹子；修剪；回形针CLIPabbr. Cellular Logic Image Pro">clip</span> of herself singing in her car in 2021, which went <span class="annot" data-tooltip="viral /'vaɪrəl/ adj. 滤过性毒菌引起的；滤过性毒菌的">viral</span>; a publishing deal followed soon after. Her internet fame resulted in <span class="annot" data-tooltip="collaborations /kəˌlæbə'reɪʃn/ n. 合作, 协作通敌">collaborations</span> with more <span class="annot" data-tooltip="established /ɪ'stæblɪʃt/ adj. 已建立的；已设立的；已制定的确定的，证实的">established</span> stars. In 2024 a snippet of a single from her <span class="annot" data-tooltip="debut /deɪ'bjuː/ n. 〈法〉演员首次演出时 态: debuted debuting debuts">debut</span> album, “Hungover”, again went viral on TikTok. Gen Z is charmed by the aesthetics of Americana. So the arrival of digitally native stars like Ms Langley, now 27, came at a “perfect moment”, says Jaime Marconette of Luminate. The firm has found that country-music fans are 27% more likely than the average American to use TikTok, giving performers more opportunities to be discovered. They are also more likely to listen on repeat to their favourite songs and artists, which keeps the music in the charts. The <span class="annot" data-tooltip="mellow /'meloʊ/ adj. (颜色或声音)柔和的, 丰富的(水果)熟透的, 甘美多汁的, (酒)芳醇的成熟的, 老练的, 稳健的高兴的, 微醉的vt">mellow</span> strains of “Choosin’ <span class="annot" data-tooltip="texas /'teksəs/ n. 德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室">Texas</span>” have no doubt worked in its favour: it can be listened to again and again without its hooks becoming grating. People who listen to music on streaming platforms <span class="annot" data-tooltip="tend /tend/ vt. 照料，照顾，伺候vi. 往，朝向易于；倾向时 态: tended，tending，tends">tend</span> not to seek out a <span class="annot" data-tooltip="specific /spə'sɪfɪk/ adj. 特殊的，特定的；明确的；详细的；具有特效的n. 特效药；细节；特性副 词: specifically">specific</span> genre, but a playlist that suits a mood or activity, such as <span class="annot" data-tooltip="cooking /kʊk/ v. 做饭，烹调；（食物）被烧煮；（非正式）篡改，伪造；密谋；干得起劲n.. 厨师n.(Cook) （美）库克（人名）时 态:">cooking</span>,</p>
+<p>explains Emily Cohen Belote of <span class="annot" data-tooltip="amazon /ˈæməˌzɑn/ n. 高大强悍的女人；（古希腊神话中的）亚马孙族女战士Amazonn. 亚马逊河(南美洲大河)">Amazon</span> Music. This can help songs <span class="annot" data-tooltip="reach /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reach</span> unexpected audiences. The guitar riffs of “Choosin’ <span class="annot" data-tooltip="texas /'teksəs/ n. 德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室">Texas</span>” may appeal to fans of 1980s soft rock. Ms Langley’s husky voice recalls Sheryl <span class="annot" data-tooltip="crow /kroʊ/ vi. 报晓；啼叫n. 乌鸦；鸡鸣；撬棍时 态: crowed, crowing, crows">Crow</span>. Still, the <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of people choosing “Choosin’ Texas” is surprising. A country track usually has to <span class="annot" data-tooltip="blend /blend/ vt. & vi. (使)混合, (使)混杂n. 混合物时 态: blended, blent blending, blends">blend</span> with another <span class="annot" data-tooltip="genre /'ʒɑːnrə/ （文学、绘画、音乐、电影等艺术作品的）体裁，类型">genre</span> to “have this massive pop crossover moment”, says Claire Heinichen of Spotify. That is not the case with Ms Langley’s hit, which declares: “A cowboy always finds a way to leave / Drinkin’ <span class="annot" data-tooltip="jack /dʒæk/ n. 千斤顶vt. 用千斤顶顶起离开；停止，放弃提高，增加">Jack</span> all by myself.” The appeal is in the storytelling. The <span class="annot" data-tooltip="lyrics n. 歌词；抒情诗（lyric的复数）">lyrics</span> might <span class="annot" data-tooltip="portray /pɔːr'treɪ/ vt. 画像；描述扮演时 态: portrayed，portraying，portrays">portray</span> a “very <span class="annot" data-tooltip="specific /spə'sɪfɪk/ adj. 特殊的，特定的；明确的；详细的；具有特效的n. 特效药；细节；特性副 词: specifically">specific</span> Southern experience”, admits Ms Heinichen. “But being sad in a bar is <span class="annot" data-tooltip="universal /ˌjuːnɪ'vɜːrsl/ adj. 全体的广泛的, 普遍的在世界各地的, 世界性的副 词: universally">universal</span>.” ■ This article was downloaded by zlibrary from https://www.economist.com/culture/2026/10/22/how-ella-langley-two-stepped-to-the- top-of-the-charts</p>
+<div class="article-separator"></div>
+<div class="article-header">Culture · Culture | The emperor’s close</div>
+<p>Leadership lessons from Napoleon How the French emperor’s management style <span class="annot" data-tooltip="ultimately /'ʌltɪmətli/ adv. 最后;最终">ultimately</span> led to his <span class="annot" data-tooltip="fall /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">fall</span> Oct 22nd 2026 What management tips can you learn from conquerors? Put aside <span class="annot" data-tooltip="oppression /ə'preʃn/ n. 压迫手段；压抑；沉闷；镇压；苦恼">oppression</span>, and there are lessons about delegation, motivation, recruitment and team building. Alexander the Great refused to drink water before battle to stand in <span class="annot" data-tooltip="solidarity /ˌsɑːlɪ'dærəti/ n. 团结">solidarity</span> with his men. Caesar marched on foot <span class="annot" data-tooltip="alongside /əˌlɔːŋ'saɪd/ adv. 靠着边，沿着边prep. (表示位置)在…旁边；沿着…的边；与…并排靠拢着(表示比较)与…放在一起比较(表示伴随)与…一">alongside</span> his men, even swimming across rivers, to demonstrate his derring-do. When his army wobbled, he would <span class="annot" data-tooltip="fling /flɪŋ/ vt.掷，抛；嘲笑；使陷入；轻蔑地投射；猛动n. 掷，抛；嘲弄；急冲vi. 猛冲，急行时 态: flung flingi">fling</span> himself in the way of his fleeing men, “even catching them by the throat and forcing them to face the enemy”, according to Suetonius, a Roman historian. Diocletian divided the Roman Empire into four, and shared power while keeping a firm <span class="annot" data-tooltip="central /'sentrəl/ adj. 中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的副 词: centrally">central</span> grip. In 2014 Andrew Roberts, a <span class="annot" data-tooltip="prolific /prə'lɪfɪk/ adj. 多产的；丰富的名 词: prolificacy">prolific</span> British historian and member of the House of Lords, published an excellent <span class="annot" data-tooltip="biography /baɪ'ɑːɡrəfi/ n. 传记">biography</span> of Napoleon and his boldness on the battlefield. In a new book he examines Napoleon’s <span class="annot" data-tooltip="marshal /'mɑːrʃl/ n. 元帅；司仪vt. 整理；引领；编列vi. 排列">marshal</span></p>
+<p>system. The day after he proclaimed himself emperor of France in 1804, Napoleon appointed 18 “<span class="annot" data-tooltip="marshals /'mɑːrʃl/ n. 元帅；司仪vt. 整理；引领；编列vi. 排列">marshals</span> of the empire”, later increasing the tally to 26. They were to be “the swords around Napoleon’s throne”, the army’s most venerated figures and the pinnacle of French <span class="annot" data-tooltip="society /sə'saɪəti/ n. 社会；社交界；交往；社团">society</span>. Some <span class="annot" data-tooltip="recruits /rɪ'kruːt/ n. 新兵(机构中的)新成员vt. 招聘；吸引(新成员)吸收某人为新成员vt. & vi. 招募，征募(新兵)恢复健康，恢复体">recruits</span> came from the nobility; others were craftsmen’s sons. They were indulged with <span class="annot" data-tooltip="fortunes /'fɔːrtʃən/ n. 运气；财富；命运vt. 给予财富vi. 偶然发生时 态: fortuned, fortuning, fortunes">fortunes</span>, land and even marriages into the <span class="annot" data-tooltip="imperial /ɪm'pɪriəl/ adj. 皇帝的；帝国的；威严的；至高无上的n. 纸张尺寸；特等品副 词: imperially">imperial</span> family. Each was given a deep-blue <span class="annot" data-tooltip="velvet /'velvɪt/ n. 天鹅绒，丝绒；天鹅绒似的东西adj. 天鹅绒的">velvet</span> high-collared uniform trimmed with golden embroidery, <span class="annot" data-tooltip="complete /kəm'pliːt/ adj. 完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善比较级: complete">complete</span> with a red silk sash, and a baton inscribed with the gold imperial eagles. Napoleon made six of them princes and <span class="annot" data-tooltip="crowned /kroʊ/ vi. 报晓；啼叫n. 乌鸦；鸡鸣；撬棍时 态: crowed, crowing, crows">crowned</span> two kings. The marshals’ <span class="annot" data-tooltip="elite /eɪ'liːt/ n. （社会）上层集团；掌权人物；出类拔萃的人，精英adj.（社会）上层集团的；掌权人物的；精英的">elite</span> leadership team was built to carry out Napoleon’s orders and bring <span class="annot" data-tooltip="glory /'ɡlɔːri/ n. 光荣，荣誉；赞颂vi. 自豪，骄傲；狂喜">glory</span> to France by executing his new theory of <span class="annot" data-tooltip="warfare /'wɔːrfer/ n. 战争, 战争状态">warfare</span>, with fewer set-piece sieges and more <span class="annot" data-tooltip="agile /'ædʒl/ adj. 灵巧的，轻快的，活跃的灵活的，头脑灵敏的，动作敏捷的机敏的，活泼的副 词: agilely">agile</span> manoeuvres, thanks to an army that lived off the land. But Napoleon also devised an efficient modern management system, based on the recruitment of <span class="annot" data-tooltip="brilliant /'brɪliənt/ adj. 闪光的, 明亮的光辉的, 辉煌的副 词: brilliantly">brilliant</span> talent, doling out of <span class="annot" data-tooltip="lavish /'lævɪʃ/ adj. 浪费的；丰富的；大方的vt. 浪费；慷慨给予；滥用时 态: lavished, lavishing, lavishes">lavish</span> rewards, intolerance of weakness and a demand for total loyalty. For all this Napoleon relied heavily on Louis-Alexandre Berthier, his chief of staff, first <span class="annot" data-tooltip="marshal /'mɑːrʃl/ n. 元帅；司仪vt. 整理；引领；编列vi. 排列">marshal</span> and a skilled manager with a remarkable <span class="annot" data-tooltip="grasp /ɡræsp/ n. 理解；控制；抓住vt. 抓住；领会vi. 抓时 态: grasped, grasping, grasps">grasp</span> of detail. A short, strong man who was said to be able to <span class="annot" data-tooltip="fall /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">fall</span> asleep with one eye open, Berthier was a former topographical engineer who had volunteered to sail across the Atlantic to help the Americans in their war for independence, drawing up a detailed map of the coast of Rhode Island. Berthier divided the army staff into four branches, to <span class="annot" data-tooltip="cover /'kʌvər/ vt. 包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替时 态: covered, covering, c">cover</span> everything from intelligence to supplies. Divisional commanders had to provide twice-daily updates on the whereabouts of every soldier; these dossiers, like proto- <span class="annot" data-tooltip="spreadsheets /'spredʃiːt/ n. 电子制表软件,电子数据表">spreadsheets</span>, were sent in 18 large volumes twice a month from the war ministry to Napoleon. In Berthier’s written orders “all names of <span class="annot" data-tooltip="places /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">places</span>, rivers, enemy generals and regiments were underlined,” writes Lord Roberts. New information flowed <span class="annot" data-tooltip="constantly /'kɑːnstəntli/ adv. 不断地;时常地">constantly</span>, from gunpowder stocks or the <span class="annot" data-tooltip="provision /prə'vɪʒn/ n. 提供，供给，给养，供应品（为将来做的）准备饮食供应，（尤指旅途中的）粮食（provisions）（法律文件的）规定，条款">provision</span> of shoes to the state of troops’ morale. Berthier and Napoleon travelled in a coach fitted with cupboards and drawers for books, maps and a card index listing the location of every unit of the Grande Armée.</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>grossing</td><td>/ɡroʊs/ adj.</td><td>总共的；粗野的；恶劣的；显而易见的vt. 总共收入n. 总额，总数, grossest</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>novelty</td><td>/'nɑːvlti/ n.</td><td>新颖; 新奇性新奇的人[事物]新颖小巧而价廉的物品</td></tr>
+<tr><td>viral</td><td>/'vaɪrəl/ adj.</td><td>滤过性毒菌引起的；滤过性毒菌的</td></tr>
+<tr><td>cult</td><td>/kʌlt/ n.</td><td>狂热；异教团体；宗教信仰；膜拜仪式；时髦的人（或事物）；信徒</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>memes</td><td>— n.</td><td>(通过模仿等传递的)文化基因</td></tr>
+<tr><td>tangible</td><td>/'tændʒəbl/ adj.</td><td>有形的；可触摸的；切实的n. 有形资产</td></tr>
+<tr><td>credits</td><td>/'kredɪt/ n.</td><td>赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)，crediting，credits</td></tr>
+<tr><td>hype</td><td>/haɪp/ n.</td><td>天花乱坠的广告宣传vt. 大肆宣传夸张地宣传(某人或某事物)(用巧计或绝技)人为地刺激,助长十分兴奋的；很激动的；十分担忧的被大肆宣扬(或宣传)的, hypin</td></tr>
+<tr><td>lure</td><td>/lʊr/ n.</td><td>诱惑物；诱惑；饵vt. 引诱；诱惑, luring, lures</td></tr>
+<tr><td>concessions</td><td>/kən'seʃn/ n.</td><td>承认, 允许妥协, 让步特许权</td></tr>
+<tr><td>squeeze</td><td>/skwiːz/ vt.</td><td>& vi. 挤, 榨, 捏vt. 榨取, 挤出n. 挤, 榨, 捏亲切的拥抱或握手拥挤, 积压缺乏钱或时间等所引致的困难或困苦, 拮据, 短缺, squeezi</td></tr>
+<tr><td>enthusiasm</td><td>/ɪn'θuːziæzəm/ n.</td><td>热情, 热心巨大兴趣, 热衷的事物</td></tr>
+<tr><td>margin</td><td>/'mɑːrdʒɪn/ n.</td><td>页边缘；利润，余裕；页边的空白</td></tr>
+<tr><td>merchandise</td><td>/'mɜːrtʃəndaɪs/ n.</td><td>商品, 货物vt. 买卖, 经营</td></tr>
+<tr><td>sparrow</td><td>/'spæroʊ/ n.</td><td>麻雀；矮小的人</td></tr>
+<tr><td>retail</td><td>/ˈriːteɪl/ vt.</td><td>零售；转述vi. 零售n. 零售adv. 以零售方式adj. 零售的, retailing, retails</td></tr>
+<tr><td>reference</td><td>/'refrəns/ n.</td><td>提及，涉及参考，查阅引文；参考书目证明书；推荐信；证明人；推荐人，referencing，references</td></tr>
+<tr><td>playful</td><td>/'pleɪfl/ adj.</td><td>爱嬉戏的；开玩笑的；幽默的</td></tr>
+<tr><td>texas</td><td>/'teksəs/ n.</td><td>德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室)</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>bumped</td><td>/bʌmp/ n.</td><td>肿块，隆起物；撞击vi. 碰撞，撞击；颠簸而行vt. 碰，撞；颠簸adv. 突然地，猛烈地, bumping, bumps</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>swift</td><td>/swɪft/ adj.</td><td>迅速的, 速度快的敏捷的, 反应快的SWIFTabbr. Society for Worldwide Interbank Financial Telecommu</td></tr>
+<tr><td>dumped</td><td>/dʌmp/ vt.</td><td>倾倒；倾卸vi. 倒垃圾n. 垃圾场dUMP脱氧尿苷酸, dumping, dumps</td></tr>
+<tr><td>genre</td><td>/'ʒɑːnrə/ </td><td>（文学、绘画、音乐、电影等艺术作品的）体裁，类型</td></tr>
+<tr><td>whisky</td><td>/'wɪski/ n.</td><td>威士忌酒</td></tr>
+<tr><td>reach</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>hop</td><td>/hɑːp/ vi.</td><td>单足蹦跳, 跳跃跳上[下]vt. 跃过, 跳过搭乘n. 蹦跳, 跳跃跳舞一次飞行的距离HOPabbr. High Oxygen Pressure 高氧压, ho</td></tr>
+<tr><td>royalties</td><td>/'rɔɪəlti/ n.</td><td>王权；皇室；版税；专利税</td></tr>
+<tr><td>boots</td><td>/buːt/ vt.</td><td>使穿靴；引导；踢；解雇n. 靴子；汽车行李箱；踢, booting, boots</td></tr>
+<tr><td>swift</td><td>/swɪft/ adj.</td><td>迅速的, 速度快的敏捷的, 反应快的SWIFTabbr. Society for Worldwide Interbank Financial Telecommu</td></tr>
+<tr><td>genre</td><td>/'ʒɑːnrə/ </td><td>（文学、绘画、音乐、电影等艺术作品的）体裁，类型</td></tr>
+<tr><td>boot</td><td>/buːt/ vt.</td><td>使穿靴；引导；踢；解雇n. 靴子；汽车行李箱；踢, booting, boots</td></tr>
+<tr><td>tunes</td><td>/tuːn/ n.</td><td>曲调, 曲子vt. & vi. 调音vt. 调整, tuning, tunes</td></tr>
+<tr><td>bunch</td><td>/bʌntʃ/ n.</td><td>串；群；突出物vi. 隆起；打褶；形成一串vt. 使成一串；使打褶, bunching, bunches</td></tr>
+<tr><td>venue</td><td>/'venjuː/ n.</td><td>聚集地点;会场;(尤指)体育比赛场所犯罪地点;审判地争论中所持的立场</td></tr>
+<tr><td>clip</td><td>/klɪp/ vt.</td><td>修剪；夹牢；痛打vi. 修剪n. 夹子；修剪；回形针CLIPabbr. Cellular Logic Image Processor 单元逻辑映象处理器Comp</td></tr>
+<tr><td>viral</td><td>/'vaɪrəl/ adj.</td><td>滤过性毒菌引起的；滤过性毒菌的</td></tr>
+<tr><td>collaborations</td><td>/kəˌlæbə'reɪʃn/ n.</td><td>合作, 协作通敌</td></tr>
+<tr><td>established</td><td>/ɪ'stæblɪʃt/ adj.</td><td>已建立的；已设立的；已制定的确定的，证实的</td></tr>
+<tr><td>debut</td><td>/deɪ'bjuː/ n.</td><td>〈法〉演员首次演出</td></tr>
+<tr><td>mellow</td><td>/'meloʊ/ adj.</td><td>(颜色或声音)柔和的, 丰富的(水果)熟透的, 甘美多汁的, (酒)芳醇的成熟的, 老练的, 稳健的高兴的, 微醉的vt. & vi. (使)成熟, mello</td></tr>
+<tr><td>texas</td><td>/'teksəs/ n.</td><td>德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室)</td></tr>
+<tr><td>tend</td><td>/tend/ vt.</td><td>照料，照顾，伺候vi. 往，朝向易于；倾向，tending，tends</td></tr>
+<tr><td>specific</td><td>/spə'sɪfɪk/ adj.</td><td>特殊的，特定的；明确的；详细的；具有特效的n. 特效药；细节；特性</td></tr>
+<tr><td>cooking</td><td>/kʊk/ v.</td><td>做饭，烹调；（食物）被烧煮；（非正式）篡改，伪造；密谋；干得起劲n.. 厨师n.(Cook) （美）库克（人名）, cooking, cooks</td></tr>
+<tr><td>amazon</td><td>/ˈæməˌzɑn/ n.</td><td>高大强悍的女人；（古希腊神话中的）亚马孙族女战士Amazonn. 亚马逊河(南美洲大河)</td></tr>
+<tr><td>reach</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>texas</td><td>/'teksəs/ n.</td><td>德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室)</td></tr>
+<tr><td>crow</td><td>/kroʊ/ vi.</td><td>报晓；啼叫n. 乌鸦；鸡鸣；撬棍, crowing, crows</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>blend</td><td>/blend/ vt.</td><td>& vi. (使)混合, (使)混杂n. 混合物, blent blending, blends</td></tr>
+<tr><td>genre</td><td>/'ʒɑːnrə/ </td><td>（文学、绘画、音乐、电影等艺术作品的）体裁，类型</td></tr>
+<tr><td>jack</td><td>/dʒæk/ n.</td><td>千斤顶vt. 用千斤顶顶起离开；停止，放弃提高，增加</td></tr>
+<tr><td>lyrics</td><td>— n.</td><td>歌词；抒情诗（lyric的复数）</td></tr>
+<tr><td>portray</td><td>/pɔːr'treɪ/ vt.</td><td>画像；描述扮演，portraying，portrays</td></tr>
+<tr><td>specific</td><td>/spə'sɪfɪk/ adj.</td><td>特殊的，特定的；明确的；详细的；具有特效的n. 特效药；细节；特性</td></tr>
+<tr><td>universal</td><td>/ˌjuːnɪ'vɜːrsl/ adj.</td><td>全体的广泛的, 普遍的在世界各地的, 世界性的</td></tr>
+<tr><td>ultimately</td><td>/'ʌltɪmətli/ adv.</td><td>最后;最终</td></tr>
+<tr><td>fall</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>oppression</td><td>/ə'preʃn/ n.</td><td>压迫手段；压抑；沉闷；镇压；苦恼</td></tr>
+<tr><td>solidarity</td><td>/ˌsɑːlɪ'dærəti/ n.</td><td>团结</td></tr>
+<tr><td>alongside</td><td>/əˌlɔːŋ'saɪd/ adv.</td><td>靠着边，沿着边prep. (表示位置)在…旁边；沿着…的边；与…并排靠拢着(表示比较)与…放在一起比较(表示伴随)与…一起，与…一道</td></tr>
+<tr><td>fling</td><td>/flɪŋ/ </td><td>vt.掷，抛；嘲笑；使陷入；轻蔑地投射；猛动n. 掷，抛；嘲弄；急冲vi. 猛冲，急行, flings</td></tr>
+<tr><td>central</td><td>/'sentrəl/ adj.</td><td>中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的</td></tr>
+<tr><td>prolific</td><td>/prə'lɪfɪk/ adj.</td><td>多产的；丰富的</td></tr>
+<tr><td>biography</td><td>/baɪ'ɑːɡrəfi/ n.</td><td>传记</td></tr>
+<tr><td>marshal</td><td>/'mɑːrʃl/ n.</td><td>元帅；司仪vt. 整理；引领；编列vi. 排列</td></tr>
+<tr><td>marshals</td><td>/'mɑːrʃl/ n.</td><td>元帅；司仪vt. 整理；引领；编列vi. 排列</td></tr>
+<tr><td>society</td><td>/sə'saɪəti/ n.</td><td>社会；社交界；交往；社团</td></tr>
+<tr><td>recruits</td><td>/rɪ'kruːt/ n.</td><td>新兵(机构中的)新成员vt. 招聘；吸引(新成员)吸收某人为新成员vt. & vi. 招募，征募(新兵)恢复健康，恢复体力，recruiting，recruit</td></tr>
+<tr><td>fortunes</td><td>/'fɔːrtʃən/ n.</td><td>运气；财富；命运vt. 给予财富vi. 偶然发生, fortuning, fortunes</td></tr>
+<tr><td>imperial</td><td>/ɪm'pɪriəl/ adj.</td><td>皇帝的；帝国的；威严的；至高无上的n. 纸张尺寸；特等品</td></tr>
+<tr><td>velvet</td><td>/'velvɪt/ n.</td><td>天鹅绒，丝绒；天鹅绒似的东西adj. 天鹅绒的</td></tr>
+<tr><td>complete</td><td>/kəm'pliːt/ adj.</td><td>完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善, completest 缩 写: comp, cpl</td></tr>
+<tr><td>crowned</td><td>/kroʊ/ vi.</td><td>报晓；啼叫n. 乌鸦；鸡鸣；撬棍, crowing, crows</td></tr>
+<tr><td>elite</td><td>/eɪ'liːt/ n.</td><td>（社会）上层集团；掌权人物；出类拔萃的人，精英adj.（社会）上层集团的；掌权人物的；精英的</td></tr>
+<tr><td>glory</td><td>/'ɡlɔːri/ n.</td><td>光荣，荣誉；赞颂vi. 自豪，骄傲；狂喜</td></tr>
+<tr><td>warfare</td><td>/'wɔːrfer/ n.</td><td>战争, 战争状态</td></tr>
+<tr><td>agile</td><td>/'ædʒl/ adj.</td><td>灵巧的，轻快的，活跃的灵活的，头脑灵敏的，动作敏捷的机敏的，活泼的</td></tr>
+<tr><td>brilliant</td><td>/'brɪliənt/ adj.</td><td>闪光的, 明亮的光辉的, 辉煌的</td></tr>
+<tr><td>lavish</td><td>/'lævɪʃ/ adj.</td><td>浪费的；丰富的；大方的vt. 浪费；慷慨给予；滥用, lavishing, lavishes</td></tr>
+<tr><td>marshal</td><td>/'mɑːrʃl/ n.</td><td>元帅；司仪vt. 整理；引领；编列vi. 排列</td></tr>
+<tr><td>grasp</td><td>/ɡræsp/ n.</td><td>理解；控制；抓住vt. 抓住；领会vi. 抓, grasping, grasps</td></tr>
+<tr><td>fall</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>cover</td><td>/'kʌvər/ vt.</td><td>包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替, covering, covers</td></tr>
+<tr><td>spreadsheets</td><td>/'spredʃiːt/ n.</td><td>电子制表软件,电子数据表</td></tr>
+<tr><td>places</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>constantly</td><td>/'kɑːnstəntli/ adv.</td><td>不断地;时常地</td></tr>
+<tr><td>provision</td><td>/prə'vɪʒn/ n.</td><td>提供，供给，给养，供应品（为将来做的）准备饮食供应，（尤指旅途中的）粮食（provisions）（法律文件的）规定，条款v. 【正式】为…提供所需物品（尤指食物</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day41.html" class="nav-btn">← Day 41</a>
+  <a href="day43.html" class="nav-btn">Day 43 →</a>
+</div>
+
+<div class="progress">📖 Day 42 of 44</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-10-24</div>
+
+</body>
+</html>

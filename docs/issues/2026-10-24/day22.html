@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Europe | Among the Johanneses</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-10-24</div>
+
+<h1 class="article-title">Europe | Among the Johanneses</h1>
+<div class="article-section">Europe</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>Germany’s young <span class="annot" data-tooltip="conservatives /kən'sɜːrvətɪv/ n. 保守的人adj. 保守的, 守旧的(式样等)不时新的, 传统的副 词: conservatively">conservatives</span> are angry with their <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> party Members are disappointed with Friedrich Merz, but <span class="annot" data-tooltip="pleased /pliːzd/ adj. 高兴的；喜欢的；乐意做某事v. 满意；愿意（please的过去分词形式）">pleased</span> with themselves Oct 22nd 2026 SUCH IS THE power of the Junge Union (JU), the youth branch of Germany’s ruling centre-right Christian <span class="annot" data-tooltip="democratic /ˌdemə'krætɪk/ adj. 民主的, 有民主精神或作风的副 词: democratically">Democratic</span> Union (CDU), that all the party’s big beasts feel obliged to pay it homage. At last weekend’s JU congress in Bonn, each was given a prizefighter’s entrance, <span class="annot" data-tooltip="complete /kəm'pliːt/ adj. 完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善比较级: complete">complete</span> with flashing <span class="annot" data-tooltip="spotlights /'spɑːtlaɪt/ n. 聚光灯(的光)公众注意的中心vt. 聚光照明使公众注意, 使突出醒目时 态: spotlighted, spotlit ">spotlights</span> and theme music selected by the organisers. Friedrich Merz, the CDU’s embattled chancellor, will have been happy with “We stay united through the storm”. Hendrik Wüst, the premier of North Rhine- Westphalia and a potential challenger to Mr Merz, looked a little bewildered on <span class="annot" data-tooltip="entering /'entər/ vt. & vi. 进入, 进去参加, 加入登记, 登录时 态: entered, entering, enters">entering</span> to the thump of “You should know that baby you’re the best”, before delivering a dull speech. As for the congress’s slogan, “Tomorrow is loading”, it seemed <span class="annot" data-tooltip="either /'iːðər/ pron. (两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的">either</span> an <span class="annot" data-tooltip="ironic /aɪ'rɑːnɪk/ adj. 讽刺的；反话的副 词: ironically">ironic</span> nod to information-superhighway</p>
+<p>dreams of yore or an attempt to sound <span class="annot" data-tooltip="vaguely /veɪɡ/ adj. 不明确的；含糊的；模糊的；暧昧的比较级: vaguer, vaguest">vaguely</span> digital. <span class="annot" data-tooltip="either /'iːðər/ pron. (两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的">Either</span> way, it was better than the toe-curling Denglish of last year’s “What the Future?!” The JU is where Germany’s ambitious <span class="annot" data-tooltip="conservatives /kən'sɜːrvətɪv/ n. 保守的人adj. 保守的, 守旧的(式样等)不时新的, 传统的副 词: conservatively">conservatives</span> come to network, drink and complain about the Mutterpartei (mother party, ie, the CDU). They are a lively <span class="annot" data-tooltip="bunch /bʌntʃ/ n. 串；群；突出物vi. 隆起；打褶；形成一串vt. 使成一串；使打褶时 态: bunched, bunching, bun">bunch</span>, if not a diverse one: bar a smattering of women, almost everyone seems to be called Johannes. The most important is the 34-year-old Johannes Winkel, head of the JU, who has emerged as an irritant for Mr Merz. Last year Mr Winkel threatened to torpedo the government’s plan to <span class="annot" data-tooltip="raise /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raise</span> <span class="annot" data-tooltip="pensions /ˈpenʃn/ n. 津贴；退休金，抚恤金；膳宿费vt. 发给养老金或抚恤金时 态: pensioned, pensioning, pensi">pensions</span>. In his speech this year he said the CDU was living in the past, passing off <span class="annot" data-tooltip="minor /'maɪnər/ adj. 较小的, 较少的, 低级的, 次要的n. 未成年人副修科目时 态: minored, minoring, minors">minor</span> <span class="annot" data-tooltip="tweaks /twiːk/ n. 拧；扭；焦急vt. 扭；用力拉；开足马力时 态: tweaked, tweaking, tweaks">tweaks</span> as ambitious “<span class="annot" data-tooltip="reforms /rɪ'fɔːrm/ n. 改革，改良，改造vt. & vi. 改革；改造；改善时 态: reformed，reforming，reforms">reforms</span>” and risking <span class="annot" data-tooltip="extinction /ɪk'stɪŋkʃn/ n. 熄灭，消灭，灭绝；废除">extinction</span>. The JU’s opinions matter because their <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span> in the Bundestag has 20 MPs—which, as members point out, is larger than the 12-seat majority held by Mr Merz’s coalition. Mr Winkel has warned that last year’s insurrection will pale next to what will come if a new <span class="annot" data-tooltip="pension /ˈpenʃn/ n. 津贴；退休金，抚恤金；膳宿费vt. 发给养老金或抚恤金时 态: pensioned, pensioning, pensi">pension</span> <span class="annot" data-tooltip="reform /rɪ'fɔːrm/ n. 改革，改良，改造vt. & vi. 改革；改造；改善时 态: reformed，reforming，reforms">reform</span>, designed to rein in costs, is watered down. If these young conservatives are angry, it is because nothing hurts so much as betrayal. It was the true believers of the JU who formed the vanguard of Mr Merz’s <span class="annot" data-tooltip="multiple /'mʌltɪpl/ adj. 多样的；许多的；多重的n. 并联；倍数">multiple</span> attempts to become CDU leader, the third of which succeeded in 2021. At last, they <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span>, a true-blooded <span class="annot" data-tooltip="conservative /kən'sɜːrvətɪv/ n. 保守的人adj. 保守的, 守旧的(式样等)不时新的, 传统的副 词: conservatively">conservative</span> saviour to wash away the mushy centrism of the long Angela Merkel years. (One thing the JU and Mr Merz agree on is that Mrs Merkel’s 16-year <span class="annot" data-tooltip="reign /reɪn/ vi. 统治；盛行；支配；君临n. 统治；支配；统治时期时 态: reigned, reigning, reigns">reign</span> was an embarrassment.) But since Mr Merz won last year’s election it has been disappointment upon disappointment: borrowing <span class="annot" data-tooltip="binges /bɪndʒ/ n. 狂欢，狂闹；放纵vt. 放纵vi. 狂饮作乐；大吃大喝时 态: binged, binging, bingeing bi">binges</span>, in-fighting and endless <span class="annot" data-tooltip="concessions /kən'seʃn/ n. 承认, 允许妥协, 让步特许权形容词: concessional">concessions</span> to the Social Democrats (SPD), the <span class="annot" data-tooltip="junior /'dʒuːniər/ adj. 年少的, 较年幼的资历较浅的, 地位较低的n. 年少者地位较低者, 晚辈(美国中学或大学的)三年级学生">junior</span> coalition partner. At last year’s youth bash Mr Merz alienated everyone by urging the JU to cool its reformist zeal. This year he was on best behaviour, offering full support for the proposed pension reform. His speech “wasn’t a success, but it wasn’t a failure”, <span class="annot" data-tooltip="sniffed /snɪf/ vi. 嗤之以鼻；嗅vt. 用力吸；发觉；闻；嗅n. 以鼻吸气；气味；吸，闻；吸气声；嗤之以鼻时 态: sniffed, sni">sniffed</span> one <span class="annot" data-tooltip="delegate /'delɪɡət/ n. 代表；会议代表v. 授（权）；把（工作、权力等）委托（给下级）选派（某人做某事）时 态: delegated, dele">delegate</span>. Mr Merz also showed he can press the crowd’s buttons. He <span class="annot" data-tooltip="earned /ɪr/ n. 耳朵；听觉；倾听；穗vi. （美俚）听见；抽穗EARabbr. East African Railways 东非铁路公司">earned</span> the weekend’s biggest applause by deploring a proposed coalition in Berlin led by the populist-left Die Linke party, which won a recent election in the capital. Many in the CDU, and beyond, believe that party’s Berlin branch is <span class="annot" data-tooltip="crawling n. 表面涂布不匀；收缩龟裂">crawling</span> with antisemites and subversives. Yet just as the <span class="annot" data-tooltip="delegates /'delɪɡət/ n. 代表；会议代表v. 授（权）；把（工作、权力等）委托（给下级）选派（某人做某事）时 态: delegated, dele">delegates</span>’ <span class="annot" data-tooltip="fury /'fjʊri/ n. 狂怒；暴怒；激怒者Furyn. 〈希神〉复仇女神">fury</span></p>
+<p>peaked, Die Linke clinched an agreement with the Greens and SPD to begin coalition talks. That inspired the JU to pass a <span class="annot" data-tooltip="resolution /ˌrezə'luːʃn/ n. 正式决定，决议决心，决定坚决；坚定；坚毅解决，解答分辨力，分辨率[度]">resolution</span>, spearheaded by another Johannes, demanding “political and social ostracism” of any such government. It featured a <span class="annot" data-tooltip="picture /'pɪktʃər/ n. 图画，肖像；照片(生动的)描述，写照影片；电影；画面美景，景色情况，事态，局面vt. 绘画；描绘想象时 态: pictu">picture</span> of a young man in a keffiyeh and the slogan Nie wieder ist jetzt! (“Never again is now!”), a rather <span class="annot" data-tooltip="hysterical /hɪ'sterɪkl/ adj. 情绪异常激动的, 歇斯底里般的副 词: hysterically">hysterical</span> <span class="annot" data-tooltip="invocation /ˌɪnvə'keɪʃn/ n. 祈祷,乞求乞灵,乞求神助">invocation</span> of the Holocaust. These days it is easier for youth <span class="annot" data-tooltip="delegates /'delɪɡət/ n. 代表；会议代表v. 授（权）；把（工作、权力等）委托（给下级）选派（某人做某事）时 态: delegated, dele">delegates</span> to <span class="annot" data-tooltip="rage /reɪdʒ/ n. 愤怒；狂暴，肆虐；情绪激动vi. 大怒，发怒；流行，风行时 态: raged, raging, rages">rage</span> against leftists than against the populist-right <span class="annot" data-tooltip="alternative /ɔːl'tɜːrnətɪv/ adj. 可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）">Alternative</span> for Germany (AfD). The CDU as a whole has not gone soft on the party that has destroyed its <span class="annot" data-tooltip="polling /'poʊlɪŋ/ n. 投票Polling轮流检测,联接到另一主机查看电子信件或新闻">polling</span> lead; Mr Merz had <span class="annot" data-tooltip="harsh /hɑːrʃ/ adj. 粗糙的；刺耳的；严厉的；严酷的；刺目的比较级: harsher, harshest">harsh</span> words for the AfD, too. But some CDU delegates in the <span class="annot" data-tooltip="parliament /'pɑːrləmənt/ n. 议会, 国会">parliament</span> of Saxony-Anhalt, an eastern state where the AfD won a near-majority in an election last month, may soon break the party <span class="annot" data-tooltip="line /laɪn/ n. 绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long inter">line</span> and give the <span class="annot" data-tooltip="radicals /'rædɪkl/ adj. 根本的，基本的；彻底的，完全的激进的，激进派的副 词: radically">radicals</span> the votes they need to take office there. The CDU in Saxony-Anhalt, sighs a third Johannes, is an “unguided missile”. No <span class="annot" data-tooltip="wonder /'wʌndər/ vt. & vi. 对…感到疑惑想知道；问自己n. 惊奇，惊叹，惊异，惊诧奇人，奇才奇观，奇景，奇迹，奇事时 态: wonder">wonder</span> delegates struggled to believe that the CDU had figured out how to recover. “The party is crumbling,” confided one, adding that he is <span class="annot" data-tooltip="embarrassed /ɪm'bærəst/ adj. 局促不安的；为难的；尴尬的窘迫的；陷入困境的；拮据的">embarrassed</span> to tell his friends he is a member. The CDU’s young guard seems to be bursting with self-confidence at <span class="annot" data-tooltip="precisely /prɪ'saɪsli/ adv. 精确地；恰好；细心地对，的确如此">precisely</span> the moment it has lost faith in the Mutterpartei. But as one CDU grandee puts it, the JU always thrives when its elders are struggling. Kids <span class="annot" data-tooltip="tend /tend/ vt. 照料，照顾，伺候vi. 往，朝向易于；倾向时 态: tended，tending，tends">tend</span> to think they know best. And these ones have the numbers in parliament to prove it. ■ This article was downloaded by zlibrary from https://www.economist.com/europe/2026/10/20/germanys-young-<span class="annot" data-tooltip="conservatives /kən'sɜːrvətɪv/ n. 保守的人adj. 保守的, 守旧的(式样等)不时新的, 传统的副 词: conservatively">conservatives</span>-are-angry- with-their-<span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span>-party</p>
+<div class="article-separator"></div>
+<div class="article-header">Europe · Europe | Charlemagne</div>
+<p>How France became ungovernable at home yet <span class="annot" data-tooltip="unstoppable /ʌn'stɑːpəbl/ adj. 无法停止的;无法阻碍的">unstoppable</span> in <span class="annot" data-tooltip="brussels /ˈbrʌsəlz/ n. 布鲁塞尔（比利时首都）">Brussels</span> The <span class="annot" data-tooltip="paradox /'pærədɑːks/ n. 似非而是的论点；悖论，反论；自相矛盾的人或事形容词: paradoxical">paradox</span> of Parisian power Oct 22nd 2026 There are better ways to vaunt the merits of your economic model than setting fire to your capital. But tell that to the French. In recent years <span class="annot" data-tooltip="protests /'proʊtest/ n. 抗议；反对vt. & vi. 声明；抗议时 态: protested，protesting，protests">protests</span> have become such a <span class="annot" data-tooltip="fixture /'fɪkstʃər/ n. (房屋等的)固定装置固定在某位置的人或物">fixture</span> of national life it is hard to see when one set of manifestations ends and the next begins. Everyone from students to pensioners seems to walk about in a perennial <span class="annot" data-tooltip="huff /hʌf/ vi. 生气地说；把……吹胀，吹气；发怒，激怒；蔑视；恫吓；嗅（汽油、溶剂）作为兴奋剂；（国际跳棋中）取掉（对方本可吃棋的棋子）">huff</span>. The political class is at war with itself, <span class="annot" data-tooltip="wondering /'wʌndər/ vt. & vi. 对…感到疑惑想知道；问自己n. 惊奇，惊叹，惊异，惊诧奇人，奇才奇观，奇景，奇迹，奇事时 态: wonder">wondering</span> if an unloved president will soon make way for a populist rabble-rouser. Bond vigilantes are giving a bloody <span class="annot" data-tooltip="nose /noʊz/ n. 鼻子似鼻子的东西嗅觉vt. 嗅vi. 窥探, 探听, 四处查看vt. & vi. 小心翼翼地前进时 态: nosed, ">nose</span> to the over- indebted government in Paris, demanding ever-higher <span class="annot" data-tooltip="yields /jiːld/ vt. 出产；屈服；放弃vi. 屈服，投降n. 收益；产量时 态: yielded, yielding, yields">yields</span> to finance its <span class="annot" data-tooltip="runaway /'rʌnəweɪ/ adj. 逃走的；逃亡的n. 逃跑；逃走的人">runaway</span> budgets. The recent spate of violence gives the <span class="annot" data-tooltip="impression /ɪm'preʃn/ n. 印象, 感想想法, 看法, 感觉滑稽模仿印记, 压痕重印">impression</span> of a state at once <span class="annot" data-tooltip="bloated /bloʊt/ vt. （使）肿胀；使膨胀；腌制vi. 膨胀；肿起；得意n. 膨胀的东西，肿胀的人；肿胀病人；自满的人时 态: bloated,">bloated</span> and overmatched. As always, the situation looks somewhat less <span class="annot" data-tooltip="dire /'daɪər/ adj. 可怕的, 恐怖的比较级: direr, direst">dire</span> from inside France than it does to outsiders. Still, who</p>
+<p>would want to emulate the policies of a <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span> that seems so <span class="annot" data-tooltip="firmly /'fɜːrmli/ adv. 坚固地;稳固地坚定地;坚决地">firmly</span> on the skids? Moi! Moi! Moi! is the <span class="annot" data-tooltip="refrain /rɪ'freɪn/ vi. 制止；避免；节制，克制n. 叠句，副歌；重复时 态: refrained, refraining, refrains">refrain</span> from France’s neighbours in the European Union. For even as Paris <span class="annot" data-tooltip="reeks /riːk/ vi. 冒烟；散发；放出臭气n. 臭气；水蒸汽；烟vt. 用烟熏；散发时 态: reeked, reeking, reeks">reeks</span> of <span class="annot" data-tooltip="tear /tɪr，ter/ v. 撕掉，扯下；撕破；拔掉；拉伤；（非正式）狂奔；饱经……摧残；流眼泪n. 眼泪；（撕破的）洞或裂缝， 撕扯时 态: tor">tear</span> gas, ideas <span class="annot" data-tooltip="promoted /'proʊmoʊ/ n. 商品推销；商品广告，广告片">promoted</span> by French officialdom for <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span> have become ascendant in EU circles. Particularly on economic matters, French thinking is being copy-pasted into statute books in <span class="annot" data-tooltip="brussels /ˈbrʌsəlz/ n. 布鲁塞尔（比利时首都）">Brussels</span>. France may be running out of money, political stability and public patience; it is not running out of influence. A country that plenty think ought to serve as a cautionary tale is instead being treated as a <span class="annot" data-tooltip="blueprint /'bluːprɪnt/ n. 蓝图, 设计图时 态: blueprinted, blueprinting, blueprints">blueprint</span>. Call it the <span class="annot" data-tooltip="paradox /'pærədɑːks/ n. 似非而是的论点；悖论，反论；自相矛盾的人或事形容词: paradoxical">paradox</span> of Parisian power: even as French politicians lose the ability to govern at home, they are tightening their ideological grip on Europe. Brussels was once a place where France’s <span class="annot" data-tooltip="instincts /'ɪnstɪŋkt/ n. 本能，直觉；天性adj. 充满着的">instincts</span> for state <span class="annot" data-tooltip="intervention /ˌɪntər'venʃn/ n. 介入, 干涉, 干预">intervention</span> collided with Germany’s faith in markets and (<span class="annot" data-tooltip="relatively /'relətɪvli/ adv. 相对地，比较而言；相当相对来说；相比较而言">relatively</span>) free trade—and usually lost. The EU’s institutions have long had a liberal bent that <span class="annot" data-tooltip="blunted /blʌnt/ adj. 钝的，不锋利的；生硬的；直率的vt. 使迟钝比较级: blunter, bluntest">blunted</span> France’s big-state, dirigiste <span class="annot" data-tooltip="preferences /'prefrəns/ n. 较喜欢的东西, 偏爱优待, 优惠, 优先权">preferences</span>. The club’s rules prevented national governments from meddling in industrial matters by doling out money to favoured firms and so forth. (The French got generous <span class="annot" data-tooltip="farming /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">farming</span> <span class="annot" data-tooltip="subsidies /'sʌbsədi/ n. 津贴；补助金；补贴">subsidies</span> in return.) <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">Far</span> from protecting national champions, the EU was usually minded to let <span class="annot" data-tooltip="domestic /də'mestɪk/ adj. 国内的；家庭的；驯养的；一心只管家务的">domestic</span> firms face competition from both within the bloc and <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span>. Parisian policymakers fumed at the hemming-in of the state’s capacity to do something. From the outset of his presidency a <span class="annot" data-tooltip="decade /'dekeɪd/ n. 十年，十年期；十">decade</span> ago, Emmanuel Macron warned it was resulting in Europe losing its “<span class="annot" data-tooltip="strategic /strə'tiːdʒɪk/ adj. 战略(上)的有战略意义的; 至关重要的副 词: strategically">strategic</span> <span class="annot" data-tooltip="autonomy /ɔː'tɑːnəmi/ n. 自治，自治权名 词: autonomist">autonomy</span>”— broadly, the ability for the continent to act independently in a world increasingly dominated by America and China. Many in the club dismissed this as a bit of Gallic eccentricity, along with the penchant for escargots and taking August off. No longer. These days French-infused scepticism of globalisation and unfettered markets is close to being orthodoxy. Those EU rules preventing public money from being showered onto national champions are all but forgotten: subsidies once <span class="annot" data-tooltip="considered /kən'sɪdər/ vt. & vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及时 态: considered, considering, ">considered</span> evidence of economic illiteracy (including by this newspaper, often) are now <span class="annot" data-tooltip="presented /'preznt/ vt. 呈现；介绍；提出；赠送vi. 举枪瞄准adj. 出席的；现在的n. 现在；礼物；瞄准时 态: presented, pr">presented</span> as proof of strategic sophistication. “Industrial policy” has gone from taboo to <span class="annot" data-tooltip="mainstream /'meɪnstriːm/ n. (思想或行为的)主流时 态: mainstreamed, mainstreaming, mainstreams">mainstream</span>. The French idea that Europe has been <span class="annot" data-tooltip="naive /naɪ'iːv/ adj. 幼稚的; 无经验的; 单纯的天真的; 轻信的副 词: naively">naive</span>—practising economic self-restraint while America and China brazenly <span class="annot" data-tooltip="pursue /pər'suː/ vt. 从事；追赶；继续；纠缠vi. 追赶；继续进行时 态: pursued, pursuing, pursues">pursue</span> economic self-interest—is now</p>
+<p><span class="annot" data-tooltip="commonplace /'kɑːmənpleɪs/ adj. 普通的, 平庸的n. 陈腔滥调, 老生常谈寻常的事物, 平常的东西">commonplace</span>. Free trade is still tolerated, but only insofar as it does not <span class="annot" data-tooltip="interfere /ˌɪntər'fɪr/ vi. 干预；调停妨碍时 态: interfered，interfering，interferes">interfere</span> with broader aims of Europe recouping some measure of economic <span class="annot" data-tooltip="sovereignty /'sɑːvrənti/ n. 最高统治权, 君权国家的主权">sovereignty</span>. How did French ideas <span class="annot" data-tooltip="triumph /'traɪʌmf/ n. 胜利，成功巨大的成就[成功]vi. 获胜，得胜；克服时 态: triumphed，triumphing，triumphs">triumph</span>, even as France has <span class="annot" data-tooltip="seemingly /'siːmɪŋli/ adv. 看来似乎, 表面上看">seemingly</span> gone off the rails? In part, because what once looked like Parisian paranoia has come to seem like foresight. Many in the EU sniggered when Mr Macron in 2019 warned in an interview with The Economist that Europe risked being “no longer in control of its destiny”. Events <span class="annot" data-tooltip="proved /proʊ/ n. 从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞">proved</span> him right. Covid-19 made globe-<span class="annot" data-tooltip="spanning /spæn/ n. 跨度，跨径两个界限间的距离一段时间vt. 建造跨越(某物的)桥或拱；横跨跨越，穿越，贯穿SPANabbr. Statis">spanning</span> supply chains <span class="annot" data-tooltip="spawned /spɔːn/ n. 菌丝；卵；产物vt. 产卵；酿成，造成；大量生产vi. 产卵；大量生产时 态: spawned, spawning, s">spawned</span> by free-trade evangelists seem less clever to some. Russia’s invasion of <span class="annot" data-tooltip="ukraine n. 乌克兰（原苏联一加盟共和国，现已独立）">Ukraine</span> in 2022 underscored how relying on imports—in this case, of natural gas—brought with it unwanted dependencies (of the sort China went on to <span class="annot" data-tooltip="exploit /ɪk'splɔɪt/ vt. 开发，开拓；剥削；开采n. 勋绩；功绩时 态: exploited, exploiting, exploits">exploit</span> with <span class="annot" data-tooltip="niche /niːʃ，nɪtʃ/ n. （尤指本人合意的）适合的工作（或职位）;称心的工作合宜的小环境（尤指用来放置塑像的）壁龛adj. （产品）针对特定小群体">niche</span> raw materials). And maybe, just maybe, generations of French presidents had been right to warn that America might one day prove an unreliable guarantor of European <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span>. <span class="annot" data-tooltip="internal /ɪn'tɜːrnl/ adj. 国内的；内部的；内在的名 词: internality">Internal</span> dynamics in the union have helped France’s cause, too. Brexit deprived the EU of a power whose raison d’être was to resist Gallic-infused thinking in <span class="annot" data-tooltip="brussels /ˈbrʌsəlz/ n. 布鲁塞尔（比利时首都）">Brussels</span>. More recently Germany has made a startling pivot to support French economic interventionism, finding free trade much less appealing as Chinese firms started competing effectively with its <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> carmakers. <span class="annot" data-tooltip="consider /kən'sɪdər/ vt. & vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及时 态: considered, considering, ">Consider</span> a slew of “Made in Europe” plans put forward by the EU’s <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> <span class="annot" data-tooltip="commissioner /kə'mɪʃn/ n. 授权, 委托委员会佣金, 回扣vt. 委任, 委托时 态: commissioned, commissioning, c">commissioner</span>, Stéphane Séjourné, a Frenchman close to Mr Macron. They <span class="annot" data-tooltip="advocate /ˈædvəkeɪt，'ædvəkət/ v. 拥护；支持；提倡n. 拥护者；支持者；提倡者；辩护律师；出庭辩护人时 态: advocated, advocating,">advocate</span> <span class="annot" data-tooltip="earmarking /'ɪrmɑːrk/ vt. 指定…作为特定用途时 态: earmarked, earmarking, earmarks">earmarking</span> public spending for EU firms. Such protectionism would once have been dismissed out of hand by officials in Berlin. Now they merely want to make sure at least some <span class="annot" data-tooltip="allies n. （第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者">allies</span> such as Britain and Canada are included in an expanded definition of Europe. The aim is to water down French plans, not thwart them. For those Europeans already uneasy about importing France’s Colbertist <span class="annot" data-tooltip="instincts /'ɪnstɪŋkt/ n. 本能，直觉；天性adj. 充满着的">instincts</span>, there is a more unsettling <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span>: Mr Macron may prove the <span class="annot" data-tooltip="moderate /'mɑːdərət/ adj. 中等的，适度的，不很大的温和的；有节制的中庸的，稳健的，不走极端的vt. & vi. (使)减轻[缓和]；节制时 态: ">moderate</span> <span class="annot" data-tooltip="version /'vɜːrʒn/ n. 变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本">version</span> of France’s attempt to remake the EU. Marine Le Pen, the populist currently <span class="annot" data-tooltip="leading /ˈliːdɪŋ/ adj. 主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）">leading</span> the <span class="annot" data-tooltip="polls /poʊl/ n. 民意测验；投票；投票数；投票所vt. 剪短；对…进行民意测验；获得选票；投票vi. 投票adj. 剪过毛的；修过枝的；无">polls</span>, would seek to recast the EU along more nationalist <span class="annot" data-tooltip="lines n. 台词；线；航线（line的复数）v. 排成一行；画线于（line的三单形式）">lines</span>. Will <span class="annot" data-tooltip="adopting /ə'dɑːpt/ vt. 收养采用, 采纳, 采取正式接受, 通过时 态: adopted, adopting, adopts">adopting</span> French ideas end up hobbling Europe, as it seemingly has France? Not necessarily. There is a difference between a state that <span class="annot" data-tooltip="intervenes /ˌɪntər'viːn/ vi. 干涉，干预；调解干扰，阻碍时 态: intervened，intervening，intervenes">intervenes</span></p>
+<p>strategically and one that spends indiscriminately. France’s predicament offers lessons in both. Mr Macron was right to warn that Europe needs greater <span class="annot" data-tooltip="autonomy /ɔː'tɑːnəmi/ n. 自治，自治权名 词: autonomist">autonomy</span> from foreign foes. But a country that cannot control its <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> finances has precious little autonomy <span class="annot" data-tooltip="either /'iːðər/ pron. (两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的">either</span>. France got the diagnosis right. It is a pity it made such a <span class="annot" data-tooltip="mess /mes/ vt. 弄脏；弄乱n. 杂乱，脏乱；脏东西不整洁[乱七八糟]的人[事]粪便时 态: messed，messing，messes">mess</span> of the treatment.■ This article was downloaded by zlibrary from https://www.economist.com/europe/2026/10/21/how-france-became-ungovernable-at-home- yet-<span class="annot" data-tooltip="unstoppable /ʌn'stɑːpəbl/ adj. 无法停止的;无法阻碍的">unstoppable</span>-in-<span class="annot" data-tooltip="brussels /ˈbrʌsəlz/ n. 布鲁塞尔（比利时首都）">brussels</span></p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>conservatives</td><td>/kən'sɜːrvətɪv/ n.</td><td>保守的人adj. 保守的, 守旧的(式样等)不时新的, 传统的</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>pleased</td><td>/pliːzd/ adj.</td><td>高兴的；喜欢的；乐意做某事v. 满意；愿意（please的过去分词形式）</td></tr>
+<tr><td>democratic</td><td>/ˌdemə'krætɪk/ adj.</td><td>民主的, 有民主精神或作风的</td></tr>
+<tr><td>complete</td><td>/kəm'pliːt/ adj.</td><td>完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善, completest 缩 写: comp, cpl</td></tr>
+<tr><td>spotlights</td><td>/'spɑːtlaɪt/ n.</td><td>聚光灯(的光)公众注意的中心vt. 聚光照明使公众注意, 使突出醒目, spotlit spotlighting, spotlights</td></tr>
+<tr><td>entering</td><td>/'entər/ vt.</td><td>& vi. 进入, 进去参加, 加入登记, 登录, entering, enters</td></tr>
+<tr><td>either</td><td>/'iːðər/ pron.</td><td>(两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的</td></tr>
+<tr><td>ironic</td><td>/aɪ'rɑːnɪk/ adj.</td><td>讽刺的；反话的</td></tr>
+<tr><td>vaguely</td><td>/veɪɡ/ adj.</td><td>不明确的；含糊的；模糊的；暧昧的, vaguest</td></tr>
+<tr><td>either</td><td>/'iːðər/ pron.</td><td>(两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的</td></tr>
+<tr><td>conservatives</td><td>/kən'sɜːrvətɪv/ n.</td><td>保守的人adj. 保守的, 守旧的(式样等)不时新的, 传统的</td></tr>
+<tr><td>bunch</td><td>/bʌntʃ/ n.</td><td>串；群；突出物vi. 隆起；打褶；形成一串vt. 使成一串；使打褶, bunching, bunches</td></tr>
+<tr><td>raise</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>pensions</td><td>/ˈpenʃn/ n.</td><td>津贴；退休金，抚恤金；膳宿费vt. 发给养老金或抚恤金, pensioning, pensions</td></tr>
+<tr><td>minor</td><td>/'maɪnər/ adj.</td><td>较小的, 较少的, 低级的, 次要的n. 未成年人副修科目, minoring, minors</td></tr>
+<tr><td>tweaks</td><td>/twiːk/ n.</td><td>拧；扭；焦急vt. 扭；用力拉；开足马力, tweaking, tweaks</td></tr>
+<tr><td>reforms</td><td>/rɪ'fɔːrm/ n.</td><td>改革，改良，改造vt. & vi. 改革；改造；改善，reforming，reforms</td></tr>
+<tr><td>extinction</td><td>/ɪk'stɪŋkʃn/ n.</td><td>熄灭，消灭，灭绝；废除</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>pension</td><td>/ˈpenʃn/ n.</td><td>津贴；退休金，抚恤金；膳宿费vt. 发给养老金或抚恤金, pensioning, pensions</td></tr>
+<tr><td>reform</td><td>/rɪ'fɔːrm/ n.</td><td>改革，改良，改造vt. & vi. 改革；改造；改善，reforming，reforms</td></tr>
+<tr><td>multiple</td><td>/'mʌltɪpl/ adj.</td><td>多样的；许多的；多重的n. 并联；倍数</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>conservative</td><td>/kən'sɜːrvətɪv/ n.</td><td>保守的人adj. 保守的, 守旧的(式样等)不时新的, 传统的</td></tr>
+<tr><td>reign</td><td>/reɪn/ vi.</td><td>统治；盛行；支配；君临n. 统治；支配；统治时期, reigning, reigns</td></tr>
+<tr><td>binges</td><td>/bɪndʒ/ n.</td><td>狂欢，狂闹；放纵vt. 放纵vi. 狂饮作乐；大吃大喝, binging, bingeing binges</td></tr>
+<tr><td>concessions</td><td>/kən'seʃn/ n.</td><td>承认, 允许妥协, 让步特许权</td></tr>
+<tr><td>junior</td><td>/'dʒuːniər/ adj.</td><td>年少的, 较年幼的资历较浅的, 地位较低的n. 年少者地位较低者, 晚辈(美国中学或大学的)三年级学生</td></tr>
+<tr><td>sniffed</td><td>/snɪf/ vi.</td><td>嗤之以鼻；嗅vt. 用力吸；发觉；闻；嗅n. 以鼻吸气；气味；吸，闻；吸气声；嗤之以鼻, sniffing, sniffs</td></tr>
+<tr><td>delegate</td><td>/'delɪɡət/ n.</td><td>代表；会议代表v. 授（权）；把（工作、权力等）委托（给下级）选派（某人做某事）, delegating, delegates</td></tr>
+<tr><td>earned</td><td>/ɪr/ n.</td><td>耳朵；听觉；倾听；穗vi. （美俚）听见；抽穗EARabbr. East African Railways 东非铁路公司, earing, ears</td></tr>
+<tr><td>crawling</td><td>— n.</td><td>表面涂布不匀；收缩龟裂</td></tr>
+<tr><td>delegates</td><td>/'delɪɡət/ n.</td><td>代表；会议代表v. 授（权）；把（工作、权力等）委托（给下级）选派（某人做某事）, delegating, delegates</td></tr>
+<tr><td>fury</td><td>/'fjʊri/ n.</td><td>狂怒；暴怒；激怒者Furyn. 〈希神〉复仇女神</td></tr>
+<tr><td>resolution</td><td>/ˌrezə'luːʃn/ n.</td><td>正式决定，决议决心，决定坚决；坚定；坚毅解决，解答分辨力，分辨率[度]</td></tr>
+<tr><td>picture</td><td>/'pɪktʃər/ n.</td><td>图画，肖像；照片(生动的)描述，写照影片；电影；画面美景，景色情况，事态，局面vt. 绘画；描绘想象，picturing，pictures</td></tr>
+<tr><td>hysterical</td><td>/hɪ'sterɪkl/ adj.</td><td>情绪异常激动的, 歇斯底里般的</td></tr>
+<tr><td>invocation</td><td>/ˌɪnvə'keɪʃn/ n.</td><td>祈祷,乞求乞灵,乞求神助</td></tr>
+<tr><td>delegates</td><td>/'delɪɡət/ n.</td><td>代表；会议代表v. 授（权）；把（工作、权力等）委托（给下级）选派（某人做某事）, delegating, delegates</td></tr>
+<tr><td>rage</td><td>/reɪdʒ/ n.</td><td>愤怒；狂暴，肆虐；情绪激动vi. 大怒，发怒；流行，风行, raging, rages</td></tr>
+<tr><td>alternative</td><td>/ɔːl'tɜːrnətɪv/ adj.</td><td>可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）可供选择的事物；可供选择的解决办法替代物</td></tr>
+<tr><td>polling</td><td>/'poʊlɪŋ/ n.</td><td>投票Polling轮流检测,联接到另一主机查看电子信件或新闻</td></tr>
+<tr><td>harsh</td><td>/hɑːrʃ/ adj.</td><td>粗糙的；刺耳的；严厉的；严酷的；刺目的, harshest</td></tr>
+<tr><td>parliament</td><td>/'pɑːrləmənt/ n.</td><td>议会, 国会</td></tr>
+<tr><td>line</td><td>/laɪn/ n.</td><td>绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long interspersed element)长散在元</td></tr>
+<tr><td>radicals</td><td>/'rædɪkl/ adj.</td><td>根本的，基本的；彻底的，完全的激进的，激进派的</td></tr>
+<tr><td>wonder</td><td>/'wʌndər/ vt.</td><td>& vi. 对…感到疑惑想知道；问自己n. 惊奇，惊叹，惊异，惊诧奇人，奇才奇观，奇景，奇迹，奇事，wondering，wonders</td></tr>
+<tr><td>embarrassed</td><td>/ɪm'bærəst/ adj.</td><td>局促不安的；为难的；尴尬的窘迫的；陷入困境的；拮据的</td></tr>
+<tr><td>precisely</td><td>/prɪ'saɪsli/ adv.</td><td>精确地；恰好；细心地对，的确如此</td></tr>
+<tr><td>tend</td><td>/tend/ vt.</td><td>照料，照顾，伺候vi. 往，朝向易于；倾向，tending，tends</td></tr>
+<tr><td>conservatives</td><td>/kən'sɜːrvətɪv/ n.</td><td>保守的人adj. 保守的, 守旧的(式样等)不时新的, 传统的</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>unstoppable</td><td>/ʌn'stɑːpəbl/ adj.</td><td>无法停止的;无法阻碍的</td></tr>
+<tr><td>brussels</td><td>/ˈbrʌsəlz/ n.</td><td>布鲁塞尔（比利时首都）</td></tr>
+<tr><td>paradox</td><td>/'pærədɑːks/ n.</td><td>似非而是的论点；悖论，反论；自相矛盾的人或事</td></tr>
+<tr><td>protests</td><td>/'proʊtest/ n.</td><td>抗议；反对vt. & vi. 声明；抗议，protesting，protests</td></tr>
+<tr><td>fixture</td><td>/'fɪkstʃər/ n.</td><td>(房屋等的)固定装置固定在某位置的人或物</td></tr>
+<tr><td>huff</td><td>/hʌf/ vi.</td><td>生气地说；把……吹胀，吹气；发怒，激怒；蔑视；恫吓；嗅（汽油、溶剂）作为兴奋剂；（国际跳棋中）取掉（对方本可吃棋的棋子）</td></tr>
+<tr><td>wondering</td><td>/'wʌndər/ vt.</td><td>& vi. 对…感到疑惑想知道；问自己n. 惊奇，惊叹，惊异，惊诧奇人，奇才奇观，奇景，奇迹，奇事，wondering，wonders</td></tr>
+<tr><td>nose</td><td>/noʊz/ n.</td><td>鼻子似鼻子的东西嗅觉vt. 嗅vi. 窥探, 探听, 四处查看vt. & vi. 小心翼翼地前进, nosing, noses</td></tr>
+<tr><td>yields</td><td>/jiːld/ vt.</td><td>出产；屈服；放弃vi. 屈服，投降n. 收益；产量, yielding, yields</td></tr>
+<tr><td>runaway</td><td>/'rʌnəweɪ/ adj.</td><td>逃走的；逃亡的n. 逃跑；逃走的人</td></tr>
+<tr><td>impression</td><td>/ɪm'preʃn/ n.</td><td>印象, 感想想法, 看法, 感觉滑稽模仿印记, 压痕重印</td></tr>
+<tr><td>bloated</td><td>/bloʊt/ vt.</td><td>（使）肿胀；使膨胀；腌制vi. 膨胀；肿起；得意n. 膨胀的东西，肿胀的人；肿胀病人；自满的人, bloating, bloats</td></tr>
+<tr><td>dire</td><td>/'daɪər/ adj.</td><td>可怕的, 恐怖的, direst</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>firmly</td><td>/'fɜːrmli/ adv.</td><td>坚固地;稳固地坚定地;坚决地</td></tr>
+<tr><td>refrain</td><td>/rɪ'freɪn/ vi.</td><td>制止；避免；节制，克制n. 叠句，副歌；重复, refraining, refrains</td></tr>
+<tr><td>reeks</td><td>/riːk/ vi.</td><td>冒烟；散发；放出臭气n. 臭气；水蒸汽；烟vt. 用烟熏；散发, reeking, reeks</td></tr>
+<tr><td>tear</td><td>/tɪr，ter/ v.</td><td>撕掉，扯下；撕破；拔掉；拉伤；（非正式）狂奔；饱经……摧残；流眼泪n. 眼泪；（撕破的）洞或裂缝， 撕扯，torn，tearing，tears</td></tr>
+<tr><td>promoted</td><td>/'proʊmoʊ/ n.</td><td>商品推销；商品广告，广告片</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>brussels</td><td>/ˈbrʌsəlz/ n.</td><td>布鲁塞尔（比利时首都）</td></tr>
+<tr><td>blueprint</td><td>/'bluːprɪnt/ n.</td><td>蓝图, 设计图, blueprinting, blueprints</td></tr>
+<tr><td>paradox</td><td>/'pærədɑːks/ n.</td><td>似非而是的论点；悖论，反论；自相矛盾的人或事</td></tr>
+<tr><td>instincts</td><td>/'ɪnstɪŋkt/ n.</td><td>本能，直觉；天性adj. 充满着的</td></tr>
+<tr><td>intervention</td><td>/ˌɪntər'venʃn/ n.</td><td>介入, 干涉, 干预</td></tr>
+<tr><td>relatively</td><td>/'relətɪvli/ adv.</td><td>相对地，比较而言；相当相对来说；相比较而言</td></tr>
+<tr><td>blunted</td><td>/blʌnt/ adj.</td><td>钝的，不锋利的；生硬的；直率的vt. 使迟钝, bluntest</td></tr>
+<tr><td>preferences</td><td>/'prefrəns/ n.</td><td>较喜欢的东西, 偏爱优待, 优惠, 优先权</td></tr>
+<tr><td>farming</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>subsidies</td><td>/'sʌbsədi/ n.</td><td>津贴；补助金；补贴</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>domestic</td><td>/də'mestɪk/ adj.</td><td>国内的；家庭的；驯养的；一心只管家务的</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>decade</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>strategic</td><td>/strə'tiːdʒɪk/ adj.</td><td>战略(上)的有战略意义的; 至关重要的</td></tr>
+<tr><td>autonomy</td><td>/ɔː'tɑːnəmi/ n.</td><td>自治，自治权</td></tr>
+<tr><td>considered</td><td>/kən'sɪdər/ vt.</td><td>& vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及, considering, considers</td></tr>
+<tr><td>presented</td><td>/'preznt/ vt.</td><td>呈现；介绍；提出；赠送vi. 举枪瞄准adj. 出席的；现在的n. 现在；礼物；瞄准, presenting, presents</td></tr>
+<tr><td>mainstream</td><td>/'meɪnstriːm/ n.</td><td>(思想或行为的)主流, mainstreaming, mainstreams</td></tr>
+<tr><td>naive</td><td>/naɪ'iːv/ adj.</td><td>幼稚的; 无经验的; 单纯的天真的; 轻信的</td></tr>
+<tr><td>pursue</td><td>/pər'suː/ vt.</td><td>从事；追赶；继续；纠缠vi. 追赶；继续进行, pursuing, pursues</td></tr>
+<tr><td>commonplace</td><td>/'kɑːmənpleɪs/ adj.</td><td>普通的, 平庸的n. 陈腔滥调, 老生常谈寻常的事物, 平常的东西</td></tr>
+<tr><td>interfere</td><td>/ˌɪntər'fɪr/ vi.</td><td>干预；调停妨碍，interfering，interferes</td></tr>
+<tr><td>sovereignty</td><td>/'sɑːvrənti/ n.</td><td>最高统治权, 君权国家的主权</td></tr>
+<tr><td>triumph</td><td>/'traɪʌmf/ n.</td><td>胜利，成功巨大的成就[成功]vi. 获胜，得胜；克服，triumphing，triumphs</td></tr>
+<tr><td>seemingly</td><td>/'siːmɪŋli/ adv.</td><td>看来似乎, 表面上看</td></tr>
+<tr><td>proved</td><td>/proʊ/ n.</td><td>从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞成；支持Pro脯氨酸PROabbr. P</td></tr>
+<tr><td>spanning</td><td>/spæn/ n.</td><td>跨度，跨径两个界限间的距离一段时间vt. 建造跨越(某物的)桥或拱；横跨跨越，穿越，贯穿SPANabbr. Statistical Processing and</td></tr>
+<tr><td>spawned</td><td>/spɔːn/ n.</td><td>菌丝；卵；产物vt. 产卵；酿成，造成；大量生产vi. 产卵；大量生产, spawning, spawns</td></tr>
+<tr><td>ukraine</td><td>— n.</td><td>乌克兰（原苏联一加盟共和国，现已独立）</td></tr>
+<tr><td>exploit</td><td>/ɪk'splɔɪt/ vt.</td><td>开发，开拓；剥削；开采n. 勋绩；功绩, exploiting, exploits</td></tr>
+<tr><td>niche</td><td>/niːʃ，nɪtʃ/ n.</td><td>（尤指本人合意的）适合的工作（或职位）;称心的工作合宜的小环境（尤指用来放置塑像的）壁龛adj. （产品）针对特定小群体的v. 把……放在壁龛中, nichin</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>internal</td><td>/ɪn'tɜːrnl/ adj.</td><td>国内的；内部的；内在的</td></tr>
+<tr><td>brussels</td><td>/ˈbrʌsəlz/ n.</td><td>布鲁塞尔（比利时首都）</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>consider</td><td>/kən'sɪdər/ vt.</td><td>& vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及, considering, considers</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>commissioner</td><td>/kə'mɪʃn/ n.</td><td>授权, 委托委员会佣金, 回扣vt. 委任, 委托, commissioning, commissions</td></tr>
+<tr><td>advocate</td><td>/ˈædvəkeɪt，'ædvəkət/ v.</td><td>拥护；支持；提倡n. 拥护者；支持者；提倡者；辩护律师；出庭辩护人, advocating, advocates</td></tr>
+<tr><td>earmarking</td><td>/'ɪrmɑːrk/ vt.</td><td>指定…作为特定用途, earmarking, earmarks</td></tr>
+<tr><td>allies</td><td>— n.</td><td>（第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者</td></tr>
+<tr><td>instincts</td><td>/'ɪnstɪŋkt/ n.</td><td>本能，直觉；天性adj. 充满着的</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>moderate</td><td>/'mɑːdərət/ adj.</td><td>中等的，适度的，不很大的温和的；有节制的中庸的，稳健的，不走极端的vt. & vi. (使)减轻[缓和]；节制，moderating，moderates</td></tr>
+<tr><td>version</td><td>/'vɜːrʒn/ n.</td><td>变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本</td></tr>
+<tr><td>leading</td><td>/ˈliːdɪŋ/ adj.</td><td>主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）</td></tr>
+<tr><td>polls</td><td>/poʊl/ n.</td><td>民意测验；投票；投票数；投票所vt. 剪短；对…进行民意测验；获得选票；投票vi. 投票adj. 剪过毛的；修过枝的；无角的, polling, polls</td></tr>
+<tr><td>lines</td><td>— n.</td><td>台词；线；航线（line的复数）v. 排成一行；画线于（line的三单形式）</td></tr>
+<tr><td>adopting</td><td>/ə'dɑːpt/ vt.</td><td>收养采用, 采纳, 采取正式接受, 通过, adopting, adopts</td></tr>
+<tr><td>intervenes</td><td>/ˌɪntər'viːn/ vi.</td><td>干涉，干预；调解干扰，阻碍，intervening，intervenes</td></tr>
+<tr><td>autonomy</td><td>/ɔː'tɑːnəmi/ n.</td><td>自治，自治权</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>either</td><td>/'iːðər/ pron.</td><td>(两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的</td></tr>
+<tr><td>mess</td><td>/mes/ vt.</td><td>弄脏；弄乱n. 杂乱，脏乱；脏东西不整洁[乱七八糟]的人[事]粪便，messing，messes</td></tr>
+<tr><td>unstoppable</td><td>/ʌn'stɑːpəbl/ adj.</td><td>无法停止的;无法阻碍的</td></tr>
+<tr><td>brussels</td><td>/ˈbrʌsəlz/ n.</td><td>布鲁塞尔（比利时首都）</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day21.html" class="nav-btn">← Day 21</a>
+  <a href="day23.html" class="nav-btn">Day 23 →</a>
+</div>
+
+<div class="progress">📖 Day 22 of 44</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-10-24</div>
+
+</body>
+</html>

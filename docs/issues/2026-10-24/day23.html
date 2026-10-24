@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Britain</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-10-24</div>
+
+<h1 class="article-title">Britain</h1>
+<div class="article-section"></div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>Britain’s welfare state is living on borrowed time Britain’s least-loved hotel chain is finally <span class="annot" data-tooltip="splashing /splæʃ/ n. 溅泼声溅上的斑点(光、色等的)斑点溅泼的量vt. 使(液体)溅起vi. (指液体)溅落时 态: splashed, sp">splashing</span> the cash Britain’s <span class="annot" data-tooltip="elite /eɪ'liːt/ n. （社会）上层集团；掌权人物；出类拔萃的人，精英adj.（社会）上层集团的；掌权人物的；精英的">elite</span> may soon become harder to <span class="annot" data-tooltip="spot /spɑːt/ n. 斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Po">spot</span> Mockery keeps Britain’s politicians <span class="annot" data-tooltip="honest /'ɑːnɪst/ adj. 诚实的，实在的；可靠的；坦率的">honest</span>. (Almost) How to help your child trounce the robots Meet John Healey, Britain’s <span class="annot" data-tooltip="bald /bɔːld/ adj. 秃顶的；单调的；光秃的；无装饰的vi. 变秃比较级: balder, baldest">bald</span> <span class="annot" data-tooltip="fraud /frɔːd/ n. 欺诈, 欺骗行为骗子">fraud</span></p>
+<div class="article-separator"></div>
+<div class="article-header">Britain · Britain | Magical thinking</div>
+<p>Britain’s welfare state is living on borrowed time But John Healey’s budget will feed the <span class="annot" data-tooltip="delusion /dɪ'luːʒn/ n. 错觉；幻想；迷惑，欺骗形容词: delusional">delusion</span> that it is not Oct 22nd 2026 One of the great <span class="annot" data-tooltip="fantasies /'fæntəsi/ n. 幻想；幻觉；[心]白日梦adj. 虚幻的vt. 想像；空想vi. 耽于幻想；奏幻想曲（等于phantasy）">fantasies</span> of British politics is that the country can <span class="annot" data-tooltip="sustain /sə'steɪn/ vt. 承受，支撑维持长期保持；使继续经受，遭受时 态: sustained，sustaining，sustains">sustain</span> a welfare state similar to today’s without raising taxes. It looks as if John Healey will be the latest chancellor to peddle this fiction, at his budget on October 28th. Taxes account for 32% of the cost to <span class="annot" data-tooltip="employ /ɪm'plɔɪ/ vt. 使用，采用；雇用；使忙于，使从事于n. 雇用；使用时 态: employed, employing, employs">employ</span> an average single Briton, three percentage points less than the rich-world average. Yet in return citizens expect a full-service welfare state, including free health care and <span class="annot" data-tooltip="universal /ˌjuːnɪ'vɜːrsl/ adj. 全体的广泛的, 普遍的在世界各地的, 世界性的副 词: universally">universal</span> <span class="annot" data-tooltip="pensions /ˈpenʃn/ n. 津贴；退休金，抚恤金；膳宿费vt. 发给养老金或抚恤金时 态: pensioned, pensioning, pensi">pensions</span>. Successive governments this century have funded this jammy deal only by taxing high earners hard, <span class="annot" data-tooltip="skimping /skɪm/ vt. 撇去…的浮物；从…表面飞掠而过；去除；略读；[俚]（为逃税而）隐瞒（部分收入）vi. 掠过；浏览n. 撇；撇去的东西；表">skimping</span> on defence, letting public services deteriorate—and borrowing a <span class="annot" data-tooltip="fortune /'fɔːrtʃən/ n. 运气；财富；命运vt. 给予财富vi. 偶然发生时 态: fortuned, fortuning, fortunes">fortune</span>. This <span class="annot" data-tooltip="strategy /'strætədʒi/ n. 战略学, 兵法战略, 策略策略, 计谋">strategy</span> is running out of road. Poor growth and an ageing population, combined with increasing geopolitical turmoil, are <span class="annot" data-tooltip="stretching /stretʃ/ vt. 伸展,张开vi. 伸展adj. 可伸缩的n. 伸展，延伸时 态: stretched, stretching, stre">stretching</span> the public finances <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> too close to breaking point. Failure to reckon with these <span class="annot" data-tooltip="realities /ri'æləti/ n. 现实；真实；实际">realities</span></p>
+<p>has given Britain’s past few budgets an air of <span class="annot" data-tooltip="perpetual /pər'petʃuəl/ adj. 永久的; 终身的不断的; 常发生的副 词: perpetually">perpetual</span> crisis, with one chancellor after another <span class="annot" data-tooltip="scrambling 不规则性">scrambling</span> to make up perennial shortfalls. Mr Healey’s budget is shaping up to be a classic of the <span class="annot" data-tooltip="genre /'ʒɑːnrə/ （文学、绘画、音乐、电影等艺术作品的）体裁，类型">genre</span>, fiddling with small tax <span class="annot" data-tooltip="rises /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rises</span> when in fact the whole system is <span class="annot" data-tooltip="flawed /flɔː/ n.瑕疵，缺点；一阵狂风；短暂的风暴；裂缝，裂纹">flawed</span>. Difficult decisions seem set to be postponed until a spending review next year. The <span class="annot" data-tooltip="backdrop /'bækdrɑːp/ n. 背景幕布背景">backdrop</span> is <span class="annot" data-tooltip="bleak /bliːk/ adj. 荒凉的，无遮蔽的；阴冷的；黯淡的，无希望的；冷酷的；单调的比较级: bleaker, bleakest">bleak</span>. Britain’s ten-year borrowing cost has risen to 5.4%, from 4.4% at the latest forecast by the Office for Budget Responsibility (OBR) in March. That is partly because the Iran war has raised <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span> prices, but many other factors—from <span class="annot" data-tooltip="outsize /'aʊtsaɪz/ adj. 特大的n. 特大号">outsize</span> government borrowing to surging global demand for capital—mean bond <span class="annot" data-tooltip="yields /jiːld/ vt. 出产；屈服；放弃vi. 屈服，投降n. 收益；产量时 态: yielded, yielding, yields">yields</span> are unlikely to <span class="annot" data-tooltip="fall /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">fall</span> soon. The <span class="annot" data-tooltip="resolution /ˌrezə'luːʃn/ n. 正式决定，决议决心，决定坚决；坚定；坚毅解决，解答分辨力，分辨率[度]">Resolution</span> Foundation, a think-<span class="annot" data-tooltip="tank /tæŋk/ n. （存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内时 态: t">tank</span>, reckons the government will need to spend £14bn ($19bn, or 0.4% of GDP) more on debt interest in the <span class="annot" data-tooltip="fiscal /'fɪskl/ adj. 国库的；会计的，财政的副 词: fiscally">fiscal</span> year to 2030 than previously assumed. Mr Healey has signed up to fiscal rules ensuring day-to-day spending is fully <span class="annot" data-tooltip="covered /'kʌvər/ vt. 包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替时 态: covered, covering, c">covered</span> by taxes in three years’ time, with debt also <span class="annot" data-tooltip="falling /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">falling</span> as a percentage of GDP by then. In March he was forecast to follow these rules with £24bn to spare, but the Resolution Foundation reckons only £12bn remains. (Other forecasts are sunnier.) The chancellor has also said his budget will maintain a financial “buffer against <span class="annot" data-tooltip="uncertainty /ʌn'sɜːrtnti/ n. 无把握;不确定;变化不定无把握、不确定的事物">uncertainty</span>” and give people a “bit of <span class="annot" data-tooltip="breathing /breθ/ n. 气息；呼吸(一次)呼吸，一口气；微风">breathing</span> space”. This suggests he will dispense help with the cost of living, through targeted <span class="annot" data-tooltip="subsidies /'sʌbsədi/ n. 津贴；补助金；补贴">subsidies</span> for energy bills, for instance, or by postponing a planned <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> in fuel duty. Depending on his <span class="annot" data-tooltip="exact /ɪɡ'zækt/ adj. 精确的；准确的，精密的vt. 强求；要求；急需vi. 勒索钱财时 态: exacted, exacting, exact">exact</span> choices, expect taxes to rise modestly by 2030, probably via small-ish measures such as higher levies on banks or gamblers. A low-drama budget would be no disaster. If Mr Healey <span class="annot" data-tooltip="stuck /stʌk/ v. 刺（stick的过去式）adj. 不能动的；被卡住的">stuck</span> to plans made by his predecessor, Rachel Reeves, in March, the deficit would fall from 4.4% of GDP in the past fiscal year to 1.8% by 2030. France, in <span class="annot" data-tooltip="contrast /'kɑːntræst/ n. 对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照时 态: contrasted, cont">contrast</span>, is on track to run a deficit of 5.4% of GDP in 2026, having aimed for 5%.</p>
+<p>But Britain should try to do more than beat the French, and abiding by the letter of the <span class="annot" data-tooltip="fiscal /'fɪskl/ adj. 国库的；会计的，财政的副 词: fiscally">fiscal</span> rules does not mean its public finances are in good repair. The rules themselves are <span class="annot" data-tooltip="eyebrow /'aɪbraʊ/ n. 眉毛v. 为…描眉；用皱眉蹙额迫使">eyebrow</span>-raisingly loose, never requiring deficits or debts to <span class="annot" data-tooltip="actually /'æktʃuəl/ adj. 真实的，实际的；现行的，目前的副 词: actually">actually</span> <span class="annot" data-tooltip="fall /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">fall</span>. They need only be forecast to fall in three to five years —so the <span class="annot" data-tooltip="treasury /'treʒəri/ n. 财政部；国库，金库；宝库">Treasury</span> can always <span class="annot" data-tooltip="dodge /dɑːdʒ/ vt. & vi. 闪躲vt. 回避n. 闪躲, 躲避伎俩, 妙计时 态: dodged, dodging, dodges">dodge</span> hard choices by promising restraint that then fails to arrive (see chart 1). This looks likely to happen again: plans rely on real-<span class="annot" data-tooltip="terms /tɜːrmz/ n. 条款；地位，关系；措辞；术语；价钱（term的复数形式）v. 把…称为（term的三单形式）">terms</span> cuts to many departments’ budgets that few expect to happen. And so Britain’s debt is like a ratchet, jumping up at every crisis and never coming back down by much. Debt, excluding the Bank of England’s balance sheet, is now 92% of GDP, up from 76% before the covid-19 <span class="annot" data-tooltip="pandemic /pæn'demɪk/ adj. （疾病）在全国（或世界）流行的">pandemic</span> and 36% before the financial crisis of 2007-09. Higher bond <span class="annot" data-tooltip="yields /jiːld/ vt. 出产；屈服；放弃vi. 屈服，投降n. 收益；产量时 态: yielded, yielding, yields">yields</span> have made servicing this debt painful. The government’s <span class="annot" data-tooltip="annual /'ænjuəl/ adj. 年度的；每年的n. 年刊，年鉴；一年生植物副 词: annually">annual</span> interest bill has more than doubled since the pandemic, to £109bn. That is 8% of government spending, more than the entire defence budget. When crisis next <span class="annot" data-tooltip="strikes /straɪk/ vi. 罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打时 态:">strikes</span>, therefore, Britain may struggle to borrow its way out. The country’s failure to pay off its debts <span class="annot" data-tooltip="stems /stem/ n. (花草的)茎, (树木的)干词干vt. 遏制[阻止](液体的流动等)时 态: stemmed, stemming, st">stems</span> from a mismatch between the state Britons want and the taxes they are willing to pay. Government spending will constitute 45% of GDP in the fiscal year to 2027, up from 39% before covid. The Institute for Fiscal Studies (IFS), a think-<span class="annot" data-tooltip="tank /tæŋk/ n. （存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内时 态: t">tank</span>, points</p>
+<p>out that the last time public spending was <span class="annot" data-tooltip="sustained /sə'steɪnd/ adj. 持久的;持续的">sustained</span> at such a high level was during the second world war. The biggest <span class="annot" data-tooltip="culprit /'kʌlprɪt/ n. 犯人，罪犯；被控犯罪的人">culprit</span> is the National Health Service. The state forks out 8.4% of GDP on health care, up from 4.9% in 2000 (see chart 2). As the population ages, and as the sector’s <span class="annot" data-tooltip="productivity /ˌproʊdʌk'tɪvəti/ n. 生产率, 生产力">productivity</span> lags behind the wider economy’s, this share will climb. The OBR reckons that health-care spending could <span class="annot" data-tooltip="reach /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reach</span> 13% of GDP by the 2070s. A growing cohort of geriatrics also needs food, accommodation and social care. In July the OBR <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span> spending on the state <span class="annot" data-tooltip="pension /ˈpenʃn/ n. 津贴；退休金，抚恤金；膳宿费vt. 发给养老金或抚恤金时 态: pensioned, pensioning, pensi">pension</span> alone could <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> from 5% of GDP by 2031 to 9% by the 2070s. Andy Burnham, the prime minister, has since said he will <span class="annot" data-tooltip="tweak /twiːk/ n. 拧；扭；焦急vt. 扭；用力拉；开足马力时 态: tweaked, tweaking, tweaks">tweak</span> the “<span class="annot" data-tooltip="triple /'trɪpl/ adj. 三倍的；三方的n. 三倍数；三个一组vi. 增至三倍vt. 使成三倍时 态: tripled, tripling, tr">triple</span> lock”, which <span class="annot" data-tooltip="raises /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raises</span> the state pension each year, to make it slightly less generous after 2030. But any savings will be swallowed by his plans for a new National Care Service.</p>
+<p>Britain used to pay for its welfare state by spending less on defence. Threats from Russia and China mean that is no longer an option. The government has pledged to spend 3.5% of GDP on defence by 2035, up from 2.7% in the <span class="annot" data-tooltip="fiscal /'fɪskl/ adj. 国库的；会计的，财政的副 词: fiscally">fiscal</span> year to 2028. In total, the OBR thinks that government spending excluding interest payments could <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> from 40% of GDP in 2030 to 49% by the 2070s. If <span class="annot" data-tooltip="revenues /'revənuː/ n. 收入，收益；财政收入，税收">revenues</span> stayed constant, Britain’s debt would balloon (see chart 3). Should an imminent debt crisis loom, the government would take action. But the incentive to move early is weak because no one knows when this might happen. A growth <span class="annot" data-tooltip="spurt /spɜːrt/ vi. 喷出；冲刺；迸发n. 喷射；冲刺vt. 喷射；喷出时 态: spurted, spurting, spurts">spurt</span>, perhaps fuelled by artificial intelligence, may postpone the reckoning (though it would probably also <span class="annot" data-tooltip="raise /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raise</span> borrowing costs). The ageing of Britain’s population nevertheless means a reckoning is coming. When it does, one option would be drastic cuts to spending: reducing the state <span class="annot" data-tooltip="pension /ˈpenʃn/ n. 津贴；退休金，抚恤金；膳宿费vt. 发给养老金或抚恤金时 态: pensioned, pensioning, pensi">pension</span>, say, or tightening eligibility for <span class="annot" data-tooltip="disability /ˌdɪsə'bɪləti/ n. 无能力, 无力残疾, 伤残">disability</span> benefits. A brave government might even start charging patients to book a doctor’s appointment.</p>
+<p>The <span class="annot" data-tooltip="alternative /ɔːl'tɜːrnətɪv/ adj. 可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）">alternative</span> is rethinking the tax system. Since coming to power in 2024 Labour has been <span class="annot" data-tooltip="constrained /kən'streɪn/ vt. 强迫，强使；限制，约束时 态: constrained，constraining，constrains">constrained</span> by its foolish manifesto <span class="annot" data-tooltip="pledge /pledʒ/ n. 抵押；保证，誓言；抵押品，典当物vt. 保证，许诺；用……抵押；举杯祝……健康时 态: pledged, pledgin">pledge</span> not to increase income tax, national insurance, <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span>-added tax (VAT) or corporation tax. These account for over 70% of tax <span class="annot" data-tooltip="revenue /'revənuː/ n. 收入，收益；财政收入，税收">revenue</span>. Labour has already broken its promise, <span class="annot" data-tooltip="notably /'noʊtəbli/ adv. 显著地；尤其">notably</span> by raising the national insurance paid by employers. The total tax take is forecast to be 38% of GDP by 2030, the highest since the 1940s. Mr Healey will be loth to break Labour’s manifesto pledge again. But if his party does not want to cut long-term spending it will have to reconsider how the government <span class="annot" data-tooltip="raises /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raises</span> revenue. Some cash could come from higher taxes on the rich. The chancellor could, say, rejig capital-gains tax to <span class="annot" data-tooltip="skim /skɪm/ vt. 撇去…的浮物；从…表面飞掠而过；去除；略读；[俚]（为逃税而）隐瞒（部分收入）vi. 掠过；浏览n. 撇；撇去的东西；表">skim</span> more from <span class="annot" data-tooltip="unusually /ʌn'juːʒuəl/ adj. 与众不同的；不寻常的；不平常的副 词: unusually">unusually</span> high investment returns. For now, however, he has reportedly rejected calls from some Labour MPs to <span class="annot" data-tooltip="raise /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raise</span> capital-gains tax. In any case, higher levies on <span class="annot" data-tooltip="wealth /welθ/ n. 财富；大量；富有">wealth</span> would not fund the sort of welfare state Britons have become accustomed to. For that, politicians and voters would have to accept that broad swathes of <span class="annot" data-tooltip="society /sə'saɪəti/ n. 社会；社交界；交往；社团">society</span> need to start contributing more. This could involve <span class="annot" data-tooltip="ditching /dɪtʃ/ vt. 在…上掘沟；把…开入沟里；[俚]丢弃vi. 开沟；掘沟n. 沟渠；壕沟时 态: ditched, ditching, d">ditching</span> the list of products, such as many clothing and food products, which are <span class="annot" data-tooltip="exempt /ɪɡ'zempt/ vt. 免除；豁免adj. 被免除的；被豁免的n. 免税者；被免除义务者时 态: exempted, exempting, ex">exempt</span> from VAT. Altogether, these <span class="annot" data-tooltip="exemptions /ɪɡ'zempʃn/ n. (义务等的)免除;免(税)(收入中的)免税额">exemptions</span> cost the state £70bn a year. Or the government could raise the level of income tax paid by low and middle earners.</p>
+<p>None of these options is politically appealing. But Britain’s <span class="annot" data-tooltip="fiscal /'fɪskl/ adj. 国库的；会计的，财政的副 词: fiscally">fiscal</span> reckoning might come <span class="annot" data-tooltip="sooner /ˈsunɚ/ n. （美）抢先占有土地者（在政府开放西部前）">sooner</span> rather than later. Next year’s spending review will set departmental budgets for at least the following three. Earlier this year, when Mr Healey was defence <span class="annot" data-tooltip="secretary /'sekrəteri/ n. 秘书书记部长, 大臣形容词: secretarial">secretary</span>, he said it was <span class="annot" data-tooltip="crucial /'kruːʃl/ adj. 决定性的；重要的；定局的；决断的副 词: crucially">crucial</span> for defence spending to <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> to 3% of GDP by 2030. He then resigned when the <span class="annot" data-tooltip="treasury /'treʒəri/ n. 财政部；国库，金库；宝库">Treasury</span> refused. The IFS reckons that meeting this target, while raising health-care spending and avoiding other real-<span class="annot" data-tooltip="terms /tɜːrmz/ n. 条款；地位，关系；措辞；术语；价钱（term的复数形式）v. 把…称为（term的三单形式）">terms</span> cuts, would cost an extra £35bn a year by 2030. To <span class="annot" data-tooltip="grasp /ɡræsp/ n. 理解；控制；抓住vt. 抓住；领会vi. 抓时 态: grasped, grasping, grasps">grasp</span> the scale of this cost, <span class="annot" data-tooltip="consider /kən'sɪdər/ vt. & vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及时 态: considered, considering, ">consider</span> that funding it would be <span class="annot" data-tooltip="equivalent /ɪ'kwɪvələnt/ adj. 等同的，等效的n. 对等的人（或事物），对应的人（或事物）">equivalent</span> to raising the basic rate of income tax from 20% to about 24%. If—as looks likely—Mr Healey instead fiddles at the <span class="annot" data-tooltip="edges /edʒ/ n. 边缘；刀刃；优势；锋利vt. 使锐利；将…开刃；给…加上边vi. 缓缓移动；侧着移动EDGEabbr. Electron">edges</span> on October 28th, he may get away with it for a while. Eventually, though, the bill will <span class="annot" data-tooltip="fall /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">fall</span> <span class="annot" data-tooltip="due /duː/ adj. 到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）">due</span>. ■ This article was downloaded by zlibrary from https://www.economist.com/britain/2026/10/22/britains-welfare-state-is-living-on- borrowed-time</p>
+<div class="article-separator"></div>
+<div class="article-header">Britain · Britain | Britannia waives the rules</div>
+<p>Britain’s least-loved hotel chain is finally <span class="annot" data-tooltip="splashing /splæʃ/ n. 溅泼声溅上的斑点(光、色等的)斑点溅泼的量vt. 使(液体)溅起vi. (指液体)溅落时 态: splashed, sp">splashing</span> the cash New management, and the loss of government business, bring a change of <span class="annot" data-tooltip="strategy /'strætədʒi/ n. 战略学, 兵法战略, 策略策略, 计谋">strategy</span> Oct 22nd 2026 The Adelphi Hotel, an Edwardian <span class="annot" data-tooltip="pile /paɪl/ n. 堆；大量；建筑群vt. 累积；打桩于vi. 积累；堆积；挤时 态: piled, piling, piles">pile</span> in Liverpool, has <span class="annot" data-tooltip="hosted /hoʊst/ n. 主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集时 态: hosted, hosting, host">hosted</span> everyone from Winston Churchill to Roy <span class="annot" data-tooltip="rogers /'rɑdʒɚ/ int. 好；知道了n. 罗杰（男子名）rogerint. (无线电通讯答语)已收到ROGERabbr. Remotely Ope">Rogers</span> and his horse Trigger. Among Britain’s most luxurious hotels when it opened in 1914, it <span class="annot" data-tooltip="boasted /boʊst/ n. 自吹自擂, 自夸的话vt. & vi. 自夸vt. 有(引以为荣的事物)时 态: boasted, boasting, ">boasted</span> Turkish baths, a heated indoor pool and shooting galleries. Charles Dickens described his dinner at an earlier incarnation as “undeniably perfect”. Today the pool and spa are closed, the shooting gallery is inoperative and your correspondent’s £14.95 ($19.80) supper was scraped from a tepid buffet shortly before it closed at 8pm. The Adelphi ranks 105th of 112 Liverpool hotels on TripAdvisor.</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>splashing</td><td>/splæʃ/ n.</td><td>溅泼声溅上的斑点(光、色等的)斑点溅泼的量vt. 使(液体)溅起vi. (指液体)溅落, splashing, splashes</td></tr>
+<tr><td>elite</td><td>/eɪ'liːt/ n.</td><td>（社会）上层集团；掌权人物；出类拔萃的人，精英adj.（社会）上层集团的；掌权人物的；精英的</td></tr>
+<tr><td>spot</td><td>/spɑːt/ n.</td><td>斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Positioning and Tracki</td></tr>
+<tr><td>honest</td><td>/'ɑːnɪst/ adj.</td><td>诚实的，实在的；可靠的；坦率的</td></tr>
+<tr><td>bald</td><td>/bɔːld/ adj.</td><td>秃顶的；单调的；光秃的；无装饰的vi. 变秃, baldest</td></tr>
+<tr><td>fraud</td><td>/frɔːd/ n.</td><td>欺诈, 欺骗行为骗子</td></tr>
+<tr><td>delusion</td><td>/dɪ'luːʒn/ n.</td><td>错觉；幻想；迷惑，欺骗</td></tr>
+<tr><td>fantasies</td><td>/'fæntəsi/ n.</td><td>幻想；幻觉；[心]白日梦adj. 虚幻的vt. 想像；空想vi. 耽于幻想；奏幻想曲（等于phantasy）</td></tr>
+<tr><td>sustain</td><td>/sə'steɪn/ vt.</td><td>承受，支撑维持长期保持；使继续经受，遭受，sustaining，sustains</td></tr>
+<tr><td>employ</td><td>/ɪm'plɔɪ/ vt.</td><td>使用，采用；雇用；使忙于，使从事于n. 雇用；使用, employing, employs</td></tr>
+<tr><td>universal</td><td>/ˌjuːnɪ'vɜːrsl/ adj.</td><td>全体的广泛的, 普遍的在世界各地的, 世界性的</td></tr>
+<tr><td>pensions</td><td>/ˈpenʃn/ n.</td><td>津贴；退休金，抚恤金；膳宿费vt. 发给养老金或抚恤金, pensioning, pensions</td></tr>
+<tr><td>skimping</td><td>/skɪm/ vt.</td><td>撇去…的浮物；从…表面飞掠而过；去除；略读；[俚]（为逃税而）隐瞒（部分收入）vi. 掠过；浏览n. 撇；撇去的东西；表层物；瞒报所得的收入adj. 撇去浮沫的</td></tr>
+<tr><td>fortune</td><td>/'fɔːrtʃən/ n.</td><td>运气；财富；命运vt. 给予财富vi. 偶然发生, fortuning, fortunes</td></tr>
+<tr><td>strategy</td><td>/'strætədʒi/ n.</td><td>战略学, 兵法战略, 策略策略, 计谋</td></tr>
+<tr><td>stretching</td><td>/stretʃ/ vt.</td><td>伸展,张开vi. 伸展adj. 可伸缩的n. 伸展，延伸, stretching, stretches</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>realities</td><td>/ri'æləti/ n.</td><td>现实；真实；实际</td></tr>
+<tr><td>perpetual</td><td>/pər'petʃuəl/ adj.</td><td>永久的; 终身的不断的; 常发生的</td></tr>
+<tr><td>scrambling</td><td>— </td><td>不规则性</td></tr>
+<tr><td>genre</td><td>/'ʒɑːnrə/ </td><td>（文学、绘画、音乐、电影等艺术作品的）体裁，类型</td></tr>
+<tr><td>rises</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>flawed</td><td>/flɔː/ </td><td>n.瑕疵，缺点；一阵狂风；短暂的风暴；裂缝，裂纹</td></tr>
+<tr><td>backdrop</td><td>/'bækdrɑːp/ n.</td><td>背景幕布背景</td></tr>
+<tr><td>bleak</td><td>/bliːk/ adj.</td><td>荒凉的，无遮蔽的；阴冷的；黯淡的，无希望的；冷酷的；单调的, bleakest</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>outsize</td><td>/'aʊtsaɪz/ adj.</td><td>特大的n. 特大号</td></tr>
+<tr><td>yields</td><td>/jiːld/ vt.</td><td>出产；屈服；放弃vi. 屈服，投降n. 收益；产量, yielding, yields</td></tr>
+<tr><td>fall</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>resolution</td><td>/ˌrezə'luːʃn/ n.</td><td>正式决定，决议决心，决定坚决；坚定；坚毅解决，解答分辨力，分辨率[度]</td></tr>
+<tr><td>tank</td><td>/tæŋk/ n.</td><td>（存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内, tanking, tanks</td></tr>
+<tr><td>fiscal</td><td>/'fɪskl/ adj.</td><td>国库的；会计的，财政的</td></tr>
+<tr><td>covered</td><td>/'kʌvər/ vt.</td><td>包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替, covering, covers</td></tr>
+<tr><td>falling</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>uncertainty</td><td>/ʌn'sɜːrtnti/ n.</td><td>无把握;不确定;变化不定无把握、不确定的事物</td></tr>
+<tr><td>breathing</td><td>/breθ/ n.</td><td>气息；呼吸(一次)呼吸，一口气；微风</td></tr>
+<tr><td>subsidies</td><td>/'sʌbsədi/ n.</td><td>津贴；补助金；补贴</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>exact</td><td>/ɪɡ'zækt/ adj.</td><td>精确的；准确的，精密的vt. 强求；要求；急需vi. 勒索钱财, exacting, exacts</td></tr>
+<tr><td>stuck</td><td>/stʌk/ v.</td><td>刺（stick的过去式）adj. 不能动的；被卡住的</td></tr>
+<tr><td>contrast</td><td>/'kɑːntræst/ n.</td><td>对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照, contrasting, contrasts</td></tr>
+<tr><td>fiscal</td><td>/'fɪskl/ adj.</td><td>国库的；会计的，财政的</td></tr>
+<tr><td>eyebrow</td><td>/'aɪbraʊ/ n.</td><td>眉毛v. 为…描眉；用皱眉蹙额迫使</td></tr>
+<tr><td>actually</td><td>/'æktʃuəl/ adj.</td><td>真实的，实际的；现行的，目前的</td></tr>
+<tr><td>fall</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>treasury</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>dodge</td><td>/dɑːdʒ/ vt.</td><td>& vi. 闪躲vt. 回避n. 闪躲, 躲避伎俩, 妙计, dodging, dodges</td></tr>
+<tr><td>terms</td><td>/tɜːrmz/ n.</td><td>条款；地位，关系；措辞；术语；价钱（term的复数形式）v. 把…称为（term的三单形式）</td></tr>
+<tr><td>pandemic</td><td>/pæn'demɪk/ adj.</td><td>（疾病）在全国（或世界）流行的</td></tr>
+<tr><td>yields</td><td>/jiːld/ vt.</td><td>出产；屈服；放弃vi. 屈服，投降n. 收益；产量, yielding, yields</td></tr>
+<tr><td>annual</td><td>/'ænjuəl/ adj.</td><td>年度的；每年的n. 年刊，年鉴；一年生植物</td></tr>
+<tr><td>strikes</td><td>/straɪk/ vi.</td><td>罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打, stricken striking, str</td></tr>
+<tr><td>stems</td><td>/stem/ n.</td><td>(花草的)茎, (树木的)干词干vt. 遏制[阻止](液体的流动等), stemming, stems</td></tr>
+<tr><td>tank</td><td>/tæŋk/ n.</td><td>（存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内, tanking, tanks</td></tr>
+<tr><td>sustained</td><td>/sə'steɪnd/ adj.</td><td>持久的;持续的</td></tr>
+<tr><td>culprit</td><td>/'kʌlprɪt/ n.</td><td>犯人，罪犯；被控犯罪的人</td></tr>
+<tr><td>productivity</td><td>/ˌproʊdʌk'tɪvəti/ n.</td><td>生产率, 生产力</td></tr>
+<tr><td>reach</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>pension</td><td>/ˈpenʃn/ n.</td><td>津贴；退休金，抚恤金；膳宿费vt. 发给养老金或抚恤金, pensioning, pensions</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>tweak</td><td>/twiːk/ n.</td><td>拧；扭；焦急vt. 扭；用力拉；开足马力, tweaking, tweaks</td></tr>
+<tr><td>triple</td><td>/'trɪpl/ adj.</td><td>三倍的；三方的n. 三倍数；三个一组vi. 增至三倍vt. 使成三倍, tripling, triples</td></tr>
+<tr><td>raises</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>fiscal</td><td>/'fɪskl/ adj.</td><td>国库的；会计的，财政的</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>revenues</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>spurt</td><td>/spɜːrt/ vi.</td><td>喷出；冲刺；迸发n. 喷射；冲刺vt. 喷射；喷出, spurting, spurts</td></tr>
+<tr><td>raise</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>pension</td><td>/ˈpenʃn/ n.</td><td>津贴；退休金，抚恤金；膳宿费vt. 发给养老金或抚恤金, pensioning, pensions</td></tr>
+<tr><td>disability</td><td>/ˌdɪsə'bɪləti/ n.</td><td>无能力, 无力残疾, 伤残</td></tr>
+<tr><td>alternative</td><td>/ɔːl'tɜːrnətɪv/ adj.</td><td>可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）可供选择的事物；可供选择的解决办法替代物</td></tr>
+<tr><td>constrained</td><td>/kən'streɪn/ vt.</td><td>强迫，强使；限制，约束，constraining，constrains</td></tr>
+<tr><td>pledge</td><td>/pledʒ/ n.</td><td>抵押；保证，誓言；抵押品，典当物vt. 保证，许诺；用……抵押；举杯祝……健康, pledging, pledges</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>revenue</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>notably</td><td>/'noʊtəbli/ adv.</td><td>显著地；尤其</td></tr>
+<tr><td>raises</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>skim</td><td>/skɪm/ vt.</td><td>撇去…的浮物；从…表面飞掠而过；去除；略读；[俚]（为逃税而）隐瞒（部分收入）vi. 掠过；浏览n. 撇；撇去的东西；表层物；瞒报所得的收入adj. 撇去浮沫的</td></tr>
+<tr><td>unusually</td><td>/ʌn'juːʒuəl/ adj.</td><td>与众不同的；不寻常的；不平常的</td></tr>
+<tr><td>raise</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>wealth</td><td>/welθ/ n.</td><td>财富；大量；富有</td></tr>
+<tr><td>society</td><td>/sə'saɪəti/ n.</td><td>社会；社交界；交往；社团</td></tr>
+<tr><td>ditching</td><td>/dɪtʃ/ vt.</td><td>在…上掘沟；把…开入沟里；[俚]丢弃vi. 开沟；掘沟n. 沟渠；壕沟, ditching, ditches</td></tr>
+<tr><td>exempt</td><td>/ɪɡ'zempt/ vt.</td><td>免除；豁免adj. 被免除的；被豁免的n. 免税者；被免除义务者, exempting, exempts</td></tr>
+<tr><td>exemptions</td><td>/ɪɡ'zempʃn/ n.</td><td>(义务等的)免除;免(税)(收入中的)免税额</td></tr>
+<tr><td>fiscal</td><td>/'fɪskl/ adj.</td><td>国库的；会计的，财政的</td></tr>
+<tr><td>sooner</td><td>/ˈsunɚ/ n.</td><td>（美）抢先占有土地者（在政府开放西部前）</td></tr>
+<tr><td>secretary</td><td>/'sekrəteri/ n.</td><td>秘书书记部长, 大臣</td></tr>
+<tr><td>crucial</td><td>/'kruːʃl/ adj.</td><td>决定性的；重要的；定局的；决断的</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>treasury</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>terms</td><td>/tɜːrmz/ n.</td><td>条款；地位，关系；措辞；术语；价钱（term的复数形式）v. 把…称为（term的三单形式）</td></tr>
+<tr><td>grasp</td><td>/ɡræsp/ n.</td><td>理解；控制；抓住vt. 抓住；领会vi. 抓, grasping, grasps</td></tr>
+<tr><td>consider</td><td>/kən'sɪdər/ vt.</td><td>& vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及, considering, considers</td></tr>
+<tr><td>equivalent</td><td>/ɪ'kwɪvələnt/ adj.</td><td>等同的，等效的n. 对等的人（或事物），对应的人（或事物）</td></tr>
+<tr><td>edges</td><td>/edʒ/ n.</td><td>边缘；刀刃；优势；锋利vt. 使锐利；将…开刃；给…加上边vi. 缓缓移动；侧着移动EDGEabbr. Electronic Data Gathering Eq</td></tr>
+<tr><td>fall</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>due</td><td>/duː/ adj.</td><td>到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）</td></tr>
+<tr><td>splashing</td><td>/splæʃ/ n.</td><td>溅泼声溅上的斑点(光、色等的)斑点溅泼的量vt. 使(液体)溅起vi. (指液体)溅落, splashing, splashes</td></tr>
+<tr><td>strategy</td><td>/'strætədʒi/ n.</td><td>战略学, 兵法战略, 策略策略, 计谋</td></tr>
+<tr><td>pile</td><td>/paɪl/ n.</td><td>堆；大量；建筑群vt. 累积；打桩于vi. 积累；堆积；挤, piling, piles</td></tr>
+<tr><td>hosted</td><td>/hoʊst/ n.</td><td>主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集, hosting, hosts</td></tr>
+<tr><td>rogers</td><td>/'rɑdʒɚ/ int.</td><td>好；知道了n. 罗杰（男子名）rogerint. (无线电通讯答语)已收到ROGERabbr. Remotely Operated Geophysical Ex</td></tr>
+<tr><td>boasted</td><td>/boʊst/ n.</td><td>自吹自擂, 自夸的话vt. & vi. 自夸vt. 有(引以为荣的事物), boasting, boasts</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day22.html" class="nav-btn">← Day 22</a>
+  <a href="day24.html" class="nav-btn">Day 24 →</a>
+</div>
+
+<div class="progress">📖 Day 23 of 44</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-10-24</div>
+
+</body>
+</html>

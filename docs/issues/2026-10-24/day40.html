@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Science & technology</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-10-24</div>
+
+<h1 class="article-title">Science & technology</h1>
+<div class="article-section"></div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>should make up about 0.1% of the samples MMX collects. Scientists already have <span class="annot" data-tooltip="martian /'mɑːrʃn/ adj. 火星的n. 火星人">Martian</span> meteorites, but these are mostly hard volcanic rocks that survived the <span class="annot" data-tooltip="journey /'dʒɜːrni/ n. 旅行; 行程vi. 旅行">journey</span> through space and Earth’s atmosphere. Sara Russell, a planetary scientist at the Natural History Museum in London who will help analyse MMX’s samples, hopes the mission could recover softer sedimentary material. “That’s the material where we might see biosignatures,” she says, offering clues to whether Mars was once habitable. There is reason to <span class="annot" data-tooltip="wonder /'wʌndər/ vt. & vi. 对…感到疑惑想知道；问自己n. 惊奇，惊叹，惊异，惊诧奇人，奇才奇观，奇景，奇迹，奇事时 态: wonder">wonder</span>. Ancient riverbeds and lake <span class="annot" data-tooltip="deposits /dɪ'pɑːzɪt/ n. 存款；保证金；沉淀物vt. 存放；使沉积vi. 沉淀时 态: deposited, depositing, deposi">deposits</span> suggest Mars once had liquid water and a thicker atmosphere. Unlike the planet itself, its moons have undergone little geological change. They may therefore have preserved <span class="annot" data-tooltip="fragments /'fræɡmənt/ n. 碎片；片断或不完整部分vt. 使成碎片vi. 破碎或裂开时 态: fragmented, fragmenting, fr">fragments</span> of that distant past like a time capsule, says Elizabeth Tasker, an astrophysicist at JAXA. The two small moons could thus help answer a much bigger question: whether life existed on the red planet. ■ This article was downloaded by zlibrary from https://www.economist.com/science-and-technology/2026/10/21/japans-mission-to- marss-moons-takes-off</p>
+<p>Science & technology | Time for a rethink The second may soon be redefined Several <span class="annot" data-tooltip="atomic /ə'tɑːmɪk/ adj. 原子的，原子能的；微粒子的副 词: atomically">atomic</span> clocks are competing for the job Oct 22nd 2026 IT TAKES ABOUT a second to say “caesium atoms”. And, for <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> 60 years, caesium atoms have said how long a second lasts. That is because caesium-133, an isotope of caesium, switches between two <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span> states when exposed to microwave radiation, at a rate so regular you could set your watch by it. Indeed, atomic clocks use this steady rhythm to measure time. According to the International System of Units, a second is 9,192,631,770 cycles. But not for much longer. On October 13th the world’s top metrologists convened in Versailles for the General <span class="annot" data-tooltip="conference /'kɑːnfərəns/ n. 会议讨论, 商谈形容词: conferential">Conference</span> on Weights and Measures (CGPM), as they have done roughly once every four years since 1889, to discuss the science of measurement. After three days of debate, they set themselves a deadline: by 2030 they will decide how to redefine the second.</p>
+<p>The CGPM <span class="annot" data-tooltip="oversees /ˌoʊvər'siː/ vt. 监督；俯瞰；审查；偷看到，无意中看到时 态: oversaw overseen overseeing, oversees">oversees</span> the International Bureau of Weights and Measures (BIPM), which sets the global standard for the passage of time. It does so by combining measurements from hundreds of <span class="annot" data-tooltip="atomic /ə'tɑːmɪk/ adj. 原子的，原子能的；微粒子的副 词: atomically">atomic</span> clocks based in laboratories around the world, to account for small fluctuations which can cause errors in each individual reading. The result is a single standardised time that co-ordinates everything from financial <span class="annot" data-tooltip="transactions /træn'zækʃn/ n. 处理，办理，执行(一笔)交易；(一项)事务形容词: transactional">transactions</span> to satellite navigation. But the BIPM has a problem. To check the accuracy of its standardised time it uses a set of newer clocks, based on different chemical elements, which can measure time more <span class="annot" data-tooltip="precisely /prɪ'saɪsli/ adv. 精确地；恰好；细心地对，的确如此">precisely</span> than the best caesium clocks can. Checking the accuracy of the newer clocks requires a definition of the second itself. Using that from a caesium clock is like trying to measure the width of a hair using a ruler whose <span class="annot" data-tooltip="divisions /dɪ'vɪʒn/ n. [数] 除法；部门；分配；分割；师（军队）；赛区形容词: divisional">divisions</span> are wider than the hair. To run the clockwork like clockwork the CGPM needs to untie the second from caesium. Kyle Arnold, a physicist at the National University of Singapore, is part of a team <span class="annot" data-tooltip="developing /dɪ'veləpɪŋ/ adj. 在进行中的;走向完成阶段的;走向成熟的发展中的">developing</span> a clock based on lutetium ions. While caesium clocks use microwave radiation to trigger <span class="annot" data-tooltip="transitions /træn'zɪʃn/ n. 过渡; 转变; 变迁">transitions</span> between the atom’s <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span> states, Dr Arnold’s device uses <span class="annot" data-tooltip="lasers /'leɪzər/ n. 激光LASERabbr. Light Amplification by Stimulated Emission of R">lasers</span>. Such optical clocks “tick” more quickly, allowing time to be measured more finely. Writing in Nature, in September, Dr Arnold’s <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span> reported its lutetium clock had a tick about 1,000 times more regular than the best caesium devices. Atomic clocks must work <span class="annot" data-tooltip="reliably /rɪ'laɪəbli/ adv. 可靠地；确实地">reliably</span> in different <span class="annot" data-tooltip="places /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">places</span> around the world. Dr Arnold’s device, however, is the size of a room and yet to leave his Singapore lab. Other, more <span class="annot" data-tooltip="portable /'pɔːrtəbl/ adj. 便于携带的; 手提式的; 轻便的">portable</span>, contenders include optical clocks based on ytterbium and strontium atoms <span class="annot" data-tooltip="suspended /sə'spend/ vt. 延缓，推迟；使暂停；使悬浮vi. 悬浮；[体]禁赛时 态: suspended, suspending, suspend">suspended</span> by lasers. These come with their <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> <span class="annot" data-tooltip="issues /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issues</span>. A study published in Physical Review Letters, in July, found that measurements comparing optical clocks based on these elements disagreed with earlier results by more than their known <span class="annot" data-tooltip="uncertainties /ʌn'sɜːrtnti/ n. 无把握;不确定;变化不定无把握、不确定的事物">uncertainties</span> could explain. Metrologists must now decide which atomic <span class="annot" data-tooltip="transition /træn'zɪʃn/ n. 过渡; 转变; 变迁">transition</span> is <span class="annot" data-tooltip="promoted /'proʊmoʊ/ n. 商品推销；商品广告，广告片">promoted</span> to the official standard. That requires <span class="annot" data-tooltip="consensus /kən'sensəs/ n. (意见等)一致, 一致同意">consensus</span> among yet another team of time lords: the Consultative Committee for Time and Frequency, who are advising the BIPM and CGPM on the second’s fate. With the deadline set for 2030, they have about 100m seconds to <span class="annot" data-tooltip="reach /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reach</span> an agreement. ■</p>
+<p>This article was downloaded by zlibrary from https://www.economist.com/science-and-technology/2026/10/21/the-second-may-soon-be- redefined</p>
+<p>Science & technology | <span class="annot" data-tooltip="cyber adj. 计算机(网络)的；信息技术的">Cyber</span>-<span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span> Is the internet still safe? A string of cyber-security incidents has caused websites to go dark Oct 22nd 2026 PITY THE cyber-defenders. Occasionally, the <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> must burst into action following the unheralded <span class="annot" data-tooltip="revelation /ˌrevə'leɪʃn/ n. 显露, 泄露, 透露, 揭露被揭露的事, 暴露出来的事">revelation</span> of a <span class="annot" data-tooltip="vulnerability /ˌvʌlnərə'bɪləti/ n. 弱点,攻击">vulnerability</span> in some widely used software. Rarely, however, must they do so several times in the same week. On October 20th the security teams at <span class="annot" data-tooltip="major /'meɪdʒər/ adj. 主要的；主修的；重要的；较多的n. 成年人；主修科目；陆军少校vi. 主修时 态: majored, majoring,">major</span> web browsers received an <span class="annot" data-tooltip="unusual /ʌn'juːʒuəl/ adj. 与众不同的；不寻常的；不平常的副 词: unusually">unusual</span> email. It read “we have a problem here” and was accompanied by a file containing eight private security keys: randomly generated numbers used to encrypt communications across the entire internet. Such keys should be 116 digits long to ensure security. Those in the email, originally issued by an Indian <span class="annot" data-tooltip="authority /ə'θɔːrəti/ n. 威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗">authority</span>, were no longer than three. One was a private key of just “4”. To top things off, the email was signed <span class="annot" data-tooltip="simply /'sɪmpli/ adv. 简单地；朴素地；简直；仅仅；坦白地">simply</span> “Wayne”.</p>
+<p>Revoking such keys from important <span class="annot" data-tooltip="central /'sentrəl/ adj. 中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的副 词: centrally">central</span> databases is manageable. Checking every system has updated accordingly is hard work. <span class="annot" data-tooltip="major /'meɪdʒər/ adj. 主要的；主修的；重要的；较多的n. 成年人；主修科目；陆军少校vi. 主修时 态: majored, majoring,">Major</span> web browsers keep their blacklists up-to-date, but many internet-connected systems do not adjust so easily. Some, like many Linux systems, require an active software update; others, like some command-<span class="annot" data-tooltip="line /laɪn/ n. 绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long inter">line</span> tools on MacOS, must be <span class="annot" data-tooltip="manually /'mænjuəl/ adj. 用手的, 手工的n. 手册, 指南副 词: manually">manually</span> fixed. Defenders were busily <span class="annot" data-tooltip="plugging /plʌɡ/ n. 栓；插头；塞子vi. 塞住；用插头将与电源接通vt. 塞住；插入；接插头时 态: plugged, plugging, ">plugging</span> those gaps when, on the morning of October 21st, another problem arrived. A pair of <span class="annot" data-tooltip="vulnerabilities /ˌvʌlnərə'bɪləti/ n. 弱点,攻击">vulnerabilities</span> had been exposed in PHP, a venerable programming language which underpins tens of millions of web applications, including message boards, financial portals and government websites. A <span class="annot" data-tooltip="patch /pætʃ/ n. 眼罩；斑点；碎片；小块土地vt. 修补；掩饰；解决vi. 打补丁时 态: patched, patching, patc">patch</span> was promised for the same afternoon. In the meantime, <span class="annot" data-tooltip="affected /ə'fekt/ vt. 影响；假装；感动；感染vi. 倾向；喜欢n. 情感；引起感情的因素时 态: affected, affecting, a">affected</span> organisations were advised by governments to take their systems offline <span class="annot" data-tooltip="entirely /ɪn'taɪərli/ adv. 全部地;完整地;完全地">entirely</span>—an instruction not issued lightly. Several government websites in Europe went dark. The advice <span class="annot" data-tooltip="proved /proʊ/ n. 从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞">proved</span> to have been reasonable. Hours after news of the <span class="annot" data-tooltip="vulnerability /ˌvʌlnərə'bɪləti/ n. 弱点,攻击">vulnerability</span> broke, and with over 12 hours before a patch was <span class="annot" data-tooltip="due /duː/ adj. 到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）">due</span>, its details <span class="annot" data-tooltip="leaked /liːk/ n. 漏洞，裂缝；泄漏vt. 使渗漏，泄露vi. 漏，渗；泄漏出去时 态: leaked, leaking, leaks">leaked</span>. The vulnerability was as bad as it gets: a <span class="annot" data-tooltip="recipe /'resəpi/ n. 烹饪法; 食谱方法; 秘诀; 诀窍">recipe</span> for unauthorised remote code execution (RCE), letting an attacker take control of machines running PHP. <span class="annot" data-tooltip="exploiting /ɪk'splɔɪt/ vt. 开发，开拓；剥削；开采n. 勋绩；功绩时 态: exploited, exploiting, exploits">Exploiting</span> the vulnerability, as demonstrated by at least one widely shared proof-of-concept, was simple. There is no direct link between the two weaknesses, but one strong relationship: both vulnerabilities seem to have been discovered by AI. The PHP vulnerability was found independently by two members of an AI <span class="annot" data-tooltip="cyber adj. 计算机(网络)的；信息技术的">cyber</span>- defence consortium led by OpenAI, an American firm. The dodgy <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span> keys were “<span class="annot" data-tooltip="possibly /'pɑːsəbli/ adv. 可能地；大概；也许">possibly</span>” found using AI too, according to eMudhra, the Indian company which issued them. Certainly, the method of <span class="annot" data-tooltip="disclosure /dɪs'kloʊʒər/ n. 公开,透露被公开的事情,被披露的秘闻">disclosure</span> suggests an <span class="annot" data-tooltip="unusual /ʌn'juːʒuəl/ adj. 与众不同的；不寻常的；不平常的副 词: unusually">unusual</span> approach to research. By October 22nd two further vulnerabilities had been published. GitLab, a software development tool, announced a patch for a weakness <span class="annot" data-tooltip="affecting /ə'fekt/ vt. 影响；假装；感动；感染vi. 倾向；喜欢n. 情感；引起感情的因素时 态: affected, affecting, a">affecting</span> 12 years of <span class="annot" data-tooltip="releases /rɪ'liːs/ vt. 释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]时 态: released，rel">releases</span> that could allow its <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> RCE, ranking it ten on a ten-point severity scale. Oracle, a tech giant, fixed a similar weakness in Java, its widely used programming language, and ranked the severity 9.1. AI was probably used to uncover these <span class="annot" data-tooltip="flaws /flɔː/ n.瑕疵，缺点；一阵狂风；短暂的风暴；裂缝，裂纹">flaws</span>, too.</p>
+<p>The <span class="annot" data-tooltip="episodes /'epɪsoʊd/ n. 插曲；插话；一段情节；有趣的事件">episodes</span> <span class="annot" data-tooltip="illustrate /'ɪləstreɪt/ vt. 给…加插图说明，阐明；表明时 态: illustrated，illustrating，illustrates">illustrate</span> an uncomfortable <span class="annot" data-tooltip="reality /ri'æləti/ n. 现实；真实；实际">reality</span> of AI-powered <span class="annot" data-tooltip="cyber adj. 计算机(网络)的；信息技术的">cyber</span>- <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span>: fixing an <span class="annot" data-tooltip="issue /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issue</span> sets a timer for its <span class="annot" data-tooltip="exploitation /ˌeksplɔɪ'teɪʃn/ n. 开发;开采；开拓利用剥削广告推销">exploitation</span>. The PHP bug was announced with 18 hours notice before a <span class="annot" data-tooltip="patch /pætʃ/ n. 眼罩；斑点；碎片；小块土地vt. 修补；掩饰；解决vi. 打补丁时 态: patched, patching, patc">patch</span> was released, in an effort to prepare defenders to install the update with alacrity. But an accidental <span class="annot" data-tooltip="release /rɪ'liːs/ vt. 释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]时 态: released，rel">release</span> of a video demonstrating the <span class="annot" data-tooltip="vulnerability /ˌvʌlnərə'bɪləti/ n. 弱点,攻击">vulnerability</span> allowed others, ai in hand, to reverse-engineer the problem and work out how to <span class="annot" data-tooltip="exploit /ɪk'splɔɪt/ vt. 开发，开拓；剥削；开采n. 勋绩；功绩时 态: exploited, exploiting, exploits">exploit</span> it. Shortly after, a security company published its <span class="annot" data-tooltip="version /'vɜːrʒn/ n. 变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本">version</span> of the fix six hours early, allowing any attacker to examine <span class="annot" data-tooltip="exactly /ɪɡ'zækt/ adj. 精确的；准确的，精密的vt. 强求；要求；急需vi. 勒索钱财时 态: exacted, exacting, exact">exactly</span> what was fixed, and therefore uncover more details of the weakness in unpatched systems. Defenders once faced the difficult problem of finding the <span class="annot" data-tooltip="flaws /flɔː/ n.瑕疵，缺点；一阵狂风；短暂的风暴；裂缝，裂纹">flaws</span> in their <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> software before attackers did. Now they have a different challenge: with AI exposing a plethora of weaknesses, how can they spread news of the fixes to their users, without tipping off their enemies in the <span class="annot" data-tooltip="process /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">process</span>? ■ This article was downloaded by zlibrary from https://www.economist.com/science-and-technology/2026/10/22/is-the-internet-still- safe</p>
+<p>Science & technology | Well Informed Can joggers outrun injury? Patience when training goes the extra mile Oct 22nd 2026 KNEE PAIN in joggers is <span class="annot" data-tooltip="prevalent /'prevələnt/ adj. 普遍的, 盛行的, 流行的">prevalent</span> enough to be a term of art. “Runner’s knee”, an ache around the kneecap, was among the most common complaints in a study of 3,669 runners published in the <span class="annot" data-tooltip="orthopaedic /ˌɔːrθə'piːdɪk/ adj. 整形外科的">Orthopaedic</span> <span class="annot" data-tooltip="journal /'dʒɜːrnl/ n. 日报，杂志；日记；[经]分类账">Journal</span> of Sports Medicine (OJSM) in 2021. But it is only one of an assortment of “overuse” injuries: those caused by training that, though tolerable in parts, <span class="annot" data-tooltip="cumulatively /'kjuːmjəleɪtɪv/ adj. 累积的, 渐增的副 词: cumulatively">cumulatively</span> exceed the body’s capacity to recover. Such problems can <span class="annot" data-tooltip="compound /'kɑːmpaʊnd/ n. 复合物；混合物；【化】化合物（语法）复合词有围栏（或围墙）的场地（内有工厂或其他建筑群）adj. 复合的v. 使加重；使">compound</span>. The study found that a previous injury increased the <span class="annot" data-tooltip="odds /ɑːdz/ n. 不平等；几率；胜算；差别">odds</span> of another by 62%. <span class="annot" data-tooltip="hence /hens/ adv. 因此；今后">Hence</span> a widespread worry that a <span class="annot" data-tooltip="lifetime /'laɪftaɪm/ n. 一生；寿命；终生；使用期adj. 一生的；终身的">lifetime</span> of running will wear down <span class="annot" data-tooltip="joints /dʒɔɪnt/ n. 关节；接合处，接合点；接缝；（牛，羊等的腿）大块肉adj. 联合的，合办的；共同的；连接的vt. 连接，贴合；接合；使有">joints</span> and eventually lead to <span class="annot" data-tooltip="arthritis /ɑːr'θraɪtɪs/ n. 关节炎形容词: arthritic">arthritis</span>. How can runners keep injuries at bay? Throwing money at the problem does not help. A review published in the Cochrane Database of Systematic Reviews, in 2022, found little evidence</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>martian</td><td>/'mɑːrʃn/ adj.</td><td>火星的n. 火星人</td></tr>
+<tr><td>journey</td><td>/'dʒɜːrni/ n.</td><td>旅行; 行程vi. 旅行</td></tr>
+<tr><td>wonder</td><td>/'wʌndər/ vt.</td><td>& vi. 对…感到疑惑想知道；问自己n. 惊奇，惊叹，惊异，惊诧奇人，奇才奇观，奇景，奇迹，奇事，wondering，wonders</td></tr>
+<tr><td>deposits</td><td>/dɪ'pɑːzɪt/ n.</td><td>存款；保证金；沉淀物vt. 存放；使沉积vi. 沉淀, depositing, deposits</td></tr>
+<tr><td>fragments</td><td>/'fræɡmənt/ n.</td><td>碎片；片断或不完整部分vt. 使成碎片vi. 破碎或裂开, fragmenting, fragments</td></tr>
+<tr><td>atomic</td><td>/ə'tɑːmɪk/ adj.</td><td>原子的，原子能的；微粒子的</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>conference</td><td>/'kɑːnfərəns/ n.</td><td>会议讨论, 商谈</td></tr>
+<tr><td>oversees</td><td>/ˌoʊvər'siː/ vt.</td><td>监督；俯瞰；审查；偷看到，无意中看到, oversees</td></tr>
+<tr><td>atomic</td><td>/ə'tɑːmɪk/ adj.</td><td>原子的，原子能的；微粒子的</td></tr>
+<tr><td>transactions</td><td>/træn'zækʃn/ n.</td><td>处理，办理，执行(一笔)交易；(一项)事务</td></tr>
+<tr><td>precisely</td><td>/prɪ'saɪsli/ adv.</td><td>精确地；恰好；细心地对，的确如此</td></tr>
+<tr><td>divisions</td><td>/dɪ'vɪʒn/ n.</td><td>[数] 除法；部门；分配；分割；师（军队）；赛区</td></tr>
+<tr><td>developing</td><td>/dɪ'veləpɪŋ/ adj.</td><td>在进行中的;走向完成阶段的;走向成熟的发展中的</td></tr>
+<tr><td>transitions</td><td>/træn'zɪʃn/ n.</td><td>过渡; 转变; 变迁</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>lasers</td><td>/'leɪzər/ n.</td><td>激光LASERabbr. Light Amplification by Stimulated Emission of Radiation 激光器, 受激辐射式光</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>reliably</td><td>/rɪ'laɪəbli/ adv.</td><td>可靠地；确实地</td></tr>
+<tr><td>places</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>portable</td><td>/'pɔːrtəbl/ adj.</td><td>便于携带的; 手提式的; 轻便的</td></tr>
+<tr><td>suspended</td><td>/sə'spend/ vt.</td><td>延缓，推迟；使暂停；使悬浮vi. 悬浮；[体]禁赛, suspending, suspends</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>issues</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>uncertainties</td><td>/ʌn'sɜːrtnti/ n.</td><td>无把握;不确定;变化不定无把握、不确定的事物</td></tr>
+<tr><td>transition</td><td>/træn'zɪʃn/ n.</td><td>过渡; 转变; 变迁</td></tr>
+<tr><td>promoted</td><td>/'proʊmoʊ/ n.</td><td>商品推销；商品广告，广告片</td></tr>
+<tr><td>consensus</td><td>/kən'sensəs/ n.</td><td>(意见等)一致, 一致同意</td></tr>
+<tr><td>reach</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>cyber</td><td>— adj.</td><td>计算机(网络)的；信息技术的</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>revelation</td><td>/ˌrevə'leɪʃn/ n.</td><td>显露, 泄露, 透露, 揭露被揭露的事, 暴露出来的事</td></tr>
+<tr><td>vulnerability</td><td>/ˌvʌlnərə'bɪləti/ n.</td><td>弱点,攻击</td></tr>
+<tr><td>major</td><td>/'meɪdʒər/ adj.</td><td>主要的；主修的；重要的；较多的n. 成年人；主修科目；陆军少校vi. 主修, majoring, majors</td></tr>
+<tr><td>unusual</td><td>/ʌn'juːʒuəl/ adj.</td><td>与众不同的；不寻常的；不平常的</td></tr>
+<tr><td>authority</td><td>/ə'θɔːrəti/ n.</td><td>威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗</td></tr>
+<tr><td>simply</td><td>/'sɪmpli/ adv.</td><td>简单地；朴素地；简直；仅仅；坦白地</td></tr>
+<tr><td>central</td><td>/'sentrəl/ adj.</td><td>中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的</td></tr>
+<tr><td>major</td><td>/'meɪdʒər/ adj.</td><td>主要的；主修的；重要的；较多的n. 成年人；主修科目；陆军少校vi. 主修, majoring, majors</td></tr>
+<tr><td>line</td><td>/laɪn/ n.</td><td>绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long interspersed element)长散在元</td></tr>
+<tr><td>manually</td><td>/'mænjuəl/ adj.</td><td>用手的, 手工的n. 手册, 指南</td></tr>
+<tr><td>plugging</td><td>/plʌɡ/ n.</td><td>栓；插头；塞子vi. 塞住；用插头将与电源接通vt. 塞住；插入；接插头, plugging, plugs</td></tr>
+<tr><td>vulnerabilities</td><td>/ˌvʌlnərə'bɪləti/ n.</td><td>弱点,攻击</td></tr>
+<tr><td>patch</td><td>/pætʃ/ n.</td><td>眼罩；斑点；碎片；小块土地vt. 修补；掩饰；解决vi. 打补丁, patching, patches</td></tr>
+<tr><td>affected</td><td>/ə'fekt/ vt.</td><td>影响；假装；感动；感染vi. 倾向；喜欢n. 情感；引起感情的因素, affecting, affects</td></tr>
+<tr><td>entirely</td><td>/ɪn'taɪərli/ adv.</td><td>全部地;完整地;完全地</td></tr>
+<tr><td>proved</td><td>/proʊ/ n.</td><td>从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞成；支持Pro脯氨酸PROabbr. P</td></tr>
+<tr><td>vulnerability</td><td>/ˌvʌlnərə'bɪləti/ n.</td><td>弱点,攻击</td></tr>
+<tr><td>due</td><td>/duː/ adj.</td><td>到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）</td></tr>
+<tr><td>leaked</td><td>/liːk/ n.</td><td>漏洞，裂缝；泄漏vt. 使渗漏，泄露vi. 漏，渗；泄漏出去, leaking, leaks</td></tr>
+<tr><td>recipe</td><td>/'resəpi/ n.</td><td>烹饪法; 食谱方法; 秘诀; 诀窍</td></tr>
+<tr><td>exploiting</td><td>/ɪk'splɔɪt/ vt.</td><td>开发，开拓；剥削；开采n. 勋绩；功绩, exploiting, exploits</td></tr>
+<tr><td>cyber</td><td>— adj.</td><td>计算机(网络)的；信息技术的</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>possibly</td><td>/'pɑːsəbli/ adv.</td><td>可能地；大概；也许</td></tr>
+<tr><td>disclosure</td><td>/dɪs'kloʊʒər/ n.</td><td>公开,透露被公开的事情,被披露的秘闻</td></tr>
+<tr><td>unusual</td><td>/ʌn'juːʒuəl/ adj.</td><td>与众不同的；不寻常的；不平常的</td></tr>
+<tr><td>affecting</td><td>/ə'fekt/ vt.</td><td>影响；假装；感动；感染vi. 倾向；喜欢n. 情感；引起感情的因素, affecting, affects</td></tr>
+<tr><td>releases</td><td>/rɪ'liːs/ vt.</td><td>释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]，releasing，releases</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>flaws</td><td>/flɔː/ </td><td>n.瑕疵，缺点；一阵狂风；短暂的风暴；裂缝，裂纹</td></tr>
+<tr><td>episodes</td><td>/'epɪsoʊd/ n.</td><td>插曲；插话；一段情节；有趣的事件</td></tr>
+<tr><td>illustrate</td><td>/'ɪləstreɪt/ vt.</td><td>给…加插图说明，阐明；表明，illustrating，illustrates</td></tr>
+<tr><td>reality</td><td>/ri'æləti/ n.</td><td>现实；真实；实际</td></tr>
+<tr><td>cyber</td><td>— adj.</td><td>计算机(网络)的；信息技术的</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>issue</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>exploitation</td><td>/ˌeksplɔɪ'teɪʃn/ n.</td><td>开发;开采；开拓利用剥削广告推销</td></tr>
+<tr><td>patch</td><td>/pætʃ/ n.</td><td>眼罩；斑点；碎片；小块土地vt. 修补；掩饰；解决vi. 打补丁, patching, patches</td></tr>
+<tr><td>release</td><td>/rɪ'liːs/ vt.</td><td>释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]，releasing，releases</td></tr>
+<tr><td>vulnerability</td><td>/ˌvʌlnərə'bɪləti/ n.</td><td>弱点,攻击</td></tr>
+<tr><td>exploit</td><td>/ɪk'splɔɪt/ vt.</td><td>开发，开拓；剥削；开采n. 勋绩；功绩, exploiting, exploits</td></tr>
+<tr><td>version</td><td>/'vɜːrʒn/ n.</td><td>变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本</td></tr>
+<tr><td>exactly</td><td>/ɪɡ'zækt/ adj.</td><td>精确的；准确的，精密的vt. 强求；要求；急需vi. 勒索钱财, exacting, exacts</td></tr>
+<tr><td>flaws</td><td>/flɔː/ </td><td>n.瑕疵，缺点；一阵狂风；短暂的风暴；裂缝，裂纹</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>process</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>prevalent</td><td>/'prevələnt/ adj.</td><td>普遍的, 盛行的, 流行的</td></tr>
+<tr><td>orthopaedic</td><td>/ˌɔːrθə'piːdɪk/ adj.</td><td>整形外科的</td></tr>
+<tr><td>journal</td><td>/'dʒɜːrnl/ n.</td><td>日报，杂志；日记；[经]分类账</td></tr>
+<tr><td>cumulatively</td><td>/'kjuːmjəleɪtɪv/ adj.</td><td>累积的, 渐增的</td></tr>
+<tr><td>compound</td><td>/'kɑːmpaʊnd/ n.</td><td>复合物；混合物；【化】化合物（语法）复合词有围栏（或围墙）的场地（内有工厂或其他建筑群）adj. 复合的v. 使加重；使恶化由…构成（或形成）混合；掺和；拌和,</td></tr>
+<tr><td>odds</td><td>/ɑːdz/ n.</td><td>不平等；几率；胜算；差别</td></tr>
+<tr><td>hence</td><td>/hens/ adv.</td><td>因此；今后</td></tr>
+<tr><td>lifetime</td><td>/'laɪftaɪm/ n.</td><td>一生；寿命；终生；使用期adj. 一生的；终身的</td></tr>
+<tr><td>joints</td><td>/dʒɔɪnt/ n.</td><td>关节；接合处，接合点；接缝；（牛，羊等的腿）大块肉adj. 联合的，合办的；共同的；连接的vt. 连接，贴合；接合；使有接头vi. 贴合；生节, jointin</td></tr>
+<tr><td>arthritis</td><td>/ɑːr'θraɪtɪs/ n.</td><td>关节炎</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day39.html" class="nav-btn">← Day 39</a>
+  <a href="day41.html" class="nav-btn">Day 41 →</a>
+</div>
+
+<div class="progress">📖 Day 40 of 44</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-10-24</div>
+
+</body>
+</html>

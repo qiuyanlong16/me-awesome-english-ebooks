@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The world this week</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-10-24</div>
+
+<h1 class="article-title">The world this week</h1>
+<div class="article-section"></div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>The developers of the PHP programming language issued a fix that they urged users to download <span class="annot" data-tooltip="immediately /ɪ'miːdiət/ adj. 立即的，即刻的；紧迫的目前的，当前的直接的最接近的名 词: immediateness">immediately</span>, after an OpenAI-led consortium discovered two <span class="annot" data-tooltip="critical /'krɪtɪkl/ adj. 批评的，爱挑剔的；决定性的；危险的；临界的；鉴定的；评论的副 词: critically">critical</span> <span class="annot" data-tooltip="vulnerabilities /ˌvʌlnərə'bɪləti/ n. 弱点,攻击">vulnerabilities</span>. PHP shores up a large part of the internet, running in the <span class="annot" data-tooltip="background /'bækɡraʊnd/ n. (画等的)背景, 底色背景情况个人背景资料动 词: background">background</span> of websites, <span class="annot" data-tooltip="hosting /hoʊst/ n. 主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集时 态: hosted, hosting, host">hosting</span> platforms and control <span class="annot" data-tooltip="panels /'pænl/ n. 仪表板；嵌板；座谈小组，全体陪审员vt. 嵌镶板时 态: paneled, panelled paneling, pan">panels</span>. Some governments, including in <span class="annot" data-tooltip="finland n. 芬兰（欧洲）名 词: Finlander">Finland</span> and the Netherlands, took some websites offline while they worked on the <span class="annot" data-tooltip="issue /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issue</span>. America’s National <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">Security</span> Agency recommended that systems be taken offline if users couldn’t apply the <span class="annot" data-tooltip="mitigations n. 缓解,减轻,平静">mitigations</span>. The fix will have alerted criminals to the <span class="annot" data-tooltip="vulnerability /ˌvʌlnərə'bɪləti/ n. 弱点,攻击">vulnerability</span> of servers. Britain’s <span class="annot" data-tooltip="annual /'ænjuəl/ adj. 年度的；每年的n. 年刊，年鉴；一年生植物副 词: annually">annual</span> <span class="annot" data-tooltip="inflation /ɪn'fleɪʃn/ n. (充气而引起的)膨胀通货膨胀">inflation</span> rate jumped to 3.5% in September. Markets are now all but certain that the Bank of England will <span class="annot" data-tooltip="raise /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raise</span> interest rates at its meeting in November. The British government at last approved the development of the Jackdaw gasfield in the North Sea, the first big endorsement of a fossil-fuel project under Andy Burnham as prime minister. The governing Labour Party has pledged to deliver a <span class="annot" data-tooltip="net /net/ n. 网；净利；网络；实价vi. 编网vt. 净赚；得到；用网捕adj. 纯粹的；净余的时 态: netted, nettin">net</span>-zero carbon emissions policy. Greens are <span class="annot" data-tooltip="furious /'fjʊriəs/ adj. 狂怒的, 暴怒的强烈的, 激烈的副 词: furiously">furious</span>, but Mr Burnham said it would protect jobs. Unions hailed the decision. The government is now under pressure to approve the Rosebank oil project, which environmentalists also vehemently oppose. UniCredit, Italy’s second-largest bank, won approval from the European <span class="annot" data-tooltip="central /'sentrəl/ adj. 中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的副 词: centrally">Central</span> Bank to take over Commerzbank, a big German lender. Having secured 48% of Commerzbank’s shares, UniCredit thinks it will take control of the bank by the end of the year. The IPO of Jio Platforms, Mukesh Ambani’s <span class="annot" data-tooltip="telecoms /ˈtɛlɪˌkɑm/ n. 电信，远距通信；电讯">telecoms</span> firm, was fully subscribed just two hours after it opened. The flotation is expected to raise $3.2bn, making it India’s biggest-ever listing. The shares start trading on October 28th. This article was downloaded by zlibrary from https://www.economist.com/the-world-this-week/2026/10/22/business</p>
+<p>Cartoon: France’s clean up A <span class="annot" data-tooltip="lighter /'laɪtər/ n. 打火机；驳船；点火者vt. 驳运时 态: lightered, lightering, lighters">lighter</span> take on the news Oct 22nd 2026 Dig deeper into the subject of this week’s cartoon: France’s devastation and its <span class="annot" data-tooltip="aftermath /'æftərmæθ/ n. 后果">aftermath</span> France is ungovernable at home—yet <span class="annot" data-tooltip="unstoppable /ʌn'stɑːpəbl/ adj. 无法停止的;无法阻碍的">unstoppable</span> in <span class="annot" data-tooltip="brussels /ˈbrʌsəlz/ n. 布鲁塞尔（比利时首都）">Brussels</span> The agony of liberal Europe You can see previous ones here. This article was downloaded by zlibrary from https://www.economist.com/the-world-this-week/2026/10/22/cartoon-frances-clean-up</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Leaders</div>
+<p>The agony of liberal Europe Saudi Arabia and the UAE are sowing <span class="annot" data-tooltip="chaos /'keɪɑːs/ n. 混沌，混乱形容词: chaotic">chaos</span> <span class="annot" data-tooltip="either /'iːðər/ pron. (两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的">Either</span> AI or public debt could <span class="annot" data-tooltip="crash /kræʃ/ n. 碰撞；崩溃；坠落vt. 破碎；撞碎；坠落vi. 碰撞；坠毁；闯；突然倒台adj. 速成的时 态: crashed, cr">crash</span> markets. But probably not both Europe must <span class="annot" data-tooltip="escape /ɪ'skeɪp/ vt. 逃避，避免；被忘掉vi. 逃脱；避开；溜走n. 逃跑；逃亡时 态: escaped, escaping, escapes">escape</span> its reliance on American satellites <span class="annot" data-tooltip="indonesia /ˌɪndə'niːʒə/ n. 印度尼西亚(东南亚岛国)">Indonesia</span>’s populist president is losing his charm</p>
+<div class="article-separator"></div>
+<div class="article-header">Leaders · Leaders | Our cover</div>
+<p>The agony of liberal Europe Centrist rulers have fallen dangerously short—and are now paying the price Oct 22nd 2026 “The first steps into the Unrest seem <span class="annot" data-tooltip="straightforward /ˌstreɪt'fɔːrwərd/ adj. (人或其态度)正直的，坦率的；老实的简单的；易懂的副 词: straightforwardly">straightforward</span> enough—anger at the <span class="annot" data-tooltip="fall /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">fall</span> of real <span class="annot" data-tooltip="wages /weɪdʒ/ vi. 进行；发动；从事n. 工资；报偿；代价vt. 开展；进行时 态: waged, waging, wages">wages</span>, at capitalist aggression, at the unwillingness of <span class="annot" data-tooltip="parliament /'pɑːrləmənt/ n. 议会, 国会">Parliament</span>; anger fomented by agitators...reason wars with <span class="annot" data-tooltip="instinct /'ɪnstɪŋkt/ n. 本能，直觉；天性adj. 充满着的">instinct</span>.” Few of those who <span class="annot" data-tooltip="mobbed /mɑːb/ n. 暴徒vt. 聚众包围时 态: mobbed, mobbing, mobs">mobbed</span> French cities this week would recognise those words. But many would agree with George Dangerfield, the British-American journalist who wrote them. The demonstrators were consumed by <span class="annot" data-tooltip="rage /reɪdʒ/ n. 愤怒；狂暴，肆虐；情绪激动vi. 大怒，发怒；流行，风行时 态: raged, raging, rages">rage</span>. Rage at the failure of the state and against the floundering centrist politicians who govern. Rage at high prices and economic dysfunction. And for some, rage against the idea of centrist politics at all. Dangerfield wrote about “the strange death of liberal England” in the years before the first world war. Some predict a similarly grim fate for liberal</p>
+<p>Europe today. Arson, <span class="annot" data-tooltip="mob /mɑːb/ n. 暴徒vt. 聚众包围时 态: mobbed, mobbing, mobs">mob</span> violence, <span class="annot" data-tooltip="looting /luːt/ n. 掠夺品；战利品；抢劫vt. 抢劫，洗劫；强夺vi. 洗劫，掠夺；抢劫时 态: looted, looting, loot">looting</span> and mass <span class="annot" data-tooltip="protests /'proʊtest/ n. 抗议；反对vt. & vi. 声明；抗议时 态: protested，protesting，protests">protests</span> show how much citizens despair of their leaders. France has a long tradition of the manif, but the violence <span class="annot" data-tooltip="unleashed /ʌn'liːʃ/ vt. 把(感情、力量等)释放出来, 发泄时 态: unleashed, unleashing, unleashes">unleashed</span> by <span class="annot" data-tooltip="hooded n. 头巾；兜帽；覆盖vt. 以头巾覆盖；罩上Hood胡德(姓氏)时 态: hooded, hooding, hoods">hooded</span> and masked rioters across the country over the past weekend was <span class="annot" data-tooltip="unusually /ʌn'juːʒuəl/ adj. 与众不同的；不寻常的；不平常的副 词: unusually">unusually</span> <span class="annot" data-tooltip="severe /sɪ'vɪr/ adj. 严厉的；苛刻的；剧烈的；严峻的比较级: severer, severest">severe</span>. Protests also flared in <span class="annot" data-tooltip="belgium n. 比利时（西欧国家，首都布鲁塞尔Brussels）">Belgium</span>, Italy and Portugal. In looming elections, first in Spain next month, then in France and Poland next year, voters are poised to punish <span class="annot" data-tooltip="moderate /'mɑːdərət/ adj. 中等的，适度的，不很大的温和的；有节制的中庸的，稳健的，不走极端的vt. & vi. (使)减轻[缓和]；节制时 态: ">moderate</span> parties—and in Italy the <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> right is outflanking the populist Giorgia Meloni, who has governed from the centre. In the <span class="annot" data-tooltip="wings /wɪŋ/ n. 翅膀；翼；飞翔；派别vt. 使飞；飞过；空运；增加…速度；装以翼vi. 飞行时 态: winged, winging, ">wings</span> wait more <span class="annot" data-tooltip="charismatic /ˌkærɪz'mætɪk/ adj. 有魅力的;有感召力的(基督徒中的一派)认为有神赐超凡能力的">charismatic</span> figures from the extremes, including Marine Le Pen in France and Alice Weidel in Germany. Many in America and in Europe say the centre has only itself to blame. Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> <span class="annot" data-tooltip="crows /kroʊ/ vi. 报晓；啼叫n. 乌鸦；鸡鸣；撬棍时 态: crowed, crowing, crows">crows</span> that Europe is on fire because its leaders spurned his advice, left their borders open and let millions of <span class="annot" data-tooltip="immigrants /'ɪmɪɡrənt/ n. 移民">immigrants</span> rush in each year, from <span class="annot" data-tooltip="afghanistan /æf'ɡænɪstæn/ n. 阿富汗">Afghanistan</span>, Algeria and Syria. Those on the MAGA right, such as Elon Musk, say growing Muslim populations pose the greatest threat. Some talk, apocalyptically and absurdly, of “civilisational erasure” or <span class="annot" data-tooltip="civil /'sɪvl/ adj. 公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的副 词: civilly">civil</span> war. Even in Germany the chancellor, Friedrich Merz, said this week that high rates of <span class="annot" data-tooltip="migration /maɪ'ɡreɪʃn/ n. 迁移, 移居">migration</span> and a failure to <span class="annot" data-tooltip="integrate /'ɪntɪɡreɪt/ vt. 使结合成为整体vt. & vi. (使)融入时 态: integrated, integrating, integrat">integrate</span> the foreign-born are partly behind the sudden, <span class="annot" data-tooltip="violent /'vaɪələnt/ adj. 暴力引起的, 粗暴的剧烈的, 强烈的副 词: violently">violent</span> upheaval. So has Hungary’s newish prime minister, Peter Magyar. Their analysis is <span class="annot" data-tooltip="either /'iːðər/ pron. (两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的">either</span> craven or self-serving. Undoubtedly, many European voters also wish to <span class="annot" data-tooltip="curb /kɜːrb/ n. 侧石, 边石限制, 克制, 抑制vt. 限制, 克制, 抑制时 态: curbed, curbing, curbs">curb</span> immigration and <span class="annot" data-tooltip="asylum /ə'saɪləm/ n. 庇护；收容所，救济院">asylum</span>. But when it comes to the violent protests, the diagnosis is plain wrong. Instead the problems facing Europe’s centrists are more complex—and less easy to fix. Even if some young protesters in France wear Algerian football shirts or chant <span class="annot" data-tooltip="pro /proʊ/ n. 从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞">pro</span>-Palestinian slogans, the upheaval in Europe today is not about <span class="annot" data-tooltip="race /reɪs/ n. 种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACE">race</span> or religion. Over 500,000 people marched in France on Saturday and they were largely unmasked and white. They were fired up, as in other countries, by the cost of living and poor public services. They want more fuel <span class="annot" data-tooltip="subsidies /'sʌbsədi/ n. 津贴；补助金；补贴">subsidies</span>, more spending on schools, more handouts. Perhaps the largest <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span> are <span class="annot" data-tooltip="aligned /ə'laɪn/ vt. 使结盟；使成一行；匹配vi. 排列；排成一行时 态: alignedalso alined aligningalinin">aligned</span> with the populist-left Jean-Luc Mélenchon, an ageing rabble-rouser and one-time Trotskyist, more akin to Bernie Sanders than an emir of ISIS.</p>
+<p>Real violence did follow. But blame that on other factors, none to do with <span class="annot" data-tooltip="race /reɪs/ n. 种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACE">race</span>. Mobs struck at public buildings, police cars and more. They also <span class="annot" data-tooltip="smashed /smæʃ/ n. 破碎(声)猛击；猛撞大成功；极为成功的新书[新戏，电影等]vt. & vi. 打碎；捣烂vt. 重击；打败时 态: sm">smashed</span> and grabbed from luxury <span class="annot" data-tooltip="retailers /'riːteɪlər/ n. 传播的人；零售商">retailers</span>, like Louis Vuitton, and small stores run by <span class="annot" data-tooltip="immigrants /'ɪmɪɡrənt/ n. 移民">immigrants</span>. The police failed to keep order, having earlier been accused of brutality against student protesters. And much of the violence was incited and <span class="annot" data-tooltip="orchestrated /'ɔːrkɪstrə/ n. 管弦乐队形容词: orchestral">orchestrated</span> by anarchists, who have a revolutionary political <span class="annot" data-tooltip="agenda /ə'dʒendə/ n. （政治）议题；议事日程；目的">agenda</span>. Typical among them is a man arrested after the burning of a 19th-century town hall in Limoges, a white French citizen in his mid-30s. <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">Although</span> the critics are wrong, Europe’s centrists do face real problems— and France shows how <span class="annot" data-tooltip="serious /'sɪriəs/ adj. 严肃的，严重的；认真的；庄重的；危急的副 词: seriously">serious</span> they are. The first is the <span class="annot" data-tooltip="fiscal /'fɪskl/ adj. 国库的；会计的，财政的副 词: fiscally">fiscal</span> bind that makes effective political action so hard. When Emmanuel Macron, the president, faced huge <span class="annot" data-tooltip="protests /'proʊtest/ n. 抗议；反对vt. & vi. 声明；抗议时 态: protested，protesting，protests">protests</span> by the gilets jaunes in 2018-19, he could deploy billions of euros to placate them. Today, that is no longer possible. France is spending too much and growing too slowly—by just over 1% a year under Mr Macron. This autumn, lawmakers will struggle to pass a budget that cuts the deficit by a <span class="annot" data-tooltip="feeble /'fiːbl/ adj. 虚弱的, 衰弱的, 无力的比较级: feebler, feeblest">feeble</span> 0.4 percentage points, to an unsustainable 5% of GDP. And still the government may <span class="annot" data-tooltip="fall /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">fall</span>. France is so overborrowed, and markets have so little faith in its politicians, that spreads of French government bonds over German ones have soared to levels last seen during the euro crisis. Instead of rising to this challenge, the centrists seem out of ideas. The Economist once cheered Mr Macron as a bold new standard-bearer for <span class="annot" data-tooltip="radical /'rædɪkl/ adj. 根本的，基本的；彻底的，完全的激进的，激进派的副 词: radically">radical</span> centrism. Today, while centrists huddle together for protection, all the <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span> is at the extremes. Surveys say over 80% of the French are pessimistic about their future, especially about their economy. Mr Merz is deeply unpopular and may be forced from office. His <span class="annot" data-tooltip="anti /'ænti/ adj. 反对的n. 反对者，反对论者">anti</span>-migrant sniping reflects his <span class="annot" data-tooltip="inability /ˌɪnə'bɪləti/ n. 无能,无力">inability</span> to find the words and ideas to see off Ms Weidel and her party, the <span class="annot" data-tooltip="alternative /ɔːl'tɜːrnətɪv/ adj. 可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）">Alternative</span> for Germany. No <span class="annot" data-tooltip="wonder /'wʌndər/ vt. & vi. 对…感到疑惑想知道；问自己n. 惊奇，惊叹，惊异，惊诧奇人，奇才奇观，奇景，奇迹，奇事时 态: wonder">wonder</span> the centrists face an electoral walloping. <span class="annot" data-tooltip="polls /poʊl/ n. 民意测验；投票；投票数；投票所vt. 剪短；对…进行民意测验；获得选票；投票vi. 投票adj. 剪过毛的；修过枝的；无">Polls</span> show that Pedro Sánchez, the centre-left prime minister in Spain, will probably be <span class="annot" data-tooltip="turfed /tɜːrf/ n. 泥炭；草皮；跑马场vt. 覆草皮于形容词: turfy">turfed</span> out soon to be replaced by a coalition of the centre- and populist right. In France the riots—and the <span class="annot" data-tooltip="myth /mɪθ/ n. 神话；虚构的人，虚构的事">myth</span> that immigrants were to blame—may lift Ms Le Pen of the populist-right National Rally into the presidency in May. Polls show</p>
+<p>that the violence boosted her this week. While Mr Macron jetted off on a <span class="annot" data-tooltip="trip /trɪp/ vi. 绊倒；犯错误；远足；轻快地走n. 旅行；绊倒；差错vt. 绊倒；使犯错TRIPabbr. transformation-">trip</span> to the Gulf, Ms Le Pen gave a presidential-sounding speech calling for public order. The violence in France should jolt head-in-the-sand centrists to <span class="annot" data-tooltip="confront /kən'frʌnt/ vt. 遭遇；比较；面对时 态: confronted, confronting, confronts">confront</span> the consequences of failure. If their countries <span class="annot" data-tooltip="descend /dɪ'send/ vi. 下降；下来；遗传；屈尊；下去vt. 下去；沿…向下时 态: descended, descending, descend">descend</span> into strife, they will lose power. If they lose power, the European Union will <span class="annot" data-tooltip="choke /tʃoʊk/ vt. & vi. 填塞(使)窒息时 态: choked, choking, chokes">choke</span>, as the rest of the world <span class="annot" data-tooltip="races /reɪs/ n. 种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACE">races</span> ahead. If bond markets seize up, financial contagion could spread. If EU countries indulge Vladimir Putin of Russia, he will only become more <span class="annot" data-tooltip="aggressive /ə'ɡresɪv/ adj. 好争斗的, 挑衅的, 侵略性的副 词: aggressively">aggressive</span>. Dangerfield was writing about a time when most people were ignorant of the catastrophe that lay ahead. Today’s liberals have no such excuse. ■ This article was downloaded by zlibrary from https://www.economist.com/leaders/2026/10/22/the-agony-of-liberal-europe</p>
+<div class="article-separator"></div>
+<div class="article-header">Leaders · Leaders | The rivalry wrecking a region</div>
+<p>Saudi Arabia and the UAE are sowing <span class="annot" data-tooltip="chaos /'keɪɑːs/ n. 混沌，混乱形容词: chaotic">chaos</span> Gulf powers should stop fuelling carnage in their backyard Oct 22nd 2026 Saudi Arabia and the United Arab Emirates (UAE) could once pose as oases of stability. Now the two Gulf powers are under siege. A hostile Iran has a chokehold over the <span class="annot" data-tooltip="strait /streɪt/ n. 海峡；（尤指经济拮据引起的）困境，境况窘迫adj. 狭窄的；苦恼的副 词: straitly">Strait</span> of Hormuz, through which much of their <span class="annot" data-tooltip="commerce /'kɑːmɜːrs/ n. 商业, 贸易">commerce</span> flows. The Houthis, an Iran-backed militia in Yemen, are lobbing missiles at Saudi airports and pipelines, <span class="annot" data-tooltip="disrupting /dɪs'rʌpt/ vt. 使混乱, 扰乱时 态: disrupted, disrupting, disrupts">disrupting</span> trade and travel, and threatening Bab al-Mandab, another <span class="annot" data-tooltip="vital /'vaɪtl/ adj. 极重要的，必不可少的维持生命所必需的；生命的有生气的，充满生机的副 词: vitally">vital</span> waterway. America, once the Gulf states’ most <span class="annot" data-tooltip="reliable /rɪ'laɪəbl/ adj. 可靠的, 可信赖的副 词: reliably">reliable</span> ally, is now less willing to guarantee their <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span>, leaving both countries exposed. Given the scale of the crisis, you might think the Saudis and Emiratis would be <span class="annot" data-tooltip="marshalling /'mɑːrʃl/ n. 元帅；司仪vt. 整理；引领；编列vi. 排列">marshalling</span> their resources to deal with the problems close to home. Instead, they are tussling for influence farther afield, and <span class="annot" data-tooltip="recklessly /'rekləs/ adj. 轻率的; 鲁莽的; 不顾危险的副 词: recklessly">recklessly</span> inflaming some of the worst wars in the world.</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>immediately</td><td>/ɪ'miːdiət/ adj.</td><td>立即的，即刻的；紧迫的目前的，当前的直接的最接近的</td></tr>
+<tr><td>critical</td><td>/'krɪtɪkl/ adj.</td><td>批评的，爱挑剔的；决定性的；危险的；临界的；鉴定的；评论的</td></tr>
+<tr><td>vulnerabilities</td><td>/ˌvʌlnərə'bɪləti/ n.</td><td>弱点,攻击</td></tr>
+<tr><td>background</td><td>/'bækɡraʊnd/ n.</td><td>(画等的)背景, 底色背景情况个人背景资料动 词: background</td></tr>
+<tr><td>hosting</td><td>/hoʊst/ n.</td><td>主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集, hosting, hosts</td></tr>
+<tr><td>panels</td><td>/'pænl/ n.</td><td>仪表板；嵌板；座谈小组，全体陪审员vt. 嵌镶板, panelled paneling, panelling panels, panels</td></tr>
+<tr><td>finland</td><td>— n.</td><td>芬兰（欧洲）</td></tr>
+<tr><td>issue</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>mitigations</td><td>— n.</td><td>缓解,减轻,平静</td></tr>
+<tr><td>vulnerability</td><td>/ˌvʌlnərə'bɪləti/ n.</td><td>弱点,攻击</td></tr>
+<tr><td>annual</td><td>/'ænjuəl/ adj.</td><td>年度的；每年的n. 年刊，年鉴；一年生植物</td></tr>
+<tr><td>inflation</td><td>/ɪn'fleɪʃn/ n.</td><td>(充气而引起的)膨胀通货膨胀</td></tr>
+<tr><td>raise</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>net</td><td>/net/ n.</td><td>网；净利；网络；实价vi. 编网vt. 净赚；得到；用网捕adj. 纯粹的；净余的, netting, nets</td></tr>
+<tr><td>furious</td><td>/'fjʊriəs/ adj.</td><td>狂怒的, 暴怒的强烈的, 激烈的</td></tr>
+<tr><td>central</td><td>/'sentrəl/ adj.</td><td>中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的</td></tr>
+<tr><td>telecoms</td><td>/ˈtɛlɪˌkɑm/ n.</td><td>电信，远距通信；电讯</td></tr>
+<tr><td>lighter</td><td>/'laɪtər/ n.</td><td>打火机；驳船；点火者vt. 驳运, lightering, lighters</td></tr>
+<tr><td>aftermath</td><td>/'æftərmæθ/ n.</td><td>后果</td></tr>
+<tr><td>unstoppable</td><td>/ʌn'stɑːpəbl/ adj.</td><td>无法停止的;无法阻碍的</td></tr>
+<tr><td>brussels</td><td>/ˈbrʌsəlz/ n.</td><td>布鲁塞尔（比利时首都）</td></tr>
+<tr><td>chaos</td><td>/'keɪɑːs/ n.</td><td>混沌，混乱</td></tr>
+<tr><td>either</td><td>/'iːðər/ pron.</td><td>(两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的</td></tr>
+<tr><td>crash</td><td>/kræʃ/ n.</td><td>碰撞；崩溃；坠落vt. 破碎；撞碎；坠落vi. 碰撞；坠毁；闯；突然倒台adj. 速成的, crashing, crashes</td></tr>
+<tr><td>escape</td><td>/ɪ'skeɪp/ vt.</td><td>逃避，避免；被忘掉vi. 逃脱；避开；溜走n. 逃跑；逃亡, escaping, escapes</td></tr>
+<tr><td>indonesia</td><td>/ˌɪndə'niːʒə/ n.</td><td>印度尼西亚(东南亚岛国)</td></tr>
+<tr><td>straightforward</td><td>/ˌstreɪt'fɔːrwərd/ adj.</td><td>(人或其态度)正直的，坦率的；老实的简单的；易懂的</td></tr>
+<tr><td>fall</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>wages</td><td>/weɪdʒ/ vi.</td><td>进行；发动；从事n. 工资；报偿；代价vt. 开展；进行, waging, wages</td></tr>
+<tr><td>parliament</td><td>/'pɑːrləmənt/ n.</td><td>议会, 国会</td></tr>
+<tr><td>instinct</td><td>/'ɪnstɪŋkt/ n.</td><td>本能，直觉；天性adj. 充满着的</td></tr>
+<tr><td>mobbed</td><td>/mɑːb/ n.</td><td>暴徒vt. 聚众包围, mobbing, mobs</td></tr>
+<tr><td>rage</td><td>/reɪdʒ/ n.</td><td>愤怒；狂暴，肆虐；情绪激动vi. 大怒，发怒；流行，风行, raging, rages</td></tr>
+<tr><td>mob</td><td>/mɑːb/ n.</td><td>暴徒vt. 聚众包围, mobbing, mobs</td></tr>
+<tr><td>looting</td><td>/luːt/ n.</td><td>掠夺品；战利品；抢劫vt. 抢劫，洗劫；强夺vi. 洗劫，掠夺；抢劫, looting, loots</td></tr>
+<tr><td>protests</td><td>/'proʊtest/ n.</td><td>抗议；反对vt. & vi. 声明；抗议，protesting，protests</td></tr>
+<tr><td>unleashed</td><td>/ʌn'liːʃ/ vt.</td><td>把(感情、力量等)释放出来, 发泄, unleashing, unleashes</td></tr>
+<tr><td>hooded</td><td>— n.</td><td>头巾；兜帽；覆盖vt. 以头巾覆盖；罩上Hood胡德(姓氏), hooding, hoods</td></tr>
+<tr><td>unusually</td><td>/ʌn'juːʒuəl/ adj.</td><td>与众不同的；不寻常的；不平常的</td></tr>
+<tr><td>severe</td><td>/sɪ'vɪr/ adj.</td><td>严厉的；苛刻的；剧烈的；严峻的, severest</td></tr>
+<tr><td>belgium</td><td>— n.</td><td>比利时（西欧国家，首都布鲁塞尔Brussels）</td></tr>
+<tr><td>moderate</td><td>/'mɑːdərət/ adj.</td><td>中等的，适度的，不很大的温和的；有节制的中庸的，稳健的，不走极端的vt. & vi. (使)减轻[缓和]；节制，moderating，moderates</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>wings</td><td>/wɪŋ/ n.</td><td>翅膀；翼；飞翔；派别vt. 使飞；飞过；空运；增加…速度；装以翼vi. 飞行, winging, wings</td></tr>
+<tr><td>charismatic</td><td>/ˌkærɪz'mætɪk/ adj.</td><td>有魅力的;有感召力的(基督徒中的一派)认为有神赐超凡能力的</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>crows</td><td>/kroʊ/ vi.</td><td>报晓；啼叫n. 乌鸦；鸡鸣；撬棍, crowing, crows</td></tr>
+<tr><td>immigrants</td><td>/'ɪmɪɡrənt/ n.</td><td>移民</td></tr>
+<tr><td>afghanistan</td><td>/æf'ɡænɪstæn/ n.</td><td>阿富汗</td></tr>
+<tr><td>civil</td><td>/'sɪvl/ adj.</td><td>公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的</td></tr>
+<tr><td>migration</td><td>/maɪ'ɡreɪʃn/ n.</td><td>迁移, 移居</td></tr>
+<tr><td>integrate</td><td>/'ɪntɪɡreɪt/ vt.</td><td>使结合成为整体vt. & vi. (使)融入, integrating, integrates</td></tr>
+<tr><td>violent</td><td>/'vaɪələnt/ adj.</td><td>暴力引起的, 粗暴的剧烈的, 强烈的</td></tr>
+<tr><td>either</td><td>/'iːðər/ pron.</td><td>(两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的</td></tr>
+<tr><td>curb</td><td>/kɜːrb/ n.</td><td>侧石, 边石限制, 克制, 抑制vt. 限制, 克制, 抑制, curbing, curbs</td></tr>
+<tr><td>asylum</td><td>/ə'saɪləm/ n.</td><td>庇护；收容所，救济院</td></tr>
+<tr><td>pro</td><td>/proʊ/ n.</td><td>从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞成；支持Pro脯氨酸PROabbr. P</td></tr>
+<tr><td>race</td><td>/reɪs/ n.</td><td>种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACEabbr. Radiation Adap</td></tr>
+<tr><td>subsidies</td><td>/'sʌbsədi/ n.</td><td>津贴；补助金；补贴</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>aligned</td><td>/ə'laɪn/ vt.</td><td>使结盟；使成一行；匹配vi. 排列；排成一行</td></tr>
+<tr><td>race</td><td>/reɪs/ n.</td><td>种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACEabbr. Radiation Adap</td></tr>
+<tr><td>smashed</td><td>/smæʃ/ n.</td><td>破碎(声)猛击；猛撞大成功；极为成功的新书[新戏，电影等]vt. & vi. 打碎；捣烂vt. 重击；打败，smashing，smashes</td></tr>
+<tr><td>retailers</td><td>/'riːteɪlər/ n.</td><td>传播的人；零售商</td></tr>
+<tr><td>immigrants</td><td>/'ɪmɪɡrənt/ n.</td><td>移民</td></tr>
+<tr><td>orchestrated</td><td>/'ɔːrkɪstrə/ n.</td><td>管弦乐队</td></tr>
+<tr><td>agenda</td><td>/ə'dʒendə/ n.</td><td>（政治）议题；议事日程；目的</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>serious</td><td>/'sɪriəs/ adj.</td><td>严肃的，严重的；认真的；庄重的；危急的</td></tr>
+<tr><td>fiscal</td><td>/'fɪskl/ adj.</td><td>国库的；会计的，财政的</td></tr>
+<tr><td>protests</td><td>/'proʊtest/ n.</td><td>抗议；反对vt. & vi. 声明；抗议，protesting，protests</td></tr>
+<tr><td>feeble</td><td>/'fiːbl/ adj.</td><td>虚弱的, 衰弱的, 无力的, feeblest</td></tr>
+<tr><td>fall</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>radical</td><td>/'rædɪkl/ adj.</td><td>根本的，基本的；彻底的，完全的激进的，激进派的</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>anti</td><td>/'ænti/ adj.</td><td>反对的n. 反对者，反对论者</td></tr>
+<tr><td>inability</td><td>/ˌɪnə'bɪləti/ n.</td><td>无能,无力</td></tr>
+<tr><td>alternative</td><td>/ɔːl'tɜːrnətɪv/ adj.</td><td>可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）可供选择的事物；可供选择的解决办法替代物</td></tr>
+<tr><td>wonder</td><td>/'wʌndər/ vt.</td><td>& vi. 对…感到疑惑想知道；问自己n. 惊奇，惊叹，惊异，惊诧奇人，奇才奇观，奇景，奇迹，奇事，wondering，wonders</td></tr>
+<tr><td>polls</td><td>/poʊl/ n.</td><td>民意测验；投票；投票数；投票所vt. 剪短；对…进行民意测验；获得选票；投票vi. 投票adj. 剪过毛的；修过枝的；无角的, polling, polls</td></tr>
+<tr><td>turfed</td><td>/tɜːrf/ n.</td><td>泥炭；草皮；跑马场vt. 覆草皮于</td></tr>
+<tr><td>myth</td><td>/mɪθ/ n.</td><td>神话；虚构的人，虚构的事</td></tr>
+<tr><td>trip</td><td>/trɪp/ vi.</td><td>绊倒；犯错误；远足；轻快地走n. 旅行；绊倒；差错vt. 绊倒；使犯错TRIPabbr. transformation-induced plasticity 高</td></tr>
+<tr><td>confront</td><td>/kən'frʌnt/ vt.</td><td>遭遇；比较；面对, confronting, confronts</td></tr>
+<tr><td>descend</td><td>/dɪ'send/ vi.</td><td>下降；下来；遗传；屈尊；下去vt. 下去；沿…向下, descending, descends</td></tr>
+<tr><td>choke</td><td>/tʃoʊk/ vt.</td><td>& vi. 填塞(使)窒息, choking, chokes</td></tr>
+<tr><td>races</td><td>/reɪs/ n.</td><td>种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACEabbr. Radiation Adap</td></tr>
+<tr><td>aggressive</td><td>/ə'ɡresɪv/ adj.</td><td>好争斗的, 挑衅的, 侵略性的</td></tr>
+<tr><td>chaos</td><td>/'keɪɑːs/ n.</td><td>混沌，混乱</td></tr>
+<tr><td>strait</td><td>/streɪt/ n.</td><td>海峡；（尤指经济拮据引起的）困境，境况窘迫adj. 狭窄的；苦恼的</td></tr>
+<tr><td>commerce</td><td>/'kɑːmɜːrs/ n.</td><td>商业, 贸易</td></tr>
+<tr><td>disrupting</td><td>/dɪs'rʌpt/ vt.</td><td>使混乱, 扰乱, disrupting, disrupts</td></tr>
+<tr><td>vital</td><td>/'vaɪtl/ adj.</td><td>极重要的，必不可少的维持生命所必需的；生命的有生气的，充满生机的</td></tr>
+<tr><td>reliable</td><td>/rɪ'laɪəbl/ adj.</td><td>可靠的, 可信赖的</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>marshalling</td><td>/'mɑːrʃl/ n.</td><td>元帅；司仪vt. 整理；引领；编列vi. 排列</td></tr>
+<tr><td>recklessly</td><td>/'rekləs/ adj.</td><td>轻率的; 鲁莽的; 不顾危险的</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day1.html" class="nav-btn">← Day 1</a>
+  <a href="day3.html" class="nav-btn">Day 3 →</a>
+</div>
+
+<div class="progress">📖 Day 2 of 44</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-10-24</div>
+
+</body>
+</html>

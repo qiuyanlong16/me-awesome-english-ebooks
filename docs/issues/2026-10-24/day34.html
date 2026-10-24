@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business | Bartleby</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-10-24</div>
+
+<h1 class="article-title">Business | Bartleby</h1>
+<div class="article-section">Business</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>employment matters, not just to people’s income but also to their happiness and dignity, would become <span class="annot" data-tooltip="salient /'seɪliənt/ adj. 显著的,重要的,主要的(指角)凸出的n. 凸角进攻或防卫阵地的突出部分">salient</span> indeed. There are Pollyanna-ish answers to this question. Some point out that history is full of <span class="annot" data-tooltip="societies /sə'saɪəti/ n. 社会；社交界；交往；社团">societies</span> that were not organised around paid work. Survey data show that most retired Americans report being satisfied with their lives. Solve the piddling problem of how to fund a life without work, in other words, and everyone could merrily spend their days growing prize-winning tomatoes or going on river cruises. The truth, <span class="annot" data-tooltip="inevitably /ɪn'evɪtəbli/ adv. 不可避免地,必然地">inevitably</span>, is a lot more complicated. A review of the <span class="annot" data-tooltip="academic /ˌækə'demɪk/ adj. 学院的；学术的；理论的n. 大学生，大学教师；学者副 词: academically">academic</span> literature on well-being and work, published last month by Stephanie Chan and other researchers from Google DeepMind, another AI lab, is a helpful reminder that paid employment provides benefits that go well beyond income, and that the path to a good outcome in the event of real economic upheaval would be a <span class="annot" data-tooltip="narrow /'næroʊ/ adj. 狭窄的，有限的；度量小的；精密的；勉强的n. 狭窄部分，隘路；海峡vt. 使变狭窄vi. 变窄比较级: narrower">narrow</span> one. <span class="annot" data-tooltip="consider /kən'sɪdər/ vt. & vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及时 态: considered, considering, ">Consider</span> what work provides. Marie Jahoda, an influential academic, identified five latent benefits of employment: the structure it <span class="annot" data-tooltip="imposes /ɪm'poʊz/ vi. 欺骗；利用；施加影响vt. 强加；以…欺骗；征税时 态: imposed, imposing, imposes">imposes</span> on people’s days; the social contact it <span class="annot" data-tooltip="entails /ɪn'teɪl/ vt. 使…成为必要, 需要限定继承时 态: entailed, entailing, entails">entails</span>; the sense of collective purpose; the status afforded by being in work; and the <span class="annot" data-tooltip="nudge /nʌdʒ/ n. 用肘轻推；推动；没完没了抱怨的人vt. 用肘轻推；推进；向…不停地唠叨vi. 轻推；推进；唠叨时 态: nudged, ">nudge</span> it gives away from idleness and <span class="annot" data-tooltip="towards /tɔːrdz/ prep. 向，朝为了；有助于；用于对于，关于接近；将近；大约">towards</span> activity. (There are others, too: a recent paper by Noah Kouchekinia of the University of California, Irvine, and his co-authors found evidence that <span class="annot" data-tooltip="cognitive /'kɑːɡnətɪv/ adj. 认知的, 认识能力的">cognitive</span> decline accelerates among adults who leave the <span class="annot" data-tooltip="workforce /'wɜːrkfɔːrs/ n. 全体员工(国家或行业等)劳动力,劳动大军,劳动人口">workforce</span> before retirement age.) Even people with plenty of options seem to be <span class="annot" data-tooltip="wary /'weri/ adj. 机警的；谨慎的；惟恐的；考虑周到的比较级: warier, wariest">wary</span> of a life of <span class="annot" data-tooltip="leisure /'liːʒər/ n. 闲暇；空闲；安逸adj. 空闲的；有闲的；业余的">leisure</span>. There aren’t that many <span class="annot" data-tooltip="silicon /'sɪlɪkən/ n. 〈化〉硅">Silicon</span> <span class="annot" data-tooltip="valley /'væli/ n. 流域；山谷；溪谷">Valley</span> billionaires who pack it all in to focus on their hobbies. In a similar <span class="annot" data-tooltip="vein /veɪn/ n. 血管；岩脉；纹理；[动]翅脉；[植]叶脉；性情vt. 使成脉络；像脉络般分布于时 态: veined, veining,">vein</span>, a paper by Bengt Furaker and Anna Davidsson of the University of Gothenburg looked at how <span class="annot" data-tooltip="lottery /'lɑːtəri/ n. 抽彩给奖法碰运气的事, 难于算计的事">lottery</span> winners in Sweden responded to their good <span class="annot" data-tooltip="fortunes /'fɔːrtʃən/ n. 运气；财富；命运vt. 给予财富vi. 偶然发生时 态: fortuned, fortuning, fortunes">fortunes</span>. A larger windfall did make it more likely that winners would take a chunk of unpaid leave and reduce their working hours, but only a small share of them quit work <span class="annot" data-tooltip="entirely /ɪn'taɪərli/ adv. 全部地;完整地;完全地">entirely</span>. Some jobs are much less enjoyable than others, of course. And it is possible to <span class="annot" data-tooltip="derive /dɪ'raɪv/ vt. & vi. 得到源于时 态: derived, deriving, derives">derive</span> latent benefits elsewhere, from caregiving, say, or being a stay-at- home parent. A paper by Michelle Jongenelis of the University of Melbourne and her co-authors looked at the effects of volunteering on the</p>
+<p>well-being of Australian retirees. Even a very small amount—as little as an hour a week—<span class="annot" data-tooltip="yielded /jiːld/ vt. 出产；屈服；放弃vi. 屈服，投降n. 收益；产量时 态: yielded, yielding, yields">yielded</span> <span class="annot" data-tooltip="notable /'noʊtəbl/ adj. 值得注意的，显著的；著名的n. 名人，显要人物副 词: notably">notable</span> improvements in scores for life satisfaction and purpose. But this is cold comfort for people who want and expect to work. In another paper, Clemens Hetschko of the University of Leeds and his co-authors traced German adults’ self-reported well-being as they <span class="annot" data-tooltip="entered /'entər/ vt. & vi. 进入, 进去参加, 加入登记, 登录时 态: entered, entering, enters">entered</span> retirement. Life satisfaction for <span class="annot" data-tooltip="employed /ɪm'plɔɪ/ vt. 使用，采用；雇用；使忙于，使从事于n. 雇用；使用时 态: employed, employing, employs">employed</span> people did not change much after they left the <span class="annot" data-tooltip="workforce /'wɜːrkfɔːrs/ n. 全体员工(国家或行业等)劳动力,劳动大军,劳动人口">workforce</span>. But people who had been long-term unemployed when they hit retirement age reported a big jump in well-being. On the face of it, this seems odd. The people who had been in work would almost certainly have experienced greater upheaval to their daily <span class="annot" data-tooltip="routines n. 日常生活；日常活动；常规，惯例（routine的复数）">routines</span> and incomes. The authors’ theory is that unemployed people have switched social categories, from an unwanted one when they are of working age to a respectable one when they <span class="annot" data-tooltip="reach /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reach</span> retirement age. In other words, anyone who blithely says that people can <span class="annot" data-tooltip="substitute /'sʌbstɪtuːt/ vt. & vi. 代替, 替换, 代用时 态: substituted, substituting, substitutes">substitute</span> other activities for paid employment is wishing away the evidence. Some jobs are <span class="annot" data-tooltip="dismal /'dɪzməl/ adj. 凄凉的，忧郁的；阴沉的，沉闷的；可怕的n. 低落的情绪副 词: dismally">dismal</span>. But at the moment nothing else brings the same bundle of psychological and monetary benefits in such a socially acceptable form. Making sure people have enough money to live on if AI takes away their jobs is a big problem. Giving them a sense of self-<span class="annot" data-tooltip="worth /wɜːrθ/ adj. 值…的n. 价值；财产时 态: worthed, worthing, worths">worth</span> would be just as difficult. ■ This article was downloaded by zlibrary from https://www.economist.com/business/2026/10/22/if-ai-displaces-human-workers-they- will-lose-more-than-just-pay</p>
+<div class="article-separator"></div>
+<div class="article-header">Business · Business | The archipelago of broken dreams</div>
+<p><span class="annot" data-tooltip="multinational /ˌmʌlti'næʃnəl/ adj. 多国的n. 跨国公司">Multinational</span> businesses are losing confidence in <span class="annot" data-tooltip="indonesia /ˌɪndə'niːʒə/ n. 印度尼西亚(东南亚岛国)">Indonesia</span> Its bountiful resources and vast population are attractive, but its government is a <span class="annot" data-tooltip="nightmare /'naɪtmer/ n. 噩梦〈口〉可怕的事情, 无法摆脱的恐惧形容词: nightmarish">nightmare</span> Oct 22nd 2026 <span class="annot" data-tooltip="ukraine n. 乌克兰（原苏联一加盟共和国，现已独立）">Ukraine</span> and Palestine are no one’s idea of attractive markets. Yet that is the company Indonesia may soon keep. On October 15th MSCI, an index provider, threatened to reclassify it as a “standalone” market, two notches below its current status as an ”emerging” one. MSCI blamed a stock market plagued by <span class="annot" data-tooltip="opaque /oʊ'peɪk/ adj. 不透明的难理解的, 晦涩的副 词: opaquely">opaque</span> listings and suspected pump-and-<span class="annot" data-tooltip="dump /dʌmp/ vt. 倾倒；倾卸vi. 倒垃圾n. 垃圾场dUMP脱氧尿苷酸时 态: dumped, dumping, dumps">dump</span> schemes. Investors have been fleeing. In dollar <span class="annot" data-tooltip="terms /tɜːrmz/ n. 条款；地位，关系；措辞；术语；价钱（term的复数形式）v. 把…称为（term的三单形式）">terms</span> <span class="annot" data-tooltip="indonesian /ˌɪndə'niːʒn/ n. 印度尼西亚人;印度尼西亚国民印度尼西亚人后裔(东印度群岛)前马来人的一员西澳特罗尼西亚语族adj. (有关)印度尼西亚的">Indonesian</span> stocks have lost half their <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span> in 2026, <span class="annot" data-tooltip="rendering /'rendər/ v. 给予；提供；回报使成为；使变得；使处于某状态；致使，造成递交；呈献；提交表达；表演；演示（用不同的语言）表达；翻译；把…">rendering</span> it the world’s worst-performing market (see chart).</p>
+<p>The sorry state of the bourse is emblematic of the deeper <span class="annot" data-tooltip="decay /dɪ'keɪ/ vi. 腐烂，腐朽；衰退，衰减n. 衰退，衰减；腐烂，腐朽vt. 使腐烂，使腐败；使衰退，使衰落时 态: decayed, de">decay</span> in <span class="annot" data-tooltip="indonesia /ˌɪndə'niːʒə/ n. 印度尼西亚(东南亚岛国)">Indonesia</span>’s business environment during the presidency of Prabowo Subianto, under whom cronyism has grown <span class="annot" data-tooltip="rampant /'ræmpənt/ adj. (尤指疾病，社会弊端)猖獗的；无法控制的(指动物)只用后腿站起来的名 词: rampancy">rampant</span> and the government has become increasingly meddlesome. His <span class="annot" data-tooltip="reign /reɪn/ vi. 统治；盛行；支配；君临n. 统治；支配；统治时期时 态: reigned, reigning, reigns">reign</span> has unsettled <span class="annot" data-tooltip="multinational /ˌmʌlti'næʃnəl/ adj. 多国的n. 跨国公司">multinational</span> businesses, many of which covet Indonesia’s bountiful natural resources and vast population of consumers. Earlier this year the China <span class="annot" data-tooltip="chamber /'tʃeɪmbər/ n. （身体或器官内的）室，膛；房间；会所adj. 室内的；私人的，秘密的vt. 把…关在室内；装填（弹药等）时 态: cha">Chamber</span> of <span class="annot" data-tooltip="commerce /'kɑːmɜːrs/ n. 商业, 贸易">Commerce</span> in Indonesia, a business association, circulated a letter complaining that its members faced “excessively stringent regulation, over-<span class="annot" data-tooltip="enforcement /ɪn'fɔːrsmənt/ n. 强制,实施,执行">enforcement</span>, and even <span class="annot" data-tooltip="corruption /kə'rʌpʃn/ n. 堕落;腐化;腐败;贿赂腐烂">corruption</span> and <span class="annot" data-tooltip="extortion /ɪk'stɔːrʃn/ n. 敲诈，勒索，逼取；被勒索的财物n. 敲诈者，勒索者，逼取者形容词: extortionary">extortion</span>” by <span class="annot" data-tooltip="authorities /ə'θɔːrəti/ n. 威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗">authorities</span>. Their <span class="annot" data-tooltip="plight /plaɪt/ n. 困境；境况；誓约vt. 保证；约定时 态: plighted, plighting, plights">plight</span> is not unique. “If you swapped out the letterhead, it could have been written by us,” says someone from a similar Western association in Indonesia. If Indonesia’s president is not careful, the ranks of <span class="annot" data-tooltip="multinationals /ˌmʌlti'næʃnəl/ adj. 多国的n. 跨国公司">multinationals</span> scaling back their presence in his country will grow. Part of the problem is Mr Prabowo’s economic nationalism. It represents a reversal of the progress that has slowly been made in Indonesia since the Asian financial crisis of 1997-98. Mr Prabowo’s predecessor, Joko Widodo, elevated a business-minded coterie of fixers, including Luhut Pandjaitan, a coal baron. They let foreign businesses cut through Indonesia’s disorganised, <span class="annot" data-tooltip="corrupt /kə'rʌpt/ adj. 腐败的，贪污的；堕落的vt. 使堕落，使恶化；使腐烂vi. 腐烂；堕落，腐化时 态: corrupted, corrup">corrupt</span> <span class="annot" data-tooltip="bureaucracy /bjʊ'rɑːkrəsi/ n. 政府机构官僚主义, 官僚作风">bureaucracy</span>, luring in firms such as Tsingshan, a Chinese miner, and</p>
+<p>LG <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">Energy</span> Solution (LGES), a South Korean battery-maker. Few doubted that Mr Widodo’s inner circle enriched themselves. But for foreign businesses, they made <span class="annot" data-tooltip="indonesia /ˌɪndə'niːʒə/ n. 印度尼西亚(东南亚岛国)">Indonesia</span> a <span class="annot" data-tooltip="simpler adj. 更简单的（simple的比较级）">simpler</span> <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span> to operate. Mr Prabowo, by <span class="annot" data-tooltip="contrast /'kɑːntræst/ n. 对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照时 态: contrasted, cont">contrast</span>, rails against “irresponsible powers” that are “stealing” Indonesia’s resources, and has installed a new cohort of cronies with little interest in economic <span class="annot" data-tooltip="strategy /'strætədʒi/ n. 战略学, 兵法战略, 策略策略, 计谋">strategy</span>. “No single person is playing the Luhut role in the Prabowo administration,” says Brasukra Sudjana of Vriens & Partners, a consultancy. That has damaged confidence among <span class="annot" data-tooltip="multinationals /ˌmʌlti'næʃnəl/ adj. 多国的n. 跨国公司">multinationals</span>. In the final <span class="annot" data-tooltip="quarter /'kwɔːrtər/ n. 四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一时 ">quarter</span> of 2024, during which Mr Prabowo took power, inflows of new foreign direct investment hit $16bn, more than double the level of four years earlier. They have since stagnated. A $12bn scheme backed by Xinyi, a Chinese <span class="annot" data-tooltip="solar /'soʊlər/ adj. 太阳的；日光的；利用太阳光的；与太阳相关的n. 日光浴室">solar</span>- <span class="annot" data-tooltip="panel /'pænl/ n. 仪表板；嵌板；座谈小组，全体陪审员vt. 嵌镶板时 态: paneled, panelled paneling, pan">panel</span> producer, to build an “eco-city” has lost <span class="annot" data-tooltip="momentum /moʊ'mentəm/ n. 动力；动量；冲力；势头复 数: momenta">momentum</span>. LGES has dropped plans for an $8bn battery project. The biggest deterioration in conditions has come in the commodities sector. Rules for miners, such as stringent quotas on production, are in constant flux. Businesses complain of shakedowns. After floods devastated the western island of Sumatra last year, the government blamed miners’ <span class="annot" data-tooltip="abuse /ə'bjuːs/ n. 滥用；辱骂；虐待；弊端；恶习，陋习vt. 滥用；辱骂；虐待时 态: abused, abusing, abuses">abuse</span> of forest land. It then attempted to nationalise Martabe, a gold mine controlled by Jardine Matheson, a conglomerate operating from Hong Kong, though it later backed down. Freeport-McMoRan, an American miner, was bullied into divesting a 12% share of its <span class="annot" data-tooltip="indonesian /ˌɪndə'niːʒn/ n. 印度尼西亚人;印度尼西亚国民印度尼西亚人后裔(东印度群岛)前马来人的一员西澳特罗尼西亚语族adj. (有关)印度尼西亚的">Indonesian</span> arm last year, which had already been 51% owned by the state (it received next to nothing in return). Sjafrie Sjamsoeddin, Indonesia’s defence minister and one of Mr Prabowo’s closest confidants, has overseen a <span class="annot" data-tooltip="sweeping /'swiːpɪŋ/ n. 扫除；垃圾adj. 扫荡的；彻底的；广泛的v. 打扫；扫除（sweep的现在分词形式）副 词: sweepingly">sweeping</span> <span class="annot" data-tooltip="crackdown /'krækdaʊn/ n. 压迫,镇压,打击">crackdown</span> on forestry. A third of all palm-oil plantation land has been expropriated. In May Mr Prabowo announced abruptly that a new state agency, Danantara Sumberdaya Indonesia (DSI), would centralise exports of palm oil, coal and ferro-nickel. Officials claim it will act merely as a <span class="annot" data-tooltip="monitoring /'mɑːnɪtər/ n. 显示屏；监视器；（计算机）显示器监控器；监测器班长；级长；班代表（尤指派往国外的）监督员，核查员巨蜥v. 监视；检查；跟">monitoring</span> agency, but Mr Prabowo continues to <span class="annot" data-tooltip="muddy /'mʌdi/ adj. 泥泞的；模糊的；混乱的vt. 使沾上泥；使污浊；把…弄糊涂vi. 变得泥泞；沾满烂泥比较级: muddier, mudd">muddy</span> the waters. “Imagine in future how much we will save when all our export commodities will be <span class="annot" data-tooltip="monitored /'mɑːnɪtər/ n. 显示屏；监视器；（计算机）显示器监控器；监测器班长；级长；班代表（尤指派往国外的）监督员，核查员巨蜥v. 监视；检查；跟">monitored</span> and controlled by DSI,” he said in August.</p>
+<p>The regulatory leash is also tightening elsewhere. Take salt and sugar, where a push for self-sufficiency has <span class="annot" data-tooltip="curbed /kɜːrb/ n. 侧石, 边石限制, 克制, 抑制vt. 限制, 克制, 抑制时 态: curbed, curbing, curbs">curbed</span> import licences. <span class="annot" data-tooltip="indonesia /ˌɪndə'niːʒə/ n. 印度尼西亚(东南亚岛国)">Indonesia</span> has limited raw-sugar production, and food-makers complain that the quality of local salt is too low for them. Troubles with import licences have led to supply- chain snarls for Coca-Cola and PepsiCo, two drinks giants. In the past, stymied firms might have cut deals with officials or hired politically connected lawyers. “Now [my <span class="annot" data-tooltip="contacts n. 联系人；联络方式；触体（contact的复数形式）v. 接触，联系（contact的第三人称单数形式）">contacts</span>] say companies are <span class="annot" data-tooltip="simply /'sɪmpli/ adv. 简单地；朴素地；简直；仅仅；坦白地">simply</span> being squeezed with no <span class="annot" data-tooltip="clarity /'klærəti/ n. 清楚，明晰；透明">clarity</span> whatsoever,” says Tom Lembong, a trade minister under Mr Widodo (who faced jail in a dubious graft case related to illegal sugar-import permits, until Mr Prabowo pardoned him last year). Further <span class="annot" data-tooltip="burdens /'bɜːrdn/ n. 负担；责任；船的载货量vt. 烦扰；使负担；装货于时 态: burdened, burdening, burdens">burdens</span> are being added: on October 18th new Halal-certification rules were put in <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span> on various consumer goods sold in Indonesia, including cosmetics and <span class="annot" data-tooltip="supplements /'sʌplɪmənt/ n. 增补（物）；补品；增刊；（书籍的）附录；额外服务费用；补角">supplements</span>, though the government <span class="annot" data-tooltip="subsequently /'sʌbsɪkwənt/ adj. 随后的, 继…之后的副 词: subsequently">subsequently</span> delayed the <span class="annot" data-tooltip="implementation /ˌɪmplɪmen'teɪʃn/ n. 贯彻，执行">implementation</span> for some categories to 2028. <span class="annot" data-tooltip="multinationals /ˌmʌlti'næʃnəl/ adj. 多国的n. 跨国公司">Multinationals</span> targeting Indonesia’s consumers have also <span class="annot" data-tooltip="encountered /ɪn'kaʊntər/ vt. 遇到, 遭遇偶然碰到, 邂逅n. 突然遇到时 态: encountered, encountering, encount">encountered</span> stagnant spending. <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">Although</span> official GDP growth is rarely lower than 5%, the share of workers in Indonesia’s middle class (as defined by <span class="annot" data-tooltip="authorities /ə'θɔːrəti/ n. 威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗">authorities</span>) has fallen from 16% a <span class="annot" data-tooltip="decade /'dekeɪd/ n. 十年，十年期；十">decade</span> ago to 7% last year. The problem predates Mr Prabowo, but on his watch more <span class="annot" data-tooltip="indonesians /ˌɪndə'niːʒn/ n. 印度尼西亚人;印度尼西亚国民印度尼西亚人后裔(东印度群岛)前马来人的一员西澳特罗尼西亚语族adj. (有关)印度尼西亚的">Indonesians</span> are slipping into low-paying informal jobs. Real <span class="annot" data-tooltip="wages /weɪdʒ/ vi. 进行；发动；从事n. 工资；报偿；代价vt. 开展；进行时 态: waged, waging, wages">wages</span> have fallen for skilled workers, too. A recent survey by NielsenIQ, a data provider, found that only 9% of consumers felt financially better off than a year ago, down from 54% in 2024. The pain has been felt across a wide range of <span class="annot" data-tooltip="industries /'ɪndəstri/ n. 工业；产业；勤勉">industries</span>. <span class="annot" data-tooltip="domestic /də'mestɪk/ adj. 国内的；家庭的；驯养的；一心只管家务的">Domestic</span> car sales remain shy of 2019 levels, hurting multinationals such as Toyota, the top auto <span class="annot" data-tooltip="brand /brænd/ n. 商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责时 态: branded, branding, brands">brand</span> in Indonesia. Foreign pedlars of packaged consumer goods have had to cut prices to attract shoppers—though even that is “not necessarily translating into proportional growth” in volumes, notes Krisetiadi Purwanto of NielsenIQ. At the <span class="annot" data-tooltip="indonesian /ˌɪndə'niːʒn/ n. 印度尼西亚人;印度尼西亚国民印度尼西亚人后裔(东印度群岛)前马来人的一员西澳特罗尼西亚语族adj. (有关)印度尼西亚的">Indonesian</span> arm of Unilever sales have fallen by a fifth since 2019, while operating profit has more than halved. (A <span class="annot" data-tooltip="gaza n. 加沙（地中海岸港市）">Gaza</span>-related boycott, another risk in the Muslim-majority country, hasn’t helped.) In January the British conglomerate sold its struggling tea business in Indonesia to a local competitor. In a country where two-thirds of men <span class="annot" data-tooltip="puff /pʌf/ vt. 喷出，张开；夸张；使膨胀；使骄傲自满vi. 张开；鼓吹；夸张；膨胀n. 一阵喷烟；粉扑；泡芙；蓬松；肿块；吹嘘，宣传广告">puff</span>, big tobacco has faced <span class="annot" data-tooltip="falling /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">falling</span> sales as consumers turn to cheaper sticks, including black-market ones that avoid taxes. Foreign firms’ dreams for Indonesia are at risk of going up in smoke. ■</p>
+<p>This article was downloaded by zlibrary from https://www.economist.com/business/2026/10/22/<span class="annot" data-tooltip="multinational /ˌmʌlti'næʃnəl/ adj. 多国的n. 跨国公司">multinational</span>-businesses-are-losing- confidence-in-<span class="annot" data-tooltip="indonesia /ˌɪndə'niːʒə/ n. 印度尼西亚(东南亚岛国)">indonesia</span></p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>salient</td><td>/'seɪliənt/ adj.</td><td>显著的,重要的,主要的(指角)凸出的n. 凸角进攻或防卫阵地的突出部分</td></tr>
+<tr><td>societies</td><td>/sə'saɪəti/ n.</td><td>社会；社交界；交往；社团</td></tr>
+<tr><td>inevitably</td><td>/ɪn'evɪtəbli/ adv.</td><td>不可避免地,必然地</td></tr>
+<tr><td>academic</td><td>/ˌækə'demɪk/ adj.</td><td>学院的；学术的；理论的n. 大学生，大学教师；学者</td></tr>
+<tr><td>narrow</td><td>/'næroʊ/ adj.</td><td>狭窄的，有限的；度量小的；精密的；勉强的n. 狭窄部分，隘路；海峡vt. 使变狭窄vi. 变窄, narrowest</td></tr>
+<tr><td>consider</td><td>/kən'sɪdər/ vt.</td><td>& vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及, considering, considers</td></tr>
+<tr><td>imposes</td><td>/ɪm'poʊz/ vi.</td><td>欺骗；利用；施加影响vt. 强加；以…欺骗；征税, imposing, imposes</td></tr>
+<tr><td>entails</td><td>/ɪn'teɪl/ vt.</td><td>使…成为必要, 需要限定继承, entailing, entails</td></tr>
+<tr><td>nudge</td><td>/nʌdʒ/ n.</td><td>用肘轻推；推动；没完没了抱怨的人vt. 用肘轻推；推进；向…不停地唠叨vi. 轻推；推进；唠叨, nudging, nudges</td></tr>
+<tr><td>towards</td><td>/tɔːrdz/ prep.</td><td>向，朝为了；有助于；用于对于，关于接近；将近；大约</td></tr>
+<tr><td>cognitive</td><td>/'kɑːɡnətɪv/ adj.</td><td>认知的, 认识能力的</td></tr>
+<tr><td>workforce</td><td>/'wɜːrkfɔːrs/ n.</td><td>全体员工(国家或行业等)劳动力,劳动大军,劳动人口</td></tr>
+<tr><td>wary</td><td>/'weri/ adj.</td><td>机警的；谨慎的；惟恐的；考虑周到的, wariest</td></tr>
+<tr><td>leisure</td><td>/'liːʒər/ n.</td><td>闲暇；空闲；安逸adj. 空闲的；有闲的；业余的</td></tr>
+<tr><td>silicon</td><td>/'sɪlɪkən/ n.</td><td>〈化〉硅</td></tr>
+<tr><td>valley</td><td>/'væli/ n.</td><td>流域；山谷；溪谷</td></tr>
+<tr><td>vein</td><td>/veɪn/ n.</td><td>血管；岩脉；纹理；[动]翅脉；[植]叶脉；性情vt. 使成脉络；像脉络般分布于, veining, veins</td></tr>
+<tr><td>lottery</td><td>/'lɑːtəri/ n.</td><td>抽彩给奖法碰运气的事, 难于算计的事</td></tr>
+<tr><td>fortunes</td><td>/'fɔːrtʃən/ n.</td><td>运气；财富；命运vt. 给予财富vi. 偶然发生, fortuning, fortunes</td></tr>
+<tr><td>entirely</td><td>/ɪn'taɪərli/ adv.</td><td>全部地;完整地;完全地</td></tr>
+<tr><td>derive</td><td>/dɪ'raɪv/ vt.</td><td>& vi. 得到源于, deriving, derives</td></tr>
+<tr><td>yielded</td><td>/jiːld/ vt.</td><td>出产；屈服；放弃vi. 屈服，投降n. 收益；产量, yielding, yields</td></tr>
+<tr><td>notable</td><td>/'noʊtəbl/ adj.</td><td>值得注意的，显著的；著名的n. 名人，显要人物</td></tr>
+<tr><td>entered</td><td>/'entər/ vt.</td><td>& vi. 进入, 进去参加, 加入登记, 登录, entering, enters</td></tr>
+<tr><td>employed</td><td>/ɪm'plɔɪ/ vt.</td><td>使用，采用；雇用；使忙于，使从事于n. 雇用；使用, employing, employs</td></tr>
+<tr><td>workforce</td><td>/'wɜːrkfɔːrs/ n.</td><td>全体员工(国家或行业等)劳动力,劳动大军,劳动人口</td></tr>
+<tr><td>routines</td><td>— n.</td><td>日常生活；日常活动；常规，惯例（routine的复数）</td></tr>
+<tr><td>reach</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>substitute</td><td>/'sʌbstɪtuːt/ vt.</td><td>& vi. 代替, 替换, 代用, substituting, substitutes</td></tr>
+<tr><td>dismal</td><td>/'dɪzməl/ adj.</td><td>凄凉的，忧郁的；阴沉的，沉闷的；可怕的n. 低落的情绪</td></tr>
+<tr><td>worth</td><td>/wɜːrθ/ adj.</td><td>值…的n. 价值；财产, worthing, worths</td></tr>
+<tr><td>multinational</td><td>/ˌmʌlti'næʃnəl/ adj.</td><td>多国的n. 跨国公司</td></tr>
+<tr><td>indonesia</td><td>/ˌɪndə'niːʒə/ n.</td><td>印度尼西亚(东南亚岛国)</td></tr>
+<tr><td>nightmare</td><td>/'naɪtmer/ n.</td><td>噩梦〈口〉可怕的事情, 无法摆脱的恐惧</td></tr>
+<tr><td>ukraine</td><td>— n.</td><td>乌克兰（原苏联一加盟共和国，现已独立）</td></tr>
+<tr><td>opaque</td><td>/oʊ'peɪk/ adj.</td><td>不透明的难理解的, 晦涩的</td></tr>
+<tr><td>dump</td><td>/dʌmp/ vt.</td><td>倾倒；倾卸vi. 倒垃圾n. 垃圾场dUMP脱氧尿苷酸, dumping, dumps</td></tr>
+<tr><td>terms</td><td>/tɜːrmz/ n.</td><td>条款；地位，关系；措辞；术语；价钱（term的复数形式）v. 把…称为（term的三单形式）</td></tr>
+<tr><td>indonesian</td><td>/ˌɪndə'niːʒn/ n.</td><td>印度尼西亚人;印度尼西亚国民印度尼西亚人后裔(东印度群岛)前马来人的一员西澳特罗尼西亚语族adj. (有关)印度尼西亚的;(有关)印度尼西亚人(语)的</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>rendering</td><td>/'rendər/ v.</td><td>给予；提供；回报使成为；使变得；使处于某状态；致使，造成递交；呈献；提交表达；表演；演示（用不同的语言）表达；翻译；把…译成粉刷；给（墙壁）抹灰将（脂肪）熬成油</td></tr>
+<tr><td>decay</td><td>/dɪ'keɪ/ vi.</td><td>腐烂，腐朽；衰退，衰减n. 衰退，衰减；腐烂，腐朽vt. 使腐烂，使腐败；使衰退，使衰落, decaying, decays</td></tr>
+<tr><td>indonesia</td><td>/ˌɪndə'niːʒə/ n.</td><td>印度尼西亚(东南亚岛国)</td></tr>
+<tr><td>rampant</td><td>/'ræmpənt/ adj.</td><td>(尤指疾病，社会弊端)猖獗的；无法控制的(指动物)只用后腿站起来的</td></tr>
+<tr><td>reign</td><td>/reɪn/ vi.</td><td>统治；盛行；支配；君临n. 统治；支配；统治时期, reigning, reigns</td></tr>
+<tr><td>multinational</td><td>/ˌmʌlti'næʃnəl/ adj.</td><td>多国的n. 跨国公司</td></tr>
+<tr><td>chamber</td><td>/'tʃeɪmbər/ n.</td><td>（身体或器官内的）室，膛；房间；会所adj. 室内的；私人的，秘密的vt. 把…关在室内；装填（弹药等）, chambering, chambers</td></tr>
+<tr><td>commerce</td><td>/'kɑːmɜːrs/ n.</td><td>商业, 贸易</td></tr>
+<tr><td>enforcement</td><td>/ɪn'fɔːrsmənt/ n.</td><td>强制,实施,执行</td></tr>
+<tr><td>corruption</td><td>/kə'rʌpʃn/ n.</td><td>堕落;腐化;腐败;贿赂腐烂</td></tr>
+<tr><td>extortion</td><td>/ɪk'stɔːrʃn/ n.</td><td>敲诈，勒索，逼取；被勒索的财物n. 敲诈者，勒索者，逼取者</td></tr>
+<tr><td>authorities</td><td>/ə'θɔːrəti/ n.</td><td>威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗</td></tr>
+<tr><td>plight</td><td>/plaɪt/ n.</td><td>困境；境况；誓约vt. 保证；约定, plighting, plights</td></tr>
+<tr><td>multinationals</td><td>/ˌmʌlti'næʃnəl/ adj.</td><td>多国的n. 跨国公司</td></tr>
+<tr><td>corrupt</td><td>/kə'rʌpt/ adj.</td><td>腐败的，贪污的；堕落的vt. 使堕落，使恶化；使腐烂vi. 腐烂；堕落，腐化, corrupting, corrupts</td></tr>
+<tr><td>bureaucracy</td><td>/bjʊ'rɑːkrəsi/ n.</td><td>政府机构官僚主义, 官僚作风</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>indonesia</td><td>/ˌɪndə'niːʒə/ n.</td><td>印度尼西亚(东南亚岛国)</td></tr>
+<tr><td>simpler</td><td>— adj.</td><td>更简单的（simple的比较级）</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>contrast</td><td>/'kɑːntræst/ n.</td><td>对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照, contrasting, contrasts</td></tr>
+<tr><td>strategy</td><td>/'strætədʒi/ n.</td><td>战略学, 兵法战略, 策略策略, 计谋</td></tr>
+<tr><td>multinationals</td><td>/ˌmʌlti'næʃnəl/ adj.</td><td>多国的n. 跨国公司</td></tr>
+<tr><td>quarter</td><td>/'kwɔːrtər/ n.</td><td>四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一, quartering, quarters</td></tr>
+<tr><td>solar</td><td>/'soʊlər/ adj.</td><td>太阳的；日光的；利用太阳光的；与太阳相关的n. 日光浴室</td></tr>
+<tr><td>panel</td><td>/'pænl/ n.</td><td>仪表板；嵌板；座谈小组，全体陪审员vt. 嵌镶板, panelled paneling, panelling panels, panels</td></tr>
+<tr><td>momentum</td><td>/moʊ'mentəm/ n.</td><td>动力；动量；冲力；势头复 数: momenta</td></tr>
+<tr><td>abuse</td><td>/ə'bjuːs/ n.</td><td>滥用；辱骂；虐待；弊端；恶习，陋习vt. 滥用；辱骂；虐待, abusing, abuses</td></tr>
+<tr><td>indonesian</td><td>/ˌɪndə'niːʒn/ n.</td><td>印度尼西亚人;印度尼西亚国民印度尼西亚人后裔(东印度群岛)前马来人的一员西澳特罗尼西亚语族adj. (有关)印度尼西亚的;(有关)印度尼西亚人(语)的</td></tr>
+<tr><td>sweeping</td><td>/'swiːpɪŋ/ n.</td><td>扫除；垃圾adj. 扫荡的；彻底的；广泛的v. 打扫；扫除（sweep的现在分词形式）</td></tr>
+<tr><td>crackdown</td><td>/'krækdaʊn/ n.</td><td>压迫,镇压,打击</td></tr>
+<tr><td>monitoring</td><td>/'mɑːnɪtər/ n.</td><td>显示屏；监视器；（计算机）显示器监控器；监测器班长；级长；班代表（尤指派往国外的）监督员，核查员巨蜥v. 监视；检查；跟踪调查监听（电话、外国无线电广播等）, </td></tr>
+<tr><td>muddy</td><td>/'mʌdi/ adj.</td><td>泥泞的；模糊的；混乱的vt. 使沾上泥；使污浊；把…弄糊涂vi. 变得泥泞；沾满烂泥, muddiest</td></tr>
+<tr><td>monitored</td><td>/'mɑːnɪtər/ n.</td><td>显示屏；监视器；（计算机）显示器监控器；监测器班长；级长；班代表（尤指派往国外的）监督员，核查员巨蜥v. 监视；检查；跟踪调查监听（电话、外国无线电广播等）, </td></tr>
+<tr><td>curbed</td><td>/kɜːrb/ n.</td><td>侧石, 边石限制, 克制, 抑制vt. 限制, 克制, 抑制, curbing, curbs</td></tr>
+<tr><td>indonesia</td><td>/ˌɪndə'niːʒə/ n.</td><td>印度尼西亚(东南亚岛国)</td></tr>
+<tr><td>contacts</td><td>— n.</td><td>联系人；联络方式；触体（contact的复数形式）v. 接触，联系（contact的第三人称单数形式）</td></tr>
+<tr><td>simply</td><td>/'sɪmpli/ adv.</td><td>简单地；朴素地；简直；仅仅；坦白地</td></tr>
+<tr><td>clarity</td><td>/'klærəti/ n.</td><td>清楚，明晰；透明</td></tr>
+<tr><td>burdens</td><td>/'bɜːrdn/ n.</td><td>负担；责任；船的载货量vt. 烦扰；使负担；装货于, burdening, burdens</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>supplements</td><td>/'sʌplɪmənt/ n.</td><td>增补（物）；补品；增刊；（书籍的）附录；额外服务费用；补角</td></tr>
+<tr><td>subsequently</td><td>/'sʌbsɪkwənt/ adj.</td><td>随后的, 继…之后的</td></tr>
+<tr><td>implementation</td><td>/ˌɪmplɪmen'teɪʃn/ n.</td><td>贯彻，执行</td></tr>
+<tr><td>multinationals</td><td>/ˌmʌlti'næʃnəl/ adj.</td><td>多国的n. 跨国公司</td></tr>
+<tr><td>encountered</td><td>/ɪn'kaʊntər/ vt.</td><td>遇到, 遭遇偶然碰到, 邂逅n. 突然遇到, encountering, encounters</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>authorities</td><td>/ə'θɔːrəti/ n.</td><td>威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗</td></tr>
+<tr><td>decade</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>indonesians</td><td>/ˌɪndə'niːʒn/ n.</td><td>印度尼西亚人;印度尼西亚国民印度尼西亚人后裔(东印度群岛)前马来人的一员西澳特罗尼西亚语族adj. (有关)印度尼西亚的;(有关)印度尼西亚人(语)的</td></tr>
+<tr><td>wages</td><td>/weɪdʒ/ vi.</td><td>进行；发动；从事n. 工资；报偿；代价vt. 开展；进行, waging, wages</td></tr>
+<tr><td>industries</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>domestic</td><td>/də'mestɪk/ adj.</td><td>国内的；家庭的；驯养的；一心只管家务的</td></tr>
+<tr><td>brand</td><td>/brænd/ n.</td><td>商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责, branding, brands</td></tr>
+<tr><td>indonesian</td><td>/ˌɪndə'niːʒn/ n.</td><td>印度尼西亚人;印度尼西亚国民印度尼西亚人后裔(东印度群岛)前马来人的一员西澳特罗尼西亚语族adj. (有关)印度尼西亚的;(有关)印度尼西亚人(语)的</td></tr>
+<tr><td>gaza</td><td>— n.</td><td>加沙（地中海岸港市）</td></tr>
+<tr><td>puff</td><td>/pʌf/ vt.</td><td>喷出，张开；夸张；使膨胀；使骄傲自满vi. 张开；鼓吹；夸张；膨胀n. 一阵喷烟；粉扑；泡芙；蓬松；肿块；吹嘘，宣传广告, puffing, puffs</td></tr>
+<tr><td>falling</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>multinational</td><td>/ˌmʌlti'næʃnəl/ adj.</td><td>多国的n. 跨国公司</td></tr>
+<tr><td>indonesia</td><td>/ˌɪndə'niːʒə/ n.</td><td>印度尼西亚(东南亚岛国)</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day33.html" class="nav-btn">← Day 33</a>
+  <a href="day35.html" class="nav-btn">Day 35 →</a>
+</div>
+
+<div class="progress">📖 Day 34 of 44</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-10-24</div>
+
+</body>
+</html>
