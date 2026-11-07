@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>By Invitation | Vote, splurge</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-11-07</div>
+
+<h1 class="article-title">By Invitation | Vote, splurge</h1>
+<div class="article-section">By Invitation</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>consumer-<span class="annot" data-tooltip="sentiment /'sentɪmənt/ n. (对怜悯、怀旧等的)柔情态度或意见观点; 意见">sentiment</span> index stood at just 48.0 in October, down from 53.6 a year earlier. Its index of current economic conditions was even lower, at 46.7. Such readings have in the past been associated with <span class="annot" data-tooltip="severe /sɪ'vɪr/ adj. 严厉的；苛刻的；剧烈的；严峻的比较级: severer, severest">severe</span> economic stress. The election results may be explained in part by a continued—and generally faster-than-expected—<span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> in the prices of food, gasoline, housing and much else. Many <span class="annot" data-tooltip="households /'haʊshoʊld/ n. 同住在一所房子里的人, 一家人, 户adj. 家庭的, 家用的">households</span> with rising nominal <span class="annot" data-tooltip="wages /weɪdʒ/ vi. 进行；发动；从事n. 工资；报偿；代价vt. 开展；进行时 态: waged, waging, wages">wages</span> have endured real <span class="annot" data-tooltip="wage /weɪdʒ/ vi. 进行；发动；从事n. 工资；报偿；代价vt. 开展；进行时 态: waged, waging, wages">wage</span> declines this year. Democrats naturally took full advantage of public <span class="annot" data-tooltip="anxiety /æŋ'zaɪəti/ n. 焦虑；挂念；渴望；令人焦虑的事">anxiety</span> over affordability during the election <span class="annot" data-tooltip="campaign /kæm'peɪn/ n. 运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）时">campaign</span>. They <span class="annot" data-tooltip="omitted /ə'mɪt/ vt. 省略，遗漏；删掉忘记做时 态: omitted，omitting，omits">omitted</span> to mention that much of the rise in prices happened on Joe Biden’s watch. The unadjusted CPI-U consumer- price index jumped by 21.4% during his four years in office, compared with 6.1% during the first 20 months of Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s second term. The economic statistics are not wrong, and households are not imagining their bills. They are looking at different <span class="annot" data-tooltip="dimensions /daɪˈmenʃn，dɪˈmenʃn/ n. (数学和科学中的) 维（度）；尺寸规模；程度；范围方面；侧面v.【工】给…定尺寸；标出…的尺寸时 态: dimensio">dimensions</span> of economic activity and prosperity. Until real wage growth makes the <span class="annot" data-tooltip="cumulative /'kjuːmjəleɪtɪv/ adj. 累积的, 渐增的副 词: cumulatively">cumulative</span> <span class="annot" data-tooltip="inflation /ɪn'fleɪʃn/ n. (充气而引起的)膨胀通货膨胀">inflation</span> shock less painful, Americans may continue to feel economically <span class="annot" data-tooltip="insecure /ˌɪnsɪ'kjʊr/ adj. 无把握的;不能断定的不稳定的;不安全的副 词: insecurely">insecure</span> even as the aggregate economy expands. Ordinary voters do not experience the economy as a <span class="annot" data-tooltip="quarterly /'kwɔːrtərli/ n. 季刊adj. 一年四次的, 每季的adv. 一年四次地, 每季地">quarterly</span> GDP rate or a stock index. They experience it through how much their paycheques can buy and, as this election illustrated, that purchasing power is not always synchronised with the aggregate statistics. Voters mostly blame the Iran war and <span class="annot" data-tooltip="tariffs /'tærɪf/ n. 关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表时 态: tariffed, tariffing, tar">tariffs</span> for <span class="annot" data-tooltip="persistent /pər'sɪstənt/ adj. 持续的; 不断的副 词: persistently">persistent</span> inflation. The <span class="annot" data-tooltip="irony /'aɪrəni/ n. 反语；反话具有讽刺意味的情况；出乎意料的情况；令人啼笑皆非的事情">irony</span> of this election is that these are the two policies the new <span class="annot" data-tooltip="democratic /ˌdemə'krætɪk/ adj. 民主的, 有民主精神或作风的副 词: democratically">Democratic</span> Congress will find hardest to reverse. Start with the Iran war. The president began it in February without congressional authorisation. A <span class="annot" data-tooltip="resolution /ˌrezə'luːʃn/ n. 正式决定，决议决心，决定坚决；坚定；坚毅解决，解答分辨力，分辨率[度]">resolution</span> to <span class="annot" data-tooltip="curb /kɜːrb/ n. 侧石, 边石限制, 克制, 抑制vt. 限制, 克制, 抑制时 态: curbed, curbing, curbs">curb</span> his war powers would need support from two-thirds of both <span class="annot" data-tooltip="chambers /'tʃeɪmbər/ n. （身体或器官内的）室，膛；房间；会所adj. 室内的；私人的，秘密的vt. 把…关在室内；装填（弹药等）时 态: cha">chambers</span> to survive his veto, and Democrats are well short of that. And much as the new Congress may wish to <span class="annot" data-tooltip="choke /tʃoʊk/ vt. & vi. 填塞(使)窒息时 态: choked, choking, chokes">choke</span> off funding for what it sees as military adventurism, few members would vote to defund troops already in the field.</p>
+<p>It is a similar story with <span class="annot" data-tooltip="tariffs /'tærɪf/ n. 关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表时 态: tariffed, tariffing, tar">tariffs</span>. After an <span class="annot" data-tooltip="adverse /əd'vɜːrs/ adj. 不利的；相反的；敌对的（名词adverseness，副词adversely）副 词: adversely">adverse</span> ruling by the <span class="annot" data-tooltip="supreme /su'priːm/ adj. 最高的；至上的最重要的比较级: supremer，supremest 缩 写: supr">Supreme</span> Court in February, the administration reissued the duties under another statute, limited to 150 days unless Congress <span class="annot" data-tooltip="extends /ɪk'stend/ vt. & vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出时 态:">extends</span> the term. The administration then moved them to a more permanent “Section 301” footing. Democrats can ask for, or trade, <span class="annot" data-tooltip="exemptions /ɪɡ'zempʃn/ n. (义务等的)免除;免(税)(收入中的)免税额">exemptions</span> for particular countries or goods, but any broader reversal would be <span class="annot" data-tooltip="vetoed /vet/ vt. 诊疗；审查vi. 作兽医；诊疗n. 兽医时 态: vetted, vetting, vets">vetoed</span> by the president. Other parts of the White House <span class="annot" data-tooltip="agenda /ə'dʒendə/ n. （政治）议题；议事日程；目的">agenda</span> will survive the election as well. Chief among them is Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s welcome deregulatory programme. An executive order signed in January 2025 told agencies to retire ten rules for every new one. Its impact has been impressive: in the 2025 <span class="annot" data-tooltip="fiscal /'fɪskl/ adj. 国库的；会计的，财政的副 词: fiscally">fiscal</span> year, the White House regulatory office counted 646 deregulatory actions against five new rules, with claimed savings of $212bn. Much of the deregulation <span class="annot" data-tooltip="drive /draɪv/ vt. 驱赶驱使, 促使敲, 击vt. & vi. 驾驶n. 乘车旅行私人车道传动, 驱动干劲, 积极性, 能动性紧迫, 逼迫,">drive</span> is baked in for this Congress. It is true that <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">federal</span>-agency rules issued <span class="annot" data-tooltip="towards /tɔːrdz/ prep. 向，朝为了；有助于；用于对于，关于接近；将近；大约">towards</span> the very end of any given Congress can be overturned by the <span class="annot" data-tooltip="subsequent /'sʌbsɪkwənt/ adj. 随后的, 继…之后的副 词: subsequently">subsequent</span> one using the Congressional Review Act “lookback” <span class="annot" data-tooltip="mechanism /'mekənɪzəm/ n. 机械装置构造, 机制办法, 技巧, 途径">mechanism</span>. However, the administration will probably aim to finish its <span class="annot" data-tooltip="major /'meɪdʒər/ adj. 主要的；主修的；重要的；较多的n. 成年人；主修科目；陆军少校vi. 主修时 态: majored, majoring,">major</span> rules through notice-and-comment rulemaking well before 2028, meaning that fewer of them will be <span class="annot" data-tooltip="reversible /rɪ'vɜːrsəbl/ adj. 可逆的">reversible</span>. The election’s fiscal impact is less clear. If recent history is a guide, the new divided government will agree to spend more, not less. Since 2013, whenever a president has lacked full control of Congress or needed opposition votes in the <span class="annot" data-tooltip="senate /ˈsenət/ n.（诸如美国、澳大利亚、法国的）参议院（the Senate） （某些国家的）大学理事会，大学评议会（古罗马的）元老院">Senate</span>, the budget deal that followed has raised spending on both parties’ priorities at once. <span class="annot" data-tooltip="republicans /rɪ'pʌblɪkən/ adj. 共和国的, 共和政体的n. 拥护共和政体者, 共和主义者名 词: republicanism">Republicans</span> got more for defence, Democrats more for <span class="annot" data-tooltip="domestic /də'mestɪk/ adj. 国内的；家庭的；驯养的；一心只管家务的">domestic</span> programmes. In a classic logroll, each side voted for the other’s spending to <span class="annot" data-tooltip="secure /sɪ'kjʊr/ adj. 安心的；有把握的可靠的；牢靠的；稳固的；安全的；稳妥的严密把守的；牢固的；坚固的v. （尤指经过努力）获得，取得，实现拴">secure</span> its <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span>. The 2013 and 2015 deals kept “<span class="annot" data-tooltip="parity /'pærəti/ n. 同等,相等,对等奇偶校验">parity</span>”, with equal increases for defence and non-defence spending. In 2018 Senate Republicans counted it a win that defence rose more than domestic spending, but they still conceded $131bn more for domestic programmes over two years. This recent history cuts against a long-held view that divided government acts as a brake on spending. For instance, William Niskanen of the Cato Institute, a think-<span class="annot" data-tooltip="tank /tæŋk/ n. （存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内时 态: t">tank</span>, found that, from Dwight Eisenhower to Bill Clinton, real federal spending grew more slowly when the two parties split control of Washington.</p>
+<p>The horse-trading of the past <span class="annot" data-tooltip="decade /'dekeɪd/ n. 十年，十年期；十">decade</span> and a half points in a different direction. Each of the deals came under split control, or when the minority’s <span class="annot" data-tooltip="senate /ˈsenət/ n.（诸如美国、澳大利亚、法国的）参议院（the Senate） （某些国家的）大学理事会，大学评议会（古罗马的）元老院">Senate</span> votes were needed, and each raised spending above the limits Congress had set for itself. On the <span class="annot" data-tooltip="annual /'ænjuəl/ adj. 年度的；每年的n. 年刊，年鉴；一年生植物副 词: annually">annual</span> budget, in short, divided governments have become a way for each side to buy the other’s agreement with additional spending. Added to which, this is a White House that likes to make deals. Only an optimist could expect growth in government debt, and the associated risk of higher interest rates, to be lessened by the new gridlock.■ Tomas J. Philipson was acting <span class="annot" data-tooltip="chairman /'tʃermən/ n. 主席，会长；董事长时 态: chairmanned, chairmanning, chairmans">chairman</span> of the Council of Economic Advisers during President Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s first term. This article was downloaded by zlibrary from https://www.economist.com/by-<span class="annot" data-tooltip="invitation /ˌɪnvɪ'teɪʃn/ n. 邀请请柬, 请帖">invitation</span>/2026/11/05/divided-government-in-america- will-mean-more-spending-not-less</p>
+<div class="article-separator"></div>
+<div class="article-header">By Invitation · By Invitation | Charge!</div>
+<p>Markets are pushing electrification. Governments must push harder The transformation can’t be left to market forces alone, writes Murat Kurum, president of COP31 Nov 5th 2026 FOR 30 YEARS global climate talks have focused on what’s feeding power systems. The defining battles of the <span class="annot" data-tooltip="annual /'ænjuəl/ adj. 年度的；每年的n. 年刊，年鉴；一年生植物副 词: annually">annual</span> COP UN climate summits have been between wind turbines and chimney stacks; <span class="annot" data-tooltip="solar /'soʊlər/ adj. 太阳的；日光的；利用太阳光的；与太阳相关的n. 日光浴室">solar</span> <span class="annot" data-tooltip="panels /'pænl/ n. 仪表板；嵌板；座谈小组，全体陪审员vt. 嵌镶板时 态: paneled, panelled paneling, pan">panels</span> and pipelines. How we use that power to electrify buildings, transport and <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> has been largely ignored, despite these sectors producing almost half of emissions. Like a northern European city this summer, electrification is now getting its day in the sun. An opportunity has opened up as the economics have shifted. <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">Energy</span> prices are rising sharply, cost-of-living pressures are biting and</p>
+<p>green-technology costs are plummeting. <span class="annot" data-tooltip="preliminary /prɪ'lɪmɪneri/ adj. 初步的, 预备的, 开端的n. 准备工作, 初步行动">Preliminary</span> data indicate markets are moving this year as more electric tech is shifting off the <span class="annot" data-tooltip="shelves /ʃelv/ vt. 搁置，将某事放到一旁不予考虑vi. 倾斜时 态: shelved, shelving, shelves">shelves</span>. Campaigners often insist the economic case for green technology is clear. But hopes that market forces alone will solve the <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span> <span class="annot" data-tooltip="transition /træn'zɪʃn/ n. 过渡; 转变; 变迁">transition</span> are misplaced. Even with building <span class="annot" data-tooltip="momentum /moʊ'mentəm/ n. 动力；动量；冲力；势头复 数: momenta">momentum</span>, existing <span class="annot" data-tooltip="trends /trend/ n. 趋势, 倾向流行时 态: trended, trending, trends">trends</span> indicate electrification is expanding too slowly—from meeting 23% of the world’s final energy <span class="annot" data-tooltip="consumption /kən'sʌmpʃn/ n. 消费，消耗；消费[耗]量肺病；结核病">consumption</span> today to 29% by 2035. This is not the 35% that the science says will keep climate goals within <span class="annot" data-tooltip="reach /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reach</span>. State <span class="annot" data-tooltip="intervention /ˌɪntər'venʃn/ n. 介入, 干涉, 干预">intervention</span> is still needed, <span class="annot" data-tooltip="urgently /'ɜːrdʒənt/ adj. 紧急的；急迫的副 词: urgently">urgently</span>. The Paris agreement of 2015 legally required countries to submit regular climate plans. These plans have been the <span class="annot" data-tooltip="main /meɪn/ adj. 主要的; 最重要的n. 总管道; 干线">main</span> <span class="annot" data-tooltip="mechanism /'mekənɪzəm/ n. 机械装置构造, 机制办法, 技巧, 途径">mechanism</span> for driving climate policy. However, in the latest round of plans electrification was largely absent. Too often, electrification targets are merely <span class="annot" data-tooltip="implicit /ɪm'plɪsɪt/ adj. 暗示的；盲从的；含蓄的副 词: implicitly">implicit</span> within headline emission-<span class="annot" data-tooltip="reduction /rɪ'dʌkʃn/ n. 减少，缩小；减少的量，降价">reduction</span> goals. Think of it like neglecting to produce an AI <span class="annot" data-tooltip="strategy /'strætədʒi/ n. 战略学, 兵法战略, 策略策略, 计谋">strategy</span> because you already have a headline growth target. Statements of government <span class="annot" data-tooltip="commitment /kə'mɪtmənt/ n. 承诺；保证；信奉；献身；委任；花费金钱、时间、人力等">commitment</span>, <span class="annot" data-tooltip="bespoke /bɪˈspoʊk/ adj. （裁缝等手艺人）专门提供定做服务的；（衣服等）定做的v. 展现，显示（bespeak的过去式）">bespoke</span> policy frameworks and incentive structures are all <span class="annot" data-tooltip="essential /ɪ'senʃl/ adj. 基本的；必要的；本质的；精华的">essential</span> to sending important market signals. Since the start of the conflict in the Gulf, 25 countries have announced new policies to support greater electrification. That is a start, but not enough. Specifically, they must focus on reducing the payback periods of <span class="annot" data-tooltip="investing /ɪn'vest/ vt. 投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买时 态: invested, investing, invests">investing</span> in electric tech and guaranteeing the <span class="annot" data-tooltip="infrastructure /'ɪnfrəstrʌktʃər/ n. 基础设施; 基础结构">infrastructure</span> to make it work. Rarely is electric tech cheaper <span class="annot" data-tooltip="upfront /ˌʌp'frʌnt/ adj. 预付的；在前面的adv. 在前面；提前支付（工资）">upfront</span>. For consumers, the economic case rests on higher efficiency and lower running costs. Electric <span class="annot" data-tooltip="vehicles /'viːəkl/ n. 交通工具, 车辆传播媒介, 手段">vehicles</span> use 70- 80% less energy and can save between $200 and $1,500 per year. But too often, it still takes too long to pay back the initial <span class="annot" data-tooltip="premium /'priːmiəm/ n. 奖金，津贴；加价；附加费；保险费；额外费用adj. （品质）高级的；优质的，顶级的">premium</span>. The relative cost of electricity compared to fossil fuels is <span class="annot" data-tooltip="critical /'krɪtɪkl/ adj. 批评的，爱挑剔的；决定性的；危险的；临界的；鉴定的；评论的副 词: critically">critical</span>. The European <span class="annot" data-tooltip="commission /kə'mɪʃn/ n. 授权, 委托委员会佣金, 回扣vt. 委任, 委托时 态: commissioned, commissioning, c">Commission</span> recently found that once electricity costs more than 2.5 times as much as natural gas, the case for <span class="annot" data-tooltip="households /'haʊshoʊld/ n. 同住在一所房子里的人, 一家人, 户adj. 家庭的, 家用的">households</span> to switch to heat pumps weakens sharply. Policymakers can <span class="annot" data-tooltip="intervene /ˌɪntər'viːn/ vi. 干涉，干预；调解干扰，阻碍时 态: intervened，intervening，intervenes">intervene</span> by <span class="annot" data-tooltip="reforming /rɪ'fɔːrm/ n. 改革，改良，改造vt. & vi. 改革；改造；改善时 态: reformed，reforming，reforms">reforming</span> the <span class="annot" data-tooltip="tapestries /'tæpəstri/ n. 挂毯；织锦；绣帷vt. 用挂毯装饰">tapestries</span> of taxes and <span class="annot" data-tooltip="subsidies /'sʌbsədi/ n. 津贴；补助金；补贴">subsidies</span> on different energy sources. In some developed countries, taxes make up 30% of the cost of residential electricity,</p>
+<p>and most EU countries tax electricity more than natural gas. <span class="annot" data-tooltip="reforms /rɪ'fɔːrm/ n. 改革，改良，改造vt. & vi. 改革；改造；改善时 态: reformed，reforming，reforms">Reforms</span> need balancing against <span class="annot" data-tooltip="fiscal /'fɪskl/ adj. 国库的；会计的，财政的副 词: fiscally">fiscal</span> and socioeconomic needs, but the <span class="annot" data-tooltip="overall /ˌoʊvər'ɔːl/ adj. 总体的；全面的；综合的全面考虑的adv. 大体上，总的来说一切包括在内，全部的n. 长罩衣工装裤；工作裤">overall</span> imperative to rebalance in favour of electricity remains. To reduce <span class="annot" data-tooltip="upfront /ˌʌp'frʌnt/ adj. 预付的；在前面的adv. 在前面；提前支付（工资）">upfront</span> costs, governments have long deployed a mixture of direct <span class="annot" data-tooltip="subsidies /'sʌbsədi/ n. 津贴；补助金；补贴">subsidies</span>, preferential tax rates and social-support schemes. Türkiye’s rapid adoption of electric <span class="annot" data-tooltip="vehicles /'viːəkl/ n. 交通工具, 车辆传播媒介, 手段">vehicles</span> has been driven by <span class="annot" data-tooltip="reductions /rɪ'dʌkʃn/ n. 减少，缩小；减少的量，降价">reductions</span> in <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span>-added tax that lower <span class="annot" data-tooltip="sticker /'stɪkər/ n. 尖刀；难题；张贴物；坚持不懈的人vt. 给…贴上标签价adj. 汽车价目标签的；汽车标签价的">sticker</span> prices at the dealership. Multilateral development banks and other development-finance institutions can also use grant-based and concessional capital along with loan guarantees to lower the cost of capital. This is particularly important for <span class="annot" data-tooltip="developing /dɪ'veləpɪŋ/ adj. 在进行中的;走向完成阶段的;走向成熟的发展中的">developing</span> countries, which face <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> higher borrowing costs that are holding back investment. But these incentives cost money. In a <span class="annot" data-tooltip="fiscally /'fɪskl/ adj. 国库的；会计的，财政的副 词: fiscally">fiscally</span> <span class="annot" data-tooltip="constrained /kən'streɪn/ vt. 强迫，强使；限制，约束时 态: constrained，constraining，constrains">constrained</span> world, electrification must fight harder for a share of a <span class="annot" data-tooltip="shrinking /ʃrɪŋk/ vt. & vi. 收缩；退缩时 态: shrank ，shrunk shrunk，shrunken shrinking，shr">shrinking</span> pie. Nevertheless, as the <span class="annot" data-tooltip="inherent /ɪn'herənt/ adj. 固有的；内在的；与生俱来的副 词: inherently">inherent</span> risks of <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span> import dependency come more sharply into view, governments should be ready to review the case for more <span class="annot" data-tooltip="aggressive /ə'ɡresɪv/ adj. 好争斗的, 挑衅的, 侵略性的副 词: aggressively">aggressive</span> support. This year 95 countries have introduced emergency price <span class="annot" data-tooltip="caps abbr. Cassette Programming System 盒式磁带程序设计系统">caps</span>, subsidies or fuel-levy cuts to support consumers. Public money might be better spent subsidising the equipment needed to reduce <span class="annot" data-tooltip="exposure /ɪk'spoʊʒər/ n. 暴露, 显露揭发, 揭露(软片等)曝光">exposure</span> to <span class="annot" data-tooltip="volatile /'vɑːlətl/ adj. （人或其情绪）不稳定的；易变的；易怒的，喜怒无常的（情况）可能急剧波动的；不稳定的；易恶化的（物质）易挥发的，易气化的【">volatile</span> global markets. Governments must also give consumers confidence that once they have bought their electric <span class="annot" data-tooltip="appliance /ə'plaɪəns/ n. 器具, 器械, 装置">appliance</span>, they will be able to run it. Otherwise, they will not risk the investment. However, 730m people lack electricity, and millions more have only unreliable access. Even in rich countries, low investment in <span class="annot" data-tooltip="grids /ɡrɪd/ n. 格子,格栏地图上的坐标方格输电网">grids</span> is a <span class="annot" data-tooltip="constraint /kən'streɪnt/ n. 强制；限制，约束强制，强迫">constraint</span>. There is <span class="annot" data-tooltip="simply /'sɪmpli/ adv. 简单地；朴素地；简直；仅仅；坦白地">simply</span> no <span class="annot" data-tooltip="transition /træn'zɪʃn/ n. 过渡; 转变; 变迁">transition</span> without <span class="annot" data-tooltip="transmission /trænz'mɪʃn/ n. 传送, 传播, 传达播送传动装置, 变速器形容词: transmissive">transmission</span>. Around $1trn is needed each year for grids and storage between now and 2030. Permitting times need to be shortened. Outdated policy and regulatory frameworks that are based on old fuel sources rather than renewables need <span class="annot" data-tooltip="reform /rɪ'fɔːrm/ n. 改革，改良，改造vt. & vi. 改革；改造；改善时 态: reformed，reforming，reforms">reform</span>. So how to kick-start progress? As chair of COP31, Türkiye is making electrification the golden <span class="annot" data-tooltip="thread /θred/ n. 线；细线线索，思路vt. 将(针、线等)穿过…将(影片)装入放映机时 态: threaded，threading，thr">thread</span>, or <span class="annot" data-tooltip="copper /'kɑːpər/ n. 铜；铜币；[俚]警察adj. 铜的vt. 镀铜于时 态: coppered, coppering, coppers">copper</span> wire, connecting all our efforts. We have proposed a global “35-by-35” target—35% electrification by 2035 —to focus minds and <span class="annot" data-tooltip="enable /ɪ'neɪbl/ vt. 使能够；提供做…的权利[措施]使可能时 态: enabled，enabling，enables">enable</span> us to track progress. Türkiye is also <span class="annot" data-tooltip="leading /ˈliːdɪŋ/ adj. 主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）">leading</span> by</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>sentiment</td><td>/'sentɪmənt/ n.</td><td>(对怜悯、怀旧等的)柔情态度或意见观点; 意见</td></tr>
+<tr><td>severe</td><td>/sɪ'vɪr/ adj.</td><td>严厉的；苛刻的；剧烈的；严峻的, severest</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>households</td><td>/'haʊshoʊld/ n.</td><td>同住在一所房子里的人, 一家人, 户adj. 家庭的, 家用的</td></tr>
+<tr><td>wages</td><td>/weɪdʒ/ vi.</td><td>进行；发动；从事n. 工资；报偿；代价vt. 开展；进行, waging, wages</td></tr>
+<tr><td>wage</td><td>/weɪdʒ/ vi.</td><td>进行；发动；从事n. 工资；报偿；代价vt. 开展；进行, waging, wages</td></tr>
+<tr><td>anxiety</td><td>/æŋ'zaɪəti/ n.</td><td>焦虑；挂念；渴望；令人焦虑的事</td></tr>
+<tr><td>campaign</td><td>/kæm'peɪn/ n.</td><td>运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）, campaigning, campai</td></tr>
+<tr><td>omitted</td><td>/ə'mɪt/ vt.</td><td>省略，遗漏；删掉忘记做，omitting，omits</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>dimensions</td><td>/daɪˈmenʃn，dɪˈmenʃn/ n.</td><td>(数学和科学中的) 维（度）；尺寸规模；程度；范围方面；侧面v.【工】给…定尺寸；标出…的尺寸, dimensioning, dimensions</td></tr>
+<tr><td>cumulative</td><td>/'kjuːmjəleɪtɪv/ adj.</td><td>累积的, 渐增的</td></tr>
+<tr><td>inflation</td><td>/ɪn'fleɪʃn/ n.</td><td>(充气而引起的)膨胀通货膨胀</td></tr>
+<tr><td>insecure</td><td>/ˌɪnsɪ'kjʊr/ adj.</td><td>无把握的;不能断定的不稳定的;不安全的</td></tr>
+<tr><td>quarterly</td><td>/'kwɔːrtərli/ n.</td><td>季刊adj. 一年四次的, 每季的adv. 一年四次地, 每季地</td></tr>
+<tr><td>tariffs</td><td>/'tærɪf/ n.</td><td>关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表, tariffing, tariffs</td></tr>
+<tr><td>persistent</td><td>/pər'sɪstənt/ adj.</td><td>持续的; 不断的</td></tr>
+<tr><td>irony</td><td>/'aɪrəni/ n.</td><td>反语；反话具有讽刺意味的情况；出乎意料的情况；令人啼笑皆非的事情</td></tr>
+<tr><td>democratic</td><td>/ˌdemə'krætɪk/ adj.</td><td>民主的, 有民主精神或作风的</td></tr>
+<tr><td>resolution</td><td>/ˌrezə'luːʃn/ n.</td><td>正式决定，决议决心，决定坚决；坚定；坚毅解决，解答分辨力，分辨率[度]</td></tr>
+<tr><td>curb</td><td>/kɜːrb/ n.</td><td>侧石, 边石限制, 克制, 抑制vt. 限制, 克制, 抑制, curbing, curbs</td></tr>
+<tr><td>chambers</td><td>/'tʃeɪmbər/ n.</td><td>（身体或器官内的）室，膛；房间；会所adj. 室内的；私人的，秘密的vt. 把…关在室内；装填（弹药等）, chambering, chambers</td></tr>
+<tr><td>choke</td><td>/tʃoʊk/ vt.</td><td>& vi. 填塞(使)窒息, choking, chokes</td></tr>
+<tr><td>tariffs</td><td>/'tærɪf/ n.</td><td>关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表, tariffing, tariffs</td></tr>
+<tr><td>adverse</td><td>/əd'vɜːrs/ adj.</td><td>不利的；相反的；敌对的（名词adverseness，副词adversely）</td></tr>
+<tr><td>supreme</td><td>/su'priːm/ adj.</td><td>最高的；至上的最重要的，supremest 缩 写: supr</td></tr>
+<tr><td>extends</td><td>/ɪk'stend/ vt.</td><td>& vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出，extending，extends</td></tr>
+<tr><td>exemptions</td><td>/ɪɡ'zempʃn/ n.</td><td>(义务等的)免除;免(税)(收入中的)免税额</td></tr>
+<tr><td>vetoed</td><td>/vet/ vt.</td><td>诊疗；审查vi. 作兽医；诊疗n. 兽医, vetting, vets</td></tr>
+<tr><td>agenda</td><td>/ə'dʒendə/ n.</td><td>（政治）议题；议事日程；目的</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>fiscal</td><td>/'fɪskl/ adj.</td><td>国库的；会计的，财政的</td></tr>
+<tr><td>drive</td><td>/draɪv/ vt.</td><td>驱赶驱使, 促使敲, 击vt. & vi. 驾驶n. 乘车旅行私人车道传动, 驱动干劲, 积极性, 能动性紧迫, 逼迫, 压力, drives</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>towards</td><td>/tɔːrdz/ prep.</td><td>向，朝为了；有助于；用于对于，关于接近；将近；大约</td></tr>
+<tr><td>subsequent</td><td>/'sʌbsɪkwənt/ adj.</td><td>随后的, 继…之后的</td></tr>
+<tr><td>mechanism</td><td>/'mekənɪzəm/ n.</td><td>机械装置构造, 机制办法, 技巧, 途径</td></tr>
+<tr><td>major</td><td>/'meɪdʒər/ adj.</td><td>主要的；主修的；重要的；较多的n. 成年人；主修科目；陆军少校vi. 主修, majoring, majors</td></tr>
+<tr><td>reversible</td><td>/rɪ'vɜːrsəbl/ adj.</td><td>可逆的</td></tr>
+<tr><td>senate</td><td>/ˈsenət/ </td><td>n.（诸如美国、澳大利亚、法国的）参议院（the Senate） （某些国家的）大学理事会，大学评议会（古罗马的）元老院</td></tr>
+<tr><td>republicans</td><td>/rɪ'pʌblɪkən/ adj.</td><td>共和国的, 共和政体的n. 拥护共和政体者, 共和主义者</td></tr>
+<tr><td>domestic</td><td>/də'mestɪk/ adj.</td><td>国内的；家庭的；驯养的；一心只管家务的</td></tr>
+<tr><td>secure</td><td>/sɪ'kjʊr/ adj.</td><td>安心的；有把握的可靠的；牢靠的；稳固的；安全的；稳妥的严密把守的；牢固的；坚固的v. （尤指经过努力）获得，取得，实现拴牢；扣紧；关严保护；保卫；使安全抵押；为</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>parity</td><td>/'pærəti/ n.</td><td>同等,相等,对等奇偶校验</td></tr>
+<tr><td>tank</td><td>/tæŋk/ n.</td><td>（存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内, tanking, tanks</td></tr>
+<tr><td>decade</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>senate</td><td>/ˈsenət/ </td><td>n.（诸如美国、澳大利亚、法国的）参议院（the Senate） （某些国家的）大学理事会，大学评议会（古罗马的）元老院</td></tr>
+<tr><td>annual</td><td>/'ænjuəl/ adj.</td><td>年度的；每年的n. 年刊，年鉴；一年生植物</td></tr>
+<tr><td>chairman</td><td>/'tʃermən/ n.</td><td>主席，会长；董事长, chairmanning, chairmans</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>invitation</td><td>/ˌɪnvɪ'teɪʃn/ n.</td><td>邀请请柬, 请帖</td></tr>
+<tr><td>annual</td><td>/'ænjuəl/ adj.</td><td>年度的；每年的n. 年刊，年鉴；一年生植物</td></tr>
+<tr><td>solar</td><td>/'soʊlər/ adj.</td><td>太阳的；日光的；利用太阳光的；与太阳相关的n. 日光浴室</td></tr>
+<tr><td>panels</td><td>/'pænl/ n.</td><td>仪表板；嵌板；座谈小组，全体陪审员vt. 嵌镶板, panelled paneling, panelling panels, panels</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>preliminary</td><td>/prɪ'lɪmɪneri/ adj.</td><td>初步的, 预备的, 开端的n. 准备工作, 初步行动</td></tr>
+<tr><td>shelves</td><td>/ʃelv/ vt.</td><td>搁置，将某事放到一旁不予考虑vi. 倾斜, shelving, shelves</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>transition</td><td>/træn'zɪʃn/ n.</td><td>过渡; 转变; 变迁</td></tr>
+<tr><td>momentum</td><td>/moʊ'mentəm/ n.</td><td>动力；动量；冲力；势头复 数: momenta</td></tr>
+<tr><td>trends</td><td>/trend/ n.</td><td>趋势, 倾向流行, trending, trends</td></tr>
+<tr><td>consumption</td><td>/kən'sʌmpʃn/ n.</td><td>消费，消耗；消费[耗]量肺病；结核病</td></tr>
+<tr><td>reach</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>intervention</td><td>/ˌɪntər'venʃn/ n.</td><td>介入, 干涉, 干预</td></tr>
+<tr><td>urgently</td><td>/'ɜːrdʒənt/ adj.</td><td>紧急的；急迫的</td></tr>
+<tr><td>main</td><td>/meɪn/ adj.</td><td>主要的; 最重要的n. 总管道; 干线</td></tr>
+<tr><td>mechanism</td><td>/'mekənɪzəm/ n.</td><td>机械装置构造, 机制办法, 技巧, 途径</td></tr>
+<tr><td>implicit</td><td>/ɪm'plɪsɪt/ adj.</td><td>暗示的；盲从的；含蓄的</td></tr>
+<tr><td>reduction</td><td>/rɪ'dʌkʃn/ n.</td><td>减少，缩小；减少的量，降价</td></tr>
+<tr><td>strategy</td><td>/'strætədʒi/ n.</td><td>战略学, 兵法战略, 策略策略, 计谋</td></tr>
+<tr><td>commitment</td><td>/kə'mɪtmənt/ n.</td><td>承诺；保证；信奉；献身；委任；花费金钱、时间、人力等</td></tr>
+<tr><td>bespoke</td><td>/bɪˈspoʊk/ adj.</td><td>（裁缝等手艺人）专门提供定做服务的；（衣服等）定做的v. 展现，显示（bespeak的过去式）</td></tr>
+<tr><td>essential</td><td>/ɪ'senʃl/ adj.</td><td>基本的；必要的；本质的；精华的</td></tr>
+<tr><td>investing</td><td>/ɪn'vest/ vt.</td><td>投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买, investing, invests</td></tr>
+<tr><td>infrastructure</td><td>/'ɪnfrəstrʌktʃər/ n.</td><td>基础设施; 基础结构</td></tr>
+<tr><td>upfront</td><td>/ˌʌp'frʌnt/ adj.</td><td>预付的；在前面的adv. 在前面；提前支付（工资）</td></tr>
+<tr><td>vehicles</td><td>/'viːəkl/ n.</td><td>交通工具, 车辆传播媒介, 手段</td></tr>
+<tr><td>premium</td><td>/'priːmiəm/ n.</td><td>奖金，津贴；加价；附加费；保险费；额外费用adj. （品质）高级的；优质的，顶级的</td></tr>
+<tr><td>critical</td><td>/'krɪtɪkl/ adj.</td><td>批评的，爱挑剔的；决定性的；危险的；临界的；鉴定的；评论的</td></tr>
+<tr><td>commission</td><td>/kə'mɪʃn/ n.</td><td>授权, 委托委员会佣金, 回扣vt. 委任, 委托, commissioning, commissions</td></tr>
+<tr><td>households</td><td>/'haʊshoʊld/ n.</td><td>同住在一所房子里的人, 一家人, 户adj. 家庭的, 家用的</td></tr>
+<tr><td>intervene</td><td>/ˌɪntər'viːn/ vi.</td><td>干涉，干预；调解干扰，阻碍，intervening，intervenes</td></tr>
+<tr><td>reforming</td><td>/rɪ'fɔːrm/ n.</td><td>改革，改良，改造vt. & vi. 改革；改造；改善，reforming，reforms</td></tr>
+<tr><td>tapestries</td><td>/'tæpəstri/ n.</td><td>挂毯；织锦；绣帷vt. 用挂毯装饰</td></tr>
+<tr><td>subsidies</td><td>/'sʌbsədi/ n.</td><td>津贴；补助金；补贴</td></tr>
+<tr><td>reforms</td><td>/rɪ'fɔːrm/ n.</td><td>改革，改良，改造vt. & vi. 改革；改造；改善，reforming，reforms</td></tr>
+<tr><td>fiscal</td><td>/'fɪskl/ adj.</td><td>国库的；会计的，财政的</td></tr>
+<tr><td>overall</td><td>/ˌoʊvər'ɔːl/ adj.</td><td>总体的；全面的；综合的全面考虑的adv. 大体上，总的来说一切包括在内，全部的n. 长罩衣工装裤；工作裤</td></tr>
+<tr><td>upfront</td><td>/ˌʌp'frʌnt/ adj.</td><td>预付的；在前面的adv. 在前面；提前支付（工资）</td></tr>
+<tr><td>subsidies</td><td>/'sʌbsədi/ n.</td><td>津贴；补助金；补贴</td></tr>
+<tr><td>vehicles</td><td>/'viːəkl/ n.</td><td>交通工具, 车辆传播媒介, 手段</td></tr>
+<tr><td>reductions</td><td>/rɪ'dʌkʃn/ n.</td><td>减少，缩小；减少的量，降价</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>sticker</td><td>/'stɪkər/ n.</td><td>尖刀；难题；张贴物；坚持不懈的人vt. 给…贴上标签价adj. 汽车价目标签的；汽车标签价的</td></tr>
+<tr><td>developing</td><td>/dɪ'veləpɪŋ/ adj.</td><td>在进行中的;走向完成阶段的;走向成熟的发展中的</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>fiscally</td><td>/'fɪskl/ adj.</td><td>国库的；会计的，财政的</td></tr>
+<tr><td>constrained</td><td>/kən'streɪn/ vt.</td><td>强迫，强使；限制，约束，constraining，constrains</td></tr>
+<tr><td>shrinking</td><td>/ʃrɪŋk/ vt.</td><td>& vi. 收缩；退缩，shrunk shrunk，shrunken shrinking，shrinks</td></tr>
+<tr><td>inherent</td><td>/ɪn'herənt/ adj.</td><td>固有的；内在的；与生俱来的</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>aggressive</td><td>/ə'ɡresɪv/ adj.</td><td>好争斗的, 挑衅的, 侵略性的</td></tr>
+<tr><td>caps</td><td>— abbr.</td><td>Cassette Programming System 盒式磁带程序设计系统</td></tr>
+<tr><td>exposure</td><td>/ɪk'spoʊʒər/ n.</td><td>暴露, 显露揭发, 揭露(软片等)曝光</td></tr>
+<tr><td>volatile</td><td>/'vɑːlətl/ adj.</td><td>（人或其情绪）不稳定的；易变的；易怒的，喜怒无常的（情况）可能急剧波动的；不稳定的；易恶化的（物质）易挥发的，易气化的【计】（计算机内存）易失的n.【罕】 挥发</td></tr>
+<tr><td>appliance</td><td>/ə'plaɪəns/ n.</td><td>器具, 器械, 装置</td></tr>
+<tr><td>grids</td><td>/ɡrɪd/ n.</td><td>格子,格栏地图上的坐标方格输电网</td></tr>
+<tr><td>constraint</td><td>/kən'streɪnt/ n.</td><td>强制；限制，约束强制，强迫</td></tr>
+<tr><td>simply</td><td>/'sɪmpli/ adv.</td><td>简单地；朴素地；简直；仅仅；坦白地</td></tr>
+<tr><td>transition</td><td>/træn'zɪʃn/ n.</td><td>过渡; 转变; 变迁</td></tr>
+<tr><td>transmission</td><td>/trænz'mɪʃn/ n.</td><td>传送, 传播, 传达播送传动装置, 变速器</td></tr>
+<tr><td>reform</td><td>/rɪ'fɔːrm/ n.</td><td>改革，改良，改造vt. & vi. 改革；改造；改善，reforming，reforms</td></tr>
+<tr><td>thread</td><td>/θred/ n.</td><td>线；细线线索，思路vt. 将(针、线等)穿过…将(影片)装入放映机，threading，threads</td></tr>
+<tr><td>copper</td><td>/'kɑːpər/ n.</td><td>铜；铜币；[俚]警察adj. 铜的vt. 镀铜于, coppering, coppers</td></tr>
+<tr><td>enable</td><td>/ɪ'neɪbl/ vt.</td><td>使能够；提供做…的权利[措施]使可能，enabling，enables</td></tr>
+<tr><td>leading</td><td>/ˈliːdɪŋ/ adj.</td><td>主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day4.html" class="nav-btn">← Day 4</a>
+  <a href="day6.html" class="nav-btn">Day 6 →</a>
+</div>
+
+<div class="progress">📖 Day 5 of 40</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-11-07</div>
+
+</body>
+</html>

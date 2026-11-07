@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Briefing | After the midterms</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-11-07</div>
+
+<h1 class="article-title">Briefing | After the midterms</h1>
+<div class="article-section">Briefing</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p><span class="annot" data-tooltip="concession /kən'seʃn/ n. 承认, 允许妥协, 让步特许权形容词: concessional">concession</span> after concession to Russia, <span class="annot" data-tooltip="cutting /'kʌtɪŋ/ n. 切断；剪辑；开凿adj. 严寒的；锋利的；尖酸刻薄的v. 切开；采伐；削减（cut的ing形式）">cutting</span> a deal to buy <span class="annot" data-tooltip="diesel /'diːzl/ n. 柴油机；柴油；（俚）健康的身体adj. 内燃机传动的；供内燃机用的">diesel</span> and waiving sanctions in return for the <span class="annot" data-tooltip="release /rɪ'liːs/ vt. 释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]时 态: released，rel">release</span> of an American <span class="annot" data-tooltip="prisoner /'prɪznər/ n. 囚徒俘虏被夺去自由的人[动物]等">prisoner</span>, in part to <span class="annot" data-tooltip="lure /lʊr/ n. 诱惑物；诱惑；饵vt. 引诱；诱惑时 态: lured, luring, lures">lure</span> Mr Putin to the negotiating table. Mr Putin may conclude that he will never again enjoy as pliant a partner as Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>. But the Russian leader also believes that time is on his side, and that European support for <span class="annot" data-tooltip="ukraine n. 乌克兰（原苏联一加盟共和国，现已独立）">Ukraine</span> will ebb away. What is more, Democrats in Congress can be expected to <span class="annot" data-tooltip="hinder /'hɪndər/ vt. & vi. 阻碍；妨碍时 态: hindered，hindering，hinders">hinder</span> or block efforts by Mr Trump to give Mr Putin more ground on Ukraine—especially any deal that <span class="annot" data-tooltip="reeks /riːk/ vi. 冒烟；散发；放出臭气n. 臭气；水蒸汽；烟vt. 用烟熏；散发时 态: reeked, reeking, reeks">reeks</span> of <span class="annot" data-tooltip="corruption /kə'rʌpʃn/ n. 堕落;腐化;腐败;贿赂腐烂">corruption</span>. The president may quickly lose interest (not for the first time) in the quagmire of Ukraine and turn his attention to another <span class="annot" data-tooltip="developing /dɪ'veləpɪŋ/ adj. 在进行中的;走向完成阶段的;走向成熟的发展中的">developing</span> hot <span class="annot" data-tooltip="spot /spɑːt/ n. 斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Po">spot</span> in his <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> hemisphere: Cuba. Since taking office, Mr Trump has squeezed Cuba’s dictatorship economically, causing power cuts, food <span class="annot" data-tooltip="shortages /'ʃɔːrtɪdʒ/ n. 不足; 缺少; 缺少量; 不足额">shortages</span> and a <span class="annot" data-tooltip="collapse /kə'læps/ vi. 倒塌；瓦解；暴跌vt. 使倒塌，使崩溃；使萎陷n. 倒塌；失败；衰竭时 态: collapsed, collapsing">collapse</span> of health care on the island. In January 2026 the president decapitated <span class="annot" data-tooltip="venezuela /ˌvenə'zweɪlə/ n. 委内瑞拉形容词: Venezuelan">Venezuela</span>’s government by abducting Nicolás Maduro, its leader. He is <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span> to be <span class="annot" data-tooltip="tempted /tempt/ vt. 引诱或怂恿(某人)干不正当的事使想要时 态: tempted, tempting, tempts">tempted</span> by a similar model of light-touch <span class="annot" data-tooltip="regime /reɪ'ʒiːm/ n. 政权，政体；社会制度；管理体制">regime</span> change in Cuba. America’s economic <span class="annot" data-tooltip="warfare /'wɔːrfer/ n. 战争, 战争状态">warfare</span> is intended both to weaken the regime and split the country’s <span class="annot" data-tooltip="elite /eɪ'liːt/ n. （社会）上层集团；掌权人物；出类拔萃的人，精英adj.（社会）上层集团的；掌权人物的；精英的">elite</span>, potentially throwing up partners who might work with America, much as Delcy Rodríguez, Venezuela’s acting leader, abandoned Mr Maduro. Mr Trump has made little secret of his goal. “We’ll take care of Cuba on our way back from Iran,” he <span class="annot" data-tooltip="boasted /boʊst/ n. 自吹自擂, 自夸的话vt. & vi. 自夸vt. 有(引以为荣的事物)时 态: boasted, boasting, ">boasted</span> on the <span class="annot" data-tooltip="campaign /kæm'peɪn/ n. 运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）时">campaign</span> <span class="annot" data-tooltip="trail /treɪl/ vt. & vi. (使某物)被拖在后面vt. 跟踪，追踪vi. (在比赛等中)输，失败n. 足迹；臭迹小径一缕，一股时 态: ">trail</span> in October. That month Mr Rubio, a Cuban-American hawk, urged disaffected Cubans to work with the CIA: “To those who seek to create positive change in Cuba—now is the time.” Mr Trump longs to be a president who achieves what his predecessors did not. He would relish being the leader who reversed the Cuban <span class="annot" data-tooltip="communist /'kɑːmjənɪst/ n. 共产主义者adj. 共产主义的, 信仰共产主义的">communist</span> victory of 1959. But he is not a man for details. In Venezuela he has largely left the country’s dictatorship in <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span>, swapping its leaders and cutting grubby deals to <span class="annot" data-tooltip="secure /sɪ'kjʊr/ adj. 安心的；有把握的可靠的；牢靠的；稳固的；安全的；稳妥的严密把守的；牢固的；坚固的v. （尤指经过努力）获得，取得，实现拴">secure</span> its oil for American firms. A <span class="annot" data-tooltip="fudge /fʌdʒ/ n. 乳脂(巧克力)软糖vt. 搪塞,篡改时 态: fudged, fudging, fudges">fudge</span> like that would be <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> harder to pull off in Cuba, notes a person with knowledge of the administration’s debates, because Cuba’s diaspora—which is older and more <span class="annot" data-tooltip="established /ɪ'stæblɪʃt/ adj. 已建立的；已设立的；已制定的确定的，证实的">established</span> than Venezuela’s—would make its wrath felt. It would <span class="annot" data-tooltip="arguably /'ɑːrɡjuəbli/ adv. 可论证地,正如可提出证据加以证明的那样">arguably</span> help Mr Trump’s chances of success in his foreign-policy endeavours if he had experienced staffers around him. But an exodus may be</p>
+<p>under way. Mr Rubio, who also serves as national <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span> adviser, has <span class="annot" data-tooltip="quietly /'kwaɪətli/ adv. 安静地；秘密地；平稳地">quietly</span> been exploring jobs in the private sector. (He may skip the 2028 presidential <span class="annot" data-tooltip="race /reɪs/ n. 种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACE">race</span>, hoping for more favourable conditions in 2032.) Mr Rubio’s departure would shift the balance of the administration, potentially leaving John Ratcliffe, the director of the CIA, as the most influential hawk in the <span class="annot" data-tooltip="cabinet /'kæbɪnət/ n. 内阁；橱柜；展览艺术品的小陈列室adj. 内阁的；私下的，秘密的">cabinet</span>. The president may also lose his favourite man at the Pentagon. Many Democrats want to <span class="annot" data-tooltip="impeach /ɪm'piːtʃ/ vt. 控告（某人）犯罪，弹劾；怀疑，提出异议时 态: impeached, impeaching, impeaches">impeach</span> Pete Hegseth, the pugnacious and divisive <span class="annot" data-tooltip="secretary /'sekrəteri/ n. 秘书书记部长, 大臣形容词: secretarial">secretary</span> of war. Hakeem Jeffries, the likely <span class="annot" data-tooltip="democratic /ˌdemə'krætɪk/ adj. 民主的, 有民主精神或作风的副 词: democratically">Democratic</span> Speaker of the House, has not ruled it out. Democrats may demand Mr Hegseth’s ousting as the price of passing an $87.6bn supplemental bill including $67bn for the Department of War, which is in a deep financial <span class="annot" data-tooltip="hole /hoʊl/ n. 洞，孔；洞穴，穴；突破口vi. 凿洞，穿孔；（高尔夫球等）进洞vt. 凿洞时 态: holed, holing, hol">hole</span>. Presidents often seek scapegoats after an electoral pummelling. Mr Bush <span class="annot" data-tooltip="dumped /dʌmp/ vt. 倾倒；倾卸vi. 倒垃圾n. 垃圾场dUMP脱氧尿苷酸时 态: dumped, dumping, dumps">dumped</span> Donald Rumsfeld, his defence secretary, after his midterm loss in 2006; Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> <span class="annot" data-tooltip="sacked /sæk/ n. 麻袋, 包一袋的量开除, 解雇洗劫, 劫掠vt. 装入袋中解雇洗劫, 劫掠时 态: sacked, sacking, s">sacked</span> Jeff Sessions, his then <span class="annot" data-tooltip="attorney /ə'tɜːrni/ n. 代理人, 律师名 词: attorneyship">attorney</span>-general, after his party’s defeat in the House in 2018. Yet Mr Trump is more likely to respond with <span class="annot" data-tooltip="defiance /dɪ'faɪəns/ n. 蔑视；挑战；反抗">defiance</span> than with contrition. There is speculation that Mr Hegseth could be shunted into the job of national security adviser or <span class="annot" data-tooltip="possibly /'pɑːsəbli/ adv. 可能地；大概；也许">possibly</span> appointed to the <span class="annot" data-tooltip="senate /ˈsenət/ n.（诸如美国、澳大利亚、法国的）参议院（the Senate） （某些国家的）大学理事会，大学评议会（古罗马的）元老院">Senate</span> seat for Tennessee that is to be vacated in January by Marsha Blackburn, who has been elected the state’s governor. There, some note, he would enjoy a degree of protection from Democratic probes—including those into his deadly <span class="annot" data-tooltip="strikes /straɪk/ vi. 罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打时 态:">strikes</span> on boats <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span> to be carrying drugs.</p>
+<p>Even if Mr Hegseth survives, Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s coterie of advisers has already begun to thin out. The national <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span> council has been largely <span class="annot" data-tooltip="gutted /'ɡʌtɪd/ adj. 非常沮丧的；非常失望的；极度伤心的v. （gut的过去分词和过去式）损毁（建筑物或房屋的）内部；取出…的内脏（以便烹饪）">gutted</span>, resulting in ad hoc and haphazard decision-making. Experts have been fired en masse, resulting in poor preparation for meetings and <span class="annot" data-tooltip="negotiations /nɪˌɡoʊʃi'eɪʃn/ n. 协商，谈判完成(难事)；通过">negotiations</span>. Policy can swing on the whim of individuals or small <span class="annot" data-tooltip="groups /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">groups</span>, as Elon Musk, the founder of SpaceX and a former adviser to Mr Trump, showed when his firm appeared to cut off <span class="annot" data-tooltip="vital /'vaɪtl/ adj. 极重要的，必不可少的维持生命所必需的；生命的有生气的，充满生机的副 词: vitally">vital</span> satellite communications to <span class="annot" data-tooltip="ukraine n. 乌克兰（原苏联一加盟共和国，现已独立）">Ukraine</span> during a row in October. Some of Mr Trump’s <span class="annot" data-tooltip="envoys /'envɔɪ/ n. 使者；全权公使">envoys</span>, both official and unofficial, <span class="annot" data-tooltip="blend /blend/ vt. & vi. (使)混合, (使)混杂n. 混合物时 态: blended, blent blending, blends">blend</span> diplomacy with the pursuit of lucrative business deals. Mr Trump will also find it ever harder to gain the <span class="annot" data-tooltip="senate /ˈsenət/ n.（诸如美国、澳大利亚、法国的）参议院（the Senate） （某些国家的）大学理事会，大学评议会（古罗马的）元老院">Senate</span>’s assent for new <span class="annot" data-tooltip="cabinet /'kæbɪnət/ n. 内阁；橱柜；展览艺术品的小陈列室adj. 内阁的；私下的，秘密的">cabinet</span> <span class="annot" data-tooltip="secretaries /'sekrəteri/ n. 秘书书记部长, 大臣形容词: secretarial">secretaries</span> and other appointees, leaving officials in acting roles for long <span class="annot" data-tooltip="stretches /stretʃ/ vt. 伸展,张开vi. 伸展adj. 可伸缩的n. 伸展，延伸时 态: stretched, stretching, stre">stretches</span>. Susie Wiles, the president’s chief of staff, who is widely viewed as a stabilising force in the White House, may depart after serving for longer than any of Mr Trump’s first-term consiglieri. The <span class="annot" data-tooltip="ultra /'ʌltrə/ adj. 极端的；过分的n. 极端主义者；过激论者；急进论者">ultra</span>- nationalist <span class="annot" data-tooltip="agenda /ə'dʒendə/ n. （政治）议题；议事日程；目的">agenda</span> pushed by Stephen Miller, Ms Wiles’s <span class="annot" data-tooltip="deputy /'depjuti/ n. 代理人，代表adj. 副的；代理的">deputy</span>, has <span class="annot" data-tooltip="proved /proʊ/ n. 从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞">proved</span> to be an electoral liability. The quality of staff <span class="annot" data-tooltip="tends /tend/ vt. 照料，照顾，伺候vi. 往，朝向易于；倾向时 态: tended，tending，tends">tends</span> to <span class="annot" data-tooltip="fall /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">fall</span> during an administration, observes Mr Sosnik: “You see a thinning of the herd, with the people coming in…generally a peg or two below the people that they replace.”</p>
+<p>That leaves an increasingly <span class="annot" data-tooltip="isolated /'aɪsəleɪtɪd/ adj. 孤立的；分离的；绝缘的；单独的v. 使孤立；使绝缘；脱离（isolate的过去分词）">isolated</span>, embattled Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> looking for ways to shore up his <span class="annot" data-tooltip="legacy /'leɡəsi/ n. 遗产, 遗赠物遗留之物">legacy</span> in the only way he knows: <span class="annot" data-tooltip="entirely /ɪn'taɪərli/ adv. 全部地;完整地;完全地">entirely</span> ad hoc. It is not <span class="annot" data-tooltip="unusual /ʌn'juːʒuəl/ adj. 与众不同的；不寻常的；不平常的副 词: unusually">unusual</span> for <span class="annot" data-tooltip="lame /leɪm/ adj. 瘸的站不住脚的, 差劲的, 蹩脚的比较级: lamer, lamest">lame</span>-duck presidents to roam the globe in search of lasting achievements in their final days. But history shows it is hard going. Woodrow Wilson spent six months at the Paris Peace <span class="annot" data-tooltip="conference /'kɑːnfərəns/ n. 会议讨论, 商谈形容词: conferential">Conference</span> in 1919 and returned to sell the <span class="annot" data-tooltip="league /liːɡ/ n. 联盟；社团；范畴vt. 使…结盟；与…联合vi. 结盟；团结时 态: leagued, leaguing, league">League</span> of Nations to the American public—an effort that failed spectacularly when the <span class="annot" data-tooltip="senate /ˈsenət/ n.（诸如美国、澳大利亚、法国的）参议院（the Senate） （某些国家的）大学理事会，大学评议会（古罗马的）元老院">Senate</span> spurned the treaty. Dwight Eisenhower’s superpower summit with the <span class="annot" data-tooltip="soviet /'soʊviet/ adj. 苏维埃的；苏联的；委员会的n. 苏维埃（代表会议）；委员会；代表会议Sovietn. 苏维埃adj. 苏维埃的,前苏联的">Soviet</span> Union fell apart after a U2 <span class="annot" data-tooltip="spy /spaɪ/ vt. 侦察；发现；暗中监视vi. 侦察；当间谍n. 间谍；密探">spy</span> plane was shot down. In 1968, after he decided not to seek re-election, Lyndon Johnson tried to <span class="annot" data-tooltip="secure /sɪ'kjʊr/ adj. 安心的；有把握的可靠的；牢靠的；稳固的；安全的；稳妥的严密把守的；牢固的；坚固的v. （尤指经过努力）获得，取得，实现拴">secure</span> a settlement of the <span class="annot" data-tooltip="vietnam /ˌviːet'nɑːm/ n. 越南（南亚国家）">Vietnam</span> war, to no <span class="annot" data-tooltip="avail /ə'veɪl/ n. 效用, 利益vt. & vi. 有用于, 有益于, 有助于时 态: availed, availing, avails">avail</span>. In his last year in office Mr Clinton came close to visiting Pyongyang and tried, but failed, to <span class="annot" data-tooltip="forge /fɔːrdʒ/ vt. 锻造伪造，仿造vi. 突然向前n. 锻造车间；铁匠铺熔铁炉时 态: forged，forging，forges">forge</span> a lasting peace deal between Israel and the Palestine <span class="annot" data-tooltip="liberation /ˌlɪbə'reɪʃn/ n. 解放名 词: liberationist">Liberation</span> Organisation. Some have fared better. Richard Nixon and Ronald Reagan signed <span class="annot" data-tooltip="major /'meɪdʒər/ adj. 主要的；主修的；重要的；较多的n. 成年人；主修科目；陆军少校vi. 主修时 态: majored, majoring,">major</span> arms-control agreements in their final years (as did Johnson). Mr Obama normalised ties with Cuba and painstakingly negotiated the Iran nuclear deal (scuttled by Mr Trump). And Mr Trump himself, in the last part of his first term, went on a foreign-policy blitz, meeting Mr Kim three times, signing a peace deal with the Taliban and brokering the Abraham accords which normalised relations between Israel and several Gulf Arab and north African states. A lame-duck Mr Trump does not seem well-positioned to <span class="annot" data-tooltip="strike /straɪk/ vi. 罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打时 态:">strike</span> lasting, historic deals. But he will try. He wants to meet Mr Kim yet again to pick up where he left off in his first term. He is <span class="annot" data-tooltip="keen /kiːn/ adj. 锋利的热衷的，热心的，渴望(做某事)激烈的，紧张的良好的；敏锐的，敏捷的比较级: keener，keenest">keen</span> on a three-way meeting with Mr Putin and Mr Xi at the summit in Shenzhen. That is ostensibly also to discuss nuclear arms control (a topic China has no interest in broaching while its arsenal is below <span class="annot" data-tooltip="parity /'pærəti/ n. 同等,相等,对等奇偶校验">parity</span> with America and Russia). Eventually he may again try to broker a peace in <span class="annot" data-tooltip="ukraine n. 乌克兰（原苏联一加盟共和国，现已独立）">Ukraine</span>. The <span class="annot" data-tooltip="prospects /'prɑːspekt/ n. 景象，景色前景；前途可能成为主顾的人；有希望的候选人vi. 勘探；勘察时 态: prospected，prospecti">prospects</span> for substantive diplomacy seem <span class="annot" data-tooltip="bleak /bliːk/ adj. 荒凉的，无遮蔽的；阴冷的；黯淡的，无希望的；冷酷的；单调的比较级: bleaker, bleakest">bleak</span>. The risk is that Mr Trump agrees to shoddy deals that serve as sticking <span class="annot" data-tooltip="plasters /'plæstər/ n. 灰泥；石膏；膏药vt. 涂以灰泥；敷以膏药；减轻；粘贴；使平服时 态: plastered, plastering, p">plasters</span>, allowing him to claim he is worthy of a peace prize. (Mr Vance too may <span class="annot" data-tooltip="encourage /ɪn'kɜːrɪdʒ/ vt. 鼓励, 激励促进, 助长, 激发时 态: encouraged, encouraging, encourages">encourage</span> such pacts to promote his <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> peacemaking bona fides to future voters.) That could store up <span class="annot" data-tooltip="serious /'sɪriəs/ adj. 严肃的，严重的；认真的；庄重的；危急的副 词: seriously">serious</span> problems for Mr Trump’s successor, just as happened</p>
+<p>in 2020: Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s pact with the Taliban contributed to the <span class="annot" data-tooltip="collapse /kə'læps/ vi. 倒塌；瓦解；暴跌vt. 使倒塌，使崩溃；使萎陷n. 倒塌；失败；衰竭时 态: collapsed, collapsing">collapse</span> of the <span class="annot" data-tooltip="afghan n. 阿富汗语；阿富汗人adj. 阿富汗人的；阿富汗的afghann. 一种宽松的羊皮外衣">Afghan</span> government and Joe Biden’s <span class="annot" data-tooltip="chaotic /keɪ'ɑːtɪk/ adj. 混乱的，无秩序的；混沌的">chaotic</span> <span class="annot" data-tooltip="withdrawal /wɪð'drɔːəl/ n. 收回，取回，撤回；撤退，撤走收回[取回，撤回；撤退，撤走]的实例">withdrawal</span> the following year. Mr Trump’s <span class="annot" data-tooltip="lame /leɪm/ adj. 瘸的站不住脚的, 差劲的, 蹩脚的比较级: lamer, lamest">lame</span>-duck status will also make it harder for him to <span class="annot" data-tooltip="strike /straɪk/ vi. 罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打时 态:">strike</span> lasting deals in the first <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span>. Friends and foes will adjust how they interact with the president, notes Sam Charap of the RAND Corporation, a think- <span class="annot" data-tooltip="tank /tæŋk/ n. （存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内时 态: t">tank</span>, mindful that his political <span class="annot" data-tooltip="authority /ə'θɔːrəti/ n. 威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗">authority</span> will ebb away. The extent of <span class="annot" data-tooltip="democratic /ˌdemə'krætɪk/ adj. 民主的, 有民主精神或作风的副 词: democratically">Democratic</span> gains on November 3rd suggests that the party is in a strong position to win the presidency in 2028. Many late-term deals, such as Mr Obama’s nuclear agreement with Iran and opening to Cuba, rest on weak legislative footing and are easily undone by successors. <span class="annot" data-tooltip="ukraine n. 乌克兰（原苏联一加盟共和国，现已独立）">Ukraine</span>, in particular, might try to wait out Mr Trump in the hope of a successor, in 2029, who would look more favourably on the country. Indeed, it will now be hard for <span class="annot" data-tooltip="republicans /rɪ'pʌblɪkən/ adj. 共和国的, 共和政体的n. 拥护共和政体者, 共和主义者名 词: republicanism">Republicans</span> to recapture the <span class="annot" data-tooltip="senate /ˈsenət/ n.（诸如美国、澳大利亚、法国的）参议院（the Senate） （某些国家的）大学理事会，大学评议会（古罗马的）元老院">Senate</span>—which must approve international treaties—until 2032, beyond Mr Trump’s <span class="annot" data-tooltip="tenure /'tenjər/ n. 占有；任期vt. 授予…终身职位形容词: tenurial">tenure</span>. It is possible that Mr Trump’s fundamental unseriousness will work in the world’s favour. It takes work to achieve <span class="annot" data-tooltip="diplomatic /ˌdɪplə'mætɪk/ adj. 外交上的, 外交人员的有手腕的, 策略的, 善于交涉的, 圆滑的副 词: diplomatically">diplomatic</span> breakthroughs. Mr Trump’s lack of follow-through might end up leaving a status quo world to the next president. Perhaps he will be drawn more to his <span class="annot" data-tooltip="domestic /də'mestɪk/ adj. 国内的；家庭的；驯养的；一心只管家务的">domestic</span> preoccupations: carving his name into Washington’s granite, securing his family’s post-presidency business interests and doling out pardons. But it is also possible that his impetuous nature will put the world at risk in a crisis, a black swan that tests a president’s wisdom and patience. <span class="annot" data-tooltip="consider /kən'sɪdər/ vt. & vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及时 态: considered, considering, ">Consider</span> an AI- enabled <span class="annot" data-tooltip="cyber adj. 计算机(网络)的；信息技术的">cyber</span> crisis or a Chinese <span class="annot" data-tooltip="blockade /blɑː'keɪd/ vt. 封锁n. 阻塞时 态: blockaded, blockading, blockades">blockade</span> of Taiwan, or something worse. For two years, the world will be holding its <span class="annot" data-tooltip="breath /breθ/ n. 气息；呼吸(一次)呼吸，一口气；微风">breath</span>.■ This article was downloaded by zlibrary from https://www.economist.com/briefing/2026/11/05/what-will-a-lame-duck-donald-trump- get-up-to-overseas</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Asia</div>
+<p>Japan prepares for its next natural disaster Dead Starlink <span class="annot" data-tooltip="terminals /'tɜːrmɪnl/ n. 终端机；终点；末端；极限adj. 末端的；终点的；晚期的Terminal终端，终端设备(仿真程序)，端子；终结符(T,T">terminals</span> in <span class="annot" data-tooltip="myanmar /'mjɑːnmɑːr/ 缅甸(东南亚国家)(即Burma)">Myanmar</span> are getting people killed The fight for the soul of the Australian right Cheap data is great for Indians but not for India’s reputation</p>
+<div class="article-separator"></div>
+<div class="article-header">Asia · Asia | The next big one</div>
+<p>Japan prepares for its next natural disaster Its new agency has plenty to do before a catastrophe <span class="annot" data-tooltip="strikes /straɪk/ vi. 罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打时 态:">strikes</span> Nov 5th 2026 AMONG THE countries most <span class="annot" data-tooltip="prone /proʊn/ adj. 易于…的; 很可能…的俯卧的名 词: proneness">prone</span> to natural disasters, Japan has a habit of <span class="annot" data-tooltip="spawning /spɔːn/ n. 菌丝；卵；产物vt. 产卵；酿成，造成；大量生产vi. 产卵；大量生产时 态: spawned, spawning, s">spawning</span> new <span class="annot" data-tooltip="bureaucracies /bjʊ'rɑːkrəsi/ n. 政府机构官僚主义, 官僚作风">bureaucracies</span>. Yet, despite in recent years launching agencies for digital technology and for children and families, its governments have <span class="annot" data-tooltip="consistently /kən'sɪstənt/ adj. 一贯的, 始终如一的一致的, 符合的副 词: consistently">consistently</span> batted away a more obvious idea: to set up a disaster agency. That changed on November 2nd. At the new body’s launch, Hosono Goshi, its freshly appointed minister, stood before a <span class="annot" data-tooltip="backdrop /'bækdrɑːp/ n. 背景幕布背景">backdrop</span> with a colourful logo resembling the character for “prevent” in bosai, or disaster prevention. He vowed to make Japan “the world’s most disaster-prepared nation”, ready for calamities “on the scale of a national crisis”.</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>concession</td><td>/kən'seʃn/ n.</td><td>承认, 允许妥协, 让步特许权</td></tr>
+<tr><td>cutting</td><td>/'kʌtɪŋ/ n.</td><td>切断；剪辑；开凿adj. 严寒的；锋利的；尖酸刻薄的v. 切开；采伐；削减（cut的ing形式）</td></tr>
+<tr><td>diesel</td><td>/'diːzl/ n.</td><td>柴油机；柴油；（俚）健康的身体adj. 内燃机传动的；供内燃机用的</td></tr>
+<tr><td>release</td><td>/rɪ'liːs/ vt.</td><td>释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]，releasing，releases</td></tr>
+<tr><td>prisoner</td><td>/'prɪznər/ n.</td><td>囚徒俘虏被夺去自由的人[动物]等</td></tr>
+<tr><td>lure</td><td>/lʊr/ n.</td><td>诱惑物；诱惑；饵vt. 引诱；诱惑, luring, lures</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>ukraine</td><td>— n.</td><td>乌克兰（原苏联一加盟共和国，现已独立）</td></tr>
+<tr><td>hinder</td><td>/'hɪndər/ vt.</td><td>& vi. 阻碍；妨碍，hindering，hinders</td></tr>
+<tr><td>reeks</td><td>/riːk/ vi.</td><td>冒烟；散发；放出臭气n. 臭气；水蒸汽；烟vt. 用烟熏；散发, reeking, reeks</td></tr>
+<tr><td>corruption</td><td>/kə'rʌpʃn/ n.</td><td>堕落;腐化;腐败;贿赂腐烂</td></tr>
+<tr><td>developing</td><td>/dɪ'veləpɪŋ/ adj.</td><td>在进行中的;走向完成阶段的;走向成熟的发展中的</td></tr>
+<tr><td>spot</td><td>/spɑːt/ n.</td><td>斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Positioning and Tracki</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>shortages</td><td>/'ʃɔːrtɪdʒ/ n.</td><td>不足; 缺少; 缺少量; 不足额</td></tr>
+<tr><td>collapse</td><td>/kə'læps/ vi.</td><td>倒塌；瓦解；暴跌vt. 使倒塌，使崩溃；使萎陷n. 倒塌；失败；衰竭, collapsing, collapses</td></tr>
+<tr><td>venezuela</td><td>/ˌvenə'zweɪlə/ n.</td><td>委内瑞拉</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>tempted</td><td>/tempt/ vt.</td><td>引诱或怂恿(某人)干不正当的事使想要, tempting, tempts</td></tr>
+<tr><td>regime</td><td>/reɪ'ʒiːm/ n.</td><td>政权，政体；社会制度；管理体制</td></tr>
+<tr><td>warfare</td><td>/'wɔːrfer/ n.</td><td>战争, 战争状态</td></tr>
+<tr><td>elite</td><td>/eɪ'liːt/ n.</td><td>（社会）上层集团；掌权人物；出类拔萃的人，精英adj.（社会）上层集团的；掌权人物的；精英的</td></tr>
+<tr><td>boasted</td><td>/boʊst/ n.</td><td>自吹自擂, 自夸的话vt. & vi. 自夸vt. 有(引以为荣的事物), boasting, boasts</td></tr>
+<tr><td>campaign</td><td>/kæm'peɪn/ n.</td><td>运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）, campaigning, campai</td></tr>
+<tr><td>trail</td><td>/treɪl/ vt.</td><td>& vi. (使某物)被拖在后面vt. 跟踪，追踪vi. (在比赛等中)输，失败n. 足迹；臭迹小径一缕，一股，trailing，trails</td></tr>
+<tr><td>communist</td><td>/'kɑːmjənɪst/ n.</td><td>共产主义者adj. 共产主义的, 信仰共产主义的</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>secure</td><td>/sɪ'kjʊr/ adj.</td><td>安心的；有把握的可靠的；牢靠的；稳固的；安全的；稳妥的严密把守的；牢固的；坚固的v. （尤指经过努力）获得，取得，实现拴牢；扣紧；关严保护；保卫；使安全抵押；为</td></tr>
+<tr><td>fudge</td><td>/fʌdʒ/ n.</td><td>乳脂(巧克力)软糖vt. 搪塞,篡改, fudging, fudges</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>established</td><td>/ɪ'stæblɪʃt/ adj.</td><td>已建立的；已设立的；已制定的确定的，证实的</td></tr>
+<tr><td>arguably</td><td>/'ɑːrɡjuəbli/ adv.</td><td>可论证地,正如可提出证据加以证明的那样</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>quietly</td><td>/'kwaɪətli/ adv.</td><td>安静地；秘密地；平稳地</td></tr>
+<tr><td>race</td><td>/reɪs/ n.</td><td>种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACEabbr. Radiation Adap</td></tr>
+<tr><td>cabinet</td><td>/'kæbɪnət/ n.</td><td>内阁；橱柜；展览艺术品的小陈列室adj. 内阁的；私下的，秘密的</td></tr>
+<tr><td>impeach</td><td>/ɪm'piːtʃ/ vt.</td><td>控告（某人）犯罪，弹劾；怀疑，提出异议, impeaching, impeaches</td></tr>
+<tr><td>secretary</td><td>/'sekrəteri/ n.</td><td>秘书书记部长, 大臣</td></tr>
+<tr><td>democratic</td><td>/ˌdemə'krætɪk/ adj.</td><td>民主的, 有民主精神或作风的</td></tr>
+<tr><td>hole</td><td>/hoʊl/ n.</td><td>洞，孔；洞穴，穴；突破口vi. 凿洞，穿孔；（高尔夫球等）进洞vt. 凿洞, holing, holes</td></tr>
+<tr><td>dumped</td><td>/dʌmp/ vt.</td><td>倾倒；倾卸vi. 倒垃圾n. 垃圾场dUMP脱氧尿苷酸, dumping, dumps</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>sacked</td><td>/sæk/ n.</td><td>麻袋, 包一袋的量开除, 解雇洗劫, 劫掠vt. 装入袋中解雇洗劫, 劫掠, sacking, sacks</td></tr>
+<tr><td>attorney</td><td>/ə'tɜːrni/ n.</td><td>代理人, 律师</td></tr>
+<tr><td>defiance</td><td>/dɪ'faɪəns/ n.</td><td>蔑视；挑战；反抗</td></tr>
+<tr><td>possibly</td><td>/'pɑːsəbli/ adv.</td><td>可能地；大概；也许</td></tr>
+<tr><td>senate</td><td>/ˈsenət/ </td><td>n.（诸如美国、澳大利亚、法国的）参议院（the Senate） （某些国家的）大学理事会，大学评议会（古罗马的）元老院</td></tr>
+<tr><td>strikes</td><td>/straɪk/ vi.</td><td>罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打, stricken striking, str</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>gutted</td><td>/'ɡʌtɪd/ adj.</td><td>非常沮丧的；非常失望的；极度伤心的v. （gut的过去分词和过去式）损毁（建筑物或房屋的）内部；取出…的内脏（以便烹饪）</td></tr>
+<tr><td>negotiations</td><td>/nɪˌɡoʊʃi'eɪʃn/ n.</td><td>协商，谈判完成(难事)；通过</td></tr>
+<tr><td>groups</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>vital</td><td>/'vaɪtl/ adj.</td><td>极重要的，必不可少的维持生命所必需的；生命的有生气的，充满生机的</td></tr>
+<tr><td>ukraine</td><td>— n.</td><td>乌克兰（原苏联一加盟共和国，现已独立）</td></tr>
+<tr><td>envoys</td><td>/'envɔɪ/ n.</td><td>使者；全权公使</td></tr>
+<tr><td>blend</td><td>/blend/ vt.</td><td>& vi. (使)混合, (使)混杂n. 混合物, blent blending, blends</td></tr>
+<tr><td>senate</td><td>/ˈsenət/ </td><td>n.（诸如美国、澳大利亚、法国的）参议院（the Senate） （某些国家的）大学理事会，大学评议会（古罗马的）元老院</td></tr>
+<tr><td>cabinet</td><td>/'kæbɪnət/ n.</td><td>内阁；橱柜；展览艺术品的小陈列室adj. 内阁的；私下的，秘密的</td></tr>
+<tr><td>secretaries</td><td>/'sekrəteri/ n.</td><td>秘书书记部长, 大臣</td></tr>
+<tr><td>stretches</td><td>/stretʃ/ vt.</td><td>伸展,张开vi. 伸展adj. 可伸缩的n. 伸展，延伸, stretching, stretches</td></tr>
+<tr><td>ultra</td><td>/'ʌltrə/ adj.</td><td>极端的；过分的n. 极端主义者；过激论者；急进论者</td></tr>
+<tr><td>agenda</td><td>/ə'dʒendə/ n.</td><td>（政治）议题；议事日程；目的</td></tr>
+<tr><td>deputy</td><td>/'depjuti/ n.</td><td>代理人，代表adj. 副的；代理的</td></tr>
+<tr><td>proved</td><td>/proʊ/ n.</td><td>从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞成；支持Pro脯氨酸PROabbr. P</td></tr>
+<tr><td>tends</td><td>/tend/ vt.</td><td>照料，照顾，伺候vi. 往，朝向易于；倾向，tending，tends</td></tr>
+<tr><td>fall</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>isolated</td><td>/'aɪsəleɪtɪd/ adj.</td><td>孤立的；分离的；绝缘的；单独的v. 使孤立；使绝缘；脱离（isolate的过去分词）</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>legacy</td><td>/'leɡəsi/ n.</td><td>遗产, 遗赠物遗留之物</td></tr>
+<tr><td>entirely</td><td>/ɪn'taɪərli/ adv.</td><td>全部地;完整地;完全地</td></tr>
+<tr><td>unusual</td><td>/ʌn'juːʒuəl/ adj.</td><td>与众不同的；不寻常的；不平常的</td></tr>
+<tr><td>lame</td><td>/leɪm/ adj.</td><td>瘸的站不住脚的, 差劲的, 蹩脚的, lamest</td></tr>
+<tr><td>conference</td><td>/'kɑːnfərəns/ n.</td><td>会议讨论, 商谈</td></tr>
+<tr><td>league</td><td>/liːɡ/ n.</td><td>联盟；社团；范畴vt. 使…结盟；与…联合vi. 结盟；团结, leaguing, leagues</td></tr>
+<tr><td>senate</td><td>/ˈsenət/ </td><td>n.（诸如美国、澳大利亚、法国的）参议院（the Senate） （某些国家的）大学理事会，大学评议会（古罗马的）元老院</td></tr>
+<tr><td>soviet</td><td>/'soʊviet/ adj.</td><td>苏维埃的；苏联的；委员会的n. 苏维埃（代表会议）；委员会；代表会议Sovietn. 苏维埃adj. 苏维埃的,前苏联的,前苏联人的</td></tr>
+<tr><td>spy</td><td>/spaɪ/ vt.</td><td>侦察；发现；暗中监视vi. 侦察；当间谍n. 间谍；密探</td></tr>
+<tr><td>secure</td><td>/sɪ'kjʊr/ adj.</td><td>安心的；有把握的可靠的；牢靠的；稳固的；安全的；稳妥的严密把守的；牢固的；坚固的v. （尤指经过努力）获得，取得，实现拴牢；扣紧；关严保护；保卫；使安全抵押；为</td></tr>
+<tr><td>vietnam</td><td>/ˌviːet'nɑːm/ n.</td><td>越南（南亚国家）</td></tr>
+<tr><td>avail</td><td>/ə'veɪl/ n.</td><td>效用, 利益vt. & vi. 有用于, 有益于, 有助于, availing, avails</td></tr>
+<tr><td>forge</td><td>/fɔːrdʒ/ vt.</td><td>锻造伪造，仿造vi. 突然向前n. 锻造车间；铁匠铺熔铁炉，forging，forges</td></tr>
+<tr><td>liberation</td><td>/ˌlɪbə'reɪʃn/ n.</td><td>解放</td></tr>
+<tr><td>major</td><td>/'meɪdʒər/ adj.</td><td>主要的；主修的；重要的；较多的n. 成年人；主修科目；陆军少校vi. 主修, majoring, majors</td></tr>
+<tr><td>strike</td><td>/straɪk/ vi.</td><td>罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打, stricken striking, str</td></tr>
+<tr><td>keen</td><td>/kiːn/ adj.</td><td>锋利的热衷的，热心的，渴望(做某事)激烈的，紧张的良好的；敏锐的，敏捷的，keenest</td></tr>
+<tr><td>parity</td><td>/'pærəti/ n.</td><td>同等,相等,对等奇偶校验</td></tr>
+<tr><td>ukraine</td><td>— n.</td><td>乌克兰（原苏联一加盟共和国，现已独立）</td></tr>
+<tr><td>prospects</td><td>/'prɑːspekt/ n.</td><td>景象，景色前景；前途可能成为主顾的人；有希望的候选人vi. 勘探；勘察，prospecting，prospects</td></tr>
+<tr><td>bleak</td><td>/bliːk/ adj.</td><td>荒凉的，无遮蔽的；阴冷的；黯淡的，无希望的；冷酷的；单调的, bleakest</td></tr>
+<tr><td>plasters</td><td>/'plæstər/ n.</td><td>灰泥；石膏；膏药vt. 涂以灰泥；敷以膏药；减轻；粘贴；使平服, plastering, plasters</td></tr>
+<tr><td>encourage</td><td>/ɪn'kɜːrɪdʒ/ vt.</td><td>鼓励, 激励促进, 助长, 激发, encouraging, encourages</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>serious</td><td>/'sɪriəs/ adj.</td><td>严肃的，严重的；认真的；庄重的；危急的</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>collapse</td><td>/kə'læps/ vi.</td><td>倒塌；瓦解；暴跌vt. 使倒塌，使崩溃；使萎陷n. 倒塌；失败；衰竭, collapsing, collapses</td></tr>
+<tr><td>afghan</td><td>— n.</td><td>阿富汗语；阿富汗人adj. 阿富汗人的；阿富汗的afghann. 一种宽松的羊皮外衣</td></tr>
+<tr><td>chaotic</td><td>/keɪ'ɑːtɪk/ adj.</td><td>混乱的，无秩序的；混沌的</td></tr>
+<tr><td>withdrawal</td><td>/wɪð'drɔːəl/ n.</td><td>收回，取回，撤回；撤退，撤走收回[取回，撤回；撤退，撤走]的实例</td></tr>
+<tr><td>lame</td><td>/leɪm/ adj.</td><td>瘸的站不住脚的, 差劲的, 蹩脚的, lamest</td></tr>
+<tr><td>strike</td><td>/straɪk/ vi.</td><td>罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打, stricken striking, str</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>tank</td><td>/tæŋk/ n.</td><td>（存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内, tanking, tanks</td></tr>
+<tr><td>authority</td><td>/ə'θɔːrəti/ n.</td><td>威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗</td></tr>
+<tr><td>democratic</td><td>/ˌdemə'krætɪk/ adj.</td><td>民主的, 有民主精神或作风的</td></tr>
+<tr><td>ukraine</td><td>— n.</td><td>乌克兰（原苏联一加盟共和国，现已独立）</td></tr>
+<tr><td>republicans</td><td>/rɪ'pʌblɪkən/ adj.</td><td>共和国的, 共和政体的n. 拥护共和政体者, 共和主义者</td></tr>
+<tr><td>senate</td><td>/ˈsenət/ </td><td>n.（诸如美国、澳大利亚、法国的）参议院（the Senate） （某些国家的）大学理事会，大学评议会（古罗马的）元老院</td></tr>
+<tr><td>tenure</td><td>/'tenjər/ n.</td><td>占有；任期vt. 授予…终身职位</td></tr>
+<tr><td>diplomatic</td><td>/ˌdɪplə'mætɪk/ adj.</td><td>外交上的, 外交人员的有手腕的, 策略的, 善于交涉的, 圆滑的</td></tr>
+<tr><td>domestic</td><td>/də'mestɪk/ adj.</td><td>国内的；家庭的；驯养的；一心只管家务的</td></tr>
+<tr><td>consider</td><td>/kən'sɪdər/ vt.</td><td>& vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及, considering, considers</td></tr>
+<tr><td>cyber</td><td>— adj.</td><td>计算机(网络)的；信息技术的</td></tr>
+<tr><td>blockade</td><td>/blɑː'keɪd/ vt.</td><td>封锁n. 阻塞, blockading, blockades</td></tr>
+<tr><td>breath</td><td>/breθ/ n.</td><td>气息；呼吸(一次)呼吸，一口气；微风</td></tr>
+<tr><td>terminals</td><td>/'tɜːrmɪnl/ n.</td><td>终端机；终点；末端；极限adj. 末端的；终点的；晚期的Terminal终端，终端设备(仿真程序)，端子；终结符(T,TERM)</td></tr>
+<tr><td>myanmar</td><td>/'mjɑːnmɑːr/ </td><td>缅甸(东南亚国家)(即Burma)</td></tr>
+<tr><td>strikes</td><td>/straɪk/ vi.</td><td>罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打, stricken striking, str</td></tr>
+<tr><td>prone</td><td>/proʊn/ adj.</td><td>易于…的; 很可能…的俯卧的</td></tr>
+<tr><td>spawning</td><td>/spɔːn/ n.</td><td>菌丝；卵；产物vt. 产卵；酿成，造成；大量生产vi. 产卵；大量生产, spawning, spawns</td></tr>
+<tr><td>bureaucracies</td><td>/bjʊ'rɑːkrəsi/ n.</td><td>政府机构官僚主义, 官僚作风</td></tr>
+<tr><td>consistently</td><td>/kən'sɪstənt/ adj.</td><td>一贯的, 始终如一的一致的, 符合的</td></tr>
+<tr><td>backdrop</td><td>/'bækdrɑːp/ n.</td><td>背景幕布背景</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day6.html" class="nav-btn">← Day 6</a>
+  <a href="day8.html" class="nav-btn">Day 8 →</a>
+</div>
+
+<div class="progress">📖 Day 7 of 40</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-11-07</div>
+
+</body>
+</html>

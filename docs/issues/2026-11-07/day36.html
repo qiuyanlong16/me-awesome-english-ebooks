@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Science & technology</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-11-07</div>
+
+<h1 class="article-title">Science & technology</h1>
+<div class="article-section"></div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>chance of needless errors and risks creating an <span class="annot" data-tooltip="illusion /ɪ'luːʒn/ n. 错觉, 幻想, 错误观念假象形容词: illusionless">illusion</span> of progress. They do not feel the labs are keeping their promises to be more transparent. Take the announcement by OpenAI, an American lab, on October 26th, of solutions to three more long-standing problems. The first is a proof of the Kakeya conjecture, related to how to rotate an <span class="annot" data-tooltip="infinitely /'ɪnfɪnət/ adj. 无限的，无穷的；无数的；极大的n. 无限；无限的东西（如空间，时间）；无穷大副 词: infinitely">infinitely</span> thin needle while <span class="annot" data-tooltip="sweeping /'swiːpɪŋ/ n. 扫除；垃圾adj. 扫荡的；彻底的；广泛的v. 打扫；扫除（sweep的现在分词形式）副 词: sweepingly">sweeping</span> out as little area as possible. Thus <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> the conjecture had been found to hold in up to three <span class="annot" data-tooltip="dimensions /daɪˈmenʃn，dɪˈmenʃn/ n. (数学和科学中的) 维（度）；尺寸规模；程度；范围方面；侧面v.【工】给…定尺寸；标出…的尺寸时 态: dimensio">dimensions</span>. OpenAI said its proof <span class="annot" data-tooltip="extends /ɪk'stend/ vt. & vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出时 态:">extends</span> it to any <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span>. The second is a disproof of the Exponential Time <span class="annot" data-tooltip="hypothesis /haɪ'pɑːθəsɪs/ n. 假说, 假设, 前提">Hypothesis</span> (ETH), which sets an upper limit on how fast any algorithm can solve a <span class="annot" data-tooltip="specific /spə'sɪfɪk/ adj. 特殊的，特定的；明确的；详细的；具有特效的n. 特效药；细节；特性副 词: specifically">specific</span> problem. The hypothesis had long been assumed to be true, with implications for disciplines ranging from computational biology to database management. A proof that it is false “re-opens questions” about how quickly such tasks could be performed, said OpenAI. For both ETH and the Kakeya conjecture, the lab released the AI’s output so experts can begin working out what these results mean. When it came to the third of the results, however, a cloak of secrecy <span class="annot" data-tooltip="descended /dɪ'send/ vi. 下降；下来；遗传；屈尊；下去vt. 下去；沿…向下时 态: descended, descending, descend">descended</span>. It is related to the Yang-Mills existence and mass-gap problem, one of seven <span class="annot" data-tooltip="landmark /'lændmɑːrk/ n. 陆标，地标；里程碑；地界标；划时代的事">landmark</span> riddles known as the Millennium Prize problems. It asks whether a mathematical framework called Yang-Mills theory, which underpins physicists’ understanding of the universe, stands on firm mathematical footing (or, in mathematical jargon, “exists”). For many physicists, the question is of little <span class="annot" data-tooltip="relevance /'reləvəns/ n. 关联；切题">relevance</span>—the theory already makes predictions that match real-world data, so its truth is assumed. Mathematicians, though, are more pernickety. OpenAI says its model has <span class="annot" data-tooltip="proved /proʊ/ n. 从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞">proved</span> that Yang-Mills theory exists. But the firm has said little else. Instead, it has chosen to keep the AI’s 1,147-page proof under wraps while a “shepherding committee” of five physicists decides what to do with it. The committee has said that before they <span class="annot" data-tooltip="release /rɪ'liːs/ vt. 释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]时 态: released，rel">release</span> it they “would like to be convinced that it is correct”. Until then, and until those <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span> the committee are similarly satisfied, there are question marks about how <span class="annot" data-tooltip="seriously /'sɪriəs/ adj. 严肃的，严重的；认真的；庄重的；危急的副 词: seriously">seriously</span> to take their claim.</p>
+<p>These worries are not theoretical. Ever since OpenAI released a solution to the Navier-Stokes problem—another of the Millennium Prize problems—on September 8th, mathematicians have been trying to follow its working. They know the proof is <span class="annot" data-tooltip="worth /wɜːrθ/ adj. 值…的n. 价值；财产时 态: worthed, worthing, worths">worth</span> understanding because it was accompanied by a certificate of logical watertightness known as a <span class="annot" data-tooltip="lean /liːn/ vi. 倾斜；倚靠；倾向；依赖adj. 瘦的；贫乏的，歉收的vt. 使倾斜n. 倾斜；倾斜度；瘦肉时 态: leaned, le">Lean</span> formalisation. If a proof translated into Lean code runs without errors, it verifies that the proof contains no <span class="annot" data-tooltip="inconsistencies /ˌɪnkən'sɪstənsi/ n. 不一致（之处）；前后矛盾（的事情）（行为的）反复无常，易变">inconsistencies</span>. In a study published online on October 6th, a team led by Anders Hansen, of the University of <span class="annot" data-tooltip="cambridge /'keɪmbrɪdʒ/ n. 剑桥">Cambridge</span>, showed that the proof’s Lean verification does not, in fact, <span class="annot" data-tooltip="correspond /ˌkɔːrə'spɑːnd/ vi. 相符合, 相一致相当, 相类似通信时 态: corresponded, corresponding, correspon">correspond</span> to what is written in the paper. The problem is unlikely to be fatal. Dr Hansen reckons that the Lean code <span class="annot" data-tooltip="accurately /'ækjərət/ adj. 精确的, 准确的，正确无误的副 词: accurately">accurately</span> reflects a solution to the Navier-Stokes problem, but that its contents differ from those of the accompanying paper. OpenAI, for its part, says it is possible its models came up with two <span class="annot" data-tooltip="distinct /dɪ'stɪŋkt/ adj. 截然不同的, 完全分开的清晰的, 明白的, 明显的副 词: distinctly">distinct</span> proofs. Anyone who has spent time navigating a foreign country will know that dodgy <span class="annot" data-tooltip="translations /trænz'leɪʃn/ n. 翻译译本, 译文形容词: translational">translations</span> can cause misunderstandings. The same is true for mathematics. If AI labs do not check that a proof’s Lean code matches the ideas behind it, they risk creating unnecessary confusion. As Kevin Buzzard, a Lean whiz at <span class="annot" data-tooltip="imperial /ɪm'pɪriəl/ adj. 皇帝的；帝国的；威严的；至高无上的n. 纸张尺寸；特等品副 词: imperially">Imperial</span> College London, put it during his presentation at the Royal <span class="annot" data-tooltip="society /sə'saɪəti/ n. 社会；社交界；交往；社团">Society</span>, the AI labs are doing only one part of the job. ■ This article was downloaded by zlibrary from https://www.economist.com/science-and-technology/2026/11/04/openais-approach-to- mathematics-does-not-add-up</p>
+<p>Science & technology | Well Informed Is brown rice really healthier than white rice? The scientific evidence goes against the <span class="annot" data-tooltip="grain /ɡreɪn/ n. 谷物；谷粒颗粒；细粒（尤用于否定句） 少量；微量；一点儿（木、织物或石头等的）纹理（表面的）质地；触感格令（重量单位，等">grain</span> Nov 5th 2026 RICE SUPPLIES <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> a fifth of the world’s calories. Which sort, though, is healthiest? Brown rice becomes white when milling removes its fibrous outer layer (known as the bran), and nutrient-rich seed embryo (the germ), so nutritional lore naturally favours the former. Indeed, some <span class="annot" data-tooltip="striking /'straɪkɪŋ/ adj. 显著的，突出的引人注目的；容貌出众的副 词: strikingly">striking</span> findings seem to support that <span class="annot" data-tooltip="preference /'prefrəns/ n. 较喜欢的东西, 偏爱优待, 优惠, 优先权">preference</span>. Look closer, though, and the colour of rice may not be what matters most. Rice is rich in starch, which <span class="annot" data-tooltip="digestion /daɪ'dʒestʃən/ n. 消化能力消化;领悟">digestion</span> turns into glucose, or blood sugar. If the body struggles to regulate it, type-2 <span class="annot" data-tooltip="diabetes /ˌdaɪə'biːtiːz/ n. 糖尿病">diabetes</span> can eventually develop. <span class="annot" data-tooltip="consider /kən'sɪdər/ vt. & vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及时 态: considered, considering, ">Consider</span> a review of eight observational studies that tracked the diets and health of 577,426 people. Writing in BMJ Open in 2022, the researchers calculated that once daily <span class="annot" data-tooltip="consumption /kən'sʌmpʃn/ n. 消费，消耗；消费[耗]量肺病；结核病">consumption</span> exceeded about two 158-gram</p>
+<p>servings of <span class="annot" data-tooltip="cooked adj. 煮熟的v. 煮（cook的过去式、过去分词形式）">cooked</span> white rice, each additional serving was linked to a 13% higher risk of the disease. Brown rice, meanwhile, appears to offer some protection. Fibre in the bran slows the <span class="annot" data-tooltip="breakdown /'breɪkdaʊn/ n. 损坏, 故障垮台, 破裂衰竭, 衰弱统计分析">breakdown</span> of starch, so glucose <span class="annot" data-tooltip="enters /'entər/ vt. & vi. 进入, 进去参加, 加入登记, 登录时 态: entered, entering, enters">enters</span> the bloodstream more gradually. The bran and germ also contain <span class="annot" data-tooltip="magnesium /mæɡ'niːziəm/ n. 镁(金属元素)">magnesium</span>, B vitamins and other nutrients that may help the body regulate blood sugar. A paper in <span class="annot" data-tooltip="archives /'ɑːrkaɪv/ v. 存档n. 档案文件动 词: archive">Archives</span> of <span class="annot" data-tooltip="internal /ɪn'tɜːrnl/ adj. 国内的；内部的；内在的名 词: internality">Internal</span> Medicine in 2010, included in the 2022 review, analysed three studies that followed 197,228 Americans for 14 to 22 years. Modelling suggested that replacing 50 grams of cooked white rice a day with brown rice was linked to a 16% lower risk of type-2 <span class="annot" data-tooltip="diabetes /ˌdaɪə'biːtiːz/ n. 糖尿病">diabetes</span>. <span class="annot" data-tooltip="correlation /ˌkɔːrə'leɪʃn/ n. 相互的关系">Correlation</span>, though, is not <span class="annot" data-tooltip="causation /kɔː'zeɪʃn/ n. 原因,(某种结果的)出现,发生因果关系">causation</span>. People who prefer brown rice <span class="annot" data-tooltip="tend /tend/ vt. 照料，照顾，伺候vi. 往，朝向易于；倾向时 态: tended，tending，tends">tend</span> to smoke less, <span class="annot" data-tooltip="exercise /'eksərsaɪz/ n. 练习；运动；运用；操练；典礼；礼拜vt. 练习；锻炼；使用；使忙碌；使惊恐vi. 运动；练习时 态: exercised">exercise</span> more and eat healthier food <span class="annot" data-tooltip="overall /ˌoʊvər'ɔːl/ adj. 总体的；全面的；综合的全面考虑的adv. 大体上，总的来说一切包括在内，全部的n. 长罩衣工装裤；工作裤">overall</span>. <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">Although</span> the authors of the papers from 2022 and 2010 attempted to account for such <span class="annot" data-tooltip="confounding /kən'faʊnd/ vt. 使惊惶；弄糊涂搞乱；混淆(意念等)击败，挫败时 态: confounded，confounding，confounds">confounding</span> lifestyle differences, they acknowledged that their findings could still be skewed. So what happens when researchers <span class="annot" data-tooltip="actually /'æktʃuəl/ adj. 真实的，实际的；现行的，目前的副 词: actually">actually</span> <span class="annot" data-tooltip="instruct /ɪn'strʌkt/ vt. 命令；教授；指导；通知时 态: instructed, instructing, instructs">instruct</span> people to eat brown rather than white rice? Not much. The 2022 review also examined 11 randomised controlled <span class="annot" data-tooltip="trials /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">trials</span> involving 1,034 participants. Those assigned to eat brown rice showed no statistically <span class="annot" data-tooltip="significant /sɪɡ'nɪfɪkənt/ adj. 重要的, 重大的, 可观的有意义的, 有用意的意味深长的副 词: significantly">significant</span> improvements in their short- or longer-term control of blood sugar. There was also no clear evidence of improved sensitivity to insulin, which helps cells absorb glucose. Nor did the trials <span class="annot" data-tooltip="consistently /kən'sɪstənt/ adj. 一贯的, 始终如一的一致的, 符合的副 词: consistently">consistently</span> find improved blood pressure. What matters more for blood sugar than rice’s colour, it turns out, is how much of a starch called amylose it contains. Amylose resists rapid <span class="annot" data-tooltip="digestion /daɪ'dʒestʃən/ n. 消化能力消化;领悟">digestion</span>, so it limits <span class="annot" data-tooltip="spikes /spaɪk/ n. 尖头，尖刺，（尤指金属的）尖状物（某些运动鞋上的）防滑鞋钉，钉鞋（spikes）（通常在指下跌前）非常高的数量，价格或程">spikes</span> in blood sugar. A review of 32 randomised controlled trials published in 2015 identified amylose content—which is largely a function of a rice’s variety—as “the most consistently important” determinant of how sharply rice <span class="annot" data-tooltip="raises /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raises</span> blood sugar. <span class="annot" data-tooltip="processing /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">Processing</span> matters, too. Parboiling—<span class="annot" data-tooltip="soaking /'soʊkɪŋ/ n. 浸湿，浸透adj. 湿透的，极湿的adv. 湿透地">soaking</span> and steaming rice before milling—moves B vitamins from the bran into the <span class="annot" data-tooltip="grain /ɡreɪn/ n. 谷物；谷粒颗粒；细粒（尤用于否定句） 少量；微量；一点儿（木、织物或石头等的）纹理（表面的）质地；触感格令（重量单位，等">grain</span> while making its starch more <span class="annot" data-tooltip="resistant /rɪ'zɪstənt/ adj. 有抵抗力的, 抵抗的">resistant</span> to digestion. An experiment reported in Nutrition in 2018 found that, among people without diabetes, eating parboiled rather than ordinary white rice reduced the <span class="annot" data-tooltip="cumulative /'kjuːmjəleɪtɪv/ adj. 累积的, 渐增的副 词: cumulatively">cumulative</span> <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> in blood sugar over the</p>
+<p>following two hours by 38%. It also appeared to have an <span class="annot" data-tooltip="edge /edʒ/ n. 边缘；刀刃；优势；锋利vt. 使锐利；将…开刃；给…加上边vi. 缓缓移动；侧着移动EDGEabbr. Electron">edge</span> over ordinary brown rice. A similar trick can be performed at home. Refrigerating <span class="annot" data-tooltip="cooked adj. 煮熟的v. 煮（cook的过去式、过去分词形式）">cooked</span> rice, whether brown or white, alters some of its starch so that it is digested more slowly. Care, though, is needed: to limit bacterial growth, rice should be cooled within an hour and reheated only once, until steaming hot, within a day.■ After a free, evidence-based guide to health and wellness? Sign up to our weekly Well Informed newsletter. This article was downloaded by zlibrary from https://www.economist.com/science-and-technology/2026/10/30/is-brown-rice-really- healthier-than-white-rice</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Culture</div>
+<p>Is childlessness contagious? What is it like to be a newborn? What goes on behind the doors of Claridge’s? Is it time to end the era of remote work? Chinese tech helps repressive African governments <span class="annot" data-tooltip="crush /krʌʃ/ vt. & vi. 压碎, 压坏vt. 弄皱镇压, 消灭, 击溃vi. 挤进, 挤入n. 拥挤的人群时 态: crushed, ">crush</span> dissent Explaining the popularity of Max Richter’s <span class="annot" data-tooltip="compositions /ˌkɑːmpə'zɪʃn/ n. 创作，写作，作曲作文，作品构图；构成，成分混合物，合成物">compositions</span></p>
+<p>Culture | (Don’t) be my baby Is childlessness contagious? A new book offers some surprising reasons people aren’t having children Nov 5th 2026 IT’S ALL gone to the dogs. In South Korea sales of <span class="annot" data-tooltip="buggies /'bʌɡi/ n. 双轮单座轻马车；童车adj. 多虫的名 词: bugginess">buggies</span> for pets have overtaken those for children. Shrines in Japan sometimes bless more canines than babies. Conventional wisdom once held that when a couple got a puppy, they would start to conceive of parenthood—and then start trying to conceive. But a growing <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of pet “parents” see four-legged creatures as a permanent <span class="annot" data-tooltip="substitute /'sʌbstɪtuːt/ vt. & vi. 代替, 替换, 代用时 态: substituted, substituting, substitutes">substitute</span> for two-legged offspring. Some firms have begun to offer “pawternity” leave, so employees can bond with a new pet or <span class="annot" data-tooltip="tend /tend/ vt. 照料，照顾，伺候vi. 往，朝向易于；倾向时 态: tended，tending，tends">tend</span> to it when it is sick. Some find nothing cute or cuddly about the <span class="annot" data-tooltip="trend /trend/ n. 趋势, 倾向流行时 态: trended, trending, trends">trend</span>. Pope Francis warned about a “<span class="annot" data-tooltip="demographic /ˌdemə'ɡræfɪk/ adj. 人口统计学的">demographic</span> winter” and frostily decried the choice not to have children as “selfish”. Elon Musk has said <span class="annot" data-tooltip="falling /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">falling</span> birth rates are the “biggest danger civilisation faces by <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span>”. The largest 15 countries by GDP are now</p>
+<p>all below the population replacement rate, including America, China and India. Declining birth rates could cause the world’s population to <span class="annot" data-tooltip="shrink /ʃrɪŋk/ vt. & vi. 收缩；退缩时 态: shrank ，shrunk shrunk，shrunken shrinking，shr">shrink</span> later this century for the first time since the Black Death killed tens of millions in the 14th century. Baroness Camilla Cavendish, a columnist for the Financial Times, gives those delaying or forgoing children a name: Generation Maybe. In a fascinating new book, she examines why “what we once <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span> of as the most <span class="annot" data-tooltip="profound /prə'faʊnd/ adj. 深度的；深切的；深远的知识渊博的，见解深刻的，深奥的比较级: profounder，profoundest">profound</span> human <span class="annot" data-tooltip="instinct /'ɪnstɪŋkt/ n. 本能，直觉；天性adj. 充满着的">instinct</span>, to continue the <span class="annot" data-tooltip="line /laɪn/ n. 绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long inter">line</span>, is on the <span class="annot" data-tooltip="wane /weɪn/ vi. 变小；衰落；亏缺；退潮；消逝n. 月亏；衰退；衰退期；缺损时 态: waned, waning, wanes">wane</span>.” The consequences of the baby <span class="annot" data-tooltip="bust /bʌst/ vi. 爆裂；破产；降低级别vt. 使爆裂；使破产；逮捕n. 半身像；胸部；萧条；破产adj. 破产了的；毁坏了的时 态: bu">bust</span> are <span class="annot" data-tooltip="intuitive /ɪn'tuːɪtɪv/ adj. 有直觉力的;凭直觉获知的副 词: intuitively">intuitive</span>: ageing <span class="annot" data-tooltip="societies /sə'saɪəti/ n. 社会；社交界；交往；社团">societies</span> will have to rely on a smaller <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span> of youngsters to fuel growth and fund <span class="annot" data-tooltip="pensions /ˈpenʃn/ n. 津贴；退休金，抚恤金；膳宿费vt. 发给养老金或抚恤金时 态: pensioned, pensioning, pensi">pensions</span> and public services. They are also <span class="annot" data-tooltip="enormous /ɪ'nɔːrməs/ adj. 巨大的, 极大的, 庞大的副 词: enormously">enormous</span>. <span class="annot" data-tooltip="falling /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">Falling</span> birth rates will reshape culture, <span class="annot" data-tooltip="society /sə'saɪəti/ n. 社会；社交界；交往；社团">society</span> and geopolitics. By 2050 Nigeria will <span class="annot" data-tooltip="overtake /ˌoʊvər'teɪk/ vt. 赶上；压倒；突然来袭vi. 超车时 态: overtook overtaken overtaking, overtake">overtake</span> America as the third-most-populous country, according to some projections (though such estimates are hotly debated). Low-growth nations could <span class="annot" data-tooltip="invade /ɪn'veɪd/ vt. 侵略；侵袭；侵扰；涌入vi. 侵略；侵袭；侵犯；侵入时 态: invaded, invading, invades">invade</span> one another to expand their numbers and <span class="annot" data-tooltip="distract /dɪ'strækt/ vt. 转移；分心时 态: distracted, distracting, distracts">distract</span> from <span class="annot" data-tooltip="tensions /'tenʃn/ n. 张力，拉力；紧张，不安；电压vt. 使紧张；使拉紧时 态: tensioned, tensioning, tension">tensions</span> and <span class="annot" data-tooltip="anxiety /æŋ'zaɪəti/ n. 焦虑；挂念；渴望；令人焦虑的事">anxiety</span> at home, Lady Cavendish suggests. She predicts the world will become less peaceful and probably more religious, as “a greater <span class="annot" data-tooltip="proportion /prə'pɔːrʃn/ n. 均衡；相称，协调一物与他物在数量、大小等方面的关系；比例部分；份儿时 态: proportioned，proportio">proportion</span> of the planet will live in countries with predominantly Islamic or Christian populations.” And as more people choose to have just one child, it has <span class="annot" data-tooltip="sparked /spɑːrk/ n. 火花，火星；电火花；一丝，略微；导火线，诱因v. 引发，触发；产生火花（电火花）；点燃；增加趣味（或活力、风味等）时 态">sparked</span> a “kin <span class="annot" data-tooltip="crash /kræʃ/ n. 碰撞；崩溃；坠落vt. 破碎；撞碎；坠落vi. 碰撞；坠毁；闯；突然倒台adj. 速成的时 态: crashed, cr">crash</span>” of fewer <span class="annot" data-tooltip="siblings /'sɪblɪŋ/ n. 兄弟姊妹；民族成员">siblings</span> and other relatives. Fifty years ago the average Canadian 35-year-old would have had 20 living cousins. Today she has about ten, and in 2095 she may have only five. By the end of the century there will be a 38% global drop in the <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of living relatives for people aged 65 compared with 1950, according to a study published by America’s National Academy of Sciences. The <span class="annot" data-tooltip="beatles n. 披头士合唱（摇滚乐队）">Beatles</span>’ sombre chorus about “all the lonely people” may be what the future has in store. What is behind this reverse baby fever? Affordability and housing costs get a lot of attention. Fewer people want to have a baby when they feel like a grown-up child, <span class="annot" data-tooltip="stuck /stʌk/ v. 刺（stick的过去式）adj. 不能动的；被卡住的">stuck</span> living with their <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> parents. One study by Benjamin Couillard at the University of Toronto estimates that about half the recent decline in birth rates in America may be <span class="annot" data-tooltip="due /duː/ adj. 到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）">due</span> to housing prices, and that around 13m more children would have been born from 1990 to 2020 if those costs had remained stable. Yet fertility has fallen sharply even in countries where housing is not especially expensive, including Japan.</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>illusion</td><td>/ɪ'luːʒn/ n.</td><td>错觉, 幻想, 错误观念假象</td></tr>
+<tr><td>infinitely</td><td>/'ɪnfɪnət/ adj.</td><td>无限的，无穷的；无数的；极大的n. 无限；无限的东西（如空间，时间）；无穷大</td></tr>
+<tr><td>sweeping</td><td>/'swiːpɪŋ/ n.</td><td>扫除；垃圾adj. 扫荡的；彻底的；广泛的v. 打扫；扫除（sweep的现在分词形式）</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>dimensions</td><td>/daɪˈmenʃn，dɪˈmenʃn/ n.</td><td>(数学和科学中的) 维（度）；尺寸规模；程度；范围方面；侧面v.【工】给…定尺寸；标出…的尺寸, dimensioning, dimensions</td></tr>
+<tr><td>extends</td><td>/ɪk'stend/ vt.</td><td>& vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出，extending，extends</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>hypothesis</td><td>/haɪ'pɑːθəsɪs/ n.</td><td>假说, 假设, 前提</td></tr>
+<tr><td>specific</td><td>/spə'sɪfɪk/ adj.</td><td>特殊的，特定的；明确的；详细的；具有特效的n. 特效药；细节；特性</td></tr>
+<tr><td>descended</td><td>/dɪ'send/ vi.</td><td>下降；下来；遗传；屈尊；下去vt. 下去；沿…向下, descending, descends</td></tr>
+<tr><td>landmark</td><td>/'lændmɑːrk/ n.</td><td>陆标，地标；里程碑；地界标；划时代的事</td></tr>
+<tr><td>relevance</td><td>/'reləvəns/ n.</td><td>关联；切题</td></tr>
+<tr><td>proved</td><td>/proʊ/ n.</td><td>从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞成；支持Pro脯氨酸PROabbr. P</td></tr>
+<tr><td>release</td><td>/rɪ'liːs/ vt.</td><td>释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]，releasing，releases</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>seriously</td><td>/'sɪriəs/ adj.</td><td>严肃的，严重的；认真的；庄重的；危急的</td></tr>
+<tr><td>worth</td><td>/wɜːrθ/ adj.</td><td>值…的n. 价值；财产, worthing, worths</td></tr>
+<tr><td>lean</td><td>/liːn/ vi.</td><td>倾斜；倚靠；倾向；依赖adj. 瘦的；贫乏的，歉收的vt. 使倾斜n. 倾斜；倾斜度；瘦肉, leaning, leans</td></tr>
+<tr><td>inconsistencies</td><td>/ˌɪnkən'sɪstənsi/ n.</td><td>不一致（之处）；前后矛盾（的事情）（行为的）反复无常，易变</td></tr>
+<tr><td>cambridge</td><td>/'keɪmbrɪdʒ/ n.</td><td>剑桥</td></tr>
+<tr><td>correspond</td><td>/ˌkɔːrə'spɑːnd/ vi.</td><td>相符合, 相一致相当, 相类似通信, corresponding, corresponds</td></tr>
+<tr><td>accurately</td><td>/'ækjərət/ adj.</td><td>精确的, 准确的，正确无误的</td></tr>
+<tr><td>distinct</td><td>/dɪ'stɪŋkt/ adj.</td><td>截然不同的, 完全分开的清晰的, 明白的, 明显的</td></tr>
+<tr><td>translations</td><td>/trænz'leɪʃn/ n.</td><td>翻译译本, 译文</td></tr>
+<tr><td>imperial</td><td>/ɪm'pɪriəl/ adj.</td><td>皇帝的；帝国的；威严的；至高无上的n. 纸张尺寸；特等品</td></tr>
+<tr><td>society</td><td>/sə'saɪəti/ n.</td><td>社会；社交界；交往；社团</td></tr>
+<tr><td>grain</td><td>/ɡreɪn/ n.</td><td>谷物；谷粒颗粒；细粒（尤用于否定句） 少量；微量；一点儿（木、织物或石头等的）纹理（表面的）质地；触感格令（重量单位，等于0.00143磅或0.0648克，用于</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>striking</td><td>/'straɪkɪŋ/ adj.</td><td>显著的，突出的引人注目的；容貌出众的</td></tr>
+<tr><td>preference</td><td>/'prefrəns/ n.</td><td>较喜欢的东西, 偏爱优待, 优惠, 优先权</td></tr>
+<tr><td>digestion</td><td>/daɪ'dʒestʃən/ n.</td><td>消化能力消化;领悟</td></tr>
+<tr><td>diabetes</td><td>/ˌdaɪə'biːtiːz/ n.</td><td>糖尿病</td></tr>
+<tr><td>consider</td><td>/kən'sɪdər/ vt.</td><td>& vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及, considering, considers</td></tr>
+<tr><td>consumption</td><td>/kən'sʌmpʃn/ n.</td><td>消费，消耗；消费[耗]量肺病；结核病</td></tr>
+<tr><td>cooked</td><td>— adj.</td><td>煮熟的v. 煮（cook的过去式、过去分词形式）</td></tr>
+<tr><td>breakdown</td><td>/'breɪkdaʊn/ n.</td><td>损坏, 故障垮台, 破裂衰竭, 衰弱统计分析</td></tr>
+<tr><td>enters</td><td>/'entər/ vt.</td><td>& vi. 进入, 进去参加, 加入登记, 登录, entering, enters</td></tr>
+<tr><td>magnesium</td><td>/mæɡ'niːziəm/ n.</td><td>镁(金属元素)</td></tr>
+<tr><td>archives</td><td>/'ɑːrkaɪv/ v.</td><td>存档n. 档案文件动 词: archive</td></tr>
+<tr><td>internal</td><td>/ɪn'tɜːrnl/ adj.</td><td>国内的；内部的；内在的</td></tr>
+<tr><td>diabetes</td><td>/ˌdaɪə'biːtiːz/ n.</td><td>糖尿病</td></tr>
+<tr><td>correlation</td><td>/ˌkɔːrə'leɪʃn/ n.</td><td>相互的关系</td></tr>
+<tr><td>causation</td><td>/kɔː'zeɪʃn/ n.</td><td>原因,(某种结果的)出现,发生因果关系</td></tr>
+<tr><td>tend</td><td>/tend/ vt.</td><td>照料，照顾，伺候vi. 往，朝向易于；倾向，tending，tends</td></tr>
+<tr><td>exercise</td><td>/'eksərsaɪz/ n.</td><td>练习；运动；运用；操练；典礼；礼拜vt. 练习；锻炼；使用；使忙碌；使惊恐vi. 运动；练习, exercising, exercises</td></tr>
+<tr><td>overall</td><td>/ˌoʊvər'ɔːl/ adj.</td><td>总体的；全面的；综合的全面考虑的adv. 大体上，总的来说一切包括在内，全部的n. 长罩衣工装裤；工作裤</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>confounding</td><td>/kən'faʊnd/ vt.</td><td>使惊惶；弄糊涂搞乱；混淆(意念等)击败，挫败，confounding，confounds</td></tr>
+<tr><td>actually</td><td>/'æktʃuəl/ adj.</td><td>真实的，实际的；现行的，目前的</td></tr>
+<tr><td>instruct</td><td>/ɪn'strʌkt/ vt.</td><td>命令；教授；指导；通知, instructing, instructs</td></tr>
+<tr><td>trials</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>significant</td><td>/sɪɡ'nɪfɪkənt/ adj.</td><td>重要的, 重大的, 可观的有意义的, 有用意的意味深长的</td></tr>
+<tr><td>consistently</td><td>/kən'sɪstənt/ adj.</td><td>一贯的, 始终如一的一致的, 符合的</td></tr>
+<tr><td>digestion</td><td>/daɪ'dʒestʃən/ n.</td><td>消化能力消化;领悟</td></tr>
+<tr><td>spikes</td><td>/spaɪk/ n.</td><td>尖头，尖刺，（尤指金属的）尖状物（某些运动鞋上的）防滑鞋钉，钉鞋（spikes）（通常在指下跌前）非常高的数量，价格或程度v. 拒绝刊登，弃置（文章）不用将烈酒</td></tr>
+<tr><td>raises</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>processing</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>soaking</td><td>/'soʊkɪŋ/ n.</td><td>浸湿，浸透adj. 湿透的，极湿的adv. 湿透地</td></tr>
+<tr><td>grain</td><td>/ɡreɪn/ n.</td><td>谷物；谷粒颗粒；细粒（尤用于否定句） 少量；微量；一点儿（木、织物或石头等的）纹理（表面的）质地；触感格令（重量单位，等于0.00143磅或0.0648克，用于</td></tr>
+<tr><td>resistant</td><td>/rɪ'zɪstənt/ adj.</td><td>有抵抗力的, 抵抗的</td></tr>
+<tr><td>cumulative</td><td>/'kjuːmjəleɪtɪv/ adj.</td><td>累积的, 渐增的</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>edge</td><td>/edʒ/ n.</td><td>边缘；刀刃；优势；锋利vt. 使锐利；将…开刃；给…加上边vi. 缓缓移动；侧着移动EDGEabbr. Electronic Data Gathering Eq</td></tr>
+<tr><td>cooked</td><td>— adj.</td><td>煮熟的v. 煮（cook的过去式、过去分词形式）</td></tr>
+<tr><td>crush</td><td>/krʌʃ/ vt.</td><td>& vi. 压碎, 压坏vt. 弄皱镇压, 消灭, 击溃vi. 挤进, 挤入n. 拥挤的人群, crushing, crushes</td></tr>
+<tr><td>compositions</td><td>/ˌkɑːmpə'zɪʃn/ n.</td><td>创作，写作，作曲作文，作品构图；构成，成分混合物，合成物</td></tr>
+<tr><td>buggies</td><td>/'bʌɡi/ n.</td><td>双轮单座轻马车；童车adj. 多虫的</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>substitute</td><td>/'sʌbstɪtuːt/ vt.</td><td>& vi. 代替, 替换, 代用, substituting, substitutes</td></tr>
+<tr><td>tend</td><td>/tend/ vt.</td><td>照料，照顾，伺候vi. 往，朝向易于；倾向，tending，tends</td></tr>
+<tr><td>trend</td><td>/trend/ n.</td><td>趋势, 倾向流行, trending, trends</td></tr>
+<tr><td>demographic</td><td>/ˌdemə'ɡræfɪk/ adj.</td><td>人口统计学的</td></tr>
+<tr><td>falling</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>shrink</td><td>/ʃrɪŋk/ vt.</td><td>& vi. 收缩；退缩，shrunk shrunk，shrunken shrinking，shrinks</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>profound</td><td>/prə'faʊnd/ adj.</td><td>深度的；深切的；深远的知识渊博的，见解深刻的，深奥的，profoundest</td></tr>
+<tr><td>instinct</td><td>/'ɪnstɪŋkt/ n.</td><td>本能，直觉；天性adj. 充满着的</td></tr>
+<tr><td>line</td><td>/laɪn/ n.</td><td>绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long interspersed element)长散在元</td></tr>
+<tr><td>wane</td><td>/weɪn/ vi.</td><td>变小；衰落；亏缺；退潮；消逝n. 月亏；衰退；衰退期；缺损, waning, wanes</td></tr>
+<tr><td>bust</td><td>/bʌst/ vi.</td><td>爆裂；破产；降低级别vt. 使爆裂；使破产；逮捕n. 半身像；胸部；萧条；破产adj. 破产了的；毁坏了的, busting, busts</td></tr>
+<tr><td>intuitive</td><td>/ɪn'tuːɪtɪv/ adj.</td><td>有直觉力的;凭直觉获知的</td></tr>
+<tr><td>societies</td><td>/sə'saɪəti/ n.</td><td>社会；社交界；交往；社团</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>pensions</td><td>/ˈpenʃn/ n.</td><td>津贴；退休金，抚恤金；膳宿费vt. 发给养老金或抚恤金, pensioning, pensions</td></tr>
+<tr><td>enormous</td><td>/ɪ'nɔːrməs/ adj.</td><td>巨大的, 极大的, 庞大的</td></tr>
+<tr><td>falling</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>society</td><td>/sə'saɪəti/ n.</td><td>社会；社交界；交往；社团</td></tr>
+<tr><td>overtake</td><td>/ˌoʊvər'teɪk/ vt.</td><td>赶上；压倒；突然来袭vi. 超车, overtakes</td></tr>
+<tr><td>invade</td><td>/ɪn'veɪd/ vt.</td><td>侵略；侵袭；侵扰；涌入vi. 侵略；侵袭；侵犯；侵入, invading, invades</td></tr>
+<tr><td>distract</td><td>/dɪ'strækt/ vt.</td><td>转移；分心, distracting, distracts</td></tr>
+<tr><td>tensions</td><td>/'tenʃn/ n.</td><td>张力，拉力；紧张，不安；电压vt. 使紧张；使拉紧, tensioning, tensions</td></tr>
+<tr><td>anxiety</td><td>/æŋ'zaɪəti/ n.</td><td>焦虑；挂念；渴望；令人焦虑的事</td></tr>
+<tr><td>proportion</td><td>/prə'pɔːrʃn/ n.</td><td>均衡；相称，协调一物与他物在数量、大小等方面的关系；比例部分；份儿，proportioning，proportions</td></tr>
+<tr><td>sparked</td><td>/spɑːrk/ n.</td><td>火花，火星；电火花；一丝，略微；导火线，诱因v. 引发，触发；产生火花（电火花）；点燃；增加趣味（或活力、风味等）, sparking, sparks</td></tr>
+<tr><td>crash</td><td>/kræʃ/ n.</td><td>碰撞；崩溃；坠落vt. 破碎；撞碎；坠落vi. 碰撞；坠毁；闯；突然倒台adj. 速成的, crashing, crashes</td></tr>
+<tr><td>siblings</td><td>/'sɪblɪŋ/ n.</td><td>兄弟姊妹；民族成员</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>beatles</td><td>— n.</td><td>披头士合唱（摇滚乐队）</td></tr>
+<tr><td>stuck</td><td>/stʌk/ v.</td><td>刺（stick的过去式）adj. 不能动的；被卡住的</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>due</td><td>/duː/ adj.</td><td>到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day35.html" class="nav-btn">← Day 35</a>
+  <a href="day37.html" class="nav-btn">Day 37 →</a>
+</div>
+
+<div class="progress">📖 Day 36 of 40</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-11-07</div>
+
+</body>
+</html>

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Culture</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-11-07</div>
+
+<h1 class="article-title">Culture</h1>
+<div class="article-section"></div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>Opportunity costs may be a bigger factor. Children demand a huge amount of time. As countries grow richer, the <span class="annot" data-tooltip="alternative /ɔːl'tɜːrnətɪv/ adj. 可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）">alternative</span> uses for that time grow more attractive. And many parents think they have a better shot at winning the educational arms <span class="annot" data-tooltip="race /reɪs/ n. 种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACE">race</span> if they shower <span class="annot" data-tooltip="mandarin /'mændərɪn/ n. (中国的)官话(普通话的旧称)(旧时)中国政府的高级官员">Mandarin</span> and violin lessons on one or two kids, rather than <span class="annot" data-tooltip="stretching /stretʃ/ vt. 伸展,张开vi. 伸展adj. 可伸缩的n. 伸展，延伸时 态: stretched, stretching, stre">stretching</span> their resources over three or four. <span class="annot" data-tooltip="academics /ˌækə'demɪk/ adj. 学院的；学术的；理论的n. 大学生，大学教师；学者副 词: academically">Academics</span> call this “<span class="annot" data-tooltip="intensive /ɪn'tensɪv/ adj. 加强的, 集中的, 密集的彻底的加强语气的副 词: intensively">intensive</span>” parenting; others <span class="annot" data-tooltip="invoke /ɪn'voʊk/ vt. 调用；祈求；恳求；引起时 态: invoked, invoking, invokes">invoke</span> <span class="annot" data-tooltip="analogies /ə'nælədʒi/ n. 类似, 相似类推, 类推法">analogies</span> to helicopters and tigers. “Social contagion” influences people’s opinions about whether to bear children and how many to have, Lady Cavendish intriguingly argues. TikTok videos exalt the gloriously #Childfree life, which <span class="annot" data-tooltip="apparently /ə'pærəntli/ adv. 显然地表面上,似乎">apparently</span> includes mid- afternoon naps, bucket-list travel, big savings and early retirement. (Sorry, <span class="annot" data-tooltip="exhausted /ɪɡ'zɔːst/ vt. 弄空, 取出用尽, 耗尽使非常疲倦vi. 排气n. 排气装置, 排气管[孔]机器排出的废气时 态: exhausted,">exhausted</span> parents, but it’s too late for second <span class="annot" data-tooltip="thoughts /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thoughts</span>.) Research has shown TV shows, including MTV’s “16 and <span class="annot" data-tooltip="pregnant /'preɡnənt/ adj. 怀孕的, 怀胎的含蓄的, 意味深长的孕育着…的, 预示着…前景的">Pregnant</span>” and Brazil’s telenovelas that feature small (albeit dysfunctional) families, have contributed to <span class="annot" data-tooltip="falling /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">falling</span> fertility rates. A growing body of “misery <span class="annot" data-tooltip="memoirs /'memwɑːr/ n. 自传；实录；回忆录；研究报告名 词: memoirist">memoirs</span>”, which complain about how hard parenthood and marriage are, acts as a prophylactic, too. Friends and <span class="annot" data-tooltip="siblings /'sɪblɪŋ/ n. 兄弟姊妹；民族成员">siblings</span> can strongly influence how many children someone wants. <span class="annot" data-tooltip="polish /'pɑːlɪʃ/ n. 磨光，擦亮；上光剂，擦亮剂；优雅，精良vi. 擦亮，变光滑vt. 磨光，使发亮adj. 波兰的Polishadj. 波兰">Polish</span> women who move to Britain, for instance, have more babies than their peers back home, “mirroring the <span class="annot" data-tooltip="household /'haʊshoʊld/ n. 同住在一所房子里的人, 一家人, 户adj. 家庭的, 家用的">household</span> average of their new country, even though it often costs more to <span class="annot" data-tooltip="raise /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raise</span> a child in London than in Warsaw”, Lady Cavendish writes. Those who think they may like children but are waiting—for the right partner, the right moment, the right bank balance—may be wrongly guided. Lady Cavendish is searing about IVF and egg-freezing; clinics give women a rosier view of their <span class="annot" data-tooltip="prospect /'prɑːspekt/ n. 景象，景色前景；前途可能成为主顾的人；有希望的候选人vi. 勘探；勘察时 态: prospected，prospecti">prospect</span> of parenthood than data support. The success rate for frozen embryos <span class="annot" data-tooltip="varies /'veri/ vi. 变化；违反；[生]变异vt. 改变；使多样化；[音]变奏时 态: varied varying, varies">varies</span> widely and depends on a woman’s age, but the national average in Britain is under 30%. Men also face little-discussed problems as they get older. A “spermapocalypse” is <span class="annot" data-tooltip="quietly /'kwaɪətli/ adv. 安静地；秘密地；平稳地">quietly</span> occurring, with men’s sperm count having fallen precipitously in many countries, <span class="annot" data-tooltip="possibly /'pɑːsəbli/ adv. 可能地；大概；也许">possibly</span> because of <span class="annot" data-tooltip="exposure /ɪk'spoʊʒər/ n. 暴露, 显露揭发, 揭露(软片等)曝光">exposure</span> to household products. Age <span class="annot" data-tooltip="degrades /dɪ'ɡreɪd/ vt. 使……丢脸；使……降级；使……降解；贬低vi. 退化；降级，降低时 态: degraded, degrading, de">degrades</span> sperm quality, too, though even those alert to a ticking biological clock do not always factor in males’ fertility decline.</p>
+<p>What can be done to baby-proof the baby <span class="annot" data-tooltip="bust /bʌst/ vi. 爆裂；破产；降低级别vt. 使爆裂；使破产；逮捕n. 半身像；胸部；萧条；破产adj. 破产了的；毁坏了的时 态: bu">bust</span>? Immigration can help, but is often unpopular, and many countries are becoming less welcoming. Efforts to <span class="annot" data-tooltip="persuade /pər'sweɪd/ vt. & vi. 说服, 劝告时 态: persuaded, persuading, persuades">persuade</span> people to have more babies have met little or no success. <span class="annot" data-tooltip="campaigns /kæm'peɪn/ n. 运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）时">Campaigns</span> are more likely to vitiate than titillate. Take the “Do it for <span class="annot" data-tooltip="denmark /'denmɑːrk/ n. 丹麦(北欧国家,首都哥本哈根)">Denmark</span>” TV adverts (encouraging couples to go on holiday and send proof of <span class="annot" data-tooltip="conception /kən'sepʃn/ n. 思想, 观念, 概念构想, 设想怀孕形容词: conceptional">conception</span> to win prizes) or a rap in Singapore (“I’m a patriotic husband, you’re my patriotic wife, let’s do our civic duty and manufacture life!”). Lady Cavendish runs through 11 less <span class="annot" data-tooltip="cringe /krɪndʒ/ vi. 奉承；畏缩；阿谀n. 畏缩；奉承时 态: cringed, cringing, cringes">cringe</span>-inducing ideas to boost baby- making, which <span class="annot" data-tooltip="span /spæn/ n. 跨度，跨径两个界限间的距离一段时间vt. 建造跨越(某物的)桥或拱；横跨跨越，穿越，贯穿SPANabbr. Statis">span</span> the <span class="annot" data-tooltip="sensible /'sensəbl/ adj. 明智的；意识到的；通晓事理的；明显的n. 可感觉到的东西；敏感的人副 词: sensibly">sensible</span> (teach both sexes more about the biological clock) to the improbable (rethink the whole education system so people can start families <span class="annot" data-tooltip="sooner /ˈsunɚ/ n. （美）抢先占有土地者（在政府开放西部前）">sooner</span>). Some are no-brainers, like trying to make procreation less political and polarising. Other suggestions are brainteasers: for example, should families with children be entitled to more votes? Paul Demeny, a late demographer and economist, proposed that parents should be given a proxy vote for each of their children. This could help counteract older voters’ obvious self-interest in <span class="annot" data-tooltip="investing /ɪn'vest/ vt. 投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买时 态: invested, investing, invests">investing</span> more in health care and less in education. But it seems like an unlikely political mantle. <span class="annot" data-tooltip="ultimately /'ʌltɪmətli/ adv. 最后;最终">Ultimately</span> child-<span class="annot" data-tooltip="bearing /'berɪŋ/ n. 轴承；方位；举止；关系v. 忍受（bear的ing形式）">bearing</span> is a personal choice with public consequences. The <span class="annot" data-tooltip="pressing /'presɪŋ/ n. 压；冲压件adj. 紧迫的；迫切的；恳切的v. 按；压；熨烫衣物（press的ing形式）副 词: pressingly">pressing</span> question is whether Generation Maybe will become Generation No. For that, demographers and authors will have to wait for the next chapter. ■ This article was downloaded by zlibrary from https://www.economist.com/culture/2026/11/05/is-childlessness-contagious</p>
+<div class="article-separator"></div>
+<div class="article-header">Culture · Culture | Born wild</div>
+<p>What is it like to be a newborn? Nobody can quite say. But a new book tries to figure it out Nov 5th 2026 The naked creature in the incubator measures perhaps 50 centimetres and <span class="annot" data-tooltip="weighs /weɪ/ vt. & vi. 称…的重量link v. 重达vt. 权衡；考虑时 态: weighed，weighing，weighs">weighs</span> some 900 grams. It <span class="annot" data-tooltip="scowls /skaʊl/ n. 愁容；怒容；阴沉沉的样子vi. 皱眉；怒视vt. 皱眉表示；对…沉下脸时 态: scowled, scowling, s">scowls</span> and <span class="annot" data-tooltip="twitches /twɪtʃ/ vt. & vi. (使)抽动；(使)颤动；(使)抽搐时 态: twitched，twitching，twitches">twitches</span> but cannot smile. Its skin is almost transparent, and its <span class="annot" data-tooltip="veins /veɪn/ n. 血管；岩脉；纹理；[动]翅脉；[植]叶脉；性情vt. 使成脉络；像脉络般分布于时 态: veined, veining,">veins</span> close to invisible; it will take a doctor several minutes first to find one and then to draw a few drops of blood. It is probably intubated to help <span class="annot" data-tooltip="breathing /breθ/ n. 气息；呼吸(一次)呼吸，一口气；微风">breathing</span>; another tube trickles milk directly to the stomach. If you put tape on this <span class="annot" data-tooltip="fragile /'frædʒl/ adj. 易碎的，脆的虚弱的，脆弱的；经不起折腾的名 词: fragility">fragile</span> being, you will <span class="annot" data-tooltip="tear /tɪr，ter/ v. 撕掉，扯下；撕破；拔掉；拉伤；（非正式）狂奔；饱经……摧残；流眼泪n. 眼泪；（撕破的）洞或裂缝， 撕扯时 态: tor">tear</span> its skin. But if you leave it, it will cry. Clémentine Goldszal, a French journalist, is consumed by this image and by a single imperative: to find out what birth is like for newborns, and how they experience the <span class="annot" data-tooltip="multiple /'mʌltɪpl/ adj. 多样的；许多的；多重的n. 并联；倍数">multiple</span> medical <span class="annot" data-tooltip="interventions /ˌɪntər'venʃn/ n. 介入, 干涉, 干预">interventions</span> that may, in a worst case, <span class="annot" data-tooltip="immediately /ɪ'miːdiət/ adj. 立即的，即刻的；紧迫的目前的，当前的直接的最接近的名 词: immediateness">immediately</span> follow. She would interview them if she could. But of course there is no communication. When her <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> son Lucien was born, what she</p>
+<p>took as sweet kittenish sounds turned out to be signs of acute <span class="annot" data-tooltip="respiratory /'respərətɔːri/ adj. 呼吸的,呼吸用的">respiratory</span> <span class="annot" data-tooltip="distress /dɪ'stres/ n. 悲痛, 痛苦, 忧伤, 苦恼贫困, 窘迫危险, 困难, 危难vt. 使痛苦, 使忧伤时 态: distressed, d">distress</span>. An <span class="annot" data-tooltip="apparently /ə'pærəntli/ adv. 显然地表面上,似乎">apparently</span> lively baby may, in fact, be having convulsions. She decided to “construct a phenomenology of the newborn” by spending many months as an observer in the neonatal unit of the Necker in Paris. This is a superb hospital, especially for its care of <span class="annot" data-tooltip="premature /ˌpriːmə'tʃʊr/ adj. 过早的, 提前的, 未到期的早产的副 词: prematurely">premature</span> babies, rated seventh in the world. Sick babies are rushed there from all over France. Standing in a corner of the incubator rooms, out of the way, she sees nurses ceaselessly watching the beeping <span class="annot" data-tooltip="monitors /'mɑːnɪtər/ n. 显示屏；监视器；（计算机）显示器监控器；监测器班长；级长；班代表（尤指派往国外的）监督员，核查员巨蜥v. 监视；检查；跟">monitors</span>, checking on <span class="annot" data-tooltip="breathing /breθ/ n. 气息；呼吸(一次)呼吸，一口气；微风">breathing</span> and feeding. In other rooms she watches operations so <span class="annot" data-tooltip="delicate /'delɪkət/ adj. 微妙的；易碎的；清淡可口的；柔和的；精美的，雅致的；纤弱的副 词: delicately">delicate</span>, performed with <span class="annot" data-tooltip="miniature /'mɪnətʃər/ adj. 很小的；微型的；小型的n. 缩微模型；微型复制品（常指人物的）微型画；小画像小瓶装烈酒名 词: miniaturist">miniature</span> instruments, that a <span class="annot" data-tooltip="margin /'mɑːrdʒɪn/ n. 页边缘；利润，余裕；页边的空白">margin</span> of error of a millimetre would be a catastrophe. What she wanted to decipher was the attitude of medical staff to the newborn: whether or not they <span class="annot" data-tooltip="considered /kən'sɪdər/ vt. & vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及时 态: considered, considering, ">considered</span> them fully human, individual and even having personalities. She had viewed Lucien as merely “a <span class="annot" data-tooltip="generic /dʒə'nerɪk/ adj. 一般的；属的；类的；非商标的副 词: generically">generic</span> entity” for some weeks, and found it hard to say his name. But at Necker newborn patients were all called by their names and treated tenderly. They were assumed to have agency, if only to close their eyes or poo in their nappies. When those nappies were changed, <span class="annot" data-tooltip="blankets /'blæŋkɪt/ n. 毛毯，毯子adj. 适用于任何情况的；总括的，综合的v. 以厚层覆盖时 态: blanketed, blanketing">blankets</span> were put over the incubators to shield their privacy. After all, in French law, they were individuals as soon as they drew <span class="annot" data-tooltip="breath /breθ/ n. 气息；呼吸(一次)呼吸，一口气；微风">breath</span> and no longer occupied their mother’s womb. And yet without their <span class="annot" data-tooltip="consent /kən'sent/ n. 准许，同意，赞成vi. 同意；赞成时 态: consented，consenting，consents">consent</span>, these babies were invaded. They were injected, intubated, placed among noisy machines and blinded by <span class="annot" data-tooltip="harsh /hɑːrʃ/ adj. 粗糙的；刺耳的；严厉的；严酷的；刺目的比较级: harsher, harshest">harsh</span> lights. Tiny catheters were sent in to deliver fluids. In France 94% of babies born between 27 and 31 weeks left the hospital in perfect health. (At 25 weeks, though, the figure fell to 60%.) These numbers were improving steadily, and had been doing so ever since the days when the only treatment for a struggling newborn was to dangle it by its <span class="annot" data-tooltip="heels /hilz/ n. 脚踝；残余料；高跟鞋（heel的复数）v. 紧跟；给（鞋等）装跟（heel的三单形式）">heels</span> or, in the case of Louis XIII of France, dose it with red wine. <span class="annot" data-tooltip="nonetheless /ˌnʌnðə'les/ adv. 虽然如此,但是">Nonetheless</span>, Ms Goldszal worries about the long-term effects of <span class="annot" data-tooltip="brutal /'bruːtl/ adj. 残忍的；野蛮的，不讲理的副 词: brutally">brutal</span> modern <span class="annot" data-tooltip="procedures 规程">procedures</span>, even <span class="annot" data-tooltip="wondering /'wʌndər/ vt. & vi. 对…感到疑惑想知道；问自己n. 惊奇，惊叹，惊异，惊诧奇人，奇才奇观，奇景，奇迹，奇事时 态: wonder">wondering</span> whether her disabled or confused friends were damaged by them, long before they knew how to complain. She paints a gripping, <span class="annot" data-tooltip="vivid /'vɪvɪd/ adj. 鲜明的；鲜艳的；生动的比较级: vivider, vividest">vivid</span> <span class="annot" data-tooltip="picture /'pɪktʃər/ n. 图画，肖像；照片(生动的)描述，写照影片；电影；画面美景，景色情况，事态，局面vt. 绘画；描绘想象时 态: pictu">picture</span> of life at Necker, especially the nurses, <span class="annot" data-tooltip="permanently /'pɜːrmənəntli/ adv. 永久地;长期不变地">permanently</span> <span class="annot" data-tooltip="exhausted /ɪɡ'zɔːst/ vt. 弄空, 取出用尽, 耗尽使非常疲倦vi. 排气n. 排气装置, 排气管[孔]机器排出的废气时 态: exhausted,">exhausted</span> but <span class="annot" data-tooltip="perceptive /pər'septɪv/ adj. 洞察力强的;敏锐的;理解力强的adv. 洞察力强地;敏锐地n. 洞察力强;敏锐;理解力名 词: perceptivity">perceptive</span> enough to lay a gentle hand on a</p>
+<p>newborn, turn down the lighting, or rock them. It is the medical setting, among people in <span class="annot" data-tooltip="scrubs n. 实习医生风云（电视剧名）">scrubs</span> and the tang of sanitiser, that <span class="annot" data-tooltip="thrills /θrɪl/ n. 强烈的兴奋、恐惧或快乐感vt. & vi. (使)兴奋, (使)激动时 态: thrilled, thrilling, ">thrills</span> her: she finds herself surrounded at staff meetings by “an entire continent” of words she can’t understand: oesophageal atresia, hypocalcaemia, exomphalos. Ms Goldszal goes only sketchily into the <span class="annot" data-tooltip="philosophy /fə'lɑːsəfi/ n. 哲学人生哲学, 人生观达观">philosophy</span> of personhood and the difficult legal <span class="annot" data-tooltip="line /laɪn/ n. 绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long inter">line</span> between the full-term <span class="annot" data-tooltip="fetus /'fiːtəs/ n. 胎,胎儿">fetus</span> inside the womb and the newborn <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span> it. For ideas of ensoulment she has even less time. She <span class="annot" data-tooltip="envies /'envi/ n. 羡慕；嫉妒，妒忌vt. 羡慕；嫉妒，妒忌vi. 感到妒忌；显示出妒忌名 词: envier">envies</span> religious Jews their belief that God <span class="annot" data-tooltip="breathes /briːð/ vi. 呼吸；低语；松口气；（风）轻拂vt. 呼吸；流露；使喘息；低声说时 态: breathed, breathing, br">breathes</span> life into the fetus at the moment of birth, but she is a modern woman; this is really just “<span class="annot" data-tooltip="magical /'mædʒɪkl/ adj. 魔力的, 不可思议的, 迷人的副 词: magically">magical</span> thinking”. All she needs to know she has seen at Necker, and it is “fundamentally prosaic”: new life appears where before there was nothing, and medical ingenuity does its best to ensure that life does not <span class="annot" data-tooltip="swiftly /swɪft/ adj. 迅速的, 速度快的敏捷的, 反应快的SWIFTabbr. Society for Worldwide Interbank">swiftly</span> return to nothing again. Yet a mystery remains. The last epigram that opens the book comes from J.G. Ballard, an English writer, recording the birth of his daughter: “For the first few seconds I had the sense she was <span class="annot" data-tooltip="immensely /ɪ'mens/ adj. 极大的, 巨大的副 词: immensely">immensely</span> old. She looked like something from Egyptian sculpture, streamlined by time. Within a few seconds she was suddenly very young.” Newborns may seem able to tell us nothing. But perhaps sometimes, for a moment, their eyes and their parents can. ■ This article was downloaded by zlibrary from https://www.economist.com/culture/2026/11/05/what-is-it-like-to-be-a-newborn</p>
+<div class="article-separator"></div>
+<div class="article-header">Culture · Culture | Fit for a king</div>
+<p>What goes on behind the doors of Claridge’s? A new book gives readers a key card to the storied hotel’s past Nov 5th 2026 THINGS CHANGE all the time inside hotels. Guests check in and out; <span class="annot" data-tooltip="towels /'taʊəl/ n. 毛巾，手巾；纸巾vt. 用毛巾擦vi. 用毛巾擦干身体时 态: toweled, towelled toweling, ">towels</span> and bed sheets are regularly laundered (or so you would hope). Hotels are also forced to accommodate upheavals that take <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span> <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span> their doors. Two recent books, “The Finest Hotel in Kabul” and “Hotel Exile”, explored the turmoil of the 20th century from the front desks of hotels in <span class="annot" data-tooltip="afghanistan /æf'ɡænɪstæn/ n. 阿富汗">Afghanistan</span> and France. Now readers can <span class="annot" data-tooltip="journey /'dʒɜːrni/ n. 旅行; 行程vi. 旅行">journey</span> to Claridge’s, one of London’s most prestigious hotels. Martin Williams, a historian, traces how the hotel has witnessed all manner of political and cultural shifts since 1812. This is a top-down view of history, for Claridge’s <span class="annot" data-tooltip="clients /'klaɪənt/ n. 委托人顾客, 常客">clients</span> have always been exceptionally posh. Princes and empresses slept there on visits to Britain; the future George IV, then prince regent, was <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span> to have slept there with lovers.</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>alternative</td><td>/ɔːl'tɜːrnətɪv/ adj.</td><td>可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）可供选择的事物；可供选择的解决办法替代物</td></tr>
+<tr><td>race</td><td>/reɪs/ n.</td><td>种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACEabbr. Radiation Adap</td></tr>
+<tr><td>mandarin</td><td>/'mændərɪn/ n.</td><td>(中国的)官话(普通话的旧称)(旧时)中国政府的高级官员</td></tr>
+<tr><td>stretching</td><td>/stretʃ/ vt.</td><td>伸展,张开vi. 伸展adj. 可伸缩的n. 伸展，延伸, stretching, stretches</td></tr>
+<tr><td>academics</td><td>/ˌækə'demɪk/ adj.</td><td>学院的；学术的；理论的n. 大学生，大学教师；学者</td></tr>
+<tr><td>intensive</td><td>/ɪn'tensɪv/ adj.</td><td>加强的, 集中的, 密集的彻底的加强语气的</td></tr>
+<tr><td>invoke</td><td>/ɪn'voʊk/ vt.</td><td>调用；祈求；恳求；引起, invoking, invokes</td></tr>
+<tr><td>analogies</td><td>/ə'nælədʒi/ n.</td><td>类似, 相似类推, 类推法</td></tr>
+<tr><td>apparently</td><td>/ə'pærəntli/ adv.</td><td>显然地表面上,似乎</td></tr>
+<tr><td>exhausted</td><td>/ɪɡ'zɔːst/ vt.</td><td>弄空, 取出用尽, 耗尽使非常疲倦vi. 排气n. 排气装置, 排气管[孔]机器排出的废气, exhausting, exhausts</td></tr>
+<tr><td>thoughts</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>pregnant</td><td>/'preɡnənt/ adj.</td><td>怀孕的, 怀胎的含蓄的, 意味深长的孕育着…的, 预示着…前景的</td></tr>
+<tr><td>falling</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>memoirs</td><td>/'memwɑːr/ n.</td><td>自传；实录；回忆录；研究报告</td></tr>
+<tr><td>siblings</td><td>/'sɪblɪŋ/ n.</td><td>兄弟姊妹；民族成员</td></tr>
+<tr><td>polish</td><td>/'pɑːlɪʃ/ n.</td><td>磨光，擦亮；上光剂，擦亮剂；优雅，精良vi. 擦亮，变光滑vt. 磨光，使发亮adj. 波兰的Polishadj. 波兰的,与波兰有关的波兰人的,波兰语的n. </td></tr>
+<tr><td>household</td><td>/'haʊshoʊld/ n.</td><td>同住在一所房子里的人, 一家人, 户adj. 家庭的, 家用的</td></tr>
+<tr><td>raise</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>prospect</td><td>/'prɑːspekt/ n.</td><td>景象，景色前景；前途可能成为主顾的人；有希望的候选人vi. 勘探；勘察，prospecting，prospects</td></tr>
+<tr><td>varies</td><td>/'veri/ vi.</td><td>变化；违反；[生]变异vt. 改变；使多样化；[音]变奏, varies</td></tr>
+<tr><td>quietly</td><td>/'kwaɪətli/ adv.</td><td>安静地；秘密地；平稳地</td></tr>
+<tr><td>possibly</td><td>/'pɑːsəbli/ adv.</td><td>可能地；大概；也许</td></tr>
+<tr><td>exposure</td><td>/ɪk'spoʊʒər/ n.</td><td>暴露, 显露揭发, 揭露(软片等)曝光</td></tr>
+<tr><td>degrades</td><td>/dɪ'ɡreɪd/ vt.</td><td>使……丢脸；使……降级；使……降解；贬低vi. 退化；降级，降低, degrading, degrades</td></tr>
+<tr><td>bust</td><td>/bʌst/ vi.</td><td>爆裂；破产；降低级别vt. 使爆裂；使破产；逮捕n. 半身像；胸部；萧条；破产adj. 破产了的；毁坏了的, busting, busts</td></tr>
+<tr><td>persuade</td><td>/pər'sweɪd/ vt.</td><td>& vi. 说服, 劝告, persuading, persuades</td></tr>
+<tr><td>campaigns</td><td>/kæm'peɪn/ n.</td><td>运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）, campaigning, campai</td></tr>
+<tr><td>denmark</td><td>/'denmɑːrk/ n.</td><td>丹麦(北欧国家,首都哥本哈根)</td></tr>
+<tr><td>conception</td><td>/kən'sepʃn/ n.</td><td>思想, 观念, 概念构想, 设想怀孕</td></tr>
+<tr><td>cringe</td><td>/krɪndʒ/ vi.</td><td>奉承；畏缩；阿谀n. 畏缩；奉承, cringing, cringes</td></tr>
+<tr><td>span</td><td>/spæn/ n.</td><td>跨度，跨径两个界限间的距离一段时间vt. 建造跨越(某物的)桥或拱；横跨跨越，穿越，贯穿SPANabbr. Statistical Processing and</td></tr>
+<tr><td>sensible</td><td>/'sensəbl/ adj.</td><td>明智的；意识到的；通晓事理的；明显的n. 可感觉到的东西；敏感的人</td></tr>
+<tr><td>sooner</td><td>/ˈsunɚ/ n.</td><td>（美）抢先占有土地者（在政府开放西部前）</td></tr>
+<tr><td>investing</td><td>/ɪn'vest/ vt.</td><td>投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买, investing, invests</td></tr>
+<tr><td>ultimately</td><td>/'ʌltɪmətli/ adv.</td><td>最后;最终</td></tr>
+<tr><td>bearing</td><td>/'berɪŋ/ n.</td><td>轴承；方位；举止；关系v. 忍受（bear的ing形式）</td></tr>
+<tr><td>pressing</td><td>/'presɪŋ/ n.</td><td>压；冲压件adj. 紧迫的；迫切的；恳切的v. 按；压；熨烫衣物（press的ing形式）</td></tr>
+<tr><td>weighs</td><td>/weɪ/ vt.</td><td>& vi. 称…的重量link v. 重达vt. 权衡；考虑，weighing，weighs</td></tr>
+<tr><td>scowls</td><td>/skaʊl/ n.</td><td>愁容；怒容；阴沉沉的样子vi. 皱眉；怒视vt. 皱眉表示；对…沉下脸, scowling, scowls</td></tr>
+<tr><td>twitches</td><td>/twɪtʃ/ vt.</td><td>& vi. (使)抽动；(使)颤动；(使)抽搐，twitching，twitches</td></tr>
+<tr><td>veins</td><td>/veɪn/ n.</td><td>血管；岩脉；纹理；[动]翅脉；[植]叶脉；性情vt. 使成脉络；像脉络般分布于, veining, veins</td></tr>
+<tr><td>breathing</td><td>/breθ/ n.</td><td>气息；呼吸(一次)呼吸，一口气；微风</td></tr>
+<tr><td>fragile</td><td>/'frædʒl/ adj.</td><td>易碎的，脆的虚弱的，脆弱的；经不起折腾的</td></tr>
+<tr><td>tear</td><td>/tɪr，ter/ v.</td><td>撕掉，扯下；撕破；拔掉；拉伤；（非正式）狂奔；饱经……摧残；流眼泪n. 眼泪；（撕破的）洞或裂缝， 撕扯，torn，tearing，tears</td></tr>
+<tr><td>multiple</td><td>/'mʌltɪpl/ adj.</td><td>多样的；许多的；多重的n. 并联；倍数</td></tr>
+<tr><td>interventions</td><td>/ˌɪntər'venʃn/ n.</td><td>介入, 干涉, 干预</td></tr>
+<tr><td>immediately</td><td>/ɪ'miːdiət/ adj.</td><td>立即的，即刻的；紧迫的目前的，当前的直接的最接近的</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>respiratory</td><td>/'respərətɔːri/ adj.</td><td>呼吸的,呼吸用的</td></tr>
+<tr><td>distress</td><td>/dɪ'stres/ n.</td><td>悲痛, 痛苦, 忧伤, 苦恼贫困, 窘迫危险, 困难, 危难vt. 使痛苦, 使忧伤, distressing, distresses</td></tr>
+<tr><td>apparently</td><td>/ə'pærəntli/ adv.</td><td>显然地表面上,似乎</td></tr>
+<tr><td>premature</td><td>/ˌpriːmə'tʃʊr/ adj.</td><td>过早的, 提前的, 未到期的早产的</td></tr>
+<tr><td>monitors</td><td>/'mɑːnɪtər/ n.</td><td>显示屏；监视器；（计算机）显示器监控器；监测器班长；级长；班代表（尤指派往国外的）监督员，核查员巨蜥v. 监视；检查；跟踪调查监听（电话、外国无线电广播等）, </td></tr>
+<tr><td>breathing</td><td>/breθ/ n.</td><td>气息；呼吸(一次)呼吸，一口气；微风</td></tr>
+<tr><td>delicate</td><td>/'delɪkət/ adj.</td><td>微妙的；易碎的；清淡可口的；柔和的；精美的，雅致的；纤弱的</td></tr>
+<tr><td>miniature</td><td>/'mɪnətʃər/ adj.</td><td>很小的；微型的；小型的n. 缩微模型；微型复制品（常指人物的）微型画；小画像小瓶装烈酒</td></tr>
+<tr><td>margin</td><td>/'mɑːrdʒɪn/ n.</td><td>页边缘；利润，余裕；页边的空白</td></tr>
+<tr><td>considered</td><td>/kən'sɪdər/ vt.</td><td>& vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及, considering, considers</td></tr>
+<tr><td>generic</td><td>/dʒə'nerɪk/ adj.</td><td>一般的；属的；类的；非商标的</td></tr>
+<tr><td>blankets</td><td>/'blæŋkɪt/ n.</td><td>毛毯，毯子adj. 适用于任何情况的；总括的，综合的v. 以厚层覆盖, blanketing, blankets</td></tr>
+<tr><td>breath</td><td>/breθ/ n.</td><td>气息；呼吸(一次)呼吸，一口气；微风</td></tr>
+<tr><td>consent</td><td>/kən'sent/ n.</td><td>准许，同意，赞成vi. 同意；赞成，consenting，consents</td></tr>
+<tr><td>harsh</td><td>/hɑːrʃ/ adj.</td><td>粗糙的；刺耳的；严厉的；严酷的；刺目的, harshest</td></tr>
+<tr><td>heels</td><td>/hilz/ n.</td><td>脚踝；残余料；高跟鞋（heel的复数）v. 紧跟；给（鞋等）装跟（heel的三单形式）</td></tr>
+<tr><td>nonetheless</td><td>/ˌnʌnðə'les/ adv.</td><td>虽然如此,但是</td></tr>
+<tr><td>brutal</td><td>/'bruːtl/ adj.</td><td>残忍的；野蛮的，不讲理的</td></tr>
+<tr><td>procedures</td><td>— </td><td>规程</td></tr>
+<tr><td>wondering</td><td>/'wʌndər/ vt.</td><td>& vi. 对…感到疑惑想知道；问自己n. 惊奇，惊叹，惊异，惊诧奇人，奇才奇观，奇景，奇迹，奇事，wondering，wonders</td></tr>
+<tr><td>vivid</td><td>/'vɪvɪd/ adj.</td><td>鲜明的；鲜艳的；生动的, vividest</td></tr>
+<tr><td>picture</td><td>/'pɪktʃər/ n.</td><td>图画，肖像；照片(生动的)描述，写照影片；电影；画面美景，景色情况，事态，局面vt. 绘画；描绘想象，picturing，pictures</td></tr>
+<tr><td>permanently</td><td>/'pɜːrmənəntli/ adv.</td><td>永久地;长期不变地</td></tr>
+<tr><td>exhausted</td><td>/ɪɡ'zɔːst/ vt.</td><td>弄空, 取出用尽, 耗尽使非常疲倦vi. 排气n. 排气装置, 排气管[孔]机器排出的废气, exhausting, exhausts</td></tr>
+<tr><td>perceptive</td><td>/pər'septɪv/ adj.</td><td>洞察力强的;敏锐的;理解力强的adv. 洞察力强地;敏锐地n. 洞察力强;敏锐;理解力</td></tr>
+<tr><td>scrubs</td><td>— n.</td><td>实习医生风云（电视剧名）</td></tr>
+<tr><td>thrills</td><td>/θrɪl/ n.</td><td>强烈的兴奋、恐惧或快乐感vt. & vi. (使)兴奋, (使)激动, thrilling, thrills</td></tr>
+<tr><td>philosophy</td><td>/fə'lɑːsəfi/ n.</td><td>哲学人生哲学, 人生观达观</td></tr>
+<tr><td>line</td><td>/laɪn/ n.</td><td>绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long interspersed element)长散在元</td></tr>
+<tr><td>fetus</td><td>/'fiːtəs/ n.</td><td>胎,胎儿</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>envies</td><td>/'envi/ n.</td><td>羡慕；嫉妒，妒忌vt. 羡慕；嫉妒，妒忌vi. 感到妒忌；显示出妒忌</td></tr>
+<tr><td>breathes</td><td>/briːð/ vi.</td><td>呼吸；低语；松口气；（风）轻拂vt. 呼吸；流露；使喘息；低声说, breathing, breathes</td></tr>
+<tr><td>magical</td><td>/'mædʒɪkl/ adj.</td><td>魔力的, 不可思议的, 迷人的</td></tr>
+<tr><td>swiftly</td><td>/swɪft/ adj.</td><td>迅速的, 速度快的敏捷的, 反应快的SWIFTabbr. Society for Worldwide Interbank Financial Telecommu</td></tr>
+<tr><td>immensely</td><td>/ɪ'mens/ adj.</td><td>极大的, 巨大的</td></tr>
+<tr><td>towels</td><td>/'taʊəl/ n.</td><td>毛巾，手巾；纸巾vt. 用毛巾擦vi. 用毛巾擦干身体, towelled toweling, towelling towels, towels</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>afghanistan</td><td>/æf'ɡænɪstæn/ n.</td><td>阿富汗</td></tr>
+<tr><td>journey</td><td>/'dʒɜːrni/ n.</td><td>旅行; 行程vi. 旅行</td></tr>
+<tr><td>clients</td><td>/'klaɪənt/ n.</td><td>委托人顾客, 常客</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day36.html" class="nav-btn">← Day 36</a>
+  <a href="day38.html" class="nav-btn">Day 38 →</a>
+</div>
+
+<div class="progress">📖 Day 37 of 40</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-11-07</div>
+
+</body>
+</html>

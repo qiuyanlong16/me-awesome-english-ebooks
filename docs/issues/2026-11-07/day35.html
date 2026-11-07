@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Science & technology</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-11-07</div>
+
+<h1 class="article-title">Science & technology</h1>
+<div class="article-section"></div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>Like an AGN, a black-<span class="annot" data-tooltip="hole /hoʊl/ n. 洞，孔；洞穴，穴；突破口vi. 凿洞，穿孔；（高尔夫球等）进洞vt. 凿洞时 态: holed, holing, hol">hole</span> star is an accreting black hole wrapped in a gas cocoon. But this cocoon’s density is much greater. So great, in fact, that no radiation <span class="annot" data-tooltip="emitted /i'mɪt/ vt. 发出，放射；发行；发表EMITabbr. Electromagnetic Induction Tweeter 电磁感应高">emitted</span> by the black hole’s infalling matter—not light, not X-rays —can ever directly <span class="annot" data-tooltip="escape /ɪ'skeɪp/ vt. 逃避，避免；被忘掉vi. 逃脱；避开；溜走n. 逃跑；逃亡时 态: escaped, escaping, escapes">escape</span>. Instead, the radiation is absorbed by the <span class="annot" data-tooltip="innermost /'ɪnərmoʊst/ adj. 最深处的隐私的, 最隐秘的">innermost</span> layer of gas, causing it to <span class="annot" data-tooltip="emit /i'mɪt/ vt. 发出，放射；发行；发表EMITabbr. Electromagnetic Induction Tweeter 电磁感应高">emit</span> new radiation, at longer wavelengths, which the next layer will absorb. After many such stages, say the idea’s proponents, the light would emerge from an outer layer similar to a star’s <span class="annot" data-tooltip="glowing /ɡloʊ/ vi. (无焰地)燃烧；发炽热；烧红脸红，身体发热n. 光亮，光辉脸红，(身体)发热热情；强烈的感情时 态: glowed，gl">glowing</span> surface, <span class="annot" data-tooltip="possessing /pə'zes/ vt. 具有占据时 态: possessed, possessing, possesses">possessing</span> a <span class="annot" data-tooltip="distinctive /dɪ'stɪŋktɪv/ adj. 有特色的, 与众不同的副 词: distinctively">distinctive</span> red tinge. Such objects would thus look like stars from the <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span>, but powered by growing black <span class="annot" data-tooltip="holes /hoʊl/ n. 洞，孔；洞穴，穴；突破口vi. 凿洞，穿孔；（高尔夫球等）进洞vt. 凿洞时 态: holed, holing, hol">holes</span> instead of nuclear <span class="annot" data-tooltip="fusion /'fjuːʒn/ n. 融合物；熔化；融合；熔接">fusion</span>. <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">Although</span> both <span class="annot" data-tooltip="proposals /prə'poʊzl/ n. 提议，建议；求婚">proposals</span> go some way to explaining the dots’ unique <span class="annot" data-tooltip="characteristics /ˌkærəktə'rɪstɪk/ adj. 典型的；特有的；表示特性的">characteristics</span>, <span class="annot" data-tooltip="neither /'niːðər/ conj. 既不；也不adv. 两个都不；既不……也不adj. 两者都不的det./pron. 两者都不">neither</span> does so satisfactorily. Critics of the AGN <span class="annot" data-tooltip="scenario /sə'nærioʊ/ n. 情节；剧本；方案">scenario</span> contend that it requires a string of assumptions to explain their <span class="annot" data-tooltip="unusual /ʌn'juːʒuəl/ adj. 与众不同的；不寻常的；不平常的副 词: unusually">unusual</span> appearance. But the <span class="annot" data-tooltip="advocates /ˈædvəkeɪt，'ædvəkət/ v. 拥护；支持；提倡n. 拥护者；支持者；提倡者；辩护律师；出庭辩护人时 态: advocated, advocating,">advocates</span> of black-hole stars have to explain why a handful of dots have displayed light <span class="annot" data-tooltip="leaking /liːk/ n. 漏洞，裂缝；泄漏vt. 使渗漏，泄露vi. 漏，渗；泄漏出去时 态: leaked, leaking, leaks">leaking</span> out of the gas cocoon, something their model forbids. Which side of the debate sounds more convincing can come down to <span class="annot" data-tooltip="taste /teɪst/ n. 滋味, 味道鉴赏力爱好, 嗜好vt. & vi. 尝, 品尝, 尝到vt. 吃, 喝体验, 领略时 态: tasted,">taste</span>. As Jenny Greene, an astronomer at Princeton University, puts it: “People see what they want to see.” What could settle the matter? The answer may lie in the dots’ mass. The two proposals predict <span class="annot" data-tooltip="wildly /'waɪldli/ adv. 野生地；野蛮地；狂暴地；鲁莽地">wildly</span> different numbers from the same data: AGN-like</p>
+<p>objects can be several orders of <span class="annot" data-tooltip="magnitude /'mæɡnɪtuːd/ n. 巨大; 重要性〈天〉星等">magnitude</span> heavier than black-<span class="annot" data-tooltip="hole /hoʊl/ n. 洞，孔；洞穴，穴；突破口vi. 凿洞，穿孔；（高尔夫球等）进洞vt. 凿洞时 态: holed, holing, hol">hole</span> stars. Writing in Nature, in May, a team led by Ignas Juodzbalis, then at the University of <span class="annot" data-tooltip="cambridge /'keɪmbrɪdʒ/ n. 剑桥">Cambridge</span>, published the first mass measurement of a little red dot. They calculated the speeds with which different <span class="annot" data-tooltip="patches /pætʃ/ n. 眼罩；斑点；碎片；小块土地vt. 修补；掩饰；解决vi. 打补丁时 态: patched, patching, patc">patches</span> of the gas cocoon moved, and used them to infer the dot’s mass. The result, about 50m <span class="annot" data-tooltip="solar /'soʊlər/ adj. 太阳的；日光的；利用太阳光的；与太阳相关的n. 日光浴室">solar</span> masses, was a point for team AGN. But the work has <span class="annot" data-tooltip="proved /proʊ/ n. 从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞">proved</span> <span class="annot" data-tooltip="controversial /ˌkɑːntrə'vɜːrʃl/ adj. 有争议的, 引起争议的名 词: controversialist">controversial</span>. Dr Juodzbalis himself points out that it provides only one data point. What’s more, “I think they can’t do what they said they did,” says Dr Greene. She contends that the authors’ technique works only when measuring the speeds of clearly defined objects, such as two stars, and not the <span class="annot" data-tooltip="motion /'moʊʃn/ n. 动作；请求；手势；移动；意向vi. 运动；打手势vt. 运动；向…打手势时 态: motioned, motioning">motion</span> within the messy gas cocoons that surround little red dots. More than <span class="annot" data-tooltip="academic /ˌækə'demɪk/ adj. 学院的；学术的；理论的n. 大学生，大学教师；学者副 词: academically">academic</span> vindication is at stake. Astronomers do not know how the first supermassive black <span class="annot" data-tooltip="holes /hoʊl/ n. 洞，孔；洞穴，穴；突破口vi. 凿洞，穿孔；（高尔夫球等）进洞vt. 凿洞时 态: holed, holing, hol">holes</span> put on their weight, for example, nor how that shaped the <span class="annot" data-tooltip="galaxies /'ɡæləksi/ n. 星系银河系, 银河一群(杰出或著名的人物)">galaxies</span> in which they sit. The modest masses of black-hole stars would suggest that they started small and grew quickly by feeding on their gas cocoons. But if the AGN <span class="annot" data-tooltip="advocates /ˈædvəkeɪt，'ædvəkət/ v. 拥护；支持；提倡n. 拥护者；支持者；提倡者；辩护律师；出庭辩护人时 态: advocated, advocating,">advocates</span> are right, somehow the first black holes were massive at birth. On such questions, the little red dots punch <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> above their weight. ■ This article was downloaded by zlibrary from https://www.economist.com/science-and-technology/2026/11/04/astronomers-are- mystified-by-little-red-dots-in-the-sky</p>
+<p>Science & technology | Weights and measures AI models can <span class="annot" data-tooltip="tinker /'tɪŋkər/ n. (补壶、锅等流动的)补锅工人能做各种小修小补的人；什么事情都会干一手的人笨拙的工人，不熟练的工人小鲭鱼粗劣的修补vi. ">tinker</span> with one another’s brains For now, the <span class="annot" data-tooltip="tweaks /twiːk/ n. 拧；扭；焦急vt. 扭；用力拉；开足马力时 态: tweaked, tweaking, tweaks">tweaks</span> are <span class="annot" data-tooltip="relatively /'relətɪvli/ adv. 相对地，比较而言；相当相对来说；相比较而言">relatively</span> small-scale Nov 5th 2026 Numbers such as -0.180, -0.080 and 0.191 do not mean very much to the untrained human eye. Even if a specialist were told that these were an AI model’s “weights”—as its <span class="annot" data-tooltip="internal /ɪn'tɜːrnl/ adj. 国内的；内部的；内在的名 词: internality">internal</span> <span class="annot" data-tooltip="parameters /pə'ræmɪtər/ n. (限定性的)因素, 特性, 界限〈物〉〈数〉参量, 参数形容词: parametric">parameters</span> are called—they would struggle to reconstruct what sort of model it was, or what it was trained to do. But it seems that a <span class="annot" data-tooltip="cutting /'kʌtɪŋ/ n. 切断；剪辑；开凿adj. 严寒的；锋利的；尖酸刻薄的v. 切开；采伐；削减（cut的ing形式）">cutting</span>-<span class="annot" data-tooltip="edge /edʒ/ n. 边缘；刀刃；优势；锋利vt. 使锐利；将…开刃；给…加上边vi. 缓缓移动；侧着移动EDGEabbr. Electron">edge</span> large language model (LLM), such as OpenAI’s GPT-6 Astra, would have no such difficulty. So said Rikiya Takehi, a PhD student at the Massachusetts Institute of Technology, and his collaborators in a blog post published on November 2nd. They claimed that Astra figured out that a second AI model had been trained to play Pong, a basic video game, just by looking at its weights. More impressive still, it fixed a known bug in a small LLM by <span class="annot" data-tooltip="tweaking /twiːk/ n. 拧；扭；焦急vt. 扭；用力拉；开足马力时 态: tweaked, tweaking, tweaks">tweaking</span> its weights, thereby sextupling its score on a popular maths test, and <span class="annot" data-tooltip="manually /'mænjuəl/ adj. 用手的, 手工的n. 手册, 指南副 词: manually">manually</span></p>
+<p>programmed the weights for an AI model <span class="annot" data-tooltip="capable /'keɪpəbl/ adj. 能干的，能胜任的；有才华的副 词: capably">capable</span> of playing Go, a board game. If ordinary model design is akin to natural selection, in which external conditions are set to allow the right weights to emerge on their <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span>, the <span class="annot" data-tooltip="tweaks /twiːk/ n. 拧；扭；焦急vt. 扭；用力拉；开足马力时 态: tweaked, tweaking, tweaks">tweaks</span> Astra made were closer to <span class="annot" data-tooltip="genetic /dʒə'netɪk/ adj. 遗传的；起源的；基因的副 词: genetically">genetic</span> engineering. These claims rapidly caught the attention of others in the field. Some observers speculated that a future AI could <span class="annot" data-tooltip="tweak /twiːk/ n. 拧；扭；焦急vt. 扭；用力拉；开足马力时 态: tweaked, tweaking, tweaks">tweak</span> its own weights, potentially releasing a <span class="annot" data-tooltip="runaway /'rʌnəweɪ/ adj. 逃走的；逃亡的n. 逃跑；逃走的人">runaway</span> train of <span class="annot" data-tooltip="recursive /rɪ'kɜːrsɪv/ adj. 回归的,递归的">recursive</span> self-improvement. Others hoped that AI systems could help them peer inside future models to catch possible misbehaviour early. The blog post is no guarantee that <span class="annot" data-tooltip="either /'iːðər/ pron. (两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的">either</span> of these will materialise. It shows only <span class="annot" data-tooltip="relatively /'relətɪvli/ adv. 相对地，比较而言；相当相对来说；相比较而言">relatively</span> simple examples of models finding and fixing <span class="annot" data-tooltip="flaws /flɔː/ n.瑕疵，缺点；一阵狂风；短暂的风暴；裂缝，裂纹">flaws</span> in other models that are still thousands of times smaller than Astra itself. What’s more, says Fazl Barez, an AI researcher at Oxford University who was not <span class="annot" data-tooltip="involved /ɪn'vɑːlvd/ adj. 卷入的；有关的；复杂的v. 涉及；使参与；包含（involve的过去式和过去分词）">involved</span> in the work, it is likely that the model’s abilities emerged only because it had been trained on previous human-led experiments to do the same thing. A <span class="annot" data-tooltip="comprehensive /ˌkɑːmprɪ'hensɪv/ adj. 广泛的, 综合的副 词: comprehensively">comprehensive</span> understanding of frontier models remains a long way off. But if it happens, says Dr Barez, “It’ll be the happiest day of my life.”■ This article was downloaded by zlibrary from https://www.economist.com/science-and-technology/2026/11/04/ai-models-can-<span class="annot" data-tooltip="tinker /'tɪŋkər/ n. (补壶、锅等流动的)补锅工人能做各种小修小补的人；什么事情都会干一手的人笨拙的工人，不熟练的工人小鲭鱼粗劣的修补vi. ">tinker</span>- with-one-anothers-brains</p>
+<p>Science & technology | Ears in the sky <span class="annot" data-tooltip="drones /droʊn/ n. 无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫">Drones</span> don’t just <span class="annot" data-tooltip="blow /bloʊ/ n. 吹；殴打；打击vi. 风吹；喘气vt. 风吹时 态: blew blown blowing, blows">blow</span> up the enemy They can also pick up on radio <span class="annot" data-tooltip="transmissions /trænz'mɪʃn/ n. 传送, 传播, 传达播送传动装置, 变速器形容词: transmissive">transmissions</span> to identify future targets Nov 5th 2026 In the David and Goliath war between <span class="annot" data-tooltip="ukraine n. 乌克兰（原苏联一加盟共和国，现已独立）">Ukraine</span> and Russia, drones have <span class="annot" data-tooltip="proved /proʊ/ n. 从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞">proved</span> a great equaliser. Ukraine’s short-range <span class="annot" data-tooltip="aircraft /'erkræft/ n. 飞机，航空器">aircraft</span> are <span class="annot" data-tooltip="cutting /'kʌtɪŋ/ n. 切断；剪辑；开凿adj. 严寒的；锋利的；尖酸刻薄的v. 切开；采伐；削减（cut的ing形式）">cutting</span> Russia’s supply <span class="annot" data-tooltip="lines n. 台词；线；航线（line的复数）v. 排成一行；画线于（line的三单形式）">lines</span> to its occupying troops, while long-range <span class="annot" data-tooltip="versions /'vɜːrʒn/ n. 变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本">versions</span> attack oil refineries, airfields and <span class="annot" data-tooltip="warehouses /'werhaʊs/ n. 仓库, 货栈时 态: warehoused, warehousing, warehousesalso">warehouses</span> as <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> afield as Siberia. Not all military drones, however, carry warheads. Many are used instead for spying and target location. A lot of these gather their data at optical or <span class="annot" data-tooltip="infrared /ˌɪnfrə'red/ adj. 〈物〉红外线的">infrared</span> frequencies. But some, <span class="annot" data-tooltip="involved /ɪn'vɑːlvd/ adj. 卷入的；有关的；复杂的v. 涉及；使参与；包含（involve的过去式和过去分词）">involved</span> in the field of signals intelligence, or SIGINT, listen out for radio <span class="annot" data-tooltip="waves /weɪv/ vi. 波动；起伏；摇动；呈波形；挥手示意vt. 向…挥手示意；使成波浪形；卷（烫）发n. 波浪；波动；高潮；卷曲；挥手示意时 ">waves</span>. And within that category are those which seek not to understand what is being broadcast, but merely to identify and locate its source, the better to attack it—a field of endeavour called electronic support measures (ESM).</p>
+<p>According to Thomas Withington, an electronic-<span class="annot" data-tooltip="warfare /'wɔːrfer/ n. 战争, 战争状态">warfare</span> expert at the Royal United Services Institute, a think-<span class="annot" data-tooltip="tank /tæŋk/ n. （存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内时 态: t">tank</span>, the result has been an arms <span class="annot" data-tooltip="race /reɪs/ n. 种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACE">race</span> in which the radio frequencies used to control <span class="annot" data-tooltip="drones /droʊn/ n. 无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫">drones</span> have migrated ever further up and down the <span class="annot" data-tooltip="spectrum /'spektrəm/ n. 光谱波谱范围, 系列复 数: spectra">spectrum</span>, in attempts to evade detection. Frequency-<span class="annot" data-tooltip="hopping /'hɑːpɪŋ/ adj. 卖力的,忙碌的">hopping</span> radios, which skip from one wavelength to another thousands of times a second, are getting faster, so a transmitter may be visible only momentarily; signals are increasingly disguised to merge into <span class="annot" data-tooltip="background /'bækɡraʊnd/ n. (画等的)背景, 底色背景情况个人背景资料动 词: background">background</span> noise. Dr Withington notes the advantages drones bring to ESM. A lorry-<span class="annot" data-tooltip="mounted /maʊnt/ vt. & vi. 登上；骑上vi. 增加；上升vt. 上演；配有…发动攻击；攻击n. 山峰坐骑时 态: mounted，mou">mounted</span> system with a ten-metre antenna can <span class="annot" data-tooltip="detect /dɪ'tekt/ vt. 发现；发觉，查明时 态: detected，detecting，detects">detect</span> transmitters roughly 13km away. The same receiver on a <span class="annot" data-tooltip="drone /droʊn/ n. 无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫">drone</span> at an altitude of 1,000 metres can see for 130km. Having antennae on drones is also more useful when an attack may come from any direction. It avoids blind <span class="annot" data-tooltip="spots /spɑːt/ n. 斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Po">spots</span> caused by topography. The Ukrainians are <span class="annot" data-tooltip="reluctant /rɪ'lʌktənt/ adj. 不情愿的, 勉强的副 词: reluctantly">reluctant</span> to discuss what they are up to. But not all their research is being done in-house. At Eurosatory, a European defence exhibition held in June, Aaronia, a German <span class="annot" data-tooltip="manufacturer /ˌmænju'fæktʃərər/ n. 制造商, 制造厂">manufacturer</span>, <span class="annot" data-tooltip="unveiled /ˌʌn'veɪl/ vt. 揭去…的面罩，除去…的遮盖物使公之于众；揭露vi. 除去面纱(或覆盖物)；揭幕揭露出来时 态: unveiled，unv">unveiled</span> a SIGINT electronics package that can be mounted on a drone. The developers say three such drones working in tandem can <span class="annot" data-tooltip="pinpoint /'pɪnpɔɪnt/ vt. 查明；精确地找到；准确描述adj. 精确的；详尽的n. 针尖；精确位置；极小之物时 态: pinpointed, pin">pinpoint</span> transmitters to within 25 metres from up to 75km away. At 5kg, Aaronia’s product is inconveniently heavy. Sky <span class="annot" data-tooltip="spy /spaɪ/ vt. 侦察；发现；暗中监视vi. 侦察；当间谍n. 间谍；密探">Spy</span>, based in Delaware, recently demonstrated Agent 001, a 500-gram electronics package that can be mounted on a small Orqa quadcopter. This <span class="annot" data-tooltip="proved /proʊ/ n. 从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞">proved</span> able to detect, identify and locate “hostile” radios as part of an <span class="annot" data-tooltip="exercise /'eksərsaɪz/ n. 练习；运动；运用；操练；典礼；礼拜vt. 练习；锻炼；使用；使忙碌；使惊恐vi. 运动；练习时 态: exercised">exercise</span> in Estonia. Agent 001 also has on-board <span class="annot" data-tooltip="processing /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">processing</span>, linked to the drone’s camera, so it can move <span class="annot" data-tooltip="towards /tɔːrdz/ prep. 向，朝为了；有助于；用于对于，关于接近；将近；大约">towards</span> a transmitter and capture video for its operator to confirm the identity of the source. One limitation of small drones, says Dr Withington, is that the amount of processing capacity they can carry is restricted. Such capacity is <span class="annot" data-tooltip="essential /ɪ'senʃl/ adj. 基本的；必要的；本质的；精华的">essential</span> for sifting through signal data. Drone-control signals may, for example, be hidden in Wi-Fi. New <span class="annot" data-tooltip="processors /'prɑːsesər/ n. 加工、处理事物的人〔设备、产业〕(计算机的)中央处理器数据处理机">processors</span> and AI software are, however, making small drones vastly more <span class="annot" data-tooltip="capable /'keɪpəbl/ adj. 能干的，能胜任的；有才华的副 词: capably">capable</span>. One bit of kit that can be mounted onto a drone, known as Barn <span class="annot" data-tooltip="owl /aʊl/ n. 猫头鹰">Owl</span>, has been developed by NxGenComm of North Carolina. David</p>
+<p><span class="annot" data-tooltip="gross /ɡroʊs/ adj. 总共的；粗野的；恶劣的；显而易见的vt. 总共收入n. 总额，总数比较级: grosser, grossest">Gross</span>, NxGenComm’s marketing director, says Barn <span class="annot" data-tooltip="owl /aʊl/ n. 猫头鹰">Owl</span> follows all <span class="annot" data-tooltip="traffic /'træfɪk/ n. 交通；贸易；运输；通信量vt. 用…作交换；在…通行vi. 交易，买卖时 态: trafficked, traffick">traffic</span> in the Wi-Fi range, analysing changes to pick out the <span class="annot" data-tooltip="signatures /'sɪɡnətʃər/ n. 签名, 签字">signatures</span> of <span class="annot" data-tooltip="concealed /kən'siːl/ vt. 隐藏；隐瞒时 态: concealed, concealing, conceals">concealed</span> military signals. He claims the <span class="annot" data-tooltip="process /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">process</span> is fast enough to keep up with the most <span class="annot" data-tooltip="nimble /'nɪmbl/ adj. 灵活的，敏捷的，聪明的；机智的比较级: nimbler，nimblest">nimble</span> frequency-<span class="annot" data-tooltip="hopping /'hɑːpɪŋ/ adj. 卖力的,忙碌的">hopping</span> radios, and powerful enough to scan and analyse an 800MHz-wide swathe of radio signals. Intelligence can go to commanders, or directly to other units. In one proposed set-up, a <span class="annot" data-tooltip="parliament /'pɑːrləmənt/ n. 议会, 国会">parliament</span> of Barn Owls would be linked directly to interceptor <span class="annot" data-tooltip="drones /droʊn/ n. 无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫">drones</span>. When they <span class="annot" data-tooltip="detected /dɪ'tekt/ vt. 发现；发觉，查明时 态: detected，detecting，detects">detected</span> an incoming <span class="annot" data-tooltip="drone /droʊn/ n. 无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫">drone</span>, they would launch an interceptor and guide it to the target’s location until it was close enough for <span class="annot" data-tooltip="visual /'vɪʒuəl/ adj. 视力的；视觉的；可见的n. 视觉材料（指用于展示或说明的图画、表格、影片等）副 词: visually">visual</span> confirmation by the operator. NxGenComm hopes to deploy Barn Owl to <span class="annot" data-tooltip="ukraine n. 乌克兰（原苏联一加盟共和国，现已独立）">Ukraine</span> in the next few months, and is in discussion with American military customers. As well as locating enemy drones, ESM can also help identify their control frequencies so that they can be <span class="annot" data-tooltip="jammed /dʒæm/ n. 果酱拥挤，堵塞困难的处境；窘境vt. & vi. (使)塞紧，(使)挤满发生故障；夹住，卡住vt. 堵塞(发射无线电波)">jammed</span>. Both sides get round this by flying some drones via fibre-optic control <span class="annot" data-tooltip="cables /'keɪbl/ n. (船只、桥梁等上的)巨缆, 钢索电缆vt. & vi. 给(某人)发电报, 打电报告诉(某人)Cable凯布尔(姓氏)时">cables</span>, which unspool as they fly. Such drones, which can carry 50km of fibre, <span class="annot" data-tooltip="emit /i'mɪt/ vt. 发出，放射；发行；发表EMITabbr. Electromagnetic Induction Tweeter 电磁感应高">emit</span> no radio signals. Similarly, some AI-enabled drones can operate incommunicado, flying and <span class="annot" data-tooltip="striking /'straɪkɪŋ/ adj. 显著的，突出的引人注目的；容貌出众的副 词: strikingly">striking</span> targets without operator input. In the meantime, however, the vast majority of drones still rely on radio, and the electronic-<span class="annot" data-tooltip="warfare /'wɔːrfer/ n. 战争, 战争状态">warfare</span> arms <span class="annot" data-tooltip="race /reɪs/ n. 种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACE">race</span> continues. <span class="annot" data-tooltip="falling /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">Falling</span> behind can be <span class="annot" data-tooltip="disastrous /dɪ'zæstrəs/ adj. 灾难性的, 造成灾害的极坏的, 很糟的副 词: disastrously">disastrous</span>: if an enemy can <span class="annot" data-tooltip="jam /dʒæm/ n. 果酱拥挤，堵塞困难的处境；窘境vt. & vi. (使)塞紧，(使)挤满发生故障；夹住，卡住vt. 堵塞(发射无线电波)">jam</span> communications and knock drones out of the sky while remaining invisible, heavy losses are sure to result. ■ This article was downloaded by zlibrary from https://www.economist.com/science-and-technology/2026/11/04/drones-dont-just-<span class="annot" data-tooltip="blow /bloʊ/ n. 吹；殴打；打击vi. 风吹；喘气vt. 风吹时 态: blew blown blowing, blows">blow</span>- up-the-enemy</p>
+<p>Science & technology | Show your working OpenAI’s approach to mathematics does not add up Two months after the firm’s initial advances, its lack of <span class="annot" data-tooltip="transparency /træns'pærənsi/ n. 透明；透明度；透明性透明的东西；幻灯片">transparency</span> is still causing problems Nov 5th 2026 On October 29th <span class="annot" data-tooltip="leading /ˈliːdɪŋ/ adj. 主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）">leading</span> mathematicians gathered at the Royal <span class="annot" data-tooltip="society /sə'saɪəti/ n. 社会；社交界；交往；社团">Society</span> in London to discuss the future of their field. There was plenty of excitement at the progress artificial intelligence is making, leavened with nostalgia for the good old days of early 2026 when human-led mathematics was the only game in town. Many attendees were also <span class="annot" data-tooltip="critical /'krɪtɪkl/ adj. 批评的，爱挑剔的；决定性的；危险的；临界的；鉴定的；评论的副 词: critically">critical</span> of how AI labs have been handling their models’ breakthroughs. In recent months labs have flooded the field with papers that are almost impenetrable to human minds, and kept the details of new results under wraps. Such secrecy, say mathematicians, increases the</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>hole</td><td>/hoʊl/ n.</td><td>洞，孔；洞穴，穴；突破口vi. 凿洞，穿孔；（高尔夫球等）进洞vt. 凿洞, holing, holes</td></tr>
+<tr><td>emitted</td><td>/i'mɪt/ vt.</td><td>发出，放射；发行；发表EMITabbr. Electromagnetic Induction Tweeter 电磁感应高频扬声器, emitting, emit</td></tr>
+<tr><td>escape</td><td>/ɪ'skeɪp/ vt.</td><td>逃避，避免；被忘掉vi. 逃脱；避开；溜走n. 逃跑；逃亡, escaping, escapes</td></tr>
+<tr><td>innermost</td><td>/'ɪnərmoʊst/ adj.</td><td>最深处的隐私的, 最隐秘的</td></tr>
+<tr><td>emit</td><td>/i'mɪt/ vt.</td><td>发出，放射；发行；发表EMITabbr. Electromagnetic Induction Tweeter 电磁感应高频扬声器, emitting, emit</td></tr>
+<tr><td>glowing</td><td>/ɡloʊ/ vi.</td><td>(无焰地)燃烧；发炽热；烧红脸红，身体发热n. 光亮，光辉脸红，(身体)发热热情；强烈的感情，glowing，glows</td></tr>
+<tr><td>possessing</td><td>/pə'zes/ vt.</td><td>具有占据, possessing, possesses</td></tr>
+<tr><td>distinctive</td><td>/dɪ'stɪŋktɪv/ adj.</td><td>有特色的, 与众不同的</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>holes</td><td>/hoʊl/ n.</td><td>洞，孔；洞穴，穴；突破口vi. 凿洞，穿孔；（高尔夫球等）进洞vt. 凿洞, holing, holes</td></tr>
+<tr><td>fusion</td><td>/'fjuːʒn/ n.</td><td>融合物；熔化；融合；熔接</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>proposals</td><td>/prə'poʊzl/ n.</td><td>提议，建议；求婚</td></tr>
+<tr><td>characteristics</td><td>/ˌkærəktə'rɪstɪk/ adj.</td><td>典型的；特有的；表示特性的</td></tr>
+<tr><td>neither</td><td>/'niːðər/ conj.</td><td>既不；也不adv. 两个都不；既不……也不adj. 两者都不的det./pron. 两者都不</td></tr>
+<tr><td>scenario</td><td>/sə'nærioʊ/ n.</td><td>情节；剧本；方案</td></tr>
+<tr><td>unusual</td><td>/ʌn'juːʒuəl/ adj.</td><td>与众不同的；不寻常的；不平常的</td></tr>
+<tr><td>advocates</td><td>/ˈædvəkeɪt，'ædvəkət/ v.</td><td>拥护；支持；提倡n. 拥护者；支持者；提倡者；辩护律师；出庭辩护人, advocating, advocates</td></tr>
+<tr><td>leaking</td><td>/liːk/ n.</td><td>漏洞，裂缝；泄漏vt. 使渗漏，泄露vi. 漏，渗；泄漏出去, leaking, leaks</td></tr>
+<tr><td>taste</td><td>/teɪst/ n.</td><td>滋味, 味道鉴赏力爱好, 嗜好vt. & vi. 尝, 品尝, 尝到vt. 吃, 喝体验, 领略, tasting, tastes</td></tr>
+<tr><td>wildly</td><td>/'waɪldli/ adv.</td><td>野生地；野蛮地；狂暴地；鲁莽地</td></tr>
+<tr><td>magnitude</td><td>/'mæɡnɪtuːd/ n.</td><td>巨大; 重要性〈天〉星等</td></tr>
+<tr><td>hole</td><td>/hoʊl/ n.</td><td>洞，孔；洞穴，穴；突破口vi. 凿洞，穿孔；（高尔夫球等）进洞vt. 凿洞, holing, holes</td></tr>
+<tr><td>cambridge</td><td>/'keɪmbrɪdʒ/ n.</td><td>剑桥</td></tr>
+<tr><td>patches</td><td>/pætʃ/ n.</td><td>眼罩；斑点；碎片；小块土地vt. 修补；掩饰；解决vi. 打补丁, patching, patches</td></tr>
+<tr><td>solar</td><td>/'soʊlər/ adj.</td><td>太阳的；日光的；利用太阳光的；与太阳相关的n. 日光浴室</td></tr>
+<tr><td>proved</td><td>/proʊ/ n.</td><td>从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞成；支持Pro脯氨酸PROabbr. P</td></tr>
+<tr><td>controversial</td><td>/ˌkɑːntrə'vɜːrʃl/ adj.</td><td>有争议的, 引起争议的</td></tr>
+<tr><td>motion</td><td>/'moʊʃn/ n.</td><td>动作；请求；手势；移动；意向vi. 运动；打手势vt. 运动；向…打手势, motioning, motions</td></tr>
+<tr><td>academic</td><td>/ˌækə'demɪk/ adj.</td><td>学院的；学术的；理论的n. 大学生，大学教师；学者</td></tr>
+<tr><td>holes</td><td>/hoʊl/ n.</td><td>洞，孔；洞穴，穴；突破口vi. 凿洞，穿孔；（高尔夫球等）进洞vt. 凿洞, holing, holes</td></tr>
+<tr><td>galaxies</td><td>/'ɡæləksi/ n.</td><td>星系银河系, 银河一群(杰出或著名的人物)</td></tr>
+<tr><td>advocates</td><td>/ˈædvəkeɪt，'ædvəkət/ v.</td><td>拥护；支持；提倡n. 拥护者；支持者；提倡者；辩护律师；出庭辩护人, advocating, advocates</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>tinker</td><td>/'tɪŋkər/ n.</td><td>(补壶、锅等流动的)补锅工人能做各种小修小补的人；什么事情都会干一手的人笨拙的工人，不熟练的工人小鲭鱼粗劣的修补vi. 做焊锅匠；焊补胡乱修补；笨手笨脚地做某事</td></tr>
+<tr><td>tweaks</td><td>/twiːk/ n.</td><td>拧；扭；焦急vt. 扭；用力拉；开足马力, tweaking, tweaks</td></tr>
+<tr><td>relatively</td><td>/'relətɪvli/ adv.</td><td>相对地，比较而言；相当相对来说；相比较而言</td></tr>
+<tr><td>internal</td><td>/ɪn'tɜːrnl/ adj.</td><td>国内的；内部的；内在的</td></tr>
+<tr><td>parameters</td><td>/pə'ræmɪtər/ n.</td><td>(限定性的)因素, 特性, 界限〈物〉〈数〉参量, 参数</td></tr>
+<tr><td>cutting</td><td>/'kʌtɪŋ/ n.</td><td>切断；剪辑；开凿adj. 严寒的；锋利的；尖酸刻薄的v. 切开；采伐；削减（cut的ing形式）</td></tr>
+<tr><td>edge</td><td>/edʒ/ n.</td><td>边缘；刀刃；优势；锋利vt. 使锐利；将…开刃；给…加上边vi. 缓缓移动；侧着移动EDGEabbr. Electronic Data Gathering Eq</td></tr>
+<tr><td>tweaking</td><td>/twiːk/ n.</td><td>拧；扭；焦急vt. 扭；用力拉；开足马力, tweaking, tweaks</td></tr>
+<tr><td>manually</td><td>/'mænjuəl/ adj.</td><td>用手的, 手工的n. 手册, 指南</td></tr>
+<tr><td>capable</td><td>/'keɪpəbl/ adj.</td><td>能干的，能胜任的；有才华的</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>tweaks</td><td>/twiːk/ n.</td><td>拧；扭；焦急vt. 扭；用力拉；开足马力, tweaking, tweaks</td></tr>
+<tr><td>genetic</td><td>/dʒə'netɪk/ adj.</td><td>遗传的；起源的；基因的</td></tr>
+<tr><td>tweak</td><td>/twiːk/ n.</td><td>拧；扭；焦急vt. 扭；用力拉；开足马力, tweaking, tweaks</td></tr>
+<tr><td>runaway</td><td>/'rʌnəweɪ/ adj.</td><td>逃走的；逃亡的n. 逃跑；逃走的人</td></tr>
+<tr><td>recursive</td><td>/rɪ'kɜːrsɪv/ adj.</td><td>回归的,递归的</td></tr>
+<tr><td>either</td><td>/'iːðər/ pron.</td><td>(两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的</td></tr>
+<tr><td>relatively</td><td>/'relətɪvli/ adv.</td><td>相对地，比较而言；相当相对来说；相比较而言</td></tr>
+<tr><td>flaws</td><td>/flɔː/ </td><td>n.瑕疵，缺点；一阵狂风；短暂的风暴；裂缝，裂纹</td></tr>
+<tr><td>involved</td><td>/ɪn'vɑːlvd/ adj.</td><td>卷入的；有关的；复杂的v. 涉及；使参与；包含（involve的过去式和过去分词）</td></tr>
+<tr><td>comprehensive</td><td>/ˌkɑːmprɪ'hensɪv/ adj.</td><td>广泛的, 综合的</td></tr>
+<tr><td>tinker</td><td>/'tɪŋkər/ n.</td><td>(补壶、锅等流动的)补锅工人能做各种小修小补的人；什么事情都会干一手的人笨拙的工人，不熟练的工人小鲭鱼粗劣的修补vi. 做焊锅匠；焊补胡乱修补；笨手笨脚地做某事</td></tr>
+<tr><td>drones</td><td>/droʊn/ n.</td><td>无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫；嗡嗡响(人)絮絮叨叨地说，喋喋不休地说</td></tr>
+<tr><td>blow</td><td>/bloʊ/ n.</td><td>吹；殴打；打击vi. 风吹；喘气vt. 风吹, blows</td></tr>
+<tr><td>transmissions</td><td>/trænz'mɪʃn/ n.</td><td>传送, 传播, 传达播送传动装置, 变速器</td></tr>
+<tr><td>ukraine</td><td>— n.</td><td>乌克兰（原苏联一加盟共和国，现已独立）</td></tr>
+<tr><td>proved</td><td>/proʊ/ n.</td><td>从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞成；支持Pro脯氨酸PROabbr. P</td></tr>
+<tr><td>aircraft</td><td>/'erkræft/ n.</td><td>飞机，航空器</td></tr>
+<tr><td>cutting</td><td>/'kʌtɪŋ/ n.</td><td>切断；剪辑；开凿adj. 严寒的；锋利的；尖酸刻薄的v. 切开；采伐；削减（cut的ing形式）</td></tr>
+<tr><td>lines</td><td>— n.</td><td>台词；线；航线（line的复数）v. 排成一行；画线于（line的三单形式）</td></tr>
+<tr><td>versions</td><td>/'vɜːrʒn/ n.</td><td>变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本</td></tr>
+<tr><td>warehouses</td><td>/'werhaʊs/ n.</td><td>仓库, 货栈, warehousing, warehousesalso</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>infrared</td><td>/ˌɪnfrə'red/ adj.</td><td>〈物〉红外线的</td></tr>
+<tr><td>involved</td><td>/ɪn'vɑːlvd/ adj.</td><td>卷入的；有关的；复杂的v. 涉及；使参与；包含（involve的过去式和过去分词）</td></tr>
+<tr><td>waves</td><td>/weɪv/ vi.</td><td>波动；起伏；摇动；呈波形；挥手示意vt. 向…挥手示意；使成波浪形；卷（烫）发n. 波浪；波动；高潮；卷曲；挥手示意, waving, waves</td></tr>
+<tr><td>warfare</td><td>/'wɔːrfer/ n.</td><td>战争, 战争状态</td></tr>
+<tr><td>tank</td><td>/tæŋk/ n.</td><td>（存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内, tanking, tanks</td></tr>
+<tr><td>race</td><td>/reɪs/ n.</td><td>种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACEabbr. Radiation Adap</td></tr>
+<tr><td>drones</td><td>/droʊn/ n.</td><td>无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫；嗡嗡响(人)絮絮叨叨地说，喋喋不休地说</td></tr>
+<tr><td>spectrum</td><td>/'spektrəm/ n.</td><td>光谱波谱范围, 系列复 数: spectra</td></tr>
+<tr><td>hopping</td><td>/'hɑːpɪŋ/ adj.</td><td>卖力的,忙碌的</td></tr>
+<tr><td>background</td><td>/'bækɡraʊnd/ n.</td><td>(画等的)背景, 底色背景情况个人背景资料动 词: background</td></tr>
+<tr><td>mounted</td><td>/maʊnt/ vt.</td><td>& vi. 登上；骑上vi. 增加；上升vt. 上演；配有…发动攻击；攻击n. 山峰坐骑，mounting，mounts</td></tr>
+<tr><td>detect</td><td>/dɪ'tekt/ vt.</td><td>发现；发觉，查明，detecting，detects</td></tr>
+<tr><td>drone</td><td>/droʊn/ n.</td><td>无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫；嗡嗡响(人)絮絮叨叨地说，喋喋不休地说</td></tr>
+<tr><td>spots</td><td>/spɑːt/ n.</td><td>斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Positioning and Tracki</td></tr>
+<tr><td>reluctant</td><td>/rɪ'lʌktənt/ adj.</td><td>不情愿的, 勉强的</td></tr>
+<tr><td>manufacturer</td><td>/ˌmænju'fæktʃərər/ n.</td><td>制造商, 制造厂</td></tr>
+<tr><td>unveiled</td><td>/ˌʌn'veɪl/ vt.</td><td>揭去…的面罩，除去…的遮盖物使公之于众；揭露vi. 除去面纱(或覆盖物)；揭幕揭露出来，unveiling，unveils</td></tr>
+<tr><td>pinpoint</td><td>/'pɪnpɔɪnt/ vt.</td><td>查明；精确地找到；准确描述adj. 精确的；详尽的n. 针尖；精确位置；极小之物, pinpointing, pinpoints</td></tr>
+<tr><td>spy</td><td>/spaɪ/ vt.</td><td>侦察；发现；暗中监视vi. 侦察；当间谍n. 间谍；密探</td></tr>
+<tr><td>proved</td><td>/proʊ/ n.</td><td>从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞成；支持Pro脯氨酸PROabbr. P</td></tr>
+<tr><td>exercise</td><td>/'eksərsaɪz/ n.</td><td>练习；运动；运用；操练；典礼；礼拜vt. 练习；锻炼；使用；使忙碌；使惊恐vi. 运动；练习, exercising, exercises</td></tr>
+<tr><td>processing</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>towards</td><td>/tɔːrdz/ prep.</td><td>向，朝为了；有助于；用于对于，关于接近；将近；大约</td></tr>
+<tr><td>essential</td><td>/ɪ'senʃl/ adj.</td><td>基本的；必要的；本质的；精华的</td></tr>
+<tr><td>processors</td><td>/'prɑːsesər/ n.</td><td>加工、处理事物的人〔设备、产业〕(计算机的)中央处理器数据处理机</td></tr>
+<tr><td>capable</td><td>/'keɪpəbl/ adj.</td><td>能干的，能胜任的；有才华的</td></tr>
+<tr><td>owl</td><td>/aʊl/ n.</td><td>猫头鹰</td></tr>
+<tr><td>gross</td><td>/ɡroʊs/ adj.</td><td>总共的；粗野的；恶劣的；显而易见的vt. 总共收入n. 总额，总数, grossest</td></tr>
+<tr><td>owl</td><td>/aʊl/ n.</td><td>猫头鹰</td></tr>
+<tr><td>traffic</td><td>/'træfɪk/ n.</td><td>交通；贸易；运输；通信量vt. 用…作交换；在…通行vi. 交易，买卖, trafficking, traffics</td></tr>
+<tr><td>signatures</td><td>/'sɪɡnətʃər/ n.</td><td>签名, 签字</td></tr>
+<tr><td>concealed</td><td>/kən'siːl/ vt.</td><td>隐藏；隐瞒, concealing, conceals</td></tr>
+<tr><td>process</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>nimble</td><td>/'nɪmbl/ adj.</td><td>灵活的，敏捷的，聪明的；机智的，nimblest</td></tr>
+<tr><td>hopping</td><td>/'hɑːpɪŋ/ adj.</td><td>卖力的,忙碌的</td></tr>
+<tr><td>parliament</td><td>/'pɑːrləmənt/ n.</td><td>议会, 国会</td></tr>
+<tr><td>drones</td><td>/droʊn/ n.</td><td>无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫；嗡嗡响(人)絮絮叨叨地说，喋喋不休地说</td></tr>
+<tr><td>detected</td><td>/dɪ'tekt/ vt.</td><td>发现；发觉，查明，detecting，detects</td></tr>
+<tr><td>drone</td><td>/droʊn/ n.</td><td>无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫；嗡嗡响(人)絮絮叨叨地说，喋喋不休地说</td></tr>
+<tr><td>visual</td><td>/'vɪʒuəl/ adj.</td><td>视力的；视觉的；可见的n. 视觉材料（指用于展示或说明的图画、表格、影片等）</td></tr>
+<tr><td>ukraine</td><td>— n.</td><td>乌克兰（原苏联一加盟共和国，现已独立）</td></tr>
+<tr><td>jammed</td><td>/dʒæm/ n.</td><td>果酱拥挤，堵塞困难的处境；窘境vt. & vi. (使)塞紧，(使)挤满发生故障；夹住，卡住vt. 堵塞(发射无线电波)干扰(信息，节目)，jamming，ja</td></tr>
+<tr><td>cables</td><td>/'keɪbl/ n.</td><td>(船只、桥梁等上的)巨缆, 钢索电缆vt. & vi. 给(某人)发电报, 打电报告诉(某人)Cable凯布尔(姓氏), cabling, cables</td></tr>
+<tr><td>emit</td><td>/i'mɪt/ vt.</td><td>发出，放射；发行；发表EMITabbr. Electromagnetic Induction Tweeter 电磁感应高频扬声器, emitting, emit</td></tr>
+<tr><td>striking</td><td>/'straɪkɪŋ/ adj.</td><td>显著的，突出的引人注目的；容貌出众的</td></tr>
+<tr><td>warfare</td><td>/'wɔːrfer/ n.</td><td>战争, 战争状态</td></tr>
+<tr><td>race</td><td>/reɪs/ n.</td><td>种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACEabbr. Radiation Adap</td></tr>
+<tr><td>falling</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>disastrous</td><td>/dɪ'zæstrəs/ adj.</td><td>灾难性的, 造成灾害的极坏的, 很糟的</td></tr>
+<tr><td>jam</td><td>/dʒæm/ n.</td><td>果酱拥挤，堵塞困难的处境；窘境vt. & vi. (使)塞紧，(使)挤满发生故障；夹住，卡住vt. 堵塞(发射无线电波)干扰(信息，节目)，jamming，ja</td></tr>
+<tr><td>blow</td><td>/bloʊ/ n.</td><td>吹；殴打；打击vi. 风吹；喘气vt. 风吹, blows</td></tr>
+<tr><td>transparency</td><td>/træns'pærənsi/ n.</td><td>透明；透明度；透明性透明的东西；幻灯片</td></tr>
+<tr><td>leading</td><td>/ˈliːdɪŋ/ adj.</td><td>主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）</td></tr>
+<tr><td>society</td><td>/sə'saɪəti/ n.</td><td>社会；社交界；交往；社团</td></tr>
+<tr><td>critical</td><td>/'krɪtɪkl/ adj.</td><td>批评的，爱挑剔的；决定性的；危险的；临界的；鉴定的；评论的</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day34.html" class="nav-btn">← Day 34</a>
+  <a href="day36.html" class="nav-btn">Day 36 →</a>
+</div>
+
+<div class="progress">📖 Day 35 of 40</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-11-07</div>
+
+</body>
+</html>

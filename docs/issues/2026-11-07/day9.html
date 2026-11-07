@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asia | Hanson v Hastie</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-11-07</div>
+
+<h1 class="article-title">Asia | Hanson v Hastie</h1>
+<div class="article-section">Asia</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>The fight for the soul of the Australian right Can a special-forces veteran stop the <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> of Pauline Hanson? Nov 5th 2026 Senator pauline hanson swaggered into Secret Harbour on October 30th like a general inspecting troops in newly conquered <span class="annot" data-tooltip="territory /'terətɔːri/ n. 领土, 版图管区, 营业地区地盘, 领域, 范围">territory</span>. It was her first visit since One Nation, her ragtag populist party, won a by-election in the coastal town. The <span class="annot" data-tooltip="race /reɪs/ n. 种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACE">race</span> for a seat in the Western Australia state <span class="annot" data-tooltip="parliament /'pɑːrləmənt/ n. 议会, 国会">parliament</span> was the latest in an “orange <span class="annot" data-tooltip="wave /weɪv/ vi. 波动；起伏；摇动；呈波形；挥手示意vt. 向…挥手示意；使成波浪形；卷（烫）发n. 波浪；波动；高潮；卷曲；挥手示意时 ">wave</span>” of wins for One Nation in elections this year. But Secret Harbour is special: the town sits inside the <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">federal</span> constituency of one of Ms Hanson’s most formidable <span class="annot" data-tooltip="opponents /ə'poʊnənt/ n. 对手, 敌手；反对者名 词: opponency">opponents</span>, the special-forces veteran and Liberal Party frontbencher Andrew Hastie. Once dismissed as a gadfly, Ms Hanson is now a real force. In January One Nation overtook the Liberals in the <span class="annot" data-tooltip="polls /poʊl/ n. 民意测验；投票；投票数；投票所vt. 剪短；对…进行民意测验；获得选票；投票vi. 投票adj. 剪过毛的；修过枝的；无">polls</span> and still has a lead. It is neck-and- neck with the governing <span class="annot" data-tooltip="labor /'leɪbər/ n. 劳工；分娩；劳动；工作vi. 劳动；苦干；努力vt. 详细分析；使厌烦时 态: labored, laboring, l">Labor</span> Party. It still lacks much of the <span class="annot" data-tooltip="scaffolding /'skæfoʊld/ n. 脚手架；绞刑台；鹰架vt. 给…搭脚手架；用支架支撑时 态: scaffolded, scaffolding, scaf">scaffolding</span> of a national organisation, but Ms Hanson has shown that she can turn voter</p>
+<p>anger at the <span class="annot" data-tooltip="major /'meɪdʒər/ adj. 主要的；主修的；重要的；较多的n. 成年人；主修科目；陆军少校vi. 主修时 态: majored, majoring,">major</span> parties into seats. So her party has a real shot at replacing the Liberals as the official opposition at the next election in 2028, and an <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span> one at forming the next government. The election in February of Angus Taylor as the Liberals’ new leader has not boosted the party’s <span class="annot" data-tooltip="fortunes /'fɔːrtʃən/ n. 运气；财富；命运vt. 给予财富vi. 偶然发生时 态: fortuned, fortuning, fortunes">fortunes</span>. Mr Taylor, attacked by Ms Hanson as a “smarmy management consultant”, has mostly avoided <span class="annot" data-tooltip="confrontation /ˌkɑːnfrən'teɪʃn/ n. 对抗, 对抗的事物形容词: confrontational">confrontation</span> with her. But Mr Hastie has taken her on directly. Some Liberals argue that, against her, he would be a stronger leader than Mr Taylor. “It was obvious that the better choice would have been Hastie,” says Malcolm Turnbull, a former prime minister and Liberal leader. “I’m sure he’ll lead the Liberal Party some day—if he doesn’t lose his seat.” That Mr Hastie might face two such different futures is largely a consequence of one decision that he made: to testify against a fellow soldier accused of war crimes. That has led to an emotional debate on the right, one which Ms Hanson has been eager to use to her advantage. “I was subpoenaed, and then under <span class="annot" data-tooltip="oath /oʊθ/ n. 誓言，誓约；诅咒，咒骂">oath</span> required to tell the truth,” Mr Hastie tells The Economist. “Would you rather me be in <span class="annot" data-tooltip="contempt /kən'tempt/ n. 轻视，蔑视；耻辱">contempt</span> of court and lie?” <span class="annot" data-tooltip="wildly /'waɪldli/ adv. 野生地；野蛮地；狂暴地；鲁莽地">Wildly</span> divergent answers to that question have this year been <span class="annot" data-tooltip="tearing /tɪr，ter/ v. 撕掉，扯下；撕破；拔掉；拉伤；（非正式）狂奔；饱经……摧残；流眼泪n. 眼泪；（撕破的）洞或裂缝， 撕扯时 态: tor">tearing</span> the Australian right apart. Mr Hastie is now under attack from Ms Hanson and</p>
+<p>her powerful <span class="annot" data-tooltip="allies n. （第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者">allies</span> like Gina Rinehart, a <span class="annot" data-tooltip="mining /'maɪnɪŋ/ n. 矿业；采矿">mining</span> magnate, and Kerry Stokes, a media baron, some of them once supporters of the Liberals. In July Ms Hanson published a video calling Mr Hastie a “<span class="annot" data-tooltip="traitor /'treɪtər/ n. 卖国贼;叛徒背叛者;背信弃义的人">traitor</span>” and encouraging Liberals to abandon him. The <span class="annot" data-tooltip="strategy /'strætədʒi/ n. 战略学, 兵法战略, 策略策略, 计谋">strategy</span> seems to be working. Tony Abbott, the president of the Liberal party and another former prime minister, has distanced himself from Mr Hastie. They are trying, he says, “to destroy me personally”. But the stakes for the Australian right are <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> higher than that. The veteran of the <span class="annot" data-tooltip="elite /eɪ'liːt/ n. （社会）上层集团；掌权人物；出类拔萃的人，精英adj.（社会）上层集团的；掌权人物的；精英的">elite</span> Special Air Service regiment is an unlikely hate figure for the populist right. Mr Hastie has led a push over the past year to drag the Liberal Party to the right on <span class="annot" data-tooltip="issues /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issues</span> that animate populists. His call for lower <span class="annot" data-tooltip="net /net/ n. 网；净利；网络；实价vi. 编网vt. 净赚；得到；用网捕adj. 纯粹的；净余的时 态: netted, nettin">net</span> <span class="annot" data-tooltip="migration /maɪ'ɡreɪʃn/ n. 迁移, 移居">migration</span> is now party policy. He is against women in combat. Like many populists, he bemoans the <span class="annot" data-tooltip="demise /dɪ'maɪz/ n. 死亡，终止；转让；传位vt.遗赠；禅让时 态: demised, demising, demises">demise</span> of Australian <span class="annot" data-tooltip="manufacturing /ˌmænju'fæktʃərɪŋ/ n. 制造业，工业adj. 制造业的；制造的">manufacturing</span>, arguing for a more active industrial policy. But he parts ways with them when it comes to the rule of law. Mr Hastie links his stand against war crimes to his Christianity. He testified against a fellow soldier, he tells supporters, under an <span class="annot" data-tooltip="oath /oʊθ/ n. 誓言，誓约；诅咒，咒骂">oath</span> before God. He is more open about his faith than most Australian politicians: “I learned more about politics and leadership watching my father [a Presbyterian minister] at church than anywhere else.” But “I am not a Christian nationalist.” By <span class="annot" data-tooltip="contrast /'kɑːntræst/ n. 对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照时 态: contrasted, cont">contrast</span>, Ms Hanson has called Australia a Christian country, yet dodged questions about her <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> beliefs. The lessons from his father’s church sometimes point in unexpected directions. Mr Hastie opposes abortion and gay marriage, but rejects Ms Hanson’s call for a “monocultural” Australia. Worse yet, in his view, are her fans’ calls for racial <span class="annot" data-tooltip="criteria /kraɪˈtɪrɪə/ n. 标准，条件（criterion的复数）">criteria</span> for <span class="annot" data-tooltip="immigrants /'ɪmɪɡrənt/ n. 移民">immigrants</span>. He recalls his father’s church in Ashfield, then one of <span class="annot" data-tooltip="sydney /'sɪdni/ n. 悉尼（澳大利亚港市）">Sydney</span>’s most diverse suburbs, which held services in several Asian languages because “everyone is made in God’s image”. Immigrants, he says, should be chosen for their <span class="annot" data-tooltip="values /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">values</span> and skills rather than their ethnicity. That same <span class="annot" data-tooltip="philosophy /fə'lɑːsəfi/ n. 哲学人生哲学, 人生观达观">philosophy</span> has allowed Mr Hastie to make friends across the <span class="annot" data-tooltip="aisle /aɪl/ n. 过道, 通道">aisle</span>. Take Senator <span class="annot" data-tooltip="penny /'peni/ n. 便士；（美）分Penny彭妮(女子名, Penelope 的昵称)">Penny</span> Wong, the foreign minister and a <span class="annot" data-tooltip="labor /'leɪbər/ n. 劳工；分娩；劳动；工作vi. 劳动；苦干；努力vt. 详细分析；使厌烦时 态: labored, laboring, l">Labor</span> stalwart. Ms Wong, gay and born in <span class="annot" data-tooltip="malaysia n. 马来西亚形容词: Malaysian">Malaysia</span>, might seem an unlikely partner. But the two worked well together when Mr Hastie was a backbencher and Ms Wong was in opposition. “It’s always been clear to me…that he is one of the</p>
+<p>few on his side who believes there is a national interest above partisanship,” says Ms Wong. “While Andrew isn’t really where modern Australia is, he understands that you can’t out-Pauline Pauline.” That hints at a potential way through for Mr Hastie. Once known as the Liberal Party’s rising right-<span class="annot" data-tooltip="winger /wɪŋ/ n. 翅膀；翼；飞翔；派别vt. 使飞；飞过；空运；增加…速度；装以翼vi. 飞行时 态: winged, winging, ">winger</span>, his fight with One Nation is broadening his appeal. He has no plans to give up his <span class="annot" data-tooltip="conservative /kən'sɜːrvətɪv/ n. 保守的人adj. 保守的, 守旧的(式样等)不时新的, 传统的副 词: conservatively">conservative</span> bona fides, but he is seeking out new <span class="annot" data-tooltip="allies n. （第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者">allies</span>. Within his <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> party, once-<span class="annot" data-tooltip="critical /'krɪtɪkl/ adj. 批评的，爱挑剔的；决定性的；危险的；临界的；鉴定的；评论的副 词: critically">critical</span> <span class="annot" data-tooltip="moderate /'mɑːdərət/ adj. 中等的，适度的，不很大的温和的；有节制的中庸的，稳健的，不走极端的vt. & vi. (使)减轻[缓和]；节制时 态: ">moderate</span> grandees like Mr Turnbull now offer <span class="annot" data-tooltip="cautious /'kɔːʃəs/ adj. 小心的, 谨慎的副 词: cautiously">cautious</span> praise. At a fundraiser last month 80% of participants were new donors. And he has become a more frequent guest on public television and radio shows, whose viewers <span class="annot" data-tooltip="tend /tend/ vt. 照料，照顾，伺候vi. 往，朝向易于；倾向时 态: tended，tending，tends">tend</span> to skew centre-left. That could leave him in a stronger position to lead the Liberal Party in the future. But first he must see off Ms Hanson’s <span class="annot" data-tooltip="campaign /kæm'peɪn/ n. 运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）时">campaign</span> to <span class="annot" data-tooltip="brand /brænd/ n. 商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责时 态: branded, branding, brands">brand</span> him among the conservative base as a <span class="annot" data-tooltip="traitor /'treɪtər/ n. 卖国贼;叛徒背叛者;背信弃义的人">traitor</span>. He still looks to be under siege. The home- <span class="annot" data-tooltip="affairs /ə'fer/ n. 事情；事务；私事；（尤指关系不长久的）风流韵事">affairs</span> minister has cited unspecified threats in advising police to upgrade <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span> at his home and office. “It’s a bit unnerving,” Mr Hastie says. “But I’m a Christian. I pray about these things, and I’m at peace about it.” ■ For <span class="annot" data-tooltip="exclusive /ɪk'skluːsɪv/ adj. 高级的，奢华的专用的；独家的n. 独家新闻，独家报道副 词: exclusively">exclusive</span> <span class="annot" data-tooltip="coverage /'kʌvərɪdʒ/ n. 新闻报道, 报道量覆盖范围">coverage</span> of Asian politics, economics and security, sign up to Asia Bulletin, our weekly subscriber-only newsletter. This article was downloaded by zlibrary from https://www.economist.com/asia/2026/11/02/the-fight-for-the-soul-of-the-australian- right</p>
+<div class="article-separator"></div>
+<div class="article-header">Asia · Asia | Ashoka</div>
+<p>Cheap data is great for Indians but not for India’s reputation The internet brings out the worst in everyone Nov 5th 2026 “BITCH LASAGNA” is the name of a song by PewDiePie. It is also a two- word social history of the relationship between India and the internet. For five years Mr Pie, a Swede whose real name is <span class="annot" data-tooltip="irrelevant /ɪ'reləvənt/ adj. 不相干的,不相关的副 词: irrelevantly">irrelevant</span>, was the <span class="annot" data-tooltip="owner /'oʊnər/ n. 所有者；物主">owner</span>- operator of YouTube’s most popular channel. In early 2019, after several months of back-and-forth, he was <span class="annot" data-tooltip="decisively /dɪ'saɪsɪv/ adj. 决定性的；果断的，坚定的副 词: decisively">decisively</span> overtaken by T-Series, a Bollywood studio. In the run-up to his defeat the Swedish streamer posted what his fans described as a “diss”, or insult, track and what anyone else would <span class="annot" data-tooltip="consider /kən'sɪdər/ vt. & vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及时 态: considered, considering, ">consider</span> to be bordering on bigotry. Its <span class="annot" data-tooltip="lyrics n. 歌词；抒情诗（lyric的复数）">lyrics</span> include <span class="annot" data-tooltip="references /'refrəns/ n. 提及，涉及参考，查阅引文；参考书目证明书；推荐信；证明人；推荐人时 态: referenced，referencing，">references</span> to open defecation, ridicule of Indian languages and a <span class="annot" data-tooltip="meme n. (通过模仿等传递的)文化基因">meme</span> about “bobs or vegana” (don’t ask). The song’s title alludes to a Facebook Messenger screenshot of an Indian</p>
+<p>man requesting unclothed self-<span class="annot" data-tooltip="portraits /'pɔːrtrət/ n. 肖像, 画像生动的描写">portraits</span> from a woman and, on being ignored, hurling the <span class="annot" data-tooltip="presumably /prɪ'zuːməbli/ adv. 据推测, 大概, 可能">presumably</span> auto-corrected epithet at her. The internet really does bring out the worst in everyone. Mr Pie’s battle with T-Series <span class="annot" data-tooltip="marked /mɑːr/ vt. 毁坏；损坏；玷污MARabbr. Master of Arts in Religion 宗教硕士Mar三月(March)">marked</span> a <span class="annot" data-tooltip="hinge /hɪndʒ/ n. 铰链vt. & vi. 用铰链连接(某物), 给(某物)装上铰链时 态: hinged, hinging, hinges">hinge</span> point in India’s internet adoption. In 2016 Mukesh Ambani, an industrialist who <span class="annot" data-tooltip="inherited /ɪn'herɪt/ vt. 继承；遗传而得vi. 成为继承人时 态: inherited, inheriting, inherits">inherited</span> a petrochemical company, took <span class="annot" data-tooltip="literally /'lɪtərəli/ adv. 逐字地；照字面地确实地，真正地">literally</span> the maxim that “data is the new oil” and launched Jio, a mobile network with rock-bottom prices and generous data allowances. Almost overnight the share of India’s population <span class="annot" data-tooltip="covered /'kʌvər/ vt. 包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替时 态: covered, covering, c">covered</span> by a modern mobile-broadband network jumped from 4% to 74%. A price war followed. Internet users doubled in just three years from a sixth of India’s people when Jio launched to a third when T-Series <span class="annot" data-tooltip="triumphed /'traɪʌmf/ n. 胜利，成功巨大的成就[成功]vi. 获胜，得胜；克服时 态: triumphed，triumphing，triumphs">triumphed</span>, rising to over two-thirds today. A billion Indians use the internet, or three for every American. Not satisfied with bringing Indians online, Jio, which in October went public in one of the country’s largest listings, also gives them something to do once they get there. Its streaming service, Hotstar, has more than 450m monthly users, well ahead of Netflix or <span class="annot" data-tooltip="amazon /ˈæməˌzɑn/ n. 高大强悍的女人；（古希腊神话中的）亚马孙族女战士Amazonn. 亚马逊河(南美洲大河)">Amazon</span>’s Prime Video. But <span class="annot" data-tooltip="neither /'niːðər/ conj. 既不；也不adv. 两个都不；既不……也不adj. 两者都不的det./pron. 两者都不">neither</span> Jio nor anyone else has managed to build a social space Indians prefer to Western ones. Indians are the largest nationality on YouTube, Instagram and Facebook and a <span class="annot" data-tooltip="significant /sɪɡ'nɪfɪkənt/ adj. 重要的, 重大的, 可观的有意义的, 有用意的意味深长的副 词: significantly">significant</span> minority on X, Reddit and Snapchat. Their influx onto these platforms has not been great for India’s image in the world. “Bitch Lasagna”, though tasteless, reflects a common <span class="annot" data-tooltip="stereotype /'steriətaɪp/ n. 老套, 模式化的见解, 有老一套固定想法的人vt. 把…模式化, 使成陈规时 态: stereotyped, stere">stereotype</span> online of Indian men as forever propositioning women on social media. The idea of India as an unsanitary <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span>, too, is depressingly common. And Indians have of late acquired a reputation as fierce nationalists with thin skins and <span class="annot" data-tooltip="foul /faʊl/ adj. 邪恶的；污秽的；犯规的；淤塞的vt. 弄脏；犯规；淤塞；缠住，妨害vi. 犯规；缠结；腐烂n. 犯规；缠绕adv. 违反">foul</span> mouths. As one <span class="annot" data-tooltip="viral /'vaɪrəl/ adj. 滤过性毒菌引起的；滤过性毒菌的">viral</span> post on X put it, “Never <span class="annot" data-tooltip="invade /ɪn'veɪd/ vt. 侵略；侵袭；侵扰；涌入vi. 侵略；侵袭；侵犯；侵入时 态: invaded, invading, invades">invade</span> Russia in winter. Never attack India by <span class="annot" data-tooltip="twitter /'twɪtər/ vi. (鸟)叽叽喳喳地叫(人因兴奋)嘁嘁喳喳地讲；喋喋不休格格地笑(激动得)抖颤vt. (鸟等)吱吱叫，啁啾地唱出唧唧喳喳地讲">Twitter</span>.” Some of the criticism is overblown. <span class="annot" data-tooltip="crude /kruːd/ adj. 粗糙的；粗鲁的；天然的，未加工的；粗略的n. 天然的物质；原油比较级: cruder, crudest">Crude</span> men and noisy nationalists exist everywhere, but the <span class="annot" data-tooltip="sheer /ʃɪr/ adj. 完全的；十足的陡峭的；垂直的极薄的，轻的，透明的adv. 垂直地，陡峭地vi. 避开，突然转向时 态: sheered，">sheer</span> scale of the Indian contingent makes them more <span class="annot" data-tooltip="noticeable /'noʊtɪsəbl/ adj. 显而易见的, 明显的, 显著的副 词: noticeably">noticeable</span>. Some of it is the result of India’s openness. Because Indians use the same platforms and often post in English, the country’s <span class="annot" data-tooltip="flaws /flɔː/ n.瑕疵，缺点；一阵狂风；短暂的风暴；裂缝，裂纹">flaws</span> are more visible than those of other countries.</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>territory</td><td>/'terətɔːri/ n.</td><td>领土, 版图管区, 营业地区地盘, 领域, 范围</td></tr>
+<tr><td>race</td><td>/reɪs/ n.</td><td>种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACEabbr. Radiation Adap</td></tr>
+<tr><td>parliament</td><td>/'pɑːrləmənt/ n.</td><td>议会, 国会</td></tr>
+<tr><td>wave</td><td>/weɪv/ vi.</td><td>波动；起伏；摇动；呈波形；挥手示意vt. 向…挥手示意；使成波浪形；卷（烫）发n. 波浪；波动；高潮；卷曲；挥手示意, waving, waves</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>opponents</td><td>/ə'poʊnənt/ n.</td><td>对手, 敌手；反对者</td></tr>
+<tr><td>polls</td><td>/poʊl/ n.</td><td>民意测验；投票；投票数；投票所vt. 剪短；对…进行民意测验；获得选票；投票vi. 投票adj. 剪过毛的；修过枝的；无角的, polling, polls</td></tr>
+<tr><td>labor</td><td>/'leɪbər/ n.</td><td>劳工；分娩；劳动；工作vi. 劳动；苦干；努力vt. 详细分析；使厌烦, laboring, labors</td></tr>
+<tr><td>scaffolding</td><td>/'skæfoʊld/ n.</td><td>脚手架；绞刑台；鹰架vt. 给…搭脚手架；用支架支撑, scaffolding, scaffolds</td></tr>
+<tr><td>major</td><td>/'meɪdʒər/ adj.</td><td>主要的；主修的；重要的；较多的n. 成年人；主修科目；陆军少校vi. 主修, majoring, majors</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>fortunes</td><td>/'fɔːrtʃən/ n.</td><td>运气；财富；命运vt. 给予财富vi. 偶然发生, fortuning, fortunes</td></tr>
+<tr><td>confrontation</td><td>/ˌkɑːnfrən'teɪʃn/ n.</td><td>对抗, 对抗的事物</td></tr>
+<tr><td>oath</td><td>/oʊθ/ n.</td><td>誓言，誓约；诅咒，咒骂</td></tr>
+<tr><td>contempt</td><td>/kən'tempt/ n.</td><td>轻视，蔑视；耻辱</td></tr>
+<tr><td>wildly</td><td>/'waɪldli/ adv.</td><td>野生地；野蛮地；狂暴地；鲁莽地</td></tr>
+<tr><td>tearing</td><td>/tɪr，ter/ v.</td><td>撕掉，扯下；撕破；拔掉；拉伤；（非正式）狂奔；饱经……摧残；流眼泪n. 眼泪；（撕破的）洞或裂缝， 撕扯，torn，tearing，tears</td></tr>
+<tr><td>allies</td><td>— n.</td><td>（第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者</td></tr>
+<tr><td>mining</td><td>/'maɪnɪŋ/ n.</td><td>矿业；采矿</td></tr>
+<tr><td>traitor</td><td>/'treɪtər/ n.</td><td>卖国贼;叛徒背叛者;背信弃义的人</td></tr>
+<tr><td>strategy</td><td>/'strætədʒi/ n.</td><td>战略学, 兵法战略, 策略策略, 计谋</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>elite</td><td>/eɪ'liːt/ n.</td><td>（社会）上层集团；掌权人物；出类拔萃的人，精英adj.（社会）上层集团的；掌权人物的；精英的</td></tr>
+<tr><td>issues</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>net</td><td>/net/ n.</td><td>网；净利；网络；实价vi. 编网vt. 净赚；得到；用网捕adj. 纯粹的；净余的, netting, nets</td></tr>
+<tr><td>migration</td><td>/maɪ'ɡreɪʃn/ n.</td><td>迁移, 移居</td></tr>
+<tr><td>demise</td><td>/dɪ'maɪz/ n.</td><td>死亡，终止；转让；传位vt.遗赠；禅让, demising, demises</td></tr>
+<tr><td>manufacturing</td><td>/ˌmænju'fæktʃərɪŋ/ n.</td><td>制造业，工业adj. 制造业的；制造的</td></tr>
+<tr><td>oath</td><td>/oʊθ/ n.</td><td>誓言，誓约；诅咒，咒骂</td></tr>
+<tr><td>contrast</td><td>/'kɑːntræst/ n.</td><td>对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照, contrasting, contrasts</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>criteria</td><td>/kraɪˈtɪrɪə/ n.</td><td>标准，条件（criterion的复数）</td></tr>
+<tr><td>immigrants</td><td>/'ɪmɪɡrənt/ n.</td><td>移民</td></tr>
+<tr><td>sydney</td><td>/'sɪdni/ n.</td><td>悉尼（澳大利亚港市）</td></tr>
+<tr><td>values</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>philosophy</td><td>/fə'lɑːsəfi/ n.</td><td>哲学人生哲学, 人生观达观</td></tr>
+<tr><td>aisle</td><td>/aɪl/ n.</td><td>过道, 通道</td></tr>
+<tr><td>penny</td><td>/'peni/ n.</td><td>便士；（美）分Penny彭妮(女子名, Penelope 的昵称)</td></tr>
+<tr><td>labor</td><td>/'leɪbər/ n.</td><td>劳工；分娩；劳动；工作vi. 劳动；苦干；努力vt. 详细分析；使厌烦, laboring, labors</td></tr>
+<tr><td>malaysia</td><td>— n.</td><td>马来西亚</td></tr>
+<tr><td>winger</td><td>/wɪŋ/ n.</td><td>翅膀；翼；飞翔；派别vt. 使飞；飞过；空运；增加…速度；装以翼vi. 飞行, winging, wings</td></tr>
+<tr><td>conservative</td><td>/kən'sɜːrvətɪv/ n.</td><td>保守的人adj. 保守的, 守旧的(式样等)不时新的, 传统的</td></tr>
+<tr><td>allies</td><td>— n.</td><td>（第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>critical</td><td>/'krɪtɪkl/ adj.</td><td>批评的，爱挑剔的；决定性的；危险的；临界的；鉴定的；评论的</td></tr>
+<tr><td>moderate</td><td>/'mɑːdərət/ adj.</td><td>中等的，适度的，不很大的温和的；有节制的中庸的，稳健的，不走极端的vt. & vi. (使)减轻[缓和]；节制，moderating，moderates</td></tr>
+<tr><td>cautious</td><td>/'kɔːʃəs/ adj.</td><td>小心的, 谨慎的</td></tr>
+<tr><td>tend</td><td>/tend/ vt.</td><td>照料，照顾，伺候vi. 往，朝向易于；倾向，tending，tends</td></tr>
+<tr><td>campaign</td><td>/kæm'peɪn/ n.</td><td>运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）, campaigning, campai</td></tr>
+<tr><td>brand</td><td>/brænd/ n.</td><td>商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责, branding, brands</td></tr>
+<tr><td>traitor</td><td>/'treɪtər/ n.</td><td>卖国贼;叛徒背叛者;背信弃义的人</td></tr>
+<tr><td>affairs</td><td>/ə'fer/ n.</td><td>事情；事务；私事；（尤指关系不长久的）风流韵事</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>exclusive</td><td>/ɪk'skluːsɪv/ adj.</td><td>高级的，奢华的专用的；独家的n. 独家新闻，独家报道</td></tr>
+<tr><td>coverage</td><td>/'kʌvərɪdʒ/ n.</td><td>新闻报道, 报道量覆盖范围</td></tr>
+<tr><td>irrelevant</td><td>/ɪ'reləvənt/ adj.</td><td>不相干的,不相关的</td></tr>
+<tr><td>owner</td><td>/'oʊnər/ n.</td><td>所有者；物主</td></tr>
+<tr><td>decisively</td><td>/dɪ'saɪsɪv/ adj.</td><td>决定性的；果断的，坚定的</td></tr>
+<tr><td>consider</td><td>/kən'sɪdər/ vt.</td><td>& vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及, considering, considers</td></tr>
+<tr><td>lyrics</td><td>— n.</td><td>歌词；抒情诗（lyric的复数）</td></tr>
+<tr><td>references</td><td>/'refrəns/ n.</td><td>提及，涉及参考，查阅引文；参考书目证明书；推荐信；证明人；推荐人，referencing，references</td></tr>
+<tr><td>meme</td><td>— n.</td><td>(通过模仿等传递的)文化基因</td></tr>
+<tr><td>portraits</td><td>/'pɔːrtrət/ n.</td><td>肖像, 画像生动的描写</td></tr>
+<tr><td>presumably</td><td>/prɪ'zuːməbli/ adv.</td><td>据推测, 大概, 可能</td></tr>
+<tr><td>marked</td><td>/mɑːr/ vt.</td><td>毁坏；损坏；玷污MARabbr. Master of Arts in Religion 宗教硕士Mar三月(March)，marring，mars</td></tr>
+<tr><td>hinge</td><td>/hɪndʒ/ n.</td><td>铰链vt. & vi. 用铰链连接(某物), 给(某物)装上铰链, hinging, hinges</td></tr>
+<tr><td>inherited</td><td>/ɪn'herɪt/ vt.</td><td>继承；遗传而得vi. 成为继承人, inheriting, inherits</td></tr>
+<tr><td>literally</td><td>/'lɪtərəli/ adv.</td><td>逐字地；照字面地确实地，真正地</td></tr>
+<tr><td>covered</td><td>/'kʌvər/ vt.</td><td>包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替, covering, covers</td></tr>
+<tr><td>triumphed</td><td>/'traɪʌmf/ n.</td><td>胜利，成功巨大的成就[成功]vi. 获胜，得胜；克服，triumphing，triumphs</td></tr>
+<tr><td>amazon</td><td>/ˈæməˌzɑn/ n.</td><td>高大强悍的女人；（古希腊神话中的）亚马孙族女战士Amazonn. 亚马逊河(南美洲大河)</td></tr>
+<tr><td>neither</td><td>/'niːðər/ conj.</td><td>既不；也不adv. 两个都不；既不……也不adj. 两者都不的det./pron. 两者都不</td></tr>
+<tr><td>significant</td><td>/sɪɡ'nɪfɪkənt/ adj.</td><td>重要的, 重大的, 可观的有意义的, 有用意的意味深长的</td></tr>
+<tr><td>stereotype</td><td>/'steriətaɪp/ n.</td><td>老套, 模式化的见解, 有老一套固定想法的人vt. 把…模式化, 使成陈规, stereotyping, stereotypes</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>foul</td><td>/faʊl/ adj.</td><td>邪恶的；污秽的；犯规的；淤塞的vt. 弄脏；犯规；淤塞；缠住，妨害vi. 犯规；缠结；腐烂n. 犯规；缠绕adv. 违反规则地，不正当地, foulest</td></tr>
+<tr><td>viral</td><td>/'vaɪrəl/ adj.</td><td>滤过性毒菌引起的；滤过性毒菌的</td></tr>
+<tr><td>invade</td><td>/ɪn'veɪd/ vt.</td><td>侵略；侵袭；侵扰；涌入vi. 侵略；侵袭；侵犯；侵入, invading, invades</td></tr>
+<tr><td>twitter</td><td>/'twɪtər/ vi.</td><td>(鸟)叽叽喳喳地叫(人因兴奋)嘁嘁喳喳地讲；喋喋不休格格地笑(激动得)抖颤vt. (鸟等)吱吱叫，啁啾地唱出唧唧喳喳地讲述颤动；抖动n. (鸟)叽叽喳喳的叫声格</td></tr>
+<tr><td>crude</td><td>/kruːd/ adj.</td><td>粗糙的；粗鲁的；天然的，未加工的；粗略的n. 天然的物质；原油, crudest</td></tr>
+<tr><td>sheer</td><td>/ʃɪr/ adj.</td><td>完全的；十足的陡峭的；垂直的极薄的，轻的，透明的adv. 垂直地，陡峭地vi. 避开，突然转向，sheering，sheers</td></tr>
+<tr><td>noticeable</td><td>/'noʊtɪsəbl/ adj.</td><td>显而易见的, 明显的, 显著的</td></tr>
+<tr><td>flaws</td><td>/flɔː/ </td><td>n.瑕疵，缺点；一阵狂风；短暂的风暴；裂缝，裂纹</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day8.html" class="nav-btn">← Day 8</a>
+  <a href="day10.html" class="nav-btn">Day 10 →</a>
+</div>
+
+<div class="progress">📖 Day 9 of 40</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-11-07</div>
+
+</body>
+</html>

@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leaders | Cool dictator, hellish hotspot</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-11-07</div>
+
+<h1 class="article-title">Leaders | Cool dictator, hellish hotspot</h1>
+<div class="article-section">Leaders</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>the state is weaker and prisons are <span class="annot" data-tooltip="notorious /noʊ'tɔːriəs/ adj. 臭名昭著的, 声名狼藉的副 词: notoriously">notorious</span> for <span class="annot" data-tooltip="escapes /ɪ'skeɪp/ vt. 逃避，避免；被忘掉vi. 逃脱；避开；溜走n. 逃跑；逃亡时 态: escaped, escaping, escapes">escapes</span>. Victory here would be more akin to winning a <span class="annot" data-tooltip="civil /'sɪvl/ adj. 公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的副 词: civilly">civil</span> war. Mr Bukele may end up doing some good in Haiti, especially if he <span class="annot" data-tooltip="persuades /pər'sweɪd/ vt. & vi. 说服, 劝告时 态: persuaded, persuading, persuades">persuades</span> others to send more peacekeepers. But he needs to make clear whether his soldiers will work with the UN or do their <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> thing. The UN could help with <span class="annot" data-tooltip="vetting /vet/ vt. 诊疗；审查vi. 作兽医；诊疗n. 兽医时 态: vetted, vetting, vets">vetting</span> and training, and discourage <span class="annot" data-tooltip="abuses /ə'bjuːs/ n. 滥用；辱骂；虐待；弊端；恶习，陋习vt. 滥用；辱骂；虐待时 态: abused, abusing, abuses">abuses</span> against civilians. Yet Mr Bukele may prefer his own gloves-off approach. His opacity is troubling. He should spell out his intentions—and remember that it is easier to start a fight than to end one. ■ This article was downloaded by zlibrary from https://www.economist.com/leaders/2026/11/05/el-salvadors-gangbuster-tries-his- luck-in-haiti</p>
+<div class="article-separator"></div>
+<div class="article-header">Leaders · Leaders | Give the good guys guns</div>
+<p>The world must act to stop a <span class="annot" data-tooltip="cyber adj. 计算机(网络)的；信息技术的">cyber</span>-disaster Governments should make sure defenders have better models than attackers do Nov 5th 2026 It was meant to be “cyber-<span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span> awareness month”. Experts now call it “Black October”. In recent weeks the normal flow of computer <span class="annot" data-tooltip="hacks /hæk/ vt. & vi. 劈, 砍vt. 狠踢, 乱踢vi. 咳嗽(发出刺耳声音)(以普通速度)骑马驾驶计程车n. 砍, 劈用靴头踢骑">hacks</span> and bugs that engineers must <span class="annot" data-tooltip="constantly /'kɑːnstəntli/ adv. 不断地;时常地">constantly</span> <span class="annot" data-tooltip="stem /stem/ n. (花草的)茎, (树木的)干词干vt. 遏制[阻止](液体的流动等)时 态: stemmed, stemming, st">stem</span> has become a torrent. The cause is artificial intelligence, which has turbocharged cyber malfeasance. Open- source AI models have <span class="annot" data-tooltip="empowered /ɪm'paʊər/ vt. 授权, 准许时 态: empowered, empowering, empowers">empowered</span> attackers to work with inhuman efficiency, <span class="annot" data-tooltip="competence /'kɑːmpɪtəns/ n. 能力, 技能(法院的)权限, 管辖权">competence</span> and persistence. As a result, years’ <span class="annot" data-tooltip="worth /wɜːrθ/ adj. 值…的n. 价值；财产时 态: worthed, worthing, worths">worth</span> of <span class="annot" data-tooltip="critical /'krɪtɪkl/ adj. 批评的，爱挑剔的；决定性的；危险的；临界的；鉴定的；评论的副 词: critically">critical</span> <span class="annot" data-tooltip="flaws /flɔː/ n.瑕疵，缺点；一阵狂风；短暂的风暴；裂缝，裂纹">flaws</span> have been exposed in days. Those flaws range from shocking to ridiculous. Engineers have rushed to fix a <span class="annot" data-tooltip="flaw /flɔː/ n.瑕疵，缺点；一阵狂风；短暂的风暴；裂缝，裂纹">flaw</span> in PHP, a widely used programming language, that let attackers take over any computer using it. Freezers in supermarkets across Europe powered down on the <span class="annot" data-tooltip="instructions /ɪnˈstrʌkʃənz/ n. 操作指南；用法说明（instruction 的复数）">instructions</span> of cyber-criminals. And a <span class="annot" data-tooltip="crucial /'kruːʃl/ adj. 决定性的；重要的；定局的；决断的副 词: crucially">crucial</span> internet security</p>
+<p>certificate was <span class="annot" data-tooltip="revealed /rɪ'viːl/ vt. 显示；露出泄露；透露时 态: revealed，revealing，reveals">revealed</span> to have a private key of “4”, when it should have been a hundred digits long. Nobody knows what bugs might have been found and <span class="annot" data-tooltip="exploited /ɪk'splɔɪt/ vt. 开发，开拓；剥削；开采n. 勋绩；功绩时 态: exploited, exploiting, exploits">exploited</span> in private. These events have been <span class="annot" data-tooltip="sobering /'soʊbər/ adj. 冷静的，清醒的；未醉的vt. 使醒酒，使清醒；使严肃比较级: soberer, soberest">sobering</span> for the many commentators, including this newspaper, who hoped that the <span class="annot" data-tooltip="disruption n. 中断,分裂,瓦解,破坏">disruption</span> to <span class="annot" data-tooltip="cyber adj. 计算机(网络)的；信息技术的">cyber</span>-<span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span> from ai would be short-lived, and that the technology itself would help those who defend digital systems more than it would <span class="annot" data-tooltip="empower /ɪm'paʊər/ vt. 授权, 准许时 态: empowered, empowering, empowers">empower</span> crooks. Those hopes are being <span class="annot" data-tooltip="dashed /dæʃ/ n. 破折号；冲撞vt. 使…破灭；猛撞；泼溅vi. 猛冲；撞击DASHabbr. Drone Antisubmarine H">dashed</span>. Instead, the digital <span class="annot" data-tooltip="infrastructure /'ɪnfrəstrʌktʃər/ n. 基础设施; 基础结构">infrastructure</span> on which modern life depends looks increasingly <span class="annot" data-tooltip="vulnerable /'vʌlnərəbl/ adj. 易受伤的, 脆弱的, 敏感的">vulnerable</span> to ai. <span class="annot" data-tooltip="urgent /'ɜːrdʒənt/ adj. 紧急的；急迫的副 词: urgently">Urgent</span> action is needed to defend it. Why are defenders struggling? The first reason is that many of them do not have the most advanced tools. In April <span class="annot" data-tooltip="anthropic /ænˈθrɑpɪk/ adj. 人类的,有关人类的">Anthropic</span>, a <span class="annot" data-tooltip="leading /ˈliːdɪŋ/ adj. 主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）">leading</span> model-maker, launched “Project Glasswing”, an <span class="annot" data-tooltip="invitation /ˌɪnvɪ'teɪʃn/ n. 邀请请柬, 请帖">invitation</span>-only club with access to the full cyber <span class="annot" data-tooltip="capabilities /ˌkeɪpə'bɪləti/ n. 能做某事的素质;能力尚未发挥的天资或素质">capabilities</span> of its frontier models. It originally intended to broaden the <span class="annot" data-tooltip="membership /'membərʃɪp/ n. 全体会员会员身份, 会员资格">membership</span> widely. A similar programme from OpenAI was launched with a promise to democratise access to its tools. However, access to powerful AI has become a geopolitical <span class="annot" data-tooltip="issue /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issue</span>. Both of the model-makers now need sign-off from America’s <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">federal</span> government before admitting new members to their clubs, so expanding them has become a painful political <span class="annot" data-tooltip="process /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">process</span>. In the meantime those <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span> the gates must defend themselves with the same open-source tools that are powering the attacks. Some are <span class="annot" data-tooltip="stuck /stʌk/ v. 刺（stick的过去式）adj. 不能动的；被卡住的">stuck</span> in a no-man’s land: unable to access American tech, but also scared of using Chinese <span class="annot" data-tooltip="alternatives /ɔːl'tɜːrnətɪv/ adj. 可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）">alternatives</span>. The second problem is that when AI is used <span class="annot" data-tooltip="benignly /bɪ'naɪn/ adj. 良性的；吉利的；和蔼的，亲切的副 词: benignly">benignly</span> it creates a friendly- fire problem. The moment that a “<span class="annot" data-tooltip="patch /pætʃ/ n. 眼罩；斑点；碎片；小块土地vt. 修补；掩饰；解决vi. 打补丁时 态: patched, patching, patc">patch</span>” for a newly identified <span class="annot" data-tooltip="vulnerability /ˌvʌlnərə'bɪləti/ n. 弱点,攻击">vulnerability</span> is released, hackers’ AI models can examine it. This may <span class="annot" data-tooltip="reveal /rɪ'viːl/ vt. 显示；露出泄露；透露时 态: revealed，revealing，reveals">reveal</span> <span class="annot" data-tooltip="exactly /ɪɡ'zækt/ adj. 精确的；准确的，精密的vt. 强求；要求；急需vi. 勒索钱财时 态: exacted, exacting, exact">exactly</span> what the weakness was and how to <span class="annot" data-tooltip="exploit /ɪk'splɔɪt/ vt. 开发，开拓；剥削；开采n. 勋绩；功绩时 态: exploited, exploiting, exploits">exploit</span> it in systems that have not yet been fixed. If defenders are really unlucky—as they were with php—the patch may <span class="annot" data-tooltip="leak /liːk/ n. 漏洞，裂缝；泄漏vt. 使渗漏，泄露vi. 漏，渗；泄漏出去时 态: leaked, leaking, leaks">leak</span> before it is released for defenders to use to fix their code. Attackers can then operate against still-defenceless systems. A final issue is that attackers can exploit prosaic <span class="annot" data-tooltip="vulnerabilities /ˌvʌlnərə'bɪləti/ n. 弱点,攻击">vulnerabilities</span> faster and on a greater scale (see Business section). Cyber-security is not just about having strong systems available in theory, but avoiding laxity in <span class="annot" data-tooltip="practice /'præktɪs/ n. 练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规时 态: practiced，practicing，">practice</span>. Unfortunately, AI has made human carelessness easier to exploit without</p>
+<p>making computer users any wiser. An internet-connected fridge running outdated software or using a default password has been a <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span> hazard for <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span>. Only now, however, have attackers found it so easy to <span class="annot" data-tooltip="automate /'ɔːtəmeɪt/ vt. 使自动化，使自动操作vi. 自动化，自动操作时 态: automated, automating, automates">automate</span> the search for and <span class="annot" data-tooltip="exploitation /ˌeksplɔɪ'teɪʃn/ n. 开发;开采；开拓利用剥削广告推销">exploitation</span> of weak points, running thousands of attacks in <span class="annot" data-tooltip="parallel /'pærəlel/ n. 平行线；对比vt. 使…与…平行adj. 平行的；类似的，相同的时 态: paralleledalso parallel">parallel</span>. Companies and governments must act <span class="annot" data-tooltip="decisively /dɪ'saɪsɪv/ adj. 决定性的；果断的，坚定的副 词: decisively">decisively</span> against these threats. Generating an imbalance in <span class="annot" data-tooltip="cyber adj. 计算机(网络)的；信息技术的">cyber</span>-weaponry is <span class="annot" data-tooltip="crucial /'kruːʃl/ adj. 决定性的；重要的；定局的；决断的副 词: crucially">crucial</span>. With equal firepower, defenders rely on a <span class="annot" data-tooltip="narrow /'næroʊ/ adj. 狭窄的，有限的；度量小的；精密的；勉强的n. 狭窄部分，隘路；海峡vt. 使变狭窄vi. 变窄比较级: narrower">narrow</span> natural advantage: they must find and <span class="annot" data-tooltip="patch /pætʃ/ n. 眼罩；斑点；碎片；小块土地vt. 修补；掩饰；解决vi. 打补丁时 态: patched, patching, patc">patch</span> only single <span class="annot" data-tooltip="vulnerabilities /ˌvʌlnərə'bɪləti/ n. 弱点,攻击">vulnerabilities</span>—<span class="annot" data-tooltip="isolated /'aɪsəleɪtɪd/ adj. 孤立的；分离的；绝缘的；单独的v. 使孤立；使绝缘；脱离（isolate的过去分词）">isolated</span> problems which might in theory help create a <span class="annot" data-tooltip="breach /briːtʃ/ n. 破坏, 违反破裂, 不和缺口, 裂口vt. 攻破破坏, 违反时 态: breached, breaching, brea">breach</span>. Attackers <span class="annot" data-tooltip="typically /'tɪpɪkli/ adv. 代表性地;作为特色地;典型地">typically</span> need to know of a whole chain of those vulnerabilities in order to breach a system. Now that AI-powered attacks are proliferating, this advantage is too narrow. Defenders need a bigger armoury. America’s government should take a more <span class="annot" data-tooltip="permissive /pər'mɪsɪv/ adj. 宽大的，放任的，宽容的；自由的，随意的容许的，许可的副 词: permissively">permissive</span> attitude to <span class="annot" data-tooltip="membership /'membərʃɪp/ n. 全体会员会员身份, 会员资格">membership</span> of cyber-defence programmes, or at least approve new joiners faster. It would also be better if attackers’ <span class="annot" data-tooltip="capabilities /ˌkeɪpə'bɪləti/ n. 能做某事的素质;能力尚未发挥的天资或素质">capabilities</span> were pushed further behind the frontier. China’s government has recognised the folly of distributing <span class="annot" data-tooltip="potent /'poʊtnt/ adj. 有效的；强有力的，有权势的；有说服力的">potent</span> cyber-weapons to all, and is requiring labs to limit the <span class="annot" data-tooltip="destructive /dɪ'strʌktɪv/ adj. 破坏性的, 毁灭性的副 词: destructively">destructive</span> potential of newly released systems. Organisations that are not yet using AI <span class="annot" data-tooltip="constantly /'kɑːnstəntli/ adv. 不断地;时常地">constantly</span> to find and close security <span class="annot" data-tooltip="holes /hoʊl/ n. 洞，孔；洞穴，穴；突破口vi. 凿洞，穿孔；（高尔夫球等）进洞vt. 凿洞时 态: holed, holing, hol">holes</span> have fallen behind the <span class="annot" data-tooltip="curve /kɜːrv/ n. 曲线；弯曲；曲线球；曲线图表vt. 使弯曲；弯vi. 成曲形adj. 弯曲的；曲线形的时 态: curved, curv">curve</span> and must catch up. Some entities need more help. In America efforts like <span class="annot" data-tooltip="texas /'teksəs/ n. 德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室">Texas</span>’s “Project Watershed 250” are <span class="annot" data-tooltip="funnelling /'fʌnl/ n. 漏斗；烟囱vt. 通过漏斗或烟囱等；使成漏斗形vi. 通过漏斗等；成漏斗形时 态: funneled, funnelle">funnelling</span> resources to providers of <span class="annot" data-tooltip="infrastructure /'ɪnfrəstrʌktʃər/ n. 基础设施; 基础结构">infrastructure</span> to help with the basics. Those efforts should be expanded. In time, the software <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> may be able to verify some code formally, thereby <span class="annot" data-tooltip="proving /proʊ/ n. 从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞">proving</span> that it is unhackable, much as a mathematician proves a theorem. <span class="annot" data-tooltip="commerce /'kɑːmɜːrs/ n. 商业, 贸易">Commerce</span>, infrastructure and human relationships have come to rely on the assumption that the internet is <span class="annot" data-tooltip="secure /sɪ'kjʊr/ adj. 安心的；有把握的可靠的；牢靠的；稳固的；安全的；稳妥的严密把守的；牢固的；坚固的v. （尤指经过努力）获得，取得，实现拴">secure</span>. A sudden loss of cyber-security would therefore pose a grave threat to <span class="annot" data-tooltip="society /sə'saɪəti/ n. 社会；社交界；交往；社团">society</span>. Cyber-security awareness has risen over the past month. Action must follow. ■ This article was downloaded by zlibrary from https://www.economist.com/leaders/2026/11/05/the-world-must-act-to-stop-a-cyber- disaster</p>
+<div class="article-separator"></div>
+<div class="article-header">Leaders · Leaders | Markets maketh medicine</div>
+<p>Patients are acting more like consumers. Good Health care cannot be an ordinary market. But it could be much more like one Nov 5th 2026 The person who uses a product usually chooses it and pays for it. The great exception is health care. Most of the time insurers (public or private) decide what is <span class="annot" data-tooltip="covered /'kʌvər/ vt. 包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替时 态: covered, covering, c">covered</span>; doctors decide what is prescribed and patients take what they are given. The result is markets riddled with inefficiency, and nowhere more so than in America, the world’s biggest. This year Americans are expected to spend about $6trn on health, <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> a fifth of their country’s GDP. Yet for all that money, about one adult in ten could not get an appointment when they needed one last year, and more than a <span class="annot" data-tooltip="quarter /'kwɔːrtər/ n. 四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一时 ">quarter</span> put off or skipped care because of the cost. No <span class="annot" data-tooltip="wonder /'wʌndər/ vt. & vi. 对…感到疑惑想知道；问自己n. 惊奇，惊叹，惊异，惊诧奇人，奇才奇观，奇景，奇迹，奇事时 态: wonder">wonder</span> patients are taking matters into their <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> hands. They <span class="annot" data-tooltip="pepper /'pepər/ n. 胡椒粉辣椒vt. 在…上撒胡椒粉；使布满以…密击，接二连三地提问时 态: peppered，peppering，pepp">pepper</span> chatbots with questions such as how to decode a blood test or prepare for an</p>
+<p>appointment; every week more than 300m people ask ChatGPT about health, says OpenAI, its <span class="annot" data-tooltip="creator /kri'eɪtər/ n. 创造者,创作者">creator</span>. The market for tests that patients order themselves has grown to be <span class="annot" data-tooltip="worth /wɜːrθ/ adj. 值…的n. 价值；财产时 态: worthed, worthing, worths">worth</span> about $4bn a year in America, double its size in 2021, reckons Morgan Stanley, a bank. And drugmakers have started selling directly to patients. Eli Lilly, an American pharmaceutical giant, now fills about half of new prescriptions for its <span class="annot" data-tooltip="obesity /oʊ'biːsəti/ n. 肥大，肥胖">obesity</span> jab in America this way, <span class="annot" data-tooltip="bypassing /'baɪpæs/ vt. 绕过, 避开不顾n. 旁道时 态: bypassed, bypassing, bypasses">bypassing</span> insurers. All three developments are good news. One reason is that patient-led markets bring lower prices. Take drugs. In America their true cost is obscured by a <span class="annot" data-tooltip="tangle /'tæŋɡl/ n. 乱糟糟的一堆, 混乱vt. & vi. (使)缠结, (使)乱作一团时 态: tangled, tangling, ta">tangle</span> of middlemen and insurers, who <span class="annot" data-tooltip="negotiate /nɪ'ɡoʊʃieɪt/ vt. 谈判，商议；转让；越过">negotiate</span> secret discounts from inflated list prices. When patients pay directly, prices are transparent and drugmakers must compete. New obesity drugs are a good example. Novo, a Danish drugmaker, launched Wegovy in 2021 at a list price of about $1,350 a month. That led to a price war with Lilly, and competition from cheap copies. Both firms now sell their jabs direct to patients for as little as $300-350 a month. The same logic works for older products. Mark Cuban Cost Plus Drug Company, an online pharmacy founded by a billionaire, buys <span class="annot" data-tooltip="generics n. 非专利药物；通用术语（generic的复数）">generics</span> from their makers and sells them at cost plus a 15% mark-up. One study found that patients with <span class="annot" data-tooltip="employer /ɪm'plɔɪ/ vt. 使用，采用；雇用；使忙于，使从事于n. 雇用；使用时 态: employed, employing, employs">employer</span>- provided insurance who pay over $15 for a prescription could buy it more cheaply from Cost Plus <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> 80% of the time. When patients pay, firms also come up with new ways to sell to them. “Direct primary care”, where medical <span class="annot" data-tooltip="practices /'præktɪs/ n. 练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规时 态: practiced，practicing，">practices</span> <span class="annot" data-tooltip="ditch /dɪtʃ/ vt. 在…上掘沟；把…开入沟里；[俚]丢弃vi. 开沟；掘沟n. 沟渠；壕沟时 态: ditched, ditching, d">ditch</span> insurers and charge patients a monthly fee instead, has grown by nearly a fifth per year since 2022, to more than 3,600 practices in America. Others, such as <span class="annot" data-tooltip="amazon /ˈæməˌzɑn/ n. 高大强悍的女人；（古希腊神话中的）亚马孙族女战士Amazonn. 亚马逊河(南美洲大河)">Amazon</span>’s One Medical, treat common <span class="annot" data-tooltip="ailments /'eɪlmənt/ n. 小病；不安">ailments</span> on a pay-per-visit basis. Drugmakers are looking at treatments that consumers will pay for, even if insurers will not. Novo is eyeing treatments for hair loss, addiction and menopause, conditions that big pharma long dismissed as unworthy of <span class="annot" data-tooltip="serious /'sɪriəs/ adj. 严肃的，严重的；认真的；庄重的；危急的副 词: seriously">serious</span> research. Even fighting off ageing now attracts money. Most <span class="annot" data-tooltip="profound /prə'faʊnd/ adj. 深度的；深切的；深远的知识渊博的，见解深刻的，深奥的比较级: profounder，profoundest">profound</span> of all is the erosion of the original source of market power: a doctor’s hold on medical knowledge. In 1963 Kenneth Arrow, an economist, said that health care could not work like an ordinary market partly because the information a doctor <span class="annot" data-tooltip="possesses /pə'zes/ vt. 具有占据时 态: possessed, possessing, possesses">possesses</span> is “necessarily very much greater than that of the patient, or at least so it is believed by both parties”. Technology has since <span class="annot" data-tooltip="narrowed /'næroʊ/ adj. 狭窄的，有限的；度量小的；精密的；勉强的n. 狭窄部分，隘路；海峡vt. 使变狭窄vi. 变窄比较级: narrower">narrowed</span> that gap. Chatbots, though hardly infallible, translate</p>
+<p>medical jargon into plain English and set out the treatment options for a condition. Increasingly they work with patients’ <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> data, too. Consumer-led health care carries dangers. The first is quackery. Websites and influencers peddle peptides and <span class="annot" data-tooltip="supplements /'sʌplɪmənt/ n. 增补（物）；补品；增刊；（书籍的）附录；额外服务费用；补角">supplements</span> that promise bigger muscles, better skin or a longer life. Many do nothing and some do harm. Regulators should make sure sellers do not lie about their products. Access matters, too. <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">Nearly</span> all consumer health care is paid for out of pocket, so for now it mostly serves the well-off. However, most <span class="annot" data-tooltip="innovations /ˌɪnə'veɪʃn/ n. 改革, 革新, 创新新观念, 新方法, 新发明形容词: innovational">innovations</span> start out as luxuries and get cheaper. No one will shop for doctors from the back of an ambulance. Complex and emergency care will stay with doctors, hospitals and insurers. But in the <span class="annot" data-tooltip="routine /ruː'tiːn/ n. 例行公事；日常工作；程序adj. 日常的；例行的副 词: routinely">routine</span> parts of medicine, patients can and should be treated as customers. A <span class="annot" data-tooltip="bloated /bloʊt/ vt. （使）肿胀；使膨胀；腌制vi. 膨胀；肿起；得意n. 膨胀的东西，肿胀的人；肿胀病人；自满的人时 态: bloated,">bloated</span>, paternalistic <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> has kept them waiting long enough. ■ This article was downloaded by zlibrary from https://www.economist.com/leaders/2026/11/05/patients-are-acting-more-like- consumers-good</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>notorious</td><td>/noʊ'tɔːriəs/ adj.</td><td>臭名昭著的, 声名狼藉的</td></tr>
+<tr><td>escapes</td><td>/ɪ'skeɪp/ vt.</td><td>逃避，避免；被忘掉vi. 逃脱；避开；溜走n. 逃跑；逃亡, escaping, escapes</td></tr>
+<tr><td>civil</td><td>/'sɪvl/ adj.</td><td>公民的，平民的；非军职的，非宗教的；国民间的，民用的民事的，民法的文明的，有教养的</td></tr>
+<tr><td>persuades</td><td>/pər'sweɪd/ vt.</td><td>& vi. 说服, 劝告, persuading, persuades</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>vetting</td><td>/vet/ vt.</td><td>诊疗；审查vi. 作兽医；诊疗n. 兽医, vetting, vets</td></tr>
+<tr><td>abuses</td><td>/ə'bjuːs/ n.</td><td>滥用；辱骂；虐待；弊端；恶习，陋习vt. 滥用；辱骂；虐待, abusing, abuses</td></tr>
+<tr><td>cyber</td><td>— adj.</td><td>计算机(网络)的；信息技术的</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>hacks</td><td>/hæk/ vt.</td><td>& vi. 劈, 砍vt. 狠踢, 乱踢vi. 咳嗽(发出刺耳声音)(以普通速度)骑马驾驶计程车n. 砍, 劈用靴头踢骑用马, 供出租的马受雇于出版商的文人出租</td></tr>
+<tr><td>constantly</td><td>/'kɑːnstəntli/ adv.</td><td>不断地;时常地</td></tr>
+<tr><td>stem</td><td>/stem/ n.</td><td>(花草的)茎, (树木的)干词干vt. 遏制[阻止](液体的流动等), stemming, stems</td></tr>
+<tr><td>empowered</td><td>/ɪm'paʊər/ vt.</td><td>授权, 准许, empowering, empowers</td></tr>
+<tr><td>competence</td><td>/'kɑːmpɪtəns/ n.</td><td>能力, 技能(法院的)权限, 管辖权</td></tr>
+<tr><td>worth</td><td>/wɜːrθ/ adj.</td><td>值…的n. 价值；财产, worthing, worths</td></tr>
+<tr><td>critical</td><td>/'krɪtɪkl/ adj.</td><td>批评的，爱挑剔的；决定性的；危险的；临界的；鉴定的；评论的</td></tr>
+<tr><td>flaws</td><td>/flɔː/ </td><td>n.瑕疵，缺点；一阵狂风；短暂的风暴；裂缝，裂纹</td></tr>
+<tr><td>flaw</td><td>/flɔː/ </td><td>n.瑕疵，缺点；一阵狂风；短暂的风暴；裂缝，裂纹</td></tr>
+<tr><td>instructions</td><td>/ɪnˈstrʌkʃənz/ n.</td><td>操作指南；用法说明（instruction 的复数）</td></tr>
+<tr><td>crucial</td><td>/'kruːʃl/ adj.</td><td>决定性的；重要的；定局的；决断的</td></tr>
+<tr><td>revealed</td><td>/rɪ'viːl/ vt.</td><td>显示；露出泄露；透露，revealing，reveals</td></tr>
+<tr><td>exploited</td><td>/ɪk'splɔɪt/ vt.</td><td>开发，开拓；剥削；开采n. 勋绩；功绩, exploiting, exploits</td></tr>
+<tr><td>sobering</td><td>/'soʊbər/ adj.</td><td>冷静的，清醒的；未醉的vt. 使醒酒，使清醒；使严肃, soberest</td></tr>
+<tr><td>disruption</td><td>— n.</td><td>中断,分裂,瓦解,破坏</td></tr>
+<tr><td>cyber</td><td>— adj.</td><td>计算机(网络)的；信息技术的</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>empower</td><td>/ɪm'paʊər/ vt.</td><td>授权, 准许, empowering, empowers</td></tr>
+<tr><td>dashed</td><td>/dæʃ/ n.</td><td>破折号；冲撞vt. 使…破灭；猛撞；泼溅vi. 猛冲；撞击DASHabbr. Drone Antisubmarine Helicopter 无线电遥控反潜艇直升</td></tr>
+<tr><td>infrastructure</td><td>/'ɪnfrəstrʌktʃər/ n.</td><td>基础设施; 基础结构</td></tr>
+<tr><td>vulnerable</td><td>/'vʌlnərəbl/ adj.</td><td>易受伤的, 脆弱的, 敏感的</td></tr>
+<tr><td>urgent</td><td>/'ɜːrdʒənt/ adj.</td><td>紧急的；急迫的</td></tr>
+<tr><td>anthropic</td><td>/ænˈθrɑpɪk/ adj.</td><td>人类的,有关人类的</td></tr>
+<tr><td>leading</td><td>/ˈliːdɪŋ/ adj.</td><td>主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）</td></tr>
+<tr><td>invitation</td><td>/ˌɪnvɪ'teɪʃn/ n.</td><td>邀请请柬, 请帖</td></tr>
+<tr><td>capabilities</td><td>/ˌkeɪpə'bɪləti/ n.</td><td>能做某事的素质;能力尚未发挥的天资或素质</td></tr>
+<tr><td>membership</td><td>/'membərʃɪp/ n.</td><td>全体会员会员身份, 会员资格</td></tr>
+<tr><td>issue</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>process</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>stuck</td><td>/stʌk/ v.</td><td>刺（stick的过去式）adj. 不能动的；被卡住的</td></tr>
+<tr><td>alternatives</td><td>/ɔːl'tɜːrnətɪv/ adj.</td><td>可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）可供选择的事物；可供选择的解决办法替代物</td></tr>
+<tr><td>benignly</td><td>/bɪ'naɪn/ adj.</td><td>良性的；吉利的；和蔼的，亲切的</td></tr>
+<tr><td>patch</td><td>/pætʃ/ n.</td><td>眼罩；斑点；碎片；小块土地vt. 修补；掩饰；解决vi. 打补丁, patching, patches</td></tr>
+<tr><td>vulnerability</td><td>/ˌvʌlnərə'bɪləti/ n.</td><td>弱点,攻击</td></tr>
+<tr><td>reveal</td><td>/rɪ'viːl/ vt.</td><td>显示；露出泄露；透露，revealing，reveals</td></tr>
+<tr><td>exactly</td><td>/ɪɡ'zækt/ adj.</td><td>精确的；准确的，精密的vt. 强求；要求；急需vi. 勒索钱财, exacting, exacts</td></tr>
+<tr><td>exploit</td><td>/ɪk'splɔɪt/ vt.</td><td>开发，开拓；剥削；开采n. 勋绩；功绩, exploiting, exploits</td></tr>
+<tr><td>leak</td><td>/liːk/ n.</td><td>漏洞，裂缝；泄漏vt. 使渗漏，泄露vi. 漏，渗；泄漏出去, leaking, leaks</td></tr>
+<tr><td>vulnerabilities</td><td>/ˌvʌlnərə'bɪləti/ n.</td><td>弱点,攻击</td></tr>
+<tr><td>practice</td><td>/'præktɪs/ n.</td><td>练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规，practicing，practices</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>automate</td><td>/'ɔːtəmeɪt/ vt.</td><td>使自动化，使自动操作vi. 自动化，自动操作, automating, automates</td></tr>
+<tr><td>exploitation</td><td>/ˌeksplɔɪ'teɪʃn/ n.</td><td>开发;开采；开拓利用剥削广告推销</td></tr>
+<tr><td>parallel</td><td>/'pærəlel/ n.</td><td>平行线；对比vt. 使…与…平行adj. 平行的；类似的，相同的</td></tr>
+<tr><td>decisively</td><td>/dɪ'saɪsɪv/ adj.</td><td>决定性的；果断的，坚定的</td></tr>
+<tr><td>cyber</td><td>— adj.</td><td>计算机(网络)的；信息技术的</td></tr>
+<tr><td>crucial</td><td>/'kruːʃl/ adj.</td><td>决定性的；重要的；定局的；决断的</td></tr>
+<tr><td>narrow</td><td>/'næroʊ/ adj.</td><td>狭窄的，有限的；度量小的；精密的；勉强的n. 狭窄部分，隘路；海峡vt. 使变狭窄vi. 变窄, narrowest</td></tr>
+<tr><td>patch</td><td>/pætʃ/ n.</td><td>眼罩；斑点；碎片；小块土地vt. 修补；掩饰；解决vi. 打补丁, patching, patches</td></tr>
+<tr><td>vulnerabilities</td><td>/ˌvʌlnərə'bɪləti/ n.</td><td>弱点,攻击</td></tr>
+<tr><td>isolated</td><td>/'aɪsəleɪtɪd/ adj.</td><td>孤立的；分离的；绝缘的；单独的v. 使孤立；使绝缘；脱离（isolate的过去分词）</td></tr>
+<tr><td>breach</td><td>/briːtʃ/ n.</td><td>破坏, 违反破裂, 不和缺口, 裂口vt. 攻破破坏, 违反, breaching, breaches</td></tr>
+<tr><td>typically</td><td>/'tɪpɪkli/ adv.</td><td>代表性地;作为特色地;典型地</td></tr>
+<tr><td>permissive</td><td>/pər'mɪsɪv/ adj.</td><td>宽大的，放任的，宽容的；自由的，随意的容许的，许可的</td></tr>
+<tr><td>membership</td><td>/'membərʃɪp/ n.</td><td>全体会员会员身份, 会员资格</td></tr>
+<tr><td>capabilities</td><td>/ˌkeɪpə'bɪləti/ n.</td><td>能做某事的素质;能力尚未发挥的天资或素质</td></tr>
+<tr><td>potent</td><td>/'poʊtnt/ adj.</td><td>有效的；强有力的，有权势的；有说服力的</td></tr>
+<tr><td>destructive</td><td>/dɪ'strʌktɪv/ adj.</td><td>破坏性的, 毁灭性的</td></tr>
+<tr><td>constantly</td><td>/'kɑːnstəntli/ adv.</td><td>不断地;时常地</td></tr>
+<tr><td>holes</td><td>/hoʊl/ n.</td><td>洞，孔；洞穴，穴；突破口vi. 凿洞，穿孔；（高尔夫球等）进洞vt. 凿洞, holing, holes</td></tr>
+<tr><td>curve</td><td>/kɜːrv/ n.</td><td>曲线；弯曲；曲线球；曲线图表vt. 使弯曲；弯vi. 成曲形adj. 弯曲的；曲线形的, curving, curves</td></tr>
+<tr><td>texas</td><td>/'teksəs/ n.</td><td>德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室)</td></tr>
+<tr><td>funnelling</td><td>/'fʌnl/ n.</td><td>漏斗；烟囱vt. 通过漏斗或烟囱等；使成漏斗形vi. 通过漏斗等；成漏斗形, funnelled funneling, funnelling funnels, </td></tr>
+<tr><td>infrastructure</td><td>/'ɪnfrəstrʌktʃər/ n.</td><td>基础设施; 基础结构</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>proving</td><td>/proʊ/ n.</td><td>从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞成；支持Pro脯氨酸PROabbr. P</td></tr>
+<tr><td>commerce</td><td>/'kɑːmɜːrs/ n.</td><td>商业, 贸易</td></tr>
+<tr><td>secure</td><td>/sɪ'kjʊr/ adj.</td><td>安心的；有把握的可靠的；牢靠的；稳固的；安全的；稳妥的严密把守的；牢固的；坚固的v. （尤指经过努力）获得，取得，实现拴牢；扣紧；关严保护；保卫；使安全抵押；为</td></tr>
+<tr><td>society</td><td>/sə'saɪəti/ n.</td><td>社会；社交界；交往；社团</td></tr>
+<tr><td>covered</td><td>/'kʌvər/ vt.</td><td>包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替, covering, covers</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>quarter</td><td>/'kwɔːrtər/ n.</td><td>四分之一；地区；季度；一刻钟；两角五分；[篮球]节vi. 住宿；驻扎vt. 将…四等分；供某人住宿num. 四分之一, quartering, quarters</td></tr>
+<tr><td>wonder</td><td>/'wʌndər/ vt.</td><td>& vi. 对…感到疑惑想知道；问自己n. 惊奇，惊叹，惊异，惊诧奇人，奇才奇观，奇景，奇迹，奇事，wondering，wonders</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>pepper</td><td>/'pepər/ n.</td><td>胡椒粉辣椒vt. 在…上撒胡椒粉；使布满以…密击，接二连三地提问，peppering，peppers</td></tr>
+<tr><td>creator</td><td>/kri'eɪtər/ n.</td><td>创造者,创作者</td></tr>
+<tr><td>worth</td><td>/wɜːrθ/ adj.</td><td>值…的n. 价值；财产, worthing, worths</td></tr>
+<tr><td>obesity</td><td>/oʊ'biːsəti/ n.</td><td>肥大，肥胖</td></tr>
+<tr><td>bypassing</td><td>/'baɪpæs/ vt.</td><td>绕过, 避开不顾n. 旁道, bypassing, bypasses</td></tr>
+<tr><td>tangle</td><td>/'tæŋɡl/ n.</td><td>乱糟糟的一堆, 混乱vt. & vi. (使)缠结, (使)乱作一团, tangling, tangles</td></tr>
+<tr><td>negotiate</td><td>/nɪ'ɡoʊʃieɪt/ vt.</td><td>谈判，商议；转让；越过</td></tr>
+<tr><td>generics</td><td>— n.</td><td>非专利药物；通用术语（generic的复数）</td></tr>
+<tr><td>employer</td><td>/ɪm'plɔɪ/ vt.</td><td>使用，采用；雇用；使忙于，使从事于n. 雇用；使用, employing, employs</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>practices</td><td>/'præktɪs/ n.</td><td>练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规，practicing，practices</td></tr>
+<tr><td>ditch</td><td>/dɪtʃ/ vt.</td><td>在…上掘沟；把…开入沟里；[俚]丢弃vi. 开沟；掘沟n. 沟渠；壕沟, ditching, ditches</td></tr>
+<tr><td>amazon</td><td>/ˈæməˌzɑn/ n.</td><td>高大强悍的女人；（古希腊神话中的）亚马孙族女战士Amazonn. 亚马逊河(南美洲大河)</td></tr>
+<tr><td>ailments</td><td>/'eɪlmənt/ n.</td><td>小病；不安</td></tr>
+<tr><td>serious</td><td>/'sɪriəs/ adj.</td><td>严肃的，严重的；认真的；庄重的；危急的</td></tr>
+<tr><td>profound</td><td>/prə'faʊnd/ adj.</td><td>深度的；深切的；深远的知识渊博的，见解深刻的，深奥的，profoundest</td></tr>
+<tr><td>possesses</td><td>/pə'zes/ vt.</td><td>具有占据, possessing, possesses</td></tr>
+<tr><td>narrowed</td><td>/'næroʊ/ adj.</td><td>狭窄的，有限的；度量小的；精密的；勉强的n. 狭窄部分，隘路；海峡vt. 使变狭窄vi. 变窄, narrowest</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>supplements</td><td>/'sʌplɪmənt/ n.</td><td>增补（物）；补品；增刊；（书籍的）附录；额外服务费用；补角</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>innovations</td><td>/ˌɪnə'veɪʃn/ n.</td><td>改革, 革新, 创新新观念, 新方法, 新发明</td></tr>
+<tr><td>routine</td><td>/ruː'tiːn/ n.</td><td>例行公事；日常工作；程序adj. 日常的；例行的</td></tr>
+<tr><td>bloated</td><td>/bloʊt/ vt.</td><td>（使）肿胀；使膨胀；腌制vi. 膨胀；肿起；得意n. 膨胀的东西，肿胀的人；肿胀病人；自满的人, bloating, bloats</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day2.html" class="nav-btn">← Day 2</a>
+  <a href="day4.html" class="nav-btn">Day 4 →</a>
+</div>
+
+<div class="progress">📖 Day 3 of 40</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-11-07</div>
+
+</body>
+</html>

@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>International | The Telegram</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-11-07</div>
+
+<h1 class="article-title">International | The Telegram</h1>
+<div class="article-section">International</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>cast <span class="annot" data-tooltip="ukraine n. 乌克兰（原苏联一加盟共和国，现已独立）">Ukraine</span> as <span class="annot" data-tooltip="needy /'niːdi/ adj. 贫穷的；贫困的；生活艰苦的比较级: needier, neediest">needy</span>, ungrateful and too slow to acknowledge crimes <span class="annot" data-tooltip="committed /kə'mɪt/ vt. 犯罪；犯错承诺；使自己受约束托付；交付时 态: committed，committing，commits">committed</span> by Ukrainians against Poles during the second world war. Aid for Ukraine should come with conditions, they growl. Above all, the nationalist right is united in opposing deeper European integration, even in <span class="annot" data-tooltip="pro /proʊ/ n. 从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞">pro</span>-EU Spain, where the Vox party may <span class="annot" data-tooltip="enter /'entər/ vt. & vi. 进入, 进去参加, 加入登记, 登录时 态: entered, entering, enters">enter</span> government. An exultant Ms Le Pen has predicted that a year of elections will transform the EU from a would-be superstate into a “Europe of nations”. Alas, a nationalist <span class="annot" data-tooltip="wave /weɪv/ vi. 波动；起伏；摇动；呈波形；挥手示意vt. 向…挥手示意；使成波浪形；卷（烫）发n. 波浪；波动；高潮；卷曲；挥手示意时 ">wave</span> could also derail Europe’s rearmament. To avoid frightening its neighbours, Germany can grow its armed forces and defence <span class="annot" data-tooltip="industries /'ɪndəstri/ n. 工业；产业；勤勉">industries</span> only if it puts its <span class="annot" data-tooltip="fiscal /'fɪskl/ adj. 国库的；会计的，财政的副 词: fiscally">fiscal</span> and military might at the service of NATO and Europe, argues Liana Fix, the author of a new book, “Germany <span class="annot" data-tooltip="rearmed /rɪr/ vt. 培养；树立；栽种vi. 暴跳；高耸adv. 在后面；向后adj. 后面的；[军]后方的；背面的n. 后面；[美俚]屁股；">Rearmed</span>: The Return of War and the End of <span class="annot" data-tooltip="illusions /ɪ'luːʒn/ n. 错觉, 幻想, 错误观念假象形容词: illusionless">Illusions</span>”. To be a “European” power means, in effect, to act within the Franco-German alliance in which Germany has <span class="annot" data-tooltip="bound /baʊnd/ vi. 跳；弹回vt. 给…划界，限制n. 跳，跳跃，跃进界限，范围adj. 被捆绑的，被束缚的一定的，必定的去，准备去时 态:">bound</span> its strength since 1945. But that creates a <span class="annot" data-tooltip="dilemma /dɪ'lemə/ n. （进退两难的）窘境，困境形容词: dilemmatic">dilemma</span>. Ms Fix fears a <span class="annot" data-tooltip="division /dɪ'vɪʒn/ n. [数] 除法；部门；分配；分割；师（军队）；赛区形容词: divisional">division</span> of Europe into a north-eastern bloc, including the Baltic states, Britain, Nordic countries and Poland, which still seeks to <span class="annot" data-tooltip="deter /dɪ'tɜːr/ vt. 制止，阻止；使打消念头时 态: deterred, deterring, deters">deter</span> Russia, and a Mediterranean bloc of southern governments ready to <span class="annot" data-tooltip="appease /ə'piːz/ vt. 使平息；使满足时 态: appeased，appeasing，appeases">appease</span> Mr Putin, to buy his oil and gas and to focus <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span> spending on hardening borders against poor-world migrants. Germany would have a national interest in securing Poland and the Baltics as a buffer against Russia, Ms Fix writes. But if France does not want to join a northern bloc, Germany’s national and European interests would be at <span class="annot" data-tooltip="odds /ɑːdz/ n. 不平等；几率；胜算；差别">odds</span>. True, as Ms Le Pen <span class="annot" data-tooltip="scents /sent/ n. 气味，香味香水(动物的)臭迹，遗臭线索(尤指狗的)嗅觉vt. (动物等)嗅出…的气味，嗅出…的存在察觉到(坏事等的)存在">scents</span> victory, she has moderated her formerly Putin- friendly rhetoric. Casting herself as an heir to Charles de Gaulle, she <span class="annot" data-tooltip="pledges /pledʒ/ n. 抵押；保证，誓言；抵押品，典当物vt. 保证，许诺；用……抵押；举杯祝……健康时 态: pledged, pledgin">pledges</span> to maintain strong armed forces. But at a minimum her sharp-elbowed, France-first approach to industrial spending could derail <span class="annot" data-tooltip="multinational /ˌmʌlti'næʃnəl/ adj. 多国的n. 跨国公司">multinational</span> defence projects. At worst, Europe would conclude it cannot rely on France in a crisis. The <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> administration’s role is both unhelpful and incoherent. Mr Trump continues to push Europeans to spend more on defence. At the same time, he seeks detente with Mr Putin and offers noisy support to pro-Russian parties on Europe’s nationalist right, including Germany’s largest opposition party, the Putin-friendly, Ukraine-spurning <span class="annot" data-tooltip="alternative /ɔːl'tɜːrnətɪv/ adj. 可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）">Alternative</span> for Germany. But if Europe has no need to deter Russia, it is unclear why Mr Trump thinks it needs to rearm: the continent is hardly about to take on China.</p>
+<p>Europe needs to learn the right lessons from the <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> era. The MAGA shock made Europeans, led by Germany, <span class="annot" data-tooltip="serious /'sɪriəs/ adj. 严肃的，严重的；认真的；庄重的；危急的副 词: seriously">serious</span> about their <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span>, at long last. To <span class="annot" data-tooltip="complete /kəm'pliːt/ adj. 完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善比较级: complete">complete</span> the task, Europe must now shun Trump-style populist nationalism, which risks <span class="annot" data-tooltip="wrecking /rek/ n. 失事；残骸；破坏；[口]失去健康的人vt. 破坏；使失事；拆毁vi. 失事；营救失事船只时 态: wrecked, wr">wrecking</span> that project. Anything else would be a fearful <span class="annot" data-tooltip="blunder /'blʌndər/ n. (因无知、粗心等造成)的错误vi. 犯错误踉踉跄跄地走时 态: blundered, blundering, blund">blunder</span>. ■ This article was downloaded by zlibrary from https://www.economist.com/international/2026/11/03/fear-united-europe-nationalism- may-<span class="annot" data-tooltip="tear /tɪr，ter/ v. 撕掉，扯下；撕破；拔掉；拉伤；（非正式）狂奔；饱经……摧残；流眼泪n. 眼泪；（撕破的）洞或裂缝， 撕扯时 态: tor">tear</span>-it-apart</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Business</div>
+<p>Firms are racing to protect themselves from AI <span class="annot" data-tooltip="cyber adj. 计算机(网络)的；信息技术的">cyber</span> threats As hackers run riot with AI, its makers want to cash in Besieged by war, Saudi Aramco continues to gush profits Can a DoorDash-Instacart <span class="annot" data-tooltip="fusion /'fjuːʒn/ n. 融合物；熔化；融合；熔接">fusion</span> stand up to <span class="annot" data-tooltip="amazon /ˈæməˌzɑn/ n. 高大强悍的女人；（古希腊神话中的）亚马孙族女战士Amazonn. 亚马逊河(南美洲大河)">Amazon</span> and Walmart? Is curiosity all it’s <span class="annot" data-tooltip="cooked adj. 煮熟的v. 煮（cook的过去式、过去分词形式）">cooked</span> up to be? America’s <span class="annot" data-tooltip="copper /'kɑːpər/ n. 铜；铜币；[俚]警察adj. 铜的vt. 镀铜于时 态: coppered, coppering, coppers">copper</span> giant has big dreams—but <span class="annot" data-tooltip="cautious /'kɔːʃəs/ adj. 小心的, 谨慎的副 词: cautiously">cautious</span> plans The break-up of CVS marks a turning point in American health care The quest for immortality has become <span class="annot" data-tooltip="serious /'sɪriəs/ adj. 严肃的，严重的；认真的；庄重的；危急的副 词: seriously">serious</span> business</p>
+<div class="article-separator"></div>
+<div class="article-header">Business · Business | Hack to the future</div>
+<p>Firms are racing to protect themselves from AI <span class="annot" data-tooltip="cyber adj. 计算机(网络)的；信息技术的">cyber</span> threats Hackers have <span class="annot" data-tooltip="unleashed /ʌn'liːʃ/ vt. 把(感情、力量等)释放出来, 发泄时 态: unleashed, unleashing, unleashes">unleashed</span> a devastating <span class="annot" data-tooltip="wave /weɪv/ vi. 波动；起伏；摇动；呈波形；挥手示意vt. 向…挥手示意；使成波浪形；卷（烫）发n. 波浪；波动；高潮；卷曲；挥手示意时 ">wave</span> of attacks. More may follow Nov 5th 2026 The <span class="annot" data-tooltip="corporate /'kɔːrpərət/ adj. 社团的, 法人的副 词: corporately">corporate</span> world is under siege. In a matter of weeks a flurry of <span class="annot" data-tooltip="serious /'sɪriəs/ adj. 严肃的，严重的；认真的；庄重的；危急的副 词: seriously">serious</span> cyber-<span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span> incidents have shaken the confidence of bosses in their defences. Thousands of new software <span class="annot" data-tooltip="vulnerabilities /ˌvʌlnərə'bɪləti/ n. 弱点,攻击">vulnerabilities</span> have been discovered, aided by artificial intelligence. That, along with a slew of <span class="annot" data-tooltip="hacks /hæk/ vt. & vi. 劈, 砍vt. 狠踢, 乱踢vi. 咳嗽(发出刺耳声音)(以普通速度)骑马驾驶计程车n. 砍, 劈用靴头踢骑">hacks</span>, has led many to argue that cyber-risk is <span class="annot" data-tooltip="entering /'entər/ vt. & vi. 进入, 进去参加, 加入登记, 登录时 态: entered, entering, enters">entering</span> a perilous new <span class="annot" data-tooltip="phase /feɪz/ n. 阶段, 时期(月亮、行星的)位相vt. 分阶段计划[安排]时 态: phased, phasing, phases">phase</span>. So testing was the past month that some analysts have called it “Black October” (others, “the Hackening”). First AI was used to discover a <span class="annot" data-tooltip="critical /'krɪtɪkl/ adj. 批评的，爱挑剔的；决定性的；危险的；临界的；鉴定的；评论的副 词: critically">critical</span> <span class="annot" data-tooltip="flaw /flɔː/ n.瑕疵，缺点；一阵狂风；短暂的风暴；裂缝，裂纹">flaw</span> in PHP, a widely used programming language that underpins most websites. The <span class="annot" data-tooltip="vulnerability /ˌvʌlnərə'bɪləti/ n. 弱点,攻击">vulnerability</span> was <span class="annot" data-tooltip="leaked /liːk/ n. 漏洞，裂缝；泄漏vt. 使渗漏，泄露vi. 漏，渗；泄漏出去时 态: leaked, leaking, leaks">leaked</span> before <span class="annot" data-tooltip="patches /pætʃ/ n. 眼罩；斑点；碎片；小块土地vt. 修补；掩饰；解决vi. 打补丁时 态: patched, patching, patc">patches</span> could be deployed, so many websites were temporarily taken offline to be fixed. Then hackers stole some $6.3bn from Binance, a crypto exchange. November has been no</p>
+<p>easier. Across Europe, supermarket freezers have had their temperatures cranked up, destroying millions of euros <span class="annot" data-tooltip="worth /wɜːrθ/ adj. 值…的n. 价值；财产时 态: worthed, worthing, worths">worth</span> of food. At Crédit Mutuel Arkéa, a French bank, funds have been stolen in a burst of fraudulent <span class="annot" data-tooltip="transactions /træn'zækʃn/ n. 处理，办理，执行(一笔)交易；(一项)事务形容词: transactional">transactions</span>. Governments have been hit, too. Air-<span class="annot" data-tooltip="raid /reɪd/ n. 袭击；突袭；搜捕；抢劫vi. 对…进行突然袭击vt. 袭击，突袭RAID磁盘冗余阵列时 态: raided, raidi">raid</span> alert apps have been <span class="annot" data-tooltip="hacked /hæk/ vt. & vi. 劈, 砍vt. 狠踢, 乱踢vi. 咳嗽(发出刺耳声音)(以普通速度)骑马驾驶计程车n. 砍, 劈用靴头踢骑">hacked</span> in both <span class="annot" data-tooltip="ukraine n. 乌克兰（原苏联一加盟共和国，现已独立）">Ukraine</span> and Russia. <span class="annot" data-tooltip="cyber adj. 计算机(网络)的；信息技术的">Cyber</span>-criminals have swiped data from <span class="annot" data-tooltip="denmark /'denmɑːrk/ n. 丹麦(北欧国家,首都哥本哈根)">Denmark</span>’s population registry, America’s Department of Homeland <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">Security</span> and the FBI. Japan has declared a cyber-security state of emergency. On November 3rd Richard Horne, head of Britain’s National Cyber Security Centre, warned that in the coming months there may be an “unprecedented <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> in the <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of cyber incidents”. Even before this onslaught, the threat was growing. Remote work and an increase in internet-connected devices created more <span class="annot" data-tooltip="vulnerabilities /ˌvʌlnərə'bɪləti/ n. 弱点,攻击">vulnerabilities</span>. The prevalence of digital currencies made it easier for hackers to make money from their <span class="annot" data-tooltip="exploits /ɪk'splɔɪt/ vt. 开发，开拓；剥削；开采n. 勋绩；功绩时 态: exploited, exploiting, exploits">exploits</span>. AI has exacerbated the danger. In April <span class="annot" data-tooltip="anthropic /ænˈθrɑpɪk/ adj. 人类的,有关人类的">Anthropic</span>, a frontier lab, said it would not <span class="annot" data-tooltip="release /rɪ'liːs/ vt. 释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]时 态: released，rel">release</span> Mythos, its latest model, to the public. Instead a limited number of software providers and financial institutions were granted access to help them <span class="annot" data-tooltip="plug /plʌɡ/ n. 栓；插头；塞子vi. 塞住；用插头将与电源接通vt. 塞住；插入；接插头时 态: plugged, plugging, ">plug</span> gaps in their cyber-defences. OpenAI, a <span class="annot" data-tooltip="rival /'raɪvl/ n. 竞争对手vt. 与…竞争, 与…匹敌时 态: rivaled, rivalled rivaling, rivalling">rival</span> lab, soon</p>
+<p>launched a similar effort. In recent months frontier models have unearthed huge numbers of <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span> <span class="annot" data-tooltip="flaws /flɔː/ n.瑕疵，缺点；一阵狂风；短暂的风暴；裂缝，裂纹">flaws</span>: the count of “common <span class="annot" data-tooltip="vulnerabilities /ˌvʌlnərə'bɪləti/ n. 弱点,攻击">vulnerabilities</span> and <span class="annot" data-tooltip="exposures /ɪk'spoʊʒər/ n. 暴露, 显露揭发, 揭露(软片等)曝光">exposures</span>” reported to software-makers and specialist <span class="annot" data-tooltip="cyber adj. 计算机(网络)的；信息技术的">cyber</span>-security organisations is soaring (see chart 1). Worryingly, however, the cyber <span class="annot" data-tooltip="capabilities /ˌkeɪpə'bɪləti/ n. 能做某事的素质;能力尚未发挥的天资或素质">capabilities</span> of open-weight models have been rapidly improving in <span class="annot" data-tooltip="parallel /'pærəlel/ n. 平行线；对比vt. 使…与…平行adj. 平行的；类似的，相同的时 态: paralleledalso parallel">parallel</span>, making it easier for even <span class="annot" data-tooltip="novice /'nɑːvɪs/ n. 初学者，新手">novice</span> hackers to identify vulnerabilities (see chart 2). Moreover, AI has sped up the <span class="annot" data-tooltip="process /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">process</span> of <span class="annot" data-tooltip="exploiting /ɪk'splɔɪt/ vt. 开发，开拓；剥削；开采n. 勋绩；功绩时 态: exploited, exploiting, exploits">exploiting</span> a <span class="annot" data-tooltip="vulnerability /ˌvʌlnərə'bɪləti/ n. 弱点,攻击">vulnerability</span> once it is discovered. Working out how to do this used to take days or weeks; now it can take hours. That means there is <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> less time for defenders to <span class="annot" data-tooltip="patch /pætʃ/ n. 眼罩；斑点；碎片；小块土地vt. 修补；掩饰；解决vi. 打补丁时 态: patched, patching, patc">patch</span> flaws in their software. The technology is also fuelling “social engineering” attacks, with models being used to <span class="annot" data-tooltip="automate /'ɔːtəmeɪt/ vt. 使自动化，使自动操作vi. 自动化，自动操作时 态: automated, automating, automates">automate</span> <span class="annot" data-tooltip="phishing 网络仿冒">phishing</span> emails and clone the voices of employees. Employees’ adoption of AI in their everyday work is adding to the problem. This makes companies a “ripe target” for hackers, says Nicole Carignan of Darktrace, a cyber-security firm. Surveys suggest that most workers use some type of AI service that has not been <span class="annot" data-tooltip="vetted /vet/ vt. 诊疗；审查vi. 作兽医；诊疗n. 兽医时 态: vetted, vetting, vets">vetted</span> by IT teams. On October 21st the maker of LiteLLM, a popular open-source AI tool, announced that it had again been compromised by hackers, following a similar incident in March that put thousands of organisations at risk.</p>
+<p>Businesses are <span class="annot" data-tooltip="scrambling 不规则性">scrambling</span> to respond. At big institutions up to a fifth of IT resources are being rerouted to finding and fixing <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span> <span class="annot" data-tooltip="flaws /flɔː/ n.瑕疵，缺点；一阵狂风；短暂的风暴；裂缝，裂纹">flaws</span>, says Vanessa Lyon of BCG, a consultancy. Firms are prioritising software that is exposed to the internet, such as websites and apps. Mark Hughes of IBM, an IT giant, says that in cases where no <span class="annot" data-tooltip="patch /pætʃ/ n. 眼罩；斑点；碎片；小块土地vt. 修补；掩饰；解决vi. 打补丁时 态: patched, patching, patc">patch</span> is available yet for <span class="annot" data-tooltip="vulnerabilities /ˌvʌlnərə'bɪləti/ n. 弱点,攻击">vulnerabilities</span> that have been unearthed, he is telling <span class="annot" data-tooltip="clients /'klaɪənt/ n. 委托人顾客, 常客">clients</span> to contain the at-risk software, perhaps taking it offline or limiting which staff have access. Companies are also fighting AI with AI. Models can be deployed not just to scan for vulnerabilities, but also to <span class="annot" data-tooltip="spot /spɑːt/ n. 斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Po">spot</span> and neutralise suspicious activity and catch <span class="annot" data-tooltip="phishing 网络仿冒">phishing</span> schemes. Goldman Sachs, for example, has greatly increased the share of the bank’s AI budget that it <span class="annot" data-tooltip="allocates /'æləkeɪt/ vt. 分配；拨出；使坐落于vi. 分配；指定时 态: allocated, allocating, allocates">allocates</span> to <span class="annot" data-tooltip="cyber adj. 计算机(网络)的；信息技术的">cyber</span>-security, according to people familiar with the effort. Managing such spending requires careful planning. “How do you make sure you don’t run out of tokens mid-<span class="annot" data-tooltip="breach /briːtʃ/ n. 破坏, 违反破裂, 不和缺口, 裂口vt. 攻破破坏, 违反时 态: breached, breaching, brea">breach</span>?” asks Charlie Lewis of McKinsey, another consultancy. He notes that some firms are setting aside tokens for emergencies, while others are <span class="annot" data-tooltip="establishing /ɪ'stæblɪʃ/ vt. 建立, 成立安置确定, 证实时 态: established, establishing, establishes">establishing</span> <span class="annot" data-tooltip="procedures 规程">procedures</span> to fast-track spending approvals in the event of a cyber-attack. Yet a variety of challenges may <span class="annot" data-tooltip="undermine /ˌʌndər'maɪn/ vt. 在某物下挖洞或挖通道；侵蚀…的基础暗中破坏；逐渐削弱时 态: undermined，undermining，underm">undermine</span> the defenders. One is human gullibility, which even the cleverest cyber-defences will struggle to <span class="annot" data-tooltip="compensate /'kɑːmpenseɪt/ vt. & vi. 补偿, 报酬时 态: compensated, compensating, compensates">compensate</span> for <span class="annot" data-tooltip="entirely /ɪn'taɪərli/ adv. 全部地;完整地;完全地">entirely</span>. The <span class="annot" data-tooltip="heist /haɪst/ vt. 抢劫，拦劫；强夺n. 抢劫；强夺vi. 抢劫时 态: heisted, heisting, heists">heist</span> of Binance, <span class="annot" data-tooltip="allegedly adv. 依其申述">allegedly</span> <span class="annot" data-tooltip="orchestrated /'ɔːrkɪstrə/ n. 管弦乐队形容词: orchestral">orchestrated</span> by North Korean hackers, was reportedly caused by an employee downloading <span class="annot" data-tooltip="malware 恶意软件">malware</span> onto their work computer during a fake job interview. A second challenge is “<span class="annot" data-tooltip="operational /ˌɑːpə'reɪʃənl/ adj. 即可使用的(用于)操作的, 经营的">operational</span> technology”, the industrial hardware used on factories and shop floors. This type of machine <span class="annot" data-tooltip="typically /'tɪpɪkli/ adv. 代表性地;作为特色地;典型地">typically</span> runs on <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span>-old software, and has often been ignored by cyber-security teams because ancient code made it hard for hackers to get at. Yet, as seems to have been the case in the recent freezer attacks, AI is now being used to understand and <span class="annot" data-tooltip="manipulate /mə'nɪpjuleɪt/ vt. 熟练控制[操作]时 态: manipulated, manipulating, manipulates">manipulate</span> such software. Then there is the <span class="annot" data-tooltip="reality /ri'æləti/ n. 现实；真实；实际">reality</span> that many smaller firms lack the necessary resources to <span class="annot" data-tooltip="invest /ɪn'vest/ vt. 投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买时 态: invested, investing, invests">invest</span> in cyber-security <span class="annot" data-tooltip="capabilities /ˌkeɪpə'bɪləti/ n. 能做某事的素质;能力尚未发挥的天资或素质">capabilities</span>. Such businesses can then be used as gateways to other targets, including larger enterprises. The source of a recent <span class="annot" data-tooltip="hack /hæk/ vt. & vi. 劈, 砍vt. 狠踢, 乱踢vi. 咳嗽(发出刺耳声音)(以普通速度)骑马驾驶计程车n. 砍, 劈用靴头踢骑">hack</span> of Polymarket, a betting platform, was a security <span class="annot" data-tooltip="flaw /flɔː/ n.瑕疵，缺点；一阵狂风；短暂的风暴；裂缝，裂纹">flaw</span> in a website- <span class="annot" data-tooltip="monitoring /'mɑːnɪtər/ n. 显示屏；监视器；（计算机）显示器监控器；监测器班长；级长；班代表（尤指派往国外的）监督员，核查员巨蜥v. 监视；检查；跟">monitoring</span> tool it used called DebugBear.</p>
+<p>Some large companies are providing their smaller suppliers with <span class="annot" data-tooltip="cyber adj. 计算机(网络)的；信息技术的">cyber</span>- <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span> advice. Government programmes offer support, too. The PHP incident may furnish a template for how these businesses will be defended in future. <span class="annot" data-tooltip="major /'meɪdʒər/ adj. 主要的；主修的；重要的；较多的n. 成年人；主修科目；陆军少校vi. 主修时 态: majored, majoring,">Major</span> providers of cloud <span class="annot" data-tooltip="infrastructure /'ɪnfrəstrʌktʃər/ n. 基础设施; 基础结构">infrastructure</span>, such as <span class="annot" data-tooltip="amazon /ˈæməˌzɑn/ n. 高大强悍的女人；（古希腊神话中的）亚马孙族女战士Amazonn. 亚马逊河(南美洲大河)">Amazon</span> and Cloudflare, quickly put in <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span> a <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of protections for their customers, such as firewalls, that shielded small businesses without them having to lift a finger. Cyber-security has always been an arms <span class="annot" data-tooltip="race /reɪs/ n. 种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACE">race</span>, and the advent of AI has handed attackers a devastating new weapon. In time the balance may shift back in favour of defenders, as software providers race to offer AI-powered solutions. Until then, businesses will have to <span class="annot" data-tooltip="confront /kən'frʌnt/ vt. 遭遇；比较；面对时 态: confronted, confronting, confronts">confront</span> a dangerous new world. ■ This article was downloaded by zlibrary from https://www.economist.com/business/2026/11/05/firms-are-racing-to-protect- themselves-from-ai-cyber-threats</p>
+<div class="article-separator"></div>
+<div class="article-header">Business · Business | Protection money</div>
+<p>As hackers run riot with AI, its makers want to cash in OpenAI and <span class="annot" data-tooltip="anthropic /ænˈθrɑpɪk/ adj. 人类的,有关人类的">Anthropic</span> <span class="annot" data-tooltip="spy /spaɪ/ vt. 侦察；发现；暗中监视vi. 侦察；当间谍n. 间谍；密探">spy</span> a big opportunity in <span class="annot" data-tooltip="cyber adj. 计算机(网络)的；信息技术的">cyber</span>-<span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span> Nov 5th 2026 There has never been a better time to be a North Korean <span class="annot" data-tooltip="hacker /hæk/ vt. & vi. 劈, 砍vt. 狠踢, 乱踢vi. 咳嗽(发出刺耳声音)(以普通速度)骑马驾驶计程车n. 砍, 劈用靴头踢骑">hacker</span>. Last year the country’s cyber-thieves stole $2bn-<span class="annot" data-tooltip="worth /wɜːrθ/ adj. 值…的n. 价值；财产时 态: worthed, worthing, worths">worth</span> of cryptocurrency, <span class="annot" data-tooltip="triple /'trɪpl/ adj. 三倍的；三方的n. 三倍数；三个一组vi. 增至三倍vt. 使成三倍时 态: tripled, tripling, tr">triple</span> the level two years before, according to Chainalysis, a research firm. This year’s haul is on course to be much bigger. On October 29th $6.3bn was swiped from Binance, the world’s largest crypto exchange. America’s <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">Federal</span> Bureau of Investigation has pointed the finger at the hermit kingdom. The theft is but one example of a worrying <span class="annot" data-tooltip="pattern /'pætərn/ n. 型，样式花样，图案方式，形式榜样，典范vt. 模仿； 仿制以图案装饰时 态: patterned，patterning，">pattern</span>. Recent weeks have brought what looks to be a sharp acceleration in the frequency of damaging <span class="annot" data-tooltip="hacks /hæk/ vt. & vi. 劈, 砍vt. 狠踢, 乱踢vi. 咳嗽(发出刺耳声音)(以普通速度)骑马驾驶计程车n. 砍, 劈用靴头踢骑">hacks</span>. The details behind many remain murky. But what is clear is that advances in artificial intelligence have handed new powers to cyber- criminals, who are using it to churn out <span class="annot" data-tooltip="malware 恶意软件">malware</span>, execute sophisticated</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>ukraine</td><td>— n.</td><td>乌克兰（原苏联一加盟共和国，现已独立）</td></tr>
+<tr><td>needy</td><td>/'niːdi/ adj.</td><td>贫穷的；贫困的；生活艰苦的, neediest</td></tr>
+<tr><td>committed</td><td>/kə'mɪt/ vt.</td><td>犯罪；犯错承诺；使自己受约束托付；交付，committing，commits</td></tr>
+<tr><td>pro</td><td>/proʊ/ n.</td><td>从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞成；支持Pro脯氨酸PROabbr. P</td></tr>
+<tr><td>enter</td><td>/'entər/ vt.</td><td>& vi. 进入, 进去参加, 加入登记, 登录, entering, enters</td></tr>
+<tr><td>wave</td><td>/weɪv/ vi.</td><td>波动；起伏；摇动；呈波形；挥手示意vt. 向…挥手示意；使成波浪形；卷（烫）发n. 波浪；波动；高潮；卷曲；挥手示意, waving, waves</td></tr>
+<tr><td>industries</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>fiscal</td><td>/'fɪskl/ adj.</td><td>国库的；会计的，财政的</td></tr>
+<tr><td>rearmed</td><td>/rɪr/ vt.</td><td>培养；树立；栽种vi. 暴跳；高耸adv. 在后面；向后adj. 后面的；[军]后方的；背面的n. 后面；[美俚]屁股；后方部队, rearing, rears</td></tr>
+<tr><td>illusions</td><td>/ɪ'luːʒn/ n.</td><td>错觉, 幻想, 错误观念假象</td></tr>
+<tr><td>bound</td><td>/baʊnd/ vi.</td><td>跳；弹回vt. 给…划界，限制n. 跳，跳跃，跃进界限，范围adj. 被捆绑的，被束缚的一定的，必定的去，准备去，bounding，bounds</td></tr>
+<tr><td>dilemma</td><td>/dɪ'lemə/ n.</td><td>（进退两难的）窘境，困境</td></tr>
+<tr><td>division</td><td>/dɪ'vɪʒn/ n.</td><td>[数] 除法；部门；分配；分割；师（军队）；赛区</td></tr>
+<tr><td>deter</td><td>/dɪ'tɜːr/ vt.</td><td>制止，阻止；使打消念头, deterring, deters</td></tr>
+<tr><td>appease</td><td>/ə'piːz/ vt.</td><td>使平息；使满足，appeasing，appeases</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>odds</td><td>/ɑːdz/ n.</td><td>不平等；几率；胜算；差别</td></tr>
+<tr><td>scents</td><td>/sent/ n.</td><td>气味，香味香水(动物的)臭迹，遗臭线索(尤指狗的)嗅觉vt. (动物等)嗅出…的气味，嗅出…的存在察觉到(坏事等的)存在；觉得有，怀疑有使充满香味；洒香水于，s</td></tr>
+<tr><td>pledges</td><td>/pledʒ/ n.</td><td>抵押；保证，誓言；抵押品，典当物vt. 保证，许诺；用……抵押；举杯祝……健康, pledging, pledges</td></tr>
+<tr><td>multinational</td><td>/ˌmʌlti'næʃnəl/ adj.</td><td>多国的n. 跨国公司</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>alternative</td><td>/ɔːl'tɜːrnətɪv/ adj.</td><td>可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）可供选择的事物；可供选择的解决办法替代物</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>serious</td><td>/'sɪriəs/ adj.</td><td>严肃的，严重的；认真的；庄重的；危急的</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>complete</td><td>/kəm'pliːt/ adj.</td><td>完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善, completest 缩 写: comp, cpl</td></tr>
+<tr><td>wrecking</td><td>/rek/ n.</td><td>失事；残骸；破坏；[口]失去健康的人vt. 破坏；使失事；拆毁vi. 失事；营救失事船只, wrecking, wrecks</td></tr>
+<tr><td>blunder</td><td>/'blʌndər/ n.</td><td>(因无知、粗心等造成)的错误vi. 犯错误踉踉跄跄地走, blundering, blunders</td></tr>
+<tr><td>tear</td><td>/tɪr，ter/ v.</td><td>撕掉，扯下；撕破；拔掉；拉伤；（非正式）狂奔；饱经……摧残；流眼泪n. 眼泪；（撕破的）洞或裂缝， 撕扯，torn，tearing，tears</td></tr>
+<tr><td>cyber</td><td>— adj.</td><td>计算机(网络)的；信息技术的</td></tr>
+<tr><td>fusion</td><td>/'fjuːʒn/ n.</td><td>融合物；熔化；融合；熔接</td></tr>
+<tr><td>amazon</td><td>/ˈæməˌzɑn/ n.</td><td>高大强悍的女人；（古希腊神话中的）亚马孙族女战士Amazonn. 亚马逊河(南美洲大河)</td></tr>
+<tr><td>cooked</td><td>— adj.</td><td>煮熟的v. 煮（cook的过去式、过去分词形式）</td></tr>
+<tr><td>copper</td><td>/'kɑːpər/ n.</td><td>铜；铜币；[俚]警察adj. 铜的vt. 镀铜于, coppering, coppers</td></tr>
+<tr><td>cautious</td><td>/'kɔːʃəs/ adj.</td><td>小心的, 谨慎的</td></tr>
+<tr><td>serious</td><td>/'sɪriəs/ adj.</td><td>严肃的，严重的；认真的；庄重的；危急的</td></tr>
+<tr><td>cyber</td><td>— adj.</td><td>计算机(网络)的；信息技术的</td></tr>
+<tr><td>unleashed</td><td>/ʌn'liːʃ/ vt.</td><td>把(感情、力量等)释放出来, 发泄, unleashing, unleashes</td></tr>
+<tr><td>wave</td><td>/weɪv/ vi.</td><td>波动；起伏；摇动；呈波形；挥手示意vt. 向…挥手示意；使成波浪形；卷（烫）发n. 波浪；波动；高潮；卷曲；挥手示意, waving, waves</td></tr>
+<tr><td>corporate</td><td>/'kɔːrpərət/ adj.</td><td>社团的, 法人的</td></tr>
+<tr><td>serious</td><td>/'sɪriəs/ adj.</td><td>严肃的，严重的；认真的；庄重的；危急的</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>vulnerabilities</td><td>/ˌvʌlnərə'bɪləti/ n.</td><td>弱点,攻击</td></tr>
+<tr><td>hacks</td><td>/hæk/ vt.</td><td>& vi. 劈, 砍vt. 狠踢, 乱踢vi. 咳嗽(发出刺耳声音)(以普通速度)骑马驾驶计程车n. 砍, 劈用靴头踢骑用马, 供出租的马受雇于出版商的文人出租</td></tr>
+<tr><td>entering</td><td>/'entər/ vt.</td><td>& vi. 进入, 进去参加, 加入登记, 登录, entering, enters</td></tr>
+<tr><td>phase</td><td>/feɪz/ n.</td><td>阶段, 时期(月亮、行星的)位相vt. 分阶段计划[安排], phasing, phases</td></tr>
+<tr><td>critical</td><td>/'krɪtɪkl/ adj.</td><td>批评的，爱挑剔的；决定性的；危险的；临界的；鉴定的；评论的</td></tr>
+<tr><td>flaw</td><td>/flɔː/ </td><td>n.瑕疵，缺点；一阵狂风；短暂的风暴；裂缝，裂纹</td></tr>
+<tr><td>vulnerability</td><td>/ˌvʌlnərə'bɪləti/ n.</td><td>弱点,攻击</td></tr>
+<tr><td>leaked</td><td>/liːk/ n.</td><td>漏洞，裂缝；泄漏vt. 使渗漏，泄露vi. 漏，渗；泄漏出去, leaking, leaks</td></tr>
+<tr><td>patches</td><td>/pætʃ/ n.</td><td>眼罩；斑点；碎片；小块土地vt. 修补；掩饰；解决vi. 打补丁, patching, patches</td></tr>
+<tr><td>worth</td><td>/wɜːrθ/ adj.</td><td>值…的n. 价值；财产, worthing, worths</td></tr>
+<tr><td>transactions</td><td>/træn'zækʃn/ n.</td><td>处理，办理，执行(一笔)交易；(一项)事务</td></tr>
+<tr><td>raid</td><td>/reɪd/ n.</td><td>袭击；突袭；搜捕；抢劫vi. 对…进行突然袭击vt. 袭击，突袭RAID磁盘冗余阵列, raiding, raids</td></tr>
+<tr><td>hacked</td><td>/hæk/ vt.</td><td>& vi. 劈, 砍vt. 狠踢, 乱踢vi. 咳嗽(发出刺耳声音)(以普通速度)骑马驾驶计程车n. 砍, 劈用靴头踢骑用马, 供出租的马受雇于出版商的文人出租</td></tr>
+<tr><td>ukraine</td><td>— n.</td><td>乌克兰（原苏联一加盟共和国，现已独立）</td></tr>
+<tr><td>cyber</td><td>— adj.</td><td>计算机(网络)的；信息技术的</td></tr>
+<tr><td>denmark</td><td>/'denmɑːrk/ n.</td><td>丹麦(北欧国家,首都哥本哈根)</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>vulnerabilities</td><td>/ˌvʌlnərə'bɪləti/ n.</td><td>弱点,攻击</td></tr>
+<tr><td>exploits</td><td>/ɪk'splɔɪt/ vt.</td><td>开发，开拓；剥削；开采n. 勋绩；功绩, exploiting, exploits</td></tr>
+<tr><td>anthropic</td><td>/ænˈθrɑpɪk/ adj.</td><td>人类的,有关人类的</td></tr>
+<tr><td>release</td><td>/rɪ'liːs/ vt.</td><td>释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]，releasing，releases</td></tr>
+<tr><td>plug</td><td>/plʌɡ/ n.</td><td>栓；插头；塞子vi. 塞住；用插头将与电源接通vt. 塞住；插入；接插头, plugging, plugs</td></tr>
+<tr><td>rival</td><td>/'raɪvl/ n.</td><td>竞争对手vt. 与…竞争, 与…匹敌, rivalled rivaling, rivalling rivals, rivals</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>flaws</td><td>/flɔː/ </td><td>n.瑕疵，缺点；一阵狂风；短暂的风暴；裂缝，裂纹</td></tr>
+<tr><td>vulnerabilities</td><td>/ˌvʌlnərə'bɪləti/ n.</td><td>弱点,攻击</td></tr>
+<tr><td>exposures</td><td>/ɪk'spoʊʒər/ n.</td><td>暴露, 显露揭发, 揭露(软片等)曝光</td></tr>
+<tr><td>cyber</td><td>— adj.</td><td>计算机(网络)的；信息技术的</td></tr>
+<tr><td>capabilities</td><td>/ˌkeɪpə'bɪləti/ n.</td><td>能做某事的素质;能力尚未发挥的天资或素质</td></tr>
+<tr><td>parallel</td><td>/'pærəlel/ n.</td><td>平行线；对比vt. 使…与…平行adj. 平行的；类似的，相同的</td></tr>
+<tr><td>novice</td><td>/'nɑːvɪs/ n.</td><td>初学者，新手</td></tr>
+<tr><td>process</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>exploiting</td><td>/ɪk'splɔɪt/ vt.</td><td>开发，开拓；剥削；开采n. 勋绩；功绩, exploiting, exploits</td></tr>
+<tr><td>vulnerability</td><td>/ˌvʌlnərə'bɪləti/ n.</td><td>弱点,攻击</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>patch</td><td>/pætʃ/ n.</td><td>眼罩；斑点；碎片；小块土地vt. 修补；掩饰；解决vi. 打补丁, patching, patches</td></tr>
+<tr><td>automate</td><td>/'ɔːtəmeɪt/ vt.</td><td>使自动化，使自动操作vi. 自动化，自动操作, automating, automates</td></tr>
+<tr><td>phishing</td><td>— </td><td>网络仿冒</td></tr>
+<tr><td>vetted</td><td>/vet/ vt.</td><td>诊疗；审查vi. 作兽医；诊疗n. 兽医, vetting, vets</td></tr>
+<tr><td>scrambling</td><td>— </td><td>不规则性</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>flaws</td><td>/flɔː/ </td><td>n.瑕疵，缺点；一阵狂风；短暂的风暴；裂缝，裂纹</td></tr>
+<tr><td>patch</td><td>/pætʃ/ n.</td><td>眼罩；斑点；碎片；小块土地vt. 修补；掩饰；解决vi. 打补丁, patching, patches</td></tr>
+<tr><td>vulnerabilities</td><td>/ˌvʌlnərə'bɪləti/ n.</td><td>弱点,攻击</td></tr>
+<tr><td>clients</td><td>/'klaɪənt/ n.</td><td>委托人顾客, 常客</td></tr>
+<tr><td>spot</td><td>/spɑːt/ n.</td><td>斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Positioning and Tracki</td></tr>
+<tr><td>phishing</td><td>— </td><td>网络仿冒</td></tr>
+<tr><td>allocates</td><td>/'æləkeɪt/ vt.</td><td>分配；拨出；使坐落于vi. 分配；指定, allocating, allocates</td></tr>
+<tr><td>cyber</td><td>— adj.</td><td>计算机(网络)的；信息技术的</td></tr>
+<tr><td>breach</td><td>/briːtʃ/ n.</td><td>破坏, 违反破裂, 不和缺口, 裂口vt. 攻破破坏, 违反, breaching, breaches</td></tr>
+<tr><td>establishing</td><td>/ɪ'stæblɪʃ/ vt.</td><td>建立, 成立安置确定, 证实, establishing, establishes</td></tr>
+<tr><td>procedures</td><td>— </td><td>规程</td></tr>
+<tr><td>undermine</td><td>/ˌʌndər'maɪn/ vt.</td><td>在某物下挖洞或挖通道；侵蚀…的基础暗中破坏；逐渐削弱，undermining，undermines</td></tr>
+<tr><td>compensate</td><td>/'kɑːmpenseɪt/ vt.</td><td>& vi. 补偿, 报酬, compensating, compensates</td></tr>
+<tr><td>entirely</td><td>/ɪn'taɪərli/ adv.</td><td>全部地;完整地;完全地</td></tr>
+<tr><td>heist</td><td>/haɪst/ vt.</td><td>抢劫，拦劫；强夺n. 抢劫；强夺vi. 抢劫, heisting, heists</td></tr>
+<tr><td>allegedly</td><td>— adv.</td><td>依其申述</td></tr>
+<tr><td>orchestrated</td><td>/'ɔːrkɪstrə/ n.</td><td>管弦乐队</td></tr>
+<tr><td>malware</td><td>— </td><td>恶意软件</td></tr>
+<tr><td>operational</td><td>/ˌɑːpə'reɪʃənl/ adj.</td><td>即可使用的(用于)操作的, 经营的</td></tr>
+<tr><td>typically</td><td>/'tɪpɪkli/ adv.</td><td>代表性地;作为特色地;典型地</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>manipulate</td><td>/mə'nɪpjuleɪt/ vt.</td><td>熟练控制[操作], manipulating, manipulates</td></tr>
+<tr><td>reality</td><td>/ri'æləti/ n.</td><td>现实；真实；实际</td></tr>
+<tr><td>invest</td><td>/ɪn'vest/ vt.</td><td>投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买, investing, invests</td></tr>
+<tr><td>capabilities</td><td>/ˌkeɪpə'bɪləti/ n.</td><td>能做某事的素质;能力尚未发挥的天资或素质</td></tr>
+<tr><td>hack</td><td>/hæk/ vt.</td><td>& vi. 劈, 砍vt. 狠踢, 乱踢vi. 咳嗽(发出刺耳声音)(以普通速度)骑马驾驶计程车n. 砍, 劈用靴头踢骑用马, 供出租的马受雇于出版商的文人出租</td></tr>
+<tr><td>flaw</td><td>/flɔː/ </td><td>n.瑕疵，缺点；一阵狂风；短暂的风暴；裂缝，裂纹</td></tr>
+<tr><td>monitoring</td><td>/'mɑːnɪtər/ n.</td><td>显示屏；监视器；（计算机）显示器监控器；监测器班长；级长；班代表（尤指派往国外的）监督员，核查员巨蜥v. 监视；检查；跟踪调查监听（电话、外国无线电广播等）, </td></tr>
+<tr><td>cyber</td><td>— adj.</td><td>计算机(网络)的；信息技术的</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>major</td><td>/'meɪdʒər/ adj.</td><td>主要的；主修的；重要的；较多的n. 成年人；主修科目；陆军少校vi. 主修, majoring, majors</td></tr>
+<tr><td>infrastructure</td><td>/'ɪnfrəstrʌktʃər/ n.</td><td>基础设施; 基础结构</td></tr>
+<tr><td>amazon</td><td>/ˈæməˌzɑn/ n.</td><td>高大强悍的女人；（古希腊神话中的）亚马孙族女战士Amazonn. 亚马逊河(南美洲大河)</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>race</td><td>/reɪs/ n.</td><td>种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACEabbr. Radiation Adap</td></tr>
+<tr><td>confront</td><td>/kən'frʌnt/ vt.</td><td>遭遇；比较；面对, confronting, confronts</td></tr>
+<tr><td>anthropic</td><td>/ænˈθrɑpɪk/ adj.</td><td>人类的,有关人类的</td></tr>
+<tr><td>spy</td><td>/spaɪ/ vt.</td><td>侦察；发现；暗中监视vi. 侦察；当间谍n. 间谍；密探</td></tr>
+<tr><td>cyber</td><td>— adj.</td><td>计算机(网络)的；信息技术的</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>hacker</td><td>/hæk/ vt.</td><td>& vi. 劈, 砍vt. 狠踢, 乱踢vi. 咳嗽(发出刺耳声音)(以普通速度)骑马驾驶计程车n. 砍, 劈用靴头踢骑用马, 供出租的马受雇于出版商的文人出租</td></tr>
+<tr><td>worth</td><td>/wɜːrθ/ adj.</td><td>值…的n. 价值；财产, worthing, worths</td></tr>
+<tr><td>triple</td><td>/'trɪpl/ adj.</td><td>三倍的；三方的n. 三倍数；三个一组vi. 增至三倍vt. 使成三倍, tripling, triples</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>pattern</td><td>/'pætərn/ n.</td><td>型，样式花样，图案方式，形式榜样，典范vt. 模仿； 仿制以图案装饰，patterning，patterns</td></tr>
+<tr><td>hacks</td><td>/hæk/ vt.</td><td>& vi. 劈, 砍vt. 狠踢, 乱踢vi. 咳嗽(发出刺耳声音)(以普通速度)骑马驾驶计程车n. 砍, 劈用靴头踢骑用马, 供出租的马受雇于出版商的文人出租</td></tr>
+<tr><td>malware</td><td>— </td><td>恶意软件</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day26.html" class="nav-btn">← Day 26</a>
+  <a href="day28.html" class="nav-btn">Day 28 →</a>
+</div>
+
+<div class="progress">📖 Day 27 of 40</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-11-07</div>
+
+</body>
+</html>
