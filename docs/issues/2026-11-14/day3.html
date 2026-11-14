@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leaders | Beyond race</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-11-14</div>
+
+<h1 class="article-title">Leaders | Beyond race</h1>
+<div class="article-section">Leaders</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>This shows that a young, <span class="annot" data-tooltip="fragile /'frædʒl/ adj. 易碎的，脆的虚弱的，脆弱的；经不起折腾的名 词: fragility">fragile</span> <span class="annot" data-tooltip="democracy /dɪ'mɑːkrəsi/ n. 民主, 民主制民主国家">democracy</span> is working. For <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span> the ANC could count on the votes of black South Africans, who are 80% of the population, because of its role in ending apartheid in 1994. In the early years it also delivered the goods: water, electricity, housing and a safety-<span class="annot" data-tooltip="net /net/ n. 网；净利；网络；实价vi. 编网vt. 净赚；得到；用网捕adj. 纯粹的；净余的时 态: netted, nettin">net</span>. But over time its performance has flagged. Voters increasingly see the anc as just another party. They punished it for water <span class="annot" data-tooltip="leaks /liːk/ n. 漏洞，裂缝；泄漏vt. 使渗漏，泄露vi. 漏，渗；泄漏出去时 态: leaked, leaking, leaks">leaks</span>, power cuts and sewage- ridden streets. The <span class="annot" data-tooltip="democratic /ˌdemə'krætɪk/ adj. 民主的, 有民主精神或作风的副 词: democratically">Democratic</span> Alliance (da), the second-largest party, is now only six percentage points behind the ANC, from almost 50 two decades ago. Previously derided as the “white party”, the da is now the largest party in five of the eight big cities—because it has a record of running cities competently. Depending on coalition <span class="annot" data-tooltip="negotiations /nɪˌɡoʊʃi'eɪʃn/ n. 协商，谈判完成(难事)；通过">negotiations</span>, Helen Zille, a da veteran, could soon become Johannesburg’s first white post-apartheid mayor. You could hardly ask for a more encouraging sign that voters are moving on from racial politics. Yet there is much to worry about, too. Most South Africans are disillusioned with democracy. Only 35% of possible voters bothered to cast a <span class="annot" data-tooltip="ballot /'bælət/ n. 投票表决, 选举选票vt. & vi. (使)投票表决时 态: balloted, balloting, ballots">ballot</span> on November 4th. More than a fifth of black voters opted for black-nationalist parties with ideas that are more Mugabe than Mandela. These include uMkhonto weSizwe (mk), which will probably run Durban, the city with the busiest <span class="annot" data-tooltip="port /pɔːrt/ n. 港口，口岸；左舷；舱门；（计算机的）端口vi. 转向左舷vt. 左转舵；持（枪）PORTabbr. Photo Opit">port</span> in sub-Saharan Africa, and the Economic Freedom Fighters (eff). Dangerous grassroots movements, from <span class="annot" data-tooltip="anti /'ænti/ adj. 反对的n. 反对者，反对论者">anti</span>-migrant vigilantes to white nationalists, pose a threat, too. To his <span class="annot" data-tooltip="credit /'kredɪt/ n. 赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)时 态:">credit</span> Cyril Ramaphosa, South Africa’s president since 2018, acknowledges that his party is losing support. Other leaders, in Africa and elsewhere, instead rig elections and <span class="annot" data-tooltip="violently /'vaɪələnt/ adj. 暴力引起的, 粗暴的剧烈的, 强烈的副 词: violently">violently</span> <span class="annot" data-tooltip="cling /klɪŋ/ vi. 坚持，墨守；紧贴；附着时 态: clung clinging, clings">cling</span> to power. Since 2024 at the national level he has led a Government of National Unity, in effect an anc-da coalition, that has brought some political stability and <span class="annot" data-tooltip="sensible /'sensəbl/ adj. 明智的；意识到的；通晓事理的；明显的n. 可感觉到的东西；敏感的人副 词: sensibly">sensible</span> <span class="annot" data-tooltip="reforms /rɪ'fɔːrm/ n. 改革，改良，改造vt. & vi. 改革；改造；改善时 态: reformed，reforming，reforms">reforms</span>. But his <span class="annot" data-tooltip="tenure /'tenjər/ n. 占有；任期vt. 授予…终身职位形容词: tenurial">tenure</span> is <span class="annot" data-tooltip="entering /'entər/ vt. & vi. 进入, 进去参加, 加入登记, 登录时 态: entered, entering, enters">entering</span> its twilight. He will be replaced as party leader in 2027 and must leave the presidency no later than in 2029. He still has much to do to <span class="annot" data-tooltip="secure /sɪ'kjʊr/ adj. 安心的；有把握的可靠的；牢靠的；稳固的；安全的；稳妥的严密把守的；牢固的；坚固的v. （尤指经过努力）获得，取得，实现拴">secure</span> his desired <span class="annot" data-tooltip="legacy /'leɡəsi/ n. 遗产, 遗赠物遗留之物">legacy</span>: as the disciple of Mandela who shored up South Africa’s graft-eroded institutions, <span class="annot" data-tooltip="reformed /rɪ'fɔːrm/ n. 改革，改良，改造vt. & vi. 改革；改造；改善时 态: reformed，reforming，reforms">reformed</span> the economy and thwarted ruinous populism.</p>
+<p>An <span class="annot" data-tooltip="urgent /'ɜːrdʒənt/ adj. 紧急的；急迫的副 词: urgently">urgent</span> priority for the country is to run its cities better. That requires more local power-sharing among parties, just as they have learned to do nationally. The anc will have to get used to being, at times, a <span class="annot" data-tooltip="junior /'dʒuːniər/ adj. 年少的, 较年幼的资历较浅的, 地位较低的n. 年少者地位较低者, 晚辈(美国中学或大学的)三年级学生">junior</span> coalition partner. Some in the party would prefer to unite the so-called “black parties”, <span class="annot" data-tooltip="cutting /'kʌtɪŋ/ n. 切断；剪辑；开凿adj. 严寒的；锋利的；尖酸刻薄的v. 切开；采伐；削减（cut的ing形式）">cutting</span> deals with mk and the eff. But that would lead to much worse and more <span class="annot" data-tooltip="corrupt /kə'rʌpt/ adj. 腐败的，贪污的；堕落的vt. 使堕落，使恶化；使腐烂vi. 腐烂；堕落，腐化时 态: corrupted, corrup">corrupt</span> <span class="annot" data-tooltip="governance /'ɡʌvərnəns/ n. 统治;管理;治理;统治方式;管理方法">governance</span>, which voters would soon notice. Smaller parties, like Actionsa, which won 16% of the vote in Johannesburg, also face a test of their seriousness. A political realignment is under way that brings some risks for the continent’s largest economy. But mostly the change is welcome: voters are rewarding those who govern better, and punishing those who don’t, just as the <span class="annot" data-tooltip="architects /'ɑːrkɪtekt/ n. 建筑师, 设计师">architects</span> of the constitution hoped they would. When the anc failed to deliver a better life for all, voters looked for an <span class="annot" data-tooltip="alternative /ɔːl'tɜːrnətɪv/ adj. 可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）">alternative</span>. Mandela would have understood. ■ This article was downloaded by zlibrary from https://www.economist.com/leaders/2026/11/12/south-africans-are-giving-up-on- nelson-mandelas-party-good</p>
+<div class="article-separator"></div>
+<div class="article-header">Leaders · Leaders | Nvidious</div>
+<p>Jensen Huang must go His should not be the only head to roll Nov 12th 2026 Editor’s note: Jensen Huang resigned on November 12th. Jensen Huang is a <span class="annot" data-tooltip="brilliant /'brɪliənt/ adj. 闪光的, 明亮的光辉的, 辉煌的副 词: brilliantly">brilliant</span> man—and a fool. The boss of <span class="annot" data-tooltip="nvidia 恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商">Nvidia</span>, the world’s <span class="annot" data-tooltip="leading /ˈliːdɪŋ/ adj. 主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）">leading</span> chip designer and until recently its most valuable company, had an extramarital <span class="annot" data-tooltip="affair /ə'fer/ n. 事情；事务；私事；（尤指关系不长久的）风流韵事">affair</span>. His lover was an executive at Megaspeed, a little-known cloud-computing firm that has bought billions of dollars’ <span class="annot" data-tooltip="worth /wɜːrθ/ adj. 值…的n. 价值；财产时 态: worthed, worthing, worths">worth</span> of Nvidia hardware. American officials think she is a Chinese agent, and that her Singapore-based company is a front for <span class="annot" data-tooltip="smuggling /'smʌɡlɪŋ/ n. 走私;偷运">smuggling</span> the politically sensitive chips into China. As we went to press, Nvidia’s board was meeting <span class="annot" data-tooltip="amid /ə'mɪd/ prep. 在其中，在其间">amid</span> reports that it was planning to oust Mr Huang. If it had yet to find the courage to <span class="annot" data-tooltip="sack /sæk/ n. 麻袋, 包一袋的量开除, 解雇洗劫, 劫掠vt. 装入袋中解雇洗劫, 劫掠时 态: sacked, sacking, s">sack</span> him, fresh allegations of another affair—this time with a direct report—will</p>
+<p>surely help. His position is untenable, and he must go. The same is true for American officials implicated in the Megaspeed scandal. Mr Huang’s <span class="annot" data-tooltip="admission /əd'mɪʃn/ n. 准许进入入场费, 入场券承认, 供认形容词: admissive">admission</span> of infidelity on November 8th followed months of rumours about his relationship with Alice Huang (no relation). It remains unclear at what point <span class="annot" data-tooltip="nvidia 恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商">Nvidia</span>’s boss knew that his government <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span> her to be a Chinese agent, or when the <span class="annot" data-tooltip="affair /ə'fer/ n. 事情；事务；私事；（尤指关系不长久的）风流韵事">affair</span> ended. <span class="annot" data-tooltip="nonetheless /ˌnʌnðə'les/ adv. 虽然如此,但是">Nonetheless</span>, he showed a catastrophic failure of judgment. Romance with a customer creates an obvious conflict of interest. And given his position as the steward of an American technology that China desperately covets, Mr Huang should have been extra <span class="annot" data-tooltip="wary /'weri/ adj. 机警的；谨慎的；惟恐的；考虑周到的比较级: warier, wariest">wary</span>. Instead, he lied publicly about the nature of their relationship as recently as last month. If it is true that he also had an affair with a <span class="annot" data-tooltip="subordinate /sə'bɔːrdɪnət/ n. 部属，下属，下级；从属，次要">subordinate</span>, no self-respecting board could allow him to remain. And Mr Huang’s transgressions may prove to have been graver still. Questions swirl as to whether Nvidia’s chief <span class="annot" data-tooltip="counsel /'kaʊnsl/ n. 忠告；讨论；商议；决策；法律顾问vt. 劝告；建议vi. 提出忠告；商讨时 态: counseled, counsell">counsel</span> intervened last year in an investigation into Megaspeed by America’s <span class="annot" data-tooltip="commerce /'kɑːmɜːrs/ n. 商业, 贸易">Commerce</span> Department, which is responsible for enforcing export controls. Mr Huang’s advocacy of looser chip controls, ostensibly to keep China <span class="annot" data-tooltip="hooked /hʊkt/ adj. 钩状的；吸毒成瘾的；入迷的v. 用钩固定；捉住（hook的过去分词）">hooked</span> on American technology, now arouses suspicion, as does his championing of Chinese open-source models. Those who have argued that Mr Huang should stay reason that he is <span class="annot" data-tooltip="essential /ɪ'senʃl/ adj. 基本的；必要的；本质的；精华的">essential</span> to Nvidia, and that Nvidia is essential to America’s lead over China in AI. Yet it is <span class="annot" data-tooltip="precisely /prɪ'saɪsli/ adv. 精确地；恰好；细心地对，的确如此">precisely</span> because Nvidia is so important that he cannot continue as its chief executive. It is in America’s long-term interests that there be penalties for egregious misconduct at the top of firms which are <span class="annot" data-tooltip="crucial /'kruːʃl/ adj. 决定性的；重要的；定局的；决断的副 词: crucially">crucial</span> to national <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span>. And for all Mr Huang’s undoubted brilliance, the interests of Nvidia’s <span class="annot" data-tooltip="shareholders /'ʃerhoʊldər/ n. 股东名 词: shareholding">shareholders</span> would hardly be served by a scandal-ridden chief executive facing a merry-go-round of investigations, including by the FBI. That there is no obvious successor makes the board’s job unenviable, but not impossible. Mr Huang has been deeply <span class="annot" data-tooltip="involved /ɪn'vɑːlvd/ adj. 卷入的；有关的；复杂的v. 涉及；使参与；包含（involve的过去式和过去分词）">involved</span> in every aspect of his business, with as many as 60 executives reporting to him directly—a situation the board should not have allowed. No one has been prepared for the top job. Even so, an experienced executive such as Colette Kress, Nvidia’s finance chief, should be <span class="annot" data-tooltip="capable /'keɪpəbl/ adj. 能干的，能胜任的；有才华的副 词: capably">capable</span> of stepping in to stabilise the business while a permanent successor, perhaps from <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span>, is appointed.</p>
+<p>Mr Huang is not the only one to have shown <span class="annot" data-tooltip="dismal /'dɪzməl/ adj. 凄凉的，忧郁的；阴沉的，沉闷的；可怕的n. 低落的情绪副 词: dismally">dismal</span> judgment in the Megaspeed debacle. The <span class="annot" data-tooltip="commerce /'kɑːmɜːrs/ n. 商业, 贸易">Commerce</span> Department, under Howard Lutnick, has failed abjectly to <span class="annot" data-tooltip="stem /stem/ n. (花草的)茎, (树木的)干词干vt. 遏制[阻止](液体的流动等)时 态: stemmed, stemming, st">stem</span> the flow of America’s best chips to China. It appears to have allowed <span class="annot" data-tooltip="nvidia 恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商">Nvidia</span> to keep selling to Megaspeed even after concerns over <span class="annot" data-tooltip="smuggling /'smʌɡlɪŋ/ n. 走私;偷运">smuggling</span> were raised, and to have resisted calls by the Pentagon, the <span class="annot" data-tooltip="treasury /'treʒəri/ n. 财政部；国库，金库；宝库">Treasury</span> and others in the administration to blacklist the Singaporean firm. Like Mr Huang, Mr Lutnick has advocated weaker chip- export controls. Alas, the <span class="annot" data-tooltip="secretary /'sekrəteri/ n. 秘书书记部长, 大臣形容词: secretarial">secretary</span> of commerce is unlikely to resign. But as Democrats take control of Congress, they will interrogate not only Mr Lutnick but also President Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>, who has bought Nvidia shares and tapped the company to fund his new ballroom. For two years incoherent policy and lax <span class="annot" data-tooltip="enforcement /ɪn'fɔːrsmənt/ n. 强制,实施,执行">enforcement</span> have allowed China to gain ground in the <span class="annot" data-tooltip="race /reɪs/ n. 种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACE">race</span> for a technology that may prove more powerful than nuclear weapons. With luck, that will now change. For years Mr Huang has been courted by governments and treated as a rock star. Like many powerful leaders, including others in <span class="annot" data-tooltip="silicon /'sɪlɪkən/ n. 〈化〉硅">Silicon</span> <span class="annot" data-tooltip="valley /'væli/ n. 流域；山谷；溪谷">Valley</span>, he came to believe that he was too important for the normal rules to apply to him. The same attitude can be found, in even larger doses, within the Trump administration. This culture of impunity must end. It has damaged one of America’s great <span class="annot" data-tooltip="corporate /'kɔːrpərət/ adj. 社团的, 法人的副 词: corporately">corporate</span> successes and undermined its national <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span>. After Mr Huang's, other heads should roll, too. ■ Clarification (November 11th): An earlier <span class="annot" data-tooltip="version /'vɜːrʒn/ n. 变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本">version</span> of this article mentioned that Cantor Fitzgerald, an investment bank run by Howard Lutnick’s sons, holds a large position in Nvidia. That stake reflects its <span class="annot" data-tooltip="asset /'æset/ n. 资产；有用的东西；有利条件；优点">asset</span>-management and other activities on behalf of <span class="annot" data-tooltip="clients /'klaɪənt/ n. 委托人顾客, 常客">clients</span>. This article was downloaded by zlibrary from https://www.economist.com/leaders/2026/11/11/jensen-huang-must-go</p>
+<div class="article-separator"></div>
+<div class="article-header">Leaders · Leaders | Results matter</div>
+<p>China's emissions are <span class="annot" data-tooltip="falling /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">falling</span>. Thank self-interest And its technology is <span class="annot" data-tooltip="helping /'helpɪŋ/ n. （进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的">helping</span> others fight climate change, too Nov 12th 2026 THE CLIMATE does not care where the carbon dioxide accumulating in the atmosphere comes from. It <span class="annot" data-tooltip="simply /'sɪmpli/ adv. 简单地；朴素地；简直；仅仅；坦白地">simply</span> takes note of how much there is and dispenses weather accordingly. The humans who have to live with that changing weather need to take a slightly more nuanced view. Less carbon dioxide being <span class="annot" data-tooltip="emitted /i'mɪt/ vt. 发出，放射；发行；发表EMITabbr. Electromagnetic Induction Tweeter 电磁感应高">emitted</span> is good. Less carbon dioxide being emitted because of structural change—change that should <span class="annot" data-tooltip="decrease /dɪ'kriːs/ n. 减少，减小；减少量vi. 减少，减小vt. 减少，减小时 态: decreased, decreasing, decre">decrease</span> emissions further in years to come—is better. According to the Global Carbon Budget, a consortium that <span class="annot" data-tooltip="monitors /'mɑːnɪtər/ n. 显示屏；监视器；（计算机）显示器监控器；监测器班长；级长；班代表（尤指派往国外的）监督员，核查员巨蜥v. 监视；检查；跟">monitors</span> the carbon cycle, carbon-dioxide emissions from fossil fuels will <span class="annot" data-tooltip="fall /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">fall</span> by 0.4% in 2026. That compares with an average <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> of 0.8% a year over the past seven years. The fall is driven in large part by <span class="annot" data-tooltip="decreases /dɪ'kriːs/ n. 减少，减小；减少量vi. 减少，减小vt. 减少，减小时 态: decreased, decreasing, decre">decreases</span> in Chinese emissions. These, as we report in the China section, have been dropping all year. In the</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>fragile</td><td>/'frædʒl/ adj.</td><td>易碎的，脆的虚弱的，脆弱的；经不起折腾的</td></tr>
+<tr><td>democracy</td><td>/dɪ'mɑːkrəsi/ n.</td><td>民主, 民主制民主国家</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>net</td><td>/net/ n.</td><td>网；净利；网络；实价vi. 编网vt. 净赚；得到；用网捕adj. 纯粹的；净余的, netting, nets</td></tr>
+<tr><td>leaks</td><td>/liːk/ n.</td><td>漏洞，裂缝；泄漏vt. 使渗漏，泄露vi. 漏，渗；泄漏出去, leaking, leaks</td></tr>
+<tr><td>democratic</td><td>/ˌdemə'krætɪk/ adj.</td><td>民主的, 有民主精神或作风的</td></tr>
+<tr><td>negotiations</td><td>/nɪˌɡoʊʃi'eɪʃn/ n.</td><td>协商，谈判完成(难事)；通过</td></tr>
+<tr><td>ballot</td><td>/'bælət/ n.</td><td>投票表决, 选举选票vt. & vi. (使)投票表决, balloting, ballots</td></tr>
+<tr><td>port</td><td>/pɔːrt/ n.</td><td>港口，口岸；左舷；舱门；（计算机的）端口vi. 转向左舷vt. 左转舵；持（枪）PORTabbr. Photo Opitical Recorder Tracke</td></tr>
+<tr><td>anti</td><td>/'ænti/ adj.</td><td>反对的n. 反对者，反对论者</td></tr>
+<tr><td>credit</td><td>/'kredɪt/ n.</td><td>赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)，crediting，credits</td></tr>
+<tr><td>violently</td><td>/'vaɪələnt/ adj.</td><td>暴力引起的, 粗暴的剧烈的, 强烈的</td></tr>
+<tr><td>cling</td><td>/klɪŋ/ vi.</td><td>坚持，墨守；紧贴；附着, clings</td></tr>
+<tr><td>sensible</td><td>/'sensəbl/ adj.</td><td>明智的；意识到的；通晓事理的；明显的n. 可感觉到的东西；敏感的人</td></tr>
+<tr><td>reforms</td><td>/rɪ'fɔːrm/ n.</td><td>改革，改良，改造vt. & vi. 改革；改造；改善，reforming，reforms</td></tr>
+<tr><td>tenure</td><td>/'tenjər/ n.</td><td>占有；任期vt. 授予…终身职位</td></tr>
+<tr><td>entering</td><td>/'entər/ vt.</td><td>& vi. 进入, 进去参加, 加入登记, 登录, entering, enters</td></tr>
+<tr><td>secure</td><td>/sɪ'kjʊr/ adj.</td><td>安心的；有把握的可靠的；牢靠的；稳固的；安全的；稳妥的严密把守的；牢固的；坚固的v. （尤指经过努力）获得，取得，实现拴牢；扣紧；关严保护；保卫；使安全抵押；为</td></tr>
+<tr><td>legacy</td><td>/'leɡəsi/ n.</td><td>遗产, 遗赠物遗留之物</td></tr>
+<tr><td>reformed</td><td>/rɪ'fɔːrm/ n.</td><td>改革，改良，改造vt. & vi. 改革；改造；改善，reforming，reforms</td></tr>
+<tr><td>urgent</td><td>/'ɜːrdʒənt/ adj.</td><td>紧急的；急迫的</td></tr>
+<tr><td>junior</td><td>/'dʒuːniər/ adj.</td><td>年少的, 较年幼的资历较浅的, 地位较低的n. 年少者地位较低者, 晚辈(美国中学或大学的)三年级学生</td></tr>
+<tr><td>cutting</td><td>/'kʌtɪŋ/ n.</td><td>切断；剪辑；开凿adj. 严寒的；锋利的；尖酸刻薄的v. 切开；采伐；削减（cut的ing形式）</td></tr>
+<tr><td>corrupt</td><td>/kə'rʌpt/ adj.</td><td>腐败的，贪污的；堕落的vt. 使堕落，使恶化；使腐烂vi. 腐烂；堕落，腐化, corrupting, corrupts</td></tr>
+<tr><td>governance</td><td>/'ɡʌvərnəns/ n.</td><td>统治;管理;治理;统治方式;管理方法</td></tr>
+<tr><td>architects</td><td>/'ɑːrkɪtekt/ n.</td><td>建筑师, 设计师</td></tr>
+<tr><td>alternative</td><td>/ɔːl'tɜːrnətɪv/ adj.</td><td>可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）可供选择的事物；可供选择的解决办法替代物</td></tr>
+<tr><td>brilliant</td><td>/'brɪliənt/ adj.</td><td>闪光的, 明亮的光辉的, 辉煌的</td></tr>
+<tr><td>nvidia</td><td>— </td><td>恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商</td></tr>
+<tr><td>leading</td><td>/ˈliːdɪŋ/ adj.</td><td>主要的；领导的n. 领导；[印刷]铅板；[计]行距v. 领导（lead的ing形式）</td></tr>
+<tr><td>affair</td><td>/ə'fer/ n.</td><td>事情；事务；私事；（尤指关系不长久的）风流韵事</td></tr>
+<tr><td>worth</td><td>/wɜːrθ/ adj.</td><td>值…的n. 价值；财产, worthing, worths</td></tr>
+<tr><td>smuggling</td><td>/'smʌɡlɪŋ/ n.</td><td>走私;偷运</td></tr>
+<tr><td>amid</td><td>/ə'mɪd/ prep.</td><td>在其中，在其间</td></tr>
+<tr><td>sack</td><td>/sæk/ n.</td><td>麻袋, 包一袋的量开除, 解雇洗劫, 劫掠vt. 装入袋中解雇洗劫, 劫掠, sacking, sacks</td></tr>
+<tr><td>admission</td><td>/əd'mɪʃn/ n.</td><td>准许进入入场费, 入场券承认, 供认</td></tr>
+<tr><td>nvidia</td><td>— </td><td>恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>affair</td><td>/ə'fer/ n.</td><td>事情；事务；私事；（尤指关系不长久的）风流韵事</td></tr>
+<tr><td>nonetheless</td><td>/ˌnʌnðə'les/ adv.</td><td>虽然如此,但是</td></tr>
+<tr><td>wary</td><td>/'weri/ adj.</td><td>机警的；谨慎的；惟恐的；考虑周到的, wariest</td></tr>
+<tr><td>subordinate</td><td>/sə'bɔːrdɪnət/ n.</td><td>部属，下属，下级；从属，次要</td></tr>
+<tr><td>counsel</td><td>/'kaʊnsl/ n.</td><td>忠告；讨论；商议；决策；法律顾问vt. 劝告；建议vi. 提出忠告；商讨, counselled counseling, counselling counsel</td></tr>
+<tr><td>commerce</td><td>/'kɑːmɜːrs/ n.</td><td>商业, 贸易</td></tr>
+<tr><td>hooked</td><td>/hʊkt/ adj.</td><td>钩状的；吸毒成瘾的；入迷的v. 用钩固定；捉住（hook的过去分词）</td></tr>
+<tr><td>essential</td><td>/ɪ'senʃl/ adj.</td><td>基本的；必要的；本质的；精华的</td></tr>
+<tr><td>precisely</td><td>/prɪ'saɪsli/ adv.</td><td>精确地；恰好；细心地对，的确如此</td></tr>
+<tr><td>crucial</td><td>/'kruːʃl/ adj.</td><td>决定性的；重要的；定局的；决断的</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>shareholders</td><td>/'ʃerhoʊldər/ n.</td><td>股东</td></tr>
+<tr><td>involved</td><td>/ɪn'vɑːlvd/ adj.</td><td>卷入的；有关的；复杂的v. 涉及；使参与；包含（involve的过去式和过去分词）</td></tr>
+<tr><td>capable</td><td>/'keɪpəbl/ adj.</td><td>能干的，能胜任的；有才华的</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>dismal</td><td>/'dɪzməl/ adj.</td><td>凄凉的，忧郁的；阴沉的，沉闷的；可怕的n. 低落的情绪</td></tr>
+<tr><td>commerce</td><td>/'kɑːmɜːrs/ n.</td><td>商业, 贸易</td></tr>
+<tr><td>stem</td><td>/stem/ n.</td><td>(花草的)茎, (树木的)干词干vt. 遏制[阻止](液体的流动等), stemming, stems</td></tr>
+<tr><td>nvidia</td><td>— </td><td>恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商</td></tr>
+<tr><td>smuggling</td><td>/'smʌɡlɪŋ/ n.</td><td>走私;偷运</td></tr>
+<tr><td>treasury</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>secretary</td><td>/'sekrəteri/ n.</td><td>秘书书记部长, 大臣</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>enforcement</td><td>/ɪn'fɔːrsmənt/ n.</td><td>强制,实施,执行</td></tr>
+<tr><td>race</td><td>/reɪs/ n.</td><td>种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACEabbr. Radiation Adap</td></tr>
+<tr><td>silicon</td><td>/'sɪlɪkən/ n.</td><td>〈化〉硅</td></tr>
+<tr><td>valley</td><td>/'væli/ n.</td><td>流域；山谷；溪谷</td></tr>
+<tr><td>corporate</td><td>/'kɔːrpərət/ adj.</td><td>社团的, 法人的</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>version</td><td>/'vɜːrʒn/ n.</td><td>变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本</td></tr>
+<tr><td>asset</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>clients</td><td>/'klaɪənt/ n.</td><td>委托人顾客, 常客</td></tr>
+<tr><td>falling</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>helping</td><td>/'helpɪŋ/ n.</td><td>（进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的</td></tr>
+<tr><td>simply</td><td>/'sɪmpli/ adv.</td><td>简单地；朴素地；简直；仅仅；坦白地</td></tr>
+<tr><td>emitted</td><td>/i'mɪt/ vt.</td><td>发出，放射；发行；发表EMITabbr. Electromagnetic Induction Tweeter 电磁感应高频扬声器, emitting, emit</td></tr>
+<tr><td>decrease</td><td>/dɪ'kriːs/ n.</td><td>减少，减小；减少量vi. 减少，减小vt. 减少，减小, decreasing, decreases</td></tr>
+<tr><td>monitors</td><td>/'mɑːnɪtər/ n.</td><td>显示屏；监视器；（计算机）显示器监控器；监测器班长；级长；班代表（尤指派往国外的）监督员，核查员巨蜥v. 监视；检查；跟踪调查监听（电话、外国无线电广播等）, </td></tr>
+<tr><td>fall</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>decreases</td><td>/dɪ'kriːs/ n.</td><td>减少，减小；减少量vi. 减少，减小vt. 减少，减小, decreasing, decreases</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day2.html" class="nav-btn">← Day 2</a>
+  <a href="day4.html" class="nav-btn">Day 4 →</a>
+</div>
+
+<div class="progress">📖 Day 3 of 41</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-11-14</div>
+
+</body>
+</html>

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>By Invitation | Defenders, unleash thyselves!</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-11-14</div>
+
+<h1 class="article-title">By Invitation | Defenders, unleash thyselves!</h1>
+<div class="article-section">By Invitation</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p><span class="annot" data-tooltip="crucially /'kruːʃl/ adj. 决定性的；重要的；定局的；决断的副 词: crucially">Crucially</span>, AI can fix <span class="annot" data-tooltip="flaws /flɔː/ n.瑕疵，缺点；一阵狂风；短暂的风暴；裂缝，裂纹">flaws</span> after finding them. In DARPA’s AI <span class="annot" data-tooltip="cyber adj. 计算机(网络)的；信息技术的">Cyber</span> Challenge last year, AI systems scanning open-source software of the kind that underpins <span class="annot" data-tooltip="critical /'krɪtɪkl/ adj. 批评的，爱挑剔的；决定性的；危险的；临界的；鉴定的；评论的副 词: critically">critical</span> <span class="annot" data-tooltip="infrastructure /'ɪnfrəstrʌktʃər/ n. 基础设施; 基础结构">infrastructure</span> <span class="annot" data-tooltip="patched /pætʃ/ n. 眼罩；斑点；碎片；小块土地vt. 修补；掩饰；解决vi. 打补丁时 态: patched, patching, patc">patched</span> 43 planted <span class="annot" data-tooltip="vulnerabilities /ˌvʌlnərə'bɪləti/ n. 弱点,攻击">vulnerabilities</span>, and uncovered 18 previously unknown flaws, fixing 11 of them. For ageing equipment that cannot safely be patched, AI can give each <span class="annot" data-tooltip="flaw /flɔː/ n.瑕疵，缺点；一阵狂风；短暂的风暴；裂缝，裂纹">flaw</span> a <span class="annot" data-tooltip="specific /spə'sɪfɪk/ adj. 特殊的，特定的；明确的；详细的；具有特效的n. 特效药；细节；特性副 词: specifically">specific</span> <span class="annot" data-tooltip="workaround /'wɜːrkəraʊnd/ n. 工作区">workaround</span>, such as a firewall rule or a settings change, tested on a digital twin before it goes live. And AI is cheap enough that small, under-staffed <span class="annot" data-tooltip="utilities /juː'tɪləti/ n. 效用；实用；功用；公共设施adj. 有多种用途的；通用的；实用的">utilities</span> can use it too. None of this happens by default. AI favours defenders only if they move with urgency. Governments should start with the infrastructure operators and shared suppliers whose failure would cause the greatest <span class="annot" data-tooltip="disruption n. 中断,分裂,瓦解,破坏">disruption</span>, enlisting AI labs to find flaws in their code or <span class="annot" data-tooltip="firmware /'fɜːrmwer/ n. 固件；韧件">firmware</span> and produce fixes by set deadlines. Governments should share the cost for smaller operators. Success should be measured by how quickly threats are contained and whether <span class="annot" data-tooltip="essential /ɪ'senʃl/ adj. 基本的；必要的；本质的；精华的">essential</span> services survive an attack. Critical-infrastructure operators could <span class="annot" data-tooltip="address /ə'dres/ v. 写（收信人）姓名地址；致函演说；演讲称呼（某人）；冠以（某种称呼）设法解决；处理；对付向…说话n. 地址；住址；通信处 ">address</span> the highest-priority systems within a year, judging by how quickly they met the cyber-<span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span> standards issued by the Biden administration. Findings should be shared with trusted partners using the co-ordinated- <span class="annot" data-tooltip="disclosure /dɪs'kloʊʒər/ n. 公开,透露被公开的事情,被披露的秘闻">disclosure</span> <span class="annot" data-tooltip="practices /'præktɪs/ n. 练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规时 态: practiced，practicing，">practices</span> that keep fixes from tipping off attackers before systems are patched. The aim should be for a discovery in one country to strengthen every country running the same technology. Such <span class="annot" data-tooltip="practical /'præktɪkl/ adj. 实际的，实践的实用的注重实际的；有实际工作能力的名 词: practicality">practical</span> partnerships are more <span class="annot" data-tooltip="urgent /'ɜːrdʒənt/ adj. 紧急的；急迫的副 词: urgently">urgent</span> than AI treaties, and the foundations exist. NATO’s <span class="annot" data-tooltip="annual /'ænjuəl/ adj. 年度的；每年的n. 年刊，年鉴；一年生植物副 词: annually">annual</span> Locked Shields <span class="annot" data-tooltip="exercise /'eksərsaɪz/ n. 练习；运动；运用；操练；典礼；礼拜vt. 练习；锻炼；使用；使忙碌；使惊恐vi. 运动；练习时 态: exercised">exercise</span> brings together thousands of participants from dozens of countries to defend power <span class="annot" data-tooltip="grids /ɡrɪd/ n. 格子,格栏地图上的坐标方格输电网">grids</span>, water systems and other networks against live attacks. The <span class="annot" data-tooltip="exercises /'eksərsaɪz/ n. 练习；运动；运用；操练；典礼；礼拜vt. 练习；锻炼；使用；使忙碌；使惊恐vi. 运动；练习时 态: exercised">exercises</span> could be expanded to include using AI to generate <span class="annot" data-tooltip="patches /pætʃ/ n. 眼罩；斑点；碎片；小块土地vt. 修补；掩饰；解决vi. 打补丁时 态: patched, patching, patc">patches</span> and controls, sharing the results across the alliance. Here, too, there is precedent. In 2021 America formed the International <span class="annot" data-tooltip="counter /'kaʊntər/ n. 柜台, 柜台式长桌计数器vt. & vi. 对抗, 反驳adv. 反方向地, 对立地时 态: countered, co">Counter</span> Ransomware <span class="annot" data-tooltip="initiative /ɪ'nɪʃətɪv/ n. 主动性, 首创精神主动的行动, 倡议主动权">Initiative</span>, now made up of <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> 70 countries. Members share threat warnings and forensic techniques, including how to trace ransoms laundered through the crypto ecosystem. They co-ordinate policy; for example, by pledging not to pay ransoms. <span class="annot" data-tooltip="alongside /əˌlɔːŋ'saɪd/ adv. 靠着边，沿着边prep. (表示位置)在…旁边；沿着…的边；与…并排靠拢着(表示比较)与…放在一起比较(表示伴随)与…一">Alongside</span> law- <span class="annot" data-tooltip="enforcement /ɪn'fɔːrsmənt/ n. 强制,实施,执行">enforcement</span> takedowns of gangs and their money-laundering networks, the</p>
+<p>effort has squeezed the business: after peaking at over $1bn in 2023, ransom payments have fallen each year since. The time has come to use AI as <span class="annot" data-tooltip="aggressively /ə'ɡresɪv/ adj. 好争斗的, 挑衅的, 侵略性的副 词: aggressively">aggressively</span> on defence as adversaries will use it in attack. A <span class="annot" data-tooltip="serious /'sɪriəs/ adj. 严肃的，严重的；认真的；庄重的；危急的副 词: seriously">serious</span> international <span class="annot" data-tooltip="agenda /ə'dʒendə/ n. （政治）议题；议事日程；目的">agenda</span> for AI safety should explain not only how it will contain the risks of a new technology, but how it will keep the lights on for the world’s citizens, and how soon. ■ Anne Neuberger is a general partner and the head of global <span class="annot" data-tooltip="affairs /ə'fer/ n. 事情；事务；私事；（尤指关系不长久的）风流韵事">affairs</span> at Andreessen Horowitz. She previously served as <span class="annot" data-tooltip="deputy /'depjuti/ n. 代理人，代表adj. 副的；代理的">Deputy</span> National <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">Security</span> Adviser of the United States. This article was downloaded by zlibrary from https://www.economist.com/by-<span class="annot" data-tooltip="invitation /ˌɪnvɪ'teɪʃn/ n. 邀请请柬, 请帖">invitation</span>/2026/11/12/ai-sceptics-focus-on-the-wrong- threats</p>
+<div class="article-separator"></div>
+<div class="article-header">Briefing · Briefing | Anticipating roaring revenue</div>
+<p>Can the AI boom make enough money to <span class="annot" data-tooltip="sustain /sə'steɪn/ vt. 承受，支撑维持长期保持；使继续经受，遭受时 态: sustained，sustaining，sustains">sustain</span> itself? Wall Street has started to worry Nov 12th 2026 Both artificial intelligence and the <span class="annot" data-tooltip="tricky /'trɪki/ adj. 机警的；狡猾的比较级: trickier, trickiest">tricky</span> business of valuing stocks <span class="annot" data-tooltip="boil /bɔɪl/ vi. 煮沸，沸腾；激动，激昂vt. 煮沸，烧开；使…激动；使…蒸发n. 沸腾，煮沸；疖子时 态: boiled, boilin">boil</span> down to questions of timelines. <span class="annot" data-tooltip="establishing /ɪ'stæblɪʃ/ vt. 建立, 成立安置确定, 证实时 态: established, establishing, establishes">Establishing</span> what a company is <span class="annot" data-tooltip="worth /wɜːrθ/ adj. 值…的n. 价值；财产时 态: worthed, worthing, worths">worth</span> is a <span class="annot" data-tooltip="hazy /'heɪzi/ adj. 朦胧的；模糊的；有薄雾的比较级: hazier, haziest">hazy</span> <span class="annot" data-tooltip="exercise /'eksərsaɪz/ n. 练习；运动；运用；操练；典礼；礼拜vt. 练习；锻炼；使用；使忙碌；使惊恐vi. 运动；练习时 态: exercised">exercise</span> at the best of times, full of <span class="annot" data-tooltip="courageous /kə'reɪdʒəs/ adj. 勇敢的;无畏的adv. 勇敢地;无畏地n. 勇敢;无畏副 词: courageously">courageous</span> assumptions about which cashflows will arrive when. <span class="annot" data-tooltip="consider /kən'sɪdər/ vt. & vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及时 态: considered, considering, ">Consider</span>, too, timelines for AI—the years, few or many, until the technology’s <span class="annot" data-tooltip="capabilities /ˌkeɪpə'bɪləti/ n. 能做某事的素质;能力尚未发挥的天资或素质">capabilities</span> <span class="annot" data-tooltip="surpass /sər'pæs/ vt. 胜过，优于；超越；非…所能办到或理解时 态: surpassed, surpassing, surpasses">surpass</span> humans’— and the exercise veers into incoherence. Markets do not enjoy the luxury of <span class="annot" data-tooltip="coherence /koʊ'hɪrəns/ n. 条理性,连贯性,一致性">coherence</span>, though. Take the imminent listing of <span class="annot" data-tooltip="anthropic /ænˈθrɑpɪk/ adj. 人类的,有关人类的">Anthropic</span>, the first big pure-play AI developer to go public. Anthropic’s prospectus <span class="annot" data-tooltip="touts /taʊt/ vt. 招徕；兜售；刺探赛马情报vi. 兜售；招徕顾客；拉选票n. 侦查者；兜售者Tout陶特(姓氏)时 态: touted, ">touts</span> the many remarkable (and <span class="annot" data-tooltip="profitable /'prɑːfɪtəbl/ adj. 有利可图的; 有益的副 词: profitably">profitable</span>) ways in which advanced AI could transform the economy, but also warns would-be buyers off. “Our decision-making may run <span class="annot" data-tooltip="counter /'kaʊntər/ n. 柜台, 柜台式长桌计数器vt. & vi. 对抗, 反驳adv. 反方向地, 对立地时 态: countered, co">counter</span> to investors’</p>
+<p>expectations,” it says, for instance with “forward investments…that may seem irresponsibly large at first glance”. Still, somewhere between Utopia and Armageddon, investors need to find a way to pick a <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span>. <span class="annot" data-tooltip="anthropic /ænˈθrɑpɪk/ adj. 人类的,有关人类的">Anthropic</span> is aiming to float at a valuation of around $1.5trn, which would make it one of the 15 biggest public companies in the world. The listing comes at a precarious time for AI. Jitters about data-centre debt collided with midterm elections in America, where AI-<span class="annot" data-tooltip="sceptical /'skeptɪkl/ adj. 不肯相信的; 常怀疑的">sceptical</span> <span class="annot" data-tooltip="candidates /'kændɪdət，ˈkændɪdeɪt/ n. 申请求职者, 候选人报考者名 词: candidacy">candidates</span> prevailed, and, bizarrely, with the <span class="annot" data-tooltip="revelation /ˌrevə'leɪʃn/ n. 显露, 泄露, 透露, 揭露被揭露的事, 暴露出来的事">revelation</span> that Jensen Huang, the boss of the chipmaker <span class="annot" data-tooltip="nvidia 恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商">Nvidia</span>, was having an <span class="annot" data-tooltip="affair /ə'fer/ n. 事情；事务；私事；（尤指关系不长久的）风流韵事">affair</span> with an alleged Chinese agent. Before all that, Anthropic looked set for a valuation of $2trn or more (see chart 1). OpenAI, its <span class="annot" data-tooltip="main /meɪn/ adj. 主要的; 最重要的n. 总管道; 干线">main</span> <span class="annot" data-tooltip="rival /'raɪvl/ n. 竞争对手vt. 与…竞争, 与…匹敌时 态: rivaled, rivalled rivaling, rivalling">rival</span>, has <span class="annot" data-tooltip="punted /pʌn/ n. 双关语；俏皮话vi. 说双关语；说俏皮话时 态: punned，punning，puns">punted</span> its <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> listing into next year. Nvidia’s share price was about 30% below its recent peak as The Economist went to press. The “neoclouds”, which borrow, often prodigiously, to run data centres, have done worse. But a comeback may be on. Shares in CoreWeave, one of the largest, rose by 25% on November 11th, following strong earnings. The stock had previously been down two- thirds from its high point this year in May. And Anthropic’s IPO is, reportedly, heavily oversubscribed.</p>
+<p>So the IPO will be a weighty moment. However many trillions <span class="annot" data-tooltip="anthropic /ænˈθrɑpɪk/ adj. 人类的,有关人类的">Anthropic</span> lists at, from then on it—and, increasingly, AI more widely—will be judged not with the gauzy optimism of venture capitalists but with the beady eyes of Wall Street. Investors will <span class="annot" data-tooltip="wonder /'wʌndər/ vt. & vi. 对…感到疑惑想知道；问自己n. 惊奇，惊叹，惊异，惊诧奇人，奇才奇观，奇景，奇迹，奇事时 态: wonder">wonder</span> whether the technology can <span class="annot" data-tooltip="possibly /'pɑːsəbli/ adv. 可能地；大概；也许">possibly</span> generate enough cash to justify these valuations or underwrite the <span class="annot" data-tooltip="colossal /kə'lɑːsl/ adj. 巨大的；异常的，非常的">colossal</span> scale of data-centre construction planned over the next few years. The numbers are vast. The Economist calculates that AI needs around $3trn in <span class="annot" data-tooltip="revenue /'revənuː/ n. 收入，收益；财政收入，税收">revenue</span> by 2030 for the planned data-centre buildout to offer a conventional rate of return. Other analysts, including Stijn <span class="annot" data-tooltip="van /væn/ n. 先锋；厢式货车；[计]增值网vt. 用车搬运Van范(男子名)时 态: vanned, vanning, vans">Van</span> Nieuwerburgh of Columbia Business School and a <span class="annot" data-tooltip="duo /'duːoʊ/ n. 成对的表演者">duo</span> at the Stanford Institute for Economic Policy Research, have <span class="annot" data-tooltip="reached /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reached</span> similar figures. To put that <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> into perspective, all <span class="annot" data-tooltip="compensation /ˌkɑːmpen'seɪʃn/ n. 补偿[赔偿]物, 补偿[赔偿]金">compensation</span> for all workers—<span class="annot" data-tooltip="wages /weɪdʒ/ vi. 进行；发动；从事n. 工资；报偿；代价vt. 开展；进行时 态: waged, waging, wages">wages</span>, plus <span class="annot" data-tooltip="perks /pɜːrk/ vi. 昂首；振作vt. 打扮；竖起；使振作n. 小费；额外收入时 态: perked, perking, perks">perks</span> like health insurance—adds up to around $16.5trn in America, or $35trn across the OECD, a club mostly of rich countries. So AI would need to lay claim to almost a tenth of today’s rich-world wages for the data-centre boom to pencil out. Of course, that could happen in a more <span class="annot" data-tooltip="benign /bɪ'naɪn/ adj. 良性的；吉利的；和蔼的，亲切的副 词: benignly">benign</span> fashion if the entire economy grows <span class="annot" data-tooltip="swiftly /swɪft/ adj. 迅速的, 速度快的敏捷的, 反应快的SWIFTabbr. Society for Worldwide Interbank">swiftly</span>—and AI evangelists do also expect dramatic growth from here. Safe to say, AI isn’t quite there yet. Anthropic has reported that its annualised run-rate revenue at the end of October was $81bn. OpenAI’s was $50bn as of the end of September. <span class="annot" data-tooltip="toss /tɔːs/ n. 投掷；摇荡；投掷的距离；掷币赌胜负vt. 投掷；使…不安；突然抬起；使…上下摇动；与…掷币打赌vi. 被乱扔；颠簸；辗转">Toss</span> in smaller developers, as well as Google’s, Meta’s and Microsoft’s <span class="annot" data-tooltip="revenues /'revənuː/ n. 收入，收益；财政收入，税收">revenues</span> from their <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> models, and the AI model-makers might be generating around $200bn in total. All that cash sits at the top of a <span class="annot" data-tooltip="funnel /'fʌnl/ n. 漏斗；烟囱vt. 通过漏斗或烟囱等；使成漏斗形vi. 通过漏斗等；成漏斗形时 态: funneled, funnelle">funnel</span>, cascading downward into the rest of the ecosystem—keeping other AI businesses afloat and persuading investors to hand them more money. The models that Anthropic, OpenAI and the others sell must be run on chips, most often designed by <span class="annot" data-tooltip="nvidia 恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商">Nvidia</span> and manufactured by Taiwan <span class="annot" data-tooltip="semiconductor /'semikəndʌktər/ n. 〈物〉半导体形容词: semiconducting">Semiconductor</span> <span class="annot" data-tooltip="manufacturing /ˌmænju'fæktʃərɪŋ/ n. 制造业，工业adj. 制造业的；制造的">Manufacturing</span> Company. Those chips in turn rely on a bevy of components. A <span class="annot" data-tooltip="shortage /'ʃɔːrtɪdʒ/ n. 不足; 缺少; 缺少量; 不足额">shortage</span> of one, <span class="annot" data-tooltip="ram /ræm/ abbr. Royal Academy of Music〈英〉皇家音乐学院">RAM</span>, a type of memory, sent the stocks of the <span class="annot" data-tooltip="main /meɪn/ adj. 主要的; 最重要的n. 总管道; 干线">main</span> South Korean memory-makers, Samsung and SK Hynix, soaring in the spring. Those chips must then be housed in a data centre, festooned with further complicated electronics. All that needs electricity to power it, too: a windfall for the makers of gas turbines, which generate much of the electricity behind the AI</p>
+<p>boom. Everything in AI-world, in other words, relies on <span class="annot" data-tooltip="revenue /'revənuː/ n. 收入，收益；财政收入，税收">revenue</span> at the top of that <span class="annot" data-tooltip="funnel /'fʌnl/ n. 漏斗；烟囱vt. 通过漏斗或烟囱等；使成漏斗形vi. 通过漏斗等；成漏斗形时 态: funneled, funnelle">funnel</span> continuing to flow in, <span class="annot" data-tooltip="ideally /aɪ'diːəli/ adv. 理想地；观念上地">ideally</span> at an ever-increasing rate. Getting from $200bn to $3trn means a <span class="annot" data-tooltip="leap /liːp/ vi. 跳，跳跃n. 跳跃；飞跃vt. 跳跃，跳过；使跃过时 态: leaped, leapt leaping, leaps">leap</span> of an order of <span class="annot" data-tooltip="magnitude /'mæɡnɪtuːd/ n. 巨大; 重要性〈天〉星等">magnitude</span> (or an OOM, in <span class="annot" data-tooltip="silicon /'sɪlɪkən/ n. 〈化〉硅">Silicon</span> <span class="annot" data-tooltip="valley /'væli/ n. 流域；山谷；溪谷">Valley</span>-speak). Could that happen? Because so many of the largest players in AI have been privately held, tracing the <span class="annot" data-tooltip="exact /ɪɡ'zækt/ adj. 精确的；准确的，精密的vt. 强求；要求；急需vi. 勒索钱财时 态: exacted, exacting, exact">exact</span> path of their <span class="annot" data-tooltip="revenues /'revənuː/ n. 收入，收益；财政收入，税收">revenues</span> is <span class="annot" data-tooltip="tricky /'trɪki/ adj. 机警的；狡猾的比较级: trickier, trickiest">tricky</span>. But the previous OOM did not take long. The combined revenues of <span class="annot" data-tooltip="anthropic /ænˈθrɑpɪk/ adj. 人类的,有关人类的">Anthropic</span>, OpenAI and a <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of smaller developers (but not Google, Meta and so on) probably crossed $10bn around March of 2025. Today, that figure is $130bn. The next leap will be tougher. One cause of AI’s recent <span class="annot" data-tooltip="wobble /'wɑːbl/ vi. 摇晃；摇摆；游移不定n. 摆动；不稳定；摇晃vt. 使摇摆；使颤动；摇动时 态: wobbled, wobbling, ">wobble</span> was a fear that revenue growth may be slowing. <span class="annot" data-tooltip="alternative /ɔːl'tɜːrnətɪv/ adj. 可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）">Alternative</span>-data proxies like <span class="annot" data-tooltip="ramp /ræmp/ n. 斜坡，坡道；敲诈vi. 蔓延；狂跳乱撞；敲诈vt. 敲诈；使有斜面时 态: ramped, ramping, ramps">Ramp</span>, which tracks AI spending on company <span class="annot" data-tooltip="credit /'kredɪt/ n. 赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)时 态:">credit</span> cards, and TickerTrends, which collates data such as social-media posts and spending <span class="annot" data-tooltip="patterns /'pætərn/ n. 型，样式花样，图案方式，形式榜样，典范vt. 模仿； 仿制以图案装饰时 态: patterned，patterning，">patterns</span> from <span class="annot" data-tooltip="panels /'pænl/ n. 仪表板；嵌板；座谈小组，全体陪审员vt. 嵌镶板时 态: paneled, panelled paneling, pan">panels</span> of businesses and consumers, point to slowing revenue growth among the AI developers. A model fitting those data sets to the revenue figures that Anthropic, OpenAI and others have released suggests three-month revenue growth slowed from 80-90% in the spring to 12% in October (see chart 2). By usual standards, even the smallest of those numbers reflects extraordinarily rapid gains. And not every proxy is <span class="annot" data-tooltip="gloomy /'ɡluːmi/ adj. 黑暗的；沮丧的；阴郁的比较级: gloomier, gloomiest">gloomy</span>; figures from</p>
+<p>OpenRouter, a tool which helps developers switch AI providers, now show spending on <span class="annot" data-tooltip="anthropic /ænˈθrɑpɪk/ adj. 人类的,有关人类的">Anthropic</span>’s, OpenAI‘s and Google’s models surging out of an earlier funk. Still, the more that <span class="annot" data-tooltip="revenue /'revənuː/ n. 收入，收益；财政收入，税收">revenue</span> growth <span class="annot" data-tooltip="tapers /'teɪpər/ n. 细蜡烛，烛芯；逐渐变弱；锥形物vi. 逐渐减少；逐渐变弱vt. 逐渐减少；使成锥形时 态: tapered, taper">tapers</span> off, the further out of <span class="annot" data-tooltip="reach /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reach</span> the next OOM may slip. Once Anthropic and, eventually, OpenAI list, the reporting requirements of public markets will make any such slowdown <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> easier to <span class="annot" data-tooltip="spot /spɑːt/ n. 斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Po">spot</span>. A trillion-dollar AI economy would change the world, in a way that today’s hundred-billion-dollar one has not. Right now, the technology’s economic impact is still limited <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span> the AI sector itself. Profit <span class="annot" data-tooltip="margins /'mɑːrdʒɪn/ n. 页边缘；利润，余裕；页边的空白">margins</span> and revenue per employee have surged at the “<span class="annot" data-tooltip="magnificent /mæɡ'nɪfɪsnt/ adj. 壮丽的, 伟大的, 华丽的, 高贵的副 词: magnificently">Magnificent</span> Seven” tech giants, but are close to flat for the “S&P 493”, the rest of America’s <span class="annot" data-tooltip="benchmark /'bentʃmɑːrk/ 基准时 态: benchmarked, benchmarking, benchmarks">benchmark</span> S&P 500 index of big companies. Software stocks have now largely rebounded from the clobbering they took at the start of the year, during the “SaaSpocalypse”, when investors worried that automated coding would make it easy to cheaply duplicate <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> any software product. Macroeconomic figures also have not moved much. <span class="annot" data-tooltip="productivity /ˌproʊdʌk'tɪvəti/ n. 生产率, 生产力">Productivity</span> growth has been strong in America, but not much stronger of late than in the early 2020s. Meanwhile, it remains painfully slow elsewhere in the rich world, even in countries like Britain whose firms have <span class="annot" data-tooltip="adopted /ə'dɑːpt/ vt. 收养采用, 采纳, 采取正式接受, 通过时 态: adopted, adopting, adopts">adopted</span> AI at a similar pace</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>crucially</td><td>/'kruːʃl/ adj.</td><td>决定性的；重要的；定局的；决断的</td></tr>
+<tr><td>flaws</td><td>/flɔː/ </td><td>n.瑕疵，缺点；一阵狂风；短暂的风暴；裂缝，裂纹</td></tr>
+<tr><td>cyber</td><td>— adj.</td><td>计算机(网络)的；信息技术的</td></tr>
+<tr><td>critical</td><td>/'krɪtɪkl/ adj.</td><td>批评的，爱挑剔的；决定性的；危险的；临界的；鉴定的；评论的</td></tr>
+<tr><td>infrastructure</td><td>/'ɪnfrəstrʌktʃər/ n.</td><td>基础设施; 基础结构</td></tr>
+<tr><td>patched</td><td>/pætʃ/ n.</td><td>眼罩；斑点；碎片；小块土地vt. 修补；掩饰；解决vi. 打补丁, patching, patches</td></tr>
+<tr><td>vulnerabilities</td><td>/ˌvʌlnərə'bɪləti/ n.</td><td>弱点,攻击</td></tr>
+<tr><td>flaw</td><td>/flɔː/ </td><td>n.瑕疵，缺点；一阵狂风；短暂的风暴；裂缝，裂纹</td></tr>
+<tr><td>specific</td><td>/spə'sɪfɪk/ adj.</td><td>特殊的，特定的；明确的；详细的；具有特效的n. 特效药；细节；特性</td></tr>
+<tr><td>workaround</td><td>/'wɜːrkəraʊnd/ n.</td><td>工作区</td></tr>
+<tr><td>utilities</td><td>/juː'tɪləti/ n.</td><td>效用；实用；功用；公共设施adj. 有多种用途的；通用的；实用的</td></tr>
+<tr><td>disruption</td><td>— n.</td><td>中断,分裂,瓦解,破坏</td></tr>
+<tr><td>firmware</td><td>/'fɜːrmwer/ n.</td><td>固件；韧件</td></tr>
+<tr><td>essential</td><td>/ɪ'senʃl/ adj.</td><td>基本的；必要的；本质的；精华的</td></tr>
+<tr><td>address</td><td>/ə'dres/ v.</td><td>写（收信人）姓名地址；致函演说；演讲称呼（某人）；冠以（某种称呼）设法解决；处理；对付向…说话n. 地址；住址；通信处 网址；电子邮件地址 演讲，演说 称呼 【</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>disclosure</td><td>/dɪs'kloʊʒər/ n.</td><td>公开,透露被公开的事情,被披露的秘闻</td></tr>
+<tr><td>practices</td><td>/'præktɪs/ n.</td><td>练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规，practicing，practices</td></tr>
+<tr><td>practical</td><td>/'præktɪkl/ adj.</td><td>实际的，实践的实用的注重实际的；有实际工作能力的</td></tr>
+<tr><td>urgent</td><td>/'ɜːrdʒənt/ adj.</td><td>紧急的；急迫的</td></tr>
+<tr><td>annual</td><td>/'ænjuəl/ adj.</td><td>年度的；每年的n. 年刊，年鉴；一年生植物</td></tr>
+<tr><td>exercise</td><td>/'eksərsaɪz/ n.</td><td>练习；运动；运用；操练；典礼；礼拜vt. 练习；锻炼；使用；使忙碌；使惊恐vi. 运动；练习, exercising, exercises</td></tr>
+<tr><td>grids</td><td>/ɡrɪd/ n.</td><td>格子,格栏地图上的坐标方格输电网</td></tr>
+<tr><td>exercises</td><td>/'eksərsaɪz/ n.</td><td>练习；运动；运用；操练；典礼；礼拜vt. 练习；锻炼；使用；使忙碌；使惊恐vi. 运动；练习, exercising, exercises</td></tr>
+<tr><td>patches</td><td>/pætʃ/ n.</td><td>眼罩；斑点；碎片；小块土地vt. 修补；掩饰；解决vi. 打补丁, patching, patches</td></tr>
+<tr><td>counter</td><td>/'kaʊntər/ n.</td><td>柜台, 柜台式长桌计数器vt. & vi. 对抗, 反驳adv. 反方向地, 对立地, countering, counters</td></tr>
+<tr><td>initiative</td><td>/ɪ'nɪʃətɪv/ n.</td><td>主动性, 首创精神主动的行动, 倡议主动权</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>alongside</td><td>/əˌlɔːŋ'saɪd/ adv.</td><td>靠着边，沿着边prep. (表示位置)在…旁边；沿着…的边；与…并排靠拢着(表示比较)与…放在一起比较(表示伴随)与…一起，与…一道</td></tr>
+<tr><td>enforcement</td><td>/ɪn'fɔːrsmənt/ n.</td><td>强制,实施,执行</td></tr>
+<tr><td>aggressively</td><td>/ə'ɡresɪv/ adj.</td><td>好争斗的, 挑衅的, 侵略性的</td></tr>
+<tr><td>serious</td><td>/'sɪriəs/ adj.</td><td>严肃的，严重的；认真的；庄重的；危急的</td></tr>
+<tr><td>agenda</td><td>/ə'dʒendə/ n.</td><td>（政治）议题；议事日程；目的</td></tr>
+<tr><td>affairs</td><td>/ə'fer/ n.</td><td>事情；事务；私事；（尤指关系不长久的）风流韵事</td></tr>
+<tr><td>deputy</td><td>/'depjuti/ n.</td><td>代理人，代表adj. 副的；代理的</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>invitation</td><td>/ˌɪnvɪ'teɪʃn/ n.</td><td>邀请请柬, 请帖</td></tr>
+<tr><td>sustain</td><td>/sə'steɪn/ vt.</td><td>承受，支撑维持长期保持；使继续经受，遭受，sustaining，sustains</td></tr>
+<tr><td>tricky</td><td>/'trɪki/ adj.</td><td>机警的；狡猾的, trickiest</td></tr>
+<tr><td>boil</td><td>/bɔɪl/ vi.</td><td>煮沸，沸腾；激动，激昂vt. 煮沸，烧开；使…激动；使…蒸发n. 沸腾，煮沸；疖子, boiling, boils</td></tr>
+<tr><td>establishing</td><td>/ɪ'stæblɪʃ/ vt.</td><td>建立, 成立安置确定, 证实, establishing, establishes</td></tr>
+<tr><td>worth</td><td>/wɜːrθ/ adj.</td><td>值…的n. 价值；财产, worthing, worths</td></tr>
+<tr><td>hazy</td><td>/'heɪzi/ adj.</td><td>朦胧的；模糊的；有薄雾的, haziest</td></tr>
+<tr><td>exercise</td><td>/'eksərsaɪz/ n.</td><td>练习；运动；运用；操练；典礼；礼拜vt. 练习；锻炼；使用；使忙碌；使惊恐vi. 运动；练习, exercising, exercises</td></tr>
+<tr><td>courageous</td><td>/kə'reɪdʒəs/ adj.</td><td>勇敢的;无畏的adv. 勇敢地;无畏地n. 勇敢;无畏</td></tr>
+<tr><td>consider</td><td>/kən'sɪdər/ vt.</td><td>& vi. 考虑vt. 把…看作, 认为关心, 体谅, 顾及, considering, considers</td></tr>
+<tr><td>capabilities</td><td>/ˌkeɪpə'bɪləti/ n.</td><td>能做某事的素质;能力尚未发挥的天资或素质</td></tr>
+<tr><td>surpass</td><td>/sər'pæs/ vt.</td><td>胜过，优于；超越；非…所能办到或理解, surpassing, surpasses</td></tr>
+<tr><td>coherence</td><td>/koʊ'hɪrəns/ n.</td><td>条理性,连贯性,一致性</td></tr>
+<tr><td>anthropic</td><td>/ænˈθrɑpɪk/ adj.</td><td>人类的,有关人类的</td></tr>
+<tr><td>touts</td><td>/taʊt/ vt.</td><td>招徕；兜售；刺探赛马情报vi. 兜售；招徕顾客；拉选票n. 侦查者；兜售者Tout陶特(姓氏), touting, touts</td></tr>
+<tr><td>profitable</td><td>/'prɑːfɪtəbl/ adj.</td><td>有利可图的; 有益的</td></tr>
+<tr><td>counter</td><td>/'kaʊntər/ n.</td><td>柜台, 柜台式长桌计数器vt. & vi. 对抗, 反驳adv. 反方向地, 对立地, countering, counters</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>anthropic</td><td>/ænˈθrɑpɪk/ adj.</td><td>人类的,有关人类的</td></tr>
+<tr><td>sceptical</td><td>/'skeptɪkl/ adj.</td><td>不肯相信的; 常怀疑的</td></tr>
+<tr><td>candidates</td><td>/'kændɪdət，ˈkændɪdeɪt/ n.</td><td>申请求职者, 候选人报考者</td></tr>
+<tr><td>revelation</td><td>/ˌrevə'leɪʃn/ n.</td><td>显露, 泄露, 透露, 揭露被揭露的事, 暴露出来的事</td></tr>
+<tr><td>nvidia</td><td>— </td><td>恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商</td></tr>
+<tr><td>affair</td><td>/ə'fer/ n.</td><td>事情；事务；私事；（尤指关系不长久的）风流韵事</td></tr>
+<tr><td>main</td><td>/meɪn/ adj.</td><td>主要的; 最重要的n. 总管道; 干线</td></tr>
+<tr><td>rival</td><td>/'raɪvl/ n.</td><td>竞争对手vt. 与…竞争, 与…匹敌, rivalled rivaling, rivalling rivals, rivals</td></tr>
+<tr><td>punted</td><td>/pʌn/ n.</td><td>双关语；俏皮话vi. 说双关语；说俏皮话，punning，puns</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>anthropic</td><td>/ænˈθrɑpɪk/ adj.</td><td>人类的,有关人类的</td></tr>
+<tr><td>wonder</td><td>/'wʌndər/ vt.</td><td>& vi. 对…感到疑惑想知道；问自己n. 惊奇，惊叹，惊异，惊诧奇人，奇才奇观，奇景，奇迹，奇事，wondering，wonders</td></tr>
+<tr><td>possibly</td><td>/'pɑːsəbli/ adv.</td><td>可能地；大概；也许</td></tr>
+<tr><td>colossal</td><td>/kə'lɑːsl/ adj.</td><td>巨大的；异常的，非常的</td></tr>
+<tr><td>revenue</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>van</td><td>/væn/ n.</td><td>先锋；厢式货车；[计]增值网vt. 用车搬运Van范(男子名), vanning, vans</td></tr>
+<tr><td>duo</td><td>/'duːoʊ/ n.</td><td>成对的表演者</td></tr>
+<tr><td>reached</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>compensation</td><td>/ˌkɑːmpen'seɪʃn/ n.</td><td>补偿[赔偿]物, 补偿[赔偿]金</td></tr>
+<tr><td>wages</td><td>/weɪdʒ/ vi.</td><td>进行；发动；从事n. 工资；报偿；代价vt. 开展；进行, waging, wages</td></tr>
+<tr><td>perks</td><td>/pɜːrk/ vi.</td><td>昂首；振作vt. 打扮；竖起；使振作n. 小费；额外收入, perking, perks</td></tr>
+<tr><td>benign</td><td>/bɪ'naɪn/ adj.</td><td>良性的；吉利的；和蔼的，亲切的</td></tr>
+<tr><td>swiftly</td><td>/swɪft/ adj.</td><td>迅速的, 速度快的敏捷的, 反应快的SWIFTabbr. Society for Worldwide Interbank Financial Telecommu</td></tr>
+<tr><td>toss</td><td>/tɔːs/ n.</td><td>投掷；摇荡；投掷的距离；掷币赌胜负vt. 投掷；使…不安；突然抬起；使…上下摇动；与…掷币打赌vi. 被乱扔；颠簸；辗转；掷钱币决定某事, tossing, t</td></tr>
+<tr><td>revenues</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>funnel</td><td>/'fʌnl/ n.</td><td>漏斗；烟囱vt. 通过漏斗或烟囱等；使成漏斗形vi. 通过漏斗等；成漏斗形, funnelled funneling, funnelling funnels, </td></tr>
+<tr><td>nvidia</td><td>— </td><td>恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商</td></tr>
+<tr><td>semiconductor</td><td>/'semikəndʌktər/ n.</td><td>〈物〉半导体</td></tr>
+<tr><td>manufacturing</td><td>/ˌmænju'fæktʃərɪŋ/ n.</td><td>制造业，工业adj. 制造业的；制造的</td></tr>
+<tr><td>shortage</td><td>/'ʃɔːrtɪdʒ/ n.</td><td>不足; 缺少; 缺少量; 不足额</td></tr>
+<tr><td>ram</td><td>/ræm/ abbr.</td><td>Royal Academy of Music〈英〉皇家音乐学院</td></tr>
+<tr><td>main</td><td>/meɪn/ adj.</td><td>主要的; 最重要的n. 总管道; 干线</td></tr>
+<tr><td>revenue</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>funnel</td><td>/'fʌnl/ n.</td><td>漏斗；烟囱vt. 通过漏斗或烟囱等；使成漏斗形vi. 通过漏斗等；成漏斗形, funnelled funneling, funnelling funnels, </td></tr>
+<tr><td>ideally</td><td>/aɪ'diːəli/ adv.</td><td>理想地；观念上地</td></tr>
+<tr><td>leap</td><td>/liːp/ vi.</td><td>跳，跳跃n. 跳跃；飞跃vt. 跳跃，跳过；使跃过, leapt leaping, leaps</td></tr>
+<tr><td>magnitude</td><td>/'mæɡnɪtuːd/ n.</td><td>巨大; 重要性〈天〉星等</td></tr>
+<tr><td>silicon</td><td>/'sɪlɪkən/ n.</td><td>〈化〉硅</td></tr>
+<tr><td>valley</td><td>/'væli/ n.</td><td>流域；山谷；溪谷</td></tr>
+<tr><td>exact</td><td>/ɪɡ'zækt/ adj.</td><td>精确的；准确的，精密的vt. 强求；要求；急需vi. 勒索钱财, exacting, exacts</td></tr>
+<tr><td>revenues</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>tricky</td><td>/'trɪki/ adj.</td><td>机警的；狡猾的, trickiest</td></tr>
+<tr><td>anthropic</td><td>/ænˈθrɑpɪk/ adj.</td><td>人类的,有关人类的</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>wobble</td><td>/'wɑːbl/ vi.</td><td>摇晃；摇摆；游移不定n. 摆动；不稳定；摇晃vt. 使摇摆；使颤动；摇动, wobbling, wobbles</td></tr>
+<tr><td>alternative</td><td>/ɔːl'tɜːrnətɪv/ adj.</td><td>可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）可供选择的事物；可供选择的解决办法替代物</td></tr>
+<tr><td>ramp</td><td>/ræmp/ n.</td><td>斜坡，坡道；敲诈vi. 蔓延；狂跳乱撞；敲诈vt. 敲诈；使有斜面, ramping, ramps</td></tr>
+<tr><td>credit</td><td>/'kredɪt/ n.</td><td>赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)，crediting，credits</td></tr>
+<tr><td>patterns</td><td>/'pætərn/ n.</td><td>型，样式花样，图案方式，形式榜样，典范vt. 模仿； 仿制以图案装饰，patterning，patterns</td></tr>
+<tr><td>panels</td><td>/'pænl/ n.</td><td>仪表板；嵌板；座谈小组，全体陪审员vt. 嵌镶板, panelled paneling, panelling panels, panels</td></tr>
+<tr><td>gloomy</td><td>/'ɡluːmi/ adj.</td><td>黑暗的；沮丧的；阴郁的, gloomiest</td></tr>
+<tr><td>anthropic</td><td>/ænˈθrɑpɪk/ adj.</td><td>人类的,有关人类的</td></tr>
+<tr><td>revenue</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>tapers</td><td>/'teɪpər/ n.</td><td>细蜡烛，烛芯；逐渐变弱；锥形物vi. 逐渐减少；逐渐变弱vt. 逐渐减少；使成锥形, tapering, tapers</td></tr>
+<tr><td>reach</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>spot</td><td>/spɑːt/ n.</td><td>斑点, 污点地点, 场所少量vt. & vi. 弄上污渍vt. 看出, 认出SPOTabbr. Satellite Positioning and Tracki</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>margins</td><td>/'mɑːrdʒɪn/ n.</td><td>页边缘；利润，余裕；页边的空白</td></tr>
+<tr><td>magnificent</td><td>/mæɡ'nɪfɪsnt/ adj.</td><td>壮丽的, 伟大的, 华丽的, 高贵的</td></tr>
+<tr><td>benchmark</td><td>/'bentʃmɑːrk/ </td><td>基准, benchmarking, benchmarks</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>productivity</td><td>/ˌproʊdʌk'tɪvəti/ n.</td><td>生产率, 生产力</td></tr>
+<tr><td>adopted</td><td>/ə'dɑːpt/ vt.</td><td>收养采用, 采纳, 采取正式接受, 通过, adopting, adopts</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day5.html" class="nav-btn">← Day 5</a>
+  <a href="day7.html" class="nav-btn">Day 7 →</a>
+</div>
+
+<div class="progress">📖 Day 6 of 41</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-11-14</div>
+
+</body>
+</html>

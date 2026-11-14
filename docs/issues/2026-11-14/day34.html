@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance & economics</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-11-14</div>
+
+<h1 class="article-title">Finance & economics</h1>
+<div class="article-section"></div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>pessimism about Indian IT companies was the <span class="annot" data-tooltip="counterpart /'kaʊntərpɑːrt/ n. 与对方地位相当的人, 与另一方作用相当的物">counterpart</span> of excessive optimism about chipmakers. Both <span class="annot" data-tooltip="excesses /ɪk'ses/ n. 无节制；过度，过量；超过，超额adj. 额外的，过量的；附加的时 态: excessed, excessing, exc">excesses</span> are now subsiding. Foreign investors have rushed back to India after a long absence. On November 5th Indian equities received $1.6bn of foreign inflows in a single day, the most since February 2021. It was also a reversal of the year-long <span class="annot" data-tooltip="trend /trend/ n. 趋势, 倾向流行时 态: trended, trending, trends">trend</span>: $30bn has left India in the first ten months of 2026. It is not only AI that is <span class="annot" data-tooltip="tempting /tempt/ vt. 引诱或怂恿(某人)干不正当的事使想要时 态: tempted, tempting, tempts">tempting</span> investors back. Valuations look more attractive, says Shibani Kurian of Kotak <span class="annot" data-tooltip="mutual /'mjuːtʃuəl/ adj. 相互的, 彼此的共同的, 共有的名 词: mutuality">Mutual</span> Fund: earnings have been growing at a “<span class="annot" data-tooltip="robust /roʊ'bʌst/ adj. 强健的；健康的；粗野的；粗鲁的副 词: robustly">robust</span> <span class="annot" data-tooltip="clip /klɪp/ vt. 修剪；夹牢；痛打vi. 修剪n. 夹子；修剪；回形针CLIPabbr. Cellular Logic Image Pro">clip</span>”. By the end of October the Nifty 50 was trading at close to its cheapest <span class="annot" data-tooltip="ratio /'reɪʃioʊ/ n. 比, 比率">ratio</span> of price to earnings for a <span class="annot" data-tooltip="decade /'dekeɪd/ n. 十年，十年期；十">decade</span>. There are other auspicious developments. Indian <span class="annot" data-tooltip="assets /'æset/ n. 资产；有用的东西；有利条件；优点">assets</span> have benefited from lower oil prices. The country imports about 90% of its oil, historically from the Gulf. As investors bet that a humbled Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> would seek a deal with Iran to stabilise the oil market, the rupee rallied and the <span class="annot" data-tooltip="yield /jiːld/ vt. 出产；屈服；放弃vi. 屈服，投降n. 收益；产量时 态: yielded, yielding, yields">yield</span> on government bonds fell. There has also been encouraging chatter that the government may remove long-term capital-gains taxes from foreigners. Sadly the 70 minutes of Sunday trading ended in <span class="annot" data-tooltip="anti /'ænti/ adj. 反对的n. 反对者，反对论者">anti</span>-climax: the market finished slightly down, for the first time in nine years. AI stocks rallied the next day and Indian stocks largely missed out on the exuberance. Those holding on to shares for their grandchildren should not mind too much. There is plenty of time for Lakshmi to do her thing. ■ This article was downloaded by zlibrary from https://www.economist.com/finance-and-economics/2026/11/12/where-to-find-the-anti- ai-trade</p>
+<p>Finance & economics | Veto and fro The future of Trumponomics: <span class="annot" data-tooltip="compromise /'kɑːmprəmaɪz/ n. 妥协, 折中方法vi. 折中解决vt. 连累, 危害, 损害时 态: compromised, compromising">compromise</span> or failure How the art of the deal may yet prevail over the art of <span class="annot" data-tooltip="denial /dɪ'naɪəl/ n. 否认拒绝, 拒绝给予">denial</span> Nov 12th 2026 DONALD <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">TRUMP</span> has a knack for fitting his politics into four letters. His supporters relish wearing red baseball <span class="annot" data-tooltip="caps abbr. Cassette Programming System 盒式磁带程序设计系统">caps</span> emblazoned with MAGA. After his party got thumped in the midterm elections, he posted a <span class="annot" data-tooltip="picture /'pɪktʃər/ n. 图画，肖像；照片(生动的)描述，写照影片；电影；画面美景，景色情况，事态，局面vt. 绘画；描绘想象时 态: pictu">picture</span> on social media of the familiar <span class="annot" data-tooltip="cap /kæp/ n. 帽子；盖vi. 脱帽致意vt. 覆盖；胜过；给…戴帽；加盖于Cap摩羯座CAPabbr. Common Agricult">cap</span> <span class="annot" data-tooltip="bearing /'berɪŋ/ n. 轴承；方位；举止；关系v. 忍受（bear的ing形式）">bearing</span> a new slogan: VETO. A sign of things to come? Perhaps. With Democrats set to control both <span class="annot" data-tooltip="chambers /'tʃeɪmbər/ n. （身体或器官内的）室，膛；房间；会所adj. 室内的；私人的，秘密的vt. 把…关在室内；装填（弹药等）时 态: cha">chambers</span> of Congress starting in January, gridlock may seem <span class="annot" data-tooltip="inevitable /ɪn'evɪtəbl/ adj. 不可避免的, 必然发生的〈非正〉总会发生的, 照例必有的, 惯常的名 词: inevitability">inevitable</span>. Yet Mr Trump would not be himself if he did not also expect to make deals. “After a couple of months of vetoes, they’ll call,” he predicted of Democrats. “And we’ll work together.”</p>
+<p>Such bipartisan bargaining would certainly be a departure from the first two years of the president’s second term. With <span class="annot" data-tooltip="republicans /rɪ'pʌblɪkən/ adj. 共和国的, 共和政体的n. 拥护共和政体者, 共和主义者名 词: republicanism">Republicans</span> controlling the House of <span class="annot" data-tooltip="representatives /ˌreprɪ'zentətɪv/ n. 代表代理人adj. 有代表性的, 典型的名 词: representativeness">Representatives</span> and the <span class="annot" data-tooltip="senate /ˈsenət/ n.（诸如美国、澳大利亚、法国的）参议院（the Senate） （某些国家的）大学理事会，大学评议会（古罗马的）元老院">Senate</span>, Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> passed a <span class="annot" data-tooltip="sweeping /'swiːpɪŋ/ n. 扫除；垃圾adj. 扫荡的；彻底的；广泛的v. 打扫；扫除（sweep的现在分词形式）副 词: sweepingly">sweeping</span> tax- and-spending law that disproportionately benefited the rich and <span class="annot" data-tooltip="swelled /swel/ vi. 膨胀；[病理]肿胀；隆起vt. 使膨胀；使隆起n. 肿胀；隆起adj. 漂亮的；一流的时 态: swelled, swe">swelled</span> projected deficits. Much else, from his massive <span class="annot" data-tooltip="tariffs /'tærɪf/ n. 关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表时 态: tariffed, tariffing, tar">tariffs</span> to mass deportations, was enacted through presidential powers that he continues to hold. What, then, will Trumponomics look like in its remaining years? On <span class="annot" data-tooltip="fiscal /'fɪskl/ adj. 国库的；会计的，财政的副 词: fiscally">fiscal</span> policy, two looming deadlines may provide opportunities for <span class="annot" data-tooltip="negotiation /nɪˌɡoʊʃi'eɪʃn/ n. 协商，谈判完成(难事)；通过">negotiation</span>. The first concerns government funding. It <span class="annot" data-tooltip="expires /ɪk'spaɪər/ vi. 期满, (期限)终止断气, 死亡时 态: expired, expiring, expires">expires</span> on December 11th, a month before members of Congress are sworn in, but a temporary extension could leave the next budget deal to the new Democrat-controlled legislature. The second deadline, to <span class="annot" data-tooltip="raise /reɪz/ v. 提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），">raise</span> the debt <span class="annot" data-tooltip="ceiling /'siːlɪŋ/ n. 天花板，顶棚最高限度，上限高度，上升限度；云幕高度形容词: ceilinged">ceiling</span>, could provide even greater <span class="annot" data-tooltip="leverage /'levərɪdʒ/ n. （能够操控形势的）影响力，手段，优势 杠杆力；杠杆作用v. 举债经营；为…融资有效利用某物（资源、优势、工具等）时 态:">leverage</span> for Democrats later next year, when failure to <span class="annot" data-tooltip="reach /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reach</span> an agreement would risk a default. Mr Trump struck deals with Democrats on both <span class="annot" data-tooltip="issues /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issues</span> in his first term, at times siding with them against <span class="annot" data-tooltip="republican /rɪ'pʌblɪkən/ adj. 共和国的, 共和政体的n. 拥护共和政体者, 共和主义者名 词: republicanism">Republican</span> congressional leaders. Any fiscal bargain could prove expensive. Mr Trump wants much more money for the armed forces. His budget for 2027 proposed a <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> of roughly 40% in defence spending, <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">although</span> the full request is highly unlikely to be met. Democrats, meanwhile, want to restore tax breaks for health care that expired at the end of 2025 and otherwise <span class="annot" data-tooltip="ease /iːz/ vt. 减轻，缓和；使安心n. 安逸，悠闲；轻松，舒适vi. 减轻，缓和；放松；灵活地移动EASEabbr. Electroni">ease</span> financial <span class="annot" data-tooltip="burdens /'bɜːrdn/ n. 负担；责任；船的载货量vt. 烦扰；使负担；装货于时 态: burdened, burdening, burdens">burdens</span> on <span class="annot" data-tooltip="households /'haʊshoʊld/ n. 同住在一所房子里的人, 一家人, 户adj. 家庭的, 家用的">households</span>. Hakeem Jeffries, their leader in the House, has prioritised expanding the child tax <span class="annot" data-tooltip="credit /'kredɪt/ n. 赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)时 态:">credit</span> and <span class="annot" data-tooltip="earned /ɪr/ n. 耳朵；听觉；倾听；穗vi. （美俚）听见；抽穗EARabbr. East African Railways 东非铁路公司">earned</span>-income tax credit, a top-up for low earners. In the old guns-<span class="annot" data-tooltip="versus /'vɜːrsəs/ prep. 对；与...相对；对抗">versus</span>-<span class="annot" data-tooltip="butter /bʌt/ n. 笑柄；烟头；屁股；靶垛；粗大的一端vt. 以头抵撞；碰撞时 态: butted, butting, butts">butter</span> debate, America’s usual answer is to “spend more on both”, observes Rohit Kumar, who served Mitch McConnell, a Republican former Senate majority leader, as <span class="annot" data-tooltip="deputy /'depjuti/ n. 代理人，代表adj. 副的；代理的">deputy</span> chief of staff and is now at PwC, a consultancy. For every additional dollar the Pentagon receives, he reckons, Democrats could demand a matching increase for <span class="annot" data-tooltip="domestic /də'mestɪk/ adj. 国内的；家庭的；驯养的；一心只管家务的">domestic</span> programmes. All of this would add to the deficit. Allianz Research, an arm of an insurance company, expects a fiscal loosening of about 0.2% of GDP in 2027. Additional demands could include delays to planned cuts in Medicaid (health care for the poor) and food <span class="annot" data-tooltip="stamps /stæmp/ n. 邮票；印记；跺脚；标志vt. 铭记；标出；盖章于…；贴邮票于…；用脚踩踏vi. 捣碎；跺脚；毁掉时 态: stamped">stamps</span>. How much red ink this adds will</p>
+<p>depend partly on <span class="annot" data-tooltip="offsetting /'ɔːfset/ vt. 抵消, 补偿时 态: offset, offsetting, offsets">offsetting</span> budget <span class="annot" data-tooltip="tweaks /twiːk/ n. 拧；扭；焦急vt. 扭；用力拉；开足马力时 态: tweaked, tweaking, tweaks">tweaks</span> elsewhere. Democrats could try to restrict tax breaks for data-centre investment or <span class="annot" data-tooltip="impose /ɪm'poʊz/ vi. 欺骗；利用；施加影响vt. 强加；以…欺骗；征税时 态: imposed, imposing, imposes">impose</span> a new levy on the AI <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span>, suggests Mr Kumar. <span class="annot" data-tooltip="compromise /'kɑːmprəmaɪz/ n. 妥协, 折中方法vi. 折中解决vt. 连累, 危害, 损害时 态: compromised, compromising">Compromise</span> may also shape Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s ambitions for America’s artificial- intelligence boom. In the past two years Mr Trump has championed data centres, taking a “let it rip” approach to regulation. But Democrats prevailed in <span class="annot" data-tooltip="races /reɪs/ n. 种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACE">races</span> for the governorship in Georgia, Ohio, <span class="annot" data-tooltip="texas /'teksəs/ n. 德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室">Texas</span> and elsewhere promising pauses or other limits on new construction. Incoming governors who back such measures won in states that account for 41% of planned data- centre capacity, according to Cleanview, a research firm. It would be wrong, though, to conclude that these governors want permanent bans on data centres. Most merely want their operators to pay more for electricity, notes Gabe Horwitz of Third Way, a centre-left think-<span class="annot" data-tooltip="tank /tæŋk/ n. （存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内时 态: t">tank</span>. That could open the door to another bargain for Mr Trump, in a perennially promising area of <span class="annot" data-tooltip="reform /rɪ'fɔːrm/ n. 改革，改良，改造vt. & vi. 改革；改造；改善时 态: reformed，reforming，reforms">reform</span>: permitting. A bipartisan bill backed by the president would speed up construction of power plants and <span class="annot" data-tooltip="transmission /trænz'mɪʃn/ n. 传送, 传播, 传达播送传动装置, 变速器形容词: transmissive">transmission</span> <span class="annot" data-tooltip="lines n. 台词；线；航线（line的复数）v. 排成一行；画线于（line的三单形式）">lines</span>, while requiring large data centres to shoulder more of the costs they impose on the <span class="annot" data-tooltip="grid /ɡrɪd/ n. 格子,格栏地图上的坐标方格输电网">grid</span>. Its chances of passing before January have dimmed, with some Democrats now hoping to <span class="annot" data-tooltip="extract /'ekstrækt/ v. 提取；提炼索取，设法得到（对方不愿提供的信息、钱财等）选取；摘录；选录（用力）取出，拔出【正式】获得，得到（某种感觉或品">extract</span> further <span class="annot" data-tooltip="concessions /kən'seʃn/ n. 承认, 允许妥协, 让步特许权形容词: concessional">concessions</span> after their electoral victories. But it is still possible to imagine a deal that makes it easier to build while shielding <span class="annot" data-tooltip="households /'haʊshoʊld/ n. 同住在一所房子里的人, 一家人, 户adj. 家庭的, 家用的">households</span> from higher electricity prices. Even where Mr Trump can act without Congress, he may face new <span class="annot" data-tooltip="constraints /kən'streɪnt/ n. 强制；限制，约束强制，强迫">constraints</span>. After a big setback at the <span class="annot" data-tooltip="supreme /su'priːm/ adj. 最高的；至上的最重要的比较级: supremer，supremest 缩 写: supr">Supreme</span> Court, what remains of his <span class="annot" data-tooltip="chaotic /keɪ'ɑːtɪk/ adj. 混乱的，无秩序的；混沌的">chaotic</span> <span class="annot" data-tooltip="tariff /'tærɪf/ n. 关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表时 态: tariffed, tariffing, tar">tariff</span> <span class="annot" data-tooltip="campaign /kæm'peɪn/ n. 运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）时">campaign</span> faces more legal challenges. Democrats are preparing congressional investigations and <span class="annot" data-tooltip="legislation /ˌledʒɪs'leɪʃn/ n. 法律；法规立法，法律的制定[通过]">legislation</span> to <span class="annot" data-tooltip="curb /kɜːrb/ n. 侧石, 边石限制, 克制, 抑制vt. 限制, 克制, 抑制时 态: curbed, curbing, curbs">curb</span> his trade powers further. These efforts may achieve little without enough <span class="annot" data-tooltip="republican /rɪ'pʌblɪkən/ adj. 共和国的, 共和政体的n. 拥护共和政体者, 共和主义者名 词: republicanism">Republican</span> support to override a presidential veto. Yet a bigger <span class="annot" data-tooltip="constraint /kən'streɪnt/ n. 强制；限制，约束强制，强迫">constraint</span> could be public opinion: <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> two-thirds of midterm voters said his <span class="annot" data-tooltip="tariffs /'tærɪf/ n. 关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表时 态: tariffed, tariffing, tar">tariffs</span> had hurt the economy. That might <span class="annot" data-tooltip="encourage /ɪn'kɜːrɪdʒ/ vt. 鼓励, 激励促进, 助长, 激发时 态: encouraged, encouraging, encourages">encourage</span> Mr Trump to <span class="annot" data-tooltip="ease /iːz/ vt. 减轻，缓和；使安心n. 安逸，悠闲；轻松，舒适vi. 减轻，缓和；放松；灵活地移动EASEabbr. Electroni">ease</span> some duties, says Ryan Majerus, a former American trade official now at King & Spalding, a law firm. He could find an off-<span class="annot" data-tooltip="ramp /ræmp/ n. 斜坡，坡道；敲诈vi. 蔓延；狂跳乱撞；敲诈vt. 敲诈；使有斜面时 态: ramped, ramping, ramps">ramp</span> in a <span class="annot" data-tooltip="pending /'pendɪŋ/ adj. 未决定的；行将发生的prep. 在…期间；直到…时为止；在等待…之际v. 待定；悬而不决（pend的ing形式）">pending</span> court ruling on “Section 301” tariffs, which are supposed to punish countries for unfair trade. Mr Trump’s room for manoeuvre may <span class="annot" data-tooltip="narrow /'næroʊ/ adj. 狭窄的，有限的；度量小的；精密的；勉强的n. 狭窄部分，隘路；海峡vt. 使变狭窄vi. 变窄比较级: narrower">narrow</span> in other ways, too. In the past he has repeatedly pressed the <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">Federal</span> Reserve to lower interest rates. Now a</p>
+<p><span class="annot" data-tooltip="democratic /ˌdemə'krætɪk/ adj. 民主的, 有民主精神或作风的副 词: democratically">Democratic</span> <span class="annot" data-tooltip="senate /ˈsenət/ n.（诸如美国、澳大利亚、法国的）参议院（the Senate） （某些国家的）大学理事会，大学评议会（古罗马的）元老院">Senate</span> could block his attempts to install another loyalist on its board, strengthening the <span class="annot" data-tooltip="central /'sentrəl/ adj. 中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的副 词: centrally">central</span> bank’s independence. Public pressure may also <span class="annot" data-tooltip="encourage /ɪn'kɜːrɪdʒ/ vt. 鼓励, 激励促进, 助长, 激发时 态: encouraged, encouraging, encourages">encourage</span> Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> to soften his immigration <span class="annot" data-tooltip="crackdown /'krækdaʊn/ n. 压迫,镇压,打击">crackdown</span>. In a post- election interview with CBS, a television network, the president acknowledged that his deportation policy “might be too tough” and said that he would “love to do something on immigration” with Democrats, particularly for long-term undocumented workers. Mr Trump’s willingness to <span class="annot" data-tooltip="compromise /'kɑːmprəmaɪz/ n. 妥协, 折中方法vi. 折中解决vt. 连累, 危害, 损害时 态: compromised, compromising">compromise</span> is, of course, <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> from certain. Only hours after his CBS interview he appointed Stephen Miller, an <span class="annot" data-tooltip="architect /'ɑːrkɪtekt/ n. 建筑师, 设计师">architect</span> of the “tough” deportation <span class="annot" data-tooltip="campaign /kæm'peɪn/ n. 运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）时">campaign</span>, as White House chief of staff. The appointment of a hardliner may have been meant to put paid to the popular notion that “Trump always chickens out” in the end. Still, with Democrats controlling Congress, bargaining may offer the best <span class="annot" data-tooltip="route /ruːt，raʊt/ n. 路, 路途, 路线, 路程时 态: routed, routing, routes">route</span> to advancing Mr Trump’s remaining economic <span class="annot" data-tooltip="agenda /ə'dʒendə/ n. （政治）议题；议事日程；目的">agenda</span>. When it comes to <span class="annot" data-tooltip="confrontation /ˌkɑːnfrən'teɪʃn/ n. 对抗, 对抗的事物形容词: confrontational">confrontation</span> with <span class="annot" data-tooltip="triumphant /traɪ'ʌmfənt/ adj. 胜利的, 成功的(因胜利而)喜气洋洋的, 欢欣鼓舞的副 词: triumphantly">triumphant</span> Democrats, TACO may prevail over VETO. ■ This article was downloaded by zlibrary from https://www.economist.com/finance-and-economics/2026/11/09/the-future-of- trumponomics-compromise-or-failure</p>
+<p>Finance & economics | Buttonwood Lessons from a <span class="annot" data-tooltip="miserable /'mɪzrəbl/ adj. 悲惨的，不幸的，可怜的令人痛苦的；令人不快的低劣的；贫乏的卑鄙的，可耻的，可恶的名 词: miserable">miserable</span> month for <span class="annot" data-tooltip="hedge /hedʒ/ vt. 用树篱笆围住；避免作正面答复vi. 用树篱围住；避免作正面答复n. 树篱；障碍时 态: hedged, hedging,">hedge</span> funds The struggle to <span class="annot" data-tooltip="invest /ɪn'vest/ vt. 投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买时 态: invested, investing, invests">invest</span> in anything other than AI Nov 12th 2026 NOVEMBER, WITH its post-election market swings and the Jensen Huang <span class="annot" data-tooltip="affair /ə'fer/ n. 事情；事务；私事；（尤指关系不长久的）风流韵事">affair</span>, has so <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> been bruising for hedge funds. But October was <span class="annot" data-tooltip="brutal /'bruːtl/ adj. 残忍的；野蛮的，不讲理的副 词: brutally">brutal</span>: many funds had their worst month since the covid-19 <span class="annot" data-tooltip="pandemic /pæn'demɪk/ adj. （疾病）在全国（或世界）流行的">pandemic</span> began, according to JPMorgan Chase, America’s biggest bank. A <span class="annot" data-tooltip="wobble /'wɑːbl/ vi. 摇晃；摇摆；游移不定n. 摆动；不稳定；摇晃vt. 使摇摆；使颤动；摇动时 态: wobbled, wobbling, ">wobble</span> in markets’ <span class="annot" data-tooltip="enthusiasm /ɪn'θuːziæzəm/ n. 热情, 热心巨大兴趣, 热衷的事物">enthusiasm</span> for artificial intelligence forced a sell-off of technology stocks. The surprise re-election of Brazil’s left-<span class="annot" data-tooltip="wing /wɪŋ/ n. 翅膀；翼；飞翔；派别vt. 使飞；飞过；空运；增加…速度；装以翼vi. 飞行时 态: winged, winging, ">wing</span> president, worries over France’s <span class="annot" data-tooltip="sovereign /'sɑːvrɪn/ n. 君主，国王，女王旧时价值为一镑的英国金币adj. 控制国家的；统治的独立自主的">sovereign</span> debt and tumult in <span class="annot" data-tooltip="credit /'kredɪt/ n. 赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)时 态:">credit</span> markets added to the pain. A Bloomberg index of the <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span>’s returns fell by 1.7% in the month. The biggest fund at Millennium, a giant manager, lost 2.3%. The <span class="annot" data-tooltip="main /meɪn/ adj. 主要的; 最重要的n. 总管道; 干线">main</span> fund of Arini Capital Management, a fast-growing credit shop, was down by 19.7%. By the time tech stocks plunged again on November 5th, managers were already so light they had little left to sell. According to data compiled by</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>counterpart</td><td>/'kaʊntərpɑːrt/ n.</td><td>与对方地位相当的人, 与另一方作用相当的物</td></tr>
+<tr><td>excesses</td><td>/ɪk'ses/ n.</td><td>无节制；过度，过量；超过，超额adj. 额外的，过量的；附加的, excessing, excesses</td></tr>
+<tr><td>trend</td><td>/trend/ n.</td><td>趋势, 倾向流行, trending, trends</td></tr>
+<tr><td>tempting</td><td>/tempt/ vt.</td><td>引诱或怂恿(某人)干不正当的事使想要, tempting, tempts</td></tr>
+<tr><td>mutual</td><td>/'mjuːtʃuəl/ adj.</td><td>相互的, 彼此的共同的, 共有的</td></tr>
+<tr><td>robust</td><td>/roʊ'bʌst/ adj.</td><td>强健的；健康的；粗野的；粗鲁的</td></tr>
+<tr><td>clip</td><td>/klɪp/ vt.</td><td>修剪；夹牢；痛打vi. 修剪n. 夹子；修剪；回形针CLIPabbr. Cellular Logic Image Processor 单元逻辑映象处理器Comp</td></tr>
+<tr><td>ratio</td><td>/'reɪʃioʊ/ n.</td><td>比, 比率</td></tr>
+<tr><td>decade</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>assets</td><td>/'æset/ n.</td><td>资产；有用的东西；有利条件；优点</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>yield</td><td>/jiːld/ vt.</td><td>出产；屈服；放弃vi. 屈服，投降n. 收益；产量, yielding, yields</td></tr>
+<tr><td>anti</td><td>/'ænti/ adj.</td><td>反对的n. 反对者，反对论者</td></tr>
+<tr><td>compromise</td><td>/'kɑːmprəmaɪz/ n.</td><td>妥协, 折中方法vi. 折中解决vt. 连累, 危害, 损害, compromising, compromises</td></tr>
+<tr><td>denial</td><td>/dɪ'naɪəl/ n.</td><td>否认拒绝, 拒绝给予</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>caps</td><td>— abbr.</td><td>Cassette Programming System 盒式磁带程序设计系统</td></tr>
+<tr><td>picture</td><td>/'pɪktʃər/ n.</td><td>图画，肖像；照片(生动的)描述，写照影片；电影；画面美景，景色情况，事态，局面vt. 绘画；描绘想象，picturing，pictures</td></tr>
+<tr><td>cap</td><td>/kæp/ n.</td><td>帽子；盖vi. 脱帽致意vt. 覆盖；胜过；给…戴帽；加盖于Cap摩羯座CAPabbr. Common Agricultural Policy (欧共体)共同农</td></tr>
+<tr><td>bearing</td><td>/'berɪŋ/ n.</td><td>轴承；方位；举止；关系v. 忍受（bear的ing形式）</td></tr>
+<tr><td>chambers</td><td>/'tʃeɪmbər/ n.</td><td>（身体或器官内的）室，膛；房间；会所adj. 室内的；私人的，秘密的vt. 把…关在室内；装填（弹药等）, chambering, chambers</td></tr>
+<tr><td>inevitable</td><td>/ɪn'evɪtəbl/ adj.</td><td>不可避免的, 必然发生的〈非正〉总会发生的, 照例必有的, 惯常的</td></tr>
+<tr><td>republicans</td><td>/rɪ'pʌblɪkən/ adj.</td><td>共和国的, 共和政体的n. 拥护共和政体者, 共和主义者</td></tr>
+<tr><td>representatives</td><td>/ˌreprɪ'zentətɪv/ n.</td><td>代表代理人adj. 有代表性的, 典型的</td></tr>
+<tr><td>senate</td><td>/ˈsenət/ </td><td>n.（诸如美国、澳大利亚、法国的）参议院（the Senate） （某些国家的）大学理事会，大学评议会（古罗马的）元老院</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>sweeping</td><td>/'swiːpɪŋ/ n.</td><td>扫除；垃圾adj. 扫荡的；彻底的；广泛的v. 打扫；扫除（sweep的现在分词形式）</td></tr>
+<tr><td>swelled</td><td>/swel/ vi.</td><td>膨胀；[病理]肿胀；隆起vt. 使膨胀；使隆起n. 肿胀；隆起adj. 漂亮的；一流的, swelled, swollen swelling, swells</td></tr>
+<tr><td>tariffs</td><td>/'tærɪf/ n.</td><td>关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表, tariffing, tariffs</td></tr>
+<tr><td>fiscal</td><td>/'fɪskl/ adj.</td><td>国库的；会计的，财政的</td></tr>
+<tr><td>negotiation</td><td>/nɪˌɡoʊʃi'eɪʃn/ n.</td><td>协商，谈判完成(难事)；通过</td></tr>
+<tr><td>expires</td><td>/ɪk'spaɪər/ vi.</td><td>期满, (期限)终止断气, 死亡, expiring, expires</td></tr>
+<tr><td>raise</td><td>/reɪz/ v.</td><td>提起；举起；竖起增加；提高；改善；引起，导致；使存在抚养；饲养；养育；喂养；种植（赌牌时）比对手多下赌注，提高（赌注），加赌注筹款解除；终止；解（禁）（尤指通过</td></tr>
+<tr><td>ceiling</td><td>/'siːlɪŋ/ n.</td><td>天花板，顶棚最高限度，上限高度，上升限度；云幕高度</td></tr>
+<tr><td>leverage</td><td>/'levərɪdʒ/ n.</td><td>（能够操控形势的）影响力，手段，优势 杠杆力；杠杆作用v. 举债经营；为…融资有效利用某物（资源、优势、工具等）, leveraging, leverages</td></tr>
+<tr><td>reach</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>issues</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>republican</td><td>/rɪ'pʌblɪkən/ adj.</td><td>共和国的, 共和政体的n. 拥护共和政体者, 共和主义者</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>ease</td><td>/iːz/ vt.</td><td>减轻，缓和；使安心n. 安逸，悠闲；轻松，舒适vi. 减轻，缓和；放松；灵活地移动EASEabbr. Electronic Airborne Systems E</td></tr>
+<tr><td>burdens</td><td>/'bɜːrdn/ n.</td><td>负担；责任；船的载货量vt. 烦扰；使负担；装货于, burdening, burdens</td></tr>
+<tr><td>households</td><td>/'haʊshoʊld/ n.</td><td>同住在一所房子里的人, 一家人, 户adj. 家庭的, 家用的</td></tr>
+<tr><td>credit</td><td>/'kredɪt/ n.</td><td>赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)，crediting，credits</td></tr>
+<tr><td>earned</td><td>/ɪr/ n.</td><td>耳朵；听觉；倾听；穗vi. （美俚）听见；抽穗EARabbr. East African Railways 东非铁路公司, earing, ears</td></tr>
+<tr><td>versus</td><td>/'vɜːrsəs/ prep.</td><td>对；与...相对；对抗</td></tr>
+<tr><td>butter</td><td>/bʌt/ n.</td><td>笑柄；烟头；屁股；靶垛；粗大的一端vt. 以头抵撞；碰撞, butting, butts</td></tr>
+<tr><td>deputy</td><td>/'depjuti/ n.</td><td>代理人，代表adj. 副的；代理的</td></tr>
+<tr><td>domestic</td><td>/də'mestɪk/ adj.</td><td>国内的；家庭的；驯养的；一心只管家务的</td></tr>
+<tr><td>stamps</td><td>/stæmp/ n.</td><td>邮票；印记；跺脚；标志vt. 铭记；标出；盖章于…；贴邮票于…；用脚踩踏vi. 捣碎；跺脚；毁掉, stamping, stamps</td></tr>
+<tr><td>offsetting</td><td>/'ɔːfset/ vt.</td><td>抵消, 补偿, offsetting, offsets</td></tr>
+<tr><td>tweaks</td><td>/twiːk/ n.</td><td>拧；扭；焦急vt. 扭；用力拉；开足马力, tweaking, tweaks</td></tr>
+<tr><td>impose</td><td>/ɪm'poʊz/ vi.</td><td>欺骗；利用；施加影响vt. 强加；以…欺骗；征税, imposing, imposes</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>compromise</td><td>/'kɑːmprəmaɪz/ n.</td><td>妥协, 折中方法vi. 折中解决vt. 连累, 危害, 损害, compromising, compromises</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>races</td><td>/reɪs/ n.</td><td>种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACEabbr. Radiation Adap</td></tr>
+<tr><td>texas</td><td>/'teksəs/ n.</td><td>德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室)</td></tr>
+<tr><td>tank</td><td>/tæŋk/ n.</td><td>（存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内, tanking, tanks</td></tr>
+<tr><td>reform</td><td>/rɪ'fɔːrm/ n.</td><td>改革，改良，改造vt. & vi. 改革；改造；改善，reforming，reforms</td></tr>
+<tr><td>transmission</td><td>/trænz'mɪʃn/ n.</td><td>传送, 传播, 传达播送传动装置, 变速器</td></tr>
+<tr><td>lines</td><td>— n.</td><td>台词；线；航线（line的复数）v. 排成一行；画线于（line的三单形式）</td></tr>
+<tr><td>grid</td><td>/ɡrɪd/ n.</td><td>格子,格栏地图上的坐标方格输电网</td></tr>
+<tr><td>extract</td><td>/'ekstrækt/ v.</td><td>提取；提炼索取，设法得到（对方不愿提供的信息、钱财等）选取；摘录；选录（用力）取出，拔出【正式】获得，得到（某种感觉或品质）n. 摘录；选录；选曲；节录（尤指食</td></tr>
+<tr><td>concessions</td><td>/kən'seʃn/ n.</td><td>承认, 允许妥协, 让步特许权</td></tr>
+<tr><td>households</td><td>/'haʊshoʊld/ n.</td><td>同住在一所房子里的人, 一家人, 户adj. 家庭的, 家用的</td></tr>
+<tr><td>constraints</td><td>/kən'streɪnt/ n.</td><td>强制；限制，约束强制，强迫</td></tr>
+<tr><td>supreme</td><td>/su'priːm/ adj.</td><td>最高的；至上的最重要的，supremest 缩 写: supr</td></tr>
+<tr><td>chaotic</td><td>/keɪ'ɑːtɪk/ adj.</td><td>混乱的，无秩序的；混沌的</td></tr>
+<tr><td>tariff</td><td>/'tærɪf/ n.</td><td>关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表, tariffing, tariffs</td></tr>
+<tr><td>campaign</td><td>/kæm'peɪn/ n.</td><td>运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）, campaigning, campai</td></tr>
+<tr><td>legislation</td><td>/ˌledʒɪs'leɪʃn/ n.</td><td>法律；法规立法，法律的制定[通过]</td></tr>
+<tr><td>curb</td><td>/kɜːrb/ n.</td><td>侧石, 边石限制, 克制, 抑制vt. 限制, 克制, 抑制, curbing, curbs</td></tr>
+<tr><td>republican</td><td>/rɪ'pʌblɪkən/ adj.</td><td>共和国的, 共和政体的n. 拥护共和政体者, 共和主义者</td></tr>
+<tr><td>constraint</td><td>/kən'streɪnt/ n.</td><td>强制；限制，约束强制，强迫</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>tariffs</td><td>/'tærɪf/ n.</td><td>关税, 关税表, 货物课税表(旅馆或饭店等的)收费表, 价目表, tariffing, tariffs</td></tr>
+<tr><td>encourage</td><td>/ɪn'kɜːrɪdʒ/ vt.</td><td>鼓励, 激励促进, 助长, 激发, encouraging, encourages</td></tr>
+<tr><td>ease</td><td>/iːz/ vt.</td><td>减轻，缓和；使安心n. 安逸，悠闲；轻松，舒适vi. 减轻，缓和；放松；灵活地移动EASEabbr. Electronic Airborne Systems E</td></tr>
+<tr><td>ramp</td><td>/ræmp/ n.</td><td>斜坡，坡道；敲诈vi. 蔓延；狂跳乱撞；敲诈vt. 敲诈；使有斜面, ramping, ramps</td></tr>
+<tr><td>pending</td><td>/'pendɪŋ/ adj.</td><td>未决定的；行将发生的prep. 在…期间；直到…时为止；在等待…之际v. 待定；悬而不决（pend的ing形式）</td></tr>
+<tr><td>narrow</td><td>/'næroʊ/ adj.</td><td>狭窄的，有限的；度量小的；精密的；勉强的n. 狭窄部分，隘路；海峡vt. 使变狭窄vi. 变窄, narrowest</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>democratic</td><td>/ˌdemə'krætɪk/ adj.</td><td>民主的, 有民主精神或作风的</td></tr>
+<tr><td>senate</td><td>/ˈsenət/ </td><td>n.（诸如美国、澳大利亚、法国的）参议院（the Senate） （某些国家的）大学理事会，大学评议会（古罗马的）元老院</td></tr>
+<tr><td>central</td><td>/'sentrəl/ adj.</td><td>中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的</td></tr>
+<tr><td>encourage</td><td>/ɪn'kɜːrɪdʒ/ vt.</td><td>鼓励, 激励促进, 助长, 激发, encouraging, encourages</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>crackdown</td><td>/'krækdaʊn/ n.</td><td>压迫,镇压,打击</td></tr>
+<tr><td>compromise</td><td>/'kɑːmprəmaɪz/ n.</td><td>妥协, 折中方法vi. 折中解决vt. 连累, 危害, 损害, compromising, compromises</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>architect</td><td>/'ɑːrkɪtekt/ n.</td><td>建筑师, 设计师</td></tr>
+<tr><td>campaign</td><td>/kæm'peɪn/ n.</td><td>运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）, campaigning, campai</td></tr>
+<tr><td>route</td><td>/ruːt，raʊt/ n.</td><td>路, 路途, 路线, 路程, routing, routes</td></tr>
+<tr><td>agenda</td><td>/ə'dʒendə/ n.</td><td>（政治）议题；议事日程；目的</td></tr>
+<tr><td>confrontation</td><td>/ˌkɑːnfrən'teɪʃn/ n.</td><td>对抗, 对抗的事物</td></tr>
+<tr><td>triumphant</td><td>/traɪ'ʌmfənt/ adj.</td><td>胜利的, 成功的(因胜利而)喜气洋洋的, 欢欣鼓舞的</td></tr>
+<tr><td>miserable</td><td>/'mɪzrəbl/ adj.</td><td>悲惨的，不幸的，可怜的令人痛苦的；令人不快的低劣的；贫乏的卑鄙的，可耻的，可恶的</td></tr>
+<tr><td>hedge</td><td>/hedʒ/ vt.</td><td>用树篱笆围住；避免作正面答复vi. 用树篱围住；避免作正面答复n. 树篱；障碍, hedging, hedges</td></tr>
+<tr><td>invest</td><td>/ɪn'vest/ vt.</td><td>投资；耗费；授予；覆盖；包围vi. 投资，入股；花钱买, investing, invests</td></tr>
+<tr><td>affair</td><td>/ə'fer/ n.</td><td>事情；事务；私事；（尤指关系不长久的）风流韵事</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>brutal</td><td>/'bruːtl/ adj.</td><td>残忍的；野蛮的，不讲理的</td></tr>
+<tr><td>pandemic</td><td>/pæn'demɪk/ adj.</td><td>（疾病）在全国（或世界）流行的</td></tr>
+<tr><td>wobble</td><td>/'wɑːbl/ vi.</td><td>摇晃；摇摆；游移不定n. 摆动；不稳定；摇晃vt. 使摇摆；使颤动；摇动, wobbling, wobbles</td></tr>
+<tr><td>enthusiasm</td><td>/ɪn'θuːziæzəm/ n.</td><td>热情, 热心巨大兴趣, 热衷的事物</td></tr>
+<tr><td>wing</td><td>/wɪŋ/ n.</td><td>翅膀；翼；飞翔；派别vt. 使飞；飞过；空运；增加…速度；装以翼vi. 飞行, winging, wings</td></tr>
+<tr><td>sovereign</td><td>/'sɑːvrɪn/ n.</td><td>君主，国王，女王旧时价值为一镑的英国金币adj. 控制国家的；统治的独立自主的</td></tr>
+<tr><td>credit</td><td>/'kredɪt/ n.</td><td>赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)，crediting，credits</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>main</td><td>/meɪn/ adj.</td><td>主要的; 最重要的n. 总管道; 干线</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day33.html" class="nav-btn">← Day 33</a>
+  <a href="day35.html" class="nav-btn">Day 35 →</a>
+</div>
+
+<div class="progress">📖 Day 34 of 41</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-11-14</div>
+
+</body>
+</html>

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Americas | Hacking history</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-11-14</div>
+
+<h1 class="article-title">The Americas | Hacking history</h1>
+<div class="article-section">The Americas</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>2024 and December 2025 tourism agencies <span class="annot" data-tooltip="exploited /ɪk'splɔɪt/ vt. 开发，开拓；剥削；开采n. 勋绩；功绩时 态: exploited, exploiting, exploits">exploited</span> weaknesses in the official ticketing website to make more than 200,000 reservations. Most were for tickets that they never <span class="annot" data-tooltip="ultimately /'ʌltɪmətli/ adv. 最后;最终">ultimately</span> bought. The government report did not <span class="annot" data-tooltip="speculate /'spekjuleɪt/ vt. & vi. 思索；猜测，推测vi. 投机时 态: speculated，speculating，speculates">speculate</span> about the agencies’ <span class="annot" data-tooltip="motives /moʊ'tiːf/ n. 主题；动机；图形；主旨；意念">motives</span>, but many Peruvians see the workings of a “mafia”. Tourists who are blocked from buying tickets are more likely to fork out for access secured by third parties who are working in cahoots with <span class="annot" data-tooltip="corrupt /kə'rʌpt/ adj. 腐败的，贪污的；堕落的vt. 使堕落，使恶化；使腐烂vi. 腐烂；堕落，腐化时 态: corrupted, corrup">corrupt</span> officials, says Maycol Ugarte, who represents the national government in the district where the site lies. “They’re tarnishing the image of Machu Picchu.” Some tourists, he says, end up paying $300 for entry, more than five times what it should cost. This is frustratingly familiar. In 2023 some 70,000 people were believed to have got into Machu Picchu in irregular ways. Back then, the government vowed to <span class="annot" data-tooltip="outsource /'aʊtsɔːrs/ vt. ①外购(指从外国供应商等处获得货物或服务)②外包(工程)时 态: outsourced, outsourcing, ou">outsource</span> the job of ticketing to a company that it <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span> would do better. But that <span class="annot" data-tooltip="sparked /spɑːrk/ n. 火花，火星；电火花；一丝，略微；导火线，诱因v. 引发，触发；产生火花（电火花）；点燃；增加趣味（或活力、风味等）时 态">sparked</span> angry <span class="annot" data-tooltip="protests /'proʊtest/ n. 抗议；反对vt. & vi. 声明；抗议时 态: protested，protesting，protests">protests</span> from people claiming to be outraged by the “systematic privatisation of Machu Picchu”. Demonstrators blocked train services that haul tourists to the <span class="annot" data-tooltip="ruins /'ruːɪn/ vt. 破坏，毁掉使破产，使沦落n. 毁坏，毁灭，灭亡完全丧失，断送；垮台(的原因)破败、坍塌或毁坏的状态废墟；遗迹时 态: r">ruins</span>. Eventually the government took back control. <span class="annot" data-tooltip="authorities /ə'θɔːrəti/ n. 威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗">Authorities</span> have <span class="annot" data-tooltip="unveiled /ˌʌn'veɪl/ vt. 揭去…的面罩，除去…的遮盖物使公之于众；揭露vi. 除去面纱(或覆盖物)；揭幕揭露出来时 态: unveiled，unv">unveiled</span> a new website that they insist is harder to <span class="annot" data-tooltip="hack /hæk/ vt. & vi. 劈, 砍vt. 狠踢, 乱踢vi. 咳嗽(发出刺耳声音)(以普通速度)骑马驾驶计程车n. 砍, 劈用靴头踢骑">hack</span>. But there appears to be little appetite to bring the wider problem of <span class="annot" data-tooltip="corruption /kə'rʌpʃn/ n. 堕落;腐化;腐败;贿赂腐烂">corruption</span> at Machu Picchu to heel. The only person known to have been charged recently with selling access to the <span class="annot" data-tooltip="monument /'mɑːnjumənt/ n. 纪念碑；历史遗迹；不朽的作品vt. 为…树碑">monument</span> is a <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span> guard handed a five-year jail term for taking a <span class="annot" data-tooltip="bribe /braɪb/ vt. & vi. 贿赂n. 贿赂时 态: bribed, bribing, bribes">bribe</span> of 100 <span class="annot" data-tooltip="soles /soʊl/ n. 鞋底；脚底；基础；鳎目鱼adj. 唯一的；单独的；仅有的vt. 上鞋底；触底时 态: soled, soling, so">soles</span> ($29) to <span class="annot" data-tooltip="sneak /sniːk/ vi. 鬼鬼祟祟做事；溜；[英俚]向老师打小报告vt. 偷偷地做；偷偷取得n. 鬼鬼祟祟的人；偷偷摸摸的行为；告密者adj. 暗">sneak</span> someone in. Mr Ugarte wants a criminal probe that would see ringleaders <span class="annot" data-tooltip="properly /'prɑːpər/ adj. 适合的; 适当的; 适用的; 恰当的遵守规则的; 正确的严格意义的; 本身的合乎体统的; 正派的固有的; 特有的副 词:">properly</span> prosecuted. In the meantime, he thinks bureaucrats who <span class="annot" data-tooltip="oversee /ˌoʊvər'siː/ vt. 监督；俯瞰；审查；偷看到，无意中看到时 态: oversaw overseen overseeing, oversees">oversee</span> Machu Picchu’s ticket sales should be rotated to different jobs every few months. Machu Picchu has long been the crown jewel of Peruvian tourism. Once a getaway for Inca <span class="annot" data-tooltip="royalty /'rɔɪəlti/ n. 王权；皇室；版税；专利税">royalty</span>, the site today attracts some 1.5m visitors a year. This pumps millions of dollars into an under-developed region that is home to a lot of indigenous Peruvians. But <span class="annot" data-tooltip="annual /'ænjuəl/ adj. 年度的；每年的n. 年刊，年鉴；一年生植物副 词: annually">annual</span> visits remain just short of their pre-<span class="annot" data-tooltip="pandemic /pæn'demɪk/ adj. （疾病）在全国（或世界）流行的">pandemic</span> peak. Some think the ticketing troubles are partly to blame. Protesters with various grievances who are more often choosing to block the site as a way of gaining attention have also taken a <span class="annot" data-tooltip="toll /toʊl/ vt. 征收；敲钟n. 通行费；代价；钟声vi. 鸣钟；征税时 态: tolled, tolling, tolls">toll</span>. “It’s shameful,” says Mr Stoessel. “The big loser is <span class="annot" data-tooltip="peru n. 秘鲁形容词: Peruvian">Peru</span>.” ■</p>
+<p>This article was downloaded by zlibrary from https://www.economist.com/the-americas/2026/11/12/machu-picchus-mafias-are-costing- <span class="annot" data-tooltip="peru n. 秘鲁形容词: Peruvian">peru</span>-real-cash</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Middle East &amp; Africa</div>
+<p>Gadi Eisenkot has a chance to form a new government in Israel <span class="annot" data-tooltip="republicans /rɪ'pʌblɪkən/ adj. 共和国的, 共和政体的n. 拥护共和政体者, 共和主义者名 词: republicanism">Republicans</span> blame Israel for their defeat Jordan is worried about a resurgence in jihadism Welcome to Africa’s treason <span class="annot" data-tooltip="belt /belt/ n. 腰带, 带子区域, 地带vt.（用带子）系住；（作为惩罚用皮带等）抽打；击打vi.（尤指驾车）疾驰；飞奔时 态: bel">belt</span> Africa’s <span class="annot" data-tooltip="solar /'soʊlər/ adj. 太阳的；日光的；利用太阳光的；与太阳相关的n. 日光浴室">solar</span> revolution is vast and speedy</p>
+<p>Middle East & Africa | A would-be prime minister Gadi Eisenkot has a chance to form a new government in Israel Both his foes and his supposed <span class="annot" data-tooltip="allies n. （第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者">allies</span> may yet prevent him Nov 12th 2026 GADI EISENKOT <span class="annot" data-tooltip="cleared 清除的">cleared</span> the first hurdle on his path to power on November 8th when Israel’s president, Isaac Herzog, gave him the mandate to form a new government. But he will have to <span class="annot" data-tooltip="overcome /ˌoʊvər'kʌm/ vt. & vi. 战胜；克服vt. 被(烟、感情等)熏[压]倒，使受不了时 态: overcame overcome，over">overcome</span> more formidable <span class="annot" data-tooltip="trials /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">trials</span>, including the breaking of election promises, if he is to replace Binyamin Netanyahu, the prime minister who lost his coalition’s majority in the election on October 27th. In a short ceremony at the president’s <span class="annot" data-tooltip="residence /'rezɪdəns/ n. 住处; 住宅; 公馆居住; 居留期间">residence</span>, Mr Eisenkot conceded that “no one can stand for all the <span class="annot" data-tooltip="commitments /kə'mɪtmənt/ n. 承诺；保证；信奉；献身；委任；花费金钱、时间、人力等">commitments</span> they made. We will all have to make <span class="annot" data-tooltip="compromises /'kɑːmprəmaɪz/ n. 妥协, 折中方法vi. 折中解决vt. 连累, 危害, 损害时 态: compromised, compromising">compromises</span>.” He hopes to swear in a minority “emergency” government, formed of four <span class="annot" data-tooltip="jewish /'dʒuːɪʃ/ adj. 犹太人的;犹太教徒的">Jewish</span> opposition parties. <span class="annot" data-tooltip="neither /'niːðər/ conj. 既不；也不adv. 两个都不；既不……也不adj. 两者都不的det./pron. 两者都不">Neither</span> Arab nor</p>
+<p><span class="annot" data-tooltip="jewish /'dʒuːɪʃ/ adj. 犹太人的;犹太教徒的">Jewish</span> <span class="annot" data-tooltip="ultra /'ʌltrə/ adj. 极端的；过分的n. 极端主义者；过激论者；急进论者">ultra</span>-Orthodox parties would formally be part of his coalition—at least to start with—but they would offer support when needed. Mr Eisenkot’s rationale is that removing Mr Netanyahu is the most <span class="annot" data-tooltip="urgent /'ɜːrdʒənt/ adj. 紧急的；急迫的副 词: urgently">urgent</span> priority. In recent weeks the prime minister has tried to drag Israel into another war with Iran and urged the head of the country’s secret service to investigate the Arab votes and disqualify the election results. To form a coalition with a majority would mean lengthy <span class="annot" data-tooltip="negotiations /nɪˌɡoʊʃi'eɪʃn/ n. 协商，谈判完成(难事)；通过">negotiations</span> and he has only six weeks before the president asks someone else to try forming a government. Persuading enough parties to <span class="annot" data-tooltip="secure /sɪ'kjʊr/ adj. 安心的；有把握的可靠的；牢靠的；稳固的；安全的；稳妥的严密把守的；牢固的；坚固的v. （尤指经过努力）获得，取得，实现拴">secure</span> a majority would mean a lot of promise- breaking. During the election <span class="annot" data-tooltip="campaign /kæm'peɪn/ n. 运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）时">campaign</span> the four Jewish opposition parties <span class="annot" data-tooltip="committed /kə'mɪt/ vt. 犯罪；犯错承诺；使自己受约束托付；交付时 态: committed，committing，commits">committed</span> themselves to <span class="annot" data-tooltip="universal /ˌjuːnɪ'vɜːrsl/ adj. 全体的广泛的, 普遍的在世界各地的, 世界性的副 词: universally">universal</span> national service. The ultra-Orthodox parties are demanding, as a condition for joining a coalition, <span class="annot" data-tooltip="exemption /ɪɡ'zempʃn/ n. (义务等的)免除;免(税)(收入中的)免税额">exemption</span> from military service for students of religious seminaries. Three of the four Jewish parties oppose including the Arab parties in a coalition. Mr Eisenkot himself has set a series of conditions, including <span class="annot" data-tooltip="condemning /kən'dem/ vt. 判刑，定罪；谴责；声讨时 态: condemned, condemning, condemns">condemning</span> Hamas, the Islamist militant movement responsible for the <span class="annot" data-tooltip="massacres /'mæsəkər/ vt. 残杀；彻底击败n. 大屠杀；[口]惨败时 态: massacred massacring massacres">massacres</span> of October 7th three years ago, as a <span class="annot" data-tooltip="terror /'terər/ n. 恐怖; 恐怖活动引起恐怖的人[事]讨厌的人">terror</span> organisation. Those are difficult for the Arab parties to accept. But the four <span class="annot" data-tooltip="main /meɪn/ adj. 主要的; 最重要的n. 总管道; 干线">main</span> Jewish opposition parties only hold 48 of the 120 seats in the Knesset, Israel’s <span class="annot" data-tooltip="parliament /'pɑːrləmənt/ n. 议会, 国会">parliament</span>. A minority government would be a way of avoiding the <span class="annot" data-tooltip="tricky /'trɪki/ adj. 机警的；狡猾的比较级: trickier, trickiest">tricky</span> <span class="annot" data-tooltip="compromises /'kɑːmprəmaɪz/ n. 妥协, 折中方法vi. 折中解决vt. 连累, 危害, 损害时 态: compromised, compromising">compromises</span> while leaving open the possibility that Arab or ultra-Orthodox parties could formally join the coalition at a later date. Mr Eisenkot, a former chief of the Israel Defence Forces, is a relative newcomer to politics. He <span class="annot" data-tooltip="entered /'entər/ vt. & vi. 进入, 进去参加, 加入登记, 登录时 态: entered, entering, enters">entered</span> the Knesset in 2022 and has been a party leader for only a year. This was an advantage in the election. His party’s fresh appeal helped it <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> <span class="annot" data-tooltip="outperform /ˌaʊtpər'fɔːrm/ vt. 做得比…更好；胜过时 态: outperformed，outperforming，outperforms">outperform</span> other parties in the opposition. But Mr Eisenkot has his work cut out to get an unruly camp in <span class="annot" data-tooltip="line /laɪn/ n. 绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long inter">line</span>. “We have various permutations for a coalition,” says an adviser to one of the party leaders. “But the four parties have to agree on one first.” His <span class="annot" data-tooltip="rival /'raɪvl/ n. 竞争对手vt. 与…竞争, 与…匹敌时 态: rivaled, rivalled rivaling, rivalling">rival</span> opposition leaders are already trying to outmanoeuvre him.</p>
+<p>Chief among them is Avigdor Lieberman, of the nationalist Yisrael Beiteinu party. Mr Lieberman began his political career <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> four <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span> ago as an assistant to Mr Netanyahu but he has now sworn to end his rule. Yisrael Beiteinu won only seven seats in the election, but Mr Lieberman still <span class="annot" data-tooltip="fancies /'fænsi/ n. 想像力；爱好；幻想adj. 想象的；奇特的；精选的；昂贵的vt. 设想；喜爱；想象；自负vi. 想象；幻想副 词: fa">fancies</span> himself as both a coalition builder and future prime minister. He has begun his <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> <span class="annot" data-tooltip="freelance /'friːlæns/ adj. 特约的；自由职业（者）的v. 做特约工作；从事自由职业n. 特约人员；自由职业者（同freelancer）时 态: fr">freelance</span> operation, negotiating with the <span class="annot" data-tooltip="ultra /'ʌltrə/ adj. 极端的；过分的n. 极端主义者；过激论者；急进论者">ultra</span>-Orthodox parties. He has ruled out being part of a minority government, especially if that would mean relying on support from Arab parties. Meanwhile, Mr Netanyahu has not bowed out. Lawyers for his Likud party are trying to challenge the election result, claiming foreign interference and irregularities among the Arab voters. The Shin Bet <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span> agency, headed by one of Mr Netanyahu’s loyalists, is investigating these claims but the resolutely independent <span class="annot" data-tooltip="attorney /ə'tɜːrni/ n. 代理人, 律师名 词: attorneyship">attorney</span>-general has ruled that there is <span class="annot" data-tooltip="insufficient /ˌɪnsə'fɪʃnt/ adj. 不足的,不够的副 词: insufficiently">insufficient</span> evidence to question the vote-count or haul Arab politicians in for questioning. The election results have been ratified. The prime minister’s <span class="annot" data-tooltip="fallback /'fɔːlbæk/ n. 可依靠的东西；撤退，退却">fallback</span> is to try to stymie the opposition’s coalition- building. On November 7th Mr Netanyahu called for a unity government, which <span class="annot" data-tooltip="presumably /prɪ'zuːməbli/ adv. 据推测, 大概, 可能">presumably</span> he would lead, instead of “a government relying on Islamists that will dismantle Israel from within”. He warned that “with a government such as this Israel <span class="annot" data-tooltip="simply /'sɪmpli/ adv. 简单地；朴素地；简直；仅仅；坦白地">simply</span> will not survive.” Mr Eisenkot’s response was to describe the prime minister as “<span class="annot" data-tooltip="hysterical /hɪ'sterɪkl/ adj. 情绪异常激动的, 歇斯底里般的副 词: hysterically">hysterical</span>”. He will need his wits about him if he is yet to <span class="annot" data-tooltip="fulfill /fʊlˈfɪl/ vt. 履行；满足；实现；使结束（等于fulfil）时 态: fulfilled, fulfilling, fulfillsal">fulfill</span> his election promise and replace Mr Netanyahu. ■ This article was downloaded by zlibrary from https://www.economist.com/middle-east-and-africa/2026/11/08/gadi-eisenkot-has-a- chance-to-form-a-new-government-in-israel</p>
+<p>Middle East & Africa | <span class="annot" data-tooltip="drifting /drɪft/ n. 漂流，漂移；漂流物；趋势vi. 漂流，漂移；漂泊vt. 使…漂流；使…受风吹积DRIFTabbr. Diversity ">Drifting</span> apart <span class="annot" data-tooltip="republicans /rɪ'pʌblɪkən/ adj. 共和国的, 共和政体的n. 拥护共和政体者, 共和主义者名 词: republicanism">Republicans</span> blame Israel for their defeat The Democrats’ victory could accelerate the decline of the Israeli- American alliance Nov 12th 2026 The blame started before voting in America’s midterm elections ended and the extent of the Republicans’ drubbing was <span class="annot" data-tooltip="revealed /rɪ'viːl/ vt. 显示；露出泄露；透露时 态: revealed，revealing，reveals">revealed</span>. In an interview on election day Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> said that America would cut off military aid to Israel “at the end of the year”. Israel no longer needs it, he explained; the country is “thriving”. But there was another reason, the president added: “It’s a bad talking point.” J.D. Vance, the <span class="annot" data-tooltip="vice /vaɪs/ n. 堕落，邪恶；不良习气，恶习（尤指与性或毒品有关的）罪行，道德败坏行为【英式】老虎钳；台钳（【美式】vise）pref. ">vice</span>-president, was more direct. On the day after the election, he blamed the war in Iran, and also America’s relationship with Israel, for the Republicans’ defeat. Israel has been <span class="annot" data-tooltip="falling /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">falling</span> steadily out of favour in America. Its <span class="annot" data-tooltip="brutal /'bruːtl/ adj. 残忍的；野蛮的，不讲理的副 词: brutally">brutal</span> <span class="annot" data-tooltip="campaigns /kæm'peɪn/ n. 运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）时">campaigns</span> in <span class="annot" data-tooltip="gaza n. 加沙（地中海岸港市）">Gaza</span> and Lebanon had already angered voters and politicians on both ends of the political <span class="annot" data-tooltip="spectrum /'spektrəm/ n. 光谱波谱范围, 系列复 数: spectra">spectrum</span>. The unpopular war with Iran has</p>
+<p>drawn further attention to the $3.8bn Israel receives <span class="annot" data-tooltip="annually /'ænjuəl/ adj. 年度的；每年的n. 年刊，年鉴；一年生植物副 词: annually">annually</span> from America, <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> all of it as <span class="annot" data-tooltip="subsidies /'sʌbsədi/ n. 津贴；补助金；补贴">subsidies</span> for the <span class="annot" data-tooltip="purchase /'pɜːrtʃəs/ n. 购买；紧握；起重装置vt. 购买；赢得vi. 购买东西时 态: purchased, purchasing, purch">purchase</span> of American-made arms and other military supplies. America’s alliance with Israel featured in a <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of high-profile <span class="annot" data-tooltip="contests /'kɑːntest/ vt. 争辩；提出质疑vi. 竞争；争辩n. 竞赛；争论；争夺时 态: contested, contesting, conte">contests</span>, including that of Abdul El-Sayed, the senator-elect from Michigan who fiercely criticised military aid. Other <span class="annot" data-tooltip="candidates /'kændɪdət，ˈkændɪdeɪt/ n. 申请求职者, 候选人报考者名 词: candidacy">candidates</span> took pride in not accepting donations from AIPAC, the <span class="annot" data-tooltip="pro /proʊ/ n. 从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞">pro</span>-Israel <span class="annot" data-tooltip="lobby /'lɑːbi/ n. 前厅, 厅堂议会休息室游说议员的团体vt. & vi. 向…进行游说[疏通]名 词: lobbyism">lobby</span>. AIPAC itself said two weeks before the election that it would stop endorsing candidates, a tacit <span class="annot" data-tooltip="admission /əd'mɪʃn/ n. 准许进入入场费, 入场券承认, 供认形容词: admissive">admission</span> of the toxicity of its <span class="annot" data-tooltip="brand /brænd/ n. 商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责时 态: branded, branding, brands">brand</span>. Messrs <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> and Vance’s words were not lost on Israelis. “The fact Trump said this on the day of the midterms was a political message that Israel is currently unpopular with both parties,” says Avner Golov, a former <span class="annot" data-tooltip="senior /'siːniər/ adj. 年长的资深的; 地位高的〈美〉最高年级的n. 较年长者高年级学生〈美〉毕业班学生Senior西尼尔(姓氏)">senior</span> director on Israel’s national-<span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span> council. Barack Obama signed the current ten-year $3.8bn package, which is set to run out in 2028. The Israeli government was <span class="annot" data-tooltip="aware /ə'wer/ adj. 知道的；意识到的；有…方面知识的；懂世故的名 词: awareness">aware</span> that negotiating a new package would be <span class="annot" data-tooltip="tricky /'trɪki/ adj. 机警的；狡猾的比较级: trickier, trickiest">tricky</span>. Growing numbers of Democrats are particularly hostile to Israel, and the Trump administration—and <span class="annot" data-tooltip="republicans /rɪ'pʌblɪkən/ adj. 共和国的, 共和政体的n. 拥护共和政体者, 共和主义者名 词: republicanism">Republicans</span> more widely—are loth to give money to foreigners. In light of this, Binyamin Netanyahu, Israel’s prime minister, told The Economist in January that he favoured gradually phasing out American aid over the next ten years. Talks had started in recent months about the future of aid, but Mr Trump’s election-day announcement took Israeli officials by surprise. “It’s been clear for years that the <span class="annot" data-tooltip="terms /tɜːrmz/ n. 条款；地位，关系；措辞；术语；价钱（term的复数形式）v. 把…称为（term的三单形式）">terms</span> of the alliance with America were going to have to change,” says Alon Pinkas, a former diplomat who served as Israel’s consul-general in New York. “Now it looks like Netanyahu has agreed with Trump to end the current aid agreement, without anything ready to replace it.” The future of the relationship is unclear. Mr Trump has suggested that Israel will be able to continue buying American arms, on its <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> dime. But Israeli officials worry that a <span class="annot" data-tooltip="democratic /ˌdemə'krætɪk/ adj. 民主的, 有民主精神或作风的副 词: democratically">Democratic</span>-controlled Congress will limit the kinds of weapons Israel can buy and restrict how it can use them, especially in the occupied Palestinian <span class="annot" data-tooltip="territories /'terətɔːri/ n. 领土, 版图管区, 营业地区地盘, 领域, 范围">territories</span>. For over half a century successive American administrations have been <span class="annot" data-tooltip="committed /kə'mɪt/ vt. 犯罪；犯错承诺；使自己受约束托付；交付时 态: committed，committing，commits">committed</span> to maintaining Israel’s “<span class="annot" data-tooltip="qualitative /'kwɑːlɪteɪtɪv/ adj. 定性的，性质(上)的；质量的副 词: qualitatively">qualitative</span></p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>exploited</td><td>/ɪk'splɔɪt/ vt.</td><td>开发，开拓；剥削；开采n. 勋绩；功绩, exploiting, exploits</td></tr>
+<tr><td>ultimately</td><td>/'ʌltɪmətli/ adv.</td><td>最后;最终</td></tr>
+<tr><td>speculate</td><td>/'spekjuleɪt/ vt.</td><td>& vi. 思索；猜测，推测vi. 投机，speculating，speculates</td></tr>
+<tr><td>motives</td><td>/moʊ'tiːf/ n.</td><td>主题；动机；图形；主旨；意念</td></tr>
+<tr><td>corrupt</td><td>/kə'rʌpt/ adj.</td><td>腐败的，贪污的；堕落的vt. 使堕落，使恶化；使腐烂vi. 腐烂；堕落，腐化, corrupting, corrupts</td></tr>
+<tr><td>outsource</td><td>/'aʊtsɔːrs/ vt.</td><td>①外购(指从外国供应商等处获得货物或服务)②外包(工程), outsourcing, outsources</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>sparked</td><td>/spɑːrk/ n.</td><td>火花，火星；电火花；一丝，略微；导火线，诱因v. 引发，触发；产生火花（电火花）；点燃；增加趣味（或活力、风味等）, sparking, sparks</td></tr>
+<tr><td>protests</td><td>/'proʊtest/ n.</td><td>抗议；反对vt. & vi. 声明；抗议，protesting，protests</td></tr>
+<tr><td>ruins</td><td>/'ruːɪn/ vt.</td><td>破坏，毁掉使破产，使沦落n. 毁坏，毁灭，灭亡完全丧失，断送；垮台(的原因)破败、坍塌或毁坏的状态废墟；遗迹，ruining，ruins</td></tr>
+<tr><td>authorities</td><td>/ə'θɔːrəti/ n.</td><td>威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗</td></tr>
+<tr><td>unveiled</td><td>/ˌʌn'veɪl/ vt.</td><td>揭去…的面罩，除去…的遮盖物使公之于众；揭露vi. 除去面纱(或覆盖物)；揭幕揭露出来，unveiling，unveils</td></tr>
+<tr><td>hack</td><td>/hæk/ vt.</td><td>& vi. 劈, 砍vt. 狠踢, 乱踢vi. 咳嗽(发出刺耳声音)(以普通速度)骑马驾驶计程车n. 砍, 劈用靴头踢骑用马, 供出租的马受雇于出版商的文人出租</td></tr>
+<tr><td>corruption</td><td>/kə'rʌpʃn/ n.</td><td>堕落;腐化;腐败;贿赂腐烂</td></tr>
+<tr><td>monument</td><td>/'mɑːnjumənt/ n.</td><td>纪念碑；历史遗迹；不朽的作品vt. 为…树碑</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>bribe</td><td>/braɪb/ vt.</td><td>& vi. 贿赂n. 贿赂, bribing, bribes</td></tr>
+<tr><td>soles</td><td>/soʊl/ n.</td><td>鞋底；脚底；基础；鳎目鱼adj. 唯一的；单独的；仅有的vt. 上鞋底；触底, soling, soles</td></tr>
+<tr><td>sneak</td><td>/sniːk/ vi.</td><td>鬼鬼祟祟做事；溜；[英俚]向老师打小报告vt. 偷偷地做；偷偷取得n. 鬼鬼祟祟的人；偷偷摸摸的行为；告密者adj. 暗中进行的, sne</td></tr>
+<tr><td>properly</td><td>/'prɑːpər/ adj.</td><td>适合的; 适当的; 适用的; 恰当的遵守规则的; 正确的严格意义的; 本身的合乎体统的; 正派的固有的; 特有的</td></tr>
+<tr><td>oversee</td><td>/ˌoʊvər'siː/ vt.</td><td>监督；俯瞰；审查；偷看到，无意中看到, oversees</td></tr>
+<tr><td>royalty</td><td>/'rɔɪəlti/ n.</td><td>王权；皇室；版税；专利税</td></tr>
+<tr><td>annual</td><td>/'ænjuəl/ adj.</td><td>年度的；每年的n. 年刊，年鉴；一年生植物</td></tr>
+<tr><td>pandemic</td><td>/pæn'demɪk/ adj.</td><td>（疾病）在全国（或世界）流行的</td></tr>
+<tr><td>toll</td><td>/toʊl/ vt.</td><td>征收；敲钟n. 通行费；代价；钟声vi. 鸣钟；征税, tolling, tolls</td></tr>
+<tr><td>peru</td><td>— n.</td><td>秘鲁</td></tr>
+<tr><td>peru</td><td>— n.</td><td>秘鲁</td></tr>
+<tr><td>republicans</td><td>/rɪ'pʌblɪkən/ adj.</td><td>共和国的, 共和政体的n. 拥护共和政体者, 共和主义者</td></tr>
+<tr><td>belt</td><td>/belt/ n.</td><td>腰带, 带子区域, 地带vt.（用带子）系住；（作为惩罚用皮带等）抽打；击打vi.（尤指驾车）疾驰；飞奔, belting, belts</td></tr>
+<tr><td>solar</td><td>/'soʊlər/ adj.</td><td>太阳的；日光的；利用太阳光的；与太阳相关的n. 日光浴室</td></tr>
+<tr><td>allies</td><td>— n.</td><td>（第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者</td></tr>
+<tr><td>cleared</td><td>— </td><td>清除的</td></tr>
+<tr><td>overcome</td><td>/ˌoʊvər'kʌm/ vt.</td><td>& vi. 战胜；克服vt. 被(烟、感情等)熏[压]倒，使受不了，overcoming，overcomes</td></tr>
+<tr><td>trials</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>residence</td><td>/'rezɪdəns/ n.</td><td>住处; 住宅; 公馆居住; 居留期间</td></tr>
+<tr><td>commitments</td><td>/kə'mɪtmənt/ n.</td><td>承诺；保证；信奉；献身；委任；花费金钱、时间、人力等</td></tr>
+<tr><td>compromises</td><td>/'kɑːmprəmaɪz/ n.</td><td>妥协, 折中方法vi. 折中解决vt. 连累, 危害, 损害, compromising, compromises</td></tr>
+<tr><td>jewish</td><td>/'dʒuːɪʃ/ adj.</td><td>犹太人的;犹太教徒的</td></tr>
+<tr><td>neither</td><td>/'niːðər/ conj.</td><td>既不；也不adv. 两个都不；既不……也不adj. 两者都不的det./pron. 两者都不</td></tr>
+<tr><td>jewish</td><td>/'dʒuːɪʃ/ adj.</td><td>犹太人的;犹太教徒的</td></tr>
+<tr><td>ultra</td><td>/'ʌltrə/ adj.</td><td>极端的；过分的n. 极端主义者；过激论者；急进论者</td></tr>
+<tr><td>urgent</td><td>/'ɜːrdʒənt/ adj.</td><td>紧急的；急迫的</td></tr>
+<tr><td>negotiations</td><td>/nɪˌɡoʊʃi'eɪʃn/ n.</td><td>协商，谈判完成(难事)；通过</td></tr>
+<tr><td>secure</td><td>/sɪ'kjʊr/ adj.</td><td>安心的；有把握的可靠的；牢靠的；稳固的；安全的；稳妥的严密把守的；牢固的；坚固的v. （尤指经过努力）获得，取得，实现拴牢；扣紧；关严保护；保卫；使安全抵押；为</td></tr>
+<tr><td>campaign</td><td>/kæm'peɪn/ n.</td><td>运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）, campaigning, campai</td></tr>
+<tr><td>committed</td><td>/kə'mɪt/ vt.</td><td>犯罪；犯错承诺；使自己受约束托付；交付，committing，commits</td></tr>
+<tr><td>universal</td><td>/ˌjuːnɪ'vɜːrsl/ adj.</td><td>全体的广泛的, 普遍的在世界各地的, 世界性的</td></tr>
+<tr><td>exemption</td><td>/ɪɡ'zempʃn/ n.</td><td>(义务等的)免除;免(税)(收入中的)免税额</td></tr>
+<tr><td>condemning</td><td>/kən'dem/ vt.</td><td>判刑，定罪；谴责；声讨, condemning, condemns</td></tr>
+<tr><td>massacres</td><td>/'mæsəkər/ vt.</td><td>残杀；彻底击败n. 大屠杀；[口]惨败</td></tr>
+<tr><td>terror</td><td>/'terər/ n.</td><td>恐怖; 恐怖活动引起恐怖的人[事]讨厌的人</td></tr>
+<tr><td>main</td><td>/meɪn/ adj.</td><td>主要的; 最重要的n. 总管道; 干线</td></tr>
+<tr><td>parliament</td><td>/'pɑːrləmənt/ n.</td><td>议会, 国会</td></tr>
+<tr><td>tricky</td><td>/'trɪki/ adj.</td><td>机警的；狡猾的, trickiest</td></tr>
+<tr><td>compromises</td><td>/'kɑːmprəmaɪz/ n.</td><td>妥协, 折中方法vi. 折中解决vt. 连累, 危害, 损害, compromising, compromises</td></tr>
+<tr><td>entered</td><td>/'entər/ vt.</td><td>& vi. 进入, 进去参加, 加入登记, 登录, entering, enters</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>outperform</td><td>/ˌaʊtpər'fɔːrm/ vt.</td><td>做得比…更好；胜过，outperforming，outperforms</td></tr>
+<tr><td>line</td><td>/laɪn/ n.</td><td>绳；排；路线，航线vt. 划线于；排成一行；以线条标示；使…起皱纹vi. 排队；站成一排LINE(=long interspersed element)长散在元</td></tr>
+<tr><td>rival</td><td>/'raɪvl/ n.</td><td>竞争对手vt. 与…竞争, 与…匹敌, rivalled rivaling, rivalling rivals, rivals</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>fancies</td><td>/'fænsi/ n.</td><td>想像力；爱好；幻想adj. 想象的；奇特的；精选的；昂贵的vt. 设想；喜爱；想象；自负vi. 想象；幻想</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>freelance</td><td>/'friːlæns/ adj.</td><td>特约的；自由职业（者）的v. 做特约工作；从事自由职业n. 特约人员；自由职业者（同freelancer）, freelancing, freelanced</td></tr>
+<tr><td>ultra</td><td>/'ʌltrə/ adj.</td><td>极端的；过分的n. 极端主义者；过激论者；急进论者</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>attorney</td><td>/ə'tɜːrni/ n.</td><td>代理人, 律师</td></tr>
+<tr><td>insufficient</td><td>/ˌɪnsə'fɪʃnt/ adj.</td><td>不足的,不够的</td></tr>
+<tr><td>fallback</td><td>/'fɔːlbæk/ n.</td><td>可依靠的东西；撤退，退却</td></tr>
+<tr><td>presumably</td><td>/prɪ'zuːməbli/ adv.</td><td>据推测, 大概, 可能</td></tr>
+<tr><td>simply</td><td>/'sɪmpli/ adv.</td><td>简单地；朴素地；简直；仅仅；坦白地</td></tr>
+<tr><td>hysterical</td><td>/hɪ'sterɪkl/ adj.</td><td>情绪异常激动的, 歇斯底里般的</td></tr>
+<tr><td>fulfill</td><td>/fʊlˈfɪl/ vt.</td><td>履行；满足；实现；使结束（等于fulfil）, fulfilling, fulfillsalso fulfils</td></tr>
+<tr><td>drifting</td><td>/drɪft/ n.</td><td>漂流，漂移；漂流物；趋势vi. 漂流，漂移；漂泊vt. 使…漂流；使…受风吹积DRIFTabbr. Diversity Receiving Instrument</td></tr>
+<tr><td>republicans</td><td>/rɪ'pʌblɪkən/ adj.</td><td>共和国的, 共和政体的n. 拥护共和政体者, 共和主义者</td></tr>
+<tr><td>revealed</td><td>/rɪ'viːl/ vt.</td><td>显示；露出泄露；透露，revealing，reveals</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>vice</td><td>/vaɪs/ n.</td><td>堕落，邪恶；不良习气，恶习（尤指与性或毒品有关的）罪行，道德败坏行为【英式】老虎钳；台钳（【美式】vise）pref. 副职的；副的</td></tr>
+<tr><td>falling</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>brutal</td><td>/'bruːtl/ adj.</td><td>残忍的；野蛮的，不讲理的</td></tr>
+<tr><td>campaigns</td><td>/kæm'peɪn/ n.</td><td>运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）, campaigning, campai</td></tr>
+<tr><td>gaza</td><td>— n.</td><td>加沙（地中海岸港市）</td></tr>
+<tr><td>spectrum</td><td>/'spektrəm/ n.</td><td>光谱波谱范围, 系列复 数: spectra</td></tr>
+<tr><td>annually</td><td>/'ænjuəl/ adj.</td><td>年度的；每年的n. 年刊，年鉴；一年生植物</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>subsidies</td><td>/'sʌbsədi/ n.</td><td>津贴；补助金；补贴</td></tr>
+<tr><td>purchase</td><td>/'pɜːrtʃəs/ n.</td><td>购买；紧握；起重装置vt. 购买；赢得vi. 购买东西, purchasing, purchases</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>contests</td><td>/'kɑːntest/ vt.</td><td>争辩；提出质疑vi. 竞争；争辩n. 竞赛；争论；争夺, contesting, contests</td></tr>
+<tr><td>candidates</td><td>/'kændɪdət，ˈkændɪdeɪt/ n.</td><td>申请求职者, 候选人报考者</td></tr>
+<tr><td>pro</td><td>/proʊ/ n.</td><td>从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞成；支持Pro脯氨酸PROabbr. P</td></tr>
+<tr><td>lobby</td><td>/'lɑːbi/ n.</td><td>前厅, 厅堂议会休息室游说议员的团体vt. & vi. 向…进行游说[疏通]</td></tr>
+<tr><td>admission</td><td>/əd'mɪʃn/ n.</td><td>准许进入入场费, 入场券承认, 供认</td></tr>
+<tr><td>brand</td><td>/brænd/ n.</td><td>商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责, branding, brands</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>senior</td><td>/'siːniər/ adj.</td><td>年长的资深的; 地位高的〈美〉最高年级的n. 较年长者高年级学生〈美〉毕业班学生Senior西尼尔(姓氏)</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>aware</td><td>/ə'wer/ adj.</td><td>知道的；意识到的；有…方面知识的；懂世故的</td></tr>
+<tr><td>tricky</td><td>/'trɪki/ adj.</td><td>机警的；狡猾的, trickiest</td></tr>
+<tr><td>republicans</td><td>/rɪ'pʌblɪkən/ adj.</td><td>共和国的, 共和政体的n. 拥护共和政体者, 共和主义者</td></tr>
+<tr><td>terms</td><td>/tɜːrmz/ n.</td><td>条款；地位，关系；措辞；术语；价钱（term的复数形式）v. 把…称为（term的三单形式）</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>democratic</td><td>/ˌdemə'krætɪk/ adj.</td><td>民主的, 有民主精神或作风的</td></tr>
+<tr><td>territories</td><td>/'terətɔːri/ n.</td><td>领土, 版图管区, 营业地区地盘, 领域, 范围</td></tr>
+<tr><td>committed</td><td>/kə'mɪt/ vt.</td><td>犯罪；犯错承诺；使自己受约束托付；交付，committing，commits</td></tr>
+<tr><td>qualitative</td><td>/'kwɑːlɪteɪtɪv/ adj.</td><td>定性的，性质(上)的；质量的</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day16.html" class="nav-btn">← Day 16</a>
+  <a href="day18.html" class="nav-btn">Day 18 →</a>
+</div>
+
+<div class="progress">📖 Day 17 of 41</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-11-14</div>
+
+</body>
+</html>

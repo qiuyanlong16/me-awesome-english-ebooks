@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business | CUDA known better</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-11-14</div>
+
+<h1 class="article-title">Business | CUDA known better</h1>
+<div class="article-section">Business</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>None of this seemed to give <span class="annot" data-tooltip="nvidia 恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商">Nvidia</span>’s boss pause. He and Ms Huang were repeatedly photographed together, and his company continued to <span class="annot" data-tooltip="vouch /vaʊtʃ/ vt. 担保；证明；传出庭作证vi. 保证；证明；确定时 态: vouched, vouching, vouches">vouch</span> for its customer. Late last year Nvidia said its <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> checks had found no evidence of <span class="annot" data-tooltip="diversion /daɪ'vɜːrʒn/ n. 转移, 转向娱乐, 消遣临时绕行路分散注意力形容词: diversionary">diversion</span>. Last month Mr Huang called his dealings with Ms Huang “<span class="annot" data-tooltip="completely /kəm'pliːt/ adj. 完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善比较级: complete">completely</span> normal and not <span class="annot" data-tooltip="unusual /ʌn'juːʒuəl/ adj. 与众不同的；不寻常的；不平常的副 词: unusually">unusual</span>”, and insisted that Nvidia had “counted every one” of Megaspeed’s chips. In recent days Bloomberg and the New York Times have independently reported that Tim Teter, Nvidia’s general <span class="annot" data-tooltip="counsel /'kaʊnsl/ n. 忠告；讨论；商议；决策；法律顾问vt. 劝告；建议vi. 提出忠告；商讨时 态: counseled, counsell">counsel</span>, intervened last year in the <span class="annot" data-tooltip="commerce /'kɑːmɜːrs/ n. 商业, 贸易">Commerce</span> Department’s investigation of Megaspeed. An Nvidia spokesperson says that the company regularly <span class="annot" data-tooltip="consults /kən'sʌlt/ vt. 商量；查阅；向…请教vi. 请教；商议；当顾问时 态: consulted, consulting, consults">consults</span> export-control officials to share knowledge. President Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s administration seemed no more troubled. Mr Huang has been one of Mr Trump’s favourite businessmen, and a frequent presence at his side. Yet the president appears to have been warned about the relationship at least twice. Reportedly he was briefed on the intelligence about Ms Huang roughly a year ago. In May, as he flew to China with a <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span> of executives, Marco Rubio, the <span class="annot" data-tooltip="secretary /'sekrəteri/ n. 秘书书记部长, 大臣形容词: secretarial">secretary</span> of state, reminded him of it shortly before Nvidia’s boss joined the <span class="annot" data-tooltip="trip /trɪp/ vi. 绊倒；犯错误；远足；轻快地走n. 旅行；绊倒；差错vt. 绊倒；使犯错TRIPabbr. transformation-">trip</span> during a refuelling stop in Alaska. The administration will now have to answer for why it took no action on the warnings, and why it continued to allow Mr Huang to wield so much influence on a matter of national <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span>. Three <span class="annot" data-tooltip="republican /rɪ'pʌblɪkən/ adj. 共和国的, 共和政体的n. 拥护共和政体者, 共和主义者名 词: republicanism">Republican</span> committee chairmen have <span class="annot" data-tooltip="summoned /'sʌmən/ vt. 召唤；召集；鼓起；振作时 态: summoned, summoning, summons">summoned</span> Mr Huang to a closed-door congressional briefing on November 18th. Howard Lutnick, the commerce secretary, will also face scrutiny, particularly once Democrats take control of Congress in January. Chris Coons, who is set to chair the <span class="annot" data-tooltip="senate /ˈsenət/ n.（诸如美国、澳大利亚、法国的）参议院（the Senate） （某些国家的）大学理事会，大学评议会（古罗马的）元老院">Senate</span> Foreign Relations Committee, has promised to investigate “the <span class="annot" data-tooltip="insane /ɪn'seɪn/ adj. 精神病的；极愚蠢的；疯狂的副 词: insanely">insane</span> relationship between the Trump administration, Chinese spies and AI billionaires”. The scandal could also revive a handful of stalled bills to tighten China’s access to AI chips. One would turn into law the administration’s policy of blocking the sale of Nvidia’s most advanced chips to China. Another would require exporters to show that their chips have not been diverted, for instance by verifying where they are. If Mr Huang goes, it will be a sorry end to a <span class="annot" data-tooltip="brilliant /'brɪliənt/ adj. 闪光的, 明亮的光辉的, 辉煌的副 词: brilliantly">brilliant</span> career. He co-founded Nvidia in 1993 to make <span class="annot" data-tooltip="graphics /'ɡræfɪks/ n. 制图学；制图法；图表算法">graphics</span> chips for video games. But in the mid-</p>
+<p>2010s Mr Huang became convinced that AI would transform computing, and that <span class="annot" data-tooltip="nvidia 恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商">Nvidia</span>’s form of chip would provide its <span class="annot" data-tooltip="essential /ɪ'senʃl/ adj. 基本的；必要的；本质的；精华的">essential</span> building blocks. The bet <span class="annot" data-tooltip="proved /proʊ/ n. 从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞">proved</span> prescient. Between the start of 2023 and the beginning of this year Nvidia’s share price rose 13-fold. In October 2025 it became the first company to be <span class="annot" data-tooltip="worth /wɜːrθ/ adj. 值…的n. 价值；财产时 态: worthed, worthing, worths">worth</span> more than $5trn. Finding a permanent successor would be hard. Jay Goldberg of Seaport Research Partners, a firm of analysts, reckons that “nobody can fill Jensen’s leather jacket”. <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">Although</span> Nvidia has grown into a giant, with some 40,000 employees, it is run as an extension of its <span class="annot" data-tooltip="charismatic /ˌkærɪz'mætɪk/ adj. 有魅力的;有感召力的(基督徒中的一派)认为有神赐超凡能力的">charismatic</span> leader. Mr Huang is a micromanager, with some 60 people reporting directly to him. His ties with suppliers such as TSMC, a Taiwanese chip <span class="annot" data-tooltip="manufacturer /ˌmænju'fæktʃərər/ n. 制造商, 制造厂">manufacturer</span>, and SK Hynix, a South Korean memory-maker, have helped <span class="annot" data-tooltip="secure /sɪ'kjʊr/ adj. 安心的；有把握的可靠的；牢靠的；稳固的；安全的；稳妥的严密把守的；牢固的；坚固的v. （尤指经过努力）获得，取得，实现拴">secure</span> scarce capacity. Some outsiders have been floated, including Lisa Su, boss of AMD (and a distant relative of Mr Huang). Yet any newcomer would <span class="annot" data-tooltip="inherit /ɪn'herɪt/ vt. 继承；遗传而得vi. 成为继承人时 态: inherited, inheriting, inherits">inherit</span> a firm full of the old boss’s loyalists. Nvidia’s performance may hold up for now. Mr Goldberg notes that many of its chips are sold out into next year, and demand for AI <span class="annot" data-tooltip="gear /ɡɪr/ n. 用具，设备，衣服齿轮；传动装置；(排)挡vi. 换挡vt. 使兴奋起来；使准备好vt. & vi. (使)搭配；(使)适">gear</span> remains strong. But the <span class="annot" data-tooltip="saga /'sɑːɡə/ n. 冒险故事；传说；英雄事迹">saga</span> looks set to be a lasting <span class="annot" data-tooltip="distraction /dɪ'strækʃn/ n. 注意力分散；消遣；心烦意乱">distraction</span>, even if Mr Huang is replaced. On November 9th <span class="annot" data-tooltip="shareholders /'ʃerhoʊldər/ n. 股东名 词: shareholding">shareholders</span> filed a class-action accusing the company and Mr Huang of <span class="annot" data-tooltip="misleading /ˌmɪs'liːdɪŋ/ adj. 欺骗的;误导性的">misleading</span> investors when they responded to reports about the relationship between him and Ms Huang. Mr Goldberg also thinks that Mr Huang’s exit would “take a lot of the <span class="annot" data-tooltip="spirit /'spɪrɪt/ n. 精神；心灵；志气；烈酒；情绪vt. 鼓励；鼓舞；诱拐时 态: spirited, spiriting, spirits">spirit</span> out of” the investment boom. Nvidia’s boss is one of AI’s loudest cheerleaders; his leather jacket, stadium keynotes and <span class="annot" data-tooltip="sermons /'sɜːrmən/ n. 布道, 讲道, 说教讲道文章一大通教训形容词: sermonic">sermons</span> on the technology have made him a rock star among the tech faithful. Lately he has also become the <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span>’s banker, using Nvidia’s cash to bankroll AI <span class="annot" data-tooltip="startups /ˈstɑrtˈʌp/ n. 启动；开办">startups</span> and its balance-sheet to guarantee the debts of myriad data-centre projects. With Mr Huang gone, the web of deals he has spun may start to unravel. ■ This article was downloaded by zlibrary from https://www.economist.com/business/2026/11/12/jensen-huangs-recklessness-leaves- nvidia-with-no-good-options</p>
+<div class="article-separator"></div>
+<div class="article-header">Business · Business | All over the shop</div>
+<p>A franchise revolution is <span class="annot" data-tooltip="stirring /stɜːr/ vt. & vi. 搅拌(使)移动；(使)激动n. 搅动；搅和；搅拌激动；纷乱；骚乱STIRabbr. Surveillance">stirring</span> in China It is bringing <span class="annot" data-tooltip="buzzy n. 伸缩式风钻，伸缩式凿岩机；嗡嗡响的">buzzy</span> <span class="annot" data-tooltip="retail /ˈriːteɪl/ vt. 零售；转述vi. 零售n. 零售adv. 以零售方式adj. 零售的时 态: retailed, retailing, ">retail</span> <span class="annot" data-tooltip="brands /brænd/ n. 商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责时 态: branded, branding, brands">brands</span> to every corner of the country—and beyond Nov 12th 2026 Yang Guofu spent much of the 1990s running from the chengguan, a dreaded troop of goons with the <span class="annot" data-tooltip="authority /ə'θɔːrəti/ n. 威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗">authority</span> to rough up street <span class="annot" data-tooltip="vendors /'vendər/ n. 小贩；卖主；自动售货机">vendors</span> in the name of tidier cities. At the time he was <span class="annot" data-tooltip="grilling /ɡrɪl/ vt. 烧，烤；拷问vi. 烧，烤；严加盘问n. 烤架，铁格子；烤肉时 态: grilled, grilling, grills">grilling</span> squid from a <span class="annot" data-tooltip="cart /kɑːrt/ n. 运货马车；手推车vt. 用马车载运时 态: carted，carting，carts">cart</span> in a north- eastern town. Since then Mr Yang has turned his business into a global <span class="annot" data-tooltip="restaurant /'restrɑːnt/ n. 饭店, 餐馆">restaurant</span> franchise with more than 7,000 <span class="annot" data-tooltip="outlets /'aʊtlet/ n. 出口, 出路发泄的途径经销店">outlets</span>. His company, Yangguofu, dishes up a <span class="annot" data-tooltip="spicy /'spaɪsi/ adj. 辛辣的；香的，多香料的；下流的比较级: spicier, spiciest">spicy</span> Chinese soup known as malatang. Most of its shops are in China, but it has expanded to more than 20 other countries, opening in London and Rome last year, and in Luxembourg last month, <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> from the <span class="annot" data-tooltip="reach /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reach</span> of the chengguan. Mr Yang is part of an oddly timed retail revolution. Consumer spending in China is by most accounts <span class="annot" data-tooltip="miserable /'mɪzrəbl/ adj. 悲惨的，不幸的，可怜的令人痛苦的；令人不快的低劣的；贫乏的卑鄙的，可耻的，可恶的名 词: miserable">miserable</span>; retail sales grew by a lousy 1.1% in</p>
+<p>September, year on year. Once-popular Western <span class="annot" data-tooltip="brands /brænd/ n. 商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责时 态: branded, branding, brands">brands</span> are struggling. And yet walk down the street in a typical mid-size city in China and you are likely to see dozens of new <span class="annot" data-tooltip="retail /ˈriːteɪl/ vt. 零售；转述vi. 零售n. 零售adv. 以零售方式adj. 零售的时 态: retailed, retailing, ">retail</span> shops wherever you look. There are myriad milk-tea <span class="annot" data-tooltip="outlets /'aʊtlet/ n. 出口, 出路发泄的途径经销店">outlets</span>. On the streets of Nanchang, a south-eastern city, every corner seems to have a GoodMe selling teas and treats. <span class="annot" data-tooltip="snack /snæk/ n. 小吃；点心；快餐vi. 吃快餐；吃点心时 态: snacked，snacking，snacks">Snack</span> shops, such as Busy Ming, which peddles a wide variety of sweets, crisps and dried meats, are almost as <span class="annot" data-tooltip="numerous /'nuːmərəs/ adj. 很多的, 许多的副 词: numerously">numerous</span>. The snow-man <span class="annot" data-tooltip="mascot /'mæskɑːt/ n. 吉祥物MASCOTabbr. Motorola Automatic Sequential Computer Operat">mascot</span> of Mixue, a popular cold- drinks franchise, is now ubiquitous. The growth of these businesses has been <span class="annot" data-tooltip="striking /'straɪkɪŋ/ adj. 显著的，突出的引人注目的；容貌出众的副 词: strikingly">striking</span>. Between 2023 and 2025 China’s 300 largest food- and drinks-franchises may have opened more than half a million outlets. That is roughly five-times the <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> opened in America during its franchising heyday between 1964 and 1969, when McDonald’s and Holiday Inn first took off. Today Chinese brands such as Mixue, Busy Ming and JI Hotel control some of the world’s largest franchise networks in their <span class="annot" data-tooltip="industries /'ɪndəstri/ n. 工业；产业；勤勉">industries</span>. The explosive growth required at least 100bn yuan ($15bn) in fresh capital in 2025, The Economist reckons, much of which came from <span class="annot" data-tooltip="household /'haʊshoʊld/ n. 同住在一所房子里的人, 一家人, 户adj. 家庭的, 家用的">household</span> savings. Until recently consolidation of China’s retail sector has been <span class="annot" data-tooltip="tedious /'tiːdiəs/ adj. 乏味的, 单调的副 词: tediously">tedious</span>. It is made up of millions of small-time entrepreneurs, many of whom run single- shop enterprises in small cities. In 2018 just 13% of <span class="annot" data-tooltip="restaurants /'restrɑːnt/ n. 饭店, 餐馆">restaurants</span> were part of a <span class="annot" data-tooltip="corporate /'kɔːrpərət/ adj. 社团的, 法人的副 词: corporately">corporate</span> chain. But by 2025 that rate had shot to 25%, a sign these entrepreneurs have been signing up to franchises in droves. Hotels, an <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> once dominated by dingy independent businesses built into housing units, have consolidated even faster. A handful of factors have come together to make this possible. Chief among them is the honing of China’s <span class="annot" data-tooltip="distinctive /dɪ'stɪŋktɪv/ adj. 有特色的, 与众不同的副 词: distinctively">distinctive</span> franchising model. American fast- food giants make most of their <span class="annot" data-tooltip="revenues /'revənuː/ n. 收入，收益；财政收入，税收">revenues</span> from <span class="annot" data-tooltip="royalties /'rɔɪəlti/ n. 王权；皇室；版税；专利税">royalties</span> and rents paid by franchisees. McDonald’s, for example, owns many of the <span class="annot" data-tooltip="properties 道具">properties</span> from which its burger <span class="annot" data-tooltip="joints /dʒɔɪnt/ n. 关节；接合处，接合点；接缝；（牛，羊等的腿）大块肉adj. 联合的，合办的；共同的；连接的vt. 连接，贴合；接合；使有">joints</span> operate; last year rents provided <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> 40% of its <span class="annot" data-tooltip="revenue /'revənuː/ n. 收入，收益；财政收入，税收">revenue</span>. China franchisors, by <span class="annot" data-tooltip="contrast /'kɑːntræst/ n. 对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照时 态: contrasted, cont">contrast</span>, act more like suppliers. They source raw materials and use sophisticated <span class="annot" data-tooltip="logistics /lə'dʒɪstɪk/ adj. 后勤学的；符号逻辑的副 词: logistically">logistics</span> networks to provide them at low prices to franchisees. They also sell equipment. These are the source of nearly all Mixue’s revenue, for example. Only in the past few years have such supply chains become sufficiently mature in China.</p>
+<p>Ferocious competition in China has been another factor. Tepid consumer demand in recent years means that <span class="annot" data-tooltip="margins /'mɑːrdʒɪn/ n. 页边缘；利润，余裕；页边的空白">margins</span> are razor thin for most <span class="annot" data-tooltip="retail /ˈriːteɪl/ vt. 零售；转述vi. 零售n. 零售adv. 以零售方式adj. 零售的时 态: retailed, retailing, ">retail</span> businesses. That makes scale <span class="annot" data-tooltip="essential /ɪ'senʃl/ adj. 基本的；必要的；本质的；精华的">essential</span>, and one way to achieve it is to open as many shops as possible with the help of franchisees. The <span class="annot" data-tooltip="brands /brænd/ n. 商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责时 态: branded, branding, brands">brands</span>, in turn, must keep license fees and <span class="annot" data-tooltip="royalties /'rɔɪəlti/ n. 王权；皇室；版税；专利税">royalties</span> low in order to <span class="annot" data-tooltip="recruit /rɪ'kruːt/ n. 新兵(机构中的)新成员vt. 招聘；吸引(新成员)吸收某人为新成员vt. & vi. 招募，征募(新兵)恢复健康，恢复体">recruit</span> new shop <span class="annot" data-tooltip="owners /'oʊnər/ n. 所有者；物主">owners</span>. This model, which helps to lower prices, suits China’s <span class="annot" data-tooltip="reluctant /rɪ'lʌktənt/ adj. 不情愿的, 勉强的副 词: reluctantly">reluctant</span> spenders. Cotti, a coffee chain that has opened 18,000 shops since 2022, charges nothing <span class="annot" data-tooltip="upfront /ˌʌp'frʌnt/ adj. 预付的；在前面的adv. 在前面；提前支付（工资）">upfront</span> to its franchisees. Yangguofu asks for just 8,888 yuan to open one of its shops, and then an <span class="annot" data-tooltip="annual /'ænjuəl/ adj. 年度的；每年的n. 年刊，年鉴；一年生植物副 词: annually">annual</span> management charge of 5,000. The cost of renting the <span class="annot" data-tooltip="outlet /'aʊtlet/ n. 出口, 出路发泄的途径经销店">outlet</span>, refurbishing it and stocking it with the <span class="annot" data-tooltip="brand /brænd/ n. 商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责时 态: branded, branding, brands">brand</span>’s equipment is <span class="annot" data-tooltip="covered /'kʌvər/ vt. 包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替时 态: covered, covering, c">covered</span> by the franchisee. The <span class="annot" data-tooltip="main /meɪn/ adj. 主要的; 最重要的n. 总管道; 干线">main</span> financial arrangement between Yangguofu and its <span class="annot" data-tooltip="restaurant /'restrɑːnt/ n. 饭店, 餐馆">restaurant</span> operators is for the soup base that goes into its malatang, sales of which account for about 90% of the company’s <span class="annot" data-tooltip="revenue /'revənuː/ n. 收入，收益；财政收入，税收">revenue</span>. The final <span class="annot" data-tooltip="ingredient /ɪn'ɡriːdiənt/ n. (混合物的)组成部分; 配料">ingredient</span> is capital. Funding retail enterprises in China is <span class="annot" data-tooltip="notoriously /noʊ'tɔːriəs/ adj. 臭名昭著的, 声名狼藉的副 词: notoriously">notoriously</span> difficult. For years the <span class="annot" data-tooltip="central /'sentrəl/ adj. 中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的副 词: centrally">central</span> government has frowned on retail brands raising public capital. It would rather funds be channeled into favoured <span class="annot" data-tooltip="industries /'ɪndəstri/ n. 工业；产业；勤勉">industries</span>, such as chipmaking and artificial intelligence. Since 2022 retail businesses have managed to grab less than 2% of the total equity- capital raised on mainland Chinese bourses. China’s ascendant retail brands have instead been built on <span class="annot" data-tooltip="household /'haʊshoʊld/ n. 同住在一所房子里的人, 一家人, 户adj. 家庭的, 家用的">household</span> savings. Not long ago Chinese workers poured their savings into the <span class="annot" data-tooltip="property /'prɑːpərti/ n. 财产；性质，性能；所有权形容词: propertyless">property</span> market. At its peak in 2021 up to 80% of household <span class="annot" data-tooltip="wealth /welθ/ n. 财富；大量；富有">wealth</span> was tied up in the <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span> of flats. But a popping of the property <span class="annot" data-tooltip="bubble /'bʌbl/ n. 气泡，泡沫，泡状物；透明圆形罩，圆形顶vi. 沸腾，冒泡；发出气泡声vt. 使冒泡；滔滔不绝地说时 态: bubbled">bubble</span> that occurred around that time has meant fewer funds flowing to the sector. Much wealth has ended up in bank <span class="annot" data-tooltip="deposits /dɪ'pɑːzɪt/ n. 存款；保证金；沉淀物vt. 存放；使沉积vi. 沉淀时 态: deposited, depositing, deposi">deposits</span>, but more than ever it is going into franchise <span class="annot" data-tooltip="outlets /'aʊtlet/ n. 出口, 出路发泄的途径经销店">outlets</span>, says Chen Luo of Bank of America. Many of these franchises are going global. As of the end of last year the top 50 Chinese food- and <span class="annot" data-tooltip="beverage /'bevərɪdʒ/ n. 饮料">beverage</span>-<span class="annot" data-tooltip="retailers /'riːteɪlər/ n. 传播的人；零售商">retailers</span> were <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span> to have opened at least 6,800 overseas shops <span class="annot" data-tooltip="cumulatively /'kjuːmjəleɪtɪv/ adj. 累积的, 渐增的副 词: cumulatively">cumulatively</span>. These outlets are important because margins are often juicier <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span> China. <span class="annot" data-tooltip="extending /ɪk'stend/ vt. & vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出时 态:">Extending</span> supply chains to other countries can be difficult, but some are trying. One Chinese hotel chain has just started <span class="annot" data-tooltip="shipping /ʃɪp/ vt. 运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Di">shipping</span> room modules to Europe in a bid to make its hotels there cheaper to construct and more uniform.</p>
+<p>Back home, the unbridled growth of franchises has not been without its challenges. Shops have been closing rapidly even as many more open up. More than 2,500 Mixue <span class="annot" data-tooltip="outlets /'aʊtlet/ n. 出口, 出路发泄的途径经销店">outlets</span> appear to have been shut last year. <span class="annot" data-tooltip="brands /brænd/ n. 商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责时 态: branded, branding, brands">Brands</span> are grappling with <span class="annot" data-tooltip="inconsistencies /ˌɪnkən'sɪstənsi/ n. 不一致（之处）；前后矛盾（的事情）（行为的）反复无常，易变">inconsistencies</span> in <span class="annot" data-tooltip="operational /ˌɑːpə'reɪʃənl/ adj. 即可使用的(用于)操作的, 经营的">operational</span> standards and divergent business <span class="annot" data-tooltip="philosophies /fə'lɑːsəfi/ n. 哲学人生哲学, 人生观达观">philosophies</span> among their franchisees, says Zhu Danpeng, an <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> analyst. Rapid growth has made quality control difficult. Tianlala, one rapidly expanding tea-shop chain, acknowledged such <span class="annot" data-tooltip="shortcomings /'ʃɔːrtkʌmɪŋ/ n. 短处; 缺点">shortcomings</span> this year after <span class="annot" data-tooltip="numerous /'nuːmərəs/ adj. 很多的, 许多的副 词: numerously">numerous</span> complaints surfaced online. It has <span class="annot" data-tooltip="forcibly /'fɔːrsəbli/ adv. 强迫地，强制地强有力地；有说服力地">forcibly</span> shut many stores. Growing a franchise is one thing. <span class="annot" data-tooltip="sustaining /sə'steɪn/ vt. 承受，支撑维持长期保持；使继续经受，遭受时 态: sustained，sustaining，sustains">Sustaining</span> it may prove another. ■ This article was downloaded by zlibrary from https://www.economist.com/business/2026/11/12/a-franchise-revolution-is-<span class="annot" data-tooltip="stirring /stɜːr/ vt. & vi. 搅拌(使)移动；(使)激动n. 搅动；搅和；搅拌激动；纷乱；骚乱STIRabbr. Surveillance">stirring</span>- in-china</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>nvidia</td><td>— </td><td>恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商</td></tr>
+<tr><td>vouch</td><td>/vaʊtʃ/ vt.</td><td>担保；证明；传出庭作证vi. 保证；证明；确定, vouching, vouches</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>diversion</td><td>/daɪ'vɜːrʒn/ n.</td><td>转移, 转向娱乐, 消遣临时绕行路分散注意力</td></tr>
+<tr><td>completely</td><td>/kəm'pliːt/ adj.</td><td>完整的, 完全的完成的, 结束的完满的, 圆满的彻底的, 完完全全的vt. 完成, 结束使完善, completest 缩 写: comp, cpl</td></tr>
+<tr><td>unusual</td><td>/ʌn'juːʒuəl/ adj.</td><td>与众不同的；不寻常的；不平常的</td></tr>
+<tr><td>counsel</td><td>/'kaʊnsl/ n.</td><td>忠告；讨论；商议；决策；法律顾问vt. 劝告；建议vi. 提出忠告；商讨, counselled counseling, counselling counsel</td></tr>
+<tr><td>commerce</td><td>/'kɑːmɜːrs/ n.</td><td>商业, 贸易</td></tr>
+<tr><td>consults</td><td>/kən'sʌlt/ vt.</td><td>商量；查阅；向…请教vi. 请教；商议；当顾问, consulting, consults</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>secretary</td><td>/'sekrəteri/ n.</td><td>秘书书记部长, 大臣</td></tr>
+<tr><td>trip</td><td>/trɪp/ vi.</td><td>绊倒；犯错误；远足；轻快地走n. 旅行；绊倒；差错vt. 绊倒；使犯错TRIPabbr. transformation-induced plasticity 高</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>republican</td><td>/rɪ'pʌblɪkən/ adj.</td><td>共和国的, 共和政体的n. 拥护共和政体者, 共和主义者</td></tr>
+<tr><td>summoned</td><td>/'sʌmən/ vt.</td><td>召唤；召集；鼓起；振作, summoning, summons</td></tr>
+<tr><td>senate</td><td>/ˈsenət/ </td><td>n.（诸如美国、澳大利亚、法国的）参议院（the Senate） （某些国家的）大学理事会，大学评议会（古罗马的）元老院</td></tr>
+<tr><td>insane</td><td>/ɪn'seɪn/ adj.</td><td>精神病的；极愚蠢的；疯狂的</td></tr>
+<tr><td>brilliant</td><td>/'brɪliənt/ adj.</td><td>闪光的, 明亮的光辉的, 辉煌的</td></tr>
+<tr><td>graphics</td><td>/'ɡræfɪks/ n.</td><td>制图学；制图法；图表算法</td></tr>
+<tr><td>nvidia</td><td>— </td><td>恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商</td></tr>
+<tr><td>essential</td><td>/ɪ'senʃl/ adj.</td><td>基本的；必要的；本质的；精华的</td></tr>
+<tr><td>proved</td><td>/proʊ/ n.</td><td>从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞成；支持Pro脯氨酸PROabbr. P</td></tr>
+<tr><td>worth</td><td>/wɜːrθ/ adj.</td><td>值…的n. 价值；财产, worthing, worths</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>charismatic</td><td>/ˌkærɪz'mætɪk/ adj.</td><td>有魅力的;有感召力的(基督徒中的一派)认为有神赐超凡能力的</td></tr>
+<tr><td>manufacturer</td><td>/ˌmænju'fæktʃərər/ n.</td><td>制造商, 制造厂</td></tr>
+<tr><td>secure</td><td>/sɪ'kjʊr/ adj.</td><td>安心的；有把握的可靠的；牢靠的；稳固的；安全的；稳妥的严密把守的；牢固的；坚固的v. （尤指经过努力）获得，取得，实现拴牢；扣紧；关严保护；保卫；使安全抵押；为</td></tr>
+<tr><td>inherit</td><td>/ɪn'herɪt/ vt.</td><td>继承；遗传而得vi. 成为继承人, inheriting, inherits</td></tr>
+<tr><td>gear</td><td>/ɡɪr/ n.</td><td>用具，设备，衣服齿轮；传动装置；(排)挡vi. 换挡vt. 使兴奋起来；使准备好vt. & vi. (使)搭配；(使)适合，gearing，gears</td></tr>
+<tr><td>saga</td><td>/'sɑːɡə/ n.</td><td>冒险故事；传说；英雄事迹</td></tr>
+<tr><td>distraction</td><td>/dɪ'strækʃn/ n.</td><td>注意力分散；消遣；心烦意乱</td></tr>
+<tr><td>shareholders</td><td>/'ʃerhoʊldər/ n.</td><td>股东</td></tr>
+<tr><td>misleading</td><td>/ˌmɪs'liːdɪŋ/ adj.</td><td>欺骗的;误导性的</td></tr>
+<tr><td>spirit</td><td>/'spɪrɪt/ n.</td><td>精神；心灵；志气；烈酒；情绪vt. 鼓励；鼓舞；诱拐, spiriting, spirits</td></tr>
+<tr><td>sermons</td><td>/'sɜːrmən/ n.</td><td>布道, 讲道, 说教讲道文章一大通教训</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>startups</td><td>/ˈstɑrtˈʌp/ n.</td><td>启动；开办</td></tr>
+<tr><td>stirring</td><td>/stɜːr/ vt.</td><td>& vi. 搅拌(使)移动；(使)激动n. 搅动；搅和；搅拌激动；纷乱；骚乱STIRabbr. Surveillance and Target Indicati</td></tr>
+<tr><td>buzzy</td><td>— n.</td><td>伸缩式风钻，伸缩式凿岩机；嗡嗡响的</td></tr>
+<tr><td>retail</td><td>/ˈriːteɪl/ vt.</td><td>零售；转述vi. 零售n. 零售adv. 以零售方式adj. 零售的, retailing, retails</td></tr>
+<tr><td>brands</td><td>/brænd/ n.</td><td>商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责, branding, brands</td></tr>
+<tr><td>authority</td><td>/ə'θɔːrəti/ n.</td><td>威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗</td></tr>
+<tr><td>vendors</td><td>/'vendər/ n.</td><td>小贩；卖主；自动售货机</td></tr>
+<tr><td>grilling</td><td>/ɡrɪl/ vt.</td><td>烧，烤；拷问vi. 烧，烤；严加盘问n. 烤架，铁格子；烤肉, grilling, grills</td></tr>
+<tr><td>cart</td><td>/kɑːrt/ n.</td><td>运货马车；手推车vt. 用马车载运，carting，carts</td></tr>
+<tr><td>restaurant</td><td>/'restrɑːnt/ n.</td><td>饭店, 餐馆</td></tr>
+<tr><td>outlets</td><td>/'aʊtlet/ n.</td><td>出口, 出路发泄的途径经销店</td></tr>
+<tr><td>spicy</td><td>/'spaɪsi/ adj.</td><td>辛辣的；香的，多香料的；下流的, spiciest</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>reach</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>miserable</td><td>/'mɪzrəbl/ adj.</td><td>悲惨的，不幸的，可怜的令人痛苦的；令人不快的低劣的；贫乏的卑鄙的，可耻的，可恶的</td></tr>
+<tr><td>brands</td><td>/brænd/ n.</td><td>商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责, branding, brands</td></tr>
+<tr><td>retail</td><td>/ˈriːteɪl/ vt.</td><td>零售；转述vi. 零售n. 零售adv. 以零售方式adj. 零售的, retailing, retails</td></tr>
+<tr><td>outlets</td><td>/'aʊtlet/ n.</td><td>出口, 出路发泄的途径经销店</td></tr>
+<tr><td>snack</td><td>/snæk/ n.</td><td>小吃；点心；快餐vi. 吃快餐；吃点心，snacking，snacks</td></tr>
+<tr><td>numerous</td><td>/'nuːmərəs/ adj.</td><td>很多的, 许多的</td></tr>
+<tr><td>mascot</td><td>/'mæskɑːt/ n.</td><td>吉祥物MASCOTabbr. Motorola Automatic Sequential Computer Operated Tester 莫托洛拉自动顺序计算</td></tr>
+<tr><td>striking</td><td>/'straɪkɪŋ/ adj.</td><td>显著的，突出的引人注目的；容貌出众的</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>industries</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>household</td><td>/'haʊshoʊld/ n.</td><td>同住在一所房子里的人, 一家人, 户adj. 家庭的, 家用的</td></tr>
+<tr><td>tedious</td><td>/'tiːdiəs/ adj.</td><td>乏味的, 单调的</td></tr>
+<tr><td>restaurants</td><td>/'restrɑːnt/ n.</td><td>饭店, 餐馆</td></tr>
+<tr><td>corporate</td><td>/'kɔːrpərət/ adj.</td><td>社团的, 法人的</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>distinctive</td><td>/dɪ'stɪŋktɪv/ adj.</td><td>有特色的, 与众不同的</td></tr>
+<tr><td>revenues</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>royalties</td><td>/'rɔɪəlti/ n.</td><td>王权；皇室；版税；专利税</td></tr>
+<tr><td>properties</td><td>— </td><td>道具</td></tr>
+<tr><td>joints</td><td>/dʒɔɪnt/ n.</td><td>关节；接合处，接合点；接缝；（牛，羊等的腿）大块肉adj. 联合的，合办的；共同的；连接的vt. 连接，贴合；接合；使有接头vi. 贴合；生节, jointin</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>revenue</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>contrast</td><td>/'kɑːntræst/ n.</td><td>对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照, contrasting, contrasts</td></tr>
+<tr><td>logistics</td><td>/lə'dʒɪstɪk/ adj.</td><td>后勤学的；符号逻辑的</td></tr>
+<tr><td>margins</td><td>/'mɑːrdʒɪn/ n.</td><td>页边缘；利润，余裕；页边的空白</td></tr>
+<tr><td>retail</td><td>/ˈriːteɪl/ vt.</td><td>零售；转述vi. 零售n. 零售adv. 以零售方式adj. 零售的, retailing, retails</td></tr>
+<tr><td>essential</td><td>/ɪ'senʃl/ adj.</td><td>基本的；必要的；本质的；精华的</td></tr>
+<tr><td>brands</td><td>/brænd/ n.</td><td>商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责, branding, brands</td></tr>
+<tr><td>royalties</td><td>/'rɔɪəlti/ n.</td><td>王权；皇室；版税；专利税</td></tr>
+<tr><td>recruit</td><td>/rɪ'kruːt/ n.</td><td>新兵(机构中的)新成员vt. 招聘；吸引(新成员)吸收某人为新成员vt. & vi. 招募，征募(新兵)恢复健康，恢复体力，recruiting，recruit</td></tr>
+<tr><td>owners</td><td>/'oʊnər/ n.</td><td>所有者；物主</td></tr>
+<tr><td>reluctant</td><td>/rɪ'lʌktənt/ adj.</td><td>不情愿的, 勉强的</td></tr>
+<tr><td>upfront</td><td>/ˌʌp'frʌnt/ adj.</td><td>预付的；在前面的adv. 在前面；提前支付（工资）</td></tr>
+<tr><td>annual</td><td>/'ænjuəl/ adj.</td><td>年度的；每年的n. 年刊，年鉴；一年生植物</td></tr>
+<tr><td>outlet</td><td>/'aʊtlet/ n.</td><td>出口, 出路发泄的途径经销店</td></tr>
+<tr><td>brand</td><td>/brænd/ n.</td><td>商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责, branding, brands</td></tr>
+<tr><td>covered</td><td>/'kʌvər/ vt.</td><td>包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替, covering, covers</td></tr>
+<tr><td>main</td><td>/meɪn/ adj.</td><td>主要的; 最重要的n. 总管道; 干线</td></tr>
+<tr><td>restaurant</td><td>/'restrɑːnt/ n.</td><td>饭店, 餐馆</td></tr>
+<tr><td>revenue</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>ingredient</td><td>/ɪn'ɡriːdiənt/ n.</td><td>(混合物的)组成部分; 配料</td></tr>
+<tr><td>notoriously</td><td>/noʊ'tɔːriəs/ adj.</td><td>臭名昭著的, 声名狼藉的</td></tr>
+<tr><td>central</td><td>/'sentrəl/ adj.</td><td>中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的</td></tr>
+<tr><td>industries</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>household</td><td>/'haʊshoʊld/ n.</td><td>同住在一所房子里的人, 一家人, 户adj. 家庭的, 家用的</td></tr>
+<tr><td>property</td><td>/'prɑːpərti/ n.</td><td>财产；性质，性能；所有权</td></tr>
+<tr><td>wealth</td><td>/welθ/ n.</td><td>财富；大量；富有</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>bubble</td><td>/'bʌbl/ n.</td><td>气泡，泡沫，泡状物；透明圆形罩，圆形顶vi. 沸腾，冒泡；发出气泡声vt. 使冒泡；滔滔不绝地说, bubbling, bubbles</td></tr>
+<tr><td>deposits</td><td>/dɪ'pɑːzɪt/ n.</td><td>存款；保证金；沉淀物vt. 存放；使沉积vi. 沉淀, depositing, deposits</td></tr>
+<tr><td>outlets</td><td>/'aʊtlet/ n.</td><td>出口, 出路发泄的途径经销店</td></tr>
+<tr><td>beverage</td><td>/'bevərɪdʒ/ n.</td><td>饮料</td></tr>
+<tr><td>retailers</td><td>/'riːteɪlər/ n.</td><td>传播的人；零售商</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>cumulatively</td><td>/'kjuːmjəleɪtɪv/ adj.</td><td>累积的, 渐增的</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>extending</td><td>/ɪk'stend/ vt.</td><td>& vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出，extending，extends</td></tr>
+<tr><td>shipping</td><td>/ʃɪp/ vt.</td><td>运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Division of the Nation</td></tr>
+<tr><td>outlets</td><td>/'aʊtlet/ n.</td><td>出口, 出路发泄的途径经销店</td></tr>
+<tr><td>brands</td><td>/brænd/ n.</td><td>商标, 牌子烙印vt. 打烙印于, 以烙铁打加污名于, 谴责, branding, brands</td></tr>
+<tr><td>inconsistencies</td><td>/ˌɪnkən'sɪstənsi/ n.</td><td>不一致（之处）；前后矛盾（的事情）（行为的）反复无常，易变</td></tr>
+<tr><td>operational</td><td>/ˌɑːpə'reɪʃənl/ adj.</td><td>即可使用的(用于)操作的, 经营的</td></tr>
+<tr><td>philosophies</td><td>/fə'lɑːsəfi/ n.</td><td>哲学人生哲学, 人生观达观</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>shortcomings</td><td>/'ʃɔːrtkʌmɪŋ/ n.</td><td>短处; 缺点</td></tr>
+<tr><td>numerous</td><td>/'nuːmərəs/ adj.</td><td>很多的, 许多的</td></tr>
+<tr><td>forcibly</td><td>/'fɔːrsəbli/ adv.</td><td>强迫地，强制地强有力地；有说服力地</td></tr>
+<tr><td>sustaining</td><td>/sə'steɪn/ vt.</td><td>承受，支撑维持长期保持；使继续经受，遭受，sustaining，sustains</td></tr>
+<tr><td>stirring</td><td>/stɜːr/ vt.</td><td>& vi. 搅拌(使)移动；(使)激动n. 搅动；搅和；搅拌激动；纷乱；骚乱STIRabbr. Surveillance and Target Indicati</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day27.html" class="nav-btn">← Day 27</a>
+  <a href="day29.html" class="nav-btn">Day 29 →</a>
+</div>
+
+<div class="progress">📖 Day 28 of 41</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-11-14</div>
+
+</body>
+</html>

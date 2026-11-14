@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Britain | Play it again</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-11-14</div>
+
+<h1 class="article-title">Britain | Play it again</h1>
+<div class="article-section">Britain</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>that the Tories might therefore seek a <span class="annot" data-tooltip="fudge /fʌdʒ/ n. 乳脂(巧克力)软糖vt. 搪塞,篡改时 态: fudged, fudging, fudges">fudge</span> that <span class="annot" data-tooltip="retains /rɪ'teɪn/ vt. 保持；雇；记住时 态: retained, retaining, retains 缩 写: ret">retains</span> the deal but gives <span class="annot" data-tooltip="parliament /'pɑːrləmənt/ n. 议会, 国会">Parliament</span> a theoretical emergency brake on future EU laws. What worries the EU more is the opposition’s <span class="annot" data-tooltip="pledge /pledʒ/ n. 抵押；保证，誓言；抵押品，典当物vt. 保证，许诺；用……抵押；举杯祝……健康时 态: pledged, pledgin">pledge</span> to pull out of the European Convention on Human Rights (ECHR). Kemi Badenoch, the Tory leader, now requires all her parliamentary <span class="annot" data-tooltip="candidates /'kændɪdət，ˈkændɪdeɪt/ n. 申请求职者, 候选人报考者名 词: candidacy">candidates</span> to support this. EU diplomats suggest she may not have <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span> through the consequences. It is not just the embarrassment of Britain, a <span class="annot" data-tooltip="creator /kri'eɪtər/ n. 创造者,创作者">creator</span> of the ECHR, joining Belarus and Russia as the only European countries <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span> it. More <span class="annot" data-tooltip="seriously /'sɪriəs/ adj. 严肃的，严重的；认真的；庄重的；危急的副 词: seriously">seriously</span>, ECHR <span class="annot" data-tooltip="membership /'membərʃɪp/ n. 全体会员会员身份, 会员资格">membership</span> is assumed in both the post-Brexit trade and co-operation agreement (TCA) and the Windsor framework that softens the customs border between Great Britain and Northern Ireland. It is also in the Good Friday Agreement. Some Tories argue that other EU countries dislike the ECHR, and especially the court that enforces it. But disapproval and <span class="annot" data-tooltip="withdrawal /wɪð'drɔːəl/ n. 收回，取回，撤回；撤退，撤走收回[取回，撤回；撤退，撤走]的实例">withdrawal</span> are different matters. A forthcoming paper by the Centre for a Better Britain, a think-<span class="annot" data-tooltip="tank /tæŋk/ n. （存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内时 态: t">tank</span> linked to <span class="annot" data-tooltip="reform /rɪ'fɔːrm/ n. 改革，改良，改造vt. & vi. 改革；改造；改善时 态: reformed，reforming，reforms">Reform</span>, <span class="annot" data-tooltip="outlines /'aʊtlaɪn/ n. 轮廓；大纲；概要；略图vt. 概述；描画…轮廓；略述时 态: outlined, outlining, outlines">outlines</span> various options for scrapping all post-Brexit EU treaties, identifying which can be expected to trigger retaliation. One such is pulling out of the ECHR. These treaties are built like a Jenga tower: pull out one key brick and the whole edifice can <span class="annot" data-tooltip="fall /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">fall</span>. The most likely response to British ECHR withdrawal would be scrapping the Windsor framework and the TCA as a whole—in effect implementing a <span class="annot" data-tooltip="version /'vɜːrʒn/ n. 变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本">version</span> of Brexit so hard that even Boris Johnson avoided it in 2020. At the next general election voters may therefore face a perverse choice. No party favours the status quo. Labour and the Liberal Democrats will probably <span class="annot" data-tooltip="campaign /kæm'peɪn/ n. 运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）时">campaign</span> for a closer relationship with the EU. At the same time the Tories and Reform will promise to pull out of the ECHR. Anand Menon of UK in a Changing Europe, a think-tank, says this points to just two <span class="annot" data-tooltip="alternatives /ɔːl'tɜːrnətɪv/ adj. 可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）">alternatives</span>: moving to rejoin or reverting to a no-deal Brexit. The mushy <span class="annot" data-tooltip="compromise /'kɑːmprəmaɪz/ n. 妥协, 折中方法vi. 折中解决vt. 连累, 危害, 损害时 态: compromised, compromising">compromise</span> that has so <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> prevailed may no longer be on offer.■ This article was downloaded by zlibrary from https://www.economist.com/britain/2026/11/12/britains-tories-want-even-more-brexit</p>
+<div class="article-separator"></div>
+<div class="article-header">Britain · Britain | The regeneration game</div>
+<p>Can e-sports boost Sunderland—and Britain’s armed forces? High hopes for the new British Arena Nov 12th 2026 “This was just a wasteland.” Graeme Miller, who ran Sunderland City Council for six years until 2024, gestures out of the window of the newish and still <span class="annot" data-tooltip="sparkling /spɑːrk/ n. 火花，火星；电火花；一丝，略微；导火线，诱因v. 引发，触发；产生火花（电火花）；点燃；增加趣味（或活力、风味等）时 态">sparkling</span> City Hall building. The site lay vacant for <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> two <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span> after the Vaux brewery closed in 1999. Now City Hall stands at the centre of a fresh clutch of office buildings facing the River Wear. Sunderland, once the world’s biggest shipbuilding <span class="annot" data-tooltip="hub /hʌb/ n. 中心；毂；木片">hub</span>, has been in decline for decades. Its last shipyard closed in 1988. <span class="annot" data-tooltip="tucked /tʌk/ vt. 卷起；挤进；用某物舒适地裹住；使有褶裥；收拢；大口吃；使隐藏n. 船尾突出部；食物；缝摺；抱膝式跳水；活力；鼓声vi. ">Tucked</span> on England’s north-east coast, the city of 290,000 sits third-bottom for earnings in a ranking of Britain’s 63 largest <span class="annot" data-tooltip="urban /'ɜːrbən/ adj. 城市的；住在都市的">urban</span> areas. It is dead last for businesses per person. Voters showed their <span class="annot" data-tooltip="discontent /ˌdɪskən'tent/ n. 不满时 态: discontented, discontenting, discontents">discontent</span> at local elections in May, handing the populist-right <span class="annot" data-tooltip="reform /rɪ'fɔːrm/ n. 改革，改良，改造vt. & vi. 改革；改造；改善时 态: reformed，reforming，reforms">Reform</span> UK 58 of the council’s 75 seats. Labour went from 54</p>
+<p>councillors to five. “People still are not happy, even with all of this,” laments Mr Miller. Might e-sports help give Sunderland a brighter future? <span class="annot" data-tooltip="enter /'entər/ vt. & vi. 进入, 进去参加, 加入登记, 登录时 态: entered, entering, enters">Enter</span> British Esports, founded in 2016 by Chester King, who also runs a health-care business, and chaired by Andy Payne, a veteran of the video-games <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span>. Their venture has set up shop in what was a vacant Audi dealership next to Sunderland Football Club’s Stadium of Light. It has also turned a row of town houses and connected office space into its National Esports Performance Campus, where touring gaming pros can stay. The former car dealership has been transformed into a 15,000-square-foot (1,400 square metres) e-sports <span class="annot" data-tooltip="venue /'venjuː/ n. 聚集地点;会场;(尤指)体育比赛场所犯罪地点;审判地争论中所持的立场">venue</span>, dubbed the British Arena. (“We couldn’t believe no one had used the name before,” says Mr King.) On a clear Thursday evening in October the arena <span class="annot" data-tooltip="hosted /hoʊst/ n. 主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集时 态: hosted, hosting, host">hosted</span> its second event, relaying a Sunderland away match on its giant screen. The 250-seat venue is <span class="annot" data-tooltip="barely /'berli/ adv. 仅仅，勉强；几乎不；公开地；贫乏地">barely</span> 100 metres from the 49,000-seat stadium, which provides a <span class="annot" data-tooltip="handy /'hændi/ adj. 手边的，就近的；便利的；容易取得的；敏捷的比较级: handier, handiest">handy</span> source of footfall on match days—and also <span class="annot" data-tooltip="highlights 拔萃,集锦(精采会议文献选辑)">highlights</span> the gulf between e- sports and traditional ones. Mr King wants the British Arena to be more than just an entertainment venue. He hopes it will help <span class="annot" data-tooltip="elite /eɪ'liːt/ n. （社会）上层集团；掌权人物；出类拔萃的人，精英adj.（社会）上层集团的；掌权人物的；精英的">elite</span> gamers learn to perform to a crowd, while supporting careers in <span class="annot" data-tooltip="hospitality /ˌhɑːspɪ'tæləti/ n. 殷勤, 好客(提供给客人的)食宿招待">hospitality</span>, broadcasting and coaching, too. E-sports can teach skills in business and marketing to those who may not be drawn to formal education, says Gregg Hill, a lecturer in e-sports event management at the University of Sunderland. Being the home of British Esports will build Sunderland’s reputation as a forward-looking digital city, enthuses Liz St Louis, the local <span class="annot" data-tooltip="authority /ə'θɔːrəti/ n. 威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗">authority</span>’s aspirationally <span class="annot" data-tooltip="titled /tɪt/ n. 山雀；各种小鸟；乳头；小马；少妇；轻打">titled</span> director of smart cities and enabling services. Sunderland Council is not the only part of the British state putting faith in e- sports. So are the armed forces, <span class="annot" data-tooltip="aware /ə'wer/ adj. 知道的；意识到的；有…方面知识的；懂世故的名 词: awareness">aware</span> that <span class="annot" data-tooltip="ukraine n. 乌克兰（原苏联一加盟共和国，现已独立）">Ukraine</span>’s battlefields have swarmed with <span class="annot" data-tooltip="drones /droʊn/ n. 无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫">drones</span> piloted by youths with PlayStation controllers. The British Arena’s first official event was the International Defence Esports Games, at which Canadian personnel beat France in <span class="annot" data-tooltip="counter /'kaʊntər/ n. 柜台, 柜台式长桌计数器vt. & vi. 对抗, 反驳adv. 反方向地, 对立地时 态: countered, co">Counter</span>-<span class="annot" data-tooltip="strike /straɪk/ vi. 罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打时 态:">Strike</span> 2 and Britain took the Rocket <span class="annot" data-tooltip="league /liːɡ/ n. 联盟；社团；范畴vt. 使…结盟；与…联合vi. 结盟；团结时 态: leagued, leaguing, league">League</span> title.</p>
+<p>Where once the armed forces <span class="annot" data-tooltip="recruited /rɪ'kruːt/ n. 新兵(机构中的)新成员vt. 招聘；吸引(新成员)吸收某人为新成员vt. & vi. 招募，征募(新兵)恢复健康，恢复体">recruited</span> from the playing fields of Eton, they now see <span class="annot" data-tooltip="value /'væljuː/ n. 价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重时 态: val">value</span> in gamers. The Ministry of Defence formally recognises e- sports and last year installed a room of gaming PCs on the Royal Navy’s <span class="annot" data-tooltip="flagship /'flæɡʃɪp/ n. 旗舰；佼佼者；（作定语）一流">flagship</span> <span class="annot" data-tooltip="aircraft /'erkræft/ n. 飞机，航空器">aircraft</span>-carrier. Back at City Hall Mr Miller insists that Sunderland’s economy is on the up. Ocado, an online grocer, and Apexon, a technology-services firm, have taken space in the new offices. A <span class="annot" data-tooltip="takeaway /'teɪkəweɪ/ adj. 外卖的；外吃的n. 外卖食品；外卖餐馆">takeaway</span> app, Just Eat, is testing robot deliveries in the city. So <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span>, e-sports and Sunderland seem a good fit. The city gets an optimistic <span class="annot" data-tooltip="owner /'oʊnər/ n. 所有者；物主">owner</span> for underused buildings; British Esports gets low prices and a welcoming local <span class="annot" data-tooltip="authority /ə'θɔːrəti/ n. 威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗">authority</span>. Not to mention <span class="annot" data-tooltip="revenue /'revənuː/ n. 收入，收益；财政收入，税收">revenue</span> from all those football fans’ pre-match pints. ■ This article was downloaded by zlibrary from https://www.economist.com/britain/2026/11/12/can-e-sports-boost-sunderland-and- britains-armed-forces</p>
+<div class="article-separator"></div>
+<div class="article-header">Britain · Britain | Quantum lite</div>
+<p>Britain’s super position in <span class="annot" data-tooltip="quantum /'kwɑːntəm/ n. 量子定量;总量剧增；突飞猛进；重大进展复 数: quanta">quantum</span> technology Some of the <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span>’s bets are already paying off Nov 12th 2026 Quantum computing is a bit like the strange laws of physics it relies on: scary enough to give national-<span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span> wonks <span class="annot" data-tooltip="nightmares /'naɪtmer/ n. 噩梦〈口〉可怕的事情, 无法摆脱的恐惧形容词: nightmarish">nightmares</span>, yet still sufficiently puny for sceptics to dismiss. Perhaps no country wants it to work more than Britain. Three of the world’s top five quantum <span class="annot" data-tooltip="clusters /'klʌstər/ n. (果实、花等的)串, 簇(人、物等的)群, 组vt. & vi. (使)集中时 态: clustered, cluste">clusters</span> are on its soil, reckons the European Centre for International Political Economy, a think-<span class="annot" data-tooltip="tank /tæŋk/ n. （存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内时 态: t">tank</span>. On November 6th at a <span class="annot" data-tooltip="showcase /'ʃoʊkeɪs/ n. （商店或博物馆等的）玻璃柜台，玻璃陈列柜展示（本领、才华或优良品质）的场合v. 展示（优点）时 态: showcased">showcase</span> in London, Sir Peter Knight, a pioneer in quantum technology, reiterated a goal to make a quantum computer that can <span class="annot" data-tooltip="outperform /ˌaʊtpər'fɔːrm/ vt. 做得比…更好；胜过时 态: outperformed，outperforming，outperforms">outperform</span> supercomputers in Britain by 2035. Yet even now other quantum technologies are <span class="annot" data-tooltip="proving /proʊ/ n. 从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞">proving</span> their <span class="annot" data-tooltip="worth /wɜːrθ/ adj. 值…的n. 价值；财产时 态: worthed, worthing, worths">worth</span>. Mostly this is down to quantum sensing, which <span class="annot" data-tooltip="exploits /ɪk'splɔɪt/ vt. 开发，开拓；剥削；开采n. 勋绩；功绩时 态: exploited, exploiting, exploits">exploits</span> the sensitivity of quantum systems to <span class="annot" data-tooltip="faint /feɪnt/ vi. 晕倒，昏倒adj. 微弱的，模糊的，暗淡的(体力)无力的，虚弱的；易失去知觉的，昏眩的(动作等)无力的，似无太大效果的n">faint</span> changes around them. Use cases in medicine have abounded for <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span> (MRI scanners, for instance); now they are</p>
+<p>multiplying. A spinout from the University of Nottingham, Cerca Magnetics, makes brain-scanning helmets fitted with <span class="annot" data-tooltip="quantum /'kwɑːntəm/ n. 量子定量;总量剧增；突飞猛进；重大进展复 数: quanta">quantum</span> <span class="annot" data-tooltip="sensors /'sensər/ n. 传感器">sensors</span> that can <span class="annot" data-tooltip="detect /dɪ'tekt/ vt. 发现；发觉，查明时 态: detected，detecting，detects">detect</span> <span class="annot" data-tooltip="subtle /'sʌtl/ adj. 微妙的；难以捉摸的；细微的狡猾的，狡诈的敏感的，敏锐的，有辨别力的比较级: subtler，subtlest">subtle</span> magnetic fields. It has made an operating profit in each of the past five years. Others are experimenting with <span class="annot" data-tooltip="diagnostic /ˌdaɪəɡ'nɑːstɪk/ adj. 诊断的, 判断的副 词: diagnostically">diagnostic</span> tools for <span class="annot" data-tooltip="breast /brest/ n. 乳房，胸部；胸怀；心情vt. 以胸对着；与…搏斗时 态: breasted, breasting, breasts">breast</span> <span class="annot" data-tooltip="cancer /'kænsər/ n. 癌迅速蔓延的恶劣的或危险的事物形容词: cancerous">cancer</span>, and finger-prick tests for diseases such as hiv. Another application for sensing is positioning, navigation and <span class="annot" data-tooltip="timing /'taɪmɪŋ/ n. 定时；时间选择；调速v. 为…安排时间；测定…的时间（time的ing形式）">timing</span> (PNT). Knowing where you are, where you are going and what time it is has always been useful for soldiers. The war in <span class="annot" data-tooltip="ukraine n. 乌克兰（原苏联一加盟共和国，现已独立）">Ukraine</span>, meanwhile, has shown how easy it is to <span class="annot" data-tooltip="jam /dʒæm/ n. 果酱拥挤，堵塞困难的处境；窘境vt. & vi. (使)塞紧，(使)挤满发生故障；夹住，卡住vt. 堵塞(发射无线电波)">jam</span> satellite systems such as gpS. So the Royal Navy has been <span class="annot" data-tooltip="trialling /'traɪəl/ n. 试验；磨炼；审讯；努力adj. 审讯的；试验的">trialling</span> quantum navigation with <span class="annot" data-tooltip="compact /kəm'pækt/ adj. 小型的；袖珍的紧凑的；体积小的紧密的；坚实的(人或动物) 矮小而健壮的n. 协定；协议；契约；合约 (内有镜子的) 化妆">compact</span> <span class="annot" data-tooltip="atomic /ə'tɑːmɪk/ adj. 原子的，原子能的；微粒子的副 词: atomically">atomic</span> clocks, which do not depend on signals from space. Similar uses <span class="annot" data-tooltip="stretch /stretʃ/ vt. 伸展,张开vi. 伸展adj. 可伸缩的n. 伸展，延伸时 态: stretched, stretching, stre">stretch</span> beyond the battlefield. Britain’s latest national risk register identifies the loss of pnt, whether from technical failure or a <span class="annot" data-tooltip="cyber adj. 计算机(网络)的；信息技术的">cyber</span>- attack, as a “<span class="annot" data-tooltip="significant /sɪɡ'nɪfɪkənt/ adj. 重要的, 重大的, 可观的有意义的, 有用意的意味深长的副 词: significantly">significant</span>” risk. It recommends that private firms keep “<span class="annot" data-tooltip="resilient /rɪ'zɪliənt/ adj. (指物体或材料)能复原的;有弹性的;有弹力的(指人的性格)能迅速恢复或重新振作的;达观的;适应性强的">resilient</span> <span class="annot" data-tooltip="backup /'bækʌp/ n. 支持；后援；阻塞adj. 候补的；支持的vt. 做备份">backup</span> systems”—such as atomic clocks. Days before the register was published, in July, a nationwide network <span class="annot" data-tooltip="outage /'aʊtɪdʒ/ n. (尤指电力的)断供期;断供">outage</span> in Australia demonstrated the potential for <span class="annot" data-tooltip="disruption n. 中断,分裂,瓦解,破坏">disruption</span>. Faulty software from Telstra, the country’s biggest <span class="annot" data-tooltip="telecoms /ˈtɛlɪˌkɑm/ n. 电信，远距通信；电讯">telecoms</span> company, halted trains and payments and blocked some emergency calls. The British government’s budget in October included £138m ($185m) for quantum-sensing kit to be used for defence, health care and transport. Useful as brain scanners and atomic clocks may be, they are merely <span class="annot" data-tooltip="heralds /'herəld/ n. 使者, 预报者vi. 预示时 态: heralded, heralding, heralds">heralds</span> in the march of quantum tech. The highest hopes are pinned on quantum computers’ mathematical powers. Large-scale machines would be able to do some sums vastly faster than today’s supercomputers, transforming computational <span class="annot" data-tooltip="chemistry /'kemɪstri/ n. 化学">chemistry</span> and materials science. Subodh Kulkarni, the boss of Rigetti, an American firm that operates in Britain, thinks that running quantum <span class="annot" data-tooltip="processors /'prɑːsesər/ n. 加工、处理事物的人〔设备、产业〕(计算机的)中央处理器数据处理机">processors</span> <span class="annot" data-tooltip="alongside /əˌlɔːŋ'saɪd/ adv. 靠着边，沿着边prep. (表示位置)在…旁边；沿着…的边；与…并排靠拢着(表示比较)与…放在一起比较(表示伴随)与…一">alongside</span> the artificial-intelligence chips used today will make it quicker and cheaper to train large language models. For now, quantum computers’ error rate is too high for them to be <span class="annot" data-tooltip="reliable /rɪ'laɪəbl/ adj. 可靠的, 可信赖的副 词: reliably">reliable</span>. British <span class="annot" data-tooltip="startups /ˈstɑrtˈʌp/ n. 启动；开办">startups</span> are working to fix this: Riverlane is building error-<span class="annot" data-tooltip="correction /kə'rekʃn/ n. 改〔纠〕正修改；纠正有待改正adj. 改正的，纠正的形容词: correctional">correction</span> systems, while Phasecraft is <span class="annot" data-tooltip="developing /dɪ'veləpɪŋ/ adj. 在进行中的;走向完成阶段的;走向成熟的发展中的">developing</span> algorithms that can do useful work even on error-<span class="annot" data-tooltip="prone /proʊn/ adj. 易于…的; 很可能…的俯卧的名 词: proneness">prone</span> machines. Through ProQure, a £1bn <span class="annot" data-tooltip="procurement /prə'kjʊrmənt/ n. 获得;采购">procurement</span></p>
+<p>competition, the government is supporting promising firms and <span class="annot" data-tooltip="helping /'helpɪŋ/ n. （进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的">helping</span> validate their prototypes. The most advanced machines will in all likelihood be built in the “golden triangle” <span class="annot" data-tooltip="spanned /spæn/ n. 跨度，跨径两个界限间的距离一段时间vt. 建造跨越(某物的)桥或拱；横跨跨越，穿越，贯穿SPANabbr. Statis">spanned</span> by <span class="annot" data-tooltip="cambridge /'keɪmbrɪdʒ/ n. 剑桥">Cambridge</span>, London and Oxford, home to hardware firms such as <span class="annot" data-tooltip="quantum /'kwɑːntəm/ n. 量子定量;总量剧增；突飞猛进；重大进展复 数: quanta">Quantum</span> <span class="annot" data-tooltip="motion /'moʊʃn/ n. 动作；请求；手势；移动；意向vi. 运动；打手势vt. 运动；向…打手势时 态: motioned, motioning">Motion</span> and orca. Yet pleasingly for <span class="annot" data-tooltip="jam /dʒæm/ n. 果酱拥挤，堵塞困难的处境；窘境vt. & vi. (使)塞紧，(使)挤满发生故障；夹住，卡住vt. 堵塞(发射无线电波)">jam</span>-spreading politicians, the <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> <span class="annot" data-tooltip="extends /ɪk'stend/ vt. & vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出时 态:">extends</span> <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> more widely around the country than that for AI. Glasgow is one of the world’s top quantum <span class="annot" data-tooltip="clusters /'klʌstər/ n. (果实、花等的)串, 簇(人、物等的)群, 组vt. & vi. (使)集中时 态: clustered, cluste">clusters</span>. The quantum supply chain runs through Sheffield in the north of England all the way to Newport in south Wales. Turning all this into a lasting lead will take more scale-up capital and <span class="annot" data-tooltip="infrastructure /'ɪnfrəstrʌktʃər/ n. 基础设施; 基础结构">infrastructure</span>, says Sir Peter: “Every now and then, I wake up in the night thinking, ‘What happens if it doesn’t work?’” But over time he thinks the <span class="annot" data-tooltip="odds /ɑːdz/ n. 不平等；几率；胜算；差别">odds</span> of that have fallen. “It’s going better than I’d hoped.” ■ This article was downloaded by zlibrary from https://www.economist.com/britain/2026/11/12/britains-super-position-in-quantum- technology</p>
+<div class="article-separator"></div>
+<div class="article-header">Britain · Britain | Life sentences</div>
+<p>What is killing Britain’s <span class="annot" data-tooltip="prisoners /'prɪznər/ n. 囚徒俘虏被夺去自由的人[动物]等">prisoners</span>? Less violence and drugs than heart disease and <span class="annot" data-tooltip="cancer /'kænsər/ n. 癌迅速蔓延的恶劣的或危险的事物形容词: cancerous">cancer</span> Nov 12th 2026 “Feculent and noxious”, said John Howard of England’s prisons in 1777. <span class="annot" data-tooltip="convicts /kən'vɪkt/ vt. 宣判有罪n. 囚犯时 态: convicted, convicting, convicts">Convicts</span>, the <span class="annot" data-tooltip="reformer /rɪ'fɔːrm/ n. 改革，改良，改造vt. & vi. 改革；改造；改善时 态: reformed，reforming，reforms">reformer</span> wrote, were “pining under diseases” and “expiring on the floors”. Conditions have improved since. And yet in 2017 Annabella, a 45-year-old diabetic, died after having spent 21 hours lying unresponsive on her cell floor. There has scarcely been a worse time to be a British <span class="annot" data-tooltip="prisoner /'prɪznər/ n. 囚徒俘虏被夺去自由的人[动物]等">prisoner</span> since detailed records began in the early 2000s. Rates of violence, self-harm and drug use are at or near record highs. With prisons running at 98% capacity, it is not <span class="annot" data-tooltip="unusual /ʌn'juːʒuəl/ adj. 与众不同的；不寻常的；不平常的副 词: unusually">unusual</span> for prisoners to spend over 22 hours a day locked in a cell no bigger than a garden <span class="annot" data-tooltip="shed /ʃed/ n. 棚, 库vt. 流出, 流下蜕皮, 树叶脱落时 态: shed, shedding, sheds">shed</span>.</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>fudge</td><td>/fʌdʒ/ n.</td><td>乳脂(巧克力)软糖vt. 搪塞,篡改, fudging, fudges</td></tr>
+<tr><td>retains</td><td>/rɪ'teɪn/ vt.</td><td>保持；雇；记住, retaining, retains 缩 写: ret</td></tr>
+<tr><td>parliament</td><td>/'pɑːrləmənt/ n.</td><td>议会, 国会</td></tr>
+<tr><td>pledge</td><td>/pledʒ/ n.</td><td>抵押；保证，誓言；抵押品，典当物vt. 保证，许诺；用……抵押；举杯祝……健康, pledging, pledges</td></tr>
+<tr><td>candidates</td><td>/'kændɪdət，ˈkændɪdeɪt/ n.</td><td>申请求职者, 候选人报考者</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>creator</td><td>/kri'eɪtər/ n.</td><td>创造者,创作者</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>seriously</td><td>/'sɪriəs/ adj.</td><td>严肃的，严重的；认真的；庄重的；危急的</td></tr>
+<tr><td>membership</td><td>/'membərʃɪp/ n.</td><td>全体会员会员身份, 会员资格</td></tr>
+<tr><td>withdrawal</td><td>/wɪð'drɔːəl/ n.</td><td>收回，取回，撤回；撤退，撤走收回[取回，撤回；撤退，撤走]的实例</td></tr>
+<tr><td>tank</td><td>/tæŋk/ n.</td><td>（存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内, tanking, tanks</td></tr>
+<tr><td>reform</td><td>/rɪ'fɔːrm/ n.</td><td>改革，改良，改造vt. & vi. 改革；改造；改善，reforming，reforms</td></tr>
+<tr><td>outlines</td><td>/'aʊtlaɪn/ n.</td><td>轮廓；大纲；概要；略图vt. 概述；描画…轮廓；略述, outlining, outlines</td></tr>
+<tr><td>fall</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>version</td><td>/'vɜːrʒn/ n.</td><td>变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本</td></tr>
+<tr><td>campaign</td><td>/kæm'peɪn/ n.</td><td>运动（为社会、商业或政治目的而进行的一系列有计划的活动）战役v. 参加运动，领导运动（如为实现政治变革或赢得竞选胜利）, campaigning, campai</td></tr>
+<tr><td>alternatives</td><td>/ɔːl'tɜːrnətɪv/ adj.</td><td>可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）可供选择的事物；可供选择的解决办法替代物</td></tr>
+<tr><td>compromise</td><td>/'kɑːmprəmaɪz/ n.</td><td>妥协, 折中方法vi. 折中解决vt. 连累, 危害, 损害, compromising, compromises</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>sparkling</td><td>/spɑːrk/ n.</td><td>火花，火星；电火花；一丝，略微；导火线，诱因v. 引发，触发；产生火花（电火花）；点燃；增加趣味（或活力、风味等）, sparking, sparks</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>hub</td><td>/hʌb/ n.</td><td>中心；毂；木片</td></tr>
+<tr><td>tucked</td><td>/tʌk/ vt.</td><td>卷起；挤进；用某物舒适地裹住；使有褶裥；收拢；大口吃；使隐藏n. 船尾突出部；食物；缝摺；抱膝式跳水；活力；鼓声vi. 缝褶裥；缩拢；舒服地裹在里面；大口吃, </td></tr>
+<tr><td>urban</td><td>/'ɜːrbən/ adj.</td><td>城市的；住在都市的</td></tr>
+<tr><td>discontent</td><td>/ˌdɪskən'tent/ n.</td><td>不满, discontenting, discontents</td></tr>
+<tr><td>reform</td><td>/rɪ'fɔːrm/ n.</td><td>改革，改良，改造vt. & vi. 改革；改造；改善，reforming，reforms</td></tr>
+<tr><td>enter</td><td>/'entər/ vt.</td><td>& vi. 进入, 进去参加, 加入登记, 登录, entering, enters</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>venue</td><td>/'venjuː/ n.</td><td>聚集地点;会场;(尤指)体育比赛场所犯罪地点;审判地争论中所持的立场</td></tr>
+<tr><td>hosted</td><td>/hoʊst/ n.</td><td>主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集, hosting, hosts</td></tr>
+<tr><td>barely</td><td>/'berli/ adv.</td><td>仅仅，勉强；几乎不；公开地；贫乏地</td></tr>
+<tr><td>handy</td><td>/'hændi/ adj.</td><td>手边的，就近的；便利的；容易取得的；敏捷的, handiest</td></tr>
+<tr><td>highlights</td><td>— </td><td>拔萃,集锦(精采会议文献选辑)</td></tr>
+<tr><td>elite</td><td>/eɪ'liːt/ n.</td><td>（社会）上层集团；掌权人物；出类拔萃的人，精英adj.（社会）上层集团的；掌权人物的；精英的</td></tr>
+<tr><td>hospitality</td><td>/ˌhɑːspɪ'tæləti/ n.</td><td>殷勤, 好客(提供给客人的)食宿招待</td></tr>
+<tr><td>authority</td><td>/ə'θɔːrəti/ n.</td><td>威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗</td></tr>
+<tr><td>titled</td><td>/tɪt/ n.</td><td>山雀；各种小鸟；乳头；小马；少妇；轻打</td></tr>
+<tr><td>aware</td><td>/ə'wer/ adj.</td><td>知道的；意识到的；有…方面知识的；懂世故的</td></tr>
+<tr><td>ukraine</td><td>— n.</td><td>乌克兰（原苏联一加盟共和国，现已独立）</td></tr>
+<tr><td>drones</td><td>/droʊn/ n.</td><td>无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫；嗡嗡响(人)絮絮叨叨地说，喋喋不休地说</td></tr>
+<tr><td>counter</td><td>/'kaʊntər/ n.</td><td>柜台, 柜台式长桌计数器vt. & vi. 对抗, 反驳adv. 反方向地, 对立地, countering, counters</td></tr>
+<tr><td>strike</td><td>/straɪk/ vi.</td><td>罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打, stricken striking, str</td></tr>
+<tr><td>league</td><td>/liːɡ/ n.</td><td>联盟；社团；范畴vt. 使…结盟；与…联合vi. 结盟；团结, leaguing, leagues</td></tr>
+<tr><td>recruited</td><td>/rɪ'kruːt/ n.</td><td>新兵(机构中的)新成员vt. 招聘；吸引(新成员)吸收某人为新成员vt. & vi. 招募，征募(新兵)恢复健康，恢复体力，recruiting，recruit</td></tr>
+<tr><td>value</td><td>/'væljuː/ n.</td><td>价值, 价格实用性, 有价值, 重要性价值标准, 价值观, 职业道德, 行业准则vt. 估价重视, 尊重, valuing, values</td></tr>
+<tr><td>flagship</td><td>/'flæɡʃɪp/ n.</td><td>旗舰；佼佼者；（作定语）一流</td></tr>
+<tr><td>aircraft</td><td>/'erkræft/ n.</td><td>飞机，航空器</td></tr>
+<tr><td>takeaway</td><td>/'teɪkəweɪ/ adj.</td><td>外卖的；外吃的n. 外卖食品；外卖餐馆</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>owner</td><td>/'oʊnər/ n.</td><td>所有者；物主</td></tr>
+<tr><td>authority</td><td>/ə'θɔːrəti/ n.</td><td>威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗</td></tr>
+<tr><td>revenue</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>quantum</td><td>/'kwɑːntəm/ n.</td><td>量子定量;总量剧增；突飞猛进；重大进展复 数: quanta</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>nightmares</td><td>/'naɪtmer/ n.</td><td>噩梦〈口〉可怕的事情, 无法摆脱的恐惧</td></tr>
+<tr><td>clusters</td><td>/'klʌstər/ n.</td><td>(果实、花等的)串, 簇(人、物等的)群, 组vt. & vi. (使)集中, clustering, clusters</td></tr>
+<tr><td>tank</td><td>/tæŋk/ n.</td><td>（存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内, tanking, tanks</td></tr>
+<tr><td>showcase</td><td>/'ʃoʊkeɪs/ n.</td><td>（商店或博物馆等的）玻璃柜台，玻璃陈列柜展示（本领、才华或优良品质）的场合v. 展示（优点）, showcasing, showcases</td></tr>
+<tr><td>outperform</td><td>/ˌaʊtpər'fɔːrm/ vt.</td><td>做得比…更好；胜过，outperforming，outperforms</td></tr>
+<tr><td>proving</td><td>/proʊ/ n.</td><td>从事某职业的人；职业运动员；职业选手；老手；好处，益处adj. （体育运动）职业的；专业的；赞成的，支持的prep. 赞成；支持Pro脯氨酸PROabbr. P</td></tr>
+<tr><td>worth</td><td>/wɜːrθ/ adj.</td><td>值…的n. 价值；财产, worthing, worths</td></tr>
+<tr><td>exploits</td><td>/ɪk'splɔɪt/ vt.</td><td>开发，开拓；剥削；开采n. 勋绩；功绩, exploiting, exploits</td></tr>
+<tr><td>faint</td><td>/feɪnt/ vi.</td><td>晕倒，昏倒adj. 微弱的，模糊的，暗淡的(体力)无力的，虚弱的；易失去知觉的，昏眩的(动作等)无力的，似无太大效果的n. 昏倒，faintest</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>quantum</td><td>/'kwɑːntəm/ n.</td><td>量子定量;总量剧增；突飞猛进；重大进展复 数: quanta</td></tr>
+<tr><td>sensors</td><td>/'sensər/ n.</td><td>传感器</td></tr>
+<tr><td>detect</td><td>/dɪ'tekt/ vt.</td><td>发现；发觉，查明，detecting，detects</td></tr>
+<tr><td>subtle</td><td>/'sʌtl/ adj.</td><td>微妙的；难以捉摸的；细微的狡猾的，狡诈的敏感的，敏锐的，有辨别力的，subtlest</td></tr>
+<tr><td>diagnostic</td><td>/ˌdaɪəɡ'nɑːstɪk/ adj.</td><td>诊断的, 判断的</td></tr>
+<tr><td>breast</td><td>/brest/ n.</td><td>乳房，胸部；胸怀；心情vt. 以胸对着；与…搏斗, breasting, breasts</td></tr>
+<tr><td>cancer</td><td>/'kænsər/ n.</td><td>癌迅速蔓延的恶劣的或危险的事物</td></tr>
+<tr><td>timing</td><td>/'taɪmɪŋ/ n.</td><td>定时；时间选择；调速v. 为…安排时间；测定…的时间（time的ing形式）</td></tr>
+<tr><td>ukraine</td><td>— n.</td><td>乌克兰（原苏联一加盟共和国，现已独立）</td></tr>
+<tr><td>jam</td><td>/dʒæm/ n.</td><td>果酱拥挤，堵塞困难的处境；窘境vt. & vi. (使)塞紧，(使)挤满发生故障；夹住，卡住vt. 堵塞(发射无线电波)干扰(信息，节目)，jamming，ja</td></tr>
+<tr><td>trialling</td><td>/'traɪəl/ n.</td><td>试验；磨炼；审讯；努力adj. 审讯的；试验的</td></tr>
+<tr><td>compact</td><td>/kəm'pækt/ adj.</td><td>小型的；袖珍的紧凑的；体积小的紧密的；坚实的(人或动物) 矮小而健壮的n. 协定；协议；契约；合约 (内有镜子的) 化妆粉盒【美式】小汽车v. 把…紧压在一起（</td></tr>
+<tr><td>atomic</td><td>/ə'tɑːmɪk/ adj.</td><td>原子的，原子能的；微粒子的</td></tr>
+<tr><td>stretch</td><td>/stretʃ/ vt.</td><td>伸展,张开vi. 伸展adj. 可伸缩的n. 伸展，延伸, stretching, stretches</td></tr>
+<tr><td>cyber</td><td>— adj.</td><td>计算机(网络)的；信息技术的</td></tr>
+<tr><td>significant</td><td>/sɪɡ'nɪfɪkənt/ adj.</td><td>重要的, 重大的, 可观的有意义的, 有用意的意味深长的</td></tr>
+<tr><td>resilient</td><td>/rɪ'zɪliənt/ adj.</td><td>(指物体或材料)能复原的;有弹性的;有弹力的(指人的性格)能迅速恢复或重新振作的;达观的;适应性强的</td></tr>
+<tr><td>backup</td><td>/'bækʌp/ n.</td><td>支持；后援；阻塞adj. 候补的；支持的vt. 做备份</td></tr>
+<tr><td>outage</td><td>/'aʊtɪdʒ/ n.</td><td>(尤指电力的)断供期;断供</td></tr>
+<tr><td>disruption</td><td>— n.</td><td>中断,分裂,瓦解,破坏</td></tr>
+<tr><td>telecoms</td><td>/ˈtɛlɪˌkɑm/ n.</td><td>电信，远距通信；电讯</td></tr>
+<tr><td>heralds</td><td>/'herəld/ n.</td><td>使者, 预报者vi. 预示, heralding, heralds</td></tr>
+<tr><td>chemistry</td><td>/'kemɪstri/ n.</td><td>化学</td></tr>
+<tr><td>processors</td><td>/'prɑːsesər/ n.</td><td>加工、处理事物的人〔设备、产业〕(计算机的)中央处理器数据处理机</td></tr>
+<tr><td>alongside</td><td>/əˌlɔːŋ'saɪd/ adv.</td><td>靠着边，沿着边prep. (表示位置)在…旁边；沿着…的边；与…并排靠拢着(表示比较)与…放在一起比较(表示伴随)与…一起，与…一道</td></tr>
+<tr><td>reliable</td><td>/rɪ'laɪəbl/ adj.</td><td>可靠的, 可信赖的</td></tr>
+<tr><td>startups</td><td>/ˈstɑrtˈʌp/ n.</td><td>启动；开办</td></tr>
+<tr><td>correction</td><td>/kə'rekʃn/ n.</td><td>改〔纠〕正修改；纠正有待改正adj. 改正的，纠正的</td></tr>
+<tr><td>developing</td><td>/dɪ'veləpɪŋ/ adj.</td><td>在进行中的;走向完成阶段的;走向成熟的发展中的</td></tr>
+<tr><td>prone</td><td>/proʊn/ adj.</td><td>易于…的; 很可能…的俯卧的</td></tr>
+<tr><td>procurement</td><td>/prə'kjʊrmənt/ n.</td><td>获得;采购</td></tr>
+<tr><td>helping</td><td>/'helpɪŋ/ n.</td><td>（进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的</td></tr>
+<tr><td>spanned</td><td>/spæn/ n.</td><td>跨度，跨径两个界限间的距离一段时间vt. 建造跨越(某物的)桥或拱；横跨跨越，穿越，贯穿SPANabbr. Statistical Processing and</td></tr>
+<tr><td>cambridge</td><td>/'keɪmbrɪdʒ/ n.</td><td>剑桥</td></tr>
+<tr><td>quantum</td><td>/'kwɑːntəm/ n.</td><td>量子定量;总量剧增；突飞猛进；重大进展复 数: quanta</td></tr>
+<tr><td>motion</td><td>/'moʊʃn/ n.</td><td>动作；请求；手势；移动；意向vi. 运动；打手势vt. 运动；向…打手势, motioning, motions</td></tr>
+<tr><td>jam</td><td>/dʒæm/ n.</td><td>果酱拥挤，堵塞困难的处境；窘境vt. & vi. (使)塞紧，(使)挤满发生故障；夹住，卡住vt. 堵塞(发射无线电波)干扰(信息，节目)，jamming，ja</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>extends</td><td>/ɪk'stend/ vt.</td><td>& vi. (空间、时间等)延伸；延续vt. 延长；扩展；达到(某一点)尽可能地伸开(身体某部)给予，提供，发出，extending，extends</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>clusters</td><td>/'klʌstər/ n.</td><td>(果实、花等的)串, 簇(人、物等的)群, 组vt. & vi. (使)集中, clustering, clusters</td></tr>
+<tr><td>infrastructure</td><td>/'ɪnfrəstrʌktʃər/ n.</td><td>基础设施; 基础结构</td></tr>
+<tr><td>odds</td><td>/ɑːdz/ n.</td><td>不平等；几率；胜算；差别</td></tr>
+<tr><td>prisoners</td><td>/'prɪznər/ n.</td><td>囚徒俘虏被夺去自由的人[动物]等</td></tr>
+<tr><td>cancer</td><td>/'kænsər/ n.</td><td>癌迅速蔓延的恶劣的或危险的事物</td></tr>
+<tr><td>convicts</td><td>/kən'vɪkt/ vt.</td><td>宣判有罪n. 囚犯, convicting, convicts</td></tr>
+<tr><td>reformer</td><td>/rɪ'fɔːrm/ n.</td><td>改革，改良，改造vt. & vi. 改革；改造；改善，reforming，reforms</td></tr>
+<tr><td>prisoner</td><td>/'prɪznər/ n.</td><td>囚徒俘虏被夺去自由的人[动物]等</td></tr>
+<tr><td>unusual</td><td>/ʌn'juːʒuəl/ adj.</td><td>与众不同的；不寻常的；不平常的</td></tr>
+<tr><td>shed</td><td>/ʃed/ n.</td><td>棚, 库vt. 流出, 流下蜕皮, 树叶脱落, shedding, sheds</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day22.html" class="nav-btn">← Day 22</a>
+  <a href="day24.html" class="nav-btn">Day 24 →</a>
+</div>
+
+<div class="progress">📖 Day 23 of 41</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-11-14</div>
+
+</body>
+</html>
