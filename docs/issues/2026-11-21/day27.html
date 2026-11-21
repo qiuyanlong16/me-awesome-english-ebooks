@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>International | The gang of four</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-11-21</div>
+
+<h1 class="article-title">International | The gang of four</h1>
+<div class="article-section">International</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>They warn that exaggerating the threat could push the four countries closer together. <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">Although</span> China has had a <span class="annot" data-tooltip="mutual /'mjuːtʃuəl/ adj. 相互的, 彼此的共同的, 共有的名 词: mutuality">mutual</span>-defence treaty with North Korea since 1961, China’s <span class="annot" data-tooltip="commitment /kə'mɪtmənt/ n. 承诺；保证；信奉；献身；委任；花费金钱、时间、人力等">commitment</span> to that is questionable. Russia signed a new one with the North Koreans in 2024 and a more limited “<span class="annot" data-tooltip="strategic /strə'tiːdʒɪk/ adj. 战略(上)的有战略意义的; 至关重要的副 词: strategically">strategic</span> partnership” with Iran last year. This collection of <span class="annot" data-tooltip="bilateral /ˌbaɪ'lætərəl/ adj. 双边的, 双方的名 词: bilateralism">bilateral</span> links thus <span class="annot" data-tooltip="falls /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">falls</span> well short of a formal alliance like NATO, each member of which is formally <span class="annot" data-tooltip="committed /kə'mɪt/ vt. 犯罪；犯错承诺；使自己受约束托付；交付时 态: committed，committing，commits">committed</span> to defend any other that comes under attack. A closer <span class="annot" data-tooltip="parallel /'pærəlel/ n. 平行线；对比vt. 使…与…平行adj. 平行的；类似的，相同的时 态: paralleledalso parallel">parallel</span> might be the Axis powers in the three years before the second world war began. They co-ordinated on foreign policy, intelligence and military <span class="annot" data-tooltip="affairs /ə'fer/ n. 事情；事务；私事；（尤指关系不长久的）风流韵事">affairs</span> but largely on an ad hoc basis until Germany and Italy signed their “Pact of Steel” in 1939. A tripartite defence treaty including Japan followed in 1940. Another <span class="annot" data-tooltip="analogy /ə'nælədʒi/ n. 类似, 相似类推, 类推法">analogy</span> is a syndicate of mafia bosses, who co-operate and compete <span class="annot" data-tooltip="simultaneously /ˌsaɪml'teɪniəsli/ adv. 同时地">simultaneously</span>. What unites them is disregard for the law and reliance on underground networks of transport and finance. Although quadrilateral axis meetings are not <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span> to occur, the four often vote in unison at the UN, <span class="annot" data-tooltip="helping /'helpɪŋ/ n. （进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的">helping</span> to shield each other from sanctions or other actions. China, Russia and Iran also co-ordinate formally via international organisations such as the Shanghai Co-operation Organisation and the BRICs (which includes Brazil, Russia, India and China). But more often the four countries support each other in transactional, bilateral and covert ways. Spying on and stealing from each other is <span class="annot" data-tooltip="routine /ruː'tiːn/ n. 例行公事；日常工作；程序adj. 日常的；例行的副 词: routinely">routine</span>. And they often withhold their best military technology, sharing enough to prevent defeat, but not to <span class="annot" data-tooltip="secure /sɪ'kjʊr/ adj. 安心的；有把握的可靠的；牢靠的；稳固的；安全的；稳妥的严密把守的；牢固的；坚固的v. （尤指经过努力）获得，取得，实现拴">secure</span> victory. Binding them together is a common desire to challenge American global leadership and to <span class="annot" data-tooltip="dominate /'dɑːmɪneɪt/ vt. 支配；控制；占优势；在…中占主要地位vi. 处于支配地位；占优势时 态: dominated, dominating, ">dominate</span> their <span class="annot" data-tooltip="respective /rɪ'spektɪv/ adj. 各自的; 各个的">respective</span> regions. “I don’t think they have in their minds an <span class="annot" data-tooltip="alternative /ɔːl'tɜːrnətɪv/ adj. 可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）">alternative</span> order. They’re just trying to <span class="annot" data-tooltip="disrupt /dɪs'rʌpt/ vt. 使混乱, 扰乱时 态: disrupted, disrupting, disrupts">disrupt</span> the US order, and then they’re trying to capitalise on that,” says Victor Cha, a former American national-<span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span> official now at the Centre for Strategic and International Studies, a think-<span class="annot" data-tooltip="tank /tæŋk/ n. （存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内时 态: t">tank</span> in Washington. But what began as transactional <span class="annot" data-tooltip="alignments /ə'laɪnmənt/ n. 排成直线">alignments</span> has laid “the <span class="annot" data-tooltip="infrastructure /'ɪnfrəstrʌktʃər/ n. 基础设施; 基础结构">infrastructure</span> for something that could last longer”, he says. That like-mindedness can show in their <span class="annot" data-tooltip="propaganda /ˌprɑːpə'ɡændə/ n. 宣传, 宣传运动名 词: propagandism">propaganda</span> as well; state media in Russia and China in particular <span class="annot" data-tooltip="routinely /ruː'tiːnli/ adv. 常规地,惯常地老一套地,令人厌烦地">routinely</span> share content with one another and, when it suits them, spread each other’s messages.</p>
+<p>Axis members still have different and often conflicting goals. China, for instance, worries that Russia’s growing influence in North Korea is emboldening its leader, Kim Jong Un. In return for his help on <span class="annot" data-tooltip="ukraine n. 乌克兰（原苏联一加盟共和国，现已独立）">Ukraine</span>, the Kremlin has provided economic support and military tech that have helped him bolster his conventional and nuclear arsenals. That troubles China, which has long sought to avert another war on its north-eastern border. Were North Korea to <span class="annot" data-tooltip="obtain /əb'teɪn/ vi. 获得；流行vt. 获得时 态: obtained, obtaining, obtains">obtain</span> a fully fledged nuclear arsenal, China fears that it could provoke an American attack or <span class="annot" data-tooltip="prompt /prɑːmpt/ adj. 敏捷的，迅速的；立刻的vt. 促进；激起；提示；（给演员）提白n. 提示；付款期限；DOS命令：改变DOS系统提示符的风">prompt</span> South Korea and Japan, both American <span class="annot" data-tooltip="allies n. （第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者">allies</span>, to develop nuclear weapons that would target China, as well as Mr Kim’s <span class="annot" data-tooltip="territory /'terətɔːri/ n. 领土, 版图管区, 营业地区地盘, 领域, 范围">territory</span>. And yet, in the last year, China has revitalised its relations with Mr Kim, dropping public objections to his nuclear weapons programme, expanding cross-border transport links and lifting trade <span class="annot" data-tooltip="restrictions /rɪ'strɪkʃn/ n. 约束，限制管制，限定；法律，规章">restrictions</span>. As North Korea’s economy revives, it has more to spend on nuclear weapons. And its conventional forces are becoming more of a threat to South Korea as battle- hardened North Korean troops return home and <span class="annot" data-tooltip="adopt /ə'dɑːpt/ vt. 收养采用, 采纳, 采取正式接受, 通过时 态: adopted, adopting, adopts">adopt</span> technology and tactics honed in Ukraine and the Middle East. China and Russia have divergent aims and <span class="annot" data-tooltip="strategies /'strætədʒi/ n. 战略学, 兵法战略, 策略策略, 计谋">strategies</span> in the Middle East too. China wants to stabilise the region, where it now has close relations with Gulf Arab states that Iran has <span class="annot" data-tooltip="bombed abbr. 物料清单（Bill of Materiel）">bombed</span>. Many of them supply China with oil or gas. Concerned that high <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span> prices are <span class="annot" data-tooltip="worsening /'wɜːrsn/ vt. & vi. (使)变得更坏,(使)恶化时 态: worsened, worsening, worsens">worsening</span> its economic slowdown, China also hopes to open up the <span class="annot" data-tooltip="strait /streɪt/ n. 海峡；（尤指经济拮据引起的）困境，境况窘迫adj. 狭窄的；苦恼的副 词: straitly">Strait</span> of Hormuz. Russia, by <span class="annot" data-tooltip="contrast /'kɑːntræst/ n. 对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照时 态: contrasted, cont">contrast</span>, seeks to destabilise the region, push up oil prices and gain <span class="annot" data-tooltip="leverage /'levərɪdʒ/ n. （能够操控形势的）影响力，手段，优势 杠杆力；杠杆作用v. 举债经营；为…融资有效利用某物（资源、优势、工具等）时 态:">leverage</span> in <span class="annot" data-tooltip="negotiations /nɪˌɡoʊʃi'eɪʃn/ n. 协商，谈判完成(难事)；通过">negotiations</span> with America over Ukraine. But Messrs Xi and Putin share enough common interests in the Middle East for their actions to be complementary. <span class="annot" data-tooltip="neither /'niːðər/ conj. 既不；也不adv. 两个都不；既不……也不adj. 两者都不的det./pron. 两者都不">Neither</span> wants a fully nuclear-armed Iran. Yet they are anxious to ensure that its <span class="annot" data-tooltip="regime /reɪ'ʒiːm/ n. 政权，政体；社会制度；管理体制">regime</span> does not <span class="annot" data-tooltip="collapse /kə'læps/ vi. 倒塌；瓦解；暴跌vt. 使倒塌，使崩溃；使萎陷n. 倒塌；失败；衰竭时 态: collapsed, collapsing">collapse</span> (and <span class="annot" data-tooltip="possibly /'pɑːsəbli/ adv. 可能地；大概；也许">possibly</span> be replaced with a Western-<span class="annot" data-tooltip="leaning /liːn/ vi. 倾斜；倚靠；倾向；依赖adj. 瘦的；贫乏的，歉收的vt. 使倾斜n. 倾斜；倾斜度；瘦肉时 态: leaned, le">leaning</span> <span class="annot" data-tooltip="alternative /ɔːl'tɜːrnətɪv/ adj. 可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）">alternative</span>). They also see the war there as a useful way to divert America’s military resources and <span class="annot" data-tooltip="undermine /ˌʌndər'maɪn/ vt. 在某物下挖洞或挖通道；侵蚀…的基础暗中破坏；逐渐削弱时 态: undermined，undermining，underm">undermine</span> public support for its military <span class="annot" data-tooltip="intervention /ˌɪntər'venʃn/ n. 介入, 干涉, 干预">intervention</span> abroad. The axis’s <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span> interests appear to be <span class="annot" data-tooltip="compatible /kəm'pætəbl/ adj. 可以并存的, 相容的, 协调的副 词: compatibly">compatible</span> enough that their co- operation across a range of military technologies is deepening. When Russia started using North Korean KN-23 ballistic missiles in 2023, they often missed targets or exploded mid-air. Russia has since made them more</p>
+<p><span class="annot" data-tooltip="accurate /'ækjərət/ adj. 精确的, 准确的，正确无误的副 词: accurately">accurate</span> and manoeuvrable by adding new components, including a Chinese-made receiver connecting it to Russian and Chinese satellite networks. The explosive charge has also changed to hexogen, which is more <span class="annot" data-tooltip="potent /'poʊtnt/ adj. 有效的；强有力的，有权势的；有说服力的">potent</span> and made in Russia, according to Ukrainian experts. And the KN-23 can now carry <span class="annot" data-tooltip="cluster /'klʌstər/ n. (果实、花等的)串, 簇(人、物等的)群, 组vt. & vi. (使)集中时 态: clustered, cluste">cluster</span> warheads, which inflict <span class="annot" data-tooltip="damage /'dæmɪdʒ/ v. 损害；伤害；毁坏；破坏n. 损坏，破坏，损失，损害，伤害（法院判定的）损害赔偿金时 态: damaged, damagi">damage</span> over a wider area. Those and other improvements appear to have flowed back to North Korea, which conducted a series of missile tests in recent weeks. Iran’s missiles have been getting more accurate too. The ones that hit Qatar’s gas-liquefaction facilities at Ras Laffan <span class="annot" data-tooltip="precisely /prɪ'saɪsli/ adv. 精确地；恰好；细心地对，的确如此">precisely</span> destroyed two “cold boxes”, the most <span class="annot" data-tooltip="vital /'vaɪtl/ adj. 极重要的，必不可少的维持生命所必需的；生命的有生气的，充满生机的副 词: vitally">vital</span> and hard-to-repair parts of the plant. Iran was also able to <span class="annot" data-tooltip="strike /straɪk/ vi. 罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打时 态:">strike</span> American radars, <span class="annot" data-tooltip="aircraft /'erkræft/ n. 飞机，航空器">aircraft</span> and facilities across the Gulf. The British-American base of Diego Garcia, in the Indian Ocean, has been targeted too, as have American warships off Iran. <span class="annot" data-tooltip="although /ɔːl'ðoʊ/ conj. 虽然，尽管">Although</span> many of Iran’s missiles are based on old North Korean designs, it no longer needs <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span> <span class="annot" data-tooltip="expertise /ˌekspɜːr'tiːz/ n. 专门知识或技能">expertise</span> in building them and has developed its <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> generation of solid-fuel missiles that can be fired quickly. Even so, their recent accuracy may <span class="annot" data-tooltip="derive /dɪ'raɪv/ vt. & vi. 得到源于时 态: derived, deriving, derives">derive</span> from Chinese and Russian intelligence <span class="annot" data-tooltip="helping /'helpɪŋ/ n. （进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的">helping</span> to identify targets, according to Western officials. They believe Iran has access to a Chinese surveillance satellite. And perhaps more important, Iran (like Russia and North Korea) is now able to use China’s BeiDou satellite- navigation system to help guide its missiles. Iran also still depends on specialist machinery, components and materials from abroad, especially China. The clearest support is through Chinese supplies of precursor chemicals for solid fuel, <span class="annot" data-tooltip="notably /'noʊtəbli/ adv. 显著地；尤其">notably</span> sodium perchlorate. A Chinese <span class="annot" data-tooltip="ship /ʃɪp/ vt. 运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Di">ship</span> carrying the chemical exploded last year in an Iranian <span class="annot" data-tooltip="port /pɔːrt/ n. 港口，口岸；左舷；舱门；（计算机的）端口vi. 转向左舷vt. 左转舵；持（枪）PORTabbr. Photo Opit">port</span>. And Chinese <span class="annot" data-tooltip="ships /ʃɪp/ vt. 运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Di">ships</span> continued to deliver it this year. There is also evidence of Chinese components being supplied to Iran’s proxy militias, including Hizbullah in Lebanon and the Houthis in Yemen. Valuable details came from the contents of four containers seized in July in Aden, with Chinese cargo <span class="annot" data-tooltip="bound /baʊnd/ vi. 跳；弹回vt. 给…划界，限制n. 跳，跳跃，跃进界限，范围adj. 被捆绑的，被束缚的一定的，必定的去，准备去时 态:">bound</span> for a Houthi-controlled port. Analysis by Conflict Armament Research, a think-<span class="annot" data-tooltip="tank /tæŋk/ n. （存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内时 态: t">tank</span>, shows it included parts for Iranian missiles. Those components appear to have been custom-made by a Chinese firm. Whether China’s government is complicit in such exports is hard to determine. It denies supplying weapons to Iran, Russia or North Korea. But</p>
+<p>much of what it exports to all three are <span class="annot" data-tooltip="dual /'duːəl/ adj. 双的；双重的n. 双数；双数词">dual</span>-use items, such as electronics and industrial machinery. Those exports <span class="annot" data-tooltip="sustain /sə'steɪn/ vt. 承受，支撑维持长期保持；使继续经受，遭受时 态: sustained，sustaining，sustains">sustain</span> their military programmes and their broader economies, while Chinese consumer goods help to <span class="annot" data-tooltip="pacify /'pæsɪfaɪ/ vt. 使平静；安慰；平定时 态: pacified, pacifying, pacifies">pacify</span> their <span class="annot" data-tooltip="domestic /də'mestɪk/ adj. 国内的；家庭的；驯养的；一心只管家务的">domestic</span> populations. Russia, in particular, relies on imports from China, which are expected to <span class="annot" data-tooltip="reach /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reach</span> $120bn-130bn this year, an 80-90% increase since 2021. While Western governments forbid the sale to Russia of dual-use items needed to make weapons, China is believed to supply as much as 90% of them. Even if some of this trade is done without the Chinese government’s knowledge, many Western officials believe that (given its formidable surveillance <span class="annot" data-tooltip="capabilities /ˌkeɪpə'bɪləti/ n. 能做某事的素质;能力尚未发挥的天资或素质">capabilities</span>) it <span class="annot" data-tooltip="either /'iːðər/ pron. (两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的">either</span> <span class="annot" data-tooltip="secretly /'siːkrətli/ adv. 秘密地;背地里">secretly</span> approves or <span class="annot" data-tooltip="consciously /'kɑːnʃəs/ adj. 神志清醒的意识到的; 注意到的自觉的; 蓄意的副 词: consciously">consciously</span> turns a blind eye to exports that it knows will be used for military purposes. The Geran-4’s original engine, for instance, was made by a Chinese firm whose website <span class="annot" data-tooltip="specifies /'spesɪfaɪ/ vt. 指定；列举；详细说明；把…列入说明书时 态: specified, specifying, specifies">specifies</span> that it can be used in cruise missiles and <span class="annot" data-tooltip="drones /droʊn/ n. 无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫">drones</span>. China tightened export controls on <span class="annot" data-tooltip="drone /droʊn/ n. 无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫">drone</span> engines in October. But Ukrainian officials believe that Russia has already localised production at Alabuga. Russian and Iranian weapons also often contain Western electronic components. But they are mostly imported via a complex network of trading firms and proxies, many of which are based in China or Hong Kong. China refuses to enforce Western sanctions imposed on dozens of such firms for</p>
+<p>supplying items for military use to Russia, Iran or North Korea. This year, China introduced rules that would penalise foreign companies and individuals for observing export controls or sanctions imposed on Chinese firms by other governments. China’s big banks still generally <span class="annot" data-tooltip="comply /kəm'plaɪ/ vi. 答应；遵守；顺从，遵从时 态: complied, complying, complies">comply</span> with Western sanctions, fearing suspension from US dollar payments and clearing systems. But China has built a network of <span class="annot" data-tooltip="alternative /ɔːl'tɜːrnətɪv/ adj. 可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）">alternative</span> financial institutions and <span class="annot" data-tooltip="mechanisms /'mekənɪzəm/ n. 机械装置构造, 机制办法, 技巧, 途径">mechanisms</span> that is largely insulated from Western sanctions. It has also accelerated efforts to “de-dollarise” its trade with Russia, Iran and other targets of sanctions. More than 95% of Russia’s trade with China is now conducted in yuan or roubles, compared with about 25% five years ago. That <span class="annot" data-tooltip="enables /ɪ'neɪbl/ vt. 使能够；提供做…的权利[措施]使可能时 态: enabled，enabling，enables">enables</span> the oil trade that <span class="annot" data-tooltip="sustains /sə'steɪn/ vt. 承受，支撑维持长期保持；使继续经受，遭受时 态: sustained，sustaining，sustains">sustains</span> the axis (see chart). China imports about 90% of Iran’s oil exports and roughly half of Russia’s. Since China mostly pays in yuan, Iran and Russia can use those <span class="annot" data-tooltip="revenues /'revənuː/ n. 收入，收益；财政收入，税收">revenues</span> to finance <span class="annot" data-tooltip="purchases /'pɜːrtʃəs/ n. 购买；紧握；起重装置vt. 购买；赢得vi. 购买东西时 态: purchased, purchasing, purch">purchases</span> of Chinese <span class="annot" data-tooltip="dual /'duːəl/ adj. 双的；双重的n. 双数；双数词">dual</span>-use tech. And the oil is mostly transported via a “shadow fleet” of ageing tankers, many of which are owned and managed through shell companies in Hong Kong and mainland China (as well as Dubai). Those tactics were pioneered by Iran but are increasingly used by Russia. As a result, the shadow fleet has expanded to more than 3,000 <span class="annot" data-tooltip="ships /ʃɪp/ vt. 运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Di">ships</span> from about 200 in 2022. North Korea, meanwhile, imports almost all of its oil overland from China and Russia. Transport links are thickening too. China and Russia are building a new cross-border gas pipeline that is <span class="annot" data-tooltip="due /duː/ adj. 到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）">due</span> to open in 2027; they have opened new road and rail bridges and are planning new railway crossings. And they co- operate closely on expanding the Northern Sea <span class="annot" data-tooltip="route /ruːt，raʊt/ n. 路, 路途, 路线, 路程时 态: routed, routing, routes">Route</span> through the Arctic. Since September, Russia and China have both opened new cross-border road bridges to North Korea. Russian and Chinese links to Iran, meanwhile, provide a window on the <span class="annot" data-tooltip="outside /ˌaʊt'saɪd/ adj. 外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外">outside</span> world. Iranian airlines still fly between <span class="annot" data-tooltip="tehran 德黑兰">Tehran</span>, Moscow and Shanghai. <span class="annot" data-tooltip="shipping /ʃɪp/ vt. 运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Di">Shipping</span> between Russia and Iran via the Caspian Sea has surged this year. So has rail freight from China to Iran via <span class="annot" data-tooltip="central /'sentrəl/ adj. 中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的副 词: centrally">Central</span> Asia. Closer axis collusion is not <span class="annot" data-tooltip="inevitable /ɪn'evɪtəbl/ adj. 不可避免的, 必然发生的〈非正〉总会发生的, 照例必有的, 惯常的名 词: inevitability">inevitable</span>. If the wars in Iran and <span class="annot" data-tooltip="ukraine n. 乌克兰（原苏联一加盟共和国，现已独立）">Ukraine</span> end, demand for military technology may <span class="annot" data-tooltip="wane /weɪn/ vi. 变小；衰落；亏缺；退潮；消逝n. 月亏；衰退；衰退期；缺损时 态: waned, waning, wanes">wane</span>, along with the trade in oil under sanctions. With fewer incentives to co-operate, <span class="annot" data-tooltip="mutual /'mjuːtʃuəl/ adj. 相互的, 彼此的共同的, 共有的名 词: mutuality">mutual</span> suspicions could</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>mutual</td><td>/'mjuːtʃuəl/ adj.</td><td>相互的, 彼此的共同的, 共有的</td></tr>
+<tr><td>commitment</td><td>/kə'mɪtmənt/ n.</td><td>承诺；保证；信奉；献身；委任；花费金钱、时间、人力等</td></tr>
+<tr><td>strategic</td><td>/strə'tiːdʒɪk/ adj.</td><td>战略(上)的有战略意义的; 至关重要的</td></tr>
+<tr><td>bilateral</td><td>/ˌbaɪ'lætərəl/ adj.</td><td>双边的, 双方的</td></tr>
+<tr><td>falls</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>committed</td><td>/kə'mɪt/ vt.</td><td>犯罪；犯错承诺；使自己受约束托付；交付，committing，commits</td></tr>
+<tr><td>parallel</td><td>/'pærəlel/ n.</td><td>平行线；对比vt. 使…与…平行adj. 平行的；类似的，相同的</td></tr>
+<tr><td>affairs</td><td>/ə'fer/ n.</td><td>事情；事务；私事；（尤指关系不长久的）风流韵事</td></tr>
+<tr><td>analogy</td><td>/ə'nælədʒi/ n.</td><td>类似, 相似类推, 类推法</td></tr>
+<tr><td>simultaneously</td><td>/ˌsaɪml'teɪniəsli/ adv.</td><td>同时地</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>helping</td><td>/'helpɪŋ/ n.</td><td>（进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的</td></tr>
+<tr><td>routine</td><td>/ruː'tiːn/ n.</td><td>例行公事；日常工作；程序adj. 日常的；例行的</td></tr>
+<tr><td>secure</td><td>/sɪ'kjʊr/ adj.</td><td>安心的；有把握的可靠的；牢靠的；稳固的；安全的；稳妥的严密把守的；牢固的；坚固的v. （尤指经过努力）获得，取得，实现拴牢；扣紧；关严保护；保卫；使安全抵押；为</td></tr>
+<tr><td>dominate</td><td>/'dɑːmɪneɪt/ vt.</td><td>支配；控制；占优势；在…中占主要地位vi. 处于支配地位；占优势, dominating, dominates</td></tr>
+<tr><td>respective</td><td>/rɪ'spektɪv/ adj.</td><td>各自的; 各个的</td></tr>
+<tr><td>alternative</td><td>/ɔːl'tɜːrnətɪv/ adj.</td><td>可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）可供选择的事物；可供选择的解决办法替代物</td></tr>
+<tr><td>disrupt</td><td>/dɪs'rʌpt/ vt.</td><td>使混乱, 扰乱, disrupting, disrupts</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>tank</td><td>/tæŋk/ n.</td><td>（存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内, tanking, tanks</td></tr>
+<tr><td>alignments</td><td>/ə'laɪnmənt/ n.</td><td>排成直线</td></tr>
+<tr><td>infrastructure</td><td>/'ɪnfrəstrʌktʃər/ n.</td><td>基础设施; 基础结构</td></tr>
+<tr><td>propaganda</td><td>/ˌprɑːpə'ɡændə/ n.</td><td>宣传, 宣传运动</td></tr>
+<tr><td>routinely</td><td>/ruː'tiːnli/ adv.</td><td>常规地,惯常地老一套地,令人厌烦地</td></tr>
+<tr><td>ukraine</td><td>— n.</td><td>乌克兰（原苏联一加盟共和国，现已独立）</td></tr>
+<tr><td>obtain</td><td>/əb'teɪn/ vi.</td><td>获得；流行vt. 获得, obtaining, obtains</td></tr>
+<tr><td>prompt</td><td>/prɑːmpt/ adj.</td><td>敏捷的，迅速的；立刻的vt. 促进；激起；提示；（给演员）提白n. 提示；付款期限；DOS命令：改变DOS系统提示符的风格adv. 准时地, promptest</td></tr>
+<tr><td>allies</td><td>— n.</td><td>（第一次世界大战时的）协约国；（第二次世界大战时的）同盟国alliesn. 联盟国,同盟者</td></tr>
+<tr><td>territory</td><td>/'terətɔːri/ n.</td><td>领土, 版图管区, 营业地区地盘, 领域, 范围</td></tr>
+<tr><td>restrictions</td><td>/rɪ'strɪkʃn/ n.</td><td>约束，限制管制，限定；法律，规章</td></tr>
+<tr><td>adopt</td><td>/ə'dɑːpt/ vt.</td><td>收养采用, 采纳, 采取正式接受, 通过, adopting, adopts</td></tr>
+<tr><td>strategies</td><td>/'strætədʒi/ n.</td><td>战略学, 兵法战略, 策略策略, 计谋</td></tr>
+<tr><td>bombed</td><td>— abbr.</td><td>物料清单（Bill of Materiel）</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>worsening</td><td>/'wɜːrsn/ vt.</td><td>& vi. (使)变得更坏,(使)恶化, worsening, worsens</td></tr>
+<tr><td>strait</td><td>/streɪt/ n.</td><td>海峡；（尤指经济拮据引起的）困境，境况窘迫adj. 狭窄的；苦恼的</td></tr>
+<tr><td>contrast</td><td>/'kɑːntræst/ n.</td><td>对比, 对照差异, 差别对照物, 明显的对比物vt. & vi. 对比, 对照, contrasting, contrasts</td></tr>
+<tr><td>leverage</td><td>/'levərɪdʒ/ n.</td><td>（能够操控形势的）影响力，手段，优势 杠杆力；杠杆作用v. 举债经营；为…融资有效利用某物（资源、优势、工具等）, leveraging, leverages</td></tr>
+<tr><td>negotiations</td><td>/nɪˌɡoʊʃi'eɪʃn/ n.</td><td>协商，谈判完成(难事)；通过</td></tr>
+<tr><td>neither</td><td>/'niːðər/ conj.</td><td>既不；也不adv. 两个都不；既不……也不adj. 两者都不的det./pron. 两者都不</td></tr>
+<tr><td>regime</td><td>/reɪ'ʒiːm/ n.</td><td>政权，政体；社会制度；管理体制</td></tr>
+<tr><td>collapse</td><td>/kə'læps/ vi.</td><td>倒塌；瓦解；暴跌vt. 使倒塌，使崩溃；使萎陷n. 倒塌；失败；衰竭, collapsing, collapses</td></tr>
+<tr><td>possibly</td><td>/'pɑːsəbli/ adv.</td><td>可能地；大概；也许</td></tr>
+<tr><td>leaning</td><td>/liːn/ vi.</td><td>倾斜；倚靠；倾向；依赖adj. 瘦的；贫乏的，歉收的vt. 使倾斜n. 倾斜；倾斜度；瘦肉, leaning, leans</td></tr>
+<tr><td>alternative</td><td>/ɔːl'tɜːrnətɪv/ adj.</td><td>可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）可供选择的事物；可供选择的解决办法替代物</td></tr>
+<tr><td>undermine</td><td>/ˌʌndər'maɪn/ vt.</td><td>在某物下挖洞或挖通道；侵蚀…的基础暗中破坏；逐渐削弱，undermining，undermines</td></tr>
+<tr><td>intervention</td><td>/ˌɪntər'venʃn/ n.</td><td>介入, 干涉, 干预</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>compatible</td><td>/kəm'pætəbl/ adj.</td><td>可以并存的, 相容的, 协调的</td></tr>
+<tr><td>accurate</td><td>/'ækjərət/ adj.</td><td>精确的, 准确的，正确无误的</td></tr>
+<tr><td>potent</td><td>/'poʊtnt/ adj.</td><td>有效的；强有力的，有权势的；有说服力的</td></tr>
+<tr><td>cluster</td><td>/'klʌstər/ n.</td><td>(果实、花等的)串, 簇(人、物等的)群, 组vt. & vi. (使)集中, clustering, clusters</td></tr>
+<tr><td>damage</td><td>/'dæmɪdʒ/ v.</td><td>损害；伤害；毁坏；破坏n. 损坏，破坏，损失，损害，伤害（法院判定的）损害赔偿金, damaging, damages</td></tr>
+<tr><td>precisely</td><td>/prɪ'saɪsli/ adv.</td><td>精确地；恰好；细心地对，的确如此</td></tr>
+<tr><td>vital</td><td>/'vaɪtl/ adj.</td><td>极重要的，必不可少的维持生命所必需的；生命的有生气的，充满生机的</td></tr>
+<tr><td>strike</td><td>/straɪk/ vi.</td><td>罢工；打，打击；敲，敲击；抓；穿透；打动vt. 罢工；打，击；侵袭；打动；撞击，冲击；到达n. 罢工；打击；殴打, stricken striking, str</td></tr>
+<tr><td>aircraft</td><td>/'erkræft/ n.</td><td>飞机，航空器</td></tr>
+<tr><td>although</td><td>/ɔːl'ðoʊ/ conj.</td><td>虽然，尽管</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>expertise</td><td>/ˌekspɜːr'tiːz/ n.</td><td>专门知识或技能</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>derive</td><td>/dɪ'raɪv/ vt.</td><td>& vi. 得到源于, deriving, derives</td></tr>
+<tr><td>helping</td><td>/'helpɪŋ/ n.</td><td>（进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的</td></tr>
+<tr><td>notably</td><td>/'noʊtəbli/ adv.</td><td>显著地；尤其</td></tr>
+<tr><td>ship</td><td>/ʃɪp/ vt.</td><td>运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Division of the Nation</td></tr>
+<tr><td>port</td><td>/pɔːrt/ n.</td><td>港口，口岸；左舷；舱门；（计算机的）端口vi. 转向左舷vt. 左转舵；持（枪）PORTabbr. Photo Opitical Recorder Tracke</td></tr>
+<tr><td>ships</td><td>/ʃɪp/ vt.</td><td>运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Division of the Nation</td></tr>
+<tr><td>bound</td><td>/baʊnd/ vi.</td><td>跳；弹回vt. 给…划界，限制n. 跳，跳跃，跃进界限，范围adj. 被捆绑的，被束缚的一定的，必定的去，准备去，bounding，bounds</td></tr>
+<tr><td>tank</td><td>/tæŋk/ n.</td><td>（存放液体或气体的）箱，罐，缸；坦克；牢房v. 喝醉；遭受失败（尤指财政巨大损失）；使惨败；把……贮放在柜内, tanking, tanks</td></tr>
+<tr><td>dual</td><td>/'duːəl/ adj.</td><td>双的；双重的n. 双数；双数词</td></tr>
+<tr><td>sustain</td><td>/sə'steɪn/ vt.</td><td>承受，支撑维持长期保持；使继续经受，遭受，sustaining，sustains</td></tr>
+<tr><td>pacify</td><td>/'pæsɪfaɪ/ vt.</td><td>使平静；安慰；平定, pacifying, pacifies</td></tr>
+<tr><td>domestic</td><td>/də'mestɪk/ adj.</td><td>国内的；家庭的；驯养的；一心只管家务的</td></tr>
+<tr><td>reach</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>capabilities</td><td>/ˌkeɪpə'bɪləti/ n.</td><td>能做某事的素质;能力尚未发挥的天资或素质</td></tr>
+<tr><td>either</td><td>/'iːðər/ pron.</td><td>(两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的</td></tr>
+<tr><td>secretly</td><td>/'siːkrətli/ adv.</td><td>秘密地;背地里</td></tr>
+<tr><td>consciously</td><td>/'kɑːnʃəs/ adj.</td><td>神志清醒的意识到的; 注意到的自觉的; 蓄意的</td></tr>
+<tr><td>specifies</td><td>/'spesɪfaɪ/ vt.</td><td>指定；列举；详细说明；把…列入说明书, specifying, specifies</td></tr>
+<tr><td>drones</td><td>/droʊn/ n.</td><td>无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫；嗡嗡响(人)絮絮叨叨地说，喋喋不休地说</td></tr>
+<tr><td>drone</td><td>/droʊn/ n.</td><td>无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫；嗡嗡响(人)絮絮叨叨地说，喋喋不休地说</td></tr>
+<tr><td>comply</td><td>/kəm'plaɪ/ vi.</td><td>答应；遵守；顺从，遵从, complying, complies</td></tr>
+<tr><td>alternative</td><td>/ɔːl'tɜːrnətɪv/ adj.</td><td>可供选择的, 可供替代的（较常用以指两项而非多项之间的选择）不寻常的, 非传统性的非正统的n. （尤指不同于平常事物的）可供选择的事物；可供选择的解决办法替代物</td></tr>
+<tr><td>mechanisms</td><td>/'mekənɪzəm/ n.</td><td>机械装置构造, 机制办法, 技巧, 途径</td></tr>
+<tr><td>enables</td><td>/ɪ'neɪbl/ vt.</td><td>使能够；提供做…的权利[措施]使可能，enabling，enables</td></tr>
+<tr><td>sustains</td><td>/sə'steɪn/ vt.</td><td>承受，支撑维持长期保持；使继续经受，遭受，sustaining，sustains</td></tr>
+<tr><td>revenues</td><td>/'revənuː/ n.</td><td>收入，收益；财政收入，税收</td></tr>
+<tr><td>purchases</td><td>/'pɜːrtʃəs/ n.</td><td>购买；紧握；起重装置vt. 购买；赢得vi. 购买东西, purchasing, purchases</td></tr>
+<tr><td>dual</td><td>/'duːəl/ adj.</td><td>双的；双重的n. 双数；双数词</td></tr>
+<tr><td>ships</td><td>/ʃɪp/ vt.</td><td>运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Division of the Nation</td></tr>
+<tr><td>due</td><td>/duː/ adj.</td><td>到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）</td></tr>
+<tr><td>route</td><td>/ruːt，raʊt/ n.</td><td>路, 路途, 路线, 路程, routing, routes</td></tr>
+<tr><td>outside</td><td>/ˌaʊt'saɪd/ adj.</td><td>外面的，外部的；外来的n. 外部；外观adv. 在外面，向外面；在室外prep. 在…范围之外</td></tr>
+<tr><td>tehran</td><td>— </td><td>德黑兰</td></tr>
+<tr><td>shipping</td><td>/ʃɪp/ vt.</td><td>运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Division of the Nation</td></tr>
+<tr><td>central</td><td>/'sentrəl/ adj.</td><td>中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的</td></tr>
+<tr><td>inevitable</td><td>/ɪn'evɪtəbl/ adj.</td><td>不可避免的, 必然发生的〈非正〉总会发生的, 照例必有的, 惯常的</td></tr>
+<tr><td>ukraine</td><td>— n.</td><td>乌克兰（原苏联一加盟共和国，现已独立）</td></tr>
+<tr><td>wane</td><td>/weɪn/ vi.</td><td>变小；衰落；亏缺；退潮；消逝n. 月亏；衰退；衰退期；缺损, waning, wanes</td></tr>
+<tr><td>mutual</td><td>/'mjuːtʃuəl/ adj.</td><td>相互的, 彼此的共同的, 共有的</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day26.html" class="nav-btn">← Day 26</a>
+  <a href="day28.html" class="nav-btn">Day 28 →</a>
+</div>
+
+<div class="progress">📖 Day 27 of 42</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-11-21</div>
+
+</body>
+</html>

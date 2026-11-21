@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Science & technology</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-11-21</div>
+
+<h1 class="article-title">Science & technology</h1>
+<div class="article-section"></div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>understand why swearing took off, but guesses the reason is because labs now train models on increasingly difficult tasks. Like their human <span class="annot" data-tooltip="counterparts /'kaʊntərpɑːrt/ n. 与对方地位相当的人, 与另一方作用相当的物">counterparts</span>, the systems studied by Vals rarely swear in output directly intended for publication. They instead keep the vulgarities in their “chain of <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span>”—the LLM <span class="annot" data-tooltip="equivalent /ɪ'kwɪvələnt/ adj. 等同的，等效的n. 对等的人（或事物），对应的人（或事物）">equivalent</span> of muttering under one’s <span class="annot" data-tooltip="breath /breθ/ n. 气息；呼吸(一次)呼吸，一口气；微风">breath</span>. The assessment did not <span class="annot" data-tooltip="cover /'kʌvər/ vt. 包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替时 态: covered, covering, c">cover</span> the full and rich scope of human vulgarity, rather examining only the word “fuck” and its <span class="annot" data-tooltip="variants /'veriənt/ n. 变体；变种；变型(词等的)变体；异读(书等的)不同版本；改编adj. 不同的；差别的；变异的；易变的，不定的；各种各样的">variants</span>, as well as a small <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of other PG-rated outbursts. Even so, Vals identified a stark difference in the coarseness of language used by various systems. Eighty- eight of the 102 models assessed did not swear a single time, disdaining even the <span class="annot" data-tooltip="abbreviation /əˌbriːvi'eɪʃn/ n. 缩写; 缩写词">abbreviation</span> “WTF”. At the other end of the <span class="annot" data-tooltip="spectrum /'spektrəm/ n. 光谱波谱范围, 系列复 数: spectra">spectrum</span>, a frontier model released in September from Xiaomi, a Chinese tech giant, cursed in more than 8% of its <span class="annot" data-tooltip="transcripts /'trænskrɪpt/ n. 抄本; 誊本; 打字本; 副本学生成绩报告单">transcripts</span>. For humans, studies show that swearing can be a useful tool to push through challenging problems. Sadly, AI systems seem to experience no such benefits. “Swearing runs usually fail,” Mr Frank reported, with a 12% success rate compared with a 39% success rate <span class="annot" data-tooltip="overall /ˌoʊvər'ɔːl/ adj. 总体的；全面的；综合的全面考虑的adv. 大体上，总的来说一切包括在内，全部的n. 长罩衣工装裤；工作裤">overall</span>. It is not quite true, however, to say that LLMs were tamer in the good old days. Even the most <span class="annot" data-tooltip="corporate /'kɔːrpərət/ adj. 社团的, 法人的副 词: corporately">corporate</span>-friendly systems occasionally lose their cool. One bug report from December 2025 shows Claude, a model made by <span class="annot" data-tooltip="anthropic /ænˈθrɑpɪk/ adj. 人类的,有关人类的">Anthropic</span>, an American firm, responding in frustration to a broken coding challenge: “You know what—fuck this. I’ve done everything I can.” ■ This article was downloaded by zlibrary from https://www.economist.com/science-and-technology/2026/11/18/llms-are-<span class="annot" data-tooltip="developing /dɪ'veləpɪŋ/ adj. 在进行中的;走向完成阶段的;走向成熟的发展中的">developing</span>- <span class="annot" data-tooltip="filthy /'fɪlθi/ adj. 肮脏的；污秽的下流的；淫秽的比较级: filthier，filthiest">filthy</span>-mouths</p>
+<p>Science & technology | Well Informed Should women sync their lifestyle to their menstrual cycle? What works for one woman may not suit another Nov 19th 2026 ALL <span class="annot" data-tooltip="elite /eɪ'liːt/ n. （社会）上层集团；掌权人物；出类拔萃的人，精英adj.（社会）上层集团的；掌权人物的；精英的">ELITE</span> athletes face similar challenges. Juggling a busy training schedule with a personal life, for example, or <span class="annot" data-tooltip="constantly /'kɑːnstəntli/ adv. 不断地;时常地">constantly</span> tracking calories and hydration levels. Female athletes have an extra data set to track: their menstrual cycles. In a study of female athletes published in PLOS ONE in 2016, over half of those <span class="annot" data-tooltip="classified /'klæsɪfaɪd/ adj. (信息)归入密级的,保密的">classified</span> as elite reported that their cycles <span class="annot" data-tooltip="affected /ə'fekt/ vt. 影响；假装；感动；感染vi. 倾向；喜欢n. 情感；引起感情的因素时 态: affected, affecting, a">affected</span> their performance. In a similar study of British track-and-field athletes in 2024, the figure was higher than 75%. In the absence of clear health guidance, then, it is small <span class="annot" data-tooltip="wonder /'wʌndər/ vt. & vi. 对…感到疑惑想知道；问自己n. 惊奇，惊叹，惊异，惊诧奇人，奇才奇观，奇景，奇迹，奇事时 态: wonder">wonder</span> that influencers on TikTok have begun offering advice. “Cycle-syncing”, the <span class="annot" data-tooltip="practice /'præktɪs/ n. 练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规时 态: practiced，practicing，">practice</span> of scheduling everything from <span class="annot" data-tooltip="workouts /'wɜːrkaʊt/ n. 试验；锻炼；练习">workouts</span> to diet around a person’s menstrual cycle, is now ubiquitous. But does it work?</p>
+<p>A typical menstrual cycle has two fixed <span class="annot" data-tooltip="landmarks /'lændmɑːrk/ n. 陆标，地标；里程碑；地界标；划时代的事">landmarks</span>. One is ovulation, when an egg cell is released from an ovary. The other is the period, when the absence of a fertilised egg causes the uterine lining to <span class="annot" data-tooltip="shed /ʃed/ n. 棚, 库vt. 流出, 流下蜕皮, 树叶脱落时 态: shed, shedding, sheds">shed</span>. The body’s preparation for these events involves <span class="annot" data-tooltip="significant /sɪɡ'nɪfɪkənt/ adj. 重要的, 重大的, 可观的有意义的, 有用意的意味深长的副 词: significantly">significant</span> <span class="annot" data-tooltip="hormonal /hɔːr'moʊnl/ adj. 荷尔蒙的,激素的">hormonal</span> swings. Levels of oestrogen, a reproductive hormone, peak around ovulation, while levels of progesterone, another hormone, peak thereafter. Levels of both <span class="annot" data-tooltip="fall /fɔːl/ vi. 降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. ">fall</span> sharply before the period. The rest of the (<span class="annot" data-tooltip="typically /'tɪpɪkli/ adv. 代表性地;作为特色地;典型地">typically</span> month-long) cycle is less well-defined. That has not stopped cycle-syncers from embracing a <span class="annot" data-tooltip="neat /niːt/ adj. 整洁的；未搀水的；优雅的；灵巧的；齐整的；平滑的比较级: neater, neatest">neat</span> <span class="annot" data-tooltip="division /dɪ'vɪʒn/ n. [数] 除法；部门；分配；分割；师（军队）；赛区形容词: divisional">division</span> into four <span class="annot" data-tooltip="distinct /dɪ'stɪŋkt/ adj. 截然不同的, 完全分开的清晰的, 明白的, 明显的副 词: distinctly">distinct</span> <span class="annot" data-tooltip="phases /feɪz/ n. 阶段, 时期(月亮、行星的)位相vt. 分阶段计划[安排]时 态: phased, phasing, phases">phases</span>: menstrual (when bleeding occurs), follicular (when egg-containing follicles grow in the ovary), ovulatory (when an egg is released) and luteal (when empty follicles <span class="annot" data-tooltip="decay /dɪ'keɪ/ vi. 腐烂，腐朽；衰退，衰减n. 衰退，衰减；腐烂，腐朽vt. 使腐烂，使腐败；使衰退，使衰落时 态: decayed, de">decay</span>). <span class="annot" data-tooltip="advocates /ˈædvəkeɪt，'ædvəkət/ v. 拥护；支持；提倡n. 拥护者；支持者；提倡者；辩护律师；出庭辩护人时 态: advocated, advocating,">Advocates</span> claim that <span class="annot" data-tooltip="energy /'enərdʒi/ n. 精力；能量；活力；精神">energy</span> levels are lowest in the menstrual <span class="annot" data-tooltip="phase /feɪz/ n. 阶段, 时期(月亮、行星的)位相vt. 分阶段计划[安排]时 态: phased, phasing, phases">phase</span> <span class="annot" data-tooltip="due /duː/ adj. 到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）">due</span> to low hormone levels and blood loss, before steadily climbing in the follicular phase. Progesterone has been linked to slower <span class="annot" data-tooltip="digestion /daɪ'dʒestʃən/ n. 消化能力消化;领悟">digestion</span> and <span class="annot" data-tooltip="bloating /bloʊt/ vt. （使）肿胀；使膨胀；腌制vi. 膨胀；肿起；得意n. 膨胀的东西，肿胀的人；肿胀病人；自满的人时 态: bloated,">bloating</span>, <span class="annot" data-tooltip="symptoms /'sɪmptəm/ n. 征兆；症状">symptoms</span> which make the luteal phase uncomfortable. The hormonal <span class="annot" data-tooltip="crash /kræʃ/ n. 碰撞；崩溃；坠落vt. 破碎；撞碎；坠落vi. 碰撞；坠毁；闯；突然倒台adj. 速成的时 态: crashed, cr">crash</span> as this phase ends often brings other unwelcome side-effects such as headaches, abdominal <span class="annot" data-tooltip="cramps /kræmp/ n. 铁夹钳；痉挛，绞痛vt. 使…抽筋；以铁箍扣紧；束缚，限制adj. 狭窄的；难解的；受限制的时 态: cramped, ">cramps</span> and depression. Advocates for cycle-syncing suggest <span class="annot" data-tooltip="tailoring /'teɪlər/ vt. 剪裁；使合适n. 裁缝vi. 做裁缝时 态: tailored, tailoring, tailors">tailoring</span> activity and diet to these different phases. <span class="annot" data-tooltip="workouts /'wɜːrkaʊt/ n. 试验；锻炼；练习">Workouts</span> should be gentler and iron-rich foods should be prioritised during the menstrual phase, for example. In the follicular phase, the advice is to focus on creative tasks and build up training <span class="annot" data-tooltip="intensity /ɪn'tensəti/ n. 强烈, 剧烈(感情的)强烈程度">intensity</span> until ovulation. In the tougher luteal phase, some recommend swapping weight training for yoga and eating fewer sugary foods which can make premenstrual cramps worse. The structure that cycle-syncing offers women is appealing, but scientists warn that it rests on shaky ground. “There haven’t been <span class="annot" data-tooltip="rigorous /'rɪɡərəs/ adj. 严密的；缜密的严格的，严厉的副 词: rigorously">rigorous</span> randomised studies,” says Liisa Hantsoo, a women’s-health researcher at Johns Hopkins University in Baltimore, “so a lot of it is anecdotal.” Anecdote can be particularly unhelpful because two women may have cycles of <span class="annot" data-tooltip="wildly /'waɪldli/ adv. 野生地；野蛮地；狂暴地；鲁莽地">wildly</span> differing lengths. In <span class="annot" data-tooltip="addition /ə'dɪʃn/ n. 添加；增加物；加法形容词: additional">addition</span>, they might experience symptoms that differ in their nature and severity. Follicular phases, for example, can last anywhere from seven to 21 days. Even a woman’s <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> cycle is likely to shorten as she ages, or if she switches <span class="annot" data-tooltip="contraceptive /ˌkɑːntrə'septɪv/ adj. 避孕的,避孕用的n. 避孕药,避孕用具">contraceptive</span> methods.</p>
+<p>For those whose daily lives are <span class="annot" data-tooltip="affected /ə'fekt/ vt. 影响；假装；感动；感染vi. 倾向；喜欢n. 情感；引起感情的因素时 态: affected, affecting, a">affected</span> by their cycles, resting when particularly tired is probably wise. But in general, says Dr Hantsoo, “There are no hard and fast rules.” The most <span class="annot" data-tooltip="sensible /'sensəbl/ adj. 明智的；意识到的；通晓事理的；明显的n. 可感觉到的东西；敏感的人副 词: sensibly">sensible</span> advice is to remember that what works for one woman will not necessarily work for another. Tracking your <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> <span class="annot" data-tooltip="symptoms /'sɪmptəm/ n. 征兆；症状">symptoms</span> to find out what works for you may <span class="annot" data-tooltip="yield /jiːld/ vt. 出产；屈服；放弃vi. 屈服，投降n. 收益；产量时 态: yielded, yielding, yields">yield</span> the best results.■ After a free, evidence-based guide to health and wellness? Sign up to our weekly Well Informed newsletter. This article was downloaded by zlibrary from https://www.economist.com/science-and-technology/2026/11/13/should-women-sync- their-lifestyle-to-their-menstrual-cycle</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Culture</div>
+<p>“Grand Theft Auto VI” may mark the end of an era in gaming Good evening, Mr Bond. We’ve been expecting you Understanding the world through a wine glass Why there are so many bizarre national days The most important economics mind you’ve never heard of The oddball who founded UPS—and changed the world</p>
+<div class="article-separator"></div>
+<div class="article-header">Culture · Culture | The last of us</div>
+<p>“Grand Theft Auto VI” may mark the end of an era in gaming Studios face <span class="annot" data-tooltip="shrinking /ʃrɪŋk/ vt. & vi. 收缩；退缩时 态: shrank ，shrunk shrunk，shrunken shrinking，shr">shrinking</span> incentives to make top-<span class="annot" data-tooltip="tier /tɪr/ n. 行，列；层，排；等级vt. 使层叠vi. 成递升排列时 态: tiered, tiering, tiers">tier</span> titles Nov 19th 2026 IT IS NIGHT-TIME in <span class="annot" data-tooltip="vice /vaɪs/ n. 堕落，邪恶；不良习气，恶习（尤指与性或毒品有关的）罪行，道德败坏行为【英式】老虎钳；台钳（【美式】vise）pref. ">Vice</span> City, Leonida, a raucous digital <span class="annot" data-tooltip="replica /'replɪkə/ n. 复制品">replica</span> of Miami, Florida. Jason and Lucia, two small-time crooks, have an inauspicious first <span class="annot" data-tooltip="encounter /ɪn'kaʊntər/ vt. 遇到, 遭遇偶然碰到, 邂逅n. 突然遇到时 态: encountered, encountering, encount">encounter</span>: they meet while trying to steal the same car. The relationship has a rocky start—Lucia introduces herself to Jason with a baseball bat—but soon the pair are on the run together in the stolen <span class="annot" data-tooltip="vehicle /'viːəkl/ n. 交通工具, 车辆传播媒介, 手段">vehicle</span>: partners in life and partners in crime. So begins the most <span class="annot" data-tooltip="eagerly /'iːɡərli/ adv. 渴望地；急切地；热心地">eagerly</span> awaited video game in history, which launched on November 19th after 13 years of rumours, <span class="annot" data-tooltip="leaks /liːk/ n. 漏洞，裂缝；泄漏vt. 使渗漏，泄露vi. 漏，渗；泄漏出去时 态: leaked, leaking, leaks">leaks</span> and missed deadlines. Some analysts predict that “Grand Theft Auto VI” (“GTA VI”) will take more than $3bn worldwide in its first week. That would make it not just the highest-<span class="annot" data-tooltip="grossing /ɡroʊs/ adj. 总共的；粗野的；恶劣的；显而易见的vt. 总共收入n. 总额，总数比较级: grosser, grossest">grossing</span> game launch in history, but the biggest entertainment <span class="annot" data-tooltip="debut /deɪ'bjuː/ n. 〈法〉演员首次演出时 态: debuted debuting debuts">debut</span></p>
+<p>of any kind (overtaking “Avengers: Endgame”, a Marvel superhero movie which, by most measures, has held the title since 2019). Players who had stayed up until midnight to play the game said it was <span class="annot" data-tooltip="worth /wɜːrθ/ adj. 值…的n. 价值；财产时 态: worthed, worthing, worths">worth</span> the wait. (Some had registered accounts in New Zealand in order to get access a few hours earlier.) “GTA VI” combines the action and irreverent humour of previous titles in the series with an improbably touching love story, played out in an astonishingly lifelike world. On its <span class="annot" data-tooltip="release /rɪ'liːs/ vt. 释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]时 态: released，rel">release</span>, it was the <span class="annot" data-tooltip="joint /dʒɔɪnt/ n. 关节；接合处，接合点；接缝；（牛，羊等的腿）大块肉adj. 联合的，合办的；共同的；连接的vt. 连接，贴合；接合；使有">joint</span>-highest-rated game in history on Metacritic, a review aggregator. Employers expect an epidemic of “GTA flu”, as workers call in sick to stay at home playing it. The <span class="annot" data-tooltip="hype /haɪp/ n. 天花乱坠的广告宣传vt. 大肆宣传夸张地宣传(某人或某事物)(用巧计或绝技)人为地刺激,助长十分兴奋的；很激动的；十分担">hype</span> around “GTA VI” is deserved—but it <span class="annot" data-tooltip="conceals /kən'siːl/ vt. 隐藏；隐瞒时 态: concealed, concealing, conceals">conceals</span> a problem. Despite the game’s likely commercial success, developers face <span class="annot" data-tooltip="shrinking /ʃrɪŋk/ vt. & vi. 收缩；退缩时 态: shrank ，shrunk shrunk，shrunken shrinking，shr">shrinking</span> incentives to make anything like it again. A look at the charts suggests that something is wrong in the <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span>. Since 2020 the five most popular PlayStation games in America each year have come from only eight franchises. The top three have hardly changed at all. “Fortnite” is a relative newcomer at nine years old. The “Call of Duty” franchise is 23. “GTA” is 29, older than many of its players.</p>
+<p>It is not only on <span class="annot" data-tooltip="consoles /kənˈsoʊl/ v. 安慰，安抚，抚慰，慰藉n. （电子设备或机器的）操纵台，控制台，仪表板时 态: consoled, consoling,">consoles</span> that gaming culture has ossified. In 2025 only 14% of playing time on PCs was spent on games released that year, according to data from Steam, a games store. In recent years the top ten PC franchises have <span class="annot" data-tooltip="racked /ræk/ n. 行李架；拷问台；齿条vi. 随风飘；小步跑；变形vt. 折磨；榨取时 态: racked, racking, racks">racked</span> up <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> as much play time as the next 100,000 combined. This concentration at the top represents “the biggest threat to gaming as we’ve known it for 30 to 40 years”, says <span class="annot" data-tooltip="mat /mæt/ n. 地垫，垫子；团，簇v. 缠结，缠结成一团；铺满……上MATabbr. Mechanical Aptitude Test ">Mat</span> Piscatella, a former <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">industry</span> executive now at Circana, a market-research firm. How did gaming get so <span class="annot" data-tooltip="stuck /stʌk/ v. 刺（stick的过去式）adj. 不能动的；被卡住的">stuck</span>? Playing “GTA VI” makes clear the formidable barriers faced by new entrants to the industry. The game’s map <span class="annot" data-tooltip="stretches /stretʃ/ vt. 伸展,张开vi. 伸展adj. 可伸缩的n. 伸展，延伸时 态: stretched, stretching, stre">stretches</span> from the thumping nightclubs of <span class="annot" data-tooltip="vice /vaɪs/ n. 堕落，邪恶；不良习气，恶习（尤指与性或毒品有关的）罪行，道德败坏行为【英式】老虎钳；台钳（【美式】vise）pref. ">Vice</span> City to <span class="annot" data-tooltip="alligator /'ælɪɡeɪtər/ n. 短吻鳄">alligator</span>-<span class="annot" data-tooltip="infested /ɪn'fest/ vt. 骚扰；寄生于；大批出没；大批滋生时 态: infested, infesting, infests">infested</span> <span class="annot" data-tooltip="swamps /swɑːmp/ n. 沼泽，低地，水洼；湿地；（用于强调）某地的浸水程度；进退两难的困境">swamps</span>, all of it painstakingly populated with a cast of eccentric characters. Leonida has a public transport system and in-game radio stations; Jason even has a <span class="annot" data-tooltip="console /kənˈsoʊl/ v. 安慰，安抚，抚慰，慰藉n. （电子设备或机器的）操纵台，控制台，仪表板时 态: consoled, consoling,">console</span> on which you can play games within the game. Every inch is <span class="annot" data-tooltip="rendered /'rendər/ v. 给予；提供；回报使成为；使变得；使处于某状态；致使，造成递交；呈献；提交表达；表演；演示（用不同的语言）表达；翻译；把…">rendered</span> with near-photographic realism. As technical possibilities have expanded, <span class="annot" data-tooltip="developing /dɪ'veləpɪŋ/ adj. 在进行中的;走向完成阶段的;走向成熟的发展中的">developing</span> a video game has become a task that makes producing a Hollywood blockbuster look quick and cheap. As games get bigger and graphically richer, making them needs more manpower. The first “Call of Duty” (2003) names 261 people on its closing <span class="annot" data-tooltip="credits /'kredɪt/ n. 赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)时 态:">credits</span>. The latest, released last month, credits 7,060 (more than any “Avengers” film).</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>counterparts</td><td>/'kaʊntərpɑːrt/ n.</td><td>与对方地位相当的人, 与另一方作用相当的物</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>equivalent</td><td>/ɪ'kwɪvələnt/ adj.</td><td>等同的，等效的n. 对等的人（或事物），对应的人（或事物）</td></tr>
+<tr><td>breath</td><td>/breθ/ n.</td><td>气息；呼吸(一次)呼吸，一口气；微风</td></tr>
+<tr><td>cover</td><td>/'kʌvər/ vt.</td><td>包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替, covering, covers</td></tr>
+<tr><td>variants</td><td>/'veriənt/ n.</td><td>变体；变种；变型(词等的)变体；异读(书等的)不同版本；改编adj. 不同的；差别的；变异的；易变的，不定的；各种各样的</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>abbreviation</td><td>/əˌbriːvi'eɪʃn/ n.</td><td>缩写; 缩写词</td></tr>
+<tr><td>spectrum</td><td>/'spektrəm/ n.</td><td>光谱波谱范围, 系列复 数: spectra</td></tr>
+<tr><td>transcripts</td><td>/'trænskrɪpt/ n.</td><td>抄本; 誊本; 打字本; 副本学生成绩报告单</td></tr>
+<tr><td>overall</td><td>/ˌoʊvər'ɔːl/ adj.</td><td>总体的；全面的；综合的全面考虑的adv. 大体上，总的来说一切包括在内，全部的n. 长罩衣工装裤；工作裤</td></tr>
+<tr><td>corporate</td><td>/'kɔːrpərət/ adj.</td><td>社团的, 法人的</td></tr>
+<tr><td>anthropic</td><td>/ænˈθrɑpɪk/ adj.</td><td>人类的,有关人类的</td></tr>
+<tr><td>developing</td><td>/dɪ'veləpɪŋ/ adj.</td><td>在进行中的;走向完成阶段的;走向成熟的发展中的</td></tr>
+<tr><td>filthy</td><td>/'fɪlθi/ adj.</td><td>肮脏的；污秽的下流的；淫秽的，filthiest</td></tr>
+<tr><td>elite</td><td>/eɪ'liːt/ n.</td><td>（社会）上层集团；掌权人物；出类拔萃的人，精英adj.（社会）上层集团的；掌权人物的；精英的</td></tr>
+<tr><td>constantly</td><td>/'kɑːnstəntli/ adv.</td><td>不断地;时常地</td></tr>
+<tr><td>classified</td><td>/'klæsɪfaɪd/ adj.</td><td>(信息)归入密级的,保密的</td></tr>
+<tr><td>affected</td><td>/ə'fekt/ vt.</td><td>影响；假装；感动；感染vi. 倾向；喜欢n. 情感；引起感情的因素, affecting, affects</td></tr>
+<tr><td>wonder</td><td>/'wʌndər/ vt.</td><td>& vi. 对…感到疑惑想知道；问自己n. 惊奇，惊叹，惊异，惊诧奇人，奇才奇观，奇景，奇迹，奇事，wondering，wonders</td></tr>
+<tr><td>practice</td><td>/'præktɪs/ n.</td><td>练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规，practicing，practices</td></tr>
+<tr><td>workouts</td><td>/'wɜːrkaʊt/ n.</td><td>试验；锻炼；练习</td></tr>
+<tr><td>landmarks</td><td>/'lændmɑːrk/ n.</td><td>陆标，地标；里程碑；地界标；划时代的事</td></tr>
+<tr><td>shed</td><td>/ʃed/ n.</td><td>棚, 库vt. 流出, 流下蜕皮, 树叶脱落, shedding, sheds</td></tr>
+<tr><td>significant</td><td>/sɪɡ'nɪfɪkənt/ adj.</td><td>重要的, 重大的, 可观的有意义的, 有用意的意味深长的</td></tr>
+<tr><td>hormonal</td><td>/hɔːr'moʊnl/ adj.</td><td>荷尔蒙的,激素的</td></tr>
+<tr><td>fall</td><td>/fɔːl/ vi.</td><td>降落，落下跌倒降低，减退来临，降临失势，垮台沦陷，失守下垂；倾斜vi. & link v. 成为，变为；进入…状态n. 跌落，下落下降，降低，减少掉落的距离，落</td></tr>
+<tr><td>typically</td><td>/'tɪpɪkli/ adv.</td><td>代表性地;作为特色地;典型地</td></tr>
+<tr><td>neat</td><td>/niːt/ adj.</td><td>整洁的；未搀水的；优雅的；灵巧的；齐整的；平滑的, neatest</td></tr>
+<tr><td>division</td><td>/dɪ'vɪʒn/ n.</td><td>[数] 除法；部门；分配；分割；师（军队）；赛区</td></tr>
+<tr><td>distinct</td><td>/dɪ'stɪŋkt/ adj.</td><td>截然不同的, 完全分开的清晰的, 明白的, 明显的</td></tr>
+<tr><td>phases</td><td>/feɪz/ n.</td><td>阶段, 时期(月亮、行星的)位相vt. 分阶段计划[安排], phasing, phases</td></tr>
+<tr><td>decay</td><td>/dɪ'keɪ/ vi.</td><td>腐烂，腐朽；衰退，衰减n. 衰退，衰减；腐烂，腐朽vt. 使腐烂，使腐败；使衰退，使衰落, decaying, decays</td></tr>
+<tr><td>advocates</td><td>/ˈædvəkeɪt，'ædvəkət/ v.</td><td>拥护；支持；提倡n. 拥护者；支持者；提倡者；辩护律师；出庭辩护人, advocating, advocates</td></tr>
+<tr><td>energy</td><td>/'enərdʒi/ n.</td><td>精力；能量；活力；精神</td></tr>
+<tr><td>phase</td><td>/feɪz/ n.</td><td>阶段, 时期(月亮、行星的)位相vt. 分阶段计划[安排], phasing, phases</td></tr>
+<tr><td>due</td><td>/duː/ adj.</td><td>到期的；应得的；应付的；预期的n. 应付款；应得之物adv. 正（置于方位词前）</td></tr>
+<tr><td>digestion</td><td>/daɪ'dʒestʃən/ n.</td><td>消化能力消化;领悟</td></tr>
+<tr><td>bloating</td><td>/bloʊt/ vt.</td><td>（使）肿胀；使膨胀；腌制vi. 膨胀；肿起；得意n. 膨胀的东西，肿胀的人；肿胀病人；自满的人, bloating, bloats</td></tr>
+<tr><td>symptoms</td><td>/'sɪmptəm/ n.</td><td>征兆；症状</td></tr>
+<tr><td>crash</td><td>/kræʃ/ n.</td><td>碰撞；崩溃；坠落vt. 破碎；撞碎；坠落vi. 碰撞；坠毁；闯；突然倒台adj. 速成的, crashing, crashes</td></tr>
+<tr><td>cramps</td><td>/kræmp/ n.</td><td>铁夹钳；痉挛，绞痛vt. 使…抽筋；以铁箍扣紧；束缚，限制adj. 狭窄的；难解的；受限制的, cramping, cramps</td></tr>
+<tr><td>tailoring</td><td>/'teɪlər/ vt.</td><td>剪裁；使合适n. 裁缝vi. 做裁缝, tailoring, tailors</td></tr>
+<tr><td>workouts</td><td>/'wɜːrkaʊt/ n.</td><td>试验；锻炼；练习</td></tr>
+<tr><td>intensity</td><td>/ɪn'tensəti/ n.</td><td>强烈, 剧烈(感情的)强烈程度</td></tr>
+<tr><td>rigorous</td><td>/'rɪɡərəs/ adj.</td><td>严密的；缜密的严格的，严厉的</td></tr>
+<tr><td>wildly</td><td>/'waɪldli/ adv.</td><td>野生地；野蛮地；狂暴地；鲁莽地</td></tr>
+<tr><td>addition</td><td>/ə'dɪʃn/ n.</td><td>添加；增加物；加法</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>contraceptive</td><td>/ˌkɑːntrə'septɪv/ adj.</td><td>避孕的,避孕用的n. 避孕药,避孕用具</td></tr>
+<tr><td>affected</td><td>/ə'fekt/ vt.</td><td>影响；假装；感动；感染vi. 倾向；喜欢n. 情感；引起感情的因素, affecting, affects</td></tr>
+<tr><td>sensible</td><td>/'sensəbl/ adj.</td><td>明智的；意识到的；通晓事理的；明显的n. 可感觉到的东西；敏感的人</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>symptoms</td><td>/'sɪmptəm/ n.</td><td>征兆；症状</td></tr>
+<tr><td>yield</td><td>/jiːld/ vt.</td><td>出产；屈服；放弃vi. 屈服，投降n. 收益；产量, yielding, yields</td></tr>
+<tr><td>shrinking</td><td>/ʃrɪŋk/ vt.</td><td>& vi. 收缩；退缩，shrunk shrunk，shrunken shrinking，shrinks</td></tr>
+<tr><td>tier</td><td>/tɪr/ n.</td><td>行，列；层，排；等级vt. 使层叠vi. 成递升排列, tiering, tiers</td></tr>
+<tr><td>vice</td><td>/vaɪs/ n.</td><td>堕落，邪恶；不良习气，恶习（尤指与性或毒品有关的）罪行，道德败坏行为【英式】老虎钳；台钳（【美式】vise）pref. 副职的；副的</td></tr>
+<tr><td>replica</td><td>/'replɪkə/ n.</td><td>复制品</td></tr>
+<tr><td>encounter</td><td>/ɪn'kaʊntər/ vt.</td><td>遇到, 遭遇偶然碰到, 邂逅n. 突然遇到, encountering, encounters</td></tr>
+<tr><td>vehicle</td><td>/'viːəkl/ n.</td><td>交通工具, 车辆传播媒介, 手段</td></tr>
+<tr><td>eagerly</td><td>/'iːɡərli/ adv.</td><td>渴望地；急切地；热心地</td></tr>
+<tr><td>leaks</td><td>/liːk/ n.</td><td>漏洞，裂缝；泄漏vt. 使渗漏，泄露vi. 漏，渗；泄漏出去, leaking, leaks</td></tr>
+<tr><td>grossing</td><td>/ɡroʊs/ adj.</td><td>总共的；粗野的；恶劣的；显而易见的vt. 总共收入n. 总额，总数, grossest</td></tr>
+<tr><td>debut</td><td>/deɪ'bjuː/ n.</td><td>〈法〉演员首次演出</td></tr>
+<tr><td>worth</td><td>/wɜːrθ/ adj.</td><td>值…的n. 价值；财产, worthing, worths</td></tr>
+<tr><td>release</td><td>/rɪ'liːs/ vt.</td><td>释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]，releasing，releases</td></tr>
+<tr><td>joint</td><td>/dʒɔɪnt/ n.</td><td>关节；接合处，接合点；接缝；（牛，羊等的腿）大块肉adj. 联合的，合办的；共同的；连接的vt. 连接，贴合；接合；使有接头vi. 贴合；生节, jointin</td></tr>
+<tr><td>hype</td><td>/haɪp/ n.</td><td>天花乱坠的广告宣传vt. 大肆宣传夸张地宣传(某人或某事物)(用巧计或绝技)人为地刺激,助长十分兴奋的；很激动的；十分担忧的被大肆宣扬(或宣传)的, hypin</td></tr>
+<tr><td>conceals</td><td>/kən'siːl/ vt.</td><td>隐藏；隐瞒, concealing, conceals</td></tr>
+<tr><td>shrinking</td><td>/ʃrɪŋk/ vt.</td><td>& vi. 收缩；退缩，shrunk shrunk，shrunken shrinking，shrinks</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>consoles</td><td>/kənˈsoʊl/ v.</td><td>安慰，安抚，抚慰，慰藉n. （电子设备或机器的）操纵台，控制台，仪表板, consoling, consoles</td></tr>
+<tr><td>racked</td><td>/ræk/ n.</td><td>行李架；拷问台；齿条vi. 随风飘；小步跑；变形vt. 折磨；榨取, racking, racks</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>mat</td><td>/mæt/ n.</td><td>地垫，垫子；团，簇v. 缠结，缠结成一团；铺满……上MATabbr. Mechanical Aptitude Test (人)对机械的适应性试验, mattin</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>stuck</td><td>/stʌk/ v.</td><td>刺（stick的过去式）adj. 不能动的；被卡住的</td></tr>
+<tr><td>stretches</td><td>/stretʃ/ vt.</td><td>伸展,张开vi. 伸展adj. 可伸缩的n. 伸展，延伸, stretching, stretches</td></tr>
+<tr><td>vice</td><td>/vaɪs/ n.</td><td>堕落，邪恶；不良习气，恶习（尤指与性或毒品有关的）罪行，道德败坏行为【英式】老虎钳；台钳（【美式】vise）pref. 副职的；副的</td></tr>
+<tr><td>alligator</td><td>/'ælɪɡeɪtər/ n.</td><td>短吻鳄</td></tr>
+<tr><td>infested</td><td>/ɪn'fest/ vt.</td><td>骚扰；寄生于；大批出没；大批滋生, infesting, infests</td></tr>
+<tr><td>swamps</td><td>/swɑːmp/ n.</td><td>沼泽，低地，水洼；湿地；（用于强调）某地的浸水程度；进退两难的困境</td></tr>
+<tr><td>console</td><td>/kənˈsoʊl/ v.</td><td>安慰，安抚，抚慰，慰藉n. （电子设备或机器的）操纵台，控制台，仪表板, consoling, consoles</td></tr>
+<tr><td>rendered</td><td>/'rendər/ v.</td><td>给予；提供；回报使成为；使变得；使处于某状态；致使，造成递交；呈献；提交表达；表演；演示（用不同的语言）表达；翻译；把…译成粉刷；给（墙壁）抹灰将（脂肪）熬成油</td></tr>
+<tr><td>developing</td><td>/dɪ'veləpɪŋ/ adj.</td><td>在进行中的;走向完成阶段的;走向成熟的发展中的</td></tr>
+<tr><td>credits</td><td>/'kredɪt/ n.</td><td>赊购；赊购制度存款；存款数额借款；贷款赞扬，荣誉，功劳信任，相信学分vt. 相信，信任把…记入贷方，存入(账户)，crediting，credits</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day37.html" class="nav-btn">← Day 37</a>
+  <a href="day39.html" class="nav-btn">Day 39 →</a>
+</div>
+
+<div class="progress">📖 Day 38 of 42</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-11-21</div>
+
+</body>
+</html>

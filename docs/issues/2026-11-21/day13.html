@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>United States | Down and out</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-11-21</div>
+
+<h1 class="article-title">United States | Down and out</h1>
+<div class="article-section">United States</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>In the short term, the result looks like digital bedlam. “Every incident… conjures fears of a <span class="annot" data-tooltip="cyber adj. 计算机(网络)的；信息技术的">cyber</span>-attack,” observes Colin Clarke of the Soufan Centre, an intelligence and <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">security</span> research <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span>. “Iran, Russia, and China live in Americans’ heads rent-free.” Those <span class="annot" data-tooltip="anxieties /æŋ'zaɪəti/ n. 焦虑；挂念；渴望；令人焦虑的事">anxieties</span> are <span class="annot" data-tooltip="compounded /'kɑːmpaʊnd/ n. 复合物；混合物；【化】化合物（语法）复合词有围栏（或围墙）的场地（内有工厂或其他建筑群）adj. 复合的v. 使加重；使">compounded</span> by Americans’ lack of trust in their government, he adds. It doesn’t help that real cyber-attacks continue. In October hackers linked to North Korea stole a whopping $6.3bn from Binance, a crypto firm. In the long term, the <span class="annot" data-tooltip="process /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">process</span> of frenetic AI-driven <span class="annot" data-tooltip="patching /pætʃ/ n. 眼罩；斑点；碎片；小块土地vt. 修补；掩饰；解决vi. 打补丁时 态: patched, patching, patc">patching</span> is good news, argues Mr Krebs. Many <span class="annot" data-tooltip="vulnerabilities /ˌvʌlnərə'bɪləti/ n. 弱点,攻击">vulnerabilities</span> will have been “swept out” in the coming months and years, he says, resulting in code that is “safer and more <span class="annot" data-tooltip="secure /sɪ'kjʊr/ adj. 安心的；有把握的可靠的；牢靠的；稳固的；安全的；稳妥的严密把守的；牢固的；坚固的v. （尤指经过努力）获得，取得，实现拴">secure</span>”. But Americans may take scant comfort in the <span class="annot" data-tooltip="prospect /'prɑːspekt/ n. 景象，景色前景；前途可能成为主顾的人；有希望的候选人vi. 勘探；勘察时 态: prospected，prospecti">prospect</span> of more <span class="annot" data-tooltip="outages /'aʊtɪdʒ/ n. (尤指电力的)断供期;断供">outages</span> now and ever-more sophisticated attacks later.■ Stay on top of American politics with The US in brief, our daily newsletter with fast analysis of the most important political news, and Checks and Balance, a weekly note that examines the state of American <span class="annot" data-tooltip="democracy /dɪ'mɑːkrəsi/ n. 民主, 民主制民主国家">democracy</span> and the <span class="annot" data-tooltip="issues /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issues</span> that matter to voters. This article was downloaded by zlibrary from https://www.economist.com/united-states/2026/11/19/what-is-causing-americas-recent- outages</p>
+<div class="article-separator"></div>
+<div class="article-header">United States · United States | A battle over controls</div>
+<p>A fight over chips is roiling Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>’s <span class="annot" data-tooltip="cabinet /'kæbɪnət/ n. 内阁；橱柜；展览艺术品的小陈列室adj. 内阁的；私下的，秘密的">cabinet</span> Will Howard Lutnick be offered up as a sacrificial lamb? Nov 19th 2026 The 18-hour <span class="annot" data-tooltip="flight /flaɪt/ n. 飞翔, 飞行航班, 航机楼梯的一段逃跑, 溃退时 态: flighted, flighting, flights">flight</span> carrying Donald Trump from Maryland to Manila, via Alaska, on November 16th might have been <span class="annot" data-tooltip="awkward /'ɔːkwərd/ adj. 笨拙的；尴尬的；棘手的；不合适的副 词: awkwardly">awkward</span> for Scott Bessent and Howard Lutnick. In previous days Mr Bessent, the <span class="annot" data-tooltip="treasury /'treʒəri/ n. 财政部；国库，金库；宝库">treasury</span> <span class="annot" data-tooltip="secretary /'sekrəteri/ n. 秘书书记部长, 大臣形容词: secretarial">secretary</span>, had <span class="annot" data-tooltip="assailed /ə'seɪl/ vt. 攻击；质问；着手解决时 态: assailed, assailing, assails">assailed</span> Mr Lutnick, the <span class="annot" data-tooltip="commerce /'kɑːmɜːrs/ n. 商业, 贸易">commerce</span> secretary, for lax <span class="annot" data-tooltip="enforcement /ɪn'fɔːrsmənt/ n. 强制,实施,执行">enforcement</span> of export controls on <span class="annot" data-tooltip="semiconductors /'semikəndʌktər/ n. 〈物〉半导体形容词: semiconducting">semiconductors</span>, an <span class="annot" data-tooltip="issue /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issue</span> thrust into public view by a scandal at <span class="annot" data-tooltip="nvidia 恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商">Nvidia</span>, America’s top chipmaker. Mr Trump initially appeared to side with Mr Lutnick. “One wants to be friendly with China,” the president quipped, “and one wants to have a <span class="annot" data-tooltip="blow /bloʊ/ n. 吹；殴打；打击vi. 风吹；喘气vt. 风吹时 态: blew blown blowing, blows">blow</span>-up with China.” But as they flew west, Mr Bessent seemed to gain the upper hand, forcing his <span class="annot" data-tooltip="rival /'raɪvl/ n. 竞争对手vt. 与…竞争, 与…匹敌时 态: rivaled, rivalled rivaling, rivalling">rival</span> into a remarkable U-turn on chip policy.</p>
+<p>White House infighting over chips had simmered for months, but erupted after Jensen Huang, <span class="annot" data-tooltip="nvidia 恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商">Nvidia</span>’s boss, resigned on November 11th. Among his sins was an <span class="annot" data-tooltip="affair /ə'fer/ n. 事情；事务；私事；（尤指关系不长久的）风流韵事">affair</span> with Alice Huang (no relation), a Chinese executive at Megaspeed, a Singapore-based firm that had bought billions of dollars of Nvidia chips and enabled their remote use by Chinese customers through servers in <span class="annot" data-tooltip="malaysia n. 马来西亚形容词: Malaysian">Malaysia</span> and <span class="annot" data-tooltip="indonesia /ˌɪndə'niːʒə/ n. 印度尼西亚(东南亚岛国)">Indonesia</span>. Other chips may have been <span class="annot" data-tooltip="illegally /ɪ'liːɡəli/ adv. 不法地">illegally</span> diverted to China. A <span class="annot" data-tooltip="memo /'memoʊ/ n. 备忘录">memo</span> overseen by Marco Rubio, the <span class="annot" data-tooltip="secretary /'sekrəteri/ n. 秘书书记部长, 大臣形容词: secretarial">secretary</span> of state, had warned administration officials about Ms Huang’s suspected ties to Chinese intelligence, according to press reports. In theory, it is the <span class="annot" data-tooltip="commerce /'kɑːmɜːrs/ n. 商业, 贸易">Commerce</span> Department’s job to <span class="annot" data-tooltip="monitor /'mɑːnɪtər/ n. 显示屏；监视器；（计算机）显示器监控器；监测器班长；级长；班代表（尤指派往国外的）监督员，核查员巨蜥v. 监视；检查；跟">monitor</span> chip exports. But Mr Lutnick and Jeff Kessler, a top <span class="annot" data-tooltip="deputy /'depjuti/ n. 代理人，代表adj. 副的；代理的">deputy</span>, are <span class="annot" data-tooltip="thought /θɔːt/ n. 思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）">thought</span> to have had an <span class="annot" data-tooltip="unusually /ʌn'juːʒuəl/ adj. 与众不同的；不寻常的；不平常的副 词: unusually">unusually</span> close relationship with Nvidia. Mr Bessent complained publicly that other parts of the government, including the <span class="annot" data-tooltip="treasury /'treʒəri/ n. 财政部；国库，金库；宝库">Treasury</span>, had favoured adding Megaspeed to the list of firms subject to American trade <span class="annot" data-tooltip="restrictions /rɪ'strɪkʃn/ n. 约束，限制管制，限定；法律，规章">restrictions</span>. The Commerce Department, which maintains the list, had demurred. Congress smells blood. Jamie Raskin and Gregory Meeks, two <span class="annot" data-tooltip="democratic /ˌdemə'krætɪk/ adj. 民主的, 有民主精神或作风的副 词: democratically">Democratic</span> lawmakers, have pressed Mr Lutnick on whether his decisions were influenced by the financial interests of Cantor Fitzgerald. Mr Lutnick formerly ran the financial firm, now led by his sons. Tim Scott, the <span class="annot" data-tooltip="republican /rɪ'pʌblɪkən/ adj. 共和国的, 共和政体的n. 拥护共和政体者, 共和主义者名 词: republicanism">Republican</span> chair of the <span class="annot" data-tooltip="senate /ˈsenət/ n.（诸如美国、澳大利亚、法国的）参议院（the Senate） （某些国家的）大学理事会，大学评议会（古罗马的）元老院">Senate</span> Banking Committee, has asked Mr Lutnick to testify on December 10th. Nvidia says that it placed Megaspeed on its “block list” in 2025 and sought permission from Mr Kessler’s Bureau of <span class="annot" data-tooltip="industry /'ɪndəstri/ n. 工业；产业；勤勉">Industry</span> and <span class="annot" data-tooltip="security /sɪ'kjʊrəti/ n. 保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）">Security</span>, or BIS, before sending replacement parts to the firm. On November 16th Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> said that he did not plan to fire Mr Lutnick. But the commerce secretary was forced that day into a humiliating retreat. BIS released a 117-page memo <span class="annot" data-tooltip="curbing /kɜːrb/ n. 侧石, 边石限制, 克制, 抑制vt. 限制, 克制, 抑制时 态: curbed, curbing, curbs">curbing</span> remote access to American chips from several countries, closing a <span class="annot" data-tooltip="loophole /'luːphoʊl/ n. 枪眼；换气孔；漏洞；射弹孔">loophole</span> long <span class="annot" data-tooltip="exploited /ɪk'splɔɪt/ vt. 开发，开拓；剥削；开采n. 勋绩；功绩时 态: exploited, exploiting, exploits">exploited</span> by China. The press <span class="annot" data-tooltip="release /rɪ'liːs/ vt. 释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]时 态: released，rel">release</span> made it clear that Mr Lutnick’s arm had been <span class="annot" data-tooltip="twisted /twɪst/ vt. 捻；拧；扭伤；编织；使苦恼n. 扭曲；扭伤；拧vi. 扭动；弯曲时 态: twisted, twisting, twis">twisted</span>: the rule was “written by and at the direction of the Department of the Treasury and the National Security Council”, it said. The new rule is not <span class="annot" data-tooltip="watertight /'wɔːtərtaɪt/ adj. 不漏水的,水密的">watertight</span>. A new licence requirement applies only to Singapore, Malaysia, <span class="annot" data-tooltip="thailand n. 泰国">Thailand</span>, Indonesia and Brazil. Would-be smugglers could target other countries or Chinese firms could <span class="annot" data-tooltip="simply /'sɪmpli/ adv. 简单地；朴素地；简直；仅仅；坦白地">simply</span> rent computing power in America. Congress is therefore likely to press ahead with efforts to</p>
+<p>include <span class="annot" data-tooltip="stricter /strɪkt/ adj. 严格的, 严厉的严谨的, 精确的绝对的, 完全的比较级: stricter, strictest">stricter</span> rules in a defence-authorisation bill. These range from tighter <span class="annot" data-tooltip="oversight /'oʊvərsaɪt/ n. 疏忽, 失察">oversight</span> of chip sales to China to <span class="annot" data-tooltip="restrictions /rɪ'strɪkʃn/ n. 约束，限制管制，限定；法律，规章">restrictions</span> on renting chips through the cloud and measures to prevent <span class="annot" data-tooltip="smuggling /'smʌɡlɪŋ/ n. 走私;偷运">smuggling</span>. The <span class="annot" data-tooltip="proposals /prə'poʊzl/ n. 提议，建议；求婚">proposals</span> were <span class="annot" data-tooltip="crafted /kræft/ n. 手艺；工艺；太空船vt. 精巧地制作时 态: crafted, crafting, crafts">crafted</span> months ago, but the <span class="annot" data-tooltip="nvidia 恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商">Nvidia</span> scandal has given them fresh <span class="annot" data-tooltip="momentum /moʊ'mentəm/ n. 动力；动量；冲力；势头复 数: momenta">momentum</span>. And because they are attached to a must-pass defence bill, they are less likely to be <span class="annot" data-tooltip="vetoed /vet/ vt. 诊疗；审查vi. 作兽医；诊疗n. 兽医时 态: vetted, vetting, vets">vetoed</span> by Mr <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span>. “We’re having a very good relationship with China right now,” insists the president. If America <span class="annot" data-tooltip="chokes /tʃoʊk/ vt. & vi. 填塞(使)窒息时 态: choked, choking, chokes">chokes</span> off access to chips, that may change. ■ Stay on top of American politics with The US in brief, our daily newsletter with fast analysis of the most important political news, and Checks and Balance, a weekly note that examines the state of American <span class="annot" data-tooltip="democracy /dɪ'mɑːkrəsi/ n. 民主, 民主制民主国家">democracy</span> and the <span class="annot" data-tooltip="issues /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issues</span> that matter to voters. This article was downloaded by zlibrary from https://www.economist.com/united-states/2026/11/19/a-fight-over-chips-is-roiling- donald-<span class="annot" data-tooltip="trumps /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">trumps</span>-<span class="annot" data-tooltip="cabinet /'kæbɪnət/ n. 内阁；橱柜；展览艺术品的小陈列室adj. 内阁的；私下的，秘密的">cabinet</span></p>
+<div class="article-separator"></div>
+<div class="article-header">United States · United States | Retrograde</div>
+<p>The return of measles in America Reversing an absurd, unnecessary failure will be expensive and slow Nov 19th 2026 The failure is as monumental as it was <span class="annot" data-tooltip="predictable /prɪ'dɪktəbl/ adj. 可预言〔预报〕的不出所料的，可以想见的；平庸的；墨守成规的；毫无想像力的n. 可预测性">predictable</span>. For years, misinformation had helped depress America’s vaccination rates. The covid- 19 <span class="annot" data-tooltip="pandemic /pæn'demɪk/ adj. （疾病）在全国（或世界）流行的">pandemic</span> made things worse by <span class="annot" data-tooltip="disrupting /dɪs'rʌpt/ vt. 使混乱, 扰乱时 态: disrupted, disrupting, disrupts">disrupting</span> <span class="annot" data-tooltip="routine /ruː'tiːn/ n. 例行公事；日常工作；程序adj. 日常的；例行的副 词: routinely">routine</span> vaccinations and deepening distrust of jabs. At the start of his second term, Donald <span class="annot" data-tooltip="trump /trʌmp/ n. (牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆">Trump</span> appointed Robert Kennedy <span class="annot" data-tooltip="junior /'dʒuːniər/ adj. 年少的, 较年幼的资历较浅的, 地位较低的n. 年少者地位较低者, 晚辈(美国中学或大学的)三年级学生">junior</span>, a <span class="annot" data-tooltip="vaccine /væk'siːn/ n. 疫苗;痘苗adj. 痘苗的;疫苗的">vaccine</span> sceptic, as the country’s top health official. Mr Kennedy’s contributions since then have included urging West Virginia to offer religious <span class="annot" data-tooltip="exemptions /ɪɡ'zempʃn/ n. (义务等的)免除;免(税)(收入中的)免税额">exemptions</span> to schools’ vaccine requirements and an executive order encouraging drugmakers to split the combined jab protecting against measles, mumps and rubella (MMR). Mr Trump claimed, with no evidence, that together “there could be a possibility they’re quite lethal.”</p>
+<p>So it was little surprise when, on November 17th, an arm of the World Health Organisation declared that <span class="annot" data-tooltip="endemic /en'demɪk/ adj. 风土的；地方性的n. 地方病副 词: endemically">endemic</span> <span class="annot" data-tooltip="transmission /trænz'mɪʃn/ n. 传送, 传播, 传达播送传动装置, 变速器形容词: transmissive">transmission</span> of measles has been re-<span class="annot" data-tooltip="established /ɪ'stæblɪʃt/ adj. 已建立的；已设立的；已制定的确定的，证实的">established</span> in America for the first time since 1999. It is <span class="annot" data-tooltip="nonetheless /ˌnʌnðə'les/ adv. 虽然如此,但是">nonetheless</span> a <span class="annot" data-tooltip="stunning /'stʌnɪŋ/ adj. 极好的；使人晕倒的；震耳欲聋的v. 把…打昏；使震耳欲聋；使大吃一惊（stun的ing形式）副 词: stunningl">stunning</span> step <span class="annot" data-tooltip="backward /'bækwərd/ adj. 向后的；反向的；发展迟缓的adv. 相反地；向后地副 词: backwardly">backward</span> for the country. This year has seen cases reported in 45 states and 11 measles-related deaths, compared with just three from 2000 to 2025. Fighting measles now will be costly and painful, for the Americans sickened by it and the health system once able to fend it off. Measles is highly contagious, an airborne pathogen that takes up <span class="annot" data-tooltip="residence /'rezɪdəns/ n. 住处; 住宅; 公馆居住; 居留期间">residence</span> in a patient’s <span class="annot" data-tooltip="nose /noʊz/ n. 鼻子似鼻子的东西嗅觉vt. 嗅vi. 窥探, 探听, 四处查看vt. & vi. 小心翼翼地前进时 态: nosed, ">nose</span> and throat before <span class="annot" data-tooltip="symptoms /'sɪmptəm/ n. 征兆；症状">symptoms</span> appear. In most cases those symptoms include a fever and <span class="annot" data-tooltip="rash /ræʃ/ n. 发疹，疹子adj. 太急速的；鲁莽的；轻率的比较级: rasher，rashest">rash</span>. But among children under five who <span class="annot" data-tooltip="contract /'kɑːntrækt/ vi. 感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约时 态: contracted, contracting, c">contract</span> measles, one in six are hospitalised with complications such as brain inflammation or pneumonia; the rate for adults is almost as high. Even mild cases cast a long shadow. Measles causes “immune amnesia”, a loss of antibodies developed against common viruses, which can lead to more frequent illness for several years. One in 600 children <span class="annot" data-tooltip="infected /ɪn'fekt/ vt. 感染，传染时 态: infected, infecting, infects">infected</span> before their first birthday will eventually develop a fatal brain condition. After a <span class="annot" data-tooltip="vaccine /væk'siːn/ n. 疫苗;痘苗adj. 痘苗的;疫苗的">vaccine</span> was developed in the 1960s, vaccination efforts proceeded fitfully until the early 1990s, when Congress authorised free jabs for children. By the end of the century measles was no longer spreading and occasional outbreaks were easily contained.</p>
+<p>That era is over. Two-thirds of counties in Pennsylvania and <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> a third of counties in Wisconsin have reported measles cases in 2026. <span class="annot" data-tooltip="transmission /trænz'mɪʃn/ n. 传送, 传播, 传达播送传动装置, 变速器形容词: transmissive">Transmission</span> in Utah and Arizona have been traced to an outbreak in <span class="annot" data-tooltip="texas /'teksəs/ n. 德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室">Texas</span> that began over a year ago. Stopping this will be harder than it was the first time around, says Joseph Kanter of the Association of State and Territorial Health Officials, a non- profit <span class="annot" data-tooltip="group /ɡruːp/ n. 组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类时 态: grouped，group">group</span> in Virginia. In the 1990s <span class="annot" data-tooltip="vaccines /væk'siːn/ n. 疫苗;痘苗adj. 痘苗的;疫苗的">vaccines</span> could focus on children, because most adults had <span class="annot" data-tooltip="either /'iːðər/ pron. (两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的">either</span> <span class="annot" data-tooltip="contracted /'kɑːntrækt/ vi. 感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约时 态: contracted, contracting, c">contracted</span> the disease in childhood or been vaccinated in a previous <span class="annot" data-tooltip="drive /draɪv/ vt. 驱赶驱使, 促使敲, 击vt. & vi. 驾驶n. 乘车旅行私人车道传动, 驱动干劲, 积极性, 能动性紧迫, 逼迫,">drive</span>. Now adults account for about 40% of cases. Muddled health policy will make the task more difficult, too. Since August the White House has directed an additional $100m to fight measles and <span class="annot" data-tooltip="vaccine /væk'siːn/ n. 疫苗;痘苗adj. 痘苗的;疫苗的">vaccine</span>-preventable diseases, but that may not be enough. To contain an outbreak, public-health workers must trace the <span class="annot" data-tooltip="contacts n. 联系人；联络方式；触体（contact的复数形式）v. 接触，联系（contact的第三人称单数形式）">contacts</span> of <span class="annot" data-tooltip="infected /ɪn'fekt/ vt. 感染，传染时 态: infected, infecting, infects">infected</span> people, ask them to <span class="annot" data-tooltip="isolate /'aɪsəleɪt/ vt. 使孤立；使绝缘；使隔离n. 隔离种群vi. 孤立；隔离adj. 隔离的；孤立的时 态: isolated, isolat">isolate</span> if they are not immune, and organise vaccination <span class="annot" data-tooltip="drives /draɪv/ vt. 驱赶驱使, 促使敲, 击vt. & vi. 驾驶n. 乘车旅行私人车道传动, 驱动干劲, 积极性, 能动性紧迫, 逼迫,">drives</span>, often going door-to-door to make the case for the jab. That makes containment costly—an average of $43,000 per measles case—and complicated, even when the health system is trusted and fully staffed. It isn’t. The Centres for Disease Control and Prevention (CDC) has lost 30% of its staff since March 2025, according to the American Federation of Government Employees, a <span class="annot" data-tooltip="federal /'fedərəl/ adj. 联邦(制)的联邦政府的副 词: federally">federal</span> workers’ union, so is less equipped to help local efforts. “Everybody is trying to pick up the pieces” of what the CDC normally does, says Jeanne Marrazzo of the Infectious Diseases <span class="annot" data-tooltip="society /sə'saɪəti/ n. 社会；社交界；交往；社团">Society</span> of America, a group of doctors and scientists. State health departments are issuing their <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> guidelines on treating measles, as most doctors have never seen a child with the disease, let alone an adult. Professional <span class="annot" data-tooltip="societies /sə'saɪəti/ n. 社会；社交界；交往；社团">societies</span> are running webinars featuring doctors from outbreak <span class="annot" data-tooltip="hotspots n. 热区；热点">hotspots</span>, a <span class="annot" data-tooltip="practice /'præktɪs/ n. 练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规时 态: practiced，practicing，">practice</span> that emerged in the early days of covid-19. On November 17th Mr Kennedy posted on X that he recommended MMR vaccination and that America would “work to regain U.S. measles <span class="annot" data-tooltip="elimination /ɪˌlɪmɪ'neɪʃn/ n. 排除；除去，根除淘汰">elimination</span> status”. The country may eventually succeed. But think of the time, treasure and lives wasted.■ Stay on top of American politics with The US in brief, our daily newsletter with fast analysis of the most important political news, and Checks and</p>
+<p>Balance, a weekly note that examines the state of American <span class="annot" data-tooltip="democracy /dɪ'mɑːkrəsi/ n. 民主, 民主制民主国家">democracy</span> and the <span class="annot" data-tooltip="issues /'ɪʃuː/ n. 流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下时 态: issued,">issues</span> that matter to voters. This article was downloaded by zlibrary from https://www.economist.com/united-states/2026/11/18/the-return-of-measles-in-america</p>
+<div class="article-separator"></div>
+<div class="article-header">United States · United States | The judge who thought differently</div>
+<p>America’s most respected jurist was never on the <span class="annot" data-tooltip="supreme /su'priːm/ adj. 最高的；至上的最重要的比较级: supremer，supremest 缩 写: supr">Supreme</span> Court Richard Posner was a different kind of <span class="annot" data-tooltip="conservative /kən'sɜːrvətɪv/ n. 保守的人adj. 保守的, 守旧的(式样等)不时新的, 传统的副 词: conservatively">conservative</span> judge Nov 19th 2026 IT MAY SEEM obvious that courts should <span class="annot" data-tooltip="weigh /weɪ/ vt. & vi. 称…的重量link v. 重达vt. 权衡；考虑时 态: weighed，weighing，weighs">weigh</span> the <span class="annot" data-tooltip="practical /'præktɪkl/ adj. 实际的，实践的实用的注重实际的；有实际工作能力的名 词: practicality">practical</span> consequences of their decisions. But this was a <span class="annot" data-tooltip="radical /'rædɪkl/ adj. 根本的，基本的；彻底的，完全的激进的，激进派的副 词: radically">radical</span> idea when first espoused by Richard Posner, the influential legal <span class="annot" data-tooltip="scholar /'skɑːlər/ n. 学者；奖学金获得者">scholar</span> and judge who died on November 10th. Mr Posner’s pragmatism made him a giant of American law without ever joining its highest court. It also set him apart from a legal world that has become increasingly dominated by <span class="annot" data-tooltip="ideology /ˌaɪdi'ɑːlədʒi/ n. 意识形态；思想意识；观念学名 词: ideologist">ideology</span>. “He didn’t care about political arguments,” says Eric Segall, a law professor and friend of Mr Posner. Instead, he sought to follow a maxim set out by one of his heroes, Oliver Wendell Holmes, a 20th-century Supreme Court justice, that “the life of the law has not been logic: it has been experience”.</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>cyber</td><td>— adj.</td><td>计算机(网络)的；信息技术的</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>anxieties</td><td>/æŋ'zaɪəti/ n.</td><td>焦虑；挂念；渴望；令人焦虑的事</td></tr>
+<tr><td>compounded</td><td>/'kɑːmpaʊnd/ n.</td><td>复合物；混合物；【化】化合物（语法）复合词有围栏（或围墙）的场地（内有工厂或其他建筑群）adj. 复合的v. 使加重；使恶化由…构成（或形成）混合；掺和；拌和,</td></tr>
+<tr><td>process</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>patching</td><td>/pætʃ/ n.</td><td>眼罩；斑点；碎片；小块土地vt. 修补；掩饰；解决vi. 打补丁, patching, patches</td></tr>
+<tr><td>vulnerabilities</td><td>/ˌvʌlnərə'bɪləti/ n.</td><td>弱点,攻击</td></tr>
+<tr><td>secure</td><td>/sɪ'kjʊr/ adj.</td><td>安心的；有把握的可靠的；牢靠的；稳固的；安全的；稳妥的严密把守的；牢固的；坚固的v. （尤指经过努力）获得，取得，实现拴牢；扣紧；关严保护；保卫；使安全抵押；为</td></tr>
+<tr><td>prospect</td><td>/'prɑːspekt/ n.</td><td>景象，景色前景；前途可能成为主顾的人；有希望的候选人vi. 勘探；勘察，prospecting，prospects</td></tr>
+<tr><td>outages</td><td>/'aʊtɪdʒ/ n.</td><td>(尤指电力的)断供期;断供</td></tr>
+<tr><td>democracy</td><td>/dɪ'mɑːkrəsi/ n.</td><td>民主, 民主制民主国家</td></tr>
+<tr><td>issues</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>cabinet</td><td>/'kæbɪnət/ n.</td><td>内阁；橱柜；展览艺术品的小陈列室adj. 内阁的；私下的，秘密的</td></tr>
+<tr><td>flight</td><td>/flaɪt/ n.</td><td>飞翔, 飞行航班, 航机楼梯的一段逃跑, 溃退, flighting, flights</td></tr>
+<tr><td>awkward</td><td>/'ɔːkwərd/ adj.</td><td>笨拙的；尴尬的；棘手的；不合适的</td></tr>
+<tr><td>treasury</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>secretary</td><td>/'sekrəteri/ n.</td><td>秘书书记部长, 大臣</td></tr>
+<tr><td>assailed</td><td>/ə'seɪl/ vt.</td><td>攻击；质问；着手解决, assailing, assails</td></tr>
+<tr><td>commerce</td><td>/'kɑːmɜːrs/ n.</td><td>商业, 贸易</td></tr>
+<tr><td>enforcement</td><td>/ɪn'fɔːrsmənt/ n.</td><td>强制,实施,执行</td></tr>
+<tr><td>semiconductors</td><td>/'semikəndʌktər/ n.</td><td>〈物〉半导体</td></tr>
+<tr><td>issue</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>nvidia</td><td>— </td><td>恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商</td></tr>
+<tr><td>blow</td><td>/bloʊ/ n.</td><td>吹；殴打；打击vi. 风吹；喘气vt. 风吹, blows</td></tr>
+<tr><td>rival</td><td>/'raɪvl/ n.</td><td>竞争对手vt. 与…竞争, 与…匹敌, rivalled rivaling, rivalling rivals, rivals</td></tr>
+<tr><td>nvidia</td><td>— </td><td>恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商</td></tr>
+<tr><td>affair</td><td>/ə'fer/ n.</td><td>事情；事务；私事；（尤指关系不长久的）风流韵事</td></tr>
+<tr><td>malaysia</td><td>— n.</td><td>马来西亚</td></tr>
+<tr><td>indonesia</td><td>/ˌɪndə'niːʒə/ n.</td><td>印度尼西亚(东南亚岛国)</td></tr>
+<tr><td>illegally</td><td>/ɪ'liːɡəli/ adv.</td><td>不法地</td></tr>
+<tr><td>memo</td><td>/'memoʊ/ n.</td><td>备忘录</td></tr>
+<tr><td>secretary</td><td>/'sekrəteri/ n.</td><td>秘书书记部长, 大臣</td></tr>
+<tr><td>commerce</td><td>/'kɑːmɜːrs/ n.</td><td>商业, 贸易</td></tr>
+<tr><td>monitor</td><td>/'mɑːnɪtər/ n.</td><td>显示屏；监视器；（计算机）显示器监控器；监测器班长；级长；班代表（尤指派往国外的）监督员，核查员巨蜥v. 监视；检查；跟踪调查监听（电话、外国无线电广播等）, </td></tr>
+<tr><td>deputy</td><td>/'depjuti/ n.</td><td>代理人，代表adj. 副的；代理的</td></tr>
+<tr><td>thought</td><td>/θɔːt/ n.</td><td>思想；关心；想法；思考v. 想，思考；认为（think的过去式和过去分词）</td></tr>
+<tr><td>unusually</td><td>/ʌn'juːʒuəl/ adj.</td><td>与众不同的；不寻常的；不平常的</td></tr>
+<tr><td>treasury</td><td>/'treʒəri/ n.</td><td>财政部；国库，金库；宝库</td></tr>
+<tr><td>restrictions</td><td>/rɪ'strɪkʃn/ n.</td><td>约束，限制管制，限定；法律，规章</td></tr>
+<tr><td>democratic</td><td>/ˌdemə'krætɪk/ adj.</td><td>民主的, 有民主精神或作风的</td></tr>
+<tr><td>republican</td><td>/rɪ'pʌblɪkən/ adj.</td><td>共和国的, 共和政体的n. 拥护共和政体者, 共和主义者</td></tr>
+<tr><td>senate</td><td>/ˈsenət/ </td><td>n.（诸如美国、澳大利亚、法国的）参议院（the Senate） （某些国家的）大学理事会，大学评议会（古罗马的）元老院</td></tr>
+<tr><td>industry</td><td>/'ɪndəstri/ n.</td><td>工业；产业；勤勉</td></tr>
+<tr><td>security</td><td>/sɪ'kjʊrəti/ n.</td><td>保护（措施）；安全（保障）担保；保证保安人员；保卫部门；保安部门保证金；担保品证券（securities）</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>curbing</td><td>/kɜːrb/ n.</td><td>侧石, 边石限制, 克制, 抑制vt. 限制, 克制, 抑制, curbing, curbs</td></tr>
+<tr><td>loophole</td><td>/'luːphoʊl/ n.</td><td>枪眼；换气孔；漏洞；射弹孔</td></tr>
+<tr><td>exploited</td><td>/ɪk'splɔɪt/ vt.</td><td>开发，开拓；剥削；开采n. 勋绩；功绩, exploiting, exploits</td></tr>
+<tr><td>release</td><td>/rɪ'liːs/ vt.</td><td>释放；放开发布；发行；发售n. 释放，排放，解除释放令公映的新影片，发布的新闻[消息]，releasing，releases</td></tr>
+<tr><td>twisted</td><td>/twɪst/ vt.</td><td>捻；拧；扭伤；编织；使苦恼n. 扭曲；扭伤；拧vi. 扭动；弯曲, twisting, twists</td></tr>
+<tr><td>watertight</td><td>/'wɔːtərtaɪt/ adj.</td><td>不漏水的,水密的</td></tr>
+<tr><td>thailand</td><td>— n.</td><td>泰国</td></tr>
+<tr><td>simply</td><td>/'sɪmpli/ adv.</td><td>简单地；朴素地；简直；仅仅；坦白地</td></tr>
+<tr><td>stricter</td><td>/strɪkt/ adj.</td><td>严格的, 严厉的严谨的, 精确的绝对的, 完全的, strictest</td></tr>
+<tr><td>oversight</td><td>/'oʊvərsaɪt/ n.</td><td>疏忽, 失察</td></tr>
+<tr><td>restrictions</td><td>/rɪ'strɪkʃn/ n.</td><td>约束，限制管制，限定；法律，规章</td></tr>
+<tr><td>smuggling</td><td>/'smʌɡlɪŋ/ n.</td><td>走私;偷运</td></tr>
+<tr><td>proposals</td><td>/prə'poʊzl/ n.</td><td>提议，建议；求婚</td></tr>
+<tr><td>crafted</td><td>/kræft/ n.</td><td>手艺；工艺；太空船vt. 精巧地制作, crafting, crafts</td></tr>
+<tr><td>nvidia</td><td>— </td><td>恩威迪亚（芯片厂方）nVIDIA著名显示芯片生产商</td></tr>
+<tr><td>momentum</td><td>/moʊ'mentəm/ n.</td><td>动力；动量；冲力；势头复 数: momenta</td></tr>
+<tr><td>vetoed</td><td>/vet/ vt.</td><td>诊疗；审查vi. 作兽医；诊疗n. 兽医, vetting, vets</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>chokes</td><td>/tʃoʊk/ vt.</td><td>& vi. 填塞(使)窒息, choking, chokes</td></tr>
+<tr><td>democracy</td><td>/dɪ'mɑːkrəsi/ n.</td><td>民主, 民主制民主国家</td></tr>
+<tr><td>issues</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>trumps</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>cabinet</td><td>/'kæbɪnət/ n.</td><td>内阁；橱柜；展览艺术品的小陈列室adj. 内阁的；私下的，秘密的</td></tr>
+<tr><td>predictable</td><td>/prɪ'dɪktəbl/ adj.</td><td>可预言〔预报〕的不出所料的，可以想见的；平庸的；墨守成规的；毫无想像力的n. 可预测性</td></tr>
+<tr><td>pandemic</td><td>/pæn'demɪk/ adj.</td><td>（疾病）在全国（或世界）流行的</td></tr>
+<tr><td>disrupting</td><td>/dɪs'rʌpt/ vt.</td><td>使混乱, 扰乱, disrupting, disrupts</td></tr>
+<tr><td>routine</td><td>/ruː'tiːn/ n.</td><td>例行公事；日常工作；程序adj. 日常的；例行的</td></tr>
+<tr><td>trump</td><td>/trʌmp/ n.</td><td>(牌戏)王牌，将牌王牌；有效手段好人；靠得住的人喇叭，号筒；喇叭声vt. (牌戏)出王牌赢(一牌或一墩)吹号公告；吹号庆祝vi. 吹喇叭捏造；编造(出乎意料地)</td></tr>
+<tr><td>junior</td><td>/'dʒuːniər/ adj.</td><td>年少的, 较年幼的资历较浅的, 地位较低的n. 年少者地位较低者, 晚辈(美国中学或大学的)三年级学生</td></tr>
+<tr><td>vaccine</td><td>/væk'siːn/ n.</td><td>疫苗;痘苗adj. 痘苗的;疫苗的</td></tr>
+<tr><td>exemptions</td><td>/ɪɡ'zempʃn/ n.</td><td>(义务等的)免除;免(税)(收入中的)免税额</td></tr>
+<tr><td>endemic</td><td>/en'demɪk/ adj.</td><td>风土的；地方性的n. 地方病</td></tr>
+<tr><td>transmission</td><td>/trænz'mɪʃn/ n.</td><td>传送, 传播, 传达播送传动装置, 变速器</td></tr>
+<tr><td>established</td><td>/ɪ'stæblɪʃt/ adj.</td><td>已建立的；已设立的；已制定的确定的，证实的</td></tr>
+<tr><td>nonetheless</td><td>/ˌnʌnðə'les/ adv.</td><td>虽然如此,但是</td></tr>
+<tr><td>stunning</td><td>/'stʌnɪŋ/ adj.</td><td>极好的；使人晕倒的；震耳欲聋的v. 把…打昏；使震耳欲聋；使大吃一惊（stun的ing形式）</td></tr>
+<tr><td>backward</td><td>/'bækwərd/ adj.</td><td>向后的；反向的；发展迟缓的adv. 相反地；向后地</td></tr>
+<tr><td>residence</td><td>/'rezɪdəns/ n.</td><td>住处; 住宅; 公馆居住; 居留期间</td></tr>
+<tr><td>nose</td><td>/noʊz/ n.</td><td>鼻子似鼻子的东西嗅觉vt. 嗅vi. 窥探, 探听, 四处查看vt. & vi. 小心翼翼地前进, nosing, noses</td></tr>
+<tr><td>symptoms</td><td>/'sɪmptəm/ n.</td><td>征兆；症状</td></tr>
+<tr><td>rash</td><td>/ræʃ/ n.</td><td>发疹，疹子adj. 太急速的；鲁莽的；轻率的，rashest</td></tr>
+<tr><td>contract</td><td>/'kɑːntrækt/ vi.</td><td>感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约, contracting, contracts</td></tr>
+<tr><td>infected</td><td>/ɪn'fekt/ vt.</td><td>感染，传染, infecting, infects</td></tr>
+<tr><td>vaccine</td><td>/væk'siːn/ n.</td><td>疫苗;痘苗adj. 痘苗的;疫苗的</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>transmission</td><td>/trænz'mɪʃn/ n.</td><td>传送, 传播, 传达播送传动装置, 变速器</td></tr>
+<tr><td>texas</td><td>/'teksəs/ n.</td><td>德克萨斯州（美国州名）texasn. 〈美〉(内河轮船的)最高甲板舱,高级房舱(包括事务室,其前部或顶部为驾驶室或领港室)</td></tr>
+<tr><td>group</td><td>/ɡruːp/ n.</td><td>组，群，团体，类小型流行音乐演奏组vt. & vi. 使成群；集合vt. 分类；归类，grouping，groups</td></tr>
+<tr><td>vaccines</td><td>/væk'siːn/ n.</td><td>疫苗;痘苗adj. 痘苗的;疫苗的</td></tr>
+<tr><td>either</td><td>/'iːðər/ pron.</td><td>(两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的</td></tr>
+<tr><td>contracted</td><td>/'kɑːntrækt/ vi.</td><td>感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约, contracting, contracts</td></tr>
+<tr><td>drive</td><td>/draɪv/ vt.</td><td>驱赶驱使, 促使敲, 击vt. & vi. 驾驶n. 乘车旅行私人车道传动, 驱动干劲, 积极性, 能动性紧迫, 逼迫, 压力, drives</td></tr>
+<tr><td>vaccine</td><td>/væk'siːn/ n.</td><td>疫苗;痘苗adj. 痘苗的;疫苗的</td></tr>
+<tr><td>contacts</td><td>— n.</td><td>联系人；联络方式；触体（contact的复数形式）v. 接触，联系（contact的第三人称单数形式）</td></tr>
+<tr><td>infected</td><td>/ɪn'fekt/ vt.</td><td>感染，传染, infecting, infects</td></tr>
+<tr><td>isolate</td><td>/'aɪsəleɪt/ vt.</td><td>使孤立；使绝缘；使隔离n. 隔离种群vi. 孤立；隔离adj. 隔离的；孤立的, isolating, isolates</td></tr>
+<tr><td>drives</td><td>/draɪv/ vt.</td><td>驱赶驱使, 促使敲, 击vt. & vi. 驾驶n. 乘车旅行私人车道传动, 驱动干劲, 积极性, 能动性紧迫, 逼迫, 压力, drives</td></tr>
+<tr><td>federal</td><td>/'fedərəl/ adj.</td><td>联邦(制)的联邦政府的</td></tr>
+<tr><td>society</td><td>/sə'saɪəti/ n.</td><td>社会；社交界；交往；社团</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>societies</td><td>/sə'saɪəti/ n.</td><td>社会；社交界；交往；社团</td></tr>
+<tr><td>hotspots</td><td>— n.</td><td>热区；热点</td></tr>
+<tr><td>practice</td><td>/'præktɪs/ n.</td><td>练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规，practicing，practices</td></tr>
+<tr><td>elimination</td><td>/ɪˌlɪmɪ'neɪʃn/ n.</td><td>排除；除去，根除淘汰</td></tr>
+<tr><td>democracy</td><td>/dɪ'mɑːkrəsi/ n.</td><td>民主, 民主制民主国家</td></tr>
+<tr><td>issues</td><td>/'ɪʃuː/ n.</td><td>流出；发行物；问题；期号vt. 发行，发布；放出，排出；发给vi. 发行；流出；造成…结果；传下, issuing, issues</td></tr>
+<tr><td>supreme</td><td>/su'priːm/ adj.</td><td>最高的；至上的最重要的，supremest 缩 写: supr</td></tr>
+<tr><td>conservative</td><td>/kən'sɜːrvətɪv/ n.</td><td>保守的人adj. 保守的, 守旧的(式样等)不时新的, 传统的</td></tr>
+<tr><td>weigh</td><td>/weɪ/ vt.</td><td>& vi. 称…的重量link v. 重达vt. 权衡；考虑，weighing，weighs</td></tr>
+<tr><td>practical</td><td>/'præktɪkl/ adj.</td><td>实际的，实践的实用的注重实际的；有实际工作能力的</td></tr>
+<tr><td>radical</td><td>/'rædɪkl/ adj.</td><td>根本的，基本的；彻底的，完全的激进的，激进派的</td></tr>
+<tr><td>scholar</td><td>/'skɑːlər/ n.</td><td>学者；奖学金获得者</td></tr>
+<tr><td>ideology</td><td>/ˌaɪdi'ɑːlədʒi/ n.</td><td>意识形态；思想意识；观念学</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day12.html" class="nav-btn">← Day 12</a>
+  <a href="day14.html" class="nav-btn">Day 14 →</a>
+</div>
+
+<div class="progress">📖 Day 13 of 42</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-11-21</div>
+
+</body>
+</html>

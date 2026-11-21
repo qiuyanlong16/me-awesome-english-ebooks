@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Culture | An underappreciated asset</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-11-21</div>
+
+<h1 class="article-title">Culture | An underappreciated asset</h1>
+<div class="article-section">Culture</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>How did “the most famous literary <span class="annot" data-tooltip="celebrity /sə'lebrəti/ n. (尤指娱乐界的)名人, 名流名声, 名誉">celebrity</span> of an era” come to be forgotten? In a new book Jeanna Smialek, a journalist, endeavours to find out. Her interest in Edgeworth began after seeing her described in a book as perhaps “the first woman to think about economics”. She <span class="annot" data-tooltip="ordered /'ɔːrdərd/ adj. 安排好的；整齐的；[数]有序的v. 命令；点餐（order的过去式和过去分词）">ordered</span> a copy of “Castle Rackrent” and was surprised to find that the tale of an Anglo-Irish dynasty also contained a <span class="annot" data-tooltip="potted /pɑːt/ n. 罐；壶；盆vt. 把…装罐；射击；节略vi. 随手射击时 态: potted, potting, pots">potted</span> <span class="annot" data-tooltip="version /'vɜːrʒn/ n. 变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本">version</span> of “The <span class="annot" data-tooltip="wealth /welθ/ n. 财富；大量；富有">Wealth</span> of Nations”. Even the title had an echo of Adam Smith’s seminal work: he wrote about “<span class="annot" data-tooltip="racked /ræk/ n. 行李架；拷问台；齿条vi. 随风飘；小步跑；变形vt. 折磨；榨取时 态: racked, racking, racks">racked</span> rent” as an extortionate charge that left <span class="annot" data-tooltip="tenant /'tenənt/ n. 房客, 佃户, 承租人〈律〉占用者, 占有者时 态: tenanted, tenanting, tenants">tenant</span> farmers with little money to improve their land. Economic concepts <span class="annot" data-tooltip="recur /rɪ'kɜːr/ vi. 重现；复发；再来；采用；循环；递归时 态: recurred, recurring, recurs">recur</span> throughout Edgeworth’s fiction. In “Letters for Literary Ladies” she likened the exclusion of women from the educated class to the creation of artificial scarcity in markets. “The Cherry <span class="annot" data-tooltip="orchard /'ɔːrtʃərd/ n. 果园；果树林">Orchard</span>” touched on the <span class="annot" data-tooltip="division /dɪ'vɪʒn/ n. [数] 除法；部门；分配；分割；师（军队）；赛区形容词: divisional">division</span> of labour. “Ennui” examined how incentives shape behaviour. “Because she cloaked her ideas in fiction”, Edgeworth “managed to <span class="annot" data-tooltip="engage /ɪn'ɡeɪdʒ/ vt. 雇佣；吸引，占用；使订婚；使参加；预定vi. 答应，保证；从事；交战；啮合时 态: engaged, engaging,">engage</span> with the most <span class="annot" data-tooltip="intense /ɪn'tens/ adj. 强烈的；紧张的；热情的；非常的比较级: intenser, intensest">intense</span> debates of the era without transgressing the <span class="annot" data-tooltip="strict /strɪkt/ adj. 严格的, 严厉的严谨的, 精确的绝对的, 完全的比较级: stricter, strictest">strict</span> social codes of the time”. From a young age, Edgeworth was reading Smith and Jean-Jacques Rousseau. By 14, her father had her <span class="annot" data-tooltip="helping /'helpɪŋ/ n. （进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的">helping</span> run their <span class="annot" data-tooltip="estate /ɪ'steɪt/ n.（位于乡村的）大片私有土地，庄园，种植园【英式】（按规划建造的）住宅区，工业区【法律】（个人死后留下的全部）财产，遗">estate</span> in Ireland. The Edgeworths implemented all kinds of <span class="annot" data-tooltip="reforms /rɪ'fɔːrm/ n. 改革，改良，改造vt. & vi. 改革；改造；改善时 态: reformed，reforming，reforms">reforms</span>: they paid high <span class="annot" data-tooltip="wages /weɪdʒ/ vi. 进行；发动；从事n. 工资；报偿；代价vt. 开展；进行时 态: waged, waging, wages">wages</span>, eliminated unpaid “duty work”, restructured <span class="annot" data-tooltip="leases /liːs/ n. 租约；租期；租赁物；租赁权vt. 出租；租得vi. 出租时 态: leased, leasing, leases">leases</span> and <span class="annot" data-tooltip="promoted /'proʊmoʊ/ n. 商品推销；商品广告，广告片">promoted</span> education. The estate gave her a chance to see how economic theories worked in <span class="annot" data-tooltip="practice /'præktɪs/ n. 练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规时 态: practiced，practicing，">practice</span>. Edgeworth met Thomas Malthus and David Ricardo in London and struck up a friendship with the two economists; in their <span class="annot" data-tooltip="correspondence /ˌkɔːrə'spɑːndəns/ n. 信件, 函件通信, 通信联系一致, 相似">correspondence</span> they sparred about the limits of free trade and other things. Ms Smialek ably recreates the world of these 19th-century thinkers and unearths interesting details (such as Ricardo’s tendency to do an embarrassing jig at parties). It is with a more queasy sense of foreboding that you read Ricardo arguing in 1822—about 20 years before the famine—that it was imprudent for Ireland to rely on a single, cheap <span class="annot" data-tooltip="crop /krɑːp/ n. 农作物；庄稼；产量；平头vt. 种植；收割；修剪；剪短vi. 收获时 态: cropped, cropping, cro">crop</span> that was <span class="annot" data-tooltip="prone /proʊn/ adj. 易于…的; 很可能…的俯卧的名 词: proneness">prone</span> to failure. Given that Edgeworth helped economics “to gain widespread popularity” through her novels and assisted in “advancing and altering its earliest theories”, why is her work <span class="annot" data-tooltip="overlooked /ˌoʊvər'lʊk/ vt.忽略；俯瞰；远眺；不计较，宽恕；施魔法于；监督；检查n.忽视；眺望；从高处能看到的景色时 态: overlooke">overlooked</span>? As the discipline became more technical in the late 19th century, contributions made through literature and</p>
+<p><span class="annot" data-tooltip="philosophy /fə'lɑːsəfi/ n. 哲学人生哲学, 人生观达观">philosophy</span> came to be seen as less valuable. “<span class="annot" data-tooltip="mainstream /'meɪnstriːm/ n. (思想或行为的)主流时 态: mainstreamed, mainstreaming, mainstreams">Mainstream</span> economics had refashioned itself as a science,” Ms Smialek writes. “Its practitioners would treat it like physics, creating rules and principles that they argued would apply always and everywhere.” At the same time, Edgeworth’s didactic literary style fell out of fashion. She was interested in characters mostly for the ideas they could <span class="annot" data-tooltip="convey /kən'veɪ/ vt. 运输；运送表达，转达时 态: conveyed，conveying，conveys">convey</span> rather than the feelings they could <span class="annot" data-tooltip="stir /stɜːr/ vt. & vi. 搅拌(使)移动；(使)激动n. 搅动；搅和；搅拌激动；纷乱；骚乱STIRabbr. Surveillance">stir</span> up. (She didn’t think much of “Emma” when Austen sent her favourite author an early copy.) “Just as economics had become the domain of maths and reason, literature had become the domain of <span class="annot" data-tooltip="sentiment /'sentɪmənt/ n. (对怜悯、怀旧等的)柔情态度或意见观点; 意见">sentiment</span> and empathy,” Ms Smialek argues. “There was no room for Maria, who mixed the two, in <span class="annot" data-tooltip="either /'iːðər/ pron. (两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的">either</span>.” But “The Invisible Hand of Maria Edgeworth” will make readers appreciate her fingerprints. ■ This article was downloaded by zlibrary from https://www.economist.com/culture/2026/11/19/the-most-important-economics-mind- youve-never-heard-of</p>
+<div class="article-separator"></div>
+<div class="article-header">Culture · Culture | Package deal</div>
+<p>The oddball who founded UPS—and changed the world James Casey’s <span class="annot" data-tooltip="obsession /əb'seʃn/ n. 困扰, 无法摆脱的思想(或情感)形容词: obsessional">obsession</span> with efficiency helped make next-day delivery possible Nov 19th 2026 JAMES CASEY is <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> from an easy subject for a biographer. Unlike many modern business titans, the founder of the United <span class="annot" data-tooltip="parcel /'pɑːrsl/ n. 包裹一块地vt. 给…打成包裹分成若干部分时 态: parceledalso parcelled parcelingpa">Parcel</span> Service (UPS) was reclusive. He wrote no <span class="annot" data-tooltip="memoirs /'memwɑːr/ n. 自传；实录；回忆录；研究报告名 词: memoirist">memoirs</span> and left behind no letters when he died, aged 95, in 1983. He seems to have had no interests other than his work: he spent his Sundays driving delivery <span class="annot" data-tooltip="routes /ruːt，raʊt/ n. 路, 路途, 路线, 路程时 态: routed, routing, routes">routes</span> in his Packard, comparing his times with those expected of drivers. The New Yorker, in a rare profile, said that “he talks only about <span class="annot" data-tooltip="parcels /'pɑːrsl/ n. 包裹一块地vt. 给…打成包裹分成若干部分时 态: parceledalso parcelled parcelingpa">parcels</span>.” Anyone writing about Casey, then, must do two things: doggedly hunt for information and make a dull person’s life interesting. Marc Levinson, a historian, economist and former editor at this newspaper, succeeds on both</p>
+<p>counts. Just as his previous book, “The Box”, used the <span class="annot" data-tooltip="shipping /ʃɪp/ vt. 运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Di">shipping</span> container to tell the story of globalisation, this one explores how Casey changed the world of <span class="annot" data-tooltip="commerce /'kɑːmɜːrs/ n. 商业, 贸易">commerce</span>. Today, people in the rich world expect that anything they buy online will show up on their doorsteps the next day. “More than 300,000 packages are delivered somewhere in the world every minute,” Mr Levinson observes. Casey built a fledgling messenger service into a <span class="annot" data-tooltip="fortune /'fɔːrtʃən/ n. 运气；财富；命运vt. 给予财富vi. 偶然发生时 态: fortuned, fortuning, fortunes">Fortune</span> 500 firm, and changed how people shop. (If you have ever successfully <span class="annot" data-tooltip="ordered /'ɔːrdərd/ adj. 安排好的；整齐的；[数]有序的v. 命令；点餐（order的过去式和过去分词）">ordered</span> a Christmas gift at the last minute, you have him to thank.) In 1907 Casey’s first business was one of many in Seattle, his hometown, that delivered packages from department stores to buyers’ houses. With messengers taking each item in turn from shop to customer, and each short <span class="annot" data-tooltip="trip /trɪp/ vi. 绊倒；犯错误；远足；轻快地走n. 旅行；绊倒；差错vt. 绊倒；使犯错TRIPabbr. transformation-">trip</span> <span class="annot" data-tooltip="fetching /fetʃ/ vt. 接来；到达；取来；吸引vi. 取物；卖得；拿n. 取得；诡计时 态: fetched, fetching, fetche">fetching</span> a few cents, it was difficult to turn a profit. So Casey decided to <span class="annot" data-tooltip="consolidate /kən'sɑːlɪdeɪt/ vt. & vi. (使)巩固；(使)加强(使)合并时 态: consolidated，consolidating，consol">consolidate</span>. He had <span class="annot" data-tooltip="retailers /'riːteɪlər/ n. 传播的人；零售商">retailers</span> send all their outgoing items to a <span class="annot" data-tooltip="central /'sentrəl/ adj. 中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的副 词: centrally">central</span> location, where they would be sorted by destination. This made delivery <span class="annot" data-tooltip="routes /ruːt，raʊt/ n. 路, 路途, 路线, 路程时 态: routed, routing, routes">routes</span> more efficient; it also allowed him to charge a <span class="annot" data-tooltip="premium /'priːmiəm/ n. 奖金，津贴；加价；附加费；保险费；额外费用adj. （品质）高级的；优质的，顶级的">premium</span> for a same- day delivery service. He offered retailers long-term <span class="annot" data-tooltip="contracts /'kɑːntrækt/ vi. 感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约时 态: contracted, contracting, c">contracts</span>, which saved them from having to spend money on operations (which, in the early 20th century, meant horses and wagons). For Casey, it guaranteed volume and financial surety; and made it harder for <span class="annot" data-tooltip="rivals /'raɪvl/ n. 竞争对手vt. 与…竞争, 与…匹敌时 态: rivaled, rivalled rivaling, rivalling">rivals</span> to poach his customers. He was relentless in seeking better ways to work. In the 1920s Casey hired an engineer who had worked at General Motors and Ford to design machinery that would help sort <span class="annot" data-tooltip="parcels /'pɑːrsl/ n. 包裹一块地vt. 给…打成包裹分成若干部分时 态: parceledalso parcelled parcelingpa">parcels</span>. Trucks were loaded in reverse order of delivery, so that drivers wasted no time scrabbling around for the right item. UPS sent observers armed with stopwatches on deliveries in order to calculate an “ideal performance” for each trip. That <span class="annot" data-tooltip="benchmark /'bentʃmɑːrk/ 基准时 态: benchmarked, benchmarking, benchmarks">benchmark</span> was then used to award <span class="annot" data-tooltip="bonuses /'boʊnəs/ n. 奖金；红利；额外津贴BONUSabbr. Boling Nuclear Superheat Reactor 沸腾式过热核">bonuses</span> to drivers who made more deliveries than expected. Similar methods are now <span class="annot" data-tooltip="commonplace /'kɑːmənpleɪs/ adj. 普通的, 平庸的n. 陈腔滥调, 老生常谈寻常的事物, 平常的东西">commonplace</span> at companies such as <span class="annot" data-tooltip="amazon /ˈæməˌzɑn/ n. 高大强悍的女人；（古希腊神话中的）亚马孙族女战士Amazonn. 亚马逊河(南美洲大河)">Amazon</span>. But it was Casey who first embraced <span class="annot" data-tooltip="automation /ˌɔːtə'meɪʃn/ n. 自动化(技术), 自动操作">automation</span> and an “unapologetic insistence on efficient <span class="annot" data-tooltip="procedures 规程">procedures</span>”. And competitors “were to be <span class="annot" data-tooltip="harassed /hə'ræs/ vt. 使烦恼；使困扰；反复袭击时 态: harassed, harassing, harasses">harassed</span> or <span class="annot" data-tooltip="simply /'sɪmpli/ adv. 简单地；朴素地；简直；仅仅；坦白地">simply</span> eradicated”. UPS hounded challengers by filing umpteen “complaints, <span class="annot" data-tooltip="protests /'proʊtest/ n. 抗议；反对vt. & vi. 声明；抗议时 态: protested，protesting，protests">protests</span> and objections”. It</p>
+<p>flouted antitrust laws by <span class="annot" data-tooltip="secretly /'siːkrətli/ adv. 秘密地;背地里">secretly</span> buying up <span class="annot" data-tooltip="rivals /'raɪvl/ n. 竞争对手vt. 与…竞争, 与…匹敌时 态: rivaled, rivalled rivaling, rivalling">rivals</span>, locking <span class="annot" data-tooltip="retailers /'riːteɪlər/ n. 传播的人；零售商">retailers</span> into <span class="annot" data-tooltip="exclusive /ɪk'skluːsɪv/ adj. 高级的，奢华的专用的；独家的n. 独家新闻，独家报道副 词: exclusively">exclusive</span> <span class="annot" data-tooltip="contracts /'kɑːntrækt/ vi. 感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约时 态: contracted, contracting, c">contracts</span> and <span class="annot" data-tooltip="striking /'straɪkɪŋ/ adj. 显著的，突出的引人注目的；容貌出众的副 词: strikingly">striking</span> deals to carve up markets with competitors. It also persuaded the <span class="annot" data-tooltip="authorities /ə'θɔːrəti/ n. 威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗">authorities</span> that “regulations should…be <span class="annot" data-tooltip="tailored /'teɪlər/ vt. 剪裁；使合适n. 裁缝vi. 做裁缝时 态: tailored, tailoring, tailors">tailored</span> to its needs alone,” winning <span class="annot" data-tooltip="exemptions /ɪɡ'zempʃn/ n. (义务等的)免除;免(税)(收入中的)免税额">exemptions</span> from rules that <span class="annot" data-tooltip="constrained /kən'streɪn/ vt. 强迫，强使；限制，约束时 态: constrained，constraining，constrains">constrained</span> other firms. In that regard, Casey was again ahead of his time. He was a “demanding taskmaster” with a ruthless, “win-at-all-costs” mentality—the kind that has become de rigueur in <span class="annot" data-tooltip="silicon /'sɪlɪkən/ n. 〈化〉硅">Silicon</span> <span class="annot" data-tooltip="valley /'væli/ n. 流域；山谷；溪谷">Valley</span> and beyond. The lesson from this book, <span class="annot" data-tooltip="budding /bʌd/ n. 芽，萌芽；蓓蕾vi. 发芽，萌芽vt. 使发芽时 态: budded, budding, buds">budding</span> entrepreneurs may feel, is that you should stop at nothing to deliver the goods. ■ This article was downloaded by zlibrary from https://www.economist.com/culture/2026/11/19/the-oddball-who-founded-ups-and- changed-the-world</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Economic &amp; financial indicators</div>
+<p>Economic data, commodities and markets</p>
+<p>Economic & financial <span class="annot" data-tooltip="indicators /'ɪndɪkeɪtər/ n. (仪器上显示温度、压力、耗油量等的)指针，指示器，记录器(车辆上的)转弯指示灯指示物；指示者">indicators</span> | Indicators Economic data, commodities and markets Nov 19th 2026</p>
+<p>This article was downloaded by zlibrary from https://www.economist.com/economic-and-financial-<span class="annot" data-tooltip="indicators /'ɪndɪkeɪtər/ n. (仪器上显示温度、压力、耗油量等的)指针，指示器，记录器(车辆上的)转弯指示灯指示物；指示者">indicators</span>/2026/11/19/economic- data-commodities-and-markets</p>
+<div class="article-separator"></div>
+<div class="article-header">Obituary · Obituary | The poison-maker’s tale</div>
+<p>Vladimir Uglev saw his life’s work denied by Russia The chemist turned dissident died on October 26th, aged 80 Nov 19th 2026 He was proud of his labour. From 1975 to 1994, in some of the <span class="annot" data-tooltip="bleakest /bliːk/ adj. 荒凉的，无遮蔽的；阴冷的；黯淡的，无希望的；冷酷的；单调的比较级: bleaker, bleakest">bleakest</span> and most secret labs in Russia, he and his team had been charged to make <span class="annot" data-tooltip="substances /'sʌbstəns/ n. 物质主旨, 要旨实质, 本体Substancen. 物质，物">substances</span> better, more effective and longer-lasting than anything else available. Two of the most promising, out of the four they synthesised, were his <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> work. When traces of them turned up he knew them at once by their molecular weight, their spectrometry and their <span class="annot" data-tooltip="purity /'pjʊrəti/ n. 纯净；纯洁；纯粹；纯度">purity</span>. He recognised them as a mother would know her child. So when in March 2018 a sample was found out in the wider world, Vladimir Uglev didn’t hesitate to claim it as his; and to declare it a “state- level hit”, for Russia was the only possible source. But the circumstances deeply troubled him. His production, the organophosphorus A-234, had been</p>
+<p><span class="annot" data-tooltip="ingested /ɪn'dʒest/ vt. 吃；吞下获取(某事物)时 态: ingested，ingesting，ingests">ingested</span> by Sergei Skripal, an <span class="annot" data-tooltip="elderly /'eldərli/ adj. 上了年纪的, 中年以上的">elderly</span> man living <span class="annot" data-tooltip="quietly /'kwaɪətli/ adv. 安静地；秘密地；平稳地">quietly</span> in retirement in Salisbury, in southern England. Mr Skripal had been a double agent, working for MI6; he had served his jail-time in Russia but was plainly still a target. His daughter Yulia happened to be sitting beside him. In moments he was convulsing and hallucinating, and both fell unconscious, from a <span class="annot" data-tooltip="mere /mɪr/ adj. 仅仅, 只不过纯粹的Superlative merest">mere</span> touch of A-234 on the front-door <span class="annot" data-tooltip="handle /'hændl/ n. 柄；把手；手感；口实vt. 买卖；处理；操作；触摸；运用vi. 易于操纵；搬运时 态: handled, handlin">handle</span> of their house. Four months later and some miles away two innocents, <span class="annot" data-tooltip="dawn /dɔːn/ n. 拂晓，破晓，黎明开端；曙光；萌芽vi. 破晓；开始见分晓，水落石出；变得明朗Dawnn. 道恩（女子名）时 态: daw">Dawn</span> Sturgess and Charlie Rowley, fell ill after handling an empty <span class="annot" data-tooltip="perfume /pər'fjuːm/ n. 香气, 芳香香水vt. 使充满香气喷香水于时 态: perfumed, perfuming, perfumes">perfume</span> bottle that had been thrown away. Sturgess even <span class="annot" data-tooltip="sprayed /spreɪ/ n. 水沫；喷雾；喷雾器vt. 喷射vi. 喷时 态: sprayed, spraying, sprays">sprayed</span> it on her wrists. Mr Rowley recovered, but she died. The cause was Novichok, the family of <span class="annot" data-tooltip="nerve /nɜːrv/ n. 神经神经过敏；神经紧张勇气；胆量时 态: nerved，nerving，nerves">nerve</span> agents to which A-234 belonged. The word meant “newcomer”. Russia’s deadliest secret was now out. He knew its potency better than anyone. It was ten times more lethal than <span class="annot" data-tooltip="either /'iːðər/ pron. (两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的">either</span> VX or Sarin; 50% of 70-kilo individuals would die from two minutes’ <span class="annot" data-tooltip="exposure /ɪk'spoʊʒər/ n. 暴露, 显露揭发, 揭露(软片等)曝光">exposure</span>. Fundamentally, it played havoc with all the muscular impulses of the body. Three of the four <span class="annot" data-tooltip="variants /'veriənt/ n. 变体；变种；变型(词等的)变体；异读(书等的)不同版本；改编adj. 不同的；差别的；变异的；易变的，不定的；各种各样的">variants</span> his team had made were liquid, with a single drop necessary. The fourth, A-242, was a solid that could be ground into near-invisible <span class="annot" data-tooltip="powder /'paʊdər/ n. 粉末；粉；火药；尘土vt. 使成粉末；搽粉于；撒粉vi. 搽粉；变成粉末时 态: powdered, powdering">powder</span> for dusting, very slightly, on clothes. Though his lab never achieved a more stable binary <span class="annot" data-tooltip="version /'vɜːrʒn/ n. 变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本">version</span>, Novichok had a long shelf- life. The fact that it was still effective after four months in the case of “Madam Sturgess” gave him a twinge of satisfaction. He might well have been made that <span class="annot" data-tooltip="batch /bætʃ/ n. 一炉一批, 一组, 一群时 态: batched, batching, batches">batch</span> with his <span class="annot" data-tooltip="own /oʊn/ adj. 属于自己的自己做的, 为自己的vt. 拥有承认时 态: owned, owning, owns">own</span> hands. Yet her death also horrified him, and it was not the first. In 1995 Novichok had been smeared on the telephone receiver of Ivan Kivelidi, a banker, and his <span class="annot" data-tooltip="secretary /'sekrəteri/ n. 秘书书记部长, 大臣形容词: secretarial">secretary</span>. Both died. Two deaths occurred of officers engaged in Novichok testing at Shikhany. Most upsetting was the <span class="annot" data-tooltip="lingering /'lɪŋɡərɪŋ/ adj. 拖延的;逗留不去的">lingering</span> death of a colleague in the lab, Andrei Zheleznyakov. One day, as they worked, he suddenly said: “It’s got me.” A tiny dose of Novichok had <span class="annot" data-tooltip="spilled /spɪl/ vt. 使溢出，使流出；使摔下vi. 溢出，流出；摔下；涌流n. 溢出，溅出；溢出量；摔下；小塞子时 态: spilled, s">spilled</span> into the air. Red and orange circles erupted round him. He was given tea, but vomited it up; he was sent home, but on the way saw a church shining and collapsing. For years he was too ill to work, and he died alone. All these <span class="annot" data-tooltip="victims /'vɪktɪm/ n. 牺牲者；受害人；牺牲品">victims</span> remained on Dr Uglev’s conscience. He himself had a close shave. A tiny <span class="annot" data-tooltip="splash /splæʃ/ n. 溅泼声溅上的斑点(光、色等的)斑点溅泼的量vt. 使(液体)溅起vi. (指液体)溅落时 态: splashed, sp">splash</span> of solvent in which he was recrystalising Novichok A-242 landed on his hand. He knew the <span class="annot" data-tooltip="drill /drɪl/ n. 钻子；钻孔机；播种机；训练vi. 钻孔；训练vt. 训练；钻孔；条播时 态: drilled, drilling, dr">drill</span>: <span class="annot" data-tooltip="immediately /ɪ'miːdiət/ adj. 立即的，即刻的；紧迫的目前的，当前的直接的最接近的名 词: immediateness">immediately</span> dunked his hand for minutes in hydrochloric acid, then into an</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>celebrity</td><td>/sə'lebrəti/ n.</td><td>(尤指娱乐界的)名人, 名流名声, 名誉</td></tr>
+<tr><td>ordered</td><td>/'ɔːrdərd/ adj.</td><td>安排好的；整齐的；[数]有序的v. 命令；点餐（order的过去式和过去分词）</td></tr>
+<tr><td>potted</td><td>/pɑːt/ n.</td><td>罐；壶；盆vt. 把…装罐；射击；节略vi. 随手射击, potting, pots</td></tr>
+<tr><td>version</td><td>/'vɜːrʒn/ n.</td><td>变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本</td></tr>
+<tr><td>wealth</td><td>/welθ/ n.</td><td>财富；大量；富有</td></tr>
+<tr><td>racked</td><td>/ræk/ n.</td><td>行李架；拷问台；齿条vi. 随风飘；小步跑；变形vt. 折磨；榨取, racking, racks</td></tr>
+<tr><td>tenant</td><td>/'tenənt/ n.</td><td>房客, 佃户, 承租人〈律〉占用者, 占有者, tenanting, tenants</td></tr>
+<tr><td>recur</td><td>/rɪ'kɜːr/ vi.</td><td>重现；复发；再来；采用；循环；递归, recurring, recurs</td></tr>
+<tr><td>orchard</td><td>/'ɔːrtʃərd/ n.</td><td>果园；果树林</td></tr>
+<tr><td>division</td><td>/dɪ'vɪʒn/ n.</td><td>[数] 除法；部门；分配；分割；师（军队）；赛区</td></tr>
+<tr><td>engage</td><td>/ɪn'ɡeɪdʒ/ vt.</td><td>雇佣；吸引，占用；使订婚；使参加；预定vi. 答应，保证；从事；交战；啮合, engaging, engages</td></tr>
+<tr><td>intense</td><td>/ɪn'tens/ adj.</td><td>强烈的；紧张的；热情的；非常的, intensest</td></tr>
+<tr><td>strict</td><td>/strɪkt/ adj.</td><td>严格的, 严厉的严谨的, 精确的绝对的, 完全的, strictest</td></tr>
+<tr><td>helping</td><td>/'helpɪŋ/ n.</td><td>（进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的</td></tr>
+<tr><td>estate</td><td>/ɪ'steɪt/ </td><td>n.（位于乡村的）大片私有土地，庄园，种植园【英式】（按规划建造的）住宅区，工业区【法律】（个人死后留下的全部）财产，遗产【英式】旅游汽车；客货两用轿车（est</td></tr>
+<tr><td>reforms</td><td>/rɪ'fɔːrm/ n.</td><td>改革，改良，改造vt. & vi. 改革；改造；改善，reforming，reforms</td></tr>
+<tr><td>wages</td><td>/weɪdʒ/ vi.</td><td>进行；发动；从事n. 工资；报偿；代价vt. 开展；进行, waging, wages</td></tr>
+<tr><td>leases</td><td>/liːs/ n.</td><td>租约；租期；租赁物；租赁权vt. 出租；租得vi. 出租, leasing, leases</td></tr>
+<tr><td>promoted</td><td>/'proʊmoʊ/ n.</td><td>商品推销；商品广告，广告片</td></tr>
+<tr><td>practice</td><td>/'præktɪs/ n.</td><td>练习，实习实践，实际(医生或律师的)业务；诊所；律师事务所惯例，常规，practicing，practices</td></tr>
+<tr><td>correspondence</td><td>/ˌkɔːrə'spɑːndəns/ n.</td><td>信件, 函件通信, 通信联系一致, 相似</td></tr>
+<tr><td>crop</td><td>/krɑːp/ n.</td><td>农作物；庄稼；产量；平头vt. 种植；收割；修剪；剪短vi. 收获, cropping, crops</td></tr>
+<tr><td>prone</td><td>/proʊn/ adj.</td><td>易于…的; 很可能…的俯卧的</td></tr>
+<tr><td>overlooked</td><td>/ˌoʊvər'lʊk/ </td><td>vt.忽略；俯瞰；远眺；不计较，宽恕；施魔法于；监督；检查n.忽视；眺望；从高处能看到的景色, overlooking, overlooks</td></tr>
+<tr><td>philosophy</td><td>/fə'lɑːsəfi/ n.</td><td>哲学人生哲学, 人生观达观</td></tr>
+<tr><td>mainstream</td><td>/'meɪnstriːm/ n.</td><td>(思想或行为的)主流, mainstreaming, mainstreams</td></tr>
+<tr><td>convey</td><td>/kən'veɪ/ vt.</td><td>运输；运送表达，转达，conveying，conveys</td></tr>
+<tr><td>stir</td><td>/stɜːr/ vt.</td><td>& vi. 搅拌(使)移动；(使)激动n. 搅动；搅和；搅拌激动；纷乱；骚乱STIRabbr. Surveillance and Target Indicati</td></tr>
+<tr><td>sentiment</td><td>/'sentɪmənt/ n.</td><td>(对怜悯、怀旧等的)柔情态度或意见观点; 意见</td></tr>
+<tr><td>either</td><td>/'iːðər/ pron.</td><td>(两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的</td></tr>
+<tr><td>obsession</td><td>/əb'seʃn/ n.</td><td>困扰, 无法摆脱的思想(或情感)</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>parcel</td><td>/'pɑːrsl/ n.</td><td>包裹一块地vt. 给…打成包裹分成若干部分</td></tr>
+<tr><td>memoirs</td><td>/'memwɑːr/ n.</td><td>自传；实录；回忆录；研究报告</td></tr>
+<tr><td>routes</td><td>/ruːt，raʊt/ n.</td><td>路, 路途, 路线, 路程, routing, routes</td></tr>
+<tr><td>parcels</td><td>/'pɑːrsl/ n.</td><td>包裹一块地vt. 给…打成包裹分成若干部分</td></tr>
+<tr><td>shipping</td><td>/ʃɪp/ vt.</td><td>运送，乘船；以船运送vi. 当船员；上船；乘船旅行n. 船；舰；太空船Ship南船星座SHIPabbr. Ship Division of the Nation</td></tr>
+<tr><td>commerce</td><td>/'kɑːmɜːrs/ n.</td><td>商业, 贸易</td></tr>
+<tr><td>fortune</td><td>/'fɔːrtʃən/ n.</td><td>运气；财富；命运vt. 给予财富vi. 偶然发生, fortuning, fortunes</td></tr>
+<tr><td>ordered</td><td>/'ɔːrdərd/ adj.</td><td>安排好的；整齐的；[数]有序的v. 命令；点餐（order的过去式和过去分词）</td></tr>
+<tr><td>trip</td><td>/trɪp/ vi.</td><td>绊倒；犯错误；远足；轻快地走n. 旅行；绊倒；差错vt. 绊倒；使犯错TRIPabbr. transformation-induced plasticity 高</td></tr>
+<tr><td>fetching</td><td>/fetʃ/ vt.</td><td>接来；到达；取来；吸引vi. 取物；卖得；拿n. 取得；诡计, fetching, fetches</td></tr>
+<tr><td>consolidate</td><td>/kən'sɑːlɪdeɪt/ vt.</td><td>& vi. (使)巩固；(使)加强(使)合并，consolidating，consolidates</td></tr>
+<tr><td>retailers</td><td>/'riːteɪlər/ n.</td><td>传播的人；零售商</td></tr>
+<tr><td>central</td><td>/'sentrəl/ adj.</td><td>中心的, 中央的, 形成中心的最重要的, 主要的, 首要的有全部权力或控制力的</td></tr>
+<tr><td>routes</td><td>/ruːt，raʊt/ n.</td><td>路, 路途, 路线, 路程, routing, routes</td></tr>
+<tr><td>premium</td><td>/'priːmiəm/ n.</td><td>奖金，津贴；加价；附加费；保险费；额外费用adj. （品质）高级的；优质的，顶级的</td></tr>
+<tr><td>contracts</td><td>/'kɑːntrækt/ vi.</td><td>感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约, contracting, contracts</td></tr>
+<tr><td>rivals</td><td>/'raɪvl/ n.</td><td>竞争对手vt. 与…竞争, 与…匹敌, rivalled rivaling, rivalling rivals, rivals</td></tr>
+<tr><td>parcels</td><td>/'pɑːrsl/ n.</td><td>包裹一块地vt. 给…打成包裹分成若干部分</td></tr>
+<tr><td>benchmark</td><td>/'bentʃmɑːrk/ </td><td>基准, benchmarking, benchmarks</td></tr>
+<tr><td>bonuses</td><td>/'boʊnəs/ n.</td><td>奖金；红利；额外津贴BONUSabbr. Boling Nuclear Superheat Reactor 沸腾式过热核反应堆</td></tr>
+<tr><td>commonplace</td><td>/'kɑːmənpleɪs/ adj.</td><td>普通的, 平庸的n. 陈腔滥调, 老生常谈寻常的事物, 平常的东西</td></tr>
+<tr><td>amazon</td><td>/ˈæməˌzɑn/ n.</td><td>高大强悍的女人；（古希腊神话中的）亚马孙族女战士Amazonn. 亚马逊河(南美洲大河)</td></tr>
+<tr><td>automation</td><td>/ˌɔːtə'meɪʃn/ n.</td><td>自动化(技术), 自动操作</td></tr>
+<tr><td>procedures</td><td>— </td><td>规程</td></tr>
+<tr><td>harassed</td><td>/hə'ræs/ vt.</td><td>使烦恼；使困扰；反复袭击, harassing, harasses</td></tr>
+<tr><td>simply</td><td>/'sɪmpli/ adv.</td><td>简单地；朴素地；简直；仅仅；坦白地</td></tr>
+<tr><td>protests</td><td>/'proʊtest/ n.</td><td>抗议；反对vt. & vi. 声明；抗议，protesting，protests</td></tr>
+<tr><td>secretly</td><td>/'siːkrətli/ adv.</td><td>秘密地;背地里</td></tr>
+<tr><td>rivals</td><td>/'raɪvl/ n.</td><td>竞争对手vt. 与…竞争, 与…匹敌, rivalled rivaling, rivalling rivals, rivals</td></tr>
+<tr><td>retailers</td><td>/'riːteɪlər/ n.</td><td>传播的人；零售商</td></tr>
+<tr><td>exclusive</td><td>/ɪk'skluːsɪv/ adj.</td><td>高级的，奢华的专用的；独家的n. 独家新闻，独家报道</td></tr>
+<tr><td>contracts</td><td>/'kɑːntrækt/ vi.</td><td>感染；订约；收缩vt. 感染；订约；使缩短n. 合同；婚约, contracting, contracts</td></tr>
+<tr><td>striking</td><td>/'straɪkɪŋ/ adj.</td><td>显著的，突出的引人注目的；容貌出众的</td></tr>
+<tr><td>authorities</td><td>/ə'θɔːrəti/ n.</td><td>威信，权力；管辖权；当局，官方；当权者；权威人士，专家，泰斗</td></tr>
+<tr><td>tailored</td><td>/'teɪlər/ vt.</td><td>剪裁；使合适n. 裁缝vi. 做裁缝, tailoring, tailors</td></tr>
+<tr><td>exemptions</td><td>/ɪɡ'zempʃn/ n.</td><td>(义务等的)免除;免(税)(收入中的)免税额</td></tr>
+<tr><td>constrained</td><td>/kən'streɪn/ vt.</td><td>强迫，强使；限制，约束，constraining，constrains</td></tr>
+<tr><td>silicon</td><td>/'sɪlɪkən/ n.</td><td>〈化〉硅</td></tr>
+<tr><td>valley</td><td>/'væli/ n.</td><td>流域；山谷；溪谷</td></tr>
+<tr><td>budding</td><td>/bʌd/ n.</td><td>芽，萌芽；蓓蕾vi. 发芽，萌芽vt. 使发芽, budding, buds</td></tr>
+<tr><td>indicators</td><td>/'ɪndɪkeɪtər/ n.</td><td>(仪器上显示温度、压力、耗油量等的)指针，指示器，记录器(车辆上的)转弯指示灯指示物；指示者</td></tr>
+<tr><td>indicators</td><td>/'ɪndɪkeɪtər/ n.</td><td>(仪器上显示温度、压力、耗油量等的)指针，指示器，记录器(车辆上的)转弯指示灯指示物；指示者</td></tr>
+<tr><td>bleakest</td><td>/bliːk/ adj.</td><td>荒凉的，无遮蔽的；阴冷的；黯淡的，无希望的；冷酷的；单调的, bleakest</td></tr>
+<tr><td>substances</td><td>/'sʌbstəns/ n.</td><td>物质主旨, 要旨实质, 本体Substancen. 物质，物</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>purity</td><td>/'pjʊrəti/ n.</td><td>纯净；纯洁；纯粹；纯度</td></tr>
+<tr><td>ingested</td><td>/ɪn'dʒest/ vt.</td><td>吃；吞下获取(某事物)，ingesting，ingests</td></tr>
+<tr><td>elderly</td><td>/'eldərli/ adj.</td><td>上了年纪的, 中年以上的</td></tr>
+<tr><td>quietly</td><td>/'kwaɪətli/ adv.</td><td>安静地；秘密地；平稳地</td></tr>
+<tr><td>mere</td><td>/mɪr/ adj.</td><td>仅仅, 只不过纯粹的Superlative merest</td></tr>
+<tr><td>handle</td><td>/'hændl/ n.</td><td>柄；把手；手感；口实vt. 买卖；处理；操作；触摸；运用vi. 易于操纵；搬运, handling, handles</td></tr>
+<tr><td>dawn</td><td>/dɔːn/ n.</td><td>拂晓，破晓，黎明开端；曙光；萌芽vi. 破晓；开始见分晓，水落石出；变得明朗Dawnn. 道恩（女子名），dawning，dawns</td></tr>
+<tr><td>perfume</td><td>/pər'fjuːm/ n.</td><td>香气, 芳香香水vt. 使充满香气喷香水于, perfuming, perfumes</td></tr>
+<tr><td>sprayed</td><td>/spreɪ/ n.</td><td>水沫；喷雾；喷雾器vt. 喷射vi. 喷, spraying, sprays</td></tr>
+<tr><td>nerve</td><td>/nɜːrv/ n.</td><td>神经神经过敏；神经紧张勇气；胆量，nerving，nerves</td></tr>
+<tr><td>either</td><td>/'iːðər/ pron.</td><td>(两者之中)任何一个adj. (两者中)任一的adv. (否定句中)也adj. 非此即彼的, 两者择一的</td></tr>
+<tr><td>exposure</td><td>/ɪk'spoʊʒər/ n.</td><td>暴露, 显露揭发, 揭露(软片等)曝光</td></tr>
+<tr><td>variants</td><td>/'veriənt/ n.</td><td>变体；变种；变型(词等的)变体；异读(书等的)不同版本；改编adj. 不同的；差别的；变异的；易变的，不定的；各种各样的</td></tr>
+<tr><td>powder</td><td>/'paʊdər/ n.</td><td>粉末；粉；火药；尘土vt. 使成粉末；搽粉于；撒粉vi. 搽粉；变成粉末, powdering, powders</td></tr>
+<tr><td>version</td><td>/'vɜːrʒn/ n.</td><td>变体；变种；型式（从不同角度的）说法，描述（电影、剧本、乐曲等的）版本，改编形式，改写本</td></tr>
+<tr><td>batch</td><td>/bætʃ/ n.</td><td>一炉一批, 一组, 一群, batching, batches</td></tr>
+<tr><td>own</td><td>/oʊn/ adj.</td><td>属于自己的自己做的, 为自己的vt. 拥有承认, owning, owns</td></tr>
+<tr><td>secretary</td><td>/'sekrəteri/ n.</td><td>秘书书记部长, 大臣</td></tr>
+<tr><td>lingering</td><td>/'lɪŋɡərɪŋ/ adj.</td><td>拖延的;逗留不去的</td></tr>
+<tr><td>spilled</td><td>/spɪl/ vt.</td><td>使溢出，使流出；使摔下vi. 溢出，流出；摔下；涌流n. 溢出，溅出；溢出量；摔下；小塞子, spilt spilling, spills</td></tr>
+<tr><td>victims</td><td>/'vɪktɪm/ n.</td><td>牺牲者；受害人；牺牲品</td></tr>
+<tr><td>splash</td><td>/splæʃ/ n.</td><td>溅泼声溅上的斑点(光、色等的)斑点溅泼的量vt. 使(液体)溅起vi. (指液体)溅落, splashing, splashes</td></tr>
+<tr><td>drill</td><td>/drɪl/ n.</td><td>钻子；钻孔机；播种机；训练vi. 钻孔；训练vt. 训练；钻孔；条播, drilling, drills</td></tr>
+<tr><td>immediately</td><td>/ɪ'miːdiət/ adj.</td><td>立即的，即刻的；紧迫的目前的，当前的直接的最接近的</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day40.html" class="nav-btn">← Day 40</a>
+  <a href="day42.html" class="nav-btn">Day 42 →</a>
+</div>
+
+<div class="progress">📖 Day 41 of 42</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-11-21</div>
+
+</body>
+</html>

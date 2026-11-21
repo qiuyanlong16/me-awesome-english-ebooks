@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Americas | Doing the robot</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Noto Sans SC', serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  background: #fafaf8;
+}
+
+.date-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.article-section {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #c0392b;
+  margin: 0 0 24px 0;
+}
+
+.article-body {
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-body p {
+  margin: 0 0 16px 0;
+  text-indent: 2em;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+
+.article-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 36px 0 28px 0;
+}
+
+.article-header {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.annot {
+  position: relative;
+  border-bottom: 1px dashed #c0392b;
+  cursor: help;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.annot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.annot:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.glossary-box {
+  margin-top: 40px;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 3px solid #c0392b;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.glossary-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glossary-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.glossary-box td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.glossary-box td:first-child {
+  font-weight: 700;
+  color: #1a1a1a;
+  width: 120px;
+  font-family: 'Georgia', serif;
+}
+
+.glossary-box td:nth-child(2) {
+  color: #666;
+  font-size: 12px;
+  width: 120px;
+}
+
+.glossary-box td:last-child {
+  color: #444;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.nav-btn:hover { background: #e0e0e0; }
+
+.print-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-decoration: none;
+}
+
+.print-btn:hover { background: #a93226; }
+
+.progress {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media print {
+  .nav-bar, .print-btn, .progress { display: none !important; }
+  body { background: #fff; padding: 20px 30px; }
+  .glossary-box { box-shadow: none; border: 1px solid #ddd; }
+  .annot { border-bottom: 1px dashed #999; }
+}
+</style>
+</head>
+<body>
+
+<div class="date-badge">2026-11-21</div>
+
+<h1 class="article-title">The Americas | Doing the robot</h1>
+<div class="article-section">The Americas</div>
+
+<hr class="divider">
+
+<div class="article-body">
+<p>What a robot Olympiad <span class="annot" data-tooltip="reveals /rɪ'viːl/ vt. 显示；露出泄露；透露时 态: revealed，revealing，reveals">reveals</span> about Latin America’s future Reasons to be hopeful about a region with too many lousy schools Nov 19th 2026 Parents in Latin America can be <span class="annot" data-tooltip="gloomy /'ɡluːmi/ adj. 黑暗的；沮丧的；阴郁的比较级: gloomier, gloomiest">gloomy</span> about their children’s futures. Many more people there think that artificial intelligence will destroy jobs than believe it will create them. Worse, the region’s kids did <span class="annot" data-tooltip="dismally /'dɪzməl/ adj. 凄凉的，忧郁的；阴沉的，沉闷的；可怕的n. 低落的情绪副 词: dismally">dismally</span> in recent international school tests—not the best starting-point for weathering an era that might bring astonishing change. Talk to children themselves, however, and the mood is different. Many are <span class="annot" data-tooltip="thrilled /θrɪl/ n. 强烈的兴奋、恐惧或快乐感vt. & vi. (使)兴奋, (使)激动时 态: thrilled, thrilling, ">thrilled</span> about the possibilities <span class="annot" data-tooltip="presented /'preznt/ vt. 呈现；介绍；提出；赠送vi. 举枪瞄准adj. 出席的；现在的n. 现在；礼物；瞄准时 态: presented, pr">presented</span> by new technologies of all kinds. Happily, Latin America’s school systems <span class="annot" data-tooltip="host /hoʊst/ n. 主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集时 态: hosted, hosting, host">host</span> pockets of excellence from which reformers could easily build out broader <span class="annot" data-tooltip="enthusiasm /ɪn'θuːziæzəm/ n. 热情, 热心巨大兴趣, 热衷的事物">enthusiasm</span>.</p>
+<p>For a glimpse of the opportunities, head to Uruguay’s robot Olympiad, which takes <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span> <span class="annot" data-tooltip="annually /'ænjuəl/ adj. 年度的；每年的n. 年刊，年鉴；一年生植物副 词: annually">annually</span> in the country’s biggest indoor arena. Children cheer <span class="annot" data-tooltip="wildly /'waɪldli/ adv. 野生地；野蛮地；狂暴地；鲁莽地">wildly</span> and thump traditional candombe drums as robots that they have built and programmed in their schools whizz around courses. Some youngsters <span class="annot" data-tooltip="race /reɪs/ n. 种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACE">race</span> <span class="annot" data-tooltip="drones /droʊn/ n. 无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫">drones</span> through <span class="annot" data-tooltip="hoops /huːp/ n. 箍；铁环；呼呼声vt. 加箍于；包围vi. 发呼呼声时 态: hooped, hooping, hoops">hoops</span> and around <span class="annot" data-tooltip="obstacles /'ɑːbstəkl/ n. 障碍(物), 妨碍">obstacles</span>. “<span class="annot" data-tooltip="awesome /'ɔːsəm/ adj. 令人敬畏的；令人惊叹的；令人惊惧的【美，非正式】很好的；了不起的（或极好玩的等）">Awesome</span>, awesome,” beams Enrique Núñez, a 12-year-old with purple hair, when asked about the experience of building a robot and competing. When a band plays, the youngsters break into dance (the robot one, naturally). Even your correspondent cannot resist waggling an elbow. The <span class="annot" data-tooltip="venue /'venjuː/ n. 聚集地点;会场;(尤指)体育比赛场所犯罪地点;审判地争论中所持的立场">venue</span> is better known for <span class="annot" data-tooltip="hosting /hoʊst/ n. 主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集时 态: hosted, hosting, host">hosting</span> massive pop <span class="annot" data-tooltip="concerts /'kɑːnsərt/ n. 音乐会；和谐；一致vt. 使协调；协同安排vi. 协力；协调adj. 音乐会用的；在音乐会上演出的时 态: concer">concerts</span> (a giant image of Jennifer Lopez looms over the <span class="annot" data-tooltip="budding /bʌd/ n. 芽，萌芽；蓓蕾vi. 发芽，萌芽vt. 使发芽时 态: budded, budding, buds">budding</span> engineers). The space is needed: the event now attracts 8,500 Uruguayan pupils, the <span class="annot" data-tooltip="number /nʌm/ adj. 麻木的，失去感觉的vt. 使麻木；使麻痹比较级: number，numbest">number</span> of teams taking part having increased about 20-fold since 2015. Even Uruguay’s president, Yamandú Orsi, stops by to applaud the kids. It also involves a competition that uses “micro:bit”, a pocket-sized computer with flashing LEDs that children as young as eight can program. Competitions such as this are drawing in children across Latin America. Ones in Brazil and <span class="annot" data-tooltip="mexico /'meksɪkoʊ/ n. 墨西哥">Mexico</span> have begun attracting hundreds of teams. Winners of national competitions travel to international robotics <span class="annot" data-tooltip="contests /'kɑːntest/ vt. 争辩；提出质疑vi. 竞争；争辩n. 竞赛；争论；争夺时 态: contested, contesting, conte">contests</span> such as the FIRST Championship in Houston, which <span class="annot" data-tooltip="boasts /boʊst/ n. 自吹自擂, 自夸的话vt. & vi. 自夸vt. 有(引以为荣的事物)时 态: boasted, boasting, ">boasts</span> some 50,000 attendees from about 60 countries. Last year’s victors in Uruguay—a team of three girls from a remote, rural school—recently competed at a global robotics shindig in South Korea. The event in Uruguay is organised by Ceibal, a state-funded body. Ceibal was created in 2007 to give every Uruguayan child a laptop, a world first. That improved access to computers but did not improve reading or maths scores. The focus on robotics may achieve more. Ceibal provides robotics kits, drones and 3D printers to hundreds of schools. But it also arranges classes, via video-link, with remote <span class="annot" data-tooltip="instructors /ɪn'strʌktər/ n. 指导者,教师名 词: instructorship">instructors</span> who teach computational thinking and artificial intelligence. These kinds of goings-on can help <span class="annot" data-tooltip="spark /spɑːrk/ n. 火花，火星；电火花；一丝，略微；导火线，诱因v. 引发，触发；产生火花（电火花）；点燃；增加趣味（或活力、风味等）时 态">spark</span> passions and heighten ambitions. A ten-year study by the organisers of the FIRST Championship in the United States found that participants, especially women, were much more likely than classmates who did not take part to do <span class="annot" data-tooltip="stem /stem/ n. (花草的)茎, (树木的)干词干vt. 遏制[阻止](液体的流动等)时 态: stemmed, stemming, st">STEM</span> subjects at university.</p>
+<p>Pollsters find young people in much of Latin America are <span class="annot" data-tooltip="far /fɑːr/ adv. 到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysi">far</span> less concerned about the <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> of AI in daily life than people over 50 are. Perhaps <span class="annot" data-tooltip="gloomy /'ɡluːmi/ adj. 黑暗的；沮丧的；阴郁的比较级: gloomier, gloomiest">gloomy</span> parents should listen to their children more. ■ This article was downloaded by zlibrary from https://www.economist.com/the-americas/2026/11/19/what-a-robot-olympiad-<span class="annot" data-tooltip="reveals /rɪ'viːl/ vt. 显示；露出泄露；透露时 态: revealed，revealing，reveals">reveals</span>- about-latin-americas-future</p>
+<div class="article-separator"></div>
+<div class="article-header"> · Middle East &amp; Africa</div>
+<p>Climate change is making some African deserts greener The hunt for Sudan’s <span class="annot" data-tooltip="looted /luːt/ n. 掠夺品；战利品；抢劫vt. 抢劫，洗劫；强夺vi. 洗劫，掠夺；抢劫时 态: looted, looting, loot">looted</span> <span class="annot" data-tooltip="heritage /'herɪtɪdʒ/ n. 遗产, 继承物传统">heritage</span> Iran is functioning without a <span class="annot" data-tooltip="supreme /su'priːm/ adj. 最高的；至上的最重要的比较级: supremer，supremest 缩 写: supr">supreme</span> leader <span class="annot" data-tooltip="neither /'niːðər/ conj. 既不；也不adv. 两个都不；既不……也不adj. 两者都不的det./pron. 两者都不">Neither</span> America nor Iran has the means to end the war Israel claims its “<span class="annot" data-tooltip="dual /'duːəl/ adj. 双的；双重的n. 双数；双数词">dual</span>-use” policy is a necessary protection</p>
+<p>Middle East & Africa | After <span class="annot" data-tooltip="drought /draʊt/ n. 干旱；缺乏形容词: droughty">drought</span>, the deluge Climate change is making some African deserts greener That could help farmers but will also bring dangerous floods Nov 19th 2026 For <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span> Lake Chad seemed to be a terrifying portent of climate <span class="annot" data-tooltip="collapse /kə'læps/ vi. 倒塌；瓦解；暴跌vt. 使倒塌，使崩溃；使萎陷n. 倒塌；失败；衰竭时 态: collapsed, collapsing">collapse</span>. It had been among the world’s largest lakes, on which tens of millions of people depended in Chad, Cameroon, Niger and Nigeria, the four countries that share it. Yet years of <span class="annot" data-tooltip="droughts /draʊt/ n. 干旱；缺乏形容词: droughty">droughts</span>, <span class="annot" data-tooltip="compounded /'kɑːmpaʊnd/ n. 复合物；混合物；【化】化合物（语法）复合词有围栏（或围墙）的场地（内有工厂或其他建筑群）adj. 复合的v. 使加重；使">compounded</span> by <span class="annot" data-tooltip="diversion /daɪ'vɜːrʒn/ n. 转移, 转向娱乐, 消遣临时绕行路分散注意力形容词: diversionary">diversion</span> for irrigation, between the 1960s and 1990s helped <span class="annot" data-tooltip="shrink /ʃrɪŋk/ vt. & vi. 收缩；退缩时 态: shrank ，shrunk shrunk，shrunken shrinking，shr">shrink</span> it by as much as 90%. With the planet warming and the Sahara desert <span class="annot" data-tooltip="apparently /ə'pærəntli/ adv. 显然地表面上,似乎">apparently</span> advancing, Lake Chad seemed destined to disappear. The famines that ravaged the surrounding Sahel in the 1980s looked like a grim preview of Africa’s hotter, drier future. Instead the opposite happened. Today Lake Chad (pictured below) has more water than it has had for decades. A new study by the World Bank and the International Water Management Institute finds that its open-water area</p>
+<p>more than doubled in little more than a <span class="annot" data-tooltip="decade /'dekeɪd/ n. 十年，十年期；十">decade</span> after 2012, <span class="annot" data-tooltip="reaching /riːtʃ/ vt. 到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段时 态: reached，reaching，">reaching</span> over 8,300 square kilometres in 2025. Elsewhere, too, waters are rising. Four of Africa’s biggest water bodies—Victoria, Malawi, Tanganyika and Turkana, the world’s largest permanent desert lake—have risen sharply in recent years. So has Africa’s biggest wetland, the Sudd marshes, which have swollen so much since 2020 that South Sudan’s <span class="annot" data-tooltip="landscape /'lændskeɪp/ n. 风景, 景色风景画, 风景照时 态: landscaped, landscaping, landscapes">landscape</span> may have been altered for good. Each case, like Africa’s 54 countries, is different. Yet rising waters in <span class="annot" data-tooltip="seemingly /'siːmɪŋli/ adv. 看来似乎, 表面上看">seemingly</span> unlikely <span class="annot" data-tooltip="places /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">places</span> such as Lake Chad hint at two important aspects of the continent’s climatic future. First, much of Africa may turn out to be wetter than many expect, especially those who recall the Sahelian <span class="annot" data-tooltip="droughts /draʊt/ n. 干旱；缺乏形容词: droughty">droughts</span> of the 1970s and 1980s. Second, <span class="annot" data-tooltip="exactly /ɪɡ'zækt/ adj. 精确的；准确的，精密的vt. 强求；要求；急需vi. 勒索钱财时 态: exacted, exacting, exact">exactly</span> how climate change will play out across much of the continent is deeply uncertain, <span class="annot" data-tooltip="arguably /'ɑːrɡjuəbli/ adv. 可论证地,正如可提出证据加以证明的那样">arguably</span> more so than elsewhere. <span class="annot" data-tooltip="helping /'helpɪŋ/ n. （进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的">Helping</span> Africans adapt to shifts that will be <span class="annot" data-tooltip="severe /sɪ'vɪr/ adj. 严厉的；苛刻的；剧烈的；严峻的比较级: severer, severest">severe</span> but hard to predict is a priority for the continent’s <span class="annot" data-tooltip="delegates /'delɪɡət/ n. 代表；会议代表v. 授（权）；把（工作、权力等）委托（给下级）选派（某人做某事）时 态: delegated, dele">delegates</span> at COP31, the UN’s <span class="annot" data-tooltip="annual /'ænjuəl/ adj. 年度的；每年的n. 年刊，年鉴；一年生植物副 词: annually">annual</span> climate summit that ends in Turkey on November 20th. Plenty about Africa’s changing climate is clear-cut. Its few glaciers are <span class="annot" data-tooltip="vanishing /'vænɪʃ/ vi. 消失；突然不见；[数]成为零vt. 使不见，使消失n. [语]弱化音时 态: vanished, vanishing, ">vanishing</span>. The seas along its coasts are rising. Heatwaves are growing longer, more frequent and more <span class="annot" data-tooltip="intense /ɪn'tens/ adj. 强烈的；紧张的；热情的；非常的比较级: intenser, intensest">intense</span>. A new study by the African Climate & Development <span class="annot" data-tooltip="initiative /ɪ'nɪʃətɪv/ n. 主动性, 首创精神主动的行动, 倡议主动权">Initiative</span> at the University of <span class="annot" data-tooltip="cape /keɪp/ n. 披肩；海角，岬CAPEabbr. Communication Automatic Processing Equipmen">Cape</span> Town finds that since</p>
+<p>2010 hot spells in South Africa have been <span class="annot" data-tooltip="nearly /'nɪrli/ adv. 几乎; 差不多">nearly</span> three times more “extreme”—a measure that combines duration, temperature and the area <span class="annot" data-tooltip="affected /ə'fekt/ vt. 影响；假装；感动；感染vi. 倾向；喜欢n. 情感；引起感情的因素时 态: affected, affecting, a">affected</span>—than in the previous three <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span>. The World Meteorological Organisation says every African sub-region has grown hotter since 1961. Parts of eastern and southern Africa appear to be drying. But in the Sahel, a vast semi-arid <span class="annot" data-tooltip="belt /belt/ n. 腰带, 带子区域, 地带vt.（用带子）系住；（作为惩罚用皮带等）抽打；击打vi.（尤指驾车）疾驰；飞奔时 态: bel">belt</span> <span class="annot" data-tooltip="stretching /stretʃ/ vt. 伸展,张开vi. 伸展adj. 可伸缩的n. 伸展，延伸时 态: stretched, stretching, stre">stretching</span> from Senegal to Sudan, rainfall has for years been increasing (see map). The clearest sign is Lake Chad, which acts like a “giant rain <span class="annot" data-tooltip="gauge /ɡeɪdʒ/ n. 厚度, 直径测量仪表规格, 尺度vt. 计量, 度量估计, 判断时 态: gaugedalso gaged gaugin">gauge</span>”, says Richard Washington of Oxford University. Another is the Sahel’s storms, which bring most of its rain. Extreme ones have become roughly three times as frequent since the early 1980s. Many climate scientists expect these <span class="annot" data-tooltip="trends /trend/ n. 趋势, 倾向流行时 态: trended, trending, trends">trends</span> to continue, as warming in the Sahara and the North Atlantic fuels the west African monsoon and draws more moisture into the Sahel. In some <span class="annot" data-tooltip="places /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">places</span>, that change brings the promise of better harvests. Satellite imagery shows that much of the Sahel is turning greener as once-parched lands revive. Richard Taylor of the University of Toronto says that a recent expansion in groundwater storage could, in theory, expand access to drinking water and one day even feed irrigated farms.</p>
+<p>But more rain also means more floods. Rainfall in the Sahel in mid-2024 was between 120% to 600% above the seasonal average for the previous three <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span>, <span class="annot" data-tooltip="sweeping /'swiːpɪŋ/ n. 扫除；垃圾adj. 扫荡的；彻底的；广泛的v. 打扫；扫除（sweep的现在分词形式）副 词: sweepingly">sweeping</span> away villages, forcing hundreds of thousands from their homes and leaving parts of Niamey, Niger’s capital, under water. In 2025, more than 230 people were killed in flash floods in Nigeria. All this challenges a long and widely held belief in Africa’s relentless “desertification”. The idea of the Sahara, the world’s largest hot desert, pushing southwards into the Sahelian savannah dates back to the colonial era. A study <span class="annot" data-tooltip="commissioned /kə'mɪʃn/ n. 授权, 委托委员会佣金, 回扣vt. 委任, 委托时 态: commissioned, commissioning, c">commissioned</span> by the UN in the 1970s claimed it was expanding in Sudan by as many as six kilometres each year. “At that stage it did indeed look as though the Sahel and west Africa as a whole was getting drier and drier in some kind of inexorable <span class="annot" data-tooltip="process /ˈprɑːses/ vt. 处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的">process</span>,” says Camilla Toulmin, a British drylands expert. Based on that premise, the African Union launched the “Great Green Wall”, an <span class="annot" data-tooltip="initiative /ɪ'nɪʃətɪv/ n. 主动性, 首创精神主动的行动, 倡议主动权">initiative</span> involving at least 22 countries in tackling soil degradation and desertification, in part by planting trees. In future, successful <span class="annot" data-tooltip="adaptation /ˌædæp'teɪʃn/ n. 适应,适合改编，改写改编本，改写本">adaptation</span> may have to look very different. It will require closer attention to what Stella Shumba, a Zimbabwean climate scientist, calls the “local expressions” of climate change in Africa. By some estimates, the continent will need $30bn-50bn (0.7-1.2% of GDP) a year for adaptation by 2030. Preparing for a future that is at once wetter and drier is both harder and more expensive. In the first <span class="annot" data-tooltip="place /pleɪs/ n. 地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位">place</span>, adapting means gathering more and better data, so that “we understand what is changing, how it is changing, where and when”, says Joyce Kimutai of <span class="annot" data-tooltip="imperial /ɪm'pɪriəl/ adj. 皇帝的；帝国的；威严的；至高无上的n. 纸张尺寸；特等品副 词: imperially">Imperial</span> College London and Kenya’s meteorological agency. Rainfall projections are especially <span class="annot" data-tooltip="tricky /'trɪki/ adj. 机警的；狡猾的比较级: trickier, trickiest">tricky</span>. In east Africa the “long rains” of March to May dwindled from the mid-1980s to around 2010, even as climate models predicted a wetter region in the future—a mismatch scientists dubbed the “eastern African <span class="annot" data-tooltip="paradox /'pærədɑːks/ n. 似非而是的论点；悖论，反论；自相矛盾的人或事形容词: paradoxical">paradox</span>”.</p>
+<p>More recently the rains have recovered somewhat, and the short rains between October and December have increased, which helps explain the dramatic <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span> of Lake Victoria and the lakes of Kenya’s Rift <span class="annot" data-tooltip="valley /'væli/ n. 流域；山谷；溪谷">Valley</span>. But projections for the region remain <span class="annot" data-tooltip="unusually /ʌn'juːʒuəl/ adj. 与众不同的；不寻常的；不平常的副 词: unusually">unusually</span> unsettled, particularly for the long rains, says Caroline Wainwright of the University of Leeds. “It’s not just that we don’t know the <span class="annot" data-tooltip="magnitude /'mæɡnɪtuːd/ n. 巨大; 重要性〈天〉星等">magnitude</span> of the future change; the direction of change is also uncertain.” <span class="annot" data-tooltip="tropical /'trɑːpɪkl/ adj. 热带的；酷热的；热情的">Tropical</span> weather, especially rain, is generally much harder to simulate than the mid-latitude kind. A dearth of <span class="annot" data-tooltip="observations /ˌɑːbzər'veɪʃn/ n. 注意；观察观察力言论，评论，意见观察资料，观察数据形容词: observational">observations</span> makes it harder still to test existing climate models and build better ones. Africa <span class="annot" data-tooltip="covers /'kʌvər/ vt. 包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替时 态: covered, covering, c">covers</span> about a fifth of the world’s land, yet is estimated to <span class="annot" data-tooltip="host /hoʊst/ n. 主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集时 态: hosted, hosting, host">host</span> only about a tenth of its weather- <span class="annot" data-tooltip="monitoring /'mɑːnɪtər/ n. 显示屏；监视器；（计算机）显示器监控器；监测器班长；级长；班代表（尤指派往国外的）监督员，核查员巨蜥v. 监视；检查；跟">monitoring</span> stations, and perhaps half of those fail to record <span class="annot" data-tooltip="reliable /rɪ'laɪəbl/ adj. 可靠的, 可信赖的副 词: reliably">reliable</span> data. The networks have thinned in recent <span class="annot" data-tooltip="decades /'dekeɪd/ n. 十年，十年期；十">decades</span>. Cuts to Western aid budgets, which have long helped pay for African climate research, could <span class="annot" data-tooltip="hasten /'heɪsn/ vt. 催促；使赶紧；加速vi. 赶快；急忙时 态: hastened, hastening, hastens">hasten</span> their decline. The perils and promise can be seen on the shores of Lake Baringo in Kenya’s Rift Valley. The lake’s waters have been rising since 2010, <span class="annot" data-tooltip="engulfing /ɪn'ɡʌlf/ vt. 吞没；吞食，狼吞虎咽时 态: engulfed, engulfing, engulfs">engulfing</span> schools, churches, homes and hotels. Nearby, some farmers are growing tomatoes on newly irrigated fields. The last rains failed. But in the coming weeks El Niño, a <span class="annot" data-tooltip="recurring /rɪ'kɜːr/ vi. 重现；复发；再来；采用；循环；递归时 态: recurred, recurring, recurs">recurring</span> climatic <span class="annot" data-tooltip="pattern /'pætərn/ n. 型，样式花样，图案方式，形式榜样，典范vt. 模仿； 仿制以图案装饰时 态: patterned，patterning，">pattern</span> that <span class="annot" data-tooltip="disrupts /dɪs'rʌpt/ vt. 使混乱, 扰乱时 态: disrupted, disrupting, disrupts">disrupts</span> global</p>
+<p>weather, is expected to bring floods. Nobody knows for sure if the lake will continue to <span class="annot" data-tooltip="rise /raɪz/ vi. 升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Resea">rise</span>. But locals are preparing as though it will. ■ Sign up to the Analysing Africa, a weekly newsletter that keeps you in the loop about the world’s youngest—and least understood—continent. This article was downloaded by zlibrary from https://www.economist.com/middle-east-and-africa/2026/11/17/climate-change-is- making-some-african-deserts-greener</p>
+
+</div>
+
+<div class="glossary-box">
+<h4>今日词汇 | Daily Vocabulary</h4>
+<table>
+<tr><td>reveals</td><td>/rɪ'viːl/ vt.</td><td>显示；露出泄露；透露，revealing，reveals</td></tr>
+<tr><td>gloomy</td><td>/'ɡluːmi/ adj.</td><td>黑暗的；沮丧的；阴郁的, gloomiest</td></tr>
+<tr><td>dismally</td><td>/'dɪzməl/ adj.</td><td>凄凉的，忧郁的；阴沉的，沉闷的；可怕的n. 低落的情绪</td></tr>
+<tr><td>thrilled</td><td>/θrɪl/ n.</td><td>强烈的兴奋、恐惧或快乐感vt. & vi. (使)兴奋, (使)激动, thrilling, thrills</td></tr>
+<tr><td>presented</td><td>/'preznt/ vt.</td><td>呈现；介绍；提出；赠送vi. 举枪瞄准adj. 出席的；现在的n. 现在；礼物；瞄准, presenting, presents</td></tr>
+<tr><td>host</td><td>/hoʊst/ n.</td><td>主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集, hosting, hosts</td></tr>
+<tr><td>enthusiasm</td><td>/ɪn'θuːziæzəm/ n.</td><td>热情, 热心巨大兴趣, 热衷的事物</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>annually</td><td>/'ænjuəl/ adj.</td><td>年度的；每年的n. 年刊，年鉴；一年生植物</td></tr>
+<tr><td>wildly</td><td>/'waɪldli/ adv.</td><td>野生地；野蛮地；狂暴地；鲁莽地</td></tr>
+<tr><td>race</td><td>/reɪs/ n.</td><td>种族，人种；家庭，门弟；属，种vt. 和…竞赛；使急走，使全速行进；使参加比赛vi. 比速度，参加竞赛；全速行进RACEabbr. Radiation Adap</td></tr>
+<tr><td>drones</td><td>/droʊn/ n.</td><td>无人驾驶飞机嗡嗡声持续低音（如风笛等发出的持续音）；持续音音管（或弦等）雄蜂（不劳动，依赖他人为生的）寄生虫v. 嗡嗡叫；嗡嗡响(人)絮絮叨叨地说，喋喋不休地说</td></tr>
+<tr><td>hoops</td><td>/huːp/ n.</td><td>箍；铁环；呼呼声vt. 加箍于；包围vi. 发呼呼声, hooping, hoops</td></tr>
+<tr><td>obstacles</td><td>/'ɑːbstəkl/ n.</td><td>障碍(物), 妨碍</td></tr>
+<tr><td>awesome</td><td>/'ɔːsəm/ adj.</td><td>令人敬畏的；令人惊叹的；令人惊惧的【美，非正式】很好的；了不起的（或极好玩的等）</td></tr>
+<tr><td>venue</td><td>/'venjuː/ n.</td><td>聚集地点;会场;(尤指)体育比赛场所犯罪地点;审判地争论中所持的立场</td></tr>
+<tr><td>hosting</td><td>/hoʊst/ n.</td><td>主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集, hosting, hosts</td></tr>
+<tr><td>concerts</td><td>/'kɑːnsərt/ n.</td><td>音乐会；和谐；一致vt. 使协调；协同安排vi. 协力；协调adj. 音乐会用的；在音乐会上演出的, concerting, concerts</td></tr>
+<tr><td>budding</td><td>/bʌd/ n.</td><td>芽，萌芽；蓓蕾vi. 发芽，萌芽vt. 使发芽, budding, buds</td></tr>
+<tr><td>number</td><td>/nʌm/ adj.</td><td>麻木的，失去感觉的vt. 使麻木；使麻痹，numbest</td></tr>
+<tr><td>mexico</td><td>/'meksɪkoʊ/ n.</td><td>墨西哥</td></tr>
+<tr><td>contests</td><td>/'kɑːntest/ vt.</td><td>争辩；提出质疑vi. 竞争；争辩n. 竞赛；争论；争夺, contesting, contests</td></tr>
+<tr><td>boasts</td><td>/boʊst/ n.</td><td>自吹自擂, 自夸的话vt. & vi. 自夸vt. 有(引以为荣的事物), boasting, boasts</td></tr>
+<tr><td>instructors</td><td>/ɪn'strʌktər/ n.</td><td>指导者,教师</td></tr>
+<tr><td>spark</td><td>/spɑːrk/ n.</td><td>火花，火星；电火花；一丝，略微；导火线，诱因v. 引发，触发；产生火花（电火花）；点燃；增加趣味（或活力、风味等）, sparking, sparks</td></tr>
+<tr><td>stem</td><td>/stem/ n.</td><td>(花草的)茎, (树木的)干词干vt. 遏制[阻止](液体的流动等), stemming, stems</td></tr>
+<tr><td>far</td><td>/fɑːr/ adv.</td><td>到很远距离, 遥远地久远地到很大程度, 很, 极adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告, fur</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>gloomy</td><td>/'ɡluːmi/ adj.</td><td>黑暗的；沮丧的；阴郁的, gloomiest</td></tr>
+<tr><td>reveals</td><td>/rɪ'viːl/ vt.</td><td>显示；露出泄露；透露，revealing，reveals</td></tr>
+<tr><td>looted</td><td>/luːt/ n.</td><td>掠夺品；战利品；抢劫vt. 抢劫，洗劫；强夺vi. 洗劫，掠夺；抢劫, looting, loots</td></tr>
+<tr><td>heritage</td><td>/'herɪtɪdʒ/ n.</td><td>遗产, 继承物传统</td></tr>
+<tr><td>supreme</td><td>/su'priːm/ adj.</td><td>最高的；至上的最重要的，supremest 缩 写: supr</td></tr>
+<tr><td>neither</td><td>/'niːðər/ conj.</td><td>既不；也不adv. 两个都不；既不……也不adj. 两者都不的det./pron. 两者都不</td></tr>
+<tr><td>dual</td><td>/'duːəl/ adj.</td><td>双的；双重的n. 双数；双数词</td></tr>
+<tr><td>drought</td><td>/draʊt/ n.</td><td>干旱；缺乏</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>collapse</td><td>/kə'læps/ vi.</td><td>倒塌；瓦解；暴跌vt. 使倒塌，使崩溃；使萎陷n. 倒塌；失败；衰竭, collapsing, collapses</td></tr>
+<tr><td>droughts</td><td>/draʊt/ n.</td><td>干旱；缺乏</td></tr>
+<tr><td>compounded</td><td>/'kɑːmpaʊnd/ n.</td><td>复合物；混合物；【化】化合物（语法）复合词有围栏（或围墙）的场地（内有工厂或其他建筑群）adj. 复合的v. 使加重；使恶化由…构成（或形成）混合；掺和；拌和,</td></tr>
+<tr><td>diversion</td><td>/daɪ'vɜːrʒn/ n.</td><td>转移, 转向娱乐, 消遣临时绕行路分散注意力</td></tr>
+<tr><td>shrink</td><td>/ʃrɪŋk/ vt.</td><td>& vi. 收缩；退缩，shrunk shrunk，shrunken shrinking，shrinks</td></tr>
+<tr><td>apparently</td><td>/ə'pærəntli/ adv.</td><td>显然地表面上,似乎</td></tr>
+<tr><td>decade</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>reaching</td><td>/riːtʃ/ vt.</td><td>到达联络vt. & vi. 伸出手臂；延伸n. 伸手可及的距离(江河的)河段，reaching，reaches</td></tr>
+<tr><td>landscape</td><td>/'lændskeɪp/ n.</td><td>风景, 景色风景画, 风景照, landscaping, landscapes</td></tr>
+<tr><td>seemingly</td><td>/'siːmɪŋli/ adv.</td><td>看来似乎, 表面上看</td></tr>
+<tr><td>places</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>droughts</td><td>/draʊt/ n.</td><td>干旱；缺乏</td></tr>
+<tr><td>exactly</td><td>/ɪɡ'zækt/ adj.</td><td>精确的；准确的，精密的vt. 强求；要求；急需vi. 勒索钱财, exacting, exacts</td></tr>
+<tr><td>arguably</td><td>/'ɑːrɡjuəbli/ adv.</td><td>可论证地,正如可提出证据加以证明的那样</td></tr>
+<tr><td>helping</td><td>/'helpɪŋ/ n.</td><td>（进餐时的）一份食物，一客食物 （尤指某种特性的）一些，一定量 adj. 给予帮助（或支持）的，辅助的</td></tr>
+<tr><td>severe</td><td>/sɪ'vɪr/ adj.</td><td>严厉的；苛刻的；剧烈的；严峻的, severest</td></tr>
+<tr><td>delegates</td><td>/'delɪɡət/ n.</td><td>代表；会议代表v. 授（权）；把（工作、权力等）委托（给下级）选派（某人做某事）, delegating, delegates</td></tr>
+<tr><td>annual</td><td>/'ænjuəl/ adj.</td><td>年度的；每年的n. 年刊，年鉴；一年生植物</td></tr>
+<tr><td>vanishing</td><td>/'vænɪʃ/ vi.</td><td>消失；突然不见；[数]成为零vt. 使不见，使消失n. [语]弱化音, vanishing, vanishes</td></tr>
+<tr><td>intense</td><td>/ɪn'tens/ adj.</td><td>强烈的；紧张的；热情的；非常的, intensest</td></tr>
+<tr><td>initiative</td><td>/ɪ'nɪʃətɪv/ n.</td><td>主动性, 首创精神主动的行动, 倡议主动权</td></tr>
+<tr><td>cape</td><td>/keɪp/ n.</td><td>披肩；海角，岬CAPEabbr. Communication Automatic Processing Equipment 通信自动处理设备</td></tr>
+<tr><td>nearly</td><td>/'nɪrli/ adv.</td><td>几乎; 差不多</td></tr>
+<tr><td>affected</td><td>/ə'fekt/ vt.</td><td>影响；假装；感动；感染vi. 倾向；喜欢n. 情感；引起感情的因素, affecting, affects</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>belt</td><td>/belt/ n.</td><td>腰带, 带子区域, 地带vt.（用带子）系住；（作为惩罚用皮带等）抽打；击打vi.（尤指驾车）疾驰；飞奔, belting, belts</td></tr>
+<tr><td>stretching</td><td>/stretʃ/ vt.</td><td>伸展,张开vi. 伸展adj. 可伸缩的n. 伸展，延伸, stretching, stretches</td></tr>
+<tr><td>gauge</td><td>/ɡeɪdʒ/ n.</td><td>厚度, 直径测量仪表规格, 尺度vt. 计量, 度量估计, 判断</td></tr>
+<tr><td>trends</td><td>/trend/ n.</td><td>趋势, 倾向流行, trending, trends</td></tr>
+<tr><td>places</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>sweeping</td><td>/'swiːpɪŋ/ n.</td><td>扫除；垃圾adj. 扫荡的；彻底的；广泛的v. 打扫；扫除（sweep的现在分词形式）</td></tr>
+<tr><td>commissioned</td><td>/kə'mɪʃn/ n.</td><td>授权, 委托委员会佣金, 回扣vt. 委任, 委托, commissioning, commissions</td></tr>
+<tr><td>process</td><td>/ˈprɑːses/ vt.</td><td>处理；加工n. 过程，进行；方法，步骤；作用；程序；推移vi. 列队前进adj. 经过特殊加工（或处理）的</td></tr>
+<tr><td>initiative</td><td>/ɪ'nɪʃətɪv/ n.</td><td>主动性, 首创精神主动的行动, 倡议主动权</td></tr>
+<tr><td>adaptation</td><td>/ˌædæp'teɪʃn/ n.</td><td>适应,适合改编，改写改编本，改写本</td></tr>
+<tr><td>place</td><td>/pleɪs/ n.</td><td>地方，场所，所在地城，村，镇建筑物，场所某点；某处；某段落座位，位置等级，地位，身份职位，职务；学习的机会自然或恰当的位置[地方]位vt. 放置，安排使…处于某</td></tr>
+<tr><td>imperial</td><td>/ɪm'pɪriəl/ adj.</td><td>皇帝的；帝国的；威严的；至高无上的n. 纸张尺寸；特等品</td></tr>
+<tr><td>tricky</td><td>/'trɪki/ adj.</td><td>机警的；狡猾的, trickiest</td></tr>
+<tr><td>paradox</td><td>/'pærədɑːks/ n.</td><td>似非而是的论点；悖论，反论；自相矛盾的人或事</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+<tr><td>valley</td><td>/'væli/ n.</td><td>流域；山谷；溪谷</td></tr>
+<tr><td>unusually</td><td>/ʌn'juːʒuəl/ adj.</td><td>与众不同的；不寻常的；不平常的</td></tr>
+<tr><td>magnitude</td><td>/'mæɡnɪtuːd/ n.</td><td>巨大; 重要性〈天〉星等</td></tr>
+<tr><td>tropical</td><td>/'trɑːpɪkl/ adj.</td><td>热带的；酷热的；热情的</td></tr>
+<tr><td>observations</td><td>/ˌɑːbzər'veɪʃn/ n.</td><td>注意；观察观察力言论，评论，意见观察资料，观察数据</td></tr>
+<tr><td>covers</td><td>/'kʌvər/ vt.</td><td>包括；涉及；采访，报导n. 盖子；封面，封皮；掩蔽物vi. 覆盖；代替, covering, covers</td></tr>
+<tr><td>host</td><td>/hoʊst/ n.</td><td>主人；主机；主持人；许多vt. 主持；当主人招待vi. 做主人；群集, hosting, hosts</td></tr>
+<tr><td>monitoring</td><td>/'mɑːnɪtər/ n.</td><td>显示屏；监视器；（计算机）显示器监控器；监测器班长；级长；班代表（尤指派往国外的）监督员，核查员巨蜥v. 监视；检查；跟踪调查监听（电话、外国无线电广播等）, </td></tr>
+<tr><td>reliable</td><td>/rɪ'laɪəbl/ adj.</td><td>可靠的, 可信赖的</td></tr>
+<tr><td>decades</td><td>/'dekeɪd/ n.</td><td>十年，十年期；十</td></tr>
+<tr><td>hasten</td><td>/'heɪsn/ vt.</td><td>催促；使赶紧；加速vi. 赶快；急忙, hastening, hastens</td></tr>
+<tr><td>engulfing</td><td>/ɪn'ɡʌlf/ vt.</td><td>吞没；吞食，狼吞虎咽, engulfing, engulfs</td></tr>
+<tr><td>recurring</td><td>/rɪ'kɜːr/ vi.</td><td>重现；复发；再来；采用；循环；递归, recurring, recurs</td></tr>
+<tr><td>pattern</td><td>/'pætərn/ n.</td><td>型，样式花样，图案方式，形式榜样，典范vt. 模仿； 仿制以图案装饰，patterning，patterns</td></tr>
+<tr><td>disrupts</td><td>/dɪs'rʌpt/ vt.</td><td>使混乱, 扰乱, disrupting, disrupts</td></tr>
+<tr><td>rise</td><td>/raɪz/ vi.</td><td>升高，上升；上涨，增高站起来；起床起义；反抗n. 上升，升起增加，增长兴起；发展斜坡，高岗RISEabbr. Research in Supersonic En</td></tr>
+
+</table>
+</div>
+
+<div class="nav-bar">
+  <a href="day16.html" class="nav-btn">← Day 16</a>
+  <a href="day18.html" class="nav-btn">Day 18 →</a>
+</div>
+
+<div class="progress">📖 Day 17 of 42</div>
+
+<div class="page-footer">The Economist Daily Reader · Generated 2026-11-21</div>
+
+</body>
+</html>
